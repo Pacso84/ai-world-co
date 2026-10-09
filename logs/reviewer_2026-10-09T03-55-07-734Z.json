@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-10-09T03:54:20.742Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0051858,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio.json",
+      "rejected": "REJECTED_GUIDE_how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio.json",
+      "decision": "FAIL",
+      "score": 3,
+      "cost_usd": 0.0020376
+    },
+    {
+      "writer": "WRITER_GUIDE_plan-a-weekend-trip-itinerary-from-a-one-line-idea-with-cohe.json",
+      "article": "ARTICLE_GUIDE_plan-a-weekend-trip-itinerary-from-a-one-line-idea-with-cohe.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00143262
+    }
+  ],
+  "finished_at": "2026-10-09T03:55:07.734Z",
+  "duration_seconds": 46.992
+}

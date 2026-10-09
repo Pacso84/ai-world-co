@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-09T03:38:01.097Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.041104452,
+  "by_article": [
+    {
+      "draft": "2026-10-09T03-35-10-326Z_databricks_Lakebase_and_Agentic_SDLC__Branching_Databases_for.json",
+      "writer_output": "WRITER_2026-10-09T03-35-10-326Z_databricks_Lakebase_and_Agentic_SDLC__Branching_Databases_for.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01489308,
+      "duration_ms": 87623,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-09T03-34-55-837Z_openai-blog_Disrupting_AI-enabled__false_front__operations.json",
+      "writer_output": "WRITER_2026-10-09T03-34-55-837Z_openai-blog_Disrupting_AI-enabled__false_front__operations.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01208148,
+      "duration_ms": 529397,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-09T03-34-55-837Z_anthropic-blog_Building_on_our_commitment_to_American_scientific_.json",
+      "writer_output": "WRITER_2026-10-09T03-34-55-837Z_anthropic-blog_Building_on_our_commitment_to_American_scientific_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.004672512,
+      "duration_ms": 13774,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-08T03-29-26-575Z_aws-ml_Introducing_Claude_Haiku_5_5_on_AWS.json",
+      "writer_output": "WRITER_2026-10-08T03-29-26-575Z_aws-ml_Introducing_Claude_Haiku_5_5_on_AWS.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00870888,
+      "duration_ms": 53702,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-10-09T03:49:33.727Z",
+  "duration_seconds": 692.63
+}

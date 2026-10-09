@@ -1,23 +1,30 @@
 {
-  "at": "2026-10-08T20:56:02.565Z",
-  "nap": "2026-10-08",
-  "hivasok": 73,
-  "bukott": 0,
-  "osszMp": 2052.7,
-  "veszettMp": 0,
+  "at": "2026-10-09T04:01:06.543Z",
+  "nap": "2026-10-09",
+  "hivasok": 50,
+  "bukott": 1,
+  "osszMp": 1378.1,
+  "veszettMp": 480,
   "leglassabb": {
-    "agent": "translator",
+    "agent": "iro",
     "provider": "openrouter",
     "model": "minimax/minimax-m3",
-    "mp": 472.9,
-    "ok": true,
-    "tullepes": false
+    "mp": 480,
+    "ok": false,
+    "tullepes": true
   },
-  "idotullepesek": [],
+  "idotullepesek": [
+    {
+      "agent": "iro",
+      "model": "minimax/minimax-m3",
+      "db": 1,
+      "mp": 480
+    }
+  ],
   "problems": [
     {
-      "code": "AI_LASSU_HIVAS",
-      "detail": "a leglassabb hívás 473 mp volt (translator/minimax/minimax-m3) — a türelem-plafon közelében"
+      "code": "AI_IDOTULLEPES",
+      "detail": "1 AI-hívás lógott bele a türelem-plafonba (iro/minimax/minimax-m3 ×1) — 8,0 perc veszett el, nulla tokenért"
     }
   ]
 }

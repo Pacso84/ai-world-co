@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "written_at": "2026-10-09T03:49:33.726Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00870888,
+    "original_draft": "2026-10-08T03-29-26-575Z_aws-ml_Introducing_Claude_Haiku_5_5_on_AWS.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/introducing-claude-haiku-5-5-on-aws/",
+    "source_links": [
+      "https://aws.amazon.com/blogs/machine-learning/introducing-claude-haiku-5-5-on-aws/"
+    ],
+    "source_snippet": "Claude Haiku 5.5 is now available on Amazon Bedrock and Claude Platform on AWS. According to Anthropic, it is the fastest, most efficient model in the Claude 5.5 family, built for subagents and high-volume, cost-sensitive work, and costs around 75% less than Claude Haiku 4.5 for most tasks. This post covers its improvements and how to get started.",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-10-09T03:49:53.777Z",
+    "slug": "anthropic-s-claude-haiku-5-5-is-now-on-aws-what-it-does",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 764
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-crafted AI news that explains Haiku's role in the Claude family, attributes all claims to Anthropic, and gives readers four clear audience-based takeaways. Tone is friendly and accessible for everyday people.",
+      "_aiCost": 0.0016746,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-09T03:50:57.745Z",
+    "guide_worthy": false,
+    "pairing_reason": "Claude Haiku 5.5 is a backend model for developers on Amazon Bedrock; the article explicitly states users won't select it from menus themselves - it runs behind the scenes in other apps",
+    "image_v": 2,
+    "image_at": "2026-10-09T03:58:08.022Z",
+    "seo": {
+      "meta_description": "Anthropic's Claude Haiku 5.5 is now on AWS. It's the fastest Claude 5.5 model and costs 75% less than Haiku 4.5 for high-volume tasks.",
+      "keywords": [
+        "Claude Haiku 5.5 AWS",
+        "Claude Haiku 5.5 Amazon Bedrock",
+        "Anthropic Claude Haiku pricing",
+        "Claude Haiku 5.5 vs 4.5",
+        "fastest Claude model",
+        "Claude Haiku cost reduction",
+        "AWS AI models 2024",
+        "Anthropic Claude family explained"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific details about what the model actually does (coding, writing, analysis tasks) to improve relevance for search intent",
+        "Include concrete use cases or performance benchmarks mentioned in the full article to provide more value",
+        "Add release date to help with timeliness signals in search results"
+      ],
+      "optimised_at": "2026-10-09T03:58:52.635Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Anthropic's Claude Haiku 5.5 Is Now on AWS: What It Does\"\nsubtitle: \"Anthropic says it's the fastest model in the Claude 5.5 family and costs about 75% less than the previous Haiku.\"\ncategory: \"ai-news\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"claude\", \"anthropic\", \"aws\", \"ai-models\", \"haiku\"]\n---\n\n# Anthropic's Claude Haiku 5.5 Is Now on AWS: What It Does\n\n> **In short:** Anthropic has released Claude Haiku 5.5 on AWS, calling it the fastest, most efficient model in its Claude 5.5 family. The company says it costs about 75% less than the previous Haiku 4.5 for most tasks, making it aimed at high-volume, cost-sensitive work.\n\nIf you've heard people mention different \"Claude\" models and wondered why there are several, this new release is a good chance to understand the lineup — and to see what changes for the tools you already use.\n\n## What Anthropic announced\n\nAccording to Anthropic's announcement, Claude Haiku 5.5 is now available on Amazon Bedrock (AWS's marketplace for AI models) and through Claude's own platform on AWS. Anthropic describes it as the fastest, most efficient option in its Claude 5.5 family — meaning it's built for situations where you need quick responses and don't want to pay top dollar for every interaction.\n\nThe company says it costs about 75% less than Claude Haiku 4.5 for most tasks. That's a large jump in efficiency, and it's the kind of update that matters most when you're running lots of AI requests at once — for example, processing thousands of documents, or when an app quietly calls an AI every time you click something.\n\nAnthropic specifically points to \"subagents\" — smaller AI helpers that handle focused jobs inside a bigger system — as a key use case. Think of it like having a fast assistant who takes care of the small, repeated tasks so the more powerful (and more expensive) main AI can focus on the harder work.\n\n## What makes this a \"Haiku\"\n\nAnthropic names its models after poetry styles. Opus is the most capable, Sonnet sits in the middle, and Haiku is the speed-focused option. If you've ever noticed the gap between a chatbot's \"thinking hard\" answer and its \"instant\" reply, that's roughly the difference between Opus and Haiku.\n\nSo Haiku 5.5 isn't trying to be the smartest model Anthropic makes. It's trying to be quick, cheap, and good enough for the tasks where waiting around or paying premium prices doesn't make sense.\n\n## What this means for you\n\n- **If you're a casual user of AI tools**: You probably won't pick \"Haiku 5.5\" from any menu yourself — it happens behind the scenes in the apps you already use. Over the coming weeks and months, some of those apps may quietly feel faster or cheaper to operate, especially ones that previously used the older Haiku 4.5 in the background.\n\n- **If you run a small business or use AI tools at work**: The 75% cost reduction Anthropic claims could change what's economically practical to automate. Tasks that were too expensive to handle with AI before — like scanning every customer email for a specific phrase, or generating short product descriptions in bulk — may now make sense to automate. Ask whoever sets up your tools whether they're already using the new Haiku.\n\n- **If you're just curious about AI in general**: This is a useful example of how the field works. Models aren't one-size-fits-all — companies release different versions for different jobs. A faster, cheaper model that handles the small stuff is just as important as a powerful one that handles the big stuff.\n\n- **If you already use Claude or other AI tools at work**: Watch for apps that previously felt slow or that limited how many AI actions you could run per day. Anthropic's update is the kind of change that often unlocks new features in the tools you already pay for, without you needing to do anything yourself.\n\n## Wrap-up\n\nClaude Haiku 5.5 is a reminder that AI progress isn't only about getting smarter — it's also about getting faster and cheaper. Anthropic says it's the quickest model in its family and roughly a quarter of the price of its predecessor. For most people, that means the AI-powered tools you already use may quietly get better in the coming months.\n\nA small next step you can take today: check whether any AI tool you use regularly mentions which Claude model it runs on. If it does, you'll be able to spot when apps update to the new Haiku — and that's often when features feel noticeably snappier.",
+  "original_title": "Introducing Claude Haiku 5.5 on AWS"
+}

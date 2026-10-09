@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-10-09T03:48:25.635Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01208148,
+    "original_draft": "2026-10-09T03-34-55-837Z_openai-blog_Disrupting_AI-enabled__false_front__operations.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/disrupting-ai-enabled-false-front-operations",
+    "source_links": [
+      "https://openai.com/index/disrupting-ai-enabled-false-front-operations"
+    ],
+    "source_snippet": "OpenAI disrupted two AI-enabled influence operations that used false-front journalists and a think tank to spread geopolitical messaging.",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-10-09T03:50:27.432Z",
+    "slug": "openai-disrupted-two-ai-disinformation-operations-here-s-what-that-mea",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 610
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured news piece that explains technical terms in context, attributes all claims properly to OpenAI, maintains an accessible and kind tone for everyday readers, and includes a practical call-to-action. No prohibited content, no clichés, and US English is correct.",
+      "_aiCost": 0.000779142,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-09T03:51:10.807Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a case study about OpenAI disrupting disinformation operations, not about a specific feature/tool users can use. The advice (check sources, verify experts) is generic media literacy, not tied to any named product.",
+    "image_v": 2,
+    "image_at": "2026-10-09T03:58:27.506Z",
+    "seo": {
+      "meta_description": "OpenAI disrupted two AI operations posing as fake journalists and think tanks spreading disinformation. Here's how to recognize AI-generated fake news.",
+      "keywords": [
+        "OpenAI disinformation operation",
+        "AI fake news detection",
+        "AI generated fake journalists",
+        "disinformation think tank AI",
+        "how to spot AI generated news",
+        "coordinated disinformation AI",
+        "fake news AI 2024"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add specific examples of the disinformation techniques mentioned in the article to improve topical relevance",
+        "Include the term 'influence operations' which is a commonly searched phrase in this niche",
+        "Consider adding 'geopolitical disinformation' as a keyword to capture higher-intent search traffic"
+      ],
+      "optimised_at": "2026-10-09T03:59:10.277Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"OpenAI Disrupted Two AI Disinformation Operations. Here's What That Means for You.\"\nsubtitle: \"AI-powered fake journalists and think tanks are now a real thing. Here's how to recognize them — and why this matters to everyday readers.\"\ncategory: \"news\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-safety\", \"disinformation\", \"openai\", \"media-literacy\"]\n---\n\n# OpenAI Disrupted Two AI Disinformation Operations. Here's What That Means for You.\n\n> **In short:** OpenAI says it shut down two influence operations that used AI to pose as journalists and run a think tank to spread geopolitical messages. The case shows how AI is making coordinated disinformation faster and more believable — and why every reader needs a sharper eye.\n\nYou probably saw a news link this week that looked legitimate. Maybe a \"reporter\" on a small outlet shared a sharp take on a current conflict. Maybe a \"policy expert\" at a \"think tank\" was quoted on something you already felt strongly about. Maybe you didn't think twice about it.\n\nThat's exactly the kind of work OpenAI says it just disrupted.\n\n## What OpenAI says it found\n\nAccording to OpenAI's announcement, the company identified and took down two **influence operations** — coordinated campaigns designed to shape what people think about world events. What made these different was the use of AI to build the **false fronts** (fake online identities and organizations that look real at first glance) the campaigns relied on.\n\nOne operation posed as a network of journalists. It created the kind of articles, profiles, and online outlets that, at a glance, look like a small but real newsroom.\n\nThe other set up a **think tank** — a research-style organization that publishes reports and commentary to influence policy debates. According to OpenAI, the think tank wasn't real; it was a false front the operation used to look legitimate.\n\nBoth operations pushed **geopolitical messaging** — content designed to shape opinions about international affairs.\n\n## Why AI makes this different\n\nCoordinated disinformation isn't new. What's changed is the cost. AI lets a small group produce in a day what used to take a team of writers, researchers, and designers weeks. It can write in many languages, generate profile pictures for fake \"staff,\" and build plausible-looking websites.\n\nThe result is more volume, more polish, and a lower chance that any single piece will trip your suspicion.\n\n## What this means for you\n\n- **If you read the news online**: Before you trust a story, look up the outlet. Is there an \"About\" page with real names? Can you find those journalists elsewhere? A two-minute check beats a strong reaction.\n- **If a \"study\" or \"expert\" is cited**: Search the expert's name. Real researchers have a trail — past papers, university pages, conference talks. A blank page is a red flag.\n- **If the content makes you feel a strong emotion quickly**: That's not always bad journalism, but it's a reason to slow down. Coordinated campaigns are designed to spark exactly that reaction.\n- **For business owners and communicators**: Watch for fake accounts that imitate your brand or industry. The same playbook used against the public can be used against companies.\n\n## Wrap-up\n\nOpenAI disrupting two operations doesn't end the problem — it spotlights it. As AI gets cheaper and easier to use, these campaigns will keep coming. The good news is that a few small habits — checking who is actually behind what you read, searching for the experts cited, pausing on emotionally charged stories — go a long way. Pick one news story you saw this week and run one of those checks on it. You'll be doing more media literacy than most people do in a year.",
+  "original_title": "Disrupting AI-enabled “false front” operations"
+}

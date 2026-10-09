@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "write-a-short-linkedin-bio-from-your-job-title-with-cohere",
+    "company": "Cohere",
+    "tool": "Cohere",
+    "icon": "👤",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-10-09T03:57:17.003Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0084918,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-09T03:57:51.094Z",
+    "slug": "write-a-short-linkedin-bio-from-your-job-title-with-cohere",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1522
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The guide has excellent structure, clear beginner-friendly steps with examples and fallbacks, friendly tone, and covers all required sections. Step 1 uses appropriate hedging for UI navigation. The 'undo' note in Step 5 could optionally clarify that users can delete and retype, but this is minor.",
+      "_aiCost": 0.002286,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-09T03:58:43.485Z",
+    "seo": {
+      "meta_description": "Learn how to turn your job title into a professional LinkedIn bio using Cohere AI. Get a polished 2-3 sentence bio in minutes with simple prompts.",
+      "keywords": [
+        "how to write a LinkedIn bio",
+        "LinkedIn bio generator",
+        "Cohere AI bio writer",
+        "AI LinkedIn bio tool",
+        "professional bio from job title",
+        "short LinkedIn about section",
+        "write LinkedIn bio with AI"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add 'how to write a LinkedIn bio with AI' or 'Cohere tutorial' to the title/subtitle for better keyword coverage",
+        "Include 1-2 concrete prompt examples in the article body to improve topical relevance",
+        "Add internal links to other AI how-to guides on the site to build topic clusters"
+      ],
+      "optimised_at": "2026-10-09T04:00:02.833Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Write a Short LinkedIn Bio from Your Job Title with Cohere\"\nsubtitle: \"Turn your job title into a polished 2-3 sentence bio in minutes — no writing skills required, just a clear prompt.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Cohere\"\ntool: \"Cohere\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"cohere\", \"writing\"]\n---\n\n# Write a Short LinkedIn Bio from Your Job Title with Cohere\n\n> **In short:** You can paste a one-line prompt with your job title into Cohere's chat assistant and get a 2-3 sentence bio you can edit and use on LinkedIn, in an email signature, or on a conference profile. The first draft won't be perfect — the trick is iterating with short follow-up prompts until it sounds like you.\n\nA short professional bio is one of those things everyone needs and almost nobody enjoys writing. You sit in front of the \"About\" field on LinkedIn, type your job title, and then stare at the cursor. Cohere is an AI assistant you can talk to in plain English. Give it the right instructions and a few details about your work, and it drafts a bio you can adjust until it fits. This guide walks you through the whole process in about ten minutes, even if you've never used Cohere before.\n\n## Before you start\n- A free Cohere account (sign up at the official Cohere website with an email address).\n- A browser on a laptop or phone — the chat works on both.\n- Your exact job title and one or two real things you do at work (a tool you use, a problem you solve, a person you help).\n- Roughly **10 minutes** for the first pass, then a few more for edits.\n\nA note on honesty: the assistant can draft the words, but it can't know your real achievements, your tone of voice, or the people you most want to attract. Treat its output as a starting point you shape, not a finished product you paste.\n\n## Step 1 — Open Cohere's chat assistant\n\nGo to the official Cohere website and look for a button or link that opens the chat assistant (Cohere calls its chat product **Coral**). On the homepage it usually sits near the top of the page. Click or tap it, and a chat window opens with an empty text box at the bottom.\n\nIf you already have an account, you'll land directly in the chat. If not, the page will ask you to sign up — an email address and a password are usually enough; no credit card is needed for basic use.\n\n💬 Example: there's nothing to type yet — you're just opening the box.\n\nYou'll know it worked when you see a blank chat box, a blinking cursor, and a placeholder line like \"Message Cohere\" or \"Ask anything\" (the exact wording may differ — look for any empty field at the bottom of the screen).\n\n## Step 2 — Give Cohere your job title and the basics\n\nClick inside the text box and write a short instruction. Tell it the role you have, the field you work in, and roughly who you help. End with a clear ask: write a short bio. The more concrete your prompt, the closer the first draft will be to what you want.\n\nPress Enter (or tap the send icon — usually a paper-airplane or up-arrow) to send. Within a few seconds, a paragraph of text appears in the chat, written as if you had written it.\n\n💬 Example: *Write a 2-sentence LinkedIn bio for a high school math teacher in a small public school. I help students who struggle with algebra build real confidence. Keep it warm and a little personal, no buzzwords.*\n\nYou'll know it worked when the assistant replies with a short paragraph that mentions your role and at least one of the details you provided.\n\n## Step 3 — Ask for two or three alternative versions\n\nOne draft is rarely enough. Ask the assistant to give you two more versions with a slightly different feel — say, one more formal, one more friendly. This gives you something to compare instead of editing a single sentence blind.\n\nType a follow-up such as \"Give me two more versions, one more formal and one more conversational\" and press Enter. The chat shows all three side by side, newest at the bottom.\n\n💬 Example: *Nice — now give me two more options: one more formal (for a conference speaker profile), and one more conversational (for an email signature). Keep each one to 2-3 sentences.*\n\nIf your chat only shows one reply at a time and you can't see the earlier version, scroll up — earlier messages stay in the same window.\n\nYou'll know it worked when you can see at least three different drafts in the chat, each with a slightly different tone.\n\n## Step 4 — Trim it down to exactly 2-3 sentences\n\nMost first drafts come out a little long. Ask the assistant to shorten your favorite version to a strict sentence count. This is the easiest way to get something that actually fits the LinkedIn \"About\" preview without scrolling.\n\nType your request in the same chat and send it. The reply will replace or sit below your previous version — depending on the interface, the new text may be labeled as a new message rather than edited in place.\n\n💬 Example: *I like version 2. Rewrite that one in exactly 2 sentences, around 50 words total. Don't add new facts.*\n\nIf 2 sentences feel too short, ask for 3 instead — there's no rule that says shorter is always better. Pick what feels natural to read out loud.\n\nYou'll know it worked when the new version is genuinely shorter, has the sentence count you asked for, and doesn't introduce any details you didn't mention in your prompt.\n\n## Step 5 — Add one real detail the assistant doesn't know\n\nNow make the draft yours. Type one real sentence about yourself — a tool you use every day, a problem you solved recently, a person you love helping — and ask the assistant to weave it into the bio. This is the step that turns a generic AI paragraph into something that sounds like *you*.\n\nSend the message and read the reply carefully. If the assistant tries to \"improve\" your sentence and makes it less true, undo and rephrase your own sentence more precisely before asking again.\n\n💬 Example: *Add this fact in a natural way: I run after-school algebra clinics every Thursday for students who are behind grade level. Keep it to 2 sentences.*\n\nYou'll know it worked when the new bio contains your real detail in roughly the words you used, not invented claims about awards or companies you never mentioned.\n\n## Step 6 — Copy the final text and paste it where you need it\n\nHover your cursor over the assistant's reply and look for a **copy** icon (often two overlapping squares, or a small clipboard). Click it, then switch to LinkedIn, your email signature settings, or your conference profile, and paste. On a phone, long-press the text and choose **Copy**.\n\nBefore you save, read the bio out loud once. If you stumble on a phrase, change it on the spot — small edits take seconds and make a big difference.\n\n💬 Example: paste your final bio here — for instance: *High school math teacher focused on helping students who struggle with algebra build real confidence. I run after-school algebra clinics every Thursday for students who are behind grade level.*\n\nYou'll know it worked when the text appears in your LinkedIn \"About\" section, email signature, or speaker profile exactly as you wrote it, with no extra characters or AI-style prefixes.\n\n## Common mistakes\n- **Pasting the first draft without editing.** The first reply is almost never the best one. Always ask for alternatives and trim before you use it.\n- **Forgetting to mention what you actually do.** If your prompt only says your job title, the bio will sound generic. Add one concrete thing — who you help or what problem you solve.\n- **Letting the assistant invent achievements.** If the bio mentions an award, a company, or a metric you never gave it, delete that line. Stick to facts you supplied.\n\n## What this means for you\n- **In everyday life:** You can refresh your LinkedIn \"About\" section any time your role changes — the same prompt works for a new job, a side project, or a volunteer position.\n- **For your business or work:** Use the same steps to draft a short bio for a colleague, a team page, or a guest post byline. Consistency across a small team makes the company look more polished.\n- **If you're just getting started:** Pick the version that sounds the most like how you'd actually talk about your work in person. That's the one your readers will trust.\n\n## Try it now\nOpen Cohere's chat assistant, paste the prompt from Step 2 with your own job title and one real detail, and see what comes back in the next two minutes.",
+  "original_title": "Write a short LinkedIn bio from your job title with Cohere"
+}

@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-10-09T03:49:33.920Z",
+  "total": 4,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.007940234,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-08T03-29-26-575Z_aws-ml_Introducing_Claude_Haiku_5_5_on_AWS.json",
+      "article": "ARTICLE_2026-10-08T03-29-26-575Z_aws-ml_Introducing_Claude_Haiku_5_5_on_AWS.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0016746
+    },
+    {
+      "writer": "WRITER_2026-10-09T03-34-55-837Z_anthropic-blog_Building_on_our_commitment_to_American_scientific_.json",
+      "article": "ARTICLE_2026-10-09T03-34-55-837Z_anthropic-blog_Building_on_our_commitment_to_American_scientific_.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0015561
+    },
+    {
+      "writer": "WRITER_2026-10-09T03-34-55-837Z_openai-blog_Disrupting_AI-enabled__false_front__operations.json",
+      "article": "ARTICLE_2026-10-09T03-34-55-837Z_openai-blog_Disrupting_AI-enabled__false_front__operations.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.000779142
+    },
+    {
+      "writer": "WRITER_2026-10-09T03-35-10-326Z_databricks_Lakebase_and_Agentic_SDLC__Branching_Databases_for.json",
+      "article": "ARTICLE_2026-10-09T03-35-10-326Z_databricks_Lakebase_and_Agentic_SDLC__Branching_Databases_for.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00111258
+    }
+  ],
+  "finished_at": "2026-10-09T03:50:49.515Z",
+  "duration_seconds": 75.595
+}
