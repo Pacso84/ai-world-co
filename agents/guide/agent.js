@@ -40,6 +40,7 @@ import { blockingIssues } from '../../core/auto-check-codes.js';
 import { valasztHireket, hirBlokk, hirekBetolt, trendBlokk } from '../../core/guide-sources.js';
 import { utmutatoE } from '../../core/guide-kind.js';
 import { tartalomKapcsolok, maiKozepDb, szintSorrend } from '../../core/content-switches.js';
+import { fokuszConfigbol, azonosEszkoz, maiFokuszDb, fokuszElore, fokuszHiany, fokuszOtletPrompt, fokuszCimOk } from '../../core/guide-focus.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -58,7 +59,7 @@ const GUIDE_MAX_REWORK = 4;
 // ---- argumentumok ----
 function parseArgs() {
   const a = process.argv.slice(2);
-  const p = { id: null, title: null, limit: 1, rework: false, ideas: 0, cover: false, balance: 0, general: 0, upgrade: false, upgradeLimit: 0 };
+  const p = { id: null, title: null, limit: 1, rework: false, ideas: 0, cover: false, focus: false, balance: 0, general: 0, upgrade: false, upgradeLimit: 0 };
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--upgrade') { p.upgrade = true; if (a[i + 1] && /^\d+$/.test(a[i + 1])) p.upgradeLimit = parseInt(a[++i], 10); }
     else if (a[i] === '--id' && a[i + 1]) { p.id = a[++i]; }
@@ -66,6 +67,7 @@ function parseArgs() {
     else if (a[i] === '--limit' && a[i + 1]) { p.limit = parseInt(a[++i], 10) || 1; }
     else if (a[i] === '--rework') { p.rework = true; }
     else if (a[i] === '--cover') { p.cover = true; }
+    else if (a[i] === '--focus') { p.focus = true; }
     else if (a[i] === '--ideas') { p.ideas = parseInt(a[i + 1], 10) || 6; if (a[i + 1] && /^\d+$/.test(a[i + 1])) i++; }
     else if (a[i] === '--general') { p.general = parseInt(a[i + 1], 10) || 6; if (a[i + 1] && /^\d+$/.test(a[i + 1])) i++; }
     else if (a[i] === '--balance') { p.balance = parseInt(a[i + 1], 10) || 8; if (a[i + 1] && /^\d+$/.test(a[i + 1])) i++; }
@@ -125,7 +127,18 @@ function pickTopics(store, args) {
     { maiKozep, be: tartalomKapcsolok().kozepUtmutato });
   const out = [];
   if (rendezett[0]?.level === 'intermediate') out.push(rendezett.shift());
-  const todo = rendezett.filter(t => t.level !== 'intermediate');   // egy futás legfeljebb 1 középszintűt ír
+  let todo = rendezett.filter(t => t.level !== 'intermediate');   // egy futás legfeljebb 1 középszintűt ír
+  // FÓKUSZ (2026-10-09, user: „először legyen eladásunk") — naponta perDay útmutató
+  // a fókusz-eszközről (pl. Alexa+, ott a partnerlink). config: content.guide_focus.
+  const maNap = new Date().toISOString().slice(0, 10);
+  const fok = fokuszConfigbol(undefined, maNap);
+  if (fok.be && out.length < args.limit) {
+    const maiFok = maiFokuszDb(maiGuideMetak(), fok, maNap) + out.filter(t => azonosEszkoz(t.tool, fok.tool)).length;
+    if (maiFok < fok.perDay) {
+      const { tema, tobbi } = fokuszElore(todo, fok);
+      if (tema) { out.push(tema); todo = tobbi; }
+    }
+  }
   const fresh = todo.filter(isFresh);
   const balance = todo.filter(t => !isFresh(t) && isBalanceTopic(t));
   const general = todo.filter(t => !isFresh(t) && !isBalanceTopic(t));
@@ -425,7 +438,7 @@ function uniqueId(base, used) {
   return id;
 }
 
-async function proposeNewTopics(count, store, brandContext, { generalOnly = false } = {}) {
+async function proposeNewTopics(count, store, brandContext, { generalOnly = false, fokusz = null } = {}) {
   const existingTitles = new Set(store.topics.map(t => normTitle(t.title)));
   const usedIds = new Set(store.topics.map(t => t.id).filter(Boolean));
   // KÖZELI-TÉMA-ŐR (2026-07-18): a JELENTÉSBEN közeli ötleteket is kiszűrjük,
@@ -458,7 +471,7 @@ async function proposeNewTopics(count, store, brandContext, { generalOnly = fals
 DO NOT repeat or lightly reword any of these EXISTING topics:
 ${sample}
 
-Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, mobile apps, voice, images, spreadsheets, email).${generalOnly ? '' : trendBlokk(sajatHirek())}${generalOnly ? '' : ' Aim for a healthy mix of general and company-specific.'}${coverageHint}${generalRule}${szintKeveres()}
+Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, mobile apps, voice, images, spreadsheets, email).${generalOnly || fokusz ? '' : trendBlokk(sajatHirek())}${generalOnly || fokusz ? '' : ' Aim for a healthy mix of general and company-specific.'}${fokusz ? '' : coverageHint}${generalRule}${fokuszOtletPrompt(fokusz)}${szintKeveres()}
 
 BRAND CONTEXT:
 ${brandContext}
@@ -474,6 +487,7 @@ Return ONLY the JSON array (${count + 4} items).`;
     const title = (it.title || '').toString().trim();
     if (!title || title.length < 12) continue;
     if (existingTitles.has(normTitle(title))) continue;     // már van ilyen (szó szerint)
+    if (fokusz && !fokuszCimOk(title, fokusz)) continue;    // fókusz-módban csak a fókusz-eszközről
     // JELENTÉSBEN közeli-e valamely meglévő guide-hoz? (dedupRef + a batch eddigi címei)
     const near = await isNearDuplicateTitle(title, dedupRef);
     if (near.duplicate) {
@@ -488,8 +502,8 @@ Return ONLY the JSON array (${count + 4} items).`;
     const id = uniqueId(slugify(title), usedIds);
     store.topics.push({
       id,
-      company: (it.company || '').toString().trim(),
-      tool: (it.tool || '').toString().trim(),
+      company: fokusz ? fokusz.company : (it.company || '').toString().trim(),
+      tool: fokusz ? fokusz.tool : (it.tool || '').toString().trim(),
       title,
       audience: ['personal', 'business', 'both'].includes(it.audience) ? it.audience : 'both',
       level: it.level === 'intermediate' ? 'intermediate' : 'beginner',
@@ -1120,6 +1134,25 @@ async function main() {
 
   if (args.ideas > 0) {
     await runIdeasMode(args.ideas, loadBrandContext());
+    return;
+  }
+
+  // FÓKUSZ-ÖTLETELÉS (2026-10-09, core/guide-focus.js): ha a fókusz-eszközről
+  // (pl. Alexa+) FOKUSZ_TARTALEK-nál kevesebb téma vár, célzottan kérünk újat.
+  // Önkorlátozó: elég téma / lejárt fókusz → LLM-hívás NÉLKÜL kilép ($0).
+  if (args.focus) {
+    const fok = fokuszConfigbol();
+    const store = loadTopics();
+    const kell = fokuszHiany(store.topics, fok);
+    if (!fok.be) { console.log('🎯 Fókusz: nincs bekapcsolva / lejárt — kihagyom.'); return; }
+    if (kell <= 0) { console.log(`🎯 Fókusz (${fok.tool}): van elég várakozó téma — kihagyom.`); return; }
+    const before = store.topics.length;
+    const r = await proposeNewTopics(kell + 2, store, loadBrandContext(), { fokusz: fok });
+    if (r.added > 0) {
+      saveTopics(store);
+      store.topics.slice(before).forEach(t => console.log(`   • ${t.title}`));
+    }
+    console.log(`🎯 Fókusz (${fok.tool}): ${r.added} új téma | költség $${r.cost.toFixed(4)}`);
     return;
   }
 

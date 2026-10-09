@@ -599,6 +599,10 @@ async function main() {
       // 2) KIEGYENLÍTÉS: a lemaradó cégeket felhozzuk a küszöbig (önkorlátozó:
       //    ha egy cég eléri a célt a backlogban, már nem ad többet hozzá).
       await runAgent('agents/guide/agent.js', ['--balance', String(slots + 4)]);
+      // 2b) FÓKUSZ (2026-10-09, core/guide-focus.js): ha a fókusz-eszközről
+      //     (pl. Alexa+, partnerlink) fogy a téma, célzottan pótol. Önkorlátozó,
+      //     lejárt / kikapcsolt fókusznál LLM-hívás nélkül kilép.
+      await runAgent('agents/guide/agent.js', ['--focus']);
       // 3) TÉMA-PUFFER (2026-07-18, user: "az útmutatók sokasodjanak"): nem csak
       //    az aznapi slotokra, hanem egy egészséges PUFFERRE töltünk fel, hogy a
       //    téma-sor SOHA ne ürüljön ki (júl. 15-én csak 4 guide ment a 6 helyett,

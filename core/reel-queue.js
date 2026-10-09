@@ -37,6 +37,8 @@
 // Így a hátralék ugyanúgy fogy, csak nem egy témát darál le egyszerre.
 // ===================================================================
 
+import { azonosEszkoz } from './guide-focus.js';
+
 const napja = (x) => {
   const t = Date.parse(String(x || ''));
   return Number.isFinite(t) ? new Date(t).toISOString().slice(0, 10) : null;
@@ -88,6 +90,17 @@ export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
   if (!jeloltek.length) return null;
 
   jeloltek.sort((a, b) => String(a.published_at).localeCompare(String(b.published_at)));
+
+  // FÓKUSZ (2026-10-09, user: „először legyen eladásunk" — core/guide-focus.js):
+  // naponta EGY Reel a fókusz-eszközről (pl. Alexa+, amin a partnerlink van),
+  // a változatossági szabály ELŐTT — különben a „múlt héten már volt Alexa"
+  // ág minden nap kiszorítaná, és a friss útmutató 7 nap után kiöregedne.
+  // Naponta legfeljebb egy: a második Reel ugyanúgy változatos marad.
+  if (opts.fokusz) {
+    const maMarFokusz = maiReelCikkek(cikkek, now).some(c => azonosEszkoz(c.tool, opts.fokusz));
+    const f = !maMarFokusz && jeloltek.find(c => azonosEszkoz(c.tool, opts.fokusz));
+    if (f) return f;
+  }
 
   // VÁLTOZATOSSÁG: az elmúlt hét Reeljének „formája" (eszköz + cím-kezdet).
   const utobbi = cikkek

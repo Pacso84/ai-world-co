@@ -466,6 +466,7 @@ export function maiPromo(utolso, now = Date.now()) {
 async function prepare(ROOT, join) {
   const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync, readdirSync } = await import('fs');
   const { kovetkezoReel } = await import('./reel-queue.js');
+  const fokusz = (await import('./guide-focus.js')).fokuszConfigbol();
   const { cardsFromGuide, renderVideo } = await import('./short-video.js');
   const { promoKell, promoKartyak, promoKepUtak, PROMO_SLUG } = await import('./packs-reel.js');
 
@@ -522,7 +523,8 @@ async function prepare(ROOT, join) {
   const valasztott = kovetkezoReel(cikkek, Date.now(), {
     alkalmas: c => !!cardsFromGuide(c.md).cards,
     maxKorNap: REEL_FRISS_NAP,         // 2026-09-27, user: csak a friss útmutatóból Reel
-    napiMax: REEL_NAPI
+    napiMax: REEL_NAPI,
+    fokusz: fokusz.be ? fokusz.tool : ''   // 2026-10-09: napi 1 Reel a fókusz-eszközről (core/guide-focus.js)
   });
   if (!valasztott) {
     // ── A MAI VIDEÓ ÉLETBEN TARTÁSA (2026-08-26) ──────────────────
