@@ -40,6 +40,7 @@ import { linkSor } from './internal-link-guard.js';
 import { bufferSor } from './buffer-guard.js';
 import { tesztSor } from './test-guard.js';
 import { pdfLetoltesSor } from './pdf-download.js';
+import { partnerKattintasSor } from './affiliate.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -952,6 +953,8 @@ async function main() {
         // 📚 INGYENES PDF-LETÖLTÉS (2026-10-07): a Worker számlálója; csend, ha 7 napja 0.
         const dlSor = pdfLetoltesSor(exp.__dl);
         if (dlSor) lines.push(dlSor);
+        const affSor = partnerKattintasSor(exp.__aff);
+        if (affSor) lines.push(affSor);
         const total = (cs.chat || 0) + (cs.mail || 0);
         if (total + (cs.esc || 0) > 0) lines.push(`💬 Ügyfélszolgálat ma: ${cs.chat || 0} chat-válasz · ${cs.mail || 0} email · ${cs.esc || 0} emberi kézbe adva`
           // A „nem válaszolható" NEM külön riasztás-sor, hanem itt egy utótag.

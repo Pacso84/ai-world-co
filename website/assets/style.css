@@ -1015,3 +1015,12 @@ body {
 /* HIRDETÉS (2026-10-01, core/ads.js): EGY egység a cikk legalján, jelölve, elválasztva a tartalomtól. */
 .ad-slot { margin: 28px 0 8px; padding-top: 14px; border-top: 1px solid var(--line); min-height: 120px; }
 .ad-slot__label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+
+/* AMAZON PARTNERLINK (2026-10-09, core/affiliate.js): jelölt doboz a lépések után + rövid jelzés a cikk tetején. */
+.aff { margin: 26px 0 14px; padding: 16px 18px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 16px; }
+.aff__label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+.aff__text { margin: 0 0 12px; }
+.aff__btn { display: inline-block; font-weight: 700; padding: 9px 16px; border-radius: 100px; background: var(--accent); color: #fff; text-decoration: none; }
+.aff__btn:hover { background: var(--accent-dark); }
+.aff__note { font-size: 12px; color: var(--muted); margin: 12px 0 0; }
+.aff-note { font-size: 12px; color: var(--muted); margin: 6px 0 0; }

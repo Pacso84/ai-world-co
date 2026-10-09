@@ -9,6 +9,13 @@
       "enabled": true,
       "client": "ca-pub-9171891300317040",
       "slot": ""
+    },
+    "affiliate": {
+      "_comment": "2026-10-09 — Amazon partnerlink-PRÓBA (core/affiliate.js): az Alexa+ útmutatók végén EGY jelölt Echo-link + kattintásszámláló (Worker /aff-hit), 4 hét. enabled:true + tag (…-20, NEM titok) = be a következő build-től; hibás tag = KI. Bekapcsoláskor a shared/legal-rules-ai.md és company-info.md 'NINCS affiliate' sorát is át kell írni (teszt őrzi).",
+      "amazon": {
+        "enabled": false,
+        "tag": ""
+      }
     }
   },
   "content": {

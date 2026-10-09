@@ -42,6 +42,8 @@ import { handleEmail } from './cs-email.js';
 import { pipelineWatchdog } from './watchdog.js';
 // 📚 Ingyenes PDF-letöltés számláló (2026-10-07) — a jelet a honlap middleware-je küldi.
 import { handleDlHit, dlExport } from './pdf-dl.js';
+// 🛒 Amazon partnerlink kattintás-számláló (2026-10-09) — a jelet a honlap app.js-e küldi.
+import { handleAffHit, affExport } from './aff-hit.js';
 
 // ===================================================================
 // OLVASÓI 👍/👎 VISSZAJELZÉS (2026-07-07) — a weboldal cikkeiről érkezik.
@@ -89,6 +91,8 @@ async function handleFeedbackExport(request, env) {
   try { out.__cs = await csExport(env); } catch { /* skip */ }
   // A PDF-letöltések (14 nap) a napi riport 📚 sorához; hibánál {error:true}, nem üres.
   out.__dl = await dlExport(env);
+  // Az Amazon-kattintások (14 nap) a napi riport 🛒 sorához; ugyanígy {error:true} hibánál.
+  out.__aff = await affExport(env);
   return new Response(JSON.stringify(out), { status: 200, headers: { 'Content-Type': 'application/json' } });
 }
 
@@ -101,6 +105,7 @@ export default {
     if (path === '/chat') return handleChat(request, env);
     if (path === '/contact') return handleContact(request, env);
     if (path === '/dl-hit') return handleDlHit(request, env);
+    if (path === '/aff-hit') return handleAffHit(request, env);
 
     // Egészség-ellenőrzés / böngészős megnyitás
     if (request.method !== 'POST') {

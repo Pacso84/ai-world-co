@@ -47,6 +47,7 @@ import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
 import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt } from '../core/ads.js';
+import { partnerBeallitas, partnerDoboz, partnerJelzes } from '../core/affiliate.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -70,6 +71,8 @@ let CF_BEACON = '';
 let KAPCSOLO = { vazlat: true, kovetkezo: true, csomagMind: true };
 // HIRDETÉS (2026-10-01): config.json → website.ads; alapból KI (core/ads.js).
 let HIRDETES = hirdetesBeallitas(null);
+// Amazon partnerlink-próba (2026-10-09, core/affiliate.js) — KI, amíg nincs érvényes azonosító.
+let PARTNER = partnerBeallitas(null);
 // Ügyfélszolgálati chat-doboz kapcsoló + Worker-végpont (Task 3 config: customer_service.*).
 // enabled csak akkor igaz, ha a config engedélyezi ÉS van Turnstile site-key.
 let CS = { enabled: false, base: '', key: '' };
@@ -103,6 +106,7 @@ try {
   const web = rawConfig.website || {};
   KAPCSOLO = { vazlat: web.guide_sketch !== false, kovetkezo: web.next_guide !== false, csomagMind: web.pack_line_all !== false };
   HIRDETES = hirdetesBeallitas(web);
+  PARTNER = partnerBeallitas(web);
   CF_BEACON = (company.cf_beacon_token || '').trim();
   SITE_URL = (company.website_url || SITE_URL).replace(/\/$/, '');
   SUPPORT = {
@@ -570,6 +574,7 @@ const UI_PRIV = {
         privPayH: 'Tips and PDF packs', privPayP: 'Payments are handled by Ko-fi and PayPal. We never see your card details.',
         privAdsH: 'Advertising', privAdsP: 'We show one ad at the end of pages, served by Google AdSense. Google and its partners use cookies to show ads based on your visits to this and other websites. In the EEA, the UK and Switzerland you are asked for your consent first.',
         privAdsSet: 'Turn off personalised ads in Google’s Ads Settings', privAdsHow: 'How Google uses information from sites that use its services',
+        privAffH: 'Amazon affiliate link', privAffP: 'Some guides end with a labelled link to Amazon. We only count that the link was clicked — not who clicked it. If you follow it, Amazon’s own privacy notice applies on amazon.com. As an Amazon Associate I earn from qualifying purchases.',
         privNoH: 'What we don’t do', privNoP: 'No accounts, no comments, no newsletter and no Google Analytics. We do not sell your data.',
         privAskH: 'Questions or deletion requests', privAskP: 'Write to support@aiworldhq.com — we will answer, and delete your data on request.' },
   hu: { privNav: 'Adatvédelem', privTitle: 'Adatvédelem', privTag: 'Mit gyűjtünk, mit nem, és milyen választásod van.',
@@ -580,6 +585,7 @@ const UI_PRIV = {
         privPayH: 'Támogatás és PDF-csomagok', privPayP: 'A fizetést a Ko-fi és a PayPal intézi. A kártyaadataidat soha nem látjuk.',
         privAdsH: 'Hirdetés', privAdsP: 'Az oldalak végén egy hirdetést mutatunk, amelyet a Google AdSense szolgál ki. A Google és partnerei sütiket használnak, hogy az ezen és más oldalakon tett látogatásaid alapján mutassanak hirdetést. Az EGT-ben, az Egyesült Királyságban és Svájcban előbb a hozzájárulásodat kérjük.',
         privAdsSet: 'A személyre szabott hirdetéseket a Google hirdetési beállításaiban kapcsolhatod ki', privAdsHow: 'Hogyan használja a Google a szolgáltatásait használó oldalak adatait',
+        privAffH: 'Amazon partnerlink', privAffP: 'Néhány útmutató végén egy jelölt Amazon-link áll. Csak azt számoljuk, hogy rákattintottak — azt nem, hogy ki. Ha követed, az amazon.com-on az Amazon saját adatvédelmi szabályai érvényesek. As an Amazon Associate I earn from qualifying purchases.',
         privNoH: 'Amit nem csinálunk', privNoP: 'Nincs regisztráció, nincs komment, nincs hírlevél és nincs Google Analytics. Az adataidat nem adjuk el.',
         privAskH: 'Kérdés vagy törlési kérés', privAskP: 'Írj a support@aiworldhq.com címre — válaszolunk, és kérésre töröljük az adataidat.' },
   es: { privNav: 'Privacidad', privTitle: 'Privacidad', privTag: 'Qué recogemos, qué no, y qué opciones tienes.',
@@ -590,6 +596,7 @@ const UI_PRIV = {
         privPayH: 'Apoyo y packs PDF', privPayP: 'Los pagos los gestionan Ko-fi y PayPal. Nunca vemos los datos de tu tarjeta.',
         privAdsH: 'Publicidad', privAdsP: 'Mostramos un anuncio al final de las páginas, servido por Google AdSense. Google y sus socios usan cookies para mostrar anuncios basados en tus visitas a este y otros sitios web. En el EEE, el Reino Unido y Suiza primero te pedimos tu consentimiento.',
         privAdsSet: 'Desactiva los anuncios personalizados en la configuración de anuncios de Google', privAdsHow: 'Cómo usa Google la información de los sitios que usan sus servicios',
+        privAffH: 'Enlace de afiliado de Amazon', privAffP: 'Algunas guías terminan con un enlace marcado a Amazon. Solo contamos que se hizo clic en él, no quién lo hizo. Si lo sigues, en amazon.com se aplica el aviso de privacidad de Amazon. As an Amazon Associate I earn from qualifying purchases.',
         privNoH: 'Lo que no hacemos', privNoP: 'Sin cuentas, sin comentarios, sin boletín y sin Google Analytics. No vendemos tus datos.',
         privAskH: 'Preguntas o solicitudes de borrado', privAskP: 'Escribe a support@aiworldhq.com: te responderemos y borraremos tus datos si lo pides.' }
 };
@@ -2494,12 +2501,14 @@ function buildGuidePage(a) {
       <p class="article__subtitle">${escapeHtml(a.subtitle)}</p>
       <div class="article__meta"><span>${a.readTime} ${tr('minRead')}</span><span class="dot">·</span><span>${formatDate(a.publishedAt)}</span></div>
       ${aiLabelHtml('aiLabelGuide')}
+      ${partnerJelzes(PARTNER, a, LANG)}
     </div>
     ${guideMapHtml(stepHeadings, artKeys)}
     ${introHtml ? `<div class="g-intro">${introHtml}</div>` : ''}
     ${blocksLinked ? `<p class="g-steptip">💡 <strong>${tr('stepTipLabel')}:</strong> ${escapeHtml(tr('stepTip'))}</p>` : ''}
     <div class="g-steps">${blocksLinked}</div>
     ${KAPCSOLO.kovetkezo ? nextGuideHtml(a) : ''}
+    ${partnerDoboz(PARTNER, a, LANG)}
     ${faqHtml}
     ${xrefBox(a)}
     ${relatedBox(a)}
@@ -3196,6 +3205,7 @@ function buildPrivacyPage() {
     kartya('📱', 'privLocalH', 'privLocalP'),
     SUPPORT.enabled || (PACKS.enabled && !PACKS.free) ? kartya('☕', 'privPayH', 'privPayP') : '',
     hirdetes,
+    PARTNER.be ? kartya('🛒', 'privAffH', 'privAffP') : '',
     kartya('🚫', 'privNoH', 'privNoP'),
     kartya('✉️', 'privAskH', 'privAskP')
   ].join('\n');

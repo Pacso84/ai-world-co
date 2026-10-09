@@ -228,6 +228,30 @@
   });
 })();
 
+// ===================================================================
+// 🛒 AMAZON PARTNERLINK KATTINTÁS (2026-10-09) — core/affiliate.js
+// ===================================================================
+// A link KÖZVETLENÜL az Amazonra megy (átirányítás = nincs jutalék), ezért a
+// kattintást a háttérben jelezzük a Workernek. A jel hibája néma: a link
+// ettől függetlenül megnyílik (új lapon).
+(function () {
+  'use strict';
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('.aff__btn') : null;
+    if (!a) return;
+    var box = a.closest('.aff');
+    var p = box ? box.getAttribute('data-aff') : '';
+    if (!p) return;
+    try {
+      fetch('https://aiworld-telegram.pacsi84.workers.dev/aff-hit', {
+        method: 'POST', keepalive: true,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ p: p })
+      }).catch(function () { /* a számláló hibája nem az olvasó gondja */ });
+    } catch (err) { /* régi böngésző */ }
+  });
+})();
+
 
 // ---------- „Másolás" gomb a beírandó mintákon (2026-09-27) ----------
 // A doboz szövegét másolja (a ➤ jel nélkül); siker után 2 mp-ig „Kimásolva!".
