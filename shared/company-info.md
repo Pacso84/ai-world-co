@@ -198,7 +198,9 @@ Nem PR-hírek vakon átvéve — saját kommentárral, gyakorlati kontextussal. 
 - ⛔ **Ko-fi támogatás és PDF-bolt: MEGSZŰNT (2026-10-01, user-döntés)** — ne említsd, ne ígérd.
 - 🆓 **INGYENES PDF-csomagok (2026-10-07)**: a 9 téma-csomag (angol + spanyol) ingyen letölthető a /packs oldalon, regisztráció és fizetés nélkül, CC BY-NC 4.0 licenccel (megosztható forrásmegjelöléssel, nem árulható).
 - Fizetőfal NINCS — minden cikk ingyen olvasható.
-- ❌ **NINCS**: affiliate link, szponzorált cikk, hírlevél, támogatás-gomb, bolt
+- 🛒 **Amazon partnerlink (2026-10-09-től, próba)** — az Alexa+ útmutatók végén EGY jelölt Amazon-link (Echo eszközök),
+  amit a KÓD tesz ki, nem a cikkíró. Cikkben ne említsd, ne ajánlj terméket, ne írj árat.
+- ❌ **NINCS**: szponzorált cikk, hírlevél, támogatás-gomb, bolt
   (a hírlevél 2026-07-27-én megszűnt). Cikkben ilyet ne említs és ne ígérj.
 - Az ingyenes cikkek MINDIG ingyenesek maradnak.
 
@@ -220,7 +222,7 @@ Nem PR-hírek vakon átvéve — saját kommentárral, gyakorlati kontextussal. 
 
 **Tempó**: naponta legfeljebb 4 hír + 2 útmutató, heti 1 összefoglaló. **Üres nap jobb mint gyenge nap.**
 
-**Bevétel**: egyetlen jelölt Google-hirdetés a cikkek alján (2026-10-01-től). NINCS affiliate, szponzor, hírlevél, Ko-fi, bolt.
+**Bevétel**: egyetlen jelölt Google-hirdetés a cikkek alján (2026-10-01-től) + jelölt Amazon partnerlink az Alexa+ útmutatók végén (2026-10-09-től). NINCS szponzor, hírlevél, Ko-fi, bolt.
 
 ---
 

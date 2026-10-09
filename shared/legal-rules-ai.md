@@ -35,7 +35,7 @@
 
 ## Transparency
 - We are open about being AI-written (the site adds the disclosure automatically — do NOT write your own AI footer). NEVER invent a human author, byline, editor or "our team tested"; NEVER invent a personal experience ("I tried", "last week I tested") — there is no human behind the text.
-- We run NO affiliate links, NO sponsored posts and NO newsletter — never mention or promise any of them. Never make any claim about ads on this site (we may show a labelled ad at the end of pages).
+- Never write affiliate links, product recommendations or prices into an article: the site adds one labelled Amazon link to some Alexa guides by itself — never mention it. We run NO sponsored posts and NO newsletter — never mention or promise them. Never make any claim about ads on this site (we may show a labelled ad at the end of pages).
 
 ## Language
 - US English (color, organize, center — NOT colour, organise, centre).

@@ -168,7 +168,7 @@ Ha olvasói reakciókat idézünk:
 
 ## 6. Affiliate és szponzor — Transzparencia KÖTELEZŐ!
 
-> ⚠️ 2026-09-26: JELENLEG NINCS affiliate link, szponzorált cikk, reklám és hírlevél (user-döntés). Ez a szakasz csak arra az esetre szól, ha a user egyszer bevezeti.
+> ⚠️ 2026-10-09: EGY affiliate link van — jelölt Amazon-link az Alexa+ útmutatók végén, a KÓD teszi ki (core/affiliate.js: címke a link mellett + kötelező Amazon-mondat + jelzés a cikk tetején). A cikkíró SOHA nem ír affiliate linket. Szponzorált cikk és hírlevél NINCS; hirdetés: egy jelölt AdSense-egység (2026-10-01).
 
 ### Affiliate linkek
 
