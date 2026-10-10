@@ -45,6 +45,8 @@
     "adóhatóságoknál",
     "agens",
     "agentek",
+    "agenteket",
+    "agenteknél",
     "agentic",
     "agentjei",
     "agentnek",
@@ -63,6 +65,7 @@
     "ajándékcsomagokat",
     "ajánlevelet",
     "ajánlólinkek",
+    "ajánlómotorok",
     "akcenteket",
     "akciótervet",
     "akkumulátorok",
@@ -255,6 +258,7 @@
     "bosszúságokat",
     "bosszúságokra",
     "botlazol",
+    "bottraffic",
     "boxok",
     "boxold",
     "branch-ek",
@@ -327,6 +331,7 @@
     "caldo",
     "callban",
     "canva",
+    "captcha",
     "cardiót",
     "cateringes",
     "cateringest",
@@ -404,6 +409,9 @@
     "chiptervezés",
     "chiptervezésben",
     "chiptervezővel",
+    "chátbottól",
+    "chátelsz",
+    "chátet",
     "cifrasabb",
     "cifraszó",
     "cimkéket",
@@ -778,6 +786,7 @@
     "energiainfrastruktúrájának",
     "energiatervet",
     "energiaösszetételre",
+    "engedlye",
     "engem",
     "engineeringet",
     "english",
@@ -910,6 +919,7 @@
     "furcsaságok",
     "furcsaságokat",
     "fussd",
+    "futsd",
     "fuvarok",
     "fuvarokat",
     "fájlchip",
@@ -1668,6 +1678,7 @@
     "mikrofonhozzáférést",
     "mintahangokból",
     "minutos",
+    "minőségellenőrzéssel",
     "minőségellenőrzést",
     "minőségellenőrző",
     "minőséget",
@@ -2091,6 +2102,7 @@
     "promttal",
     "promó",
     "promóból",
+    "promók",
     "promóklip",
     "promóklippek",
     "promót",
@@ -2239,6 +2251,7 @@
     "sarokában",
     "save-the-date-et",
     "scrapbookot",
+    "scraperek",
     "screenshotelni",
     "screenshotolni",
     "scriptek",
@@ -2265,6 +2278,7 @@
     "sentimentjét",
     "sentimentnek",
     "sereget",
+    "serverless",
     "sessionben",
     "sessionekről",
     "sessionnek",
@@ -2311,6 +2325,7 @@
     "soronkénti",
     "sorszámosáv",
     "spamet",
+    "spammerek",
     "spamre",
     "spamszűrő",
     "spamszűrők",
@@ -2585,6 +2600,7 @@
     "termékmockupoknál",
     "termékszöveget",
     "terméktulajdonságokat",
+    "termékvizuált",
     "terven",
     "tervet",
     "tervédbe",
@@ -2967,6 +2983,8 @@
     "észreveszel",
     "észrevesznek",
     "észrevette",
+    "észrevettük",
+    "észrevettünk",
     "észrevtlenül",
     "ételallergének",
     "ételtip",
@@ -5857,11 +5875,31 @@
       "correct": "tanknak",
       "at": "2026-10-09",
       "mondattal": true
+    },
+    "köztt": {
+      "correct": "közt",
+      "at": "2026-10-10",
+      "mondattal": true
+    },
+    "felttelezésből": {
+      "correct": "feltételezésből",
+      "at": "2026-10-10",
+      "mondattal": true
+    },
+    "költsgvetést": {
+      "correct": "költségvetést",
+      "at": "2026-10-10",
+      "mondattal": true
+    },
+    "biztonságrt": {
+      "correct": "biztonságot",
+      "at": "2026-10-10",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-10-09",
-    "files": 978,
-    "candidates": 0
+    "at": "2026-10-10",
+    "files": 984,
+    "candidates": 22
   }
 }
