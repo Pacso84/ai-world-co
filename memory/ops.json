@@ -1,134 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179129739867995",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-06T14:36:38.679Z",
-      "updated": "2026-10-06T14:36:45.207Z"
-    },
-    {
-      "id": "t179129740520883",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-06T14:36:45.208Z",
-      "updated": "2026-10-06T14:36:57.545Z"
-    },
-    {
-      "id": "t179129741754767",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-06T14:36:57.547Z",
-      "updated": "2026-10-06T14:37:20.887Z"
-    },
-    {
-      "id": "t179134278625340",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-07T03:13:06.253Z",
-      "updated": "2026-10-07T03:13:06.424Z"
-    },
-    {
-      "id": "t179134278642694",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-07T03:13:06.426Z",
-      "updated": "2026-10-07T03:14:03.973Z"
-    },
-    {
-      "id": "t179134284397498",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-07T03:14:03.975Z",
-      "updated": "2026-10-07T03:14:04.171Z"
-    },
-    {
-      "id": "t179134284417337",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-07T03:14:04.173Z",
-      "updated": "2026-10-07T03:16:37.316Z"
-    },
-    {
-      "id": "t179134299731879",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-07T03:16:37.318Z",
-      "updated": "2026-10-07T03:17:37.793Z"
-    },
-    {
-      "id": "t179134305779661",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-07T03:17:37.796Z",
-      "updated": "2026-10-07T03:18:19.975Z"
-    },
-    {
-      "id": "t179134309997776",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-07T03:18:19.977Z",
-      "updated": "2026-10-07T03:18:53.702Z"
-    },
-    {
-      "id": "t179134313370565",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-07T03:18:53.705Z",
-      "updated": "2026-10-07T03:19:11.162Z"
-    },
-    {
-      "id": "t179134315121424",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-07T03:19:11.214Z",
-      "updated": "2026-10-07T03:26:18.918Z"
-    },
-    {
-      "id": "t179134357892085",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-07T03:26:18.920Z",
-      "updated": "2026-10-07T03:26:59.638Z"
-    },
-    {
-      "id": "t179134361968668",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-07T03:26:59.686Z",
-      "updated": "2026-10-07T03:27:39.537Z"
-    },
-    {
-      "id": "t179134365953854",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-07T03:27:39.538Z",
-      "updated": "2026-10-07T03:28:24.147Z"
-    },
-    {
-      "id": "t179134370414986",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-07T03:28:24.149Z",
-      "updated": "2026-10-07T03:28:33.438Z"
-    },
-    {
       "id": "t179134371344066",
       "title": "Run publisher",
       "status": "done",
@@ -479,41 +351,137 @@
       "agent": "publisher",
       "created": "2026-10-09T04:00:16.696Z",
       "updated": "2026-10-09T04:00:34.851Z"
+    },
+    {
+      "id": "t179160209595110",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-10T03:14:55.951Z",
+      "updated": "2026-10-10T03:14:56.139Z"
+    },
+    {
+      "id": "t179160209614152",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-10T03:14:56.141Z",
+      "updated": "2026-10-10T03:15:36.194Z"
+    },
+    {
+      "id": "t179160213619678",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-10T03:15:36.196Z",
+      "updated": "2026-10-10T03:15:36.419Z"
+    },
+    {
+      "id": "t179160213642145",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-10T03:15:36.421Z",
+      "updated": "2026-10-10T03:19:10.810Z"
+    },
+    {
+      "id": "t17916023508120",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-10T03:19:10.812Z",
+      "updated": "2026-10-10T03:20:30.987Z"
+    },
+    {
+      "id": "t179160243099068",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-10T03:20:30.990Z",
+      "updated": "2026-10-10T03:20:53.726Z"
+    },
+    {
+      "id": "t179160245372863",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-10T03:20:53.728Z",
+      "updated": "2026-10-10T03:21:12.004Z"
+    },
+    {
+      "id": "t179160247200751",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-10T03:21:12.007Z",
+      "updated": "2026-10-10T03:21:46.694Z"
+    },
+    {
+      "id": "t179160250669651",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-10T03:21:46.696Z",
+      "updated": "2026-10-10T03:22:47.331Z"
+    },
+    {
+      "id": "t179160256733358",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-10T03:22:47.333Z",
+      "updated": "2026-10-10T03:23:19.246Z"
+    },
+    {
+      "id": "t179160259930198",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-10T03:23:19.301Z",
+      "updated": "2026-10-10T03:24:47.467Z"
+    },
+    {
+      "id": "t179160268746832",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-10T03:24:47.468Z",
+      "updated": "2026-10-10T03:25:06.197Z"
+    },
+    {
+      "id": "t179160270624512",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-10T03:25:06.245Z",
+      "updated": "2026-10-10T03:26:06.323Z"
+    },
+    {
+      "id": "t179160276632523",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-10T03:26:06.325Z",
+      "updated": "2026-10-10T03:27:06.498Z"
+    },
+    {
+      "id": "t179160282650040",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-10T03:27:06.500Z",
+      "updated": "2026-10-10T03:27:16.830Z"
+    },
+    {
+      "id": "t179160283683240",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-10T03:27:16.832Z",
+      "updated": "2026-10-10T03:27:48.863Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n178978432015613",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0755).",
-      "agent": "ceo",
-      "at": "2026-09-19T02:18:40.156Z",
-      "loud": false
-    },
-    {
-      "id": "n178987120543596",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 8.2/10).",
-      "agent": "seo",
-      "at": "2026-09-20T02:26:45.436Z",
-      "loud": false
-    },
-    {
-      "id": "n17898712190350",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is solid and ready — it's a practical, user-friendly mix of everyday writing tasks helped by AI, from complaint letters to heartfelt speeches. One note: since this is tech-heavy, consider a",
-      "agent": "publisher",
-      "at": "2026-09-20T02:26:59.035Z",
-      "loud": false
-    },
-    {
-      "id": "n17898712340440",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0623).",
-      "agent": "ceo",
-      "at": "2026-09-20T02:27:14.044Z",
-      "loud": false
-    },
     {
       "id": "n178995788813866",
       "level": "info",
@@ -1281,81 +1249,41 @@
       "agent": "ceo",
       "at": "2026-10-09T04:00:34.890Z",
       "loud": false
+    },
+    {
+      "id": "n179160250668558",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to use Nano Banana 2.1 in Picsart for AI image generation\" — az Ellenőrző tényt/forrást kér, amit ne",
+      "agent": "guide",
+      "at": "2026-10-10T03:21:46.685Z",
+      "loud": false
+    },
+    {
+      "id": "n179160282649035",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 7.5/10).",
+      "agent": "seo",
+      "at": "2026-10-10T03:27:06.490Z",
+      "loud": false
+    },
+    {
+      "id": "n179160284994469",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready—cohesive theme of practical AI writing tools for everyday life situations (complaints, resumes, pet-sitting, sympathy). One small note: the articles span many AI tools",
+      "agent": "publisher",
+      "at": "2026-10-10T03:27:29.944Z",
+      "loud": false
+    },
+    {
+      "id": "n179160286890971",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0829).",
+      "agent": "ceo",
+      "at": "2026-10-10T03:27:48.909Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179002222257619",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-21T20:23:42.576Z"
-    },
-    {
-      "id": "m179004450832738",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-22T02:35:08.327Z"
-    },
-    {
-      "id": "m179004546151057",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-22T02:51:01.510Z"
-    },
-    {
-      "id": "m179013016823492",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Claude Opus 5.5 is now available on AWS\" — mi a baj: Invented model name 'Claude Opus 5.5': Anthropic's model lineup in my training (through January 2026) tops out at Claude Opus 4 / 4.1. The 'Opus 5.5' designation represents a major version jump that does not match any known Anthropic release, and the article states it as a hard fact rather than hedging.",
-      "ref": "2026-09-23T02-19-43-916Z_aws-ml_Claude_Opus_5_5_is_now_available_on_AWS.json",
-      "at": "2026-09-23T02:22:48.234Z"
-    },
-    {
-      "id": "m179013018751281",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to analyze a PDF with AI in Picsart Flow\" — mi a baj: Picsart Flow is mentioned as being able to do AI PDF analysis ('Tools like ChatGPT, Claude, and Picsart Flow now do this in seconds') — there is no 'Picsart Flow' product that performs AI PDF analysis. Picsart's product is an image/video editor/generator (Picsart AI Image Generator / Picsart app); the 'Picsart Flow' n",
-      "ref": "2026-09-23T02-19-43-916Z_picsart_How_to_analyze_a_PDF_with_AI_in_Picsart_Flow.json",
-      "at": "2026-09-23T02:23:07.512Z"
-    },
-    {
-      "id": "m179013024572695",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Score ad creative with Vera, an AI ad strategist powered by Zappi\" — mi a baj: \"Vera\" is described as a feature inside Picsart built with Zappi — there is no verified Picsart product called 'Vera' or any confirmed Picsart/Zappi ad-scoring partnership; this appears to be an invented product name and fabricated collaboration.; The article claims Vera was 'built together with Z",
-      "ref": "2026-09-23T02-19-43-916Z_picsart_Score_ad_creative_with_Vera__an_AI_ad_strategist_p.json",
-      "at": "2026-09-23T02:24:05.726Z"
-    },
-    {
-      "id": "m179013027260599",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Claude Opus 5.5 is now available on AWS\" — javítva: Invented model name 'Claude Opus 5.5': Anthropic's model lineup in my training (through January 2026) tops out at Claude Opus 4 / 4.1. The 'Opus 5.5' designation represents a major version jump that does not match any known Anthropic release, and the article states it as a hard fact rather than hedging.; Reviewer verdict: Hitelesség",
-      "ref": "2026-09-23T02-19-43-916Z_aws-ml_Claude_Opus_5_5_is_now_available_on_AWS.json",
-      "at": "2026-09-23T02:24:32.605Z"
-    },
-    {
-      "id": "m179013028607977",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to analyze a PDF with AI in Picsart Flow\" — javítva: Picsart Flow is mentioned as being able to do AI PDF analysis ('Tools like ChatGPT, Claude, and Picsart Flow now do this in seconds') — there is no 'Picsart Flow' product that performs AI PDF analysis. Picsart's product is an image/video editor/generator (Picsart AI Image Generator / Picsart app); the 'Picsart Flow' name is inv",
-      "ref": "2026-09-23T02-19-43-916Z_picsart_How_to_analyze_a_PDF_with_AI_in_Picsart_Flow.json",
-      "at": "2026-09-23T02:24:46.079Z"
-    },
     {
       "id": "m179013029978572",
       "from": "iro",
@@ -2639,6 +2567,80 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-09T04:08:09.018Z"
+    },
+    {
+      "id": "m179160238219022",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"ICYMI: What landed for AI builders in September 2026\" — mi a baj: Audience mismatch: article targets everyday people but recommends watching 'evaluation dashboards inside AgentCore' — developer territory; Vague promise: 'No more weekly uploads' reads as a product guarantee not clearly attributed to AWS; Metadata says 'audience: both' but body text is written for non-develope",
+      "ref": "2026-10-10T03-15-36-180Z_aws-ml_ICYMI__What_landed_for_AI_builders_in_September_20.json",
+      "at": "2026-10-10T03:19:42.190Z"
+    },
+    {
+      "id": "m179160245371590",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"ICYMI: What landed for AI builders in September 2026\" — javítva: Audience mismatch: article targets everyday people but recommends watching 'evaluation dashboards inside AgentCore' — developer territory; Vague promise: 'No more weekly uploads' reads as a product guarantee not clearly attributed to AWS; újraküldöm.",
+      "ref": "2026-10-10T03-15-36-180Z_aws-ml_ICYMI__What_landed_for_AI_builders_in_September_20.json",
+      "at": "2026-10-10T03:20:53.715Z"
+    },
+    {
+      "id": "m179160247199280",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"ICYMI: What landed for AI builders in September 2026\" (?/10)",
+      "ref": "2026-10-10T03-15-36-180Z_aws-ml_ICYMI__What_landed_for_AI_builders_in_September_20.json",
+      "at": "2026-10-10T03:21:11.992Z"
+    },
+    {
+      "id": "m179160250668368",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to use Nano Banana 2.1 in Picsart for AI image generation\" — javítva: UI_CLAIMS_UNSOURCED: 4 konkrét képernyő-feliratot állít tényként forrás nélkül (\"shape\", \"size\", \"1:1\", \"9:16\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; újraküldöm.",
+      "ref": "GUIDE_how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio.json",
+      "at": "2026-10-10T03:21:46.683Z"
+    },
+    {
+      "id": "m179160250668536",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to use Nano Banana 2.1 in Picsart for AI image generation\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: UI_CLAIMS_UNSOURCED: 4 konkrét képernyő-feliratot állít tényként forrás nélkül (\"shape\", \"size\", \"1:1\", \"9:16\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").",
+      "ref": "GUIDE_how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio.json",
+      "open": false,
+      "at": "2026-10-10T03:21:46.685Z",
+      "resolved_at": "2026-10-10T03:22:47.315Z"
+    },
+    {
+      "id": "m179160256731413",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to use Nano Banana 2.1 in Picsart for AI image generation\" (?/10)",
+      "ref": "GUIDE_how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio.json",
+      "at": "2026-10-10T03:22:47.314Z"
+    },
+    {
+      "id": "m179160259923331",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"HeyGen Video explained: give it a photo, a clip, and a \" hír a meglévő útmutatóra mutat: how-to-use-picsart-ai-playground-on-your-desktop",
+      "ref": "how-to-use-picsart-ai-playground-on-your-desktop",
+      "at": "2026-10-10T03:23:19.233Z"
+    },
+    {
+      "id": "m179160283682132",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-10T03:27:16.821Z"
     }
   ]
 }

@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-10T03:15:36.596Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.04478057999999999,
+  "by_article": [
+    {
+      "draft": "2026-10-10T03-15-36-181Z_picsart_HeyGen_Video_explained__give_it_a_photo__a_clip__a.json",
+      "writer_output": "WRITER_2026-10-10T03-15-36-181Z_picsart_HeyGen_Video_explained__give_it_a_photo__a_clip__a.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01009848,
+      "duration_ms": 33261,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-10T03-15-36-180Z_salesforce_Your_Customer_s_Personal_Agent_Is_Knocking__Is_You.json",
+      "writer_output": "WRITER_2026-10-10T03-15-36-180Z_salesforce_Your_Customer_s_Personal_Agent_Is_Knocking__Is_You.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01042284,
+      "duration_ms": 25434,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-10T03-15-36-180Z_openai-blog_Sophos_cuts_threat_investigation_time_by_96__with_.json",
+      "writer_output": "WRITER_2026-10-10T03-15-36-180Z_openai-blog_Sophos_cuts_threat_investigation_time_by_96__with_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01115508,
+      "duration_ms": 45159,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-10T03-15-36-180Z_aws-ml_ICYMI__What_landed_for_AI_builders_in_September_20.json",
+      "writer_output": "WRITER_2026-10-10T03-15-36-180Z_aws-ml_ICYMI__What_landed_for_AI_builders_in_September_20.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01219128,
+      "duration_ms": 97981,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-10-10T03:19:10.793Z",
+  "duration_seconds": 214.197
+}

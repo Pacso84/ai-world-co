@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-10-10T03:17:31.047Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01115508,
+    "original_draft": "2026-10-10T03-15-36-180Z_openai-blog_Sophos_cuts_threat_investigation_time_by_96__with_.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/sophos",
+    "source_links": [
+      "https://openai.com/index/sophos"
+    ],
+    "source_snippet": "Discover how Sophos uses OpenAI’s Daybreak to cut cyber-threat investigation time by 96% and automate 52% of MDR cases while preserving human oversight.",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-10-10T03:19:58.679Z",
+    "slug": "how-sophos-cut-cyber-threat-investigations-by-96-with-openai-s-daybrea",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 520
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured article with clear attribution to Sophos, accessible explanations of MDR, and a useful 'What this means for you' section that addresses multiple audience types. No prohibited content, no clichés, and no apparent factual issues.",
+      "_aiCost": 0.0014601,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-10T03:23:00.857Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a business case study about how Sophos uses OpenAI's Daybreak internally — not a consumer-facing product or feature people can use",
+    "image_v": 2,
+    "image_at": "2026-10-10T03:25:26.427Z",
+    "seo": {
+      "meta_description": "Sophos reduced cyber threat investigation time by 96% using OpenAI's Daybreak, resolving cases in minutes instead of hours while keeping humans in the loop.",
+      "keywords": [
+        "Sophos Daybreak",
+        "OpenAI Daybreak cybersecurity",
+        "AI threat investigation",
+        "cyber threat investigation automation",
+        "AI security monitoring",
+        "automated security operations",
+        "AI cybersecurity tools"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add the specific time comparisons (hours vs minutes) to the meta description for better CTR",
+        "Include more context about what Daybreak does as a product/service in the article",
+        "Consider adding related terms like 'security operations center' or 'SOC automation' to capture IT professional search intent"
+      ],
+      "optimised_at": "2026-10-10T03:26:28.517Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How Sophos Cut Cyber-Threat Investigations by 96% With OpenAI's Daybreak\"\nsubtitle: \"The cybersecurity firm says its analysts now resolve most cases in minutes instead of hours, while keeping humans in the loop.\"\ncategory: \"news\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"cybersecurity\", \"ai\", \"sophos\", \"openai\", \"enterprise-security\"]\n---\n\n# How Sophos Cut Cyber-Threat Investigations by 96% With OpenAI's Daybreak\n\n> **In short:** Sophos says using OpenAI's Daybreak cut its cyber-threat investigation time by 96% and let it automate 52% of its security-monitoring cases. Faster investigations mean quicker protection for the businesses — and the customers — behind those alerts.\n\nWhen a hacker tries to break into a company's network, the clock starts ticking. Somewhere, a human analyst has to notice the attack, dig into what happened, and decide how to stop it. That whole process used to take hours.\n\n## What Sophos built\n\nAccording to the cybersecurity firm Sophos, integrating OpenAI's Daybreak into its security operations cut threat-investigation time by 96%. An investigation that once ate most of a workday might now wrap up in minutes.\n\nSophos also says 52% of its MDR cases are now automated. MDR stands for Managed Detection and Response — a 24/7 service where a security team watches over a company's systems and steps in when something looks wrong. If the AI can handle roughly half of those cases on its own, analysts can spend their time on the more complex attacks that genuinely need human judgment.\n\n## Why humans still matter\n\n\"Automated\" does not mean \"unattended.\" Sophos emphasizes that a human analyst still reviews the AI's conclusions before any action is taken on a customer's system. The AI triages — it sorts, summarizes, and points to the suspicious bits — but a person makes the final call. That detail matters, because a wrong call in cybersecurity can block real users from their own accounts, or worse.\n\n## What this means for you\n\n- **If you run a small business or work in IT:** When you pick a security provider, ask how they handle investigations. Faster response shortens the time attackers have inside a network. Whether the team uses AI or simply has more people, the question to ask is: how long from \"we noticed something\" to \"we contained it\"?\n- **If you're an everyday user:** You don't choose Sophos directly, but the companies that hold your data — your bank, your email provider, your employer — often use firms like it. When those firms investigate faster, your information sits exposed for less time during a breach.\n- **If you're worried about AI making the wrong call:** Sophos says a person still reviews every AI decision before action is taken. The system is meant to speed up the boring parts, not to replace human judgment.\n\n## Wrap-up\n\nFaster isn't always better — but in cybersecurity, time is what attackers need most. If AI can shrink the gap between \"we noticed\" and \"we stopped it,\" and humans still check the work, that's a meaningful shift. The next time you read about a major breach, the speed of the response is often what decided how bad it got.",
+  "original_title": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak"
+}

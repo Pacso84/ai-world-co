@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-10-10T03:19:11.002Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0107533,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-10T03-15-36-180Z_aws-ml_ICYMI__What_landed_for_AI_builders_in_September_20.json",
+      "rejected": "REJECTED_2026-10-10T03-15-36-180Z_aws-ml_ICYMI__What_landed_for_AI_builders_in_September_20.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.0048588
+    },
+    {
+      "writer": "WRITER_2026-10-10T03-15-36-180Z_openai-blog_Sophos_cuts_threat_investigation_time_by_96__with_.json",
+      "article": "ARTICLE_2026-10-10T03-15-36-180Z_openai-blog_Sophos_cuts_threat_investigation_time_by_96__with_.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0014601
+    },
+    {
+      "writer": "WRITER_2026-10-10T03-15-36-180Z_salesforce_Your_Customer_s_Personal_Agent_Is_Knocking__Is_You.json",
+      "article": "ARTICLE_2026-10-10T03-15-36-180Z_salesforce_Your_Customer_s_Personal_Agent_Is_Knocking__Is_You.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00152577
+    },
+    {
+      "writer": "WRITER_2026-10-10T03-15-36-181Z_picsart_HeyGen_Video_explained__give_it_a_photo__a_clip__a.json",
+      "article": "ARTICLE_2026-10-10T03-15-36-181Z_picsart_HeyGen_Video_explained__give_it_a_photo__a_clip__a.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0014223
+    }
+  ],
+  "finished_at": "2026-10-10T03:20:30.978Z",
+  "duration_seconds": 79.976
+}
