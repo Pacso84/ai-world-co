@@ -46,7 +46,7 @@ t('🔴 a hang soha nem szakad félmondatnál: csak az alcím első, rövid mond
 t('🔴 a kártya-cím nem vágódik le (10-10 bemutató): kettőspontnál kettéválik, legfeljebb 7 nagy szó', () => {
   assert.deepEqual(kartyaCim("Picsart's HeyGen Video: How Three Inputs Become a Short Clip With Sound"),
     { nagy: "Picsart's HeyGen Video", kicsi: 'How Three Inputs Become a Short Clip With Sound' });
-  assert.match(kartyaCim('Big: one two three four five six seven eight nine ten').kicsi, /…$/, '9 szó fölött jelzett vágás');
+  assert.match(kartyaCim('Big News: one two three four five six seven eight nine ten').kicsi, /…$/, '9 szó fölött jelzett vágás');
   assert.equal(kartyaCim('When AI Agents Become Your Customers: What Businesses Need to Know').nagy, 'When AI Agents Become Your Customers');
   assert.ok(kartyaCim('One two three four five six seven eight nine ten').nagy.split(' ').length <= 7);
   const sz = osszesitoSzakaszok([h('Big News: Small details here', 1), h('B', 2)]);
