@@ -53,7 +53,11 @@ t('a mai középszintűek számlálása a written_at napja szerint', () => {
 t('🔑 a két író TÉNYLEG ezt a modult kérdezi (és a prompt-szövegek a kapcsolótól függnek)', () => {
   const g = readFileSync(join(ROOT, 'agents', 'guide', 'agent.js'), 'utf-8');
   assert.match(g, /import \{ tartalomKapcsolok, maiKozepDb, szintSorrend \} from '\.\.\/\.\.\/core\/content-switches\.js';/);
-  assert.match(g, /szintSorrend\(store\.topics\.filter\(t => t\.status !== 'done'\),\s*\{ maiKozep, be: tartalomKapcsolok\(\)\.kozepUtmutato \}\)/);
+  // 10-10: a fókusz-téma (core/guide-focus.js) az ELSŐ helyen jön, a szint-sorrend a maradékra
+  // és a fókusszal frissített mai középszintű-számra fut — a kapcsoló ugyanúgy a modulból jön.
+  assert.match(g, /const kozepBe = tartalomKapcsolok\(\)\.kozepUtmutato;/);
+  assert.match(g, /maiKozep: maiKozepDb\(metak, maNap\), kozepBe/);
+  assert.match(g, /szintSorrend\(fk\.tobbi, \{ maiKozep: fk\.maiKozep, be: kozepBe \}\)/);
   assert.match(g, /topic\.level === 'intermediate' \? KOZEP_BLOKK :/);
   assert.match(g, /\$\{szintKeveres\(\)\}/);
   assert.match(g, /LEVEL: INTERMEDIATE[\s\S]{0,1500}ALL clarity and honesty rules still apply/);

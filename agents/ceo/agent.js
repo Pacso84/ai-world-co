@@ -583,6 +583,14 @@ async function main() {
   //     ne fogyjon ki a téma.
   // Az idle-fill EXTRA tartalmat gyárt a maradék keretből — ez a legelső,
   // ami elmaradhat, ha fogy az idő: a mai termés kiadása fontosabb nála.
+  // FÓKUSZ-TÉMÁK PÓTLÁSA (2026-10-09, core/guide-focus.js; 10-10: KIEMELVE az idle-fill
+  // elé — az útmutató-keret reggel betelik, és akkor az egész idle-fill blokk kimarad,
+  // így a pótlás SOSEM futott volna). Holnapra készít témát, ezért a mai keret nem
+  // számít. Önkorlátozó: elég téma / lejárt fókusz → LLM-hívás nélkül kilép (~$0,005/pótlás).
+  if (!args.skipGuides && generateReport().cost_remaining_usd > 0.01 && haveTime(3, '3i. FÓKUSZ-TÉMÁK')) {
+    await runAgent('agents/guide/agent.js', ['--focus']);
+  }
+
   if (!args.skipGuides && !gate.guidesBlocked && haveTime(8, '3j. IDLE-FILL')) {
     const now = generateReport();                       // FRISS útmutató-keret
     const slots = now.guides_remaining;                 // napi útmutató-limit − ma írt útmutató
@@ -599,10 +607,6 @@ async function main() {
       // 2) KIEGYENLÍTÉS: a lemaradó cégeket felhozzuk a küszöbig (önkorlátozó:
       //    ha egy cég eléri a célt a backlogban, már nem ad többet hozzá).
       await runAgent('agents/guide/agent.js', ['--balance', String(slots + 4)]);
-      // 2b) FÓKUSZ (2026-10-09, core/guide-focus.js): ha a fókusz-eszközről
-      //     (pl. Alexa+, partnerlink) fogy a téma, célzottan pótol. Önkorlátozó,
-      //     lejárt / kikapcsolt fókusznál LLM-hívás nélkül kilép.
-      await runAgent('agents/guide/agent.js', ['--focus']);
       // 3) TÉMA-PUFFER (2026-07-18, user: "az útmutatók sokasodjanak"): nem csak
       //    az aznapi slotokra, hanem egy egészséges PUFFERRE töltünk fel, hogy a
       //    téma-sor SOHA ne ürüljön ki (júl. 15-én csak 4 guide ment a 6 helyett,

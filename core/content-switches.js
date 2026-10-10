@@ -50,7 +50,7 @@ export function maiKozepDb(metak, ma) {
  * A többi téma sorrendje változatlan.
  */
 // Kezdőknek szóló cím — ebből NEM lesz középszintű útmutató.
-const KEZDO_CIM = /\b(?:getting started|beginners?|first steps?|basics|for dummies|introduction to|what is)\b/i;
+export const KEZDO_CIM = /\b(?:getting started|beginners?|first steps?|basics|for dummies|introduction to|what is)\b/i;
 
 export function szintSorrend(topics, { maiKozep = 0, be = true, cel = KOZEP_NAPI } = {}) {
   const T = Array.isArray(topics) ? topics : [];

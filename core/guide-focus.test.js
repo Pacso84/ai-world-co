@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { fokuszBeallitas, azonosEszkoz, maiFokuszDb, fokuszElore, fokuszHiany, fokuszOtletPrompt,
+import { fokuszBeallitas, azonosEszkoz, maiFokuszDb, fokuszElore, fokuszElsoHely, fokuszHiany, fokuszOtletPrompt,
   fokuszCimOk, FOKUSZ_TARTALEK } from './guide-focus.js';
 import { kovetkezoReel } from './reel-queue.js';
 
@@ -74,6 +74,29 @@ t('🚫 az ötlet-kérés tiltja az összehasonlítást, a vásárlási tanácso
   assert.ok(!fokuszCimOk('Plan a trip with ChatGPT', BE), 'elkalandozott ötlet nem kerülhet a fókusz-témák közé');
 });
 
+t('🔴 első hely (10-10 élő hiba): a fókusz-téma ELŐRE, és ha kell, ő lesz a napi középszintű', () => {
+  const T = [{ id: 'k', tool: 'ChatGPT', level: 'intermediate', title: 'Advanced ChatGPT projects' },
+    { id: 'a', tool: 'Alexa+', level: 'beginner', title: 'Use Alexa+ as a meeting note-taker' }];
+  const r = fokuszElsoHely(T, BE, { maiFok: 0, maiKozep: 0, kozepBe: true });
+  assert.equal(r.tema.id, 'a');
+  assert.equal(r.tema.level, 'intermediate', 'egy útmutató két szabályt teljesíthet');
+  assert.equal(r.maiKozep, 1, 'a középszintű kvóta teljesült → a másik középszintű mára vár');
+  assert.equal(T[1].level, 'beginner', 'MÁSOLAT: a témasorban a téma nem íródik át');
+  assert.deepEqual(r.tobbi.map(x => x.id), ['k']);
+});
+
+t('első hely: kezdő című fókusz-téma kezdő marad; ma már volt fókusz → régi viselkedés', () => {
+  const T = [{ id: 'a', tool: 'Alexa+', level: 'beginner', title: 'Getting started with Alexa+ routines' }];
+  const r = fokuszElsoHely(T, BE, { maiFok: 0, maiKozep: 0 });
+  assert.equal(r.tema.level, 'beginner');
+  assert.equal(r.maiKozep, 0);
+  const kesz = fokuszElsoHely(T, BE, { maiFok: 1, maiKozep: 0 });
+  assert.equal(kesz.tema, null);
+  assert.equal(kesz.tobbi.length, 1);
+  assert.equal(fokuszElsoHely(T, fokuszBeallitas({}, MA)).tema, null, 'kikapcsolva semmi');
+  assert.equal(fokuszElsoHely(T, BE, { maiFok: 0, maiKozep: 0, kozepBe: false }).tema.level, 'beginner', 'középszint-kapcsoló KI → nem emel');
+});
+
 // ── a videós sor (core/reel-queue.js) ───────────────────────────────
 const NOW = Date.parse(MA + 'T12:00:00Z');
 const g = (slug, tool, nap, extra = {}) => ({ slug, type: 'guide', tool, published_at: `2026-10-${nap}T08:00:00Z`, reel_at: '', md: `title: "${slug}"`, ...extra });
@@ -106,7 +129,9 @@ t('🎬 Reel: a „csak friss" szabály (user, 09-27) a fókuszra is áll — r�
 t('🔌 be van kötve: témasor, ötletelő (--focus), CEO, Reel, config', () => {
   const ga = olvas('agents/guide/agent.js');
   assert.match(ga, /from '\.\.\/\.\.\/core\/guide-focus\.js'/);
-  assert.match(ga, /fokuszElore\(todo, fok\)/, 'a témasor nem kapja meg a fókuszt');
+  assert.match(ga, /fokuszElsoHely\(store\.topics\.filter/, 'a témasor nem kapja meg a fókuszt');
+  // 🔴 10-10 élő hiba: a fókusznak a középszintű ELŐTT kell jönnie, különben a reggeli egyetlen hely elvész.
+  assert.ok(ga.indexOf('fokuszElsoHely(store.topics') < ga.indexOf('szintSorrend(fk.tobbi'), 'a középszintű megint a fókusz elé került');
   assert.match(ga, /if \(args\.focus\)/, 'nincs --focus mód');
   assert.match(ga, /fokuszOtletPrompt\(fokusz\)/, 'az ötletelő nem kapja meg a fókusz-kérést');
   assert.match(ga, /fokuszCimOk\(title, fokusz\)/, 'az elkalandozott ötletet nem szűri');

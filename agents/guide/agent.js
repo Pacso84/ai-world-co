@@ -40,7 +40,7 @@ import { blockingIssues } from '../../core/auto-check-codes.js';
 import { valasztHireket, hirBlokk, hirekBetolt, trendBlokk } from '../../core/guide-sources.js';
 import { utmutatoE } from '../../core/guide-kind.js';
 import { tartalomKapcsolok, maiKozepDb, szintSorrend } from '../../core/content-switches.js';
-import { fokuszConfigbol, azonosEszkoz, maiFokuszDb, fokuszElore, fokuszHiany, fokuszOtletPrompt, fokuszCimOk } from '../../core/guide-focus.js';
+import { fokuszConfigbol, maiFokuszDb, fokuszElsoHely, fokuszHiany, fokuszOtletPrompt, fokuszCimOk } from '../../core/guide-focus.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -122,23 +122,24 @@ function pickTopics(store, args) {
   // KÖZÉPSZINT (2026-09-29, user): napi 1 középszintű a 2-ből → ha ma még nincs,
   // az első középszintű téma ELŐRE kerül; ha már van, mára kimaradnak. Kapcsoló:
   // config.json content.intermediate_guides (core/content-switches.js).
-  const maiKozep = maiKozepDb(maiGuideMetak(), new Date().toISOString().slice(0, 10));
-  const rendezett = szintSorrend(store.topics.filter(t => t.status !== 'done'),
-    { maiKozep, be: tartalomKapcsolok().kozepUtmutato });
-  const out = [];
-  if (rendezett[0]?.level === 'intermediate') out.push(rendezett.shift());
-  let todo = rendezett.filter(t => t.level !== 'intermediate');   // egy futás legfeljebb 1 középszintűt ír
-  // FÓKUSZ (2026-10-09, user: „először legyen eladásunk") — naponta perDay útmutató
-  // a fókusz-eszközről (pl. Alexa+, ott a partnerlink). config: content.guide_focus.
   const maNap = new Date().toISOString().slice(0, 10);
+  const metak = maiGuideMetak();
+  const kozepBe = tartalomKapcsolok().kozepUtmutato;
+  const out = [];
+  // FÓKUSZ ELŐSZÖR (2026-10-09, user: „először legyen eladásunk"; javítva 10-10):
+  // naponta perDay útmutató a fókusz-eszközről (pl. Alexa+, ott a partnerlink),
+  // és ha ma még nincs középszintű, EZ lesz az (core/guide-focus.js fokuszElsoHely).
+  // Előtte a középszintű elvitte a reggeli egyetlen helyet → 10-09-én 0 Alexa.
   const fok = fokuszConfigbol(undefined, maNap);
-  if (fok.be && out.length < args.limit) {
-    const maiFok = maiFokuszDb(maiGuideMetak(), fok, maNap) + out.filter(t => azonosEszkoz(t.tool, fok.tool)).length;
-    if (maiFok < fok.perDay) {
-      const { tema, tobbi } = fokuszElore(todo, fok);
-      if (tema) { out.push(tema); todo = tobbi; }
-    }
-  }
+  const fk = fokuszElsoHely(store.topics.filter(t => t.status !== 'done'), fok,
+    { maiFok: maiFokuszDb(metak, fok, maNap), maiKozep: maiKozepDb(metak, maNap), kozepBe });
+  if (fk.tema && args.limit > 0) out.push(fk.tema);
+  // KÖZÉPSZINT (2026-09-29, user): napi 1 középszintű a 2-ből → ha ma még nincs,
+  // az első középszintű téma ELŐRE kerül; ha már van, mára kimaradnak. Kapcsoló:
+  // config.json content.intermediate_guides (core/content-switches.js).
+  const rendezett = szintSorrend(fk.tobbi, { maiKozep: fk.maiKozep, be: kozepBe });
+  if (out.length < args.limit && rendezett[0]?.level === 'intermediate') out.push(rendezett.shift());
+  const todo = rendezett.filter(t => t.level !== 'intermediate');   // egy futás legfeljebb 1 középszintűt ír
   const fresh = todo.filter(isFresh);
   const balance = todo.filter(t => !isFresh(t) && isBalanceTopic(t));
   const general = todo.filter(t => !isFresh(t) && !isBalanceTopic(t));

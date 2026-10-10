@@ -19,6 +19,7 @@
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { KEZDO_CIM, KOZEP_NAPI } from './content-switches.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -79,6 +80,30 @@ export function fokuszElore(topics, beall) {
   return { tema: T[i], tobbi: [...T.slice(0, i), ...T.slice(i + 1)] };
 }
 
+/**
+ * A NAP ELSŐ útmutató-helye: a fókusz-téma ELŐRE, és ha ma még nincs
+ * középszintű, AZ legyen a középszintű is (egy útmutató, két szabály).
+ *
+ * MIÉRT (élő eset 10-10): a reggeli futás --limit 1-gyel ír, és a helyet a
+ * középszintű (user, 09-29: napi 1 a 2-ből) mindig elvitte — a fókusz-ág csak
+ * UTÁNA jött, így az első napon EGY Alexa-útmutató sem készült, a napi keret
+ * pedig betelt. Kezdő című fókusz-téma kezdő marad (nem lesz hamis középszint).
+ *
+ * @returns {{tema: object|null, tobbi: object[], maiKozep: number}}
+ *          maiKozep = a mai középszintű darab, a most kiválasztottal együtt
+ */
+export function fokuszElsoHely(topics, beall, { maiFok = 0, maiKozep = 0, kozepBe = true } = {}) {
+  const T = Array.isArray(topics) ? topics : [];
+  if (!beall || !beall.be || maiFok >= beall.perDay) return { tema: null, tobbi: T.slice(), maiKozep };
+  const { tema, tobbi } = fokuszElore(T, beall);
+  if (!tema) return { tema: null, tobbi, maiKozep };
+  if (tema.level === 'intermediate') return { tema, tobbi, maiKozep: maiKozep + 1 };
+  const kozepKell = kozepBe && maiKozep < KOZEP_NAPI && !KEZDO_CIM.test(String(tema.title || ''));
+  return kozepKell
+    ? { tema: { ...tema, level: 'intermediate' }, tobbi, maiKozep: maiKozep + 1 }
+    : { tema, tobbi, maiKozep };
+}
+
 /** Hány új fókusz-téma kell, hogy a tartalék meglegyen (0 = elég van / ki van kapcsolva). */
 export function fokuszHiany(topics, beall) {
   if (!beall || !beall.be) return 0;
@@ -103,4 +128,4 @@ export function fokuszCimOk(title, beall) {
   return beall.keywords.some(k => t.includes(String(k).toLowerCase()));
 }
 
-export default { FOKUSZ_TARTALEK, fokuszBeallitas, fokuszConfigbol, azonosEszkoz, maiFokuszDb, fokuszElore, fokuszHiany, fokuszOtletPrompt, fokuszCimOk };
+export default { FOKUSZ_TARTALEK, fokuszBeallitas, fokuszConfigbol, azonosEszkoz, maiFokuszDb, fokuszElore, fokuszElsoHely, fokuszHiany, fokuszOtletPrompt, fokuszCimOk };
