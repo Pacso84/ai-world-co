@@ -39,6 +39,7 @@ import { skillsBlock } from '../../core/skills.js';
 import { notify } from '../../core/ops.js';
 import { sendMessage } from '../../core/telegram.js';
 import { aiContentRatio, usefulnessVerdict } from '../../core/source-usefulness.js';
+import { kozonsegKapu, atiranyitas } from '../../core/source-audience.js';
 import { discoverSitemapFeed } from '../../core/sitemap-discovery.js';
 import { discoverHtmlListFeed } from '../../core/html-list-feed.js';
 
@@ -214,16 +215,22 @@ const SCOUT_NICHES = [
 // futás (a) pontja ez, a (b) marad véletlen.
 const LLM_NICHE = 'companies that make AI chat assistants / large language models people can use, INCLUDING Chinese ones (e.g. DeepSeek, Moonshot Kimi, Zhipu Z.ai, MiniMax, ByteDance, Baidu, Tencent) — their official news, model-release and product-update pages';
 
+// KÖZÉPHALADÓ VADÁSZMEZŐ (2026-10-10, user: „keressen középhaladó forrásokat is!").
+// 09-29 óta naponta 1 középszintű útmutató készül — ehhez olyan hivatalos forrás
+// kell, ami a kezdőnél EGY SZINTTEL MÉLYEBB, de NEM fejlesztői: „tippek és trükkök",
+// „power user", funkció-mélyfúrás. Minden futás (c) pontja.
+const KOZEP_NICHE = 'official "tips & tricks", "power user" or feature deep-dive blogs of mainstream AI and productivity tools ordinary people already use (e.g. Google Workspace, Microsoft 365 Copilot, Notion, Canva, Adobe Express, Grammarly, ChatGPT/Claude/Gemini) — practical, one level deeper than beginner, still for non-developers';
+
 async function getCandidateOrgs(coverage) {
   const known = [...coverage.brands].filter(b => b.length >= 4).slice(0, 30).join(', ');
   // (a) mindig az LLM-mező, (b) egy véletlen fülke — minden futás máshol is vadászik
-  const niches = [LLM_NICHE, [...SCOUT_NICHES].sort(() => Math.random() - 0.5)[0]];
+  const niches = [LLM_NICHE, [...SCOUT_NICHES].sort(() => Math.random() - 0.5)[0], KOZEP_NICHE];
   console.log(`🎯 Mai vadászmezők: ${niches.join('  +  ')}`);
   // A KÉRÉS IS TERMÉK-KÖZPONTÚ (2026-08-01). Korábban "official blogs/newsrooms"-ot
   // kértünk — arra a cégek KUTATÁSI és SAJTÓ-blogját kaptuk, amiből 0 útmutató lesz.
   // Most kifejezetten a "mi újság a termékben" típusú hírfolyamot kérjük: pontosan
   // ilyen a Google Workspace Updates, a legjobb forrásunk (59% útmutató).
-  const prompt = `List 18 official PRODUCT-UPDATE feeds (release notes, changelogs, "what's new" or product newsroom) from: (a) ${niches[0]}, and (b) ${niches[1]}.
+  const prompt = `List 18 official PRODUCT-UPDATE feeds (release notes, changelogs, "what's new" or product newsroom) from: (a) ${niches[0]}, (b) ${niches[1]}, and (c) ${niches[2]}.
 
 HARD REQUIREMENTS:
 - First-party official sources only. No news media, no aggregators, no review sites.
@@ -232,6 +239,8 @@ HARD REQUIREMENTS:
 - EXCLUDE: pure research labs and universities, chip/hardware makers, MLOps and developer
   infrastructure, and enterprise-only platforms an ordinary person never touches.
   (AI companies whose chatbot or model ordinary people can use DO count.)
+- EXCLUDE marketing/SEO/sales blogs written for marketers or businesses (e.g. a CRM company's
+  marketing blog) and "best X" / "X vs Y" listicle blogs — give the PRODUCT-UPDATE feed URL itself.
 - A feed may be RSS OR a sitemap with news/blog pages — give the company's main domain.
 
 Do NOT include any of these already-covered feeds: ${known}. Return a complete, valid JSON array only.${skillsBlock('source-scout')}`;
@@ -497,13 +506,33 @@ async function main() {
       continue;
     }
 
+    // ── KÖZÖNSÉG-KAPU (2026-10-10, core/source-audience.js) ─────────────
+    // A harmadik kérdés: KINEK SZÓL? Élő eset: a „HubSpot Product Updates"
+    // 100/100-zal és MI-tartalommal átment, de a cím a MARKETING-blogra
+    // irányított át (b2b 78% + „best X" cikkek). User: „legyen profibb!"
+    const kozonseg = kozonsegKapu(found.feed?.items || []);
+    if (!kozonseg.ok) {
+      console.log(`🚫 ${org.name} (${hostname}) — NEM AZ OLVASÓINKNAK: ${kozonseg.okok.join('; ')}`);
+      rejected.push({ name: org.name, host: hostname, reason: kozonseg.okok.join('; '), score: verdict.score });
+      continue;
+    }
+    // ÁTIRÁNYÍTÁS: a javaslat a TÉNYLEGESEN elért címet kapja, és a user látja a váltást.
+    let vegsoUrl = found.url;
+    try { vegsoUrl = (await fetch(found.url, { redirect: 'follow', signal: AbortSignal.timeout(12000) })).url || found.url; } catch { /* marad az eredeti */ }
+    const atir = atiranyitas(found.url, vegsoUrl);
+    const figyelmeztetesek = [...kozonseg.figyelmeztetesek, ...(atir.atiranyit ? [atir.leiras] : [])];
+
     console.log(`✅ MEGBÍZHATÓ [${verdict.score}/100] + HASZNOS (${aiRatio}% AI): ${org.name} — ${found.url}`);
     console.log(`     ↳ ${verdict.reasons.join(' · ')}`);
     discovered.push({
       ai_content_ratio: aiRatio,
       suggested_id: hostFirstLabel(hostname),
       name: org.name + ' (hivatalos)',
-      url: found.url,
+      url: atir.atiranyit ? vegsoUrl : found.url,
+      // A user ITT látja, mi van a forrásban (10-10: pontszám helyett minta-címek).
+      minta_cimek: kozonseg.mintak,
+      figyelmeztetesek,
+      kozonseg_arany: { b2b: Math.round(kozonseg.arany.b2b * 100), dev: Math.round(kozonseg.arany.dev * 100), lista: Math.round(kozonseg.arany.lista * 100) },
       // A bekötéshez pontosan ez kell a rss-feeds.json-ba (sitemapnál a path_include is).
       type: found.type,
       path_include: found.path_include,
@@ -588,11 +617,16 @@ async function main() {
     const topLog = discovered.slice(0, 5).map(d => `• [${d.reliability_score}] ${d.name}`).join('\n');
     notify('info', `🧭 Forráskutató: ${discovered.length} ÚJ megbízható forrás-javaslat (küszöb ${MIN_SCORE}).\n${topLog}\nJóváhagyod valamelyiket?`, { agent: 'source-scout' });
 
+    // 10-10: a pontszám önmagában félrevezetett (HubSpot 100/100) → az üzenet a
+    // valódi címet, 3 minta-cikkcímet és a figyelmeztetéseket is mutatja.
     const tg = discovered.slice(0, 6).map(d => {
       const clean = d.name.replace(/\s*\(hivatalos\)$/, '');
       const age = d.last_post_age_days != null ? `, utolsó cikk ${d.last_post_age_days} napja` : '';
-      return `• *${clean}* — megbízhatóság ${d.reliability_score}/100${age}`;
-    }).join('\n');
+      const minta = (d.minta_cimek || []).slice(0, 3).map(t => `   – ${String(t).slice(0, 90)}`).join('\n');
+      const jelez = (d.figyelmeztetesek || []).map(w => `   ⚠️ ${w}`).join('\n');
+      return `• *${clean}* — megbízhatóság ${d.reliability_score}/100${age}\n   ${d.url}`
+        + (minta ? `\n   Legutóbbi cikkek:\n${minta}` : '') + (jelez ? `\n${jelez}` : '');
+    }).join('\n\n');
     const firstName = discovered[0].name.replace(/\s*\(hivatalos\)$/, '');
     try {
       await sendMessage(
