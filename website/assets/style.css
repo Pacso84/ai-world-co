@@ -1025,8 +1025,41 @@ body {
 .aff__note { font-size: 12px; color: var(--muted); margin: 12px 0 0; }
 .aff-note { font-size: 12px; color: var(--muted); margin: 6px 0 0; }
 
-/* GOOGLE „KEDVENC FORRÁS" (2026-10-10, core/preferred-source.js): kis gomb a cikk alján, a 👍/👎 alatt. */
-.pref-src { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0 0 14px; }
-.pref-src__btn { display: inline-block; font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 100px; border: 1px solid var(--line); background: var(--paper-2); color: inherit; text-decoration: none; }
-.pref-src__btn:hover { border-color: var(--accent); }
-.pref-src__note { font-size: 12px; color: var(--muted); }
+/* GOOGLE „KEDVENC FORRÁS" KÁRTYA (2026-10-10, core/preferred-source.js) — a cikk ELEJÉN.
+   A négyszínű keret a „Google" jelzés (logó nélkül): ettől akad meg a szem a visszafogott
+   zsálya–papír oldalon. Az egész kártya EGY link; a kék gomb csak a cselekvést mondja ki. */
+.pref-src {
+  display: flex; align-items: center; gap: 14px;
+  margin: 18px 0 4px; padding: 14px 16px;
+  border: 2px solid transparent; border-radius: 18px;
+  background:
+    linear-gradient(var(--card), var(--card)) padding-box,
+    linear-gradient(100deg, #4285f4 0%, #ea4335 34%, #fbbc05 66%, #34a853 100%) border-box;
+  box-shadow: 0 10px 24px -16px rgba(66, 133, 244, 0.55);
+  color: var(--ink); text-decoration: none; text-align: left;   /* a cikk-fej középre zár — a kártya szövege balra */
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.pref-src:hover { transform: translateY(-1px); box-shadow: 0 14px 28px -16px rgba(66, 133, 244, 0.7); }
+.pref-src:focus-visible { outline: 3px solid #4285f4; outline-offset: 3px; }
+.pref-src__badge {
+  flex: none; width: 46px; height: 46px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: conic-gradient(#4285f4 0 25%, #ea4335 0 50%, #fbbc05 0 75%, #34a853 0);
+  animation: pref-src-villan 1.4s ease-out .6s 1 both;
+}
+.pref-src__txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.pref-src__cim { font-size: 17px; font-weight: 800; line-height: 1.25; }
+.pref-src__alcim { font-size: 13px; line-height: 1.4; color: var(--ink-soft); }
+.pref-src__btn {
+  flex: none; padding: 10px 18px; border-radius: 100px;
+  background: #1a73e8; color: #fff; font-weight: 800; font-size: 14px; white-space: nowrap;
+}
+.pref-src:hover .pref-src__btn { background: #1765cc; }
+@keyframes pref-src-villan { 0% { transform: scale(1) rotate(0); } 40% { transform: scale(1.12) rotate(-12deg); } 100% { transform: scale(1) rotate(0); } }
+@media (prefers-reduced-motion: reduce) { .pref-src, .pref-src__badge { animation: none; transition: none; } }
+@media (max-width: 560px) {
+  .pref-src { flex-wrap: wrap; padding: 14px; }
+  .pref-src__txt { flex-basis: calc(100% - 60px); }
+  .pref-src__btn { flex-basis: 100%; text-align: center; }
+}
+[data-theme="dark"] .pref-src { background: linear-gradient(var(--paper-2), var(--paper-2)) padding-box, linear-gradient(100deg, #4285f4 0%, #ea4335 34%, #fbbc05 66%, #34a853 100%) border-box; }

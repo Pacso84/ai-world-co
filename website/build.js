@@ -2022,6 +2022,7 @@ function buildArticlePage(a) {
         <span>${formatDate(a.publishedAt)}</span>
       </div>
       ${aiLabelHtml('aiLabelNews')}
+      ${kedvencForrasHtml(SITE.url, LANG)}
     </div>
     ${videoBlock(a)}
     <div class="article__body">
@@ -2032,7 +2033,6 @@ function buildArticlePage(a) {
     ${relatedBox(a)}
     <div class="article__foot">
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
-      ${kedvencForrasHtml(SITE.url, LANG)}
       <p class="ai-disclosure">${tr('disclosureNews')}</p>
       ${supportLine()}
       <a href="../index" class="back-link">${tr('backStories')}</a>
@@ -2504,6 +2504,7 @@ function buildGuidePage(a) {
       <div class="article__meta"><span>${a.readTime} ${tr('minRead')}</span><span class="dot">·</span><span>${formatDate(a.publishedAt)}</span></div>
       ${aiLabelHtml('aiLabelGuide')}
       ${partnerJelzes(PARTNER, a, LANG)}
+      ${kedvencForrasHtml(SITE.url, LANG)}
     </div>
     ${guideMapHtml(stepHeadings, artKeys)}
     ${introHtml ? `<div class="g-intro">${introHtml}</div>` : ''}
@@ -2516,7 +2517,6 @@ function buildGuidePage(a) {
     ${relatedBox(a)}
     <div class="article__foot">
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
-      ${kedvencForrasHtml(SITE.url, LANG)}
       <p class="ai-disclosure">${tr('disclosureGuide')}</p>
       ${(KAPCSOLO.csomagMind || a.reelAt) ? packLine(temaOf(a.titleEn || a.title)) : ''}
       ${supportLine()}
