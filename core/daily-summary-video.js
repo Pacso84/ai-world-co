@@ -95,6 +95,11 @@ export function osszesitoSzakaszok(hirek) {
   return ki;
 }
 
+/** Egy MI-klip hossza (mp) — a hang hosszáig hurkolódik. */
+export const KLIP_MP = 5;
+const UJRA_MS = 20000;
+const varj = ms => new Promise(r => setTimeout(r, ms));
+
 const hossz = f => parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration',
   '-of', 'default=nw=1:nk=1', f]).toString().trim()) || 0;
 
@@ -109,7 +114,8 @@ export async function renderOsszesito(szakaszok, { out, workDir, klipFn, voice =
   mkdirSync(workDir, { recursive: true });
   const papir = await sharp({ create: { width: W, height: H, channels: 3, background: '#f4efe6' } }).jpeg().toBuffer();
   writeFileSync(join(workDir, 'papir.jpg'), papir);
-  let klipDb = 0;
+  let klipDb = 0, utolsoKlip = '';
+  const potolt = [];
   const darabok = [];
   for (let i = 0; i < szakaszok.length; i++) {
     const sz = szakaszok[i];
@@ -128,11 +134,23 @@ export async function renderOsszesito(szakaszok, { out, workDir, klipFn, voice =
     // 2) KÉP — MI-klip (hurkolva a hang hosszáig) vagy a záró kártya papír-alapon.
     let hatter;
     if (sz.prompt) {
-      const r = await klipFn(sz.prompt, Math.max(4, Math.min(8, Math.ceil(mp))));
-      if (!r || !r.ok) return { ok: false, klipek: klipDb, kvota: !!(r && r.kvota), hiba: `klip ${i + 1}: ${(r && r.hiba) || 'nincs válasz'}` };
-      klipDb++;
+      // FIX 5 mp-es klip (hurkolva a hang hosszáig): kevesebb GPU-idő, mint a hang
+      // hosszához igazított 8 mp — 10-10 első bemutató: a 4. klipnél elfogyott/hibázott.
+      let r = await klipFn(sz.prompt, KLIP_MP);
+      if ((!r || !r.ok) && !(r && r.kvota)) { await varj(UJRA_MS); r = await klipFn(sz.prompt, KLIP_MP); }
       hatter = join(workDir, `c${i}.mp4`);
-      writeFileSync(hatter, r.buf);
+      if (r && r.ok) {
+        klipDb++;
+        writeFileSync(hatter, r.buf);
+        utolsoKlip = hatter;
+      } else if (utolsoKlip) {
+        // PÓTLÁS: a hír-szakasz az előző kész klipet kapja — egy ismételt klip jobb,
+        // mint a teljes videó elvesztése. A nyitó klip nélkül viszont NINCS videó.
+        hatter = utolsoKlip;
+        potolt.push(`${i + 1}: ${(r && r.hiba) || 'nincs válasz'}`);
+      } else {
+        return { ok: false, klipek: klipDb, kvota: !!(r && r.kvota), hiba: `klip ${i + 1}: ${(r && r.hiba) || 'nincs válasz'}` };
+      }
     }
     // 3) FELIRAT-KÁRTYA átlátszó rétegen (ugyanaz a dizájn, mint a mostani Reelen).
     const reteg = join(workDir, `r${i}.png`);
@@ -150,7 +168,7 @@ export async function renderOsszesito(szakaszok, { out, workDir, klipFn, voice =
   writeFileSync(join(workDir, 'lista.txt'), darabok.map(f => `file '${f.replace(/\\/g, '/')}'`).join('\n'), 'utf-8');
   execFileSync('ffmpeg', ['-y', '-f', 'concat', '-safe', '0', '-i', join(workDir, 'lista.txt'), '-c', 'copy',
     '-movflags', '+faststart', out], { stdio: 'pipe' });
-  return { ok: true, file: out, seconds: hossz(out), klipek: klipDb };
+  return { ok: true, file: out, seconds: hossz(out), klipek: klipDb, potolt };
 }
 
 export default { FRISS_ORA, HIR_MAX, HIR_MIN, napiHirek, rovid, klipPrompt, osszesitoSzakaszok, renderOsszesito };

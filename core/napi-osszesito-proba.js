@@ -36,4 +36,4 @@ const r = await renderOsszesito(szakaszok, {
   klipFn: (prompt, mp) => zerogpuKlip({ prompt, token, mp })
 });
 writeFileSync('osszesito-proba/eredmeny.json', JSON.stringify({ ...r, hirek: hirek.map(h => h.title), szoveg: szakaszok.map(s => s.mond) }, null, 2));
-console.log(r.ok ? `✅ Kész: ${r.seconds.toFixed(1)} mp, ${r.klipek} MI-klip` : `❌ ${r.hiba}${r.kvota ? ' (elfogyott a keret)' : ''}`);
+console.log(r.ok ? `✅ Kész: ${r.seconds.toFixed(1)} mp, ${r.klipek} MI-klip${r.potolt.length ? ", pótolva: " + r.potolt.join("; ") : ""}` : `❌ ${r.hiba}${r.kvota ? ' (elfogyott a keret)' : ''}`);
