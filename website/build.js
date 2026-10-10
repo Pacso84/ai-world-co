@@ -48,6 +48,7 @@ import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt } from '../core/ads.js';
 import { partnerBeallitas, partnerDoboz, partnerJelzes } from '../core/affiliate.js';
+import { kedvencForrasHtml } from '../core/preferred-source.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -2031,6 +2032,7 @@ function buildArticlePage(a) {
     ${relatedBox(a)}
     <div class="article__foot">
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
+      ${kedvencForrasHtml(SITE.url, LANG)}
       <p class="ai-disclosure">${tr('disclosureNews')}</p>
       ${supportLine()}
       <a href="../index" class="back-link">${tr('backStories')}</a>
@@ -2514,6 +2516,7 @@ function buildGuidePage(a) {
     ${relatedBox(a)}
     <div class="article__foot">
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
+      ${kedvencForrasHtml(SITE.url, LANG)}
       <p class="ai-disclosure">${tr('disclosureGuide')}</p>
       ${(KAPCSOLO.csomagMind || a.reelAt) ? packLine(temaOf(a.titleEn || a.title)) : ''}
       ${supportLine()}
