@@ -48,6 +48,16 @@ t('„best X" címek: kevés → figyelmeztetés (nem kizárás); többség → 
   assert.equal(kozonsegKapu(tobbseg).ok, false);
 });
 
+t('🔴 új MI-modellgyártó (user, 10-10: „ne maradjunk le az új LLM-cégekről") NEM esik ki a dev/b2b szűrőn', () => {
+  const ujLlm = tetel(['Introducing Nova-2: our open-weight reasoning model', 'Nova-2 API pricing and rate limits',
+    'Benchmarks: Nova-2 on coding and math evals', 'Deploy Nova-2 on your own servers', 'Nova Chat app now remembers your files',
+    'Nova-2 for enterprise: SSO and data controls']);
+  const v = kozonsegKapu(ujLlm);
+  assert.equal(v.ok, true, 'kidobta az új LLM-céget: ' + v.okok.join('; '));
+  assert.match(v.figyelmeztetesek.join(' '), /MI-modellgyártónak tűnik/);
+  assert.equal(kozonsegKapu(HUBSPOT).ok, false, 'a HubSpot (nem modellgyártó) továbbra is kiesik');
+});
+
 t('fejlesztői forrás kiesik', () => {
   const dev = tetel(['Fine-tuning Llama with our SDK', 'Inference latency benchmarks', 'Deploy endpoints with Terraform', 'New API rate limits', 'Kubernetes autoscaling for MLOps']);
   assert.equal(kozonsegKapu(dev).ok, false);

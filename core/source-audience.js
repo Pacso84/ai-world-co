@@ -22,6 +22,13 @@
 const B2B = /\b(enterprise|b2b|saas|aeo|seo|sem|ppc|pipeline|demand gen\w*|lead gen\w*|go-to-market|gtm|revenue|roi|kpis?|stakeholders?|agenc(?:y|ies)|marketers?|marketing (?:teams?|ops|operations|leaders?)|sales (?:teams?|reps?|leaders?)|crm|customer success|account-based|abm|procurement|compliance|governance|at scale|workforce|cios?|ctos?|cfos?|it leaders?|webinar|whitepaper|case study|earnings|quarterly results|fiscal)\b/i;
 // Fejlesztői szakszavak.
 const DEV = /\b(apis?|sdks?|cli|kubernetes|k8s|docker|devops|mlops|benchmarks?|fine-?tun\w*|inference|latency|throughput|endpoints?|deploy\w*|repos?|github actions|open-source model|weights|tokens? per|vector databases?|rag pipeline|terraform|serverless|microservices?)\b/i;
+// MI-MODELLGYÁRTÓ JELEI (2026-10-10, user: „ha jön egy új LLM-cég, mi lemaradunk
+// róla! pedig jó lenne időben publikálni"). Egy modell-bejelentő blog címeiben
+// TERMÉSZETES a fejlesztői/vállalati szó (API, benchmark, inference, „for
+// enterprise") — ilyenkor a b2b/dev szűrő NEM zár ki, csak jelez.
+const LLM_JEL = /\b(introducing|announcing|launch\w*|releas\w*|models?|llms?|large language|reasoning|multimodal|open[- ]?weights?|open[- ]?source model|chatbot|chat app|assistants?|agents?|gpt|tokens?|context window|frontier)\b/i;
+export const LLM_GYARTO_ARANY = 0.3;
+
 // Összehasonlító / listás címek (a user tiltja: 09-26).
 const LISTA = /\b(best|top \d+|\d+ best|vs\.?|versus|alternatives?|compar\w+|ranked|ranking)\b/i;
 
@@ -47,7 +54,7 @@ export function kozonsegArany(items) {
   const c = cimek(items);
   const n = c.length || 1;
   const db = re => c.filter(t => re.test(t)).length;
-  return { n: c.length, b2b: db(B2B) / n, dev: db(DEV) / n, lista: db(LISTA) / n };
+  return { n: c.length, b2b: db(B2B) / n, dev: db(DEV) / n, lista: db(LISTA) / n, llm: db(LLM_JEL) / n };
 }
 
 /**
@@ -76,11 +83,15 @@ export function kozonsegKapu(items) {
   const mintak = cimek(items).slice(0, 3);
   if (arany.n < 3) return { ok: true, okok, figyelmeztetesek, arany, mintak };   // kevés adat: nem ez a kapu dönt
   const pct = x => Math.round(x * 100) + '%';
-  if (arany.b2b > KUSZOB.b2b) okok.push(`vállalati/marketinges tartalom (${pct(arany.b2b)} a címekből) — nem az átlagembernek`);
-  if (arany.dev > KUSZOB.dev) okok.push(`fejlesztői tartalom (${pct(arany.dev)}) — nem az átlagembernek`);
+  // MI-modellgyártó: a b2b/dev szó természetes → csak FIGYELMEZTETÉS, nem kizárás.
+  const llmGyarto = arany.llm >= LLM_GYARTO_ARANY;
+  const ide = llmGyarto ? figyelmeztetesek : okok;
+  const megj = llmGyarto ? ' (MI-modellgyártónak tűnik, ezért NEM zártam ki)' : ' — nem az átlagembernek';
+  if (arany.b2b > KUSZOB.b2b) ide.push(`vállalati/marketinges tartalom (${pct(arany.b2b)} a címekből)${megj}`);
+  if (arany.dev > KUSZOB.dev) ide.push(`fejlesztői tartalom (${pct(arany.dev)})${megj}`);
   if (arany.lista > KUSZOB.lista) okok.push(`„legjobb X / X vs Y" összehasonlító címek (${pct(arany.lista)}) — tiltott műfaj`);
   else if (arany.lista > KUSZOB.listaJelez) figyelmeztetesek.push(`sok „legjobb X / X vs Y" cím (${pct(arany.lista)}) — ezeket a cikkíró kiszűri`);
   return { ok: okok.length === 0, okok, figyelmeztetesek, arany, mintak };
 }
 
-export default { KUSZOB, cimek, kozonsegArany, atiranyitas, kozonsegKapu };
+export default { KUSZOB, LLM_GYARTO_ARANY, cimek, kozonsegArany, atiranyitas, kozonsegKapu };
