@@ -62,7 +62,13 @@ export async function zerogpuKlip(o = {}) {
     const s = await f(`${base}/gradio_api/call/generate_video/${event_id}`, { headers: o.token ? { Authorization: fej.Authorization } : {} });
     const esemenyek = sseEsemenyek(await s.text());
     const hibaE = esemenyek.find(([e]) => e === 'error');
-    if (hibaE) return { ok: false, mp: mp(), kvota: kvotaHibaE(hibaE[1]), hiba: String(hibaE[1]).slice(0, 300) };
+    // ÜRES HIBA (data: null) — élő eset 10-10: a napi keret elfogyása után minden hívás
+    // így bukott, üzenet nélkül. Valószínű kvóta → NEM próbálunk újra (csak az idő menne).
+    if (hibaE) {
+      const ures = String(hibaE[1]).trim() === 'null';
+      return { ok: false, mp: mp(), kvota: kvotaHibaE(hibaE[1]) || ures,
+        hiba: ures ? 'üres hibaüzenet (valószínűleg elfogyott a napi keret)' : String(hibaE[1]).slice(0, 300) };
+    }
     const kesz = esemenyek.find(([e]) => e === 'complete');
     const url = kesz && mp4Url(kesz[1]);
     if (!url) return { ok: false, mp: mp(), hiba: 'nincs kész videó' };

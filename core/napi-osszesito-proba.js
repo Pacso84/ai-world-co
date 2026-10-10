@@ -33,7 +33,11 @@ console.log('📰 Hírek:\n' + hirek.map(h => '  • ' + h.title).join('\n'));
 const token = (process.env.HF_TOKEN || '').trim();
 const r = await renderOsszesito(szakaszok, {
   out: 'osszesito-proba/osszesito.mp4', workDir: join(ROOT, '.osszesito-munka'),
-  klipFn: (prompt, mp) => zerogpuKlip({ prompt, token, mp })
+  // BEMUTATÓ-MÓD: ha a DEMO_KLIP egy meglévő klip útja (pl. egy korábbi próba artifactja),
+  // azt használja — így elfogyott napi keretnél is megmutatható a felépítés.
+  klipFn: process.env.DEMO_KLIP
+    ? async () => ({ ok: true, buf: readFileSync(process.env.DEMO_KLIP) })
+    : (prompt, mp) => zerogpuKlip({ prompt, token, mp })
 });
 writeFileSync('osszesito-proba/eredmeny.json', JSON.stringify({ ...r, hirek: hirek.map(h => h.title), szoveg: szakaszok.map(s => s.mond) }, null, 2));
-console.log(r.ok ? `✅ Kész: ${r.seconds.toFixed(1)} mp, ${r.klipek} MI-klip${r.potolt.length ? ", pótolva: " + r.potolt.join("; ") : ""}` : `❌ ${r.hiba}${r.kvota ? ' (elfogyott a keret)' : ''}`);
+console.log(r.ok ? `✅ Kész: ${r.seconds.toFixed(1)} mp, 1 MI-animáció` : `❌ ${r.hiba}${r.kvota ? ' (elfogyott a keret)' : ''}`);

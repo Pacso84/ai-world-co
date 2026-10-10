@@ -6,10 +6,16 @@ name: MI-videó — napi összefoglaló BEMUTATÓ (kézi)
 # core/daily-summary-video.js és core/napi-osszesito-proba.js.
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      klip_run:
+        description: 'Bemutató-mód: egy korábbi video-proba futás azonosítója — annak klipjét használja (üres = új MI-klip)'
+        required: false
+        default: ''
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: video-proba
@@ -32,9 +38,15 @@ jobs:
           mkdir -p "$HOME/.local/share/fonts"
           cp shared/fonts/schibsted-grotesk-900.ttf "$HOME/.local/share/fonts/"
           fc-cache -f
+      - name: Bemutató-klip letöltése (ha kérték)
+        if: ${{ inputs.klip_run != '' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh run download "${{ inputs.klip_run }}" -n video-proba -D demo-klip && ls -la demo-klip
       - name: Napi összefoglaló legyártása
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          DEMO_KLIP: ${{ inputs.klip_run != '' && 'demo-klip/klip-1.mp4' || '' }}
         run: node core/napi-osszesito-proba.js
       - name: Videó mentése
         if: always()

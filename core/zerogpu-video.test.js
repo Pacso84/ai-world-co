@@ -59,6 +59,14 @@ await t('🔴 elfogyott keret: külön jelölve (nem „elromlott")', async () =
   assert.ok(!kvotaHibaE('CUDA out of memory'));
 });
 
+await t('🔴 üres hiba (data: null, élő eset 10-10) = valószínű kvóta, nem „ismeretlen"', async () => {
+  const { fetchFn } = hamis('event: error\ndata: null\n\n');
+  const r = await zerogpuKlip({ prompt: 'p', fetchFn });
+  assert.equal(r.ok, false);
+  assert.equal(r.kvota, true);
+  assert.match(r.hiba, /elfogyott a napi keret/);
+});
+
 await t('hálózati hiba / rossz POST → ok:false, nem dob kivételt', async () => {
   assert.equal((await zerogpuKlip({ prompt: 'p', fetchFn: async () => { throw new Error('ECONNRESET'); } })).ok, false);
   const { fetchFn } = hamis(SSE_OK, { post: 503 });

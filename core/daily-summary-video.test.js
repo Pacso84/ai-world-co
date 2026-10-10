@@ -1,6 +1,7 @@
 // core/daily-summary-video.js — napi „Today in AI" összefoglaló (2026-10-10). Hálózat és ffmpeg nélkül.
 import assert from 'node:assert/strict';
-import { napiHirek, rovid, elsoMondat, klipPrompt, osszesitoSzakaszok, HIR_MIN } from './daily-summary-video.js';
+import { readFileSync } from 'fs';
+import { napiHirek, rovid, elsoMondat, napiPrompt, osszesitoSzakaszok, idosavok, HIR_MIN, KLIP_MP } from './daily-summary-video.js';
 
 let hiba = 0;
 const t = (nev, fn) => { try { fn(); console.log('  ✅ ' + nev); } catch (e) { hiba++; console.log('  ❌ ' + nev + '\n     ' + e.message); } };
@@ -19,21 +20,19 @@ t(`ha ${HIR_MIN}-nél kevesebb friss hír van → nincs videó (null)`, () => {
   assert.equal(napiHirek([], MOST), null);
 });
 
-t('szakaszok: nyitó + hírek + záró; csak a záró lehet klip nélkül', () => {
+t('szakaszok: nyitó + hírek + záró, a kimondott szöveg a saját cikkeinkből', () => {
   const sz = osszesitoSzakaszok([h('OpenAI adds a new voice mode to ChatGPT', 1), h('Gemini can now plan trips', 2)]);
   assert.equal(sz.length, 4);
-  assert.ok(sz.slice(0, 3).every(s => s.prompt), 'nyitó és hírek: MI-klip');
-  assert.equal(sz[3].prompt, null);
   assert.match(sz[0].mond, /two things/);
   assert.match(sz[1].mond, /^One\. OpenAI adds a new voice mode to ChatGPT\./);
   assert.match(sz[3].mond, /aiworldhq dot com/);
+  assert.ok(sz.every(s => !('prompt' in s)), 'egyik szakasz sem kér saját klipet');
 });
 
-t('🚫 a klip-prompt tilt feliratot, logót, valódi embert; nem mondja ki a cikk állításait hosszan', () => {
-  const p = klipPrompt('OpenAI adds a new "voice" mode to ChatGPT for millions of users worldwide starting today in every country');
-  assert.match(p, /No text, no letters, no logos, no real people\./);
-  assert.doesNotMatch(p, /"/);
-  assert.ok(p.split(':')[1].split('.')[0].trim().split(' ').length <= 15, 'a téma legfeljebb ~14 szó');
+t('🔴 EGY összefoglaló = EGY MI-animáció naponta (user, 10-10: „nem három külön klipet")', () => {
+  const src = readFileSync(new URL('./daily-summary-video.js', import.meta.url), 'utf-8');
+  assert.equal((src.match(/await klipFn\(/g) || []).length, 1, 'a renderelés egynél több MI-klipet kér');
+  assert.ok(KLIP_MP <= 10 && KLIP_MP >= 6);
 });
 
 t('🔴 a hang soha nem szakad félmondatnál: csak az alcím első, rövid mondata, vagy semmi', () => {
@@ -42,6 +41,14 @@ t('🔴 a hang soha nem szakad félmondatnál: csak az alcím első, rövid mond
   const sz = osszesitoSzakaszok([h('A', 1, { subtitle: 'Short first. And a second one.' }), h('B', 2)]);
   assert.match(sz[1].mond, /^One\. A\. Short first\.$/);
   assert.doesNotMatch(sz.map(s => s.mond).join(' '), /…/);
+});
+
+t('kártyák idősávjai egymás után, rés és átfedés nélkül', () => {
+  assert.deepEqual(idosavok([2, 3.5, 1]), [{ tol: 0, ig: 2 }, { tol: 2, ig: 5.5 }, { tol: 5.5, ig: 6.5 }]);
+});
+
+t('🚫 az animáció-prompt tilt feliratot, logót, valódi embert', () => {
+  assert.match(napiPrompt(), /No text, no letters, no logos, no real people\./);
 });
 
 t('rovid(): szóhatáron vág, jelzi a vágást', () => {
