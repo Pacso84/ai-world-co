@@ -1,7 +1,7 @@
 // core/daily-summary-video.js — napi „Today in AI" összefoglaló (2026-10-10). Hálózat és ffmpeg nélkül.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
-import { napiHirek, rovid, elsoMondat, napiPrompt, osszesitoSzakaszok, idosavok, HIR_MIN, KLIP_MP } from './daily-summary-video.js';
+import { napiHirek, rovid, elsoMondat, napiPrompt, osszesitoSzakaszok, idosavok, kartyaCim, HIR_MIN, KLIP_MP } from './daily-summary-video.js';
 
 let hiba = 0;
 const t = (nev, fn) => { try { fn(); console.log('  ✅ ' + nev); } catch (e) { hiba++; console.log('  ❌ ' + nev + '\n     ' + e.message); } };
@@ -41,6 +41,16 @@ t('🔴 a hang soha nem szakad félmondatnál: csak az alcím első, rövid mond
   const sz = osszesitoSzakaszok([h('A', 1, { subtitle: 'Short first. And a second one.' }), h('B', 2)]);
   assert.match(sz[1].mond, /^One\. A\. Short first\.$/);
   assert.doesNotMatch(sz.map(s => s.mond).join(' '), /…/);
+});
+
+t('🔴 a kártya-cím nem vágódik le (10-10 bemutató): kettőspontnál kettéválik, legfeljebb 7 nagy szó', () => {
+  assert.deepEqual(kartyaCim("Picsart's HeyGen Video: How Three Inputs Become a Short Clip With Sound"),
+    { nagy: "Picsart's HeyGen Video", kicsi: 'How Three Inputs Become a Short Clip With Sound' });
+  assert.match(kartyaCim('Big: one two three four five six seven eight nine ten').kicsi, /…$/, '9 szó fölött jelzett vágás');
+  assert.equal(kartyaCim('When AI Agents Become Your Customers: What Businesses Need to Know').nagy, 'When AI Agents Become Your Customers');
+  assert.ok(kartyaCim('One two three four five six seven eight nine ten').nagy.split(' ').length <= 7);
+  const sz = osszesitoSzakaszok([h('Big News: Small details here', 1), h('B', 2)]);
+  assert.match(sz[1].mond, /Big News: Small details here/, 'a hang a TELJES címet mondja');
 });
 
 t('kártyák idősávjai egymás után, rés és átfedés nélkül', () => {

@@ -72,15 +72,29 @@ export function napiPrompt() {
     + 'No text, no letters, no logos, no real people.';
 }
 
+/**
+ * A kártya címe: kettőspontnál kettévágva (nagy = előtte, kicsi = utána).
+ * MIÉRT (10-10, első bemutató): a teljes hír-cím 3 sorba tördelve LEVÁGÓDOTT
+ * („…Become a Short", „…What Businesses Need"). A nagy rész legfeljebb 7 szó;
+ * a hang ettől függetlenül a TELJES címet mondja.
+ */
+export function kartyaCim(cim) {
+  const c = String(cim || '').replace(/\s+/g, ' ').trim();
+  const [elo, ...tobbi] = c.split(/:\s+/);
+  const utana = tobbi.join(': ');
+  if (utana && elo.split(' ').length >= 2) return { nagy: rovid(elo, 7), kicsi: rovid(utana, 9) };
+  return { nagy: rovid(nagybetusHorog(splitHeading(horogCimbol(c)).nagy), 7), kicsi: '' };
+}
+
 /** A videó szakaszai (kártya + kimondott szöveg): nyitó + hírek + záró. Egyik sem kér saját klipet. */
 export function osszesitoSzakaszok(hirek) {
   const db = hirek.length;
   const szam = ['', 'one', 'two', 'three'][db] || String(db);
   const ki = [{ cimke: '', nagy: tordel('TODAY IN AI'), kicsi: `${db} things worth knowing`, mond: `Today in A I: ${szam} things worth knowing.` }];
   hirek.forEach((h, i) => {
-    const horog = nagybetusHorog(splitHeading(horogCimbol(h.title)).nagy);
+    const { nagy, kicsi } = kartyaCim(h.title);
     ki.push({
-      cimke: '', nagy: tordel(horog), kicsi: rovid(h.subtitle, 9),
+      cimke: '', nagy: tordel(nagy), kicsi: kicsi || rovid(h.subtitle, 9),
       mond: kimondhato(`${['One', 'Two', 'Three'][i] || i + 1}. ${h.title.replace(/[.:]\s*$/, '')}.`
         + (elsoMondat(h.subtitle) ? ` ${elsoMondat(h.subtitle)}.` : ''))
     });
