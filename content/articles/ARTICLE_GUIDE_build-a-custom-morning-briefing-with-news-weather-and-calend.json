@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "build-a-custom-morning-briefing-with-news-weather-and-calend",
+    "company": "Amazon",
+    "tool": "Alexa+",
+    "icon": "🌅",
+    "level": "beginner",
+    "source_news": null,
+    "written_at": "2026-10-11T14:32:30.570Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01297578,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-10-11T02:52:46.428Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "HOWTO_TOO_LONG: 1798 szó (~9.0 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig."
+      ],
+      "wordCount": 1798
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This guide is well-structured, beginner-friendly, and thorough with seven clear steps that include multiple UI fallbacks, specific examples, and 'you'll know it worked' checkpoints. It explains Alexa+ and all technical terms accessibly, uses only US English, and the common mistakes section adds practical value. No factual issues or prohibited content detected.",
+      "_aiCost": 0.00225261,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The guide is well-structured with solid beginner-friendly steps, good fallback language (or if your app shows), and a strong Common Mistakes section. The clarity_score of 7 reflects minor UI vagueness in Step 7's Save instruction and the drag instruction in Common Mistakes — both are fixable but not blocking. Overall a publishable guide that will serve readers well.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_build-a-custom-morning-briefing-with-news-weather-and-calend.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-10-11T14:32:53.615Z",
+    "slug": "build-a-custom-morning-briefing-with-news-weather-and-calendar-in-alex",
+    "image_v": 2,
+    "image_at": "2026-10-11T14:33:29.528Z",
+    "seo": {
+      "meta_description": "Learn how to build an Alexa+ morning routine that reads your calendar, weather, and news with a single 'Alexa, good morning' command.",
+      "keywords": [
+        "Alexa+ morning routine",
+        "Alexa morning briefing",
+        "Alexa custom routine",
+        "Alexa calendar weather news",
+        "how to set up Alexa routine",
+        "Alexa+ features",
+        "Alexa voice commands"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'Alexa good morning routine setup' to compete for specific search queries",
+        "Consider mentioning 'Amazon Alexa+' explicitly in the first heading to improve relevance for branded searches",
+        "Add FAQ section with questions like 'How do I create a morning routine on Alexa+' to capture voice search and featured snippet opportunities"
+      ],
+      "optimised_at": "2026-10-11T14:33:47.472Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Build a Custom Morning Briefing with News, Weather, and Calendar in Alexa+\"\nsubtitle: \"Create one Alexa+ routine that reads your day aloud the moment you say good morning — calendar, weather, and news.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Amazon\"\ntool: \"Alexa+\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"alexa-plus\", \"routines\"]\n---\n\n# Build a Custom Morning Briefing with News, Weather, and Calendar in Alexa+\n\n> **In short:** In the Alexa app you can build one Routine that reads your linked calendar, today's weather, and a short news briefing when you say \"Alexa, good morning.\" Alexa+ is a paid subscription tier that Amazon describes as its next-generation, AI-powered Alexa.\n\nBy the end of this guide, you'll have a single voice command that kicks off your day with the three things you actually need to know: what's on your calendar, what the weather will do, and what's happening in the world. Once it works, it quietly replaces ten minutes of phone-checking every morning — and anyone in the room can trigger it just by saying good morning to your Echo. Note up front: Alexa+ cannot pull events from a calendar you haven't connected yet, so that linking step matters.\n\n## Before you start\n- An **Alexa+ subscription** — Amazon describes this as the paid, AI-powered next generation of Alexa. Check Amazon's official pricing page for the latest details, since plans and offers change.\n- The **Alexa app** on your phone, signed in to the same Amazon account your Echo device uses. Routines can't be built from the Echo itself.\n- An **Alexa-enabled speaker** (an Echo, Echo Dot, or any device on your Alexa account) placed where you'll usually be in the morning.\n- A **calendar account ready to link** — Google, Microsoft, or Apple/iCloud all work.\n- About **10–15 minutes** for the first setup; tweaking the routine later takes seconds.\n\n## Step 1 — Open Routines in the Alexa app\nOpen the **Alexa app** on your phone — it's the one with a light blue ring icon (a small colored circle), separate from the Amazon Shopping app. Sign in with the same Amazon account your Echo device is registered to, if it doesn't sign you in automatically. From the home screen, look along the **bottom navigation bar** for tabs that sound like Home, Communicate, Play, and Devices. Now find a **More** entry — depending on your app version it might be a tab at the far right, a **menu icon** (three lines or three dots) in the top-right corner, or a gear icon. Open it, then look inside for an entry that sounds like **Routines**.\n\n💬 Example: if the app asks which Amazon account to use, pick the one your Echo is registered to and tap **Continue**.\n\nYou'll know it worked when the Routines screen opens, showing any routines you've already made (probably none yet) and a way to create a new one.\n\n## Step 2 — Start a new routine and give it a name\nTap the option to create a new routine — depending on your app version, this might be a button labeled something like **Create Routine**, an **Add** or **New Routine** button, or a **+** icon, often near the top of the list or as a floating button at the bottom. A new screen appears asking for two things: a name for the routine, and the actions it will perform. Tap into the **name field** near the top and type something easy to recognize, like \"Morning Briefing\". The name only shows inside the app — it doesn't have to match what you'll say out loud.\n\n💬 Example: type **Morning Briefing** as the routine name.\n\nYou'll know it worked when the routine name appears at the top of the screen and you see empty sections labeled something like **\"When this happens\"** and **\"Add action\"**.\n\n## Step 3 — Set the voice trigger\nFind the section labeled something like **\"When this happens\"** — yours may say \"When\" or \"Trigger\" instead. Tap it, then look through the list of trigger types for one that sounds like **Voice**. A text field appears asking for the phrase Alexa should listen for. Type **good morning** — or pick one of the short suggested phrases your app may offer. Keep the phrase short: the more words you add, the more chances Alexa will mishear you, especially first thing in the morning. Skip optional settings like \"device\" unless you want to limit the trigger to one specific Echo.\n\n💬 Example: type **good morning** as the trigger phrase.\n\nYou'll know it worked when the trigger shows up in the routine summary as something like \"Voice: good morning\" and the screen moves down to the action section.\n\n## Step 4 — Add the calendar action\nScroll down to the section labeled something like **Add action** and tap it. A menu appears with categories — depending on your app version, these might include Communication, Music, News, Weather, Calendar, and others. Look for the entry that sounds like **Calendar**, or a shortcut your app may offer called something like **\"Tell me about my day\"**, which Amazon describes as a way to summarize your agenda in one sentence. If your calendar isn't already linked, the app will walk you through connecting a Google, Microsoft, or iCloud account. Pick the account you actually use, then tap **Allow** on each permission screen that follows. The action is now attached to your routine.\n\n💬 Example: if prompted, choose the calendar service you actually use (Google, Microsoft, or iCloud) and tap **Allow**.\n\nYou'll know it worked when an action card appears in the routine — usually labeled something like \"Read calendar events\" or \"Tell me about my day.\"\n\n## Step 5 — Add the weather action\nStay inside the actions menu and tap **Add action** again to add a second one. Look for the category that sounds like **Weather** and tap it. Some app versions may ask you to pick a specific device to read the forecast on; choose the Echo you'll be closest to in the morning — usually the one in your bedroom or kitchen. The app will use your device's location by default, but you can change it to a different city if you commute or travel regularly. Once you confirm, the weather action shows up as another card in your routine, sitting below the calendar one.\n\n💬 Example: leave the location set to your **home city** so the forecast matches your actual day.\n\nYou'll know it worked when two action cards appear in the routine list — one for the calendar, one for the weather — stacked in that order.\n\n## Step 6 — Add the news action\nTap **Add action** once more and look for the category that sounds like **News**. You'll see a list of available news providers — choose one you already trust, or pick the default option your app suggests. Amazon offers a short audio news summary feature at this step; the default usually runs about two to five minutes of audio, which is a comfortable length for a morning routine. Add just one news provider at first; you can stack more later if it feels too short. After you confirm, the routine now has three actions lined up in order: calendar, weather, news.\n\n💬 Example: select a single trusted news provider like **NPR** or your local station, and keep the briefing length on **short**.\n\nYou'll know it worked when three action cards are visible in the routine list, in the order calendar → weather → news.\n\n## Step 7 — Save and test your routine\nTap **Save** in the top-right corner to lock in your routine. If you don't see Save, look instead for a **Done** button, a **checkmark (✓)**, or a **Confirm** option — those are the three most common alternatives, and any of them finalizes the routine. The app drops you back to the Routines list, where your new \"Morning Briefing\" routine appears with a toggle to enable or disable it; make sure the toggle is **on** (usually shown in blue or green). Now test it: stand within earshot of your Echo and clearly say **\"Alexa, good morning.\"** Alexa should respond by reading your calendar events first, then the weather forecast, then a short news briefing. If anything is missing or the order feels off, come back to the routine and rearrange the action cards.\n\n💬 Example: say **\"Alexa, good morning\"** clearly, then wait silently for the full briefing to play through.\n\nYou'll know it worked when Alexa speaks all three pieces in order — calendar, weather, news — without you needing to ask a follow-up question.\n\n## Common mistakes\n- **Forgetting to link the calendar first.** If you add the calendar action before your Google, Microsoft, or iCloud account is connected, Alexa will quietly skip your events. Fix: open **Settings → Calendars** in the Alexa app, link the account you actually use, then return to your routine.\n- **Using a trigger phrase that's too long.** \"Alexa, please give me my full morning briefing now\" is hard to catch accurately, especially over background noise. Fix: keep the phrase to two or three short, common words like **\"good morning\"**.\n- **Reordering actions the wrong way.** If news ends up playing before the weather, your morning feels scrambled. Fix: in the routine editor, **press and hold** an action card (about one second) until it lifts slightly or shows a drag handle — that handle is usually three small horizontal lines or a set of dots on the right side of the card. Then drag the card up or down into the order you want, and release.\n- **The routine toggle is off.** A perfect routine won't run if the switch next to its name is off. Fix: on the main Routines screen, slide the toggle next to **Morning Briefing** to **on**.\n\n## What this means for you\n- **In everyday life:** anyone in your home — partner, kids, roommates — can trigger the briefing just by saying \"good morning\" to the Echo. No buttons, no phone unlock, no apps to open.\n- **For your business or work:** the calendar piece doubles as a quick stand-up prompt for anyone who runs remote meetings or has back-to-back calls; you'll hear what's coming before you even reach for your laptop.\n- **If you're just getting started:** keep the routine to those three actions for the first week. Once it feels automatic, add one more — like a one-line traffic update for your commute — so the briefing grows with you instead of overwhelming you on day one.\n\n## Try it now\nOpen the Alexa app right now and create the routine — even if you stop after Step 3, you'll have the trigger phrase set up, and the rest is just three more taps per action.",
+  "original_title": "Build a custom morning briefing with news, weather, and calendar in Alexa+"
+}
