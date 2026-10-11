@@ -1,0 +1,70 @@
+name: MI-híradó — küldés (kézi)
+
+# KÉZZEL indított küldés (2026-10-11, user: „nagyon jó! mehet ki mindenhova most!").
+#
+# A content/hirado/<nap>.json híradóját (a beszélő kabala videója, oldalt a cikk
+# borítójával) kiküldi: Facebook Reel (Make) + TikTok + Threads (Buffer).
+# Nincs AI-hívás, nincs build — $0. A videónak már KINT kell lennie
+# (/assets/video/shorts/<video_slug>.mp4) — a küldő HEAD-del ellenőrzi.
+# A TikTok napi plafonja (config) itt is él. Lásd core/hirado-kuldes.js.
+#
+# ⚠️ AZ ALAPÉRTELMEZÉS A PRÓBA (dry = true): megmutatja, mi menne ki.
+# A „kiküldve" jelöléseket visszacommitolja — enélkül újraküldené.
+
+on:
+  workflow_dispatch:
+    inputs:
+      datum:
+        description: 'Melyik nap híradója? (ÉÉÉÉ-HH-NN; üresen: a legutóbbi)'
+        required: false
+        default: ''
+      dry:
+        description: 'Csak próba? (igaz = NEM posztol, csak megmutatja)'
+        type: boolean
+        required: true
+        default: true
+
+permissions:
+  contents: write
+
+# Ugyanaz a csoport, mint a napi futásé: a kettő sosem fut egyszerre.
+concurrency:
+  group: aiworld-auto
+  cancel-in-progress: false
+
+jobs:
+  kuldes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Függőségek
+        run: npm install
+
+      - name: Híradó küldése
+        env:
+          MAKE_REEL_WEBHOOK_URL: ${{ secrets.MAKE_REEL_WEBHOOK_URL }}
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.datum }}" ]; then ARGS="--datum ${{ inputs.datum }}"; fi
+          if [ "${{ inputs.dry }}" = "true" ]; then ARGS="$ARGS --dry"; fi
+          node core/hirado-kuldes.js $ARGS
+
+      - name: Jelölés visszacommitolása
+        if: ${{ always() && inputs.dry == false }}
+        run: |
+          git config user.name "AI World Bot"
+          git config user.email "bot@aiworld.local"
+          git add content/hirado
+          git commit -m "auto: MI-híradó küldés $(date -u +%FT%TZ)" || { echo "nincs változás"; exit 0; }
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase -X theirs || { git rebase --abort 2>/dev/null || true; }
+            sleep 5
+          done
+          git push || { echo "⚠️ a jelölés push-a nem sikerült — újraküldésnél DUPLÁN mehet!"; exit 1; }
