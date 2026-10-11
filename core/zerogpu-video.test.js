@@ -38,6 +38,9 @@ await t('🔴 a méret 64-gyel osztható (10-11: a 544 csendben elbukott), a hos
 
 await t('kép→videó: a feltöltött kép az első paraméter (gradio FileData); kép nélkül null', async () => {
   assert.equal(ltxAdat({ prompt: 'p' })[0], null);
+  assert.equal(ltxAdat({ prompt: 'p' })[5], true, 'alapból véletlen seed (a régi viselkedés)');
+  assert.equal(ltxAdat({ prompt: 'p', seed: 42, veletlen: false })[5], false, '🔴 a fix seed kérése elveszett — darabonként más hang');
+  assert.equal(ltxAdat({ prompt: 'p', seed: 42, veletlen: false })[4], 42);
   assert.deepEqual(ltxAdat({ prompt: 'p', kepUt: '/tmp/gradio/k.jpg' })[0], { path: '/tmp/gradio/k.jpg', meta: { _type: 'gradio.FileData' } });
   const hiv = [];
   const fetchFn = async (url, o) => { hiv.push({ url, o }); return { ok: true, json: async () => ['/tmp/gradio/k.jpg'] }; };

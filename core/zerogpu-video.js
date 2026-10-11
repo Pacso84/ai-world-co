@@ -36,7 +36,7 @@ export function mp4Url(completeAdat) {
 }
 
 /** A /generate_video hívás adatsora (sorrend a Space /gradio_api/info szerint, 10-09). */
-export function ltxAdat({ prompt, mp = 4, magas = 1024, szeles = 576, seed = 10, kepUt = '', kepUrl = '' } = {}) {
+export function ltxAdat({ prompt, mp = 4, magas = 1024, szeles = 576, seed = 10, kepUt = '', kepUrl = '', veletlen = true } = {}) {
   const ms = Math.max(1, Math.min(10, Number(mp) || 4));
   // A méretnek 64-gyel oszthatónak kell lennie. 10-11, élő eset: 960×544 (32-vel
   // osztható, 64-gyel NEM) → a Space belül elhasalt, és „complete [null]"-t adott,
@@ -46,7 +46,9 @@ export function ltxAdat({ prompt, mp = 4, magas = 1024, szeles = 576, seed = 10,
   // A kép megadható a kép NYILVÁNOS címével is (a Space maga tölti le).
   const kep = kepUt ? { path: kepUt, meta: { _type: 'gradio.FileData' } }
     : kepUrl ? { url: kepUrl, meta: { _type: 'gradio.FileData' } } : null;
-  return [kep, String(prompt || ''), ms, false, seed, true, k32(magas), k32(szeles)];
+  // `veletlen: false` → a megadott seed számít (10-11: a több darabból álló híradó
+  // darabjai UGYANAZZAL a seeddel — különben darabonként más hangon szólna a figura).
+  return [kep, String(prompt || ''), ms, false, seed, veletlen !== false, k32(magas), k32(szeles)];
 }
 
 /**
