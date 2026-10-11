@@ -1,0 +1,39 @@
+name: MI-videó — beszélő kabala PRÓBA (kézi)
+
+# KÉZZEL indított PRÓBA (2026-10-11): a kabala-figura (website/assets/images/
+# mascot-weekly.jpg) beszél — LTX-2.3 kép→videó a Hugging Face ZeroGPU ingyenes
+# keretéből, a user kulcsával (HF_TOKEN). Nem posztol, nem commitol, $0.
+# A videók letölthető artifactként. Lásd core/beszelo-proba.js.
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: video-proba
+  cancel-in-progress: false
+
+jobs:
+  proba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Beszélő kabala — két változat
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: node core/beszelo-proba.js
+
+      - name: Videók mentése
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: beszelo-proba
+          path: video-proba/
+          retention-days: 7

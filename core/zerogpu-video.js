@@ -36,11 +36,28 @@ export function mp4Url(completeAdat) {
 }
 
 /** A /generate_video hívás adatsora (sorrend a Space /gradio_api/info szerint, 10-09). */
-export function ltxAdat({ prompt, mp = 4, magas = 1024, szeles = 576, seed = 10 } = {}) {
+export function ltxAdat({ prompt, mp = 4, magas = 1024, szeles = 576, seed = 10, kepUt = '' } = {}) {
   const ms = Math.max(1, Math.min(10, Number(mp) || 4));
   // A méretnek 32-vel oszthatónak kell lennie (LTX-szabály).
   const k32 = x => Math.max(256, Math.round((Number(x) || 0) / 32) * 32);
-  return [null, String(prompt || ''), ms, false, seed, true, k32(magas), k32(szeles)];
+  // KÉP→VIDEÓ (2026-10-11, beszélő kabala): az első paraméter a Space-re feltöltött kép útvonala.
+  const kep = kepUt ? { path: kepUt, meta: { _type: 'gradio.FileData' } } : null;
+  return [kep, String(prompt || ''), ms, false, seed, true, k32(magas), k32(szeles)];
+}
+
+/**
+ * Kép feltöltése a Space-re (a kép→videó első lépése). Visszatér: az útvonal, vagy ''.
+ * @param {object} o  { kepBuf, nev, tipus, token, base, fetchFn }
+ */
+export async function kepFeltoltes(o = {}) {
+  const f = o.fetchFn || fetch;
+  const fd = new FormData();
+  fd.append('files', new Blob([o.kepBuf], { type: o.tipus || 'image/jpeg' }), o.nev || 'kep.jpg');
+  const r = await f(`${o.base || LTX_SPACE}/gradio_api/upload`, { method: 'POST', body: fd,
+    headers: o.token ? { Authorization: 'Bearer ' + o.token } : {} });
+  if (!r.ok) return '';
+  const j = await r.json().catch(() => null);
+  return Array.isArray(j) && typeof j[0] === 'string' ? j[0] : '';
 }
 
 /**
@@ -83,4 +100,4 @@ export async function zerogpuKlip(o = {}) {
   }
 }
 
-export default { LTX_SPACE, sseEsemenyek, kvotaHibaE, mp4Url, ltxAdat, zerogpuKlip };
+export default { LTX_SPACE, sseEsemenyek, kvotaHibaE, mp4Url, ltxAdat, kepFeltoltes, zerogpuKlip };

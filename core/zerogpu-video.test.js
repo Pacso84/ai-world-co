@@ -1,6 +1,6 @@
 // core/zerogpu-video.js — ingyenes MI-videóklip (2026-10-09). Hálózat nélkül: hamis fetch.
 import assert from 'node:assert/strict';
-import { sseEsemenyek, kvotaHibaE, mp4Url, ltxAdat, zerogpuKlip } from './zerogpu-video.js';
+import { sseEsemenyek, kvotaHibaE, mp4Url, ltxAdat, kepFeltoltes, zerogpuKlip } from './zerogpu-video.js';
 
 let hiba = 0;
 const t = async (nev, fn) => { try { await fn(); console.log('  ✅ ' + nev); } catch (e) { hiba++; console.log('  ❌ ' + nev + '\n     ' + e.message); } };
@@ -32,6 +32,17 @@ await t('álló méret 32-vel osztható, a hossz 1–10 mp közé szorítva', ()
   assert.equal(d[2], 10);
   assert.equal(d[6] % 32, 0); assert.equal(d[7] % 32, 0);
   assert.ok(d[6] > d[7], 'álló (magasabb, mint széles)');
+});
+
+await t('kép→videó: a feltöltött kép az első paraméter (gradio FileData); kép nélkül null', async () => {
+  assert.equal(ltxAdat({ prompt: 'p' })[0], null);
+  assert.deepEqual(ltxAdat({ prompt: 'p', kepUt: '/tmp/gradio/k.jpg' })[0], { path: '/tmp/gradio/k.jpg', meta: { _type: 'gradio.FileData' } });
+  const hiv = [];
+  const fetchFn = async (url, o) => { hiv.push({ url, o }); return { ok: true, json: async () => ['/tmp/gradio/k.jpg'] }; };
+  assert.equal(await kepFeltoltes({ kepBuf: Buffer.from('x'), token: 'hf_teszt', fetchFn, base: 'https://s.hf.space' }), '/tmp/gradio/k.jpg');
+  assert.equal(hiv[0].url, 'https://s.hf.space/gradio_api/upload');
+  assert.equal(hiv[0].o.headers.Authorization, 'Bearer hf_teszt');
+  assert.equal(await kepFeltoltes({ kepBuf: Buffer.from('x'), fetchFn: async () => ({ ok: false }) }), '');
 });
 
 await t('✅ siker CSAK valódi, letöltött MP4-gyel; a token a fejlécben megy', async () => {
