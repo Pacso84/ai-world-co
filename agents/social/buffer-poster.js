@@ -301,7 +301,9 @@ async function imageExists(url) {
 async function maiVideok(field, cikkLista) {
   try {
     const { reelVideoUrl } = await import('../../core/reel-post.js');
-    const cikkek = cikkLista.map(({ data }) => ({ slug: data?._meta?.slug || '', reel_at: data?._meta?.reel_at || '' }));
+    // 2026-10-11: + a napi csak-TikTok videó (tiktok_video_at, core/reel-post.js prepareTiktokExtra).
+    const cikkek = cikkLista.map(({ data }) => ({ slug: data?._meta?.slug || '', reel_at: data?._meta?.reel_at || '',
+      tiktok_video_at: data?._meta?.tiktok_video_at || '' }));
     const postOf = slug => {
       const sp = join(SOCIAL_DIR, slug + '.json');
       if (!existsSync(sp)) { console.log(`   ⚠️ ${slug.slice(0, 40)} — a mai Reel cikkéhez nincs poszt-szöveg`); return null; }
@@ -403,6 +405,7 @@ async function main() {
   for (const ch of channels) {
     const cfg = CHANNELS[ch.key];
     // ── VIDEÓS CSATORNA (TikTok, 2026-10-07): CSAK a mai Reel megy ki ──
+    // (2026-10-11 óta + a napi 1 csak-TikTok videó — core/reel-queue.js tiktokExtra)
     // A sora NEM a közösségi sor: azon a queueFor() a régi híreket
     // 'skipped-stale'-lel jelölné — száz fájl írása egy olyan csatornára,
     // ahová állókép amúgy sem mehet.

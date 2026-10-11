@@ -281,7 +281,8 @@ await t('🔑 a gyártás TÉNYLEG megkapja a borítókép útvonalát', async (
   const rp = readFileSync(join(ROOT, 'core', 'reel-post.js'), 'utf-8')
     .split('\n').filter(s => !s.trim().startsWith('//')).join('\n');
   const db = (rp.match(/kepUt: boritoUt\(/g) || []).length;
-  assert.equal(db, 2, 'a reel-post ' + db + ' helyen adja át a borítót (2 kellene: fő ág + újragyártás)');
+  // 3 hely (2026-10-11 óta): fő ág + újragyártás + a csak-TikTok videó (prepareTiktokExtra).
+  assert.equal(db, 3, 'a reel-post ' + db + ' helyen adja át a borítót (3 kellene: fő ág + újragyártás + TikTok-extra)');
   assert.ok(/website['"], ['"]assets['"], ['"]images['"]/.test(rp), 'a boritoUt nem a képek mappájára mutat');
 });
 

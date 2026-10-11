@@ -18,7 +18,7 @@ import { readFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { promoKell, promoKartyak, promoKepUtak, promoCaption, PROMO_NAP, PROMO_SZUNET_NAP, PROMO_UT } from './packs-reel.js';
-import { maiPromo } from './reel-post.js';
+import { maiPromo, napiReelKeret } from './reel-post.js';
 import { SZOVEG_MAX_SZELES, BETU_ARANY, SZOVEG_MIN_MERET, ALCIM_MERET, ALCIM_ARANY } from './short-video.js';
 
 const ROOT_T = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -184,7 +184,7 @@ t('olvashatatlan időbélyeg NEM némítja el örökre a csatornát', () => {
 });
 
 // ===================================================================
-// 5. A BEKÖTÉS — vasárnap NE menjen ki KÉT videó
+// 5. A BEKÖTÉS — vasárnap reklám + 1 útmutató (2026-10-11 óta), nem több
 // ===================================================================
 // Ez a legdrágább elrontható dolog ebben a munkában: a `prepare` naponta
 // háromszor fut, a promó viszont NEM jelöl meg cikket. Ha a promó-ág nem
@@ -192,15 +192,25 @@ t('olvashatatlan időbélyeg NEM némítja el örökre a csatornát', () => {
 const reelPostForras = readFileSync(join(ROOT_T, 'core', 'reel-post.js'), 'utf-8')
   .split('\n').filter(s => !s.trim().startsWith('//')).join('\n');
 
-t('🔑 a promó-ág a cikk-kiválasztás ELŐTT áll és return-öl', () => {
+t('🔑 a promó-ág a cikk-kiválasztás ELŐTT áll; a GYÁRTÓ futás return-öl, utána 1 útmutató-Reel jöhet', () => {
+  // 2026-10-11 (user): vasárnap a reklám MELLÉ egy útmutató-Reel is — különben
+  // a TikTok üres (oda reklám nem megy). Futásonként továbbra is max 1 új videó,
+  // és a nap összesen 2 (= hétköznapi Make-költség): napiReelKeret(true) = 1.
   const promoHely = reelPostForras.indexOf('kellPromo.kell || maMarPromo');
   const valasztasHely = reelPostForras.indexOf('const valasztott = kovetkezoReel(');
   assert.ok(promoHely > 0, 'nincs promó-ág a prepare-ben');
   assert.ok(valasztasHely > promoHely,
-    'a cikk-kiválasztás a promó-ág ELŐTT fut — vasárnap két videó menne ki');
+    'a cikk-kiválasztás a promó-ág ELŐTT fut — a reklám-futás mellé is gyártana');
   const ag = reelPostForras.slice(promoHely, valasztasHely);
-  assert.ok(/return \{ betu: rp\.betu \};/.test(ag), 'a promó-ág nem return-öl a gyártás után');
-  assert.ok(/return;/.test(ag), 'a promó-ág nem return-öl a „ma már ment" esetben');
+  assert.ok(/if \(!maMarPromo\) \{[\s\S]*?return \{ betu: rp\.betu \};/.test(ag), 'a reklámot GYÁRTÓ futás nem return-öl — két új videó egy futásban');
+  assert.ok(/napiKeret = napiReelKeret\(maMarPromo\)/.test(ag), 'a reklám-napon nincs csökkentett útmutató-keret');
+  assert.ok(/napiMax: napiKeret/.test(reelPostForras), 'a kiválasztás nem a csökkentett keretet kapja');
+});
+
+t('napiReelKeret: reklám-napon 1, egyébként 2', () => {
+  assert.equal(napiReelKeret(true), 1);
+  assert.equal(napiReelKeret(false), 2);
+  assert.equal(napiReelKeret(true, 1), 0);
 });
 
 t('🔑 a „ma már ment" a SAJÁT nyilvántartásból jön, nem a cikk-jelölésből', () => {

@@ -182,10 +182,61 @@ export function maiReelCikkek(cikkek, now = Date.now()) {
  */
 export function videoCsatornaMai(cikkek, postOf, field, now = Date.now()) {
   const ki = [];
-  for (const c of maiReelCikkek(cikkek, now)) {
-    const post = c?.slug ? postOf(c.slug) : null;
+  const volt = new Set();
+  // 2026-10-11: a mai Facebook-Reelek UTÁN a mai TikTok-extra videók is (lent).
+  for (const c of [...maiReelCikkek(cikkek, now), ...maiTiktokExtra(cikkek, now)]) {
+    if (!c?.slug || volt.has(c.slug)) continue;
+    volt.add(c.slug);
+    const post = postOf(c.slug);
     if (!post || post[field]) continue;
     ki.push({ slug: c.slug, post });
   }
   return ki;
+}
+
+// ===================================================================
+// TIKTOK-EXTRA (2026-10-11, user: „ha belefér a keretbe, mehet több videó
+// is a tiktokra is!")
+// ===================================================================
+// A TikTokra a Buffer posztol (saját ingyenes keret), NEM a Make — tehát egy
+// csak-TikTok videó a szűk Make-keretből (havi 1000) nem eszik, a gyártás
+// pedig ingyenes (ffmpeg + helyi TTS). Mérve 10-11: 11 friss (≤7 nap)
+// útmutatónak nem volt videója — naponta 2 jön, 2 Reel készül, a maradék a 7.
+// napon NÉMÁN kiöregszik. Ezekből a LEGRÉGEBBI kap csak-TikTok videót: az,
+// amelyik a legközelebb áll a kiöregedéshez.
+//
+// A Facebook-Reel sorát NEM szűkíti: a `kovetkezoReel` nem nézi a
+// `tiktok_video_at`-et. Ha a Facebook később ugyanazt választja, a TikTokra
+// nem megy ki kétszer (a `posted_tiktok` jelölés véd) — a Facebook-forgalom
+// (~82%) fontosabb, mint hogy a két csatorna tartalma sosem fedje egymást.
+// A jelölés: a cikk `_meta.tiktok_video_at` (a gyártás pillanata).
+
+/** A MA csak-TikTokra gyártott videók cikkei, a korábbi elöl. */
+export function maiTiktokExtra(cikkek, now = Date.now()) {
+  if (!Array.isArray(cikkek)) return [];
+  const ma = new Date(now).toISOString().slice(0, 10);
+  return cikkek.filter(c => napja(c?.tiktok_video_at) === ma)
+    .sort((a, b) => String(a.tiktok_video_at).localeCompare(String(b.tiktok_video_at)));
+}
+
+/**
+ * Melyik útmutató kapjon ma csak-TikTok videót? null, ha senki.
+ * @param {object} opts  napiMax (alap 1) · maxKorNap · alkalmas(c) · kizar (slug: a most gyártott FB-Reel)
+ */
+export function tiktokExtra(cikkek, now = Date.now(), opts = {}) {
+  if (!Array.isArray(cikkek) || !cikkek.length) return null;
+  const napiMax = Number.isFinite(opts.napiMax) ? opts.napiMax : 1;
+  if (napiMax <= 0 || maiTiktokExtra(cikkek, now).length >= napiMax) return null;
+  const alkalmas = typeof opts.alkalmas === 'function' ? opts.alkalmas : () => true;
+  const korHatar = Number.isFinite(opts.maxKorNap) ? now - opts.maxKorNap * 864e5 : -Infinity;
+  const jeloltek = cikkek.filter(c =>
+    c && c.type === 'guide' && c.slug
+    && c.slug !== opts.kizar
+    && !napja(c.reel_at) && !napja(c.tiktok_video_at)   // még sehol nem volt videója
+    && napja(c.published_at)
+    && Date.parse(c.published_at) >= korHatar
+    && alkalmas(c)
+  );
+  jeloltek.sort((a, b) => String(a.published_at).localeCompare(String(b.published_at)));
+  return jeloltek[0] || null;
 }

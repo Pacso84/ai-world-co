@@ -56,6 +56,19 @@ export const REEL_FRISS_NAP = 7;
 // NAPI 2 REEL (2026-09-27, user: „ha belefér, rendben") — futásonként legfeljebb 1 új;
 // Make-keret: friss posztok ~540 + 2 Reel ~120 = ~660/1000. Az Instagram marad napi 1.
 export const REEL_NAPI = 2;
+// NAPI +1 CSAK-TIKTOK VIDEÓ (2026-10-11, user: „ha belefér a keretbe, mehet több videó is
+// a tiktokra is!") — Buffer-keret, nem Make; a választás: core/reel-queue.js tiktokExtra().
+export const TIKTOK_EXTRA_NAPI = 1;
+
+/**
+ * Hány útmutató-Reel mehet ma a Facebookra? Csomag-reklámos napon (vasárnap)
+ * eggyel kevesebb — a reklám a második helyet foglalja, így a Make-költség
+ * ugyanaz, mint hétköznap. (2026-10-11, user: vasárnap is legyen útmutató-
+ * videó, különben a TikTok aznap üresen marad — oda reklám nem megy.)
+ */
+export function napiReelKeret(maMarPromo, napi = REEL_NAPI) {
+  return maMarPromo ? Math.max(0, napi - 1) : napi;
+}
 
 export function reelVideoUrl(slug, site = SITE) {
   const s = String(slug || '');
@@ -385,6 +398,7 @@ async function cikkekBetolt(ROOT, join) {
     // `type` mezőt nézi, nem kérdezi meg újra, máshogy.
     ki.push({ file: f, slug: m.slug || '', type: utmutatoE(f, j) ? 'guide' : 'news',
       published_at: m.published_at || '', reel_at: m.reel_at || '', tool: m.tool || '',
+      tiktok_video_at: m.tiktok_video_at || '',
       md: j.article_markdown || '' });
   }
   return ki;
@@ -464,6 +478,66 @@ export function maiPromo(utolso, now = Date.now()) {
 }
 
 async function prepare(ROOT, join) {
+  const ki = await prepareReel(ROOT, join);
+  // A TikTok-extra hibája SOHA nem ronthatja el a Facebook-Reelt — az már kész.
+  try { await prepareTiktokExtra(ROOT, join); }
+  catch (e) { console.log('⚠️  TikTok-extra videó kimaradt: ' + String(e?.message || e).slice(0, 160)); }
+  return ki;
+}
+
+/**
+ * NAPI +1 CSAK-TIKTOK VIDEÓ (2026-10-11). A Facebook-Reel UTÁN fut, minden
+ * futásban:
+ *   1. a ma már kiválasztott extra videót ÉLETBEN TARTJA (a shorts/ mappa
+ *      gitignore-olt, minden futás üresen indul — a 08-26-i lecke);
+ *   2. ha ma még nem volt, választ egyet (core/reel-queue.js tiktokExtra),
+ *      legyártja, és a cikkbe írja a `_meta.tiktok_video_at`-et.
+ * A kiküldés a Buffer-poszteré (agents/social/buffer-poster.js → videoCsatornaMai).
+ */
+async function prepareTiktokExtra(ROOT, join) {
+  const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync } = await import('fs');
+  const { tiktokExtra, maiTiktokExtra } = await import('./reel-queue.js');
+  const { cardsFromGuide, renderVideo } = await import('./short-video.js');
+  const cikkek = await cikkekBetolt(ROOT, join);
+  const kiDir = join(ROOT, 'website', 'assets', 'video', 'shorts');
+  const gyart = async (c) => {
+    const { cards } = cardsFromGuide(c.md);
+    if (!cards) return null;
+    mkdirSync(kiDir, { recursive: true });
+    const r = await renderVideo(cards, { out: join(kiDir, c.slug + '.mp4'), kepUt: boritoUt(ROOT, join, c.slug), workDir: join(ROOT, '.video-munka') });
+    try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
+    return r;
+  };
+
+  for (const c of maiTiktokExtra(cikkek)) {
+    if (existsSync(join(kiDir, c.slug + '.mp4'))) continue;
+    const r = await gyart(c);
+    if (r) console.log('♻️  TikTok-extra: a mai videó újragyártva (' + c.slug + ') — ' + r.seconds.toFixed(1) + ' mp');
+  }
+
+  // A MOST gyártott Facebook-Reel cikke ne legyen egyben a TikTok-extra is
+  // (a reel_at csak a --send után kerül rá, addig a sor nem látja).
+  let fogalt = '';
+  try { fogalt = JSON.parse(readFileSync(join(ROOT, 'memory', 'reel-pending.json'), 'utf-8')).slug || ''; } catch { /* nincs */ }
+  const v = tiktokExtra(cikkek, Date.now(), {
+    napiMax: TIKTOK_EXTRA_NAPI,
+    maxKorNap: REEL_FRISS_NAP,
+    alkalmas: c => !!cardsFromGuide(c.md).cards,
+    kizar: fogalt
+  });
+  if (!v) return;
+  console.log('🎵 TikTok-extra videó készül: ' + v.slug);
+  const r = await gyart(v);
+  if (!r) return;
+  const ut = join(ROOT, 'content', 'articles', v.file);
+  const cikk = JSON.parse(readFileSync(ut, 'utf-8'));
+  cikk._meta = cikk._meta || {};
+  cikk._meta.tiktok_video_at = new Date().toISOString();
+  writeFileSync(ut, JSON.stringify(cikk, null, 2), 'utf-8');
+  console.log('   ✅ ' + r.seconds.toFixed(1) + ' mp — a TikTokra a Buffer-poszter viszi ki');
+}
+
+async function prepareReel(ROOT, join) {
   const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync, readdirSync } = await import('fs');
   const { kovetkezoReel } = await import('./reel-queue.js');
   const fokusz = (await import('./guide-focus.js')).fokuszConfigbol();
@@ -491,39 +565,47 @@ async function prepare(ROOT, join) {
   const kellPromo = promoKell({ live: promoA.live, now: Date.now(), utolso: promoA.utolso });
   const maMarPromo = maiPromo(promoA.utolso);
 
+  //
+  // 🔁 2026-10-11 (user): a „ma már ment" ág NEM áll meg többé — a reklám MELLÉ
+  // jön EGY útmutató-Reel is (napiReelKeret: 2 helyett 1), mert a TikTokra csak
+  // útmutató-videó mehet, és az első TikTokos vasárnapon (10-11) üresen maradt.
+  // A GYÁRTÓ futás viszont továbbra is return-öl: futásonként legfeljebb 1 új videó.
+  let napiKeret = REEL_NAPI;
   if (kellPromo.kell || maMarPromo) {
     const kiDirP = join(ROOT, 'website', 'assets', 'video', 'shorts');
     const utvonalP = join(kiDirP, PROMO_SLUG + '.mp4');
     if (maMarPromo && existsSync(utvonalP)) {
-      console.log('💤 Csomag-reklám: ma már ment, a videó megvan — nincs teendő.');
-      return;
-    }
-    const { cards, reason } = promoKartyak({ utmutatoDb });
-    if (!cards) {
-      console.log('⏭️  Csomag-reklám kimarad: ' + reason);
+      console.log('💤 Csomag-reklám: ma már ment, a videó megvan.');
     } else {
-      console.log((maMarPromo ? '♻️  Csomag-reklám újragyártása' : '📘 Csomag-reklám készül')
-        + ' — ' + utmutatoDb + ' útmutató, ' + cards.length + ' tábla');
-      mkdirSync(kiDirP, { recursive: true });
-      // 2026-09-27: táblánként illő útmutató-borító — kép nélkül a RÉGI papír-dizájn ment ki.
-      const kepUtak = promoKepUtak({ ROOT, join, fs: { readdirSync, readFileSync, existsSync }, db: cards.length });
-      const rp = await renderVideo(cards, { out: utvonalP, workDir: join(ROOT, '.video-munka'), kepUtak });
-      try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
-      if (!maMarPromo) {
-        const memDirP = join(ROOT, 'memory');
-        if (!existsSync(memDirP)) mkdirSync(memDirP, { recursive: true });
-        writeFileSync(join(memDirP, 'reel-pending.json'),
-          JSON.stringify({ kind: 'packs', slug: PROMO_SLUG, utmutatoDb, at: new Date().toISOString() }, null, 2), 'utf-8');
+      const { cards, reason } = promoKartyak({ utmutatoDb });
+      if (!cards) {
+        console.log('⏭️  Csomag-reklám kimarad: ' + reason);
+      } else {
+        console.log((maMarPromo ? '♻️  Csomag-reklám újragyártása' : '📘 Csomag-reklám készül')
+          + ' — ' + utmutatoDb + ' útmutató, ' + cards.length + ' tábla');
+        mkdirSync(kiDirP, { recursive: true });
+        // 2026-09-27: táblánként illő útmutató-borító — kép nélkül a RÉGI papír-dizájn ment ki.
+        const kepUtak = promoKepUtak({ ROOT, join, fs: { readdirSync, readFileSync, existsSync }, db: cards.length });
+        const rp = await renderVideo(cards, { out: utvonalP, workDir: join(ROOT, '.video-munka'), kepUtak });
+        try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
+        console.log('   ✅ ' + rp.seconds.toFixed(1) + ' mp');
+        if (!maMarPromo) {
+          const memDirP = join(ROOT, 'memory');
+          if (!existsSync(memDirP)) mkdirSync(memDirP, { recursive: true });
+          writeFileSync(join(memDirP, 'reel-pending.json'),
+            JSON.stringify({ kind: 'packs', slug: PROMO_SLUG, utmutatoDb, at: new Date().toISOString() }, null, 2), 'utf-8');
+          return { betu: rp.betu };
+        }
       }
-      console.log('   ✅ ' + rp.seconds.toFixed(1) + ' mp');
-      return { betu: rp.betu };
     }
+    napiKeret = napiReelKeret(maMarPromo);
+    if (maMarPromo) console.log('   ➕ ma a reklám mellett ' + napiKeret + ' útmutató-Reel mehet');
   }
   // ALKALMAS-E? Csak a markdown ismeretében derül ki (kell 3+ lépés).
   const valasztott = kovetkezoReel(cikkek, Date.now(), {
     alkalmas: c => !!cardsFromGuide(c.md).cards,
     maxKorNap: REEL_FRISS_NAP,         // 2026-09-27, user: csak a friss útmutatóból Reel
-    napiMax: REEL_NAPI,
+    napiMax: napiKeret,                // vasárnap (reklám-nap) 1, egyébként REEL_NAPI
     fokusz: fokusz.be ? fokusz.tool : ''   // 2026-10-09: napi 1 Reel a fókusz-eszközről (core/guide-focus.js)
   });
   if (!valasztott) {

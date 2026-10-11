@@ -13,7 +13,7 @@
 
 import assert from 'assert/strict';
 import { readFileSync } from 'fs';
-import { reelMaMar, kovetkezoReel, maiReelCikk, maiReelCikkek, reelForma, videoCsatornaMai } from './reel-queue.js';
+import { reelMaMar, kovetkezoReel, maiReelCikk, maiReelCikkek, reelForma, videoCsatornaMai, tiktokExtra, maiTiktokExtra } from './reel-queue.js';
 
 let pass = 0;
 const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
@@ -281,7 +281,8 @@ t('🔑 NAPI 2 REEL: a második is mehet, a harmadik nem; kapcsoló nélkül mar
   assert.deepEqual(maiReelCikkek(ketMent, MOST).map(c => c.slug).sort(), ['a', 'b']);
   const src = readFileSync(new URL('./reel-post.js', import.meta.url), 'utf-8');
   assert.match(src, /export const REEL_NAPI = 2;/);
-  assert.match(src, /napiMax: REEL_NAPI/);
+  assert.match(src, /let napiKeret = REEL_NAPI;/);
+  assert.match(src, /napiMax: napiKeret/);
   assert.match(src, /for \(const mai of maiak\)/, 'a nap minden Reeljét életben kell tartani');
 });
 
@@ -315,6 +316,54 @@ t('🎬 TikTok: csak a MAI, oda még ki nem küldött Reel — a korábbi elöl'
   delete posztok.delutani;   // nincs közösségi szöveg → nem megy (idegen szöveggel sem)
   assert.deepEqual(videoCsatornaMai(cikkek, p, 'posted_tiktok', MOST), []);
   assert.deepEqual(videoCsatornaMai(null, p, 'posted_tiktok', MOST), []);
+});
+
+// ── TIKTOK-EXTRA (2026-10-11, user: „ha belefér a keretbe mehet több video is a tiktokra is!") ──
+
+t('🎵 TikTok-extra: a LEGRÉGEBBI friss, videó nélküli útmutató; naponta egy', () => {
+  const nap = d => new Date(MOST - d * 864e5).toISOString();
+  const cikkek = [
+    g('uj', nap(1)),
+    g('regi', nap(6)),
+    g('kiregedett', nap(9)),                         // 7 napnál régebbi
+    g('reelt-kapott', nap(6.5), { reel_at: nap(2) }),
+    g('mar-tiktok', nap(6.8), { tiktok_video_at: nap(3) }),
+    { slug: 'hir', type: 'news', published_at: nap(6.9) }
+  ];
+  const opts = { maxKorNap: 7 };
+  assert.equal(tiktokExtra(cikkek, MOST, opts).slug, 'regi', 'nem a kiöregedéshez legközelebbit választotta');
+  assert.equal(tiktokExtra(cikkek, MOST, { ...opts, kizar: 'regi' }).slug, 'uj', '🔴 a most gyártott FB-Reel cikke lett a TikTok-extra is');
+  assert.equal(tiktokExtra(cikkek, MOST, { ...opts, alkalmas: c => c.slug !== 'regi' }).slug, 'uj');
+
+  const maMent = [...cikkek, g('mai-extra', nap(4), { tiktok_video_at: new Date(MOST - 3600e3).toISOString() })];
+  assert.equal(tiktokExtra(maMent, MOST, opts), null, '🔴 ma már volt TikTok-extra — a második is menne');
+  assert.deepEqual(maiTiktokExtra(maMent, MOST).map(c => c.slug), ['mai-extra']);
+  assert.equal(tiktokExtra(cikkek, MOST, { ...opts, napiMax: 0 }), null, 'a 0-s keret nem állítja le');
+  assert.equal(tiktokExtra([], MOST), null);
+});
+
+t('🎵 TikTok-poszter: a mai Reelek UTÁN a mai extra is megy — egyszer, a saját szövegével', () => {
+  const ma = h => new Date(MOST - h * 3600e3).toISOString();
+  const cikkek = [
+    g('extra', '2026-08-20', { tiktok_video_at: ma(10) }),
+    g('reel', '2026-08-21', { reel_at: ma(12) }),
+    g('mindketto', '2026-08-19', { reel_at: ma(2), tiktok_video_at: ma(11) })   // FB később ugyanazt választotta
+  ];
+  const posztok = { extra: { slug: 'extra' }, reel: { slug: 'reel' }, mindketto: { slug: 'mindketto', posted_tiktok: ma(11) } };
+  const p = s => posztok[s] || null;
+  assert.deepEqual(videoCsatornaMai(cikkek, p, 'posted_tiktok', MOST).map(x => x.slug), ['reel', 'extra'],
+    '🔴 az extra kimaradt, vagy ami már kiment TikTokra, újra menne');
+});
+
+t('🔌 a reel-post tényleg gyártja (a FB-Reel UTÁN, hibatűrően), a Buffer-poszter tényleg látja', () => {
+  const src = readFileSync(new URL('./reel-post.js', import.meta.url), 'utf-8');
+  assert.match(src, /const ki = await prepareReel\(ROOT, join\);\s*\n\s*\/\/[^\n]*\n\s*try \{ await prepareTiktokExtra\(ROOT, join\); \}/);
+  assert.match(src, /export const TIKTOK_EXTRA_NAPI = 1;/);
+  assert.match(src, /cikk\._meta\.tiktok_video_at = new Date\(\)\.toISOString\(\);/);
+  assert.match(src, /tiktok_video_at: m\.tiktok_video_at \|\| ''/, 'a cikk-betöltő nem adja tovább a jelölést');
+  assert.match(src, /for \(const c of maiTiktokExtra\(cikkek\)\)/, 'a mai extra videót életben kell tartani');
+  const buf = readFileSync(new URL('../agents/social/buffer-poster.js', import.meta.url), 'utf-8');
+  assert.match(buf, /tiktok_video_at: data\?\._meta\?\.tiktok_video_at \|\| ''/, '🔴 a Buffer-poszter nem látja a TikTok-extrát');
 });
 
 console.log('\n✅ reel-queue.test: mind a ' + pass + ' eset rendben');
