@@ -21,9 +21,13 @@ mkdirSync('video-proba', { recursive: true });
 const eredmeny = { token: token ? 'van' : 'NINCS', klipek: [] };
 const kepUt = await kepFeltoltes({ kepBuf: readFileSync('website/assets/images/mascot-weekly.jpg'), nev: 'host.jpg', token });
 console.log('kép feltöltve:', kepUt ? 'igen' : 'NEM');
-if (kepUt) {
-  for (const [i, seed] of [[1, 10], [2, 77]]) {
-    const r = await zerogpuKlip({ prompt: PROMPT, token, mp: 6, magas: 544, szeles: 960, seed, kepUt });
+// 1. változat: feltöltött kép · 2.: a kép nyilvános címe (10-11: az első próbán a
+// feltöltött képpel „complete" jött videó nélkül — kiderül, melyik út a jó).
+const KEP_URL = 'https://aiworldhq.com/assets/images/mascot-weekly.jpg';
+{
+  for (const [i, seed, kep] of [[1, 10, { kepUt }], [2, 77, { kepUrl: KEP_URL }]]) {
+    if (i === 1 && !kepUt) continue;
+    const r = await zerogpuKlip({ prompt: PROMPT, token, mp: 6, magas: 544, szeles: 960, seed, ...kep });
     if (r.ok) writeFileSync(`video-proba/beszelo-${i}.mp4`, r.buf);
     const sor = { klip: i, ok: r.ok, mp: r.mp, kb: r.buf ? Math.round(r.buf.length / 1024) : 0, kvota: !!r.kvota, hiba: r.hiba || '' };
     eredmeny.klipek.push(sor);

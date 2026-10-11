@@ -36,12 +36,14 @@ export function mp4Url(completeAdat) {
 }
 
 /** A /generate_video hívás adatsora (sorrend a Space /gradio_api/info szerint, 10-09). */
-export function ltxAdat({ prompt, mp = 4, magas = 1024, szeles = 576, seed = 10, kepUt = '' } = {}) {
+export function ltxAdat({ prompt, mp = 4, magas = 1024, szeles = 576, seed = 10, kepUt = '', kepUrl = '' } = {}) {
   const ms = Math.max(1, Math.min(10, Number(mp) || 4));
   // A méretnek 32-vel oszthatónak kell lennie (LTX-szabály).
   const k32 = x => Math.max(256, Math.round((Number(x) || 0) / 32) * 32);
   // KÉP→VIDEÓ (2026-10-11, beszélő kabala): az első paraméter a Space-re feltöltött kép útvonala.
-  const kep = kepUt ? { path: kepUt, meta: { _type: 'gradio.FileData' } } : null;
+  // A kép megadható a kép NYILVÁNOS címével is (a Space maga tölti le).
+  const kep = kepUt ? { path: kepUt, meta: { _type: 'gradio.FileData' } }
+    : kepUrl ? { url: kepUrl, meta: { _type: 'gradio.FileData' } } : null;
   return [kep, String(prompt || ''), ms, false, seed, true, k32(magas), k32(szeles)];
 }
 
@@ -88,7 +90,8 @@ export async function zerogpuKlip(o = {}) {
     }
     const kesz = esemenyek.find(([e]) => e === 'complete');
     const url = kesz && mp4Url(kesz[1]);
-    if (!url) return { ok: false, mp: mp(), hiba: 'nincs kész videó' };
+    // A nyers válasz eleje a hibában: 10-11-én a „complete" videó nélkül jött, és vakon álltunk.
+    if (!url) return { ok: false, mp: mp(), hiba: 'nincs kész videó' + (kesz ? ': ' + String(kesz[1]).slice(0, 160) : '') };
     const v = await f(url, { headers: o.token ? { Authorization: fej.Authorization } : {} });
     if (!v.ok) return { ok: false, mp: mp(), hiba: 'letöltés HTTP ' + v.status };
     const buf = Buffer.from(await v.arrayBuffer());
