@@ -26,7 +26,9 @@ await t('SSE-események és MP4-URL kiolvasása', () => {
   assert.equal(mp4Url('[{"url": "https://x/kep.png"}]'), null);
 });
 
-await t('álló méret 32-vel osztható, a hossz 1–10 mp közé szorítva', () => {
+await t('🔴 a méret 64-gyel osztható (10-11: a 544 csendben elbukott), a hossz 1–10 mp közé szorítva', () => {
+  const k = ltxAdat({ prompt: 'p', magas: 544, szeles: 960 });
+  assert.equal(k[6] % 64, 0, 'a 544 nem lett 64 többszöröse'); assert.equal(k[7] % 64, 0);
   const d = ltxAdat({ prompt: 'p', mp: 99, magas: 1000, szeles: 560 });
   assert.equal(d[1], 'p');
   assert.equal(d[2], 10);

@@ -38,8 +38,10 @@ export function mp4Url(completeAdat) {
 /** A /generate_video hívás adatsora (sorrend a Space /gradio_api/info szerint, 10-09). */
 export function ltxAdat({ prompt, mp = 4, magas = 1024, szeles = 576, seed = 10, kepUt = '', kepUrl = '' } = {}) {
   const ms = Math.max(1, Math.min(10, Number(mp) || 4));
-  // A méretnek 32-vel oszthatónak kell lennie (LTX-szabály).
-  const k32 = x => Math.max(256, Math.round((Number(x) || 0) / 32) * 32);
+  // A méretnek 64-gyel oszthatónak kell lennie. 10-11, élő eset: 960×544 (32-vel
+  // osztható, 64-gyel NEM) → a Space belül elhasalt, és „complete [null]"-t adott,
+  // üzenet nélkül. A Space saját méretei (768×512, 1536×1024) mind 64 többszörösei.
+  const k32 = x => Math.max(256, Math.round((Number(x) || 0) / 64) * 64);
   // KÉP→VIDEÓ (2026-10-11, beszélő kabala): az első paraméter a Space-re feltöltött kép útvonala.
   // A kép megadható a kép NYILVÁNOS címével is (a Space maga tölti le).
   const kep = kepUt ? { path: kepUt, meta: { _type: 'gradio.FileData' } }
