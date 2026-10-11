@@ -247,6 +247,7 @@
     "blokkszöveget",
     "bluetooth",
     "boardra",
+    "bogok",
     "boldogabbá",
     "boldogan",
     "bootcampeken",
@@ -1244,6 +1245,7 @@
     "jegyzetappeddel",
     "jegyzetappedet",
     "jegyzetapról",
+    "jegyzetlehetőséget",
     "jegyzőkönyvet",
     "jeinek",
     "jeit",
@@ -1476,6 +1478,7 @@
     "launch-ról",
     "launchokat",
     "launchot",
+    "launchról",
     "law-et",
     "leadek",
     "leadeket",
@@ -1784,6 +1787,7 @@
     "nekünk",
     "nemegyezést",
     "nemrégi",
+    "nevevel",
     "nevezzuk",
     "niche-eddel",
     "nincsennek",
@@ -2485,6 +2489,7 @@
     "szövetséget",
     "szőnyeget",
     "sábado",
+    "sávjai",
     "sávod",
     "sávodban",
     "sávokat",
@@ -2559,10 +2564,13 @@
     "teendőlistádba",
     "teendőlistádon",
     "teendőlistádra",
+    "teendőlistához",
+    "teendőlistáid",
     "teendőlistáidat",
     "teendőlisták",
     "teendőlistákká",
     "teendőlistámat",
+    "teendőlistámhoz",
     "teendőlistáról",
     "teendőlistát",
     "teendőlistává",
@@ -5895,11 +5903,26 @@
       "correct": "biztonságot",
       "at": "2026-10-10",
       "mondattal": true
+    },
+    "egypercnél": {
+      "correct": "egy percnél",
+      "at": "2026-10-11",
+      "mondattal": true
+    },
+    "oatóvideók": {
+      "correct": "oktatóvideók",
+      "at": "2026-10-11",
+      "mondattal": true
+    },
+    "partysisakban": {
+      "correct": "partysisakban vagy partisisakban",
+      "at": "2026-10-11",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-10-10",
-    "files": 983,
-    "candidates": 0
+    "at": "2026-10-11",
+    "files": 987,
+    "candidates": 11
   }
 }
