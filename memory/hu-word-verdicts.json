@@ -972,6 +972,7 @@
     "gyorshívón",
     "gyorskapcsolók",
     "gyorsparancsokat",
+    "gyorsparancsot",
     "gyorssegéd",
     "gyorsszámítás",
     "gyorsválasz",
@@ -987,6 +988,7 @@
     "hajtanivaló",
     "hallatát",
     "hallgatóságod",
+    "hallótávolságon",
     "handleket",
     "hanganyagod",
     "hanganyagok",
@@ -4324,6 +4326,11 @@
       "correct": "indokold",
       "at": "2026-10-08",
       "mondattal": true
+    },
+    "koppinás": {
+      "correct": "koppintás",
+      "at": "2026-10-11",
+      "mondattal": true
     }
   },
   "review": {
@@ -5922,7 +5929,7 @@
   },
   "scan": {
     "at": "2026-10-11",
-    "files": 987,
-    "candidates": 11
+    "files": 989,
+    "candidates": 3
   }
 }
