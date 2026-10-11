@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-10-11T02:52:13.987Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00692628,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_build-a-custom-morning-briefing-with-news-weather-and-calend.json",
+      "rejected": "REJECTED_GUIDE_build-a-custom-morning-briefing-with-news-weather-and-calend.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.0027717
+    },
+    {
+      "writer": "WRITER_GUIDE_use-alexa-as-a-hands-free-meeting-note-taker-and-task-builde.json",
+      "article": "ARTICLE_GUIDE_use-alexa-as-a-hands-free-meeting-note-taker-and-task-builde.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0024762
+    }
+  ],
+  "finished_at": "2026-10-11T02:53:14.533Z",
+  "duration_seconds": 60.546
+}

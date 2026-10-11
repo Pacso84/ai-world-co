@@ -1,0 +1,61 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "use-alexa-as-a-hands-free-meeting-note-taker-and-task-builde",
+    "company": "Amazon",
+    "tool": "Alexa+",
+    "icon": "📝",
+    "level": "intermediate",
+    "source_news": null,
+    "written_at": "2026-10-11T02:51:34.917Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00785388,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-11T02:53:14.532Z",
+    "slug": "use-alexa-as-a-hands-free-meeting-note-taker-and-task-builder-at-work",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1587
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide with clear steps, good fallbacks for varying interfaces, appropriate example names in context, and a helpful 'What this means for you' section. One minor note: Step 5 mentions sending emails by voice, which should include a brief caveat that this requires email to be set up with Alexa — the current note already hints at this with 'if your setup supports email,' but making it slightly more prominent would strengthen it. Otherwise, the article meets all quality standards for publication.",
+      "_aiCost": 0.0024762,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-11T02:57:39.621Z",
+    "seo": {
+      "meta_description": "Learn how to use Alexa+ as a hands-free meeting note-taker. Dictate notes on an Echo device and turn action items into tasks without leaving your keyboard.",
+      "keywords": [
+        "Alexa+ meeting notes",
+        "hands-free note taking at work",
+        "Echo device meeting notes",
+        "Alexa action items to task list",
+        "voice notes for work meetings",
+        "Alexa to-do list from meeting",
+        "dictate meeting notes with Alexa"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add specific voice command examples readers can try immediately",
+        "Include step-by-step instructions for pulling task list from the Alexa app",
+        "Mention any requirements like Alexa+ subscription or specific Echo device needed"
+      ],
+      "optimised_at": "2026-10-11T02:58:08.503Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Use Alexa+ as a Hands-Free Meeting Note-Taker and Task Builder at Work\"\nsubtitle: \"Dictate meeting notes with Alexa+ and turn spoken action items into a personal to-do list while your hands stay on your keyboard.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Amazon\"\ntool: \"Alexa+\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"alexa-plus\", \"productivity\", \"meetings\", \"voice-assistant\"]\n---\n\n# Use Alexa+ as a Hands-Free Meeting Note-Taker and Task Builder at Work\n\n> **In short:** Alexa+ can listen to your meeting on an Echo device, capture what was said, and turn the action items you call out into a personal to-do list. The notes usually live inside the Alexa app, not in a shared doc, so they're a private capture layer rather than a full meeting tool.\n\nYou're already comfortable talking to Alexa+ for music, timers, or quick questions. This guide teaches one more capable workflow: running Alexa+ alongside a meeting to capture notes by voice, then pulling a clean task list out of what was said. Your hands stay on the keyboard, and you don't have to switch windows to write things down.\n\n## Before you start\n\n- An **Amazon account** with **Alexa+** access set up and an Echo device (or the Alexa mobile app) already signed in. You should already know how to say \"Alexa, …\" and get a response.\n- **Permission to capture**: let people know the meeting is being recorded by voice, or stick to using Alexa+ on your own desk for personal note-taking.\n- Roughly **15 minutes** for your first full run; shorter after that.\n- A quiet spot for the Echo within earshot of where you usually sit in meetings.\n- A free account is enough for basic note-taking, but Alexa+ features and availability vary by region and device — some capabilities may require a paid Amazon plan, so check Amazon's official page if anything you need is locked.\n\n## Step 1 — Open a new note in the Alexa app\n\nSay **\"Alexa, create a note\"** or **\"Alexa, start a new note called Quarterly planning.\"** On the Alexa app on your phone, you can also open the **Notes** section from the menu and tap a button like **Create Note**. A small confirmation sound or a notification appears, and Alexa tells you the note title back so you can verify it was created.\n\nIf your device shows a different menu, look for a **Notepad**, **Lists and Notes**, or **Capture** section instead — the label varies by app version. If you don't see any notes option at all, your region or plan may not support it; double-check Amazon's help page.\n\n💬 Example: say *\"Alexa, create a note called Q2 planning sync.\"*\n\nYou'll know it worked when Alexa replies with the note name and you see a new entry in the Alexa app's Notes section.\n\n## Step 2 — Add to the note as the meeting happens\n\nDuring the meeting, dictate into the open note. Say **\"Alexa, add to my note\"** followed by your sentence, or just say **\"Alexa, write this down: …\"** if you want to be explicit. Each spoken line gets added as its own bullet in the same note, so you can keep capturing without interrupting the conversation.\n\nIf Alexa+ doesn't seem to hear you across the room, move the Echo closer, or lower background music and open windows. The microphone on most Echo devices is good for a normal office, but heavy room echo or fan noise can confuse it.\n\n💬 Example: *\"Alexa, write this down: Maria will finalize the budget by Friday. John is drafting the comms. Sarah is booking the follow-up.\"*\n\nYou'll know it worked when Alexa repeats a short summary of what it captured and the new bullets appear in the note on your phone.\n\n## Step 3 — Ask Alexa+ to pull out the action items\n\nAfter the meeting, say **\"Alexa, what are the action items from my note?\"** or **\"Alexa, summarize the tasks from my Q2 planning sync note.\"** Alexa+ will read back the sentences that look like tasks — anything starting with a name and a verb, deadlines, or commitments. The reply is spoken, and you can also see it in the app.\n\nIf the summary misses something, try asking more directly: **\"Alexa, list everything in that note that has a person's name.\"** Different wording often pulls out different pieces. If Alexa+ asks a clarifying question instead of answering, give it the note name again to keep things on track.\n\n💬 Example: *\"Alexa, pull the action items from my Q2 planning sync note and read them back to me.\"*\n\nYou'll know it worked when Alexa reads a short list of name-plus-task pairs and that list matches what you remember from the meeting.\n\n## Step 4 — Send those tasks to your personal to-do list\n\nSay **\"Alexa, add those to my to-do list,\"** or specify the list name: **\"Alexa, add the action items to my Work to-do list.\"** Each action item becomes its own to-do entry, which you can then check off from the Alexa app or by voice later. This is the moment the captured meeting actually turns into tracked work.\n\nIf you only want some of the items, ask **\"Alexa, add the first two action items to my to-do list\"** instead of dumping all of them. If your to-do lists don't show up, ask **\"Alexa, show my lists\"** to see what's available, then rename or create a new one.\n\n💬 Example: *\"Alexa, add all of those action items to my Work to-do list.\"*\n\nYou'll know it worked when Alexa confirms each task was added, and you can see the new entries in the to-do list inside the Alexa app.\n\n## Step 5 — Ask Alexa+ to draft a follow-up email from the note\n\nSay **\"Alexa, write an email to my team recapping the meeting\"** or **\"Alexa, draft a short summary email from my Q2 planning sync note.\"** Alexa+ will compose a short message that names the key decisions and tasks, which you can review before sending. This step is optional, but it saves the manual rewrite most people do right after a meeting.\n\nIf you want a different tone, say so: **\"Alexa, make it more formal\"** or **\"Alexa, make it three sentences.\"** You can also add a recipient by saying **\"Alexa, send it to John\"** if John is saved as a contact and your setup supports email.\n\n💬 Example: *\"Alexa, draft a follow-up email from my Q2 planning sync note. Keep it under five sentences.\"*\n\nYou'll know it worked when Alexa reads back a complete draft email with the key points and tasks you dictated.\n\n## Step 6 — Review and clean up at the end of the day\n\nBefore you close your laptop, open the Alexa app and skim the note. Delete anything that was said off the record, correct any names Alexa misheard, and check the to-do list for the day. This is the small habit that makes the whole workflow trustworthy — without it, you end up with a pile of half-clean notes.\n\nIf you want to keep the note, say **\"Alexa, save my note\"** or simply leave it open. If you'd rather discard it, say **\"Alexa, delete the note called Q2 planning sync.\"** Both work; pick one and stay consistent.\n\n💬 Example: *\"Alexa, show my note called Q2 planning sync so I can review it.\"*\n\nYou'll know it worked when the note opens in the Alexa app with all the bullet points you spoke during the meeting, ready for a quick proofread.\n\n## Common mistakes\n\n- **Forgetting to tell people the meeting is being captured.** Voice capture is still recording. A short \"I'm using Alexa+ to take notes for myself\" at the top of the meeting avoids uncomfortable surprises later.\n- **Letting one Echo hear two people at once.** Alexa+ tries to capture everything in range. If your coworker is on a call next to you, expect their words in your note. Use a closer Echo or a headset-mic setup if you need cleaner separation.\n- **Trusting the summary without checking.** Alexa+ usually picks up the right action items, but it can miss a deadline or mishear a name. A 60-second skim of the note at the end of the day catches almost every mistake.\n\n## What this means for you\n\n- **In everyday life:** for personal calls or family planning — say, a phone call with a relative about a doctor's appointment — Alexa+ can capture the to-dos without you scrambling for a pen. The same note-and-list workflow works outside work.\n- **For your business or work:** in a one-on-one or a small recurring meeting, Alexa+ becomes a private capture layer: you stay engaged in the conversation, and the action items are already waiting in your to-do list when the meeting ends. It is not a replacement for shared meeting tools — it complements them.\n- **If you want to go further:** once the to-do list is captured, ask Alexa+ to schedule the deadlines you mentioned, or to set reminders that fire an hour before each due date. That turns a passive list into a workflow that nudges you, not just a record you have to remember to check.\n\n## Try it now\n\nPick your next meeting — even a 15-minute one — and run through Steps 1 to 4 only. Create the note at the start, dictate a couple of lines, then ask Alexa+ to pull out the action items and add them to a to-do list. You'll see in under ten minutes whether the workflow fits how you actually work.",
+  "original_title": "Use Alexa+ as a hands-free meeting note-taker and task builder at work"
+}

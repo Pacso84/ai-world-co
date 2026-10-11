@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-10-11T02:48:43.034Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00971598,
+    "original_draft": "2026-10-07T03-13-46-175Z_google-workspace_Point-in-time_editing_now_available_in_Google_Vids.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/10/point-in-time-editing-now-available-in-Google-Vids.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/10/point-in-time-editing-now-available-in-Google-Vids.html"
+    ],
+    "source_snippet": "Google Vids is improving the video creation experience with the introduction of point-in-time editing. This feature will help ensure that the canvas matches the video timeline 1:1. Previously, the canvas displayed all elements present across an entire scene all at the same time, regardless of when they appeared during the video. With this update, when a user is editing, they will see exactly what appears in the video at that specific timestamp, eliminating visual clutter from overlapping text boxes, stickers, and images.\nThis update simplifies the creation process by providing a true \"what you see is what you get\" editing workflow. Key improvements include:\n\n\nSynchronized canvas display: The editing canvas dynamically updates as you scrub or move through the timeline, showing only the active elements at that exact moment.\nEnhanced timeline interaction: Editors can click directly on object tracks within the timeline to move the playhead to that point.\nSimplified scene management: Users no longer need to split scenes into smaller segments simply to manage multiple timed objects, making it easier to build multi-layered content like captions, lower thirds, and media overlays.\n\n\nPoint-in-time editing is the default behavior across all Google Vids sessions and requires no action from administrators. This streamlined experience will help users create polished video content more efficiently without managing overlapping elements.\n\n\n\n\n\nPoint-in-time editing in Google Vids\n\nGetting star",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-10-11T02:48:59.531Z",
+    "slug": "google-vids-new-point-in-time-editing-explained",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "OPENING_REPETITIVE: A legutóbbi 20 cikkből 4 kezdődik ugyanígy (\"if you've…\"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel."
+      ],
+      "wordCount": 668
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with a strong hook, clear explanations of technical terms (lower thirds, playhead), well-structured sections covering what changed and what it means for different user types, and all claims properly attributed to Google. No prohibited content, no clichés, and encouraging tone throughout.",
+      "_aiCost": 0.00102375,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-11T02:49:17.354Z",
+    "guide_worthy": false,
+    "pairing_reason": "The feature is already on by default with no setup required — users just experience it when opening Google Vids, so there's no specific action to guide them through.",
+    "image_v": 2,
+    "image_at": "2026-10-11T02:55:20.109Z",
+    "seo": {
+      "meta_description": "Google Vids' new point-in-time editing shows only visible elements at each moment, removing clutter from overlapping text boxes, stickers, and images.",
+      "keywords": [
+        "Google Vids point in time editing",
+        "Google Vids new features",
+        "Google Vids timeline editing",
+        "Google Vids video editor 2024",
+        "how to use Google Vids point in time editing",
+        "Google Vids update features",
+        "Google video editor clutter reduction"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a brief how-to section explaining step-by-step how to use point-in-time editing to capture long-tail search traffic",
+        "Include the specific date or version number of when this feature launched to improve freshness signals",
+        "Consider adding more context about who this feature benefits (e.g., beginner creators vs. professionals)"
+      ],
+      "optimised_at": "2026-10-11T02:57:43.988Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Google Vids' New Point-in-Time Editing, Explained\"\nsubtitle: \"Google's video tool now shows only what's visible at each moment — here's what changed and why it matters for everyday creators.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-vids\", \"video-editing\", \"google-workspace\", \"creativity\"]\n---\n\n# Google Vids' New Point-in-Time Editing, Explained\n\n> **In short:** Google says its Vids video tool now shows editors only the elements visible at the current moment on the timeline. The change, called point-in-time editing, removes the clutter of overlapping text boxes, stickers, and images across an entire scene.\n\nIf you've ever opened a video editor and felt overwhelmed by every text box, sticker, and image crowding the canvas at once, Google just made that experience noticeably calmer.\n\n## What the old version looked like\n\nBefore this update, Google Vids showed you every object in a scene at the same time, no matter where you were in the video. So if your clip had a title card that appeared for three seconds, a lower third (the small text band at the bottom of the screen that names a speaker) that flashed at the one-minute mark, and a logo that stayed on screen the whole time, all three would crowd your editing canvas together. Editing any one of them meant scrolling past the others, and small adjustments could feel like untangling knots.\n\n## What's different now\n\nGoogle says point-in-time editing now keeps the canvas in sync with the timeline (the horizontal bar at the bottom that shows where in the video you are). Three changes come with it:\n\n- **The canvas now syncs with the timeline.** The editing area updates as you scrub (drag the playhead back and forth) or jump through the timeline, displaying only the elements that are active at that exact moment.\n- **Object tracks are clickable.** You can click on an object's track inside the timeline to jump straight to where it appears in the video.\n- **No more splitting scenes.** You no longer have to chop a scene into smaller pieces just to juggle timed elements, which Google says makes layered content like captions, lower thirds, and media overlays easier to build.\n\n## Why this helps in practice\n\nThe big win is multi-layered content. Think about a short training video with a speaker's name in the corner, captions running along the bottom, and a logo fixed to one side. In the old setup, every one of those objects was always visible on the canvas, even when the playhead (the marker that shows your current position on the timeline) was parked at a moment where none of them appeared. You had to remember which one was which.\n\nNow, when you pause at any moment, you only see what's actually on screen at that moment. Google calls it a \"what you see is what you get\" workflow, and it cuts down on the visual noise that makes editing feel harder than it should be.\n\n## What this means for you\n\n- **If you make videos for work:** team updates, training clips, customer explainers, and social posts become easier to assemble, because the messy middle layer of \"where do all these elements live?\" gets a lot calmer.\n- **If you're new to video editing:** the learning curve shrinks. You won't waste time wondering why a text box seems to be in the wrong place; if it's not on screen at the moment you're parked, it just won't show up in the canvas.\n- **If you already use it:** you can drop the workaround of splitting scenes into tiny slices just to keep your editing area organized. Layer captions, lower thirds, and overlays in one scene and trust the canvas to keep up.\n\n## Wrap-up\n\nPoint-in-time editing is on by default in Google Vids and needs no setup from administrators, according to Google. If you've been putting off making a video because the editing felt overwhelming, this is a good week to give it another try — the cleanup might be the nudge you needed.",
+  "original_title": "Point-in-time editing now available in Google Vids"
+}

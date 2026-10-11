@@ -7424,11 +7424,12 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Dictate meeting notes with Alexa+ and turn spoken action items into a personal to-do list while your hands stay on your keyboard.",
-      "status": "todo",
+      "status": "done",
       "icon": "📝",
       "priority": "balance",
       "proposed_at": "2026-10-09T03:55:36.290Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-10-11T02:51:34.918Z"
     },
     {
       "id": "build-a-custom-morning-briefing-with-news-weather-and-calend",
@@ -7438,11 +7439,12 @@
       "audience": "both",
       "level": "beginner",
       "angle": "Create one Alexa+ routine that reads your calendar, the day's weather, and your favorite news sources the moment you say good morning.",
-      "status": "todo",
+      "status": "done",
       "icon": "🌅",
       "priority": "balance",
       "proposed_at": "2026-10-09T03:55:45.066Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-10-11T02:52:13.872Z"
     },
     {
       "id": "how-to-turn-a-messy-photo-of-handwritten-notes-into-clean-te",
@@ -7574,6 +7576,128 @@
       "icon": "🎨",
       "proposed_at": "2026-10-09T03:56:58.987Z",
       "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "how-to-set-up-a-shared-family-grocery-list-in-alexa-anyone-c",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "How to set up a shared family grocery list in Alexa+ anyone can add to by voice",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Set it up once, then anyone in the house can add items hands-free the moment they think of them.",
+      "status": "todo",
+      "icon": "🛒",
+      "proposed_at": "2026-10-11T02:53:26.707Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "How to ask Alexa+ to read recipe steps out loud while you cook with messy hands",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Hands-free walk-through of the next step so you never have to touch your phone with flour-covered hands.",
+      "status": "todo",
+      "icon": "👨‍🍳",
+      "proposed_at": "2026-10-11T02:53:28.447Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "how-to-send-a-quick-voice-message-to-a-family-member-s-echo-",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "How to send a quick voice message to a family member's Echo with Alexa+",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "A two-second voice note that lands on the right Echo in the house without anyone picking up a phone.",
+      "status": "todo",
+      "icon": "📣",
+      "proposed_at": "2026-10-11T02:53:29.628Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "how-to-ask-alexa-for-outfit-suggestions-based-on-the-day-s-w",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "How to ask Alexa+ for outfit suggestions based on the day's weather forecast",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Get a quick weather-aware clothing idea before you leave, without scrolling through forecasts on your phone.",
+      "status": "todo",
+      "icon": "🧥",
+      "proposed_at": "2026-10-11T02:53:30.117Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "build-a-reusable-alexa-morning-routine-that-runs-the-same-wa",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "Build a reusable Alexa+ morning routine that runs the same way every weekday",
+      "audience": "personal",
+      "level": "intermediate",
+      "angle": "Save a custom routine once that combines news, weather, calendar, and lights into one hands-free command.",
+      "status": "todo",
+      "icon": "☀️",
+      "proposed_at": "2026-10-11T02:53:30.588Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "turn-whatever-s-left-in-your-fridge-into-a-real-recipe-with-",
+      "company": "Mistral",
+      "tool": "Le Chat",
+      "title": "Turn whatever's left in your fridge into a real recipe with Le Chat",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "List the ingredients you have on hand, and Le Chat suggests what you can cook tonight without a grocery run.",
+      "status": "done",
+      "icon": "🍳",
+      "priority": "balance",
+      "proposed_at": "2026-10-11T02:54:19.981Z",
+      "proposed_by": "guide-balance",
+      "written_at": "2026-10-11T02:54:54.491Z"
+    },
+    {
+      "id": "polish-your-resume-bullet-points-with-le-chat-in-10-minutes",
+      "company": "Mistral",
+      "tool": "Le Chat",
+      "title": "Polish your resume bullet points with Le Chat in 10 minutes",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Paste a plain description of what you did at a job, and Le Chat rewrites it as a stronger CV line a recruiter will actually notice.",
+      "status": "todo",
+      "icon": "📄",
+      "priority": "balance",
+      "proposed_at": "2026-10-11T02:54:22.019Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "write-a-quick-project-status-update-for-your-team-with-le-ch",
+      "company": "Mistral",
+      "tool": "Le Chat",
+      "title": "Write a quick project status update for your team with Le Chat",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Drop your scattered notes about what's done, what's blocked and what's next, and Le Chat turns them into a clean weekly update you can paste into Slack or email.",
+      "status": "todo",
+      "icon": "📊",
+      "priority": "balance",
+      "proposed_at": "2026-10-11T02:54:24.258Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "draft-a-polite-but-firm-refund-email-to-a-company-with-le-ch",
+      "company": "Mistral",
+      "tool": "Le Chat",
+      "title": "Draft a polite but firm refund email to a company with Le Chat",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Describe what went wrong with a product or service, and Le Chat writes a respectful message that gets results from customer support.",
+      "status": "todo",
+      "icon": "✉️",
+      "priority": "balance",
+      "proposed_at": "2026-10-11T02:54:24.955Z",
+      "proposed_by": "guide-balance"
     }
   ]
 }

@@ -1,0 +1,38 @@
+{
+  "started_at": "2026-10-11T02:47:50.148Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.015300612000000002,
+  "by_article": [
+    {
+      "draft": "2026-10-07T14-54-17-512Z_zapier-blog_How_to_use_Gemini__A_detailed_beginner_s_guide.json",
+      "writer_output": "WRITER_2026-10-07T14-54-17-512Z_zapier-blog_How_to_use_Gemini__A_detailed_beginner_s_guide.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.005171232,
+      "duration_ms": 14217,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-07T03-13-46-175Z_google-workspace_Point-in-time_editing_now_available_in_Google_Vids.json",
+      "writer_output": "WRITER_2026-10-07T03-13-46-175Z_google-workspace_Point-in-time_editing_now_available_in_Google_Vids.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00971598,
+      "duration_ms": 32271,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-10-11T02:48:43.035Z",
+  "duration_seconds": 52.887
+}
