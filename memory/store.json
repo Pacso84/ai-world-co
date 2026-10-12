@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "AI World rétegzett memória (hot/warm/cold, salience decay).",
-    "updated": "2026-10-12T17:18:42.970Z"
+    "updated": "2026-10-12T17:23:23.847Z"
   },
   "items": [
     {
@@ -10902,10 +10902,12 @@
         "formality"
       ],
       "created": "2026-10-12T03:24:41.908Z",
-      "lastAccessed": "2026-10-12T03:24:41.908Z",
-      "accessCount": 0,
+      "lastAccessed": "2026-10-12T17:23:23.847Z",
+      "accessCount": 1,
       "salience": 1,
-      "tier": "hot"
+      "tier": "hot",
+      "repeats": 1,
+      "lastRepeat": "2026-10-12T17:23:23.847Z"
     }
   ],
   "lastDecay": "2026-10-12"
