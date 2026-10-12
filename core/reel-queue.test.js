@@ -366,4 +366,23 @@ t('🔌 a reel-post tényleg gyártja (a FB-Reel UTÁN, hibatűrően), a Buffer-
   assert.match(buf, /tiktok_video_at: data\?\._meta\?\.tiktok_video_at \|\| ''/, '🔴 a Buffer-poszter nem látja a TikTok-extrát');
 });
 
+// ── FRISS VIDEÓ ELÉRHETŐSÉGE (2026-10-12: a Buffer 4 mp-cel a deploy után 404-et kapott) ──
+{
+  const { varjVideora } = await import('./reel-post.js');
+  const sor = st => { let i = 0; return async () => ({ status: st[Math.min(i++, st.length - 1)], ok: st[Math.min(i - 1, st.length - 1)] === 200 }); };
+  const alvasok = [];
+  const alvas = async ms => { alvasok.push(ms); };
+  const r1 = await varjVideora('https://x/v.mp4', { fetchFn: sor([404, 404, 200]), alvas, varasMs: 10, lecsengesMs: 99 });
+  assert.equal(r1.ok, true, '🔴 egy 404 után feladta — a TikTok aznap kimaradt volna');
+  assert.deepEqual(alvasok, [10, 10, 99], 'hiány után lecsengés is kell (a Buffer máshonnan tölt le)');
+  alvasok.length = 0;
+  assert.equal((await varjVideora('https://x/v.mp4', { fetchFn: sor([200]), alvas })).ok, true);
+  assert.deepEqual(alvasok, [], 'elsőre meglévő videónál nincs várakozás');
+  const r3 = await varjVideora('https://x/v.mp4', { fetchFn: sor([404]), alvas, probak: 3, varasMs: 1 });
+  assert.equal(r3.ok, false); assert.equal(r3.status, 404);
+  const buf = readFileSync(new URL('../agents/social/buffer-poster.js', import.meta.url), 'utf-8');
+  assert.match(buf, /const h = await varjVideora\(video\);/, '🔴 a Buffer-poszter megint egyetlen HEAD-del dönt');
+  pass++; console.log('  ✅ friss videó: újrapróba + lecsengés, a Buffer-poszter is ezt használja');
+}
+
 console.log('\n✅ reel-queue.test: mind a ' + pass + ' eset rendben');

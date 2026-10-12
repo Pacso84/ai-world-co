@@ -300,7 +300,7 @@ async function imageExists(url) {
 // csatorna posztolását nem akadályozza.
 async function maiVideok(field, cikkLista) {
   try {
-    const { reelVideoUrl } = await import('../../core/reel-post.js');
+    const { reelVideoUrl, varjVideora } = await import('../../core/reel-post.js');
     // 2026-10-11: + a napi csak-TikTok videó (tiktok_video_at, core/reel-post.js prepareTiktokExtra).
     const cikkek = cikkLista.map(({ data }) => ({ slug: data?._meta?.slug || '', reel_at: data?._meta?.reel_at || '',
       tiktok_video_at: data?._meta?.tiktok_video_at || '' }));
@@ -312,8 +312,9 @@ async function maiVideok(field, cikkLista) {
     const ki = [];
     for (const { slug, post } of videoCsatornaMai(cikkek, postOf, field)) {
       const video = reelVideoUrl(slug);
-      const h = await fetch(video, { method: 'HEAD', signal: AbortSignal.timeout(15000) }).catch(() => null);
-      if (!h || !h.ok) { console.log(`   ⚠️ ${slug.slice(0, 40)} — a videó nincs kint (HTTP ${h ? h.status : '—'})`); continue; }
+      // 2026-10-12: újrapróba + lecsengés (a friss deploy után a Cloudflare nem azonnal adja mindenhonnan).
+      const h = await varjVideora(video);
+      if (!h.ok) { console.log(`   ⚠️ ${slug.slice(0, 40)} — a videó nincs kint (HTTP ${h.status || '—'})`); continue; }
       ki.push({ path: join(SOCIAL_DIR, slug + '.json'), post, video });
     }
     return ki;

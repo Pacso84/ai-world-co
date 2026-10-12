@@ -169,6 +169,31 @@ export const HEAD_VARAS_MS = 15000;
 // videónál nincs várakozás.
 export const LECSENGES_MS = 45000;
 
+/**
+ * Megvárja, hogy egy frissen kitett videó MINDENHOL elérhető legyen (ugyanaz a
+ * szabály, mint a sendReel-ben). 2026-10-12, éles eset: a Make 18:10:30-kor
+ * kiküldte a Reelt, a Buffer-poszter 4 mp-cel később EGY HEAD-et próbált → 404,
+ * a TikTok-extra pedig „Video could not be read from its URL" → aznap 0 TikTok.
+ * @returns {Promise<{ok:boolean, status:number, voltHiany:boolean}>}
+ */
+export async function varjVideora(url, { fetchFn, probak = HEAD_PROBAK, varasMs = HEAD_VARAS_MS,
+  lecsengesMs = LECSENGES_MS, timeoutMs = 15000, alvas = (ms) => new Promise(r => setTimeout(r, ms)) } = {}) {
+  const f = fetchFn || fetch;
+  let st = 0, voltHiany = false;
+  for (let proba = 1; proba <= Math.max(1, probak); proba++) {
+    const h = await f(url, { method: 'HEAD', signal: AbortSignal.timeout(timeoutMs) }).catch(() => null);
+    st = h ? h.status : 0;
+    if (h && h.ok) {
+      if (voltHiany && lecsengesMs > 0) await alvas(lecsengesMs);   // a többi szerver is késhet
+      return { ok: true, status: st, voltHiany };
+    }
+    if (!(st === 404 || st >= 500 || st === 0) || proba >= probak) break;
+    voltHiany = true;
+    if (varasMs > 0) await alvas(varasMs);
+  }
+  return { ok: false, status: st, voltHiany };
+}
+
 export async function sendReel({ video, caption, hook, fetchFn, dry = false, timeoutMs = 20000,
   probak = HEAD_PROBAK, varasMs = HEAD_VARAS_MS, lecsengesMs = LECSENGES_MS,
   alvas = (ms) => new Promise(r => setTimeout(r, ms)) }) {
