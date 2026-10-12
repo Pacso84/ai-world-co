@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-10-12T17:13:51.930Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01178978,
+    "original_draft": "2026-10-12T17-08-31-032Z_picsart_Picsart_Flow_now_adds_AI_captioning_in_30_animated.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/ai-captioning-now-in-picsart-flow/",
+    "source_links": [
+      "https://picsart.com/blog/ai-captioning-now-in-picsart-flow/"
+    ],
+    "source_snippet": "Picsart Flow now has AI captioning in one node. Connect a video to the new Captions node, pick a style and run. Speech is transcribed and burned in as animated, styled subtitles, ready for TikTok, Reels and Shorts. Vertical video needs captions, and now they happen on the Picsart Flow canvas, right after generation. The … \nContinue reading \"Picsart Flow now adds AI captioning in 30 animated styles\"",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-10-12T17:16:20.433Z",
+    "slug": "how-to-auto-add-animated-captions-in-picsart-flow",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1354
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent how-to guide that explains node-based workflows clearly for beginners, includes practical caveats (subscription tiers, UI variation, AI accuracy), and covers all required sections with a warm, non-judgmental tone. No prohibited content, no invented facts, and fresh writing throughout.",
+      "_aiCost": 0.00145719,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-12T17:16:59.863Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-use-picsart-ai-playground-on-your-desktop",
+    "image_v": 2,
+    "image_at": "2026-10-12T17:17:46.394Z",
+    "seo": {
+      "meta_description": "Picsart Flow now lets you auto-add animated captions in 30 styles — transcribe speech and create subtitles for TikTok, Reels, and Shorts in one step.",
+      "keywords": [
+        "how to add animated captions in Picsart",
+        "Picsart Flow captions node",
+        "auto captions for TikTok",
+        "add subtitles to Reels automatically",
+        "Picsart animated text captions",
+        "auto subtitles for Shorts",
+        "Picsart Flow tutorial"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'Picsart Flow auto-caption tutorial' to capture tutorial-searching users",
+        "Include the word 'transcription' or 'speech-to-text' in the article to rank for transcription-related queries",
+        "Consider adding a section on how to customize caption timing for better search relevance"
+      ],
+      "optimised_at": "2026-10-12T17:18:33.337Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to Auto-Add Animated Captions in Picsart Flow\"\nsubtitle: \"Picsart Flow's new Captions node turns your video's speech into animated subtitles in 30 styles — ready for TikTok, Reels, and Shorts in one step.\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 5\ntags: [\"picsart-flow\", \"video-captions\", \"short-video\", \"social-media\", \"ai-captions\"]\n---\n\n# How to Auto-Add Animated Captions in Picsart Flow\n\n> **In short:** Picsart Flow now adds animated captions in one step — drop your video into the new Captions node, pick a style from 30 options, and the tool transcribes your speech and burns the subtitles into the video, ready for TikTok, Reels, and Shorts.\n\nIf you've ever uploaded a video and then spent twenty minutes typing out subtitles by hand, this update is for you. Picsart Flow's new Captions node listens to your video, writes down what you said, and lays the words on screen as animated, styled text — all in one move.\n\n## What you need before you start\n\n- A **Picsart account** (free or paid — check Picsart's official pricing page to confirm which plans include the new Captions node)\n- The **latest version of Picsart Flow** on the platform you normally use it (web or app)\n- A short vertical video with **clear spoken audio** (TikTok, Reels, or Shorts format works best)\n\nI'll be honest: the announcement doesn't say which exact subscription tiers include this feature, so confirm with Picsart before you build a paid project around it.\n\n## Step 1 — Open Picsart Flow and start a new video project\n\nOpen Picsart Flow on whichever device you normally use it on. Start a new project and bring in the vertical video you want to caption.\n\nPicsart Flow works as a **node-based canvas** — that's a workspace where each small task (cutting, adding music, generating captions, exporting) is its own little block, called a node, connected in a chain. Each node does one thing; the result flows into the next. You'll see these nodes as cards on the canvas as you work.\n\n> 💬 **What to look for:** a fresh canvas with an \"Add\" or \"Import\" option for your source video file.\n\n**You'll know it worked when:** your video appears on the canvas and is connected (visually linked by a line) to the first processing node.\n\n## Step 2 — Connect your video to the new Captions node\n\nOnce your video is on the canvas, add the **Captions node** — this is the new feature Picsart just announced. In a node-based workflow, \"connecting\" usually means dragging a line from your video node's output into the Captions node's input.\n\nThis step tells Picsart: take this video, and feed it into the captions engine. Don't run anything yet — you'll set the style first in the next step.\n\n> 💬 **What to look for:** a node labeled \"Captions\" or \"AI Captions\" in your node library or sidebar, with a connection line drawn into it.\n\n**You'll know it worked when:** the Captions node appears on your canvas and your video is feeding into it. Nothing visible will change on the video yet — that's normal.\n\n## Step 3 — Pick a style from the 30 animated options\n\nOpen the Captions node's settings. According to Picsart's announcement, you now get **30 animated caption styles** to choose from — think of these as different visual personalities for your subtitles. Some might be bold and bouncy; others clean and minimal; others dramatic, like karaoke-style pop-ups.\n\nPick the one that fits your video's mood. A cooking tutorial might pair well with something soft and pretty; a gaming clip might want something punchy and high-energy.\n\nThe announcement doesn't list the 30 styles by name, so you'll see them in the picker yourself when you open the tool.\n\n> 💬 **What to look for:** a style picker inside the Captions node showing thumbnails of the 30 different caption looks.\n\n**You'll know it worked when:** you've selected a style and the node now has that style's name or thumbnail highlighted as active.\n\n## Step 4 — Run it and let the AI transcribe\n\nHit **Run** on the Captions node (the exact button label may be \"Generate\", \"Run\", or \"Apply\" — pick whichever starts the process). The AI will listen to your video's audio, write down the spoken words (this is called **transcription** — turning speech into written text), and then \"burn\" the subtitles into the video.\n\n\"Burned in\" means the words become a permanent part of the image — they're not a separate toggle or layer you can switch off later. The video file itself contains the text.\n\n> 💬 **What to look for:** a progress indicator while the AI listens and writes; the captions should appear on a preview of your video when it's done.\n\n**You'll know it worked when:** you can see animated, styled subtitles appearing at the right moments in your video preview, matching what you (or whoever is speaking) actually said.\n\n## Step 5 — Review, tweak, and export for social\n\nWatch the captioned preview all the way through. AI transcription is good but not perfect — names, brand words, and unusual pronunciations can come out misspelled. If Picsart lets you edit the transcript text inside the node, fix any errors now.\n\nOnce the captions look right, export the video or send it down the next node in your Picsart Flow workflow. The captioned video is ready to upload directly to **TikTok, Instagram Reels, or YouTube Shorts**, according to Picsart.\n\n> 💬 **What to look for:** an export button on the Captions node output, or the next node in your chain ready to receive the finished video.\n\n**You'll know it worked when:** you have a video file with animated subtitles baked in, sized for vertical social platforms.\n\n## Common mistakes\n\n- **Mistake:** Uploading a video with loud background music and unclear speech.  \n  **Fix:** Captions work best when the spoken voice is the loudest sound. Try the AI again with a cleaner audio track if the transcript comes out garbled.\n\n- **Mistake:** Picking a caption style with tiny text or low contrast.  \n  **Fix:** Most people watch short videos on their phones in bright places. Pick a style that's bold enough to read at a glance — if you have to squint, your viewers will too.\n\n- **Mistake:** Skipping the review step and posting straight to social.  \n  **Fix:** Always watch the captioned preview once. AI transcription can mishear words, and burned-in captions are permanent — once uploaded, the misspelling is out there.\n\n## What this means for you\n\n- **If you post casual videos for fun:** This is the fastest way to add captions to your TikToks and Reels. No more typing subtitles in a separate app, no more uploading, downloading, and re-uploading. Just run the node and post.\n\n- **If you're a hobby creator or small channel:** Captions aren't optional anymore — most short-form videos get watched on mute first, and silent clips get scrolled past. With 30 styles to pick from, you can match the captions to your channel's vibe instead of settling for the default look.\n\n- **If you teach or explain things on camera:** Step-by-step recipes, study tips, language practice — captions make your content usable by people watching without sound, plus by viewers who are deaf or hard of hearing. The AI does the typing; you just talk.\n\n- **If you already use it:** Try saving the transcript text after the first run, then swap styles without re-running the AI transcription. This is faster when you want to test a few different looks on the same video.\n\n## Wrap-up\n\nPicsart Flow's new Captions node takes the most tedious part of posting short videos — typing the subtitles — and turns it into a single click. Drop in your video, pick a style from the 30 options, run the node, and you've got animated, burned-in captions ready for TikTok, Reels, or Shorts.\n\n**Try it today:** open Picsart Flow, find the Captions node on your canvas, and run it on the last vertical video you posted. See how the AI handles your voice — that's the fastest way to learn whether it fits your workflow.",
+  "original_title": "Picsart Flow now adds AI captioning in 30 animated styles"
+}

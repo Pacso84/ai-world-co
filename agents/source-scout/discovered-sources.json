@@ -1,42 +1,36 @@
 {
   "_meta": {
-    "generated_at": "2026-10-09T03:38:00.454Z",
+    "generated_at": "2026-10-12T17:10:41.720Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 1,
-    "rejected_count": 5,
+    "rejected_count": 4,
     "rejected_examples": [
       {
-        "name": "Freshworks Product Updates",
-        "host": "freshworks.com",
+        "name": "Pi AI (Inflection)",
+        "host": "inflection.ai",
         "reason": "pont 94 < 100",
         "score": 94
       },
       {
-        "name": "Xero Product Updates",
-        "host": "xero.com",
+        "name": "Jasper AI Blog",
+        "host": "jasper.ai",
         "reason": "pont 94 < 100",
         "score": 94
       },
       {
-        "name": "Calendly Product News",
-        "host": "calendly.com",
-        "reason": "pont 94 < 100",
-        "score": 94
+        "name": "Brave Browser Features",
+        "host": "brave.com",
+        "reason": "a friss cikkeinek csak 40%-a szól AI-ról (kell: 60%)",
+        "score": 100
       },
       {
-        "name": "Shopify Product Updates",
-        "host": "shopify.com",
-        "reason": "halott feed — 1037 napja nincs új cikk (limit: 365)",
+        "name": "OnePlus AI Features",
+        "host": "oneplus.com",
+        "reason": "halott feed — 480 napja nincs új cikk (limit: 365)",
         "score": 0
-      },
-      {
-        "name": "Wix Product Updates",
-        "host": "wix.com",
-        "reason": "pont 94 < 100",
-        "score": 94
       }
     ]
   },
@@ -58,5 +52,40 @@
     "writer.com",
     "zoho.com"
   ],
-  "discovered_sources": []
+  "discovered_sources": [
+    {
+      "ai_content_ratio": 80,
+      "suggested_id": "character",
+      "name": "Character AI Blog (hivatalos)",
+      "url": "https://blog.character.ai/rss/",
+      "minta_cimek": [
+        "introducing PipSqueak 3, ShortSqueak, and (c.ai) lite",
+        "The Next Chapter of Entertainment and Fandom",
+        "Post-training image models for fandom"
+      ],
+      "figyelmeztetesek": [],
+      "kozonseg_arany": {
+        "b2b": 0,
+        "dev": 0,
+        "lista": 0
+      },
+      "type": "rss",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "reliability_score": 100,
+      "reliability_reasons": [
+        "friss (utolsó cikk 14 napja)",
+        "bő kínálat (15 cikk)",
+        "hivatalos forrásként jelölve",
+        "a domain/feed egyezik a cég nevével",
+        "HTTPS + érvényes RSS"
+      ],
+      "item_count_at_discovery": 15,
+      "last_post_age_days": 14,
+      "comment": "JAVASLAT (source-scout, megbízhatóság 100/100): AI character chatbot - feature announcements and product news. Felhasználói jóváhagyás kell!",
+      "enabled": false
+    }
+  ]
 }
