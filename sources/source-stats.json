@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-10-12T17:26:21.183Z",
+    "updated": "2026-10-12T18:11:13.616Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -140,7 +140,7 @@
     },
     "github-ai": {
       "name": "GitHub AI & ML (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 0,
       "published30d": 1,
       "truthBlocks": 1,
       "truthUnfixed": 0,
@@ -608,7 +608,7 @@
     },
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
-      "feedAgeDays": 9,
+      "feedAgeDays": 3,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
