@@ -99,7 +99,11 @@ t('🔬 [hitelesítés] a tiltás-kereső MINDKÉT irányba jól dönt', () => {
     'No human editor reviews the text.',            // a mi valódi mondatunk
     'no human editor reads the text',               // ugyanez az AI-szakaszból
     'Automated quality gates check every piece before it goes out.',
-    'Ningún editor humano revisa el texto.'
+    'Ningún editor humano revisa el texto.',
+    // 10-12: az új, igaz mondataink (szerkesztői szúrópróba, nem minden szöveg) — ezeket NEM foghatja meg
+    'our editor spot-checks published pieces every day — not every text is read by a person.',
+    'a szerkesztőnk pedig naponta szúrópróbaszerűen átnézi a megjelent darabokat — nem minden szöveget olvas el ember.',
+    'nuestro editor comprueba cada día una muestra de lo publicado: no todos los textos los lee una persona.'
   ];
   for (const s of FOGNIA_KELL) {
     assert.ok(tiltottTalalat(s).length > 0, 'a kapu ÁTENGEDTE: ' + s);
@@ -108,8 +112,9 @@ t('🔬 [hitelesítés] a tiltás-kereső MINDKÉT irányba jól dönt', () => {
     assert.deepEqual(tiltottTalalat(s), [], 'a kapu HAMISAN fogta meg: ' + s);
   }
   // És a valódi szövegünkben tényleg ott van a becsületes, tagadó alak:
-  assert.ok(/no human editor (?:reads|reviews)/i.test(szovegKod),
-    'eltűnt a „no human editor…" mondat — enélkül a termék többet állít magáról');
+  // 10-12: a „no human editor" helyett a pontos mondat: szúrópróba, de nem minden szöveget olvas ember.
+  assert.ok(/not every text is read by a person/i.test(szovegKod),
+    'eltűnt a „not every text is read by a person" mondat — enélkül a termék többet állít magáról');
 });
 
 t('🆓 INGYENES MÓD: se bolt, se fizetés, se visszatérítés-ígéret az oldal szövegében (2026-10-07)', () => {

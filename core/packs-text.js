@@ -134,7 +134,7 @@ export const PACKS_UI = {
     packsBuildP: 'Every guide follows the same shape, because that is the shape that works when you are stuck. It opens with what you need before you start: which account, which app, how long it will take. Then numbered steps, each one telling you what to look for and how to know it worked. Then the mistakes people actually make. Then a short, honest close about what this changes, and what it does not. Most guides include an example prompt you can copy. Most guides say in that first box whether you need a free or a paid plan, not in step four.',
 
     packsAiH: 'Written by AI, and labeled that way',
-    packsAiP: 'This whole site is written by AI. The guides, the news articles and most of the pictures are generated, and the support chat is an AI too. Automated quality gates check every piece before it goes out, and no human editor reads the text. A human owner runs the system, reads the feedback and keeps tightening the rules. We say this on every article and on every pack, because you should be able to decide what that is worth to you.',
+    packsAiP: 'This whole site is written by AI. The guides, the news articles and most of the pictures are generated, and the support chat is an AI too. Automated quality gates check every piece before it goes out, and our editor spot-checks published pieces every day — not every text is read by a person. A human owner runs the system, reads the feedback and keeps tightening the rules. We say this on every article and on every pack, because you should be able to decide what that is worth to you.',
 
     packsFaqH: 'Questions',
     packsQ1: 'What do I get, exactly?',
@@ -146,7 +146,7 @@ export const PACKS_UI = {
     packsQ4: 'Why a PDF, if the guides are free on the site anyway?',
     packsA4: 'For the reading order and for offline use. Everything in the packs is on this site, free, and will stay there. The PDF puts one subject into one searchable file you can read on a plane, on a phone with no signal, or printed on paper. If you prefer reading here, that is completely fine.',
     packsQ5: 'Who wrote these?',
-    packsA5: 'AI agents did, start to finish. They pass automated fact and quality checks before publication, but no human editor reviews the text. That is the deal, stated up front, on the site and inside the files.',
+    packsA5: 'AI agents did, start to finish. They pass automated fact and quality checks before publication, and our editor spot-checks published guides daily — but not every text is read by a person. That is the deal, stated up front, on the site and inside the files.',
 
     packsMetaTitle: 'Free AI guide PDFs',
     packsMetaDesc: 'Our step-by-step AI guides, grouped by subject into free PDFs you can download, print and share. No sign-up.',
@@ -174,7 +174,7 @@ export const PACKS_UI = {
     packsBuildP: 'Minden útmutató ugyanazt az alakot követi, mert ez az az alak, ami akkor segít, amikor elakadtál. Azzal kezdődik, mi kell hozzá: melyik fiók, melyik alkalmazás, mennyi idő. Utána számozott lépések, mindegyik megmondja, mit keress, és miről ismered fel, hogy sikerült. Aztán a hibák, amiket tényleg el szoktak követni. Végül egy rövid, őszinte zárás arról, min változtat ez — és min nem. A legtöbb útmutatóban van egy másolható példa-prompt. A legtöbb útmutató már az első dobozban megmondja, hogy ingyenes vagy fizetős csomag kell-e, nem a negyedik lépésben.',
 
     packsAiH: 'AI írta, és ezt ki is írjuk',
-    packsAiP: 'Ezt az egész oldalt AI írja. Az útmutatók, a hírek és a képek nagy része gépi, és az ügyfélszolgálati csevegő is AI. Automatikus minőség-kapuk minden darabot ellenőriznek a megjelenés előtt, de emberi szerkesztő nem olvassa át a szöveget. Egy ember üzemelteti a rendszert, olvassa a visszajelzéseket, és folyamatosan szigorítja a szabályokat. Ezt minden cikken és minden csomagon kiírjuk, mert neked kell eldöntened, mennyit ér ez így.',
+    packsAiP: 'Ezt az egész oldalt AI írja. Az útmutatók, a hírek és a képek nagy része gépi, és az ügyfélszolgálati csevegő is AI. Automatikus minőség-kapuk minden darabot ellenőriznek a megjelenés előtt, a szerkesztőnk pedig naponta szúrópróbaszerűen átnézi a megjelent darabokat — nem minden szöveget olvas el ember. Egy ember üzemelteti a rendszert, olvassa a visszajelzéseket, és folyamatosan szigorítja a szabályokat. Ezt minden cikken és minden csomagon kiírjuk, mert neked kell eldöntened, mennyit ér ez így.',
 
     packsFaqH: 'Kérdések',
     packsQ1: 'Mit kapok pontosan?',
@@ -186,7 +186,7 @@ export const PACKS_UI = {
     packsQ4: 'Miért PDF, ha az útmutatók amúgy is ingyen fent vannak?',
     packsA4: 'Az olvasási sorrend és az offline olvasás miatt. Minden, ami a csomagokban van, fent van ezen az oldalon ingyen, és ott is marad. A PDF egy témát egyetlen kereshető fájlba tesz, amit repülőn, térerő nélküli telefonon vagy kinyomtatva is elolvashatsz. Ha inkább itt olvasol, az is teljesen rendben van.',
     packsQ5: 'Ki írta ezeket?',
-    packsA5: 'AI-ügynökök, elejétől a végéig. Automatikus tény- és minőség-ellenőrzésen mennek át a megjelenés előtt, de emberi szerkesztő nem nézi át a szöveget. Ez az alku, és előre kimondjuk — az oldalon és a fájlokban is.',
+    packsA5: 'AI-ügynökök, elejétől a végéig. Automatikus tény- és minőség-ellenőrzésen mennek át a megjelenés előtt, a szerkesztőnk pedig naponta szúrópróbát végez a megjelentek között — de nem minden szöveget olvas el ember. Ez az alku, és előre kimondjuk — az oldalon és a fájlokban is.',
 
     packsMetaTitle: 'Ingyenes AI-útmutató PDF-ek',
     packsMetaDesc: 'A lépésről lépésre szóló AI-útmutatóink téma szerint csomagolva, ingyen letölthető, nyomtatható és megosztható PDF-ként. Regisztráció nélkül.',
@@ -214,7 +214,7 @@ export const PACKS_UI = {
     packsBuildP: 'Todas las guías siguen la misma forma, porque es la que funciona cuando te has atascado. Empiezan por lo que necesitas antes de ponerte a ello: qué cuenta, qué aplicación, cuánto tiempo te llevará. Después, pasos numerados: cada uno te dice qué buscar y cómo saber que ha funcionado. Luego, los errores que la gente comete de verdad. Y al final, un cierre breve y honesto sobre qué cambia esto y qué no. La mayoría incluye un prompt de ejemplo que puedes copiar. La mayoría de las guías indican ya en el primer recuadro si necesitas un plan gratuito o de pago, no en el paso cuatro.',
 
     packsAiH: 'Escrito por IA, y así lo indicamos',
-    packsAiP: 'Todo este sitio lo escribe una IA. Las guías, las noticias y la mayoría de las imágenes se generan, y el chat de soporte también es una IA. Unos controles de calidad automáticos comprueban cada pieza antes de publicarla, y ningún editor humano lee el texto. Una persona gestiona el sistema, lee los comentarios y va ajustando las reglas. Lo decimos en cada artículo y en cada pack, porque eres tú quien debe decidir cuánto vale eso.',
+    packsAiP: 'Todo este sitio lo escribe una IA. Las guías, las noticias y la mayoría de las imágenes se generan, y el chat de soporte también es una IA. Unos controles de calidad automáticos comprueban cada pieza antes de publicarla, y nuestro editor comprueba cada día una muestra de lo publicado: no todos los textos los lee una persona. Una persona gestiona el sistema, lee los comentarios y va ajustando las reglas. Lo decimos en cada artículo y en cada pack, porque eres tú quien debe decidir cuánto vale eso.',
 
     packsFaqH: 'Preguntas',
     packsQ1: '¿Qué recibo exactamente?',
@@ -226,7 +226,7 @@ export const PACKS_UI = {
     packsQ4: '¿Por qué un PDF, si las guías ya son gratis en el sitio?',
     packsA4: 'Por el orden de lectura y para leer sin conexión. Todo lo que hay en los packs está en este sitio, gratis, y ahí seguirá. El PDF reúne un tema en un único archivo en el que puedes buscar y que puedes leer en un avión, en un móvil sin cobertura o impreso en papel. Si prefieres leer aquí, no hay ningún problema.',
     packsQ5: '¿Quién ha escrito esto?',
-    packsA5: 'Agentes de IA, de principio a fin. Pasan controles automáticos de hechos y de calidad antes de publicarse, pero ningún editor humano revisa el texto. Ese es el trato, dicho por delante, en el sitio y dentro de los archivos.',
+    packsA5: 'Agentes de IA, de principio a fin. Pasan controles automáticos de hechos y de calidad antes de publicarse, y nuestro editor comprueba cada día una muestra de lo publicado, pero no todos los textos los lee una persona. Ese es el trato, dicho por delante, en el sitio y dentro de los archivos.',
 
     packsMetaTitle: 'PDF gratis de guías de IA',
     packsMetaDesc: 'Nuestras guías de IA paso a paso, agrupadas por tema en PDF gratuitos que puedes descargar, imprimir y compartir. Sin registro.',

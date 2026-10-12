@@ -61,11 +61,16 @@ const MI_IRTA = {
   hu: /mesterséges intelligencia (írta|készítette)/i,
   es: /(escrit|generad)[oa] por IA\b/i
 };
-const EMBER_NEM = {
-  en: /no human editor/i,
-  hu: /emberi szerkesztő nem/i,
-  es: /ningún editor humano/i
+// 2026-10-12 (user: napi szúrópróba, szerkesztő álnéven: Sam Calder): a jelölés már
+// NEM azt mondja, hogy ember nem nézte — hanem hogy a szerkesztő CSAK SZÚRÓPRÓBÁT
+// végez a MEGJELENT cikkeken. Két irányban őrizzük: (1) ezt kimondja, (2) SOHA nem
+// állítja, hogy minden szöveget ember olvasott/átnézett megjelenés előtt.
+const SZUROPROBA = {
+  en: /spot-checks? published/i,
+  hu: /szúrópróba/i,
+  es: /muestr(?:a|eo)/i
 };
+const TULIGERES = /(?<!\bno\s)reviewed by a human|(?<!\bno\s)human editor (?:reviews|reads|checks)|(?<!nem\s)emberi szerkesztő (?:átnézi|elolvassa)|(?<!ningún\s)(?<!sin\s)editor humano (?:revisa|lee)/i;
 
 function sablonTest(nev) {
   const i = src.indexOf('function ' + nev + '(');
@@ -127,7 +132,8 @@ t('🔴 a FELSŐ címke minden nyelven kimondja: MI írta, ember nem nézte át'
     v.forEach((s, i) => {
       const l = NYELV[i];
       assert.ok(MI_IRTA[l].test(s), `🔴 ${kulcs}/${l} nem mondja ki egyértelműen, hogy MI írta: ${s}`);
-      assert.ok(EMBER_NEM[l].test(s), `🔴 ${kulcs}/${l} nem mondja ki, hogy ember nem nézte át: ${s}`);
+      assert.ok(SZUROPROBA[l].test(s), `🔴 ${kulcs}/${l} nem mondja ki, hogy a szerkesztő csak szúrópróbát végez: ${s}`);
+      assert.ok(!TULIGERES.test(s), `🔴 ${kulcs}/${l} TÚLÍGÉR (minden szöveget ember nézett át?): ${s}`);
     });
   }
 });
@@ -139,7 +145,8 @@ t('🔴 a lap ALJI jelölés is egyértelmű, és eltűnt a félreérthető rég
     v.forEach((s, i) => {
       const l = NYELV[i];
       assert.ok(MI_IRTA[l].test(s), `🔴 ${kulcs}/${l}: nem egyértelmű, hogy MI készítette`);
-      assert.ok(EMBER_NEM[l].test(s), `🔴 ${kulcs}/${l}: nem mondja ki, hogy ember nem nézte át`);
+      assert.ok(SZUROPROBA[l].test(s), `🔴 ${kulcs}/${l}: nem mondja ki, hogy a szerkesztő csak szúrópróbát végez`);
+      assert.ok(!TULIGERES.test(s), `🔴 ${kulcs}/${l}: túlígér`);
     });
   }
   // Az „AI editorial team" úgy is olvasható, hogy EMBEREK írnak az MI-ről.
@@ -151,12 +158,12 @@ t('🔴 a lábléc nem sugall emberi ellenőrzést (minden oldal alján ott van)
   // 2026-09-15: a lábléc „Reviewed for accuracy" / „Pontosságra ellenőrizve" volt —
   // alany nélkül, szenvedő szerkezetben ez EMBERI átnézést sugall, miközben a
   // címke kimondja, hogy szerkesztő nem nézte át. A kettő nem mondhat ellent.
-  const NEM_EMBER = { en: /no human editor/i, hu: /emberi szerkesztő nélkül/i, es: /sin editor humano/i };
+  const NEM_EMBER = { en: /spot-checks/i, hu: /szúrópróbával/i, es: /por muestreo/i };   // 10-12: csak szúrópróba
   const v = ertekek('footerNote');
   assert.equal(v.length, 3, 'footerNote: nem pontosan 3 nyelven');
   v.forEach((s, i) => {
     assert.ok(!/Reviewed for accuracy|Pontosságra ellenőrizve|Revisado para mayor precisión/i.test(s), `🔴 footerNote/${NYELV[i]}: visszakerült az emberi ellenőrzést sugalló szöveg: ${s}`);
-    assert.ok(NEM_EMBER[NYELV[i]].test(s), `🔴 footerNote/${NYELV[i]} nem mondja ki, hogy ember nem nézte át: ${s}`);
+    assert.ok(NEM_EMBER[NYELV[i]].test(s), `🔴 footerNote/${NYELV[i]} nem mondja ki, hogy ember csak szúrópróbát végez: ${s}`);
   });
 });
 
@@ -185,7 +192,8 @@ t('🔴 a Rólunk oldal leírja, hogyan jelöljük az MI-tartalmat', () => {
     const l = NYELV[i];
     assert.ok(s.includes(JEL[l]), `🔴 aboutAiP/${l} nem említi az „AI"-jelet: ${s}`);
     assert.ok(MI_IRTA[l].test(s), `🔴 aboutAiP/${l} nem mondja ki, hogy MI írta`);
-    assert.ok(EMBER_NEM[l].test(s), `🔴 aboutAiP/${l} nem mondja ki, hogy ember nem nézte át`);
+    assert.ok(SZUROPROBA[l].test(s), `🔴 aboutAiP/${l} nem mondja ki, hogy a szerkesztő csak szúrópróbát végez`);
+    assert.ok(!TULIGERES.test(s), `🔴 aboutAiP/${l} túlígér`);
   });
   assert.equal(ertekek('aboutAiP').length, 3, 'aboutAiP: nem pontosan 3 nyelven');
 });
@@ -244,6 +252,20 @@ t('🔴 a címke és az „AI"-jel kontrasztja ≥ 4,5:1 — világos ÉS söté
       assert.ok(k >= 4.5, `🔴 ${mit} kontrasztja ${nev} témában csak ${k.toFixed(2)}:1 (WCAG AA: 4,5)`);
     }
   }
+});
+
+t('🔴 a Rólunk oldalon a szerkesztő NYÍLTAN álnév (Sam Calder), és nem állít többet a napi szúrópróbánál (10-12)', () => {
+  assert.ok(sablonTest('buildAboutPage').includes("'aboutTeamH', 'aboutTeamP'"), '🔴 nincs „Ki áll mögötte" kártya');
+  const ALNEV = { en: /\(a pen name\)/, hu: /\(írói álnév\)/, es: /\(un seudónimo\)/ };
+  const v = ertekek('aboutTeamP');
+  assert.equal(v.length, 3, 'aboutTeamP: nem pontosan 3 nyelven');
+  v.forEach((s, i) => {
+    const l = NYELV[i];
+    assert.ok(s.includes('Sam Calder'), `aboutTeamP/${l}: hiányzik a szerkesztő neve`);
+    assert.ok(ALNEV[l].test(s), `🔴 aboutTeamP/${l}: nem mondja ki, hogy álnév (kitalált szerző = megtévesztés)`);
+    assert.ok(!TULIGERES.test(s), `🔴 aboutTeamP/${l}: túlígér`);
+    assert.ok(!/years of experience|expert|PhD|journalist|évnyi tapasztalat|szakértő|újságíró|años de experiencia|experto|periodista/i.test(s), `🔴 aboutTeamP/${l}: kitalált szakértelem`);
+  });
 });
 
 console.log(`\n✅ ${pass} teszt rendben`);
