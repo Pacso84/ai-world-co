@@ -281,3 +281,26 @@ export function visitorLine(days, today) {
 export function orFutott({ writerNaplok = 0, dedupMai = 0 } = {}) {
   return Number(writerNaplok) > 0 || Number(dedupMai) > 0;
 }
+
+// ===================================================================
+// A JELENTÉS ZÁRÓSORA (2026-10-12, user: „nem mentek ki a posztok facebookra
+// és tiktokra sem! pedig telegram azt írta, hogy igen!!!!!")
+// ===================================================================
+// Élő eset 10-12: a jelentésben ott állt „🎬 REEL-ŐRSZEM: a videó-gyártás
+// elbukott — Edge TTS … 403" és „⚠️ REEL-POSZTOLÓ: 1/2 poszt ELBUKOTT" — az
+// utolsó sor mégis FELTÉTEL NÉLKÜL ezt mondta: „Minden megy magától. ✅".
+// Aki csak a végét olvassa (mobilon ez látszik), az azt hiszi, minden kiment.
+// Mostantól a zárósor számolja a hibajelző sorokat. A KRÓNIKUS leletek
+// (🧩 kimenet-őr, ♻️ ismétlődő hiba) nem kimaradás, ezért nem számítanak.
+const HIBA_JEL = /^\s*(⚠️|❌|🔴|🚨|⛔)|elbukott|ELBUKOTT|nem sikerült|leállt/;
+
+/** Hány sor jelez valódi hibát? */
+export function hibaSorok(sorok) {
+  return (Array.isArray(sorok) ? sorok : []).filter(s => HIBA_JEL.test(String(s || '')));
+}
+
+/** A jelentés utolsó sora: ✅ csak akkor, ha egyetlen hibajelzés sincs fent. */
+export function zaroSor(sorok) {
+  const db = hibaSorok(sorok).length;
+  return db ? `⚠️ Nem minden ment magától: ${db} hibajelzés fent — ezeket nézd meg.` : 'Minden megy magától. ✅';
+}

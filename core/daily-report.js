@@ -27,7 +27,7 @@ import { summarizeRuns, describeFailures } from './make-health.js';
 // A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
 // összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
 import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
-import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, repeatLine, visitorLine, orFutott } from './report-lines.js';
+import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, repeatLine, visitorLine, orFutott, zaroSor } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
@@ -1041,7 +1041,7 @@ async function main() {
     console.log('🔇 elnémítva ' + zaj.csendes.length + ' változatlan őrszem-sor: '
       + Object.entries(zaj.indokok).map(([k, v]) => k + '=' + v).join(' · '));
   }
-  szurtSorok.push(``, `Minden megy magától. ✅`);
+  szurtSorok.push(``, zaroSor(szurtSorok));   // 10-12: ✅ csak hibajelzés nélkül (report-lines.js)
   lines.length = 0;
   lines.push(...szurtSorok);
 

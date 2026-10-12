@@ -10,8 +10,9 @@
 
 import assert from 'assert/strict';
 import {
-  describePosts, describeRepeat, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine
+  describePosts, describeRepeat, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine, zaroSor, hibaSorok
 } from './report-lines.js';
+import { readFileSync } from 'fs';
 
 let pass = 0;
 const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
@@ -350,6 +351,32 @@ t('hibás bemenetre nem borul, és nem hazudik „futott"-at', () => {
   for (const rossz of [null, undefined, 'hopp', NaN]) {
     assert.equal(orFutott({ writerNaplok: rossz, dedupMai: rossz }), false, String(rossz));
   }
+});
+
+// ---------- zárósor: ✅ csak hibajelzés nélkül (10-12) ----------
+
+t('🔴 a 10-12-i ÉLŐ jelentés: Reel-hiba mellett a zárósor NEM mondhat ✅-t', () => {
+  const elo = [
+    '📘 Facebook-poszt: 5 kiküldve, mind megjelent',
+    '⚠️ REEL-POSZTOLÓ: 1/2 poszt ELBUKOTT ma. A Make hibasorában megvan, újrajátszható.',
+    '🎬 REEL-ŐRSZEM: a videó-gyártás elbukott — Edge TTS WebSocket error: Unexpected server response: 403',
+    '🧩 KIMENET-ŐR: 3 lelet — csak a hírben van'
+  ];
+  const z = zaroSor(elo);
+  assert.ok(!z.includes('✅'), 'hiba mellett is ✅: ' + z);
+  assert.match(z, /2 hibajelzés/);
+});
+
+t('hibajelzés nélkül marad a „Minden megy magától. ✅"; a krónikus 🧩/♻️ lelet nem hiba', () => {
+  assert.equal(zaroSor(['📘 Facebook-poszt: 6 kiküldve, mind megjelent', '🧩 KIMENET-ŐR: 3 lelet', '♻️ Ismétlődő hiba: 2 típus ma']), 'Minden megy magától. ✅');
+  assert.equal(zaroSor([]), 'Minden megy magától. ✅');
+  assert.equal(hibaSorok(['❌ valami', '🔴 más', 'rendben']).length, 2);
+});
+
+t('🔌 a napi jelentés tényleg ezt használja (nem a régi feltétel nélküli ✅-t)', () => {
+  const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
+  assert.match(src, /szurtSorok\.push\(``, zaroSor\(szurtSorok\)\)/);
+  assert.ok(!/push\(``, `Minden megy magától\. ✅`\)/.test(src), 'a feltétel nélküli ✅ visszakerült');
 });
 
 console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');
