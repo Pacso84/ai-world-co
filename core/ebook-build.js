@@ -154,8 +154,8 @@ export const SZOVEG = {
     // eleme a nagybetűs, ANGOL „AI" rövidítés minden nyelven (Gyakorlati
     // Kódex 1.1(a)) — a próza viszont a honlap adott nyelvű szövegével egyezik.
     aiSzerzo: (site) => '<span class="ai-mark">AI</span> <strong>Every guide in this pack was written '
-      + 'by AI</strong> and checked by automated fact and quality gates. <strong>No human editor '
-      + `reviewed the text.</strong> Every guide page on ${site} carries the same notice — we say it `
+      + 'by AI</strong> and checked by automated fact and quality gates. <strong>Our editor spot-checks published guides '
+      + `every day, but not every text is read by a person.</strong> Every guide page on ${site} carries the same notice — we say it `
       + 'openly because you deserve to know who wrote what you are reading.',
     valtozas: '<strong>Apps change.</strong> Buttons move and menus get renamed. If a step does not '
       + "match what you see, the guide's online version is the newer one — the link is under "
@@ -188,8 +188,8 @@ export const SZOVEG = {
     // editor humano la revisó"), a JEL viszont a nagybetűs angol „AI" —
     // ugyanaz a kettősség, mint a honlap kártyáin (`aiMark()`).
     aiSzerzo: (site) => '<span class="ai-mark">AI</span> <strong>Todas las guías de este paquete fueron '
-      + 'escritas por IA</strong> y pasaron controles automáticos de datos y calidad. <strong>Ningún editor '
-      + `humano revisó el texto.</strong> Cada guía de ${site} lleva el mismo aviso: lo decimos abiertamente `
+      + 'escritas por IA</strong> y pasaron controles automáticos de datos y calidad. <strong>Nuestro editor comprueba cada día '
+      + `una muestra de lo publicado, pero no todos los textos los lee una persona.</strong> Cada guía de ${site} lleva el mismo aviso: lo decimos abiertamente `
       + 'porque tienes derecho a saber quién escribió lo que estás leyendo.',
     valtozas: '<strong>Las aplicaciones cambian.</strong> Los botones se mueven y los menús cambian de '
       + 'nombre. Si un paso no coincide con lo que ves, la versión en internet de la guía es la más '

@@ -168,8 +168,9 @@ t('🚨 a könyv KIMONDJA: MI írta, EMBER nem szerkesztette', () => {
   const html = konyvHtml(valogat([cikk('Automate Email Drafts')]));
   assert.match(html, /written by AI\b/,
     '⚠️ eltűnt az AI-szerzőség — épp gépi tartalom miatt vagyunk keresői büntetésben');
-  assert.match(html, /No human editor reviewed the text/i,
-    '🔴 nincs kimondva, hogy emberi szerkesztő NEM nézte át (a honlap kimondja)');
+  // 10-12: a honlappal egyezően — a szerkesztő CSAK szúrópróbát végez, nem olvas el minden szöveget.
+  assert.match(html, /spot-checks published guides every day, but not every text is read by a person/i,
+    '🔴 nincs kimondva, hogy a szerkesztő csak szúrópróbát végez (a honlap kimondja)');
   // A jel FŐ ELEME a nagybetűs, ANGOL „AI" — Gyakorlati Kódex 1.1(a), ugyanaz,
   // amit a honlap kártyáin az `aiMark()` ad.
   assert.match(html, /class="ai-mark">AI</, '🔴 eltűnt a nagybetűs „AI" jel');
@@ -398,8 +399,8 @@ t('a spanyol felületi szöveg a NYELVI TÁBLÁBÓL jön, nem helyszíni fordít
   // editor humano"), a JEL viszont a nagybetűs ANGOL „AI" — ugyanaz a kettősség,
   // mint a honlap kártyáin. A régi „equipo editorial de IA" mindkettőt elmosta.
   assert.match(html, /escritas por IA/, '⚠️ eltűnt a MI-JELÖLÉS a spanyol csomagból');
-  assert.match(html, /Ningún editor humano revisó el texto/,
-    '🔴 a spanyol csomag elhallgatja, hogy emberi szerkesztő nem nézte át');
+  assert.match(html, /comprueba cada día una muestra de lo publicado, pero no todos los textos los lee una persona/,
+    '🔴 a spanyol csomag nem mondja ki, hogy a szerkesztő csak szúrópróbát végez');
   assert.match(html, /class="ai-mark">AI</, '🔴 a spanyol csomagból eltűnt a nagybetűs „AI" jel');
   assert.ok(!/equipo editorial de IA/.test(html), '🔴 visszajött az eufemizmus');
   assert.match(html, /gratis en nuestra web/, 'a spanyol csomag elhallgatja, hogy a tartalom ingyenes');
