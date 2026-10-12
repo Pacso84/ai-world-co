@@ -143,7 +143,7 @@ async function main() {
   console.log(`   ✍️  Szkript kész (${script.split(' ').length} szó) | $${r.costUsd.toFixed(4)}`);
 
   // 2) TTS + szó-időzítések (Microsoft Edge felolvasó — ingyenes)
-  const { MsEdgeTTS, OUTPUT_FORMAT } = await import('msedge-tts');
+  const { MsEdgeTTS, OUTPUT_FORMAT } = await (await import('../../core/edge-tts.js')).edgeTts();   // új MS-host (10-12)
   mkdirSync(OUT_DIR, { recursive: true });
   const tts = new MsEdgeTTS();
   await tts.setMetadata(VOICE, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3, { wordBoundaryEnabled: true });

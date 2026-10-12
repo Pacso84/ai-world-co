@@ -118,7 +118,7 @@ const hossz = f => parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_ent
  */
 export async function renderOsszesito(szakaszok, { out, workDir, klipFn, voice = 'en-US-AvaMultilingualNeural' }) {
   const sharp = (await import('sharp')).default;
-  const { MsEdgeTTS, OUTPUT_FORMAT } = await import('msedge-tts');
+  const { MsEdgeTTS, OUTPUT_FORMAT } = await (await import('./edge-tts.js')).edgeTts();   // új MS-host (10-12)
   rmSync(workDir, { recursive: true, force: true });
   mkdirSync(workDir, { recursive: true });
 

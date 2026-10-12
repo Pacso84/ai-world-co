@@ -726,7 +726,7 @@ export async function hatterekKepekbol(sharp, utak) {
 
 export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMultilingualNeural', kepUt = '', kepUtak = null }) {
   const sharp = (await import('sharp')).default;
-  const { MsEdgeTTS, OUTPUT_FORMAT } = await import('msedge-tts');
+  const { MsEdgeTTS, OUTPUT_FORMAT } = await (await import('./edge-tts.js')).edgeTts();   // új MS-host (10-12)
 
   // 🔤 MEGKAPTUK-E A KÉRT BETŰT? (2026-09-17) A táblák csak KÉRIK a
   // betűcsaládot; ha a gépen nincs telepítve, a betűmotor némán egy
