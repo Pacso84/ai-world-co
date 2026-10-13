@@ -385,4 +385,15 @@ t('🔌 a reel-post tényleg gyártja (a FB-Reel UTÁN, hibatűrően), a Buffer-
   pass++; console.log('  ✅ friss videó: újrapróba + lecsengés, a Buffer-poszter is ezt használja');
 }
 
+t('🔴 10-13: új Reel mellett a nap KORÁBBI Reelje is újragyártódik; a Buffer „nem olvasható" hibára újrapróbál', () => {
+  const rp = readFileSync(new URL('./reel-post.js', import.meta.url), 'utf-8');
+  const uj = rp.indexOf("console.log('✅ ' + r.seconds.toFixed(1) + ' mp — a küldés a deploy után jön (--send)');");
+  const vege = rp.indexOf('return { betu: r.betu };', uj);
+  assert.ok(uj > 0 && vege > uj, 'nem találom az új-Reel ágat');
+  assert.match(rp.slice(uj, vege), /for \(const mai of maiReelCikkek\(cikkek\)\)[\s\S]*renderVideo/, '🔴 az új-Reel ág nem tartja életben a reggeli videót');
+  const buf = readFileSync(new URL('../agents/social/buffer-poster.js', import.meta.url), 'utf-8');
+  assert.match(buf, /VIDEO_NEM_OLVASHATO = \/could not be read from its URL\/i/);
+  assert.match(buf, /VIDEO_NEM_OLVASHATO\.test\(r\.error\) && ujra <= 2/, '🔴 a Buffer-hibára nincs újrapróba');
+});
+
 console.log('\n✅ reel-queue.test: mind a ' + pass + ' eset rendben');

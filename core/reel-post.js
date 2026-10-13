@@ -712,6 +712,20 @@ async function prepareReel(ROOT, join) {
     JSON.stringify({ slug: valasztott.slug, file: valasztott.file, at: new Date().toISOString() }, null, 2), 'utf-8');
   console.log('✅ ' + r.seconds.toFixed(1) + ' mp — a küldés a deploy után jön (--send)');
 
+  // ♻️ A NAP KORÁBBI REELJE IS MARADJON KINT (2026-10-13, éles eset): a délutáni
+  // futás új Reelt gyártott, a reggelit viszont NEM gyártotta újra (az életben
+  // tartó ág csak akkor futott, ha nem volt új Reel) → a deploy után a reggeli
+  // videó 404 lett, és a TikTok-poszter nem tudta kiküldeni (aznap 1/3 TikTok).
+  for (const mai of maiReelCikkek(cikkek)) {
+    const ut = join(kiDir, mai.slug + '.mp4');
+    if (mai.slug === valasztott.slug || existsSync(ut)) continue;
+    const k = cardsFromGuide(mai.md).cards;
+    if (!k) continue;
+    const r1 = await renderVideo(k, { out: ut, kepUt: boritoUt(ROOT, join, mai.slug), workDir: join(ROOT, '.video-munka') });
+    try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
+    console.log('♻️  Reel: a nap korábbi videója is újragyártva (' + mai.slug + ') — ' + r1.seconds.toFixed(1) + ' mp');
+  }
+
   // 🔤 A BETŰ-LELET TOVÁBBADÁSA (2026-09-17). A gyártás megmérte, hogy
   // tényleg a kért betűt kapta-e (core/video-font.js); a `futtatFazis`
   // innen teszi be a `memory/reel-guard.json`-ba, ahonnan a napi jelentés

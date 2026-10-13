@@ -328,6 +328,8 @@ async function maiVideok(field, cikkLista) {
 // ott áll teszt alatt, hogy a HTTP 200-ban érkező hibaüzenet (MutationError)
 // HIBÁNAK számít, nem sikernek. Itt már csak a tokent adjuk hozzá.
 const createPost = args => createPostApi(args, api());
+// A Buffer „még nem érem el a videót" hibája (10-13 élesben) — erre van értelme újrapróbálni.
+const VIDEO_NEM_OLVASHATO = /could not be read from its URL/i;
 
 async function main() {
   console.log('📤 BUFFER-POSZTER (X · Threads · TikTok)');
@@ -479,9 +481,16 @@ async function main() {
         continue;
       }
 
-      const r = video
+      let r = video
         ? await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, video })
         : await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, image: vanKep ? kep : null });
+      // 2026-10-13: a Buffer a SAJÁT szervereiről tölti le a videót — nálunk már 200 volt,
+      // náluk még nem („Video could not be read from its URL"). Várunk, és újra próbáljuk.
+      for (let ujra = 1; video && r.error && VIDEO_NEM_OLVASHATO.test(r.error) && ujra <= 2; ujra++) {
+        console.log(`   ⏳ a Buffer még nem éri el a videót — ${ujra}. újrapróba 60 mp múlva`);
+        await new Promise(res => setTimeout(res, 60000));
+        r = await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, video });
+      }
       if (video) console.log(`   🎬 videó: ${slug.slice(0, 44)}`);
       keres++;
       if (r.error) {
