@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-10-13T15:53:46.282Z",
+    "updated": "2026-10-13T19:31:34.943Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -20,7 +20,7 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 0,
       "published30d": 27,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -44,7 +44,7 @@
     },
     "google-ai-blog": {
       "name": "Google AI (hivatalos, blog.google)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 0,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -104,7 +104,7 @@
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 9,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -140,7 +140,7 @@
     },
     "github-ai": {
       "name": "GitHub AI & ML (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 1,
       "truthBlocks": 1,
       "truthUnfixed": 0,
@@ -440,7 +440,7 @@
     },
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 5,
       "truthBlocks": 1,
       "truthUnfixed": 0,
@@ -452,7 +452,7 @@
     },
     "snowflake": {
       "name": "Snowflake Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -464,7 +464,7 @@
     },
     "together": {
       "name": "Together AI Blog (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -620,7 +620,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 15,
+      "feedAgeDays": 16,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -704,7 +704,7 @@
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 5,
       "truthBlocks": 0,
       "truthUnfixed": 0,
