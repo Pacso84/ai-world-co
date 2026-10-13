@@ -185,7 +185,7 @@ function pruneLogs() {
 //
 // ÖRÖKZÖLD, SOHA NEM TÖRLŐDIK:
 //   - útmutató (a user kifejezett kérése)
-//   - összehasonlítás ("X vagy Y") — ez sem évül el, ugyanaz a fajta tartalom
+//   (az összehasonlítás 2026-10-13 óta LEJÁR, mint a hír — a user tiltja a műfajt)
 // LEJÁR:
 //   - sima hír
 //   - heti összefoglaló (dátumos: "This Week in AI, 21 June 2026" — három
@@ -204,8 +204,10 @@ function isEvergreen(file, data) {
   // ⚠️ EZ A LEGDRÁGÁBB „útmutató-e?" kérdés a repóban: a téves „hír" válasz
   // 90 nap múlva VÉGLEG TÖRLI a cikket. Ezért a közös core/guide-kind.js dönt
   // (2026-09-16), ugyanazzal a szabállyal, mint a build és a poszterek.
-  if (utmutatoE(file, data)) return true;
-  return /^tags:.*\bcomparison\b/m.test(data.article_markdown || '');
+  // 2026-10-13: az összehasonlítás NEM örökzöld többé — a user 09-26 óta TILTJA az
+  // összehasonlító tartalmat; a július 8-i „chatgpt-vs-gemini-vs-claude" hír ezért
+  // maradt 3 hónap után is az archívumban. Az ÚTMUTATÓ a címkétől függetlenül örökzöld.
+  return utmutatoE(file, data);
 }
 
 function pruneOldNews() {

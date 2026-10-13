@@ -187,7 +187,7 @@ const HIVOK = [
   { f: 'website/build.js', hivas: 'isGuide: utmutatoE(file, data)',
     tilos: /isGuide:\s*\(?data\._meta\?\.type === 'guide'\)?\s*\|\|/,
     miert: 'ez vezérli a SABLONVÁLASZTÁST és a /guides listát' },
-  { f: 'core/housekeeping.js', hivas: 'if (utmutatoE(file, data)) return true;',
+  { f: 'core/housekeeping.js', hivas: 'return utmutatoE(file, data);',   // 10-13: az összehasonlítás már nem örökzöld
     tilos: /data\._meta\?\.type === 'guide' \|\| file\.startsWith\('ARTICLE_GUIDE'\)/,
     miert: 'a téves „hír" 90 nap után VÉGLEG TÖRLI a cikket' },
   { f: 'core/social-published.js', hivas: 'const isGuide = utmutatoE(f, d);',
