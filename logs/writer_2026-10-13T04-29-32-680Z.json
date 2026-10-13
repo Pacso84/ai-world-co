@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-13T04:27:23.287Z",
+  "drafts_total": 5,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 1,
+  "merged_total": 1,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.046037494000000005,
+  "by_article": [
+    {
+      "draft": "2026-10-13T04-27-22-898Z_google-workspace_Find_your_routine_next_steps_on_the_post-meeting_s.json",
+      "writer_output": "WRITER_2026-10-13T04-27-22-898Z_google-workspace_Find_your_routine_next_steps_on_the_post-meeting_s.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Google Meet feature updates: AI next steps and post-quantum cryptography",
+      "cost_usd": 0.005152464,
+      "duration_ms": 15729,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-13T04-27-22-897Z_meta-ai_Introducing_Muse_Wonder_and_Muse_Wonder_Full__Fron.json",
+      "writer_output": "WRITER_2026-10-13T04-27-22-897Z_meta-ai_Introducing_Muse_Wonder_and_Muse_Wonder_Full__Fron.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00886638,
+      "duration_ms": 39687,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-12T17-08-23-913Z_sap_SAP_SuccessFactors_2H_2026_Release__Delivering_the.json",
+      "writer_output": "WRITER_2026-10-12T17-08-23-913Z_sap_SAP_SuccessFactors_2H_2026_Release__Delivering_the.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0209457,
+      "duration_ms": 20024,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-12T17-08-23-913Z_sap_SAP_Advances_Finance_Operations_with_Embedded_Paym.json",
+      "writer_output": "WRITER_2026-10-12T17-08-23-913Z_sap_SAP_Advances_Finance_Operations_with_Embedded_Paym.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00991848,
+      "duration_ms": 37580,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-10-13T04:29:32.680Z",
+  "duration_seconds": 129.393
+}

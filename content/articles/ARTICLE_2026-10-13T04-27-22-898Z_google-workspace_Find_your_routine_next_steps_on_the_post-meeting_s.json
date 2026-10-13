@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "written_at": "2026-10-13T04:27:53.837Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.005152464,
+    "original_draft": "2026-10-13T04-27-22-898Z_google-workspace_Find_your_routine_next_steps_on_the_post-meeting_s.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/10/find-your-routine-next-steps-on-post-meeting-screen-in-Google-Meet.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/10/find-your-routine-next-steps-on-post-meeting-screen-in-Google-Meet.html",
+      "http://workspaceupdates.googleblog.com/2026/10/google-meet-now-uses-post-quantum-cryptography.html"
+    ],
+    "source_snippet": "We are introducing next steps in Google Meet. Powered by Gemini and Workspace Studio, our new capability allows users to automate repetitive post-meeting tasks directly within Google Workspace. Next steps help you transform meeting discussions into definitive actions, like drafting follow-up emails in Gmail or exporting action items to Google Tasks.\nDuring busy work days, meetings are frequently just one part of an expanding workflow. Without the right integrations, capturing decisions and executing on follow-up tasks requires manual data entry that leads to context fragmentation and wasted time.\nOn your post-meeting screen, look for the section titled, “Routines for this meeting,”  where you can enable next steps with one tap. “Take notes for me” must be enabled during the meeting for any next steps to appear. This works for both one-off or recurring meetings, and users can enable a specific next step across all of their meetings (when “Take notes for me” is turned on).\nWe are starting out with just two routine next steps, draft a follow-up email and add action items to Google Tasks. However, there are several more soon on the way, so be on the lookout!\n\n\n\n\n\nDraft a followup email or export your action items to Google Tasks on the Google Meet post-call page after a one-off meeting\n\n\n\n\n\nYou can also complete your next steps after a recurring meeting\n\nGetting started\n\n\nAdmins: This feature will be ON by default and can be disabled at the domain/OU/group level via the Workspace\n\n---\n\nCalls in Google Meet will use post-quantum cryptography (PQC) for extra protection, starting now with laptop web clients and meeting room hardware, with mobile support coming soon. There are no visible changes, and you can continue using Meet normally. The updated encryption protects your data against potential future quantum computer threats.\nThe expansion of PQC to all Meet calls will help to secure infrastructure and services against the potential threat of a future cryptographically relevant quantum computer. No such computer exists today; however this change helps protect today's Meet traffic from the theoretical risk of being harvested and decrypted by a future quantum computer, an approach commonly referred to as Store Now, Decrypt Later.\nGoogle Meet has used quantum-safe encryption previously for client-side encrypted calls (CSE).\nGoogle automatically implements all necessary updates to benefit all Meet hosts and participants. Administrators and end users don't need to take any action.\n\nGetting started\n\n\nAdmins: There is no admin control for this feature.\nEnd users: There is no end user setting for this feature. Visit the Help Center to learn more about call & meeting encryption in Google Meet.\n\n\nRollout pace\n\n\nRapid Release and Scheduled Release domains: Gradual rollout (up to 15 days for feature visibility) starting on Oct 12 for web and room hardware\n\n\nAvailability\n\n\nAvailable to all Google Workspace customers, Workspace Individual subscribers, and users wit",
+    "merged_from": 2,
+    "merged_theme": "Google Meet feature updates: AI next steps and post-quantum cryptography",
+    "status": "published",
+    "published_at": "2026-10-13T04:30:47.895Z",
+    "slug": "google-meet-gets-a-new-after-meeting-helper-and-quantum-safe-encryptio",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 62 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 953
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hooks, solid technical explanations in plain language, and a useful 'What this means for you' section. No prohibited content, no invented facts, no clichés. Minor subtitle redundancy (Quantum-Safe vs post-quantum) but the body text properly explains both terms as synonymous. Ready to publish.",
+      "_aiCost": 0.0015441,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-13T04:31:13.833Z",
+    "guide_worthy": true,
+    "related_guide_topic": "gemini-getting-started",
+    "image_v": 2,
+    "image_at": "2026-10-13T04:38:13.538Z",
+    "seo": {
+      "meta_description": "Google Meet adds AI helper that drafts follow-up emails and moves action items to Google Tasks, plus post-quantum encryption for privacy.",
+      "keywords": [
+        "Google Meet features",
+        "Google Meet AI",
+        "post-quantum encryption",
+        "quantum-safe encryption",
+        "Google Tasks",
+        "meeting productivity",
+        "Google Meet updates"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add the specific timeframe (when these features rolled out) to the title or intro for better freshness signals",
+        "Consider adding '2024' or '2025' to keywords to capture time-specific searches",
+        "The subtitle could include 'post-quantum encryption' as a secondary keyword for additional SERP coverage"
+      ],
+      "optimised_at": "2026-10-13T04:38:47.357Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Google Meet Gets a New After-Meeting Helper and Quantum-Safe Encryption\"\nsubtitle: \"Two quiet updates that change how your calls wrap up and how your conversations stay private.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"google-meet\", \"workspace\", \"productivity\", \"security\", \"encryption\"]\n---\n\n# Google Meet Gets a New After-Meeting Helper and Quantum-Safe Encryption\n\n> **In short:** Google Meet is rolling out \"next steps,\" an AI helper that drafts a follow-up email or moves action items into Google Tasks right after a call, and the service is also switching on post-quantum encryption to protect calls from future threats. No setup is needed for the encryption; the AI helper requires Google's \"Take notes for me\" to be on.\n\nIf your day looks back-to-back, you know the worst part is rarely the meeting itself — it's the twenty minutes after. You scrounge through notes, write \"circle back\" to three people, and hope you remember who said what. Google is trying to give those twenty minutes back to you, and quietly, in the background, harden the calls themselves against a threat most people have never heard of.\n\nLet's look at both updates together, because they tell one simple story: meetings should end with a clear next move, and the conversation in them should stay private.\n\n## Meet now has an \"after-meeting\" screen that does the follow-up\n\nWhen a Google Meet call wraps up, you'll see a new section called **Routines for this meeting** on the post-call page. Google says this section is powered by Gemini (Google's AI assistant) and Workspace Studio, and it offers two routine next steps at launch:\n\n- **Draft a follow-up email** — pulled from the meeting and prepared in Gmail\n- **Add action items to Google Tasks** — the to-do list tool inside Google Workspace\n\nAccording to Google's announcement, you enable these with a single tap. There is one important catch: **Take notes for me** has to be turned on during the meeting for any next steps to appear on the post-call screen. If that AI notetaker wasn't running, nothing shows up.\n\nThe feature works for both one-off meetings and recurring ones. You can also pick one routine and apply it across every meeting you join, as long as notes are being taken. Google says more routines are coming, though it hasn't listed which ones.\n\nFor a quick definition: a \"routine\" here is just a small automated job — a pre-set task that runs after a trigger. Think of it like a shortcut on your phone: one tap, several steps happen in a row.\n\n## Meet is also rolling out post-quantum encryption\n\nThe second update is invisible to users, and that's the point. Google Meet is switching to **post-quantum cryptography** — a new kind of data scrambling designed to resist attacks from future quantum computers, which could one day break today's encryption. (Quantum computers are a different kind of machine that can solve certain math problems far faster than regular computers; PQC is the math we use today to stay ahead of that future risk.)\n\nGoogle says the upgrade is starting now on **laptop web clients and meeting room hardware**, with mobile support coming soon. The company also notes this protects against an attack pattern sometimes called \"Store Now, Decrypt Later,\" where someone records encrypted traffic today in the hope of unlocking it years from now with a powerful quantum machine.\n\nIf this sounds abstract, here's the human version: the audio and video flowing through Meet is being wrapped in a stronger lock. Nobody needs to install anything. Google says administrators and end users don't have to take any action — the rollout is automatic, and there's no admin setting to flip.\n\nThe company also points out this is an expansion: Meet had already used quantum-safe encryption for client-side encrypted calls (a privacy mode where the meeting keys stay on the participants' devices), and this rollout brings the same protection to all Meet calls.\n\n## What this means for you\n\n- **If you live in meetings**: turn on **Take notes for me** before your next call. Without it, none of the new follow-up helpers will appear, and you'll get the old, empty post-call screen.\n- **If you manage a team or run a project**: even one saved routine — say, always pushing action items into Tasks — adds up. Across a week of calls, that one toggle is roughly the time of one meeting you no longer have to summarize.\n- **If you handle anything sensitive** (client calls, hiring, health, money): the encryption update is a quiet upgrade to the security of every call, with no work on your end. Worth knowing it's there when customers ask how their data is protected.\n- **If you work in IT or admin**: confirm that the feature is on for your domain — Google says it will be ON by default and can be turned off at the domain, OU, or group level if needed. The encryption change has no admin control.\n- **If you already use Meet's notes**: try this — after your next call, instead of scrolling through the transcript, hit the new section and let it draft the follow-up. You'll get a draft you can edit in seconds, rather than a blank email and a half-remembered to-do.\n\n## Wrap-up\n\nTwo small changes, one big idea: meetings should end with the work already half-done, and the conversations in them should be private by default. If you use Google Meet, the encryption upgrade arrives on its own — nothing to click. The post-meeting helpers just need one switch flipped ahead of time. Turn on **Take notes for me** at your next call, and the rest will be waiting on the screen when you hang up.",
+  "original_title": "Find your routine next steps on the post-meeting screen in Google Meet"
+}
