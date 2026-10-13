@@ -1,16 +1,4 @@
 {
-  "2026-09-16": [
-    {
-      "at": "2026-09-16T02:23:40.592Z",
-      "file": "WRITER_2026-09-16T02-14-52-457Z_google-workspace_Gmail_Search_s_AI_Overviews_now_available_globally.json",
-      "action": "block",
-      "reasons": [
-        "Tool and Company fields are empty in the article metadata despite the article being about a Google/Gmail/Gemini product — while not strictly a fabrication, the article's specific claim that MCP (Model Context Protocol) is the standard connecting Gemini in Workspace to Asana, HubSpot, Salesforce, etc., and that Gemini now talks to these apps via MCP, presents a specific technical attribution that should be verified — MCP is a real Anthropic-developed protocol, but attributing a 'new' MCP rollout to Gemini in Workspace connecting to these specific listed third-party apps is a specific factual claim I cannot verify.",
-        "The article states AI Overviews in Gmail search are rolling out to 'paid Google Workspace users worldwide' and were 'previously U.S.-only' — this is a specific availability claim presented as fact about a Google product feature that requires verification against Google's official announcements."
-      ],
-      "confidence": 4
-    }
-  ],
   "2026-09-18": [
     {
       "at": "2026-09-18T02:15:10.042Z",
@@ -256,6 +244,21 @@
         "Confidence: 9 — the source is explicitly labeled as AWS, the article repeatedly and falsely attributes the playbook to Google."
       ],
       "confidence": 9
+    }
+  ],
+  "2026-10-13": [
+    {
+      "at": "2026-10-13T15:25:23.962Z",
+      "file": "WRITER_GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "action": "block",
+      "reasons": [
+        "Step 4 fabricates a specific voice command flow: 'Alexa, walk me through this recipe' followed by reading a URL aloud, or 'Alexa, read me this recipe' followed by pasting steps. Alexa+ does not have a documented recipe-walking feature triggered by these specific phrasings, and the article presents these as if they are confirmed flows. The behaviors described (repeating ingredients, asking 'are you ready to start', responding to 'next', 'pause', 'resume', 'repeat that', 'what step am I on?', 'go back one step', 'skip to the last step') are not verified Alexa+ features.",
+        "Step 8 fabricates the command 'Alexa, save this recipe' to save within the Alexa app and 'Alexa, send this recipe to my phone' to receive a text version, presented as features that exist on Alexa+ devices.",
+        "Step 1 instructs the user to look for a specific 'banner, badge, or label that says \"Alexa+\"' on a device's page in the Alexa app, presented as the way to verify Alexa+ is active. This UI element as described is not verified to exist in the Alexa app.",
+        "Step 2 instructs the user to 'read the URL aloud' for Alexa+ to use a webpage recipe. There is no verified Alexa+ feature that fetches a recipe from a URL spoken aloud by the user.",
+        "Step 7 fabricates that Alexa+ can convert metric measurements on the fly during a recipe session and resume the recipe with 'continue' at the same step, as a specific Alexa+ capability."
+      ],
+      "confidence": 7
     }
   ]
 }

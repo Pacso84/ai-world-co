@@ -1,142 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179174637550991",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-11T19:19:35.509Z",
-      "updated": "2026-10-11T19:19:35.695Z"
-    },
-    {
-      "id": "t179174637569737",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-11T19:19:35.697Z",
-      "updated": "2026-10-11T19:19:35.885Z"
-    },
-    {
-      "id": "t179174637588826",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-11T19:19:35.888Z",
-      "updated": "2026-10-11T19:19:36.122Z"
-    },
-    {
-      "id": "t179174637622122",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-11T19:19:36.221Z",
-      "updated": "2026-10-11T19:19:36.410Z"
-    },
-    {
-      "id": "t17917463764120",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-11T19:19:36.412Z",
-      "updated": "2026-10-11T19:19:36.655Z"
-    },
-    {
-      "id": "t179174637665796",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-11T19:19:36.657Z",
-      "updated": "2026-10-11T19:19:36.879Z"
-    },
-    {
-      "id": "t179174637688182",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-11T19:19:36.881Z",
-      "updated": "2026-10-11T19:19:50.095Z"
-    },
-    {
-      "id": "t179174639009787",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-11T19:19:50.097Z",
-      "updated": "2026-10-11T19:20:20.490Z"
-    },
-    {
-      "id": "t179174812215981",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-11T19:48:42.159Z",
-      "updated": "2026-10-11T19:48:42.298Z"
-    },
-    {
-      "id": "t179174812230023",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-11T19:48:42.300Z",
-      "updated": "2026-10-11T19:49:10.431Z"
-    },
-    {
-      "id": "t179174815043282",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-11T19:49:10.432Z",
-      "updated": "2026-10-11T19:49:10.592Z"
-    },
-    {
-      "id": "t17917481505932",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-11T19:49:10.593Z",
-      "updated": "2026-10-11T19:49:10.742Z"
-    },
-    {
-      "id": "t179174815074370",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-11T19:49:10.743Z",
-      "updated": "2026-10-11T19:49:10.891Z"
-    },
-    {
-      "id": "t17917481508944",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-11T19:49:10.894Z",
-      "updated": "2026-10-11T19:49:11.074Z"
-    },
-    {
-      "id": "t179174815116065",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-11T19:49:11.160Z",
-      "updated": "2026-10-11T19:49:11.310Z"
-    },
-    {
-      "id": "t179174815131240",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-11T19:49:11.312Z",
-      "updated": "2026-10-11T19:49:11.509Z"
-    },
-    {
-      "id": "t179174815151155",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-11T19:49:11.511Z",
-      "updated": "2026-10-11T19:49:11.843Z"
-    },
-    {
       "id": "t179174815186674",
       "title": "Run designer",
       "status": "done",
@@ -479,57 +343,145 @@
       "agent": "publisher",
       "created": "2026-10-13T04:39:04.374Z",
       "updated": "2026-10-13T04:39:32.946Z"
+    },
+    {
+      "id": "t179190505186257",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-13T15:24:11.862Z",
+      "updated": "2026-10-13T15:24:12.022Z"
+    },
+    {
+      "id": "t179190505202433",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-13T15:24:12.024Z",
+      "updated": "2026-10-13T15:24:12.225Z"
+    },
+    {
+      "id": "t179190505222653",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-13T15:24:12.226Z",
+      "updated": "2026-10-13T15:24:12.394Z"
+    },
+    {
+      "id": "t179190505239766",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-13T15:24:12.397Z",
+      "updated": "2026-10-13T15:24:56.125Z"
+    },
+    {
+      "id": "t179190509612766",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-13T15:24:56.127Z",
+      "updated": "2026-10-13T15:25:53.472Z"
+    },
+    {
+      "id": "t179190515347455",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-13T15:25:53.474Z",
+      "updated": "2026-10-13T15:27:27.394Z"
+    },
+    {
+      "id": "t179190524739649",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-13T15:27:27.396Z",
+      "updated": "2026-10-13T15:28:23.543Z"
+    },
+    {
+      "id": "t179190530354651",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-13T15:28:23.546Z",
+      "updated": "2026-10-13T15:29:29.274Z"
+    },
+    {
+      "id": "t179190536927677",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-13T15:29:29.276Z",
+      "updated": "2026-10-13T15:29:51.389Z"
+    },
+    {
+      "id": "t179190539139296",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-13T15:29:51.392Z",
+      "updated": "2026-10-13T15:31:03.810Z"
+    },
+    {
+      "id": "t179190546381266",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-13T15:31:03.812Z",
+      "updated": "2026-10-13T15:31:54.053Z"
+    },
+    {
+      "id": "t179190551405526",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-13T15:31:54.055Z",
+      "updated": "2026-10-13T15:31:54.272Z"
+    },
+    {
+      "id": "t179190551437997",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-13T15:31:54.379Z",
+      "updated": "2026-10-13T15:35:49.780Z"
+    },
+    {
+      "id": "t179190574983289",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-13T15:35:49.832Z",
+      "updated": "2026-10-13T15:36:23.704Z"
+    },
+    {
+      "id": "t179190578370624",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-13T15:36:23.706Z",
+      "updated": "2026-10-13T15:36:55.625Z"
+    },
+    {
+      "id": "t179190581562717",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-13T15:36:55.627Z",
+      "updated": "2026-10-13T15:37:23.383Z"
+    },
+    {
+      "id": "t17919058433842",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-13T15:37:23.384Z",
+      "updated": "2026-10-13T15:37:52.549Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179025533982733",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0199).",
-      "agent": "ceo",
-      "at": "2026-09-24T13:08:59.827Z",
-      "loud": false
-    },
-    {
-      "id": "n17902553686930",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs meg az útmutató-szerkezet): \"Ask plain-English questions about a lo",
-      "agent": "fact-check",
-      "at": "2026-09-24T13:09:28.693Z",
-      "loud": false
-    },
-    {
-      "id": "n179030396023155",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-09-25T02:39:20.231Z",
-      "loud": false
-    },
-    {
-      "id": "n179030397994711",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). **Publish Summary:**\n\nThe lineup has solid, practical appeal — these are exactly the kinds of real-life tasks people want help with. One note: the mix of AI tools (DeepSeek, ChatRTX, Grok, ChatGPT, Co",
-      "agent": "publisher",
-      "at": "2026-09-25T02:39:39.947Z",
-      "loud": false
-    },
-    {
-      "id": "n179030399793914",
-      "level": "success",
-      "text": "4 hír + 1 útmutató publikálva (költség: $0.0877).",
-      "agent": "ceo",
-      "at": "2026-09-25T02:39:57.939Z",
-      "loud": false
-    },
-    {
-      "id": "n179039033486119",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 8.4/10).",
-      "agent": "seo",
-      "at": "2026-09-26T02:38:54.861Z",
-      "loud": false
-    },
     {
       "id": "n179039035133966",
       "level": "success",
@@ -1281,135 +1233,57 @@
       "agent": "ceo",
       "at": "2026-10-13T04:39:32.992Z",
       "loud": false
+    },
+    {
+      "id": "n179190507668176",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — az Ellenőrző tényt/fo",
+      "agent": "guide",
+      "at": "2026-10-13T15:24:36.681Z",
+      "loud": false
+    },
+    {
+      "id": "n179190509611787",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to send a quick voice message to a family member's Echo with Alexa+\" — az Ellenőrző tényt/forrást ké",
+      "agent": "guide",
+      "at": "2026-10-13T15:24:56.117Z",
+      "loud": false
+    },
+    {
+      "id": "n179190546380213",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — az Ellenőrző tényt/fo",
+      "agent": "guide",
+      "at": "2026-10-13T15:31:03.802Z",
+      "loud": false
+    },
+    {
+      "id": "n179190581561812",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 7.5/10).",
+      "agent": "seo",
+      "at": "2026-10-13T15:36:55.618Z",
+      "loud": false
+    },
+    {
+      "id": "n17919058546556",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — practical, everyday use cases that show real people how to use AI tools for things they actually need: workplace emails, job applications, personal agreements, and k",
+      "agent": "publisher",
+      "at": "2026-10-13T15:37:34.655Z",
+      "loud": false
+    },
+    {
+      "id": "n179190587260184",
+      "level": "success",
+      "text": "0 hír + 2 útmutató publikálva (költség: $0.0242).",
+      "agent": "ceo",
+      "at": "2026-10-13T15:37:52.601Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179030366233177",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How invideo improves color grading 3x with GPT‑6 Astra\" (?/10)",
-      "ref": "2026-09-24T02-06-54-285Z_openai-blog_How_invideo_improves_color_grading_3x_with_GPT_6_A.json",
-      "at": "2026-09-25T02:34:22.331Z"
-    },
-    {
-      "id": "m179030368841152",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Draft mode for Seedance 2.5: preview in 480p, deliver in 1080p\" (?/10)",
-      "ref": "2026-09-25T02-23-56-385Z_picsart_Draft_mode_for_Seedance_2_5__preview_in_480p__deli.json",
-      "at": "2026-09-25T02:34:48.411Z"
-    },
-    {
-      "id": "m179030371277835",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Edit updates, thumbnail previews, and more\" hír a meglévő útmutatóra mutat: generate-unique-profile-pictures-for-social-media-with-midjo",
-      "ref": "generate-unique-profile-pictures-for-social-media-with-midjo",
-      "at": "2026-09-25T02:35:12.778Z"
-    },
-    {
-      "id": "m179030397322817",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-25T02:39:33.228Z"
-    },
-    {
-      "id": "m179030410224396",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a clear project status update for your team \" — The specific URL 'chat.deepseek.com' as the guaranteed access point; The exact 'New Chat' button name and location in the UI",
-      "ref": "ARTICLE_GUIDE_draft-a-clear-project-status-update-for-your-team-with-deeps.json",
-      "at": "2026-09-25T02:41:42.243Z"
-    },
-    {
-      "id": "m179030470501484",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-25T02:51:45.014Z"
-    },
-    {
-      "id": "m179038994937537",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Recraft V4.1 Flash: the fastest image model on the market\" — mi a baj: The article states Recraft's V4.1 Flash 'can return a finished picture so quickly that you can react, tweak your prompt, and try again' and that 'some models take 30 seconds to a couple of minutes. The fastest ones come back so quickly…' — these specific timing claims and the trade-off characterization (s",
-      "ref": "2026-09-26T02-28-17-332Z_picsart_Recraft_V4_1_Flash__the_fastest_image_model_on_the.json",
-      "at": "2026-09-26T02:32:29.375Z"
-    },
-    {
-      "id": "m17903899819415",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Recraft V4.1 Flash: the fastest image model on the market\" — javítva: The article states Recraft's V4.1 Flash 'can return a finished picture so quickly that you can react, tweak your prompt, and try again' and that 'some models take 30 seconds to a couple of minutes. The fastest ones come back so quickly…' — these specific timing claims and the trade-off characterization (softer/less",
-      "ref": "2026-09-26T02-28-17-332Z_picsart_Recraft_V4_1_Flash__the_fastest_image_model_on_the.json",
-      "at": "2026-09-26T02:33:01.941Z"
-    },
-    {
-      "id": "m179039000518475",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Recraft V4.1 Flash: the fastest image model on the market\" (?/10)",
-      "ref": "2026-09-26T02-28-17-332Z_picsart_Recraft_V4_1_Flash__the_fastest_image_model_on_the.json",
-      "at": "2026-09-26T02:33:25.184Z"
-    },
-    {
-      "id": "m179039009064857",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to write a warm thank-you note after a job interview tonight\" — mi a baj: LEDE_TOO_LONG: A RÖVIDEN-doboz 67 szó (max ~45) — ami hosszú, az már nem \"röviden\".; HOWTO_TOO_LONG: 1840 szó (~9.2 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; Beginner clarity too low (7/10): steps are vague or could mislead ",
-      "ref": "GUIDE_how-to-write-a-warm-thank-you-note-after-a-job-interview-ton.json",
-      "at": "2026-09-26T02:34:50.649Z"
-    },
-    {
-      "id": "m179039034203815",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-26T02:39:02.038Z"
-    },
-    {
-      "id": "m179039096473430",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-26T02:49:24.734Z"
-    },
-    {
-      "id": "m17904260665553",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \" AI is the new starting point for work, but finishing it still requires a manual \"last mile\" \" — mi a baj: Article references 'a study of more than 500 US knowledge workers' but provides no citation or link back to the source Dropbox study at the given URL",
-      "ref": "2026-09-24T02-07-47-678Z_dropbox-blog__AI_is_the_new_starting_point_for_work__but_finish.json",
-      "at": "2026-09-26T12:34:26.555Z"
-    },
-    {
-      "id": "m179042608949817",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \" AI is the new starting point for work, but finishing it still requires a manual \"last mile\" \" — javítva: Article references 'a study of more than 500 US knowledge workers' but provides no citation or link back to the source Dropbox study at the given URL; Reviewer verdict: Well-structured, friendly, and clear explainer that hits all mandatory elements. The US English is correct, ton",
-      "ref": "2026-09-24T02-07-47-678Z_dropbox-blog__AI_is_the_new_starting_point_for_work__but_finish.json",
-      "at": "2026-09-26T12:34:49.498Z"
-    },
     {
       "id": "m179042610262673",
       "from": "ellenorzo",
@@ -2641,6 +2515,138 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-13T04:51:08.653Z"
+    },
+    {
+      "id": "m179190507667956",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — javítva: LEDE_TOO_LONG: A RÖVIDEN-doboz 67 szó (max ~45) — ami hosszú, az már nem \"röviden\".; HOWTO_TOO_LONG: 1839 szó (~9.2 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; újraküldöm.",
+      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "at": "2026-10-13T15:24:36.679Z"
+    },
+    {
+      "id": "m179190507668110",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Step 5: 'it does not interrupt the recipe audio unless you ask' stated as fact — cannot verify this behavior; readers may experience interruptions on their device",
+      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "open": false,
+      "at": "2026-10-13T15:24:36.681Z",
+      "resolved_at": "2026-10-13T15:31:54.041Z"
+    },
+    {
+      "id": "m179190509611522",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to send a quick voice message to a family member's Echo with Alexa+\" — javítva: UI_CLAIMS_UNSOURCED: 5 konkrét képernyő-feliratot állít tényként forrás nélkül (\"edit name\", \"all devices\", \"communicate\", \"contacts\", …). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; Article relies on Alexa+ which is still rolling out; some readers won't have access ",
+      "ref": "GUIDE_how-to-send-a-quick-voice-message-to-a-family-member-s-echo-.json",
+      "at": "2026-10-13T15:24:56.115Z"
+    },
+    {
+      "id": "m179190509611714",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to send a quick voice message to a family member's Echo with Alexa+\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: UI_CLAIMS_UNSOURCED: 5 konkrét képernyő-feliratot állít tényként forrás nélkül (\"edit name\", \"all devices\", \"communicate\", \"contacts\", …). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").",
+      "ref": "GUIDE_how-to-send-a-quick-voice-message-to-a-family-member-s-echo-.json",
+      "open": false,
+      "at": "2026-10-13T15:24:56.117Z",
+      "resolved_at": "2026-10-13T15:25:53.459Z"
+    },
+    {
+      "id": "m179190512396170",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — mi a baj: HOWTO_TOO_LONG: 2221 szó (~11.1 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; Step 4 fabricates a specific voice command flow: 'Alexa, walk me through this recipe' followed by reading a URL aloud, or 'Alexa, read ",
+      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "at": "2026-10-13T15:25:23.961Z"
+    },
+    {
+      "id": "m17919051534580",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to send a quick voice message to a family member's Echo with Alexa+\" (?/10)",
+      "ref": "GUIDE_how-to-send-a-quick-voice-message-to-a-family-member-s-echo-.json",
+      "at": "2026-10-13T15:25:53.458Z"
+    },
+    {
+      "id": "m179190524738656",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — javítva: HOWTO_TOO_LONG: 2221 szó (~11.1 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; Step 4 fabricates a specific voice command flow: 'Alexa, walk me through this recipe' followed by reading a URL aloud, or 'Alexa, read me this re",
+      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "at": "2026-10-13T15:27:27.386Z"
+    },
+    {
+      "id": "m179190530353533",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — mi a baj: HOWTO_TOO_LONG: 1912 szó (~9.6 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; Step 4 uses vague 'recipe flow' language — clarify whether this is a real built-in feature or just standard text-reading behavior; Minor",
+      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "at": "2026-10-13T15:28:23.535Z"
+    },
+    {
+      "id": "m179190536926672",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — javítva: HOWTO_TOO_LONG: 1912 szó (~9.6 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; Step 4 uses vague 'recipe flow' language — clarify whether this is a real built-in feature or just standard text-reading behavior; újraküldöm.",
+      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "at": "2026-10-13T15:29:29.266Z"
+    },
+    {
+      "id": "m179190539136226",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — mi a baj: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 4 fabricates specific voice commands: 'Alexa, read me the recipe in my notes' and 'Alexa, read this recipe step by step' — these are not confirmed real commands; the company lessons prohibit inv",
+      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "at": "2026-10-13T15:29:51.362Z"
+    },
+    {
+      "id": "m179190546380079",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — javítva: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 4 fabricates specific voice commands: 'Alexa, read me the recipe in my notes' and 'Alexa, read this recipe step by step' — these are not confirmed real commands; the company lessons prohibit inventing spe",
+      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "at": "2026-10-13T15:31:03.800Z"
+    },
+    {
+      "id": "m179190546380266",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Step 4 fabricates specific voice commands: 'Alexa, read me the recipe in my notes' and 'Alexa, read this recipe step by step' — these are not confirmed real commands; the company lessons prohibit inventing specific voice command flows as facts",
+      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "open": false,
+      "at": "2026-10-13T15:31:03.802Z",
+      "resolved_at": "2026-10-13T15:31:54.041Z"
+    },
+    {
+      "id": "m179190551403979",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" (?/10)",
+      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "at": "2026-10-13T15:31:54.039Z"
+    },
+    {
+      "id": "m179190584337568",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-13T15:37:23.375Z"
     }
   ]
 }
