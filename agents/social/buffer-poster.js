@@ -516,7 +516,18 @@ async function main() {
   console.log('\n' + '─'.repeat(60));
   console.log(`📊 Kiküldve: ${kikuldve} | API-kérés: ${keres}/${NAPI_KERET} napi keret`);
 
+  // 🎵 TIKTOK NAPI SZÁM A RIPORTNAK (2026-10-13, user: „fontos lenne a forgalom miatt!"):
+  // a futás VÉGÉN még egyszer megkérdezzük a Buffert, hány videó ment ki ma — a
+  // napi jelentés ebből ír „🎵 TikTok ma: 3/3" vagy „⚠️ … csak 1/3" sort (core/buffer-guard.js).
+  let tiktokMa = null;
+  const ttCsat = channels.find(c => c.key === 'tiktok');
+  if (ttCsat && ORG && !DRY) {
+    tiktokMa = { nap: new Date().toISOString().slice(0, 10), db: await sentTodayFor(ORG, ttCsat.id), plafon: capFor(CONFIG, 'tiktok') };
+    console.log(`🎵 TikTok ma összesen: ${tiktokMa.db === null ? '?' : tiktokMa.db}/${tiktokMa.plafon}`);
+  }
+
   return {
+    tiktokMa,
     tokenVan: !!token(),
     socialMappa: true,
     csatornaLekerdezes: token() ? 'ok' : 'kihagyva',

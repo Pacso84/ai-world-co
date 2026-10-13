@@ -37,7 +37,7 @@ import { szemantikusSor } from './semantic-guard.js';
 import { latenciaSor } from './ai-latency-guard.js';
 import { futasokLekerdez, sodrodasVizsgalat, sodrodasSor } from './watchdog-drift.js';
 import { linkSor } from './internal-link-guard.js';
-import { bufferSor } from './buffer-guard.js';
+import { bufferSor, tiktokSor } from './buffer-guard.js';
 import { tesztSor } from './test-guard.js';
 import { pdfLetoltesSor } from './pdf-download.js';
 import { partnerKattintasSor } from './affiliate.js';
@@ -691,6 +691,8 @@ async function main() {
     const bufg = JSON.parse(readFileSync(join(ROOT, 'memory', 'buffer-guard.json'), 'utf-8'));
     const sor = bufferSor(bufg);
     if (sor) lines.push(sor);
+    const tt = tiktokSor(bufg);   // 10-13: hány TikTok-videó ment ki ma a 3-ból
+    if (tt) lines.push(tt);
   } catch { /* még nem futott — nem baj */ }
 
   // 🧪 TESZT-ŐRSZEM (2026-09-06). 2026-08-31-én a tény-ellenőrző agent egy ÉLŐ

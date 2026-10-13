@@ -33,7 +33,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, mkdtempSync, rmSync
 import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { bufferProblemak, bufferSor, irBufferGuard, futtatBuffer, GUARD_FAJL } from './buffer-guard.js';
+import { bufferProblemak, bufferSor, irBufferGuard, futtatBuffer, GUARD_FAJL, tiktokSor } from './buffer-guard.js';
 import { szurZajt } from './report-noise.js';
 import { elavultOrszemek, frissessegSor } from './guard-freshness.js';
 
@@ -375,6 +375,24 @@ t('🔒 a valódi memory/buffer-guard.json érintetlen maradt', () => {
 });
 
 if (GUARD_EREDETI !== null) writeFileSync(VALODI_GUARD, GUARD_EREDETI, 'utf-8');
+
+t('🎵 10-13: TikTok-sor — 3/3 rendben; délután a hiány ⚠️ (a zárósor ezt hibának számolja); régi nap/nincs adat → hallgat', () => {
+  const D = Date.parse('2026-10-13T15:00:00Z'), REGGEL = Date.parse('2026-10-13T06:00:00Z');
+  const g = db => ({ tiktokMa: { nap: '2026-10-13', db, plafon: 3 } });
+  assert.equal(tiktokSor(g(3), D), '🎵 TikTok ma: 3/3 videó kint');
+  assert.match(tiktokSor(g(1), D), /^⚠️ TIKTOK: ma csak 1\/3/, '🔴 a 10-13-i 1/3 délután is csendben maradna');
+  assert.equal(tiktokSor(g(1), REGGEL), '🎵 TikTok ma eddig: 1/3 videó', 'reggel még nem hiba');
+  assert.match(tiktokSor(g(null), D), /^⚠️ TIKTOK: a mai videók száma nem kérdezhető le/);
+  assert.equal(tiktokSor({ tiktokMa: { nap: '2026-10-12', db: 0, plafon: 3 } }, D), '', 'a tegnapi adat nem mai hír');
+  assert.equal(tiktokSor({}, D), '');
+  // az írás tényleg elteszi
+  const tmp = mkdtempSync(join(tmpdir(), 'bg-'));
+  const rec = irBufferGuard(tmp, join, { kikuldve: 1, tiktokMa: { nap: '2026-10-13', db: 2, plafon: 3 } });
+  assert.deepEqual(rec.tiktokMa, { nap: '2026-10-13', db: 2, plafon: 3 });
+  rmSync(tmp, { recursive: true, force: true });
+  const dr = readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'daily-report.js'), 'utf-8');
+  assert.match(dr, /tiktokSor\(bufg\)/, '🔴 a napi jelentés nem írja ki a TikTok-sort');
+});
 
 console.log(bukott === 0
   ? '\n✅ buffer-guard.test: mind a ' + pass + ' eset rendben'

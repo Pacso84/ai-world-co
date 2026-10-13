@@ -134,6 +134,25 @@ export function bufferSor(guard) {
 }
 
 /**
+ * 🎵 A NAPI JELENTÉS TIKTOK-SORA (2026-10-13, user: „remélem most már nem lesz hiba a
+ * tiktok posztoknál, mert fontos lenne a forgalom miatt!"). 10-12-én 0, 10-13-án 1 videó
+ * ment ki a napi 3-ból, és a jelentés egy szót sem szólt róla. Délután (12 UTC után —
+ * addigra a napi 3 kint kell legyen) a hiány ⚠️-vel szól, így a zárósor sem lesz ✅.
+ * Ma nem futott poszter / régi bejegyzés → üres (azt a frissesség-őr jelzi).
+ */
+export function tiktokSor(guard, now = Date.now()) {
+  const tt = guard && guard.tiktokMa;
+  const ma = new Date(now).toISOString().slice(0, 10);
+  if (!tt || tt.nap !== ma || !Number.isFinite(tt.plafon) || tt.plafon <= 0) return '';
+  if (!Number.isFinite(tt.db)) return '⚠️ TIKTOK: a mai videók száma nem kérdezhető le a Buffertől.';
+  if (tt.db >= tt.plafon) return `🎵 TikTok ma: ${tt.db}/${tt.plafon} videó kint`;
+  if (new Date(now).getUTCHours() >= 12) {
+    return `⚠️ TIKTOK: ma csak ${tt.db}/${tt.plafon} videó ment ki — nézd meg a REEL- és BUFFER-sorokat.`;
+  }
+  return `🎵 TikTok ma eddig: ${tt.db}/${tt.plafon} videó`;
+}
+
+/**
  * Feljegyzi, mi történt — a napi riport ebből olvas.
  *
  * SOHA NEM DOB: az állapot-írás hibája nem ronthatja el magát a posztolást
@@ -154,6 +173,11 @@ export function irBufferGuard(ROOT, join, allapot = {}) {
       csatornak: Array.isArray(allapot?.ismertCsatornak) ? allapot.ismertCsatornak : [],
       problems: bufferProblemak(allapot)
     };
+    // 10-13: a TikTok napi darabszáma (a poszter a futás végén kérdezi le a Buffertől).
+    const tt = allapot?.tiktokMa;
+    if (tt && typeof tt.nap === 'string' && Number.isFinite(tt.plafon)) {
+      rec.tiktokMa = { nap: tt.nap, db: Number.isFinite(tt.db) ? tt.db : null, plafon: tt.plafon };
+    }
     writeFileSync(join(dir, GUARD_FAJL), JSON.stringify(rec, null, 2), 'utf-8');
     return rec;
   } catch (e) {
