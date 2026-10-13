@@ -88,4 +88,24 @@ export function laposit(tortenet) {
   return ki;
 }
 
-export default { vegcel, laposit, MAX_LEPES };
+/**
+ * LEJÁRT CÉLÚ ÁTIRÁNYÍTÁSOK TÖRLÉSE (2026-10-13, éles eset): a 90 napos
+ * hír-megőrzés letörölt 2 hírt, és 5 régi cím (összevont duplikátumok) épp
+ * ezekre mutatott → két ugrás után 404. Ha a végcél nem él, a bejegyzés
+ * kimarad: a régi cím így ugyanúgy viselkedik, mint maga a lejárt hír.
+ * @param {object} tortenet  slug-history (régi → új)
+ * @param {(slug:string)=>boolean} el  él-e a cikk
+ * @returns {{tortenet: object, torolt: string[]}}
+ */
+export function lejartCeluakNelkul(tortenet, el) {
+  const ki = {}, torolt = [];
+  if (!tortenet || typeof tortenet !== 'object' || Array.isArray(tortenet)) return { tortenet: ki, torolt };
+  for (const [from, to] of Object.entries(tortenet)) {
+    const cel = vegcel(tortenet, from);
+    if (cel && cel !== from && !el(cel)) { torolt.push(from); continue; }
+    ki[from] = to;
+  }
+  return { tortenet: ki, torolt };
+}
+
+export default { vegcel, laposit, lejartCeluakNelkul, MAX_LEPES };

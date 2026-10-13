@@ -41,6 +41,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { decay, purgeStoreEmbeddings } from './memory-manager.js';
 import { utmutatoE } from './guide-kind.js';
+import { lejartCeluakNelkul } from './redirect-chain.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -236,7 +237,19 @@ function pruneOldNews() {
       if (existsSync(s)) { social++; if (!DRY) { try { unlinkSync(s); } catch { /* jövő körben */ } } }
     }
   }
-  report.push(`📰 lejárt hír törölve: ${doomed.length} cikk · ${kb(bytes)} KB (${NEWS_KEEP_DAYS} napnál régebbi)${social ? ` + ${social} közösségi poszt` : ''} — az útmutatók és összehasonlítások érintetlenek`);
+  // 🔗 A TÖRÖLT HÍRRE MUTATÓ ÁTIRÁNYÍTÁSOK IS MENNEK (2026-10-13, éles eset: 5 régi cím
+  // két ugrás után 404-re futott). Csak a MOST törölt hírekre mutatókat vesszük ki.
+  let atir = 0;
+  try {
+    const hp = join(ROOT, 'content', 'slug-history.json');
+    const toroltek = new Set(doomed.map(x => x.slug).filter(Boolean));
+    if (toroltek.size && existsSync(hp)) {
+      const r = lejartCeluakNelkul(JSON.parse(readFileSync(hp, 'utf-8')), s => !toroltek.has(s));
+      atir = r.torolt.length;
+      if (atir && !DRY) writeFileSync(hp, JSON.stringify(r.tortenet, null, 2) + '\n', 'utf-8');
+    }
+  } catch { /* az átirányítás-takarítás hibája ne állítsa meg a házmestert */ }
+  report.push(`📰 lejárt hír törölve: ${doomed.length} cikk · ${kb(bytes)} KB (${NEWS_KEEP_DAYS} napnál régebbi)${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} rá mutató átirányítás` : ''} — az útmutatók és összehasonlítások érintetlenek`);
 }
 
 // ── 3. ÁRVA BORÍTÓKÉPEK ──────────────────────────────────────────────

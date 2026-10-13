@@ -28,7 +28,7 @@ import assert from 'assert/strict';
 import { readFileSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { vegcel, laposit, MAX_LEPES } from './redirect-chain.js';
+import { vegcel, laposit, lejartCeluakNelkul, MAX_LEPES } from './redirect-chain.js';
 
 // ⚠️ `fileURLToPath`, NEM `.pathname` — Windowson az utóbbi „/C:/AI%20work/…"
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -202,6 +202,15 @@ t('🔌 a build TÉNYLEG a lapított listából írja a _redirects-et', () => {
   // mint egy működő bekötés. Ezért a CIKLUS FORRÁSÁT is nézzük.
   assert.ok(/for \(const \[from, to\] of lapos\)/.test(forras),
     'a _redirects ciklusa nem a LAPÍTOTT listán megy — a lánc kimenne élesbe');
+});
+
+t('🔴 10-13: lejárt (törölt) végcélú átirányítás kimarad, az élő marad; a Házmester ezt használja', () => {
+  const h = { a: 'b', b: 'torolt-hir', c: 'el', x: 'y' };
+  const r = lejartCeluakNelkul(h, s => s === 'el' || s === 'y');
+  assert.deepEqual(r.torolt.sort(), ['a', 'b'], 'a lánc közepe is a törölt hírre fut ki');
+  assert.deepEqual(r.tortenet, { c: 'el', x: 'y' });
+  const hk = readFileSync(join(ROOT, 'core', 'housekeeping.js'), 'utf-8');
+  assert.match(hk, /lejartCeluakNelkul\(/, '🔴 a hír-törlés nem takarítja a rá mutató átirányításokat');
 });
 
 console.log(`\n${bukott === 0 ? '✅' : '❌'} redirect-chain.test: ${pass} rendben, ${bukott} bukott`);
