@@ -1,16 +1,4 @@
 {
-  "2026-09-18": [
-    {
-      "at": "2026-09-18T02:15:10.042Z",
-      "file": "WRITER_2026-09-18T02-04-26-641Z_aws-ml_Reduce_time-to-hire_for_quality_candidates_with_AI.json",
-      "action": "block",
-      "reasons": [
-        "The article describes an AWS hiring tool built inside Amazon Connect that runs structured job interviews for call-center hiring with AI asking questions and scoring candidates. This appears to be a fabricated or inaccurate product feature not currently announced by AWS/Amazon Connect.",
-        "The article describes an AWS open-source 'agent skills' release for medical reasoning that any developer/hospital IT team can download. This is not a verified AWS product or release and appears fabricated."
-      ],
-      "confidence": 3
-    }
-  ],
   "2026-09-19": [
     {
       "at": "2026-09-19T02:11:28.095Z",
@@ -259,6 +247,17 @@
         "Step 7 fabricates that Alexa+ can convert metric measurements on the fly during a recipe session and resume the recipe with 'continue' at the same step, as a specific Alexa+ capability."
       ],
       "confidence": 7
+    }
+  ],
+  "2026-10-14": [
+    {
+      "at": "2026-10-14T02:46:48.081Z",
+      "file": "WRITER_GUIDE_how-to-ask-alexa-for-outfit-suggestions-based-on-the-day-s-w.json",
+      "action": "block",
+      "reasons": [
+        "Az AI-bíró kitalált állítást talált (részletek nélkül)"
+      ],
+      "confidence": null
     }
   ]
 }

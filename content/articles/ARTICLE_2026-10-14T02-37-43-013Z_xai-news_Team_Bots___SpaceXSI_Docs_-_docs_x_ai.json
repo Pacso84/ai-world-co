@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-10-14T02:39:09.135Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01259142,
+    "original_draft": "2026-10-14T02-37-43-013Z_xai-news_Team_Bots___SpaceXSI_Docs_-_docs_x_ai.json",
+    "source_id": "xai-news",
+    "source_name": "xAI (hivatalos, Google News szűrve)",
+    "source_link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBLS00wRjdIcV9yREoyX3hzODFqLWJhbWpxV284YVp6Y2JwbUxsYkhUSkxiQlFvaWctSU56MXBMbmhGRzNWemFEckwySjk?oc=5",
+    "source_links": [
+      "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBLS00wRjdIcV9yREoyX3hzODFqLWJhbWpxV284YVp6Y2JwbUxsYkhUSkxiQlFvaWctSU56MXBMbmhGRzNWemFEckwySjk?oc=5",
+      "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBreW9NbXFuUDUxVmxoZldxMUNZT2ZfZ29NWnl6U1FPMDU0aFI2RENVbXpRdENac29Ed29mNFl5VFRSRmN2anlNVHQxV09rQVU0?oc=5",
+      "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5yZ3FVTW10YjRxc1ZVcllpS29Pd1pwa0tuaEZ2V0trVjFTOEhGZHZWd24yTDdPU0tnNm9Ia29WRzZCZC1nUG8xeC1iY2xFa1FaWjl5eGdBbw?oc=5"
+    ],
+    "source_snippet": "Team Bots | SpaceXSI Docs  docs.x.ai\n\n---\n\nGrok Bot security FAQ  docs.x.ai\n\n---\n\nGrok 4.7 | SpaceXSI Docs  docs.x.ai",
+    "merged_from": 3,
+    "merged_theme": "xAI Grok documentation and features",
+    "status": "published",
+    "published_at": "2026-10-14T02:42:51.187Z",
+    "slug": "xai-s-new-grok-docs-what-regular-users-should-know",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 741
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hook, excellent plain-language definitions of technical terms (model, API, FAQ), practical What this means for you section, and a warm wrap-up with a concrete next step. No prohibited content, no clichés, no invented facts — the article appropriately hedges on Team Bots specifics with 'appears to be' and acknowledges the security FAQ is worth skimming rather than claiming to summarize its contents.",
+      "_aiCost": 0.0015705,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-14T02:43:29.510Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article summarizes three separate documentation pages (Grok 4.7 model, Team Bots, security FAQ) rather than introducing one specific, usable feature",
+    "image_v": 2,
+    "image_at": "2026-10-14T02:52:35.276Z",
+    "seo": {
+      "meta_description": "A plain-English guide to xAI's three new Grok documentation pages covering Grok 4.7, Team Bots, and security FAQ.",
+      "keywords": [
+        "xAI Grok documentation",
+        "Grok 4.7",
+        "Team Bots Grok",
+        "Grok security FAQ",
+        "xAI docs",
+        "Grok chatbot guide",
+        "how to use Grok"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add the publish date in the article to improve freshness signals for search engines",
+        "Include more specific details about what each documentation page actually covers to capture more long-tail search intent",
+        "Consider adding internal links to related AI World HQ articles about xAI or Grok for better site authority"
+      ],
+      "optimised_at": "2026-10-14T02:53:13.413Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"xAI's New Grok Docs: What Regular Users Should Know\"\nsubtitle: \"A plain-English guide to three new official resources covering the Grok 4.7 model, Team Bots, and the security FAQ.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"xai\", \"grok\", \"ai-chatbots\", \"documentation\"]\n---\n\n# xAI's New Grok Docs: What Regular Users Should Know\n\n> **In short:** xAI has added three new pages to its official Grok documentation at docs.x.ai: one on the Grok 4.7 model, one on Team Bots, and a security FAQ for Grok Bot. None of them change the everyday chat, but together they hint at where xAI is heading.\n\nIf you've ever wondered what xAI is building behind the Grok chat window, the company's official documentation site is a good place to look. Three pages there cover very different things, and reading them side by side gives a small but useful picture of where Grok is going next.\n\n## The Grok 4.7 model page\n\nThe first page is dedicated to **Grok 4.7**, which xAI frames as a new model release. A \"model\" is the engine that actually generates answers when you type into the chatbot — when you ask Grok to summarize an article, the model is what does the work. New versions usually bring improvements in reasoning, speed, or the kinds of tasks the AI can handle.\n\nxAI's Grok 4.7 page is aimed at developers who want to plug the model into their own apps through an **API** (a way for two programs to talk to each other). If you're a regular user, you don't need to do anything here. Newer model versions typically roll out to the chat app on their own, and you can keep using Grok the way you always have.\n\n## Team Bots\n\nThe second page covers **Team Bots**. Based on the name and its place in the developer documentation, these appear to be bots designed to work inside a group or shared workspace — somewhere several people can interact with the same automated assistant, rather than each person chatting solo.\n\nThe exact feature set lives in the technical docs, so I can't walk you through specific buttons. But the direction is clear: xAI is investing in tools that go beyond a one-person chat window. If you run a small team, teach a class, or help run a community group, this is the area most likely to grow next.\n\n## The Grok Bot security FAQ\n\nThe third page is a **security FAQ** for Grok Bot. An FAQ is a \"frequently asked questions\" page, and a security FAQ usually answers the practical questions people have when AI moves out of casual use and into work or school: who can see my conversations? Where is my data stored? What happens if a bot gives a wrong answer?\n\nxAI's FAQ exists because, as bots get used in more serious settings, these questions stop being hypothetical. You don't need to read it today, but it's the kind of page worth skimming when you have a quiet moment — knowing a company has written these answers down tells you how seriously it takes the topic.\n\n## What this means for you\n\n- **If you only use Grok for casual chat**: nothing changes today. Model updates like Grok 4.7 usually reach the chat app on their own.\n- **If you run a team, classroom, or community group**: Team Bots is the area to watch. This is where xAI is signaling it wants Grok to live in shared spaces, not just solo conversations.\n- **If you care about privacy and data**: knowing a security FAQ exists is half the answer. The page itself is the other half, and it's written for non-developers too.\n- **If you already use it**: the documentation hub is updated often. The release notes attached to a new model version are the fastest way to find out what your chatbot just got better at — read those first before diving into the rest.\n\n## Wrap-up\n\nThese three pages aren't splashy announcements. They're the quiet kind of update that shows where a product is heading: a newer model, group-friendly bots, and a serious look at security. The next step is simple — if you already use Grok, try a task you do regularly, like drafting an email or summarizing a long article, and notice whether the answers feel sharper than they did a month ago. That's usually the clearest sign a new model is doing its job.",
+  "original_title": "Team Bots | SpaceXSI Docs - docs.x.ai"
+}

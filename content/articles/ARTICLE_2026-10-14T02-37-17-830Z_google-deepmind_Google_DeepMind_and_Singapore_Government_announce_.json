@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-10-14T02:41:02.045Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.0099527,
+    "original_draft": "2026-10-14T02-37-17-830Z_google-deepmind_Google_DeepMind_and_Singapore_Government_announce_.json",
+    "source_id": "google-deepmind",
+    "source_name": "Google DeepMind (hivatalos)",
+    "source_link": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
+    "source_links": [
+      "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/"
+    ],
+    "source_snippet": "Learn how Google DeepMind and GovTech Singapore uses lightweight on-device Gemma models to intercept conversational scams in private chats with zero cloud data egress.",
+    "merged_from": 1,
+    "merged_theme": null,
+    "status": "published",
+    "published_at": "2026-10-14T02:41:24.321Z",
+    "slug": "google-deepmind-s-new-on-device-ai-is-built-to-catch-chat-scams",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 840
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured news piece with clear explanations of on-device AI and cloud data egress, a relatable hook scenario, practical takeaways in What This Means For You, and a solid wrap-up with actionable advice. No prohibited content, no cliches, and factual claims stay within what the official source supports.",
+      "_aiCost": 0.0013677,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-14T02:43:01.914Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a partnership announcement about a tool being developed with Singapore's government - not a currently available product or feature that ordinary people can use today.",
+    "image_v": 2,
+    "image_at": "2026-10-14T02:51:59.398Z",
+    "seo": {
+      "meta_description": "Google DeepMind partners with Singapore's GovTech to build an on-device AI scam detector using Gemma models. Your messages stay private.",
+      "keywords": [
+        "on-device AI scam detection",
+        "Google DeepMind scam detector",
+        "how to stop chat scams",
+        "Gemma AI scam protection",
+        "phone data privacy scam detection",
+        "WhatsApp Telegram scam protection"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'how to detect conversation scams in chat apps' to capture more search intent",
+        "Include the specific benefit message 'messages stay on your device' earlier in the title for better CTR",
+        "Consider adding related terms like 'zero data egress' or 'on-device machine learning' for tech-savvy audiences"
+      ],
+      "optimised_at": "2026-10-14T02:52:47.984Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Google DeepMind's New On-Device AI Is Built to Catch Chat Scams\"\nsubtitle: \"A partnership with Singapore's GovTech uses lightweight Gemma models to spot scam patterns in private messages — without sending your data anywhere.\"\ncategory: \"news\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"ai-news\", \"scam-protection\", \"gemma\", \"on-device-ai\", \"deepmind\", \"privacy\"]\n---\n\n# Google DeepMind's New On-Device AI Is Built to Catch Chat Scams\n\n> **In short:** Google DeepMind and Singapore's GovTech are building an AI scam detector that runs directly on your phone, using lightweight Gemma models to spot conversational scams in private chats with zero cloud data egress. Your messages stay on your device.\n\nPicture this: you're scrolling through WhatsApp or Telegram, and a message pops up. It looks like your bank, a delivery service, or even your kid asking for help. Your heart rate jumps. Is it real? Most scam protection today catches bad links or known scam numbers. But what about the long, friendly chat where a scammer slowly builds your trust before asking for money? That's exactly the kind of scam a new tool from Google DeepMind and GovTech Singapore is built to catch.\n\n## What's actually being announced\n\nGoogle DeepMind and **GovTech Singapore** (the agency that builds government tech for Singapore) are working together on an AI tool that sits on your phone and watches private chat conversations in real time. When a chat starts looking like the opening moves of a scam — fake delivery notices, \"hi mom I changed my number\" tricks, romance setups — the tool flags it before you send money or click a link.\n\nThe headline technical choice: it runs **on-device**, meaning everything happens on your phone. Your messages never leave to be checked somewhere else.\n\n## How \"on-device\" actually works\n\nAn **on-device AI** is a model that lives on your phone or computer and does its thinking right there, instead of calling out to a company's servers (the big remote computers that power most AI tools you use today).\n\nThe model powering this tool is from the **Gemma** family — Google's family of compact AI models designed to run on everyday hardware. The version being used is described as **lightweight**, which means it doesn't need a supercomputer or a fast internet connection to work. It runs on a regular phone, which matters because most scam messages hit phones first.\n\n## Why \"zero cloud data egress\" is the whole point\n\n**Cloud data egress** is a fancy way of saying \"your data leaving your device and traveling to someone else's computer.\" When you use most AI tools, your message goes from your phone, across the internet, into a company's servers, gets analyzed there, and a reply comes back. Along the way, a copy of your message lives on that server.\n\n\"**Zero cloud data egress**\" means: the model does all the analysis on your phone. Nothing gets uploaded. Your messages stay on your device, full stop.\n\nFor a tool that reads your private conversations, that is not a small detail. A scam detector that read every message you sent and stored a copy on a company server would create a privacy problem worse than the scams themselves.\n\n## What this means for you\n\n- **If you get a lot of chat messages**: this on-device approach is the direction the industry is moving. The kind of protection described here — local AI watching for scam patterns without uploading your messages — is what you'll likely see built into phones and chat apps over the next few years.\n- **If a scam has ever caught you off guard**: you're not alone. Conversational scams (the long, chat-based kind) are one of the fastest-growing fraud types, partly because traditional spam filters miss them. Awareness is still your first line of defense — slow down when anyone asks for money, codes, or login info, even if they \"sound\" like someone you know.\n- **If you're privacy-conscious**: on-device is the standard to look for. When any tool offers to \"protect\" you by reading your messages, ask whether the analysis happens on your device or on a company's server. On-device is the better answer.\n- **If you're just curious about AI**: this is a great example of AI doing a narrow, useful job. It doesn't need to be the smartest model in the world — it just needs to recognize \"this conversation looks like a scam opening\" well enough to warn you.\n\n## Wrap-up\n\nGoogle DeepMind and Singapore's GovTech are showing what scam protection can look like when privacy is built in from day one: a lightweight AI that lives on your phone and reads your messages without sending them anywhere. You can't download this tool today — it's a partnership project for Singapore — but the approach it demonstrates is worth paying attention to, because it's almost certainly coming to a chat app near you.\n\nFor now, the single safest habit you can build is also the oldest: pause before you act on any message that asks for money, codes, or login info, no matter how real it sounds.",
+  "original_title": "Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams"
+}
