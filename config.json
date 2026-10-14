@@ -34,6 +34,18 @@
       "days": 60,
       "max_per_run": 25
     },
+    "trends": {
+      "_comment": "2026-10-14 — user ötlete: AI trendkutató. Naponta 1× ingyen gyűjt (Google keresési javaslatok ezekre az alapkérdésekre, Google napi felkapott AI-tételek, saját legolvasottak, content/trend-bing.json) → memory/trendek.json → a hírek sorrendje + napi 1 trend-útmutató az általános hely helyére (a napi 1 középszintű MARAD, user 10-14). enabled:false = azonnal ki (core/trend-kutato.js aktivTrendek). Mérés ~11-11: node core/trend-kutato.js --meres.",
+      "enabled": true,
+      "seeds": [
+        "ai photo trend", "ai photo prompt", "gemini trending prompt", "chatgpt trend", "ai trend",
+        "viral ai", "ai scam", "ai voice clone scam", "deepfake", "how to use chatgpt",
+        "how to use gemini", "how to use claude", "how to use copilot", "how to use meta ai", "how to use notebooklm",
+        "how to use alexa+", "how to use perplexity", "how to use grok", "chatgpt new feature", "gemini new feature",
+        "can ai help", "how to make ai", "ai image generator", "ai video generator", "ai for students",
+        "ai for seniors", "ai for small business", "ai to write", "chatgpt prompt for", "gemini prompt for"
+      ]
+    },
     "_comment": "2026-09-29 — user: középszintű tartalom, visszaállíthatóan. false = régi viselkedés a következő futástól. intermediate_guides: napi 1 középszintű útmutató a 2-ből; news_if_you_use: a hírek 'What this means for you' részében 4. pont ('If you already use it'). Olvassa: core/content-switches.js.",
     "intermediate_guides": true,
     "news_if_you_use": true

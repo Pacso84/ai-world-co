@@ -110,6 +110,7 @@ const NEM_ORSZEM = {
   'torolt-utmutatok.json': 'a törölt útmutatók 30 napos listája az IndexNow-bejelentéshez (core/housekeeping.js → core/indexnow.js) — munkasor; a törlést a Házmester riportsora jelzi',
   'topic-dedup-log.json': 'a témaismétlés-szűrő döntés-naplója — eseménynapló; az őr ÉLETÉT az embed-guard.json méri',
   'traffic-log.json': 'a cikkenkénti forgalom-napló (KIZÁRÓLAG a CI írja) — mérési adat, nem őrszem-lelet',
+  'trendek.json': 'a trendkutató napi témalistája (core/trend-kutato.js) — munkaadat az Írónak és az Útmutató-agentnek; a riport a forrás-kiesést és a 2 napnál régebbi listát jelzi (trendRiportSorok)',
   'translation-cost.json': 'a fordítás futásonkénti költség-átlaga — becsléshez használt mérőszám, nem ellenőrzés',
   'translation-failures.json': 'a fordító újrapróba-számlálója (a sokszor bukó fájl kihagyásához) — belső vezérlés',
   'truth-gate-log.json': 'a hitelesség-kapu döntés-naplója — a riport és a forrás-bizonyítvány összesít belőle; napló',
