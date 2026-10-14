@@ -157,9 +157,17 @@ jobs:
       - name: Tesztek (ingyenes kapuk — a bukás a napi riportba megy)
         # 5 perc: a mért futásidő ~1-2 perc, a maradék a lassú futtatóra.
         # ⚠️ A `core/ci-timeouts.test.js` őrzi, hogy a lépés-korlátok ÖSSZEGE
-        # (most 136) beleférjen a 145 perces job-plafonba 5 perc tartalékkal.
+        # (most 139) beleférjen a 145 perces job-plafonba 5 perc tartalékkal.
         timeout-minutes: 5
         run: node core/run-tests.js --guard || true
+
+      # TRENDKUTATÓ (2026-10-14, user ötlete): mi felkapott ma? Naponta EGYSZER gyűjt (a 3 futásból
+      # az első dolgozik, a többi a 20 órás kapun kihagy), ingyen, AI-hívás nélkül. A CEO ELŐTT
+      # fut, hogy az Író és az Útmutató-agent már a friss listát lássa. A hibája NEM állíthatja
+      # meg a kiadást (|| true); a forrás-kiesést a napi riport jelzi. core/trend-kutato.js
+      - name: Trendkutató (napi 1×, ingyenes)
+        timeout-minutes: 3
+        run: node core/trend-kutato.js || true
 
       - name: Pipeline (hírkeresés + cikk/útmutató írás + ellenőrzés)
         env:

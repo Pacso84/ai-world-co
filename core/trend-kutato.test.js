@@ -4,7 +4,8 @@ import assert from 'node:assert/strict';
 import {
   trendBeallitas, normal, eszkozBenne, marMegirt, szuro, rssTetelek, googleJavaslatok,
   googleFelkapott, sajatTopEszkozok, osszesit, frissE, aktivTrendek, rssAiE, mentendo,
-  trendTalalat, trendElore, maiTrendDb, maiTrendTema, kovetkezoTrendTema, trendFelvetelKell, trendProbaJegyez, trendPrompt
+  trendTalalat, trendElore, maiTrendDb, maiTrendTema, kovetkezoTrendTema, trendFelvetelKell, trendProbaJegyez, trendPrompt,
+  trendRiportSorok, trendMeres, trendekBetolt, bingListaBetolt
 } from './trend-kutato.js';
 
 let pass = 0;
@@ -245,6 +246,42 @@ t('🔌 Útmutató-agent: felvétel naponta 1, a középszintű MARAD, a trend u
   assert.match(s, /\{ generalOnly = false, fokusz = null, trend = null \} = \{\}/);
   assert.match(s, /proposed_by: trend \? 'trend-kutato' : 'guide-ideas'/);
   assert.match(s, /trend: topic\.trend \|\| null,/);
+});
+
+t('riport: a 3 legjobb téma forrással; kiesett forrás ⚠️; régi lista ⚠️; régi Bing-lista 🔁; még nem futott → csend', () => {
+  const s = trendRiportSorok({ ...TR, hibak: ['Google-javaslat: HTTP 429 (letiltott)'] }, { frissitve: '2026-10-14' }, MOST);
+  assert.equal(s[0], '📈 Trend ma: gemini trending photo prompt (Google-javaslat) · can ai help with daily tasks (Bing)');
+  assert.equal(s[1], '⚠️ Trendforrás kiesett: Google-javaslat: HTTP 429 (letiltott)');
+  assert.equal(s.length, 2);
+  assert.match(trendRiportSorok(TR, null, MOST + 3 * NAP)[0], /^⚠️ Trendkutató: a lista 3 napja nem frissült/);
+  assert.match(trendRiportSorok(TR, { frissitve: '2026-08-01' }, MOST).at(-1), /^🔁 Bing AI-lehetőség lista régi \(\d+ nap\)/);
+  assert.deepEqual(trendRiportSorok(null, null, MOST), []);
+  assert.equal(trendRiportSorok({ ...TR, temak: [] }, null, MOST)[0], '📈 Trend ma: nincs a szűrőn átjutó téma');
+});
+
+t('mérés: az első 7 nap belépői, trend vs többi, útmutató és hír külön; a 7 napja még nem teljes cikk kimarad', () => {
+  const nap = n => new Date(MOST - n * NAP).toISOString().slice(0, 10);
+  const days = {};
+  for (let i = 0; i <= 30; i++) days[nap(i)] = [];
+  days[nap(20)].push({ path: '/article/tr1', visits: 12 }, { path: '/article/sima', visits: 2 }, { path: '/hu/article/tr1', visits: 3 });
+  const cikkek = [
+    { slug: 'tr1', published_at: new Date(MOST - 21 * NAP).toISOString(), guide: true, trend: true },
+    { slug: 'sima', published_at: new Date(MOST - 21 * NAP).toISOString(), guide: true, trend: false },
+    { slug: 'friss', published_at: new Date(MOST - 2 * NAP).toISOString(), guide: true, trend: true },
+    { slug: 'regi', published_at: new Date(MOST - 29 * NAP).toISOString(), guide: false, trend: false }
+  ];
+  const m = trendMeres({ cikkek, days, kezdet: nap(25), now: MOST });
+  assert.deepEqual(m.utmutato.trend, { db: 1, atlag: 15, median: 15 });
+  assert.deepEqual(m.utmutato.tobbi, { db: 1, atlag: 2, median: 2 });
+  assert.deepEqual(m.hir.tobbi, { db: 0, atlag: 0, median: 0 }, 'a kezdet előtti cikk nem számít');
+});
+
+t('🔌 napi riport és CI: a riport a trendsorokat kiírja; a CI-lépés a Pipeline ELŐTT, || true-val, 3 perces kerettel', () => {
+  const dr = forras('core/daily-report.js');
+  assert.match(dr, /trendRiportSorok\(trendekBetolt\(\), bingListaBetolt\(\), Date\.now\(\)\)/);
+  const yml = forras('.github/workflows/auto.yml');
+  assert.match(yml, /- name: Trendkutató \(napi 1×, ingyenes\)\n\s*timeout-minutes: 3\n\s*run: node core\/trend-kutato\.js \|\| true/);
+  assert.ok(yml.indexOf('node core/trend-kutato.js') < yml.indexOf('node agents/ceo/agent.js'), '🔴 a trend a CEO UTÁN gyűjtene — aznap már késő');
 });
 
 console.log('\n✅ trend-kutato.test: mind a ' + pass + ' eset rendben');

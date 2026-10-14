@@ -918,6 +918,14 @@ async function main() {
     if (worth.length) lines.push('🧹 HÁZMESTER: ' + worth.join(' · '));
   } catch { /* nem futott — nem baj */ }
 
+  // TRENDKUTATÓ (2026-10-14, user ötlete): mi felkapott ma, és él-e minden forrás.
+  // Ha még sosem futott, csend; ha egy forrás kiesett vagy a lista régi, ⚠️ (a záró sor
+  // ezt hibának számolja — a user ott nézi).
+  try {
+    const { trendRiportSorok, trendekBetolt, bingListaBetolt } = await import('./trend-kutato.js');
+    for (const s of trendRiportSorok(trendekBetolt(), bingListaBetolt(), Date.now())) lines.push(s);
+  } catch { /* a riport ettől még kimegy */ }
+
   // FORRÁS-BIZONYÍTVÁNY (2026-07-22): a külön lépés által kiírt osztályzatokból.
   // Csendes, ha nincs teendő; hangos, ha forrást kapcsoltunk ki vagy elavultból írunk.
   try {

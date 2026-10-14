@@ -377,6 +377,54 @@ export function trendPrompt(t) {
     + `. Only describe features that really exist; if you are not sure a feature exists, choose a general approach that works with any mainstream AI assistant. No comparisons or rankings between products.`;
 }
 
+// ── RIPORT ÉS MÉRÉS ─────────────────────────────────────────────────
+/** A napi Telegram-riport sorai. Ha még sosem futott: csend (üres tömb). */
+export function trendRiportSorok(trendek, bing, now = Date.now()) {
+  const s = [];
+  if (!trendek) return s;
+  const kor = now - Date.parse(trendek.at || 0);
+  if (!(kor <= AKTIV_ORA * 3600e3)) s.push(`⚠️ Trendkutató: a lista ${Math.floor(kor / NAP)} napja nem frissült — a hírek és útmutatók most trend nélkül mennek`);
+  const top = (trendek.temak || []).slice(0, 3).map(t => `${t.kifejezes} (${(t.forras || []).map(f => FORRAS_NEV[f] || f).join('+')})`);
+  s.push(top.length ? '📈 Trend ma: ' + top.join(' · ') : '📈 Trend ma: nincs a szűrőn átjutó téma');
+  for (const h of trendek.hibak || []) s.push('⚠️ Trendforrás kiesett: ' + h);
+  const bk = now - Date.parse(bing?.frissitve || '');
+  if (bk > BING_ELAVULT_NAP * NAP) s.push(`🔁 Bing AI-lehetőség lista régi (${Math.floor(bk / NAP)} nap) — kérd: „frissítsd a Bing-listát"`);
+  return s;
+}
+
+const csoport = a => {
+  if (!a.length) return { db: 0, atlag: 0, median: 0 };
+  const r = a.slice().sort((x, y) => x - y);
+  const med = r.length % 2 ? r[(r.length - 1) / 2] : (r[r.length / 2 - 1] + r[r.length / 2]) / 2;
+  return { db: a.length, atlag: Math.round(10 * a.reduce((x, y) => x + y, 0) / a.length) / 10, median: med };
+};
+
+/** Trend vs többi: az első 7 nap belépői (3 nyelv együtt), a `kezdet` utáni, teljes 7 napos cikkekre. */
+export function trendMeres({ cikkek, days, kezdet = '2026-10-15', now = Date.now() }) {
+  const napok = Object.keys(days || {}).sort();
+  const utolso = napok[napok.length - 1] || '';
+  const v = new Map();
+  for (const [nap, sorok] of Object.entries(days || {})) {
+    for (const r of Array.isArray(sorok) ? sorok : []) {
+      const m = String(r?.path || '').match(/^\/(?:hu\/|es\/)?article\/([^/?#]+)/);
+      if (m) { const x = v.get(m[1]) || []; x.push([nap, Number(r.visits) || 0]); v.set(m[1], x); }
+    }
+  }
+  const ki = { utmutato: { trend: [], tobbi: [] }, hir: { trend: [], tobbi: [] } };
+  for (const c of cikkek || []) {
+    const pub = String(c?.published_at || '').slice(0, 10);
+    if (!pub || pub < kezdet) continue;
+    const vege = new Date(Date.parse(pub) + 7 * NAP).toISOString().slice(0, 10);
+    if (vege > utolso) continue;   // az első 7 nap még nincs meg a naplóban
+    const ossz = (v.get(c.slug) || []).filter(([n]) => n >= pub && n <= vege).reduce((s, [, x]) => s + x, 0);
+    ki[c.guide ? 'utmutato' : 'hir'][c.trend ? 'trend' : 'tobbi'].push(ossz);
+  }
+  return {
+    utmutato: { trend: csoport(ki.utmutato.trend), tobbi: csoport(ki.utmutato.tobbi) },
+    hir: { trend: csoport(ki.hir.trend), tobbi: csoport(ki.hir.tobbi) }
+  };
+}
+
 // ── PARANCSSOR ──────────────────────────────────────────────────────
 //   node core/trend-kutato.js            napi gyűjtés (20 órán belül nem ismétel)
 //   node core/trend-kutato.js --force    gyűjtés mindenképp
@@ -384,6 +432,18 @@ export function trendPrompt(t) {
 if (process.argv[1] && process.argv[1].endsWith('trend-kutato.js')) {
   const arg = process.argv.slice(2);
   (async () => {
+    if (arg.includes('--meres')) {
+      const dir = join(ROOT, 'content', 'articles');
+      const cikkek = readdirSync(dir).filter(x => x.endsWith('.json')).map(f => {
+        const d = jsonBe(join(dir, f)) || {};
+        return { slug: d._meta?.slug, published_at: d._meta?.published_at, guide: utmutatoE(f, d), trend: !!d._meta?.trend };
+      }).filter(c => c.slug);
+      const m = trendMeres({ cikkek, days: jsonBe(join(ROOT, 'memory', 'traffic-log.json'))?.days || {} });
+      const sor = (n, g) => console.log(`   ${n}: trend ${g.trend.db} db · átlag ${g.trend.atlag} · medián ${g.trend.median}  |  többi ${g.tobbi.db} db · átlag ${g.tobbi.atlag} · medián ${g.tobbi.median}  (első 7 nap belépői)`);
+      console.log('📏 TREND-MÉRÉS (2026-10-15 óta megjelent, teljes 7 napos cikkek)');
+      sor('Útmutató', m.utmutato); sor('Hír     ', m.hir);
+      return;
+    }
     const cfg = jsonBe(join(ROOT, 'config.json')) || {};
     const beall = trendBeallitas(cfg);
     if (!beall.be) { console.log('⏭️  Trendkutató: kikapcsolva (config content.trends.enabled).'); return; }
