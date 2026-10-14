@@ -41,6 +41,7 @@ import { valasztHireket, hirBlokk, hirekBetolt, trendBlokk } from '../../core/gu
 import { utmutatoE } from '../../core/guide-kind.js';
 import { tartalomKapcsolok, maiKozepDb, szintSorrend } from '../../core/content-switches.js';
 import { fokuszConfigbol, maiFokuszDb, fokuszElsoHely, fokuszHiany, fokuszOtletPrompt, fokuszCimOk } from '../../core/guide-focus.js';
+import { aktivTrendek, trendFelvetelKell, trendProbaJegyez, maiTrendTema, trendPrompt } from '../../core/trend-kutato.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -137,8 +138,14 @@ function pickTopics(store, args) {
   // KÖZÉPSZINT (2026-09-29, user): napi 1 középszintű a 2-ből → ha ma még nincs,
   // az első középszintű téma ELŐRE kerül; ha már van, mára kimaradnak. Kapcsoló:
   // config.json content.intermediate_guides (core/content-switches.js).
-  const rendezett = szintSorrend(fk.tobbi, { maiKozep: fk.maiKozep, be: kozepBe });
+  // A trend-téma CSAK a saját helyén íródhat (lent) — az általános sorba nem csúszhat be.
+  const rendezett = szintSorrend(fk.tobbi.filter(t => t.priority !== 'trend'), { maiKozep: fk.maiKozep, be: kozepBe });
   if (out.length < args.limit && rendezett[0]?.level === 'intermediate') out.push(rendezett.shift());
+  // TREND (2026-10-14, user: „de a középszintű útmutató maradjon! a napi 1"): naponta 1
+  // trend-téma a fókusz ÉS a középszintű UTÁN, az általános sor ELÉ — vagyis az általános
+  // hely helyére. A napi 2-es keret nem nő: ha a fókusz és a középszintű kitölti, aznap nincs trend.
+  const trendTema = out.length < args.limit ? maiTrendTema(fk.tobbi, metak, maNap) : null;
+  if (trendTema) out.push(trendTema);
   const todo = rendezett.filter(t => t.level !== 'intermediate');   // egy futás legfeljebb 1 középszintűt ír
   const fresh = todo.filter(isFresh);
   const balance = todo.filter(t => !isFresh(t) && isBalanceTopic(t));
@@ -439,7 +446,7 @@ function uniqueId(base, used) {
   return id;
 }
 
-async function proposeNewTopics(count, store, brandContext, { generalOnly = false, fokusz = null } = {}) {
+async function proposeNewTopics(count, store, brandContext, { generalOnly = false, fokusz = null, trend = null } = {}) {
   const existingTitles = new Set(store.topics.map(t => normTitle(t.title)));
   const usedIds = new Set(store.topics.map(t => t.id).filter(Boolean));
   // KÖZELI-TÉMA-ŐR (2026-07-18): a JELENTÉSBEN közeli ötleteket is kiszűrjük,
@@ -472,7 +479,7 @@ async function proposeNewTopics(count, store, brandContext, { generalOnly = fals
 DO NOT repeat or lightly reword any of these EXISTING topics:
 ${sample}
 
-Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, mobile apps, voice, images, spreadsheets, email).${generalOnly || fokusz ? '' : trendBlokk(sajatHirek())}${generalOnly || fokusz ? '' : ' Aim for a healthy mix of general and company-specific.'}${fokusz ? '' : coverageHint}${generalRule}${fokuszOtletPrompt(fokusz)}${szintKeveres()}
+Pick fresh, genuinely useful angles people want (e.g. everyday tasks, study, small business, parents, job hunting, accessibility, safety/privacy, mobile apps, voice, images, spreadsheets, email).${generalOnly || fokusz || trend ? '' : trendBlokk(sajatHirek())}${generalOnly || fokusz || trend ? '' : ' Aim for a healthy mix of general and company-specific.'}${fokusz || trend ? '' : coverageHint}${generalRule}${fokuszOtletPrompt(fokusz)}${trendPrompt(trend)}${szintKeveres()}
 
 BRAND CONTEXT:
 ${brandContext}
@@ -512,7 +519,8 @@ Return ONLY the JSON array (${count + 4} items).`;
       status: 'todo',
       icon: (it.icon || '💡').toString().trim(),
       proposed_at: new Date().toISOString(),
-      proposed_by: 'guide-ideas'
+      proposed_by: trend ? 'trend-kutato' : 'guide-ideas',
+      ...(trend ? { priority: 'trend', trend: { kifejezes: trend.kifejezes, forras: trend.forras, datum: new Date().toISOString().slice(0, 10) } } : {})
     });
     added++;
     if (added >= count) break;
@@ -765,6 +773,7 @@ function saveGuide(topic, response) {
       icon: topic.icon || '',
       level: topic.level || 'beginner',
       source_news: topic.source_news || null,   // hír→útmutató kereszthivatkozáshoz
+      trend: topic.trend || null,                 // trendkutató-jelölés (a méréshez, 2026-10-14)
       written_at: new Date().toISOString(),
       writer_provider: response.provider,
       writer_model: response.model,
@@ -1162,6 +1171,21 @@ async function main() {
 
   const brandContext = loadBrandContext();
   const store = loadTopics();
+  // TREND-TÉMA (2026-10-14, user): naponta EGY téma a trendkutató listájából (core/trend-kutato.js).
+  // Önkorlátozó: ha ma már próbáltuk, vagy vár egy trend-téma, AI-hívás NÉLKÜL továbblép — a
+  // próbát a sikertelen ötletelés után is feljegyezzük, különben a napi 3 futás 3× fizetne érte.
+  try {
+    const tema = trendFelvetelKell(store, aktivTrendek(), Date.now());
+    if (tema) {
+      store.trend_proba = trendProbaJegyez(store.trend_proba, tema.kifejezes, Date.now());
+      const before = store.topics.length;
+      const r = await proposeNewTopics(1, store, brandContext, { trend: tema });
+      saveTopics(store);
+      console.log(r.added > 0
+        ? `📈 Trend-téma felvéve: ${store.topics.slice(before).map(t => t.title).join(' | ')} („${tema.kifejezes}")`
+        : `📈 Trend-téma: „${tema.kifejezes}" — nem született új, nem ismétlő cím (holnap a következő trend jön).`);
+    }
+  } catch (e) { console.log('⚠️ Trend-téma felvétel kimaradt: ' + String(e?.message || e).slice(0, 80)); }
   const topics = pickTopics(store, args);
 
   if (!topics.length) {

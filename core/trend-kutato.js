@@ -307,6 +307,76 @@ export async function gyujt({ beall, fetchFn = fetch, alvas = alvasAlap, ora = D
   return { at: new Date(most).toISOString(), datum: new Date(most).toISOString().slice(0, 10), temak, hibak, bing_frissitve: bing?.frissitve || null };
 }
 
+// ── HATÁS: HÍREK (core) ─────────────────────────────────────────────
+/** Melyik trendhez illik egy cím? Eszköz-egyezés, vagy a kifejezés MINDEN tartalmas szava benne van. */
+export function trendTalalat(cim, trendek) {
+  const c = ` ${normal(cim).replace(/[^a-z0-9+ ]+/g, ' ')} `;
+  for (const t of trendek?.temak || []) {
+    const e = String(t.eszkoz || '').toLowerCase().replace(/\+$/, '');
+    if (e && new RegExp(`[^a-z0-9]${escRx(e)}\\+?[^a-z0-9]`).test(c)) return t.kifejezes;
+    const sz = [...szavak(t.kifejezes)];
+    if (sz.length >= 2 && sz.every(w => c.includes(` ${w} `) || c.includes(` ${w.replace(/s$/, '')} `))) return t.kifejezes;
+  }
+  return null;
+}
+
+/** Stabil átrendezés: a trendhez illő draftok előre, a sorrend egyébként változatlan. */
+export function trendElore(fajlok, trendek, cimOf) {
+  const L = Array.isArray(fajlok) ? fajlok.slice() : [];
+  if (!trendek?.temak?.length) return L;
+  const elol = [], hatul = [];
+  for (const f of L) {
+    let cim = '';
+    try { cim = cimOf(f) || ''; } catch { /* sérült draft: a helyén marad */ }
+    (trendTalalat(cim, trendek) ? elol : hatul).push(f);
+  }
+  return [...elol, ...hatul];
+}
+
+// ── HATÁS: ÚTMUTATÓK (core) ─────────────────────────────────────────
+export const UJRA_NAP = 30;
+
+/** Hány trend-útmutató íródott MA (a _meta.trend + written_at alapján). */
+export function maiTrendDb(metak, ma) {
+  return (Array.isArray(metak) ? metak : []).filter(m => m && m.trend && String(m.written_at || '').startsWith(ma)).length;
+}
+
+/** A mai trend-téma — csak ha ma még nem készült trend-útmutató. */
+export function maiTrendTema(topics, metak, ma) {
+  if (maiTrendDb(metak, ma) > 0) return null;
+  return (Array.isArray(topics) ? topics : []).find(t => t && t.status !== 'done' && t.priority === 'trend') || null;
+}
+
+/** Az első trend, amit az utóbbi UJRA_NAP napban nem próbáltunk. */
+export function kovetkezoTrendTema(trendek, proba, now = Date.now()) {
+  const hatar = now - UJRA_NAP * NAP;
+  const volt = new Set((Array.isArray(proba) ? proba : []).filter(p => Date.parse(p?.at || '') >= hatar).map(p => normal(p.kifejezes)));
+  return (trendek?.temak || []).find(t => !volt.has(normal(t.kifejezes))) || null;
+}
+
+/** Kell-e ma trend-témát felvenni? → a téma, vagy null (ma már próbáltuk / vár egy / nincs lista). */
+export function trendFelvetelKell(store, trendek, now = Date.now()) {
+  if (!trendek?.temak?.length) return null;
+  const ma = new Date(now).toISOString().slice(0, 10);
+  if ((store?.topics || []).some(t => t?.priority === 'trend' && t.status !== 'done')) return null;
+  if ((store?.trend_proba || []).some(p => String(p?.at || '').startsWith(ma))) return null;
+  return kovetkezoTrendTema(trendek, store?.trend_proba, now);
+}
+
+/** A próbálkozás feljegyzése (sikertelen ötletelésnél is) — 60 napnál régebbi kiesik. */
+export function trendProbaJegyez(lista, kifejezes, now = Date.now()) {
+  const hatar = now - 60 * NAP;
+  return [...(Array.isArray(lista) ? lista : []).filter(p => Date.parse(p?.at || '') >= hatar), { kifejezes, at: new Date(now).toISOString() }];
+}
+
+/** Az ötletelő kérésének kiegészítése egy trendhez. */
+export function trendPrompt(t) {
+  if (!t) return '';
+  return `\n\nTREND — real people are searching for this RIGHT NOW: "${t.kifejezes}". Every idea must be a practical, beginner-friendly how-to that answers exactly this need`
+    + (t.eszkoz ? ` using ${t.eszkoz}` : '')
+    + `. Only describe features that really exist; if you are not sure a feature exists, choose a general approach that works with any mainstream AI assistant. No comparisons or rankings between products.`;
+}
+
 // ── PARANCSSOR ──────────────────────────────────────────────────────
 //   node core/trend-kutato.js            napi gyűjtés (20 órán belül nem ismétel)
 //   node core/trend-kutato.js --force    gyűjtés mindenképp

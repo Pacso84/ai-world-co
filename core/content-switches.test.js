@@ -57,7 +57,7 @@ t('🔑 a két író TÉNYLEG ezt a modult kérdezi (és a prompt-szövegek a ka
   // és a fókusszal frissített mai középszintű-számra fut — a kapcsoló ugyanúgy a modulból jön.
   assert.match(g, /const kozepBe = tartalomKapcsolok\(\)\.kozepUtmutato;/);
   assert.match(g, /maiKozep: maiKozepDb\(metak, maNap\), kozepBe/);
-  assert.match(g, /szintSorrend\(fk\.tobbi, \{ maiKozep: fk\.maiKozep, be: kozepBe \}\)/);
+  assert.match(g, /szintSorrend\(fk\.tobbi(?:\.filter\(t => t\.priority !== 'trend'\))?, \{ maiKozep: fk\.maiKozep, be: kozepBe \}\)/);
   assert.match(g, /topic\.level === 'intermediate' \? KOZEP_BLOKK :/);
   assert.match(g, /\$\{szintKeveres\(\)\}/);
   assert.match(g, /LEVEL: INTERMEDIATE[\s\S]{0,1500}ALL clarity and honesty rules still apply/);

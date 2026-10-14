@@ -28,6 +28,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, unlink
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
+import { aktivTrendek, trendElore, trendTalalat } from '../../core/trend-kutato.js';
 import { normalizeArticleMarkdown } from '../../core/markdown-normalize.js';
 import { recallSemantic } from '../../core/memory-manager.js';
 import { skillsBlock } from '../../core/skills.js';
@@ -181,7 +182,13 @@ function listUnprocessedDrafts(filter = null) {
   }
 
   // LEGÚJABB ELÖL — a friss hír megy ki előbb (nem ragad be a régi backlogon)
-  return fresh.sort().reverse();
+  const rendezve = fresh.sort().reverse();
+  // TREND ELŐRE (2026-10-14, user: trendkutató): a felkapott témáról szóló hír kerül előre —
+  // csak a SORREND változik, a napi keret és minden ellenőrzés ugyanaz (core/trend-kutato.js).
+  try {
+    const T = aktivTrendek();
+    return T ? trendElore(rendezve, T, f => JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8')).title) : rendezve;
+  } catch { return rendezve; }
 }
 
 // ===================================================================
@@ -490,6 +497,16 @@ async function ismetlesE(markdown, drafts, theme) {
 // CIKK MENTÉSE
 // ===================================================================
 
+// TREND-JELÖLÉS (2026-10-14): ha a forrás-cím a mai trendlistához illik, a cikk megjelölve
+// megy tovább — a mérés (node core/trend-kutato.js --meres) ebből dolgozik.
+function trendJeloles(lista) {
+  try {
+    const T = aktivTrendek();
+    const k = T && trendTalalat(lista.map(d => d.title || '').join(' · '), T);
+    return k ? { kifejezes: k, datum: T.datum } : null;
+  } catch { return null; }
+}
+
 function saveWrittenArticle(originalDraftFilename, drafts, articleResponse, theme = null) {
   const lista = Array.isArray(drafts) ? drafts : [drafts];
   const fo = lista[0];
@@ -516,6 +533,7 @@ function saveWrittenArticle(originalDraftFilename, drafts, articleResponse, them
       source_snippet: lista.map(d => String(d.content_snippet || '').slice(0, 1500)).filter(Boolean).join('\n\n---\n\n').slice(0, 3000),
       merged_from: lista.length,
       merged_theme: theme || null,
+      trend: trendJeloles(lista),
       status: 'awaiting-review' // → Ellenőrző agent veszi fel
     },
     article_markdown: normalizeArticleMarkdown(articleResponse.text),

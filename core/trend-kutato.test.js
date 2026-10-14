@@ -3,7 +3,8 @@
 import assert from 'node:assert/strict';
 import {
   trendBeallitas, normal, eszkozBenne, marMegirt, szuro, rssTetelek, googleJavaslatok,
-  googleFelkapott, sajatTopEszkozok, osszesit, frissE, aktivTrendek, rssAiE, mentendo
+  googleFelkapott, sajatTopEszkozok, osszesit, frissE, aktivTrendek, rssAiE, mentendo,
+  trendTalalat, trendElore, maiTrendDb, maiTrendTema, kovetkezoTrendTema, trendFelvetelKell, trendProbaJegyez, trendPrompt
 } from './trend-kutato.js';
 
 let pass = 0;
@@ -173,6 +174,77 @@ t('javítás M1: üres + hibás gyűjtés nem írja felül a tegnapi nem üres l
   assert.equal(mentendo({ at: 'y', temak: [], hibak: [] }, regi).at, 'y');
   const uj = { at: 'z', temak: [{ kifejezes: 'c d' }], hibak: ['x'] };
   assert.equal(mentendo(uj, regi), uj);
+});
+
+import { readFileSync as rfs } from 'node:fs';
+const forras = p => rfs(new URL('../' + p, import.meta.url), 'utf-8').replace(/\r\n/g, '\n');
+const TR = { at: new Date(MOST).toISOString(), datum: '2026-10-14', temak: [
+  { kifejezes: 'gemini trending photo prompt', forras: ['google-javaslat'], pont: 25, eszkoz: 'Gemini' },
+  { kifejezes: 'can ai help with daily tasks', forras: ['bing-lehetoseg'], pont: 10, eszkoz: '' }
+] };
+
+t('hír-sorrend: a trendhez illő draft ELŐRE, a többi sorrendje változatlan; trend nélkül semmi nem változik', () => {
+  const cimek = { a: 'OpenAI ships new ChatGPT voice', b: 'Google brings new photo tricks to Gemini app', c: 'SAP finance suite update', d: 'How AI can help with daily tasks at home' };
+  assert.deepEqual(trendElore(['a', 'b', 'c', 'd'], TR, f => cimek[f]), ['b', 'd', 'a', 'c']);
+  assert.deepEqual(trendElore(['a', 'b'], null, f => cimek[f]), ['a', 'b']);
+  assert.deepEqual(trendElore(['x'], TR, () => { throw new Error('sérült draft'); }), ['x']);
+  assert.equal(trendTalalat('SAP finance suite update', TR), null);
+  assert.equal(trendTalalat('Gemini gets a photo editor', TR), 'gemini trending photo prompt');
+});
+
+t('útmutató-hely: napi 1 trend-téma; ha ma már készült trend-útmutató, nincs több', () => {
+  const ma = '2026-10-14';
+  const topics = [{ id: 'k', status: 'todo', level: 'intermediate' }, { id: 'tr', status: 'todo', priority: 'trend' }, { id: 'kesz', status: 'done', priority: 'trend' }];
+  assert.equal(maiTrendTema(topics, [], ma).id, 'tr');
+  const metak = [{ trend: { kifejezes: 'x' }, written_at: ma + 'T03:00:00Z' }];
+  assert.equal(maiTrendDb(metak, ma), 1);
+  assert.equal(maiTrendTema(topics, metak, ma), null);
+  assert.equal(maiTrendTema([{ id: 'k', status: 'todo' }], [], ma), null);
+});
+
+t('🔴 Review Focus 5: téma-felvétel naponta egyszer — sikertelen ötletelés után sem próbál újra aznap; 30 napig nem ismétel', () => {
+  const store = { topics: [] };
+  const elso = trendFelvetelKell(store, TR, MOST);
+  assert.equal(elso.kifejezes, 'gemini trending photo prompt');
+  store.trend_proba = trendProbaJegyez(store.trend_proba, elso.kifejezes, MOST);
+  assert.equal(trendFelvetelKell(store, TR, MOST + 3600e3), null, '🔴 ugyanazon a napon újra AI-hívás menne');
+  const holnap = trendFelvetelKell(store, TR, MOST + NAP);
+  assert.equal(holnap.kifejezes, 'can ai help with daily tasks', 'a már kipróbált kifejezés 30 napig nem jön újra');
+  assert.equal(trendFelvetelKell({ topics: [{ priority: 'trend', status: 'todo' }] }, TR, MOST), null, 'ha már vár egy trend-téma, ne halmozzon');
+  assert.equal(trendFelvetelKell({ topics: [] }, null, MOST), null);
+  assert.equal(kovetkezoTrendTema(TR, [{ kifejezes: 'gemini trending photo prompt', at: new Date(MOST - 40 * NAP).toISOString() }], MOST).kifejezes, 'gemini trending photo prompt', '30 nap után újra jöhet');
+  assert.equal(trendProbaJegyez(null, 'x', MOST).length, 1);
+});
+
+t('ötletelő-prompt: a kifejezés benne van, összehasonlítást tilt, csak létező funkció', () => {
+  const p = trendPrompt(TR.temak[0]);
+  assert.match(p, /"gemini trending photo prompt"/);
+  assert.match(p, /using Gemini/);
+  assert.match(p, /No comparisons/);
+  assert.match(p, /Only describe features that really exist/);
+  assert.equal(trendPrompt(null), '');
+});
+
+t('🔌 Író: a draftok trend szerint rendezve, a cikk _meta.trend-et kap', () => {
+  const s = forras('agents/iro/agent.js');
+  assert.match(s, /import \{ aktivTrendek, trendElore, trendTalalat \} from '\.\.\/\.\.\/core\/trend-kutato\.js';/);
+  assert.match(s, /trendElore\(rendezve, T, f => JSON\.parse\(readFileSync\(join\(DRAFTS_DIR, f\), 'utf-8'\)\)\.title\)/);
+  assert.match(s, /trend: trendJeloles\(lista\),/);
+});
+
+t('🔌 Útmutató-agent: felvétel naponta 1, a középszintű MARAD, a trend utána jön (az általános hely helyére)', () => {
+  const s = forras('agents/guide/agent.js');
+  assert.match(s, /import \{ aktivTrendek, trendFelvetelKell, trendProbaJegyez, maiTrendTema, trendPrompt \} from '\.\.\/\.\.\/core\/trend-kutato\.js';/);
+  assert.match(s, /szintSorrend\(fk\.tobbi\.filter\(t => t\.priority !== 'trend'\), \{ maiKozep: fk\.maiKozep, be: kozepBe \}\)/,
+    '🔴 a középszintű szabálya változott, vagy a nem választott trend-téma az általános sorba csúszna');
+  assert.match(s, /out\.push\(rendezett\.shift\(\)\);\n(?:\s*\/\/[^\n]*\n)*\s*const trendTema = out\.length < args\.limit \? maiTrendTema\(fk\.tobbi, metak, maNap\) : null;/,
+    '🔴 a trend nem a középszintű UTÁN jön (user 10-14: „a középszintű maradjon")');
+  assert.ok(!/trendMa/.test(s), '🔴 a trend kiszorítaná a középszintűt');
+  assert.match(s, /const tema = trendFelvetelKell\(store, aktivTrendek\(\), Date\.now\(\)\);/);
+  assert.match(s, /store\.trend_proba = trendProbaJegyez\(store\.trend_proba, tema\.kifejezes, Date\.now\(\)\);/);
+  assert.match(s, /\{ generalOnly = false, fokusz = null, trend = null \} = \{\}/);
+  assert.match(s, /proposed_by: trend \? 'trend-kutato' : 'guide-ideas'/);
+  assert.match(s, /trend: topic\.trend \|\| null,/);
 });
 
 console.log('\n✅ trend-kutato.test: mind a ' + pass + ' eset rendben');
