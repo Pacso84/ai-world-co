@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, CIMKE } from './ads.js';
+import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, CIMKE, URES_VARAS_MS } from './ads.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 let hiba = 0;
@@ -51,6 +51,40 @@ t('2. szakasz (azonosító + egység): EGY blokk, jelölve, a saját nyelvén', 
   }
   assert.notEqual(CIMKE.en, CIMKE.hu);
   assert.equal(hirdetesBlokk(h, 'xx').includes(CIMKE.en), true, 'ismeretlen nyelv → angol címke');
+});
+
+t('🫥 10-14: ÜRES DOBOZ NEM MARAD — töltve látszik; „unfilled” vagy 8 mp csend után eltűnik', () => {
+  // 10-14 élőben: a személyazonosság-igazolásig a Google 280 px-t foglalt, de hirdetést
+  // nem küldött → minden cikk alján üres „ADVERTISEMENT” sáv. A doboz-kód futtatva:
+  const h = hirdetesBeallitas({ ads: { enabled: true, client: KLIENS, slot: '9876543210' } });
+  const kod = (hirdetesBlokk(h, 'en').match(/<script>(\(function\(a\)[\s\S]*?)<\/script>/) || [])[1];
+  assert.ok(kod, 'nincs láthatóság-kezelő a dobozban');
+  const futtat = () => {
+    const osztaly = new Set(), attr = {};
+    let mo = null, io = null, idozito = null;
+    const ins = { getAttribute: k => attr[k] ?? null };
+    const aside = { querySelector: () => ins, classList: { add: c => osztaly.add(c), remove: c => osztaly.delete(c), contains: c => osztaly.has(c) } };
+    function MO(cb) { mo = cb; this.observe = () => {}; }
+    function IO(cb) { io = cb; this.observe = () => {}; this.disconnect = () => {}; }
+    new Function('window', 'document', 'setTimeout', 'MutationObserver', 'IntersectionObserver', kod)(
+      { MutationObserver: MO, IntersectionObserver: IO }, { currentScript: { parentNode: aside } },
+      (f, ms) => { idozito = { f, ms }; }, MO, IO);
+    return { osztaly, attr, valt: () => mo(), lathato: () => io([{ isIntersecting: true }]), ido: () => idozito };
+  };
+  const tele = futtat(); tele.lathato(); tele.attr['data-ad-status'] = 'filled'; tele.valt(); tele.ido().f();
+  assert.ok(tele.osztaly.has('ad-slot--tele') && !tele.osztaly.has('ad-slot--ures'), '🔴 a megérkezett hirdetés eltűnt');
+  const csend = futtat(); csend.lathato();
+  assert.equal(csend.ido().ms, URES_VARAS_MS);
+  csend.ido().f();
+  assert.ok(csend.osztaly.has('ad-slot--ures'), '🔴 hirdetés nélkül is ott marad az üres doboz');
+  const nincs = futtat(); nincs.attr['data-ad-status'] = 'unfilled'; nincs.valt();
+  assert.ok(nincs.osztaly.has('ad-slot--ures'), '🔴 a Google „nincs hirdetés” jelzése után is látszik');
+  nincs.attr['data-ad-status'] = 'filled'; nincs.valt();
+  assert.ok(nincs.osztaly.has('ad-slot--tele') && !nincs.osztaly.has('ad-slot--ures'), '🔴 a később megjött hirdetés rejtve marad');
+  const css = readFileSync(join(ROOT, 'website', 'assets', 'style.css'), 'utf-8');
+  assert.match(css, /\.ad-slot--ures \{ display: none; \}/, 'a stílus nem rejti el az üres dobozt');
+  assert.match(css, /\.ad-slot__label \{[^}]*visibility: hidden;/, 'a címke hirdetés nélkül is látszik');
+  assert.match(css, /\.ad-slot--tele \.ad-slot__label \{ visibility: visible; \}/, '🔴 a hirdetés CÍMKE NÉLKÜL jelenne meg');
 });
 
 t('🔒 nem számjegyes egység-azonosító → nincs blokk', () => {

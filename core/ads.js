@@ -44,6 +44,15 @@ export function fejKod(h) {
     + `  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${h.kliens}" crossorigin="anonymous"></script>`;
 }
 
+// ── ÜRES DOBOZ NEM MARADHAT (2026-10-14, user: „csak töltve látszódjon") ──
+// Élőben mérve: a személyazonosság-igazolásig a Google 280 px-t lefoglalt, de hirdetést
+// nem küldött, így minden cikk alján üres „ADVERTISEMENT” sáv állt. A Google az <ins>
+// `data-ad-status` attribútumában jelzi az eredményt („filled” / „unfilled”) — de igazolás
+// előtt SEMMIT nem ír, ezért kell az időkorlát is. A dobozt NEM rejtjük el előre: rejtett
+// helyre a Google nem kér hirdetést. Csak a címke és a vonal vár a megérkezésre (style.css).
+/** Ennyi ideig vár a látogató képernyőjén a hirdetésre, mielőtt az üres dobozt elrejti. */
+export const URES_VARAS_MS = 8000;
+
 /** Az EGYETLEN hirdetés-egység a cikk aljára — vagy üres, ha nincs egység. */
 export function hirdetesBlokk(h, lang) {
   if (!h || !h.be || !h.slot) return '';
@@ -52,6 +61,12 @@ export function hirdetesBlokk(h, lang) {
       <p class="ad-slot__label">${cimke}</p>
       <ins class="adsbygoogle" style="display:block" data-ad-client="${h.kliens}" data-ad-slot="${h.slot}" data-ad-format="auto" data-full-width-responsive="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      <script>(function(a){if(!a||!window.MutationObserver)return;var i=a.querySelector('ins.adsbygoogle');if(!i)return;`
+    + `function nez(){var s=i.getAttribute('data-ad-status');if(s==='filled'){a.classList.add('ad-slot--tele');a.classList.remove('ad-slot--ures');}else if(s==='unfilled'){a.classList.add('ad-slot--ures');}}`
+    + `new MutationObserver(nez).observe(i,{attributes:true,attributeFilter:['data-ad-status']});nez();`
+    + `function var_(){setTimeout(function(){if(!a.classList.contains('ad-slot--tele'))a.classList.add('ad-slot--ures');},${URES_VARAS_MS});}`
+    + `if(window.IntersectionObserver){var o=new IntersectionObserver(function(e){if(e[0]&&e[0].isIntersecting){o.disconnect();var_();}});o.observe(a);}else var_();`
+    + `})(document.currentScript&&document.currentScript.parentNode);</script>
     </aside>`;
 }
 
