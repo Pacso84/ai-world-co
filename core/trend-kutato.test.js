@@ -86,6 +86,10 @@ await ta('🔴 Review Focus 3: Google-javaslat — 429-nél megáll, HTML-re és
   assert.match(tiltott.hiba, /429/);
   const html = await googleJavaslatok(['a'], { fetchFn: valasz(200, '<html>consent</html>'), alvas });
   assert.deepEqual(html.talalat, []);
+  assert.match(html.hiba, /használható válasz/, '🔴 a halott/átalakult Google-forrás némán „nincs téma"-nak látszana');
+  const rssUres = await googleFelkapott({ fetchFn: valasz(200, '<rss></rss>') });
+  assert.deepEqual(rssUres.tetelek, []);
+  assert.match(rssUres.hiba, /üres lista/);
   const halo = await googleJavaslatok(['a'], { fetchFn: async () => { throw new Error('ECONNRESET'); }, alvas });
   assert.match(halo.hiba, /hálózati hiba/);
   const felk = await googleFelkapott({ fetchFn: async () => { throw new Error('x'); } });
@@ -280,7 +284,7 @@ t('🔌 napi riport és CI: a riport a trendsorokat kiírja; a CI-lépés a Pipe
   const dr = forras('core/daily-report.js');
   assert.match(dr, /trendRiportSorok\(trendekBetolt\(\), bingListaBetolt\(\), Date\.now\(\)\)/);
   const yml = forras('.github/workflows/auto.yml');
-  assert.match(yml, /- name: Trendkutató \(napi 1×, ingyenes\)\n\s*timeout-minutes: 3\n\s*run: node core\/trend-kutato\.js \|\| true/);
+  assert.match(yml, /- name: Trendkutató \(napi 1×, ingyenes\)\n\s*timeout-minutes: 3\n\s*run: node core\/trend-kutato\.js \|\| true\n\s*continue-on-error: true\n/, '🔴 a lépés időtúllépése kihagyhatná a Pipeline-t');
   assert.ok(yml.indexOf('node core/trend-kutato.js') < yml.indexOf('node agents/ceo/agent.js'), '🔴 a trend a CEO UTÁN gyűjtene — aznap már késő');
 });
 

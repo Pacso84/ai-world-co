@@ -20,6 +20,7 @@ export const SITE = 'https://aiworldhq.com';
 const NAP = 864e5;
 const UTVONAL_RX = /^\/(?:hu\/|es\/)?article\/([^/?#]+)/;
 const GYANUS_ARANY = 0.6;
+export const CSONKA_SOR = 200;   // a core/traffic-log.js ennyi útvonalat kér naponta (limit: 200)
 const datum = t => new Date(t).toISOString().slice(0, 10);
 
 /** config.json content.guide_prune → { be, napok, max }. Csak a kifejezett false kapcsol ki. */
@@ -54,6 +55,9 @@ export function lefedettseg(days, now, ablakNap) {
   for (let i = 0; i < ablakNap; i++) {
     const nap = datum(Date.parse(ig) - i * NAP);
     if (!Array.isArray(days[nap]) || !days[nap].length) return { ok: false, ok_ok: `hiányzó nap a forgalmi naplóban: ${nap}`, ig };
+    // 10-14 végső átnézés: a core/traffic-log.js napi 200 útvonalat kér — a levágott nap olvasott
+    // útmutatót is „olvasatlannak" mutatna.
+    if (days[nap].length >= CSONKA_SOR) return { ok: false, ok_ok: `a forgalmi napló ${nap} napja csonka lehet (${CSONKA_SOR}+ sor — a Cloudflare-lekérés határa)`, ig };
   }
   return { ok: true, ok_ok: '', ig };
 }
@@ -84,8 +88,14 @@ export function torlendok({ cikkek, days, now = Date.now(), ablakNap = 60, max =
 /** A slug minden URL-alakja, amivel más cikkek hivatkozhatnak rá. */
 export function linkAlakok(slug, site = SITE) {
   const ki = [];
-  for (const ny of ['', '/hu', '/es']) ki.push(`${site}${ny}/article/${slug}`, `${ny}/article/${slug}`);
+  for (const ny of ['', '/hu', '/es']) ki.push(`${site}${ny}/article/${slug}`, `${ny}/article/${slug}`, `${site}${ny}/article/${slug}.html`, `${ny}/article/${slug}.html`);
   return ki;
+}
+
+/** Hány útmutatót töröltünk MA (UTC)? A napi keret a CI napi 3 futására együtt vonatkozik. */
+export function maiToroltDb(lista, now = Date.now()) {
+  const ma = new Date(now).toISOString().slice(0, 10);
+  return (Array.isArray(lista) ? lista : []).filter(x => String(x?.at || '').startsWith(ma)).length;
 }
 
 /** A törölt útmutatókra mutató linkek kivétele egy markdownból — a linkszöveg marad. */

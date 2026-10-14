@@ -147,11 +147,12 @@ export async function googleJavaslatok(magok, { fetchFn = fetch, alvas = alvasAl
   const vege = hatarido ?? ora() + OSSZ_IDO_MS;
   const talalat = [];
   let hiba = '';
-  let n = 0;
+  let n = 0, kuldve = 0, hasznalhato = 0;
   for (const mag of (magok || []).slice(0, MAX_LEKERES)) {
     if (ora() > vege) { hiba = 'időkeret elfogyott'; break; }
     if (n++) await alvas(szunetMs);
     let r;
+    kuldve++;
     try {
       r = await fetchFn('https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=' + encodeURIComponent(mag),
         { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(idoMs) });
@@ -160,10 +161,15 @@ export async function googleJavaslatok(magok, { fetchFn = fetch, alvas = alvasAl
     if (r.status >= 500) { hiba = `HTTP ${r.status} (szerverhiba)`; break; }
     if (!r.ok) continue;
     let j; try { j = JSON.parse(await r.text()); } catch { continue; }   // pl. HTML egyetértés-oldal
-    (Array.isArray(j?.[1]) ? j[1] : []).slice(0, 10).forEach((k, i) => {
+    if (!Array.isArray(j?.[1])) continue;
+    hasznalhato++;
+    j[1].slice(0, 10).forEach((k, i) => {
       if (typeof k === 'string' && normal(k) !== normal(mag)) talalat.push({ kifejezes: k, hely: i, mag });
     });
   }
+  // 10-14 végső átnézés: ha minden válasz használhatatlan volt (egyetértés-oldal, új formátum),
+  // a forrás halott — ez eddig némán „nincs trend"-nek látszott.
+  if (!hiba && kuldve > 0 && hasznalhato === 0) hiba = 'egyetlen használható válasz sem jött (a formátum megváltozott?)';
   return { talalat, hiba };
 }
 
@@ -172,7 +178,9 @@ export async function googleFelkapott({ fetchFn = fetch, idoMs = LEKERES_IDO_MS 
   try {
     const r = await fetchFn('https://trends.google.com/trending/rss?geo=US', { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(idoMs) });
     if (!r.ok) return { tetelek: [], hiba: `HTTP ${r.status}` };
-    return { tetelek: rssTetelek(await r.text()), hiba: '' };
+    const tetelek = rssTetelek(await r.text());
+    if (!tetelek.length) return { tetelek: [], hiba: 'üres lista (a formátum megváltozott?)' };
+    return { tetelek, hiba: '' };
   } catch (e) {
     return { tetelek: [], hiba: 'hálózati hiba: ' + String(e?.message || e).slice(0, 60) };
   }

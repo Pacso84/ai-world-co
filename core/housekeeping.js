@@ -42,7 +42,7 @@ import { dirname, join } from 'path';
 import { decay, purgeStoreEmbeddings } from './memory-manager.js';
 import { utmutatoE } from './guide-kind.js';
 import { lejartCeluakNelkul } from './redirect-chain.js';
-import { pruneBeallitas, torlendok, linkekKi, toroltListaFrissit } from './guide-prune.js';
+import { pruneBeallitas, torlendok, linkekKi, toroltListaFrissit, maiToroltDb } from './guide-prune.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -264,7 +264,8 @@ function pruneOldNews() {
 function pruneUnreadGuides() {
   if (!existsSync(ARTICLES)) return;
   let cfg = {};
-  try { cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8')); } catch { /* alapértékek */ }
+  // 10-14 végső átnézés: ha a config nem olvasható, a kapcsoló nem ítélhető meg → NEM törlünk (fail-closed).
+  try { cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8')); } catch { report.push('⚠️ nézetlen útmutató-törlés kihagyva: a config.json nem olvasható'); return; }
   const b = pruneBeallitas(cfg);
   if (!b.be) return;
   let days = null;
@@ -275,9 +276,20 @@ function pruneUnreadGuides() {
     if (!utmutatoE(f, d)) continue;
     cikkek.push({ file: f, slug: d._meta?.slug || '', published_at: d._meta?.published_at || '' });
   }
-  const r = torlendok({ cikkek, days, now: Date.now(), ablakNap: b.napok, max: b.max });
+  // 10-14 végső átnézés: a keret NAPI (a CI napi 3 futása együtt), nem futásonkénti — a mai törlések
+  // száma a törölt-listából jön (ugyanez a lista íródik is lejjebb).
+  const toroltUt = join(ROOT, 'memory', 'torolt-utmutatok.json');
+  let lista = [];
+  try { lista = JSON.parse(readFileSync(toroltUt, 'utf-8')); } catch { /* első törlés */ }
+  const maiDb = maiToroltDb(lista);
+  const keret = Math.max(0, b.max - maiDb);
+  const r = torlendok({ cikkek, days, now: Date.now(), ablakNap: b.napok, max: keret });
   if (!r.ok) { report.push(`⚠️ nézetlen útmutató-törlés kihagyva: ${r.ok_ok}`); return; }
-  if (!r.torlendo.length) return;
+  if (!r.torlendo.length) {
+    // a keret kimerült (vagy nincs jelölt): a napi összesítő így is látsszon minden aznapi futásban
+    if (maiDb > 0) report.push(`🗑️ nézetlen útmutató: ma ${maiDb} db törölve (${b.napok} napja 0 olvasó, napi keret ${b.max})${r.jeloltek.length > 0 ? ` — még ${r.jeloltek.length} vár` : ''}`);
+    return;
+  }
 
   const slugok = r.torlendo.map(x => x.slug);
   let social = 0;
@@ -297,17 +309,14 @@ function pruneUnreadGuides() {
     }
   } catch { /* az átirányítás-takarítás hibája ne állítsa meg a házmestert */ }
   let linkDb = 0;
-  if (!DRY) linkDb = linkekKiMindenhol(slugok);
+  if (!DRY) { try { linkDb = linkekKiMindenhol(slugok); } catch { /* a link-takarítás hibája ne állítsa meg a házmestert */ } }
   if (!DRY) {
     try {
-      const p = join(ROOT, 'memory', 'torolt-utmutatok.json');
-      let lista = [];
-      try { lista = JSON.parse(readFileSync(p, 'utf-8')); } catch { /* első törlés */ }
-      writeFileSync(p, JSON.stringify(toroltListaFrissit(lista, slugok), null, 2) + '\n', 'utf-8');
+      writeFileSync(toroltUt, JSON.stringify(toroltListaFrissit(lista, slugok), null, 2) + '\n', 'utf-8');
     } catch { /* az IndexNow-bejelentés elmarad, a 404 akkor is kiveszi a keresőből */ }
   }
   const maradek = r.jeloltek.length - r.torlendo.length;
-  report.push(`🗑️ nézetlen útmutató törölve: ${r.torlendo.length} db (${b.napok} napja 0 olvasó)`
+  report.push(`🗑️ nézetlen útmutató: ma ${maiDb + r.torlendo.length} db törölve (${b.napok} napja 0 olvasó, napi keret ${b.max})`
     + `${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} átirányítás` : ''}`
     + `${linkDb ? ` + ${linkDb} rá mutató link` : ''}${maradek > 0 ? ` — még ${maradek} vár` : ''}`);
 }

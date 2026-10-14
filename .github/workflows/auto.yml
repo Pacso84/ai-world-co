@@ -168,6 +168,7 @@ jobs:
       - name: Trendkutató (napi 1×, ingyenes)
         timeout-minutes: 3
         run: node core/trend-kutato.js || true
+        continue-on-error: true
 
       - name: Pipeline (hírkeresés + cikk/útmutató írás + ellenőrzés)
         env:

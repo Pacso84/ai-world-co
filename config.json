@@ -29,7 +29,7 @@
       "keywords": ["Alexa", "Echo"]
     },
     "guide_prune": {
-      "_comment": "2026-10-14 — user: „ha 60 napig nem volt olvasó, akkor minek tartjuk!” · „teljes törlés”. A legalább 60 napos, 60 napja 0 olvasós (en+hu+es együtt) útmutató TELJESEN törlődik (core/guide-prune.js → core/housekeeping.js). Hibavédelem: hiányos/elavult forgalmi napló, 0 cikk-látogatás vagy >60% jelölt → nincs törlés; futásonként max_per_run. enabled:false = azonnal ki.",
+      "_comment": "2026-10-14 — user: „ha 60 napig nem volt olvasó, akkor minek tartjuk!” · „teljes törlés”. A legalább 60 napos, 60 napja 0 olvasós (en+hu+es együtt) útmutató TELJESEN törlődik (core/guide-prune.js → core/housekeeping.js). Hibavédelem: hiányos/elavult forgalmi napló, 0 cikk-látogatás vagy >60% jelölt → nincs törlés; naponta max_per_run (a CI napi 3 futása együtt). enabled:false = azonnal ki.",
       "enabled": true,
       "days": 60,
       "max_per_run": 25
