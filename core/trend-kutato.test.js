@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import {
   trendBeallitas, normal, eszkozBenne, marMegirt, szuro, rssTetelek, googleJavaslatok,
-  googleFelkapott, sajatTopEszkozok, osszesit, frissE, aktivTrendek
+  googleFelkapott, sajatTopEszkozok, osszesit, frissE, aktivTrendek, rssAiE, mentendo
 } from './trend-kutato.js';
 
 let pass = 0;
@@ -125,6 +125,54 @@ t('🔴 Review Focus 4: frissesség — 20 órán belül nem gyűjt újra; 48 ó
   assert.equal(aktivTrendek({ now: MOST + 2 * NAP, cfg: {}, trendek: tr }), null);
   assert.equal(aktivTrendek({ now: MOST, cfg: { content: { trends: { enabled: false } } }, trendek: tr }), null);
   assert.equal(normal('  Gemini  (Bot)!! '), 'gemini bot');
+});
+
+t('🔴 javítás F1/F2: többszavas márkanév, verzió/évszám, hír-stílus, feladat-szó mindig kell', () => {
+  const o = { eszkozok: ESZK, magok: [] };
+  for (const k of ['microsoft copilot', 'microsoft copilot login']) { const r = szuro(k, o); assert.equal(r.ok, false, k); assert.match(r.ok_ok, /csak márkanév/, k); }
+  for (const k of ['how to use gemini 4 argon', 'gemini new features 2026']) { const r = szuro(k, o); assert.equal(r.ok, false, k); assert.match(r.ok_ok, /verzió/, k); }
+  assert.equal(szuro('gemini new features', o).ok, false);
+  assert.equal(szuro('Microsoft Copilot Linux support', o).ok, false);
+  for (const k of ['chatgpt paraphrase', 'claude record a skill', 'can ai help with daily tasks', 'gemini trending photo prompt for girls']) assert.equal(szuro(k, o).ok, true, k);
+});
+
+t('🔴 javítás F3: felkapott tétel csak akkor AI, ha a kifejezés az, vagy a hírcímek TÖBBSÉGE az', () => {
+  assert.equal(rssAiE({ kifejezes: 'nano banana', hirek: ['Gemini AI image trend', 'Google Gemini nano banana'] }, ESZK), true);
+  assert.equal(rssAiE({ kifejezes: 'fenerbahçe', hirek: ['Fenerbahçe wins', 'Coach uses AI analytics', 'Match report'] }, ESZK), false);
+  assert.equal(rssAiE({ kifejezes: 'chatgpt outage', hirek: [] }, ESZK), true);
+  assert.equal(rssAiE({ kifejezes: 'whalefall', hirek: [] }, ESZK), false);
+});
+
+t('🔴 javítás F4: eszközönként legfeljebb 2 téma; az ismétlődő-alapkérdés bónusz legfeljebb +10', () => {
+  const temak = osszesit({
+    javaslatok: [
+      { kifejezes: 'gemini prompt for headshot', hely: 0, mag: 'a' }, { kifejezes: 'gemini trending photo prompt', hely: 0, mag: 'b' },
+      { kifejezes: 'gemini make a video', hely: 0, mag: 'c' }, { kifejezes: 'gemini write an email', hely: 0, mag: 'd' },
+      { kifejezes: 'chatgpt paraphrase', hely: 9, mag: 'e' }
+    ],
+    eszkozok: ESZK, magok: [], meglevoCimek: []
+  });
+  assert.equal(temak.filter(x => x.eszkoz === 'Gemini').length, 2);
+  assert.ok(temak.some(x => x.eszkoz === 'ChatGPT'));
+  const ot = osszesit({ javaslatok: ['a', 'b', 'c', 'd', 'e'].map(m => ({ kifejezes: 'chatgpt paraphrase', hely: 2, mag: m })), eszkozok: ESZK, magok: [], meglevoCimek: [] });
+  assert.equal(ot[0].pont, 8 + 10);
+});
+
+await ta('javítás M2: 5xx-nél a Google-forrás megáll', async () => {
+  let hivas = 0;
+  const r = await googleJavaslatok(['a', 'b'], { fetchFn: async () => { hivas++; return { status: 503, ok: false, text: async () => '' }; }, alvas: async () => {} });
+  assert.equal(hivas, 1);
+  assert.match(r.hiba, /szerverhiba/);
+});
+
+t('javítás M1: üres + hibás gyűjtés nem írja felül a tegnapi nem üres listát', () => {
+  const regi = { at: 'x', temak: [{ kifejezes: 'a b' }], hibak: [] };
+  const ures = { at: 'y', temak: [], hibak: ['Google-javaslat: HTTP 429'] };
+  assert.equal(mentendo(ures, regi), regi);
+  assert.equal(mentendo(ures, null), ures);
+  assert.equal(mentendo({ at: 'y', temak: [], hibak: [] }, regi).at, 'y');
+  const uj = { at: 'z', temak: [{ kifejezes: 'c d' }], hibak: ['x'] };
+  assert.equal(mentendo(uj, regi), uj);
 });
 
 console.log('\n✅ trend-kutato.test: mind a ' + pass + ' eset rendben');

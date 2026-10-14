@@ -37,6 +37,7 @@ export const LEKERES_IDO_MS = 8000;
 export const OSSZ_IDO_MS = 120000;    // a CI-lépés 3 perces kerete alatt
 export const TOP_DB = 10;
 export const MAX_SZO = 10;
+export const MAX_ESZKOZONKENT = 2;
 export const BING_ELAVULT_NAP = 45;
 export const FORRAS_NEV = { 'google-javaslat': 'Google-javaslat', 'google-felkapott': 'Google felkapott', 'bing-lehetoseg': 'Bing' };
 const BING_PONT = { '100K-500K': 30, '10K-50K': 25, '5K-10K': 20, '1K-5K': 15, '500-1K': 12, '101-500': 10, '51-100': 8, '11-50': 6, '0-10': 4 };
@@ -52,7 +53,8 @@ const AI_RX = /\b(ai|a\.i\.|chatgpt|gpt|gemini|claude|copilot|alexa|notebooklm|p
 const FELADAT_RX = /\b(how|use|using|make|create|write|prompts?|trend\w*|photos?|pictures?|images?|videos?|voice|help|scams?|plan|learn|study|edit|summar\w*|translate|paraphrase|record|skill|identify|build|setup|set up|organi[sz]e|emails?|resume|budget|cook\w*|recipes?|travel|homework|letter|schedule|remind\w*|shopping|clone)\b/i;
 const GENERIKUS = new Set(['ai', 'chat', 'gpt', 'gptt', 'chet', 'jet', 'bot', 'chatbot', 'assistant', 'app', 'apps', 'free', 'online', 'web', 'login', 'sign', 'download',
   'version', 'versions', 'model', 'models', 'plus', 'pro', 'new', 'latest', 'the', 'a', 'an', 'for', 'with', 'of', 'in', 'on', 'to', 'and', 'or', 'is', 'it', 'my', 'your',
-  'anthropic', 'openai', 'google', 'microsoft', 'meta', 'amazon', 'xai']);
+  'anthropic', 'openai', 'google', 'microsoft', 'meta', 'amazon', 'xai',
+  'feature', 'features', 'update', 'updates', 'news']);   // 10-14 javítás: hír-stílusú, nem útmutató-téma
 const TOLTELEK = new Set(['the', 'and', 'for', 'with', 'your', 'you', 'how', 'use', 'using', 'what', 'that', 'this', 'from', 'into', 'can', 'are', 'step', 'steps',
   'guide', 'minutes', 'beginner', 'beginners', 'easy', 'simple', 'ai']);
 const escRx = s => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -106,14 +108,17 @@ export function szuro(kifejezes, { eszkozok = [], magok = [], meglevoCimek = [],
   if (OSSZEHASONLITAS_RX.test(k)) return { ok: false, ok_ok: 'összehasonlítás (tilos)' };
   if (TILTOTT_RX.test(k)) return { ok: false, ok_ok: 'nem nekünk való' };
   if (TENY_RX.test(k)) return { ok: false, ok_ok: 'szám/ár-kérdés (hivatalos adat kell)' };
+  // 10-14 javítás: a verzió/évszám nem ellenőrizhető a trendből („gemini 4 argon" kitalált név lehet)
+  if (sz.some(s => /\d/.test(s))) return { ok: false, ok_ok: 'verzió/évszám (hivatalos forrás kell)' };
   if (NEM_ANGOL_RX.test(nyers)) return { ok: false, ok_ok: 'nem angol' };
   const eszkoz = eszkozBenne(k, eszkozok);
   if (!rss) {
     if (!eszkoz && !AI_RX.test(k)) return { ok: false, ok_ok: 'nem AI-téma' };
-    const en = eszkoz.toLowerCase().replace(/\+$/, '');
-    const maradek = sz.filter(s => !GENERIKUS.has(s) && s.replace(/\+$/, '') !== en);
+    // az eszköz MINDEN szavát le kell vágni („microsoft copilot" két szó)
+    const nevSzavak = new Set(eszkoz.toLowerCase().replace(/\+$/, '').split(' ').filter(Boolean));
+    const maradek = sz.filter(s => !GENERIKUS.has(s) && !nevSzavak.has(s.replace(/\+$/, '')));
     if (!maradek.length) return { ok: false, ok_ok: 'csak márkanév (navigációs keresés)' };
-    if (!eszkoz && !FELADAT_RX.test(k)) return { ok: false, ok_ok: 'ismeretlen márka vagy nincs benne feladat' };
+    if (!FELADAT_RX.test(k)) return { ok: false, ok_ok: 'ismeretlen márka vagy nincs benne feladat' };
   }
   if (marMegirt(k, meglevoCimek)) return { ok: false, ok_ok: 'már van ilyen útmutatónk' };
   return { ok: true, ok_ok: '', eszkoz };
@@ -152,6 +157,7 @@ export async function googleJavaslatok(magok, { fetchFn = fetch, alvas = alvasAl
         { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(idoMs) });
     } catch (e) { hiba = 'hálózati hiba: ' + String(e?.message || e).slice(0, 60); break; }
     if (r.status === 403 || r.status === 429) { hiba = `HTTP ${r.status} (letiltott)`; break; }
+    if (r.status >= 500) { hiba = `HTTP ${r.status} (szerverhiba)`; break; }
     if (!r.ok) continue;
     let j; try { j = JSON.parse(await r.text()); } catch { continue; }   // pl. HTML egyetértés-oldal
     (Array.isArray(j?.[1]) ? j[1] : []).slice(0, 10).forEach((k, i) => {
@@ -187,6 +193,14 @@ export function sajatTopEszkozok(days, cikkMeta, now = Date.now(), napok = 14, d
   return [...new Set(top.map(s => String(cikkMeta?.get(s)?.tool || '').trim().toLowerCase()).filter(Boolean))];
 }
 
+/** Felkapott tétel AI-kapcsolatú-e? A kifejezés maga AI/ismert eszköz, VAGY a hírcímek TÖBBSÉGE az (10-14 javítás). */
+export function rssAiE(tetel, eszkozok = []) {
+  const kif = String(tetel?.kifejezes || '');
+  if (AI_RX.test(kif) || eszkozBenne(kif, eszkozok)) return true;
+  const hirek = tetel?.hirek || [];
+  return hirek.length > 0 && hirek.filter(h => AI_RX.test(h)).length > hirek.length / 2;
+}
+
 /** Pontozás + összevonás (azonos tartalmas szókészlet = egy téma) → a legjobb TOP_DB. */
 export function osszesit({ javaslatok = [], felkapott = [], bing = null, sajatEszkozok = [], eszkozok = [], magok = [], meglevoCimek = [] } = {}) {
   const m = new Map();
@@ -196,21 +210,39 @@ export function osszesit({ javaslatok = [], felkapott = [], bing = null, sajatEs
     const kulcs = [...szavak(kif)].sort().join(' ') || normal(kif);
     const e = m.get(kulcs);
     if (e) {
-      if (forras === 'google-javaslat' && e.forras.has('google-javaslat')) { e.pont += 5; return; }   // több alapkérdésnél is felbukkant
+      if (forras === 'google-javaslat' && e.forras.has('google-javaslat')) {                            // több alapkérdésnél is felbukkant
+        if (e.ism < 2) { e.pont += 5; e.ism++; }                                                         // legfeljebb +10 összesen
+        return;
+      }
       if (e.forras.has(forras)) return;                                                                // ugyanaz a Bing-sor más szórenddel
       e.forras.add(forras); e.pont += pont; return;
     }
-    m.set(kulcs, { kifejezes: normal(kif), forras: new Set([forras]), pont, eszkoz: sz.eszkoz || '' });
+    m.set(kulcs, { kifejezes: normal(kif), forras: new Set([forras]), pont, eszkoz: sz.eszkoz || '', ism: 0 });
   };
   for (const j of javaslatok) add(j.kifejezes, 'google-javaslat', 10 - Math.min(9, Number(j.hely) || 0));
-  for (const f of felkapott) if (AI_RX.test([f.kifejezes, ...(f.hirek || [])].join(' '))) add(f.kifejezes, 'google-felkapott', 50, true);
+  for (const f of felkapott) if (rssAiE(f, eszkozok)) add(f.kifejezes, 'google-felkapott', 50, true);
   for (const b of bing?.lehetosegek || []) add(b.kifejezes, 'bing-lehetoseg', BING_PONT[b.sav] || 4);
   const sajat = new Set((sajatEszkozok || []).map(s => s.toLowerCase()));
   for (const e of m.values()) if (e.eszkoz && sajat.has(e.eszkoz.toLowerCase())) e.pont += 10;
+  const db = new Map();   // 10-14 javítás: eszközönként legfeljebb 2 téma (változatosság); eszköz nélküli nincs korlátozva
   return [...m.values()]
     .map(e => ({ kifejezes: e.kifejezes, forras: [...e.forras], pont: Math.round(e.pont), eszkoz: e.eszkoz }))
     .sort((a, b) => b.pont - a.pont || a.kifejezes.localeCompare(b.kifejezes))
+    .filter(e => {
+      if (!e.eszkoz) return true;
+      const kulcs = e.eszkoz.toLowerCase();
+      const n = db.get(kulcs) || 0;
+      if (n >= MAX_ESZKOZONKENT) return false;
+      db.set(kulcs, n + 1);
+      return true;
+    })
     .slice(0, TOP_DB);
+}
+
+/** A CLI-nek: ha a gyűjtés üres ÉS hibás volt, a tegnapi nem üres lista marad (10-14 javítás). */
+export function mentendo(uj, regi) {
+  if (!(uj?.temak?.length) && (uj?.hibak?.length) && regi?.temak?.length) return regi;
+  return uj;
 }
 
 // ── LEMEZ ───────────────────────────────────────────────────────────
@@ -291,6 +323,8 @@ if (process.argv[1] && process.argv[1].endsWith('trend-kutato.js')) {
     for (const tm of ki.temak) console.log(`   ${String(tm.pont).padStart(3)}  ${tm.kifejezes}  [${tm.forras.map(x => FORRAS_NEV[x] || x).join(' + ')}]${tm.eszkoz ? ' · ' + tm.eszkoz : ''}`);
     for (const h of ki.hibak) console.log('   ⚠️ ' + h);
     if (arg.includes('--dry')) { console.log('   (próba — nem mentem)'); return; }
+    const regi = trendekBetolt();
+    if (mentendo(ki, regi) === regi) { console.log('   ⚠️ minden forrás kiesett — a tegnapi lista marad'); return; }
     mkdirSync(dirname(TRENDEK_UT), { recursive: true });
     writeFileSync(TRENDEK_UT, JSON.stringify(ki, null, 2) + '\n', 'utf-8');
     console.log(`   ✅ ${ki.temak.length} téma mentve → memory/trendek.json`);
