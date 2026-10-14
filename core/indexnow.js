@@ -21,6 +21,7 @@ import { readFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { noindexNyelv } from './noindex-langs.js';
+import { toroltUrlek } from './guide-prune.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -78,6 +79,12 @@ export async function submitIndexNow({ all = false, dry = false } = {}) {
       } catch { /* rossz fájl kihagyva */ }
     }
   }
+  // TÖRÖLT ÚTMUTATÓK (2026-10-14, core/guide-prune.js): a megszűnt címet is bejelentjük — az
+  // IndexNow-nál ez azt jelenti: „nézd meg újra", a kereső 404-et talál, és kiveszi a találatai közül.
+  try {
+    const lista = JSON.parse(readFileSync(join(ROOT, 'memory', 'torolt-utmutatok.json'), 'utf-8'));
+    for (const u of toroltUrlek(lista, site, LANGS, now, FRESH_HOURS)) urls.add(u);
+  } catch { /* nincs törölt útmutató — nem baj */ }
   // Ha van friss tartalom, a listaoldalak is változtak
   if (urls.size > 0 || all) {
     for (const lp of LANGS) { urls.add(`${site}${lp}/`); urls.add(`${site}${lp}/guides`); urls.add(`${site}${lp}/tools`); }

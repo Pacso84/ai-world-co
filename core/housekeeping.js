@@ -42,6 +42,7 @@ import { dirname, join } from 'path';
 import { decay, purgeStoreEmbeddings } from './memory-manager.js';
 import { utmutatoE } from './guide-kind.js';
 import { lejartCeluakNelkul } from './redirect-chain.js';
+import { pruneBeallitas, torlendok, linkekKi, toroltListaFrissit } from './guide-prune.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -251,7 +252,84 @@ function pruneOldNews() {
       if (atir && !DRY) writeFileSync(hp, JSON.stringify(r.tortenet, null, 2) + '\n', 'utf-8');
     }
   } catch { /* az átirányítás-takarítás hibája ne állítsa meg a házmestert */ }
-  report.push(`📰 lejárt hír törölve: ${doomed.length} cikk · ${kb(bytes)} KB (${NEWS_KEEP_DAYS} napnál régebbi)${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} rá mutató átirányítás` : ''} — az útmutatók érintetlenek`);
+  report.push(`📰 lejárt hír törölve: ${doomed.length} cikk · ${kb(bytes)} KB (${NEWS_KEEP_DAYS} napnál régebbi)${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} rá mutató átirányítás` : ''} — az útmutatókat külön szabály kezeli (60 nap olvasó nélkül)`);
+}
+
+// ── 2b. NÉZETLEN ÚTMUTATÓK (2026-10-14, user: „ha 60 napig nem volt olvasó, akkor minek
+// tartjuk!" · „ne csak átirányítás legyen, teljes törlés!") ────────────────────────
+// A DÖNTÉS a core/guide-prune.js-é (3 hibakapu + futásonkénti korlát) — itt csak a törlés
+// történik, a hírtörlés mintájára. A képet és a fordítást a lenti árva-takarítók viszik el
+// UGYANEBBEN a futásban (ezért fut ez előttük). Az oldal a következő buildben már nem
+// készül el → 404, és kimarad a webhelytérképből; az IndexNow a törölt-listából szól.
+function pruneUnreadGuides() {
+  if (!existsSync(ARTICLES)) return;
+  let cfg = {};
+  try { cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8')); } catch { /* alapértékek */ }
+  const b = pruneBeallitas(cfg);
+  if (!b.be) return;
+  let days = null;
+  try { days = JSON.parse(readFileSync(join(ROOT, 'memory', 'traffic-log.json'), 'utf-8')).days; } catch { /* a kapu kezeli */ }
+  const cikkek = [];
+  for (const f of readdirSync(ARTICLES).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
+    let d; try { d = JSON.parse(readFileSync(join(ARTICLES, f), 'utf-8')); } catch { continue; }
+    if (!utmutatoE(f, d)) continue;
+    cikkek.push({ file: f, slug: d._meta?.slug || '', published_at: d._meta?.published_at || '' });
+  }
+  const r = torlendok({ cikkek, days, now: Date.now(), ablakNap: b.napok, max: b.max });
+  if (!r.ok) { report.push(`⚠️ nézetlen útmutató-törlés kihagyva: ${r.ok_ok}`); return; }
+  if (!r.torlendo.length) return;
+
+  const slugok = r.torlendo.map(x => x.slug);
+  let social = 0;
+  for (const { file, slug } of r.torlendo) {
+    if (!DRY) { try { unlinkSync(join(ARTICLES, file)); } catch { /* jövő körben */ } }
+    const s = join(ROOT, 'content', 'social', `${slug}.json`);
+    if (existsSync(s)) { social++; if (!DRY) { try { unlinkSync(s); } catch { /* jövő körben */ } } }
+  }
+  let atir = 0;
+  try {
+    const hp = join(ROOT, 'content', 'slug-history.json');
+    const toroltek = new Set(slugok);
+    if (existsSync(hp)) {
+      const h = lejartCeluakNelkul(JSON.parse(readFileSync(hp, 'utf-8')), s => !toroltek.has(s));
+      atir = h.torolt.length;
+      if (atir && !DRY) writeFileSync(hp, JSON.stringify(h.tortenet, null, 2) + '\n', 'utf-8');
+    }
+  } catch { /* az átirányítás-takarítás hibája ne állítsa meg a házmestert */ }
+  let linkDb = 0;
+  if (!DRY) linkDb = linkekKiMindenhol(slugok);
+  if (!DRY) {
+    try {
+      const p = join(ROOT, 'memory', 'torolt-utmutatok.json');
+      let lista = [];
+      try { lista = JSON.parse(readFileSync(p, 'utf-8')); } catch { /* első törlés */ }
+      writeFileSync(p, JSON.stringify(toroltListaFrissit(lista, slugok), null, 2) + '\n', 'utf-8');
+    } catch { /* az IndexNow-bejelentés elmarad, a 404 akkor is kiveszi a keresőből */ }
+  }
+  const maradek = r.jeloltek.length - r.torlendo.length;
+  report.push(`🗑️ nézetlen útmutató törölve: ${r.torlendo.length} db (${b.napok} napja 0 olvasó)`
+    + `${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} átirányítás` : ''}`
+    + `${linkDb ? ` + ${linkDb} rá mutató link` : ''}${maradek > 0 ? ` — még ${maradek} vár` : ''}`);
+}
+
+// A törölt útmutatókra mutató linkek kivétele a többi cikkből ÉS a fordításokból (a szöveg
+// marad). Cikk: article_markdown; fordítás: minden szöveg-mező (hu, es).
+function linkekKiMindenhol(slugok) {
+  let db = 0;
+  for (const [dir, mezok] of [[ARTICLES, ['article_markdown']], [TRANSLATIONS, null]]) {
+    if (!existsSync(dir)) continue;
+    for (const f of readdirSync(dir).filter(x => x.endsWith('.json'))) {
+      let d; try { d = JSON.parse(readFileSync(join(dir, f), 'utf-8')); } catch { continue; }
+      let valt = 0;
+      for (const k of mezok || Object.keys(d)) {
+        if (typeof d[k] !== 'string') continue;
+        const r = linkekKi(d[k], slugok);
+        if (r.db) { d[k] = r.md; valt += r.db; }
+      }
+      if (valt) { db += valt; try { writeFileSync(join(dir, f), JSON.stringify(d, null, 2), 'utf-8'); } catch { /* jövő körben */ } }
+    }
+  }
+  return db;
 }
 
 // ── 3. ÁRVA BORÍTÓKÉPEK ──────────────────────────────────────────────
@@ -351,6 +429,7 @@ async function main() {
   stripEmbeddings();
   pruneLogs();
   pruneOldNews();
+  pruneUnreadGuides();
   // ÚJRAOLVASSUK az élő cikkeket: a lejárt hírek most tűntek el, és a lenti
   // árva-takarítók csak így viszik el a képüket és a fordításukat UGYANEBBEN
   // a futásban. E nélkül egy körrel később takarítanánk — vagy soha, ha

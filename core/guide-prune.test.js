@@ -100,4 +100,34 @@ t('törölt-lista: új bejegyzés be, 30 napnál régebbi ki; IndexNow csak a 48
   assert.deepEqual(urlek, [`${SITE}/article/mai`, `${SITE}/es/article/mai`]);
 });
 
+// ── BEKÖTÉS (forrás-alapú: a housekeeping.js és az indexnow.js NEM importálható) ──
+import { readFileSync } from 'node:fs';
+const forras = p => readFileSync(new URL('../' + p, import.meta.url), 'utf-8').replace(/\r\n/g, '\n');
+
+t('🔌 Házmester: a hírtörlés UTÁN, az árva-takarítás ELŐTT fut; a 3 kaput a modul adja', () => {
+  const hk = forras('core/housekeeping.js');
+  assert.match(hk, /import \{ pruneBeallitas, torlendok, linkekKi, toroltListaFrissit \} from '\.\/guide-prune\.js';/);
+  assert.match(hk, /pruneOldNews\(\);\n\s*pruneUnreadGuides\(\);/, '🔴 a takarító nincs bekötve, vagy rossz helyen fut');
+  const fn = hk.slice(hk.indexOf('function pruneUnreadGuides()'), hk.indexOf('function linkekKiMindenhol('));
+  assert.ok(fn.length > 100, 'nincs pruneUnreadGuides()');
+  assert.match(fn, /torlendok\(\{ cikkek, days, now: Date\.now\(\), ablakNap: b\.napok, max: b\.max \}\)/);
+  assert.match(fn, /if \(!r\.ok\) \{ report\.push\(`⚠️ nézetlen útmutató-törlés kihagyva: \$\{r\.ok_ok\}`\); return; \}/);
+  assert.match(fn, /utmutatoE\(f, d\)/, 'csak útmutató törlődhet');
+  assert.match(fn, /lejartCeluakNelkul\(/, 'a rá mutató átirányítások maradnának');
+  assert.match(fn, /linkekKiMindenhol\(slugok\)/, 'a többi cikkben halott link maradna');
+  assert.match(fn, /toroltListaFrissit\(/, 'az IndexNow nem tudna a törlésről');
+  assert.match(fn, /if \(!DRY\)/, 'a --dry próba is törölne');
+});
+
+t('🔌 config: content.guide_prune be, 60 nap, 25/futás', () => {
+  const cfg = JSON.parse(forras('config.json'));
+  assert.deepEqual(pruneBeallitas(cfg), { be: true, napok: 60, max: 25 });
+});
+
+t('🔌 IndexNow: a 48 órán belül törölt útmutatókat is bejelenti', () => {
+  const ix = forras('core/indexnow.js');
+  assert.match(ix, /import \{ toroltUrlek \} from '\.\/guide-prune\.js';/);
+  assert.match(ix, /toroltUrlek\(lista, site, LANGS, now, FRESH_HOURS\)/);
+});
+
 console.log('\n✅ guide-prune.test: mind a ' + pass + ' eset rendben');

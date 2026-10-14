@@ -28,6 +28,12 @@
       "per_day": 1,
       "keywords": ["Alexa", "Echo"]
     },
+    "guide_prune": {
+      "_comment": "2026-10-14 — user: „ha 60 napig nem volt olvasó, akkor minek tartjuk!” · „teljes törlés”. A legalább 60 napos, 60 napja 0 olvasós (en+hu+es együtt) útmutató TELJESEN törlődik (core/guide-prune.js → core/housekeeping.js). Hibavédelem: hiányos/elavult forgalmi napló, 0 cikk-látogatás vagy >60% jelölt → nincs törlés; futásonként max_per_run. enabled:false = azonnal ki.",
+      "enabled": true,
+      "days": 60,
+      "max_per_run": 25
+    },
     "_comment": "2026-09-29 — user: középszintű tartalom, visszaállíthatóan. false = régi viselkedés a következő futástól. intermediate_guides: napi 1 középszintű útmutató a 2-ből; news_if_you_use: a hírek 'What this means for you' részében 4. pont ('If you already use it'). Olvassa: core/content-switches.js.",
     "intermediate_guides": true,
     "news_if_you_use": true
