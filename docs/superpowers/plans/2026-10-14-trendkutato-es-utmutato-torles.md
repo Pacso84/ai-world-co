@@ -1064,7 +1064,7 @@ if (process.argv[1] && process.argv[1].endsWith('trend-kutato.js')) {
 
 ```json
     "trends": {
-      "_comment": "2026-10-14 — user ötlete: AI trendkutató. Naponta 1× ingyen gyűjt (Google keresési javaslatok ezekre az alapkérdésekre, Google napi felkapott AI-tételek, saját legolvasottak, content/trend-bing.json) → memory/trendek.json → a hírek sorrendje + napi 1 trend-útmutató a középszintű helyére. enabled:false = azonnal ki (core/trend-kutato.js aktivTrendek). Mérés ~11-11: node core/trend-kutato.js --meres.",
+      "_comment": "2026-10-14 — user ötlete: AI trendkutató. Naponta 1× ingyen gyűjt (Google keresési javaslatok ezekre az alapkérdésekre, Google napi felkapott AI-tételek, saját legolvasottak, content/trend-bing.json) → memory/trendek.json → a hírek sorrendje + napi 1 trend-útmutató az általános hely helyére (a napi 1 középszintű MARAD, user 10-14). enabled:false = azonnal ki (core/trend-kutato.js aktivTrendek). Mérés ~11-11: node core/trend-kutato.js --meres.",
       "enabled": true,
       "seeds": [
         "ai photo trend", "ai photo prompt", "gemini trending prompt", "chatgpt trend", "ai trend",
@@ -1185,12 +1185,14 @@ t('🔌 Író: a draftok trend szerint rendezve, a cikk _meta.trend-et kap', () 
   assert.match(s, /trend: trendJeloles\(lista\),/);
 });
 
-t('🔌 Útmutató-agent: felvétel naponta 1, a trend a középszintű HELYÉRE, a jelölés a draftba kerül', () => {
+t('🔌 Útmutató-agent: felvétel naponta 1, a középszintű MARAD, a trend utána jön (az általános hely helyére)', () => {
   const s = forras('agents/guide/agent.js');
-  assert.match(s, /import \{ aktivTrendek, trendFelvetelKell, trendProbaJegyez, maiTrendTema, maiTrendDb, trendPrompt \} from '\.\.\/\.\.\/core\/trend-kutato\.js';/);
-  assert.match(s, /const trendTema = out\.length < args\.limit \? maiTrendTema\(fk\.tobbi, metak, maNap\) : null;/);
-  assert.match(s, /be: kozepBe && !trendMa/, '🔴 a trend-útmutató MELLETT középszintű is íródna (napi 3)');
-  assert.match(s, /fk\.tobbi\.filter\(t => t\.priority !== 'trend'\)/, 'a nem választott trend-téma az általános sorba csúszna');
+  assert.match(s, /import \{ aktivTrendek, trendFelvetelKell, trendProbaJegyez, maiTrendTema, trendPrompt \} from '\.\.\/\.\.\/core\/trend-kutato\.js';/);
+  assert.match(s, /szintSorrend\(fk\.tobbi\.filter\(t => t\.priority !== 'trend'\), \{ maiKozep: fk\.maiKozep, be: kozepBe \}\)/,
+    '🔴 a középszintű szabálya változott, vagy a nem választott trend-téma az általános sorba csúszna');
+  assert.match(s, /out\.push\(rendezett\.shift\(\)\);\n(?:\s*\/\/[^\n]*\n)*\s*const trendTema = out\.length < args\.limit \? maiTrendTema\(fk\.tobbi, metak, maNap\) : null;/,
+    '🔴 a trend nem a középszintű UTÁN jön (user 10-14: „a középszintű maradjon")');
+  assert.ok(!/trendMa/.test(s), '🔴 a trend kiszorítaná a középszintűt');
   assert.match(s, /const tema = trendFelvetelKell\(store, aktivTrendek\(\), Date\.now\(\)\);/);
   assert.match(s, /store\.trend_proba = trendProbaJegyez\(store\.trend_proba, tema\.kifejezes, Date\.now\(\)\);/);
   assert.match(s, /\{ generalOnly = false, fokusz = null, trend = null \} = \{\}/);
@@ -1330,33 +1332,27 @@ function trendJeloles(lista) {
   - **a)** Import a `guide-focus.js` import sora UTÁN:
 
 ```js
-import { aktivTrendek, trendFelvetelKell, trendProbaJegyez, maiTrendTema, maiTrendDb, trendPrompt } from '../../core/trend-kutato.js';
+import { aktivTrendek, trendFelvetelKell, trendProbaJegyez, maiTrendTema, trendPrompt } from '../../core/trend-kutato.js';
 ```
 
-  - **b)** A `pickTopics`-ban cseréld le ezt a blokkot:
+  - **b)** A `pickTopics`-ban cseréld le ezt a blokkot (a középszintű szabálya VÁLTOZATLAN marad):
 
 ```js
-  if (fk.tema && args.limit > 0) out.push(fk.tema);
-  // KÖZÉPSZINT (2026-09-29, user): napi 1 középszintű a 2-ből → ha ma még nincs,
-  // az első középszintű téma ELŐRE kerül; ha már van, mára kimaradnak. Kapcsoló:
-  // config.json content.intermediate_guides (core/content-switches.js).
   const rendezett = szintSorrend(fk.tobbi, { maiKozep: fk.maiKozep, be: kozepBe });
+  if (out.length < args.limit && rendezett[0]?.level === 'intermediate') out.push(rendezett.shift());
 ```
 
     erre:
 
 ```js
-  if (fk.tema && args.limit > 0) out.push(fk.tema);
-  // TREND (2026-10-14, user: „mehet a trend-útmutató a középszintű helyére"): naponta 1
-  // trend-téma a fókusz UTÁN; ha ma van trend-útmutató, AZNAP nincs középszintű (különben
-  // a napi 2 helyett 3 íródna). A nem választott trend-téma NEM csúszik az általános sorba.
+  // A trend-téma CSAK a saját helyén íródhat (lent) — az általános sorba nem csúszhat be.
+  const rendezett = szintSorrend(fk.tobbi.filter(t => t.priority !== 'trend'), { maiKozep: fk.maiKozep, be: kozepBe });
+  if (out.length < args.limit && rendezett[0]?.level === 'intermediate') out.push(rendezett.shift());
+  // TREND (2026-10-14, user: „de a középszintű útmutató maradjon! a napi 1"): naponta 1
+  // trend-téma a fókusz ÉS a középszintű UTÁN, az általános sor ELÉ — vagyis az általános
+  // hely helyére. A napi 2-es keret nem nő: ha a fókusz és a középszintű kitölti, aznap nincs trend.
   const trendTema = out.length < args.limit ? maiTrendTema(fk.tobbi, metak, maNap) : null;
   if (trendTema) out.push(trendTema);
-  const trendMa = !!trendTema || maiTrendDb(metak, maNap) > 0;
-  // KÖZÉPSZINT (2026-09-29, user): napi 1 középszintű a 2-ből → ha ma még nincs,
-  // az első középszintű téma ELŐRE kerül; ha már van, mára kimaradnak. Kapcsoló:
-  // config.json content.intermediate_guides (core/content-switches.js).
-  const rendezett = szintSorrend(fk.tobbi.filter(t => t.priority !== 'trend'), { maiKozep: fk.maiKozep, be: kozepBe && !trendMa });
 ```
 
   - **c)** `proposeNewTopics` — az aláírás:
@@ -1416,7 +1412,7 @@ async function proposeNewTopics(count, store, brandContext, { generalOnly = fals
 
 ```bash
 git add core/trend-kutato.js core/trend-kutato.test.js agents/iro/agent.js agents/guide/agent.js
-git commit -m "Trendkutató hatása: a felkapott hír előre, napi 1 trend-útmutató a középszintű helyére, jelölés a méréshez
+git commit -m "Trendkutató hatása: a felkapott hír előre, napi 1 trend-útmutató (a középszintű marad), jelölés a méréshez
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 ```

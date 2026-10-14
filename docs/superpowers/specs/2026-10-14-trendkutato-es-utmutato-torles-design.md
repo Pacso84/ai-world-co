@@ -19,7 +19,7 @@ A két rész együtt működik:
 | Milyen jelek alapján? | **Mindkettő:** külső felkapottság + a saját olvasóink érdeklődése |
 | Mennyiség | **A mostani keretben:** napi 4 hír + 2 útmutató, nincs több cikk |
 | Melyik megoldás | **„Kérdésvadász” szűkítve:** Google-javaslatok, Google napi felkapott lista (AI-szűrővel), saját adatok, Bing AI Performance lehetőség-lista. A Bing-keresésszám és a Wikipedia KIMARAD, mert saját mérés szerint az eszköz népszerűsége nálunk nem számít (4,1 vs 4,3 belépő/7 nap). |
-| Útmutató-hely | A trend-útmutató a **középszintű helyére** kerül; ha aznap nincs jó trendtéma, marad a középszintű |
+| Útmutató-hely | **A napi 1 középszintű MARAD** (user, 10-14 javítás: „de a középszintű útmutató maradjon! a napi 1”). A trend-útmutató az **általános hely** helyére kerül. Sorrend: fókusz → középszintű → trend → a többi. 10-23-ig (Alexa-fókusz) a trend akkor fér be, ha az Alexa-útmutató maga a középszintű; utána naponta 1 középszintű + 1 trend. |
 | Törlési szabály | **60 nap** olvasó nélkül → törlés (a 30 napot elvetettük: 57%-ot vinne, és az első 30 napban nézetlen új útmutatók harmada később kapott olvasót) |
 | Törlés módja | **Teljes törlés**, nem átirányítás; egyik kereső se indexelje |
 | Automatika | **Teljesen automatikus,** előzetes lista és jóváhagyás nélkül |
@@ -148,8 +148,9 @@ A tesztekben nincs hálózat: a `fetch` beadható.
   - a címet az útmutató-agent meglévő ötletelője fogalmazza meg egy kis AI-hívással (≤ $0,01/nap). A promptban a trendkifejezés szerepel, és ugyanazok a szabályok érvényesek („csak amit a hivatalos forrás mond”).
 - **Kiválasztás (`pickTopics`):**
   1. a **fókusz** (Alexa, 10-23-ig) marad az első;
-  2. ha ma még nem készült trend-útmutató, a `trend` téma **a középszintű elé** kerül;
-  3. középszintű csak akkor jön, ha nincs trendtéma.
+  2. a napi 1 **középszintű** a helyén marad (változatlan szabály);
+  3. ha ma még nem készült trend-útmutató, a `trend` téma jön, **az általános sor ELÉ**;
+  4. a nem választott trend-téma nem csúszik az általános sorba (csak a trend-helyen íródhat).
 - **Jelölés:** az elkészült útmutató `_meta.trend` mezőt kap (kifejezés, forrás), a mérés ebből dolgozik.
 - **Biztonság:** változatlan. A trend-útmutató is átmegy az ellenőrzőn, a tényellenőrzésen, a hitelesség-kapun és a név-őrön.
 
@@ -188,7 +189,7 @@ A tesztekben nincs hálózat: a `fetch` beadható.
   - forráskiesés-tűrés: 429 → a többi forrás megy, `hibak` kitöltve;
   - 20 órás kihagyás;
   - `trendElore()` stabil sorrend;
-  - bekötés: iro, guide `pickTopics` (`priority 'trend'` a középszintű előtt), daily-report sor, `auto.yml` lépés (forrás-alapú ellenőrzés, mert az agentek nem importálhatók).
+  - bekötés: iro, guide `pickTopics` (`priority 'trend'` a középszintű UTÁN, az általános sor előtt), daily-report sor, `auto.yml` lépés (forrás-alapú ellenőrzés, mert az agentek nem importálhatók).
 - Meglévő tesztek: zöldek maradnak.
 
 ## Kockázatok
