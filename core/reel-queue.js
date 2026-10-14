@@ -91,6 +91,14 @@ export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
 
   jeloltek.sort((a, b) => String(a.published_at).localeCompare(String(b.published_at)));
 
+  // MÉG SEHOL NEM VIDEÓZOTT ELŐRE (2026-10-14): a TikTok-extra is a legrégebbi
+  // videó nélküli útmutatót viszi, tehát a tiszta FIFO MÁSNAP PONT AZT választotta
+  // Reelnek — a TikTokra ugyanaz kétszer nem megy, így 10-13-án és 10-14-én is
+  // csak 2/3 videó ment ki. Ha van még sehol nem videózott jelölt, abból választunk;
+  // ha nincs, a TikTokon már járt is mehet (a Facebook-Reel SOHA nem marad el).
+  const tiktokonNemJart = jeloltek.filter(c => !napja(c.tiktok_video_at));
+  const sor = tiktokonNemJart.length ? tiktokonNemJart : jeloltek;
+
   // FÓKUSZ (2026-10-09, user: „először legyen eladásunk" — core/guide-focus.js):
   // naponta EGY Reel a fókusz-eszközről (pl. Alexa+, amin a partnerlink van),
   // a változatossági szabály ELŐTT — különben a „múlt héten már volt Alexa"
@@ -98,7 +106,8 @@ export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
   // Naponta legfeljebb egy: a második Reel ugyanúgy változatos marad.
   if (opts.fokusz) {
     const maMarFokusz = maiReelCikkek(cikkek, now).some(c => azonosEszkoz(c.tool, opts.fokusz));
-    const f = !maMarFokusz && jeloltek.find(c => azonosEszkoz(c.tool, opts.fokusz));
+    const fokuszos = c => azonosEszkoz(c.tool, opts.fokusz);
+    const f = !maMarFokusz && (sor.find(fokuszos) || jeloltek.find(fokuszos));
     if (f) return f;
   }
 
@@ -111,7 +120,7 @@ export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
   const voltEszkoz = new Set(utobbi.map(x => x.eszkoz).filter(Boolean));
   const voltKezdet = new Set(utobbi.map(x => x.kezdet).filter(Boolean));
 
-  const valtozatos = jeloltek.find(c => {
+  const valtozatos = sor.find(c => {
     const f = reelForma(c);
     if (f.eszkoz && voltEszkoz.has(f.eszkoz)) return false;
     if (f.kezdet && voltKezdet.has(f.kezdet)) return false;
@@ -121,7 +130,7 @@ export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
   // MEGY Reel — a változatosság kényelem, a napi videó a feladat. Enélkül a
   // sor némán megállna, és az „elromlott" pontosan úgy nézne ki, mint a
   // „ma nem volt jelölt".
-  return valtozatos || jeloltek[0];
+  return valtozatos || sor[0];
 }
 
 // ── VÁLTOZATOSSÁG ───────────────────────────────────────────────────
@@ -205,10 +214,11 @@ export function videoCsatornaMai(cikkek, postOf, field, now = Date.now()) {
 // napon NÉMÁN kiöregszik. Ezekből a LEGRÉGEBBI kap csak-TikTok videót: az,
 // amelyik a legközelebb áll a kiöregedéshez.
 //
-// A Facebook-Reel sorát NEM szűkíti: a `kovetkezoReel` nem nézi a
-// `tiktok_video_at`-et. Ha a Facebook később ugyanazt választja, a TikTokra
-// nem megy ki kétszer (a `posted_tiktok` jelölés véd) — a Facebook-forgalom
-// (~82%) fontosabb, mint hogy a két csatorna tartalma sosem fedje egymást.
+// A Facebook-Reel sorát NEM szűkíti: ha a TikTokon már járt útmutatón kívül
+// nincs jelölt, a `kovetkezoReel` azt is választja (a TikTokra nem megy ki
+// kétszer — a `posted_tiktok` jelölés véd). 2026-10-14 óta viszont a még sehol
+// nem videózottat ELŐRE veszi, mert a tiszta FIFO naponta ütközött (lásd ott),
+// és ha mégis ütközik, a `tiktokPotlas` +1 extrát ad aznapra.
 // A jelölés: a cikk `_meta.tiktok_video_at` (a gyártás pillanata).
 
 /** A MA csak-TikTokra gyártott videók cikkei, a korábbi elöl. */
@@ -239,4 +249,22 @@ export function tiktokExtra(cikkek, now = Date.now(), opts = {}) {
   );
   jeloltek.sort((a, b) => String(a.published_at).localeCompare(String(b.published_at)));
   return jeloltek[0] || null;
+}
+
+/**
+ * PÓTLÓ EXTRA (2026-10-14): hány MAI Reel NEM hoz új videót a TikTokra, mert egy
+ * KORÁBBI napon már TikTok-extra volt? Ennyivel több csak-TikTok videó mehet ma,
+ * hogy a napi TikTok-szám ne essen vissza (10-13, 10-14: emiatt csak 2/3).
+ *
+ * `fuggoSlug`: a MOST gyártott, még `reel_at` nélküli Reel (memory/reel-pending.json) —
+ * a délutáni futás ugyanis a Reel kiküldése ELŐTT dönt az extráról.
+ * Az ugyanaznapi extra + Reel nem számít: az a TikTokon ma kiment egy videó.
+ */
+export function tiktokPotlas(cikkek, now = Date.now(), fuggoSlug = '') {
+  if (!Array.isArray(cikkek)) return 0;
+  const ma = new Date(now).toISOString().slice(0, 10);
+  const maiak = new Set(maiReelCikkek(cikkek, now).map(c => c.slug));
+  if (fuggoSlug) maiak.add(fuggoSlug);
+  return cikkek.filter(c => c && maiak.has(c.slug)
+    && napja(c.tiktok_video_at) && napja(c.tiktok_video_at) < ma).length;
 }

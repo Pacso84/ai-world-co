@@ -251,7 +251,7 @@ function pruneOldNews() {
       if (atir && !DRY) writeFileSync(hp, JSON.stringify(r.tortenet, null, 2) + '\n', 'utf-8');
     }
   } catch { /* az átirányítás-takarítás hibája ne állítsa meg a házmestert */ }
-  report.push(`📰 lejárt hír törölve: ${doomed.length} cikk · ${kb(bytes)} KB (${NEWS_KEEP_DAYS} napnál régebbi)${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} rá mutató átirányítás` : ''} — az útmutatók és összehasonlítások érintetlenek`);
+  report.push(`📰 lejárt hír törölve: ${doomed.length} cikk · ${kb(bytes)} KB (${NEWS_KEEP_DAYS} napnál régebbi)${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} rá mutató átirányítás` : ''} — az útmutatók érintetlenek`);
 }
 
 // ── 3. ÁRVA BORÍTÓKÉPEK ──────────────────────────────────────────────

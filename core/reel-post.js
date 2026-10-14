@@ -521,7 +521,7 @@ async function prepare(ROOT, join) {
  */
 async function prepareTiktokExtra(ROOT, join) {
   const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync } = await import('fs');
-  const { tiktokExtra, maiTiktokExtra } = await import('./reel-queue.js');
+  const { tiktokExtra, maiTiktokExtra, tiktokPotlas } = await import('./reel-queue.js');
   const { cardsFromGuide, renderVideo } = await import('./short-video.js');
   const cikkek = await cikkekBetolt(ROOT, join);
   const kiDir = join(ROOT, 'website', 'assets', 'video', 'shorts');
@@ -544,8 +544,10 @@ async function prepareTiktokExtra(ROOT, join) {
   // (a reel_at csak a --send után kerül rá, addig a sor nem látja).
   let fogalt = '';
   try { fogalt = JSON.parse(readFileSync(join(ROOT, 'memory', 'reel-pending.json'), 'utf-8')).slug || ''; } catch { /* nincs */ }
+  // PÓTLÁS (2026-10-14): ha egy mai Reel korábbi napon már TikTok-extra volt, a TikTokra
+  // nem megy ki újra — helyette jár még egy extra, hogy a napi szám ne essen vissza.
   const v = tiktokExtra(cikkek, Date.now(), {
-    napiMax: TIKTOK_EXTRA_NAPI,
+    napiMax: TIKTOK_EXTRA_NAPI + tiktokPotlas(cikkek, Date.now(), fogalt),
     maxKorNap: REEL_FRISS_NAP,
     alkalmas: c => !!cardsFromGuide(c.md).cards,
     kizar: fogalt

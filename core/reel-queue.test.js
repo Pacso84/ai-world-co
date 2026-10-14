@@ -13,7 +13,7 @@
 
 import assert from 'assert/strict';
 import { readFileSync } from 'fs';
-import { reelMaMar, kovetkezoReel, maiReelCikk, maiReelCikkek, reelForma, videoCsatornaMai, tiktokExtra, maiTiktokExtra } from './reel-queue.js';
+import { reelMaMar, kovetkezoReel, maiReelCikk, maiReelCikkek, reelForma, videoCsatornaMai, tiktokExtra, maiTiktokExtra, tiktokPotlas } from './reel-queue.js';
 
 let pass = 0;
 const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
@@ -394,6 +394,59 @@ t('🔴 10-13: új Reel mellett a nap KORÁBBI Reelje is újragyártódik; a Buf
   const buf = readFileSync(new URL('../agents/social/buffer-poster.js', import.meta.url), 'utf-8');
   assert.match(buf, /VIDEO_NEM_OLVASHATO = \/could not be read from its URL\/i/);
   assert.match(buf, /VIDEO_NEM_OLVASHATO\.test\(r\.error\) && ujra <= 2/, '🔴 a Buffer-hibára nincs újrapróba');
+});
+
+// ── 10-13 + 10-14: a délutáni Reel MINDKÉT nap a tegnapi TikTok-extra volt → TikTok csak 2/3 ──
+//
+// Mindkét választó a LEGRÉGEBBI videó nélküli útmutatót keresi, tehát amit reggel a
+// TikTok-extra elvitt, azt másnap a Facebook-Reel választotta — a TikTokra pedig
+// ugyanaz kétszer nem megy. Két javítás: a Reel előnyben részesíti a még sehol nem
+// videózott útmutatót, és ha mégis ütközik (fókusz, visszaesés), jár egy pótló extra.
+
+t('🔴 10-14: a Reel a TikTokon még NEM járt útmutatót választja, ha van ilyen', () => {
+  const nap = d => new Date(MOST - d * 864e5).toISOString();
+  const cikkek = [
+    g('tegnapi-extra', nap(6), { tiktok_video_at: nap(1) }),
+    g('uj', nap(2)),
+    g('legujabb', nap(1))
+  ];
+  assert.equal(kovetkezoReel(cikkek, MOST, { maxKorNap: 7, napiMax: 2 }).slug, 'uj',
+    '🔴 a Reel a tegnapi TikTok-extrát választotta — a TikTokra így ma eggyel kevesebb megy');
+  // VISSZAESÉS: ha minden jelölt járt már TikTokon, a Facebook akkor is kap Reelt.
+  const csakVolt = [g('a', nap(5), { tiktok_video_at: nap(1) }), g('b', nap(3), { tiktok_video_at: nap(2) })];
+  assert.equal(kovetkezoReel(csakVolt, MOST, { maxKorNap: 7, napiMax: 2 }).slug, 'a', '🔴 a Facebook Reel nélkül maradt');
+  // A FÓKUSZ (Alexa) is a még nem videózottat keresi előbb, de ha csak TikTokon járt van, azt viszi.
+  const alexa = [
+    g('alexa-volt', nap(5), { tool: 'Alexa+', tiktok_video_at: nap(1) }),
+    g('alexa-uj', nap(2), { tool: 'Alexa+' }),
+    g('mas', nap(4))
+  ];
+  assert.equal(kovetkezoReel(alexa, MOST, { maxKorNap: 7, napiMax: 2, fokusz: 'Alexa+' }).slug, 'alexa-uj');
+  assert.equal(kovetkezoReel(alexa.filter(c => c.slug !== 'alexa-uj'), MOST, { maxKorNap: 7, napiMax: 2, fokusz: 'Alexa+' }).slug,
+    'alexa-volt', 'a fókusz-Reel elveszett, mert csak TikTokon járt Alexa-útmutató volt');
+});
+
+t('🎵 pótló extra: a mai Reel, ami korábbi napon már TikTok-extra volt, +1 extrát ad', () => {
+  const nap = d => new Date(MOST - d * 864e5).toISOString();
+  const ora = h => new Date(MOST - h * 3600e3).toISOString();
+  const cikkek = [
+    g('reggeli-reel', nap(3), { reel_at: ora(12) }),                               // új a TikTokon
+    g('delutani-reel', nap(6), { reel_at: ora(2), tiktok_video_at: nap(1) }),      // tegnap már TikTok-extra
+    g('mai-extra', nap(5), { tiktok_video_at: ora(13) }),
+    g('regi-reel', nap(6), { reel_at: nap(2), tiktok_video_at: nap(3) })           // nem mai Reel
+  ];
+  assert.equal(tiktokPotlas(cikkek, MOST), 1, '🔴 a délutáni ütközés nem ad pótló extrát');
+  // A MOST gyártott (még reel_at nélküli) Reel is számít — a délutáni futás ekkor dönt az extráról.
+  const fuggo = [...cikkek, g('fuggo', nap(6), { tiktok_video_at: nap(2) })];
+  assert.equal(tiktokPotlas(fuggo, MOST, 'fuggo'), 2);
+  assert.equal(tiktokPotlas(fuggo, MOST, 'delutani-reel'), 1, 'ugyanaz a cikk kétszer számolva');
+  // Ugyanaznapi extra + Reel NEM ütközés-pótlás: az a TikTokon egy videó, ami ma kiment.
+  assert.equal(tiktokPotlas([g('x', nap(3), { reel_at: ora(1), tiktok_video_at: ora(5) })], MOST), 0);
+  assert.equal(tiktokPotlas([], MOST), 0);
+  assert.equal(tiktokPotlas(null, MOST), 0);
+  const src = readFileSync(new URL('./reel-post.js', import.meta.url), 'utf-8');
+  assert.match(src, /napiMax: TIKTOK_EXTRA_NAPI \+ tiktokPotlas\(cikkek, Date\.now\(\), fogalt\)/,
+    '🔴 a TikTok-extra gyártója nem kapja meg a pótlást');
 });
 
 console.log('\n✅ reel-queue.test: mind a ' + pass + ' eset rendben');
