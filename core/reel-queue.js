@@ -82,8 +82,8 @@ export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
   const korHatar = Number.isFinite(opts.maxKorNap) ? now - opts.maxKorNap * 864e5 : -Infinity;
   const jeloltek = cikkek.filter(c =>
     c && c.type === 'guide'
-    && !napja(c.reel_at)                                // még nem volt Reel
-    && napja(c.published_at)                            // dátum nélkül nem sorolható
+    && !napja(c.reel_at) && !napja(c.fb_reel_at)        // még nem volt Reel (TikTok-extraként sem, 10-15)
+    && napja(c.published_at)                          // dátum nélkül nem sorolható
     && Date.parse(c.published_at) >= korHatar           // csak friss (ha a hívó kéri)
     && alkalmas(c)
   );
@@ -112,9 +112,11 @@ export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
   }
 
   // VÁLTOZATOSSÁG: az elmúlt hét Reeljének „formája" (eszköz + cím-kezdet).
+  // 2026-10-15: a TikTok-extraként Facebook-Reelt kapott (`fb_reel_at`) cikk is Reel.
+  const reelIdo = c => String(napja(c?.reel_at) ? c.reel_at : (napja(c?.fb_reel_at) ? c.fb_reel_at : ''));
   const utobbi = cikkek
-    .filter(c => napja(c?.reel_at))
-    .sort((a, b) => String(b.reel_at).localeCompare(String(a.reel_at)))
+    .filter(c => reelIdo(c))
+    .sort((a, b) => reelIdo(b).localeCompare(reelIdo(a)))
     .slice(0, VALTOZATOSSAG_ABLAK)
     .map(reelForma);
   const voltEszkoz = new Set(utobbi.map(x => x.eszkoz).filter(Boolean));

@@ -69,7 +69,7 @@ export function buildPublishedMap(entries) {
       // „hír" itt egy örökzöld cikket zárna ki a terjesztésből 7 nap után.
       const isGuide = utmutatoE(f, d);
       // reel: Reelként már kiment (2026-09-27, user: „amik kimennek Reelbe, azok ne jelenjenek meg posztba")
-      const rec = { at: d._meta?.published_at || '', guide: isGuide, reel: !!d._meta?.reel_at };
+      const rec = { at: d._meta?.published_at || '', guide: isGuide, reel: !!(d._meta?.reel_at || d._meta?.fb_reel_at) };
       if (d._meta?.slug) map[d._meta.slug] = rec;
       const m = (d.article_markdown || '').match(/^---\n[\s\S]*?^title:\s*["']?(.+?)["']?\s*$/m);
       const legacy = matchSlug((m && m[1]) || d.original_title || f);

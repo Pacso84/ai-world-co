@@ -345,6 +345,10 @@ t('🔑 a REELKÉNT kiment útmutató nem megy ki képes posztként is (user 09-
   assert.match(src, /if \(st\.reel\) \{\s*post\.posted_fb = 'skipped-reel';/, 'a Facebook-poszter nem hagyja ki a Reelként kiment cikket');
   const nincsReel = queueStatus(buildPublishedMap([cikk('A.json', { slug: 'x', at: iso(MOST) })]), poszt('x', URL('x')), MOST);
   assert.equal(nincsReel.reel, false);
+  // 2026-10-15: a TikTok-extraként Facebook-Reelként kiment útmutató (fb_reel_at) is Reelezettnek számít.
+  const ex = cikk('ARTICLE_GUIDE_extra.json', { slug: 'extra-guide', type: 'guide', at: iso(MOST - 3600e3), title: 'How to extra' });
+  ex.data._meta.fb_reel_at = iso(MOST - 600e3);
+  assert.equal(queueStatus(buildPublishedMap([ex]), poszt('extra-guide', URL('extra-guide')), MOST).reel, true, 'az fb_reel_at nem számít Reelnek');
 });
 
 if (fails.length) {

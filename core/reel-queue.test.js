@@ -501,4 +501,22 @@ t('🔌 a --send út a normál send() UTÁN, tőle függetlenül küldi az extr�
   assert.match(dr, /'send_extra'/, 'a napi riport nem olvassa az extra Reel őrszemét');
 });
 
+t('🔑 a Facebookra már kiment TikTok-extra (fb_reel_at) NEM választható újra Reelnek, és a változatosságot is formálja (10-15)', () => {
+  const ma = '2026-08-25T03:30:00Z';
+  const cikkek = [
+    g('extra', '2026-08-01', { tiktok_video_at: ma, fb_reel_at: ma }),
+    g('masik', '2026-08-02', { tiktok_video_at: '2026-08-20T03:00:00Z' })
+  ];
+  // csak TikTokon járt jelöltek maradnak → a tartalék ág sem adhatja vissza az extrát
+  assert.equal(kovetkezoReel(cikkek, MOST).slug, 'masik', '🔴 ugyanaz a videó kétszer menne Facebookra');
+  assert.equal(kovetkezoReel([cikkek[0]], MOST), null);
+  // a Reelként kiment (fb_reel_at) cikk eszköze a változatossági ablakba kerül
+  const v = [
+    g('fbvolt', '2026-07-01', { fb_reel_at: '2026-08-24T10:00:00Z', tool: 'Claude' }),
+    g('claude2', '2026-08-01', { tool: 'Claude' }),
+    g('gemini', '2026-08-02', { tool: 'Gemini' })
+  ];
+  assert.equal(kovetkezoReel(v, MOST).slug, 'gemini', 'az fb_reel_at nem kerül a változatossági ablakba');
+});
+
 console.log('\n✅ reel-queue.test: mind a ' + pass + ' eset rendben');
