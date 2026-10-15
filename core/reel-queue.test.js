@@ -357,7 +357,10 @@ t('🎵 TikTok-poszter: a mai Reelek UTÁN a mai extra is megy — egyszer, a sa
 
 t('🔌 a reel-post tényleg gyártja (a FB-Reel UTÁN, hibatűrően), a Buffer-poszter tényleg látja', () => {
   const src = readFileSync(new URL('./reel-post.js', import.meta.url), 'utf-8');
-  assert.match(src, /const ki = await prepareReel\(ROOT, join\);\s*\n\s*\/\/[^\n]*\n\s*try \{ await prepareTiktokExtra\(ROOT, join\); \}/);
+  // 10-14: a Reel-ág TTS-hibája (429) miatt a TikTok-extra EL SEM INDULT → a két ág független.
+  assert.match(src, /try \{ ki = await prepareReel\(ROOT, join\); \} catch \(e\) \{ reelHiba = e; \}\s*\n\s*\/\/[^\n]*\n\s*try \{ await prepareTiktokExtra\(ROOT, join\); \}/,
+    '🔴 a Reel-ág hibája után a TikTok-extra nem fut le');
+  assert.match(src, /if \(reelHiba\) throw reelHiba;/, 'a Reel-ág hibáját nem szabad elnyelni (a riport innen tud róla)');
   assert.match(src, /export const TIKTOK_EXTRA_NAPI = 1;/);
   assert.match(src, /cikk\._meta\.tiktok_video_at = new Date\(\)\.toISOString\(\);/);
   assert.match(src, /tiktok_video_at: m\.tiktok_video_at \|\| ''/, 'a cikk-betöltő nem adja tovább a jelölést');

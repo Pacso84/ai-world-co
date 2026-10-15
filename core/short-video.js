@@ -726,7 +726,8 @@ export async function hatterekKepekbol(sharp, utak) {
 
 export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMultilingualNeural', kepUt = '', kepUtak = null }) {
   const sharp = (await import('sharp')).default;
-  const { MsEdgeTTS, OUTPUT_FORMAT } = await (await import('./edge-tts.js')).edgeTts();   // új MS-host (10-12)
+  const et = await import('./edge-tts.js');
+  const { MsEdgeTTS, OUTPUT_FORMAT } = await et.edgeTts();   // új MS-host (10-12)
 
   // 🔤 MEGKAPTUK-E A KÉRT BETŰT? (2026-09-17) A táblák csak KÉRIK a
   // betűcsaládot; ha a gépen nincs telepítve, a betűmotor némán egy
@@ -765,13 +766,8 @@ export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMulti
   for (let i = 0; i < cards.length; i++) {
     const nyers = join(workDir, `n${i}.mp3`), mp3 = join(workDir, `h${i}.mp3`);
 
-    const tts = new MsEdgeTTS();
-    await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
-    const { audioStream } = tts.toStream(cards[i].mond);
-    const d = [];
-    audioStream.on('data', x => d.push(x));
-    await new Promise(r => audioStream.on('close', r));
-    writeFileSync(nyers, Buffer.concat(d));
+    // 10-14: egyetlen 429 az egész gyártást megállította → türelmes újrapróba (core/edge-tts.js).
+    writeFileSync(nyers, await et.hangSzintezis({ MsEdgeTTS, OUTPUT_FORMAT }, voice, cards[i].mond));
 
     // A szünet a HANGBA is bekerül — enélkül a kép elcsúszik a beszédtől.
     execFileSync('ffmpeg', ['-y', '-i', nyers, '-af', `apad=pad_dur=${SZUNET_MP}`,

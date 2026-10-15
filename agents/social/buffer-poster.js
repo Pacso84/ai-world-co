@@ -46,7 +46,7 @@ import { composePost, followCta, CHANNELS } from '../../core/social-text.js';
 // A SOR KÖZÖS DÖNTÉSE (2026-09-12) — ugyanaz, mint a Facebook-poszterben.
 // Eddig karakterre lemásolva élt itt; most egy példány: core/social-published.js.
 import { isArticleFile, buildPublishedMap, queueStatus, realSlug } from '../../core/social-published.js';
-import { capFor, allowedNow, countSentToday, figyelendoCsatornak } from '../../core/channel-cap.js';
+import { capFor, allowedNow, countSentToday, countTodayWithQueued, figyelendoCsatornak } from '../../core/channel-cap.js';
 import { videoCsatornaMai } from '../../core/reel-queue.js';
 // ⚠️ AZ ŐRSZEM (2026-08-30). Enélkül ez a modul NÉMÁN áll le: lejárt token,
 // levált csatorna vagy bukott createPost esetén csak a CI naplójába írt,
@@ -165,6 +165,14 @@ async function sentTodayFor(organizationId, channelId) {
   const r = await lekerPosztok({ organizationId, channelId }, api());
   if (r.error) return null;
   return countSentToday(r.nodes);
+}
+
+// A RIPORT mai TikTok-száma (2026-10-15): az elküldöttek + a most feladott, még küldés alatt
+// állók. Enélkül a futás végén a friss poszt még nem „sent", és a riport hamis ⚠️-t írt (2/3).
+async function maiTiktokDb(organizationId, channelId) {
+  const r = await lekerPosztok({ organizationId, channelId }, api());
+  if (r.error) return null;
+  return countTodayWithQueued(r.nodes);
 }
 
 // ── AZ ŐRSZEM NYERSANYAGA (2026-08-30) ──────────────────────────────
@@ -522,7 +530,7 @@ async function main() {
   let tiktokMa = null;
   const ttCsat = channels.find(c => c.key === 'tiktok');
   if (ttCsat && ORG && !DRY) {
-    tiktokMa = { nap: new Date().toISOString().slice(0, 10), db: await sentTodayFor(ORG, ttCsat.id), plafon: capFor(CONFIG, 'tiktok') };
+    tiktokMa = { nap: new Date().toISOString().slice(0, 10), db: await maiTiktokDb(ORG, ttCsat.id), plafon: capFor(CONFIG, 'tiktok') };
     console.log(`🎵 TikTok ma összesen: ${tiktokMa.db === null ? '?' : tiktokMa.db}/${tiktokMa.plafon}`);
   }
 

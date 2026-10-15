@@ -42,6 +42,26 @@ export function countSentToday(posts, now = Date.now()) {
 }
 
 /**
+ * A RIPORT napi darabszáma (2026-10-15): a ma kiküldött posztok + a ma feladott, még küldés
+ * alatt álló posztok. Élesben 10-15: a riport „2/3"-at írt, pedig 3 ment ki — a harmadik 2
+ * perccel a számolás UTÁN küldődött el (a Buffer késleltetve küld). A bukott és a vázlat nem
+ * számít. ⚠️ A plafon-DÖNTÉS marad a szigorú countSentToday() — ez csak a jelentésé.
+ * @returns {number|null} darabszám, vagy `null`, ha nem tudjuk (mint a countSentToday).
+ */
+export function countTodayWithQueued(posts, now = Date.now()) {
+  if (!Array.isArray(posts)) return null;
+  const ma = new Date(now).toISOString().slice(0, 10);
+  let db = 0;
+  for (const p of posts) {
+    if (!p) continue;
+    if (p.status === 'sent') { if (String(p.sentAt || '').slice(0, 10) === ma) db++; continue; }
+    if (p.status === 'error' || p.status === 'draft') continue;
+    if (String(p.createdAt || '').slice(0, 10) === ma) db++;
+  }
+  return db;
+}
+
+/**
  * A csatorna napi plafonja a beállításból, vagy `null`, ha nincs.
  *
  * ⚠️ Az ÉRTELMETLEN érték (szöveg, negatív, NaN) NEM plafon — ilyenkor

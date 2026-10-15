@@ -316,6 +316,7 @@ await at('📊 a posztok szűrője a filter ALATT viszi a channelIds-t (a gyök�
   assert.equal(be.channelIds, undefined, '🔴 a gyökérbe került — „Field channelIds is not defined by type PostsInput"');
   assert.ok(POSZTOK_QUERY.includes('status') && POSZTOK_QUERY.includes('sentAt'),
     '🔴 a napi darabszámhoz status + sentAt kell');
+  assert.ok(POSZTOK_QUERY.includes('createdAt'), '🔴 a még küldés alatt álló mai poszt nem sorolható a mai naphoz (10-15)');
 });
 
 await at('🚦 a lekérdezés HIBÁJA nem 0, hanem „nem tudom" — különben a napi plafon némán kikapcsol', async () => {

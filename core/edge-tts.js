@@ -39,4 +39,33 @@ export async function edgeTts() {
   return kesz;
 }
 
-export default { SZINTEZIS_HOST, GEC_VERZIO, edgeTts };
+// ── TÜRELMES SZINTÉZIS (2026-10-14) ─────────────────────────────────
+// Élesben: „Edge TTS WebSocket error: Unexpected server response: 429" — a Microsoft
+// egy futásban sok kérést kapott (a nap Reeljeinek újragyártása + a TikTok-extra), és
+// visszaszólt. Egyetlen 429 az EGÉSZ gyártást megállította, a pótló TikTok-videó el sem
+// készült (10-14: 2/3). Ezért a túlterheléses hibára NÖVEKVŐ várakozással újrapróbálunk;
+// minden más hiba (pl. rossz hang) azonnal továbbmegy — azt az újrapróba nem javítja.
+export const TULTERHELES_RX = /\b429\b|too many requests|Unexpected server response: 5\d\d/i;
+export const VARASOK_MS = [20000, 60000];
+
+/** Egy szöveg hangja (mp3 Buffer). A 429-re / 5xx-re VARASOK_MS szerint újrapróbál. */
+export async function hangSzintezis({ MsEdgeTTS, OUTPUT_FORMAT }, voice, szoveg,
+  { varasok = VARASOK_MS, alvas = ms => new Promise(r => setTimeout(r, ms)) } = {}) {
+  for (let proba = 0; ; proba++) {
+    try {
+      const tts = new MsEdgeTTS();
+      await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
+      const { audioStream } = tts.toStream(szoveg);
+      const d = [];
+      audioStream.on('data', x => d.push(x));
+      await new Promise((ok, hiba) => { audioStream.on('close', ok); audioStream.on('error', hiba); });
+      return Buffer.concat(d);
+    } catch (e) {
+      if (proba >= varasok.length || !TULTERHELES_RX.test(String(e?.message || e))) throw e;
+      console.log(`   ⏳ felolvasó túlterhelt (${String(e?.message || e).slice(0, 60)}) — ${varasok[proba] / 1000} mp múlva újra`);
+      await alvas(varasok[proba]);
+    }
+  }
+}
+
+export default { SZINTEZIS_HOST, GEC_VERZIO, edgeTts, hangSzintezis };

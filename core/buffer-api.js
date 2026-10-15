@@ -80,7 +80,7 @@ export const CSATORNAK_QUERY =
  * defined by type PostsInput" jön).
  */
 export const POSZTOK_QUERY =
-  `query($i: PostsInput!){ posts(input:$i){ edges { node { status sentAt } } } }`;
+  `query($i: PostsInput!){ posts(input:$i){ edges { node { status sentAt createdAt } } } }`;
 
 /**
  * A poszt-készítő mutáció.

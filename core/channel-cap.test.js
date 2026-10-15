@@ -17,7 +17,7 @@ import assert from 'assert/strict';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { allowedNow, countSentToday, capFor, figyelendoCsatornak } from './channel-cap.js';
+import { allowedNow, countSentToday, countTodayWithQueued, capFor, figyelendoCsatornak } from './channel-cap.js';
 
 let pass = 0;
 const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
@@ -211,6 +211,27 @@ t('📌 az ÉLES config.json: TikTok napi 3 (2 Reel + 1 csak-TikTok), Instagram-
   assert.equal(allowedNow({ sentToday: 3, dailyCap: capFor(eles, 'tiktok'), runLimit: 3 }), 0,
     'a napi 3 után mégis kimenne a negyedik');
   assert.equal(capFor(eles, 'instagram'), null, 'az Instagram-bejegyzés visszakerült a configba');
+});
+
+// ── 10-15: a riport „⚠️ TIKTOK: ma csak 2/3"-at írt, pedig 3 ment ki — a harmadik 2 perccel a
+// számolás UTÁN küldődött el (a Buffer késleltetve küld). A RIPORT-szám ezért a mai, még
+// küldés alatt álló posztot is beszámolja. (A plafon-döntés marad a szigorú countSentToday.)
+t('🔴 10-15: a riport-szám a ma feladott, még küldés alatt álló posztot is beszámolja', () => {
+  const ma = d => new Date(MOST - d * 3600e3).toISOString();
+  const posts = [
+    { status: 'sent', sentAt: ma(10), createdAt: ma(10) },
+    { status: 'sent', sentAt: ma(9), createdAt: ma(9) },
+    { status: 'sending', sentAt: null, createdAt: ma(0.03) },     // most adtuk fel, még nem ment ki
+    { status: 'error', sentAt: null, createdAt: ma(1) },          // bukott — nem számít
+    { status: 'draft', sentAt: null, createdAt: ma(1) },
+    { status: 'sent', sentAt: '2026-08-23T20:00:00Z', createdAt: '2026-08-23T20:00:00Z' }   // tegnapi
+  ];
+  assert.equal(countTodayWithQueued(posts, MOST), 3);
+  assert.equal(countTodayWithQueued(null, MOST), null, 'a „nem tudom" nem lehet nulla');
+  assert.equal(countTodayWithQueued([], MOST), 0);
+  const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'agents', 'social', 'buffer-poster.js'), 'utf-8');
+  assert.match(src, /db: await maiTiktokDb\(ORG, ttCsat\.id\)/, '🔴 a riport megint csak az elküldötteket számolja');
+  assert.match(src, /return countTodayWithQueued\(r\.nodes\);/);
 });
 
 console.log('\n✅ channel-cap.test: mind a ' + pass + ' eset rendben');

@@ -503,10 +503,15 @@ export function maiPromo(utolso, now = Date.now()) {
 }
 
 async function prepare(ROOT, join) {
-  const ki = await prepareReel(ROOT, join);
+  // 10-14: a Reel-ág hibája (Edge TTS 429 az újragyártáskor) miatt a TikTok-extra EL SEM
+  // INDULT, és aznap kimaradt a pótló videó. A két ág FÜGGETLEN: bármelyik bukik, a másik
+  // akkor is lefut. A Reel-ág hibája a végén továbbmegy — a riport onnan tud róla.
+  let ki = null, reelHiba = null;
+  try { ki = await prepareReel(ROOT, join); } catch (e) { reelHiba = e; }
   // A TikTok-extra hibája SOHA nem ronthatja el a Facebook-Reelt — az már kész.
   try { await prepareTiktokExtra(ROOT, join); }
   catch (e) { console.log('⚠️  TikTok-extra videó kimaradt: ' + String(e?.message || e).slice(0, 160)); }
+  if (reelHiba) throw reelHiba;
   return ki;
 }
 
