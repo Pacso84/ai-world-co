@@ -318,6 +318,15 @@ t('🎬 TikTok: csak a MAI, oda még ki nem küldött Reel — a korábbi elöl'
   assert.deepEqual(videoCsatornaMai(null, p, 'posted_tiktok', MOST), []);
 });
 
+t('🔴 10-15: a TikTok-FOTÓVAL már kiment cikk nem megy videóként is (csak a posted_tiktok mezőre)', () => {
+  const cikkek = [g('a', '2026-01-01', { reel_at: '2026-08-25T03:40:00Z' })];
+  const posztok = { a: { slug: 'a', posted_tiktok_photo: '2026-08-25T04:00:00Z' } };
+  const p = s => posztok[s] || null;
+  assert.deepEqual(videoCsatornaMai(cikkek, p, 'posted_tiktok', MOST), [], '🔴 ugyanaz a cikk fotóként ÉS videóként is');
+  assert.deepEqual(videoCsatornaMai(cikkek, p, 'posted_threads_video', MOST).map(x => x.slug), ['a'],
+    'a Threads-videót a TikTok-fotó nem érinti');
+});
+
 // ── TIKTOK-EXTRA (2026-10-11, user: „ha belefér a keretbe mehet több video is a tiktokra is!") ──
 
 t('🎵 TikTok-extra: a LEGRÉGEBBI friss, videó nélküli útmutató; naponta egy', () => {

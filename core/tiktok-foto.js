@@ -65,10 +65,14 @@ export function fotoKeret({ plafon, maiDb, videoKikuldve = 0 }) {
  * @param {{now?:number, keret?:number, napiMax?:number}} opts
  * @returns {{sor: Array, hely: number}}
  */
-export function tiktokFotoSor(items, { now = Date.now(), keret, napiMax = FOTO_NAPI_MAX } = {}) {
+export function tiktokFotoSor(items, { now = Date.now(), keret, napiMax = FOTO_NAPI_MAX, kizar } = {}) {
   if (!Array.isArray(items)) return { sor: [], hely: 0 };
+  // 2026-10-15 (review I1): a fotó CSAK HÍRBŐL — az útmutató videóként megy (az a jobb formátum),
+  // így a két forma nem ütközhet. `kizar`: a futásban már VIDEÓKÉNT kiment elemek útvonalai
+  // (a sor a videók előtt készült, a jelölésük nála elavult).
   const sor = items
-    .filter(x => x?.isFresh && x.post?.posted_at && !x.post.posted_tiktok && !x.post.posted_tiktok_photo)
+    .filter(x => x?.isFresh && !x.isGuide && x.post?.posted_at && !x.post.posted_tiktok && !x.post.posted_tiktok_photo
+      && !(kizar && kizar.has(x.path)))
     .sort((a, b) => String(b.pubAt || '').localeCompare(String(a.pubAt || '')));
   const maradekNap = Math.max(0, napiMax - maiMarkaDb(items, 'posted_tiktok_photo', now));
   const k = typeof keret === 'number' && !Number.isNaN(keret) && keret >= 0 ? keret : 0;   // 🔒 ismeretlen → 0

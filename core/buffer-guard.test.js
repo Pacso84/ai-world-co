@@ -386,6 +386,19 @@ t('🎵 10-13: TikTok-sor — 3/3 rendben; délután a hiány ⚠️ (a záróso
   const g6 = db => ({ tiktokMa: { nap: '2026-10-13', db, plafon: 6 } });
   assert.equal(tiktokSor(g6(3), D), '🎵 TikTok ma: 3/6 poszt kint (videó + fotó)', '🔴 fotó híján hamis ⚠️ lenne');
   assert.match(tiktokSor(g6(2), D), /^⚠️ TIKTOK: ma csak 2\/6/);
+  // 10-15 (review M3): külön videó + fotó; a fotó nem takarhatja el a hiányzó videót.
+  const gv = (video, foto, nap = '2026-10-13') => ({ tiktokMa: { nap, db: video + foto, plafon: 6, video, foto } });
+  assert.equal(tiktokSor(gv(3, 3), D), '🎵 TikTok ma: 3 videó + 3 fotó');
+  assert.match(tiktokSor(gv(1, 3), D), /^⚠️ TIKTOK: ma csak 1 videó/, '🔴 a 3 fotó elfedi a hiányzó videókat');
+  assert.equal(tiktokSor(gv(1, 3), REGGEL), '🎵 TikTok ma eddig: 1 videó + 3 fotó', 'reggel még nem hiba');
+  // vasárnap (2026-10-18) a cél 2 videó: a reklám nem megy TikTokra
+  const V = Date.parse('2026-10-18T15:00:00Z');
+  assert.equal(tiktokSor(gv(2, 0, '2026-10-18'), V), '🎵 TikTok ma: 2 videó + 0 fotó', 'vasárnap 2 videó a cél');
+  assert.match(tiktokSor(gv(1, 0, '2026-10-18'), V), /^⚠️ TIKTOK: ma csak 1 videó.*cél: 2/);
+  const tmp2 = mkdtempSync(join(tmpdir(), 'bg-'));
+  const rec2 = irBufferGuard(tmp2, join, { kikuldve: 1, tiktokMa: { nap: '2026-10-13', db: 4, plafon: 6, video: 3, foto: 1 } });
+  assert.deepEqual(rec2.tiktokMa, { nap: '2026-10-13', db: 4, plafon: 6, video: 3, foto: 1 }, '🔴 a videó/fotó szám nem kerül az őr-fájlba');
+  rmSync(tmp2, { recursive: true, force: true });
   assert.match(tiktokSor(g(null), D), /^⚠️ TIKTOK: a mai videók száma nem kérdezhető le/);
   assert.equal(tiktokSor({ tiktokMa: { nap: '2026-10-12', db: 0, plafon: 3 } }, D), '', 'a tegnapi adat nem mai hír');
   assert.equal(tiktokSor({}, D), '');

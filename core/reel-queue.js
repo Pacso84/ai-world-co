@@ -198,6 +198,8 @@ export function videoCsatornaMai(cikkek, postOf, field, now = Date.now()) {
     volt.add(c.slug);
     const post = postOf(c.slug);
     if (!post || post[field]) continue;
+    // 2026-10-15: a TikTok-FOTÓVAL már kiment cikk nem megy videóként is (csak a TikTok-sorra).
+    if (field === 'posted_tiktok' && post.posted_tiktok_photo) continue;
     ki.push({ slug: c.slug, post });
   }
   return ki;

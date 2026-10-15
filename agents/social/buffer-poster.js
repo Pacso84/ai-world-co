@@ -38,7 +38,7 @@
 // ===================================================================
 
 import 'dotenv/config';
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
+import { readFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { selectSocialBatch } from '../../core/social-queue.js';
@@ -50,7 +50,9 @@ import { capFor, allowedNow, countSentToday, countTodayWithQueued, figyelendoCsa
 import { videoCsatornaMai } from '../../core/reel-queue.js';
 // 2026-10-15 (user): a TikTokra a Facebookra kiment cikkek FOTÓ-posztként is mennek (napi max 3),
 // a Threads pedig a napi videókat is megkapja. A döntés a core-ban (tesztelhető): core/tiktok-foto.js.
-import { tiktokFotoSor, fotoKeret } from '../../core/tiktok-foto.js';
+import { tiktokFotoSor, fotoKeret, maiMarkaDb } from '../../core/tiktok-foto.js';
+// 2026-10-15 (review I2): a jelölés MINDIG a friss fájlba megy (a tételek ugyanannak a fájlnak külön parse-jai).
+import { jelolMezo } from '../../core/social-mark.js';
 // ⚠️ AZ ŐRSZEM (2026-08-30). Enélkül ez a modul NÉMÁN áll le: lejárt token,
 // levált csatorna vagy bukott createPost esetén csak a CI naplójába írt,
 // ahová senki nem néz — és a fájl végi `catch` még 0-val is lépett ki, tehát
@@ -236,7 +238,7 @@ function queueFor(field, pub, now) {
     // HÍR: csak friss. ÚTMUTATÓ: örökzöld (ugyanaz a szabály, mint a Facebooknál).
     if (st.stale) {
       post[field] = 'skipped-stale';
-      if (!DRY) writeFileSync(path, JSON.stringify(post, null, 2), 'utf-8');
+      if (!DRY) jelolMezo(path, field, 'skipped-stale', { fallback: post });
       continue;
     }
     out.push({ path, post, pubAt: st.pubAt, isGuide: st.isGuide, isFresh: st.isFresh });
@@ -556,17 +558,19 @@ async function main() {
       // csatornánkénti látogatót két hét múlva KÜLÖN megmérjük.
       // A jelölő tételenként más lehet: link-poszt `posted_threads`, Threads-videó
       // `posted_threads_video`, TikTok-fotó `posted_tiktok_photo`.
-      item.post[markField] = new Date().toISOString();
-      writeFileSync(item.path, JSON.stringify(item.post, null, 2), 'utf-8');
+      // ⚠️ Nem az item.post-ot írjuk vissza (az elavult: a link-poszt, a videó és a fotó külön parse-ok
+      // ugyanabból a fájlból) — a core/social-mark.js újraolvas, és csak ezt az egy mezőt állítja.
+      item.post = jelolMezo(item.path, markField, new Date().toISOString(), { fallback: item.post });
       kikuldve++;
       console.log(`   ✅ ${slug.slice(0, 44)}`);
       return true;
     };
 
     let videoKikuldve = 0;
+    const videoUtak = new Set();   // a futásban VIDEÓKÉNT kiment cikkek — a fotó-sor ezeket kihagyja (review I1)
     for (const item of batch) {
       const ok = await kuldTetel(item);
-      if (ok && (item.video || cfg.videoOnly)) videoKikuldve++;
+      if (ok && (item.video || cfg.videoOnly)) { videoKikuldve++; videoUtak.add(item.path); }
     }
 
     // ── TIKTOK FOTÓ-POSZTOK (2026-10-15, user: „minden közösségi médiában ugyanazok jelenjenek meg") ──
@@ -578,7 +582,7 @@ async function main() {
       let fk = fotoKeret({ plafon, maiDb, videoKikuldve });
       // Próbában a plafon nem némítja el, mi menne (lásd fent) — de a napi 3-nál így is megáll.
       if (DRY && fk <= 0) fk = 1;
-      const { sor, hely } = tiktokFotoSor(fotoNy, { now, keret: fk });
+      const { sor, hely } = tiktokFotoSor(fotoNy, { now, keret: fk, kizar: videoUtak });
       console.log(`\n🖼️ ${cfg.label} FOTÓ-posztok: ${sor.length} jelölt (FB-n kint, friss, nincs videó/fotó) · hely most: ${hely}`);
       let elkuldve = 0;
       for (const j of sor) {
@@ -600,7 +604,10 @@ async function main() {
   let tiktokMa = null;
   const ttCsat = channels.find(c => c.key === 'tiktok');
   if (ttCsat && ORG && !DRY) {
-    tiktokMa = { nap: new Date().toISOString().slice(0, 10), db: await maiTiktokDb(ORG, ttCsat.id), plafon: capFor(CONFIG, 'tiktok') };
+    // A külön videó- és fotó-szám a SAJÁT mai jelölésekből (friss olvasás) — a fotó nem takarhatja el a hiányzó videót.
+    const jelolesek = fotoNyersanyag(pub, Date.now());
+    tiktokMa = { nap: new Date().toISOString().slice(0, 10), db: await maiTiktokDb(ORG, ttCsat.id), plafon: capFor(CONFIG, 'tiktok'),
+      video: maiMarkaDb(jelolesek, 'posted_tiktok'), foto: maiMarkaDb(jelolesek, 'posted_tiktok_photo') };
     console.log(`🎵 TikTok ma összesen: ${tiktokMa.db === null ? '?' : tiktokMa.db}/${tiktokMa.plafon}`);
   }
 

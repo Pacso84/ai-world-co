@@ -147,6 +147,16 @@ export function tiktokSor(guard, now = Date.now()) {
   if (!Number.isFinite(tt.db)) return '⚠️ TIKTOK: a mai videók száma nem kérdezhető le a Buffertől.';
   // 2026-10-15: a napi plafon 6 (3 videó + max 3 fotó-poszt). Fotó csak akkor megy, ha van friss,
   // a Facebookra már kiment cikk — ezért a ⚠️ küszöbe a VIDEÓ-cél (3), nem a teljes plafon.
+  // 2026-10-15 (review M3): ha megvan a külön videó/fotó szám, a fotó NEM takarhatja el a hiányzó videót.
+  // Cél: hétfő–szombat 3 videó, vasárnap 2 (a reklám nem megy TikTokra).
+  if (Number.isFinite(tt.video) && Number.isFinite(tt.foto)) {
+    const videoCel = new Date(now).getUTCDay() === 0 ? 2 : 3;
+    if (tt.video >= videoCel) return `🎵 TikTok ma: ${tt.video} videó + ${tt.foto} fotó`;
+    if (new Date(now).getUTCHours() >= 12) {
+      return `⚠️ TIKTOK: ma csak ${tt.video} videó ment ki (cél: ${videoCel}) + ${tt.foto} fotó — nézd meg a REEL- és BUFFER-sorokat.`;
+    }
+    return `🎵 TikTok ma eddig: ${tt.video} videó + ${tt.foto} fotó`;
+  }
   const cel = Math.min(tt.plafon, 3);
   if (tt.db >= cel) return `🎵 TikTok ma: ${tt.db}/${tt.plafon} poszt kint (videó + fotó)`;
   if (new Date(now).getUTCHours() >= 12) {
@@ -180,6 +190,8 @@ export function irBufferGuard(ROOT, join, allapot = {}) {
     const tt = allapot?.tiktokMa;
     if (tt && typeof tt.nap === 'string' && Number.isFinite(tt.plafon)) {
       rec.tiktokMa = { nap: tt.nap, db: Number.isFinite(tt.db) ? tt.db : null, plafon: tt.plafon };
+      // 2026-10-15: külön videó/fotó darabszám (a saját mai jelölésekből) — a riport ebből látja a hiányzó videót.
+      if (Number.isFinite(tt.video) && Number.isFinite(tt.foto)) { rec.tiktokMa.video = tt.video; rec.tiktokMa.foto = tt.foto; }
     }
     writeFileSync(join(dir, GUARD_FAJL), JSON.stringify(rec, null, 2), 'utf-8');
     return rec;

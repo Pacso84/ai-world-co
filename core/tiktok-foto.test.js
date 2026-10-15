@@ -16,6 +16,9 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { tiktokFotoSor, maiMarkaDb, fotoKeret, FOTO_NAPI_MAX } from './tiktok-foto.js';
 import { CHANNELS } from './social-text.js';
+import { jelolMezo } from './social-mark.js';
+import { mkdtempSync, writeFileSync, rmSync } from 'fs';
+import { tmpdir } from 'os';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 let pass = 0;
