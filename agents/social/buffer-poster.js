@@ -48,6 +48,9 @@ import { composePost, followCta, CHANNELS } from '../../core/social-text.js';
 import { isArticleFile, buildPublishedMap, queueStatus, realSlug } from '../../core/social-published.js';
 import { capFor, allowedNow, countSentToday, countTodayWithQueued, figyelendoCsatornak } from '../../core/channel-cap.js';
 import { videoCsatornaMai } from '../../core/reel-queue.js';
+// 2026-10-15 (user): a TikTokra a Facebookra kiment cikkek FOTÓ-posztként is mennek (napi max 3),
+// a Threads pedig a napi videókat is megkapja. A döntés a core-ban (tesztelhető): core/tiktok-foto.js.
+import { tiktokFotoSor, fotoKeret } from '../../core/tiktok-foto.js';
 // ⚠️ AZ ŐRSZEM (2026-08-30). Enélkül ez a modul NÉMÁN áll le: lejárt token,
 // levált csatorna vagy bukott createPost esetén csak a CI naplójába írt,
 // ahová senki nem néz — és a fájl végi `catch` még 0-val is lépett ki, tehát
@@ -241,7 +244,24 @@ function queueFor(field, pub, now) {
   return out;
 }
 
-// A 4:5 álló borítókép — ugyanaz, amit a Facebook kap (Threads/X; a TikTok videót kap).
+/**
+ * A TikTok FOTÓ-posztok nyersanyaga (2026-10-15): az ÖSSZES közösségi bejegyzés a cikk korával.
+ * NEM ír semmit (a queueFor 'skipped-stale' jelölést tenne száz fájlra — ide az nem kell), és a
+ * kiválasztás (FB-n kint, friss, nincs TikTok-videó/-fotó, napi max) a core/tiktok-foto.js dolga.
+ */
+function fotoNyersanyag(pub, now) {
+  const out = [];
+  for (const f of readdirSync(SOCIAL_DIR).filter(x => x.endsWith('.json'))) {
+    const path = join(SOCIAL_DIR, f);
+    let post; try { post = JSON.parse(readFileSync(path, 'utf-8')); } catch { continue; }
+    if (!post.facebook || !post.url) continue;
+    const st = queueStatus(pub, post, now);
+    out.push({ path, post, pubAt: st ? st.pubAt : '', isGuide: !!st?.isGuide, isFresh: !!st?.isFresh });
+  }
+  return out;
+}
+
+// A 4:5 álló borítókép — ugyanaz, amit a Facebook kap (Threads/X/TikTok-fotó; a TikTok videót is kap).
 const imageUrl = slug => `${SITE}/assets/fb/${slug}.jpg`;
 
 // ⚠️ A KÉP NEM MINDIG VAN MEG (2026-08-14, mérve: 18 sorban álló posztból 17-nek
@@ -415,21 +435,30 @@ async function main() {
 
   for (const ch of channels) {
     const cfg = CHANNELS[ch.key];
-    // ── VIDEÓS CSATORNA (TikTok, 2026-10-07): CSAK a mai Reel megy ki ──
+    // ── VIDEÓS CSATORNA (TikTok, 2026-10-07): a VIDEÓS sorba a mai Reel megy ──
     // (2026-10-11 óta + a napi 1 csak-TikTok videó — core/reel-queue.js tiktokExtra)
-    // A sora NEM a közösségi sor: azon a queueFor() a régi híreket
+    // (2026-10-15 óta a videók UTÁN a Facebookra kiment friss cikkek FOTÓ-posztként is,
+    // napi max 3 — lent, a core/tiktok-foto.js döntése szerint.)
+    // A videós sora NEM a közösségi sor: azon a queueFor() a régi híreket
     // 'skipped-stale'-lel jelölné — száz fájl írása egy olyan csatornára,
-    // ahová állókép amúgy sem mehet.
+    // ahová a link-poszt amúgy sem mehet.
     //
     // ⚠️ NEM A SORBÓL VETT SZÖVEGHEZ RAGASZTJUK A VIDEÓT (2026-08-25-i lecke:
     // a próbán a szöveg és a videó két különböző cikkről szólt). A videó a
     // SAJÁT cikkének kész közösségi szövegével megy, és az kapja a jelölést.
     //
     // Ha egy nap nincs Reel (elfogytak az útmutatók, hibázott a gyártás), a
-    // TikTok aznap NÉMA MARAD — szándékosan; a bukást a 🎬 REEL-ŐRSZEM jelzi.
+    // TikTok videó nélkül marad — szándékosan; a bukást a 🎬 REEL-ŐRSZEM jelzi.
     const q = cfg.videoOnly ? await maiVideok(cfg.field, cikkLista) : queueFor(cfg.field, pub, now);
-    if (!q.length) {
-      console.log(`\n💤 ${cfg.label}: nincs kiküldendő.` + (cfg.videoOnly ? ' (ide CSAK a mai Reel mehet)' : ''));
+    // THREADS-VIDEÓK (2026-10-15): a link-posztok UTÁN a mai videók is, saját jelölővel
+    // (posted_threads_video) — a cikk link-posztja napokkal korábban kimehetett. Ugyanaz a
+    // videó-készlet, mint a TikToké (maiVideok), ugyanaz a 404-védelem és újrapróba.
+    const vq = cfg.videoField ? (await maiVideok(cfg.videoField, cikkLista)).map(x => ({ ...x, markField: cfg.videoField })) : [];
+    // TIKTOK-FOTÓK (2026-10-15): jelöltek a core-ból; a keretet a videók után számoljuk.
+    const fotoNy = cfg.photoField ? fotoNyersanyag(pub, now) : [];
+    const fotoLehet = cfg.photoField ? tiktokFotoSor(fotoNy, { now, keret: Infinity }) : { sor: [], hely: 0 };
+    if (!q.length && !vq.length && !(fotoLehet.sor.length && fotoLehet.hely > 0)) {
+      console.log(`\n💤 ${cfg.label}: nincs kiküldendő.` + (cfg.videoOnly ? ' (videó: a mai Reel · fotó: friss, FB-n kint lévő cikk)' : ''));
       continue;
     }
 
@@ -439,8 +468,9 @@ async function main() {
     // mért számok: core/channel-cap.js.
     const plafon = token() ? capFor(CONFIG, ch.key) : null;
     let keret = LIMIT;
+    let maiDb = null;          // a fotó-keret is ebből számol (2026-10-15)
     if (plafon !== null) {
-      const maiDb = ORG ? await sentTodayFor(ORG, ch.id) : null;
+      maiDb = ORG ? await sentTodayFor(ORG, ch.id) : null;
       keret = allowedNow({ sentToday: maiDb, dailyCap: plafon, runLimit: LIMIT });
       console.log(`\n📊 ${cfg.label}: napi plafon ${plafon} · ma eddig `
         + `${maiDb === null ? '? (nem sikerült lekérdezni)' : maiDb} → most ${keret} mehet`);
@@ -460,25 +490,31 @@ async function main() {
 
     // 2026-09-27 (user): „a lemaradásokat töröljük, csak a frissek menjenek" — a Threadsre is.
     // A videós csatorna sora eleve csak a MAI Reeleket tartalmazza, a korábbi elöl.
-    const batch = cfg.videoOnly ? q.slice(0, keret) : selectSocialBatch(q, keret, { csakFriss: true });
-    console.log(`\n📨 ${cfg.label} (@${ch.user}) — ${q.length} várakozóból ${batch.length} megy ki`
-      + (cfg.videoOnly ? '  🎬 (a mai Reel)' : ''));
+    const linkBatch = cfg.videoOnly ? q.slice(0, keret) : selectSocialBatch(q, keret, { csakFriss: true });
+    // A Threads: a link-posztok UTÁN a mai videók (vq) — a --limit a link-posztokra számol, a videókat
+    // a saját napi készletük (és a posted_threads_video jelölő) korlátozza.
+    const batch = [...linkBatch, ...vq];
+    console.log(`\n📨 ${cfg.label} (@${ch.user}) — ${q.length + vq.length} várakozóból ${batch.length} megy ki`
+      + (cfg.videoOnly ? '  🎬 (a mai Reel)' : '') + (vq.length ? `  🎬 (+${vq.length} videó-poszt)` : ''));
 
-    for (const item of batch) {
+    // EGY tétel kiküldése: videó, link-poszt (képpel) vagy TikTok-fotó. Visszaadja, sikerült-e.
+    const kuldTetel = async item => {
       const slug = realSlug(item.post);
       const cta = followCta(slug);
       // A követésre hívás a link UTÁN, hogy ne tolja el a mondanivalót.
       const alap = composePost({ text: item.post.facebook, url: item.post.url, channel: ch.key });
-      if (!alap) { console.log(`   ⏭️  ${slug.slice(0, 40)} — nem fér ki erre a csatornára`); continue; }
+      if (!alap) { console.log(`   ⏭️  ${slug.slice(0, 40)} — nem fér ki erre a csatornára`); return false; }
       const szoveg = cta && (alap.weight + cta.length + 2) <= cfg.limit ? `${alap.body}\n\n${cta}` : alap.body;
 
       // ── VIDEÓ VAGY KÉP ──────────────────────────────────────────
-      // A videós csatorna (TikTok) a napi Facebook-Reel UGYANAZON fájlját kapja —
-      // egy fájl, két helyre, nulla plusz költség. A szöveges csatornák (Threads,
-      // X) a 4:5 borítóképet, ha kint van; kép nélkül is elmennek.
+      // A videós sor (TikTok) és a Threads-videó a napi Facebook-Reel UGYANAZON fájlját kapja —
+      // egy fájl, több helyre, nulla plusz költség. A szöveges csatornák (Threads,
+      // X) a 4:5 borítóképet, ha kint van; kép nélkül is elmennek. A TikTok-fotó
+      // (item.kep) képe már ellenőrzött: a kiválasztáskor megvolt az imageExists.
       const video = item.video || null;
-      const kep = imageUrl(slug);
-      const vanKep = video ? false : await imageExists(kep);
+      const kep = item.kep || imageUrl(slug);
+      const vanKep = video ? false : (item.kep ? true : await imageExists(kep));
+      const markField = item.markField || cfg.field;
 
       if (DRY) {
         console.log(`   (próba) ${slug.slice(0, 44)}  [${alap.weight}/${cfg.limit}${alap.truncated ? ', csonkítva' : ''}]${video || vanKep ? '' : ' ⚠️ kép nélkül'}`);
@@ -486,12 +522,15 @@ async function main() {
           console.log(`      🎬 VIDEÓ: ${video}`);
           console.log(`         csempe: a videó ${REEL_CSEMPE_MS} ms-nál lévő képkockája (a horog-kártya)`);
         }
-        continue;
+        if (item.kep) console.log(`      🖼️ FOTÓ-poszt: ${item.kep}  (jelölő: ${markField})`);
+        return false;
       }
 
       let r = video
         ? await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, video })
-        : await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, image: vanKep ? kep : null });
+        : item.kep
+          ? await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, image: item.kep })
+          : await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, image: vanKep ? kep : null });
       // 2026-10-13: a Buffer a SAJÁT szervereiről tölti le a videót — nálunk már 200 volt,
       // náluk még nem („Video could not be read from its URL"). Várunk, és újra próbáljuk.
       for (let ujra = 1; video && r.error && VIDEO_NEM_OLVASHATO.test(r.error) && ujra <= 2; ujra++) {
@@ -500,6 +539,7 @@ async function main() {
         r = await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, video });
       }
       if (video) console.log(`   🎬 videó: ${slug.slice(0, 44)}`);
+      if (item.kep) console.log(`   🖼️ fotó: ${slug.slice(0, 44)}`);
       keres++;
       if (r.error) {
         // A bukás nem csak a naplóba megy: az őrszem-fájlon át a napi
@@ -507,17 +547,47 @@ async function main() {
         // „UnauthorizedError") pontosan olyan néma leállás, mint a lejárt token.
         hibak.push({ csatorna: ch.key, slug: slug.slice(0, 60), hiba: r.error });
         console.log(`   ❌ ${slug.slice(0, 40)} — ${r.error}`);
-        continue;
+        return false;
       }
 
       // CSAK sikeres válasz után jelöljük kiküldöttnek. ⚠️ A "sikeres" API-válasz
       // nem jelenti, hogy a poszt MEG IS JELENT — a Facebooknál ezt már
       // megtanultuk (a webhook 200-a csak annyit tett: "átvettem"). Ezért a
       // csatornánkénti látogatót két hét múlva KÜLÖN megmérjük.
-      item.post[cfg.field] = new Date().toISOString();
+      // A jelölő tételenként más lehet: link-poszt `posted_threads`, Threads-videó
+      // `posted_threads_video`, TikTok-fotó `posted_tiktok_photo`.
+      item.post[markField] = new Date().toISOString();
       writeFileSync(item.path, JSON.stringify(item.post, null, 2), 'utf-8');
       kikuldve++;
       console.log(`   ✅ ${slug.slice(0, 44)}`);
+      return true;
+    };
+
+    let videoKikuldve = 0;
+    for (const item of batch) {
+      const ok = await kuldTetel(item);
+      if (ok && (item.video || cfg.videoOnly)) videoKikuldve++;
+    }
+
+    // ── TIKTOK FOTÓ-POSZTOK (2026-10-15, user: „minden közösségi médiában ugyanazok jelenjenek meg") ──
+    // A videók UTÁN: a Facebookra már kiment, friss cikkek 4:5 képe, a legfrissebb elöl, napi max 3 és
+    // soha a csatorna napi plafonján (6) túl. A válogatás a core/tiktok-foto.js-ben (tesztelt); itt csak
+    // a kép létét ellenőrizzük (hiányzó kép nem viszi el a helyet), és küldünk. NINCS isAiGenerated:
+    // a TikTok fotónál elutasítja — az MI-jelölés a szövegben van (core/buffer-api.js).
+    if (cfg.photoField) {
+      let fk = fotoKeret({ plafon, maiDb, videoKikuldve });
+      // Próbában a plafon nem némítja el, mi menne (lásd fent) — de a napi 3-nál így is megáll.
+      if (DRY && fk <= 0) fk = 1;
+      const { sor, hely } = tiktokFotoSor(fotoNy, { now, keret: fk });
+      console.log(`\n🖼️ ${cfg.label} FOTÓ-posztok: ${sor.length} jelölt (FB-n kint, friss, nincs videó/fotó) · hely most: ${hely}`);
+      let elkuldve = 0;
+      for (const j of sor) {
+        if (elkuldve >= hely) break;
+        const kep = imageUrl(realSlug(j.post));
+        if (!(await imageExists(kep))) { console.log(`   ⏭️  ${realSlug(j.post).slice(0, 40)} — a kép nincs kint, kihagyom`); continue; }
+        const ok = await kuldTetel({ ...j, kep, markField: cfg.photoField });
+        if (ok || DRY) elkuldve++;
+      }
     }
   }
 

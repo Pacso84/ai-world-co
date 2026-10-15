@@ -379,9 +379,13 @@ if (GUARD_EREDETI !== null) writeFileSync(VALODI_GUARD, GUARD_EREDETI, 'utf-8');
 t('🎵 10-13: TikTok-sor — 3/3 rendben; délután a hiány ⚠️ (a zárósor ezt hibának számolja); régi nap/nincs adat → hallgat', () => {
   const D = Date.parse('2026-10-13T15:00:00Z'), REGGEL = Date.parse('2026-10-13T06:00:00Z');
   const g = db => ({ tiktokMa: { nap: '2026-10-13', db, plafon: 3 } });
-  assert.equal(tiktokSor(g(3), D), '🎵 TikTok ma: 3/3 videó kint');
+  assert.equal(tiktokSor(g(3), D), '🎵 TikTok ma: 3/3 poszt kint (videó + fotó)');
   assert.match(tiktokSor(g(1), D), /^⚠️ TIKTOK: ma csak 1\/3/, '🔴 a 10-13-i 1/3 délután is csendben maradna');
-  assert.equal(tiktokSor(g(1), REGGEL), '🎵 TikTok ma eddig: 1/3 videó', 'reggel még nem hiba');
+  assert.equal(tiktokSor(g(1), REGGEL), '🎵 TikTok ma eddig: 1/3 poszt', 'reggel még nem hiba');
+  // 10-15: plafon 6 (3 videó + 3 fotó) — a ⚠️ küszöbe a 3 videó, nem a 6: fotó nélküli nap nem hiba.
+  const g6 = db => ({ tiktokMa: { nap: '2026-10-13', db, plafon: 6 } });
+  assert.equal(tiktokSor(g6(3), D), '🎵 TikTok ma: 3/6 poszt kint (videó + fotó)', '🔴 fotó híján hamis ⚠️ lenne');
+  assert.match(tiktokSor(g6(2), D), /^⚠️ TIKTOK: ma csak 2\/6/);
   assert.match(tiktokSor(g(null), D), /^⚠️ TIKTOK: a mai videók száma nem kérdezhető le/);
   assert.equal(tiktokSor({ tiktokMa: { nap: '2026-10-12', db: 0, plafon: 3 } }, D), '', 'a tegnapi adat nem mai hír');
   assert.equal(tiktokSor({}, D), '');

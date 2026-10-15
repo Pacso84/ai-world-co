@@ -268,6 +268,14 @@ t('🤖 a TikTok-videó „AI-generált" jelölést kap (EU AI Act) — a séma 
   assert.equal(th.metadata, undefined, '🔴 a Threads is tiktok-metaadatot kapott');
 });
 
+t('🖼️ 10-15: a TikTok FOTÓ-poszt NEM kap isAiGenerated-et (élesben mérve: InvalidInputError „photo posts do not support AI content disclosure")', () => {
+  const f = createPostInput({ channelId: 'c', text: 'x', image: 'https://pelda.invalid/k.jpg', channelKey: 'tiktok' });
+  assert.deepEqual(f.assets, [{ image: { url: 'https://pelda.invalid/k.jpg' } }]);
+  assert.equal(f.metadata, undefined, '🔴 a fotó-poszt MI-jelölést kapott — a TikTok elutasítja');
+  const v = createPostInput({ channelId: 'c', text: 'x', video: 'https://pelda.invalid/v.mp4', channelKey: 'tiktok' });
+  assert.equal(v.metadata.tiktok.isAiGenerated, true, '🔴 a videó MI-jelölése elveszett');
+});
+
 t('⛔ Instagram-metaadat nincs többé (kivezetve 2026-10-07)', () => {
   const i = createPostInput({ channelId: 'c', text: 'x', video: 'https://pelda.invalid/v.mp4', channelKey: 'instagram' });
   assert.equal(i.metadata, undefined, 'az Instagram-ág visszakerült');

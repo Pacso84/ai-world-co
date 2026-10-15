@@ -238,7 +238,12 @@ export function createPostInput({ channelId, text, image, video, channelKey }) {
   // ⚠️ Az Instagram-ág (metadata.instagram.type) 10-07-én KIVEZETVE — a fiók
   // törölve. Ha egyszer visszajönne: a Buffer ott TÍPUST követel
   // („Instagram posts require a type"), lásd a git-történetet.
-  if (channelKey === 'tiktok') {
+  //
+  // ⚠️ CSAK A VIDEÓRA (2026-10-15, élesben mérve Buffer-vázlattal): a TikTok FOTÓ-poszt
+  // az `isAiGenerated`-et ELUTASÍTJA — InvalidInputError: „TikTok photo posts do not
+  // support AI content disclosure". A fotónál a jelölést a caption viszi
+  // (CHANNELS.tiktok.aiLabel, core/social-text.js), metaadat nem megy.
+  if (channelKey === 'tiktok' && video) {
     input.metadata = { tiktok: { isAiGenerated: true } };
   }
 

@@ -20,17 +20,21 @@ export const CHANNELS = {
   // fölöslegesen vágnánk le 55 karakternyi mondanivalót.
   x: { limit: 280, urlWeight: 23, field: 'posted_x', label: 'X' },
   // A Threads a link teljes hosszát beleszámolja az 500-ba.
-  threads: { limit: 500, urlWeight: null, field: 'posted_threads', label: 'Threads' },
+  // `videoField` (2026-10-15, user: „minden közösségi médiában ugyanazok jelenjenek meg"): a napi
+  // videók a Threadsre is mennek videó-posztként. KÜLÖN jelölő, mert ugyanennek a cikknek a
+  // link-posztja (`posted_threads`) napokkal korábban már kimehetett.
+  threads: { limit: 500, urlWeight: null, field: 'posted_threads', label: 'Threads', videoField: 'posted_threads_video' },
   // ── TIKTOK (2026-10-07, user: „csináljunk egy tiktokot") ────────────
   // Az Instagram HELYÉN (fiók törölve 10-05; 14 nap alatt 4 belépő). Ugyanaz
   // a két szabály, amit ott mérve tanultunk (2026-08-11):
   //   • a link a szövegben NEM KATTINTHATÓ → `linkMode: 'bio'` (a profilban,
   //     üzleti fiókkal van kattintható honlap-link);
-  //   • CSAK VIDEÓ megy (`videoOnly`) — a napi Facebook-Reel ugyanazon fájlja,
-  //     gyártás nélkül. Állókép a TikTokon nincs értelme.
+  //   • a VIDEÓS SOR (`videoOnly`) a napi Facebook-Reel ugyanazon fájlja, gyártás nélkül.
+  //     2026-10-15 (user): ezen túl a Facebookra kiment friss cikkek FOTÓ-posztként is mennek,
+  //     napi max 3 (`photoField`, core/tiktok-foto.js). A link-poszt (sima szöveg) továbbra sem.
   // `aiLabel`: az MI-jelölés a SZÖVEGBEN is (EU AI Act, 2026-09-27), a TikTok
   // saját „AI-generált" kapcsolója mellett (core/buffer-api.js).
-  tiktok: { limit: 2200, urlWeight: null, field: 'posted_tiktok', label: 'TikTok', linkMode: 'bio', videoOnly: true, aiLabel: true }
+  tiktok: { limit: 2200, urlWeight: null, field: 'posted_tiktok', label: 'TikTok', linkMode: 'bio', videoOnly: true, aiLabel: true, photoField: 'posted_tiktok_photo' }
 };
 
 const SEP = '\n\n';

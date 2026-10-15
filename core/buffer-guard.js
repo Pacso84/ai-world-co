@@ -145,11 +145,14 @@ export function tiktokSor(guard, now = Date.now()) {
   const ma = new Date(now).toISOString().slice(0, 10);
   if (!tt || tt.nap !== ma || !Number.isFinite(tt.plafon) || tt.plafon <= 0) return '';
   if (!Number.isFinite(tt.db)) return '⚠️ TIKTOK: a mai videók száma nem kérdezhető le a Buffertől.';
-  if (tt.db >= tt.plafon) return `🎵 TikTok ma: ${tt.db}/${tt.plafon} videó kint`;
+  // 2026-10-15: a napi plafon 6 (3 videó + max 3 fotó-poszt). Fotó csak akkor megy, ha van friss,
+  // a Facebookra már kiment cikk — ezért a ⚠️ küszöbe a VIDEÓ-cél (3), nem a teljes plafon.
+  const cel = Math.min(tt.plafon, 3);
+  if (tt.db >= cel) return `🎵 TikTok ma: ${tt.db}/${tt.plafon} poszt kint (videó + fotó)`;
   if (new Date(now).getUTCHours() >= 12) {
-    return `⚠️ TIKTOK: ma csak ${tt.db}/${tt.plafon} videó ment ki — nézd meg a REEL- és BUFFER-sorokat.`;
+    return `⚠️ TIKTOK: ma csak ${tt.db}/${tt.plafon} poszt ment ki (cél: ${cel} videó) — nézd meg a REEL- és BUFFER-sorokat.`;
   }
-  return `🎵 TikTok ma eddig: ${tt.db}/${tt.plafon} videó`;
+  return `🎵 TikTok ma eddig: ${tt.db}/${tt.plafon} poszt`;
 }
 
 /**
