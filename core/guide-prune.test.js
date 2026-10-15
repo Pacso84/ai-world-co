@@ -159,4 +159,16 @@ t('🔌 IndexNow: a 48 órán belül törölt útmutatókat is bejelenti', () =>
   assert.match(ix, /toroltUrlek\(lista, site, LANGS, now, FRESH_HOURS\)/);
 });
 
+t('🔴 10-15: a forgalmi napló a törlés ELŐTT frissül (az előző nap olvasója is számít)', () => {
+  // Élesben: egy útmutató spanyol változatát 10-14-én 1 ember olvasta, a napló viszont csak
+  // a futás VÉGÉN frissült — a 10-15 hajnali törlés még nem látta. User: „csak akkor törlünk
+  // útmutatót, ha 60 napig nem olvassa senki!"
+  const yml = forras('.github/workflows/auto.yml');
+  const naplo = yml.indexOf('- name: Forgalom-napló frissítése a törlés előtt');
+  const hazmester = yml.indexOf('- name: Házmester (halott adat takarítása)');
+  assert.ok(naplo > 0 && hazmester > naplo, '🔴 a Házmester a friss napló NÉLKÜL dönt a törlésről');
+  assert.match(yml.slice(naplo, hazmester), /run: node core\/traffic-log\.js \|\| true/);
+  assert.match(yml.slice(naplo, hazmester), /CF_ANALYTICS_TOKEN: \$\{\{ secrets\.CF_ANALYTICS_TOKEN \}\}/, 'kulcs nélkül a lépés üresen fut');
+});
+
 console.log('\n✅ guide-prune.test: mind a ' + pass + ' eset rendben');

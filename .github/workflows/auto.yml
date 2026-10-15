@@ -157,7 +157,7 @@ jobs:
       - name: Tesztek (ingyenes kapuk — a bukás a napi riportba megy)
         # 5 perc: a mért futásidő ~1-2 perc, a maradék a lassú futtatóra.
         # ⚠️ A `core/ci-timeouts.test.js` őrzi, hogy a lépés-korlátok ÖSSZEGE
-        # (most 139) beleférjen a 145 perces job-plafonba 5 perc tartalékkal.
+        # (most 140) beleférjen a 145 perces job-plafonba 5 perc tartalékkal.
         timeout-minutes: 5
         run: node core/run-tests.js --guard || true
 
@@ -479,6 +479,19 @@ jobs:
       # Csak azt törli, amiről BIZONYÍTHATÓ, hogy nincs rá hivatkozás; ha bármi
       # bizonytalan, hozzá sem nyúl. Beépített őrszem szól, ha valami újra hízni
       # kezd — hogy ne fél év múlva, a lassú klónozásból derüljön ki.
+      # FORGALOM-NAPLÓ A TÖRLÉS ELŐTT (2026-10-15, user: „csak akkor törlünk útmutatót, ha 60
+      # napig nem olvassa senki!"). A Házmester a 60 napja olvasatlan útmutatót törli
+      # (core/guide-prune.js), a napló viszont eddig csak a futás VÉGÉN frissült — az előző nap
+      # olvasói így még nem látszottak (10-15: egy útmutató spanyol változatának 1 olvasója a
+      # törlés előtti napon). Itt is frissítjük; a futás végi lépés marad (a riport is abból dolgozik).
+      - name: Forgalom-napló frissítése a törlés előtt
+        if: always()
+        timeout-minutes: 1
+        env:
+          CF_ANALYTICS_TOKEN: ${{ secrets.CF_ANALYTICS_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node core/traffic-log.js || true
+
       - name: Házmester (halott adat takarítása)
         if: always()
         run: node core/housekeeping.js || true
