@@ -770,7 +770,7 @@ export async function send(ROOT, join, dry) {
       } catch { /* a jelölés hibája ne rontsa el a küldést */ }
     }
     try { unlinkSync(P); } catch { /* */ }
-    if (rp.ok) { console.log('   ✅ Átvette a Make (HTTP ' + rp.status + ')'); return; }
+    if (rp.ok) { console.log('   ✅ Átvette a Make (HTTP ' + rp.status + ')'); return { kiment: true }; }
     console.error('   ❌ ' + rp.reason);
     const hibaP = new Error(rp.reason || 'A csomag-reklám kiküldése nem sikerült.');
     hibaP.sent = rp.sent;
@@ -807,7 +807,7 @@ export async function send(ROOT, join, dry) {
 
   if (r.ok) {
     console.log('   ✅ Átvette a Make (HTTP ' + r.status + ') — a TÉNYLEGES sikert a napló mondja meg');
-    return;
+    return { kiment: true };
   }
   console.error('   ❌ ' + r.reason);
   if (r.sent === 'unknown') console.error('   ⚠️ Bizonytalan kimenetel — megjelöltem, hogy ne menjen ki kétszer.');
@@ -833,6 +833,15 @@ export async function send(ROOT, join, dry) {
 }
 
 /**
+ * Kiment-e (vagy kimehetett-e) ebben a futásban a rendes Facebook-Reel? A send() sikerkor
+ * `{ kiment: true }`-t ad; bizonytalan kimenetelű dobás (`sent === 'unknown'`) is annak számít,
+ * mert a Make átvehette — inkább kihagyjuk az extrát, mint hogy két Reel menjen egymás után.
+ */
+export function reelKiment(ki, normalHiba) {
+  return ki?.kiment === true || normalHiba?.sent === 'unknown';
+}
+
+/**
  * A --send FÁZIS (2026-10-15): a normál Reel(ek) küldése, UTÁNA a TikTok-extra
  * Facebook-Reelje. A kettő FÜGGETLEN (mint a prepare() 10-14-i javítása után):
  * bármelyik bukik, a másik akkor is lefut. A normál küldés hibája a végén
@@ -844,7 +853,10 @@ export async function sendFazis(ROOT, join, dry) {
   let ki = null, normalHiba = null;
   try { ki = await send(ROOT, join, dry); } catch (e) { normalHiba = e; }
   try {
-    await sendTiktokExtraFb(ROOT, join, dry);
+    // 2026-10-15 (végső review M6): két Facebook-Reel egymás után egy futásban feltűnő — az extra
+    // csak olyan futásban megy, ahol a rendes Reel NEM ment ki. Az extra egész nap él, később kiküldhető.
+    if (!reelKiment(ki, normalHiba)) await sendTiktokExtraFb(ROOT, join, dry);
+    else console.log('💤 TikTok-extra Facebook-Reel: ebben a futásban már ment rendes Reel — a következő futásra marad.');
     // Siker VAGY „nem volt dolga" → ok:true: az előző nap bukása ne ragadjon be.
     reelAllapot(ROOT, join, { fazis: 'send_extra', ok: true });
   } catch (e) {

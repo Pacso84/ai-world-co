@@ -766,7 +766,7 @@ jobs:
           # képest, ami 189 pinért a Make-keret 62%-át vitte el.
           #
           # A csatornákat a Buffertől kérdezi le, nem hardcode-olt lista —
-          # most Threads + TikTok (csak a napi Reel-videó, napi plafon 2), az X bekötése után magától bővül.
+          # most Threads (link-posztok + a napi videók) + TikTok (videók + legfeljebb napi 3 hír-fotó, napi plafon 6), az X bekötése után magától bővül.
           #
           # LIMIT 2 (nem 3), SZÁNDÉKOSAN: a fiókok VADONATÚJAK, 0 követővel.
           # Napi 3 futás × 2 poszt = 6/nap csatornánként. Egy friss fiók napi

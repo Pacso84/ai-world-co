@@ -151,11 +151,16 @@ export function tiktokSor(guard, now = Date.now()) {
   // Cél: hétfő–szombat 3 videó, vasárnap 2 (a reklám nem megy TikTokra).
   if (Number.isFinite(tt.video) && Number.isFinite(tt.foto)) {
     const videoCel = new Date(now).getUTCDay() === 0 ? 2 : 3;
-    if (tt.video >= videoCel) return `🎵 TikTok ma: ${tt.video} videó + ${tt.foto} fotó`;
+    // 2026-10-15 (végső review M4): a jelöléseink csak azt mondják, hogy ELKÜLDTÜK. Ha a Buffer
+    // kevesebbet mutat, mint amennyit megjelöltünk, valamelyik poszt elutasítva vagy elveszve lehet.
+    const jelolt = tt.video + tt.foto;
+    const eltérés = tt.db < jelolt ? `
+⚠️ TIKTOK: a Buffer csak ${tt.db} posztot mutat, a saját jelöléseink szerint ${jelolt} ment ki — elutasított poszt lehet.` : '';
+    if (tt.video >= videoCel) return `🎵 TikTok ma: ${tt.video} videó + ${tt.foto} fotó` + eltérés;
     if (new Date(now).getUTCHours() >= 12) {
-      return `⚠️ TIKTOK: ma csak ${tt.video} videó ment ki (cél: ${videoCel}) + ${tt.foto} fotó — nézd meg a REEL- és BUFFER-sorokat.`;
+      return `⚠️ TIKTOK: ma csak ${tt.video} videó ment ki (cél: ${videoCel}) + ${tt.foto} fotó — nézd meg a REEL- és BUFFER-sorokat.` + eltérés;
     }
-    return `🎵 TikTok ma eddig: ${tt.video} videó + ${tt.foto} fotó`;
+    return `🎵 TikTok ma eddig: ${tt.video} videó + ${tt.foto} fotó` + eltérés;
   }
   const cel = Math.min(tt.plafon, 3);
   if (tt.db >= cel) return `🎵 TikTok ma: ${tt.db}/${tt.plafon} poszt kint (videó + fotó)`;

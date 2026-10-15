@@ -50,7 +50,7 @@ import { capFor, allowedNow, countSentToday, countTodayWithQueued, figyelendoCsa
 import { videoCsatornaMai } from '../../core/reel-queue.js';
 // 2026-10-15 (user): a TikTokra a Facebookra kiment cikkek FOTÓ-posztként is mennek (napi max 3),
 // a Threads pedig a napi videókat is megkapja. A döntés a core-ban (tesztelhető): core/tiktok-foto.js.
-import { tiktokFotoSor, fotoKeret, maiMarkaDb } from '../../core/tiktok-foto.js';
+import { tiktokFotoSor, fotoKeret, maiMarkaDb, fotoLepes } from '../../core/tiktok-foto.js';
 // 2026-10-15 (review I2): a jelölés MINDIG a friss fájlba megy (a tételek ugyanannak a fájlnak külön parse-jai).
 import { jelolMezo } from '../../core/social-mark.js';
 // ⚠️ AZ ŐRSZEM (2026-08-30). Enélkül ez a modul NÉMÁN áll le: lejárt token,
@@ -589,8 +589,14 @@ async function main() {
         if (elkuldve >= hely) break;
         const kep = imageUrl(realSlug(j.post));
         if (!(await imageExists(kep))) { console.log(`   ⏭️  ${realSlug(j.post).slice(0, 40)} — a kép nincs kint, kihagyom`); continue; }
+        // 2026-10-15 (végső review I1): minden createPost-KÍSÉRLET helyet használ, és az első
+        // Buffer-hibánál megállunk — különben egy elutasító Buffer mellett minden futás a teljes
+        // jelölt-listán égetné a kvótát. A döntés a core/tiktok-foto.js fotoLepes-ében (tesztelt).
+        const keresElotte = keres;
         const ok = await kuldTetel({ ...j, kep, markField: cfg.photoField });
-        if (ok || DRY) elkuldve++;
+        const lepes = fotoLepes({ keresElotte, keresUtana: keres, ok, dry: DRY });
+        if (lepes.hely) elkuldve++;
+        if (lepes.megall) { console.log('   ⛔ a Buffer elutasította a fotót — a többit nem próbálom ebben a futásban'); break; }
       }
     }
   }

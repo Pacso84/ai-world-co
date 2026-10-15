@@ -52,9 +52,22 @@ assert.equal(stripUrl('', URL), '', 'üres szöveg nem borul fel');
 // --- Threads: 500 karakter, a link VALÓDI hossza számít ---------------
 {
   const r = composePost({ text: 'Rövid.', url: URL, channel: 'threads' });
-  assert.equal(r.weight, 'Rövid.'.length + 2 + URL.length,
-    'a Threads a link teljes hosszát számolja');
+  // A súly a teljes szöveg valós hossza (urlWeight: null) — a link egészében benne van, az MI-jelöléssel együtt.
+  assert.equal(r.weight, r.body.length, 'a Threads a link teljes hosszát számolja');
+  assert.ok(r.body.includes(URL) && r.body.startsWith('Rövid.'));
   assert.equal(CHANNELS.threads.limit, 500);
+}
+
+// --- Threads: az MI-jelölés a szövegben (EU AI Act, review I2, 2026-10-15) ---
+{
+  assert.equal(CHANNELS.threads.aiLabel, true, 'a Threads posztjai is kapják a jelölést');
+  const r = composePost({ text: 'Rövid.', url: URL, channel: 'threads' });
+  assert.ok(r.body.includes(AI_JELOLES), 'a Threads link-poszt hordozza az MI-jelölést');
+  assert.ok(r.body.endsWith(AI_JELOLES));
+  assert.ok(r.weight <= 500, 'belefér 500-ba: ' + r.weight);
+  const h = composePost({ text: 'szó '.repeat(300), url: URL, channel: 'threads' });
+  assert.ok(h.body.includes(AI_JELOLES) && h.body.includes(URL), 'hosszú szövegnél sem esik ki a link és a jelölés');
+  assert.ok(h.weight <= 500, 'hosszúnál is belefér 500-ba: ' + h.weight);
 }
 
 // --- Threads: ami az X-en nem fér el, itt még elfér -------------------
@@ -128,7 +141,7 @@ assert.equal(composePost({ text: 'a', url: '', channel: 'x' }), null,
   assert.ok(r.body.startsWith(text), 'a mondanivaló marad elöl');
   assert.equal(r.label, 'TikTok');
   assert.equal(r.field, 'posted_tiktok');
-  assert.equal(CHANNELS.tiktok.videoOnly, true, 'a TikTokra CSAK videó mehet');
+  assert.equal(CHANNELS.tiktok.videoOnly, true, 'a TikTok videós sora marad (a fotó-poszt külön photoField-ből megy)');
 
   // A caption-korlát 2200 — bőven elég, de a csonkítás itt is működjön.
   assert.equal(CHANNELS.tiktok.limit, 2200);

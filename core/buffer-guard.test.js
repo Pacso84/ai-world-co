@@ -391,6 +391,9 @@ t('🎵 10-13: TikTok-sor — 3/3 rendben; délután a hiány ⚠️ (a záróso
   assert.equal(tiktokSor(gv(3, 3), D), '🎵 TikTok ma: 3 videó + 3 fotó');
   assert.match(tiktokSor(gv(1, 3), D), /^⚠️ TIKTOK: ma csak 1 videó/, '🔴 a 3 fotó elfedi a hiányzó videókat');
   assert.equal(tiktokSor(gv(1, 3), REGGEL), '🎵 TikTok ma eddig: 1 videó + 3 fotó', 'reggel még nem hiba');
+  // 10-15 (review M4): a Buffer kevesebbet mutat, mint a saját jelöléseink → figyelmeztetés (elutasított poszt?)
+  assert.match(tiktokSor({ tiktokMa: { nap: '2026-10-13', db: 2, plafon: 6, video: 3, foto: 1 } }, D), /Buffer.*2.*4/, '🔴 a Buffer-eltérés néma');
+  assert.ok(!/Buffer/.test(tiktokSor(gv(3, 1), D)), 'egyező számnál nincs figyelmeztetés');
   // vasárnap (2026-10-18) a cél 2 videó: a reklám nem megy TikTokra
   const V = Date.parse('2026-10-18T15:00:00Z');
   assert.equal(tiktokSor(gv(2, 0, '2026-10-18'), V), '🎵 TikTok ma: 2 videó + 0 fotó', 'vasárnap 2 videó a cél');

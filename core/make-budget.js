@@ -177,11 +177,12 @@ export const REEL_SCENARIO_ID = '7066389';
  * Egy Reel ára: webhook + a Reel-feltöltő modul. (URL-módban a Facebook maga
  * tölti le a videót, ezért nincs külön letöltő lépés, mint a fotós posztnál.)
  * ⚠️ 2026-10-15: a Facebookra napi akár HÁROM Reel megy (2 útmutató + a
- * TikTok-extra) = ~6 művelet/nap, ez a konstans (2) viszont már a napi 2 Reel
- * óta is elmaradt. SZÁNDÉKOSAN nem emeltem: a hó végi vetítésbe (fékezés)
- * tartozik, és az emelés a Facebook-posztok fékét hónapokra szigorítaná — ez
- * a user döntése. A valós használatot (usedThisMonth) a Make-napló adja,
- * a konstans csak a naplótlan becslés és a vetítés alapja.
+ * TikTok-extra) = ~6 művelet/nap, ez a konstans (2) viszont a napi 2 Reel
+ * értékén áll. A konstans NEM közvetlen bemenete a Facebook-poszt fékének (`postsPerRun`): az a
+ * valós használatból számol. A konstans a riport vetítését és a tartalék becslést
+ * adja, ha a Reel-napló nem olvasható. SZÁNDÉKOSAN 2 maradt (vezérlői döntés):
+ * az emelés a hó végi vetítést (és a fékezést) hónapokra szigorítaná. A valós
+ * használatot (usedThisMonth) a Make-napló adja.
  */
 export const REEL_OPS_PER_DAY = 2;
 

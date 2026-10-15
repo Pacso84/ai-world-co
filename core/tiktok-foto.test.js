@@ -5,7 +5,7 @@
 //
 // USER-DÖNTÉS (10-15): „minden közösségi médiában ugyanazok jelenjenek meg".
 //   • a napi videók a Threadsre is mennek (videó-poszt);
-//   • a Facebookra kiment hír/útmutató a TikTokra is, FOTÓ-posztként, napi max 3.
+//   • a Facebookra kiment HÍR a TikTokra is, FOTÓ-posztként, napi max 3 (az útmutató videóként megy).
 // A buffer-poster.js NEM importálható (élesben posztolna), ezért a döntés a
 // core/tiktok-foto.js-ben él, a bekötést FORRÁS-SZÖVEG teszt őrzi.
 // ===================================================================
@@ -14,7 +14,7 @@ import assert from 'assert/strict';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { tiktokFotoSor, maiMarkaDb, fotoKeret, FOTO_NAPI_MAX } from './tiktok-foto.js';
+import { tiktokFotoSor, maiMarkaDb, fotoKeret, fotoLepes, FOTO_NAPI_MAX, FOTO_FUTASONKENT_MAX } from './tiktok-foto.js';
 import { CHANNELS } from './social-text.js';
 import { jelolMezo } from './social-mark.js';
 import { mkdtempSync, writeFileSync, rmSync } from 'fs';
@@ -67,18 +67,20 @@ t('napi max 3, a MAI jelölésekből számolva (tegnapi nem számít)', () => {
   ];
   assert.equal(maiMarkaDb(mind, 'posted_tiktok_photo', MOST), 1);
   const r = tiktokFotoSor(mind, { now: MOST, keret: 6 });
-  assert.equal(r.hely, 2, '3 - 1 mai = 2 hely');
+  assert.equal(r.hely, 1, 'futásonként legfeljebb 1 (review I3)');
+  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: 6, futasMax: 5 }).hely, 2, '3 - 1 mai = 2 hely, ha a futásonkénti max nem szűkít');
   assert.equal(r.sor.length, 3, 'a jelöltek listája teljes (a kép-ellenőrzés a hívónál szűr)');
 });
 
 t('a csatorna maradék kerete is korlátoz; 0 / ismeretlen keret → 0 hely', () => {
   const mind = [it('a', '2026-10-15T01:00:00Z')];
-  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: 2 }).hely, 2);
+  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: 2, futasMax: 5 }).hely, 2);
   assert.equal(tiktokFotoSor(mind, { now: MOST, keret: 0 }).hely, 0);
   for (const rossz of [null, undefined, NaN, -1]) {
     assert.equal(tiktokFotoSor(mind, { now: MOST, keret: rossz }).hely, 0, '🔒 keret=' + rossz);
   }
-  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: Infinity }).hely, 3, 'plafon nélkül a napi 3 marad');
+  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: Infinity, futasMax: 5 }).hely, 3, 'plafon nélkül a napi 3 marad');
+  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: Infinity }).hely, 1, 'alapból futásonként 1');
 });
 
 t('hibás bemenetre üres, nem borul', () => {
@@ -177,6 +179,33 @@ t('🔌 poszter: minden jelölés a friss-fájlos jelolMezo-n megy, és a fotó 
   assert.match(src, /kizar: videoUtak/, '🔴 a fotó-szelektor nem kapja meg a mai videó-cikkeket');
   assert.match(src, /foto: maiMarkaDb\(/, '🔴 a riport nem kapja külön a fotó-számot');
   assert.match(src, /video: maiMarkaDb\(/, '🔴 a riport nem kapja külön a videó-számot');
+});
+
+t('I3: futásonként legfeljebb 1 fotó (alapérték), a napi 3 így több futásra oszlik', () => {
+  assert.equal(FOTO_FUTASONKENT_MAX, 1);
+  const mind = [it('a', '2026-10-15T01:00:00Z'), it('b', '2026-10-15T02:00:00Z'), it('c', '2026-10-15T03:00:00Z')];
+  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: 6 }).hely, 1);
+  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: 0 }).hely, 0, 'a keret továbbra is zár');
+});
+
+t('I1: fotoLepes — minden createPost-KÍSÉRLET helyet használ, az első Buffer-hibánál megáll', () => {
+  // sikeres küldés: hely fogy, nincs megállás
+  assert.deepEqual(fotoLepes({ keresElotte: 4, keresUtana: 5, ok: true }), { hely: true, megall: false });
+  // Buffer-hiba: a kísérlet is hely, és a ciklus megáll (ne égessük a kvótát az összes jelöltön)
+  assert.deepEqual(fotoLepes({ keresElotte: 4, keresUtana: 5, ok: false }), { hely: true, megall: true });
+  // nem volt kísérlet (pl. nem fér ki a szöveg): nem használ helyet, nem áll meg
+  assert.deepEqual(fotoLepes({ keresElotte: 4, keresUtana: 4, ok: false }), { hely: false, megall: false });
+  // próba: helyet használ (a darabszám mutatható), de nem áll meg
+  assert.deepEqual(fotoLepes({ keresElotte: 4, keresUtana: 4, ok: false, dry: true }), { hely: true, megall: false });
+});
+
+t('🔌 I1: a poszter fotó-ciklusa a fotoLepes-t használja, és nem megy tovább hiba után', () => {
+  assert.ok(src.includes('fotoLepes('), '🔴 a fotó-ciklus nem a tesztelt döntést használja');
+  const i = src.indexOf('for (const j of sor)');
+  const blokk = src.slice(i, i + 1200);
+  assert.ok(blokk.includes('keresElotte'), '🔴 a kísérletek számolása hiányzik');
+  assert.ok(blokk.includes('if (lepes.megall)') && blokk.includes('break; }'), '🔴 hiba után a ciklus tovább próbálkozik');
+  assert.ok(!src.includes('if (ok || DRY) elkuldve++'), '🔴 a régi „csak siker számít” logika maradt');
 });
 
 console.log('\n✅ tiktok-foto.test: mind a ' + pass + ' eset rendben');

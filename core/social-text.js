@@ -23,7 +23,9 @@ export const CHANNELS = {
   // `videoField` (2026-10-15, user: „minden közösségi médiában ugyanazok jelenjenek meg"): a napi
   // videók a Threadsre is mennek videó-posztként. KÜLÖN jelölő, mert ugyanennek a cikknek a
   // link-posztja (`posted_threads`) napokkal korábban már kimehetett.
-  threads: { limit: 500, urlWeight: null, field: 'posted_threads', label: 'Threads', videoField: 'posted_threads_video' },
+  threads: { limit: 500, urlWeight: null, field: 'posted_threads', label: 'Threads', videoField: 'posted_threads_video',
+    // 2026-10-15 (végső review I2): az EU AI Act jelölés a Threads posztokon is (link- és videó-poszt).
+    aiLabel: true },
   // ── TIKTOK (2026-10-07, user: „csináljunk egy tiktokot") ────────────
   // Az Instagram HELYÉN (fiók törölve 10-05; 14 nap alatt 4 belépő). Ugyanaz
   // a két szabály, amit ott mérve tanultunk (2026-08-11):

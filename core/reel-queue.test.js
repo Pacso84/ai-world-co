@@ -492,6 +492,10 @@ t('🔌 a --send út a normál send() UTÁN, tőle függetlenül küldi az extr�
   assert.match(fazis, /catch \(e\) \{ normalHiba = e; \}/, 'a normál küldés hibája nem állíthatja meg az extrát');
   assert.match(fazis, /if \(normalHiba\) throw normalHiba;/, 'a normál küldés hibája el kell jusson a futtatFazis-ig');
   assert.match(fazis, /fazis: 'send_extra'/, 'az extra külön őrszem-rekordot kap');
+  // 10-15 (review M6): a rendes Reel mellett NEM megy az extra ugyanabban a futásban
+  assert.ok(fazis.includes('reelKiment(ki, normalHiba)'), '🔴 az extra a normál Reel mellett is kimegy');
+  assert.ok(fazis.includes('if (!reelKiment(ki, normalHiba))'));
+  assert.ok(src.includes('export function reelKiment('));
   const ex = src.slice(src.indexOf('export async function sendTiktokExtraFb'));
   assert.match(ex, /fbReelExtra\(cikkek\)/);
   assert.match(ex, /_meta\.fb_reel_at = new Date\(\)\.toISOString\(\)/);
