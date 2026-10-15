@@ -13,7 +13,7 @@
 
 import assert from 'assert/strict';
 import { readFileSync } from 'fs';
-import { reelMaMar, kovetkezoReel, maiReelCikk, maiReelCikkek, reelForma, videoCsatornaMai, tiktokExtra, maiTiktokExtra, tiktokPotlas } from './reel-queue.js';
+import { reelMaMar, kovetkezoReel, maiReelCikk, maiReelCikkek, reelForma, videoCsatornaMai, tiktokExtra, maiTiktokExtra, tiktokPotlas, fbReelExtra } from './reel-queue.js';
 
 let pass = 0;
 const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
@@ -459,6 +459,46 @@ t('🎵 pótló extra: a mai Reel, ami korábbi napon már TikTok-extra volt, +1
   const src = readFileSync(new URL('./reel-post.js', import.meta.url), 'utf-8');
   assert.match(src, /napiMax: TIKTOK_EXTRA_NAPI \+ tiktokPotlas\(cikkek, Date\.now\(\), fogalt\)/,
     '🔴 a TikTok-extra gyártója nem kapja meg a pótlást');
+});
+
+// ── A TIKTOK-EXTRA IS MEGY FACEBOOK-REELKÉNT (2026-10-15, user: „minden napi videó minden csatornán") ──
+
+t('🎬 fbReelExtra: a MAI extra, ami még nem volt Facebook-Reel — legfeljebb 1', () => {
+  const ma1 = '2026-08-25T03:30:00Z', ma2 = '2026-08-25T09:00:00Z', tegnap = '2026-08-24T15:00:00Z';
+  assert.equal(fbReelExtra([g('e', '2026-08-20', { tiktok_video_at: ma1 })], MOST).slug, 'e');
+  // a korábbi gyártású megy előbb, és csak EGY jön vissza
+  const ketto = [g('k2', '2026-08-20', { tiktok_video_at: ma2 }), g('k1', '2026-08-20', { tiktok_video_at: ma1 })];
+  assert.equal(fbReelExtra(ketto, MOST).slug, 'k1');
+  // már volt Facebook-Reel (a normál sorból) vagy már kiment extraként → nincs
+  assert.equal(fbReelExtra([g('r', '2026-08-20', { tiktok_video_at: ma1, reel_at: ma1 })], MOST), null,
+    '🔴 a normál Reelként kiment cikk kétszer menne');
+  assert.equal(fbReelExtra([g('f', '2026-08-20', { tiktok_video_at: ma1, fb_reel_at: ma2 })], MOST), null,
+    '🔴 az extraként már kiment cikk kétszer menne');
+  // tegnapi extra nem pótolható (csak friss, user 09-27); a hibás fb_reel_at nem számít „kiment"-nek
+  assert.equal(fbReelExtra([g('t', '2026-08-20', { tiktok_video_at: tegnap })], MOST), null);
+  assert.equal(fbReelExtra([g('h', '2026-08-20', { tiktok_video_at: ma1, fb_reel_at: 'szemet' })], MOST).slug, 'h');
+  assert.equal(fbReelExtra([], MOST), null);
+  assert.equal(fbReelExtra(null, MOST), null);
+});
+
+t('🔌 a --send út a normál send() UTÁN, tőle függetlenül küldi az extrát; a jelölés fb_reel_at', () => {
+  const src = readFileSync(new URL('./reel-post.js', import.meta.url), 'utf-8');
+  assert.match(src, /export async function sendTiktokExtraFb\(ROOT, join, dry\)/);
+  assert.match(src, /export async function sendFazis\(ROOT, join, dry\)/);
+  assert.match(src, /: \(\) => sendFazis\(ROOT, join, dry\)/, '🔴 a --send nem a sendFazis-t futtatja');
+  const fazis = src.slice(src.indexOf('export async function sendFazis'), src.indexOf('export async function sendTiktokExtraFb'));
+  assert.ok(fazis.indexOf('await send(ROOT, join, dry)') > -1 && fazis.indexOf('await send(ROOT, join, dry)') < fazis.indexOf('await sendTiktokExtraFb(ROOT, join, dry)'),
+    '🔴 az extra nem a normál send() után jön');
+  assert.match(fazis, /catch \(e\) \{ normalHiba = e; \}/, 'a normál küldés hibája nem állíthatja meg az extrát');
+  assert.match(fazis, /if \(normalHiba\) throw normalHiba;/, 'a normál küldés hibája el kell jusson a futtatFazis-ig');
+  assert.match(fazis, /fazis: 'send_extra'/, 'az extra külön őrszem-rekordot kap');
+  const ex = src.slice(src.indexOf('export async function sendTiktokExtraFb'));
+  assert.match(ex, /fbReelExtra\(cikkek\)/);
+  assert.match(ex, /_meta\.fb_reel_at = new Date\(\)\.toISOString\(\)/);
+  assert.match(ex, /r\.ok \|\| r\.sent === 'unknown'/, 'bizonytalan kimenetelnél is jelölni kell');
+  assert.match(src, /fb_reel_at: m\.fb_reel_at \|\| ''/, 'a cikkekBetolt nem adja tovább az fb_reel_at-et');
+  const dr = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
+  assert.match(dr, /'send_extra'/, 'a napi riport nem olvassa az extra Reel őrszemét');
 });
 
 console.log('\n✅ reel-queue.test: mind a ' + pass + ' eset rendben');

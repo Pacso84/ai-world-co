@@ -649,10 +649,11 @@ async function main() {
   // tényleg baj van; a csendes napokon nem zajong.
   try {
     const rg = JSON.parse(readFileSync(join(ROOT, 'memory', 'reel-guard.json'), 'utf-8'));
-    for (const fazis of ['prepare', 'send']) {
+    // 'send_extra' (2026-10-15): a TikTok-extra videó Facebook-Reelje, külön rekord.
+    for (const fazis of ['prepare', 'send', 'send_extra']) {
       const f = rg[fazis];
       if (f && f.ok === false) {
-        const nev = fazis === 'prepare' ? 'videó-gyártás' : 'kiküldés';
+        const nev = fazis === 'prepare' ? 'videó-gyártás' : fazis === 'send' ? 'kiküldés' : 'extra Reel kiküldése';
         lines.push(`🎬 REEL-ŐRSZEM: a ${nev} elbukott — ${String(f.hiba || 'ismeretlen ok').slice(0, 90)}`);
       }
     }

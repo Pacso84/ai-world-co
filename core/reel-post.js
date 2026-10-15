@@ -318,7 +318,7 @@ async function main() {
   // néz ki: mindkettő néma. Ezért írjuk le, mi történt.
   if (args.includes('--prepare') || args.includes('--send')) {
     const fazis = args.includes('--prepare') ? 'prepare' : 'send';
-    const fn = fazis === 'prepare' ? () => prepare(ROOT, join) : () => send(ROOT, join, dry);
+    const fn = fazis === 'prepare' ? () => prepare(ROOT, join) : () => sendFazis(ROOT, join, dry);
     await futtatFazis({ ROOT, join, fazis, fn });
     return;
   }
@@ -423,7 +423,7 @@ async function cikkekBetolt(ROOT, join) {
     // `type` mezőt nézi, nem kérdezi meg újra, máshogy.
     ki.push({ file: f, slug: m.slug || '', type: utmutatoE(f, j) ? 'guide' : 'news',
       published_at: m.published_at || '', reel_at: m.reel_at || '', tool: m.tool || '',
-      tiktok_video_at: m.tiktok_video_at || '',
+      tiktok_video_at: m.tiktok_video_at || '', fb_reel_at: m.fb_reel_at || '',
       md: j.article_markdown || '' });
   }
   return ki;
@@ -829,6 +829,71 @@ export async function send(ROOT, join, dry) {
   // egymást (a workflow `|| true`-ja miatt a CI-napló amúgy sem jut el senkihez).
   const hiba = new Error(r.reason || 'A Reel kiküldése nem sikerült.');
   hiba.sent = r.sent;          // 'unknown' = a Make már átvehette, ne küldd újra vakon
+  throw hiba;
+}
+
+/**
+ * A --send FÁZIS (2026-10-15): a normál Reel(ek) küldése, UTÁNA a TikTok-extra
+ * Facebook-Reelje. A kettő FÜGGETLEN (mint a prepare() 10-14-i javítása után):
+ * bármelyik bukik, a másik akkor is lefut. A normál küldés hibája a végén
+ * továbbmegy — a futtatFazis ('send') ebből ír őrszem-rekordot és a kilépőkód
+ * is ebből lesz. Az extra hibája KÜLÖN rekordba kerül ('send_extra'), hogy a
+ * sikeres normál küldést ne bélyegezze bukásnak, és fordítva.
+ */
+export async function sendFazis(ROOT, join, dry) {
+  let ki = null, normalHiba = null;
+  try { ki = await send(ROOT, join, dry); } catch (e) { normalHiba = e; }
+  try {
+    await sendTiktokExtraFb(ROOT, join, dry);
+    // Siker VAGY „nem volt dolga" → ok:true: az előző nap bukása ne ragadjon be.
+    reelAllapot(ROOT, join, { fazis: 'send_extra', ok: true });
+  } catch (e) {
+    console.error('⚠️  TikTok-extra Facebook-Reel kimaradt: ' + String(e?.message || e).slice(0, 160));
+    reelAllapot(ROOT, join, { fazis: 'send_extra', ok: false, hiba: String(e?.message || e).slice(0, 200) });
+  }
+  if (normalHiba) throw normalHiba;
+  return ki;
+}
+
+/**
+ * A MAI TikTok-extra videó Facebook-Reelként is (2026-10-15, user: „minden napi
+ * videó minden csatornán"). Futásonként legfeljebb EGY (core/reel-queue.js
+ * fbReelExtra). A videót a --prepare gyártotta (prepareTiktokExtra), a deploy
+ * után ugyanazon az URL-en érhető el, mint a normál Reel.
+ * Jelölés: `_meta.fb_reel_at` — siker VAGY bizonytalan kimenetel után, mert a
+ * duplikált Reel rosszabb, mint a kimaradt (ugyanaz a szabály, mint a send()-nél).
+ * Bukáskor DOB (a sendFazis a 'send_extra' rekordba írja); a jelölés ilyenkor
+ * elmarad, tehát a következő futás újra próbálja.
+ */
+export async function sendTiktokExtraFb(ROOT, join, dry) {
+  const { readFileSync, writeFileSync } = await import('fs');
+  const { fbReelExtra } = await import('./reel-queue.js');
+  const { cardsFromGuide } = await import('./short-video.js');
+  const cikkek = await cikkekBetolt(ROOT, join);
+  const c = fbReelExtra(cikkek);
+  if (!c) { console.log('💤 TikTok-extra Facebook-Reel: nincs ma küldendő — kihagyom.'); return; }
+
+  const cikkPath = join(ROOT, 'content', 'articles', c.file);
+  const cikk = JSON.parse(readFileSync(cikkPath, 'utf-8'));
+  const kartyak = cardsFromGuide(cikk.article_markdown || '');
+  const caption = reelCaption(cikk, { videoSteps: kartyak.cards ? kartyak.cards.length - 2 : null });
+  const video = reelVideoUrl(c.slug);
+  const hook = (process.env.MAKE_REEL_WEBHOOK_URL || '').trim();
+
+  console.log('🎬 TikTok-extra Reel küldése Facebookra: ' + c.slug);
+  const r = await sendReel({ video, caption, hook, dry });
+  if (r.ok && r.dry) { console.log('   🧪 PRÓBA — nem küldtem el.'); return; }
+
+  if (r.ok || r.sent === 'unknown') {
+    cikk._meta = cikk._meta || {};
+    cikk._meta.fb_reel_at = new Date().toISOString();
+    writeFileSync(cikkPath, JSON.stringify(cikk, null, 2), 'utf-8');
+  }
+  if (r.ok) { console.log('   ✅ Átvette a Make (HTTP ' + r.status + ')'); return; }
+  console.error('   ❌ ' + r.reason);
+  if (r.sent === 'unknown') console.error('   ⚠️ Bizonytalan kimenetel — megjelöltem, hogy ne menjen ki kétszer.');
+  const hiba = new Error(r.reason || 'A TikTok-extra Facebook-Reel kiküldése nem sikerült.');
+  hiba.sent = r.sent;
   throw hiba;
 }
 

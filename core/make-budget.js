@@ -176,7 +176,12 @@ export const REEL_SCENARIO_ID = '7066389';
 /**
  * Egy Reel ára: webhook + a Reel-feltöltő modul. (URL-módban a Facebook maga
  * tölti le a videót, ezért nincs külön letöltő lépés, mint a fotós posztnál.)
- * Napi EGY Reel megy ki → ~60 művelet/hó.
+ * ⚠️ 2026-10-15: a Facebookra napi akár HÁROM Reel megy (2 útmutató + a
+ * TikTok-extra) = ~6 művelet/nap, ez a konstans (2) viszont már a napi 2 Reel
+ * óta is elmaradt. SZÁNDÉKOSAN nem emeltem: a hó végi vetítésbe (fékezés)
+ * tartozik, és az emelés a Facebook-posztok fékét hónapokra szigorítaná — ez
+ * a user döntése. A valós használatot (usedThisMonth) a Make-napló adja,
+ * a konstans csak a naplótlan becslés és a vetítés alapja.
  */
 export const REEL_OPS_PER_DAY = 2;
 

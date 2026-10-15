@@ -232,6 +232,21 @@ export function maiTiktokExtra(cikkek, now = Date.now()) {
 }
 
 /**
+ * A MAI TikTok-extra, amelyik még NEM ment ki Facebook-Reelként (2026-10-15, user:
+ * „minden napi videó minden csatornán"). Futásonként legfeljebb EGY.
+ *
+ * Kiment-jelölés: `reel_at` (a normál Reel-sorból már ment) VAGY `fb_reel_at`
+ * (extraként ment). Csak a MAI extra jön szóba: a tegnapi nem pótolható (csak
+ * friss videó, user 09-27). A hibás (nem dátum) mező NEM számít „kiment"-nek —
+ * ugyanaz az elv, mint a `reelMaMar`-nál.
+ * @returns {object|null}
+ */
+export function fbReelExtra(cikkek, now = Date.now()) {
+  return maiTiktokExtra(cikkek, now)
+    .find(c => c.slug && !napja(c.reel_at) && !napja(c.fb_reel_at)) || null;
+}
+
+/**
  * Melyik útmutató kapjon ma csak-TikTok videót? null, ha senki.
  * @param {object} opts  napiMax (alap 1) · maxKorNap · alkalmas(c) · kizar (slug: a most gyártott FB-Reel)
  */
