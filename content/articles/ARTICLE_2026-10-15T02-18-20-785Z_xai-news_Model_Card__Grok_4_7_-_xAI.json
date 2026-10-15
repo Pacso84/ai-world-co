@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "written_at": "2026-10-15T02:20:17.970Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.007717848,
+    "original_draft": "2026-10-15T02-18-20-785Z_xai-news_Model_Card__Grok_4_7_-_xAI.json",
+    "source_id": "xai-news",
+    "source_name": "xAI (hivatalos, Google News szűrve)",
+    "source_link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5STmRmQU5XSUxfb3ZQbzVhUnRRY2w1dWZ3Y2FQNHBZUlY0MDN3TDV3ZjhoSUFxRlVFRmJoZm9oYVdyUkNpcnpDVGk3SEN0YXEyR1k0MEVQV21nUHZaZ1NB?oc=5",
+    "source_links": [
+      "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5STmRmQU5XSUxfb3ZQbzVhUnRRY2w1dWZ3Y2FQNHBZUlY0MDN3TDV3ZjhoSUFxRlVFRmJoZm9oYVdyUkNpcnpDVGk3SEN0YXEyR1k0MEVQV21nUHZaZ1NB?oc=5"
+    ],
+    "source_snippet": "Model Card: Grok 4.7  xAI",
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": {
+      "kifejezes": "how to use grok for free",
+      "datum": "2026-10-14"
+    },
+    "status": "published",
+    "published_at": "2026-10-15T02:25:22.495Z",
+    "slug": "xai-publishes-a-model-card-for-grok-4-7-here-s-what-that-actually-mean",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 598
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer that meets all structural requirements with a clear hook, plain-English definitions, and a useful audience-segmented 'What this means for you' section; the writing is honest about thin information, avoids fabricated specifics, and maintains a friendly, non-judgmental tone throughout.",
+      "_aiCost": 0.0009975,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-15T02:27:48.585Z",
+    "guide_worthy": false,
+    "pairing_reason": "No specific named feature or tool introduced that users can go use — just confirms a model version exists with thin public details",
+    "image_v": 2,
+    "image_at": "2026-10-15T02:31:39.015Z",
+    "seo": {
+      "meta_description": "xAI released a model card for Grok 4.7 — what does this mean? A plain-English explainer on model cards and what Grok 4.7 signals for users.",
+      "keywords": [
+        "what is a model card",
+        "Grok 4.7",
+        "xAI model card",
+        "what is Grok 4.7",
+        "model card explained",
+        "xAI Grok"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding more specific details about Grok 4.7 capabilities as they become public",
+        "Add schema markup for the explainer article type to improve visibility in rich results",
+        "Include internal links to related xAI or Grok articles if available on the site"
+      ],
+      "optimised_at": "2026-10-15T02:32:20.559Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"xAI Publishes a Model Card for Grok 4.7 — Here's What That Actually Means\"\nsubtitle: \"A short, plain-English explainer on what a model card is and what Grok 4.7 signals\"\ncategory: \"ai-news\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"xai\", \"grok\", \"model-cards\", \"ai-basics\"]\n---\n\n# xAI Publishes a Model Card for Grok 4.7 — Here's What That Actually Means\n\n> **In short:** xAI has released a model card for Grok 4.7, its latest large language model (LLM — the engine behind AI assistants like Grok itself). The document confirms the new version exists, but the public-facing details so far are thin.\n\nYou've probably heard the name Grok before. It's the AI assistant made by xAI, the company Elon Musk founded. Now a new version, Grok 4.7, has shown up on the company's official materials. Here's what has actually been announced, what hasn't, and why a piece of paper called a \"model card\" matters at all.\n\n## What's a model card, anyway?\n\nA model card is a document a company publishes about one of its AI models. Think of it like the nutrition label on a food package: it tells you what the thing is, what it was trained on, what it's meant to do, and where it might fall short. Serious AI companies put these out so users and researchers can understand the model's strengths and limits before relying on it.\n\nIn this case, xAI has published a model card titled \"Grok 4.7.\" That's the headline fact: a new version is officially documented. The card exists, but the publicly available summary we're working from doesn't spell out dramatic new features in plain language — it confirms the version, not a feature list.\n\n## What the announcement actually says\n\nStripped to the basics, the company's official materials confirm two things:\n\n- A model named **Grok 4.7** now has its own model card.\n- The card is hosted on xAI's official channels.\n\nBeyond that, the public-facing summary in the announcement is thin. xAI hasn't published detailed benchmark scores (those standardized tests that compare AI models on things like math, reasoning, or coding) in the announcement we have, and there are no new pricing tiers, app updates, or consumer-facing features announced alongside it.\n\nSo if you've been waiting to hear \"Grok 4.7 can now do X\" — that X isn't on the table yet. Just the version line.\n\n## What this means for you\n\n- **If you're just curious about AI news**: a new version number alone isn't a reason to switch tools. The real question is always \"what can it do that the last one couldn't?\" — and right now that answer isn't public in plain language.\n- **If you already use Grok**: don't expect an instant change. Model card updates often arrive before — or separately from — consumer-facing rollouts. Watch for an xAI announcement about new features, not just a new version number.\n- **If you're trying to keep up with the AI race**: model cards are a good habit to skim. They tell you when a company has quietly shipped a new version, even before the marketing push.\n\n## Wrap-up\n\nxAI has officially documented Grok 4.7 — that's the news. Everything beyond it (capabilities, availability, pricing, how it compares to other models) hasn't been spelled out in the announcement we're working from. If you want to know when Grok 4.7 becomes something you can actually try in a meaningful new way, keep an eye on xAI's official channels rather than the version number alone. The next real story will be what the new model can actually *do*.",
+  "original_title": "Model Card: Grok 4.7 - xAI"
+}

@@ -1,26 +1,4 @@
 {
-  "2026-09-19": [
-    {
-      "at": "2026-09-19T02:11:28.095Z",
-      "file": "WRITER_2026-09-19T02-08-38-038Z_google-workspace_New_back-to-school_features_and_learning_tools_ava.json",
-      "action": "block",
-      "reasons": [
-        "The product name \"Gemini Notebook\" is fabricated/informal. Google's actual product is called NotebookLM (also sometimes referred to in the Gemini app context). The article consistently uses \"Gemini Notebook\" instead of the official name \"NotebookLM,\" which violates the shortest official product name rule.",
-        "The article states the audio recorder and live conversation features are new, but these features were already part of NotebookLM well before any recent announcement — they were not newly introduced as described. The framing of two specific \"new\" features (built-in audio recorder and real-time spoken conversation supporting ~100 languages) as recent additions inside the Gemini app needs verification against actual announcements, and the description risks conflating or fabricating feature details.",
-        "Specific UI claims such as a 'microphone icon', 'headphones icon', 'waveform', or a button labeled 'Live' or 'Talk' inside the notebook are presented as fact but cannot be verified as accurate descriptions of the actual NotebookLM interface."
-      ],
-      "confidence": 7
-    },
-    {
-      "at": "2026-09-19T02:11:43.443Z",
-      "file": "WRITER_2026-09-19T02-08-38-038Z_qwen-news_Qwen3_8-LiveTranslate__Names_the_speaker__Carries_.json",
-      "action": "block",
-      "reasons": [
-        "The article presents \"Qwen's LiveTranslate\" as an existing named product with speaker-diarization translation capabilities. While Qwen is verified-real, \"LiveTranslate\" as a specific branded product/feature of Qwen with the described capabilities (speaker diarization + LLM-smoothed live translation) is not verifiable and appears to be a fabricated product name. The article frames it as a concrete, shippable product (\"a new generation of live translation tools — including Qwen's LiveTranslate\"), which would mislead readers into believing this is a real, available offering."
-      ],
-      "confidence": 7
-    }
-  ],
   "2026-09-20": [
     {
       "at": "2026-09-20T02:16:54.381Z",
@@ -258,6 +236,16 @@
         "Az AI-bíró kitalált állítást talált (részletek nélkül)"
       ],
       "confidence": null
+    }
+  ],
+  "2026-10-15": [
+    {
+      "at": "2026-10-15T02:30:02.405Z",
+      "file": "WRITER_GUIDE_how-to-write-a-gemini-prompt-that-turns-a-casual-selfie-into.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
     }
   ]
 }

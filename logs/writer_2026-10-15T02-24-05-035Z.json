@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-15T02:18:21.029Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.040129908,
+  "by_article": [
+    {
+      "draft": "2026-10-15T02-18-20-785Z_xai-news_Model_Card__Grok_4_7_-_xAI.json",
+      "writer_output": "WRITER_2026-10-15T02-18-20-785Z_xai-news_Model_Card__Grok_4_7_-_xAI.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.007717848,
+      "duration_ms": 104400,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-15T02-18-20-785Z_samsung-newsroom_Samsung_Expands_Language_Support_Across_AI_Experie.json",
+      "writer_output": "WRITER_2026-10-15T02-18-20-785Z_samsung-newsroom_Samsung_Expands_Language_Support_Across_AI_Experie.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00888468,
+      "duration_ms": 136278,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-15T02-18-20-785Z_dropbox-blog__2026_Dropbox_Trends_Report__AI_impact_on_content_.json",
+      "writer_output": "WRITER_2026-10-15T02-18-20-785Z_dropbox-blog__2026_Dropbox_Trends_Report__AI_impact_on_content_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01226358,
+      "duration_ms": 53491,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-15T02-18-06-883Z_anthropic-blog_Singapore_office_and_government_MOU.json",
+      "writer_output": "WRITER_2026-10-15T02-18-06-883Z_anthropic-blog_Singapore_office_and_government_MOU.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0100989,
+      "duration_ms": 34783,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-10-15T02:24:05.035Z",
+  "duration_seconds": 344.006
+}

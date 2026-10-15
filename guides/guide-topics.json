@@ -7792,6 +7792,73 @@
       "priority": "balance",
       "proposed_at": "2026-10-14T02:47:52.118Z",
       "proposed_by": "guide-balance"
+    },
+    {
+      "id": "how-to-write-a-gemini-prompt-that-turns-a-casual-selfie-into",
+      "company": "Google",
+      "tool": "Gemini",
+      "title": "How to write a Gemini prompt that turns a casual selfie into a clean LinkedIn headshot",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "A copy-paste prompt template you can paste into Gemini to swap a casual selfie into a clean, professional-looking headshot with a simple background.",
+      "status": "done",
+      "icon": "📸",
+      "proposed_at": "2026-10-15T02:29:09.561Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "gemini prompt for professional headshot",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-10-15"
+      },
+      "written_at": "2026-10-15T02:29:41.948Z"
+    },
+    {
+      "id": "set-up-an-alexa-routine-that-runs-different-steps-on-weekday",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "Set up an Alexa+ routine that runs different steps on weekdays versus weekends",
+      "audience": "personal",
+      "level": "intermediate",
+      "angle": "Use conditional logic inside a single routine so the same wake-up command behaves differently based on the day.",
+      "status": "todo",
+      "icon": "📅",
+      "proposed_at": "2026-10-15T02:30:48.476Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "build-a-reusable-alexa-pomodoro-routine-that-announces-focus",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "Build a reusable Alexa+ pomodoro routine that announces focus blocks and break times",
+      "audience": "both",
+      "level": "intermediate",
+      "angle": "One command starts a repeating cycle of focus and break timers with voice check-ins, so you never reset anything.",
+      "status": "todo",
+      "icon": "⏱️",
+      "proposed_at": "2026-10-15T02:30:49.516Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "create-a-shared-alexa-household-whiteboard-anyone-in-the-fam",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "Create a shared Alexa+ household whiteboard anyone in the family can post to by voice",
+      "audience": "personal",
+      "level": "intermediate",
+      "angle": "Use a shared list so every family member can drop a note onto the same board from any Echo and read it back later.",
+      "status": "todo",
+      "icon": "📋",
+      "proposed_at": "2026-10-15T02:30:50.394Z",
+      "proposed_by": "guide-ideas"
+    }
+  ],
+  "trend_proba": [
+    {
+      "kifejezes": "gemini prompt for professional headshot",
+      "at": "2026-10-15T02:27:48.737Z"
     }
   ]
 }
