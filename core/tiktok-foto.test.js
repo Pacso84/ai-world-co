@@ -126,4 +126,57 @@ t('🔌 poszter: a „CSAK videó" kommentek nem hazudnak többé', () => {
   assert.ok(!/CSAK a mai Reel megy ki/.test(src), 'elavult komment: a TikTokra már fotó is megy');
 });
 
+// ── 10-15 javítás: I1 — a fotó CSAK hírből; ugyanaz a cikk nem megy videóként ÉS fotóként ──
+
+t('🔴 I1/a: a friss, FB-n kint lévő ÚTMUTATÓ soha nem fotó-jelölt (az videóként megy)', () => {
+  const r = tiktokFotoSor([{ ...it('utmutato', '2026-10-15T05:00:00Z'), isGuide: true }], { now: MOST, keret: 6 });
+  assert.deepEqual(slugok(r), []);
+});
+
+t('🔴 I1/b: a futásban videóként már kiment cikk (kizar) soha nem fotó-jelölt', () => {
+  const r = tiktokFotoSor([it('b', '2026-10-15T02:00:00Z')], { now: MOST, keret: 6, kizar: new Set(['b.json']) });
+  assert.deepEqual(slugok(r), []);
+});
+
+t('I1/c: a friss, FB-n kint lévő HÍR viszont jelölt (a szűrő nem dob ki mindent)', () => {
+  const r = tiktokFotoSor([
+    it('hir', '2026-10-15T01:00:00Z'),
+    { ...it('utmutato', '2026-10-15T05:00:00Z'), isGuide: true },
+    it('videozott', '2026-10-15T02:00:00Z')
+  ], { now: MOST, keret: 6, kizar: new Set(['videozott.json']) });
+  assert.deepEqual(slugok(r), ['hir']);
+});
+
+// ── I2: a jelölés mindig a FRISS fájlba megy ──
+
+t('🔴 I2: két elavult objektumból írt két jelölés MIND megmarad, a visszatérési érték az egyesített állapot', () => {
+  const dir = mkdtempSync(join(tmpdir(), 'jelol-'));
+  try {
+    const f = join(dir, 'cikk.json');
+    writeFileSync(f, JSON.stringify({ facebook: 'sz', url: 'u' }), 'utf-8');
+    const regiA = JSON.parse(readFileSync(f, 'utf-8'));     // link-poszt tétel
+    const regiB = JSON.parse(readFileSync(f, 'utf-8'));     // videó tétel (külön parse)
+    jelolMezo(f, 'posted_threads', '2026-10-15T01:00:00Z', { fallback: regiA });
+    const vissza = jelolMezo(f, 'posted_threads_video', '2026-10-15T02:00:00Z', { fallback: regiB });
+    const v = JSON.parse(readFileSync(f, 'utf-8'));
+    assert.equal(v.posted_threads, '2026-10-15T01:00:00Z', '🔴 a második írás letörölte az elsőt');
+    assert.equal(v.posted_threads_video, '2026-10-15T02:00:00Z');
+    assert.equal(v.facebook, 'sz');
+    assert.deepEqual(vissza, v, 'a visszatérési érték nem az egyesített állapot');
+    // olvashatatlan fájl: a tartalék objektumra esik vissza (a régi viselkedés)
+    const g = join(dir, 'uj.json');
+    const r = jelolMezo(g, 'posted_tiktok', 'T', { fallback: { facebook: 'x' } });
+    assert.equal(r.posted_tiktok, 'T');
+    assert.equal(JSON.parse(readFileSync(g, 'utf-8')).facebook, 'x');
+  } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+t('🔌 poszter: minden jelölés a friss-fájlos jelolMezo-n megy, és a fotó kizárja a mai videókat', () => {
+  assert.match(src, /jelolMezo\(item\.path, markField/, '🔴 a jelölés megint az elavult objektumot írja vissza');
+  assert.ok(!/writeFileSync\(item\.path/.test(src), '🔴 maradt közvetlen visszaírás');
+  assert.match(src, /kizar: videoUtak/, '🔴 a fotó-szelektor nem kapja meg a mai videó-cikkeket');
+  assert.match(src, /foto: maiMarkaDb\(/, '🔴 a riport nem kapja külön a fotó-számot');
+  assert.match(src, /video: maiMarkaDb\(/, '🔴 a riport nem kapja külön a videó-számot');
+});
+
 console.log('\n✅ tiktok-foto.test: mind a ' + pass + ' eset rendben');
