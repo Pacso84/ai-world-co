@@ -1019,6 +1019,10 @@ body {
 .ad-slot--tele { border-top-color: var(--line); }
 .ad-slot--tele .ad-slot__label { visibility: visible; }
 .ad-slot--ures { display: none; }
+/* 2026-10-16: az egység a cikk KÖZEPÉRE került (két bekezdés / két lépés közé, core/ads.js) — a törzs
+   bekezdés-stílusa (margin-bottom: 22px) ne írja felül a címkét, a lépéssor (gap) ne kapjon dupla hézagot. */
+.article__body .ad-slot__label { margin-bottom: 8px; }
+.g-steps > .ad-slot { margin: 12px 0; }
 
 /* AMAZON PARTNERLINK (2026-10-09, core/affiliate.js): jelölt doboz a lépések után + rövid jelzés a cikk tetején. */
 .aff { margin: 26px 0 14px; padding: 16px 18px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 16px; }

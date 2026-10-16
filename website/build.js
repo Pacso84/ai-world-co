@@ -46,7 +46,7 @@ import { cimTag } from '../core/title-tag.js';
 import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
 import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
-import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt } from '../core/ads.js';
+import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek } from '../core/ads.js';
 import { partnerBeallitas, partnerDoboz, partnerJelzes } from '../core/affiliate.js';
 import { kedvencForrasHtml } from '../core/preferred-source.js';
 
@@ -2010,6 +2010,9 @@ function buildArticlePage(a) {
   const tagsHtml = a.tags.length
     ? `<div class="article__tags">${a.tags.map(t => `<span class="minitag">#${escapeHtml(t)}</span>`).join('')}</div>`
     : '';
+  // HIRDETÉS A CIKK KÖZEPÉN (2026-10-16): két bekezdés közé, a ~40%-hoz; ha nincs alkalmas
+  // hely, a régi helyére, a cikk aljára — de EGY oldalon mindig legfeljebb EGY (core/ads.js).
+  const hirTorzs = hirdetesHirbe(withMidRead(guideAutolink(glossAutolink(a.bodyHtml, { linked: new Set(), count: 0 }), a), a), hirdetesBlokk(HIRDETES, LANG));
 
   const body = `<article class="article">
     ${coverHtml(a, '../', 'article__cover', true)}
@@ -2030,7 +2033,7 @@ function buildArticlePage(a) {
     </div>
     ${videoBlock(a)}
     <div class="article__body">
-      ${withMidRead(guideAutolink(glossAutolink(a.bodyHtml, { linked: new Set(), count: 0 }), a), a)}
+      ${hirTorzs.html}
     </div>
     ${tagsHtml}
     ${xrefBox(a)}
@@ -2041,7 +2044,7 @@ function buildArticlePage(a) {
       ${supportLine()}
       <a href="../index" class="back-link">${tr('backStories')}</a>
     </div>
-    ${hirdetesBlokk(HIRDETES, LANG)}
+    ${hirTorzs.kozepen ? '' : hirdetesBlokk(HIRDETES, LANG)}
   </article>`;
 
   const canonical = `${SITE.url}${LP}/article/${a.slug}`;
@@ -2464,6 +2467,9 @@ function buildGuidePage(a) {
   const blocksLinked = insertMidGuide(
     guideAutolink(glossAutolink(blocks, alState), a, glOpts),
     stepHeadings.length, midReadBox(a), midReadBox(a, 1));
+  // HIRDETÉS A LÉPÉSEK KÖZÖTT (2026-10-16): a ~40%-hoz legközelebbi lépés-határra, soha nem a
+  // közép-doboz mellé; ha nincs hely, a cikk aljára — oldalanként legfeljebb EGY (core/ads.js).
+  const lepesTorzs = hirdetesLepesek(blocksLinked, stepHeadings.length, hirdetesBlokk(HIRDETES, LANG));
 
   const toolChip = (a.company || a.tool)
     ? `<span class="g-tool">📘 ${escapeHtml(toolLabel(a.company, a.tool, ' · '))}</span>` : '';
@@ -2513,7 +2519,7 @@ function buildGuidePage(a) {
     ${guideMapHtml(stepHeadings, artKeys)}
     ${introHtml ? `<div class="g-intro">${introHtml}</div>` : ''}
     ${blocksLinked ? `<p class="g-steptip">💡 <strong>${tr('stepTipLabel')}:</strong> ${escapeHtml(tr('stepTip'))}</p>` : ''}
-    <div class="g-steps">${blocksLinked}</div>
+    <div class="g-steps">${lepesTorzs.html}</div>
     ${KAPCSOLO.kovetkezo ? nextGuideHtml(a) : ''}
     ${partnerDoboz(PARTNER, a, LANG)}
     ${faqHtml}
@@ -2526,7 +2532,7 @@ function buildGuidePage(a) {
       ${supportLine()}
       <a href="../index" class="back-link">${tr('backStories')}</a>
     </div>
-    ${hirdetesBlokk(HIRDETES, LANG)}
+    ${lepesTorzs.kozepen ? '' : hirdetesBlokk(HIRDETES, LANG)}
   </article>`;
 
   const canonical = `${SITE.url}${LP}/article/${a.slug}`;

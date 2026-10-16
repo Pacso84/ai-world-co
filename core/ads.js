@@ -22,6 +22,8 @@
 // látszik, ezért mehet a nyilvános configba.
 // ===================================================================
 
+import { midStepNo, masodikStepNo } from './mid-guide.js';
+
 const KLIENS_MINTA = /^ca-pub-\d{16}$/;
 const SLOT_MINTA = /^\d{6,20}$/;
 
@@ -68,6 +70,60 @@ export function hirdetesBlokk(h, lang) {
     + `if(window.IntersectionObserver){var o=new IntersectionObserver(function(e){if(e[0]&&e[0].isIntersecting){o.disconnect();var_();}});o.observe(a);}else var_();`
     + `})(document.currentScript&&document.currentScript.parentNode);</script>
     </aside>`;
+}
+
+// ── A HIRDETÉS A CIKK KÖZEPÉN (2026-10-16, user: „igen, ha szerinted jó ötlet!") ──────────
+// Mérve (AdSense, 10-15): 57 oldalmegtekintésből csak 11 hirdetéskérés (a kitöltés 82%) — a
+// cikk aljáig kevesen jutnak el. A darabszám MARAD EGY (lásd a fejlécet: a Meta a hirdetéssel
+// TELI oldalakat bünteti, egy szövegközi hirdetést nem), csak a helye kerül feljebb, a ~40%-hoz.
+// Ahol nincs alkalmas hely, a hívó a régi helyre, a cikk aljára teszi (`kozepen: false`).
+export const KOZEP_CEL = 0.4;          // a látható szöveg ennyiedénél
+export const HIR_SAV = [0.2, 0.7];     // hírben: ennél korábban/későbben nem
+export const HIR_MIN_SZO = 150;        // rövidebb hírben nincs „közép" — marad alul
+const szoszam = s => String(s).replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+
+/** Hír: két BEKEZDÉS közé (nem alcím, doboz vagy lista mellé), a ~40%-hoz legközelebb. */
+export function hirdetesHirbe(html, blokk) {
+  if (!html || !blokk) return { html, kozepen: false };
+  const ossz = szoszam(html);
+  if (ossz < HIR_MIN_SZO) return { html, kozepen: false };
+  let legjobb = null;
+  for (const m of html.matchAll(/<\/p>(?=\s*<p[\s>])/gi)) {
+    const at = m.index + m[0].length;
+    const elotte = szoszam(html.slice(0, at));
+    if (elotte < ossz * HIR_SAV[0] || elotte > ossz * HIR_SAV[1]) continue;
+    const tav = Math.abs(elotte - ossz * KOZEP_CEL);
+    if (!legjobb || tav < legjobb.tav) legjobb = { at, tav };
+  }
+  if (!legjobb) return { html, kozepen: false };
+  return { html: html.slice(0, legjobb.at) + blokk + html.slice(legjobb.at), kozepen: true };
+}
+
+/**
+ * Útmutató: hányadik LÉPÉS ELÉ kerüljön (0 = sehova)? A ~40%-hoz legközelebbi lépés-határ, de
+ * SOHA nem az „olvass tovább" doboz(ok) helye (core/mid-guide.js) — két doboz egymás mellett
+ * tolakodó. Egész számokkal mér (5·(j−1) vs 2·n), hogy a döntetlen ne a lebegőpontos zajon dőljön el.
+ * 3→2 (3 lépésnél nincs doboz), 4→2, 5→2, 6→3, 7→3, 8→4, 11→5.
+ */
+export function lepesHirdetesHely(stepCount) {
+  if (!Number.isInteger(stepCount) || stepCount < 2) return 0;
+  const tilos = new Set([midStepNo(stepCount), masodikStepNo(stepCount)]);
+  let legjobb = 0, legjobbTav = Infinity;
+  for (let j = 2; j <= stepCount; j++) {
+    if (tilos.has(j)) continue;
+    const tav = Math.abs(5 * (j - 1) - 2 * stepCount);
+    if (tav < legjobbTav) { legjobb = j; legjobbTav = tav; }
+  }
+  return legjobb;
+}
+
+/** Útmutató: a hirdetés a kiválasztott lépés ELÉ. Ha a lépés-jelölő nincs meg → nem tippelünk. */
+export function hirdetesLepesek(blocksHtml, stepCount, blokk) {
+  if (!blocksHtml || !blokk) return { html: blocksHtml, kozepen: false };
+  const j = lepesHirdetesHely(stepCount);
+  const at = j ? blocksHtml.indexOf(`<div class="g-step" id="step-${j}">`) : -1;
+  if (at < 0) return { html: blocksHtml, kozepen: false };
+  return { html: blocksHtml.slice(0, at) + blokk + blocksHtml.slice(at), kozepen: true };
 }
 
 /** Az ads.txt tartalma (a Google hivatalos sora; az f08c… a Google állandó azonosítója). */

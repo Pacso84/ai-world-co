@@ -4,7 +4,10 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, CIMKE, URES_VARAS_MS } from './ads.js';
+import { readdirSync } from 'fs';
+import { marked } from 'marked';
+import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, CIMKE, URES_VARAS_MS, hirdetesHirbe, hirdetesLepesek, lepesHirdetesHely } from './ads.js';
+import { midStepNo, masodikStepNo } from './mid-guide.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 let hiba = 0;
@@ -117,6 +120,81 @@ t('🔒 /privacy: minden szöveg mindhárom nyelven, a hirdetés-kártya CSAK be
   assert.ok(/const hirdetes = !HIRDETES\.be \? '' :/.test(fn), 'a hirdetés-kártya kapcsoló nélkül kerülne ki → kikapcsolva is sütit állítana');
   assert.ok(/'privacy\.html'\), buildPrivacyPage\(\)/.test(b), 'az oldal nincs kiírva');
   assert.ok(/\$\{LP\}\/privacy">\$\{tr\('privNav'\)\}/.test(b), 'nincs lábléc-link');
+});
+
+// ── A HIRDETÉS A CIKK KÖZEPÉN (2026-10-16, user: „igen, ha szerinted jó ötlet!") ──────────
+// Mérve (AdSense, 10-15): 57 oldalmegtekintésből csak 11 hirdetéskérés — a cikk aljáig kevesen
+// jutnak el. EGY hirdetés marad, csak feljebb: útmutatóban két LÉPÉS, hírben két BEKEZDÉS közé.
+const B = '<aside class="ad-slot">AD</aside>';
+const bek = n => Array.from({ length: n }, (_, i) => `<p>${'szó '.repeat(20)}${i}</p>`).join('\n');
+
+t('🔗 hír: két BEKEZDÉS közé, a szöveg ~40%-ánál; a hirdetés pontosan egyszer', () => {
+  const r = hirdetesHirbe(bek(10), B);
+  assert.equal(r.kozepen, true);
+  assert.equal(r.html.split(B).length - 1, 1, 'pontosan egy hirdetés');
+  const elotte = r.html.slice(0, r.html.indexOf(B));
+  assert.equal((elotte.match(/<p>/g) || []).length, 4, '10 bekezdésből 4 után (40%)');
+  assert.match(r.html, /<\/p>\n?<aside class="ad-slot">AD<\/aside>\n?<p>/, 'két bekezdés között');
+});
+
+t('🔗 hír: alcím vagy doboz mellé NEM kerül; ha nincs két bekezdés közti hely a 20–70%-os sávban → marad alul', () => {
+  const h2Kozt = '<p>' + 'a '.repeat(50) + '</p><h2>X</h2><p>' + 'b '.repeat(50) + '</p><aside class="midread">M</aside><h2>Y</h2><p>' + 'c '.repeat(50) + '</p>';
+  const r = hirdetesHirbe(h2Kozt, B);
+  assert.equal(r.kozepen, false, 'csak alcím/doboz előtti határ van → ne ott');
+  assert.equal(r.html, h2Kozt, 'változatlan törzs');
+  assert.equal(hirdetesHirbe(bek(2), B).kozepen, false, 'rövid cikkben nincs középső hely');
+  assert.deepEqual(hirdetesHirbe(bek(10), ''), { html: bek(10), kozepen: false }, 'kikapcsolt hirdetés → semmi');
+  assert.deepEqual(hirdetesHirbe('', B), { html: '', kozepen: false });
+});
+
+t('🔗 útmutató: két LÉPÉS közé, a 40%-hoz legközelebb — soha nem az „olvass tovább" doboz helyére', () => {
+  const vart = { 3: 2, 4: 2, 5: 2, 6: 3, 7: 3, 8: 4, 11: 5 };
+  for (const [n, hely] of Object.entries(vart).map(([a, b]) => [+a, b])) {
+    assert.equal(lepesHirdetesHely(n), hely, `${n} lépésnél a ${hely}. lépés elé`);
+    assert.notEqual(lepesHirdetesHely(n), midStepNo(n), `${n}: az első doboz helyére esne`);
+    assert.notEqual(lepesHirdetesHely(n), masodikStepNo(n), `${n}: a második doboz helyére esne`);
+  }
+  assert.equal(lepesHirdetesHely(1), 0);
+  assert.equal(lepesHirdetesHely(0), 0);
+  assert.equal(lepesHirdetesHely(null), 0);
+});
+
+t('🔗 útmutató: a beszúrás a megadott lépés ELÉ kerül; ha a lépés-jelölő nincs meg → marad alul', () => {
+  const lepesek = n => Array.from({ length: n }, (_, i) => `<div class="g-step" id="step-${i + 1}">L${i + 1}</div>`).join('');
+  const r = hirdetesLepesek(lepesek(6), 6, B);
+  assert.equal(r.kozepen, true);
+  assert.ok(r.html.includes(`${B}<div class="g-step" id="step-3">`), 'a 3. lépés elé');
+  assert.equal(r.html.split(B).length - 1, 1);
+  assert.deepEqual(hirdetesLepesek('<div>régi felépítés</div>', 6, B), { html: '<div>régi felépítés</div>', kozepen: false });
+  assert.deepEqual(hirdetesLepesek(lepesek(6), 6, ''), { html: lepesek(6), kozepen: false });
+});
+
+t('📊 VALÓDI cikkeken: az útmutatók és a hírek többsége kap középső helyet', () => {
+  const DIR = join(ROOT, 'content', 'articles');
+  let ut = 0, utKozep = 0, hir = 0, hirKozep = 0;
+  for (const f of readdirSync(DIR).filter(f => f.endsWith('.json'))) {
+    const md = String(JSON.parse(readFileSync(join(DIR, f), 'utf-8')).article_markdown || '').replace(/^---[\s\S]*?\n---\n/, '');
+    if (!md) continue;
+    if (f.startsWith('ARTICLE_GUIDE_')) {
+      ut++;
+      const n = (md.match(/^##\s*Step\s*\d+/gim) || []).length;
+      if (lepesHirdetesHely(n)) utKozep++;
+    } else {
+      hir++;
+      if (hirdetesHirbe(marked.parse(md), B).kozepen) hirKozep++;
+    }
+  }
+  console.log(`     útmutató: ${utKozep}/${ut} · hír: ${hirKozep}/${hir} kap középső helyet (a többinél marad alul)`);
+  assert.ok(utKozep / ut > 0.9, 'az útmutatók 90%-a felett kell legyen');
+  assert.ok(hirKozep / hir > 0.8, 'a hírek 80%-a felett kell legyen');
+});
+
+t('🔌 build.js: mindkét sablon a középső helyet használja, és alul CSAK akkor tesz hirdetést, ha középre nem került', () => {
+  const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  assert.match(b, /hirdetesHirbe\(/, 'a hír-sablon nem használja');
+  assert.match(b, /hirdetesLepesek\(/, 'az útmutató-sablon nem használja');
+  assert.equal((b.match(/\$\{[a-zA-Z]+\.kozepen \? '' : hirdetesBlokk\(HIRDETES, LANG\)\}/g) || []).length, 2,
+    '🔴 két hirdetés kerülne egy oldalra (közép + alj)');
 });
 
 if (hiba) { console.log(`\n❌ ads.test: ${hiba} hiba`); process.exit(1); }
