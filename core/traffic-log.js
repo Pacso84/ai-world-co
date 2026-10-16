@@ -40,16 +40,29 @@ const dayAge = (day, today) =>
 
 // ---------- TISZTA LOGIKA (ez van tesztelve) ----------
 
+// 2026-10-16 élesben: egy futás végén a Cloudflare a 42 és 47 soros jó napok helyett napi
+// EGY sort adott (visits = views = 100), és az felülírta a meglévő adatot — a törlés ebből
+// olvasatlannak látta volna az aznap olvasott útmutatókat. Egy múltbeli napra később érkező
+// adat csak BŐVÜLHET: a meglévő sorszám felénél szegényebb válasz nem írhat felül.
+export const SZEGENY_ARANY = 0.5;
+
 // Egy nap adatának beillesztése. Friss napot felülír, régit érintetlenül hagy,
-// és üres lekérdezés-eredménnyel SOHA nem töröl meglévő adatot.
+// és üres vagy sokkal szegényebb lekérdezés-eredménnyel SOHA nem ront meglévő adatot.
 export function mergeDay(log, day, rows, today) {
   const out = { ...log };
   if (!rows || !rows.length) return out;          // sikertelen lekérdezés: ne rontsunk
   const known = day in out;
   const fresh = dayAge(day, today) < RECENT_DAYS;
   if (known && !fresh) return out;                // a történelem nem mozdul
+  if (known && rows.length < SZEGENY_ARANY * (out[day]?.length || 0)) return out;   // hibás válasz: ne rontsunk
   out[day] = rows.map(r => ({ path: r.path, visits: r.visits, views: r.views }));
   return out;
+}
+
+// Mintavételezett-e a Cloudflare-válasz? (sampleInterval > 1: egy rögzített esemény N látogatást
+// jelent — a 10-16-i „1 sor, 100 látogató" erre vall.) Ilyen napot nem írunk a naplóba.
+export function mintavetelezett(nyers) {
+  return (Array.isArray(nyers) ? nyers : []).some(x => Number(x?.avg?.sampleInterval) > 1);
 }
 
 export function pruneOld(log, today) {
@@ -168,7 +181,7 @@ async function fetchDay(day) {
   const q = `query($account: String!, $since: Time!, $until: Time!) {
     viewer { accounts(filter: {accountTag: $account}) {
       pages: rumPageloadEventsAdaptiveGroups(filter: {datetime_geq: $since, datetime_leq: $until}, limit: 200, orderBy: [count_DESC]) {
-        count sum { visits } dimensions { requestPath }
+        count sum { visits } avg { sampleInterval } dimensions { requestPath }
       }
     } }
   }`;
@@ -182,6 +195,7 @@ async function fetchDay(day) {
   const data = await r.json();
   if (data.errors?.length) throw new Error('CF GraphQL: ' + String(data.errors[0].message).slice(0, 90));
   const rows = data.data?.viewer?.accounts?.[0]?.pages || [];
+  if (mintavetelezett(rows)) throw new Error('mintavételezett Cloudflare-adat — a meglévőt nem írom felül');
   return rows
     .filter(x => x.dimensions?.requestPath)
     .map(x => ({ path: x.dimensions.requestPath, visits: x.sum?.visits || 0, views: x.count || 0 }));
@@ -260,10 +274,12 @@ async function main() {
     if (known && dayAge(day, today) >= RECENT_DAYS) { skipped++; continue; }
     try {
       const rows = await fetchDay(day);
+      const regi = merged[day];
       merged = mergeDay(merged, day, rows, today);
       const v = rows.reduce((s, r) => s + r.visits, 0);
       console.log('  ' + day + ': ' + v + ' belépő, ' + rows.length + ' oldal'
-        + (known ? ' (frissítve)' : ' (új)'));
+        + (!known ? ' (új)' : merged[day] !== regi ? ' (frissítve)'
+          : ` (⚠️ szegényebb válasz a meglévő ${regi.length} soros napnál — megtartva)`));
       ok++;
     } catch (e) {
       console.log('  ' + day + ': kihagyva — ' + String(e.message).slice(0, 70));

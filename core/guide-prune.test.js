@@ -63,6 +63,19 @@ t('🔴 I4: a 200 sornál nem rövidebb nap csonka lehet (Cloudflare limit: 200)
   assert.equal(lefedettseg(days, MOST, 60).ok, true, '199 sor még rendben');
 });
 
+t('🔴 10-16 élesben: gyanúsan szegény nap az ablakban (a szokásos sorszám negyede alatt) → NINCS törlés', () => {
+  const days = {};
+  for (let i = 1; i <= 70; i++) days[d(i)] = Array.from({ length: 40 }, (_, k) => ({ path: '/p' + k, visits: 1, views: 1 }));
+  assert.equal(lefedettseg(days, MOST, 60).ok, true);
+  days[d(2)] = [{ path: '/article/anthropic-x', visits: 100, views: 100 }];
+  const lf = lefedettseg(days, MOST, 60);
+  assert.equal(lf.ok, false, '🔴 a sérült napon olvasott útmutató „olvasatlannak" látszana');
+  assert.match(lf.ok_ok, /gyanúsan kevés/);
+  assert.match(lf.ok_ok, new RegExp(d(2)));
+  days[d(2)] = days[d(3)].slice(0, 12);
+  assert.equal(lefedettseg(days, MOST, 60).ok, true, 'egy csendesebb nap (a szokásos negyede felett) rendben');
+});
+
 t('I1: maiToroltDb — a törölt-lista MA (UTC) bejegyzéseit számolja', () => {
   const lista = [{ slug: 'a', at: new Date(MOST).toISOString() }, { slug: 'b', at: new Date(MOST - 3600e3).toISOString() }, { slug: 'c', at: new Date(MOST - NAP).toISOString() }];
   assert.equal(maiToroltDb(lista, MOST), 2);

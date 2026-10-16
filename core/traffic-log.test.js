@@ -6,7 +6,8 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { mergeDay, pruneOld, topPages, depth, depthTrend, isAudiencePath, RECENT_DAYS, KEEP_DAYS } from './traffic-log.js';
+import { readFileSync } from 'fs';
+import { mergeDay, mintavetelezett, pruneOld, topPages, depth, depthTrend, isAudiencePath, RECENT_DAYS, KEEP_DAYS } from './traffic-log.js';
 
 let pass = 0;
 const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
@@ -53,6 +54,31 @@ t('üres sorlista nem törli a meglévő napot', () => {
   const log = { '2026-08-04': [{ path: '/a', visits: 5, views: 5 }] };
   const out = mergeDay(log, '2026-08-04', [], '2026-08-05');
   assert.equal(out['2026-08-04'][0].visits, 5, 'a sikertelen lekérdezés NEM tüntetheti el a meglévő adatot');
+});
+
+t('🔴 10-16 élesben: egy sokkal szegényebb válasz NEM írja felül a meglévő napot — a sérült nap javítása igen', () => {
+  const sok = Array.from({ length: 42 }, (_, i) => ({ path: '/p' + i, visits: 2, views: 2 }));
+  const szemet = [{ path: '/article/x', visits: 100, views: 100 }];
+  const out = mergeDay({ '2026-10-14': sok }, '2026-10-14', szemet, '2026-10-16');
+  assert.equal(out['2026-10-14'].length, 42, '🔴 a 42 soros jó napot egy 1 soros válasz írta felül');
+  const javit = mergeDay({ '2026-10-14': szemet }, '2026-10-14', sok, '2026-10-16');
+  assert.equal(javit['2026-10-14'].length, 42, 'a sérült nap javítása átmegy');
+  const kozel = mergeDay({ '2026-10-14': sok }, '2026-10-14', sok.slice(0, 30), '2026-10-16');
+  assert.equal(kozel['2026-10-14'].length, 30, 'a kis ingadozás (a meglévő fele felett) még frissít');
+});
+
+t('🔴 mintavételezett Cloudflare-válasz felismerése (sampleInterval > 1 = egy rögzített esemény N látogatást jelent)', () => {
+  assert.equal(mintavetelezett([{ avg: { sampleInterval: 1 } }, { avg: { sampleInterval: 1 } }]), false);
+  assert.equal(mintavetelezett([{ avg: { sampleInterval: 1 } }, { avg: { sampleInterval: 100 } }]), true);
+  assert.equal(mintavetelezett([{}]), false, 'a mező hiánya nem bukás');
+  assert.equal(mintavetelezett([]), false);
+  assert.equal(mintavetelezett(null), false);
+});
+
+t('🔌 a lekérdezés kéri a mintavételi közt, és mintavételezett napot nem ír', () => {
+  const src = readFileSync(new URL('./traffic-log.js', import.meta.url), 'utf-8');
+  assert.match(src, /avg \{ sampleInterval \}/, 'a Cloudflare-lekérdezés nem kéri a sampleInterval-t');
+  assert.match(src, /if \(mintavetelezett\(rows\)\) throw/, 'a mintavételezett válasz átmenne');
 });
 
 // ---------- metszés ----------

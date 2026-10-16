@@ -21,6 +21,7 @@ const NAP = 864e5;
 const UTVONAL_RX = /^\/(?:hu\/|es\/)?article\/([^/?#]+)/;
 const GYANUS_ARANY = 0.6;
 export const CSONKA_SOR = 200;   // a core/traffic-log.js ennyi útvonalat kér naponta (limit: 200)
+const SZEGENY_ARANY = 0.25;      // ennél kevesebb sor a szokásoshoz képest = hibás naplónap (10-16)
 const datum = t => new Date(t).toISOString().slice(0, 10);
 
 /** config.json content.guide_prune → { be, napok, max }. Csak a kifejezett false kapcsol ki. */
@@ -52,13 +53,21 @@ export function lefedettseg(days, now, ablakNap) {
   if (!napok.length) return { ok: false, ok_ok: 'üres a forgalmi napló', ig: null };
   const ig = napok[napok.length - 1];
   if (ig < datum(now - 2 * NAP)) return { ok: false, ok_ok: `a forgalmi napló elavult (utolsó nap: ${ig})`, ig };
+  const hosszak = [];
   for (let i = 0; i < ablakNap; i++) {
     const nap = datum(Date.parse(ig) - i * NAP);
     if (!Array.isArray(days[nap]) || !days[nap].length) return { ok: false, ok_ok: `hiányzó nap a forgalmi naplóban: ${nap}`, ig };
     // 10-14 végső átnézés: a core/traffic-log.js napi 200 útvonalat kér — a levágott nap olvasott
     // útmutatót is „olvasatlannak" mutatna.
     if (days[nap].length >= CSONKA_SOR) return { ok: false, ok_ok: `a forgalmi napló ${nap} napja csonka lehet (${CSONKA_SOR}+ sor — a Cloudflare-lekérés határa)`, ig };
+    hosszak.push([nap, days[nap].length]);
   }
+  // 10-16 élesben: a Cloudflare egy futásban napi 1 sort adott a szokásos ~40 helyett — az ilyen
+  // napon olvasott útmutató is „olvasatlannak" látszana. A szokásos sorszám negyede alatt: nincs törlés.
+  const rendezett = hosszak.map(h => h[1]).sort((a, b) => a - b);
+  const szokasos = rendezett[Math.floor(rendezett.length / 2)] || 0;
+  const szegeny = hosszak.find(([, n]) => n < SZEGENY_ARANY * szokasos);
+  if (szegeny) return { ok: false, ok_ok: `a forgalmi napló ${szegeny[0]} napja gyanúsan kevés sort tartalmaz (${szegeny[1]}, a szokásos ~${szokasos}) — hibás Cloudflare-válasz lehet`, ig };
   return { ok: true, ok_ok: '', ig };
 }
 
