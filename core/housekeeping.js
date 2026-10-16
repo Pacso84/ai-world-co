@@ -317,7 +317,7 @@ function pruneUnreadGuides() {
   }
   const maradek = r.jeloltek.length - r.torlendo.length;
   report.push(`🗑️ nézetlen útmutató: ma ${maiDb + r.torlendo.length} db törölve (${b.napok} napja 0 olvasó, napi keret ${b.max})`
-    + `${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} átirányítás` : ''}`
+    + `${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} régi, rá mutató átirányítás is törölve` : ''}`
     + `${linkDb ? ` + ${linkDb} rá mutató link` : ''}${maradek > 0 ? ` — még ${maradek} vár` : ''}`);
 }
 

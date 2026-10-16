@@ -355,11 +355,25 @@ export function maiTrendTema(topics, metak, ma) {
   return (Array.isArray(topics) ? topics : []).find(t => t && t.status !== 'done' && t.priority === 'trend') || null;
 }
 
-/** Az első trend, amit az utóbbi UJRA_NAP napban nem próbáltunk. */
+/**
+ * Ugyanannak az igénynek két Google-változata-e? (10-16 élesben: a „gemini prompt for professional
+ * headshot" után másnap a „…professional photo" jött, és szinte ugyanaz az útmutató került sorra.)
+ * Rokon: pontos egyezés, vagy a RÖVIDEBB kifejezés tartalmas szavainak legalább 75%-a a másikban is.
+ */
+export function rokonKifejezes(a, b) {
+  if (normal(a) === normal(b)) return true;
+  const x = szavak(a), y = szavak(b);
+  const kicsi = Math.min(x.size, y.size);
+  if (!kicsi) return false;
+  let k = 0; for (const w of x) if (y.has(w)) k++;
+  return k / kicsi >= 0.75;
+}
+
+/** Az első trend, amit (vagy aminek rokonát) az utóbbi UJRA_NAP napban nem próbáltuk. */
 export function kovetkezoTrendTema(trendek, proba, now = Date.now()) {
   const hatar = now - UJRA_NAP * NAP;
-  const volt = new Set((Array.isArray(proba) ? proba : []).filter(p => Date.parse(p?.at || '') >= hatar).map(p => normal(p.kifejezes)));
-  return (trendek?.temak || []).find(t => !volt.has(normal(t.kifejezes))) || null;
+  const volt = (Array.isArray(proba) ? proba : []).filter(p => Date.parse(p?.at || '') >= hatar).map(p => p.kifejezes);
+  return (trendek?.temak || []).find(t => !volt.some(v => rokonKifejezes(v, t.kifejezes))) || null;
 }
 
 /** Kell-e ma trend-témát felvenni? → a téma, vagy null (ma már próbáltuk / vár egy / nincs lista). */

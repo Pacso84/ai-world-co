@@ -5,7 +5,7 @@ import {
   trendBeallitas, normal, eszkozBenne, marMegirt, szuro, rssTetelek, googleJavaslatok,
   googleFelkapott, sajatTopEszkozok, osszesit, frissE, aktivTrendek, rssAiE, mentendo,
   trendTalalat, trendElore, maiTrendDb, maiTrendTema, kovetkezoTrendTema, trendFelvetelKell, trendProbaJegyez, trendPrompt,
-  trendRiportSorok, trendMeres, trendekBetolt, bingListaBetolt
+  rokonKifejezes, trendRiportSorok, trendMeres, trendekBetolt, bingListaBetolt
 } from './trend-kutato.js';
 
 let pass = 0;
@@ -219,6 +219,19 @@ t('🔴 Review Focus 5: téma-felvétel naponta egyszer — sikertelen ötletel�
   assert.equal(trendFelvetelKell({ topics: [] }, null, MOST), null);
   assert.equal(kovetkezoTrendTema(TR, [{ kifejezes: 'gemini trending photo prompt', at: new Date(MOST - 40 * NAP).toISOString() }], MOST).kifejezes, 'gemini trending photo prompt', '30 nap után újra jöhet');
   assert.equal(trendProbaJegyez(null, 'x', MOST).length, 1);
+});
+
+t('🔴 10-16 élesben: ugyanannak az igénynek a Google-változata („…headshot" ↔ „…photo") 30 napig nem jön újra — más igény igen', () => {
+  const tr = { temak: [{ kifejezes: 'gemini prompt for professional photo' }, { kifejezes: 'can ai help me write a book' }] };
+  const proba = [{ kifejezes: 'gemini prompt for professional headshot', at: new Date(MOST - NAP).toISOString() }];
+  assert.equal(kovetkezoTrendTema(tr, proba, MOST).kifejezes, 'can ai help me write a book', '🔴 ugyanarra az igényre második útmutató menne');
+  assert.equal(rokonKifejezes('gemini prompt for professional headshot', 'gemini prompt for professional photo'), true);
+  assert.equal(rokonKifejezes('gemini headshot', 'gemini prompt for professional headshot'), true, 'a rövidebb teljesen benne van');
+  assert.equal(rokonKifejezes('chatgpt prompt for resume', 'chatgpt prompt for cover letter'), false, 'csak az eszköz + „prompt" közös: más igény');
+  assert.equal(rokonKifejezes('can ai help me write a book', 'can ai help with daily tasks'), false);
+  assert.equal(rokonKifejezes('Gemini Prompt', 'gemini prompt'), true, 'a pontos egyezés továbbra is az');
+  assert.equal(kovetkezoTrendTema(tr, [{ kifejezes: 'gemini prompt for professional headshot', at: new Date(MOST - 40 * NAP).toISOString() }], MOST).kifejezes,
+    'gemini prompt for professional photo', '30 nap után a rokon is jöhet');
 });
 
 t('ötletelő-prompt: a kifejezés benne van, összehasonlítást tilt, csak létező funkció', () => {
