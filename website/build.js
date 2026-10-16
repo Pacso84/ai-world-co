@@ -47,6 +47,7 @@ import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
 import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek } from '../core/ads.js';
+import { promptTar, promptTarHtml } from '../core/prompt-library.js';
 import { partnerBeallitas, partnerDoboz, partnerJelzes } from '../core/affiliate.js';
 import { kedvencForrasHtml } from '../core/preferred-source.js';
 
@@ -515,6 +516,21 @@ const UI_GLOSS = {
 
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_GLOSS[l] || {});
+
+// PROMPT-TÁR feliratok (2026-10-16, core/prompt-library.js). A promptok szövege az ANGOL
+// útmutatókból jön (ott a legtisztább a forrás) — a nem angol oldal ezt egy tippel mondja meg.
+const UI_PROMPTS = {
+  en: { plNav: 'Prompt library', plTitle: 'AI Prompt Library', plTag: 'Copy-ready prompts from our step-by-step guides — paste them into ChatGPT, Gemini, Claude or any AI assistant.',
+        plTrending: 'Trending & new', plMore: 'More prompts', plCopy: 'Copy', plCopied: 'Copied!', plGuide: 'Full guide', plCount: '{n} prompts',
+        plSearch: 'Search prompts…', plTip: '', plBanner: 'Copy-ready AI prompts — the prompt library' },
+  hu: { plNav: 'Prompt-tár', plTitle: 'AI prompt-tár', plTag: 'Bemásolható promptok a lépésről lépésre útmutatóinkból — illeszd be a ChatGPT-be, a Geminibe, a Claude-ba vagy bármelyik MI-asszisztensbe.',
+        plTrending: 'Felkapott és új', plMore: 'További promptok', plCopy: 'Másolás', plCopied: 'Kimásolva!', plGuide: 'Teljes útmutató', plCount: '{n} prompt',
+        plSearch: 'Keresés a promptok közt…', plTip: 'A promptok angolul vannak — az MI ugyanúgy érti őket. Írd a végére: „Válaszolj magyarul.”', plBanner: 'Bemásolható MI-promptok — a prompt-tár' },
+  es: { plNav: 'Biblioteca de prompts', plTitle: 'Biblioteca de prompts de IA', plTag: 'Prompts listos para copiar de nuestras guías paso a paso — pégalos en ChatGPT, Gemini, Claude o cualquier asistente de IA.',
+        plTrending: 'En tendencia y nuevos', plMore: 'Más prompts', plCopy: 'Copiar', plCopied: '¡Copiado!', plGuide: 'Guía completa', plCount: '{n} prompts',
+        plSearch: 'Buscar prompts…', plTip: 'Los prompts están en inglés — la IA los entiende igual. Añade al final: «Responde en español».', plBanner: 'Prompts de IA listos para copiar — la biblioteca' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_PROMPTS[l] || {});
 
 // "Melyik AI való neked?" varázsló feliratok (2026-07-08)
 const UI_WIZ = {
@@ -1084,6 +1100,8 @@ function loadArticles() {
         // ott a legmelegebb a közönség, és így 449 cikk helyett ~27-et
         // érint — szűk, visszavonható, mérhető kísérlet.
         reelAt: data._meta?.reel_at || '',
+        // Trendből készült-e (2026-10-14, core/trend-kutato.js) — a Prompt-tár elöl mutatja (2026-10-16).
+        trend: !!data._meta?.trend,
         // VALÓDI módosítás-dátum (2026-08-01, kereső-barátság átvilágítás).
         // Eddig a dateModified = datePublished volt, vagyis a Google szerint
         // egyetlen cikkünk sem frissült SOHA — pedig a felújító (upgrade-howtos)
@@ -1511,6 +1529,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <p class="site-footer__brand">${SITE.name}<span class="masthead__dot">.</span></p>
       <p class="site-footer__note">${escapeHtml(tr('siteDesc') || SITE.description)}</p>
       <p class="site-footer__support"><a href="${LP}/about">${tr('aboutNav')}</a></p>
+      <p class="site-footer__support"><a href="${LP}/prompts">📋 ${tr('plNav')}</a></p>
       ${PACKS.enabled ? `<p class="site-footer__support"><a href="${packsPath}">${tr('packsNav')}</a></p>` : ''}
       ${SUPPORT.enabled ? `<p class="site-footer__support"><a href="${supportPath}">${T.support}</a></p>` : ''}
       <p class="site-footer__support"><a href="${LP}/privacy">${tr('privNav')}</a></p>
@@ -1803,7 +1822,8 @@ function buildGuidesPage(generalGuides, counts, temaCsoportok = new Map()) {
     <h1 class="guides-hero__title">${tr('guidesTitle')}</h1>
     <p class="guides-hero__tag">${tr('guidesTag')}</p>
   </section>`;
-  const body = designStyleBlock() + header + temaSav(temaCsoportok) + tiles;
+  const body = designStyleBlock() + header + temaSav(temaCsoportok)
+    + `<p class="start__wizcta"><a href="prompts">📋 ${escapeHtml(tr('plBanner'))}</a></p>` + tiles;
   return pageShell({
     // LOKALIZÁLT CÍM + LEÍRÁS (2026-08-04): eddig beégetett ANGOL szöveg ment
     // ki a magyar és spanyol változatra is — a Google találatban a cím és az
@@ -2816,6 +2836,7 @@ function buildStartPage(allLoc) {
       <div class="start__card"><h2>🛡️ ${tr('startS3h')}</h2><p>${tr('startS3p')}</p></div>
     </div>
     <p class="start__wizcta"><a href="wizard">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>
+    <p class="start__wizcta"><a href="prompts">📋 ${escapeHtml(tr('plBanner'))}</a></p>
     <section class="start__picks"><h2 class="rel__h">📘 ${tr('startPickH')}</h2>${items}
       <p style="margin-top:18px"><a class="back-link" href="guides">${tr('startMore')} →</a></p></section>`;
   return pageShell({
@@ -3111,6 +3132,30 @@ function buildGlossaryPage() {
     title: `${tr('glossTitle')} — ${SITE.name}`,
     description: tr('glossTag'),
     noIntro: true, pagePath: 'glossary.html', bodyContent: body
+  });
+}
+
+// ===================================================================
+// PROMPT-TÁR (2026-10-16, core/prompt-library.js) — kereshető, bemásolható promptok az
+// útmutatókból; elöl a trend-útmutatók és a friss promptok. A szöveg az ANGOL forrásból
+// (`alap`), a cím és a link a megjelenítés nyelvén (`loc`).
+// ===================================================================
+function buildPromptsPage(alap, loc) {
+  const helyi = new Map(loc.filter(a => a.isGuide).map(a => [a.slug, a]));
+  const tar = promptTar(alap.filter(a => a.isGuide).map(a => ({
+    slug: a.slug, title: helyi.get(a.slug)?.title || a.title, titleEn: a.titleEn || a.title,
+    tool: a.tool || '', trend: !!a.trend, publishedAt: a.publishedAt || '', md: a.bodyMd || ''
+  })));
+  const body = promptTarHtml(tar, {
+    sz: { kicker: tr('plNav'), cim: tr('plTitle'), tag: tr('plTag'), kiemeltCim: tr('plTrending'), egyebCim: tr('plMore'),
+      masol: tr('plCopy'), masolva: tr('plCopied'), utmutato: tr('plGuide'), db: n => tr('plCount').replace('{n}', n), kereses: tr('plSearch') },
+    temaNev: id => temaSzoveg(TEMAK.find(t => t.id === id), LANG).cim || id,
+    nyelvTipp: tr('plTip')
+  });
+  return pageShell({
+    title: `${tr('plTitle')} — ${SITE.name}`,
+    description: tr('plTag'),
+    noIntro: true, pagePath: 'prompts.html', bodyContent: body
   });
 }
 
@@ -3549,6 +3594,7 @@ function main() {
     writeFileSync(join(outBase, 'tools.html'), buildToolsPage(companyGuides, guideCounts), 'utf-8');
     writeFileSync(join(outBase, 'start.html'), buildStartPage(loc), 'utf-8');
     writeFileSync(join(outBase, 'glossary.html'), buildGlossaryPage(), 'utf-8');   // AI-kisszótár
+    writeFileSync(join(outBase, 'prompts.html'), buildPromptsPage(articles, loc), 'utf-8');   // Prompt-tár (2026-10-16)
     writeFileSync(join(outBase, 'wizard.html'), buildWizardPage(), 'utf-8');       // Melyik AI való neked?
     writeFileSync(join(outBase, 'about.html'), buildAboutPage(), 'utf-8');         // Rólunk (bizalmi oldal)
     writeFileSync(join(outBase, 'privacy.html'), buildPrivacyPage(), 'utf-8');     // Adatvédelem (2026-10-01, AdSense-feltétel)
@@ -3625,6 +3671,7 @@ function main() {
       if (PACKS.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/packs`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/start`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary`, date: today });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/prompts`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/about`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/privacy`, date: today });

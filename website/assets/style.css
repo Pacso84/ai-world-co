@@ -1024,6 +1024,24 @@ body {
 .article__body .ad-slot__label { margin-bottom: 8px; }
 .g-steps > .ad-slot { margin: 12px 0; }
 
+/* PROMPT-TÁR (2026-10-16, core/prompt-library.js): kereshető, bemásolható promptok az útmutatókból. */
+.pl-tip { margin: 0 0 14px; padding: 10px 14px; border-radius: 10px; background: var(--paper-2); color: var(--ink-soft); font-size: 14px; }
+.pl-tools { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin: 0 0 22px; }
+.pl-search { flex: 1 1 260px; min-width: 0; font: inherit; font-size: 15px; padding: 10px 12px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--card); color: var(--ink); }
+.pl-jump { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 13px; }
+.pl-jump a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted currentColor; }
+.pl-sec { margin: 0 0 30px; }
+.pl-h { font-size: 20px; margin: 0 0 12px; }
+.pl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 14px; }
+.pl-card { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 14px; background: var(--card); padding: 14px; }
+.pl-text { flex: 1; margin: 0 0 12px; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; font-size: 15px; line-height: 1.5; color: var(--ink); }
+.pl-fill { background: color-mix(in srgb, var(--accent) 18%, transparent); border-radius: 4px; padding: 0 2px; }
+.pl-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 13px; }
+.pl-guide { color: var(--accent); text-decoration: none; font-weight: 600; }
+.pl-copy { margin-left: auto; font: inherit; font-size: 13px; font-weight: 700; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+.pl-copy:focus-visible, .pl-search:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.pl-count { white-space: nowrap; font-weight: 700; }
+
 /* AMAZON PARTNERLINK (2026-10-09, core/affiliate.js): jelölt doboz a lépések után + rövid jelzés a cikk tetején. */
 .aff { margin: 26px 0 14px; padding: 16px 18px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 16px; }
 .aff__label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
