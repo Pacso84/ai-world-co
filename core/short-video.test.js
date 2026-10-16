@@ -20,7 +20,8 @@ import {
   videoArgs, tablaSvg,
   MIN_LEPES, SAV_FELSO, SAV_ALSO, W,
   ALCIM_MERET, ALCIM_MIN_MERET, ALCIM_ARANY,
-  SZOVEG_MAX_SZELES, BETU_ARANY, SZOVEG_MIN_MERET, SAV_JELZO_Y, MARKAJEL_Y
+  SZOVEG_MAX_SZELES, BETU_ARANY, SZOVEG_MIN_MERET, SAV_JELZO_Y, MARKAJEL_Y,
+  REEL_MARKA, KARTYA_SZOVEG_MAX
 } from './short-video.js';
 import { BETU_CSALAD } from './video-font.js';
 import { fm } from './frontmatter.js';
@@ -141,6 +142,15 @@ t('🎬 a kimondott mondat sorszámot kap, hogy követhető legyen', () => {
 t('🎬 a domain KIMONDVA is érthető — „dot com", nem pont', () => {
   const { cards } = cardsFromGuide(CIKK, { maxSteps: 4 });
   assert.match(cards.at(-1).mond, /dot com/, 'a felolvasó a pontot nem mondja ki');
+});
+
+t('🔗 10-16: minden útmutató-kártya alján „FULL GUIDE: AIWORLDHQ.COM", a záró alcím a teljes útmutatóra mutat', () => {
+  // Mérve (Meta, 10-16): egy Reelt átlagosan 1–2 mp-ig néznek — a záró kártyát szinte senki
+  // nem látja, ezért a teljes útmutató létét az ELSŐ kockától kell kiírni.
+  const { cards } = cardsFromGuide(CIKK, { maxSteps: 4 });
+  assert.equal(REEL_MARKA, 'FULL GUIDE: AIWORLDHQ.COM');
+  for (const c of cards) assert.equal(c.marka, REEL_MARKA, '🔴 a néző nem tudja meg, hogy van teljes útmutató');
+  assert.equal(cards.at(-1).kicsi, 'The full step-by-step guide');
 });
 
 // ── amikor NEM készül videó ─────────────────────────────────────────
@@ -266,6 +276,14 @@ t('🎨 a márkajel a domain, nem a régi szóköz-tagolt név', () => {
   const svg = tablaSvg(MINTA_TABLA, 0, 5).toString();
   assert.match(svg, />AIWORLDHQ\.COM</, 'a nézőnek beírható alakban kell');
   assert.ok(!/>AI WORLD HQ</.test(svg));
+});
+
+t('🔗 10-16: a feliratot a KÁRTYA adja — útmutató-Reelen „FULL GUIDE", a reklámon és az összefoglalón a régi domain', () => {
+  const sima = tablaSvg(MINTA_TABLA, 0, 5).toString();
+  assert.match(sima, />AIWORLDHQ\.COM</);
+  assert.ok(!/FULL GUIDE/.test(sima), 'a csomag-reklám és a napi összefoglaló NEM ígérhet útmutatót');
+  const reel = tablaSvg({ ...MINTA_TABLA, marka: REEL_MARKA }, 0, 5, { kartya: true }).toString();
+  assert.match(reel, />FULL GUIDE: AIWORLDHQ\.COM</);
 });
 
 t('🔤 a BETU_CSALAD MINDEN <text>-en ott van — nincs kimaradó elem', () => {
@@ -973,6 +991,26 @@ t('📏 a betűfájl metrikái a várt nagyságrendben vannak', () => {
   assert.ok(BETU.descender < 0 && BETU.descender > -0.4 * BETU.em, 'descender: ' + BETU.descender);
   assert.ok(BETU.capHeight > 0.5 * BETU.em && BETU.capHeight < BETU.em, 'capHeight: ' + BETU.capHeight);
   assert.ok(BETU.numGlyphs > 100, 'csonka betűfájl? ' + BETU.numGlyphs + ' glifa');
+});
+
+t('📏 10-16: az alsó felirat (a hosszabb „FULL GUIDE" is) befér — vásznon és kártyán is, a valódi betűvel mérve', () => {
+  const felirat = svg => {
+    const m = svg.match(/font-size="([\d.]+)" letter-spacing="([\d.]+)"[^>]*>([^<]*AIWORLDHQ[^<]*)</);
+    assert.ok(m, 'nincs alsó felirat — romlott a mérőeszköz');
+    return { meret: +m[1], tav: +m[2], szoveg: m[3] };
+  };
+  const meretek = {};
+  for (const [marka, kartya, hatar] of [[undefined, false, SZOVEG_MAX_SZELES], [undefined, true, KARTYA_SZOVEG_MAX],
+    [REEL_MARKA, false, SZOVEG_MAX_SZELES], [REEL_MARKA, true, KARTYA_SZOVEG_MAX]]) {
+    const f = felirat(tablaSvg({ ...MINTA_TABLA, marka }, 0, 5, { kartya }).toString());
+    const mert = szovegSzeles(f.szoveg, f.meret);
+    assert.deepEqual(mert.ismeretlen, [], `«${f.szoveg}»: a betűfájlban hiányzó karakter → üres téglalap a videón`);
+    const szeles = mert.px + f.tav * ([...f.szoveg].length - 1);
+    meretek[`${marka ? 'FULL GUIDE' : 'régi'}/${kartya ? 'kártya' : 'vászon'}`] = `${f.meret} pt → ${Math.round(szeles)} px / ${hatar}`;
+    assert.ok(szeles <= hatar, `«${f.szoveg}» ${szeles.toFixed(0)} px > ${hatar} px (kártya: ${kartya})`);
+    if (!marka) assert.equal(f.meret, 40, 'a régi felirat mérete nem változhat (reklám, összefoglaló)');
+  }
+  console.log('     ' + JSON.stringify(meretek));
 });
 
 // ── A VALÓDI KÁRTYA-HALMAZ — egyszer beolvasva ──────────────────────

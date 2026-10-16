@@ -66,10 +66,22 @@ t('⛔ slug nélkül NEM gyártunk csonka címet', () => {
 
 // ── a leírás ────────────────────────────────────────────────────────
 
-t('📱 az első sor befér a mobil vágása elé', () => {
-  const elso = reelCaption(cikk(SLUG, ALCIM)).split('\n')[0];
-  assert.ok(elso.length <= MOBIL_VAGAS, 'túl hosszú: ' + elso.length);
-  assert.ok(elso.length > 20);
+// 2026-10-16 (user: „a videókból is szeretnék olvasót!"): a Reel alatt a „Továbbiak" előtt
+// csak ~100–125 karakter látszik (élőben megnézve) — a link eddig a levágott részben állt.
+// Azóta az ELSŐ sor a link, a leírás-mondat a harmadik.
+const leiras = c => c.split('\n')[2];
+
+t('🔗 10-16: az ELSŐ SOR a cikk linkje, és befér a mobil vágása elé', () => {
+  const sorok = reelCaption(cikk(SLUG, ALCIM)).split('\n');
+  assert.equal(sorok[0], '📖 Full guide: ' + reelArticleUrl(SLUG), '🔴 a link a „Továbbiak" mögé szorulna');
+  assert.ok(sorok[0].length <= MOBIL_VAGAS, 'túl hosszú: ' + sorok[0].length);
+  assert.equal(sorok[1], '', 'a link és a leírás közt üres sor');
+});
+
+t('📱 a leírás-sor befér a mobil vágása elé', () => {
+  const sor = leiras(reelCaption(cikk(SLUG, ALCIM)));
+  assert.ok(sor.length <= MOBIL_VAGAS, 'túl hosszú: ' + sor.length);
+  assert.ok(sor.length > 20);
 });
 
 t('📱 szóhatáron vág, és NEM hagy záró vesszőt a „…" előtt', () => {
@@ -77,7 +89,7 @@ t('📱 szóhatáron vág, és NEM hagy záró vesszőt a „…" előtt', () =>
   // másolat nem hántotta le a záró írásjelet — 358 valódi alcímből 9-nél
   // vessző maradt volna. Egy példány van belőle, és ez a teszt őrzi.
   const hosszu = 'Five quick checks anyone can run on a suspicious video or voice clip in under two minutes, with no app, no account and no special software';
-  const elso = reelCaption(cikk(SLUG, hosszu)).split('\n')[0];
+  const elso = leiras(reelCaption(cikk(SLUG, hosszu)));
   assert.ok(elso.endsWith('…'), 'jelezze, hogy folytatódik');
   const csonk = elso.slice(0, -1);
   assert.ok(!/[\s,;:.!-]$/.test(csonk), 'záró írásjel maradt: ' + JSON.stringify(elso.slice(-6)));
@@ -94,7 +106,7 @@ t('a végén követésre hívás áll — ugyanaz a hang, mint a többi poszton'
 
 t('alcím híján a cím lép a helyére', () => {
   const c = reelCaption(cikk(SLUG, '', 'How to Spot a Deepfake Video'));
-  assert.match(c.split('\n')[0], /Deepfake/);
+  assert.match(leiras(c), /Deepfake/);
 });
 
 t('⛔ SLUG NÉLKÜL nincs leírás — a halott link rosszabb, mint a néma nap', () => {
@@ -135,25 +147,25 @@ t('nem-szám kezdetre és hibás bemenetre null', () => {
 
 t('⚠️ ha az alcím TÖBBET ígér, mint amennyi a videóban van → a CÍM megy ki', () => {
   const c = cikk(SLUG, 'Five quick checks anyone can run', 'How to Spot a Deepfake Video');
-  const elso = reelCaption(c, { videoSteps: 4 }).split('\n')[0];
+  const elso = leiras(reelCaption(c, { videoSteps: 4 }));
   assert.ok(!/^Five/i.test(elso), 'nem ígérhet ötöt, ha négy van: ' + elso);
   assert.match(elso, /Deepfake/, 'a cím lép a helyére');
 });
 
 t('✅ ha EGYEZIK, marad az alcím — az a jobb szöveg', () => {
   const c = cikk(SLUG, 'Five quick checks anyone can run', 'How to Spot a Deepfake Video');
-  assert.match(reelCaption(c, { videoSteps: 5 }).split('\n')[0], /^Five quick checks/);
+  assert.match(leiras(reelCaption(c, { videoSteps: 5 })), /^Five quick checks/);
 });
 
 t('lépésszám nélkül nem avatkozunk be — nincs mihez mérni', () => {
   const c = cikk(SLUG, 'Five quick checks anyone can run', 'How to Spot a Deepfake Video');
-  assert.match(reelCaption(c).split('\n')[0], /^Five quick checks/);
-  assert.match(reelCaption(c, { videoSteps: null }).split('\n')[0], /^Five quick checks/);
+  assert.match(leiras(reelCaption(c)), /^Five quick checks/);
+  assert.match(leiras(reelCaption(c, { videoSteps: null })), /^Five quick checks/);
 });
 
 t('a szám nélküli alcímhez a lépésszám nem szól hozzá', () => {
   const c = cikk(SLUG, 'Quick checks anyone can run', 'A cím');
-  assert.match(reelCaption(c, { videoSteps: 4 }).split('\n')[0], /^Quick checks/);
+  assert.match(leiras(reelCaption(c, { videoSteps: 4 })), /^Quick checks/);
 });
 
 // ── a küldés ────────────────────────────────────────────────────────
@@ -382,10 +394,10 @@ t('📌 VALÓDI útmutatókon: mindegyikhez épül érvényes leírás és vide�
     const j = JSON.parse(readFileSync(join(DIR, f), 'utf-8'));
     const c = reelCaption(j);
     if (!c || !c.includes('/article/')) { rossz++; continue; }
-    if (c.split('\n')[0].length > MOBIL_VAGAS) hosszu++;
+    if (c.split('\n')[0].length > MOBIL_VAGAS || leiras(c).length > MOBIL_VAGAS) hosszu++;
   }
   assert.equal(rossz, 0, rossz + ' cikkhez nem épült érvényes leírás');
-  assert.equal(hosszu, 0, hosszu + ' leírás első sora túllógna a mobil vágásán');
+  assert.equal(hosszu, 0, hosszu + ' leírás link- vagy szöveg-sora túllógna a mobil vágásán');
   console.log('     (' + fajlok.length + ' valódi útmutató átnézve)');
 });
 

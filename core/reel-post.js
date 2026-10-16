@@ -97,6 +97,9 @@ export function reelArticleUrl(slug, site = SITE) {
  *   2. blokk— a link
  *   3. blokk— követésre hívás (a videó záró táblája is a domaint mutatja)
  */
+// A Reel-leírás első sorának eleje (2026-10-16) — utána a cikk linkje.
+export const REEL_LINK_ELO = '📖 Full guide: ';
+
 export function reelCaption(article, { site = SITE, videoSteps = null } = {}) {
   const { slug, title, subtitle } = guideMeta(article);
   // SLUG NÉLKÜL NINCS LEÍRÁS. A link a poszt egyetlen célja; slug nélkül
@@ -117,7 +120,10 @@ export function reelCaption(article, { site = SITE, videoSteps = null } = {}) {
   if (!nyers) return '';
   const elso = trimToWords(nyers, MOBIL_VAGAS);
   const cta = followCta(slug);
-  return `${elso}\n\n👉 ${reelArticleUrl(slug, site)}${cta ? `\n\n${cta}` : ''}\n\n${AI_JELOLES}`;
+  // 2026-10-16 (user: „a videókból is szeretnék olvasót!"): a Reel alatt a „Továbbiak" előtt
+  // csak ~100–125 karakter látszik (élőben megnézve) — a link eddig a levágott részben állt.
+  // Ezért a LINK az első sor; a leghosszabb cikk-cím is befér (15 + ≤100 < MOBIL_VAGAS).
+  return `${REEL_LINK_ELO}${reelArticleUrl(slug, site)}\n\n${elso}${cta ? `\n\n${cta}` : ''}\n\n${AI_JELOLES}`;
 }
 
 // Kiírt számnevek, amikkel egy alcím kezdődhet („Five quick checks…").

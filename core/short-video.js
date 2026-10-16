@@ -385,6 +385,16 @@ export function tordel(s, maxSor = 13) {
 // („nem tudok angolul" — ezért soronként lefordítottam neki, és így tűnt fel).
 export const LEPES_MAX = 6;
 
+// AZ ALSÓ FELIRAT (2026-10-16, user: „a videókból is szeretnék olvasót!"). Mérve (Meta):
+// egy Reelt átlagosan 1–2 mp-ig néznek, ezért a záró kártya „aiworldhq.com"-ját szinte
+// senki nem látja — a teljes útmutató létét az ELSŐ kockától, minden kártyán kiírjuk.
+// Minden platformon igaz (a TikTokon a link nem kattintható, a domain beírható).
+export const REEL_MARKA = 'FULL GUIDE: AIWORLDHQ.COM';
+export const ALAP_MARKA = 'AIWORLDHQ.COM';
+export const MARKA_MERET = 40;     // a régi, rövid felirat mérete — nem változik
+export const MARKA_TAV = 5;        // betűköz (letter-spacing)
+export const MARKA_ARANY = 0.75;   // nagybetűs félkövér: mért ~0,725 (AIWORLDHQ.COM) → felfelé kerekítve
+
 export function cardsFromGuide(md, { maxSteps = LEPES_MAX } = {}) {
   if (typeof md !== 'string' || !md.trim()) return { cards: null, reason: 'nincs szöveg' };
 
@@ -416,7 +426,8 @@ export function cardsFromGuide(md, { maxSteps = LEPES_MAX } = {}) {
     cimke: '',
     nagy: tordel(horogCim),
     kicsi: `In ${SORSZAM[valasztott.length - 1]?.toLowerCase() || valasztott.length} steps`,
-    mond: `${horogMondat}. In ${SORSZAM[valasztott.length - 1]?.toLowerCase() || valasztott.length} fast steps.`
+    mond: `${horogMondat}. In ${SORSZAM[valasztott.length - 1]?.toLowerCase() || valasztott.length} fast steps.`,
+    marka: REEL_MARKA
   }];
 
   valasztott.forEach((l, i) => {
@@ -426,16 +437,18 @@ export function cardsFromGuide(md, { maxSteps = LEPES_MAX } = {}) {
       nagy: tordel(nagy),
       kicsi,
       // A sorszám kimondva tartja követhetően a menetet.
-      mond: `${SORSZAM[i] || i + 1}. ${nagy}${kicsi ? ' ' + kicsi : ''}.`
+      mond: `${SORSZAM[i] || i + 1}. ${nagy}${kicsi ? ' ' + kicsi : ''}.`,
+      marka: REEL_MARKA
     });
   });
 
   cards.push({
     cimke: '',
     nagy: 'aiworldhq\n.com',
-    kicsi: 'Daily AI tips, in plain English',
+    kicsi: 'The full step-by-step guide',
     // ⚠️ A felolvasó a pontot nem mondja ki — ezért „dot com".
-    mond: 'Full guide at aiworldhq dot com.'
+    mond: 'Full guide at aiworldhq dot com.',
+    marka: REEL_MARKA
   });
 
   return { cards, reason: '' };
@@ -485,9 +498,17 @@ const esc = s => String(s).replace(/‑/g, '-')
 // ÉLES borítóképe, a szöveg egy papírszínű kártyán ül (KARTYA_*), és a
 // halvány, nagy lépésszám (cimke) elmarad: a fotón 30%-os átlátszósággal
 // nem látszana, csak zavarna.
-export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true, kartya = false } = {}) {
+// ⚠️ A `marka` (2026-10-16): az alsó felirat a KÁRTYÁRÓL jön — az útmutató-Reel
+// „FULL GUIDE: AIWORLDHQ.COM"-ot ír (REEL_MARKA), a csomag-reklám és a napi
+// összefoglaló a régi domaint (nem ígérhet útmutatót). A hosszabb felirat
+// betűmérete a helyhez igazodik; a régi marad 40.
+export function tablaSvg({ cimke, nagy, kicsi, marka }, i, db, { alap = true, kartya = false } = {}) {
   if (kartya) cimke = '';
   const maxSzeles = kartya ? KARTYA_SZOVEG_MAX : SZOVEG_MAX_SZELES;
+  const markaSzoveg = marka || ALAP_MARKA;
+  const markaHossz = [...markaSzoveg].length;
+  const markaMeret = Math.min(MARKA_MERET,
+    Math.floor((maxSzeles - MARKA_TAV * (markaHossz - 1)) / (markaHossz * MARKA_ARANY)));
   const sorok = String(nagy).split('\n').slice(0, 3);
   // A méret a SORSZÁMTÓL függ, nem a sorok hosszától: három sornál a
   // 138-as magasság a blokkot a sávból lógatná ki.
@@ -583,8 +604,8 @@ export function tablaSvg({ cimke, nagy, kicsi }, i, db, { alap = true, kartya = 
   ${alcimLatszik ? `<text x="${kx}" y="${utolsoSor + 70}" text-anchor="middle" font-size="${alcimMeret}"
     font-family="${BETU_CSALAD}" fill="${HALVANY}">${esc(kicsi)}</text>` : ''}
   ${sav}
-  <text x="${kx}" y="${markaY}" text-anchor="middle" font-size="40" letter-spacing="5"
-    font-family="${BETU_CSALAD}" font-weight="bold" fill="${TINTA}" opacity="0.65">AIWORLDHQ.COM</text>
+  <text x="${kx}" y="${markaY}" text-anchor="middle" font-size="${markaMeret}" letter-spacing="${MARKA_TAV}"
+    font-family="${BETU_CSALAD}" font-weight="bold" fill="${TINTA}" opacity="0.65">${esc(markaSzoveg)}</text>
 </svg>`);
 }
 
