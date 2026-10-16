@@ -1,0 +1,73 @@
+{
+  "_meta": {
+    "written_at": "2026-10-16T02:13:59.357Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00494462,
+    "original_draft": "2026-10-16T02-10-37-240Z_picsart_Grok_Imagine_1_5_Lite_explained__quick_clips_with_.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/grok-imagine-1-5-lite-explained/",
+    "source_links": [
+      "https://picsart.com/blog/grok-imagine-1-5-lite-explained/",
+      "https://picsart.com/blog/ai-video-translation-in-picsart-flow/",
+      "https://picsart.com/blog/how-to-make-ai-lip-sync-videos/",
+      "https://picsart.com/blog/how-to-make-short-videos/"
+    ],
+    "source_snippet": "Grok Imagine 1.5 Lite is the faster, lower-cost version of xAI’s Grok Imagine 1.5 video model. It turns a text prompt or one starting image into a clip of 3 to 15 seconds. Every clip comes with an audio track already in it. Lite gives up some detail in exchange for speed. Full Grok Imagine … \nContinue reading \"Grok Imagine 1.5 Lite explained: quick clips with sound\"\n\n---\n\nThe latest Picsart Flow release is live, and it puts an AI video translator right on the canvas: the new Translate node. Hand it a video of someone speaking, and it hands the video back in another language, in the same voice, with the lips moving to the new words. That last part is the … \nContinue reading \"Picsart Flow now has an AI video translator with lip-sync\"\n\n---\n\nTo make an AI lip sync video with MiniMax H3 Max Lip Sync, upload one portrait and one voice track, choose a resolution, and generate. The model moves the mouth to match your audio and returns a talking video that runs exactly as long as the recording, at up to 2K. There is no prompt … \nContinue reading \"How to make AI lip sync videos with MiniMax H3 Max Lip Sync\"\n\n---\n\nLearn how to make short videos using AI. Turn one long upload into up to 12 captioned clips for TikTok, Reels and Shorts, then post them for Picsart Earn.",
+    "merged_from": 4,
+    "merged_theme": "PicsArt AI video creation tools",
+    "trend": {
+      "kifejezes": "how to use grok for free",
+      "datum": "2026-10-15"
+    },
+    "status": "published",
+    "published_at": "2026-10-16T02:17:01.187Z",
+    "slug": "ai-video-tools-just-got-faster-quieter-and-more-useful-what-the-new-re",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "OPENING_REPETITIVE: A legutóbbi 20 cikkből 4 kezdődik ugyanígy (\"if you've ever…\"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel."
+      ],
+      "wordCount": 896
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Article is well-structured with a clear hook, plain-language explanations of technical terms (text prompt, lip-sync, Translate node), and a useful 'What this means for you' section with specific audience guidance. All tool descriptions are factual with claims properly attributed. Writing is fresh, respectful, and accessible for everyday readers. Minor consideration: the article leans promotional since it covers PicsArt's tools prominently, but it reads as editorial product roundup rather than a marketing brief, and the educational explanations keep it useful for readers.",
+      "_aiCost": 0.0023808,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-16T02:17:40.945Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a roundup covering four separate tools (Grok Imagine 1.5 Lite, Picsart Flow Translate node, MiniMax H3 Max Lip Sync, and Picsart short-video tool) — not one specific named feature for a focused guide.",
+    "image_v": 2,
+    "image_at": "2026-10-16T02:19:55.800Z",
+    "seo": {
+      "meta_description": "Four new AI video tools can generate 3-15 second clips, translate with lip sync, and turn one video into up to 12 captioned clips.",
+      "keywords": [
+        "AI video tools",
+        "AI video clip generator",
+        "video translation with lip sync",
+        "turn long video into short clips AI",
+        "AI lip sync tool",
+        "create short videos from long videos",
+        "AI video editing tools"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add more specific details about the tool names if mentioned in the article to improve keyword relevance",
+        "Include the exact use cases (social media, marketing) in the subtitle or opening for better search intent matching",
+        "Consider adding a comparison table or structured data for enhanced SERP appearance"
+      ],
+      "optimised_at": "2026-10-16T02:20:49.032Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"AI Video Tools Just Got Faster, Quieter, and More Useful: What the New Releases Actually Do\"\nsubtitle: \"A practical look at four new AI video tools — quick clips, translations, lip-sync, and one video turned into twelve.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-video\", \"content-creation\", \"video-tools\", \"social-media\"]\n---\n\n# AI Video Tools Just Got Faster, Quieter, and More Useful\n\n> **In short:** Four new AI video tools turn text, images, audio, and long recordings into short, ready-to-share clips — including a 3–15 second generator with built-in sound, a translator that keeps the speaker's voice and moves their lips to the new words, a portrait-and-voice lip-sync tool, and a tool that splits one upload into up to 12 captioned clips.\n\nIf you've ever wanted a quick video without filming one yourself — or wished your old videos could reach people in another language — there's a fresh batch of AI tools worth knowing about. They cover a lot of ground: speed, sound, translation, lip movement, and turning long recordings into bite-sized posts. Here's what each one actually does, in plain language.\n\n## Quick clips with sound built in\n\nxAI's **Grok Imagine 1.5 Lite** turns a text prompt (the instruction you type to the AI) or a single starting image into a video clip of 3 to 15 seconds. Every clip comes with an audio track already in it — no separate sound editing needed. According to xAI, the \"Lite\" version trades a little visual detail for faster results and lower cost compared to the full Grok Imagine 1.5.\n\nA useful way to think about it: if the full model is a careful painter, Lite is a fast sketch artist. You get something shareable quickly, and you can always regenerate if you want a sharper version.\n\n## Translate a video, keep the voice\n\nThe latest release of **Picsart Flow** adds a new **Translate node** (a step in the editor where you hand off work to the AI). Drop in a video of someone speaking, pick a target language, and the tool hands back a video in that language — in the same voice — with the speaker's lips moving to match the new words. That last part, the lip-sync (matching the mouth to the audio), is what makes the result look natural rather than dubbed.\n\nFor anyone who's ever wanted to post the same video for two audiences, this removes the awkwardness of foreign-language voice-over tracks that don't match the speaker's face.\n\n## One portrait, one voice track, one talking video\n\n**MiniMax H3 Max Lip Sync** works differently. You upload one portrait photo and one voice recording, choose a resolution up to 2K (a sharp, high-quality video size), and the model animates the mouth to match your audio. No text prompt is needed — the tool follows the sound. The resulting video runs exactly as long as the recording.\n\nThis is the kind of tool that makes classroom explainers, internal training clips, or short announcements possible without a camera or a studio.\n\n## One long video, up to 12 short posts\n\nThe fourth release focuses on repurposing, not generating. With **Picsart's** short-video tool, you upload one longer video and the AI breaks it into up to 12 captioned clips, ready for TikTok, Reels, and Shorts. Creators who already have webinars, podcast recordings, or long talks can feed them in once and walk away with a week's worth of social posts. Picsart also offers a way to earn through the platform via its Picsart Earn program, though terms and availability vary.\n\n## What this means for you\n\n- **If you're a small business owner or creator**: the translation and lip-sync tools make it realistic to reach audiences in more than one language without hiring voice actors. The 12-clips-from-one-upload tool is a quick way to get more mileage out of content you already have.\n- **If you're learning or teaching**: a portrait-and-audio tool like MiniMax H3 Max Lip Sync can turn a recorded lesson into a talking-head explainer without filming yourself, which is useful if you'd rather stay off camera.\n- **If you make content for fun**: the quick-clip generator with built-in sound is good for social posts, birthday greetings, or visual ideas — and because it works from a single image, you can start with something you already have.\n- **If you already use AI video tools**: think of these as specialists rather than replacements. The translator is for localization. The lip-sync model is for talking-head clips. The clip splitter is for repurposing. The 15-second generator is for speed. Pick the one that matches the job, instead of expecting one tool to do everything.\n- **If you're worried about misuse**: any tool that can match lips to new words or clone a voice can also be misused. Stick to your own footage, your own voice, and clear consent when working with other people's images or voices.\n\n## Wrap-up\n\nAI video tools are splitting into specialized jobs — quick generation, translation, lip-sync, repurposing — rather than trying to be one Swiss Army knife. That's good news if you know what you want to make: you can pick the right tool for the job. A practical next step is to try one of these on a piece of content you already have, even if it's just a 30-second voice note and a headshot, and see what comes out.",
+  "original_title": "Grok Imagine 1.5 Lite explained: quick clips with sound"
+}

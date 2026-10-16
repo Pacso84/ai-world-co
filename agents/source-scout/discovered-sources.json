@@ -1,36 +1,42 @@
 {
   "_meta": {
-    "generated_at": "2026-10-12T17:10:41.720Z",
+    "generated_at": "2026-10-16T02:12:18.374Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 1,
-    "rejected_count": 4,
+    "rejected_count": 5,
     "rejected_examples": [
       {
-        "name": "Pi AI (Inflection)",
-        "host": "inflection.ai",
-        "reason": "pont 94 < 100",
-        "score": 94
-      },
-      {
-        "name": "Jasper AI Blog",
-        "host": "jasper.ai",
-        "reason": "pont 94 < 100",
-        "score": 94
-      },
-      {
-        "name": "Brave Browser Features",
-        "host": "brave.com",
-        "reason": "a friss cikkeinek csak 40%-a szól AI-ról (kell: 60%)",
+        "name": "Obsidian Blog",
+        "host": "obsidian.md",
+        "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
         "score": 100
       },
       {
-        "name": "OnePlus AI Features",
-        "host": "oneplus.com",
-        "reason": "halott feed — 480 napja nincs új cikk (limit: 365)",
-        "score": 0
+        "name": "Bear Blog",
+        "host": "bear.app",
+        "reason": "a friss cikkeinek csak 6%-a szól AI-ról (kell: 60%)",
+        "score": 100
+      },
+      {
+        "name": "Craft Blog",
+        "host": "craft.do",
+        "reason": "pont 94 < 100",
+        "score": 94
+      },
+      {
+        "name": "Capacities Blog",
+        "host": "capacities.io",
+        "reason": "a friss cikkeinek csak 14%-a szól AI-ról (kell: 60%)",
+        "score": 100
+      },
+      {
+        "name": "Reflect Blog",
+        "host": "reflect.app",
+        "reason": "pont 76 < 100",
+        "score": 76
       }
     ]
   },
@@ -54,5 +60,42 @@
     "writer.com",
     "zoho.com"
   ],
-  "discovered_sources": []
+  "discovered_sources": [
+    {
+      "ai_content_ratio": 84,
+      "suggested_id": "taskade",
+      "name": "Taskade Blog (hivatalos)",
+      "url": "https://www.taskade.com/blog/feed.xml",
+      "minta_cimek": [
+        "Introducing Taskade TSK-1: The System Kernel Behind Every App (2026)",
+        "Run Your Whole Business in One App with Taskade Genesis (June 2026)",
+        "Skills AI Can't Replace: Learn to Grade the Homework (2026)"
+      ],
+      "figyelmeztetesek": [
+        "sok „legjobb X / X vs Y\" cím (25%) — ezeket a cikkíró kiszűri"
+      ],
+      "kozonseg_arany": {
+        "b2b": 0,
+        "dev": 5,
+        "lista": 25
+      },
+      "type": "rss",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "reliability_score": 100,
+      "reliability_reasons": [
+        "friss (utolsó cikk 1 napja)",
+        "bő kínálat (50 cikk)",
+        "hivatalos forrásként jelölve",
+        "a domain/feed egyezik a cég nevével",
+        "HTTPS + érvényes RSS"
+      ],
+      "item_count_at_discovery": 50,
+      "last_post_age_days": 1,
+      "comment": "JAVASLAT (source-scout, megbízhatóság 100/100): Productivity and AI note-taking app - product news and feature releases. Felhasználói jóváhagyás kell!",
+      "enabled": false
+    }
+  ]
 }

@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "written_at": "2026-10-16T02:13:06.459Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00990324,
+    "original_draft": "2026-10-16T02-09-57-159Z_google-workspace_Gmail_s_AI_Inbox_is_rolling_out_to_paid_Workspace_.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/10/gmails-ai-inbox-is-rolling-out-to-paid-Workspace-users.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/10/gmails-ai-inbox-is-rolling-out-to-paid-Workspace-users.html",
+      "http://workspaceupdates.googleblog.com/2026/10/gmail-live-is-rolling-out-to-paid-Workspace-users.html"
+    ],
+    "source_snippet": "Earlier this year, we launched AI Inbox in Gmail which helps users catch up on what matters most. Starting today, we’re expanding AI Inbox to paid Google Workspace users. By highlighting key actionable to-do’s and summarizing priority work updates across your emails, AI Inbox makes it easier to stay on top of daily business workflows.\nAI Inbox’s core capabilities:\n\n\nSuggested to-dos: Automatically extracts action items, deliverables, and deadlines embedded within email conversations. Teams and business leaders gain clear visibility into critical follow-ups without manual note-taking or scanning through dense threads.\nTopics to catch up on: Delivers clear, context-rich summaries of your most important topics, across multi-message threads and rapid back-and-forth discussions. Users can reference this section to get caught up on the latest key decisions and status changes.\n\n\n\nGetting started\n\n\nAdmins: There is no admin control for this feature.\nEnd users: Eligible users can access AI Inbox directly within the Gmail desktop client or mobile app menu. Use our Help Center to learn more about AI Inbox.\n\n\nAvailability\n\n\nBusiness: Business Starter, Standard, and Plus\nEnterprise: Enterprise Starter, Standard, and Plus\nEducation: AI Pro for Education\nOther Editions: Frontline Plus\n\n\nNote that this feature is currently only available to users in the US with EN-US as their language.\nRollout pace\n\n\nRapid Release domains: Gradual rollout (up to 15 days for visibility) started on October 12,\n\n---\n\nFinding critical information on the go often involves sifting through lengthy email threads and switching between multiple messages while your hands are busy commuting or multi-tasking. Following our initial rollout of conversational AI voice capabilities, we are bringing Gmail Live to Google Workspace customers on mobile (Android and iOS). Using our latest Gemini models, Gmail Live delivers a low-latency, inbox-aware voice search experience that lets you ask questions naturally and hear synthesized answers directly from your email inbox. We’ve included sources for users to easily view the emails where the information is being pulled, as well as the following improvements:\n\n\nSee where the information is coming from: An email source card is now surfaced prominently at every conversational turn.\nAbility to pick the voice of your choice: You can now pick your preferred voice directly from Gmail Live.\n\n\n\nCommon use cases include:\n\n\n“What is the order status for Black Forest Construction Supply?”\n“When is my next mandatory training due?”\n“Show me the latest update from my manager, John.”\n“What gate is my flight leaving from tomorrow?”\n\n\nGetting started\n\n\nAdmins: This feature will be ON by default for organizations with Gemini in Workspace access and respects existing smart features and personalization admin settings. Visit the Help Center to learn more.\nEnd users: On supported iOS and Android devices, tap the Live entry point in the Gmail search bar to begin a voice session",
+    "merged_from": 2,
+    "merged_theme": "Gmail AI features rolling out to paid Workspace users",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-10-16T02:16:25.301Z",
+    "slug": "google-adds-two-ai-features-to-paid-gmail-here-s-what-they-do",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "OPENING_REPETITIVE: A legutóbbi 20 cikkből 5 kezdődik ugyanígy (\"if you've…\"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel."
+      ],
+      "wordCount": 900
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured news article with clear explanations of both features, appropriate attribution to Google's official source, a useful 'What this means for you' section covering different reader scenarios, and a practical wrap-up with next steps. No prohibited content, no ranking/comparison issues, and US English is correct throughout.",
+      "_aiCost": 0.00118251,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-16T02:17:33.311Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article introduces two separate features (AI Inbox and Gmail Live) rather than one specific named tool; also limited to US English paid Workspace users",
+    "image_v": 2,
+    "image_at": "2026-10-16T02:19:42.331Z",
+    "seo": {
+      "meta_description": "Google adds AI Inbox and Gmail Live to paid Gmail. AI Inbox shows to-dos and summaries; Gmail Live offers voice search. Here's what they do.",
+      "keywords": [
+        "Google AI features Gmail",
+        "AI Inbox Gmail",
+        "Gmail Live voice search",
+        "Google Workspace AI features",
+        "paid Gmail AI features",
+        "Gmail AI summary",
+        "Google Workspace new features"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the exact rollout region 'English (US)' in the meta to capture more specific local searches",
+        "Consider adding 'Google AI' as a primary keyword since many users search for 'Google AI Gmail'"
+      ],
+      "optimised_at": "2026-10-16T02:20:36.677Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Google Adds Two AI Features to Paid Gmail — Here's What They Do\"\nsubtitle: \"AI Inbox and Gmail Live bring smarter summaries, to-do detection, and voice search to paid Workspace users with English (US) settings\"\ncategory: \"news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"gmail\", \"google-workspace\", \"ai-features\", \"productivity\"]\n---\n\n# Google Adds Two AI Features to Paid Gmail — Here's What They Do\n\n> **In short:** Google is rolling out two new AI features to paid Workspace users with English (US) settings: AI Inbox surfaces to-dos and topic summaries from your email, and Gmail Live lets you ask questions about your inbox by voice. Both are designed to cut the manual work of staying on top of a busy inbox.\n\nIf you've ever closed Gmail feeling like you still don't know what was actually decided yesterday, Google is trying to fix that. The company is rolling out two new AI features to paid Google Workspace users, both aimed at taking some of the manual work out of staying on top of email.\n\n## What AI Inbox does\n\nAI Inbox is the larger of the two updates. According to Google's announcement, it has two core jobs:\n\n- **Suggested to-dos**: It scans your email conversations and pulls out the action items, deliverables, and deadlines hiding inside them. Google says this lets teams and managers see what needs follow-up \"without manual note-taking or scanning through dense threads.\"\n- **Topics to catch up on**: This section gives you context-rich summaries (think: a short briefing, not a full transcript) of your most important threads — including the ones with lots of back-and-forth. You can scan it to see what was decided or what changed without reading every message.\n\nIn short, AI Inbox does the skimming for you. It surfaces both what you owe other people and what's been happening in conversations you missed.\n\n## What Gmail Live does\n\nThe second feature, Gmail Live, brings voice search to your inbox on mobile (Android and iOS). It runs on Google's latest **Gemini models** — Gemini is Google's family of AI models, the same technology that powers Google's chatbot products. According to Google, Gmail Live offers a \"low-latency, inbox-aware voice search experience\": you ask questions in plain language, and the AI reads back an answer based on what's actually in your email.\n\nTwo small but useful touches Google highlighted:\n\n- An **email source card** appears at every conversational turn, so you can see exactly which messages the answer came from.\n- You can now pick which **voice** you want to hear.\n\nGoogle shared some example questions that Gmail Live handles well: *\"What is the order status for Black Forest Construction Supply?\"*, *\"When is my next mandatory training due?\"*, *\"Show me the latest update from my manager, John\"*, and *\"What gate is my flight leaving from tomorrow?\"* That's a wide range — work tasks, HR requirements, personal travel — all from the same voice interface.\n\n## Who can use them, and how\n\nBoth features are part of paid Google Workspace. AI Inbox is available on Business Starter, Standard, and Plus; Enterprise Starter, Standard, and Plus; AI Pro for Education; and Frontline Plus. Google says there is no admin control for it — it just shows up for eligible users.\n\nTo find AI Inbox, Google says, look in the Gmail desktop client or mobile app menu. For Gmail Live, eligible users on supported iOS and Android devices tap the **Live** entry point in the Gmail search bar to start a voice session. Google notes it will be on by default for organizations that have Gemini in Workspace access, and that it respects existing admin settings.\n\nOne important limit Google called out: both features are currently only available to users in the US with English (US) as their language setting. The AI Inbox rollout on Rapid Release domains (Google's faster update track for some Workspace accounts) began October 12, with a gradual rollout that can take up to 15 days for full visibility.\n\n## What this means for you\n\n- **If you use Gmail for work**: AI Inbox is the one to try first. After your morning coffee, open Gmail and check the new section before reading individual threads — it should show you your day at a glance.\n- **If you're often away from a keyboard**: Gmail Live is built for hands-busy moments — commuting, walking, cooking. Try a question like *\"What's my next meeting today?\"* or *\"Any messages from my manager?\"* and listen to the answer.\n- **If you don't see these yet**: They may not have reached your account yet, or you may be outside the current US + English (US) rollout. Check back in a few days, or ask your IT admin about your Workspace tier and language settings.\n- **If you already use it**: Skip the suggested-to-dos section at first read and use it as your end-of-day checklist instead — Google says it pulls deliverables and deadlines out of threads, which works well as a \"did I forget anything?\" sweep before logging off.\n\n## Wrap-up\n\nGoogle's paid Workspace users with English (US) settings are getting two new ways to read less and know more in Gmail: AI Inbox does the skimming for you, and Gmail Live lets you ask questions out loud. If you're eligible, the features are already turned on — open Gmail and look around the menu or the search bar to find them.",
+  "original_title": "Gmail’s AI Inbox is rolling out to paid Workspace users"
+}

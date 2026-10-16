@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-ask-alexa-to-translate-a-short-phrase-into-another-la",
+    "company": "Amazon",
+    "tool": "Alexa+",
+    "icon": "🌐",
+    "level": "intermediate",
+    "source_news": null,
+    "trend": null,
+    "written_at": "2026-10-16T02:18:54.790Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.006205104,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-16T02:19:19.300Z",
+    "slug": "how-to-ask-alexa-to-translate-a-short-phrase-on-your-echo",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "OPENING_REPETITIVE: A legutóbbi 20 cikkből 5 kezdődik ugyanígy (\"if you've ever…\"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel."
+      ],
+      "wordCount": 1582
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide with clear step-by-step instructions, good visual cues in the app section, solid fallbacks when things go wrong, and a warm tone throughout. The structure meets all requirements including hook, explanations, What this means for you, and a strong call-to-action ending.",
+      "_aiCost": 0.001425942,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-16T02:20:01.807Z",
+    "seo": {
+      "meta_description": "Learn how to use Alexa+ to translate short phrases on your Echo device for hands-free language help while traveling or chatting with family.",
+      "keywords": [
+        "how to translate with Alexa",
+        "Alexa Echo translation",
+        "Alexa+ translation feature",
+        "Echo device translate language",
+        "Alexa hands-free translation",
+        "Alexa translate for travel",
+        "Alexa language translation app"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific examples of supported languages and example phrases in the article",
+        "Include step-by-step numbered instructions for the translation workflow",
+        "Add a brief troubleshooting section covering accent recognition limitations mentioned in the article"
+      ],
+      "optimised_at": "2026-10-16T02:21:04.997Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How to ask Alexa+ to translate a short phrase on your Echo\"\nsubtitle: \"Get hands-free translations for travel, family and quick language help, with tips for clearer pronunciation and the languages that work best.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Amazon\"\ntool: \"Alexa+\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"alexa\", \"translation\", \"echo\", \"languages\"]\n---\n\n# How to ask Alexa+ to translate a short phrase on your Echo\n\n> **In short:** Your Echo can translate short spoken phrases into many languages, hands-free, as long as you say the wake word first. Some languages and accents work better than others, and Alexa+ cannot reliably translate long conversations or read written text from a photo.\n\nIf you've ever frozen at a bakery counter abroad or waved at a relative who doesn't share your language, the Echo on your kitchen counter can quietly fix that moment. You don't need an app, a phone or a dictionary — just your voice, the wake word, and a short, clear sentence. This guide walks you through a translation workflow that goes beyond the basic one-off request: setting the target language once, asking for the slow spelling when a word matters, and recovering when Alexa+ gets it wrong.\n\n## Before you start\n\n- An Echo device (any generation that supports Alexa+ — the newer the device, the smoother the experience, but older Echos still work for most translations).\n- An Amazon account already linked to your Echo, and a working internet connection (translations run in the cloud, not on the device).\n- The wake word turned on — by default it's \"Alexa,\" but if you've changed it, use whatever you chose.\n- A rough idea of the target language and how its name sounds in English (for example, \"Spanish,\" \"Japanese,\" \"Brazilian Portuguese\"). Alexa+ understands English language names; it does not usually need the exact locale code.\n- About 5 minutes for the first run, then it gets faster the more you practice.\n\n## Step 1 — Say the wake word and a simple \"translate\" request\n\nStand within a few feet of the Echo so the microphone can pick you up cleanly — the seven-mic array on most Echos hears across a room, but a quiet kitchen beats a loud living room. Say the wake word, then a short sentence that names the source and target language. The light ring on top turns blue, then a spinning cyan or white ring while Alexa+ thinks, then it speaks the translation out loud.\n\n💬 Example: \"Alexa, how do I say 'Where is the bathroom?' in French?\"\n\nIf your Echo doesn't light up at all, the wake word may be off or the mic button on top is pressed in (red ring). Look for a small microphone or mic-off icon on top and tap it once to unmute. If you renamed the wake word to \"Echo\" or \"Amazon,\" swap that in for \"Alexa\" in every example below. You'll know it worked when the ring spins, you hear a short chime, and Alexa+ speaks the translated phrase clearly.\n\n## Step 2 — Set a target language so you don't repeat yourself\n\nIf you know you'll be asking for several phrases in the same language, you can pin it for the conversation. Say a short setup line first, then each phrase after that only needs the wake word. The light ring pulses briefly to acknowledge the mode, and every following translation goes into that language until you change it or stop talking for a minute or two.\n\n💬 Example: \"Alexa, speak Spanish for the next five minutes.\" Then: \"Alexa, how do I say 'the check, please'?\"\n\nIf \"speak X for the next Y minutes\" doesn't work on your device, try the simpler form: \"Alexa, translate everything I say into Italian.\" It does the same thing in plain words. Some older Echos may not support timed modes — if nothing changes, fall back to including the target language in every request, like Step 1. You'll know it worked when your second request comes back in the same language without you naming it again.\n\n## Step 3 — Ask for the slow version when pronunciation matters\n\nA spoken translation is only useful if a real person can understand you. When a phrase contains a tricky word — a city name, a food, a medication — follow up and ask Alexa+ to say it more slowly, or to spell it out letter by letter. The Echo will repeat the phrase at a slower pace, or say each letter with pauses, which you can copy down or repeat after.\n\n💬 Example: \"Alexa, can you say that more slowly?\" — or — \"Alexa, spell that in French.\"\n\nIf the slow version is still too fast, ask \"even slower\" or \"one more time, slowly\" — most Echoes will keep slowing down. If the spelling uses letters your language doesn't share (like the Spanish ñ or French accents), ask \"how is that spelled with accents?\" and Alexa+ usually spells it out phonetically. You'll know it worked when the second version is noticeably slower than the first, or when you hear each letter named individually.\n\n## Step 4  Translate what someone else just said to you\n\nThis is the move most people miss: you can have Alexa+ listen to a foreign-language phrase and bring it back in English (or another language you know). Hold the conversation close to the Echo and ask for a translation after the speaker finishes. The light ring stays blue while it's \"listening\" past the wake word, so you don't need to say the wake word again until Alexa+ replies.\n\n💬 Example: \"Alexa, translate that into English.\" — after someone has spoken in another language near the device.\n\nIf Alexa+ says it didn't catch anything, the room was probably too noisy, or the speaker paused too long and the Echo thought its turn was over. Try again, and this time say \"Alexa, listen to this and translate it\" before the other person speaks, so the listening window stays open. You'll know it worked when Alexa+ repeats the foreign phrase back to confirm what it heard, then gives you the English version.\n\n## Step 5 — Save the translation in your Alexa app for later\n\nSometimes the phrase matters — a hotel address, an allergy, a relative's name. Open the Alexa app on your phone, tap the **Activity** tab (look for a clock or list icon along the bottom), find the translation in the recent list, and tap the three dots or a share icon to send it to yourself by message, email, or notes. This way you don't have to remember it from memory or write it down on a napkin.\n\n💬 Example: after a translation you want to keep, open the app and search the activity feed for the first word of the phrase.\n\nIf the Activity tab is empty or you can't find the entry, the translation may not have been logged — not every Echo logs every interaction. As a backup, just ask: \"Alexa, what did you just say?\" and it will repeat the translation, which you can then type into your phone. You'll know it worked when the phrase appears in the app's activity list with a timestamp, or when you can copy it from a message you sent yourself.\n\n## Common mistakes\n\n- **Speaking too fast or mumbling.** The Echo's translation is only as good as what it heard. Slow down, pause between the wake word and the phrase, and face the device. The fix: treat it like talking to someone across a quiet table, not someone across a noisy street.\n- **Asking for a language Alexa+ doesn't support well.** Most major languages — Spanish, French, German, Italian, Portuguese, Japanese, Mandarin, Hindi, Arabic, plus regional variants like Brazilian Portuguese and Mexican Spanish — translate cleanly. Smaller languages or dialects may come back patchy or romanized (written in Latin letters instead of the original script). The fix: check Amazon's current list of supported languages before you rely on it for a trip.\n- **Trying to translate a full conversation.** Alexa+ handles short phrases; if you speak for 30 seconds straight, it often misses the second half. The fix: break the conversation into one- or two-sentence chunks, and let Alexa+ respond between them.\n\n## What this means for you\n\n- **In everyday life:** the next time a neighbor, a delivery driver or a family member speaks a different language at the door, you can get a polite phrase in seconds without pulling out your phone or asking them to write it down.\n- **For your travel or work:** before a trip, sit with the Echo for two minutes and learn ten core phrases — greetings, please and thank you, yes and no, \"how much,\" \"where is,\" and \"I don't understand.\" The repetition is a built-in flashcard drill.\n- **If you want to go further:** connect the Alexa app to a note-taking tool like a shared phone note or a simple spreadsheet, and build a personal phrasebook from your activity feed over a week — the phrases you'll actually use, in the order you'll need them.\n\n## Try it now\n\nPick the one phrase you'd most like to have in another language this week — \"how much is this?\", \"thank you very much,\" or your name — and say it to your Echo right now. Ask for the slow version, then save it in the Alexa app. You'll have your first saved, rehearsed translation in under two minutes.",
+  "original_title": "How to ask Alexa+ to translate a short phrase into another language on your Echo"
+}
