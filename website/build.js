@@ -207,9 +207,10 @@ const FB_URL = 'https://www.facebook.com/profile.php?id=61591788804540';   // FB
 const IG_URL = '';
 const TH_URL = 'https://www.threads.com/@aiworldhq';                      // Threads (Bufferrel posztolunk rá)
 // TikTok (2026-10-07, az Instagram helyén): a napi Reel-videók mennek ki rá (Buffer).
-// A felhasználónév egyelőre az AUTOMATIKUS — a szép nevek foglaltak voltak. Átírásnál
-// EZT az egy sort kell frissíteni (a TikTok 30 naponta egyszer enged névváltást).
-const TT_URL = 'https://www.tiktok.com/@user8049054233525';
+// 2026-10-16: a user átírta a nevet (@user8049054233525 → @aiworldhq; ugyanaz a fiók, a belső
+// azonosító egyezik). Újabb átírásnál EZT az egy sort kell frissíteni (a TikTok 30 naponta
+// egyszer enged névváltást).
+const TT_URL = 'https://www.tiktok.com/@aiworldhq';
 // X/Twitter SZÁNDÉKOSAN NINCS: a Buffer nem ismer ilyen csatornát, tehát nem
 // létező profilra nem linkelünk. Ha bekötjük, ide kerül — és a sameAs-be is.
 const FOLLOW = { en: 'Follow us', hu: 'Kövess minket', es: 'Síguenos', };
