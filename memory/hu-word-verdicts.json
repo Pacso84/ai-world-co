@@ -23,6 +23,7 @@
     "adelaide",
     "adjs",
     "adminbeállítás",
+    "adminbeállításokat",
     "adminból",
     "admincsapat",
     "admineszközöket",
@@ -33,6 +34,7 @@
     "adminisztrátorok",
     "adminisztrátorom",
     "adminjogokkal",
+    "adminkapcsoló",
     "adminnak",
     "adminod",
     "adminodat",
@@ -122,6 +124,7 @@
     "anyagod",
     "anyagodban",
     "anyagodból",
+    "anyagodon",
     "anyagodra",
     "anyagodról",
     "anyagok",
@@ -288,6 +291,7 @@
     "briefhez",
     "briefingedben",
     "briefinget",
+    "briefingre",
     "briefingről",
     "briefje",
     "briefjét",
@@ -402,6 +406,7 @@
     "chiphez",
     "chipje",
     "chipjeiket",
+    "chipjét",
     "chipjével",
     "chipkategória",
     "chipként",
@@ -663,6 +668,7 @@
     "e-mail-piszkozatot",
     "e-mail-választ",
     "e-maileid",
+    "e-maileidből",
     "ebook",
     "edbe",
     "edből",
@@ -2026,6 +2032,7 @@
     "polgárok",
     "polúr",
     "portlandi",
+    "portrépromptot",
     "post-itre",
     "posthoz",
     "poszterbriefet",
@@ -2454,6 +2461,7 @@
     "szerkesztettetni",
     "szerveren",
     "szervezettséget",
+    "szimulátoron",
     "szintjet",
     "szkenn",
     "szkenneren",
@@ -2684,6 +2692,8 @@
     "tulajdonságokkal",
     "tulajdonságokra",
     "turistalátványosságokat",
+    "tutoraid",
+    "tutoraik",
     "tutori",
     "tutorialban",
     "tutorialból",
@@ -2904,6 +2914,7 @@
     "walkie",
     "webhosztingért",
     "webináriumhoz",
+    "webináriumuk",
     "webinárt",
     "webmail",
     "weboldalszöveget",
@@ -2938,6 +2949,7 @@
     "yourdocument",
     "youtube",
     "zapier",
+    "zavarodat",
     "zavarodra",
     "zenegenerátorok",
     "zenegenerátoroknál",
@@ -4373,6 +4385,26 @@
     "telefonkoppinást": {
       "correct": "telefonkoppintást",
       "at": "2026-10-14",
+      "mondattal": true
+    },
+    "verzija": {
+      "correct": "verziója",
+      "at": "2026-10-16",
+      "mondattal": true
+    },
+    "eszkz": {
+      "correct": "eszköz",
+      "at": "2026-10-16",
+      "mondattal": true
+    },
+    "köszöntőkhz": {
+      "correct": "köszöntőkhöz",
+      "at": "2026-10-16",
+      "mondattal": true
+    },
+    "kivlaszthatod": {
+      "correct": "kiválaszthatod",
+      "at": "2026-10-16",
       "mondattal": true
     }
   },
@@ -6006,8 +6038,8 @@
     }
   },
   "scan": {
-    "at": "2026-10-15",
-    "files": 937,
-    "candidates": 0
+    "at": "2026-10-16",
+    "files": 941,
+    "candidates": 16
   }
 }
