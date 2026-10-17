@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-10-17T02:10:26.061Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00400386,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-15T02-17-50-372Z_nvidia-blog_European_Cities_Deploy_NVIDIA-Powered_AI_Agents_to.json",
+      "article": "ARTICLE_2026-10-15T02-17-50-372Z_nvidia-blog_European_Cities_Deploy_NVIDIA-Powered_AI_Agents_to.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00101619
+    },
+    {
+      "writer": "WRITER_2026-10-17T02-02-59-662Z_picsart_How_to_turn_a_photo_into_a_3D_model_of_your_produc.json",
+      "rejected": "REJECTED_2026-10-17T02-02-59-662Z_picsart_How_to_turn_a_photo_into_a_3D_model_of_your_produc.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.00241407
+    }
+  ],
+  "finished_at": "2026-10-17T02:11:07.709Z",
+  "duration_seconds": 41.648
+}

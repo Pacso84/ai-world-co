@@ -1,126 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179190505222653",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-13T15:24:12.226Z",
-      "updated": "2026-10-13T15:24:12.394Z"
-    },
-    {
-      "id": "t179190505239766",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-13T15:24:12.397Z",
-      "updated": "2026-10-13T15:24:56.125Z"
-    },
-    {
-      "id": "t179190509612766",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-13T15:24:56.127Z",
-      "updated": "2026-10-13T15:25:53.472Z"
-    },
-    {
-      "id": "t179190515347455",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-13T15:25:53.474Z",
-      "updated": "2026-10-13T15:27:27.394Z"
-    },
-    {
-      "id": "t179190524739649",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-13T15:27:27.396Z",
-      "updated": "2026-10-13T15:28:23.543Z"
-    },
-    {
-      "id": "t179190530354651",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-13T15:28:23.546Z",
-      "updated": "2026-10-13T15:29:29.274Z"
-    },
-    {
-      "id": "t179190536927677",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-13T15:29:29.276Z",
-      "updated": "2026-10-13T15:29:51.389Z"
-    },
-    {
-      "id": "t179190539139296",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-13T15:29:51.392Z",
-      "updated": "2026-10-13T15:31:03.810Z"
-    },
-    {
-      "id": "t179190546381266",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-13T15:31:03.812Z",
-      "updated": "2026-10-13T15:31:54.053Z"
-    },
-    {
-      "id": "t179190551405526",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-13T15:31:54.055Z",
-      "updated": "2026-10-13T15:31:54.272Z"
-    },
-    {
-      "id": "t179190551437997",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-13T15:31:54.379Z",
-      "updated": "2026-10-13T15:35:49.780Z"
-    },
-    {
-      "id": "t179190574983289",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-13T15:35:49.832Z",
-      "updated": "2026-10-13T15:36:23.704Z"
-    },
-    {
-      "id": "t179190578370624",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-13T15:36:23.706Z",
-      "updated": "2026-10-13T15:36:55.625Z"
-    },
-    {
-      "id": "t179190581562717",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-13T15:36:55.627Z",
-      "updated": "2026-10-13T15:37:23.383Z"
-    },
-    {
-      "id": "t17919058433842",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-13T15:37:23.384Z",
-      "updated": "2026-10-13T15:37:52.549Z"
-    },
-    {
       "id": "t179194540053517",
       "title": "Run ceo",
       "status": "done",
@@ -479,33 +359,129 @@
       "agent": "publisher",
       "created": "2026-10-16T02:21:25.926Z",
       "updated": "2026-10-16T02:21:56.128Z"
+    },
+    {
+      "id": "t179220253641614",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-17T02:02:16.416Z",
+      "updated": "2026-10-17T02:02:16.596Z"
+    },
+    {
+      "id": "t17922025365976",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-17T02:02:16.597Z",
+      "updated": "2026-10-17T02:02:59.674Z"
+    },
+    {
+      "id": "t17922025796769",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-17T02:02:59.676Z",
+      "updated": "2026-10-17T02:02:59.873Z"
+    },
+    {
+      "id": "t179220257987585",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-17T02:02:59.875Z",
+      "updated": "2026-10-17T02:07:30.572Z"
+    },
+    {
+      "id": "t179220285057350",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-17T02:07:30.573Z",
+      "updated": "2026-10-17T02:08:46.086Z"
+    },
+    {
+      "id": "t179220292608999",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-17T02:08:46.089Z",
+      "updated": "2026-10-17T02:10:25.889Z"
+    },
+    {
+      "id": "t179220302589119",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-17T02:10:25.891Z",
+      "updated": "2026-10-17T02:11:07.717Z"
+    },
+    {
+      "id": "t179220306772010",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-17T02:11:07.720Z",
+      "updated": "2026-10-17T02:11:30.677Z"
+    },
+    {
+      "id": "t179220309072590",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-17T02:11:30.725Z",
+      "updated": "2026-10-17T02:14:11.835Z"
+    },
+    {
+      "id": "t179220325183633",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-17T02:14:11.836Z",
+      "updated": "2026-10-17T02:14:53.408Z"
+    },
+    {
+      "id": "t179220329345282",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-17T02:14:53.452Z",
+      "updated": "2026-10-17T02:14:53.644Z"
+    },
+    {
+      "id": "t179220329368649",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-17T02:14:53.686Z",
+      "updated": "2026-10-17T02:16:19.459Z"
+    },
+    {
+      "id": "t179220337946135",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-17T02:16:19.461Z",
+      "updated": "2026-10-17T02:17:15.084Z"
+    },
+    {
+      "id": "t179220343508641",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-17T02:17:15.086Z",
+      "updated": "2026-10-17T02:17:25.701Z"
+    },
+    {
+      "id": "t179220344570334",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-17T02:17:25.703Z",
+      "updated": "2026-10-17T02:18:00.304Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179056313771034",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0882).",
-      "agent": "ceo",
-      "at": "2026-09-28T02:38:57.710Z",
-      "loud": false
-    },
-    {
-      "id": "n17906528180087",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 7.7/10).",
-      "agent": "seo",
-      "at": "2026-09-29T03:33:38.008Z",
-      "loud": false
-    },
-    {
-      "id": "n179065285708440",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup feels coherent — all real-life writing tasks made easier with AI — but four pieces focus on complaint or email drafts, which may feel a bit heavy; balancing that with a quick homepage note ",
-      "agent": "publisher",
-      "at": "2026-09-29T03:34:17.084Z",
-      "loud": false
-    },
     {
       "id": "n179065287558258",
       "level": "success",
@@ -1281,72 +1257,33 @@
       "agent": "ceo",
       "at": "2026-10-16T02:21:56.176Z",
       "loud": false
+    },
+    {
+      "id": "n179220343507517",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 7.8/10).",
+      "agent": "seo",
+      "at": "2026-10-17T02:17:15.075Z",
+      "loud": false
+    },
+    {
+      "id": "n179220346318277",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is coherent and ready to publish — solid everyday writing use cases across work, job hunting, and personal moments. One thing to flag: four articles cover complaint/refund emails and two f",
+      "agent": "publisher",
+      "at": "2026-10-17T02:17:43.182Z",
+      "loud": false
+    },
+    {
+      "id": "n179220348034752",
+      "level": "success",
+      "text": "3 hír + 2 útmutató publikálva (költség: $0.0913).",
+      "agent": "ceo",
+      "at": "2026-10-17T02:18:00.347Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179056294830736",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Introducing GPT-6 Sol and Luna\" (?/10)",
-      "ref": "2026-09-23T02-19-31-347Z_openai-blog_Introducing_GPT-6_Sol_and_Luna.json",
-      "at": "2026-09-28T02:35:48.307Z"
-    },
-    {
-      "id": "m179056311239593",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-28T02:38:32.395Z"
-    },
-    {
-      "id": "m179056321045826",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Creating a travel packing list for any trip with A\" — All mentioned assistants can read links/URLs (some cannot); The example weather-forecast reading scenario works universally with all listed assistants; All listed assistants have microphone and paperclip/attach icons for voice input and file upload",
-      "ref": "ARTICLE_GUIDE_creating-a-travel-packing-list-for-any-trip-with-ai-guidance.json",
-      "at": "2026-09-28T02:40:10.458Z"
-    },
-    {
-      "id": "m179056373378524",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-28T02:48:53.785Z"
-    },
-    {
-      "id": "m179061205051998",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a Complete FAQ Page for Your Website with Ch\" — The guide is still factually accurate overall — ChatGPT free tier still exists, the process described is still valid. However, one example uses a potentially real domain (ecosip.com.au) which violates the style rule that fictional examples should use example.com.",
-      "ref": "ARTICLE_GUIDE_draft-a-complete-faq-page-for-your-website-with-chatgpt.json",
-      "at": "2026-09-28T16:14:10.519Z"
-    },
-    {
-      "id": "m179065205186832",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Basis completes a tax workbook 2x faster with GPT-6 Astra\" — mi a baj: Fictional model names: GPT-6 Astra and GPT-5.6 Sol do not exist — GPT-5 does not exist yet, and no 'Astra' model is publicly known; Fictional company: 'Basis' as a tax platform is unverifiable and appears to be invented; Fabricated performance claim: 'twice as fast' and 'stronger understanding of user int",
-      "ref": "2026-09-29T03-11-58-861Z_openai-blog_Basis_completes_a_tax_workbook_2x_faster_with_GPT-.json",
-      "at": "2026-09-29T03:20:51.868Z"
-    },
-    {
-      "id": "m179065211359478",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Basis completes a tax workbook 2x faster with GPT-6 Astra\" — javítva: Fictional model names: GPT-6 Astra and GPT-5.6 Sol do not exist — GPT-5 does not exist yet, and no 'Astra' model is publicly known; Fictional company: 'Basis' as a tax platform is unverifiable and appears to be invented; újraküldöm.",
-      "ref": "2026-09-29T03-11-58-861Z_openai-blog_Basis_completes_a_tax_workbook_2x_faster_with_GPT-.json",
-      "at": "2026-09-29T03:21:53.594Z"
-    },
     {
       "id": "m179065213906571",
       "from": "ellenorzo",
@@ -2647,6 +2584,69 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-16T02:35:05.413Z"
+    },
+    {
+      "id": "m179220286795394",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations\" — mi a baj: Future date 'October 15, 2026' appears in the article — if published now, this is a factual error or the article is incorrectly dated; Cancer care section makes health claims ('closing oncology's data gaps', 'survivorship care') without qualifying it as a company claim or adding heal",
+      "ref": "2026-10-15T02-17-50-372Z_nvidia-blog_European_Cities_Deploy_NVIDIA-Powered_AI_Agents_to.json",
+      "at": "2026-10-17T02:07:47.953Z"
+    },
+    {
+      "id": "m179220290648725",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to turn a photo into a 3D model of your product\" — mi a baj: HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-7, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés.; Picsart Flow is referenced as the name of a visual workspace, but the source only says \"Picsart Flow\" without confirming it as the official product name. However, t",
+      "ref": "2026-10-17T02-02-59-662Z_picsart_How_to_turn_a_photo_into_a_3D_model_of_your_produc.json",
+      "at": "2026-10-17T02:08:26.487Z"
+    },
+    {
+      "id": "m179220296213452",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations\" — javítva: Future date 'October 15, 2026' appears in the article — if published now, this is a factual error or the article is incorrectly dated; Cancer care section makes health claims ('closing oncology's data gaps', 'survivorship care') without qualifying it as a company claim or adding health disclai",
+      "ref": "2026-10-15T02-17-50-372Z_nvidia-blog_European_Cities_Deploy_NVIDIA-Powered_AI_Agents_to.json",
+      "at": "2026-10-17T02:09:22.134Z"
+    },
+    {
+      "id": "m17922030258808",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to turn a photo into a 3D model of your product\" — javítva: HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-7, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés.; Picsart Flow is referenced as the name of a visual workspace, but the source only says \"Picsart Flow\" without confirming it as the official product name. However, this is men",
+      "ref": "2026-10-17T02-02-59-662Z_picsart_How_to_turn_a_photo_into_a_3D_model_of_your_produc.json",
+      "at": "2026-10-17T02:10:25.880Z"
+    },
+    {
+      "id": "m179220304079090",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations\" (?/10)",
+      "ref": "2026-10-15T02-17-50-372Z_nvidia-blog_European_Cities_Deploy_NVIDIA-Powered_AI_Agents_to.json",
+      "at": "2026-10-17T02:10:40.790Z"
+    },
+    {
+      "id": "m179220306770834",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to turn a photo into a 3D model of your product\" — mi a baj: Picsart Flow — brand guidance warns this name is unconfirmed; the source calls it a visual workspace, not the official product name; rewrite as 'the tutorial section' or 'the Flow workspace' to avoid fabricating a product name; Subtitle 'built-in monetization' overstates a feature; the article itself only attri",
+      "ref": "2026-10-17T02-02-59-662Z_picsart_How_to_turn_a_photo_into_a_3D_model_of_your_produc.json",
+      "at": "2026-10-17T02:11:07.708Z"
+    },
+    {
+      "id": "m179220344569235",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-17T02:17:25.692Z"
     }
   ]
 }

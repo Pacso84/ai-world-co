@@ -1,15 +1,4 @@
 {
-  "2026-09-20": [
-    {
-      "at": "2026-09-20T02:16:54.381Z",
-      "file": "WRITER_2026-09-20T02-14-53-889Z_openai-blog_Introducing_the_Australian_Youth_Safety_Blueprint.json",
-      "action": "block",
-      "reasons": [
-        "The article repeatedly refers to an 'OpenAI Youth Safety Blueprint' with six specific pillars as if it is a published, real document. No such named, published document with this title or these six specific pillars is verifiably known to exist. This is a fabricated specific feature/document attributed to OpenAI."
-      ],
-      "confidence": 7
-    }
-  ],
   "2026-09-21": [
     {
       "at": "2026-09-21T02:16:42.897Z",
@@ -246,6 +235,18 @@
       "reasons": [
         "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
       ]
+    }
+  ],
+  "2026-10-17": [
+    {
+      "at": "2026-10-17T02:08:26.488Z",
+      "file": "WRITER_2026-10-17T02-02-59-662Z_picsart_How_to_turn_a_photo_into_a_3D_model_of_your_produc.json",
+      "action": "block",
+      "reasons": [
+        "Picsart Flow is referenced as the name of a visual workspace, but the source only says \"Picsart Flow\" without confirming it as the official product name. However, this is mentioned in the source excerpt itself, so it is real.",
+        "The claim that Picsart's cartoon video tutorial outlines a full loop including monetization through Picsart Earn is partly supported, but the article states that Picsart Earn is \"the company's program for creators to earn from their work, according to Picsart\" — this attribution is acceptable as it hedges with \"according to Picsart\"."
+      ],
+      "confidence": 3
     }
   ]
 }

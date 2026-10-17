@@ -7775,10 +7775,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Capture ideas hands-free and retrieve them later by voice or topic, instead of digging through a phone full of forgotten notes.",
-      "status": "todo",
+      "status": "done",
       "icon": "🎙️",
       "proposed_at": "2026-10-13T15:35:45.936Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-10-17T02:13:00.673Z"
     },
     {
       "id": "how-to-write-a-polite-no-to-an-invitation-or-request-using-g",
@@ -7854,6 +7855,28 @@
       "icon": "📋",
       "proposed_at": "2026-10-15T02:30:50.394Z",
       "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "how-to-turn-a-selfie-into-a-polaroid-style-portrait-with-a-g",
+      "company": "Google",
+      "tool": "Gemini",
+      "title": "How to turn a selfie into a polaroid-style portrait with a Gemini prompt",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Walk through the trending prompt structure (subject, outfit, lighting, frame) so you get a polaroid-looking image that still actually looks like you.",
+      "status": "done",
+      "icon": "📸",
+      "proposed_at": "2026-10-17T02:12:05.135Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "gemini trending prompt for girls",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-10-17"
+      },
+      "written_at": "2026-10-17T02:14:11.825Z"
     }
   ],
   "trend_proba": [
@@ -7864,6 +7887,10 @@
     {
       "kifejezes": "gemini prompt for professional photo",
       "at": "2026-10-16T02:17:41.196Z"
+    },
+    {
+      "kifejezes": "gemini trending prompt for girls",
+      "at": "2026-10-17T02:11:30.912Z"
     }
   ]
 }
