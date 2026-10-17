@@ -209,5 +209,16 @@ t('🔌 build.js: mindkét sablon a középső helyet használja, és alul CSAK 
     '🔴 két hirdetés kerülne egy oldalra (közép + alj)');
 });
 
+t('📘 PDF-oldal (/packs): EGY hirdetés, a letöltés-gombos kártyák ALATT, szöveges rész után (10-17, user: „rakjunk hirdetést a pdf-hez”)', () => {
+  const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  const i = b.indexOf('function buildPacksPage(');
+  const s = b.slice(i, b.indexOf('\nfunction ', i + 10));
+  assert.equal((s.match(/hirdetesBlokk\(HIRDETES, LANG\)/g) || []).length, 1, 'pontosan egy hirdetés a PDF-oldalon');
+  const ad = s.indexOf('hirdetesBlokk(HIRDETES, LANG)');
+  // AdSense: ne lehessen letöltés-gombnak nézni → a kártyarács után előbb egy szöveges blokk jön
+  assert.ok(ad > s.indexOf('packs__grid') && ad > s.indexOf("tr('packsBuildP')"), '🔴 a hirdetés a letöltés-gombok közvetlen közelében');
+  assert.ok(ad < s.indexOf("tr('packsAiH')"), 'a hirdetés a „Hogyan készül” és az MI-jelölés rész közé kerüljön');
+});
+
 if (hiba) { console.log(`\n❌ ads.test: ${hiba} hiba`); process.exit(1); }
 console.log('\n✅ ads.test: mind rendben');

@@ -2756,6 +2756,7 @@ function buildPacksPage() {
       <h2>${escapeHtml(tr('packsBuildH'))}</h2>
       <p>${escapeHtml(tr('packsBuildP'))}</p>
     </div>
+    ${hirdetesBlokk(HIRDETES, LANG)}
     <div class="packs__sec">
       <h2>${escapeHtml(tr('packsAiH'))}</h2>
       <p>${escapeHtml(tr('packsAiP'))}</p>
