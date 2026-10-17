@@ -177,10 +177,21 @@ t('🔑 a júl. 19-i összefoglaló halott linkjére van átirányítás', () =>
   // „personalize"-ra változott, és a „Read the full story" gomb azóta 404.
   // A gépezet már javítva (core/us-spelling.js védi az URL-eket), ez a
   // maradék sérülés helyreállítása — az élő szöveghez nyúlás nélkül.
+  // 2026-10-17: a célcikk (07-16-i hír) a 90 napos megőrzés végén törlődött, vele a 301 is
+  // (lásd a „lejárt végcélú átirányítás kimarad" tesztet) → a 301 csak AMÍG a cél él, kötelező.
+  const CEL = 'personalise-your-ai-connect-it-to-your-everyday-apps';
+  const DIR = join(ROOT, 'content', 'articles');
+  const celEl = readdirSync(DIR).filter(f => f.endsWith('.json'))
+    .some(f => readFileSync(join(DIR, f), 'utf-8').includes(`"slug": "${CEL}"`));
   const hist = JSON.parse(readFileSync(join(ROOT, 'content', 'slug-history.json'), 'utf-8'));
+  if (!celEl) {
+    assert.equal(hist['personalize-your-ai-connect-it-to-your-everyday-apps'], undefined,
+      'a célcikk már törölve — halott célra nem maradhat átirányítás');
+    return;
+  }
   assert.equal(
     hist['personalize-your-ai-connect-it-to-your-everyday-apps'],
-    'personalise-your-ai-connect-it-to-your-everyday-apps',
+    CEL,
     'hiányzik a 301 az elgépelt (amerikai) alakról a valódi cikkre');
 });
 

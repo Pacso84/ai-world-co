@@ -169,6 +169,18 @@ t('🔗 útmutató: a beszúrás a megadott lépés ELÉ kerül; ha a lépés-je
   assert.deepEqual(hirdetesLepesek(lepesek(6), 6, ''), { html: lepesek(6), kozepen: false });
 });
 
+t('🔗 útmutató: a build.js VALÓDI lépés-jelölőjét is megtalálja (10-17: a „g-step g-slide" miatt élőben alul maradt)', () => {
+  const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  const sablon = (b.match(/<div class="g-step[^"]*" id="step-\$\{stepNo\}">/) || [])[0];
+  assert.ok(sablon, 'a build.js lépés-sablonja nem található');
+  const lepesek = n => Array.from({ length: n }, (_, i) => sablon.replace('${stepNo}', i + 1) + `L${i + 1}</div>`).join('');
+  for (const n of [4, 6, 8]) {
+    const r = hirdetesLepesek(lepesek(n), n, B);
+    assert.equal(r.kozepen, true, `${n} lépés: a valódi jelölőnél is középre kell kerülnie`);
+    assert.ok(r.html.includes(B + sablon.replace('${stepNo}', lepesHirdetesHely(n))), `${n} lépés: a ${lepesHirdetesHely(n)}. lépés elé`);
+  }
+});
+
 t('📊 VALÓDI cikkeken: az útmutatók és a hírek többsége kap középső helyet', () => {
   const DIR = join(ROOT, 'content', 'articles');
   let ut = 0, utKozep = 0, hir = 0, hirKozep = 0;

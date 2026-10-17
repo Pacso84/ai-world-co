@@ -121,7 +121,8 @@ export function lepesHirdetesHely(stepCount) {
 export function hirdetesLepesek(blocksHtml, stepCount, blokk) {
   if (!blocksHtml || !blokk) return { html: blocksHtml, kozepen: false };
   const j = lepesHirdetesHely(stepCount);
-  const at = j ? blocksHtml.indexOf(`<div class="g-step" id="step-${j}">`) : -1;
+  // Az osztály-lista változhat (élőben „g-step g-slide") → a lépés-azonosítóra illesztünk.
+  const at = j ? blocksHtml.search(new RegExp(`<div class="g-step(?: [^"]*)?" id="step-${j}"`)) : -1;
   if (at < 0) return { html: blocksHtml, kozepen: false };
   return { html: blocksHtml.slice(0, at) + blokk + blocksHtml.slice(at), kozepen: true };
 }
