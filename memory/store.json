@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "AI World rétegzett memória (hot/warm/cold, salience decay).",
-    "updated": "2026-10-17T02:36:00.455Z"
+    "updated": "2026-10-17T11:52:26.980Z"
   },
   "items": [
     {
@@ -26,9 +26,9 @@
         "lesson"
       ],
       "created": "2026-06-20T22:01:05.694Z",
-      "lastAccessed": "2026-10-17T02:09:22.613Z",
-      "accessCount": 1203,
-      "salience": 0.9995793847222222,
+      "lastAccessed": "2026-10-17T11:51:27.842Z",
+      "accessCount": 1205,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -99,9 +99,9 @@
         "design-rule"
       ],
       "created": "2026-06-22T19:24:53.845Z",
-      "lastAccessed": "2026-10-17T02:17:15.257Z",
-      "accessCount": 278,
-      "salience": 0.9997982013888889,
+      "lastAccessed": "2026-10-17T11:52:26.979Z",
+      "accessCount": 279,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -112,9 +112,9 @@
         "design-rule"
       ],
       "created": "2026-06-22T19:33:18.784Z",
-      "lastAccessed": "2026-10-17T02:17:15.257Z",
-      "accessCount": 275,
-      "salience": 0.9997982013888889,
+      "lastAccessed": "2026-10-17T11:52:26.979Z",
+      "accessCount": 276,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -142,9 +142,9 @@
         "design-rule"
       ],
       "created": "2026-06-28T19:44:51.115Z",
-      "lastAccessed": "2026-10-17T02:17:15.257Z",
-      "accessCount": 268,
-      "salience": 0.9997982013888889,
+      "lastAccessed": "2026-10-17T11:52:26.979Z",
+      "accessCount": 269,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -831,9 +831,9 @@
         "article"
       ],
       "created": "2026-07-08T01:44:49.826Z",
-      "lastAccessed": "2026-10-17T02:09:22.613Z",
-      "accessCount": 499,
-      "salience": 0.9995793847222222,
+      "lastAccessed": "2026-10-17T11:51:27.842Z",
+      "accessCount": 501,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -1410,12 +1410,12 @@
         "truth-gate"
       ],
       "created": "2026-07-17T09:48:45.563Z",
-      "lastAccessed": "2026-10-17T02:08:26.495Z",
-      "accessCount": 93,
-      "salience": 0.19955340416666667,
-      "tier": "cold",
-      "repeats": 91,
-      "lastRepeat": "2026-10-17T02:08:26.495Z"
+      "lastAccessed": "2026-10-17T11:51:58.902Z",
+      "accessCount": 94,
+      "salience": 0.3495534041666667,
+      "tier": "warm",
+      "repeats": 92,
+      "lastRepeat": "2026-10-17T11:51:58.902Z"
     },
     {
       "id": "m1784307723565467",
@@ -2658,9 +2658,9 @@
         "article"
       ],
       "created": "2026-07-22T10:30:10.241Z",
-      "lastAccessed": "2026-10-17T02:09:22.613Z",
-      "accessCount": 587,
-      "salience": 0.9995793842592593,
+      "lastAccessed": "2026-10-17T11:51:27.842Z",
+      "accessCount": 589,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -3070,9 +3070,9 @@
         "article"
       ],
       "created": "2026-07-23T10:15:43.016Z",
-      "lastAccessed": "2026-10-17T02:09:22.613Z",
-      "accessCount": 296,
-      "salience": 0.9995793842592593,
+      "lastAccessed": "2026-10-17T11:51:27.842Z",
+      "accessCount": 298,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -4041,9 +4041,9 @@
         "article"
       ],
       "created": "2026-07-25T01:52:03.838Z",
-      "lastAccessed": "2026-10-17T02:09:22.613Z",
-      "accessCount": 298,
-      "salience": 0.9995793842592593,
+      "lastAccessed": "2026-10-17T11:51:27.842Z",
+      "accessCount": 300,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -4634,9 +4634,9 @@
         "article"
       ],
       "created": "2026-07-28T01:42:38.073Z",
-      "lastAccessed": "2026-10-17T02:09:22.613Z",
-      "accessCount": 297,
-      "salience": 0.9995793842592593,
+      "lastAccessed": "2026-10-17T11:51:27.842Z",
+      "accessCount": 299,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -6606,9 +6606,9 @@
         "article"
       ],
       "created": "2026-08-19T16:25:47.240Z",
-      "lastAccessed": "2026-10-17T02:09:22.613Z",
-      "accessCount": 272,
-      "salience": 0.9995793842592593,
+      "lastAccessed": "2026-10-17T11:51:27.842Z",
+      "accessCount": 274,
+      "salience": 1,
       "tier": "hot",
       "repeats": 1,
       "lastRepeat": "2026-08-28T08:11:21.673Z"
@@ -8766,16 +8766,16 @@
     {
       "id": "m1788789085494956",
       "scope": "shared",
-      "text": "Hitelesség-kapu blokk: Picsart Flow is referenced as the name of a visual workspace, but the source only says \"Picsart Flow\" without confirming it as the official product na — kitalált felületet/linket/számot SOHA ne írj le tényként",
+      "text": "Hitelesség-kapu blokk: Picsart Earn is described as a program creators can earn from, with a 'signup flow' and qualification process — the source only mentions 'Picsart Earn — kitalált felületet/linket/számot SOHA ne írj le tényként",
       "kulcs": "hitelesseg-kapu",
       "tags": [],
       "created": "2026-09-07T13:51:25.494Z",
-      "lastAccessed": "2026-10-17T02:08:26.491Z",
-      "accessCount": 39,
-      "salience": 0.539437261574074,
-      "tier": "warm",
-      "repeats": 39,
-      "lastRepeat": "2026-10-17T02:08:26.491Z"
+      "lastAccessed": "2026-10-17T11:51:58.897Z",
+      "accessCount": 40,
+      "salience": 0.689437261574074,
+      "tier": "hot",
+      "repeats": 40,
+      "lastRepeat": "2026-10-17T11:51:58.897Z"
     },
     {
       "id": "m1788833241347628",
@@ -11148,9 +11148,9 @@
         "article"
       ],
       "created": "2026-10-17T02:11:07.698Z",
-      "lastAccessed": "2026-10-17T02:11:07.698Z",
-      "accessCount": 0,
-      "salience": 0.9996280347222222,
+      "lastAccessed": "2026-10-17T11:51:27.842Z",
+      "accessCount": 2,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -11166,6 +11166,51 @@
       "lastAccessed": "2026-10-17T02:11:07.705Z",
       "accessCount": 0,
       "salience": 0.999628037962963,
+      "tier": "hot"
+    },
+    {
+      "id": "m1792237918880435",
+      "scope": "iro",
+      "text": "Picsart Earn is described as a program creators can earn from, with a 'signup flow' and qualification process — the source only mentions 'Picsart Earn' as a monetization option referenced in a sidebar link, not as a verified program with documented features.",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-10-17T11:51:58.880Z",
+      "lastAccessed": "2026-10-17T11:51:58.880Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1792237918886867",
+      "scope": "iro",
+      "text": "The article claims a specific 'Flow workspace' exists as a visual area with connectable AI nodes ('connect small AI tasks together, like LEGO blocks') — the source only mentions 'Picsart Flow' once in passing and 'a 3D node' in a single workflow, not a documented visual workspace product with chained-project capabilities.",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-10-17T11:51:58.886Z",
+      "lastAccessed": "2026-10-17T11:51:58.886Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1792237918890929",
+      "scope": "iro",
+      "text": "Step 5 ('Chain two projects in one Flow') describes chaining generated characters, animations, and banners into one project — this chained workflow is not supported by the source, which describes four separate tutorials.",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-10-17T11:51:58.890Z",
+      "lastAccessed": "2026-10-17T11:51:58.890Z",
+      "accessCount": 0,
+      "salience": 1,
       "tier": "hot"
     }
   ],

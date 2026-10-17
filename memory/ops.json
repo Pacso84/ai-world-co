@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179194540053517",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-14T02:36:40.535Z",
-      "updated": "2026-10-14T02:36:40.729Z"
-    },
-    {
-      "id": "t179194540073178",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-14T02:36:40.731Z",
-      "updated": "2026-10-14T02:37:43.028Z"
-    },
-    {
-      "id": "t179194546303067",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-14T02:37:43.030Z",
-      "updated": "2026-10-14T02:37:43.236Z"
-    },
-    {
-      "id": "t17919454632381",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-14T02:37:43.238Z",
-      "updated": "2026-10-14T02:41:02.065Z"
-    },
-    {
-      "id": "t179194566206756",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-14T02:41:02.067Z",
-      "updated": "2026-10-14T02:42:51.197Z"
-    },
-    {
-      "id": "t179194577120155",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-14T02:42:51.201Z",
-      "updated": "2026-10-14T02:43:29.523Z"
-    },
-    {
-      "id": "t179194580958011",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-14T02:43:29.580Z",
-      "updated": "2026-10-14T02:45:46.852Z"
-    },
-    {
-      "id": "t179194594685445",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-14T02:45:46.854Z",
-      "updated": "2026-10-14T02:46:48.101Z"
-    },
-    {
-      "id": "t179194600815274",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-14T02:46:48.152Z",
-      "updated": "2026-10-14T02:46:48.344Z"
-    },
-    {
-      "id": "t179194600839377",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-14T02:46:48.393Z",
-      "updated": "2026-10-14T02:46:48.583Z"
-    },
-    {
-      "id": "t179194600858580",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-14T02:46:48.585Z",
-      "updated": "2026-10-14T02:47:52.902Z"
-    },
-    {
-      "id": "t179194607290896",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-14T02:47:52.908Z",
-      "updated": "2026-10-14T02:51:02.458Z"
-    },
-    {
-      "id": "t179194626246025",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-14T02:51:02.460Z",
-      "updated": "2026-10-14T02:51:50.385Z"
-    },
-    {
       "id": "t179194631038772",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +375,113 @@
       "agent": "publisher",
       "created": "2026-10-17T02:17:25.703Z",
       "updated": "2026-10-17T02:18:00.304Z"
+    },
+    {
+      "id": "t179223782382365",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-17T11:50:23.823Z",
+      "updated": "2026-10-17T11:50:24.021Z"
+    },
+    {
+      "id": "t179223782402396",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-17T11:50:24.023Z",
+      "updated": "2026-10-17T11:50:48.714Z"
+    },
+    {
+      "id": "t179223784871610",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-17T11:50:48.716Z",
+      "updated": "2026-10-17T11:50:48.924Z"
+    },
+    {
+      "id": "t179223784892613",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-17T11:50:48.926Z",
+      "updated": "2026-10-17T11:51:08.640Z"
+    },
+    {
+      "id": "t179223786864231",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-17T11:51:08.642Z",
+      "updated": "2026-10-17T11:51:26.935Z"
+    },
+    {
+      "id": "t179223788693756",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-17T11:51:26.937Z",
+      "updated": "2026-10-17T11:51:40.869Z"
+    },
+    {
+      "id": "t179223790087054",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-17T11:51:40.870Z",
+      "updated": "2026-10-17T11:51:58.913Z"
+    },
+    {
+      "id": "t179223791891674",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-17T11:51:58.916Z",
+      "updated": "2026-10-17T11:52:04.440Z"
+    },
+    {
+      "id": "t179223792453181",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-17T11:52:04.531Z",
+      "updated": "2026-10-17T11:52:04.730Z"
+    },
+    {
+      "id": "t179223792473286",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-17T11:52:04.732Z",
+      "updated": "2026-10-17T11:52:15.592Z"
+    },
+    {
+      "id": "t179223793559440",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-17T11:52:15.594Z",
+      "updated": "2026-10-17T11:52:26.801Z"
+    },
+    {
+      "id": "t179223794680346",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-17T11:52:26.803Z",
+      "updated": "2026-10-17T11:52:33.775Z"
+    },
+    {
+      "id": "t179223795377637",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-17T11:52:33.776Z",
+      "updated": "2026-10-17T11:53:00.481Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179065287558258",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0838).",
-      "agent": "ceo",
-      "at": "2026-09-29T03:34:35.582Z",
-      "loud": false
-    },
-    {
-      "id": "n179073744209453",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Use Ideogram Character for Consistent AI Mascot Visuals\"",
-      "agent": "pairing",
-      "at": "2026-09-30T03:04:02.094Z",
-      "loud": false
-    },
-    {
-      "id": "n179073744988418",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to create AI logos with Recraft V4.1 Vector\"",
-      "agent": "pairing",
-      "at": "2026-09-30T03:04:09.884Z",
-      "loud": false
-    },
     {
       "id": "n17907376610040",
       "level": "info",
@@ -1281,36 +1257,33 @@
       "agent": "ceo",
       "at": "2026-10-17T02:18:00.347Z",
       "loud": false
+    },
+    {
+      "id": "n17922379467913",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 7.0/10).",
+      "agent": "seo",
+      "at": "2026-10-17T11:52:26.791Z",
+      "loud": false
+    },
+    {
+      "id": "n17922379637914",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — practical, everyday use cases (emails, resumes, LinkedIn bios) that will genuinely help busy people. Good mix of AI tools too. One small note: some tool names in the titles (l",
+      "agent": "publisher",
+      "at": "2026-10-17T11:52:43.791Z",
+      "loud": false
+    },
+    {
+      "id": "n179223798052593",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0128).",
+      "agent": "ceo",
+      "at": "2026-10-17T11:53:00.525Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179065282703574",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 20 → 5/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-09-29T03:33:47.035Z"
-    },
-    {
-      "id": "m179065341213323",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-09-29T03:43:32.133Z"
-    },
-    {
-      "id": "m179073738132544",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \" Put your Dropbox project context to work with Muse, from Meta \" — mi a baj: \"Meta's Muse\" AI agent is not a known product. Meta has not announced a personal AI agent called 'Muse' with Dropbox and Zapier integrations. This appears to be a fabricated product.; Muse for Small Business as described — a personal AI agent for small business owners — is not a real, announced Meta",
-      "ref": "2026-09-30T02-55-14-270Z_dropbox-blog__Put_your_Dropbox_project_context_to_work_with_Mus.json",
-      "at": "2026-09-30T03:03:01.325Z"
-    },
     {
       "id": "m179073739954710",
       "from": "iro",
@@ -2647,6 +2620,33 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-17T02:38:03.078Z"
+    },
+    {
+      "id": "m179223790085620",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to turn a photo into a 3D model of your product\" — javítva: Picsart Flow — brand guidance warns this name is unconfirmed; the source calls it a visual workspace, not the official product name; rewrite as 'the tutorial section' or 'the Flow workspace' to avoid fabricating a product name; Subtitle 'built-in monetization' overstates a feature; the article itself only attributes mone",
+      "ref": "2026-10-17T02-02-59-662Z_picsart_How_to_turn_a_photo_into_a_3D_model_of_your_produc.json",
+      "at": "2026-10-17T11:51:40.856Z"
+    },
+    {
+      "id": "m179223791889333",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to turn a photo into a 3D model of your product\" — mi a baj: Picsart Earn is described as a program creators can earn from, with a 'signup flow' and qualification process — the source only mentions 'Picsart Earn' as a monetization option referenced in a sidebar link, not as a verified program with documented features.; The article claims a specific 'Flow workspace' exist",
+      "ref": "2026-10-17T02-02-59-662Z_picsart_How_to_turn_a_photo_into_a_3D_model_of_your_produc.json",
+      "at": "2026-10-17T11:51:58.893Z"
+    },
+    {
+      "id": "m179223795376372",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-17T11:52:33.763Z"
     }
   ]
 }

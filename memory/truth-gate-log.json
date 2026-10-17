@@ -247,6 +247,19 @@
         "The claim that Picsart's cartoon video tutorial outlines a full loop including monetization through Picsart Earn is partly supported, but the article states that Picsart Earn is \"the company's program for creators to earn from their work, according to Picsart\" — this attribution is acceptable as it hedges with \"according to Picsart\"."
       ],
       "confidence": 3
+    },
+    {
+      "at": "2026-10-17T11:51:58.895Z",
+      "file": "WRITER_2026-10-17T02-02-59-662Z_picsart_How_to_turn_a_photo_into_a_3D_model_of_your_produc.json",
+      "action": "block",
+      "reasons": [
+        "Picsart Earn is described as a program creators can earn from, with a 'signup flow' and qualification process — the source only mentions 'Picsart Earn' as a monetization option referenced in a sidebar link, not as a verified program with documented features.",
+        "The article claims a specific 'Flow workspace' exists as a visual area with connectable AI nodes ('connect small AI tasks together, like LEGO blocks') — the source only mentions 'Picsart Flow' once in passing and 'a 3D node' in a single workflow, not a documented visual workspace product with chained-project capabilities.",
+        "Step 5 ('Chain two projects in one Flow') describes chaining generated characters, animations, and banners into one project — this chained workflow is not supported by the source, which describes four separate tutorials.",
+        "The article specifies YouTube banner dimensions as '2560 × 1440 pixels' as Picsart's recommended size — the source mentions this dimension but the article presents the tutorial as a Picsart-issued YouTube banner spec, when YouTube's actual recommended upload size is 2560 × 1440; fine, but the framing implies Picsart sets these specs.",
+        "Example prompts ('white ceramic mug with handle facing left', 'hip-hop routine', 'slow-motion spin', 'friendly cartoon chef with a red bandana') are presented as phrases from Picsart's tutorials — the source does not provide these example prompts."
+      ],
+      "confidence": 6
     }
   ]
 }
