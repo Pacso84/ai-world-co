@@ -202,7 +202,7 @@ t('🔌 kikapcsolt támogatás/bolt: a régi címek 301-gyel a főoldalra, a cha
   // kikapcsolva ezek NE 404-et adjanak. A chatbot pedig csak élő oldalt ajánljon.
   assert.ok(/SUPPORT\.enabled \? \[\] : \['support'\]/.test(build), 'a /support átirányítása hiányzik');
   assert.ok(/PACKS\.enabled \? \[\] : \['packs'\]/.test(build), 'a /packs átirányítása hiányzik');
-  assert.ok(/\$\{kiRules\}`/.test(build), 'az átirányítás nem kerül a _redirects-be');
+  assert.ok(/\$\{kiRules\}[^`]*`/.test(build), 'az átirányítás nem kerül a _redirects-be');
   assert.ok(/filter\(f => PACKS\.enabled \|\| f\.p !== '\/packs'\)/.test(build), 'a chatbot kikapcsolt boltba küldhet');
   const faq = build.slice(build.indexOf('const CS_FAQ = {'), build.indexOf('const CS_FAQ = {') + 9000);
   assert.ok(!/p: '\/support'/.test(faq), 'a chatbot GY.I.K. a /support oldalra küld');

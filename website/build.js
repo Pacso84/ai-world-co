@@ -400,7 +400,7 @@ const CS_FAQ = {
     { q: 'What is AI World HQ?', a: `An automated, independent news + guides site that helps everyday people use AI. Content is produced by an AI newsroom with honesty checks, in ${NYELV_SZAM} languages.`, p: '/about' },
     { q: 'How do I report a mistake in an article?', a: 'Use the 👍/👎 buttons under the article, or send us a message — genuine errors get corrected and republished.', p: '/about' },
     { q: 'Is the site free?', a: 'Yes — all articles and guides are free to read, with no paywall and no sign-up.', p: '/guides' },
-    { q: 'Where do I find beginner guides?', a: 'The Start page lists the first 5 guides to read, and the Guides page has all of them by topic.', p: '/start' },
+    { q: 'Where do I find beginner guides?', a: 'The About page starts with the first 5 guides to read, and the Guides page has all of them by topic.', p: '/about' },
     { q: 'What do AI words like prompt or token mean?', a: 'Our AI glossary explains the most common terms in plain language.', p: '/glossary' },
     { q: 'Do you sell anything? What are the packs?', a: 'We do not sell anything. Our guides are free here, and we also group them by subject into PDF packs you can download free — no account, no email, no payment. The packs page lists all of them.', p: '/packs' },
     { q: 'Can I share the PDF packs? Do they cost anything?', a: 'They are free. You may copy, print and share them — with a class, a library or a team — under the CC BY-NC 4.0 license: credit AI World HQ with a link to aiworldhq.com, and do not sell them.', p: '/packs' },
@@ -411,7 +411,7 @@ const CS_FAQ = {
     { q: 'Mi az AI World HQ?', a: `Automata, független hír- és útmutató-oldal, ami a hétköznapi AI-használatban segít. A tartalmat AI-szerkesztőség készíti őszinteség-ellenőrzéssel, ${NYELV_SZAM} nyelven.`, p: '/about' },
     { q: 'Hogyan jelezhetek hibát egy cikkben?', a: 'A cikk alatti 👍/👎 gombokkal, vagy írj nekünk — a valódi hibákat javítjuk és újra kiadjuk.', p: '/about' },
     { q: 'Ingyenes az oldal?', a: 'Igen — minden cikk és útmutató ingyen olvasható, fizetőfal és regisztráció nélkül.', p: '/guides' },
-    { q: 'Hol találom a kezdő útmutatókat?', a: 'A Kezdés oldal az első 5 ajánlott útmutatót mutatja, az Útmutatók oldalon pedig az összes megvan téma szerint.', p: '/start' },
+    { q: 'Hol találom a kezdő útmutatókat?', a: 'A Rólunk oldal tetején az első 5 ajánlott útmutató van, az Útmutatók oldalon pedig az összes megvan téma szerint.', p: '/about' },
     { q: 'Mit jelentenek az AI-szavak, pl. prompt vagy token?', a: 'Az AI-kisszótárunk közérthetően elmagyarázza a leggyakoribb fogalmakat.', p: '/glossary' },
     { q: 'Árultok valamit? Mik azok a csomagok?', a: 'Nem árulunk semmit. Az útmutatóink itt ingyenesek, és téma szerint PDF-csomagokba rendezve ingyen le is tölthetők — fiók, email-cím és fizetés nélkül. A Csomagok oldal mindet felsorolja.', p: '/packs' },
     { q: 'Megoszthatom a PDF-csomagokat? Kerülnek valamibe?', a: 'Ingyenesek. A CC BY-NC 4.0 licenc szerint másolhatod, kinyomtathatod és megoszthatod őket — osztállyal, könyvtárral, csapattal —, ha megjelölöd az AI World HQ-t egy aiworldhq.com linkkel, és nem árulod őket.', p: '/packs' },
@@ -422,7 +422,7 @@ const CS_FAQ = {
     { q: '¿Qué es AI World HQ?', a: `Un sitio automático e independiente de noticias y guías que te ayuda a usar la IA en el día a día. El contenido lo produce una redacción de IA con controles de honestidad, en ${NYELV_SZAM} idiomas.`, p: '/about' },
     { q: '¿Cómo aviso de un error en un artículo?', a: 'Con los botones 👍/👎 bajo el artículo, o escríbenos — los errores reales se corrigen y se vuelven a publicar.', p: '/about' },
     { q: '¿El sitio es gratis?', a: 'Sí: todos los artículos y guías se leen gratis, sin muro de pago y sin registro.', p: '/guides' },
-    { q: '¿Dónde están las guías para principiantes?', a: 'La página Empezar muestra las 5 primeras guías recomendadas, y en Guías están todas por tema.', p: '/start' },
+    { q: '¿Dónde están las guías para principiantes?', a: 'La página Quiénes somos empieza con las 5 primeras guías recomendadas, y en Guías están todas por tema.', p: '/about' },
     { q: '¿Qué significan palabras como prompt o token?', a: 'Nuestro pequeño glosario de IA explica los términos más comunes en lenguaje claro.', p: '/glossary' },
     { q: '¿Vendéis algo? ¿Qué son los packs?', a: 'No vendemos nada. Nuestras guías son gratis aquí, y además las agrupamos por tema en packs PDF que puedes descargar gratis: sin cuenta, sin correo y sin pago. La página de packs los lista todos.', p: '/packs' },
     { q: '¿Puedo compartir los packs PDF? ¿Cuestan algo?', a: 'Son gratis. Puedes copiarlos, imprimirlos y compartirlos —con una clase, una biblioteca o un equipo— con la licencia CC BY-NC 4.0: cita a AI World HQ con un enlace a aiworldhq.com y no los vendas.', p: '/packs' },
@@ -461,11 +461,11 @@ const UI_STEPTIP = {
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_STEPTIP[l] || {});
 
 // Kereső feliratok (navbar kereső-overlay, 2026-07-07)
-// Kapcsolódó cikkek + Kezdd itt feliratok
+// Kapcsolódó cikkek feliratai
 const UI_REL = {
-  en: { relatedTitle: 'Keep reading', startHere: 'Start here', midRead: 'Read this next' },
-  hu: { relatedTitle: 'Olvass tovább', startHere: 'Kezdd itt!', midRead: 'Ezt olvasd utána' },
-  es: { relatedTitle: 'Sigue leyendo', startHere: 'Empieza aquí', midRead: 'Lee esto después' },
+  en: { relatedTitle: 'Keep reading', midRead: 'Read this next' },
+  hu: { relatedTitle: 'Olvass tovább', midRead: 'Ezt olvasd utána' },
+  es: { relatedTitle: 'Sigue leyendo', midRead: 'Lee esto después' },
 
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_REL[l] || {});
@@ -1383,7 +1383,6 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
   const homePath = `${LP}/`;
   const supportPath = `${LP}/support`;
   const guidesPath = `${LP}/guides`;
-  const startPath = `${LP}/start`;
   const toolsPath = `${LP}/tools`;
   const glossaryPath = `${LP}/glossary`;
   const aboutPath = `${LP}/about`;
@@ -1488,15 +1487,14 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
     <div class="navbar__inner">
       <a href="${homePath}" class="navbar__logo"><img src="/assets/logo.svg" alt="${escapeHtml(SITE.name)} logo" class="navbar__mark">${SITE.name}<span class="navbar__dot">.</span></a>
       <nav class="navbar__nav" id="navMenu">
-        <a href="${startPath}" class="nav--star">⭐ ${tr('startHere')}</a>
         <a href="${homePath}">${T.news}</a>
         <a href="${archivePath}">${tr('archNavS')}</a>
         <a href="${guidesPath}">${T.guides}</a>
         <a href="${toolsPath}">${T.tools}</a>
         <a href="${glossaryPath}">${tr('glossNav')}</a>
-        <a href="${aboutPath}">${tr('aboutNav')}</a>
         ${PACKS.enabled ? `<a href="${packsPath}">${tr('packsNav')}</a>` : ''}
         ${SUPPORT.enabled ? `<a href="${supportPath}" class="navbar__support">${T.support}</a>` : ''}
+        <a href="${aboutPath}">${tr('aboutNav')}</a>
       </nav>
       ${langSwitcher}
       <button class="search-toggle" id="searchToggle" aria-label="${tr('searchLabel')}" title="${tr('searchLabel')}">🔍</button>
@@ -2808,10 +2806,11 @@ function packLine(temaId) {
 }
 
 // ===================================================================
-// "KEZDD ITT!" OLDAL — a teljesen kezdő látogató kapuja (2026-07-07)
+// "KEZDD ITT!" — a teljesen kezdő látogató kapuja (2026-07-07). 2026-10-17 óta
+// NEM külön oldal: a Rólunk oldal TETEJE (user: „így hülyén néz ki”); a /start 301.
 // ===================================================================
 const START_GUIDE_IDS = ['what-ai-is-good-for', 'prompt-basics', 'chatgpt-getting-started', 'ai-privacy-basics', 'fact-check-ai'];
-function buildStartPage(allLoc) {
+function startPicks(allLoc) {
   const picks = [];
   for (const id of START_GUIDE_IDS) {
     const g = allLoc.find(a => a.isGuide && a.file.includes(id));
@@ -2821,32 +2820,10 @@ function buildStartPage(allLoc) {
     if (picks.length >= 5) break;
     if (!picks.includes(g)) picks.push(g);
   }
-  const items = picks.map((g, i) => `<a class="start__pick" href="article/${g.slug}">
+  return picks.map((g, i) => `<a class="start__pick" href="article/${g.slug}">
       <span class="start__num">${i + 1}</span>
       <span><span class="rel__t">${escapeHtml(g.title)}</span>
       ${g.subtitle ? `<span class="rel__s">${escapeHtml(g.subtitle)}</span>` : ''}</span></a>`).join('');
-  const body = `<section class="guides-hero">
-      <p class="intro__kicker">⭐ ${tr('startHere')}</p>
-      <h1 class="guides-hero__title">${escapeHtml(tr('startTitle'))}</h1>
-      <p class="guides-hero__tag">${escapeHtml(tr('startTag'))}</p>
-    </section>
-    <div class="start__cols">
-      <div class="start__card"><h2>💡 ${tr('startS1h')}</h2><p>${tr('startS1p')}</p></div>
-      <div class="start__card"><h2>👣 ${tr('startS2h')}</h2><p>${tr('startS2p')}</p></div>
-      <div class="start__card"><h2>🛡️ ${tr('startS3h')}</h2><p>${tr('startS3p')}</p></div>
-    </div>
-    <p class="start__wizcta"><a href="wizard">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>
-    <p class="start__wizcta"><a href="prompts">📋 ${escapeHtml(tr('plBanner'))}</a></p>
-    <section class="start__picks"><h2 class="rel__h">📘 ${tr('startPickH')}</h2>${items}
-      <p style="margin-top:18px"><a class="back-link" href="guides">${tr('startMore')} →</a></p></section>`;
-  return pageShell({
-    title: `${tr('startTitle')} — ${SITE.name}`,
-    // A LÁTHATÓ mottó (startTag) változatlan marad — csak a meta leírás
-    // egészül ki a már meglévő, MINDEN nyelvre lefordított bevezetőből.
-    // Így egyetlen új szöveget sem kell írni egyik nyelven sem.
-    description: buildMetaDescription(tr('startTag'), tr('startS1p')),
-    noIntro: true, pagePath: 'start.html', bodyContent: body
-  });
 }
 
 // ===================================================================
@@ -3201,9 +3178,8 @@ function buildArchivePage(loc) {
 // Organization schema + őszinte műhely-leírás. A Google és az olvasó
 // bizalmát építi — a hirdetés-kampány előfeltétele.
 // ===================================================================
-function buildAboutPage() {
+function buildAboutPage(allLoc) {
   const cards = [
-    ['🌏', 'aboutWhoH', 'aboutWhoP'],
     ['🧑‍💻', 'aboutTeamH', 'aboutTeamP'],   // 2026-10-12: a szerkesztő (álnév: Sam Calder), napi szúrópróba
     ['⚙️', 'aboutHowH', 'aboutHowP'],
     ['📰', 'aboutSrcH', 'aboutSrcP'],
@@ -3226,17 +3202,31 @@ function buildAboutPage() {
       <p class="cs-status" aria-live="polite"></p>
     </form>
   </section>`;
+  // FENT a régi „Kezdd itt” (a „Mi ez az oldal?” egyszer: az aboutWho viszi, benne a nyelvszám),
+  // ALATTA a bizalmi rész. 2026-10-17, user: „a Kezdd itt és a Rólunkat … összerakni egybe”.
   const body = `<section class="guides-hero">
       <p class="intro__kicker">${escapeHtml(tr('aboutNav'))}</p>
-      <h1 class="guides-hero__title">${escapeHtml(tr('aboutTitle'))}</h1>
+      <h1 class="guides-hero__title">${escapeHtml(tr('startTitle'))}</h1>
+      <p class="guides-hero__tag">${escapeHtml(tr('startTag'))}</p>
+    </section>
+    <div class="start__cols">
+      <div class="start__card"><h2>🌏 ${escapeHtml(tr('aboutWhoH'))}</h2><p>${escapeHtml(tr('aboutWhoP'))}</p></div>
+      <div class="start__card"><h2>👣 ${tr('startS2h')}</h2><p>${tr('startS2p')}</p></div>
+      <div class="start__card"><h2>🛡️ ${tr('startS3h')}</h2><p>${tr('startS3p')}</p></div>
+    </div>
+    <p class="start__wizcta"><a href="wizard">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>
+    <p class="start__wizcta"><a href="prompts">📋 ${escapeHtml(tr('plBanner'))}</a></p>
+    <section class="start__picks"><h2 class="rel__h">📘 ${tr('startPickH')}</h2>${startPicks(allLoc)}
+      <p style="margin-top:18px"><a class="back-link" href="guides">${tr('startMore')} →</a></p></section>
+    <section class="guides-hero about__who">
+      <h2 class="guides-hero__title">${escapeHtml(tr('aboutTitle'))}</h2>
       <p class="guides-hero__tag">${escapeHtml(tr('aboutTag'))}</p>
     </section>
     <div class="gloss__grid">${cards}</div>
-    <p class="start__wizcta"><a href="start">⭐ ${escapeHtml(tr('startTitle'))}</a></p>
     ${csFormHtml}`;
   return pageShell({
     title: `${tr('aboutTitle')} — ${SITE.name}`,
-    description: tr('aboutTag'),
+    description: buildMetaDescription(tr('startTag'), tr('aboutTag')),
     noIntro: true, pagePath: 'about.html', bodyContent: body,
     jsonld: {
       '@context': 'https://schema.org', '@type': 'Organization',
@@ -3592,11 +3582,10 @@ function main() {
     }
     writeFileSync(join(outBase, 'guides.html'), buildGuidesPage(generalGuides, guideCounts, temaCsoportok), 'utf-8');
     writeFileSync(join(outBase, 'tools.html'), buildToolsPage(companyGuides, guideCounts), 'utf-8');
-    writeFileSync(join(outBase, 'start.html'), buildStartPage(loc), 'utf-8');
     writeFileSync(join(outBase, 'glossary.html'), buildGlossaryPage(), 'utf-8');   // AI-kisszótár
     writeFileSync(join(outBase, 'prompts.html'), buildPromptsPage(articles, loc), 'utf-8');   // Prompt-tár (2026-10-16)
     writeFileSync(join(outBase, 'wizard.html'), buildWizardPage(), 'utf-8');       // Melyik AI való neked?
-    writeFileSync(join(outBase, 'about.html'), buildAboutPage(), 'utf-8');         // Rólunk (bizalmi oldal)
+    writeFileSync(join(outBase, 'about.html'), buildAboutPage(loc), 'utf-8');      // Rólunk (fent a Kezdd itt, 2026-10-17)
     writeFileSync(join(outBase, 'privacy.html'), buildPrivacyPage(), 'utf-8');     // Adatvédelem (2026-10-01, AdSense-feltétel)
     writeFileSync(join(outBase, 'archive.html'), buildArchivePage(loc), 'utf-8');  // Minden hír (archívum)
     writeFileSync(join(outBase, 'feed.xml'), feedXml(loc, lang), 'utf-8');   // nyelvenkénti RSS
@@ -3669,7 +3658,6 @@ function main() {
       if (companyGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/tools`, date: today });
       if (SUPPORT.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/support`, date: today });
       if (PACKS.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/packs`, date: today });
-      sitemapUrls.push({ loc: `${SITE.url}${lp}/start`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/prompts`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: today });
@@ -3922,6 +3910,9 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   // a nyelv főoldalára vigyenek, ne a 404-re. Visszakapcsoláskor maguktól eltűnnek.
   const kiOldalak = [...(SUPPORT.enabled ? [] : ['support']), ...(PACKS.enabled ? [] : ['packs'])];
   const kiRules = kiOldalak.flatMap(o => SITE_LANGS.map(l => `${langPrefix(l)}/${o} ${langPrefix(l) || ''}/ 301`)).join('\n') + (kiOldalak.length ? '\n' : '');
+  // A „Kezdd itt” 2026-10-17 óta a Rólunk oldal teteje — a régi /start címre linkelnek
+  // (könyvtári levelek, FB-posztok), ezért 301, nem 404.
+  const startRules = SITE_LANGS.map(l => `${langPrefix(l)}/start ${langPrefix(l)}/about 301`).join('\n') + '\n';
 
   // HOST-EGYESÍTÉS (www + pages.dev → fő domain): NEM ITT történik!
   //
@@ -3935,7 +3926,7 @@ Original content by ${SITE.name} — written and quality-checked by an autonomou
   // fő-domaines kérést 301-gyel átküld. A halott sorokat kivettük, hogy ne
   // keltsenek hamis biztonságérzetet. Az őrszem: core/live-guard.js kintről
   // méri a www-t ÉS a pages.dev-et minden futásban.
-  writeFileSync(join(OUT_DIR, '_redirects'), `${verifyRule}${renameRules}${retiredLangRules}${kiRules}`, 'utf-8');
+  writeFileSync(join(OUT_DIR, '_redirects'), `${verifyRule}${renameRules}${retiredLangRules}${kiRules}${startRules}`, 'utf-8');
   console.log('✅ _redirects generálva (pages.dev → saját domain, 301)');
 
   // _headers — biztonsági fejlécek (CF Security Center javaslat, 2026-07-11):
