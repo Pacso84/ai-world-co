@@ -63,7 +63,7 @@ body {
 }
 .navbar__mark { width: 30px; height: 30px; display: block; }
 .navbar__dot { color: var(--accent); }
-.navbar__nav { display: flex; gap: clamp(13px, 1.7vw, 24px); margin-left: auto; align-items: center; }
+.navbar__nav { display: flex; gap: clamp(10px, 1.1vw, 22px); margin-left: auto; align-items: center; }   /* 10-18: 8 menüpont → szűkebb köz */
 .navbar__nav a {
   font-size: 14px; font-weight: 600; color: var(--ink-soft);
   text-decoration: none; position: relative; padding: 4px 0;
@@ -90,7 +90,8 @@ body {
   margin: 0 auto; transition: transform .25s ease, opacity .2s ease;
 }
 
-@media (max-width: 900px) {
+/* 10-18: 8 menüpont (Felkapott + Prompt-tár) → a hamburger 1300 px alatt, különben 900–1300 px között kilógott a fejléc */
+@media (max-width: 1300px) {
   .navbar__inner { gap: 12px; padding: 13px 18px; }
   .navbar__logo { font-size: 18px; }
   .navbar__burger { display: flex; }

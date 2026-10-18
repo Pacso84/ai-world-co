@@ -524,13 +524,13 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_GLOSS[l] || {});
 const UI_PROMPTS = {
   en: { plNav: 'Prompt library', plTitle: 'AI Prompt Library', plTag: 'Copy-ready prompts from our step-by-step guides — paste them into ChatGPT, Gemini, Claude or any AI assistant.',
         plTrending: 'Trending & new', plMore: 'More prompts', plCopy: 'Copy', plCopied: 'Copied!', plGuide: 'Full guide', plCount: '{n} prompts',
-        plSearch: 'Search prompts…', plTip: '', plBanner: 'Copy-ready AI prompts — the prompt library' },
+        plSearch: 'Search prompts…', plTip: '', plNavS: 'Prompts', plBanner: 'Copy-ready AI prompts — the prompt library' },
   hu: { plNav: 'Prompt-tár', plTitle: 'AI prompt-tár', plTag: 'Bemásolható promptok a lépésről lépésre útmutatóinkból — illeszd be a ChatGPT-be, a Geminibe, a Claude-ba vagy bármelyik MI-asszisztensbe.',
         plTrending: 'Felkapott és új', plMore: 'További promptok', plCopy: 'Másolás', plCopied: 'Kimásolva!', plGuide: 'Teljes útmutató', plCount: '{n} prompt',
-        plSearch: 'Keresés a promptok közt…', plTip: 'A promptok angolul vannak — az MI ugyanúgy érti őket. Írd a végére: „Válaszolj magyarul.”', plBanner: 'Bemásolható MI-promptok — a prompt-tár' },
+        plSearch: 'Keresés a promptok közt…', plNavS: 'Prompt-tár', plTip: 'A promptok angolul vannak — az MI ugyanúgy érti őket. Írd a végére: „Válaszolj magyarul.”', plBanner: 'Bemásolható MI-promptok — a prompt-tár' },
   es: { plNav: 'Biblioteca de prompts', plTitle: 'Biblioteca de prompts de IA', plTag: 'Prompts listos para copiar de nuestras guías paso a paso — pégalos en ChatGPT, Gemini, Claude o cualquier asistente de IA.',
         plTrending: 'En tendencia y nuevos', plMore: 'Más prompts', plCopy: 'Copiar', plCopied: '¡Copiado!', plGuide: 'Guía completa', plCount: '{n} prompts',
-        plSearch: 'Buscar prompts…', plTip: 'Los prompts están en inglés — la IA los entiende igual. Añade al final: «Responde en español».', plBanner: 'Prompts de IA listos para copiar — la biblioteca' }
+        plSearch: 'Buscar prompts…', plNavS: 'Prompts', plTip: 'Los prompts están en inglés — la IA los entiende igual. Añade al final: «Responde en español».', plBanner: 'Prompts de IA listos para copiar — la biblioteca' }
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_PROMPTS[l] || {});
 
@@ -1512,8 +1512,9 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <a href="${homePath}" class="navbar__logo"><img src="/assets/logo.svg" alt="${escapeHtml(SITE.name)} logo" class="navbar__mark">${SITE.name}<span class="navbar__dot">.</span></a>
       <nav class="navbar__nav" id="navMenu">
         <a href="${homePath}">${T.news}</a>
-        <a href="${archivePath}">${tr('archNavS')}</a>
+        <a href="${LP}/trending">🔥 ${tr('trNav')}</a>
         <a href="${guidesPath}">${T.guides}</a>
+        <a href="${LP}/prompts">📋 ${tr('plNavS')}</a>
         <a href="${toolsPath}">${T.tools}</a>
         <a href="${glossaryPath}">${tr('glossNav')}</a>
         ${PACKS.enabled ? `<a href="${packsPath}">${tr('packsNav')}</a>` : ''}
@@ -1553,6 +1554,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <p class="site-footer__support"><a href="${LP}/about">${tr('aboutNav')}</a></p>
       <p class="site-footer__support"><a href="${LP}/prompts">📋 ${tr('plNav')}</a></p>
       <p class="site-footer__support"><a href="${LP}/trending">🔥 ${tr('trBanner')}</a></p>
+      <p class="site-footer__support"><a href="${archivePath}">🗂️ ${tr('archNavS')}</a></p>
       ${PACKS.enabled ? `<p class="site-footer__support"><a href="${packsPath}">${tr('packsNav')}</a></p>` : ''}
       ${SUPPORT.enabled ? `<p class="site-footer__support"><a href="${supportPath}">${T.support}</a></p>` : ''}
       <p class="site-footer__support"><a href="${LP}/privacy">${tr('privNav')}</a></p>

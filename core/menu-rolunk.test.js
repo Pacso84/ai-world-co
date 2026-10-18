@@ -37,6 +37,15 @@ t('🧭 a „Rólunk” a menü VÉGÉN van (a feltételes Ko-fi pontok után)',
   assert.equal(sorok.filter(s => s.includes('aboutPath')).length, 1, 'a Rólunk pontosan egyszer');
 });
 
+t('🧭 menü 2 (10-18, user: „nem látom se a Prompt-tárat, se a másikat” → „Mindkettő előre”): Hírek · 🔥 Felkapott · Útmutatók · 📋 Prompt-tár · Eszközök …; Archívum a láblécben', () => {
+  const sorok = menu();
+  const sorrend = ['${T.news}', "/trending\">🔥 ${tr('trNav')}", '${T.guides}', "/prompts\">📋 ${tr('plNavS')}", '${T.tools}', "${tr('glossNav')}"];
+  sorrend.forEach((k, i) => assert.ok(sorok[i] && sorok[i].includes(k), `a(z) ${i + 1}. menüpont nem ez: ${k} (hanem: ${sorok[i]})`));
+  assert.ok(!sorok.some(s => s.includes('archivePath')), 'az Archívum még a menüben van');
+  assert.match(src, /<a href="\$\{archivePath\}">🗂️ \$\{tr\('archNavS'\)\}<\/a>/, 'az Archívum nincs a láblécben');
+  assert.equal((src.match(/plNavS: '/g) || []).length, 3, 'a rövid Prompt-tár menüfelirat nem 3 nyelven');
+});
+
 t('📄 a Rólunk oldal TETEJÉN a „Kezdd itt” rész, ALATTA a bizalmi kártyák', () => {
   const s = sablon('buildAboutPage');
   const sorrend = ["tr('startTitle')", "'startS2h'", "'startS3h'", 'href="wizard"', 'href="prompts"', 'startPicks(', "tr('aboutTitle')", '${cards}'];
