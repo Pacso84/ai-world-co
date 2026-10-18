@@ -53,6 +53,14 @@ export const BETU_ARANY = 0.62;
  */
 export const KAROK = ['foto', 'vilagos', 'sotet'];
 
+/**
+ * 🔴 KÍSÉRLET LEZÁRVA (2026-10-18, user: „jó lenne, ha az oldalra kattintanának a poszton keresztül!”):
+ * mérve 09-23→10-11 (az első 7 nap belépői) fotó 8,1 vs infografika 5,8 / poszt (p≈0,04) — a
+ * lépéseket mutató poszt elveszi az átkattintás okát. Minden poszter FOTÓS; a kar() megmarad, hogy a
+ * régi posztok mérése visszafejthető legyen, és egy szóval újra bekapcsolható.
+ */
+export const INFOGRAFIKA_BE = false;
+
 // ── A PALETTA: UTASÍTÁS-LAP ────────────────────────────────────────
 //
 // A tárgy nem szoftver, hanem UTASÍTÁS. Ezért nem „márkaszín + semleges

@@ -32,7 +32,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import {
   kar, KAROK, STILUS, poszterSvg, lepesSzoveg, lepesekMdbol, alkalmas,
-  LEPES_MAX_DB, LEPES_MAX_KAR, W, H, HATTER_ELMOSAS, HATTER_TELITETTSEG, FOTO_MAGAS
+  LEPES_MAX_DB, LEPES_MAX_KAR, W, H, HATTER_ELMOSAS, HATTER_TELITETTSEG, FOTO_MAGAS, INFOGRAFIKA_BE
 } from './social-poster.js';
 import { splitHeading } from './short-video.js';
 import { utmutatoE } from './guide-kind.js';
@@ -83,6 +83,14 @@ t('🔑 a három kar nagyjából egyformán oszlik el (különben a mérés torz
     assert.ok(elteres < 0.25,
       k + ': ' + db[k] + ' cikk a várt ~' + Math.round(varhato) + ' helyett (' + (elteres * 100).toFixed(0) + '% eltérés)');
   }
+});
+
+t('🔴 KÍSÉRLET LEZÁRVA (10-18): az infografika KI — minden útmutató-poszt fotós (user: „jó lenne, ha az oldalra kattintanának”)', () => {
+  // Mérés 09-23→10-11: fotó 8,1 vs infografika 5,8 belépő/poszt az első 7 napban (p≈0,04) —
+  // a lépéseket mutató poszt elveszi az átkattintás okát. A kar() megmarad (visszafejthető mérés).
+  assert.equal(INFOGRAFIKA_BE, false, 'az infografika be van kapcsolva');
+  const kep = readFileSync(join(ROOT, 'core', 'share-images.js'), 'utf-8');
+  assert.match(kep, /const infoKar = \(INFOGRAFIKA_BE && utmutato && alkalmas\(/, '🔴 a képgyártó nem nézi a kapcsolót');
 });
 
 t('ismeretlen vagy üres slug a mostani (fotós) karba esik', () => {

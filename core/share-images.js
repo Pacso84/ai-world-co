@@ -21,7 +21,7 @@ import sharp from 'sharp';
 import { selectFormats, queuedSlugs } from './image-targets.js';
 import { utmutatoE } from './guide-kind.js';
 import { splitHeading } from './short-video.js';
-import { kar, STILUS, poszterSvg, lepesekMdbol, alkalmas, szakaszok, HATTER_ELMOSAS, HATTER_TELITETTSEG, FOTO_MAGAS } from './social-poster.js';
+import { kar, INFOGRAFIKA_BE, STILUS, poszterSvg, lepesekMdbol, alkalmas, szakaszok, HATTER_ELMOSAS, HATTER_TELITETTSEG, FOTO_MAGAS } from './social-poster.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -225,7 +225,8 @@ async function main() {
     // A kar a slugból SZÁMOLÓDIK (core/social-poster.js kar()), nincs
     // külön nyilvántartás — az elemzés bármikor visszafejti.
     const utmutato = utmutatoE(f, d);
-    const infoKar = (utmutato && alkalmas(d.article_markdown || '')) ? kar(slug) : 'foto';
+    // 2026-10-18: a kísérlet LEZÁRVA (fotó 8,1 vs infografika 5,8 belépő/poszt) → INFOGRAFIKA_BE = false.
+    const infoKar = (INFOGRAFIKA_BE && utmutato && alkalmas(d.article_markdown || '')) ? kar(slug) : 'foto';
     const pub = new Date(d._meta?.published_at || 0).getTime();
     const formats = selectFormats({
       ageDays: (now - pub) / 86400e3,
