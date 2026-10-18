@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m179082394482334",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Customize the style of your captions in Google Vids\" — mi a baj: Gemini 3.8 Flash Lite TTS is likely a hallucinated product name — Google AI products follow patterns like Gemini 2.0 Flash, not this naming scheme; needs source verification; Category is 'how-to' but article contains no step-by-step instructions at all; should be category 'news' instead; Article ends with a sid",
-      "ref": "2026-10-01T03-00-41-535Z_google-workspace_Customize_the_style_of_your_captions_in_Google_Vid.json",
-      "at": "2026-10-01T03:05:44.823Z"
-    },
-    {
       "id": "m179082401549337",
       "from": "ellenorzo",
       "to": "iro",
@@ -2645,6 +2636,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-18T02:28:03.401Z"
+    },
+    {
+      "id": "m17923258367806",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a Simple Event Sign-Up Form with GitHub Cop\" — The guide describes installing the Copilot extension manually via VS Code Extensions panel, but GitHub Copilot is now built directly into VS Code (as of 2024-2025) — the user just needs to sign in, not install an extension separately. This workflow is outdated.",
+      "ref": "ARTICLE_GUIDE_create-a-simple-event-sign-up-form-with-github-copilot.json",
+      "at": "2026-10-18T12:17:16.780Z"
     }
   ]
 }
