@@ -596,6 +596,7 @@
     "diacsomagod",
     "diacsomagodban",
     "diarizáció",
+    "diasoron",
     "distilbert-base-uncased-finetuned-sst",
     "distilgpt",
     "dizájnszakkifejezés",
@@ -821,6 +822,7 @@
     "eszközorkesztálás",
     "eszköztáron",
     "eszközvezérelt",
+    "esőhangok",
     "ethernet",
     "ethernet-kábelt",
     "eu-west",
@@ -855,6 +857,7 @@
     "feedhez",
     "fehértábláról",
     "fejezetösszefoglaló",
+    "fejezetösszefoglalót",
     "feladatad",
     "feladatlaptervezésben",
     "feladatpriorizálás",
@@ -938,6 +941,7 @@
     "fuvarokat",
     "fájlchip",
     "félévet",
+    "fókuszolsz",
     "fókuszplaylistet",
     "fölösleget",
     "függetlenséget",
@@ -1140,6 +1144,7 @@
     "házifeladat",
     "házifeladatodhoz",
     "házifeladaton",
+    "házifeladatra",
     "házifeladattal",
     "házifeladattá",
     "házitanárt",
@@ -1403,6 +1408,7 @@
     "kurzoroddal",
     "kurzorodnak",
     "kurzusanyagok",
+    "kurzuskurzus",
     "kuszaak",
     "kutatócéget",
     "kutatólaborokban",
@@ -1505,6 +1511,7 @@
     "lechat",
     "lefedettséget",
     "legaktívabb",
+    "legboldogabb",
     "legcsilesebb",
     "leghosszabhoz",
     "legitimnak",
@@ -2037,6 +2044,7 @@
     "pointtá",
     "polgárok",
     "polúr",
+    "pomodoro",
     "portlandi",
     "portrépromptot",
     "post-itre",
@@ -2091,6 +2099,7 @@
     "promptkönyvtárral",
     "promptkövetése",
     "promptlogika",
+    "promptláncot",
     "promptmező",
     "promptmezőbe",
     "promptmezőben",
@@ -2421,6 +2430,7 @@
     "stresszszintű",
     "stringek",
     "struktúrált",
+    "struktúráltnak",
     "stylised",
     "subagents",
     "subreddit",
@@ -2525,6 +2535,7 @@
     "szövegösszefoglalással",
     "szövegösszefoglaló",
     "szövetséget",
+    "szünettimeret",
     "szőnyeget",
     "sábado",
     "sávjai",
@@ -2625,6 +2636,7 @@
     "telefontársaságod",
     "telejegyzet-alkalmazás",
     "telekom",
+    "telekomnál",
     "telekomszolgáltató",
     "telekomóriás",
     "telekó",
@@ -2675,6 +2687,8 @@
     "ticketet",
     "tieren",
     "timelinesra",
+    "timerekkel",
+    "timert",
     "tippedd",
     "tisztánlanul",
     "tomoríteni",
@@ -3092,6 +3106,7 @@
     "újrapontolás",
     "újraírodnád",
     "újságodban",
+    "újságok",
     "útbaigazítás",
     "útbaigazításokat",
     "útbaigazításra",
@@ -4422,6 +4437,11 @@
     "opciónt": {
       "correct": "opciót",
       "at": "2026-10-17",
+      "mondattal": true
+    },
+    "diásor": {
+      "correct": "diasor",
+      "at": "2026-10-18",
       "mondattal": true
     }
   },
@@ -6052,11 +6072,21 @@
       "correct": "modellistát",
       "at": "2026-10-15",
       "mondattal": true
+    },
+    "bízzza": {
+      "correct": "bízzátok",
+      "at": "2026-10-18",
+      "mondattal": true
+    },
+    "családsagák": {
+      "correct": "családi ságok",
+      "at": "2026-10-18",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-10-17",
-    "files": 871,
-    "candidates": 0
+    "at": "2026-10-18",
+    "files": 875,
+    "candidates": 20
   }
 }
