@@ -903,6 +903,7 @@
     "forgatókönyvet",
     "forintösszeget",
     "formalityás",
+    "formon",
     "forrásanyagod",
     "forrásanyagok",
     "forrásanyagoknál",
@@ -2369,6 +2370,7 @@
     "soron",
     "soronként",
     "soronkénti",
+    "sorrol",
     "sorszámosáv",
     "spamet",
     "spammerek",
@@ -3007,6 +3009,7 @@
     "áteresztőképességet",
     "átfestészed",
     "átfussd",
+    "átfutsd",
     "átgondultan",
     "átlagodnál",
     "átlagok",
@@ -4441,6 +4444,11 @@
     },
     "diásor": {
       "correct": "diasor",
+      "at": "2026-10-18",
+      "mondattal": true
+    },
+    "beívódna": {
+      "correct": "beivódna",
       "at": "2026-10-18",
       "mondattal": true
     }
@@ -6082,11 +6090,16 @@
       "correct": "családi ságok",
       "at": "2026-10-18",
       "mondattal": true
+    },
+    "árkizációs": {
+      "correct": "árképzési",
+      "at": "2026-10-18",
+      "mondattal": true
     }
   },
   "scan": {
     "at": "2026-10-18",
-    "files": 875,
-    "candidates": 20
+    "files": 848,
+    "candidates": 5
   }
 }

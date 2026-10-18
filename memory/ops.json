@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m179082401549337",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to scale agentic applications without creating AI sprawl\" — mi a baj: The source is from Databricks (databricks.com/blog), but the article attributes the guide to Datadog, a completely different company ('Datadog, a company that helps businesses monitor their software, recently published a guide titled...'). Datadog did not publish this guide; Databricks did.",
-      "ref": "2026-10-01T03-00-56-728Z_databricks_How_to_scale_agentic_applications_without_creating.json",
-      "at": "2026-10-01T03:06:55.493Z"
-    },
-    {
       "id": "m179082408548879",
       "from": "iro",
       "to": "ellenorzo",
@@ -2645,6 +2636,15 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Create a Simple Event Sign-Up Form with GitHub Cop\" — The guide describes installing the Copilot extension manually via VS Code Extensions panel, but GitHub Copilot is now built directly into VS Code (as of 2024-2025) — the user just needs to sign in, not install an extension separately. This workflow is outdated.",
       "ref": "ARTICLE_GUIDE_create-a-simple-event-sign-up-form-with-github-copilot.json",
       "at": "2026-10-18T12:17:16.780Z"
+    },
+    {
+      "id": "m179232638298089",
+      "from": "social",
+      "to": "team",
+      "kind": "info",
+      "text": "1 közösségi poszt megírva (Facebook)",
+      "ref": null,
+      "at": "2026-10-18T12:26:22.980Z"
     }
   ]
 }
