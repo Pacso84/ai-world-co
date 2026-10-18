@@ -1,29 +1,4 @@
 {
-  "2026-09-21": [
-    {
-      "at": "2026-09-21T02:16:42.897Z",
-      "file": "WRITER_2026-09-17T02-18-27-380Z_google-workspace_View_conference_room_and_meeting_location_details_.json",
-      "action": "block",
-      "reasons": [
-        "The article describes a specific feature ('meeting cards showing room and floor details on the Google Meet web homepage') as a real, rolling-out update with no source, no Workspace blog post, no official Google announcement cited. Given the specificity of the claims (prioritizing the most relevant room for multi-room bookings, surfacing Calendar location on the homepage card), this reads as fabricated product news rather than a verifiable update.",
-        "Claim that 'Google says the homepage will prioritize the most relevant room' attributes a specific behavioral detail and an official statement to Google without any cited source — this is an invented claim presented as fact."
-      ],
-      "confidence": 6
-    },
-    {
-      "at": "2026-09-21T02:16:59.616Z",
-      "file": "WRITER_2026-09-20T02-27-27-983Z_aiworld-editorial_This_Week_in_AI.json",
-      "action": "block",
-      "reasons": [
-        "Link to non-existent article: https://aiworldhq.com/article/how-ai-companies-are-making-chatbots-safer-for-young-users-and-what-pa.html — fabricated URL",
-        "Link to non-existent article: https://aiworldhq.com/article/ai-powered-prosthetics-how-smart-bionic-arms-work-and-who-they-re-for.html — fabricated URL",
-        "Link to non-existent article: https://aiworldhq.com/article/what-flexible-ai-data-centers-actually-means-for-you.html — fabricated URL",
-        "Link to non-existent article: https://aiworldhq.com/article/notebooklm-s-audio-features-what-it-can-do-and-who-it-s-for.html — fabricated URL",
-        "Link to non-existent article: https://aiworldhq.com/article/speaker-aware-ai-translation-is-coming-what-it-does-and-who-it-helps.html — fabricated URL"
-      ],
-      "confidence": 7
-    }
-  ],
   "2026-09-23": [
     {
       "at": "2026-09-23T02:22:48.235Z",
@@ -260,6 +235,19 @@
         "Example prompts ('white ceramic mug with handle facing left', 'hip-hop routine', 'slow-motion spin', 'friendly cartoon chef with a red bandana') are presented as phrases from Picsart's tutorials — the source does not provide these example prompts."
       ],
       "confidence": 6
+    }
+  ],
+  "2026-10-18": [
+    {
+      "at": "2026-10-18T02:09:44.874Z",
+      "file": "WRITER_GUIDE_set-up-an-alexa-routine-that-runs-different-steps-on-weekday.json",
+      "action": "block",
+      "reasons": [
+        "The article repeatedly describes per-action day-of-week filtering as a feature of Alexa+ routines (e.g., 'the app will usually ask When? — choose Weekday mornings', 'Conditions section at the bottom of the routine form', and tagging individual actions with Mon–Fri vs Sat–Sun filters). Alexa routines apply day-of-week selection to the entire routine via its schedule, not to individual actions. There is no per-action day-of-week condition in Alexa+ routines.",
+        "The article claims a 'Test routine' button (sometimes labeled 'Try it now' or 'Run routine') exists inside routines for manual testing, and that Alexa+ can simulate dates. Alexa routines do not have an in-app 'Test routine' feature and do not support date simulation.",
+        "The article describes Alexa+ being able to 'branch on device, location (home/away), and alarm state' as part of routine conditional logic. Alexa routines do not have conditional 'if/then' branching across these dimensions in the way described."
+      ],
+      "confidence": 8
     }
   ]
 }

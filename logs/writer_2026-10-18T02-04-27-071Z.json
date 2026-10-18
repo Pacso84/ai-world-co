@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-18T02:02:22.401Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.039067783999999994,
+  "by_article": [
+    {
+      "draft": "2026-10-18T02-02-22-019Z_nvidia-blog_RTX_Spark_Ignites_Global_Celebration_as_New_Window.json",
+      "writer_output": "WRITER_2026-10-18T02-02-22-019Z_nvidia-blog_RTX_Spark_Ignites_Global_Celebration_as_New_Window.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0108737,
+      "duration_ms": 32020,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-17T02-02-59-661Z_openai-blog_How_Ita__is_building_generative_AI_for_its_entire_.json",
+      "writer_output": "WRITER_2026-10-17T02-02-59-661Z_openai-blog_How_Ita__is_building_generative_AI_for_its_entire_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.004890864,
+      "duration_ms": 14557,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-16T02-10-37-240Z_d-id-news_Introducing_Presentation_Mode__Slides_That_Talk_Ba.json",
+      "writer_output": "WRITER_2026-10-16T02-10-37-240Z_d-id-news_Introducing_Presentation_Mode__Slides_That_Talk_Ba.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01010304,
+      "duration_ms": 23526,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-16T02-10-20-235Z_anthropic-blog_Anthropic_update_on_independent_evaluators___Anthr.json",
+      "writer_output": "WRITER_2026-10-16T02-10-20-235Z_anthropic-blog_Anthropic_update_on_independent_evaluators___Anthr.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01257438,
+      "duration_ms": 45967,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-10-18T02:04:27.071Z",
+  "duration_seconds": 124.67
+}

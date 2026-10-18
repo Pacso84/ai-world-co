@@ -7825,10 +7825,11 @@
       "audience": "personal",
       "level": "intermediate",
       "angle": "Use conditional logic inside a single routine so the same wake-up command behaves differently based on the day.",
-      "status": "todo",
+      "status": "done",
       "icon": "📅",
       "proposed_at": "2026-10-15T02:30:48.476Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-10-18T02:08:45.110Z"
     },
     {
       "id": "build-a-reusable-alexa-pomodoro-routine-that-announces-focus",
@@ -7838,10 +7839,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "One command starts a repeating cycle of focus and break timers with voice check-ins, so you never reset anything.",
-      "status": "todo",
+      "status": "done",
       "icon": "⏱️",
       "proposed_at": "2026-10-15T02:30:49.516Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-10-18T02:12:11.911Z"
     },
     {
       "id": "create-a-shared-alexa-household-whiteboard-anyone-in-the-fam",
@@ -7877,6 +7879,81 @@
         "datum": "2026-10-17"
       },
       "written_at": "2026-10-17T02:14:11.825Z"
+    },
+    {
+      "id": "outline-your-whole-novel-in-one-sitting-with-any-ai-assistan",
+      "company": "",
+      "tool": "",
+      "title": "Outline your whole novel in one sitting with any AI assistant",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "A copy-paste prompt chain that turns a one-line idea into a chapter-by-chapter outline, working the same way in ChatGPT, Claude, or Gemini.",
+      "status": "done",
+      "icon": "📖",
+      "proposed_at": "2026-10-18T02:07:31.297Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "can ai help me write a book",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-10-18"
+      },
+      "written_at": "2026-10-18T02:09:06.554Z"
+    },
+    {
+      "id": "ask-alexa-to-play-rain-brown-noise-or-nature-sounds-for-focu",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "Ask Alexa+ to play rain, brown noise or nature sounds for focus or sleep",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Turn Alexa+ into a hands-free background sound machine — pick the right sound for sleep versus focus, set a stop timer, and have the audio fade out automatically.",
+      "status": "todo",
+      "icon": "🌧️",
+      "proposed_at": "2026-10-18T02:10:21.071Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "set-up-alexa-voice-profiles-so-each-family-member-gets-their",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "Set up Alexa+ voice profiles so each family member gets their own briefing",
+      "audience": "personal",
+      "level": "intermediate",
+      "angle": "Use Alexa+'s per-voice personalization so the same Echo device greets each family member by name, plays their own music, and reads their personal reminders and calendar.",
+      "status": "todo",
+      "icon": "👥",
+      "proposed_at": "2026-10-18T02:10:22.405Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "create-a-shared-alexa-chore-chart-that-rotates-weekly-assign",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "Create a shared Alexa+ chore chart that rotates weekly assignments by voice",
+      "audience": "personal",
+      "level": "intermediate",
+      "angle": "Use Alexa+ lists plus a Monday routine so anyone in the household can ask who has which chore today, mark items done, and trigger a fresh rotation each week.",
+      "status": "todo",
+      "icon": "✅",
+      "proposed_at": "2026-10-18T02:10:24.187Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "how-to-summarize-a-long-email-thread-in-apple-mail",
+      "company": "Apple",
+      "tool": "Apple Intelligence",
+      "title": "How to summarize a long email thread in Apple Mail",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Turn a 40-message email chain into a two-sentence summary at the top of the thread, so you know in seconds whether you actually need to read the whole thing.",
+      "status": "todo",
+      "icon": "📧",
+      "priority": "balance",
+      "proposed_at": "2026-10-18T02:10:43.440Z",
+      "proposed_by": "guide-balance"
     }
   ],
   "trend_proba": [
@@ -7891,6 +7968,10 @@
     {
       "kifejezes": "gemini trending prompt for girls",
       "at": "2026-10-17T02:11:30.912Z"
+    },
+    {
+      "kifejezes": "can ai help me write a book",
+      "at": "2026-10-18T02:06:51.259Z"
     }
   ]
 }
