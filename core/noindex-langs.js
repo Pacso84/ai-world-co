@@ -2,6 +2,14 @@
 // NEM INDEXELENDŐ NYELVEK (2026-09-08, user-döntés)
 // ===================================================================
 //
+// ⏪ VISSZAVONVA 2026-10-18 (user): „a magyart nem rejtjük el! az a németre
+// és a franciára volt érvényes!" → a lista ÜRES, MINDEN élő nyelv (en, hu,
+// es) indexelhető. A gépezet marad; egy nyelv újbóli elrejtése CSAK
+// user-döntéssel (a `noindex-langs.test.js` rögzíti). Figyelés: a Bing napi
+// megjelenései 10-19 → 11-01 (ha nullára esnek, szólni a usernek).
+//
+// ── AZ EREDETI, 09-08-I INDOKLÁS (történeti) ─────────────────────
+//
 // A LELET, ami kiváltotta. 2026-08-21-én a Bing lépcsőfüggvényként
 // kikapcsolt minket: napi 38-76 megjelenésről PONTOSAN nullára, és azóta
 // végig. Közben az indexe 785 → 1415-re NŐTT, a feltérképezés napi 113,
@@ -52,7 +60,7 @@
  * ⚠️ Ez NEM azonos a `core/retired-langs.js` listájával: az a VÉGLEG TÖRÖLT
  * nyelveké (de, fr — azok 301-et kapnak). Ezek a lapok ÉLNEK és elérhetők.
  */
-export const NOINDEX_LANGS = ['hu'];
+export const NOINDEX_LANGS = [];
 
 /** Ki van-e zárva ez a nyelv az indexelésből? */
 export function noindexNyelv(lang) {

@@ -114,8 +114,8 @@ function checkPageSignals() {
     if (badHreflang) add('HREFLANG_HTML', `${badHreflang} db .html-es hreflang: ${rel}`);
     const og = (html.match(/og:url" content="([^"]+)"/) || [])[1];
     if (og && og.endsWith('.html')) add('OGURL_HTML', `.html-es og:url: ${rel}`);
-    // ⚠️ A SZÁNDÉKOS noindex NEM HIBA (2026-09-08). A `/hu/` ág kimarad a
-    // keresők indexéből (user-döntés, lásd `core/noindex-langs.js`) — ha ezt
+    // ⚠️ A SZÁNDÉKOS noindex NEM HIBA (2026-09-08). A `NOINDEX_LANGS` ágai kimaradnak a
+    // keresők indexéből (lásd `core/noindex-langs.js`; 10-18 óta ÜRES, a magyar is indexelt) — ha ezt
     // az őr nem tudná, MINDEN futásban riasztana rá, és a hamis riasztás
     // zajában a valódi lelet veszne el.
     //

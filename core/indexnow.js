@@ -29,7 +29,7 @@ const ARTICLES_DIR = join(ROOT, 'content', 'articles');
 // 2026-07-31: a /de és /fr kivezetve (301 az angol cikkre). NE jelentsük be
 // őket a keresőknek — különben ÁTIRÁNYÍTÓ címeket hirdetnénk, ami pontosan az
 // a hiba, amit július 27-én javítottunk ki mindenhonnan.
-// ⚠️ A NOINDEXELT nyelvi ágakat NEM jelentjük be (2026-09-08). Bejelenteni egy
+// ⚠️ A NOINDEXELT nyelvi ágakat NEM jelentjük be (2026-09-08; 10-18 óta nincs ilyen — a /hu/ is megy). Bejelenteni egy
 // címet, majd a lapon megtiltani az indexelést, ellentmondás — ugyanaz a hiba,
 // mint a /de /fr esetében: átirányító, illetve nem kívánt címeket hirdetnénk.
 const LANGS = ['', '/hu', '/es']
