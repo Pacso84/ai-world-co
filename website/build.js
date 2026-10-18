@@ -48,6 +48,8 @@ import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek } from '../core/ads.js';
 import { promptTar, promptTarHtml } from '../core/prompt-library.js';
+import { trendRadar, trendRadarHtml } from '../core/trend-radar.js';
+import { aktivTrendek } from '../core/trend-kutato.js';
 import { partnerBeallitas, partnerDoboz, partnerJelzes } from '../core/affiliate.js';
 import { kedvencForrasHtml } from '../core/preferred-source.js';
 
@@ -531,6 +533,26 @@ const UI_PROMPTS = {
         plSearch: 'Buscar prompts…', plTip: 'Los prompts están en inglés — la IA los entiende igual. Añade al final: «Responde en español».', plBanner: 'Prompts de IA listos para copiar — la biblioteca' }
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_PROMPTS[l] || {});
+
+// Trend-radar (/trending, 2026-10-18) feliratok
+const UI_TREND = {
+  en: { trNav: 'Trending', trTitle: 'What people are asking AI this week',
+        trTag: 'Every day we pick one thing people are searching for about AI and answer it with a step-by-step guide. This list only ever shows the last 7 days.',
+        trCount: 'Answered this week: {n}', trRead: 'Read the step-by-step guide',
+        trWeek: 'This week', trAgain: 'Trending again', trSearched: 'People searched:', trEmpty: 'New trend guides appear here every day — check back tomorrow.',
+        trBanner: 'Trending this week', trMore: 'See all of this week’s AI trends' },
+  hu: { trNav: 'Felkapott', trTitle: 'Ezt kérdezik most az emberek az AI-tól',
+        trTag: 'Minden nap kiválasztunk egy dolgot, amire most sokan rákeresnek az AI-jal kapcsolatban, és lépésről lépésre útmutatóval válaszolunk rá. A lista mindig csak az elmúlt 7 napot mutatja.',
+        trCount: 'Ezen a héten megválaszolva: {n}', trRead: 'Lépésről lépésre útmutató',
+        trWeek: 'Ezen a héten', trAgain: 'Újra felkapott', trSearched: 'Erre kerestek rá:', trEmpty: 'Ide naponta kerülnek új trend-útmutatók — nézz vissza holnap!',
+        trBanner: 'A hét felkapott témái', trMore: 'Nézd meg a hét összes AI-trendjét' },
+  es: { trNav: 'Tendencias', trTitle: 'Lo que la gente pregunta a la IA esta semana',
+        trTag: 'Cada día elegimos algo que la gente busca sobre la IA y lo respondemos con una guía paso a paso. La lista solo muestra los últimos 7 días.',
+        trCount: 'Respondidas esta semana: {n}', trRead: 'Leer la guía paso a paso',
+        trWeek: 'Esta semana', trAgain: 'De nuevo en tendencia', trSearched: 'La gente buscó:', trEmpty: 'Aquí aparecen nuevas guías de tendencias cada día: vuelve mañana.',
+        trBanner: 'Tendencias de la semana', trMore: 'Mira todas las tendencias de IA de la semana' }
+};
+for (const l of SITE_LANGS) Object.assign(UI[l], UI_TREND[l] || {});
 
 // "Melyik AI való neked?" varázsló feliratok (2026-07-08)
 const UI_WIZ = {
@@ -1102,6 +1124,8 @@ function loadArticles() {
         reelAt: data._meta?.reel_at || '',
         // Trendből készült-e (2026-10-14, core/trend-kutato.js) — a Prompt-tár elöl mutatja (2026-10-16).
         trend: !!data._meta?.trend,
+        // A trend-keresés szó szerint (2026-10-18) — a /trending oldal mutatja, mire írtuk az útmutatót.
+        trendKif: data._meta?.trend?.kifejezes || '',
         // VALÓDI módosítás-dátum (2026-08-01, kereső-barátság átvilágítás).
         // Eddig a dateModified = datePublished volt, vagyis a Google szerint
         // egyetlen cikkünk sem frissült SOHA — pedig a felújító (upgrade-howtos)
@@ -1528,6 +1552,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <p class="site-footer__note">${escapeHtml(tr('siteDesc') || SITE.description)}</p>
       <p class="site-footer__support"><a href="${LP}/about">${tr('aboutNav')}</a></p>
       <p class="site-footer__support"><a href="${LP}/prompts">📋 ${tr('plNav')}</a></p>
+      <p class="site-footer__support"><a href="${LP}/trending">🔥 ${tr('trBanner')}</a></p>
       ${PACKS.enabled ? `<p class="site-footer__support"><a href="${packsPath}">${tr('packsNav')}</a></p>` : ''}
       ${SUPPORT.enabled ? `<p class="site-footer__support"><a href="${supportPath}">${T.support}</a></p>` : ''}
       <p class="site-footer__support"><a href="${LP}/privacy">${tr('privNav')}</a></p>
@@ -2543,6 +2568,7 @@ function buildGuidePage(a) {
     ${faqHtml}
     ${xrefBox(a)}
     ${relatedBox(a)}
+    ${a.trend ? `<p class="tr-more"><a href="../trending">🔥 ${escapeHtml(tr('trMore'))} →</a></p>` : ''}
     <div class="article__foot">
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureGuide')}</p>
@@ -3138,6 +3164,37 @@ function buildPromptsPage(alap, loc) {
 }
 
 // ===================================================================
+// TREND-RADAR (2026-10-18, core/trend-radar.js) — a hét trend-útmutatói: a keresés, ahogy
+// beírták, az útmutató, egymondatos összefoglaló és (ha van) prompt. Cím és összefoglaló a
+// megjelenítés nyelvén (`loc`), a prompt az ANGOL forrásból (`alap`), mint a Prompt-tárban.
+// ===================================================================
+function buildTrendingPage(alap, loc) {
+  const helyi = new Map(loc.filter(a => a.isGuide).map(a => [a.slug, a]));
+  // A MAI trendlista (≤48 óra; ha nincs, üres) — ha egy régebbi trend-útmutató témája újra rajta van, visszakerül.
+  const mai = (aktivTrendek()?.temak || []).map(t => t.kifejezes).filter(Boolean);
+  const radar = trendRadar(alap.filter(a => a.isGuide && a.trendKif).map(a => ({
+    slug: a.slug, title: helyi.get(a.slug)?.title || a.title, kifejezes: a.trendKif, tool: a.tool || '',
+    publishedAt: a.publishedAt || '', md: helyi.get(a.slug)?.bodyMd || a.bodyMd || '', mdEn: a.bodyMd || '',
+    kep: a.image ? `/assets/images/${a.image}` : ''
+  })), { mai });
+  const body = trendRadarHtml(radar, {
+    sz: { cim: tr('trTitle'), tag: tr('trTag'), het: tr('trWeek'), ujra: tr('trAgain'), db: n => tr('trCount').replace('{n}', n),
+      kerestek: tr('trSearched'), ures: tr('trEmpty'), masol: tr('plCopy'), masolva: tr('plCopied'), utmutato: tr('trRead') },
+    datum: iso => new Date(iso).toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { month: 'short', day: 'numeric' }),
+    hetnap: iso => new Date(iso).toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { weekday: 'long' }),
+    rovidNap: iso => new Date(iso).toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { weekday: 'short', timeZone: 'UTC' }),
+    napSzam: iso => String(new Date(iso).getUTCDate()),
+    nyelvTipp: tr('plTip'),
+    hirdetes: hirdetesBlokk(HIRDETES, LANG)   // EGY, két napló-sor közé (user 10-18)
+  });
+  return pageShell({
+    title: `${tr('trTitle')} — ${SITE.name}`,
+    description: tr('trTag'),
+    noIntro: true, pagePath: 'trending.html', bodyContent: body
+  });
+}
+
+// ===================================================================
 // "MINDEN HÍR" ARCHÍVUM (2026-07-11) — a régi hírek eddig csak keresőből
 // voltak elérhetők; itt hónapok szerint, kompakt listában mind megvan.
 // ===================================================================
@@ -3585,6 +3642,7 @@ function main() {
     writeFileSync(join(outBase, 'tools.html'), buildToolsPage(companyGuides, guideCounts), 'utf-8');
     writeFileSync(join(outBase, 'glossary.html'), buildGlossaryPage(), 'utf-8');   // AI-kisszótár
     writeFileSync(join(outBase, 'prompts.html'), buildPromptsPage(articles, loc), 'utf-8');   // Prompt-tár (2026-10-16)
+    writeFileSync(join(outBase, 'trending.html'), buildTrendingPage(articles, loc), 'utf-8'); // Trend-radar (2026-10-18)
     writeFileSync(join(outBase, 'wizard.html'), buildWizardPage(), 'utf-8');       // Melyik AI való neked?
     writeFileSync(join(outBase, 'about.html'), buildAboutPage(loc), 'utf-8');      // Rólunk (fent a Kezdd itt, 2026-10-17)
     writeFileSync(join(outBase, 'privacy.html'), buildPrivacyPage(), 'utf-8');     // Adatvédelem (2026-10-01, AdSense-feltétel)
@@ -3661,6 +3719,7 @@ function main() {
       if (PACKS.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/packs`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/prompts`, date: today });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/trending`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/about`, date: today });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/privacy`, date: today });

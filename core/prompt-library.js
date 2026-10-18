@@ -60,7 +60,7 @@ function promptE(szoveg) {
 }
 
 // Egy korábbi válaszra épülő folytatás — a kirakatba nem való (10-16 előnézet).
-const FOLYTATAS = /^(now|then|also|next|and|what if|ok|okay|one more|another)\b/i;
+export const FOLYTATAS = /^(now|then|also|next|and|what if|ok|okay|one more|another)\b/i;
 
 // Felsorolás-sor: ezt nem fűzzük az előzőhöz.
 const LISTA_SOR = /^\s*([-*•]|\d+[.)])\s/;
@@ -157,7 +157,7 @@ function kartya(e, sz) {
 }
 
 // Másolás (eseménydelegálással) + szűrés gépelés közben. A vágólap-API hiányában a gomb nem csinál semmit.
-const SZKRIPT = `<script>(function(){document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.pl-copy');if(!b||!navigator.clipboard)return;var t=b.closest('.pl-card').querySelector('.pl-text').innerText;navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent=b.getAttribute('data-copied');setTimeout(function(){b.textContent=o},1600)})});var q=document.getElementById('plSearch');if(!q)return;q.addEventListener('input',function(){var v=q.value.toLowerCase().trim();document.querySelectorAll('.pl-card').forEach(function(c){c.style.display=!v||c.textContent.toLowerCase().indexOf(v)>-1?'':'none'});document.querySelectorAll('.pl-sec').forEach(function(s){var l=s.querySelectorAll('.pl-card:not([style*="none"])').length;s.style.display=l?'':'none'})})})();</script>`;
+export const SZKRIPT = `<script>(function(){document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.pl-copy');if(!b||!navigator.clipboard)return;var t=b.closest('.pl-card').querySelector('.pl-text').innerText;navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent=b.getAttribute('data-copied');setTimeout(function(){b.textContent=o},1600)})});var q=document.getElementById('plSearch');if(!q)return;q.addEventListener('input',function(){var v=q.value.toLowerCase().trim();document.querySelectorAll('.pl-card').forEach(function(c){c.style.display=!v||c.textContent.toLowerCase().indexOf(v)>-1?'':'none'});document.querySelectorAll('.pl-sec').forEach(function(s){var l=s.querySelectorAll('.pl-card:not([style*="none"])').length;s.style.display=l?'':'none'})})})();</script>`;
 
 /** Az oldal törzse. `sz`: felületi szövegek; `temaNev(id)`: a téma neve az adott nyelven; `nyelvTipp`: nem angol oldalon. */
 export function promptTarHtml(tar, { sz, temaNev, nyelvTipp = '' }) {

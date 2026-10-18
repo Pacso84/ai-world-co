@@ -131,7 +131,7 @@ t('🧱 HTML: minden kártyán másolás-gomb, eszköz és link a teljes útmuta
   assert.match(promptTarHtml(tar, { sz: SZ, temaNev: id => id, nyelvTipp: 'Tipp: <x>' }), /<p class="pl-tip">Tipp: &lt;x&gt;<\/p>/);
 });
 
-t('📊 VALÓDI útmutatókon: legalább 400 prompt (mérve 10-16: 431), és egyik sem példa-adat („Theme: …”, „Pantry: …”)', () => {
+t('📊 VALÓDI útmutatókon: útmutatónként legalább 0,85 prompt (mérve 10-16: 431/428, 10-18: 375/382), és egyik sem példa-adat („Theme: …”, „Pantry: …”)', () => {
   const DIR = join(ROOT, 'content', 'articles');
   const cikkek = readdirSync(DIR).filter(f => f.startsWith('ARTICLE_GUIDE_')).map(f => {
     const j = JSON.parse(readFileSync(join(DIR, f), 'utf-8'));
@@ -142,7 +142,9 @@ t('📊 VALÓDI útmutatókon: legalább 400 prompt (mérve 10-16: 431), és egy
   const adat = mind.filter(e => /^(Theme|Pantry|Fridge|Freezer|Name|Budget|Me|Facts|Notes|Subject|Date|Day \d+|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|Out of)\b[^.\n]{0,24}:/i.test(e.szoveg));
   const kesz = mind.filter(e => /^(thanks|thank you|hi|hello|dear)\b/i.test(e.szoveg));
   console.log(`     ${tar.ossz} prompt ${cikkek.length} útmutatóból · kiemelt ${tar.kiemelt.length}`);
-  assert.ok(tar.ossz >= 400, 'túl kevés (elromlott a kinyerés?): ' + tar.ossz);
+  // ARÁNY, nem darabszám: a napi útmutató-törlés (core/guide-prune.js) a darabszámot csökkenti —
+  // a rögzített „≥ 400” 10-18-án így bukott el, pedig a kinyerés ép volt.
+  assert.ok(tar.ossz >= 0.85 * cikkek.length, `túl kevés (elromlott a kinyerés?): ${tar.ossz} / ${cikkek.length} útmutató`);
   assert.deepEqual(kesz.map(e => e.szoveg.slice(0, 50)), [], 'kész levél/üdvözlés csúszott át');
   assert.deepEqual(adat.map(e => e.szoveg.slice(0, 50)), [], 'példa-adat csúszott át');
 });
