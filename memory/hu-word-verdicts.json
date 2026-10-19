@@ -549,6 +549,7 @@
     "célközönséget",
     "célnyelven",
     "célnyelvet",
+    "címenél",
     "címkát",
     "címsorok",
     "címsorokat",
@@ -1586,6 +1587,7 @@
     "magokat",
     "magrebi",
     "magyarazza",
+    "magyaráznivalót",
     "magántanárod",
     "mailbe",
     "mailben",
@@ -1750,6 +1752,7 @@
     "motorokat",
     "motorokra",
     "mozgáspromptot",
+    "multimodal",
     "munkadataidhoz",
     "munkahelyidre",
     "munkahelyit",
@@ -1932,6 +1935,7 @@
     "oktatóanyagokhoz",
     "oktatóanyagokkal",
     "oktatóanyagoknál",
+    "oldalsávodban",
     "oldalsávodon",
     "oldalsávok",
     "oldalsávokat",
@@ -4451,6 +4455,11 @@
       "correct": "beivódna",
       "at": "2026-10-18",
       "mondattal": true
+    },
+    "füzetlapohoz": {
+      "correct": "füzetlaphoz",
+      "at": "2026-10-19",
+      "mondattal": true
     }
   },
   "review": {
@@ -6098,8 +6107,8 @@
     }
   },
   "scan": {
-    "at": "2026-10-18",
-    "files": 847,
-    "candidates": 0
+    "at": "2026-10-19",
+    "files": 840,
+    "candidates": 5
   }
 }
