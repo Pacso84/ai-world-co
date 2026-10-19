@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-19T15:08:50.203Z",
+  "drafts_total": 5,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 1,
+  "merged_total": 1,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.03575507,
+  "by_article": [
+    {
+      "draft": "2026-10-19T15-08-45-040Z_picsart_Kling_4_0_is_now_in_Picsart_with_30-second_and_4K_.json",
+      "writer_output": "WRITER_2026-10-19T15-08-45-040Z_picsart_Kling_4_0_is_now_in_Picsart_with_30-second_and_4K_.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Kling 4.0 video generation in Picsart",
+      "cost_usd": 0.00896748,
+      "duration_ms": 27473,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-19T15-08-45-040Z_pixlr_Iconic_Horror_Scene_Prompts.json",
+      "writer_output": "WRITER_2026-10-19T15-08-45-040Z_pixlr_Iconic_Horror_Scene_Prompts.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00715415,
+      "duration_ms": 26962,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-19T15-08-45-040Z_picsart_Chrome_screenshot_extension__meet_Picsart_Capture_.json",
+      "writer_output": "WRITER_2026-10-19T15-08-45-040Z_picsart_Chrome_screenshot_extension__meet_Picsart_Capture_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.00690881,
+      "duration_ms": 32754,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    },
+    {
+      "draft": "2026-10-19T15-08-45-039Z_minimax-blog_MiniMax_M3_1_Flash__Redefining_Agent_Performance_a.json",
+      "writer_output": "WRITER_2026-10-19T15-08-45-039Z_minimax-blog_MiniMax_M3_1_Flash__Redefining_Agent_Performance_a.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.01063423,
+      "duration_ms": 34143,
+      "provider": "openrouter",
+      "model": "minimax/minimax-m3"
+    }
+  ],
+  "finished_at": "2026-10-19T15:11:11.504Z",
+  "duration_seconds": 141.301
+}

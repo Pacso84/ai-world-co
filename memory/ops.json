@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179220285057350",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-17T02:07:30.573Z",
-      "updated": "2026-10-17T02:08:46.086Z"
-    },
-    {
-      "id": "t179220292608999",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-17T02:08:46.089Z",
-      "updated": "2026-10-17T02:10:25.889Z"
-    },
-    {
-      "id": "t179220302589119",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-17T02:10:25.891Z",
-      "updated": "2026-10-17T02:11:07.717Z"
-    },
-    {
-      "id": "t179220306772010",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-17T02:11:07.720Z",
-      "updated": "2026-10-17T02:11:30.677Z"
-    },
-    {
-      "id": "t179220309072590",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-17T02:11:30.725Z",
-      "updated": "2026-10-17T02:14:11.835Z"
-    },
-    {
-      "id": "t179220325183633",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-17T02:14:11.836Z",
-      "updated": "2026-10-17T02:14:53.408Z"
-    },
-    {
-      "id": "t179220329345282",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-17T02:14:53.452Z",
-      "updated": "2026-10-17T02:14:53.644Z"
-    },
-    {
-      "id": "t179220329368649",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-17T02:14:53.686Z",
-      "updated": "2026-10-17T02:16:19.459Z"
-    },
-    {
-      "id": "t179220337946135",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-17T02:16:19.461Z",
-      "updated": "2026-10-17T02:17:15.084Z"
-    },
-    {
-      "id": "t179220343508641",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-17T02:17:15.086Z",
-      "updated": "2026-10-17T02:17:25.701Z"
-    },
-    {
-      "id": "t179220344570334",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-17T02:17:25.703Z",
-      "updated": "2026-10-17T02:18:00.304Z"
-    },
-    {
-      "id": "t179223782382365",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-17T11:50:23.823Z",
-      "updated": "2026-10-17T11:50:24.021Z"
-    },
-    {
-      "id": "t179223782402396",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-17T11:50:24.023Z",
-      "updated": "2026-10-17T11:50:48.714Z"
-    },
-    {
       "id": "t179223784871610",
       "title": "Run source-scout",
       "status": "done",
@@ -479,33 +375,113 @@
       "agent": "publisher",
       "created": "2026-10-19T02:25:16.070Z",
       "updated": "2026-10-19T02:25:50.936Z"
+    },
+    {
+      "id": "t17924224792574",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-19T15:07:59.257Z",
+      "updated": "2026-10-19T15:07:59.451Z"
+    },
+    {
+      "id": "t179242247945225",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-19T15:07:59.453Z",
+      "updated": "2026-10-19T15:08:49.793Z"
+    },
+    {
+      "id": "t179242252979533",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-19T15:08:49.795Z",
+      "updated": "2026-10-19T15:08:50.010Z"
+    },
+    {
+      "id": "t179242253001298",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-19T15:08:50.012Z",
+      "updated": "2026-10-19T15:11:11.521Z"
+    },
+    {
+      "id": "t179242267152270",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-19T15:11:11.522Z",
+      "updated": "2026-10-19T15:12:09.694Z"
+    },
+    {
+      "id": "t179242272969796",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-19T15:12:09.697Z",
+      "updated": "2026-10-19T15:12:40.415Z"
+    },
+    {
+      "id": "t179242276041773",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-19T15:12:40.417Z",
+      "updated": "2026-10-19T15:12:51.669Z"
+    },
+    {
+      "id": "t179242277167245",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-19T15:12:51.672Z",
+      "updated": "2026-10-19T15:13:23.301Z"
+    },
+    {
+      "id": "t179242280338736",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-19T15:13:23.387Z",
+      "updated": "2026-10-19T15:13:23.593Z"
+    },
+    {
+      "id": "t179242280359554",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-19T15:13:23.595Z",
+      "updated": "2026-10-19T15:15:45.438Z"
+    },
+    {
+      "id": "t179242294544076",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-19T15:15:45.440Z",
+      "updated": "2026-10-19T15:16:33.640Z"
+    },
+    {
+      "id": "t179242299364286",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-19T15:16:33.642Z",
+      "updated": "2026-10-19T15:16:46.525Z"
+    },
+    {
+      "id": "t179242300652786",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-19T15:16:46.527Z",
+      "updated": "2026-10-19T15:17:14.837Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179091171395458",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, everyday use cases (complaints, resumes, thank-you notes) that match your \"AI for regular people\" mission nicely. A couple of articles don't specify which AI tool ",
-      "agent": "publisher",
-      "at": "2026-10-02T03:28:33.954Z",
-      "loud": false
-    },
-    {
-      "id": "n179091173253175",
-      "level": "success",
-      "text": "3 hír + 2 útmutató publikálva (költség: $0.0769).",
-      "agent": "ceo",
-      "at": "2026-10-02T03:28:52.531Z",
-      "loud": false
-    },
-    {
-      "id": "n179095129311036",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-10-02T14:28:13.110Z",
-      "loud": false
-    },
     {
       "id": "n179095131305169",
       "level": "success",
@@ -1281,63 +1257,33 @@
       "agent": "ceo",
       "at": "2026-10-19T02:25:50.970Z",
       "loud": false
+    },
+    {
+      "id": "n179242299363162",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 7.4/10).",
+      "agent": "seo",
+      "at": "2026-10-19T15:16:33.631Z",
+      "loud": false
+    },
+    {
+      "id": "n179242301850471",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — all 10 articles cover practical, everyday writing tasks with a nice mix of AI tools (ChatGPT, DeepSeek, Grok, Le Chat, Cohere, Qwen). They use the shortest official pr",
+      "agent": "publisher",
+      "at": "2026-10-19T15:16:58.504Z",
+      "loud": false
+    },
+    {
+      "id": "n179242303488074",
+      "level": "success",
+      "text": "5 hír + 0 útmutató publikálva (költség: $0.0489).",
+      "agent": "ceo",
+      "at": "2026-10-19T15:17:14.880Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17908872354551",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a meeting agenda and summarise notes with Pe\" — Focus dropdown showing modes like Internet, Academic, Writing, or Social; Writing mode for drafting original text without web lookups",
-      "ref": "ARTICLE_GUIDE_draft-a-meeting-agenda-and-summarise-notes-with-perplexity.json",
-      "at": "2026-10-01T20:40:35.455Z"
-    },
-    {
-      "id": "m179091170949188",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-02T03:28:29.491Z"
-    },
-    {
-      "id": "m179091282667793",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-02T03:47:06.677Z"
-    },
-    {
-      "id": "m179095130329975",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-02T14:28:23.299Z"
-    },
-    {
-      "id": "m179095152541776",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a polite complaint email to your landlord ab\" — The specific placeholder text \"Send a message to Qwen…\" (UI may have changed); The description of the send button as \"usually an arrow icon or paper-plane shape on the right side of the message box\" (UI may have changed); The claim that the \"+\" icon \"usually sits on the left side of ",
-      "ref": "ARTICLE_GUIDE_draft-a-polite-complaint-email-to-your-landlord-about-a-main.json",
-      "at": "2026-10-02T14:32:05.417Z"
-    },
-    {
-      "id": "m17909521208393",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-02T14:42:00.839Z"
-    },
     {
       "id": "m179097212088862",
       "from": "fact-check",
@@ -2647,6 +2593,60 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-19T02:40:54.994Z"
+    },
+    {
+      "id": "m179242276040520",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"This Week in AI: The 5 Stories That Matter (October 18, 2026)\" — javítva: Item 4 attributes a 'four real examples of AI agents in cities, hospitals, and sports' announcement to NVIDIA, including specific claims that one routes citizen requests across government departments and another helps hospital staff with scheduling — the source block only references the weekly roundup headline ",
+      "ref": "2026-10-18T02-16-12-366Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-10-19T15:12:40.405Z"
+    },
+    {
+      "id": "m179242277165998",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"This Week in AI: The 5 Stories That Matter (October 18, 2026)\" (?/10)",
+      "ref": "2026-10-18T02-16-12-366Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-10-19T15:12:51.659Z"
+    },
+    {
+      "id": "m179242278744885",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Chrome screenshot extension: meet Picsart Capture & Cre\" hír a meglévő útmutatóra mutat: how-to-turn-your-notes-into-a-polished-report-with-ai-in-min",
+      "ref": "how-to-turn-your-notes-into-a-polished-report-with-ai-in-min",
+      "at": "2026-10-19T15:13:07.448Z"
+    },
+    {
+      "id": "m179242279786232",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Kling 4.0 is now in Picsart with 30-second and 4K video\" hír a meglévő útmutatóra mutat: how-to-use-kling-ai-video-templates-in-picsart-flow",
+      "ref": "how-to-use-kling-ai-video-templates-in-picsart-flow",
+      "at": "2026-10-19T15:13:17.862Z"
+    },
+    {
+      "id": "m179242300651697",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-19T15:16:46.516Z"
+    },
+    {
+      "id": "m179242309441925",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a calm, professional reply to a frustrating \" — Reference to paid plan that may give more replies — unverifiable whether DeepSeek currently offers paid plans, and the guide's purpose is basic free usage",
+      "ref": "ARTICLE_GUIDE_draft-a-calm-professional-reply-to-a-frustrating-work-email.json",
+      "at": "2026-10-19T15:18:14.419Z"
     }
   ]
 }
