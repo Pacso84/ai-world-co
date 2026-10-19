@@ -1,42 +1,30 @@
 {
   "_meta": {
-    "generated_at": "2026-10-16T02:12:18.374Z",
+    "generated_at": "2026-10-19T02:20:57.814Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
-    "newly_discovered": 1,
-    "rejected_count": 5,
+    "newly_discovered": 0,
+    "rejected_count": 3,
     "rejected_examples": [
       {
-        "name": "Obsidian Blog",
-        "host": "obsidian.md",
-        "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
+        "name": "Brave Browser",
+        "host": "brave.com",
+        "reason": "a friss cikkeinek csak 50%-a szól AI-ról (kell: 60%)",
         "score": 100
       },
       {
-        "name": "Bear Blog",
-        "host": "bear.app",
-        "reason": "a friss cikkeinek csak 6%-a szól AI-ról (kell: 60%)",
+        "name": "Slack AI",
+        "host": "slack.com",
+        "reason": "a friss cikkeinek csak 40%-a szól AI-ról (kell: 60%)",
         "score": 100
       },
       {
-        "name": "Craft Blog",
-        "host": "craft.do",
+        "name": "Otter.ai",
+        "host": "otter.ai",
         "reason": "pont 94 < 100",
         "score": 94
-      },
-      {
-        "name": "Capacities Blog",
-        "host": "capacities.io",
-        "reason": "a friss cikkeinek csak 14%-a szól AI-ról (kell: 60%)",
-        "score": 100
-      },
-      {
-        "name": "Reflect Blog",
-        "host": "reflect.app",
-        "reason": "pont 76 < 100",
-        "score": 76
       }
     ]
   },
