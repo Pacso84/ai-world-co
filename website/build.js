@@ -33,6 +33,7 @@ import { RETIRED_LANGS } from '../core/retired-langs.js';
 // kapnak), ezek viszont ÉLŐ, elérhető lapok — csak a keresők indexéből
 // maradnak ki. A modul fejléce indokolja, hogy miért. (2026-09-08)
 import { robotsTartalom, indexelhetoNyelvek, noindexNyelv } from '../core/noindex-langs.js';
+import { cikkLastmod, gyujtoLastmod, napja, sitemapSor } from '../core/sitemap-lastmod.js';
 // Teme-hub oldalak (2026-09-10) — a besorolas a KOZOS modulbol jon, ugyanabbol,
 // amit a fizetos csomag hasznal. Egy szabaly, egy hely.
 import { TEMAK, temaOf , temaSzoveg, temaLeiras } from '../core/topics.js';
@@ -1133,7 +1134,7 @@ function loadArticles() {
         // egyetlen cikkünk sem frissült SOHA — pedig a felújító (upgrade-howtos)
         // és a tény-ellenőrző rendszeresen újraírja őket. A frissesség a
         // rangsorolás egyik jelzése; a saját munkánkat titkoltuk el vele.
-        modifiedAt: [data._meta?.published_at, data._meta?.howto_upgraded_at, data._meta?.fact_checked_at]
+        modifiedAt: [data._meta?.published_at, data._meta?.howto_upgraded_at, data._meta?.fact_checked_at, data._meta?.fresh_updated_at]
           .filter(Boolean).sort().pop() || data._meta?.published_at || '',
         sourceName: data._meta?.source_name || '',
         sourceLink: data._meta?.source_link || '',
@@ -3642,7 +3643,7 @@ function main() {
       const lista = temaCsoportok.get(t.id);
       if (lista.length < 3) continue;
       writeFileSync(join(outBase, temaHubUt(t.id) + '.html'), buildTopicPage(t, lista), 'utf-8');
-      if (!noindexNyelv(lang)) sitemapUrls.push({ loc: `${SITE.url}${langPrefix(lang)}/${temaHubUt(t.id)}`, date: today });
+      if (!noindexNyelv(lang)) sitemapUrls.push({ loc: `${SITE.url}${langPrefix(lang)}/${temaHubUt(t.id)}`, date: gyujtoLastmod(lista) });
     }
     writeFileSync(join(outBase, 'guides.html'), buildGuidesPage(generalGuides, guideCounts, temaCsoportok), 'utf-8');
     writeFileSync(join(outBase, 'tools.html'), buildToolsPage(companyGuides, guideCounts), 'utf-8');
@@ -3718,19 +3719,21 @@ function main() {
     // Az OLDALAK ettől függetlenül elkészülnek és elérhetők (fentebb).
     const lp = langPrefix(lang);
     if (!noindexNyelv(lang)) {
-      sitemapUrls.push({ loc: `${SITE.url}${lp}/`, date: today });
-      if (generalGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/guides`, date: today });
-      if (companyGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/tools`, date: today });
-      if (SUPPORT.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/support`, date: today });
-      if (PACKS.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/packs`, date: today });
-      sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary`, date: today });
-      sitemapUrls.push({ loc: `${SITE.url}${lp}/prompts`, date: today });
-      sitemapUrls.push({ loc: `${SITE.url}${lp}/trending`, date: today });
-      sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: today });
-      sitemapUrls.push({ loc: `${SITE.url}${lp}/about`, date: today });
-      sitemapUrls.push({ loc: `${SITE.url}${lp}/privacy`, date: today });
-      sitemapUrls.push({ loc: `${SITE.url}${lp}/archive`, date: today });
-      for (const a of loc) sitemapUrls.push({ loc: `${SITE.url}${lp}/article/${a.slug}`, date: (a.publishedAt || '').slice(0, 10) || today });
+      // ŐSZINTE LASTMOD (2026-10-19, core/sitemap-lastmod.js): gyűjtőoldal = a rajta lévő
+      // legfrissebb cikk; állandó oldal = NINCS dátum; cikk = a valódi utolsó változás.
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/`, date: gyujtoLastmod(loc) });
+      if (generalGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/guides`, date: gyujtoLastmod(generalGuides) });
+      if (companyGuides.length) sitemapUrls.push({ loc: `${SITE.url}${lp}/tools`, date: gyujtoLastmod(companyGuides) });
+      if (SUPPORT.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/support`, date: null });
+      if (PACKS.enabled) sitemapUrls.push({ loc: `${SITE.url}${lp}/packs`, date: napja(PACKS.updated) });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary`, date: null });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/prompts`, date: gyujtoLastmod(guides) });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/trending`, date: gyujtoLastmod(loc.filter(a => a.trend)) });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: null });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/about`, date: null });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/privacy`, date: null });
+      sitemapUrls.push({ loc: `${SITE.url}${lp}/archive`, date: gyujtoLastmod(news) });
+      for (const a of loc) sitemapUrls.push({ loc: `${SITE.url}${lp}/article/${a.slug}`, date: cikkLastmod(a) });
     }
 
     console.log(`✅ [${lang}] ${loc.length + 3} oldal generálva (${outBase === OUT_DIR ? 'gyökér' : lang + '/'})`);
@@ -3741,7 +3744,7 @@ function main() {
   // SEO: egyesített sitemap.xml + robots.txt
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapUrls.map(u => `  <url><loc>${u.loc}</loc><lastmod>${u.date}</lastmod></url>`).join('\n')}
+${sitemapUrls.map(sitemapSor).join('\n')}
 </urlset>`;
   writeFileSync(join(OUT_DIR, 'sitemap.xml'), sitemap, 'utf-8');
 

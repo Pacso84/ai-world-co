@@ -862,6 +862,22 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: node core/traffic-log.js || true
 
+      # 🚨 FACEBOOK-LINKKORLÁT-ŐR (2026-10-19). A forgalom ~82%-a a Facebookról jön, és a
+      # Meta havi 2 linkes korlátja napok alatt elviheti. Rögzíti a Facebookról jött
+      # látogatókat + a kiment posztokat (memory/fb-link-guard.json), és Telegramon szól,
+      # ha két napja a megszokott szint fele alatt vagyunk. Read-only Cloudflare, $0, nincs AI.
+      - name: Facebook-linkkorlát-őr
+        # Külön timeout-minutes NINCS (mint a fenti forgalom-naplónál): a lépés-plafonok
+        # összege már szoros (core/ci-timeouts.test.js); az őr minden hívása 20 mp-es
+        # AbortSignal-lal fut, tehát magától sem akadhat be.
+        if: always()
+        env:
+          CF_ANALYTICS_TOKEN: ${{ secrets.CF_ANALYTICS_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: node core/fb-link-guard.js || true
+
       # if: always() (2026-07-21 audit) — a költség-napló (core/budget-state.json)
       # CSAK itt őrződik meg. Enélkül egy bukott lépés az egész futás elköltött
       # pénzét ELDOBTA a nyilvántartásból → a havi plafon egyre kevesebbet mért.

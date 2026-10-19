@@ -38,6 +38,7 @@ import { latenciaSor } from './ai-latency-guard.js';
 import { futasokLekerdez, sodrodasVizsgalat, sodrodasSor } from './watchdog-drift.js';
 import { linkSor } from './internal-link-guard.js';
 import { bufferSor, tiktokSor } from './buffer-guard.js';
+import { riportSor as fbRiportSor } from './fb-link-guard.js';
 import { tesztSor } from './test-guard.js';
 import { pdfLetoltesSor } from './pdf-download.js';
 import { partnerKattintasSor } from './affiliate.js';
@@ -696,6 +697,15 @@ async function main() {
     if (tt) lines.push(tt);
   } catch { /* még nem futott — nem baj */ }
 
+  // 📘 FACEBOOK-LINKKORLÁT-ŐR (2026-10-19). A forgalom ~82%-a a Facebookról jön; a
+  // Meta havi 2 linkes korlátja napok alatt elviheti. Az őr maga is riaszt, ha
+  // összeesik — ez a sor naponta megmutatja a számot, riasztás alatt ⚠️-vel.
+  try {
+    const fbg = JSON.parse(readFileSync(join(ROOT, 'memory', 'fb-link-guard.json'), 'utf-8'));
+    const sor = fbRiportSor(fbg);
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott — nem baj */ }
+
   // 🧪 TESZT-ŐRSZEM (2026-09-06). 2026-08-31-én a tény-ellenőrző agent egy ÉLŐ
   // cikkben átírta a valódi „ChatRTX" nevet a nem létező „NVIDIA Chat"-re. A
   // `core/tool-kinds.test.js` EZT PONTOSAN ELKAPTA — csakhogy a munkafolyamat
@@ -843,6 +853,8 @@ async function main() {
       // megáll, az azt jelenti, hogy a lépés maga maradt ki — enélkül a
       // „nem volt mit posztolni" és a „nem futott le" egyformán nézne ki.
       'buffer-guard.json': 'Buffer',
+      // A Facebook-linkkorlát-őr (2026-10-19) MINDEN futásban ír (`at`), riasztás nélkül is.
+      'fb-link-guard.json': 'Facebook-őr',
       // A teszt-futtató őre (2026-09-06). A `tesztSor()` a TARTALMAT nézi
       // (piros-e), ez az `at` BÉLYEGET: ha a CI tesztlépése kimarad (pl. egy
       // korábbi lépés elhasal, és a step nem `always()`), a lemezen az ELŐZŐ
