@@ -1,0 +1,61 @@
+name: Heti MI-híradó — gyártás (vasárnap)
+
+# HETI MI-HÍRADÓ (2026-10-19, user: „azt mondtuk a heti összefoglaló videó lesz! de nem
+# így sikerült!" → „ez így jó!"). A 10-11-i mini-híradó formájában (beszélő kabala +
+# a hír borítója + hírszalag) minden héten MAGÁTÓL elkészül a heti összefoglaló cikkből.
+# Lásd core/heti-hirado.js.
+#
+# ⚠️ NEM POSZTOL. A videó + content/hirado/<dátum>.json visszacommitolódik, a következő
+# auto.yml-futás kiteszi a honlapra, és a Telegram szól a usernek. Kiküldés CSAK a
+# jóváhagyása után: .github/workflows/hirado-kuldes.yml (kézi).
+#
+# IDŐZÍTÉS: vasárnap 16:30 UTC (a heti összefoglaló a déli futásban készül), és hétfőn
+# 16:30 UTC pótlásként, ha a cikk késett (10-18-án hétfőn jelent meg). Ha már kész, kihagyja.
+
+on:
+  schedule:
+    - cron: '30 16 * * 0'
+    - cron: '30 16 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aiworld-auto
+  cancel-in-progress: false
+
+jobs:
+  gyartas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: ffmpeg telepítése
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && ffmpeg -version | head -1
+
+      - name: Heti híradó gyártása (Hugging Face LTX + ffmpeg)
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: node core/heti-hirado.js --gyart
+
+      - name: Videó + jelölő json visszacommitolása
+        if: success()
+        run: |
+          git config user.name "AI World Bot"
+          git config user.email "bot@aiworld.local"
+          # a shorts/ gitignore-olt — a heti híradót kifejezetten fel kell venni (-f), különben nem kerül ki
+          git add -f website/assets/video/shorts/this-week-in-ai-*.mp4 2>/dev/null || true
+          git add content/hirado/*.json
+          git commit -m "auto: heti MI-híradó $(date -u +%F)" || { echo "nincs új híradó"; exit 0; }
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase -X theirs || { git rebase --abort 2>/dev/null || true; }
+          done
+          exit 1
