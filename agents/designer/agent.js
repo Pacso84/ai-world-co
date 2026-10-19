@@ -25,6 +25,7 @@ import { dirname, join } from 'path';
 import { GoogleGenAI } from '@google/genai';
 import { ask } from '../../core/ai-router.js';
 import { skillsBlock } from '../../core/skills.js';
+import { szovegMentesJelenet, szovegKockazat, ujrairasKeres } from '../../core/cover-scene.js';
 
 const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 const IMAGE_MODEL = 'gemini-2.5-flash-image';
@@ -82,20 +83,36 @@ async function describeScene(title, subtitle, body = '') {
   const prompt = `Article title: "${title}"
 Subtitle: "${subtitle}"
 ${steps ? `Sections: ${steps}\n` : ''}${excerpt ? `Article opening: ${excerpt}\n` : ''}
-Base the scene on what the article ACTUALLY talks about (the tools, screens and
+Base the scene on what the article ACTUALLY talks about (the tools, devices and
 actions named above) — not on the title alone.
 
 Describe ONE concrete visual scene for the cover image. STRICT RULES:
 - The scene MUST show the article's actual SUBJECT as instantly recognizable objects
-  (photo analysis -> "a smartphone displaying a photo, scanned by a glowing magnifying lens";
+  (photo analysis -> "a printed photograph on a desk, scanned by a glowing magnifying lens";
    customer-service bot -> "a friendly robot with a headset behind a help desk counter").
 - Name 2-4 specific objects and what they are DOING; the main object dominates the frame.
+- NO screens, displays, app interfaces, papers, books, notebooks, planners, newspapers, documents,
+  speech bubbles, signs, boards, labels or logos: the image model cannot write, so any of them
+  turns into gibberish letters. Show the tool as a PHYSICAL object instead
+  (Alexa routines -> "a smart speaker on a breakfast table next to an alarm clock and a steaming mug").
 - FORBIDDEN: landscapes, hills, balloons, cloud scenery, abstract blobs, people's faces, text/letters.
 Reply with ONLY the scene description, max 30 words.
 ${skillsBlock('designer')}`;
   try {
     const r = await ask(prompt, { agentName: 'designer', systemPrompt: 'You are an art director. Reply with one vivid, concrete visual scene description only. The scene must make the article topic instantly recognizable — never a generic landscape.', maxTokens: 200 });
-    const t = (r && r.text || '').trim().replace(/^["']|["']$/g, '');
+    let t = (r && r.text || '').trim().replace(/^["']|["']$/g, '');
+    // 2026-10-19: feliratos tárgy (képernyő, papír, logó) → a Flux halandzsa betűket rajzol rá
+    // („Rtews News”). A puszta „no text” toldat mérve NEM elég → a tárgyat kell kivenni:
+    // EGYSZER újraíratjuk (nem ciklus — költség). Ha a második is kockázatos, a buildPrompt
+    // hálója még rákerül.
+    const szo = szovegKockazat(t);
+    if (t.length >= 15 && szo) {
+      try {
+        const r2 = await ask(ujrairasKeres(t, szo), { agentName: 'designer', systemPrompt: 'You are an art director. Reply with one vivid, concrete visual scene description only. The scene must make the article topic instantly recognizable — never a generic landscape.', maxTokens: 200 });
+        const t2 = (r2 && r2.text || '').trim().replace(/^["']|["']$/g, '');
+        if (t2.length >= 15) t = t2;
+      } catch { /* marad az első jelenet */ }
+    }
     if (t.length >= 15) return t;   // csak ha értelmes hosszúságú
   } catch { /* fallback */ }
   // Tartalék: a témát TÁRGYAKKÁ fordítjuk (nehogy tájkép legyen!)
@@ -103,13 +120,15 @@ ${skillsBlock('designer')}`;
 }
 
 // A brand vizuális stílusa a prompthoz — SZÍNES 3D RENDER
-const STYLE = 'vibrant colorful 3D render, glossy soft rounded shapes, playful modern tech illustration, soft studio lighting, smooth materials, clean minimal background, depth of field, high quality octane render, 4k, no text no words no letters';
+const STYLE = 'vibrant colorful 3D render, glossy soft rounded shapes, playful modern tech illustration, soft studio lighting, smooth materials, clean minimal background, depth of field, high quality octane render, 4k, no text no words no letters, no logos, no user interface';
 
 function buildPrompt(scene) {
   // A jelenet (art-director által) adja a tárgyat, a STYLE a konzisztens 3D megjelenést.
   // FONTOS: a "landscape" szó TILOS a promptban — a képgenerátor tájképnek érti,
   // ebből lettek a semmitmondó dombos-lufis borítók (2026-07-02 user-jelzés).
-  const s = scene.replace(/["']/g, '').slice(0, 160);
+  // 2026-10-19: a képernyőből/feliratból a Flux halandzsa betűket rajzol („Aleza+”) →
+  // a háló a VÁGÁS UTÁN kerül rá, hogy a 160 karakteres levágás ne egye meg.
+  const s = szovegMentesJelenet(scene.replace(/["']/g, '').slice(0, 160));
   return `3D rendered illustration, 16:9 wide format: ${s}. The subject is large, centered and instantly recognizable. ${STYLE}`;
 }
 
