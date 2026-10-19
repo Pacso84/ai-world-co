@@ -682,6 +682,18 @@ jobs:
           MAKE_REEL_WEBHOOK_URL: ${{ secrets.MAKE_REEL_WEBHOOK_URL }}
         run: node core/reel-post.js --send || true
 
+      # 📺 HETI MI-HÍRADÓ — automata kiküldés (2026-10-19, user: „mehet ki automatikusan!").
+      # A videót a .github/workflows/heti-hirado.yml gyártja vasárnap; ez a lépés a deploy
+      # UTÁN küldi ki (FB Reel → Make, TikTok + Threads → Buffer), csak ha a videó már él,
+      # friss (≤4 nap) és van még csatorna, ahová nem ment ki. A jelölést a záró
+      # visszacommit menti (content/hirado/<dátum>.json) — kétszer sosem megy ki.
+      - name: Heti MI-híradó — kiküldés (a deploy UTÁN)
+        if: always()
+        env:
+          MAKE_REEL_WEBHOOK_URL: ${{ secrets.MAKE_REEL_WEBHOOK_URL }}
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+        run: node core/hirado-kuldes.js --auto || true
+
       # Social: poszt-szöveg az új cikkekhez + kiküldés (Make webhook → FB oldal).
       # Max 2 poszt/futás (kulturált tempó); hiba nem dönti el a futást.
       - name: Social — poszt-gyártás + kiküldés

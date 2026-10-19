@@ -14,8 +14,8 @@
 //   4. website/assets/video/shorts/this-week-in-ai-<dátum>.mp4 + content/hirado/<dátum>.json
 //      (ezt olvassa a meglévő kiküldő: core/hirado-kuldes.js).
 //
-// A KIKÜLDÉS NEM ITT VAN: az első hetekben a user megnézi, és csak a jóváhagyása
-// után indul a .github/workflows/hirado-kuldes.yml.
+// A KIKÜLDÉS NEM ITT VAN: az auto.yml a deploy UTÁN magától kiküldi (core/hirado-kuldes.js
+// --auto; user 10-19: „mehet ki automatikusan!"), és a heti cikk tetején a honlapon is látszik.
 // BORÍTÓ: csak a felirat-javítás (a835e619, 10-19) UTÁN készült kép kerülhet bele —
 // a régiek halandzsa szöveget hordoznak; helyettük a heti cikk saját borítója.
 //
@@ -231,7 +231,7 @@ if (kozvetlen && process.argv.includes('--gyart')) {
   try {
     const r = await gyart();
     uzenet = r.ok
-      ? `🎬 Elkészült a heti MI-híradó (${r.j.datum}, ${r.jelenetek} jelenet). A következő frissítés után itt nézhető meg:\nhttps://aiworldhq.com/assets/video/shorts/${r.j.video_slug}.mp4\nKiküldés CSAK jóváhagyás után (szólj Claude-nak).`
+      ? `🎬 Elkészült a heti MI-híradó (${r.j.datum}, ${r.jelenetek} jelenet). A következő frissítés után itt nézhető meg:\nhttps://aiworldhq.com/assets/video/shorts/${r.j.video_slug}.mp4\nA deploy után magától kimegy a Facebookra, a TikTokra és a Threadsre, és a heti összefoglaló cikk tetején is látszik.`
       : null;
   } catch (e) {
     uzenet = `⚠️ A heti MI-híradó nem készült el: ${String(e.message).slice(0, 200)}`;

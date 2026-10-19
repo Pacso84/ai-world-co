@@ -47,6 +47,23 @@ export function hatravan(h) {
   return ['posted_fb', 'posted_tiktok', 'posted_threads'].filter(m => !h[m]);
 }
 
+/** Az automata kiküldés legfeljebb ennyi napos heti híradót küld (a deploy-késés + hétfői pótlás belefér). */
+export const AUTOMATA_NAP = 4;
+
+/**
+ * AUTOMATA KIKÜLDÉS (2026-10-19, user: „mehet ki automatikusan!"): az auto.yml a deploy UTÁN
+ * hívja. Csak friss (≤ AUTOMATA_NAP), HETI híradót (this-week-in-ai-…) küld, és csak amíg
+ * van csatorna, ahová még nem ment ki — a jelölések miatt semmi nem megy ki kétszer.
+ */
+export function automataMehet(h, ma = Date.now()) {
+  if (!h || !h.datum || !h.video_slug) return { mehet: false, ok: 'nincs híradó' };
+  if (!/^this-week-in-ai-/.test(h.video_slug)) return { mehet: false, ok: 'nem heti híradó — csak kézzel' };
+  if (!hatravan(h).length) return { mehet: false, ok: 'mindenhová kiment' };
+  const kor = (ma - Date.parse(h.datum + 'T00:00:00Z')) / 864e5;
+  if (!(kor <= AUTOMATA_NAP)) return { mehet: false, ok: `túl régi (${Math.round(kor)} nap)` };
+  return { mehet: true, ok: 'mehet' };
+}
+
 function betolt(datum) {
   if (!existsSync(HIRADO_DIR)) return null;
   const fajlok = readdirSync(HIRADO_DIR).filter(f => /^\d{4}-\d{2}-\d{2}\.json$/.test(f)).sort();
@@ -64,6 +81,13 @@ async function main() {
   if (!b) { console.log('💤 Nincs ilyen híradó (content/hirado/).'); return; }
   const { ut, h } = b;
   const video = reelVideoUrl(h.video_slug);
+  if (args.includes('--auto')) {
+    const d = automataMehet(h);
+    if (!d.mehet) { console.log(`💤 Heti híradó automata: ${h.datum} — ${d.ok}`); return; }
+    // A videónak már élnie kell a honlapon (a Buffer és a Make is URL-ről tölti le).
+    const fej = await fetch(video, { method: 'HEAD' }).catch(() => null);
+    if (!fej || fej.status !== 200) { console.log(`⏳ Heti híradó automata: a videó még nincs kint (${fej ? fej.status : 'hiba'}) — a következő futás próbálja.`); return; }
+  }
   const ment = () => { if (!dry) writeFileSync(ut, JSON.stringify(h, null, 2) + '\n', 'utf-8'); };
   console.log(`📺 MI-HÍRADÓ ${h.datum}${dry ? '  🧪 PRÓBA' : ''}\n   videó: ${video}\n   cikk : ${reelArticleUrl(h.cikk_slug)}`);
   let hiba = 0;

@@ -5,9 +5,9 @@ name: Heti MI-híradó — gyártás (vasárnap)
 # a hír borítója + hírszalag) minden héten MAGÁTÓL elkészül a heti összefoglaló cikkből.
 # Lásd core/heti-hirado.js.
 #
-# ⚠️ NEM POSZTOL. A videó + content/hirado/<dátum>.json visszacommitolódik, a következő
-# auto.yml-futás kiteszi a honlapra, és a Telegram szól a usernek. Kiküldés CSAK a
-# jóváhagyása után: .github/workflows/hirado-kuldes.yml (kézi).
+# EZ A LÉPÉS NEM POSZTOL: a videó + content/hirado/<dátum>.json visszacommitolódik, a
+# következő auto.yml-futás kiteszi a honlapra (a heti cikk tetején is), és a deploy UTÁN
+# magától kiküldi (core/hirado-kuldes.js --auto; user 10-19: "mehet ki automatikusan!").
 #
 # IDŐZÍTÉS: vasárnap 16:30 UTC (a heti összefoglaló a déli futásban készül), és hétfőn
 # 16:30 UTC pótlásként, ha a cikk késett (10-18-án hétfőn jelent meg). Ha már kész, kihagyja.

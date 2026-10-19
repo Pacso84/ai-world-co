@@ -674,15 +674,41 @@ try {
   if (vm.slug && (Date.now() - new Date(vm.created_at).getTime()) < 8 * 86400e3) VIDEO_META = vm;
 } catch { /* nincs videó ezen a héten */ }
 
+// 📺 HETI MI-HÍRADÓ A HONLAPON (2026-10-19, user: „de a honlapon is legyen kint!").
+// A core/heti-hirado.js minden héten legyártja a beszélő kabalás híradót, és
+// content/hirado/<dátum>.json-ban jelöli, melyik cikkhez tartozik (cikk_slug).
+// Ha a videófájl is megvan, a cikk feje alatt álló lejátszó jelenik meg.
+const HIRADOK = new Map();
+try {
+  const hdir = join(__dirname, '..', 'content', 'hirado');
+  for (const f of readdirSync(hdir).filter(x => x.endsWith('.json'))) {
+    try {
+      const j = JSON.parse(readFileSync(join(hdir, f), 'utf-8'));
+      if (j.cikk_slug && j.video_slug && existsSync(join(__dirname, 'assets', 'video', 'shorts', `${j.video_slug}.mp4`))) HIRADOK.set(j.cikk_slug, j);
+    } catch { /* sérült jelölő — kihagyjuk */ }
+  }
+} catch { /* nincs híradó-mappa */ }
+
 const UI_VID = {
-  en: { vidNote: '▶ Orbit, our AI news anchor, sums up the week in about 90 seconds (English).' },
-  hu: { vidNote: '▶ Orbit, az AI-hírbemondónk kb. 90 másodpercben összefoglalja a hetet (angolul).' },
-  es: { vidNote: '▶ Orbit, nuestro presentador de IA, resume la semana en unos 90 segundos (en inglés).' },
+  en: { vidNote: '▶ Orbit, our AI news anchor, sums up the week in about 90 seconds (English).',
+        hirNote: "📺 This week's top AI stories in about 30 seconds, from our AI news host (English, AI-generated video)." },
+  hu: { vidNote: '▶ Orbit, az AI-hírbemondónk kb. 90 másodpercben összefoglalja a hetet (angolul).',
+        hirNote: '📺 A hét legfontosabb MI-hírei kb. 30 másodpercben, az MI-hírbemondónktól (angolul, MI-vel készült videó).' },
+  es: { vidNote: '▶ Orbit, nuestro presentador de IA, resume la semana en unos 90 segundos (en inglés).',
+        hirNote: '📺 Las noticias de IA más importantes de la semana en unos 30 segundos, de nuestro presentador de IA (en inglés, vídeo generado por IA).' },
 
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_VID[l] || {});
 
 function videoBlock(a) {
+  // Heti MI-híradó (álló, 9:16) — elsőbbséget kap a régi Orbit-lejátszóval szemben.
+  const h = HIRADOK.get(a.slug);
+  if (h) {
+    return `<div class="vid vid--allo">
+    <video controls playsinline preload="metadata" src="/assets/video/shorts/${h.video_slug}.mp4#t=0.5"></video>
+    <p class="ai-disclosure">${escapeHtml(tr('hirNote'))}</p>
+  </div>`;
+  }
   if (!VIDEO_META || VIDEO_META.slug !== a.slug) return '';
   // Kapcsolható feliratok (hu/es/de/fr) — az oldal nyelvén alapból BE
   const LANG_LABEL = { hu: 'Magyar', es: 'Español', };

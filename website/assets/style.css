@@ -922,6 +922,9 @@ body {
 /* ============ ORBIT heti videó (2026-07-11) ============ */
 .vid { margin: 6px 0 26px; }
 .vid video { display: block; width: 100%; border-radius: var(--radius); border: 1px solid var(--line-strong); background: #000; aspect-ratio: 16/9; }
+/* Heti MI-híradó (2026-10-19): álló 9:16 videó — keskeny, középre igazított lejátszó */
+.vid--allo video { aspect-ratio: 9/16; max-width: 340px; margin: 0 auto; }
+.vid--allo .ai-disclosure { text-align: center; }
 .vid .ai-disclosure { margin-top: 8px; }
 
 /* ============ HIVATALOS ELÉRHETŐSÉGEK (2026-07-12) ============ */

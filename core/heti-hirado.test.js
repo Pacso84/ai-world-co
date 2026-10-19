@@ -85,15 +85,27 @@ t('🧾 a kiküldő modul (core/hirado-kuldes.js) által várt json', () => {
   assert.ok(!('posted_fb' in j), 'jelölés nélkül induljon');
 });
 
-t('🔌 a CI hetente futtatja (vasárnap + hétfő pótlás), HF-kulccsal, ffmpeg-gel, és jóváhagyásig NEM posztol', () => {
+t('🔌 a CI hetente futtatja (vasárnap + hétfő pótlás), HF-kulccsal, ffmpeg-gel; a gyártó lépés maga NEM posztol (azt az auto.yml teszi a deploy után)', () => {
   const yml = readFileSync(join(ROOT, '.github', 'workflows', 'heti-hirado.yml'), 'utf-8');
   assert.match(yml, /cron: '[^']+ \* \* 0'/, 'nincs vasárnapi időzítés');
   assert.match(yml, /cron: '[^']+ \* \* 1'/, 'nincs hétfői pótlás');
   assert.match(yml, /HF_TOKEN: \$\{\{ secrets\.HF_TOKEN \}\}/);
   assert.match(yml, /apt-get install -y -qq ffmpeg/);
   assert.match(yml, /node core\/heti-hirado\.js --gyart/);
-  assert.ok(!/hirado-kuldes\.js/.test(yml), 'jóváhagyás előtt ne küldjön ki semmit');
+  assert.ok(!/run: node core\/hirado-kuldes/.test(yml), 'a gyártó küldené ki — a videó a deploy előtt még nem élne');
   assert.match(yml, /group: aiworld-auto/, 'ütközne az auto.yml visszacommitjával');
+});
+
+t('🌐 a HONLAPON is kint van (user 10-19: „de a honlapon is legyen kint!"): a heti cikk tetején álló lejátszó, 3 nyelvű felirattal', () => {
+  const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  assert.match(b, /join\(__dirname, '\.\.', 'content', 'hirado'\)/, 'a build nem olvassa a híradó-jelölőket');
+  const vb = b.slice(b.indexOf('function videoBlock('), b.indexOf('function videoBlock(') + 1600);
+  assert.match(vb, /HIRADOK\.get\(a\.slug\)/, 'a cikkhez tartozó híradót nem keresi');
+  assert.match(vb, /<video [^>]*controls[^>]*playsinline/, 'nem lejátszható / iPhone-on teljes képernyőre ugrana');
+  assert.match(vb, /\/assets\/video\/shorts\/\$\{h\.video_slug\}\.mp4/);
+  assert.match(vb, /tr\('hirNote'\)/);
+  for (const ny of ['en', 'hu', 'es']) assert.ok(new RegExp(`${ny}: \\{[^}]*hirNote:`).test(b), ny + ': nincs hirNote felirat');
+  assert.match(b, /existsSync\(join\(__dirname, 'assets', 'video', 'shorts', `\$\{j\.video_slug\}\.mp4`\)\)/, 'videó nélküli jelölőre is lejátszót rakna');
 });
 
 if (hiba) { console.log(`\n❌ heti-hirado.test: ${hiba} hiba`); process.exit(1); }
