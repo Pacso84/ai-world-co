@@ -492,6 +492,18 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: node core/traffic-log.js || true
 
+      # 🔗 ÚTMUTATÓ-ÖSSZEVONÁS — AUTOMATA (2026-10-19, user: „de ne csak a híreket vonja
+      # össze hanem az útmutatókat is!" → „Magától, utána szóljon"). Hetente egyszer (a
+      # script maga dönti el, esedékes-e), legfeljebb 5 valódi ismétlés → 301 a megmaradóra
+      # (content/slug-history.json), a különböző eszközök változatai MARADNAK. A BUILD ELŐTT
+      # fut, hogy a törölt útmutató ne épüljön meg; a záró visszacommit menti. $0, nincs AI.
+      - name: Útmutató-összevonás (heti, automata)
+        if: always()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: node core/utmutato-osszevonas.js --auto || true
+
       - name: Házmester (halott adat takarítása)
         if: always()
         run: node core/housekeeping.js || true
