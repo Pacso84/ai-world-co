@@ -431,6 +431,8 @@ t('🔄 FRISSÍTETT KIADÁS (10-19): a /packs oldal kiírja a PDF-ek gyártási 
   assert.ok(/class="packs__updated"/.test(build), 'nincs frissítés-jelzés a /packs oldalon');
   assert.ok(/PACKS\.updated \?/.test(build), 'dátum nélkül is kiírná a jelzést');
   for (const ny of NYELVEK) assert.ok(PACKS_UI[ny] && PACKS_UI[ny].packsUpdated, ny + ': nincs packsUpdated szöveg');
+  // user 10-19: „Frissítve: <dátum>" — nem „Frissített kiadás"
+  assert.deepEqual(NYELVEK.map(ny => PACKS_UI[ny].packsUpdated), ['Updated:', 'Frissítve:', 'Actualizado:']);
 });
 
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} sikeres, ${bukott} bukott`);

@@ -773,10 +773,10 @@ t('📚 több útmutató: témánként 20, a gyűjteményben minden besorolt (25
 
 t('🔄 a borítón kint van, hogy FRISSÍTETT kiadás, a gyártás napjával — angolul és spanyolul', () => {
   const en = konyvHtml(valogat(mintaKeszlet(), { tema: 'work' }), { tema: 'work', kiadas: '2026-10-19' });
-  assert.match(en, /<p class="cover__ed">Updated edition · October 19, 2026<\/p>/);
+  assert.match(en, /<p class="cover__ed">Updated: October 19, 2026<\/p>/);
   const es = konyvHtml(valogat([esCikk('Sort your inbox fast', 'Ordena tu bandeja')], { nyelv: 'es' }),
     { nyelv: 'es', kiadas: '2026-10-19' });
-  assert.match(es, /<p class="cover__ed">Edición actualizada · 19 de octubre de 2026<\/p>/);
+  assert.match(es, /<p class="cover__ed">Actualizado: 19 de octubre de 2026<\/p>/);
 });
 
 t('💬 a FÉLKÖVÉREN BELÜLI címke („**💬 Example:**”) után is megtalálja a promptot (10-19, DeepSeek-fordítós útmutató)', () => {
@@ -820,7 +820,7 @@ t('🧾 QA 10-19: a kódblokk UTÁNI, 4 szóközzel behúzott felsorolás felsor
 t('🔄 kiadás-dátum nélkül a MAI nap kerül a borítóra (a gyártás napja), hibás dátumra nem dob', () => {
   const html = konyvHtml(valogat(mintaKeszlet(), { tema: 'work' }), { tema: 'work' });
   const ma = new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-  assert.ok(html.includes('Updated edition · ' + ma), 'nem a mai dátum: ' + ma);
+  assert.ok(html.includes('Updated: ' + ma), 'nem a mai dátum: ' + ma);
   assert.doesNotThrow(() => konyvHtml(valogat(mintaKeszlet(), { tema: 'work' }), { tema: 'work', kiadas: 'nem-datum' }));
 });
 

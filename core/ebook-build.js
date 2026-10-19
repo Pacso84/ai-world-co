@@ -168,7 +168,7 @@ export const SZOVEG = {
       + 'aiworldhq.com and do not sell it.',
     boritoLicenc: 'Free edition · CC BY-NC 4.0 · free to share with credit',
     // 🔄 FRISSÍTETT KIADÁS (2026-10-19, user: „legyen kint, hogy újraírva").
-    kiadas: 'Updated edition', kiadasLocale: 'en-US',
+    kiadas: 'Updated', kiadasLocale: 'en-US',
     ujKiadas: '<strong>This is an updated edition.</strong> It was rebuilt from our current guides on '
       + 'the date shown on the cover: more guides per topic, retired guides removed, and every step '
       + 'taken from the latest version of each guide.',
@@ -213,7 +213,7 @@ export const SZOVEG = {
       + 'Atribución-NoComercial 4.0 (CC BY-NC 4.0): puedes copiarla, imprimirla y compartirla —con tu clase, '
       + 'tu biblioteca o tu equipo— siempre que cites a AI World HQ con un enlace a aiworldhq.com y no la vendas.',
     boritoLicenc: 'Edición gratuita · CC BY-NC 4.0 · compártela citando la fuente',
-    kiadas: 'Edición actualizada', kiadasLocale: 'es-ES',
+    kiadas: 'Actualizado', kiadasLocale: 'es-ES',
     ujKiadas: '<strong>Esta es una edición actualizada.</strong> Se rehízo a partir de nuestras guías '
       + 'actuales en la fecha que aparece en la portada: más guías por tema, sin las guías retiradas y '
       + 'con cada paso tomado de la versión más reciente de cada guía.',
@@ -382,7 +382,7 @@ export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = '
   <h1>${esc(csomagCim(tema, nyelv))}</h1>
   <p>${esc(T.alcim(db))}</p>
   <p>${szakaszok.map(s => esc(szCim(s))).join(' &middot; ')}</p>
-  <p class="cover__ed">${esc(T.kiadas)} · ${esc(kiadasDatum(kiadas, T.kiadasLocale))}</p>
+  <p class="cover__ed">${esc(T.kiadas)}: ${esc(kiadasDatum(kiadas, T.kiadasLocale))}</p>
   <p style="margin-top:14mm">AI World HQ &middot; ${site}${T.ut}</p>
   <p style="font-size:10pt;color:#666">${esc(T.boritoLicenc)}</p>
 </div>
