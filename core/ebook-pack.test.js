@@ -19,7 +19,7 @@ import {
   horgony, horgonyok, promptok, promptLista, promptBeirhato, PROMPT_CIMKE,
   TERULETEK, SZUK_ESZKOZ, DB_TERULETENKENT, DB_MINI, DB_NAGY, MIN_CSOMAG, SZO_PER_OLDAL
 } from './ebook-pack.js';
-import { torzs, konyvHtml, utmutatokBetolt, csomagCim } from './ebook-build.js';
+import { torzs, konyvHtml, utmutatokBetolt, csomagCim, konyvMd } from './ebook-build.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 let pass = 0, bukott = 0;
@@ -250,7 +250,7 @@ const MINTA_TEMAK = {
   automate: 'Automate a weekly routine'
 };
 /** Témánként N jelölt, mind a mérce fölött. */
-const mintaKeszlet = (n = 14) => Object.values(MINTA_TEMAK)
+const mintaKeszlet = (n = DB_MINI + 4) => Object.values(MINTA_TEMAK)
   .flatMap(cim => Array.from({ length: n }, (_, i) => cikk(`${cim} ${i}`, { lep: 9 - (i % 5) })));
 
 t('a MINTA-készlet tényleg mind a 8 témát lefedi (a mérce hitelesítése)', () => {
@@ -756,6 +756,72 @@ t('a mért oldalszám a MÉRT 600 szó/oldal arányból jön', () => {
   const r = csomag(cikkek, { tema: 'work' });
   assert.equal(r.oldal, Math.round(r.szo / SZO_PER_OLDAL));
   assert.ok(r.szo > 0 && r.oldal > 0, 'a csomag 0 szót/oldalt mért — a számláló romlott el');
+});
+
+// ===================================================================
+// 9. FRISSÍTETT KIADÁS (2026-10-19, user: „írd újra a könyveket … legyen kint,
+//    hogy újraírva; nyugodtan rakhatsz bele még cikkeket")
+// ===================================================================
+console.log('\n🧪 frissített kiadás (10-19)');
+
+t('📚 több útmutató: témánként 20, a gyűjteményben minden besorolt (250-es plafon)', () => {
+  // MÉRVE 10-19 (382 útmutató): work 88 · home 54 · learn 35 · explain 27 ·
+  // create 23 · safe 8 · automate 8 · money 5 alkalmas; besorolt összesen 248.
+  assert.equal(DB_MINI, 20);
+  assert.equal(DB_NAGY, 250);
+});
+
+t('🔄 a borítón kint van, hogy FRISSÍTETT kiadás, a gyártás napjával — angolul és spanyolul', () => {
+  const en = konyvHtml(valogat(mintaKeszlet(), { tema: 'work' }), { tema: 'work', kiadas: '2026-10-19' });
+  assert.match(en, /<p class="cover__ed">Updated edition · October 19, 2026<\/p>/);
+  const es = konyvHtml(valogat([esCikk('Sort your inbox fast', 'Ordena tu bandeja')], { nyelv: 'es' }),
+    { nyelv: 'es', kiadas: '2026-10-19' });
+  assert.match(es, /<p class="cover__ed">Edición actualizada · 19 de octubre de 2026<\/p>/);
+});
+
+t('💬 a FÉLKÖVÉREN BELÜLI címke („**💬 Example:**”) után is megtalálja a promptot (10-19, DeepSeek-fordítós útmutató)', () => {
+  // Élő eset: a címke után maradt záró „**” lett a „prompt”, ami üres → NÉMÁN kiesett (1199 jelből 1197).
+  assert.deepEqual(promptok('**💬 Example:**\n> Please translate this into English.\n').map(p => p.szoveg), ['Please translate this into English.']);
+  assert.deepEqual(promptok('**💬 Example:**\n(After pasting your text, type this):\n> Make it more polite.\n').map(p => p.szoveg), ['Make it more polite.']);
+  assert.deepEqual(promptok('💬 Example: "Summarize this email"').map(p => p.szoveg), ['"Summarize this email"'], 'a megszokott alak elromlott');
+});
+
+// A független QA-ügynök (10-19) két megjelenítési hibát talált a legyártott PDF-ekben:
+t('🧾 QA 10-19: a függelék FELVEZETŐ sorában sem marad nyers „**Focus**" (all-en 579. oldal)', () => {
+  const src = readFileSync(join(ROOT, 'core', 'ebook-build.js'), 'utf-8');
+  assert.match(src, /pr__b">\$\{felkover\(esc\(p\.bevezeto\)\)\}/, 'a felvezető sor nyersen marad');
+  assert.match(src, /pr__t">\$\{p\.kod \? felkover\(esc\(p\.szoveg\)\)/, 'a kódként kigyűjtött prompt nyersen marad');
+});
+
+t('🧾 QA 10-19: a hosszú kódsor TÖRDELŐDIK, nem lóg ki a lapról (all-en 265., learn-en 6. oldal)', () => {
+  const html = konyvHtml(valogat(mintaKeszlet(), { tema: 'work' }), { tema: 'work' });
+  assert.match(html, /pre \{[^}]*white-space: pre-wrap/, 'nincs pre-wrap a <pre>-re');
+  assert.match(html, /pre \{[^}]*overflow-wrap: anywhere/, 'a szóköz nélküli hosszú sor is kilógna');
+});
+
+t('🧾 QA 10-19: „** Unos cinco minutos**” — a szóközös félkövér is félkövér lesz, nem nyers csillag', () => {
+  assert.equal(konyvMd('- ** Unos cinco minutos** para el primer intento.'), '- **Unos cinco minutos** para el primer intento.');
+  assert.equal(konyvMd('**Tres datos** y ** Unos 15 minutos**: listo'), '**Tres datos** y **Unos 15 minutos**: listo');
+  assert.equal(konyvMd('2 ** 3 = 8'), '2 ** 3 = 8', 'a nem-félkövér csillagot is átírta');
+});
+
+t('🧾 QA 10-19: a kódblokk UTÁNI, 4 szóközzel behúzott felsorolás felsorolás marad, nem kód (Cohere-útmutató)', () => {
+  const md = '```\nWrite a short welcome email.\n```\n    *   **You\'ll know it worked when** the reply appears.\n    *   **If it looks different:** scroll down.\n\nNext paragraph.';
+  const ki = konyvMd(md);
+  assert.ok(ki.includes('\n- **You\'ll know it worked when** the reply appears.'), ki);
+  assert.ok(ki.includes('\n- **If it looks different:** scroll down.'), 'a második sor nem lett felsorolás');
+  assert.ok(ki.includes('```\nWrite a short welcome email.\n```'), 'a kódblokk tartalmához hozzányúlt');
+  // a kódblokkon BELÜLI behúzás marad (az a prompt része)
+  assert.equal(konyvMd('```\n    *   inside code\n```'), '```\n    *   inside code\n```');
+  // egy rendes beágyazott lista (felsorolás alatt) NEM változik
+  assert.equal(konyvMd('1. Step\n    *   **Tip:** nested'), '1. Step\n    *   **Tip:** nested');
+});
+
+t('🔄 kiadás-dátum nélkül a MAI nap kerül a borítóra (a gyártás napja), hibás dátumra nem dob', () => {
+  const html = konyvHtml(valogat(mintaKeszlet(), { tema: 'work' }), { tema: 'work' });
+  const ma = new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  assert.ok(html.includes('Updated edition · ' + ma), 'nem a mai dátum: ' + ma);
+  assert.doesNotThrow(() => konyvHtml(valogat(mintaKeszlet(), { tema: 'work' }), { tema: 'work', kiadas: 'nem-datum' }));
 });
 
 console.log(`\n${bukott === 0 ? '✅' : '❌'} ebook-pack.test: ${pass} rendben, ${bukott} bukott`);

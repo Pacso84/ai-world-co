@@ -128,6 +128,7 @@ export const PACKS_UI = {
     packsShopAll: 'See all packs',
     packsSoon: 'Coming soon',
     packsLangs: 'The packs are available in English and Spanish.',
+    packsUpdated: 'Updated edition:',
     packsFreePrice: 'Free',
 
     packsBuildH: 'How a guide is built',
@@ -168,6 +169,7 @@ export const PACKS_UI = {
     packsShopAll: 'Az összes csomag',
     packsSoon: 'Hamarosan',
     packsLangs: 'A csomagok angolul és spanyolul érhetők el (magyarul nem).',
+    packsUpdated: 'Frissített kiadás:',
     packsFreePrice: 'Ingyenes',
 
     packsBuildH: 'Hogyan épül fel egy útmutató',
@@ -208,6 +210,7 @@ export const PACKS_UI = {
     packsShopAll: 'Ver todos los packs',
     packsSoon: 'Muy pronto',
     packsLangs: 'Los packs están disponibles en inglés y español.',
+    packsUpdated: 'Edición actualizada:',
     packsFreePrice: 'Gratis',
 
     packsBuildH: 'Cómo se construye una guía',

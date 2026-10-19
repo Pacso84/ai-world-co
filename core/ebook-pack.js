@@ -88,7 +88,11 @@ export const TERULETEK = TEMAK;
 export const DB_TERULETENKENT = 5;
 
 /** Egy MINI csomag célmérete. Ahol ennyi nincs, annyi lesz, amennyi van. */
-export const DB_MINI = 12;
+// 2026-10-19 (user: „nyugodtan rakhatsz bele még cikkeket"): 12 → 20. MÉRVE
+// 10-19-én, 382 útmutatóból: work 88 · home 54 · learn 35 · explain 27 ·
+// create 23 alkalmas — ezek 20-at kapnak; safe 8 · automate 8 · money 5 marad
+// annyi, amennyi van (feltölteni idegen témával tilos, a teszt őrzi).
+export const DB_MINI = 20;
 
 /**
  * A NAGY gyűjtemény felső határa — cikkben, nem oldalban, mert a cikkszám az,
@@ -104,7 +108,10 @@ export const DB_MINI = 12;
  * három nyelven kellene kitalálni. És nincs is rá szükség: a 276 besorolt
  * MAGÁBAN több, mint a plafon (150) — nem a készlet szűk.
  */
-export const DB_NAGY = 150;
+// 2026-10-19: 150 → 250. A besorolt útmutatók száma 248 (MÉRVE) — a
+// gyűjtemény így MIND tartalmazza őket (~600 oldal, ~12 MB). A plafon a
+// gyors növekedés ellen marad, nem a mostani készlet ellen.
+export const DB_NAGY = 250;
 
 /** Ennél kevesebb útmutatóból NEM gyártunk terméket. */
 export const MIN_CSOMAG = 3;
@@ -325,7 +332,10 @@ const RX_FELVEZETES = /:\s*\*{0,2}\s*$/;
 /** Üres-e a prompt ÉRDEMI szövege? A jelölés (idézőjel, félkövér, kettőspont) nem tartalom. */
 const promptUres = (s) => !String(s).replace(/[`*_>#\s"'„“”«»:.\-–—]/g, '').length;
 /** Egy sor nyers jelöléstől megtisztítva: idézet-jel, behúzás, címke. */
-const promptSor = (s) => String(s).replace(/^[ \t>]+/, '').trim().replace(RX_CIMKE_ELOL, '').trim();
+// 2026-10-19: ha a 💬 a félkövéren BELÜL áll („**💬 Example:**”), a címke után a záró „**”
+// marad a sor elején — a régi változat ezt nézte promptnak, ami üres → a prompt NÉMÁN kiesett.
+const promptSor = (s) => String(s).replace(/^[ \t>]+/, '').trim().replace(RX_CIMKE_ELOL, '').trim()
+  .replace(/^\*{1,2}(?=\s|$)/, '').trim();
 
 /**
  * BEÍRHATÓ prompt-e, vagy csak SZEMLÉLTETŐ példa?

@@ -86,7 +86,31 @@ export function torzs(md) {
   return (m ? s.slice(m[0].length) : s).trim().replace(/^#\s+.*(\r?\n)?/, '').trim();
 }
 
+/**
+ * A könyvbe kerülő markdown két ismert hibájának javítása (2026-10-19, független QA a legyártott PDF-eken):
+ *  1. „** Unos cinco minutos**" — a fordításban szóköz került a nyitó csillag után; a markdown így NEM
+ *     félkövérnek, hanem nyers csillagnak veszi. → a szóközt kivesszük.
+ *  2. Egy kódblokk UTÁN 4 szóközzel behúzott felsorolás („    *   **You'll know it worked when**…") a
+ *     markdownban ÚJABB KÓDBLOKK lesz (Cohere-útmutató). → felső szintű felsorolássá húzzuk ki. Csak a
+ *     kódkerítés-záró után álló sorozatot; a kódblokk belsejéhez és a rendes beágyazott listához nem nyúl.
+ */
+export function konyvMd(md) {
+  const sorok = String(md || '').split('\n');
+  let kerites = false, kiHuz = false;
+  for (let i = 0; i < sorok.length; i++) {
+    const sor = sorok[i];
+    if (/^\s*```/.test(sor)) { kerites = !kerites; kiHuz = !kerites; continue; }
+    if (kerites) continue;
+    if (kiHuz && /^ {4,}[*-] +/.test(sor)) { sorok[i] = sor.replace(/^ {4,}[*-] +/, '- '); continue; }
+    if (sor.trim()) kiHuz = false;
+    sorok[i] = sor.replace(/(^|[\s(])\*\*[ \t]+([^*\s][^*\n]*?)\*\*/g, '$1**$2**');
+  }
+  return sorok.join('\n');
+}
+
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+/** Már ESCAPE-elt szövegben a „**x**" → <strong>x</strong> (a függelék nyers sorai; QA 10-19). */
+const felkover = (s) => String(s).replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>');
 
 // ===================================================================
 // A FELÜLETI SZÖVEGEK NYELVENKÉNT — KÉZZEL ÍRVA, NEM GÉPI FORDÍTÁSSAL
@@ -143,6 +167,11 @@ export const SZOVEG = {
       + 'class, your library or your team — as long as you credit AI World HQ with a link to '
       + 'aiworldhq.com and do not sell it.',
     boritoLicenc: 'Free edition · CC BY-NC 4.0 · free to share with credit',
+    // 🔄 FRISSÍTETT KIADÁS (2026-10-19, user: „legyen kint, hogy újraírva").
+    kiadas: 'Updated edition', kiadasLocale: 'en-US',
+    ujKiadas: '<strong>This is an updated edition.</strong> It was rebuilt from our current guides on '
+      + 'the date shown on the cover: more guides per topic, retired guides removed, and every step '
+      + 'taken from the latest version of each guide.',
     // 🇪🇺 A MI-JELÖLÉS SZÓ SZERINT AZT MONDJA, AMI IGAZ (átírva 2026-09-19).
     // A régi mondat („written by our AI editorial team and reviewed for
     // accuracy and clarity") KÉT dolgot állított, amit nem tudunk fedezni:
@@ -184,6 +213,10 @@ export const SZOVEG = {
       + 'Atribución-NoComercial 4.0 (CC BY-NC 4.0): puedes copiarla, imprimirla y compartirla —con tu clase, '
       + 'tu biblioteca o tu equipo— siempre que cites a AI World HQ con un enlace a aiworldhq.com y no la vendas.',
     boritoLicenc: 'Edición gratuita · CC BY-NC 4.0 · compártela citando la fuente',
+    kiadas: 'Edición actualizada', kiadasLocale: 'es-ES',
+    ujKiadas: '<strong>Esta es una edición actualizada.</strong> Se rehízo a partir de nuestras guías '
+      + 'actuales en la fecha que aparece en la portada: más guías por tema, sin las guías retiradas y '
+      + 'con cada paso tomado de la versión más reciente de cada guía.',
     // A próza a HONLAP spanyol szövegével egyezik („escrita por IA … ningún
     // editor humano la revisó"), a JEL viszont a nagybetűs angol „AI" —
     // ugyanaz a kettősség, mint a honlap kártyáin (`aiMark()`).
@@ -214,7 +247,14 @@ export function csomagCim(tema, nyelv = 'en') {
  * kimondva, és minden útmutatóhoz ott a HONLAP-LINK. Egy fizetős csomag,
  * ami elhallgatja, hogy a tartalma ingyen is megvan, megtévesztés.
  */
-export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = 'en', tema = null } = {}) {
+/** A kiadás napja a borítóra, a nyelv dátumformájában (UTC). Hibás dátumra a MAI nap. */
+export function kiadasDatum(kiadas, locale = 'en-US') {
+  let d = new Date(kiadas || Date.now());
+  if (Number.isNaN(d.getTime())) d = new Date();
+  return d.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+}
+
+export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = 'en', tema = null, kiadas = null } = {}) {
   const T = SZOVEG[nyelv] || SZOVEG.en;
   const db = szakaszok.reduce((s, x) => s + x.cikkek.length, 0);
   // A szakasz-cím a nyelvi táblából jön (a `szakaszok` ANGOL címet hoz — ott
@@ -249,7 +289,7 @@ export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = '
     <h2>${esc(cimBol(sz(c)))}</h2>
     <p class="guide__meta">${lepesSzam(c.md)} ${T.lepes} &middot;
       <a href="${site}${T.ut}/article/${esc(c.slug)}">${T.online}</a></p>
-    ${marked.parse(torzs(sz(c)))}
+    ${marked.parse(konyvMd(torzs(sz(c))))}
   </article>`).join('')}`).join('');
 
   // 💬 PROMPT-FÜGGELÉK — CSAK A NAGY GYŰJTEMÉNYBEN (a termékszöveg is csak ott
@@ -267,10 +307,11 @@ export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = '
       <h3 class="pr__h"><a href="#${horg.get(x.cikk)}">${esc(x.cim)}</a></h3>
       <ul class="pr__l">${x.promptok.map(p =>
     `<li class="pr__i${p.beir ? ' pr__i--beir' : ''}">`
-    + (p.bevezeto ? `<span class="pr__b">${esc(p.bevezeto)}</span>` : '')
+    + (p.bevezeto ? `<span class="pr__b">${felkover(esc(p.bevezeto))}</span>` : '')
     // A kerítésből jött prompt SORTÖRÉSE TARTALOM, nem formázás: escape + <br>.
     // Az egysorosé markdown (dőlt/félkövér/kód) — ugyanaz, amit a törzs kap.
-    + `<span class="pr__t">${p.kod ? esc(p.szoveg).replace(/\n/g, '<br>') : marked.parseInline(p.szoveg)}</span>`
+    // QA 10-19: a kódként kigyűjtött promptban a „**Focus**" nyers csillagként látszott → félkövér.
+    + `<span class="pr__t">${p.kod ? felkover(esc(p.szoveg)).replace(/\n/g, '<br>') : marked.parseInline(konyvMd(p.szoveg))}</span>`
     + `</li>`).join('')}</ul>
     </div>`).join('')}
   </section>` : '';
@@ -297,6 +338,8 @@ export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = '
   .cover { text-align: center; padding-top: 55mm; page-break-after: always; }
   .cover h1 { font-size: 30pt; margin: 0 0 6mm; }
   .cover p { font-size: 12pt; color: #444; margin: 2mm 0; }
+  .cover .cover__ed { display: inline-block; margin-top: 8mm; padding: 1.5mm 4mm; border: 1pt solid #14507d;
+    border-radius: 2mm; color: #14507d; font: bold 11pt Helvetica, Arial, sans-serif; }
   .honesty { page-break-after: always; background: #f6f6f4; padding: 8mm; border-radius: 3mm; }
   .honesty h2 { margin-top: 0; }
   .toc { page-break-after: always; }
@@ -329,6 +372,9 @@ export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = '
   .guide h3 { font-size: 12.5pt; margin-top: 6mm; }
   a { color: #14507d; }
   code { background: #f2f2ef; padding: 0 2px; font-size: 10pt; }
+  /* QA 10-19: a hosszú kódsor kilógott a lapról (all-en 265., learn-en 6. oldal) → tördelés. */
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #f2f2ef; padding: 3mm 4mm; border-radius: 2mm; }
+  pre code { background: none; padding: 0; }
   blockquote { border-left: 3px solid #ccc; margin-left: 0; padding-left: 4mm; color: #444; }
 </style></head><body>
 
@@ -336,12 +382,14 @@ export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = '
   <h1>${esc(csomagCim(tema, nyelv))}</h1>
   <p>${esc(T.alcim(db))}</p>
   <p>${szakaszok.map(s => esc(szCim(s))).join(' &middot; ')}</p>
+  <p class="cover__ed">${esc(T.kiadas)} · ${esc(kiadasDatum(kiadas, T.kiadasLocale))}</p>
   <p style="margin-top:14mm">AI World HQ &middot; ${site}${T.ut}</p>
   <p style="font-size:10pt;color:#666">${esc(T.boritoLicenc)}</p>
 </div>
 
 <div class="honesty">
   <h2>${esc(T.oszinteCim)}</h2>
+  <p>${T.ujKiadas}</p>
   <p>${T.ingyen}</p>
   <p>${T.aiSzerzo(site)}</p>
   <p>${T.valtozas}</p>

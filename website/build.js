@@ -87,7 +87,7 @@ let CS = { enabled: false, base: '', key: '' };
 // üres, `PACKS.enabled` hamis, és az eladó oldal EL SEM KÉSZÜL — nem
 // épül be link sehova. Így a bolt megnyitásáig egyetlen gomb sem visz
 // üres boltba. (A support-gombnál ugyanez az elv működik 07-07 óta.)
-let PACKS = { enabled: false, free: false, shopUrl: '', list: [] };
+let PACKS = { enabled: false, free: false, shopUrl: '', updated: '', list: [] };
 try {
   const rawPacks = JSON.parse(readFileSync(join(__dirname, 'packs.json'), 'utf-8'));
   const list = (rawPacks.packs || []).filter(p => p && p.id && p.price > 0);
@@ -101,6 +101,8 @@ try {
     free: ingyen,
     shopUrl: ingyen ? '' : (rawPacks.shop_url || '').trim(),
     currency: rawPacks.currency || 'USD',
+    // 🔄 a PDF-ek gyártási napja (packs-data.js írja) → „Frissített kiadás” a /packs-on (10-19)
+    updated: rawPacks.generated_at || '',
     list
   };
 } catch { /* nincs packs.json → az eladó oldal kimarad */ }
@@ -2731,6 +2733,7 @@ function packsStyleBlock() {
 .packs{max-width:860px;margin:0 auto;padding:8px 0 24px}
 .packs__lead{font-size:17px;line-height:1.65;color:var(--ink-soft);margin:0 0 14px}
 .packs__langs{font-size:14px;color:var(--muted);margin:0 0 30px}
+.packs__updated{display:inline-block;font-size:14px;font-weight:600;color:var(--accent-dark);background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin:-18px 0 30px}
 .packs__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:0 0 40px;text-align:left}
 .packs__item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:22px 20px;display:flex;flex-direction:column;gap:8px}
 .packs__item--big{grid-column:1 / -1;border-color:var(--line-strong)}
@@ -2777,6 +2780,7 @@ function buildPacksPage() {
     <h1 class="support__title">${tr('packsTitle')}</h1>
     <p class="packs__lead">${escapeHtml(tr('packsLead'))}</p>
     <p class="packs__langs">${escapeHtml(tr('packsLangs'))}</p>
+    ${PACKS.updated ? `<p class="packs__updated">🔄 ${escapeHtml(tr('packsUpdated'))} <time datetime="${escapeHtml(PACKS.updated)}">${escapeHtml(formatDate(PACKS.updated))}</time></p>` : ''}
 
     <div class="packs__grid">${kartyak}</div>
 

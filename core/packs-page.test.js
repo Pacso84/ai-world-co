@@ -424,5 +424,14 @@ t('a bolti szöveg csak azt ígéri, ami igaz (09-26: csak PayPal; nem minden l�
   }
 });
 
+t('🔄 FRISSÍTETT KIADÁS (10-19): a /packs oldal kiírja a PDF-ek gyártási napját, 3 nyelven', () => {
+  // A dátum a packs.json `generated_at` mezője — azt a packs-data.js írja a
+  // legyártott PDF-ek mérésekor, tehát a valódi gyártás napja, nem kézi szám.
+  assert.ok(/updated: rawPacks\.generated_at \|\| ''/.test(build), 'a build nem olvassa a generated_at-et');
+  assert.ok(/class="packs__updated"/.test(build), 'nincs frissítés-jelzés a /packs oldalon');
+  assert.ok(/PACKS\.updated \?/.test(build), 'dátum nélkül is kiírná a jelzést');
+  for (const ny of NYELVEK) assert.ok(PACKS_UI[ny] && PACKS_UI[ny].packsUpdated, ny + ': nincs packsUpdated szöveg');
+});
+
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} sikeres, ${bukott} bukott`);
 process.exit(bukott ? 1 : 0);
