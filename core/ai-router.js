@@ -452,6 +452,8 @@ const PRICING = {
   'minimax/minimax-m3': { input: 0.30, output: 1.20 },
   'minimax/minimax-m2.7': { input: 0.25, output: 1.00 },
   'minimax/minimax-m2.5': { input: 0.15, output: 0.90 },
+  // A FORDÍTÓ 2026-10-20 óta (20 mondatos próba: messze a legjobb magyar; OpenRouter-ár, élőben)
+  'openai/gpt-5.6-luna': { input: 0.20, output: 1.20 },
   // Vész-háló (2026-10-02) — OpenRouter-ár; a valódi költség a usage.cost-ból jön,
   // ez csak akkor számít, ha az hiányzik (különben a fizetős hívás $0-nak látszana).
   'google/gemini-3.1-flash-lite': { input: 0.25, output: 1.50 },
