@@ -457,6 +457,56 @@ export function trendMeres({ cikkek, days, kezdet = '2026-10-15', now = Date.now
   };
 }
 
+// ── MI-SZŰRÉS: TREND-ELLENŐR (2026-10-20) ───────────────────────────
+// User: „mérd meg mindet … még a trend-ellenőrre is!” → „oké csináld”. A heurisztika (rssAiE,
+// szuro) után EGY rövid MI-hívás eldönti, valóban MI-téma-e a keresés („dow today”, „claude monet
+// exhibition” nem az). Mérve: GPT-5.6 Luna low 20/20. FAIL-OPEN: hiba/hibás válasz → a heurisztikus
+// lista változatlan (a trendkutató miatta nem állhat le). Költség: ~$0,001/nap.
+export const TREND_SZURO_RENDSZER = 'You screen trending web searches for aiworldhq.com, a site of step-by-step guides on using everyday AI tools (ChatGPT, Gemini, Claude, Copilot, Alexa+, Perplexity, image/video AI, AI safety). For each search decide: is it really about AI tools or AI use (true), or something else that merely shares a word (false)? If true, propose one guide title that answers it (plain English, no comparisons). Return ONLY a JSON array: [{"query": "...", "ai": true or false, "guide": "title or null"}].';
+
+/** A modell válaszából a NEM MI-témák (kisbetűs kifejezések) halmaza; értelmezhetetlen válaszra null (= nincs szűrés). */
+export function nemAiKifejezesek(szoveg, kifejezesek) {
+  const m = String(szoveg || '').match(/\[[\s\S]*\]/);
+  if (!m) return null;
+  let a; try { a = JSON.parse(m[0]); } catch { return null; }
+  if (!Array.isArray(a)) return null;
+  const kert = new Set((kifejezesek || []).map(k => normal(k)));
+  const ki = new Set();
+  let ervenyes = 0;
+  for (const x of a) {
+    const k = normal(x?.query);
+    if (!kert.has(k) || typeof x?.ai !== 'boolean') continue;
+    ervenyes++;
+    if (x.ai === false) ki.add(k);
+  }
+  // ha a válasz a kérdezett kifejezések felénél kevesebbet minősít, nem bízunk benne
+  return ervenyes * 2 >= kert.size ? ki : null;
+}
+
+/** A gyűjtés eredményéből kiveszi az MI szerint nem MI-témákat; a kiszűrteket külön listába teszi. */
+export function aiSzuresAlkalmaz(ki, nemAi) {
+  if (!nemAi || !nemAi.size) return ki;
+  return { ...ki, temak: ki.temak.filter(t => !nemAi.has(normal(t.kifejezes))),
+    kiszurt_ai: ki.temak.filter(t => nemAi.has(normal(t.kifejezes))).map(t => t.kifejezes) };
+}
+
+async function aiSzures(ki) {
+  if (!ki?.temak?.length) return ki;
+  try {
+    const { ask } = await import('./ai-router.js');
+    const kifejezesek = ki.temak.map(t => t.kifejezes);
+    const r = await ask(JSON.stringify(kifejezesek), { agentName: 'trend', systemPrompt: TREND_SZURO_RENDSZER, maxTokens: 3000 });
+    const nemAi = nemAiKifejezesek(r?.text, kifejezesek);
+    if (!nemAi) { console.log('   ⚠️ trend-ellenőr: értelmezhetetlen válasz — a heurisztikus lista marad'); return ki; }
+    const uj = aiSzuresAlkalmaz(ki, nemAi);
+    console.log(`   🧠 trend-ellenőr: ${nemAi.size ? 'kiszűrve: ' + [...nemAi].join(', ') : 'minden téma MI-témának bizonyult'}`);
+    return uj;
+  } catch (e) {
+    console.log('   ⚠️ trend-ellenőr hiba (nem kritikus, a heurisztikus lista marad): ' + String(e?.message || e).slice(0, 80));
+    return ki;
+  }
+}
+
 // ── PARANCSSOR ──────────────────────────────────────────────────────
 //   node core/trend-kutato.js            napi gyűjtés (20 órán belül nem ismétel)
 //   node core/trend-kutato.js --force    gyűjtés mindenképp
@@ -481,7 +531,7 @@ if (process.argv[1] && process.argv[1].endsWith('trend-kutato.js')) {
     if (!beall.be) { console.log('⏭️  Trendkutató: kikapcsolva (config content.trends.enabled).'); return; }
     if (!arg.includes('--force') && !arg.includes('--dry') && frissE(trendekBetolt())) { console.log('💤 Trendkutató: a mai lista már megvan.'); return; }
     console.log('📈 TRENDKUTATÓ — ' + beall.seeds.length + ' alapkérdés');
-    const ki = await gyujt({ beall });
+    const ki = arg.includes('--dry') ? await gyujt({ beall }) : await aiSzures(await gyujt({ beall }));   // --dry: helyben NINCS fizetős hívás
     for (const tm of ki.temak) console.log(`   ${String(tm.pont).padStart(3)}  ${tm.kifejezes}  [${tm.forras.map(x => FORRAS_NEV[x] || x).join(' + ')}]${tm.eszkoz ? ' · ' + tm.eszkoz : ''}`);
     for (const h of ki.hibak) console.log('   ⚠️ ' + h);
     if (arg.includes('--dry')) { console.log('   (próba — nem mentem)'); return; }

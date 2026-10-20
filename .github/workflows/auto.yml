@@ -162,11 +162,14 @@ jobs:
         run: node core/run-tests.js --guard || true
 
       # TRENDKUTATÓ (2026-10-14, user ötlete): mi felkapott ma? Naponta EGYSZER gyűjt (a 3 futásból
-      # az első dolgozik, a többi a 20 órás kapun kihagy), ingyen, AI-hívás nélkül. A CEO ELŐTT
+      # az első dolgozik, a többi a 20 órás kapun kihagy). 2026-10-20: EGY olcsó MI-hívás (trend-ellenőr,
+      # GPT-5.6 Luna, ~$0,001/nap) kiszűri a nem MI-témákat („dow today”); hibánál a heurisztikus lista marad. A CEO ELŐTT
       # fut, hogy az Író és az Útmutató-agent már a friss listát lássa. A hibája NEM állíthatja
       # meg a kiadást (|| true); a forrás-kiesést a napi riport jelzi. core/trend-kutato.js
-      - name: Trendkutató (napi 1×, ingyenes)
+      - name: Trendkutató (napi 1×, egy olcsó MI-szűréssel)
         timeout-minutes: 3
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: node core/trend-kutato.js || true
         continue-on-error: true
 

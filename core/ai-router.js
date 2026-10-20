@@ -337,6 +337,10 @@ export function buildOpenAIBody(provider, model, prompt, options) {
   // (ott dokumentált a paraméter); a minőség-kritikus írás/bírálat agenteknél
   // NEM kapcsoljuk ki — ott a gondolkodás minőséget vesz, nem időt éget.
   if (options.reasoningOff && provider === 'openrouter') body.reasoning = { enabled: false };
+  // KEVÉS GONDOLKODÁS (2026-10-20, modell-mérés): a trend-ellenőr GPT-5.6 Lunával „low”
+  // módban 20/20, kikapcsolva 19/20 — a döntéses feladatnál egy kis gondolkodás megéri
+  // (config agents.<név>.reasoning: "low" | "medium" | "high").
+  else if (options.reasoningEffort && provider === 'openrouter') body.reasoning = { effort: options.reasoningEffort };
   return body;
 }
 
@@ -454,6 +458,8 @@ const PRICING = {
   'minimax/minimax-m2.5': { input: 0.15, output: 0.90 },
   // A FORDÍTÓ 2026-10-20 óta (20 mondatos próba: messze a legjobb magyar; OpenRouter-ár, élőben)
   'openai/gpt-5.6-luna': { input: 0.20, output: 1.20 },
+  // AZ ÍRÓ ÉS AZ ÚTMUTATÓ-ÍRÓ 2026-10-20 óta (3 cikkes próba: M3-minőség ~⅓ áron)
+  'anthropic/claude-haiku-5.5': { input: 0.10, output: 0.50 },
   // Vész-háló (2026-10-02) — OpenRouter-ár; a valódi költség a usage.cost-ból jön,
   // ez csak akkor számít, ha az hiányzik (különben a fizetős hívás $0-nak látszana).
   'google/gemini-3.1-flash-lite': { input: 0.25, output: 1.50 },
@@ -960,7 +966,8 @@ export async function ask(prompt, options = {}) {
       // bukottként. A napi „N hívásból" nevező ettől hazudna.
       let merKesz = false;
       try {
-        const response = await caller(prompt, model, { systemPrompt: sysWithLessons, maxTokens: effMaxTokens, jsonMode, reasoningOff: noThink });
+        const response = await caller(prompt, model, { systemPrompt: sysWithLessons, maxTokens: effMaxTokens, jsonMode, reasoningOff: noThink,
+          reasoningEffort: ['low', 'medium', 'high'].includes(agentConfig.reasoning) ? agentConfig.reasoning : null });
         // A SIKERES hívás ideje is kell: a „leglassabb hívás" pont attól
         // mérőszám, hogy a sikeres körökre is kiterjed (2026-09-16: a
         // leglassabb SIKERES hívás 4,7 perc volt, a plafon 8).

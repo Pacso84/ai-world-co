@@ -307,7 +307,8 @@ t('🔌 napi riport és CI: a riport a trendsorokat kiírja; a CI-lépés a Pipe
   const dr = forras('core/daily-report.js');
   assert.match(dr, /trendRiportSorok\(trendekBetolt\(\), bingListaBetolt\(\), Date\.now\(\)\)/);
   const yml = forras('.github/workflows/auto.yml');
-  assert.match(yml, /- name: Trendkutató \(napi 1×, ingyenes\)\n\s*timeout-minutes: 3\n\s*run: node core\/trend-kutato\.js \|\| true\n\s*continue-on-error: true\n/, '🔴 a lépés időtúllépése kihagyhatná a Pipeline-t');
+  // 10-20: a lépés egy olcsó MI-szűrést is futtat (trend-ellenőr) → env-blokk a kulccsal
+  assert.match(yml, /- name: Trendkutató \(napi 1×, egy olcsó MI-szűréssel\)\n\s*timeout-minutes: 3\n\s*env:\n\s*OPENROUTER_API_KEY: \$\{\{ secrets\.OPENROUTER_API_KEY \}\}\n\s*run: node core\/trend-kutato\.js \|\| true\n\s*continue-on-error: true\n/, '🔴 a lépés időtúllépése kihagyhatná a Pipeline-t');
   assert.ok(yml.indexOf('node core/trend-kutato.js') < yml.indexOf('node agents/ceo/agent.js'), '🔴 a trend a CEO UTÁN gyűjtene — aznap már késő');
 });
 
