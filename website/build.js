@@ -529,13 +529,13 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_GLOSS[l] || {});
 const UI_PROMPTS = {
   en: { plNav: 'Prompt library', plTitle: 'AI Prompt Library', plTag: 'Copy-ready prompts from our step-by-step guides — paste them into ChatGPT, Gemini, Claude or any AI assistant.',
         plTrending: 'Trending & new', plMore: 'More prompts', plCopy: 'Copy', plCopied: 'Copied!', plGuide: 'Full guide', plCount: '{n} prompts',
-        plSearch: 'Search prompts…', plTip: '', plNavS: 'Prompts', plBanner: 'Copy-ready AI prompts — the prompt library' },
+        plSearch: 'What do you want AI to help with?', plDay: 'Prompt of the day', plExpand: 'Show the whole prompt', plCollapse: 'Show less', plNone: 'No prompt matches that yet — try a shorter word.', plTip: '', plNavS: 'Prompts', plBanner: 'Copy-ready AI prompts — the prompt library' },
   hu: { plNav: 'Prompt-tár', plTitle: 'AI prompt-tár', plTag: 'Bemásolható promptok a lépésről lépésre útmutatóinkból — illeszd be a ChatGPT-be, a Geminibe, a Claude-ba vagy bármelyik MI-asszisztensbe.',
         plTrending: 'Felkapott és új', plMore: 'További promptok', plCopy: 'Másolás', plCopied: 'Kimásolva!', plGuide: 'Teljes útmutató', plCount: '{n} prompt',
-        plSearch: 'Keresés a promptok közt…', plNavS: 'Prompt-tár', plTip: 'A promptok angolul vannak — az MI ugyanúgy érti őket. Írd a végére: „Válaszolj magyarul.”', plBanner: 'Bemásolható MI-promptok — a prompt-tár' },
+        plSearch: 'Miben segítsen az MI?', plDay: 'A nap promptja', plExpand: 'Mutasd az egészet', plCollapse: 'Kevesebb', plNone: 'Erre még nincs prompt — próbálj egy rövidebb szót.', plNavS: 'Prompt-tár', plTip: 'A promptok angolul vannak — az MI ugyanúgy érti őket. Írd a végére: „Válaszolj magyarul.”', plBanner: 'Bemásolható MI-promptok — a prompt-tár' },
   es: { plNav: 'Biblioteca de prompts', plTitle: 'Biblioteca de prompts de IA', plTag: 'Prompts listos para copiar de nuestras guías paso a paso — pégalos en ChatGPT, Gemini, Claude o cualquier asistente de IA.',
         plTrending: 'En tendencia y nuevos', plMore: 'Más prompts', plCopy: 'Copiar', plCopied: '¡Copiado!', plGuide: 'Guía completa', plCount: '{n} prompts',
-        plSearch: 'Buscar prompts…', plNavS: 'Prompts', plTip: 'Los prompts están en inglés — la IA los entiende igual. Añade al final: «Responde en español».', plBanner: 'Prompts de IA listos para copiar — la biblioteca' }
+        plSearch: '¿En qué quieres que te ayude la IA?', plDay: 'El prompt del día', plExpand: 'Ver el prompt completo', plCollapse: 'Ver menos', plNone: 'Todavía no hay ningún prompt para eso: prueba con una palabra más corta.', plNavS: 'Prompts', plTip: 'Los prompts están en inglés — la IA los entiende igual. Añade al final: «Responde en español».', plBanner: 'Prompts de IA listos para copiar — la biblioteca' }
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_PROMPTS[l] || {});
 
@@ -3199,7 +3199,8 @@ function buildPromptsPage(alap, loc) {
   })));
   const body = promptTarHtml(tar, {
     sz: { kicker: tr('plNav'), cim: tr('plTitle'), tag: tr('plTag'), kiemeltCim: tr('plTrending'), egyebCim: tr('plMore'),
-      masol: tr('plCopy'), masolva: tr('plCopied'), utmutato: tr('plGuide'), db: n => tr('plCount').replace('{n}', n), kereses: tr('plSearch') },
+      masol: tr('plCopy'), masolva: tr('plCopied'), utmutato: tr('plGuide'), db: n => tr('plCount').replace('{n}', n), kereses: tr('plSearch'),
+      nap: tr('plDay'), mutasd: tr('plExpand'), kevesebb: tr('plCollapse'), nincs: tr('plNone') },
     temaNev: id => temaSzoveg(TEMAK.find(t => t.id === id), LANG).cim || id,
     nyelvTipp: ''   // a promptok már a megjelenítés nyelvén vannak
   });

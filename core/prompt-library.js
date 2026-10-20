@@ -199,35 +199,63 @@ export function promptTar(cikkek, { now = Date.now() } = {}) {
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function kartya(e, sz) {
+// ===================================================================
+// MEGJELENÉS (2026-10-20, user: „a prompttárnak csinálj valami jobb dizájnt, mert ez nagyon gagyi —
+// mintha csak egy felsorolás lenne, nem köti oda a szemet!”). A prompt az, amit az ember az MI-nek
+// MOND → chat-buborékban áll, fölötte vastagon, MIRE JÓ (az útmutató címe). Felül chat-mezőre
+// emlékeztető kereső és témagombok darabszámmal; az első felkapott „A nap promptja”; a témák két
+// hasábban (CSS columns), így a rövid és a hosszú prompt nem hagy lyukat; a hosszú lenyitható.
+// ===================================================================
+const TEMA_JEL = { trending: '🔥', safe: '🛡️', money: '💵', home: '🏠', create: '🎨', learn: '🌱', work: '💼', explain: '💡', automate: '⚙️', more: '✨' };
+const HOSSZU = 240;   // ennél hosszabb promptnál „Mutasd az egészet” (a másolás mindig a teljes szöveget viszi)
+const MASOL_IKON = '<svg class="pl-copy-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="8" width="12" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+const KERES_IKON = '<svg class="pl-compose-i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
+
+function kartya(e, sz, fo = false) {
   const szoveg = esc(e.szoveg).replace(/\[[^\]\n]{2,80}\]/g, m => `<span class="pl-fill">${m}</span>`);
-  return `<div class="pl-card">
-      <pre class="pl-text">${szoveg}</pre>
-      <div class="pl-foot">${e.tool ? `<span class="g-tool">📘 ${esc(e.tool)}</span>` : ''}<a class="pl-guide" href="article/${esc(e.slug)}" title="${esc(e.title)}">${esc(sz.utmutato)} →</a><button class="pl-copy" type="button" data-copied="${esc(sz.masolva)}">${esc(sz.masol)}</button></div>
-    </div>`;
+  const hosszu = !fo && (e.szoveg.length > HOSSZU || (e.szoveg.match(/\n/g) || []).length > 4);   // a nap promptja mindig teljes
+  return `<article class="pl-card${fo ? ' pl-card--fo' : ''}${hosszu ? ' pl-card--hosszu' : ''}">
+      ${fo ? `<p class="pl-day">${esc(sz.nap || '')}</p>` : ''}
+      <h3 class="pl-goal"><a href="article/${esc(e.slug)}">${esc(e.title || '')}</a></h3>
+      <div class="pl-bubble"><pre class="pl-text">${szoveg}</pre></div>
+      ${hosszu ? `<button class="pl-more" type="button" aria-expanded="false" data-less="${esc(sz.kevesebb || '')}">${esc(sz.mutasd || '')}</button>` : ''}
+      <div class="pl-foot">${e.tool ? `<span class="pl-tool">${esc(e.tool)}</span>` : ''}<a class="pl-guide" href="article/${esc(e.slug)}">${esc(sz.utmutato)}</a><button class="pl-copy" type="button" data-copied="${esc(sz.masolva)}">${MASOL_IKON}<span class="pl-copy-l">${esc(sz.masol)}</span></button></div>
+    </article>`;
 }
 
-// Másolás (eseménydelegálással) + szűrés gépelés közben. A vágólap-API hiányában a gomb nem csinál semmit.
-export const SZKRIPT = `<script>(function(){document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.pl-copy');if(!b||!navigator.clipboard)return;var t=b.closest('.pl-card').querySelector('.pl-text').innerText;navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent=b.getAttribute('data-copied');setTimeout(function(){b.textContent=o},1600)})});var q=document.getElementById('plSearch');if(!q)return;q.addEventListener('input',function(){var v=q.value.toLowerCase().trim();document.querySelectorAll('.pl-card').forEach(function(c){c.style.display=!v||c.textContent.toLowerCase().indexOf(v)>-1?'':'none'});document.querySelectorAll('.pl-sec').forEach(function(s){var l=s.querySelectorAll('.pl-card:not([style*="none"])').length;s.style.display=l?'':'none'})})})();</script>`;
+// Másolás (eseménydelegálással; a Felkapott oldal prompt-dobozát is ez kezeli) + lenyitás + szűrés
+// gépelés közben (üres találatnál üzenet). A vágólap-API hiányában a gomb nem csinál semmit.
+export const SZKRIPT = `<script>(function(){document.addEventListener('click',function(e){var m=e.target.closest&&e.target.closest('.pl-more');if(m){var c=m.closest('.pl-card'),o=c.classList.toggle('pl-card--nyitott');m.setAttribute('aria-expanded',o);if(!m.dataset.more)m.dataset.more=m.textContent;m.textContent=o?m.dataset.less:m.dataset.more;return}var b=e.target.closest&&e.target.closest('.pl-copy');if(!b||!navigator.clipboard)return;var t=b.closest('.pl-card').querySelector('.pl-text').innerText;navigator.clipboard.writeText(t).then(function(){var l=b.querySelector('.pl-copy-l')||b,x=l.textContent;l.textContent=b.getAttribute('data-copied');b.classList.add('pl-copy--ok');setTimeout(function(){l.textContent=x;b.classList.remove('pl-copy--ok')},1600)})});var q=document.getElementById('plSearch');if(!q)return;var n=document.getElementById('plNone');q.addEventListener('input',function(){var v=q.value.toLowerCase().trim(),db=0;document.querySelectorAll('.pl-card').forEach(function(c){var j=!v||c.textContent.toLowerCase().indexOf(v)>-1;c.style.display=j?'':'none';if(j)db++});document.querySelectorAll('.pl-sec').forEach(function(s){var l=s.querySelectorAll('.pl-card:not([style*="none"])').length;s.style.display=l?'':'none'});if(n)n.hidden=db>0})})();</script>`;
 
-/** Az oldal törzse. `sz`: felületi szövegek; `temaNev(id)`: a téma neve az adott nyelven; `nyelvTipp`: nem angol oldalon. */
+/**
+ * Az oldal törzse. `sz`: felületi szövegek (kereses = a kereső helyőrzője; nap = „A nap promptja”;
+ * mutasd/kevesebb = lenyitás; nincs = üres találat); `temaNev(id)`: a téma neve az adott nyelven.
+ */
 export function promptTarHtml(tar, { sz, temaNev, nyelvTipp = '' }) {
+  const fejlec = (id, cim, db) => `<h2 class="pl-h"><span class="pl-h-i" aria-hidden="true">${TEMA_JEL[id] || '✨'}</span>${esc(cim)}<span class="pl-h-db">${db}</span></h2>`;
   const szakasz = (id, cim, lista) => lista.length ? `<section class="pl-sec" id="${esc(id)}">
-    <h2 class="pl-h">${esc(cim)}</h2>
-    <div class="pl-grid">${lista.map(e => kartya(e, sz)).join('\n')}</div>
+    ${fejlec(id, cim, lista.length)}
+    <div class="pl-cols">${lista.map(e => kartya(e, sz)).join('\n')}</div>
   </section>` : '';
-  const ugro = [...(tar.kiemelt.length ? [['trending', sz.kiemeltCim]] : []), ...tar.temak.map(x => [x.id, temaNev(x.id)]),
-    ...(tar.egyeb.length ? [['more', sz.egyebCim]] : [])]
-    .map(([id, c]) => `<a href="#${esc(id)}">${esc(c)}</a>`).join('');
-  return `<section class="guides-hero">
-      <p class="intro__kicker">${esc(sz.kicker)}</p>
-      <h1 class="guides-hero__title">${esc(sz.cim)}</h1>
-      <p class="guides-hero__tag">${esc(sz.tag)} <span class="pl-count">${esc(sz.db(tar.ossz))}</span></p>
+  const [fo, ...tobbiKiemelt] = tar.kiemelt;
+  const gombok = [...(tar.kiemelt.length ? [['trending', sz.kiemeltCim, tar.kiemelt.length]] : []),
+    ...tar.temak.map(x => [x.id, temaNev(x.id), x.lista.length]),
+    ...(tar.egyeb.length ? [['more', sz.egyebCim, tar.egyeb.length]] : [])]
+    .map(([id, c, db]) => `<a class="pl-chip" href="#${esc(id)}"><span aria-hidden="true">${TEMA_JEL[id] || '✨'}</span>${esc(c)}<span class="pl-chip-db">${db}</span></a>`).join('');
+  return `<div class="pl-page"><section class="pl-hero">
+      <h1 class="pl-h1">${esc(sz.cim)}</h1>
+      <p class="pl-lead">${esc(sz.tag)}</p>
+      <label class="pl-compose">${KERES_IKON}<input id="plSearch" class="pl-search" type="search" placeholder="${esc(sz.kereses)}" aria-label="${esc(sz.kereses)}"><span class="pl-total">${esc(sz.db(tar.ossz))}</span></label>
+      <nav class="pl-chips" aria-label="${esc(sz.kicker || '')}">${gombok}</nav>
     </section>
     ${nyelvTipp ? `<p class="pl-tip">${esc(nyelvTipp)}</p>` : ''}
-    <div class="pl-tools"><input id="plSearch" class="pl-search" type="search" placeholder="${esc(sz.kereses)}" aria-label="${esc(sz.kereses)}"><nav class="pl-jump">${ugro}</nav></div>
-    ${szakasz('trending', sz.kiemeltCim, tar.kiemelt)}
+    <p id="plNone" class="pl-none" hidden>${esc(sz.nincs || '')}</p>
+    ${fo ? `<section class="pl-sec pl-sec--kiemelt" id="trending">
+      ${fejlec('trending', sz.kiemeltCim, tar.kiemelt.length)}
+      ${kartya(fo, sz, true)}
+      ${tobbiKiemelt.length ? `<div class="pl-cols">${tobbiKiemelt.map(e => kartya(e, sz)).join('\n')}</div>` : ''}
+    </section>` : ''}
     ${tar.temak.map(x => szakasz(x.id, temaNev(x.id), x.lista)).join('\n')}
-    ${szakasz('more', sz.egyebCim, tar.egyeb)}
+    ${szakasz('more', sz.egyebCim, tar.egyeb)}</div>
     ${SZKRIPT}`;
 }

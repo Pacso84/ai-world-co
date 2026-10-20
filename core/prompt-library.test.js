@@ -121,7 +121,10 @@ const SZ = { kicker: 'Prompts', cim: 'AI Prompt Library', tag: 'Copy-ready promp
 t('🧱 HTML: minden kártyán másolás-gomb, eszköz és link a teljes útmutatóra; a szöveg ESCAPE-elve; a [kitöltendő] kiemelve', () => {
   const tar = promptTar([{ ...cikk('ut', 2), md: '💬 Example: "Write a polite <b>complaint</b> email. Facts: [paste your five facts here]. Keep it under 150 words."' }], { now: MOST });
   const h = promptTarHtml(tar, { sz: SZ, temaNev: id => id, nyelvTipp: '' });
-  assert.match(h, /<button class="pl-copy" type="button" data-copied="Copied!">Copy<\/button>/);
+  // 10-20 új megjelenés: ikon + felirat a gombban (a szkript a .pl-copy-l feliratot cseréli)
+  assert.match(h, /<button class="pl-copy" type="button" data-copied="Copied!"><svg[^>]*class="pl-copy-i"|<button class="pl-copy" type="button" data-copied="Copied!"><svg class="pl-copy-i"/);
+  assert.match(h, /<span class="pl-copy-l">Copy<\/span><\/button>/);
+  assert.match(h, /<h3 class="pl-goal"><a href="article\/ut">/, 'a kártya fölött, mire jó (az útmutató címe)');
   assert.match(h, /href="article\/ut"/);
   assert.ok(h.includes('&lt;b&gt;complaint&lt;/b&gt;') && !h.includes('<b>complaint'), 'a prompt HTML-je nem futhat le');
   assert.match(h, /<span class="pl-fill">\[paste your five facts here\]<\/span>/);
