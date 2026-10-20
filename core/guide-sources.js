@@ -18,7 +18,7 @@
 
 const NAP = 24 * 60 * 60 * 1000;
 export const HIR_MAX = 2;
-export const HIR_KOR_NAP = 90;   // = a hír-megőrzés (config news_keep_days: 90) — régebbi hír úgysem létezik
+export const HIR_KOR_NAP = 90;   // forrásnak csak friss hír jó (10-20 óta az olvasott régi hír is megmarad, de forrásnak elavult)
 const TORZS_MAX = 1100;
 const KIVONAT_MAX = 800;
 

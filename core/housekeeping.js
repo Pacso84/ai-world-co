@@ -43,6 +43,7 @@ import { decay, purgeStoreEmbeddings } from './memory-manager.js';
 import { utmutatoE } from './guide-kind.js';
 import { lejartCeluakNelkul } from './redirect-chain.js';
 import { pruneBeallitas, torlendok, linkekKi, toroltListaFrissit, maiToroltDb } from './guide-prune.js';
+import { hirTorlendok } from './news-prune.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -211,19 +212,26 @@ function isEvergreen(file, data) {
   return utmutatoE(file, data);
 }
 
+// 2026-10-20 (user: „ha 60 napig nem olvassa senki, akkor van törlés — a cikkeknél 90 nap!"):
+// a hír már NEM a kora miatt törlődik, hanem ha 90 napnál régebbi ÉS 90 napja senki nem
+// olvasta (core/news-prune.js). Hiányos forgalmi naplónál nincs törlés (fail-closed).
 function pruneOldNews() {
   if (!existsSync(ARTICLES)) return;
-  const cutoff = Date.now() - NEWS_KEEP_DAYS * 86400e3;
-  const doomed = [];
+  const hirek = [];
   for (const f of readdirSync(ARTICLES).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
     let d; try { d = JSON.parse(readFileSync(join(ARTICLES, f), 'utf-8')); } catch { continue; }
     if (isEvergreen(f, d)) continue;
-    const t = Date.parse(d._meta?.published_at || '');
-    if (!Number.isFinite(t)) continue;          // dátum nélkülit nem bántunk
-    if (t >= cutoff) continue;
-    doomed.push({ f, slug: d._meta?.slug || '' });
+    hirek.push({ f, slug: d._meta?.slug || '', published_at: d._meta?.published_at || '' });
   }
-  if (!doomed.length) return;
+  let days = null;
+  try { days = JSON.parse(readFileSync(join(ROOT, 'memory', 'traffic-log.json'), 'utf-8')).days; } catch { /* a kapu kezeli */ }
+  const r = hirTorlendok({ hirek, days, now: Date.now(), keepDays: NEWS_KEEP_DAYS });
+  if (!r.ok) { report.push(`⚠️ lejárt hír-törlés kihagyva (${r.regiek} db ${NEWS_KEEP_DAYS} napnál régebbi vár): ${r.ok_ok}`); return; }
+  const doomed = r.torlendo.map(({ f, slug }) => ({ f, slug }));
+  if (!doomed.length) {
+    if (r.olvasott.length) report.push(`📖 ${r.olvasott.length} régi hír megtartva — az utolsó ${NEWS_KEEP_DAYS} napban is olvasták`);
+    return;
+  }
 
   if (doomed.length > MAX_DELETE) {
     report.push(`🛑 LEJÁRT HÍR: ${doomed.length} cikk esne ki egyszerre (határ ${MAX_DELETE}) — NEM TÖRLÖK. Ez dátumhibára utal; nézd meg, mielőtt folytatjuk.`);
@@ -252,7 +260,7 @@ function pruneOldNews() {
       if (atir && !DRY) writeFileSync(hp, JSON.stringify(r.tortenet, null, 2) + '\n', 'utf-8');
     }
   } catch { /* az átirányítás-takarítás hibája ne állítsa meg a házmestert */ }
-  report.push(`📰 lejárt hír törölve: ${doomed.length} cikk · ${kb(bytes)} KB (${NEWS_KEEP_DAYS} napnál régebbi)${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} rá mutató átirányítás` : ''} — az útmutatókat külön szabály kezeli (60 nap olvasó nélkül)`);
+  report.push(`📰 lejárt hír törölve: ${doomed.length} cikk · ${kb(bytes)} KB (${NEWS_KEEP_DAYS} napnál régebbi és ${NEWS_KEEP_DAYS} napja 0 olvasó${r.olvasott.length ? `; ${r.olvasott.length} olvasott régi hír megtartva` : ''})${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} rá mutató átirányítás` : ''} — az útmutatókat külön szabály kezeli (60 nap olvasó nélkül)`);
 }
 
 // ── 2b. NÉZETLEN ÚTMUTATÓK (2026-10-14, user: „ha 60 napig nem volt olvasó, akkor minek
