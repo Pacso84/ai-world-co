@@ -107,6 +107,52 @@ export function promptokCikkbol(md) {
   return ki;
 }
 
+// ===================================================================
+// A PROMPT A MEGJELENÍTÉS NYELVÉN (2026-10-20, user: „a trendeknél a magyarban vannak angol
+// mondatok! ez így nem jó”). A `promptE` csak ANGOL szöveget ismer fel, ezért eddig a magyar és
+// a spanyol oldal is az angol promptot kapta. A fordító a 💬-jelölést és a sorrendet megtartja
+// → az angolban kiválasztott prompt HELYÉN álló fordított szöveget vesszük. Ha a két cikkben
+// eltér a 💬-találatok száma, vagy a „fordítás” angolul maradt: nincs helyi prompt (null) —
+// a hívó ilyenkor inkább kihagyja, mint hogy angol mondatot tegyen a magyar oldalra.
+// ===================================================================
+const ANGOL_SZO = /\b(the|and|your|you|with|for|this|that|please|write|make|give|my|me|is|are|of|to)\b/gi;
+/** Angolul maradt-e a szöveg (nem angol oldalon)? */
+export function angolNak(s) {
+  const t = String(s || '');
+  const en = (t.match(ANGOL_SZO) || []).length;
+  const helyi = (t.match(/[áéíóöőúüűñ¿¡]|\b(és|egy|hogy|nekem|kérlek|el|la|los|las|que|para|con|una|por)\b/gi) || []).length;
+  return en >= 4 && en > helyi * 2;
+}
+
+function nyersTalalatok(md) {
+  const t = [];
+  for (const m of md.matchAll(/💬[^\n]*\n+```[a-z]*\n([\s\S]*?)```/g)) t.push({ at: m.index, s: m[1], blokk: true });
+  for (const m of md.matchAll(/💬[^\n:]*:\s*\*{0,2}["“„«]([^"”»\n]{40,})["”»]/g)) t.push({ at: m.index, s: m[1], blokk: false });
+  return t.sort((a, b) => a.at - b.at).map(x => ({ ...x, s: tisztit(x.s) }));
+}
+
+/**
+ * Az angol útmutató promptjai (ugyanaz a válogatás, mint a `promptokCikkbol`), mindegyik mellett a
+ * helyi változat: [{ en, helyi }] — `helyi` null, ha nem található biztosan.
+ */
+export function helyiPromptok(mdEn, mdHelyi) {
+  const en = typeof mdEn === 'string' ? nyersTalalatok(mdEn) : [];
+  const hu = typeof mdHelyi === 'string' && mdHelyi ? nyersTalalatok(mdHelyi) : [];
+  const igazodik = hu.length === en.length;
+  const ki = [], latott = new Set();
+  en.forEach((x, i) => {
+    // az angol szabály: az idézőjeles (nem blokkos) prompt legalább 60 karakter
+    if (!x.blokk && x.s.length < 60) return;
+    if (x.s.length < PROMPT_MIN || x.s.length > PROMPT_MAX || !promptE(x.s)) return;
+    const kulcs = x.s.toLowerCase().replace(/[^a-z0-9]+/g, '');
+    if (latott.has(kulcs)) return;
+    latott.add(kulcs);
+    const h = igazodik ? hu[i].s : '';
+    ki.push({ en: x.s, helyi: h && h.length >= 20 && h.length <= PROMPT_MAX * 1.6 && !angolNak(h) ? h : null });
+  });
+  return ki;
+}
+
 /**
  * A tár szerkezete. `cikkek`: [{ slug, title (megjelenítendő), titleEn (témához), tool, trend,
  * publishedAt, md (ANGOL markdown) }]. Kiemelt: trend-útmutatók, majd a FRISS_NAP-nál fiatalabbak,
@@ -118,13 +164,18 @@ export function promptTar(cikkek, { now = Date.now() } = {}) {
   for (const c of Array.isArray(cikkek) ? cikkek : []) {
     if (!c?.slug) continue;
     let db = 0;
-    for (const szoveg of promptokCikkbol(c.md)) {
+    // Nem angol oldalon (`helyi`) a fordított cikk ugyanazon helyén álló prompt; ami nincs meg a
+    // megjelenítés nyelvén, kimarad (2026-10-20, user: „ez van a prompttárban is”). A kulcs angol marad.
+    const parok = c.helyi
+      ? helyiPromptok(c.md, c.mdHelyi).filter(x => x.helyi).map(x => ({ en: x.en, szoveg: x.helyi }))
+      : promptokCikkbol(c.md).map(p => ({ en: p, szoveg: p }));
+    for (const { en, szoveg } of parok) {
       if (db >= CIKKENKENT_MAX) break;
-      const kulcs = szoveg.toLowerCase().replace(/[^a-z0-9]+/g, '');
+      const kulcs = en.toLowerCase().replace(/[^a-z0-9]+/g, '');
       if (globalis.has(kulcs)) continue;
       globalis.add(kulcs);
       db++;
-      bejegyzesek.push({ szoveg, slug: c.slug, title: c.title || '', tool: c.tool || '', trend: !!c.trend,
+      bejegyzesek.push({ szoveg, en, slug: c.slug, title: c.title || '', tool: c.tool || '', trend: !!c.trend,
         publishedAt: c.publishedAt || '', tema: temaOf(c.titleEn || c.title) });
     }
   }
@@ -137,7 +188,7 @@ export function promptTar(cikkek, { now = Date.now() } = {}) {
   // érthetetlen — az lent, a témáknál marad, az útmutató linkjével.
   const kiemeltSlug = new Set();
   const kiemelt = [...bejegyzesek.filter(e => e.trend).sort(ujElol), ...bejegyzesek.filter(e => !e.trend && friss(e)).sort(ujElol)]
-    .filter(e => !FOLYTATAS.test(e.szoveg) && !kiemeltSlug.has(e.slug) && kiemeltSlug.add(e.slug))
+    .filter(e => !FOLYTATAS.test(e.en || e.szoveg) && !kiemeltSlug.has(e.slug) && kiemeltSlug.add(e.slug))
     .slice(0, KIEMELT_MAX);
   const kiemeltHalmaz = new Set(kiemelt);
   const tobbi = bejegyzesek.filter(e => !kiemeltHalmaz.has(e)).sort(ujElol);

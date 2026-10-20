@@ -18,7 +18,7 @@
 // SZÁNDÉKOSAN nincs „még ezeket keresik” lista útmutató nélkül: a cím-szavas párosítás
 // élesben tévedett (pl. „perplexity for free” → Alexa „hands-free cooking”), rossz
 // párosítást pedig nem teszünk ki. Csak a trendre ÍRT útmutató kerül ide. LLM nélkül, $0.
-import { promptokCikkbol, FOLYTATAS, SZKRIPT } from './prompt-library.js';
+import { promptokCikkbol, helyiPromptok, FOLYTATAS, SZKRIPT } from './prompt-library.js';
 import { normal, szavak, rokonKifejezes } from './trend-kutato.js';
 
 const NAP = 864e5;
@@ -59,18 +59,28 @@ export function ujraFelkapott(mai, regi) {
 }
 
 /**
- * A radar szerkezete. `cikkek`: [{ slug, title (megjelenítendő), kifejezes (a trend-keresés),
- * tool, publishedAt, md (a megjelenítés nyelvén — összefoglaló), mdEn (ANGOL — prompt), kep }].
+ * A radar szerkezete. `cikkek`: [{ slug, title (megjelenítendő), kifejezes (a trend-keresés, ANGOL —
+ * ezzel párosítunk), tool, publishedAt, md (a megjelenítés nyelvén — összefoglaló), mdEn (ANGOL), kep }].
+ * NEM ANGOL OLDALON (2026-10-20, user: „a magyarban vannak angol mondatok! ez így nem jó”) a hívó
+ * `helyi: true`-t, `kerdesHelyi`-t (a keresés fordítása, core/trend-forditas.js) ad: a prompt a
+ * fordított cikkből jön (core/prompt-library.js helyiPromptok), és ami nincs meg a megjelenítés
+ * nyelvén, az KIMARAD — angol mondat nem kerül a magyar/spanyol oldalra.
  * `mai`: a MAI trendlista kifejezései (aktivTrendek; ha nincs friss lista, üres).
  */
 export function trendRadar(cikkek, { now = Date.now(), mai = [] } = {}) {
   const napok = Array.from({ length: HET_NAP }, (_, i) => new Date(now - (HET_NAP - 1 - i) * NAP).toISOString().slice(0, 10));
   const ma = napok.at(-1);
-  const tetel = (c, extra) => ({
-    slug: c.slug, title: c.title || c.slug, kifejezes: String(c.kifejezes).trim().toLowerCase(), tool: c.tool || '',
-    publishedAt: c.publishedAt, rovid: rovidOsszefoglalo(c.md), kep: c.kep || '',
-    prompt: promptokCikkbol(c.mdEn || '').find(p => !FOLYTATAS.test(p)) || null, ...extra
-  });
+  const promptja = c => c.helyi
+    ? (helyiPromptok(c.mdEn || '', c.md || '').find(x => x.helyi && !FOLYTATAS.test(x.en))?.helyi || null)
+    : (promptokCikkbol(c.mdEn || '').find(p => !FOLYTATAS.test(p)) || null);
+  const tetel = (c, extra) => {
+    const kifejezes = String(c.kifejezes).trim().toLowerCase();
+    return {
+      slug: c.slug, title: c.title || c.slug, kifejezes, kerdes: c.helyi ? String(c.kerdesHelyi || '').trim().toLowerCase() : kifejezes,
+      tool: c.tool || '', publishedAt: c.publishedAt, rovid: rovidOsszefoglalo(c.md), kep: c.kep || '',
+      prompt: promptja(c), ...extra
+    };
+  };
   const jo = (Array.isArray(cikkek) ? cikkek : []).filter(c => c?.slug && String(c.kifejezes || '').trim() && Date.parse(c.publishedAt));
   const ujak = jo.filter(c => napok.includes(String(c.publishedAt).slice(0, 10))).map(c => tetel(c, { nap: String(c.publishedAt).slice(0, 10), ujra: false }));
   const latott = new Set(ujak.map(e => e.slug));
@@ -112,7 +122,7 @@ function naploSor(e, sz, datum, hetnap, nyelvTipp, horgony) {
       <div class="tr-when"><span class="tr-dd">${esc(datum(iso))}</span><span class="tr-wd">${esc(hetnap(iso))}</span></div>
       <div class="tr-body">
         ${e.ujra ? `<p class="tr-again">${esc(sz.ujra)}</p>` : ''}
-        ${mezo(e.kifejezes, sz)}
+        ${e.kerdes ? mezo(e.kerdes, sz) : ''}
         <div class="tr-answer${e.kep ? ' tr-answer--img' : ''}">${VALASZ}<div class="tr-ans">
           <h3 class="tr-t"><a href="article/${esc(e.slug)}">${esc(e.title)}</a></h3>
           ${e.rovid ? `<p class="tr-s">${esc(e.rovid)}</p>` : ''}

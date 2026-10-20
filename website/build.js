@@ -50,6 +50,8 @@ import { kovetkezoUtmutato } from '../core/next-guide.js';
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek } from '../core/ads.js';
 import { promptTar, promptTarHtml } from '../core/prompt-library.js';
 import { trendRadar, trendRadarHtml } from '../core/trend-radar.js';
+import { szotarBetolt, kerdesForditas } from '../core/trend-forditas.js';
+const TREND_SZOTAR = szotarBetolt();   // a Felkapott oldal kereséseinek fordítása (2026-10-20)
 import { aktivTrendek } from '../core/trend-kutato.js';
 import { partnerBeallitas, partnerDoboz, partnerJelzes } from '../core/affiliate.js';
 import { kedvencForrasHtml } from '../core/preferred-source.js';
@@ -3191,13 +3193,15 @@ function buildPromptsPage(alap, loc) {
   const helyi = new Map(loc.filter(a => a.isGuide).map(a => [a.slug, a]));
   const tar = promptTar(alap.filter(a => a.isGuide).map(a => ({
     slug: a.slug, title: helyi.get(a.slug)?.title || a.title, titleEn: a.titleEn || a.title,
-    tool: a.tool || '', trend: !!a.trend, publishedAt: a.publishedAt || '', md: a.bodyMd || ''
+    tool: a.tool || '', trend: !!a.trend, publishedAt: a.publishedAt || '', md: a.bodyMd || '',
+    // 2026-10-20 (user: „ez van a prompttárban is”): nem angol oldalon a FORDÍTOTT prompt, angol mondat nincs
+    helyi: LANG !== 'en', mdHelyi: LANG !== 'en' ? (helyi.get(a.slug)?.bodyMd || '') : ''
   })));
   const body = promptTarHtml(tar, {
     sz: { kicker: tr('plNav'), cim: tr('plTitle'), tag: tr('plTag'), kiemeltCim: tr('plTrending'), egyebCim: tr('plMore'),
       masol: tr('plCopy'), masolva: tr('plCopied'), utmutato: tr('plGuide'), db: n => tr('plCount').replace('{n}', n), kereses: tr('plSearch') },
     temaNev: id => temaSzoveg(TEMAK.find(t => t.id === id), LANG).cim || id,
-    nyelvTipp: tr('plTip')
+    nyelvTipp: ''   // a promptok már a megjelenítés nyelvén vannak
   });
   return pageShell({
     title: `${tr('plTitle')} — ${SITE.name}`,
@@ -3218,7 +3222,9 @@ function buildTrendingPage(alap, loc) {
   const radar = trendRadar(alap.filter(a => a.isGuide && a.trendKif).map(a => ({
     slug: a.slug, title: helyi.get(a.slug)?.title || a.title, kifejezes: a.trendKif, tool: a.tool || '',
     publishedAt: a.publishedAt || '', md: helyi.get(a.slug)?.bodyMd || a.bodyMd || '', mdEn: a.bodyMd || '',
-    kep: a.image ? `/assets/images/${a.image}` : ''
+    kep: a.image ? `/assets/images/${a.image}` : '',
+    // 2026-10-20 (user: „a magyarban vannak angol mondatok!”): a keresés és a prompt is a megjelenítés nyelvén
+    helyi: LANG !== 'en', kerdesHelyi: kerdesForditas(TREND_SZOTAR, a.trendKif, LANG)
   })), { mai });
   const body = trendRadarHtml(radar, {
     sz: { cim: tr('trTitle'), tag: tr('trTag'), het: tr('trWeek'), ujra: tr('trAgain'), db: n => tr('trCount').replace('{n}', n),
@@ -3227,7 +3233,7 @@ function buildTrendingPage(alap, loc) {
     hetnap: iso => new Date(iso).toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { weekday: 'long' }),
     rovidNap: iso => new Date(iso).toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { weekday: 'short', timeZone: 'UTC' }),
     napSzam: iso => String(new Date(iso).getUTCDate()),
-    nyelvTipp: tr('plTip'),
+    nyelvTipp: '',   // a prompt már a megjelenítés nyelvén van (2026-10-20)
     hirdetes: hirdetesBlokk(HIRDETES, LANG)   // EGY, két napló-sor közé (user 10-18)
   });
   return pageShell({

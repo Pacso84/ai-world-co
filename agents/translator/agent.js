@@ -33,6 +33,7 @@ import { orderForTranslation, pruneFails } from '../../core/translation-queue.js
 import { fileHandback, sourceDefect } from '../../core/handback.js';
 import { remember } from '../../core/memory-manager.js';
 import { peldaDomainJavit } from '../../core/example-domain.js';
+import { SZOTAR, szotarBetolt, hianyzoForditasok, valaszFeldolgoz } from '../../core/trend-forditas.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -194,6 +195,35 @@ async function translateMarkdown(markdown, langName, { maxTokens = BASE_TOKENS }
 function looksValid(md) {
   // Kötelező: nyitó ÉS záró frontmatter delimiter + értelmes hossz
   return md && /^---\n[\s\S]*?\n---/.test(md.trimStart()) && md.length > 160;
+}
+
+/** A trend-keresések hiányzó fordításai (core/trend-forditas.js szótár). Visszaadja a költséget. */
+async function trendKeresesekForditasa() {
+  const kifejezesek = [];
+  for (const f of readdirSync(ARTICLES_DIR).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
+    try { const k = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'))._meta?.trend?.kifejezes; if (k) kifejezesek.push(k); } catch { /* rossz fájl */ }
+  }
+  const szotar = szotarBetolt();
+  const hiany = hianyzoForditasok(kifejezesek, szotar, Object.keys(LANGS));
+  if (!hiany.length) return 0;
+  let koltseg = 0, db = 0;
+  for (const [ny, nev] of Object.entries(LANGS)) {
+    const lista = hiany.filter(h => h.nyelv === ny).map(h => h.kifejezes);
+    if (!lista.length) continue;
+    const prompt = `Translate these English web search queries into natural ${nev} search phrases — the way a ${nev}-speaking person would type them into a search engine. Keep brand and product names (Gemini, Grok, ChatGPT, etc.) as they are. Lowercase. Output exactly ${lista.length} lines, one per query, in the same order, nothing else.\n\n`
+      + lista.map((k, i) => `${i + 1}. ${k}`).join('\n');
+    const r = await ask(prompt, { agentName: AGENT_NAME, maxTokens: 1500 });
+    koltseg += r?.costUsd || 0;
+    const ki = valaszFeldolgoz(r?.text, lista.length);
+    if (!ki) { console.log(`   ⚠️ trend-keresések (${ny}): a válasz nem ${lista.length} sor — jövő körben újra`); continue; }
+    lista.forEach((k, i) => { szotar[k] = { ...(szotar[k] || {}), [ny]: ki[i] }; });
+    db += lista.length;
+  }
+  if (db) {
+    writeFileSync(SZOTAR, JSON.stringify(szotar, null, 2) + '\n', 'utf-8');
+    console.log(`   🔎 trend-keresés lefordítva: ${db} db ($${koltseg.toFixed(5)})`);
+  }
+  return koltseg;
 }
 
 async function main() {
@@ -370,6 +400,11 @@ async function main() {
   const lanes = Math.max(1, Math.min(args.concurrency, files.length || 1));
   console.log(`⚙️  párhuzamos sávok: ${lanes} | limit: ${args.limit} | időkeret: ${args.maxMinutes} perc`);
   await Promise.all(Array.from({ length: lanes }, () => worker()));
+
+  // 🔎 A FELKAPOTT OLDAL KERESÉSEI (2026-10-20, user: „a magyarban vannak angol mondatok!”) —
+  // a trend-útmutatók keresés-kifejezését is lefordítjuk (core/trend-forditas.js). Rövid, olcsó
+  // hívás; a hibája nem állítja meg a fordítót — a nem angol oldalon a keresés addig kimarad.
+  try { cost += await trendKeresesekForditasa(); } catch (e) { console.log(`   ⚠️ trend-keresések fordítása elmaradt (nem kritikus): ${String(e?.message || e).slice(0, 80)}`); }
 
   if (stopReason === 'limit') console.log(`\n⏸️  Elértem a futás-limitet (${args.limit}). A többit a következő futás fordítja.`);
   if (stopReason === 'time') console.log(`\n⏱️  Elértem az idő-keretet (${args.maxMinutes} perc). A többit a következő futás fordítja.`);
