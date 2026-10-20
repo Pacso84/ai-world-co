@@ -35,3 +35,26 @@ export function gyujtoLastmod(cikkek) {
 export function sitemapSor(u) {
   return `  <url><loc>${u.loc}</loc>${u.date ? `<lastmod>${u.date}</lastmod>` : ''}</url>`;
 }
+
+// ===================================================================
+// LÁTHATÓ „FRISSÍTVE" + KÖZÖS MÓDOSÍTÁS-DÁTUM (2026-10-19)
+// ===================================================================
+// User: „de ne felejtsük el lehessen látni a módosítás dátumát!" A build
+// (sitemap, JSON-LD dateModified, a cikkfejléc „Frissítve" sora) és az IndexNow
+// UGYANEBBŐL a függvényből számol — két külön képlet előbb-utóbb szétcsúszna.
+// A tény-ellenőrző MEGJELÖLÉSE (fact_check_flag) nem módosítás: olyankor a
+// szöveg nem változott, csak a fact_checked_at íródott (agents/fact-check).
+// ===================================================================
+
+/** A cikk utolsó TARTALMI változása (ISO), annak híján a megjelenés; semmi esetén ''. */
+export function valodiModositas(meta) {
+  const m = meta || {};
+  return [m.published_at, m.howto_upgraded_at, m.fresh_updated_at, m.fact_check_flag ? null : m.fact_checked_at]
+    .filter(x => napja(x)).sort().pop() || '';
+}
+
+/** A „Frissítve" dátuma: csak ha a módosítás KÉSŐBBI NAPON volt, mint a megjelenés; különben null. */
+export function frissitveNap(publishedAt, modifiedAt) {
+  const p = napja(publishedAt), m = napja(modifiedAt);
+  return p && m && m > p ? modifiedAt : null;
+}

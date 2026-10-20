@@ -22,6 +22,8 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { noindexNyelv } from './noindex-langs.js';
 import { toroltUrlek } from './guide-prune.js';
+import { valodiModositas } from './sitemap-lastmod.js';
+import { osszevontUrlek } from './utmutato-osszevonas.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -61,7 +63,9 @@ export async function submitIndexNow({ all = false, dry = false } = {}) {
     for (const f of readdirSync(ARTICLES_DIR).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
       try {
         const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
-        const pub = new Date(d._meta?.published_at || 0).getTime();
+        // 2026-10-19: a MÓDOSÍTOTT cikk is friss (felújító, tény-ellenőrző javítása) — ugyanaz a dátum,
+        // ami az oldalon „Frissítve”-ként és a sitemapban lastmod-ként látszik (core/sitemap-lastmod.js).
+        const pub = new Date(valodiModositas(d._meta) || 0).getTime();
         const written = new Date(d._meta?.written_at || 0).getTime();
         if (!all && (now - Math.max(pub, written)) > FRESH_HOURS * 3600e3) continue;
         // ===================================================================
@@ -85,6 +89,11 @@ export async function submitIndexNow({ all = false, dry = false } = {}) {
     const lista = JSON.parse(readFileSync(join(ROOT, 'memory', 'torolt-utmutatok.json'), 'utf-8'));
     for (const u of toroltUrlek(lista, site, LANGS, now, FRESH_HOURS)) urls.add(u);
   } catch { /* nincs törölt útmutató — nem baj */ }
+  // ÖSSZEVONT ÚTMUTATÓK (2026-10-19, core/utmutato-osszevonas.js): a régi cím (most 301) és a megmaradó.
+  try {
+    const naplo = JSON.parse(readFileSync(join(ROOT, 'content', 'osszevonas-naplo.json'), 'utf-8'));
+    for (const u of osszevontUrlek(naplo, site, LANGS, now, FRESH_HOURS)) urls.add(u);
+  } catch { /* még nem volt összevonás */ }
   // Ha van friss tartalom, a listaoldalak is változtak
   if (urls.size > 0 || all) {
     for (const lp of LANGS) { urls.add(`${site}${lp}/`); urls.add(`${site}${lp}/guides`); urls.add(`${site}${lp}/tools`); }

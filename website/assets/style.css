@@ -303,6 +303,7 @@ body {
   font-size: 13px; color: var(--muted); font-weight: 600; letter-spacing: 0.04em;
 }
 .article__meta .dot { color: var(--line-strong); }
+.article__updated { color: var(--accent-dark); }   /* „Frissítve” (2026-10-19) */
 /* MI-JELÖLÉS A CIKK TETEJÉN (2026-09-12, EU AI Act 50. cikk (4)–(5)): a jelölésnek
    „világosan és megkülönböztethetően, legkésőbb az első találkozáskor" kell
    megjelennie. Addig csak a lap alján (77–84%) volt. Szándékosan NEM halvány:

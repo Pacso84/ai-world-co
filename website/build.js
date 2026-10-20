@@ -33,7 +33,7 @@ import { RETIRED_LANGS } from '../core/retired-langs.js';
 // kapnak), ezek viszont ÉLŐ, elérhető lapok — csak a keresők indexéből
 // maradnak ki. A modul fejléce indokolja, hogy miért. (2026-09-08)
 import { robotsTartalom, indexelhetoNyelvek, noindexNyelv } from '../core/noindex-langs.js';
-import { cikkLastmod, gyujtoLastmod, napja, sitemapSor } from '../core/sitemap-lastmod.js';
+import { cikkLastmod, gyujtoLastmod, napja, sitemapSor, valodiModositas, frissitveNap } from '../core/sitemap-lastmod.js';
 // Teme-hub oldalak (2026-09-10) — a besorolas a KOZOS modulbol jon, ugyanabbol,
 // amit a fizetos csomag hasznal. Egy szabaly, egy hely.
 import { TEMAK, temaOf , temaSzoveg, temaLeiras } from '../core/topics.js';
@@ -236,7 +236,7 @@ const LANG_NAME = { en: 'English', hu: 'Magyar', es: 'Español', };
 const UI = {
   en: { news: 'News', guides: 'Guides', tools: 'AI tools', support: 'Support',
         heroKicker: 'Issue 01', heroTitle: 'Everyday AI, <em>explained simply.</em>',
-        minRead: 'min read', stepByStep: 'Step-by-step',
+        minRead: 'min read', stepByStep: 'Step-by-step', articleUpdated: 'Updated',
         guidesTitle: 'Everyday AI <em>skills</em>', guidesTag: 'Plain-language how-tos that work with any assistant — ChatGPT, Gemini, Claude or others.',
         // ⚠️ A TAGLINE NEM ÍGÉRHET ASSZISZTENST (2026-08-17, user jelezte): eddig
         // "Pick your assistant" állt itt, miközben az oldalon a Midjourney (kép)
@@ -251,7 +251,7 @@ const UI = {
         footerNote: 'Written by AI agents · Automated quality checks · Human editor spot-checks daily', back: '← Back', language: 'Language' },
   hu: { news: 'Hírek', guides: 'Útmutatók', tools: 'AI eszközök', support: 'Támogatás',
         heroKicker: '01. szám', heroTitle: 'A hétköznapi AI, <em>érthetően.</em>',
-        minRead: 'perc olvasás', stepByStep: 'Lépésről lépésre',
+        minRead: 'perc olvasás', stepByStep: 'Lépésről lépésre', articleUpdated: 'Frissítve',
         guidesTitle: 'Hétköznapi AI <em>készségek</em>', guidesTag: 'Közérthető útmutatók, amelyek bármelyik asszisztenssel működnek — ChatGPT, Gemini, Claude és társai.',
         toolsTitle: 'Útmutatók <em>AI eszköz</em> szerint', toolsTag: 'Válaszd ki az AI-eszközöd az eszköz-specifikus, lépésről lépésre útmutatókhoz.',
         guidesMetaDesc: 'Közérthető, lépésről lépésre útmutatók a hétköznapi AI-hoz: promptírás, összefoglalás, tényellenőrzés, biztonság. Bármelyik asszisztenssel működik.',
@@ -259,7 +259,7 @@ const UI = {
         footerNote: 'AI-ügynökök írják · Automatikus minőség-ellenőrzés · Emberi szerkesztő naponta szúrópróbával ellenőrzi', back: '← Vissza', language: 'Nyelv' },
   es: { news: 'Noticias', guides: 'Guías', tools: 'Herramientas IA', support: 'Apóyanos',
         heroKicker: 'Número 01', heroTitle: 'La IA cotidiana, <em>explicada fácil.</em>',
-        minRead: 'min de lectura', stepByStep: 'Paso a paso',
+        minRead: 'min de lectura', stepByStep: 'Paso a paso', articleUpdated: 'Actualizado',
         guidesTitle: 'Habilidades de <em>IA cotidiana</em>', guidesTag: 'Guías en lenguaje claro que funcionan con cualquier asistente — ChatGPT, Gemini, Claude y más.',
         toolsTitle: 'Guías por <em>herramienta de IA</em>', toolsTag: 'Elige tu herramienta de IA para guías paso a paso específicas.',
         guidesMetaDesc: 'Guías paso a paso en lenguaje claro sobre IA cotidiana: escribir prompts, resumir, verificar datos y usarla con seguridad. Funciona con cualquier asistente.',
@@ -1059,6 +1059,14 @@ function formatDate(iso) {
   return d.toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
+// LÁTHATÓ „FRISSÍTVE” (2026-10-19, user: „lehessen látni a módosítás dátumát!”): a cikkfejléc
+// dátuma mellé, CSAK ha a tartalom egy későbbi napon tényleg változott (core/sitemap-lastmod.js).
+function frissitveHtml(a) {
+  const m = frissitveNap(a.publishedAt, a.modifiedAt);
+  if (!m) return '';
+  return `<span class="dot">·</span><span class="article__updated">🔄 ${tr('articleUpdated')}: <time datetime="${napja(m)}">${formatDate(m)}</time></span>`;
+}
+
 // ===================================================================
 // CIKKEK BETÖLTÉSE
 // ===================================================================
@@ -1160,8 +1168,9 @@ function loadArticles() {
         // egyetlen cikkünk sem frissült SOHA — pedig a felújító (upgrade-howtos)
         // és a tény-ellenőrző rendszeresen újraírja őket. A frissesség a
         // rangsorolás egyik jelzése; a saját munkánkat titkoltuk el vele.
-        modifiedAt: [data._meta?.published_at, data._meta?.howto_upgraded_at, data._meta?.fact_checked_at, data._meta?.fresh_updated_at]
-          .filter(Boolean).sort().pop() || data._meta?.published_at || '',
+        // 2026-10-19: közös képlet (core/sitemap-lastmod.js) — a sitemap, a JSON-LD, a látható
+        // „Frissítve” sor és az IndexNow ugyanazt a dátumot mondja.
+        modifiedAt: valodiModositas(data._meta),
         sourceName: data._meta?.source_name || '',
         sourceLink: data._meta?.source_link || '',
         reviewScore: data._meta?.ai_review?.overall_score || null
@@ -2101,6 +2110,7 @@ function buildArticlePage(a) {
         <span>${a.readTime} ${tr('minRead')}</span>
         <span class="dot">·</span>
         <span>${formatDate(a.publishedAt)}</span>
+        ${frissitveHtml(a)}
       </div>
       ${aiLabelHtml('aiLabelNews')}
       ${kedvencForrasHtml(SITE.url, LANG)}
@@ -2585,7 +2595,7 @@ function buildGuidePage(a) {
       </div>
       <h1 class="article__title">${escapeHtml(a.title)}</h1>
       <p class="article__subtitle">${escapeHtml(a.subtitle)}</p>
-      <div class="article__meta"><span>${a.readTime} ${tr('minRead')}</span><span class="dot">·</span><span>${formatDate(a.publishedAt)}</span></div>
+      <div class="article__meta"><span>${a.readTime} ${tr('minRead')}</span><span class="dot">·</span><span>${formatDate(a.publishedAt)}</span>${frissitveHtml(a)}</div>
       ${aiLabelHtml('aiLabelGuide')}
       ${partnerJelzes(PARTNER, a, LANG)}
       ${kedvencForrasHtml(SITE.url, LANG)}

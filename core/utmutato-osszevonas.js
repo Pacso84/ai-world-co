@@ -92,6 +92,20 @@ export function esedekes(utolso, ma = new Date().toISOString()) {
   return (Date.parse(ma) - Date.parse(utolso)) / 864e5 >= HET_NAP;
 }
 
+/**
+ * A friss összevonások bejelentendő címei (core/indexnow.js hívja): a RÉGI cím — a kereső
+ * újra megnézi, 301-et talál, és a megmaradóra teszi át — és a megmaradó, minden nyelven.
+ */
+export function osszevontUrlek(naplo, site, nyelvek, now = Date.now(), oraHatar = 48) {
+  const hatar = now - oraHatar * 3600e3;
+  const ki = new Set();
+  for (const x of naplo?.tortenet || []) {
+    if (!x?.from || !x?.to || !(Date.parse(x.at) >= hatar)) continue;
+    for (const lp of nyelvek || []) for (const s of [x.from, x.to]) ki.add(`${site}${lp}/article/${s}`);
+  }
+  return [...ki];
+}
+
 // ---------- I/O (csak a CI; --dry helyben) ----------
 
 function betolt() {

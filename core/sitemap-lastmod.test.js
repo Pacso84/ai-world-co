@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { napja, cikkLastmod, gyujtoLastmod, sitemapSor } from './sitemap-lastmod.js';
+import { napja, cikkLastmod, gyujtoLastmod, sitemapSor, valodiModositas } from './sitemap-lastmod.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const build = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8').replace(/\r\n/g, '\n');
@@ -57,9 +57,12 @@ t('🔌 a gyűjtőoldalak a SAJÁT tartalmuk dátumát kapják', () => {
 });
 
 t('🔌 a felújító-frissítés (fresh_updated_at) is módosításnak számít', () => {
-  const m = build.match(/modifiedAt: \[([^\]]*)\]/);
-  assert.ok(m, 'nincs modifiedAt');
-  for (const mezo of ['published_at', 'howto_upgraded_at', 'fact_checked_at', 'fresh_updated_at']) assert.ok(m[1].includes(mezo), 'hiányzik: ' + mezo);
+  // 2026-10-20: a képlet a közös valodiModositas()-ba költözött (core/modositas-datum.test.js) — itt VISELKEDÉSRE nézzük.
+  assert.match(build, /modifiedAt:\s*valodiModositas\(data\._meta\)/, 'a build nem a közös függvényből számol');
+  const alap = { published_at: '2026-08-01T10:00:00Z' };
+  for (const mezo of ['howto_upgraded_at', 'fact_checked_at', 'fresh_updated_at']) {
+    assert.equal(valodiModositas({ ...alap, [mezo]: '2026-10-02T09:00:00Z' }), '2026-10-02T09:00:00Z', 'nem számít módosításnak: ' + mezo);
+  }
 });
 
 if (hiba) { console.log(`\n❌ sitemap-lastmod.test: ${hiba} hiba`); process.exit(1); }
