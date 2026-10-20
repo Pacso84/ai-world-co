@@ -1285,15 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m179099682098176",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"AI is changing developer work. Here are three skills to strengthen.\" — mi a baj: The claim that 'Claude Frontier Academy' is an Anthropic program 'with a $100 million commitment to train 10,000 by the end of 2027' is a fabricated specific — it is presented as fact in the article's source-quoted block but does not appear in the official GitHub announcement and constitutes an ",
-      "ref": "2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
-      "at": "2026-10-03T03:07:00.981Z"
-    },
-    {
       "id": "m179099684526619",
       "from": "ellenorzo",
       "to": "iro",
@@ -2647,6 +2638,15 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-20T03:05:07.217Z"
+    },
+    {
+      "id": "m179252548125244",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a simple cover letter for a job application \" — Free DeepSeek account claim (pricing may have changed); Specific UI element descriptions (paper airplane icon, 'Message DeepSeek...' placeholder)",
+      "ref": "ARTICLE_GUIDE_draft-a-simple-cover-letter-for-a-job-application-with-deeps.json",
+      "at": "2026-10-20T19:44:41.252Z"
     }
   ]
 }
