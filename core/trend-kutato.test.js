@@ -147,6 +147,15 @@ t('🔴 javítás F3: felkapott tétel csak akkor AI, ha a kifejezés az, vagy a
   assert.equal(rssAiE({ kifejezes: 'fenerbahçe', hirek: ['Fenerbahçe wins', 'Coach uses AI analytics', 'Match report'] }, ESZK), false);
   assert.equal(rssAiE({ kifejezes: 'chatgpt outage', hirek: [] }, ESZK), true);
   assert.equal(rssAiE({ kifejezes: 'whalefall', hirek: [] }, ESZK), false);
+  // 10-20 élesben: a tőzsdei keresés átjutott, mert a hírcímekben „AI stocks” állt
+  assert.equal(rssAiE({ kifejezes: 'dow today', hirek: ['Dow rises as AI stocks rally', 'Stock market today: Dow, S&P 500 gain on AI optimism', 'Dow Jones futures slip'] }, ESZK), false);
+});
+
+t('🔴 10-20: a hír trend-CÍMKÉJE csak teljes egyezésnél (szigorú); a sorrendhez az eszköznév is elég', () => {
+  const T = { temak: [{ kifejezes: 'gemini prompt for professional photo', eszkoz: 'Gemini' }] };
+  assert.equal(trendTalalat('Gemini Can Now Chat With Your BigQuery Data Inside Google Sheets', T), 'gemini prompt for professional photo');
+  assert.equal(trendTalalat('Gemini Can Now Chat With Your BigQuery Data Inside Google Sheets', T, { szigoru: true }), null);
+  assert.equal(trendTalalat('A Gemini prompt for a professional photo, step by step', T, { szigoru: true }), 'gemini prompt for professional photo');
 });
 
 t('🔴 javítás F4: eszközönként legfeljebb 2 téma; az ismétlődő-alapkérdés bónusz legfeljebb +10', () => {
@@ -248,6 +257,7 @@ t('🔌 Író: a draftok trend szerint rendezve, a cikk _meta.trend-et kap', () 
   assert.match(s, /import \{ aktivTrendek, trendElore, trendTalalat \} from '\.\.\/\.\.\/core\/trend-kutato\.js';/);
   assert.match(s, /trendElore\(rendezve, T, f => JSON\.parse\(readFileSync\(join\(DRAFTS_DIR, f\), 'utf-8'\)\)\.title\)/);
   assert.match(s, /trend: trendJeloles\(lista\),/);
+  assert.match(s, /T, \{ szigoru: true \}\)/, 'a hír trend-címkéje nem szigorú (10-20)');
 });
 
 t('🔌 Útmutató-agent: felvétel naponta 1, a középszintű MARAD, a trend utána jön (az általános hely helyére)', () => {

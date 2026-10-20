@@ -201,12 +201,17 @@ export function sajatTopEszkozok(days, cikkMeta, now = Date.now(), napok = 14, d
   return [...new Set(top.map(s => String(cikkMeta?.get(s)?.tool || '').trim().toLowerCase()).filter(Boolean))];
 }
 
-/** Felkapott tétel AI-kapcsolatú-e? A kifejezés maga AI/ismert eszköz, VAGY a hírcímek TÖBBSÉGE az (10-14 javítás). */
+// A hírcím-ágban a puszta „AI” szó NEM elég (2026-10-20, élesben: a „dow today” tőzsdei keresés
+// átjutott, mert a hírcímek többsége „AI stocks…” volt → nem odaillő trend-útmutató készült).
+// Konkrét MI-termék/-műfaj kell (Gemini, ChatGPT, chatbot, prompt…) — a „nano banana” így is átmegy.
+const AI_TERMEK_RX = /\b(chatgpt|gpt|gemini|claude|copilot|alexa|notebooklm|perplexity|grok|meta ai|midjourney|deepfakes?|chatbots?|prompts?)\b/i;
+
+/** Felkapott tétel AI-kapcsolatú-e? A kifejezés maga AI/ismert eszköz, VAGY a hírcímek TÖBBSÉGE konkrét MI-termékről szól (10-14, 10-20). */
 export function rssAiE(tetel, eszkozok = []) {
   const kif = String(tetel?.kifejezes || '');
   if (AI_RX.test(kif) || eszkozBenne(kif, eszkozok)) return true;
   const hirek = tetel?.hirek || [];
-  return hirek.length > 0 && hirek.filter(h => AI_RX.test(h)).length > hirek.length / 2;
+  return hirek.length > 0 && hirek.filter(h => AI_TERMEK_RX.test(h) || eszkozBenne(h, eszkozok)).length > hirek.length / 2;
 }
 
 /** Pontozás + összevonás (azonos tartalmas szókészlet = egy téma) → a legjobb TOP_DB. */
@@ -316,12 +321,17 @@ export async function gyujt({ beall, fetchFn = fetch, alvas = alvasAlap, ora = D
 }
 
 // ── HATÁS: HÍREK (core) ─────────────────────────────────────────────
-/** Melyik trendhez illik egy cím? Eszköz-egyezés, vagy a kifejezés MINDEN tartalmas szava benne van. */
-export function trendTalalat(cim, trendek) {
+/**
+ * Melyik trendhez illik egy cím? Eszköz-egyezés, vagy a kifejezés MINDEN tartalmas szava benne van.
+ * `szigoru` (2026-10-20): CSAK a teljes szó-egyezés számít — a hír trend-CÍMKÉJÉHEZ (agents/iro). A puszta
+ * eszköznév („Gemini…”) a sorrendhez (trendElore) jó jel, címkének túl laza: 10-20-án 4 Gemini-hír kapta
+ * meg a „gemini prompt for professional photo” címkét, pedig egyik sem arról szólt.
+ */
+export function trendTalalat(cim, trendek, { szigoru = false } = {}) {
   const c = ` ${normal(cim).replace(/[^a-z0-9+ ]+/g, ' ')} `;
   for (const t of trendek?.temak || []) {
     const e = String(t.eszkoz || '').toLowerCase().replace(/\+$/, '');
-    if (e && new RegExp(`[^a-z0-9]${escRx(e)}\\+?[^a-z0-9]`).test(c)) return t.kifejezes;
+    if (!szigoru && e && new RegExp(`[^a-z0-9]${escRx(e)}\\+?[^a-z0-9]`).test(c)) return t.kifejezes;
     const sz = [...szavak(t.kifejezes)];
     if (sz.length >= 2 && sz.every(w => c.includes(` ${w} `) || c.includes(` ${w.replace(/s$/, '')} `))) return t.kifejezes;
   }

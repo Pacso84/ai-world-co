@@ -502,7 +502,7 @@ async function ismetlesE(markdown, drafts, theme) {
 function trendJeloles(lista) {
   try {
     const T = aktivTrendek();
-    const k = T && trendTalalat(lista.map(d => d.title || '').join(' · '), T);
+    const k = T && trendTalalat(lista.map(d => d.title || '').join(' · '), T, { szigoru: true });   // címke: csak teljes egyezés (10-20)
     return k ? { kifejezes: k, datum: T.datum } : null;
   } catch { return null; }
 }
