@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "written_at": "2026-10-20T02:35:43.417Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00906665,
+    "original_draft": "2026-10-20T02-33-12-849Z_google-workspace_Analyze_BigQuery_data_using_natural_language_with_.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/10/analyze-bigquery-data-using-natural-language-with-Gemini-in-Google-Sheets.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/10/analyze-bigquery-data-using-natural-language-with-Gemini-in-Google-Sheets.html"
+    ],
+    "source_snippet": "We’re introducing a new way to analyze BigQuery data in Google Sheets. After connecting to BigQuery data with Connected Sheets, you can use Gemini to interact and analyze that data conversationally, right in Google Sheets. Gemini queries run against the full dataset in BigQuery, not just what’s visible in your spreadsheet. This means users can now ask questions on, analyze, and create views over super large data sets. Key use cases include:\n\n\nAsk questions in natural language: Ask something like “What were total sales in the Northeast last quarter?” and get an answer based on your complete BigQuery data.\nDig deeper with follow-ups: Keep the conversation going with questions like “How does that compare to the same quarter last year?” or “Which products drove the increase?”\n\n\n\n\nAsk Gemini to analyze and pull insights from your largest datasets in BigQuery\n\n\nGo from analysis to dashboard: Describe what you need, such as “Build a quarterly sales review with revenue by region, a monthly trend, and our top 10 products.” Gemini will share its plan for you to review, then build a new spreadsheet tab with native, connected, refreshable objects like database formulas, pivot tables, and charts.\n\n\n\n\nGemini can create connected charts, pivot tables, and dashboards that are always up to date with scheduled refreshes\n\n\n\nFor business users, Gemini handles the legwork of completing their end to end analysis, from querying the data to garnering complex and nuanced insights from the data, to la",
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": {
+      "kifejezes": "gemini prompt for professional photo",
+      "datum": "2026-10-19"
+    },
+    "status": "published",
+    "published_at": "2026-10-20T02:36:56.833Z",
+    "slug": "gemini-can-now-chat-with-your-bigquery-data-inside-google-sheets",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 665
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-crafted explainer with clear hook, solid plain-language definitions of BigQuery, SQL, and Connected Sheets, accurate Google attribution throughout, and a useful 'What this means for you' section tailored to different reader types. No prohibited content, no clichés, and US English throughout.",
+      "_aiCost": 0.0017376,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-20T02:38:11.616Z",
+    "guide_worthy": false,
+    "pairing_reason": "This requires BigQuery and Connected Sheets - enterprise products most everyday people don't have access to",
+    "image_v": 2,
+    "image_at": "2026-10-20T02:44:08.561Z",
+    "seo": {
+      "meta_description": "Gemini now lets you query BigQuery data in Google Sheets using plain English—no SQL required. Get charts, pivot tables, and dashboards instantly.",
+      "keywords": [
+        "Gemini BigQuery Google Sheets",
+        "query BigQuery without SQL",
+        "Gemini AI data analysis",
+        "Google Sheets BigQuery integration",
+        "AI data visualization Google",
+        "plain English database queries",
+        "Google AI spreadsheet tools"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add step-by-step instructions on how to enable and use this feature",
+        "Include a concrete example showing a typical business question and the resulting output",
+        "Mention any requirements or limitations (workspace version, data access permissions)"
+      ],
+      "optimised_at": "2026-10-20T02:46:06.917Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Gemini Can Now Chat With Your BigQuery Data Inside Google Sheets\"\nsubtitle: \"Google says you can ask plain-English questions about huge company datasets and get charts, pivot tables, and dashboards back — no SQL needed\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"gemini\", \"google-sheets\", \"bigquery\", \"data-analysis\", \"business-tools\"]\n---\n\n# Gemini Can Now Chat With Your BigQuery Data Inside Google Sheets\n\n> **In short:** Google says Gemini now answers plain-English questions about BigQuery data inside Google Sheets, querying the full dataset (not just what's visible). It can also build refreshable charts, pivot tables, and dashboards from a single sentence.\n\nYou know that moment when a manager asks for a quick sales breakdown and the only person who can answer it is locked in meetings for two days? Google's latest Gemini integration is aimed squarely at that kind of pain.\n\n## What changed\n\nThe new feature, announced by Google, lets you talk to your BigQuery data the way you'd talk to a coworker sitting next to you. **BigQuery** is Google's data warehouse — think of it as a giant, well-organized storage locker for company data: sales records, app logs, customer events, and other very large datasets.\n\nTo use the new feature, you first connect BigQuery to Google Sheets through **Connected Sheets**, a Google feature that lets you treat BigQuery tables almost like normal spreadsheet data. Once connected, you can ask Gemini questions in everyday language. Type *\"What were total sales in the Northeast last quarter?\"* and Gemini writes and runs the actual BigQuery query behind the scenes — against the entire dataset, not just the slice you happen to be looking at.\n\nThat is the key difference from a regular spreadsheet formula. Your data can be enormous, and Gemini still handles it.\n\n## What you can actually do\n\nAccording to Google's announcement, three workflows are front and center.\n\n**Ask plain-English questions.** Instead of writing a **SQL query** (the programming language databases speak), you describe what you want. Gemini figures out the query.\n\n**Follow up in the same conversation.** Ask *\"How does that compare to the same quarter last year?\"* and Gemini remembers the earlier answer. You can keep digging without restating the background.\n\n**Build a dashboard from a single sentence.** Describe the report you need — say, *\"Build a quarterly sales review with revenue by region, a monthly trend, and our top 10 products.\"* Google says Gemini will first show you its plan, then create a new tab in your spreadsheet with charts, pivot tables, and formulas that stay linked to BigQuery. Scheduled refreshes keep the data current.\n\nFor business users, Google says Gemini handles the legwork of completing an end-to-end analysis — from querying the data to pulling out insights and laying them out in a report.\n\n## What this means for you\n\n- **If you work with data at a company:** This shortens the gap between \"I have a question\" and \"I have a number.\" Tasks you used to file a ticket for, you may now just ask the spreadsheet.\n- **If you're a manager or founder:** Less reliance on a single data analyst for routine questions. Your team can self-serve the basics, freeing experts for deeper work.\n- **If you've never used BigQuery:** You can probably ignore this for now. BigQuery is an enterprise data tool — most everyday spreadsheets don't need it.\n- **If you already use it:** Already on Connected Sheets? Look for the Gemini option when you open a connected sheet, and try asking your most frequent dashboard question to see if it can build the report for you.\n\n## Wrap-up\n\nGemini's new BigQuery-in-Sheets conversation is a practical step toward making large datasets more conversational. If your company already uses Connected Sheets, this could save real time on routine reporting. A good first move: pick one question you normally email your data team about, and try asking Gemini instead. If you don't see the Gemini option yet, your Workspace admin can confirm whether the feature has reached your account.",
+  "original_title": "Analyze BigQuery data using natural language with Gemini in Google Sheets"
+}

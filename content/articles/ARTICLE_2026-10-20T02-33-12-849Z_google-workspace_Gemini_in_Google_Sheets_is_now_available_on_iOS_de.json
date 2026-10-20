@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "written_at": "2026-10-20T02:35:07.370Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00907218,
+    "original_draft": "2026-10-20T02-33-12-849Z_google-workspace_Gemini_in_Google_Sheets_is_now_available_on_iOS_de.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/10/gemini-in-google-sheets-is-now-available-on-iOS-devices.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/10/gemini-in-google-sheets-is-now-available-on-iOS-devices.html"
+    ],
+    "source_snippet": "Building upon the power of Gemini in Sheets on the web and our recent launch on Android devices, we’re excited to announce that you can now use Gemini in Google Sheets on your iOS device to quickly analyze and understand your data while on the go.\nSimply tap on the Gemini spark icon, and you can ask questions about your data, generate analytical insights, and create charts. To help you get started, we've included suggested prompts such as “Summarize this table,” and “Analyze for insights.”\nFinance Tracker:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEmployee Tracker:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGetting started\n\n\nAdmins: There is no specific admin control for this mobile feature beyond the general Gemini for Google Workspace enablement at the domain/OU level. Visit the Help Center to learn more about managing Gemini access.\nEnd users: This feature will be available by default for eligible users. To access it, open a compatible spreadsheet on your iOS device and tap the Ask Gemini icon. Visit the Help Center to learn more about using Gemini in Google Sheets.\n\n\nRollout pace\n\n\nRapid Release and Scheduled Release domains: Gradual rollout (up to 15 days for feature visibility) started on October 15, 2026\n\n\nAvailability\n\n\nBusiness: Business Starter, Standard, and Plus\nEnterprise: Enterprise Starter, Standard, and Plus\nEducation Add-ons: Google AI Pro for Education\nConsumer: Google AI Plus, Pro, and Ultra\n\n\nResources\n\n\nGoogle help article: Collaborate with Gemini in Google Sheets",
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": {
+      "kifejezes": "gemini prompt for professional photo",
+      "datum": "2026-10-19"
+    },
+    "status": "published",
+    "published_at": "2026-10-20T02:37:14.994Z",
+    "slug": "gemini-in-google-sheets-is-now-on-ios-here-s-what-it-does",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 666
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clean explainer with strong structure, friendly tone, and good plain-language definitions. All mandatory sections present. No prohibited content, no clichés, and facts are attributed to Google appropriately.",
+      "_aiCost": 0.00134526,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-20T02:38:15.690Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-build-a-simple-weekly-schedule-in-google-sheets-with-",
+    "image_v": 2,
+    "image_at": "2026-10-20T02:44:17.556Z",
+    "seo": {
+      "meta_description": "Google's Gemini AI helper is now in Google Sheets on iOS, letting you ask plain language questions about your data and generate charts from your phone.",
+      "keywords": [
+        "Gemini Google Sheets iOS",
+        "Google Sheets AI helper",
+        "Gemini in Google Sheets",
+        "AI spreadsheet iPhone",
+        "Google Sheets AI features",
+        "mobile spreadsheet AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific use cases or examples of what questions users can ask Gemini in Sheets",
+        "Include details about how to enable or access the feature in the app",
+        "Mention any limitations or requirements (like needing a paid AI plan)"
+      ],
+      "optimised_at": "2026-10-20T02:46:21.848Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Gemini in Google Sheets Is Now on iOS — Here's What It Does\"\nsubtitle: \"Google's AI helper for spreadsheets just landed on iPhones, letting you summarize tables and build charts while you're away from your desk.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-sheets\", \"gemini\", \"ios\", \"mobile-ai\", \"productivity\"]\n---\n\n# Gemini in Google Sheets Is Now on iOS — Here's What It Does\n\n> **In short:** Google's Gemini AI helper has arrived in Google Sheets on iOS, letting you ask plain-language questions about your data and generate charts from your phone. The gradual rollout started on October 15, 2026, and the feature is available across Workspace, Education, and paid consumer AI plans.\n\nYou've probably opened a spreadsheet on your phone at some point — a budget, a workout log, a small project tracker — and wished you could just *ask* it a question instead of squinting at the cells. That moment just got easier on iOS.\n\n## What you can do with it\n\nAccording to Google, Gemini in Sheets on iOS works much like the web and Android versions. You tap the Gemini **spark icon** inside a spreadsheet, and a chat panel opens. From there, you can:\n\n- Ask plain-English questions about your data — think of a **prompt** (the instruction you type to an AI) like \"Which category did I spend the most on last month?\"\n- Generate **analytical insights**, which is a fancy way of saying \"have the AI spot patterns or trends you might miss.\"\n- Create **charts** without manually selecting ranges and clicking through menus.\n\nTo lower the blank-page barrier, Google includes a couple of suggested prompts, such as *\"Summarize this table\"* and *\"Analyze for insights\"*, so you don't have to invent the perfect question right away.\n\nThe examples Google shared show this working on two everyday kinds of spreadsheets: a personal **Finance Tracker** and a small-team **Employee Tracker**. Both are the kind of thing many people already keep in Sheets.\n\n## Who can use it\n\nThe feature is rolling out across several paid Google plans:\n\n- **Workspace Business**: Starter, Standard, and Plus\n- **Workspace Enterprise**: Starter, Standard, and Plus\n- **Education**: the Google AI Pro for Education add-on\n- **Consumer**: Google AI Plus, Pro, and Ultra\n\nIf you're on one of those plans and Gemini is already enabled for your account, you don't need to flip any switches — the feature shows up by default. Google notes there is no separate admin toggle for this mobile version beyond the general Gemini for Google Workspace setting.\n\n## When you'll see it\n\nGoogle says the gradual rollout started on **October 15, 2026**, and full visibility can take up to **15 days**. So if you don't see the icon on day one, give it a little time.\n\n## What this means for you\n\n- **If you work with data on the go**: this is the easiest way yet to check a number or pull a quick chart without booting up a laptop. Worth opening Sheets the next time you're stuck waiting in line.\n- **If you manage personal finances or side projects**: the suggested prompts (\"Summarize this table,\" \"Analyze for insights\") are a friendly starting point — you don't need to write detailed instructions.\n- **If you're new to AI helpers**: think of Gemini as a chat-style assistant sitting next to your cells. You type a question, it reads the spreadsheet, and answers in plain English.\n- **If you already use it**: try combining two requests in one prompt — for example, \"Summarize this table and make a bar chart of the top three categories.\" It saves a round trip.\n\n## Wrap-up\n\nGemini in Sheets on iOS turns your phone into a small data analyst — handy for quick questions, casual summaries, and the occasional chart when you're away from your desk. Open the Google Sheets app on your iPhone, look for the Gemini spark icon inside one of your spreadsheets, and try the suggested prompt that fits what you're working on.",
+  "original_title": "Gemini in Google Sheets is now available on iOS devices"
+}

@@ -7101,7 +7101,11 @@
       "icon": "📅",
       "proposed_at": "2026-09-24T02:23:26.118Z",
       "proposed_by": "guide-ideas",
-      "written_at": "2026-10-04T03:26:35.348Z"
+      "written_at": "2026-10-04T03:26:35.348Z",
+      "source_news": {
+        "file": "ARTICLE_2026-10-20T02-33-12-849Z_google-workspace_Gemini_in_Google_Sheets_is_now_available_on_iOS_de.json",
+        "title": "Gemini in Google Sheets is now available on iOS devices"
+      }
     },
     {
       "id": "how-to-turn-a-long-pdf-contract-into-a-plain-english-summary",
@@ -7853,10 +7857,11 @@
       "audience": "personal",
       "level": "intermediate",
       "angle": "Use a shared list so every family member can drop a note onto the same board from any Echo and read it back later.",
-      "status": "todo",
+      "status": "done",
       "icon": "📋",
       "proposed_at": "2026-10-15T02:30:50.394Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-10-20T02:41:17.692Z"
     },
     {
       "id": "how-to-turn-a-selfie-into-a-polaroid-style-portrait-with-a-g",
@@ -7976,6 +7981,28 @@
         "datum": "2026-10-19"
       },
       "written_at": "2026-10-19T02:23:35.122Z"
+    },
+    {
+      "id": "how-to-write-a-tailored-cover-letter-for-one-job-posting-usi",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "How to write a tailored cover letter for one job posting using ChatGPT",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Paste the job post and your background, and walk away with a focused draft you can edit in minutes instead of staring at a blank page.",
+      "status": "done",
+      "icon": "💼",
+      "proposed_at": "2026-10-20T02:39:42.887Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "dow today",
+        "forras": [
+          "google-felkapott"
+        ],
+        "datum": "2026-10-20"
+      },
+      "written_at": "2026-10-20T02:42:27.814Z"
     }
   ],
   "trend_proba": [
@@ -7998,6 +8025,10 @@
     {
       "kifejezes": "ai trends",
       "at": "2026-10-19T02:22:59.979Z"
+    },
+    {
+      "kifejezes": "dow today",
+      "at": "2026-10-20T02:38:30.656Z"
     }
   ]
 }
