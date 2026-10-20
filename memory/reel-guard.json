@@ -1,12 +1,13 @@
 {
-  "at": "2026-10-20T03:04:01.346Z",
+  "at": "2026-10-20T13:20:03.402Z",
   "send": {
     "fazis": "send",
     "ok": true
   },
   "prepare": {
     "fazis": "prepare",
-    "ok": true,
+    "ok": false,
+    "hiba": "Edge TTS WebSocket error: Unexpected server response: 429",
     "betu": {
       "ok": true,
       "reason": "",
