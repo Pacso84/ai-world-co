@@ -96,6 +96,7 @@ const NEM_ORSZEM = {
   'chat-history.json': 'a Telegram-bot beszélgetés-előzménye (core/telegram.js) — munkaanyag, nincs benne ellenőrzés',
   'compare-state.json': 'a heti összehasonlító agent futás-kapuja (last_week, hibaszámláló) — ismétlés-védelem',
   'daily-report-state.json': 'a napi riport SAJÁT küldés- és zajszűrő-állapota (last_sent, orszem) — nem őrszem-kimenet',
+  'forditas-javitas.json': 'a fordítás-javító kihagyás-listája (szándékosan idegen nyelvű darabok ujjlenyomata, agents/translator) — munkaállapot, nem lelet',
   'digest-state.json': 'a heti összefoglaló agent futás-kapuja (last_week, hibaszámláló) — ismétlés-védelem',
   'emergency-fallback-state.json': 'a vészháló-riasztás napi dedup-kulcsa (core/ai-router.js) — a riasztás maga Telegramra megy',
   'handbacks.json': 'a visszaküldött cikkek postafiókja (core/handback.js) — munkasor, nem ellenőrzési eredmény',

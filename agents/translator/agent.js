@@ -34,6 +34,7 @@ import { fileHandback, sourceDefect } from '../../core/handback.js';
 import { remember } from '../../core/memory-manager.js';
 import { peldaDomainJavit } from '../../core/example-domain.js';
 import { SZOTAR, szotarBetolt, hianyzoForditasok, valaszFeldolgoz } from '../../core/trend-forditas.js';
+import { angolDarabok, csere, javitoPrompt, ujjlenyomat, valaszFeldolgoz as valaszJavito, MAX_FUTASONKENT as JAVITO_MAX } from '../../core/forditas-javito.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -195,6 +196,49 @@ async function translateMarkdown(markdown, langName, { maxTokens = BASE_TOKENS }
 function looksValid(md) {
   // Kötelező: nyitó ÉS záró frontmatter delimiter + értelmes hossz
   return md && /^---\n[\s\S]*?\n---/.test(md.trimStart()) && md.length > 160;
+}
+
+/**
+ * Az angolul maradt darabok javítása a kész fordításokban (core/forditas-javito.js). A legfrissebb
+ * cikkek elöl. Amit a modell VÁLTOZATLANUL ad vissza (szándékosan idegen nyelvű: nyelvtanulás, kód),
+ * azt a memory/forditas-javitas.json kihagyás-listája megjegyzi → nem kérdezzük újra. Visszaadja a költséget.
+ */
+async function forditasJavitas(hatarido = Infinity) {
+  const NAPLO = join(ROOT, 'memory', 'forditas-javitas.json');
+  let naplo = { kihagy: {} };
+  try { naplo = { kihagy: {}, ...JSON.parse(readFileSync(NAPLO, 'utf-8')) }; } catch { /* első futás */ }
+  const sor = readdirSync(TRANS_DIR).filter(f => f.endsWith('.json') && existsSync(join(ARTICLES_DIR, f)))
+    .map(f => { let pub = ''; try { pub = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'))._meta?.published_at || ''; } catch { /* sérült */ } return { f, pub }; })
+    .sort((a, b) => String(b.pub).localeCompare(String(a.pub)));
+  let koltseg = 0, javitott = 0, darabDb = 0, kihagyva = 0;
+  for (const { f } of sor) {
+    if (javitott >= JAVITO_MAX) break;
+    // a CI-lépés 30 perces: a fordító időkeretén belül maradunk, a maradék a következő futásé
+    if (Date.now() > hatarido - 90e3) { console.log('   ⏱️ fordítás-javító: elfogyott az időkeret — a többi a következő futásban'); break; }
+    const data = loadCache(f);
+    let valtozott = false;
+    for (const ny of Object.keys(LANGS)) {
+      if (javitott >= JAVITO_MAX) break;
+      const darabok = angolDarabok(data[ny], ny).filter(d => !naplo.kihagy[ujjlenyomat(d.szoveg)]);
+      if (!darabok.length) continue;
+      javitott++;
+      const meret = darabok.reduce((a, d) => a + d.szoveg.length, 0);
+      const r = await ask(javitoPrompt(darabok, ny), { agentName: AGENT_NAME, maxTokens: Math.min(12000, 1500 + meret * 3) });
+      koltseg += r?.costUsd || 0;
+      const ki = valaszJavito(r?.text, darabok.length);
+      if (!ki) { console.log(`   ⚠️ fordítás-javító (${ny}): hibás válasz — ${f.slice(0, 48)} (jövő körben újra)`); continue; }
+      ki.forEach((s, i) => { if (s.trim() === darabok[i].szoveg.trim()) { naplo.kihagy[ujjlenyomat(darabok[i].szoveg)] = 1; kihagyva++; } });
+      const uj = csere(data[ny], darabok, ki.map((s, i) => (s.trim() === darabok[i].szoveg.trim() ? null : s)));
+      if (uj !== data[ny] && looksValid(uj)) { data[ny] = uj; valtozott = true; darabDb += darabok.length; }
+    }
+    if (valtozott) saveCache(f, data);
+  }
+  if (javitott) {
+    writeFileSync(NAPLO, JSON.stringify(naplo, null, 2) + '\n', 'utf-8');
+    console.log(`   🩹 fordítás-javító: ${javitott} cikk-nyelv pár, ${darabDb} angolul maradt darab lefordítva`
+      + `${kihagyva ? `, ${kihagyva} szándékosan idegen nyelvű kihagyva` : ''} ($${koltseg.toFixed(4)})`);
+  }
+  return koltseg;
 }
 
 /** A trend-keresések hiányzó fordításai (core/trend-forditas.js szótár). Visszaadja a költséget. */
@@ -405,6 +449,9 @@ async function main() {
   // a trend-útmutatók keresés-kifejezését is lefordítjuk (core/trend-forditas.js). Rövid, olcsó
   // hívás; a hibája nem állítja meg a fordítót — a nem angol oldalon a keresés addig kimarad.
   try { cost += await trendKeresesekForditasa(); } catch (e) { console.log(`   ⚠️ trend-keresések fordítása elmaradt (nem kritikus): ${String(e?.message || e).slice(0, 80)}`); }
+  // 🩹 FORDÍTÁS-JAVÍTÓ (2026-10-20, user: „nem minden magyar”) — az angolul maradt darabok
+  // (prompt, bekezdés, cím…) utólagos fordítása, futásonként legfeljebb MAX_FUTASONKENT cikk.
+  try { cost += await forditasJavitas(startedAt + maxMs); } catch (e) { console.log(`   ⚠️ fordítás-javító elmaradt (nem kritikus): ${String(e?.message || e).slice(0, 80)}`); }
 
   if (stopReason === 'limit') console.log(`\n⏸️  Elértem a futás-limitet (${args.limit}). A többit a következő futás fordítja.`);
   if (stopReason === 'time') console.log(`\n⏱️  Elértem az idő-keretet (${args.maxMinutes} perc). A többit a következő futás fordítja.`);
