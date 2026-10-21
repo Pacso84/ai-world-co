@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-21T02:28:33.403Z",
+  "drafts_total": 8,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 3,
+  "clusters_found": 2,
+  "merged_total": 2,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.0156676,
+  "by_article": [
+    {
+      "draft": "2026-10-21T02-28-33-124Z_picsart_Meet_Picsart_Commerce__AI_for_ecommerce_merchants.json",
+      "writer_output": "WRITER_2026-10-21T02-28-33-124Z_picsart_Meet_Picsart_Commerce__AI_for_ecommerce_merchants.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "PicsArt AI image editing tools and commerce features",
+      "cost_usd": 0.0036043,
+      "duration_ms": 14712,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-21T02-27-43-196Z_openai-blog_Franchisee_reconciles_cash_in_94__less_time_with_C.json",
+      "writer_output": "WRITER_2026-10-21T02-27-43-196Z_openai-blog_Franchisee_reconciles_cash_in_94__less_time_with_C.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "OpenAI business and product updates",
+      "cost_usd": 0.0035123,
+      "duration_ms": 14238,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-21T02-28-33-124Z_dropbox-blog__The_manager_effect__Why_leadership_matters_in_the.json",
+      "writer_output": "WRITER_2026-10-21T02-28-33-124Z_dropbox-blog__The_manager_effect__Why_leadership_matters_in_the.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0034259,
+      "duration_ms": 13835,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-21T02-28-08-989Z_sony-ai_Advancing_AI__Highlights_from_June.json",
+      "writer_output": "WRITER_2026-10-21T02-28-08-989Z_sony-ai_Advancing_AI__Highlights_from_June.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0037019,
+      "duration_ms": 16386,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-10-21T02:29:38.693Z",
+  "duration_seconds": 65.29
+}

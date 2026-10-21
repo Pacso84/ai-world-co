@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179228894203246",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-18T02:02:22.032Z",
-      "updated": "2026-10-18T02:02:22.231Z"
-    },
-    {
-      "id": "t179228894223347",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-18T02:02:22.233Z",
-      "updated": "2026-10-18T02:04:27.086Z"
-    },
-    {
-      "id": "t179228906708870",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-18T02:04:27.088Z",
-      "updated": "2026-10-18T02:05:29.406Z"
-    },
-    {
-      "id": "t179228912940875",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-18T02:05:29.408Z",
-      "updated": "2026-10-18T02:06:00.933Z"
-    },
-    {
-      "id": "t179228916093525",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-18T02:06:00.935Z",
-      "updated": "2026-10-18T02:06:15.908Z"
-    },
-    {
-      "id": "t179228917591081",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-18T02:06:15.910Z",
-      "updated": "2026-10-18T02:06:51.032Z"
-    },
-    {
-      "id": "t179228921107937",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-18T02:06:51.079Z",
-      "updated": "2026-10-18T02:09:06.565Z"
-    },
-    {
-      "id": "t179228934656725",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-18T02:09:06.567Z",
-      "updated": "2026-10-18T02:09:44.892Z"
-    },
-    {
-      "id": "t179228938493446",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-18T02:09:44.934Z",
-      "updated": "2026-10-18T02:10:24.205Z"
-    },
-    {
-      "id": "t179228942424752",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-18T02:10:24.247Z",
-      "updated": "2026-10-18T02:10:24.440Z"
-    },
-    {
-      "id": "t179228942444231",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-18T02:10:24.442Z",
-      "updated": "2026-10-18T02:10:48.366Z"
-    },
-    {
-      "id": "t179228944837323",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-18T02:10:48.373Z",
-      "updated": "2026-10-18T02:12:11.922Z"
-    },
-    {
-      "id": "t17922895319243",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-18T02:12:11.924Z",
-      "updated": "2026-10-18T02:12:35.318Z"
-    },
-    {
       "id": "t179228955532092",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +375,113 @@
       "agent": "publisher",
       "created": "2026-10-20T02:47:15.592Z",
       "updated": "2026-10-20T02:47:41.717Z"
+    },
+    {
+      "id": "t17925496073376",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-21T02:26:47.337Z",
+      "updated": "2026-10-21T02:26:47.459Z"
+    },
+    {
+      "id": "t179254960746072",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-21T02:26:47.460Z",
+      "updated": "2026-10-21T02:28:33.139Z"
+    },
+    {
+      "id": "t179254971314038",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-21T02:28:33.140Z",
+      "updated": "2026-10-21T02:28:33.277Z"
+    },
+    {
+      "id": "t179254971327974",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-21T02:28:33.279Z",
+      "updated": "2026-10-21T02:29:38.713Z"
+    },
+    {
+      "id": "t179254977871412",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-21T02:29:38.714Z",
+      "updated": "2026-10-21T02:31:16.897Z"
+    },
+    {
+      "id": "t179254987690029",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-21T02:31:16.900Z",
+      "updated": "2026-10-21T02:32:16.602Z"
+    },
+    {
+      "id": "t179254993663823",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-21T02:32:16.638Z",
+      "updated": "2026-10-21T02:33:09.685Z"
+    },
+    {
+      "id": "t17925499896861",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-21T02:33:09.686Z",
+      "updated": "2026-10-21T02:34:14.234Z"
+    },
+    {
+      "id": "t179255005425956",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-21T02:34:14.259Z",
+      "updated": "2026-10-21T02:34:29.900Z"
+    },
+    {
+      "id": "t179255006992860",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-21T02:34:29.928Z",
+      "updated": "2026-10-21T02:36:11.469Z"
+    },
+    {
+      "id": "t179255017147255",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-21T02:36:11.472Z",
+      "updated": "2026-10-21T02:37:29.534Z"
+    },
+    {
+      "id": "t179255024953541",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-21T02:37:29.535Z",
+      "updated": "2026-10-21T02:37:56.660Z"
+    },
+    {
+      "id": "t179255027666342",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-21T02:37:56.663Z",
+      "updated": "2026-10-21T02:38:23.804Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179099715141268",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — it's a practical mix of everyday writing tasks (complaints, resumes, emails, agreements) that shows AI can genuinely help busy people. Good variety of tools too, whi",
-      "agent": "publisher",
-      "at": "2026-10-03T03:12:31.412Z",
-      "loud": false
-    },
-    {
-      "id": "n179099716862271",
-      "level": "success",
-      "text": "3 hír + 2 útmutató publikálva (költség: $0.0828).",
-      "agent": "ceo",
-      "at": "2026-10-03T03:12:48.622Z",
-      "loud": false
-    },
-    {
-      "id": "n179103209452042",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
-      "agent": "seo",
-      "at": "2026-10-03T12:54:54.520Z",
-      "loud": false
-    },
     {
       "id": "n179103210768642",
       "level": "success",
@@ -1281,18 +1257,33 @@
       "agent": "ceo",
       "at": "2026-10-20T02:47:41.758Z",
       "loud": false
+    },
+    {
+      "id": "n179255024952590",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 7.8/10).",
+      "agent": "seo",
+      "at": "2026-10-21T02:37:29.525Z",
+      "loud": false
+    },
+    {
+      "id": "n17925502933486",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is coherent and ready to publish — a balanced mix of one privacy guide, one fact-checking piece, and a friendly cluster of hands-on writing tutorials across six well-known tools, which giv",
+      "agent": "publisher",
+      "at": "2026-10-21T02:38:13.348Z",
+      "loud": false
+    },
+    {
+      "id": "n179255030383068",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0450).",
+      "agent": "ceo",
+      "at": "2026-10-21T02:38:23.830Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179099684526619",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Chatham scales its capital markets expertise with OpenAI\" (?/10)",
-      "ref": "2026-10-03T02-49-44-934Z_openai-blog_Chatham_scales_its_capital_markets_expertise_with_.json",
-      "at": "2026-10-03T03:07:25.266Z"
-    },
     {
       "id": "m179099714358576",
       "from": "designer",
@@ -2647,6 +2638,15 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a simple cover letter for a job application \" — Free DeepSeek account claim (pricing may have changed); Specific UI element descriptions (paper airplane icon, 'Message DeepSeek...' placeholder)",
       "ref": "ARTICLE_GUIDE_draft-a-simple-cover-letter-for-a-job-application-with-deeps.json",
       "at": "2026-10-20T19:44:41.252Z"
+    },
+    {
+      "id": "m17925502766510",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-21T02:37:56.651Z"
     }
   ]
 }

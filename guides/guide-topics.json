@@ -7915,10 +7915,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Turn Alexa+ into a hands-free background sound machine — pick the right sound for sleep versus focus, set a stop timer, and have the audio fade out automatically.",
-      "status": "todo",
+      "status": "done",
       "icon": "🌧️",
       "proposed_at": "2026-10-18T02:10:21.071Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-10-21T02:32:50.161Z"
     },
     {
       "id": "set-up-alexa-voice-profiles-so-each-family-member-gets-their",
@@ -8003,6 +8004,67 @@
         "datum": "2026-10-20"
       },
       "written_at": "2026-10-20T02:42:27.814Z"
+    },
+    {
+      "id": "how-to-paraphrase-a-paragraph-with-chatgpt-without-changing-",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "How to Paraphrase a Paragraph with ChatGPT Without Changing Its Meaning",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Ask ChatGPT to rewrite the paragraph in new words, then ask it to list the key facts so you can confirm the meaning didn't shift.",
+      "status": "done",
+      "icon": "🔄",
+      "proposed_at": "2026-10-21T02:32:27.160Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "chatgpt paraphrase",
+        "forras": [
+          "bing-lehetoseg"
+        ],
+        "datum": "2026-10-21"
+      },
+      "written_at": "2026-10-21T02:33:09.671Z"
+    },
+    {
+      "id": "how-to-set-kitchen-timers-with-your-alexa-echo-while-your-ha",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "How to Set Kitchen Timers with Your Alexa Echo While Your Hands Are Full",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Learn to set, name and check several cooking timers by voice on your Echo, so you can keep stirring or kneading without touching a phone.",
+      "status": "todo",
+      "icon": "⏱️",
+      "proposed_at": "2026-10-21T02:34:27.429Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "how-to-set-reminders-with-alexa-on-your-echo-for-bills-birth",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "How to Set Reminders with Alexa on Your Echo for Bills, Birthdays and Errands",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Use plain sentences with a day and time to create reminders, and learn how to confirm and cancel one when plans change.",
+      "status": "todo",
+      "icon": "🔔",
+      "proposed_at": "2026-10-21T02:34:29.339Z",
+      "proposed_by": "guide-ideas"
+    },
+    {
+      "id": "how-to-ask-alexa-on-your-echo-to-convert-cups-to-grams-while",
+      "company": "Amazon",
+      "tool": "Alexa+",
+      "title": "How to Ask Alexa on Your Echo to Convert Cups to Grams While You Bake",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Ask for a single ingredient conversion mid-recipe, then double-check the number against the recipe's own measurements before you pour.",
+      "status": "todo",
+      "icon": "🥣",
+      "proposed_at": "2026-10-21T02:34:29.879Z",
+      "proposed_by": "guide-ideas"
     }
   ],
   "trend_proba": [
@@ -8029,6 +8091,10 @@
     {
       "kifejezes": "dow today",
       "at": "2026-10-20T02:38:30.656Z"
+    },
+    {
+      "kifejezes": "chatgpt paraphrase",
+      "at": "2026-10-21T02:32:16.758Z"
     }
   ]
 }
