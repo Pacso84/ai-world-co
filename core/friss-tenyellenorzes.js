@@ -50,10 +50,19 @@ export function forrasSzoveg(html, max = 15000) {
     .replace(/\s+/g, ' ').trim().slice(0, max);
 }
 
+/**
+ * A cikk ÖSSZES forrása. Az összevont hírnek (merged_from) több forrása van a `source_links`-ben;
+ * ha csak az elsőt néznénk, a többiből jövő HELYES adatot „kitaláltnak” hinnénk (10-21, Picsart).
+ */
+export function forrasLinkek(meta) {
+  const m = meta || {};
+  return [...new Set([...(Array.isArray(m.source_links) ? m.source_links : []), m.source_link].filter(u => /^https?:\/\//.test(u || '')))];
+}
+
 /** Ennél rövidebb forrásszövegből nem ítélünk (JS-oldal, bejelentkezés, hibaoldal). */
 export const MIN_FORRAS = 600;
 
-export const HIR_RENDSZER = `You are the post-publication fact-checker for AI World HQ. You compare a PUBLISHED news explainer with the OFFICIAL SOURCE it was written from. The source text is the ONLY authority. Your own memory is NOT: the source may describe products and features newer than your training, so never call something false just because you have not heard of it.
+export const HIR_RENDSZER = `You are the post-publication fact-checker for AI World HQ. You compare a PUBLISHED news explainer with the OFFICIAL SOURCE(S) it was written from. When several sources are given, the article may combine them: a claim is supported if ANY source supports it. The source text is the ONLY authority. Your own memory is NOT: the source may describe products and features newer than your training, so never call something false just because you have not heard of it.
 
 Find factual specifics in the article that the SOURCE CONTRADICTS: numbers, dates, prices, plan or tier names, who gets it and where (regions, languages, platforms, account types), what the feature does or does not do, and timing (available now vs. coming later).
 Ignore: general advice, explanations of what it means for the reader, widely known background, opinions and style.

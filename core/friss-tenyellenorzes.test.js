@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { ellenorzesiSor, forrasSzoveg, MIN_FORRAS, hirCsereEp, HIR_RENDSZER } from './friss-tenyellenorzes.js';
+import { ellenorzesiSor, forrasSzoveg, forrasLinkek, MIN_FORRAS, hirCsereEp, HIR_RENDSZER } from './friss-tenyellenorzes.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const NAP = 86400e3;
@@ -40,6 +40,17 @@ t('📚 a régi hírt NEM nézi (csak a 30 napnál régebbi útmutatókat), és 
     c('util-b', { type: 'guide', published_at: new Date(NOW - 60 * NAP).toISOString(), fact_verified_at: '2026-09-01T00:00:00Z' }),
   ], NOW);
   assert.deepEqual(sor.map(x => x.file), ['util-b.json', 'util-a.json']);
+});
+
+t('🔗 összevont hír: MINDEN forrás kell (10-21 Picsart: 3 forrásból csak az elsőt néztük → helyes adatot vett ki)', () => {
+  const meta = { source_link: 'https://picsart.com/blog/a/', source_links: ['https://picsart.com/blog/a/', 'https://picsart.com/blog/b/', 'https://picsart.com/blog/c/'], merged_from: 3 };
+  assert.deepEqual(forrasLinkek(meta), ['https://picsart.com/blog/a/', 'https://picsart.com/blog/b/', 'https://picsart.com/blog/c/']);
+  assert.deepEqual(forrasLinkek({ source_link: 'https://x.com/y' }), ['https://x.com/y'], 'egyforrású hír');
+  assert.deepEqual(forrasLinkek({}), [], 'forrás nélkül üres → nem ítélünk');
+  const src = readFileSync(join(ROOT, 'agents', 'fact-check', 'agent.js'), 'utf-8');
+  assert.match(src, /const urls = forrasLinkek\(item\.data\._meta\)/);
+  assert.match(src, /darabok\.length < urls\.length/, 'ha egy forrás is hiányzik, ne ítéljen');
+  assert.match(HIR_RENDSZER, /supported if ANY source supports it/);
 });
 
 t('🧹 a forrás-tisztítás eldobja a szkriptet és a stílust, és a szöveget megtartja', () => {

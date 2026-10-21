@@ -49,7 +49,7 @@ import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
 import { message } from '../../core/ops.js';
 import { nameLockObjection, jegyezNevZar } from '../../core/name-guard.js';
-import { ellenorzesiSor, forrasSzoveg, MIN_FORRAS, HIR_RENDSZER, hirCsereEp } from '../../core/friss-tenyellenorzes.js';
+import { ellenorzesiSor, forrasSzoveg, forrasLinkek, MIN_FORRAS, HIR_RENDSZER, hirCsereEp } from '../../core/friss-tenyellenorzes.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -174,13 +174,20 @@ Output ONLY JSON (no prose, no code fence):
  * olvasható (halott link, JS-oldal), nem ítélünk: `skip` indokkal.
  */
 async function auditHir(item) {
-  const url = item.data._meta?.source_link;
-  let forras = '';
-  try {
-    const r = await fetch(url, { headers: { 'User-Agent': 'AIWorldHQ-factcheck/1.0' }, signal: AbortSignal.timeout(20000) });
-    if (r.ok) forras = forrasSzoveg(await r.text());
-  } catch { /* lent kezeljük */ }
-  if (forras.length < MIN_FORRAS) return { response: null, decision: null, skip: 'a forrás nem olvasható' };
+  // ÖSSZEVONT HÍR (merged_from): MINDEN forrás kell. 10-21: csak az elsőt töltöttük le, és a Picsart-
+  // hírből a másik két forrás helyes adatait („12 Halloween-prompt”, banner/story/négyzet) „kitaláltnak” vette.
+  const urls = forrasLinkek(item.data._meta);
+  const darabok = [];
+  for (const url of urls) {
+    try {
+      const r = await fetch(url, { headers: { 'User-Agent': 'AIWorldHQ-factcheck/1.0' }, signal: AbortSignal.timeout(20000) });
+      if (r.ok) darabok.push({ url, szoveg: forrasSzoveg(await r.text(), Math.floor(24000 / urls.length)) });
+    } catch { /* lent kezeljük */ }
+  }
+  // Ha akár EGY forrás is hiányzik, nem ítélünk: a hiányzóból jövő helyes adatot hamisnak hinné.
+  if (!urls.length || darabok.length < urls.length || darabok.some(d => d.szoveg.length < MIN_FORRAS))
+    return { response: null, decision: null, skip: `a forrás nem olvasható (${darabok.length}/${urls.length})` };
+  const forras = darabok.map((d, i) => `--- SOURCE ${i + 1} (${d.url}) ---\n${d.szoveg}`).join('\n\n');
   const userPrompt = `OFFICIAL SOURCE TEXT:\n${forras}\n\nPUBLISHED ARTICLE:\n${item.data.article_markdown || ''}\n\nOutput ONLY the JSON.`;
   const response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: HIR_RENDSZER, maxTokens: 4000, jsonMode: true });
   return { response, decision: parseJson(response?.text) };
