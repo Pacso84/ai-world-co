@@ -291,7 +291,12 @@ async function main() {
     const { response, decision, skip } = hir ? await auditHir(guide) : await audit(guide, args, brandContext);
     cost += response?.costUsd || 0;
 
-    if (skip) { console.log(`⏭️  ${title}… — ${skip}, nem ítélek`); continue; }
+    if (skip) {
+      // Megjelöljük, különben a következő futásban megint ez állna a sor elején (pl. robotot tiltó forrás).
+      console.log(`⏭️  ${title}… — ${skip}, nem ítélek`);
+      if (!args.dry) { guide.data._meta = { ...guide.data._meta, fact_verified_at: new Date().toISOString(), fact_check_skip: skip }; saveGuide(guide); }
+      continue;
+    }
     if (!decision) { console.log(`⚠️  ${title}… — döntés nem értelmezhető, kihagyom`); continue; }
     // Átnéztük: a következő körben ez már nem kerül elő (friss cikkek sorrendje).
     guide.data._meta = { ...guide.data._meta, fact_verified_at: new Date().toISOString() };
@@ -303,7 +308,7 @@ async function main() {
       continue;
     }
 
-    const claims = (decision.removed_claims || []).slice(0, 3).join('; ');
+    const claims = (decision.removed_claims || decision.errors || []).slice(0, 3).join('; ');   // hír-ág: errors
     if (decision.verdict === 'unpublish') {
       // NEM TÖRLÜNK. Egy oldal levétele emberi döntés (404 + elveszett rangsor
       // + 301 kellene hozzá). A gép megjelöl és szól — a user dönt.

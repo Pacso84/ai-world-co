@@ -73,6 +73,8 @@ t('🔌 a tény-ellenőrző a friss sorrendet és a hír-ágat használja; a CI 
   assert.match(src, /if \(auto\) list = ellenorzesiSor\(list\);/);
   assert.match(src, /const hir = guide\.data\._meta\?\.type !== 'guide';/);
   assert.match(src, /fact_verified_at: new Date\(\)\.toISOString\(\)/);
+  assert.match(src, /fact_check_skip: skip/, 'az olvashatatlan forrású hír is megjelölődjön, különben minden futásban elöl áll');
+  assert.match(src, /decision\.removed_claims \|\| decision\.errors/, 'a hír-ág hibalistája (errors) is a jelentésbe kerüljön');
   const yml = readFileSync(join(ROOT, '.github', 'workflows', 'auto.yml'), 'utf-8');
   assert.match(yml, /node agents\/fact-check\/agent\.js --limit 4/);
 });

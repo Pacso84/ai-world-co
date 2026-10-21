@@ -238,7 +238,7 @@ const LANG_NAME = { en: 'English', hu: 'Magyar', es: 'Español', };
 const UI = {
   en: { news: 'News', guides: 'Guides', tools: 'AI tools', support: 'Support',
         heroKicker: 'Issue 01', heroTitle: 'Everyday AI, <em>explained simply.</em>',
-        minRead: 'min read', stepByStep: 'Step-by-step', articleUpdated: 'Updated',
+        minRead: 'min read', stepByStep: 'Step-by-step', articleUpdated: 'Updated', themeToggle: 'Light / dark mode', menuLabel: 'Menu',
         guidesTitle: 'Everyday AI <em>skills</em>', guidesTag: 'Plain-language how-tos that work with any assistant — ChatGPT, Gemini, Claude or others.',
         // ⚠️ A TAGLINE NEM ÍGÉRHET ASSZISZTENST (2026-08-17, user jelezte): eddig
         // "Pick your assistant" állt itt, miközben az oldalon a Midjourney (kép)
@@ -253,7 +253,7 @@ const UI = {
         footerNote: 'Written by AI agents · Automated quality checks · Human editor spot-checks daily', back: '← Back', language: 'Language' },
   hu: { news: 'Hírek', guides: 'Útmutatók', tools: 'AI eszközök', support: 'Támogatás',
         heroKicker: '01. szám', heroTitle: 'A hétköznapi AI, <em>érthetően.</em>',
-        minRead: 'perc olvasás', stepByStep: 'Lépésről lépésre', articleUpdated: 'Frissítve',
+        minRead: 'perc olvasás', stepByStep: 'Lépésről lépésre', articleUpdated: 'Frissítve', themeToggle: 'Világos / sötét mód', menuLabel: 'Menü',
         guidesTitle: 'Hétköznapi AI <em>készségek</em>', guidesTag: 'Közérthető útmutatók, amelyek bármelyik asszisztenssel működnek — ChatGPT, Gemini, Claude és társai.',
         toolsTitle: 'Útmutatók <em>AI eszköz</em> szerint', toolsTag: 'Válaszd ki az AI-eszközöd az eszköz-specifikus, lépésről lépésre útmutatókhoz.',
         guidesMetaDesc: 'Közérthető, lépésről lépésre útmutatók a hétköznapi AI-hoz: promptírás, összefoglalás, tényellenőrzés, biztonság. Bármelyik asszisztenssel működik.',
@@ -261,7 +261,7 @@ const UI = {
         footerNote: 'AI-ügynökök írják · Automatikus minőség-ellenőrzés · Emberi szerkesztő naponta szúrópróbával ellenőrzi', back: '← Vissza', language: 'Nyelv' },
   es: { news: 'Noticias', guides: 'Guías', tools: 'Herramientas IA', support: 'Apóyanos',
         heroKicker: 'Número 01', heroTitle: 'La IA cotidiana, <em>explicada fácil.</em>',
-        minRead: 'min de lectura', stepByStep: 'Paso a paso', articleUpdated: 'Actualizado',
+        minRead: 'min de lectura', stepByStep: 'Paso a paso', articleUpdated: 'Actualizado', themeToggle: 'Modo claro / oscuro', menuLabel: 'Menú',
         guidesTitle: 'Habilidades de <em>IA cotidiana</em>', guidesTag: 'Guías en lenguaje claro que funcionan con cualquier asistente — ChatGPT, Gemini, Claude y más.',
         toolsTitle: 'Guías por <em>herramienta de IA</em>', toolsTag: 'Elige tu herramienta de IA para guías paso a paso específicas.',
         guidesMetaDesc: 'Guías paso a paso en lenguaje claro sobre IA cotidiana: escribir prompts, resumir, verificar datos y usarla con seguridad. Funciona con cualquier asistente.',
@@ -927,6 +927,13 @@ const CATEGORIES = {
   'guide':    { label: 'Guide',    cls: 'cat-guide',    icon: '📘' },
   'other':    { label: 'AI',       cls: 'cat-other',    icon: '✨' }
 };
+// A kártya-címke a megjelenítés nyelvén (2026-10-21, user: „nézd át, a spanyol/magyar oldalon maradt-e
+// javítanivaló”): a hu/es kártyákon „AI News”, „How-To”, „Business” állt angolul.
+const CAT_NEV = {
+  hu: { 'AI News': 'AI-hírek', 'How-To': 'Így csináld', Business: 'Üzlet', Work: 'Munka', Creative: 'Alkotás', Guide: 'Útmutató', AI: 'AI' },
+  es: { 'AI News': 'Noticias de IA', 'How-To': 'Cómo hacerlo', Business: 'Negocios', Work: 'Trabajo', Creative: 'Creatividad', Guide: 'Guía', AI: 'IA' },
+};
+const catNev = cat => (CAT_NEV[LANG] || {})[cat.label] || cat.label;
 
 // Célhasználat (audience) — hova építhető be
 const AUDIENCES = {
@@ -1563,10 +1570,10 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       </nav>
       ${langSwitcher}
       <button class="search-toggle" id="searchToggle" aria-label="${tr('searchLabel')}" title="${tr('searchLabel')}">🔍</button>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Light / dark">
+      <button class="theme-toggle" id="themeToggle" aria-label="${tr('themeToggle')}" title="${tr('themeToggle')}">
         <span class="theme-toggle__icon">☾</span>
       </button>
-      <button class="navbar__burger" id="navBurger" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+      <button class="navbar__burger" id="navBurger" aria-label="${tr('menuLabel')}" aria-expanded="false" aria-controls="navMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -1657,7 +1664,7 @@ function articleCard(a, featured = false) {
       <h2 class="card__title">${escapeHtml(a.title)}</h2>
       <p class="card__subtitle">${escapeHtml(a.subtitle)}</p>
       <div class="card__foot">
-        <span class="tag ${cat.cls}">${cat.label}</span>
+        <span class="tag ${cat.cls}">${catNev(cat)}</span>
         <span class="card__arrow">→</span>
       </div>
     </a>
@@ -2104,7 +2111,7 @@ function buildArticlePage(a) {
     <div class="article__head">
       <div class="article__badges">
         <span class="aud ${aud.cls}">${aud.icon} ${tr(aud.key)}</span>
-        <span class="tag ${cat.cls}">${cat.label}</span>
+        <span class="tag ${cat.cls}">${catNev(cat)}</span>
       </div>
       <h1 class="article__title">${escapeHtml(a.title)}</h1>
       <p class="article__subtitle">${escapeHtml(a.subtitle)}</p>
@@ -2158,7 +2165,7 @@ function buildArticlePage(a) {
     keywords: a.seoKeywords,
     ogImage, jsonld: [jsonld, breadcrumbSchema(a, canonical)], pagePath: `article/${a.slug}`,
     bodyContent: body, isArticle: true,
-    articleMeta: { published: a.publishedAt, modified: a.modifiedAt || a.publishedAt, section: cat.label }
+    articleMeta: { published: a.publishedAt, modified: a.modifiedAt || a.publishedAt, section: catNev(cat) }
   });
 }
 
