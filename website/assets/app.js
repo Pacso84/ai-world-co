@@ -219,7 +219,7 @@
     btn.addEventListener('click', function () {
       lsSet(key, btn.getAttribute('data-vote'));
       thank();
-      fetch('https://aiworld-telegram.pacsi84.workers.dev/feedback', {
+      fetch('https://api.aiworldhq.com/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ slug: slug, lang: lang, vote: btn.getAttribute('data-vote') })
@@ -243,7 +243,7 @@
     var p = box ? box.getAttribute('data-aff') : '';
     if (!p) return;
     try {
-      fetch('https://aiworld-telegram.pacsi84.workers.dev/aff-hit', {
+      fetch('https://api.aiworldhq.com/aff-hit', {
         method: 'POST', keepalive: true,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ p: p })

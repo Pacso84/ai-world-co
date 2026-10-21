@@ -226,5 +226,5 @@ Nem PR-hírek vakon átvéve — saját kommentárral, gyakorlati kontextussal. 
 
 ---
 
-*Készült: 2026-06-04, pacsi84 + Claude.*
+*Készült: 2026-06-04, AI World HQ + Claude.*
 *Ezt a fájlt bármikor frissítheted — minden agent automatikusan az új verziót használja.*

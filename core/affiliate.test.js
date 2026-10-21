@@ -101,7 +101,7 @@ t('🔌 a lánc be van kötve: build → app.js → Worker → napi riport', () 
   for (const k of ['privAffH', 'privAffP']) assert.equal((priv.match(new RegExp('\\b' + k + ':', 'g')) || []).length, 3, k + ' nincs meg mind a 3 nyelven');
   const app = olvas('website/assets/app.js');
   assert.match(app, /closest\('\.aff__btn'\)/);
-  assert.match(app, /workers\.dev\/aff-hit/);
+  assert.match(app, /api\.aiworldhq\.com\/aff-hit/);   // 2026-10-21: saját domain (a workers.dev a fiók nevét mutatta)
   assert.match(app, /keepalive: true/);
   assert.match(olvas('website/assets/style.css'), /\.aff \{/);
   assert.match(olvas('core/daily-report.js'), /partnerKattintasSor\(exp\.__aff\)/);

@@ -1,6 +1,6 @@
 # Útmutató-minőség: szabályrendszer + kezdő-érthetőségi ellenőrzés
 
-**Dátum:** 2026-07-03 · **Kérte:** pacsi84 · **Státusz:** jóváhagyva ("igen")
+**Dátum:** 2026-07-03 · **Kérte:** a tulajdonos · **Státusz:** jóváhagyva ("igen")
 
 ## Probléma
 

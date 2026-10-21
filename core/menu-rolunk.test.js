@@ -39,6 +39,7 @@ t('🧭 a „Rólunk” a menü VÉGÉN van (a feltételes Ko-fi pontok után)',
 
 t('🧭 menü 2 (10-18, user: „nem látom se a Prompt-tárat, se a másikat” → „Mindkettő előre”): Hírek · 🔥 Felkapott · Útmutatók · 📋 Prompt-tár · Eszközök …; Archívum a láblécben', () => {
   const sorok = menu();
+  // 2026-10-21: az ingyenes eszközök a Prompt-tár TETEJÉN vannak, nem külön menüpontban (user: „a prompttárral vond össze!”)
   const sorrend = ['${T.news}', "/trending\">🔥 ${tr('trNav')}", '${T.guides}', "/prompts\">📋 ${tr('plNavS')}", '${T.tools}', "${tr('glossNav')}"];
   sorrend.forEach((k, i) => assert.ok(sorok[i] && sorok[i].includes(k), `a(z) ${i + 1}. menüpont nem ez: ${k} (hanem: ${sorok[i]})`));
   assert.ok(!sorok.some(s => s.includes('archivePath')), 'az Archívum még a menüben van');

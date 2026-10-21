@@ -588,7 +588,7 @@
   "customer_service": {
     "_comment": "Automata ügyfélszolgálat (ÉLES 2026-07-20). enabled=true → a build kiteszi a chat-dobozt/űrlapot. A worker-oldali kill-switch KÜLÖN van: telegram-worker/wrangler.toml [vars] CS_ENABLED (vészleállításnál MINDKETTŐT false-ra). turnstile_site_key PUBLIKUS by design (a secret párja CSAK wrangler secret!).",
     "enabled": true,
-    "worker_base": "https://aiworld-telegram.pacsi84.workers.dev",
+    "worker_base": "https://api.aiworldhq.com",
     "turnstile_site_key": "0x4AAAAAAD5-0_stUu2LQwDO"
   },
   "limits": {

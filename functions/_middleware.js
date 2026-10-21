@@ -28,7 +28,7 @@
 import { letoltesFajl } from '../core/pdf-download.js';
 
 const CANONICAL_HOST = 'aiworldhq.com';
-const DL_JEL = 'https://aiworld-telegram.pacsi84.workers.dev/dl-hit';
+const DL_JEL = 'https://api.aiworldhq.com/dl-hit';
 
 export async function onRequest({ request, next, waitUntil }) {
   const url = new URL(request.url);

@@ -498,5 +498,5 @@ Minden cikk végén (rövideknél is!):
 
 ---
 
-*Készült: 2026-06-04, pacsi84 + Claude.*
+*Készült: 2026-06-04, AI World HQ + Claude.*
 *Az Író-Agent és Ellenőrző-Agent ehhez a fájlhoz nézzen minden cikknél.*

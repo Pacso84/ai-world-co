@@ -320,5 +320,5 @@ Minden cikkre az Ellenőrző-Agent **kötelezően** lefuttatja:
 
 ---
 
-*Készült: 2026-06-04, pacsi84 + Claude.*
+*Készült: 2026-06-04, AI World HQ + Claude.*
 *Ezt a fájlt évente felül kell vizsgálni (vagy ha új törvény jön).*

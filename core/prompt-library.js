@@ -231,7 +231,9 @@ export const SZKRIPT = `<script>(function(){document.addEventListener('click',fu
  * Az oldal törzse. `sz`: felületi szövegek (kereses = a kereső helyőrzője; nap = „A nap promptja”;
  * mutasd/kevesebb = lenyitás; nincs = üres találat); `temaNev(id)`: a téma neve az adott nyelven.
  */
-export function promptTarHtml(tar, { sz, temaNev, nyelvTipp = '' }) {
+// 📢 2026-10-21 (user: „ide is rakjunk erre az oldalra reklámot!”): EGY hirdetés, az első („Felkapott és új”)
+// szakasz UTÁN, a témák előtt — szakaszok közti térközben, a Másolás gomboktól távol (mint a /trending-en).
+export function promptTarHtml(tar, { sz, temaNev, nyelvTipp = '', eszkozok = '', promptokCim = '', hirdetes = '' }) {
   const fejlec = (id, cim, db) => `<h2 class="pl-h"><span class="pl-h-i" aria-hidden="true">${TEMA_JEL[id] || '✨'}</span>${esc(cim)}<span class="pl-h-db">${db}</span></h2>`;
   const szakasz = (id, cim, lista) => lista.length ? `<section class="pl-sec" id="${esc(id)}">
     ${fejlec(id, cim, lista.length)}
@@ -245,6 +247,9 @@ export function promptTarHtml(tar, { sz, temaNev, nyelvTipp = '' }) {
   return `<div class="pl-page"><section class="pl-hero">
       <h1 class="pl-h1">${esc(sz.cim)}</h1>
       <p class="pl-lead">${esc(sz.tag)}</p>
+      ${eszkozok ? `</section>
+    ${eszkozok}
+    <section class="pl-hero pl-hero--promptok"><h2 class="pl-h"><span class="pl-h-i" aria-hidden="true">📋</span>${esc(promptokCim)}</h2>` : ''}
       <label class="pl-compose">${KERES_IKON}<input id="plSearch" class="pl-search" type="search" placeholder="${esc(sz.kereses)}" aria-label="${esc(sz.kereses)}"><span class="pl-total">${esc(sz.db(tar.ossz))}</span></label>
       <nav class="pl-chips" aria-label="${esc(sz.kicker || '')}">${gombok}</nav>
     </section>
@@ -255,6 +260,7 @@ export function promptTarHtml(tar, { sz, temaNev, nyelvTipp = '' }) {
       ${kartya(fo, sz, true)}
       ${tobbiKiemelt.length ? `<div class="pl-cols">${tobbiKiemelt.map(e => kartya(e, sz)).join('\n')}</div>` : ''}
     </section>` : ''}
+    ${hirdetes ? `<div class="pl-ad">${hirdetes}</div>` : ''}
     ${tar.temak.map(x => szakasz(x.id, temaNev(x.id), x.lista)).join('\n')}
     ${szakasz('more', sz.egyebCim, tar.egyeb)}</div>
     ${SZKRIPT}`;

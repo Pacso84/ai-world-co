@@ -36,4 +36,4 @@
 
 ## Készítő
 
-pacsi84 + Claude (Anthropic) közös fejlesztés, 2026.
+AI World HQ + Claude (Anthropic) közös fejlesztés, 2026.

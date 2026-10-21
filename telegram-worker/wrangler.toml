@@ -5,6 +5,12 @@ compatibility_date = "2024-11-01"
 # keresztül node "path" beépített modult importál — enélkül a bundle nem épül.
 compatibility_flags = ["nodejs_compat"]
 
+# 🔒 SAJÁT DOMAIN (2026-10-21, user: „kösd át saját domainre!”): a *.workers.dev cím a Cloudflare-fiók
+# nevét mutatta minden oldal forrásában. A DNS-rekordot és a tanúsítványt a Cloudflare maga hozza létre.
+routes = [{ pattern = "api.aiworldhq.com", custom_domain = true }]
+# Átmenetileg a régi *.workers.dev cím is él, amíg az oldal és a CI át nem állt (utána false).
+workers_dev = true
+
 # Nyilvános, nem-titkos változó. A titkokat NEM ide tesszük, hanem:
 #   wrangler secret put BOT_TOKEN
 #   wrangler secret put OWNER_CHAT_ID

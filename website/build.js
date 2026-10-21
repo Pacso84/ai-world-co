@@ -49,6 +49,8 @@ import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek } from '../core/ads.js';
 import { promptTar, promptTarHtml } from '../core/prompt-library.js';
+import { eszkozSavHtml, biztonsagosHtml, promptEpitoHtml, ESZKOZ_UTAK } from '../core/ingyenes-eszkozok.js';   // 🧰 2026-10-21
+import { eszkozSzoveg } from '../core/ingyenes-eszkozok-szoveg.js';
 import { trendRadar, trendRadarHtml } from '../core/trend-radar.js';
 import { szotarBetolt, kerdesForditas } from '../core/trend-forditas.js';
 const TREND_SZOTAR = szotarBetolt();   // a Felkapott oldal kereséseinek fordítása (2026-10-20)
@@ -618,7 +620,7 @@ const UI_PRIV = {
         privStatsH: 'Visitor statistics', privStatsP: 'We count visits with Cloudflare Web Analytics. It uses no cookies and does not identify you: we only see totals such as page views, country and the site that sent you.',
         privFbH: 'The 👍/👎 buttons', privFbP: 'A vote only adds one to that article’s counter. We do not store who voted.',
         privCsH: 'Chat, contact form and email', privCsP: 'What you write to us is used only to answer you. Contact-form messages and emails are deleted after 30 days. Against spam we use Cloudflare Turnstile and keep a scrambled (hashed) form of your IP address for two days — never the address itself.',
-        privLocalH: 'Saved on your device', privLocalP: 'Your light/dark mode choice and the guide steps you tick off are saved in your own browser. They never leave your device.',
+        privLocalH: 'Saved on your device', privLocalP: 'Your light/dark mode choice and the guide steps you tick off are saved in your own browser. They never leave your device. Our free tools (Safe Paste, Prompt Builder) also run only in your browser: what you type there is never uploaded or saved.',
         privPayH: 'Tips and PDF packs', privPayP: 'Payments are handled by Ko-fi and PayPal. We never see your card details.',
         privAdsH: 'Advertising', privAdsP: 'We show one ad at the end of pages, served by Google AdSense. Google and its partners use cookies to show ads based on your visits to this and other websites. In the EEA, the UK and Switzerland you are asked for your consent first.',
         privAdsSet: 'Turn off personalised ads in Google’s Ads Settings', privAdsHow: 'How Google uses information from sites that use its services',
@@ -629,7 +631,7 @@ const UI_PRIV = {
         privStatsH: 'Látogatási statisztika', privStatsP: 'A látogatásokat a Cloudflare Web Analytics számolja. Nem használ sütit, és nem azonosít téged: csak összesítéseket látunk, például oldalletöltést, országot és azt, honnan érkeztél.',
         privFbH: 'A 👍/👎 gombok', privFbP: 'Egy szavazat csak eggyel növeli a cikk számlálóját. Azt nem tároljuk, ki szavazott.',
         privCsH: 'Chat, kapcsolati űrlap és e-mail', privCsP: 'Amit nekünk írsz, csak a válaszhoz használjuk. Az űrlapon küldött üzeneteket és az e-maileket 30 nap után töröljük. A kéretlen üzenetek ellen a Cloudflare Turnstile-t használjuk, és az IP-címed összekevert (hash-elt) változatát két napig őrizzük — magát a címet soha.',
-        privLocalH: 'Amit a saját eszközöd tárol', privLocalP: 'A világos/sötét mód választását és az útmutatókban kipipált lépéseket a saját böngésződ menti. Nem hagyják el az eszközödet.',
+        privLocalH: 'Amit a saját eszközöd tárol', privLocalP: 'A világos/sötét mód választását és az útmutatókban kipipált lépéseket a saját böngésződ menti. Nem hagyják el az eszközödet. Az ingyenes eszközeink (Biztonságos bemásolás, Promptépítő) is csak a böngésződben futnak: amit ott beírsz, azt nem töltjük fel és nem mentjük.',
         privPayH: 'Támogatás és PDF-csomagok', privPayP: 'A fizetést a Ko-fi és a PayPal intézi. A kártyaadataidat soha nem látjuk.',
         privAdsH: 'Hirdetés', privAdsP: 'Az oldalak végén egy hirdetést mutatunk, amelyet a Google AdSense szolgál ki. A Google és partnerei sütiket használnak, hogy az ezen és más oldalakon tett látogatásaid alapján mutassanak hirdetést. Az EGT-ben, az Egyesült Királyságban és Svájcban előbb a hozzájárulásodat kérjük.',
         privAdsSet: 'A személyre szabott hirdetéseket a Google hirdetési beállításaiban kapcsolhatod ki', privAdsHow: 'Hogyan használja a Google a szolgáltatásait használó oldalak adatait',
@@ -640,7 +642,7 @@ const UI_PRIV = {
         privStatsH: 'Estadísticas de visitas', privStatsP: 'Contamos las visitas con Cloudflare Web Analytics. No usa cookies y no te identifica: solo vemos totales, como páginas vistas, país y el sitio desde el que llegaste.',
         privFbH: 'Los botones 👍/👎', privFbP: 'Un voto solo suma uno al contador de ese artículo. No guardamos quién votó.',
         privCsH: 'Chat, formulario de contacto y correo', privCsP: 'Lo que nos escribes solo se usa para responderte. Los mensajes del formulario y los correos se borran a los 30 días. Contra el spam usamos Cloudflare Turnstile y guardamos una forma cifrada (hash) de tu dirección IP durante dos días, nunca la dirección en sí.',
-        privLocalH: 'Lo que guarda tu dispositivo', privLocalP: 'Tu elección de modo claro/oscuro y los pasos que marcas en las guías se guardan en tu propio navegador. Nunca salen de tu dispositivo.',
+        privLocalH: 'Lo que guarda tu dispositivo', privLocalP: 'Tu elección de modo claro/oscuro y los pasos que marcas en las guías se guardan en tu propio navegador. Nunca salen de tu dispositivo. Nuestras herramientas gratis (Pegado seguro, Creador de prompts) también funcionan solo en tu navegador: lo que escribes ahí nunca se sube ni se guarda.',
         privPayH: 'Apoyo y packs PDF', privPayP: 'Los pagos los gestionan Ko-fi y PayPal. Nunca vemos los datos de tu tarjeta.',
         privAdsH: 'Publicidad', privAdsP: 'Mostramos un anuncio al final de las páginas, servido por Google AdSense. Google y sus socios usan cookies para mostrar anuncios basados en tus visitas a este y otros sitios web. En el EEE, el Reino Unido y Suiza primero te pedimos tu consentimiento.',
         privAdsSet: 'Desactiva los anuncios personalizados en la configuración de anuncios de Google', privAdsHow: 'Cómo usa Google la información de los sitios que usan sus servicios',
@@ -3209,13 +3211,38 @@ function buildPromptsPage(alap, loc) {
       masol: tr('plCopy'), masolva: tr('plCopied'), utmutato: tr('plGuide'), db: n => tr('plCount').replace('{n}', n), kereses: tr('plSearch'),
       nap: tr('plDay'), mutasd: tr('plExpand'), kevesebb: tr('plCollapse'), nincs: tr('plNone') },
     temaNev: id => temaSzoveg(TEMAK.find(t => t.id === id), LANG).cim || id,
-    nyelvTipp: ''   // a promptok már a megjelenítés nyelvén vannak
+    nyelvTipp: '',   // a promptok már a megjelenítés nyelvén vannak
+    // 🧰 2026-10-21 (user: „a prompttárral vond össze! … az eszközök felül, a promptok alul”)
+    eszkozok: eszkozSavHtml(eszkozSzoveg(LANG), { lp: langPrefix(LANG) }), promptokCim: eszkozSzoveg(LANG).promptokH,
+    hirdetes: hirdetesBlokk(HIRDETES, LANG)   // 📢 EGY, a „Felkapott és új” után (user 10-21: „ide is rakjunk reklámot!”)
   });
   return pageShell({
     title: `${tr('plTitle')} — ${SITE.name}`,
     description: tr('plTag'),
     noIntro: true, pagePath: 'prompts.html', bodyContent: body
   });
+}
+
+// ===================================================================
+// 🧰 INGYENES ESZKÖZÖK (2026-10-21, core/ingyenes-eszkozok.js): Biztonságos bemásolás + Promptépítő;
+// a gyűjtőjük a Prompt-tár teteje (eszkozSavHtml). Mindkettő a látogató böngészőjében fut; oldalanként EGY hirdetés, az eszköz ALATT.
+// ===================================================================
+function eszkozJsonLd(nev, leiras, ut) {
+  return { '@context': 'https://schema.org', '@type': 'WebApplication', name: nev, description: leiras,
+    url: `${SITE.url}${langPrefix(LANG)}/${ut}`, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any',
+    isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, inLanguage: HTML_LANG[LANG] || LANG };
+}
+function buildSafePastePage() {
+  const sz = eszkozSzoveg(LANG);
+  return pageShell({ title: `${sz.sp.name}: ${sz.sp.h1} — ${SITE.name}`, description: sz.sp.meta, noIntro: true,
+    pagePath: `${ESZKOZ_UTAK.sp}.html`, jsonld: eszkozJsonLd(sz.sp.name, sz.sp.meta, ESZKOZ_UTAK.sp),
+    bodyContent: biztonsagosHtml(sz, { lp: langPrefix(LANG), hirdetes: hirdetesBlokk(HIRDETES, LANG) }) });
+}
+function buildPromptBuilderPage() {
+  const sz = eszkozSzoveg(LANG);
+  return pageShell({ title: `${sz.pb.name}: ${sz.pb.h1} — ${SITE.name}`, description: sz.pb.meta, noIntro: true,
+    pagePath: `${ESZKOZ_UTAK.pb}.html`, jsonld: eszkozJsonLd(sz.pb.name, sz.pb.meta, ESZKOZ_UTAK.pb),
+    bodyContent: promptEpitoHtml(sz, { lp: langPrefix(LANG), hirdetes: hirdetesBlokk(HIRDETES, LANG) }) });
 }
 
 // ===================================================================
@@ -3700,6 +3727,8 @@ function main() {
     writeFileSync(join(outBase, 'glossary.html'), buildGlossaryPage(), 'utf-8');   // AI-kisszótár
     writeFileSync(join(outBase, 'prompts.html'), buildPromptsPage(articles, loc), 'utf-8');   // Prompt-tár (2026-10-16)
     writeFileSync(join(outBase, 'trending.html'), buildTrendingPage(articles, loc), 'utf-8'); // Trend-radar (2026-10-18)
+    writeFileSync(join(outBase, ESZKOZ_UTAK.sp + '.html'), buildSafePastePage(), 'utf-8');   // 🧰 Ingyenes eszközök (2026-10-21; a gyűjtő a Prompt-tár)
+    writeFileSync(join(outBase, ESZKOZ_UTAK.pb + '.html'), buildPromptBuilderPage(), 'utf-8');
     writeFileSync(join(outBase, 'wizard.html'), buildWizardPage(), 'utf-8');       // Melyik AI való neked?
     writeFileSync(join(outBase, 'about.html'), buildAboutPage(loc), 'utf-8');      // Rólunk (fent a Kezdd itt, 2026-10-17)
     writeFileSync(join(outBase, 'privacy.html'), buildPrivacyPage(), 'utf-8');     // Adatvédelem (2026-10-01, AdSense-feltétel)
@@ -3780,6 +3809,7 @@ function main() {
       sitemapUrls.push({ loc: `${SITE.url}${lp}/prompts`, date: gyujtoLastmod(guides) });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/trending`, date: gyujtoLastmod(loc.filter(a => a.trend)) });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: null });
+      for (const ut of Object.values(ESZKOZ_UTAK)) sitemapUrls.push({ loc: `${SITE.url}${lp}/${ut}`, date: null });   // 🧰
       sitemapUrls.push({ loc: `${SITE.url}${lp}/about`, date: null });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/privacy`, date: null });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/archive`, date: gyujtoLastmod(news) });

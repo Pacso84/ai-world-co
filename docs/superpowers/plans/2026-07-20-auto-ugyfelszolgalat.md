@@ -281,7 +281,7 @@ Az `infrastructure` blokk UTÁN (vesszővel), a `limits` ELÉ:
   "customer_service": {
     "_comment": "Automata ügyfélszolgálat (2026-07-20, spec: 2026-07-19-auto-ugyfelszolgalat-design.md). enabled=false → a build NEM teszi ki a chat-dobozt/űrlapot. A worker-oldali kill-switch KÜLÖN van: telegram-worker/wrangler.toml [vars] CS_ENABLED. turnstile_site_key PUBLIKUS by design (a secret párja CSAK wrangler secret!). Az itteni kulcs a Cloudflare TESZT-kulcs (mindig átenged) — élesítéskor a valódira cserélendő.",
     "enabled": false,
-    "worker_base": "https://aiworld-telegram.pacsi84.workers.dev",
+    "worker_base": "https://api.aiworldhq.com",
     "turnstile_site_key": "1x00000000000000000000AA"
   },
 ```
@@ -1281,7 +1281,7 @@ A Make-őrszem `try/catch` blokkja UTÁN:
   // Csak akkor szól, ha volt forgalom — csendes, ha 0.
   try {
     if (process.env.FEEDBACK_EXPORT_KEY) {
-      const cr = await fetch('https://aiworld-telegram.pacsi84.workers.dev/feedback-export',
+      const cr = await fetch('https://api.aiworldhq.com/feedback-export',
         { headers: { 'X-Export-Key': process.env.FEEDBACK_EXPORT_KEY }, signal: AbortSignal.timeout(15000) });
       if (cr.ok) {
         const cs = (await cr.json()).__cs || {};
@@ -1325,7 +1325,7 @@ npx wrangler deploy
 ```
 Füst (a Turnstile teszt-kulcs minden tokent elfogad):
 ```bash
-curl -s -X POST https://aiworld-telegram.pacsi84.workers.dev/chat -H "Content-Type: application/json" -H "Origin: https://aiworldhq.com" -d '{"message":"How do I subscribe to the newsletter?","lang":"en","token":"smoke"}'
+curl -s -X POST https://api.aiworldhq.com/chat -H "Content-Type: application/json" -H "Origin: https://aiworldhq.com" -d '{"message":"How do I subscribe to the newsletter?","lang":"en","token":"smoke"}'
 ```
 Elvárt: 200, JSON `answer` értelmes szöveggel + `sessionId`. Majd magyar füst (`"lang":"hu"`, kérdés: `"Hogyan jelezhetek hibát egy cikkben?"`) → magyar, tegeződő válasz. Ellenőrizd a 429-et is: 11 gyors hívás ugyanarról az IP-ről → az utolsó `limit:true`.
 
@@ -1365,6 +1365,6 @@ Majd: napló-bejegyzés (`project_aiworld_naplo.md`) + MEMORY.md frissítés (re
 
 ## Ellenőrző lista a terv végére
 
-- Minden route-változás után a MEGLÉVŐ végpontok füstje: `curl -s https://aiworld-telegram.pacsi84.workers.dev/` → „AI World Telegram worker — OK”; egy 👍 leadása a weben → /feedback 200.
+- Minden route-változás után a MEGLÉVŐ végpontok füstje: `curl -s https://api.aiworldhq.com/` → „AI World Telegram worker — OK”; egy 👍 leadása a weben → /feedback 200.
 - A worker-tesztek (Task 1/4/5/6) egyetlen paranccsal: `for t in telegram-worker/test/*.test.js; do node "$t" || exit 1; done`
 - Költség-őr: a Workers AI hívás SEMMILYEN esetben nem történhet limit-ellenőrzés előtt (chat: 3 kapu előbb; email: globalLimitReached előbb).

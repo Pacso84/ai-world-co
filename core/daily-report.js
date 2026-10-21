@@ -968,7 +968,7 @@ async function main() {
   try {
     const exportKey = (process.env.FEEDBACK_EXPORT_KEY || '').trim();
     if (exportKey) {
-      const cr = await fetch('https://aiworld-telegram.pacsi84.workers.dev/feedback-export',
+      const cr = await fetch('https://api.aiworldhq.com/feedback-export',
         { headers: { 'X-Export-Key': exportKey }, signal: AbortSignal.timeout(15000) });
       if (cr.ok) {
         const exp = await cr.json();
