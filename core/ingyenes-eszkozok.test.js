@@ -112,6 +112,15 @@ t('🧠 a böngészőbe ágyazott mag UGYANAZT csinálja, mint a tesztelt (toStr
   assert.deepEqual(JSON.parse(JSON.stringify(Mb.keres(sz))), JSON.parse(JSON.stringify(M.keres(sz))));
 });
 
+t('🧪 „fejlesztés alatt” jelzés mindkét eszközön és a Prompt-tár sávjában, mindhárom nyelven (user 10-21)', () => {
+  for (const ny of ['en', 'hu', 'es']) {
+    const sz = ESZKOZ_SZ[ny];
+    for (const [nev, h] of [['sp', biztonsagosHtml(sz, {})], ['pb', promptEpitoHtml(sz, {})], ['sáv', eszkozSavHtml(sz, {})]])
+      assert.ok(h.includes(`<span class="fx-beta">🧪 ${sz.beta}</span>`), `${ny}/${nev}: nincs béta-jelzés`);
+    assert.ok(biztonsagosHtml(sz, {}).includes(sz.betaTip), ny + ': a bővítés-mondat hiányzik');
+  }
+});
+
 t('🔗 a Promptépítő a szöveget sessionStorage-ben adja át, NEM az URL-ben', () => {
   const h = promptEpitoHtml(ESZKOZ_SZ.hu, { lp: '/hu' });
   assert.match(h, /sessionStorage\.setItem\(S\.kulcs, utolso\)/);

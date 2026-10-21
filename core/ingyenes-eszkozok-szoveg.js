@@ -31,6 +31,7 @@ const GOALS = {
 
 export const ESZKOZ_SZ = {
   en: {
+    beta: 'Beta · still being improved', betaTip: 'We are adding more kinds of personal details. If something is missed, add it by hand.',
     vissza: 'Back to the Prompt Library', promptokH: 'Ready-made prompts',
     nav: 'Free tools', local: 'Runs in your browser · nothing is uploaded', open: 'Open the tool',
     labels: { email: 'EMAIL', telefon: 'PHONE', kartya: 'CARD', iban: 'IBAN', szamla: 'ACCOUNT', azonosito: 'ID NUMBER', szuletes: 'BIRTH DATE', cim: 'ADDRESS', nev: 'NAME', sajat: 'HIDDEN' },
@@ -74,6 +75,7 @@ export const ESZKOZ_SZ = {
     }
   },
   hu: {
+    beta: 'Béta · fejlesztés alatt', betaTip: 'Folyamatosan bővítjük, milyen adatokat ismer fel. Ha valamit kihagy, add hozzá kézzel.',
     vissza: 'Vissza a Prompt-tárhoz', promptokH: 'Kész promptok',
     nav: 'Ingyenes eszközök', local: 'A böngésződben fut · semmit nem töltünk fel', open: 'Megnyitom',
     labels: { email: 'E-MAIL', telefon: 'TELEFON', kartya: 'KÁRTYA', iban: 'IBAN', szamla: 'SZÁMLASZÁM', azonosito: 'AZONOSÍTÓ', szuletes: 'SZÜLETÉSI DÁTUM', cim: 'CÍM', nev: 'NÉV', sajat: 'REJTETT' },
@@ -117,6 +119,7 @@ export const ESZKOZ_SZ = {
     }
   },
   es: {
+    beta: 'Beta · en desarrollo', betaTip: 'Seguimos ampliando los tipos de datos que reconoce. Si se le escapa algo, añádelo a mano.',
     vissza: 'Volver a la Biblioteca de prompts', promptokH: 'Prompts listos',
     nav: 'Herramientas gratis', local: 'Funciona en tu navegador · no se sube nada', open: 'Abrir la herramienta',
     labels: { email: 'CORREO', telefon: 'TELÉFONO', kartya: 'TARJETA', iban: 'IBAN', szamla: 'CUENTA', azonosito: 'DOCUMENTO', szuletes: 'FECHA DE NACIMIENTO', cim: 'DIRECCIÓN', nev: 'NOMBRE', sajat: 'OCULTO' },

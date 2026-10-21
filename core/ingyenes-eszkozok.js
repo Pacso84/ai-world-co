@@ -257,7 +257,7 @@ export function eszkozSavHtml(sz, { lp = '' } = {}) {
     </a>`;
   return `<section class="fx-page fx-sav" aria-labelledby="fxSavH">
     <h2 class="pl-h" id="fxSavH"><span class="pl-h-i" aria-hidden="true">🧰</span>${esc(sz.nav)}</h2>
-    <p class="fx-sav-local"><span aria-hidden="true">🔒</span> ${esc(sz.local)}</p>
+    <p class="fx-sav-local"><span aria-hidden="true">🔒</span> ${esc(sz.local)} <span class="fx-beta">🧪 ${esc(sz.beta)}</span></p>
     <div class="fx-sav-racs">
       ${kartya(ESZKOZ_UTAK.sp, sz.sp, akta(sz))}
       ${kartya(ESZKOZ_UTAK.pb, sz.pb, csevegoMinta(sz))}
@@ -273,7 +273,7 @@ export function biztonsagosHtml(sz, { lp = '', hirdetes = '' } = {}) {
   <a class="fx-vissza-link" href="${lp}/prompts">← ${esc(sz.vissza)}</a>
   <section class="fx-top">
     <div class="fx-top-t">
-      <p class="fx-badge"><span aria-hidden="true">${s.emoji}</span> ${esc(sz.local)}</p>
+      <p class="fx-badges"><span class="fx-badge"><span aria-hidden="true">${s.emoji}</span> ${esc(sz.local)}</span><span class="fx-beta">🧪 ${esc(sz.beta)}</span></p>
       <h1 class="fx-h1">${esc(s.h1)}</h1>
       <p class="fx-lead">${esc(s.lead)}</p>
     </div>
@@ -300,7 +300,7 @@ export function biztonsagosHtml(sz, { lp = '', hirdetes = '' } = {}) {
     </div>
   </section>
   <div class="fx-found" id="spFound" aria-live="polite"></div>
-  <p class="fx-warn"><span aria-hidden="true">⚠️</span> ${esc(s.warn)}</p>
+  <p class="fx-warn"><span aria-hidden="true">⚠️</span> ${esc(s.warn)} ${esc(sz.betaTip)}</p>
   <section class="fx-valasz" aria-labelledby="spS3">
     <h2 class="fx-lap-h" id="spS3"><span class="fx-num">3</span>${esc(s.s3)}</h2>
     <p class="fx-sub">${esc(s.s3lead)}</p>
@@ -383,7 +383,7 @@ export function promptEpitoHtml(sz, { lp = '', hirdetes = '' } = {}) {
   return `<div class="fx-page fx-pb">
   <a class="fx-vissza-link" href="${lp}/prompts">← ${esc(sz.vissza)}</a>
   <section class="fx-hero">
-    <p class="fx-badge"><span aria-hidden="true">${p.emoji}</span> ${esc(sz.local)}</p>
+    <p class="fx-badges"><span class="fx-badge"><span aria-hidden="true">${p.emoji}</span> ${esc(sz.local)}</span><span class="fx-beta">🧪 ${esc(sz.beta)}</span></p>
     <h1 class="fx-h1">${esc(p.h1)}</h1>
     <p class="fx-lead">${esc(p.lead)}</p>
   </section>
