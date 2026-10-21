@@ -483,14 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179103210768642",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid — it's a practical mix of real-life writing tasks (complaints, resumes, agreements, sympathy notes) across multiple AI tools, which fits your \"AI for everyday people\" mission pe",
-      "agent": "publisher",
-      "at": "2026-10-03T12:55:07.686Z",
-      "loud": false
-    },
-    {
       "id": "n179103211897038",
       "level": "success",
       "text": "1 hír + 0 útmutató publikálva (költség: $0.0189).",
@@ -1281,27 +1273,17 @@
       "agent": "ceo",
       "at": "2026-10-21T02:38:23.830Z",
       "loud": false
+    },
+    {
+      "id": "n179258887254870",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (túl nagy átírás (801 szó a 649-ből)): \" The manager effect: Why leadershi",
+      "agent": "fact-check",
+      "at": "2026-10-21T13:21:12.548Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179099776735459",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-03T03:22:47.354Z"
-    },
-    {
-      "id": "m17910320476792",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"AI is changing developer work. Here are three skills to strengthen.\" — javítva: The claim that 'Claude Frontier Academy' is an Anthropic program 'with a $100 million commitment to train 10,000 by the end of 2027' is a fabricated specific — it is presented as fact in the article's source-quoted block but does not appear in the official GitHub announcement and constitutes an invented p",
-      "ref": "2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
-      "at": "2026-10-03T12:54:07.679Z"
-    },
     {
       "id": "m179103206449358",
       "from": "ellenorzo",
@@ -2647,6 +2629,25 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-21T02:49:10.120Z"
+    },
+    {
+      "id": "m179258885995739",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Meet Picsart Commerce: AI for ecommerce merchants\" — The article claims Picsart announced '12 Halloween prompts, split into six photo prompts and six video prompts' — the source does not mention any Halloween prompts or a specific number of prompts; The article claims the extension feature can turn 'one vertical product photo' into 'a w",
+      "ref": "ARTICLE_2026-10-21T02-28-33-124Z_picsart_Meet_Picsart_Commerce__AI_for_ecommerce_merchants.json",
+      "at": "2026-10-21T13:20:59.957Z"
+    },
+    {
+      "id": "m179258887254840",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (túl nagy átírás (801 szó a 649-ből)): \" The manager effect: Why leadership matters in the\" — Article claims source does not list specific habits when source contains three detailed habits with concrete numbers",
+      "ref": "ARTICLE_2026-10-21T02-28-33-124Z_dropbox-blog__The_manager_effect__Why_leadership_matters_in_the.json",
+      "open": true,
+      "at": "2026-10-21T13:21:12.548Z"
     }
   ]
 }
