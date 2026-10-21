@@ -269,6 +269,9 @@ const MASOLAT_RX = [
 const MASOLAT_KIVETEL = {
   'guide-kind.js':
     'ez MAGA a közös szabály — itt kell állnia a feltételnek',
+  'friss-tenyellenorzes.js':
+    'a KANONIKUS `_meta.type` mezőt olvassa (ugyanaz, amit a tény-ellenőrző és a build is használ), '
+    + 'nem a fájlnév-heurisztikát: a friss-sor csak a már normalizált cikk-objektumon fut.',
   'reel-queue.js':
     'nem osztályoz: MÁR NORMALIZÁLT `type` mezőt kap a core/reel-post.js-től '
     + '(ami a közös függvényt hívja). Se fájlnév, se markdown nincs a kezében, '

@@ -49,7 +49,7 @@ function keresKiveteleken(md, re, tipus, min, nyelv, ki, foglalt) {
  * Az angolul maradt darabok egy fordított markdownban (frontmatterrel együtt).
  * @returns {{tipus: string, szoveg: string, start: number, end: number}[]} pozíció szerint
  */
-export function angolDarabok(md, nyelv) {
+export function angolDarabok(md, nyelv, mdEn = '') {
   if (typeof md !== 'string' || !md || !HELYI[nyelv]) return [];
   const ki = [], foglalt = [];
   // A kód-blokkok, a frontmatter címei és a fejezetcímek elöl: ezek a legnagyobb egységek.
@@ -57,6 +57,19 @@ export function angolDarabok(md, nyelv) {
   keresKiveteleken(md, /^subtitle:\s*["']?(?<t>.+?)["']?\s*$/gm, 'alcím', 3, nyelv, ki, foglalt);
   keresKiveteleken(md, /```[a-z]*\n(?<t>[\s\S]*?)\n?```/g, 'prompt', 3, nyelv, ki, foglalt);
   keresKiveteleken(md, /^#{1,4} (?<t>.+)$/gm, 'fejezetcím', 2, nyelv, ki, foglalt);
+  // 2026-10-21: a rövid fejezetcímben („Before you start”) kevés az angol funkciószó → a számláló
+  // nem látja. Ha megvan az angol eredeti, a vele SZÓ SZERINT egyező (legalább kétszavas) cím fordítatlan.
+  if (mdEn) {
+    const enCimek = new Set([...String(mdEn).matchAll(/^#{1,4} (.+)$/gm)].map(m => m[1].trim()));
+    for (const m of md.matchAll(/^#{1,4} (?<t>.+)$/gm)) {
+      const szoveg = m.groups.t;
+      if (!enCimek.has(szoveg.trim()) || !/[a-z]{2,}\s+[a-z]{2,}/i.test(szoveg)) continue;
+      const start = m.index + m[0].indexOf(szoveg), end = start + szoveg.length;
+      if (foglalt.some(([a, b]) => start < b && end > a)) continue;
+      foglalt.push([start, end]);
+      ki.push({ tipus: 'fejezetcím', szoveg, start, end });
+    }
+  }
   keresKiveteleken(md, /!\[(?<t>[^\]\n]{12,})\]\(/g, 'képfelirat', 2, nyelv, ki, foglalt);
   keresKiveteleken(md, /`(?<t>[^`\n]{25,})`/g, 'prompt', 3, nyelv, ki, foglalt);
   keresKiveteleken(md, /["“„](?<t>[^"”“„*\n]{25,})["”]/g, 'idézet', 3, nyelv, ki, foglalt);

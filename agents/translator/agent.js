@@ -216,10 +216,12 @@ async function forditasJavitas(hatarido = Infinity) {
     // a CI-lépés 30 perces: a fordító időkeretén belül maradunk, a maradék a következő futásé
     if (Date.now() > hatarido - 90e3) { console.log('   ⏱️ fordítás-javító: elfogyott az időkeret — a többi a következő futásban'); break; }
     const data = loadCache(f);
+    let en = '';
+    try { en = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8')).article_markdown || ''; } catch { /* sérült */ }
     let valtozott = false;
     for (const ny of Object.keys(LANGS)) {
       if (javitott >= JAVITO_MAX) break;
-      const darabok = angolDarabok(data[ny], ny).filter(d => !naplo.kihagy[ujjlenyomat(d.szoveg)]);
+      const darabok = angolDarabok(data[ny], ny, en).filter(d => !naplo.kihagy[ujjlenyomat(d.szoveg)]);
       if (!darabok.length) continue;
       javitott++;
       const meret = darabok.reduce((a, d) => a + d.szoveg.length, 0);

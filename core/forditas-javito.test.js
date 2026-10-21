@@ -92,6 +92,17 @@ t('🌍 VALÓDI fordítások: a csere minden fájlon ép frontmattert hagy, és 
   console.log(`     (${db} cikk-nyelv pár ellenőrizve)`);
 });
 
+t('🪧 rövid fejezetcím: az angol eredetivel SZÓ SZERINT egyező cím találat (10-21: „Before you start”), az egyszavas nem', () => {
+  const en = '# Shared list\n\n## Before you start\n\nText.\n\n## Gemini\n';
+  const hu = '# Közös lista\n\n## Before you start\n\nSzöveg, és még egy kis szöveg.\n\n## Gemini\n';
+  assert.equal(angolDarabok(hu, 'hu').length, 0, 'eredeti nélkül a számláló nem látja (ezért kell az eredeti)');
+  const d = angolDarabok(hu, 'hu', en);
+  assert.deepEqual(d.map(x => x.szoveg), ['Before you start']);
+  assert.equal(csere(hu, d, ['Mielőtt elkezded']).includes('## Mielőtt elkezded\n'), true);
+  const src = readFileSync(join(ROOT, 'agents', 'translator', 'agent.js'), 'utf-8');
+  assert.match(src, /angolDarabok\(data\[ny\], ny, en\)/, 'a fordító átadja az angol eredetit');
+});
+
 t('🔌 a fordító minden futásban lefuttatja (korláttal, kihagyás-listával)', () => {
   const src = readFileSync(join(ROOT, 'agents', 'translator', 'agent.js'), 'utf-8');
   assert.match(src, /from '\.\.\/\.\.\/core\/forditas-javito\.js'/);

@@ -337,7 +337,7 @@ jobs:
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
-        run: node agents/fact-check/agent.js --limit 2 || true
+        run: node agents/fact-check/agent.js --limit 4 || true
 
       # Orbit heti videó: szkript + hang (vasárnap; a videót a compose rakja össze)
       - name: Orbit videó — szkript + hang (vasárnap)

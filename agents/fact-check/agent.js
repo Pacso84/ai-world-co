@@ -49,6 +49,7 @@ import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
 import { message } from '../../core/ops.js';
 import { nameLockObjection, jegyezNevZar } from '../../core/name-guard.js';
+import { ellenorzesiSor, forrasSzoveg, MIN_FORRAS, HIR_RENDSZER, hirCsereEp } from '../../core/friss-tenyellenorzes.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -85,10 +86,12 @@ function loadBrandContext() {
 function loadGuides(args) {
   if (!existsSync(ARTICLES_DIR)) return [];
   const guides = [];
+  // Automata körben a HÍREK is jönnek (a friss cikkek az elsők), kézi indításnál csak az útmutatók.
+  const auto = !args.claim && !args.id && !args.company && !args.tool;
   for (const f of readdirSync(ARTICLES_DIR).filter(x => x.endsWith('.json'))) {
     try {
       const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
-      if (d._meta?.type !== 'guide') continue;
+      if (d._meta?.type !== 'guide' && !auto) continue;
       guides.push({ file: f, data: d });
     } catch {}
   }
@@ -111,20 +114,9 @@ function loadGuides(args) {
   //      épp most engedte át, nincs mit újraellenőrizni rajta);
   //   2) a legrégebben ellenőrzött kerül előre, hogy körbeérjünk a 240-en;
   //   3) az emberre váró (megjelölt) útmutatót kihagyjuk — már döntésre vár.
-  if (!args.claim && !args.id && !args.company && !args.tool) {
-    const monthAgo = Date.now() - 30 * 86400e3;
-    list = list
-      .filter(g => !g.data._meta?.fact_check_flag)
-      .filter(g => {
-        const pub = new Date(g.data._meta?.published_at || 0).getTime();
-        return pub && pub < monthAgo;
-      })
-      .sort((a, b) => {
-        const av = a.data._meta?.fact_checked_at || '';   // sosem ellenőrzött = '' → elöl
-        const bv = b.data._meta?.fact_checked_at || '';
-        return av.localeCompare(bv);
-      });
-  }
+  // 2026-10-21 (user: „a friss cikkeket nézze át, ne a régieket”): a friss (≤7 napos, még át nem
+  // nézett) cikkek ELÖL, utána a 30 napnál régebbi útmutatók. A sorrend a core/friss-tenyellenorzes.js.
+  if (auto) list = ellenorzesiSor(list);
   return list.slice(0, args.limit);
 }
 
@@ -176,6 +168,23 @@ If nothing needs changing: verdict "ok".
 
 Output ONLY JSON (no prose, no code fence):
 {"verdict":"ok"|"fix"|"unpublish","removed_claims":["..."],"reason":"one short sentence","fixed_markdown":"full corrected guide markdown, or empty string"}`;
+
+/**
+ * Hír átnézése a HIVATALOS FORRÁS szövegéhez mérve (nem a modell emlékezetéhez). Ha a forrás nem
+ * olvasható (halott link, JS-oldal), nem ítélünk: `skip` indokkal.
+ */
+async function auditHir(item) {
+  const url = item.data._meta?.source_link;
+  let forras = '';
+  try {
+    const r = await fetch(url, { headers: { 'User-Agent': 'AIWorldHQ-factcheck/1.0' }, signal: AbortSignal.timeout(20000) });
+    if (r.ok) forras = forrasSzoveg(await r.text());
+  } catch { /* lent kezeljük */ }
+  if (forras.length < MIN_FORRAS) return { response: null, decision: null, skip: 'a forrás nem olvasható' };
+  const userPrompt = `OFFICIAL SOURCE TEXT:\n${forras}\n\nPUBLISHED ARTICLE:\n${item.data.article_markdown || ''}\n\nOutput ONLY the JSON.`;
+  const response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: HIR_RENDSZER, maxTokens: 4000, jsonMode: true });
+  return { response, decision: parseJson(response?.text) };
+}
 
 async function audit(guide, args, brandContext) {
   const meta = guide.data._meta || {};
@@ -243,6 +252,11 @@ function applyFix(guide, fixedMarkdown, reason, claims) {
   } catch { /* marad a régi fordítás — nem kritikus */ }
 }
 
+/** Csak a „átnéztem” jelölés mentése (a szöveg nem változott → a „Frissítve” dátum sem). */
+function saveGuide(guide) {
+  writeFileSync(join(ARTICLES_DIR, guide.file), JSON.stringify(guide.data, null, 2), 'utf-8');
+}
+
 /**
  * "unpublish" ítélet: MEGJELÖLÉS, NEM TÖRLÉS.
  * Egy oldal levétele emberi döntés: 404-et okoz, rangsor-erőt veszít, és
@@ -273,14 +287,19 @@ async function main() {
 
   for (const guide of guides) {
     const title = (guide.data.original_title || guide.file).slice(0, 50);
-    const { response, decision } = await audit(guide, args, brandContext);
+    const hir = guide.data._meta?.type !== 'guide';
+    const { response, decision, skip } = hir ? await auditHir(guide) : await audit(guide, args, brandContext);
     cost += response?.costUsd || 0;
 
+    if (skip) { console.log(`⏭️  ${title}… — ${skip}, nem ítélek`); continue; }
     if (!decision) { console.log(`⚠️  ${title}… — döntés nem értelmezhető, kihagyom`); continue; }
+    // Átnéztük: a következő körben ez már nem kerül elő (friss cikkek sorrendje).
+    guide.data._meta = { ...guide.data._meta, fact_verified_at: new Date().toISOString() };
 
     if (decision.verdict === 'ok') {
       console.log(`✅ OK: ${title}…`);
       ok++;
+      if (!args.dry) saveGuide(guide);
       continue;
     }
 
@@ -299,7 +318,9 @@ async function main() {
     }
 
     // verdict === 'fix' — HELYBEN javítunk, az URL nem mozdul, az oldal végig él
-    let why = decision.fixed_markdown ? isSafeReplacement(decision.fixed_markdown, guide.data.article_markdown) : 'nincs javított szöveg';
+    let why = !decision.fixed_markdown ? 'nincs javított szöveg'
+      : hir ? hirCsereEp(decision.fixed_markdown, guide.data.article_markdown)
+      : isSafeReplacement(decision.fixed_markdown, guide.data.article_markdown);
 
     // ── NÉV-ZÁR (2026-09-06) ─────────────────────────────────────────
     // A 08-31-i eset: a tényellenőr a valódi „ChatRTX" nevet átírta a nem
@@ -333,10 +354,12 @@ async function main() {
       // Van javaslat, de nem elég ép → A RÉGI MARAD. Inkább a régi jó szöveg,
       // mint egy megcsonkított új.
       console.log(`⏭️  ${title}… — a javítás nem elég ép (${why}), a RÉGI marad`);
+      if (!args.dry) saveGuide(guide);
       if (!args.dry) message('fact-check', 'ceo', 'need', `Gyanús állítás, de a javítás nem volt elég ép (${why}): "${title}" — ${decision.reason}`, { ref: guide.file });
     } else {
       // Talált gondot, de nincs jó javítás → jelez, nem törlünk vakon
       console.log(`🙋 JELZÉS: ${title}… — gyanús állítás, de nincs biztos javítás: ${decision.reason}`);
+      if (!args.dry) saveGuide(guide);
       if (!args.dry) message('fact-check', 'ceo', 'need', `Ellenőrizendő állítás: "${title}" — ${decision.reason}`, { ref: guide.file.replace(/^ARTICLE_/, '') });
     }
   }
