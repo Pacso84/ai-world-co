@@ -108,6 +108,7 @@ const NEM_ORSZEM = {
   'reel-pending.json': 'a Reel két fázisa közti átadó fájl (--prepare → --send) — munkaanyag; a bukást a reel-guard.json jelzi',
   'search-report-state.json': 'a heti kereső-riport küldés-dedupja (last_week) — ismétlés-védelem, nem ellenőrzési eredmény',
   'store.json': 'a memória szövegtára (leckék) — adat; a méretét a Házmester hízás-őre figyeli (600 KB-os határ)',
+  'torolt-hirek.json': 'a törölt hírek 30 napos listája az IndexNow-bejelentéshez (core/housekeeping.js → core/indexnow.js) — munkasor; a törlést a Házmester riportsora jelzi',
   'torolt-utmutatok.json': 'a törölt útmutatók 30 napos listája az IndexNow-bejelentéshez (core/housekeeping.js → core/indexnow.js) — munkasor; a törlést a Házmester riportsora jelzi',
   'topic-dedup-log.json': 'a témaismétlés-szűrő döntés-naplója — eseménynapló; az őr ÉLETÉT az embed-guard.json méri',
   'traffic-log.json': 'a cikkenkénti forgalom-napló (KIZÁRÓLAG a CI írja) — mérési adat, nem őrszem-lelet',

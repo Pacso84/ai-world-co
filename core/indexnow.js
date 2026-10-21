@@ -89,6 +89,11 @@ export async function submitIndexNow({ all = false, dry = false } = {}) {
     const lista = JSON.parse(readFileSync(join(ROOT, 'memory', 'torolt-utmutatok.json'), 'utf-8'));
     for (const u of toroltUrlek(lista, site, LANGS, now, FRESH_HOURS)) urls.add(u);
   } catch { /* nincs törölt útmutató — nem baj */ }
+  // TÖRÖLT HÍREK (2026-10-21, user: „…és értesítés a keresőknek!”): ugyanígy, a Házmester listájából.
+  try {
+    const lista = JSON.parse(readFileSync(join(ROOT, 'memory', 'torolt-hirek.json'), 'utf-8'));
+    for (const u of toroltUrlek(lista, site, LANGS, now, FRESH_HOURS)) urls.add(u);
+  } catch { /* nincs törölt hír — nem baj */ }
   // ÖSSZEVONT ÚTMUTATÓK (2026-10-19, core/utmutato-osszevonas.js): a régi cím (most 301) és a megmaradó.
   try {
     const naplo = JSON.parse(readFileSync(join(ROOT, 'content', 'osszevonas-naplo.json'), 'utf-8'));

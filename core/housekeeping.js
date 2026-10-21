@@ -67,6 +67,10 @@ const NEWS_KEEP_DAYS = (() => {
     return Number(c.limits?.news_keep_days) || 90;
   } catch { return 90; }
 })();
+// 2026-10-21 (user: „folytassuk a hírek törlését is!”): amíg a forgalmi napló rövidebb 90 napnál (08-02-án
+// indult), a TELJES hiánytalan mért időszak az olvasottsági ablak, de legalább ennyi nap (szigorúbb az
+// útmutatók 60 napjánál). ~10-31-től magától 90 nap. A KOR-határ marad 90 nap. Lásd core/news-prune.js.
+const NEWS_MIN_ABLAK = 75;
 const KEEP_DAYS = (() => {
   const i = process.argv.indexOf('--days');
   return i >= 0 && process.argv[i + 1] ? parseInt(process.argv[i + 1], 10) : 14;
@@ -225,11 +229,11 @@ function pruneOldNews() {
   }
   let days = null;
   try { days = JSON.parse(readFileSync(join(ROOT, 'memory', 'traffic-log.json'), 'utf-8')).days; } catch { /* a kapu kezeli */ }
-  const r = hirTorlendok({ hirek, days, now: Date.now(), keepDays: NEWS_KEEP_DAYS });
+  const r = hirTorlendok({ hirek, days, now: Date.now(), keepDays: NEWS_KEEP_DAYS, minAblak: NEWS_MIN_ABLAK });
   if (!r.ok) { report.push(`⚠️ lejárt hír-törlés kihagyva (${r.regiek} db ${NEWS_KEEP_DAYS} napnál régebbi vár): ${r.ok_ok}`); return; }
   const doomed = r.torlendo.map(({ f, slug }) => ({ f, slug }));
   if (!doomed.length) {
-    if (r.olvasott.length) report.push(`📖 ${r.olvasott.length} régi hír megtartva — az utolsó ${NEWS_KEEP_DAYS} napban is olvasták`);
+    if (r.olvasott.length) report.push(`📖 ${r.olvasott.length} régi hír megtartva — az utolsó ${r.ablak} napban is olvasták`);
     return;
   }
 
@@ -260,7 +264,19 @@ function pruneOldNews() {
       if (atir && !DRY) writeFileSync(hp, JSON.stringify(r.tortenet, null, 2) + '\n', 'utf-8');
     }
   } catch { /* az átirányítás-takarítás hibája ne állítsa meg a házmestert */ }
-  report.push(`📰 lejárt hír törölve: ${doomed.length} cikk · ${kb(bytes)} KB (${NEWS_KEEP_DAYS} napnál régebbi és ${NEWS_KEEP_DAYS} napja 0 olvasó${r.olvasott.length ? `; ${r.olvasott.length} olvasott régi hír megtartva` : ''})${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} rá mutató átirányítás` : ''} — az útmutatókat külön szabály kezeli (60 nap olvasó nélkül)`);
+  // 🔔 KERESŐ-ÉRTESÍTÉS + BELSŐ LINKEK (2026-10-21, user: „…és értesítés a keresőknek!”): eddig csak a
+  // törölt ÚTMUTATÓKAT jelentettük be és vettük ki a linkjeiket; a hír némán tűnt el. Most ugyanúgy:
+  // a törölt címek listára kerülnek (memory/torolt-hirek.json → core/indexnow.js 48 órán át bejelenti,
+  // a kereső 404-et talál és kiveszi), a rájuk mutató belső linkek pedig kikerülnek a többi cikkből.
+  const hirSlugok = doomed.map(x => x.slug).filter(Boolean);
+  let hirLinkDb = 0;
+  if (!DRY && hirSlugok.length) {
+    try { hirLinkDb = linkekKiMindenhol(hirSlugok); } catch { /* a link-takarítás hibája ne állítsa meg a házmestert */ }
+    const tu = join(ROOT, 'memory', 'torolt-hirek.json');
+    let tl = []; try { tl = JSON.parse(readFileSync(tu, 'utf-8')); } catch { /* első törlés */ }
+    try { writeFileSync(tu, JSON.stringify(toroltListaFrissit(tl, hirSlugok), null, 2) + '\n', 'utf-8'); } catch { /* a 404 akkor is kiveszi */ }
+  }
+  report.push(`📰 lejárt hír törölve: ${doomed.length} cikk · ${kb(bytes)} KB (${NEWS_KEEP_DAYS} napnál régebbi és ${r.ablak} napja 0 olvasó${hirLinkDb ? `; ${hirLinkDb} belső link kivéve` : ''}; a keresők értesítve${r.olvasott.length ? `; ${r.olvasott.length} olvasott régi hír megtartva` : ''})${social ? ` + ${social} közösségi poszt` : ''}${atir ? ` + ${atir} rá mutató átirányítás` : ''} — az útmutatókat külön szabály kezeli (60 nap olvasó nélkül)`);
 }
 
 // ── 2b. NÉZETLEN ÚTMUTATÓK (2026-10-14, user: „ha 60 napig nem volt olvasó, akkor minek

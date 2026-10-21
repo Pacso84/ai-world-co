@@ -60,6 +60,39 @@ t('📅 dátum nélküli hírt nem bántunk', () => {
   assert.equal(r.regiek, 0);
 });
 
+// 2026-10-21 (user: „folytassuk a hírek törlését is és értesítés a keresőknek!”)
+const roviditett = (napDb, extra = {}) => { const d = naplo(extra); for (let i = napDb + 1; i <= 95; i++) delete d[nap(i)]; return d; };
+
+t('▶️ 80 napos hiánytalan napló + minAblak 75 → törlés INDUL a teljes mért időszakkal; az olvasott marad', () => {
+  const r = hirTorlendok({ hirek: [hir('senki', 120), hir('olvasott', 120)], days: roviditett(80, { [nap(70)]: [{ path: '/hu/article/olvasott', visits: 1 }] }), now: NOW, minAblak: 75 });
+  assert.equal(r.ok, true, r.ok_ok);
+  assert.equal(r.ablak, 80);
+  assert.deepEqual(r.torlendo.map(h => h.slug), ['senki']);
+  assert.deepEqual(r.olvasott.map(h => h.slug), ['olvasott']);
+});
+
+t('🛑 70 napos napló + minAblak 75 → NEM töröl; alapértelmezésben (minAblak = 90) a 80 napos sem', () => {
+  const r = hirTorlendok({ hirek: [hir('senki', 120)], days: roviditett(70), now: NOW, minAblak: 75 });
+  assert.equal(r.ok, false); assert.match(r.ok_ok, /hiányzó nap.*hiánytalan: 70 nap, kell legalább 75/);
+  assert.equal(hirTorlendok({ hirek: [hir('senki', 120)], days: roviditett(80), now: NOW }).ok, false, 'a szigorú alapérték marad');
+});
+
+t('📏 ha a napló eléri a 90 napot, az ablak magától 90 (minAblak mellett is); a KOR-határ mindig 90', () => {
+  const r = hirTorlendok({ hirek: [hir('senki', 120), hir('fiatal', 85)], days: naplo(), now: NOW, minAblak: 75 });
+  assert.equal(r.ablak, 90);
+  assert.deepEqual(r.torlendo.map(h => h.slug), ['senki'], 'a 85 napos hír túl fiatal a törléshez');
+});
+
+t('🔔 bekötés: a Házmester min. 75 napot kér, a törölt hírt listára teszi (IndexNow) és kiveszi a rá mutató linkeket', () => {
+  const src = readFileSync(join(ROOT, 'core', 'housekeeping.js'), 'utf-8');
+  assert.match(src, /const NEWS_MIN_ABLAK = 75;/);
+  assert.match(src, /hirTorlendok\(\{ hirek, days, now: Date\.now\(\), keepDays: NEWS_KEEP_DAYS, minAblak: NEWS_MIN_ABLAK \}\)/);
+  assert.match(src, /hirLinkDb = linkekKiMindenhol\(hirSlugok\)/);
+  assert.match(src, /'torolt-hirek\.json'/);
+  const ix = readFileSync(join(ROOT, 'core', 'indexnow.js'), 'utf-8');
+  assert.match(ix, /'memory', 'torolt-hirek\.json'/);
+});
+
 t('🔌 a Házmester ezt a döntést használja (nem a puszta kort)', () => {
   const src = readFileSync(join(ROOT, 'core', 'housekeeping.js'), 'utf-8');
   assert.match(src, /import \{ hirTorlendok \} from '\.\/news-prune\.js'/);
