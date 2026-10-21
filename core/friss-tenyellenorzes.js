@@ -73,6 +73,34 @@ Change ONLY the wrong sentences and keep everything else word for word: the same
 Output ONLY JSON (no prose, no code fence):
 {"verdict":"ok"|"fix","errors":["article says X, source says Y"],"reason":"one short sentence","fixed_markdown":"the full corrected article markdown, or an empty string"}`;
 
+// ── GÉPI BIZTOSÍTÉK (2026-10-21, user: „ezek a hibák ne forduljanak elő többet!”) ──────────────
+// A modell ítélete nem elég ahhoz, hogy élő szövegből kivegyünk valamit: 10-21-én a Picsart-hírből
+// HELYES adatot vett ki, mert a forrás egy részét nem látta. Ezért a csere ELŐTT a kód maga nézi
+// meg: a kivett / átírt mondat számai és tartalomszavai benne vannak-e a forrás(ok)ban. Ha igen,
+// a forrás ALÁTÁMASZTJA → a javítás nem mehet ki (a régi szöveg marad, és szólunk).
+const SZAMSZO = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, fifteen: 15, twenty: 20, thirty: 30, fifty: 50, hundred: 100 };
+const TOLTELEK = new Set('about above after again also because been before being between both could does doing down during each from further have having here into itself just more most much need only other over same should some such than that their them then there these they this those through under until very what when where which while with would your yours youre will what\'s it\'s that\'s company says said according announcement post blog article'.split(' '));
+const mondatok = md => String(md || '').replace(/^---[\s\S]*?\n---\n/, '').split(/\n+|(?<=[.!?])\s+(?=[A-Z"„“])/).map(s => s.replace(/^[#>*\-\d.\s]+/, '').trim()).filter(s => s.split(/\s+/).length >= 4);
+const szamok = s => [...String(s).toLowerCase().matchAll(/\b(\d+(?:[.,]\d+)?|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|fifty|hundred)\b/g)].map(m => String(SZAMSZO[m[1]] ?? m[1].replace(',', '.')));
+const szavak = s => [...new Set((String(s).toLowerCase().replace(/[’']s\b/g, '').match(/[a-z][a-z-]{3,}/g) || []).filter(w => !TOLTELEK.has(w)))];
+
+/**
+ * A javítás által KIVETT vagy átírt mondatok közül azok, amelyeket a forrás alátámaszt
+ * (minden számuk és tartalomszavaik ≥60%-a megvan a forrásban). Üres tömb = a csere mehet.
+ */
+export function forrasAlatamasztja(eredeti, javitott, forrasSz) {
+  const uj = new Set(mondatok(javitott));
+  const F = String(forrasSz || '').toLowerCase();
+  const fSzam = new Set(szamok(F)), fSzo = new Set(szavak(F));
+  return mondatok(eredeti).filter(m => !uj.has(m)).filter(m => {
+    const sz = szamok(m), w = szavak(m);
+    if (!w.length) return false;
+    const szamOk = sz.every(x => fSzam.has(x));
+    const arany = w.filter(x => fSzo.has(x)).length / w.length;
+    return szamOk && arany >= 0.6;
+  });
+}
+
 /** A hír javítása csak akkor cserélheti a régit, ha kis, célzott javítás maradt. null = rendben. */
 export function hirCsereEp(fixed, original) {
   if (!fixed || !String(fixed).trimStart().startsWith('---')) return 'nincs frontmatter';

@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { ellenorzesiSor, forrasSzoveg, forrasLinkek, MIN_FORRAS, hirCsereEp, HIR_RENDSZER } from './friss-tenyellenorzes.js';
+import { ellenorzesiSor, forrasSzoveg, forrasLinkek, forrasAlatamasztja, MIN_FORRAS, hirCsereEp, HIR_RENDSZER } from './friss-tenyellenorzes.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const NAP = 86400e3;
@@ -51,6 +51,32 @@ t('🔗 összevont hír: MINDEN forrás kell (10-21 Picsart: 3 forrásból csak 
   assert.match(src, /const urls = forrasLinkek\(item\.data\._meta\)/);
   assert.match(src, /darabok\.length < urls\.length/, 'ha egy forrás is hiányzik, ne ítéljen');
   assert.match(HIR_RENDSZER, /supported if ANY source supports it/);
+});
+
+t('🛑 GÉPI BIZTOSÍTÉK: a forrás által alátámasztott mondatot a javítás NEM veheti ki (10-21 Picsart, valódi szövegek)', () => {
+  const eredeti = '---\ntitle: "Picsart"\n---\n\n# Picsart\n\nAccording to the company, one vertical product photo can become:\n\n- A wide website banner\n- A tall story frame for a phone\n\nPicsart\'s Halloween post offers 12 prompts, split into six photo prompts and six video prompts. The company\'s advice is to start with your own photo.\n';
+  const javitott = eredeti.replace("Picsart's Halloween post offers 12 prompts, split into six photo prompts and six video prompts.", "Picsart's Halloween post offers prompts for costumed portraits.").replace('- A wide website banner\n- A tall story frame for a phone\n', '');
+  const forras = 'Meet Picsart Commerce ... A vertical product photo can become a wide website banner, a tall story frame or a square feed post, all from the same shot. Halloween AI prompts: 12 photo and video prompts. Below are six Halloween photo prompts and six video prompts that bring each portrait to life.';
+  const al = forrasAlatamasztja(eredeti, javitott, forras);
+  assert.ok(al.some(s => /12 prompts/.test(s)), 'a „12 prompt” mondatot a forrás alátámasztja → nem vehető ki');
+  assert.ok(al.some(s => /website banner/.test(s)), 'a „banner” sort a forrás alátámasztja → nem vehető ki');
+});
+
+t('✅ GÉPI BIZTOSÍTÉK ellenpróba: a forrásban NEM szereplő (kitalált) állítást a javítás kiveheti', () => {
+  const eredeti = '---\ntitle: "X"\n---\n\nPicsart Commerce costs $29 per month and works only for Shopify sellers in Europe. You can see a credit quote before anything is generated.\n';
+  const javitott = eredeti.replace('Picsart Commerce costs $29 per month and works only for Shopify sellers in Europe. ', '');
+  const forras = 'Commerce is designed to show you a credit quote before anything is generated. The model and output settings you pick determine the cost.';
+  assert.deepEqual(forrasAlatamasztja(eredeti, javitott, forras), []);
+  assert.deepEqual(forrasAlatamasztja(eredeti, eredeti, forras), [], 'változatlan szöveg → nincs mit védeni');
+});
+
+t('🔌 bekötés: a hír-javítás előtt fut a biztosíték; útmutatót automata körben (emlékezetből) NEM írhat át', () => {
+  const src = readFileSync(join(ROOT, 'agents', 'fact-check', 'agent.js'), 'utf-8');
+  assert.match(src, /forrasAlatamasztja\(guide\.data\.article_markdown, decision\.fixed_markdown, forras\)/);
+  assert.match(src, /return \{ response, decision: parseJson\(response\?\.text\), forras \}/, 'az auditHir adja vissza a forrásszöveget');
+  assert.match(src, /if \(!why && !hir && auto\) why = /, 'útmutató + automata kör → csak jelzés');
+  // a biztosíték a NÉV-ZÁR és az applyFix ELŐTT áll
+  assert.ok(src.indexOf('forrasAlatamasztja(guide') < src.indexOf('applyFix(guide, decision.fixed_markdown'));
 });
 
 t('🧹 a forrás-tisztítás eldobja a szkriptet és a stílust, és a szöveget megtartja', () => {

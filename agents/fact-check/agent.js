@@ -49,7 +49,7 @@ import { ask } from '../../core/ai-router.js';
 import { remember } from '../../core/memory-manager.js';
 import { message } from '../../core/ops.js';
 import { nameLockObjection, jegyezNevZar } from '../../core/name-guard.js';
-import { ellenorzesiSor, forrasSzoveg, forrasLinkek, MIN_FORRAS, HIR_RENDSZER, hirCsereEp } from '../../core/friss-tenyellenorzes.js';
+import { ellenorzesiSor, forrasSzoveg, forrasLinkek, forrasAlatamasztja, MIN_FORRAS, HIR_RENDSZER, hirCsereEp } from '../../core/friss-tenyellenorzes.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -190,7 +190,7 @@ async function auditHir(item) {
   const forras = darabok.map((d, i) => `--- SOURCE ${i + 1} (${d.url}) ---\n${d.szoveg}`).join('\n\n');
   const userPrompt = `OFFICIAL SOURCE TEXT:\n${forras}\n\nPUBLISHED ARTICLE:\n${item.data.article_markdown || ''}\n\nOutput ONLY the JSON.`;
   const response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: HIR_RENDSZER, maxTokens: 4000, jsonMode: true });
-  return { response, decision: parseJson(response?.text) };
+  return { response, decision: parseJson(response?.text), forras };
 }
 
 async function audit(guide, args, brandContext) {
@@ -281,6 +281,7 @@ function flagForHuman(guide, reason) {
 
 async function main() {
   const args = parseArgs();
+  const auto = !args.claim && !args.id && !args.company && !args.tool;
   console.log('🕵️  TÉNY-ELLENŐRZŐ AGENT (frissesség-őr)');
   console.log('─'.repeat(60));
   if (args.claim) console.log(`📌 Bejelentett változás: "${args.claim}"`);
@@ -295,7 +296,7 @@ async function main() {
   for (const guide of guides) {
     const title = (guide.data.original_title || guide.file).slice(0, 50);
     const hir = guide.data._meta?.type !== 'guide';
-    const { response, decision, skip } = hir ? await auditHir(guide) : await audit(guide, args, brandContext);
+    const { response, decision, skip, forras } = hir ? await auditHir(guide) : await audit(guide, args, brandContext);
     cost += response?.costUsd || 0;
 
     if (skip) {
@@ -333,6 +334,17 @@ async function main() {
     let why = !decision.fixed_markdown ? 'nincs javított szöveg'
       : hir ? hirCsereEp(decision.fixed_markdown, guide.data.article_markdown)
       : isSafeReplacement(decision.fixed_markdown, guide.data.article_markdown);
+
+    // ── GÉPI BIZTOSÍTÉK (2026-10-21, user: „ezek a hibák ne forduljanak elő többet!”) ──────────
+    // 1) Hír: amit a javítás kivenne, azt a KÓD összeveti a forrással; ha a forrás alátámasztja,
+    //    a javítás nem mehet ki (10-21: a Picsart-hírből helyes adatot vett ki).
+    // 2) Útmutató automata körben: forrás nincs, a modell EMLÉKEZETE régebbi a cikkeinknél → élő
+    //    szöveget NEM írhat át, csak jelez. Kézi bejelentéssel (--claim/--id/…) javíthat.
+    if (!why && hir) {
+      const alatamasztott = forrasAlatamasztja(guide.data.article_markdown, decision.fixed_markdown, forras);
+      if (alatamasztott.length) why = `a forrás alátámasztja, amit kivenne: „${alatamasztott[0].slice(0, 90)}”`;
+    }
+    if (!why && !hir && auto) why = 'forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez';
 
     // ── NÉV-ZÁR (2026-09-06) ─────────────────────────────────────────
     // A 08-31-i eset: a tényellenőr a valódi „ChatRTX" nevet átírta a nem
