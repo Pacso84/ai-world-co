@@ -1,6 +1,6 @@
 {
-  "at": "2026-10-21T19:54:59.047Z",
-  "hir": 448,
+  "at": "2026-10-22T02:52:03.996Z",
+  "hir": 450,
   "utmutato": 376,
   "problems": [
     {
@@ -22,11 +22,12 @@
     },
     {
       "code": "PARITAS_TAG",
-      "uzenet": "meg nem magyarázott tag-eltérés: <circle>, <figcaption>, <figure>, <i>, <rect>, <text>",
+      "uzenet": "meg nem magyarázott tag-eltérés: <circle>, <figcaption>, <figure>, <h3>, <i>, <rect>, <text>",
       "elemek": [
         "circle",
         "figcaption",
         "figure",
+        "h3",
         "i",
         "rect",
         "text"
