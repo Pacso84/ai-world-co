@@ -8,8 +8,10 @@ compatibility_flags = ["nodejs_compat"]
 # 🔒 SAJÁT DOMAIN (2026-10-21, user: „kösd át saját domainre!”): a *.workers.dev cím a Cloudflare-fiók
 # nevét mutatta minden oldal forrásában. A DNS-rekordot és a tanúsítványt a Cloudflare maga hozza létre.
 routes = [{ pattern = "api.aiworldhq.com", custom_domain = true }]
-# Átmenetileg a régi *.workers.dev cím is él, amíg az oldal és a CI át nem állt (utána false).
-workers_dev = true
+# A régi *.workers.dev cím KIKAPCSOLVA (10-22: az oldal és a CI már az api.aiworldhq.com-ot használja).
+# FIGYELEM: a kulcs nélkül a wrangler deploy magától is kikapcsolná — maradjon kiírva.
+workers_dev = false
+preview_urls = false
 
 # Nyilvános, nem-titkos változó. A titkokat NEM ide tesszük, hanem:
 #   wrangler secret put BOT_TOKEN
