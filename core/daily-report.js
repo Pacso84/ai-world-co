@@ -38,7 +38,7 @@ import { latenciaSor } from './ai-latency-guard.js';
 import { futasokLekerdez, sodrodasVizsgalat, sodrodasSor } from './watchdog-drift.js';
 import { linkSor } from './internal-link-guard.js';
 import { bufferSor, tiktokSor } from './buffer-guard.js';
-import { riportSor as fbRiportSor } from './fb-link-guard.js';
+import { riportSor as fbRiportSor, threadsRiportSor } from './fb-link-guard.js';
 import { tesztSor } from './test-guard.js';
 import { pdfLetoltesSor } from './pdf-download.js';
 import { partnerKattintasSor } from './affiliate.js';
@@ -704,6 +704,9 @@ async function main() {
     const fbg = JSON.parse(readFileSync(join(ROOT, 'memory', 'fb-link-guard.json'), 'utf-8'));
     const sor = fbRiportSor(fbg);
     if (sor) lines.push(sor);
+    // 🧵 THREADS (2026-10-22, user: „threadsre kéne még, hogy hány látogatónk volt”)
+    const th = threadsRiportSor(fbg);
+    if (th) lines.push(th);
   } catch { /* még nem futott — nem baj */ }
 
   // 🧪 TESZT-ŐRSZEM (2026-09-06). 2026-08-31-én a tény-ellenőrző agent egy ÉLŐ

@@ -45,6 +45,24 @@ export function fbHost(h) {
   return /(^|\.)(facebook\.com|fb\.com|fb\.me)$/.test(String(h || '').toLowerCase().trim());
 }
 
+/** Threads-hivatkozó-e a cím (threads.net, threads.com, l.threads.*). (2026-10-22) */
+export function threadsHost(h) {
+  return /(^|\.)threads\.(net|com)$/.test(String(h || '').toLowerCase().trim());
+}
+
+/**
+ * A Threads-sor a napi Telegram-riportba (user 10-22: „threadsre kéne még, hogy hány látogatónk volt”).
+ * A legutóbbi nap, amelyre van Threads-adat (a 10-22 előtti napokon még nincs), + az utolsó 7 nap összege.
+ */
+export function threadsRiportSor(allapot) {
+  const napok = (allapot && allapot.napok) || {};
+  const vanAdat = Object.keys(napok).sort().filter(k => Number.isFinite(napok[k]?.th));
+  if (!vanAdat.length) return '';
+  const utolso = vanAdat.at(-1);
+  const het = vanAdat.slice(-7).reduce((s, k) => s + napok[k].th, 0);
+  return `🧵 Threadsről tegnap: ${napok[utolso].th} látogató (utolsó ${Math.min(7, vanAdat.length)} nap: ${het})`;
+}
+
 /** Hány Facebook-poszt ment ki az adott UTC-napon: link-poszt (social_at) + Reel (reel_at). */
 export function posztokNapra(cikkek, nap) {
   let db = 0;
@@ -143,8 +161,9 @@ async function fbLatogatok(nap) {
   if (!r.ok) throw new Error('CF GraphQL HTTP ' + r.status);
   const j = await r.json();
   if (j.errors?.length) throw new Error('CF GraphQL: ' + String(j.errors[0].message).slice(0, 90));
-  return (j.data?.viewer?.accounts?.[0]?.r || [])
-    .filter(x => fbHost(x.dimensions?.refererHost)).reduce((s, x) => s + (x.sum?.visits || 0), 0);
+  const sorok = j.data?.viewer?.accounts?.[0]?.r || [];
+  const osszeg = f => sorok.filter(x => f(x.dimensions?.refererHost)).reduce((s, x) => s + (x.sum?.visits || 0), 0);
+  return { fb: osszeg(fbHost), th: osszeg(threadsHost) };   // th: Threads (10-22)
 }
 
 function cikkMetak() {
@@ -165,7 +184,7 @@ async function main() {
   const uj = {};
   for (let i = 1; i <= 3; i++) {
     const nap = new Date(Date.parse(ma + 'T00:00:00Z') - i * NAP_MS).toISOString().slice(0, 10);
-    try { uj[nap] = { fb: await fbLatogatok(nap), posztok: posztokNapra(metak, nap) }; }
+    try { const l = await fbLatogatok(nap); uj[nap] = { fb: l.fb, th: l.th, posztok: posztokNapra(metak, nap) }; }
     catch (e) { console.log(`  ${nap}: kihagyva — ${String(e.message).slice(0, 70)}`); }
   }
   const napok = osszevon(allapot.napok, uj, ma);
@@ -183,7 +202,7 @@ async function main() {
     at: new Date().toISOString(),
     riasztva, utolsoDontes: d.ok, alap: d.alap, napok
   }, null, 2) + '\n', 'utf-8');
-  console.log(`📘 FB-őr: ${Object.keys(uj).map(k => `${k} ${uj[k].fb} látogató/${uj[k].posztok} poszt`).join(' · ')} → ${d.ok}${d.kuld ? ' (Telegram elküldve)' : ''}`);
+  console.log(`📘 FB-őr: ${Object.keys(uj).map(k => `${k} ${uj[k].fb} látogató/${uj[k].posztok} poszt, Threads ${uj[k].th}`).join(' · ')} → ${d.ok}${d.kuld ? ' (Telegram elküldve)' : ''}`);
 }
 
 const kozvetlen = process.argv[1] && process.argv[1].endsWith('fb-link-guard.js');

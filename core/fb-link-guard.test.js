@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { fbHost, posztokNapra, median, dontes, osszevon, riportSor, MIN_ALAP, ALAP_NAP } from './fb-link-guard.js';
+import { fbHost, threadsHost, threadsRiportSor, posztokNapra, median, dontes, osszevon, riportSor, MIN_ALAP, ALAP_NAP } from './fb-link-guard.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 let hiba = 0;
@@ -110,6 +110,16 @@ t('📨 napi riport-sor: riasztásnál ⚠️-vel kezdődik (a zajszűrő áteng
   assert.match(s, /44/); assert.match(s, /36/); assert.ok(!s.startsWith('⚠️'));
   assert.equal(riportSor({}), '');
   assert.equal(riportSor(null), '');
+});
+
+t('🧵 Threads: a hivatkozó felismerése és a napi riport-sor (user 10-22)', () => {
+  for (const h of ['threads.net', 'www.threads.net', 'l.threads.net', 'threads.com', 'l.threads.com']) assert.equal(threadsHost(h), true, h);
+  for (const h of ['facebook.com', 'nothreads.net', 'threads.org', '']) assert.equal(threadsHost(h), false, h);
+  assert.equal(threadsRiportSor({ napok: { '2026-10-20': { fb: 38 } } }), '', 'régi napokon nincs Threads-adat → nincs sor');
+  const napok = { '2026-10-20': { fb: 1 }, '2026-10-21': { fb: 2, th: 3 }, '2026-10-22': { fb: 4, th: 5 } };
+  assert.equal(threadsRiportSor({ napok }), '🧵 Threadsről tegnap: 5 látogató (utolsó 2 nap: 8)');
+  const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
+  assert.match(src, /const th = threadsRiportSor\(fbg\);/);
 });
 
 if (hiba) { console.log(`\n❌ fb-link-guard.test: ${hiba} hiba`); process.exit(1); }
