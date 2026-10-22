@@ -1,28 +1,22 @@
 {
   "_meta": {
-    "generated_at": "2026-10-19T02:20:57.814Z",
+    "generated_at": "2026-10-22T02:29:51.508Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 0,
-    "rejected_count": 3,
+    "rejected_count": 2,
     "rejected_examples": [
       {
-        "name": "Brave Browser",
+        "name": "Brave Browser Blog",
         "host": "brave.com",
         "reason": "a friss cikkeinek csak 50%-a szól AI-ról (kell: 60%)",
         "score": 100
       },
       {
-        "name": "Slack AI",
-        "host": "slack.com",
-        "reason": "a friss cikkeinek csak 40%-a szól AI-ról (kell: 60%)",
-        "score": 100
-      },
-      {
-        "name": "Otter.ai",
-        "host": "otter.ai",
+        "name": "Figma Blog",
+        "host": "figma.com",
         "reason": "pont 94 < 100",
         "score": 94
       }

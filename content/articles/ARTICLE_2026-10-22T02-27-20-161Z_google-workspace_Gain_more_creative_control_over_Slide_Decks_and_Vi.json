@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "written_at": "2026-10-22T02:30:44.316Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0035519,
+    "original_draft": "2026-10-22T02-27-20-161Z_google-workspace_Gain_more_creative_control_over_Slide_Decks_and_Vi.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/10/gain-more-creative-control-over-slide-Decks-and-Video-Overviews-in-Gemini-Notebook.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/10/gain-more-creative-control-over-slide-Decks-and-Video-Overviews-in-Gemini-Notebook.html"
+    ],
+    "source_snippet": "Gemini Notebook now gives you more creative control over Slide Decks and Video Overviews. Instead of jumping straight to a final output, Gemini Notebook can now walk you through a step-by-step creation flow so you can steer the content further and guide the visual style and format. Get started by asking for a presentation or video in chat or by tapping on \"Slide Deck\" or \"Video\" in the Studio panel.\n\n\nGuided customization: In chat, Gemini Notebook suggests relevant focus topics, formats, and visual styles based on your sources. If you already know what you want, you can share specific instructions in your prompt and Gemini Notebook will pre-fill your selections without asking you to repeat yourself.\nOutline and producer notes review: If you turn on the Review toggle, you can preview the slide deck outline or video producer notes in the Studio panel and give written feedback before generating the final output. \nQuick first pass: If you prefer a quick output, you can still have Gemini Notebook generate a Slide Deck or Video Overview right away without the extra review step.\n\n\n\nGetting started\n\n\nAdmins: There is no admin control for this feature. Visit the Help Center to learn more about turning Gemini Notebook on or off for users.\nEnd users: End users can turn on “Review outline” or “Review producer notes” to use this feature. Visit the Help Center to learn more about generating Video Overviews and Slide Decks in Gemini Notebook.\n\n\nRollout pace\n\n\nRapid Release and Scheduled Rel",
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-10-22T02:32:08.830Z",
+    "slug": "what-gemini-notebook-s-new-creative-controls-mean-for-slide-decks-and-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 796
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Article passes all quality gates: friendly explanatory tone, clear term definitions, proper attribution throughout, complete structure with hook and What this means for you section, no prohibited content or clichés, and honest about unspecified UI details.",
+      "_aiCost": 0.0016797,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-22T02:35:20.387Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-start-a-new-google-docs-document-with-gemini-s-built-",
+    "image_v": 2,
+    "image_at": "2026-10-22T02:37:38.294Z",
+    "seo": {
+      "meta_description": "Google Gemini Notebook's new creative controls guide you through building slide decks and video overviews step by step, letting you preview and give feedback before final output.",
+      "keywords": [
+        "Gemini Notebook new features",
+        "AI presentation tool",
+        "Google Gemini slide deck",
+        "AI video overview generator",
+        "Gemini Notebook creative controls"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more details about the specific preview functionality to improve search relevance for 'Gemini Notebook tutorial' queries",
+        "Consider mentioning the year or recency in the article body to strengthen freshness signals for SEO"
+      ],
+      "optimised_at": "2026-10-22T02:39:24.164Z"
+    },
+    "fact_verified_at": "2026-10-22T02:42:16.558Z"
+  },
+  "article_markdown": "---\ntitle: \"What Gemini Notebook's New Creative Controls Mean for Slide Decks and Video Overviews\"\nsubtitle: \"Gemini Notebook can now walk you through building a slide deck or video step by step, and let you review the plan before it's made.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"gemini\", \"gemini-notebook\", \"slide-decks\", \"video-overviews\", \"getting-started\"]\n---\n\n# What Gemini Notebook's New Creative Controls Mean for Slide Decks and Video Overviews\n\n> **In short:** Google says Gemini Notebook can now guide you through creating a Slide Deck or Video Overview step by step, suggesting topics, formats, and visual styles from your sources. You can also preview the outline or producer notes and give feedback before the final version is made.\n\nHave you ever asked an AI tool for a presentation, then gotten back something that missed the point entirely? You had to start over, hoping the next try would land closer. Gemini Notebook's new controls aim to reduce that guesswork by letting you steer the result before it's finished.\n\n## What changed\n\nUntil now, asking for a Slide Deck or a Video Overview usually meant the tool made the whole thing at once. Google's announcement says Gemini Notebook can now walk you through a step-by-step creation flow instead. You get more say over the content, the visual style, and the format.\n\nA few terms first:\n\n- **Gemini Notebook** is the workspace where you gather your own documents, notes, or links (your \"sources\") and ask Gemini questions about them.\n- **Slide Deck** is a set of presentation slides built from those sources.\n- **Video Overview** is a short video that summarizes your sources, with narration and visuals.\n- **Studio panel** is the area where you start and manage these outputs.\n- **Producer notes** are the plan the AI writes for a video, similar to a director's notes: what the video covers, in what order, and how it looks.\n\n## How the guided flow works\n\nAccording to Google, there are three parts to the new experience:\n\n- **Guided customization.** In the chat, Gemini Notebook suggests focus topics, formats, and visual styles based on your sources. You pick what fits.\n- **Pre-filled choices.** If you already know what you want, put your instructions in your prompt (the message you type to the AI). Gemini Notebook fills in your selections, so you don't have to repeat yourself.\n- **Review before making it.** If you turn on the Review toggle, you can preview the slide deck outline or video producer notes in the Studio panel. You can give written feedback first.\n\nIf you'd rather skip all that, Google says you can still generate a Slide Deck or Video Overview right away, without the review step.\n\n## Getting started\n\nTo begin, you can either ask for a presentation or video in the chat, or tap \"Slide Deck\" or \"Video\" in the Studio panel. Then decide how much control you want:\n\n- **Quick version:** Skip the review step and let Gemini Notebook make the output directly.\n- **Controlled version:** Turn on \"Review outline\" (for slide decks) or \"Review producer notes\" (for videos), read the plan, and add your feedback before the final output is generated.\n\nGoogle's announcement doesn't describe exact screens or button placement beyond these names, so look for them in the Studio panel and the chat as you go.\n\n## What this means for you\n\n- **In everyday life:** If you're planning a family trip, a school project, or a club presentation, you can review the outline before the slides are made. Catching a wrong topic early is easier than fixing a finished deck.\n- **For your work:** If you prepare team updates or client presentations, the review step gives you a chance to check that the structure matches your message before anyone else sees it.\n- **If you're just getting started:** Begin with the quick version on a small set of sources, such as a few pages of notes. Then try the review option so you can see how the outline looks before it's final.\n- **If you already use it:** Turn on the review toggle for every deck you create, and use your written feedback to set the visual style and format. You'll often get a closer match with one round of notes than with several rewrites.\n\nAdmins should know that Google says there is no admin control for this feature. The announcement points to the Help Center for turning Gemini Notebook on or off for users.\n\n## Wrap-up\n\nGemini Notebook's new flow gives you a choice: let it run, or step in and steer the plan. Pick one of your own sources and ask for a short slide deck. Turn on the review option once, and read the outline before you accept it. You'll quickly see how much control you have.",
+  "original_title": "Gain more creative control over Slide Decks and Video Overviews in Gemini Notebook"
+}

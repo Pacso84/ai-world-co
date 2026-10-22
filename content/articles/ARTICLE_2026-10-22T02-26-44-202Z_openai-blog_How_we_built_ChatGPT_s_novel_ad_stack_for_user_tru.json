@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "written_at": "2026-10-22T02:30:55.745Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0031642,
+    "original_draft": "2026-10-22T02-26-44-202Z_openai-blog_How_we_built_ChatGPT_s_novel_ad_stack_for_user_tru.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/building-chatgpt-ad-stack",
+    "source_links": [
+      "https://openai.com/index/building-chatgpt-ad-stack"
+    ],
+    "source_snippet": "Learn how OpenAI built ChatGPT’s LLM-powered ad stack to understand conversational intent, keep ads separate from answers, and deliver relevant ads at scale.",
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-10-22T02:31:45.021Z",
+    "slug": "how-chatgpt-s-new-ad-system-tries-to-keep-ads-separate-from-answers",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 610
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent explainer that clearly explains intent-based ads, LLM concepts, and separation goals in plain language while carefully attributing all claims to OpenAI. The article avoids fabricated facts, maintains respectful tone, includes the required What this means for you section, and gives readers a practical next step.",
+      "_aiCost": 0.0028164,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-22T02:34:34.181Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article describes OpenAI's general ad system architecture and philosophy, not a specific named feature users can access or use today",
+    "image_v": 2,
+    "image_at": "2026-10-22T02:36:58.578Z",
+    "seo": {
+      "meta_description": "OpenAI has revealed how its new ChatGPT ad system works—using AI to understand your questions and keep sponsored content separate from answers.",
+      "keywords": [
+        "ChatGPT ads",
+        "OpenAI advertising",
+        "how ChatGPT ads work",
+        "ChatGPT sponsored content",
+        "AI chatbot advertising",
+        "OpenAI ad system announcement",
+        "ChatGPT advertising explained"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add a FAQ section addressing common user concerns about ads in AI chatbots to capture featured snippet opportunities",
+        "Include specific examples of how the ad-answer separation actually appears to users in practice",
+        "Add schema markup for the article to improve visibility in tech news search results"
+      ],
+      "optimised_at": "2026-10-22T02:39:06.019Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How ChatGPT's New Ad System Tries to Keep Ads Separate From Answers\"\nsubtitle: \"OpenAI says its ad system reads what you're trying to do in a chat and keeps ads apart from the answers you get.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"chatgpt\", \"advertising\", \"ai-basics\", \"privacy\", \"openai\"]\n---\n\n# How ChatGPT's New Ad System Tries to Keep Ads Separate From Answers\n\n> **In short:** OpenAI says it built an ad system for ChatGPT that uses a large language model (LLM) to understand what you mean in a conversation. The company says the system keeps ads separate from the answers ChatGPT writes, and that it can show relevant ads at scale.\n\nChances are you've seen ads on almost every website you visit. Now OpenAI, the company behind ChatGPT, has published a detailed look at how it built its own ad system. If you use ChatGPT for everyday questions, it helps to know what the company says it is trying to do.\n\n## What the announcement says\n\nOpenAI's announcement is mostly about design choices. It doesn't list menus, settings, or launch dates, so this article sticks to what the company describes.\n\nAccording to OpenAI, the system has three main goals:\n\n- **Understand conversational intent.** Intent means what you are actually trying to do. If you ask about planning a trip, the system is meant to pick up on that goal, not just the individual words.\n- **Keep ads separate from answers.** The company says ads should not mix into the text ChatGPT writes for you.\n- **Deliver relevant ads at scale.** \"At scale\" means handling a very large number of conversations. The company says the system is built to do this.\n\nThe \"LLM-powered\" part matters. An LLM (large language model, the kind of AI that powers ChatGPT) reads and interprets language. That lets the system work from the meaning of a conversation instead of a short list of keywords.\n\n## Why separating ads from answers matters\n\nThink about asking a friend for restaurant advice and having them quietly steer you toward the place that paid them. You'd want to know which part was advice and which part was a pitch.\n\nOpenAI's stated goal is to keep that line clear. In its own words, the design is meant to protect user trust, which is the reason the company gives for the separation. This is the company's claim about its own design, and it describes a goal, not a result you can independently check from the announcement.\n\n## What this means for you\n\n- **In everyday life**: Treat ChatGPT's answers the way you'd treat any source. For anything important, like health, money, or legal questions, check with a professional or an official website.\n- **For your business or work**: If you use ChatGPT for research or writing, keep a simple habit of checking facts before you share them. The announcement describes how ads are placed, not how answers are checked.\n- **If you're just getting started**: Notice how your questions shape the response. Being clear about your goal, such as \"I want a cheap weeknight dinner for two,\" gives the AI a clearer picture of what you need.\n\n## Wrap-up\n\nOpenAI says its new ad system uses an LLM to understand what you're trying to do, keeps ads apart from ChatGPT's answers, and is built to show relevant ads across a huge number of conversations. The announcement doesn't yet say when or where these ads will appear, so it's wise to wait for official details. Your next step: the next time ChatGPT gives you advice, ask yourself whether it answers your question clearly, and check anything important against an official source.",
+  "original_title": "How we built ChatGPT’s novel ad stack for user trust and relevance"
+}

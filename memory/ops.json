@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179228955532092",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-18T02:12:35.320Z",
-      "updated": "2026-10-18T02:13:48.271Z"
-    },
-    {
-      "id": "t179228962827345",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-18T02:13:48.273Z",
-      "updated": "2026-10-18T02:15:12.271Z"
-    },
-    {
-      "id": "t179228971227334",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-18T02:15:12.273Z",
-      "updated": "2026-10-18T02:15:32.134Z"
-    },
-    {
-      "id": "t179228973213684",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-18T02:15:32.136Z",
-      "updated": "2026-10-18T02:15:57.769Z"
-    },
-    {
-      "id": "t17923763218800",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-19T02:18:41.880Z",
-      "updated": "2026-10-19T02:18:42.019Z"
-    },
-    {
-      "id": "t179237632202083",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-19T02:18:42.020Z",
-      "updated": "2026-10-19T02:19:12.672Z"
-    },
-    {
-      "id": "t17923763526736",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-19T02:19:12.673Z",
-      "updated": "2026-10-19T02:20:57.832Z"
-    },
-    {
-      "id": "t179237645783439",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-19T02:20:57.834Z",
-      "updated": "2026-10-19T02:20:57.985Z"
-    },
-    {
-      "id": "t179237645798739",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-19T02:20:57.987Z",
-      "updated": "2026-10-19T02:21:21.059Z"
-    },
-    {
-      "id": "t179237648106152",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-19T02:21:21.061Z",
-      "updated": "2026-10-19T02:21:55.242Z"
-    },
-    {
-      "id": "t179237651524336",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-19T02:21:55.243Z",
-      "updated": "2026-10-19T02:22:17.866Z"
-    },
-    {
-      "id": "t179237653786833",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-19T02:22:17.868Z",
-      "updated": "2026-10-19T02:22:32.544Z"
-    },
-    {
-      "id": "t179237655254568",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-19T02:22:32.545Z",
-      "updated": "2026-10-19T02:22:59.618Z"
-    },
-    {
       "id": "t179237657962035",
       "title": "Run pairing",
       "status": "done",
@@ -479,49 +375,113 @@
       "agent": "publisher",
       "created": "2026-10-21T02:37:56.663Z",
       "updated": "2026-10-21T02:38:23.804Z"
+    },
+    {
+      "id": "t179263597131624",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-22T02:26:11.316Z",
+      "updated": "2026-10-22T02:26:11.529Z"
+    },
+    {
+      "id": "t179263597153124",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-22T02:26:11.531Z",
+      "updated": "2026-10-22T02:27:34.956Z"
+    },
+    {
+      "id": "t179263605495834",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-22T02:27:34.958Z",
+      "updated": "2026-10-22T02:29:51.535Z"
+    },
+    {
+      "id": "t179263619153769",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-22T02:29:51.537Z",
+      "updated": "2026-10-22T02:30:55.761Z"
+    },
+    {
+      "id": "t179263625576376",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-22T02:30:55.763Z",
+      "updated": "2026-10-22T02:34:28.959Z"
+    },
+    {
+      "id": "t179263646896220",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-22T02:34:28.962Z",
+      "updated": "2026-10-22T02:35:29.021Z"
+    },
+    {
+      "id": "t179263652906414",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-22T02:35:29.064Z",
+      "updated": "2026-10-22T02:36:26.648Z"
+    },
+    {
+      "id": "t179263658664961",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-22T02:36:26.649Z",
+      "updated": "2026-10-22T02:36:49.616Z"
+    },
+    {
+      "id": "t179263660965246",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-22T02:36:49.652Z",
+      "updated": "2026-10-22T02:36:49.824Z"
+    },
+    {
+      "id": "t179263660986267",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-22T02:36:49.862Z",
+      "updated": "2026-10-22T02:38:30.771Z"
+    },
+    {
+      "id": "t179263671077328",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-22T02:38:30.773Z",
+      "updated": "2026-10-22T02:39:48.185Z"
+    },
+    {
+      "id": "t179263678818781",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-22T02:39:48.187Z",
+      "updated": "2026-10-22T02:40:50.345Z"
+    },
+    {
+      "id": "t179263685034763",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-22T02:40:50.347Z",
+      "updated": "2026-10-22T02:41:13.447Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179103211897038",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0189).",
-      "agent": "ceo",
-      "at": "2026-10-03T12:55:18.970Z",
-      "loud": false
-    },
-    {
-      "id": "n179108451171884",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 7.8/10).",
-      "agent": "seo",
-      "at": "2026-10-04T03:28:31.718Z",
-      "loud": false
-    },
-    {
-      "id": "n179108452314677",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). **Publish Summary:** The lineup looks solid and ready — it covers a nice mix of personal, professional, and casual AI writing use cases across six different tools, which gives readers great variety. O",
-      "agent": "publisher",
-      "at": "2026-10-04T03:28:43.146Z",
-      "loud": false
-    },
-    {
-      "id": "n17910845383057",
-      "level": "success",
-      "text": "2 hír + 2 útmutató publikálva (költség: $0.0473).",
-      "agent": "ceo",
-      "at": "2026-10-04T03:28:58.305Z",
-      "loud": false
-    },
-    {
-      "id": "n179112091775495",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-10-04T13:35:17.754Z",
-      "loud": false
-    },
     {
       "id": "n179112093204540",
       "level": "success",
@@ -1281,54 +1241,49 @@
       "agent": "fact-check",
       "at": "2026-10-21T13:21:12.548Z",
       "loud": false
+    },
+    {
+      "id": "n179263678817658",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 7.8/10).",
+      "agent": "seo",
+      "at": "2026-10-22T02:39:48.176Z",
+      "loud": false
+    },
+    {
+      "id": "n17926368588312",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid and practical — you've got a nice balance of privacy awareness and hands-on writing tasks that everyday people can really use. One thing worth flagging: since these articles as",
+      "agent": "publisher",
+      "at": "2026-10-22T02:40:58.831Z",
+      "loud": false
+    },
+    {
+      "id": "n179263687348552",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0461).",
+      "agent": "ceo",
+      "at": "2026-10-22T02:41:13.485Z",
+      "loud": false
+    },
+    {
+      "id": "n179263692229543",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-22T02:42:02.295Z",
+      "loud": false
+    },
+    {
+      "id": "n179263693656012",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (megváltozott a fejezetek száma): \"Gain more creative control over Slide D",
+      "agent": "fact-check",
+      "at": "2026-10-22T02:42:16.560Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179103206449358",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"AI is changing developer work. Here are three skills to strengthen.\" — mi a baj: The 'Claude Frontier Academy' is described as 'an Anthropic program with a $100 million commitment to train 10,000 Frontier Deployed Engineers by the end of 2027' — this is a fabricated program name with invented financial commitment, headcount, and deadline not supported by the source or any ve",
-      "ref": "2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
-      "at": "2026-10-03T12:54:24.493Z"
-    },
-    {
-      "id": "m179103210495894",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-03T12:55:04.958Z"
-    },
-    {
-      "id": "m179103251298529",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-03T13:01:52.985Z"
-    },
-    {
-      "id": "m179108397315680",
-      "from": "ceo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Főnöki újraindítás: \"AI is changing developer work. Here are three skills to stre\" — rewrite-explainer",
-      "ref": "2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
-      "at": "2026-10-04T03:19:33.156Z"
-    },
-    {
-      "id": "m179108411796195",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"AI is changing developer work. Here are three skills to strengthen.\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rewrite by replacing the fabricated 'Claude Frontier Academy' $100M/10,000-engineers/2027 reference with only the verifiable GitHub content (the three skills: directin",
-      "ref": "2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
-      "at": "2026-10-04T03:21:57.961Z"
-    },
     {
       "id": "m17910841373219",
       "from": "ellenorzo",
@@ -2648,6 +2603,53 @@
       "ref": "ARTICLE_2026-10-21T02-28-33-124Z_dropbox-blog__The_manager_effect__Why_leadership_matters_in_the.json",
       "open": true,
       "at": "2026-10-21T13:21:12.548Z"
+    },
+    {
+      "id": "m179263652042794",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Gain more creative control over Slide Decks and Video O\" hír a meglévő útmutatóra mutat: how-to-start-a-new-google-docs-document-with-gemini-s-built-",
+      "ref": "how-to-start-a-new-google-docs-document-with-gemini-s-built-",
+      "at": "2026-10-22T02:35:20.427Z"
+    },
+    {
+      "id": "m179263652901119",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"An easier way to customize how Gemini works for you\" hír a meglévő útmutatóra mutat: gemini-getting-started",
+      "ref": "gemini-getting-started",
+      "at": "2026-10-22T02:35:29.011Z"
+    },
+    {
+      "id": "m179263685033797",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-22T02:40:50.337Z"
+    },
+    {
+      "id": "m179263692229573",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"How to Use Perplexity AI for Free to Get Answers Y\" — The guide states 'A free account is optional. You may be able to ask questions without signing in.' Perplexity AI now requires users to create an account to use the service, making this claim outdated.",
+      "ref": "ARTICLE_GUIDE_how-to-use-perplexity-ai-for-free-to-get-answers-you-can-che.json",
+      "open": true,
+      "at": "2026-10-22T02:42:02.295Z"
+    },
+    {
+      "id": "m179263693656086",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (megváltozott a fejezetek száma): \"Gain more creative control over Slide Decks and Vi\" — The source describes a future rollout that is still gradual, not a currently available feature",
+      "ref": "ARTICLE_2026-10-22T02-27-20-161Z_google-workspace_Gain_more_creative_control_over_Slide_Decks_and_Vi.json",
+      "open": true,
+      "at": "2026-10-22T02:42:16.560Z"
     }
   ]
 }

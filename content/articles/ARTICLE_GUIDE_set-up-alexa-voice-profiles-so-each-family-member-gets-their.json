@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "set-up-alexa-voice-profiles-so-each-family-member-gets-their",
+    "company": "Amazon",
+    "tool": "Alexa+",
+    "icon": "👥",
+    "level": "intermediate",
+    "source_news": null,
+    "trend": null,
+    "written_at": "2026-10-22T02:36:02.838Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0046471,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-22T02:36:49.607Z",
+    "slug": "set-up-alexa-voice-profiles-so-each-family-member-gets-their-own-brief",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1614
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide with friendly tone, clear step-by-step instructions, practical If-this-looks-different fallbacks for each step, and good coverage of privacy considerations. No prohibited content, no clichés, and appropriate for everyday readers. Minor note: Step 1 could specify which screen the menu icon appears on, but the existing fallbacks compensate adequately.",
+      "_aiCost": 0.00143808,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-22T02:38:30.756Z",
+    "seo": {
+      "meta_description": "Learn to set up Alexa+ voice profiles on your Echo so each family member gets personalized music, reminders and calendar briefings.",
+      "keywords": [
+        "how to set up Alexa voice profiles",
+        "Alexa+ voice profile setup",
+        "Echo voice recognition multiple users",
+        "Alexa personalized experience family",
+        "Alexa household multiple users",
+        "set up Alexa for family members"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider revising the title to include the benefit: 'Set up Alexa+ Voice Profiles for Personalized Family Briefings'",
+        "Add more details about the step-by-step process in the excerpt to improve snippet appeal",
+        "Include the main keyword 'voice profiles' earlier in the subtitle for better keyword prominence"
+      ],
+      "optimised_at": "2026-10-22T02:39:48.170Z"
+    },
+    "fact_verified_at": "2026-10-22T02:41:27.366Z"
+  },
+  "article_markdown": "---\ntitle: \"Set up Alexa+ voice profiles so each family member gets their own briefing\"\nsubtitle: \"Teach your Echo to recognize each person's voice so it greets them by name, plays their music and reads their own reminders.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Amazon\"\ntool: \"Alexa+\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"alexa-plus\", \"echo\", \"voice-profiles\", \"family\", \"routines\"]\n---\n\n# Set up Alexa+ voice profiles so each family member gets their own briefing\n\n> **In short:** In the Alexa app, you can create a separate profile for each person, train the Echo to recognize their voice, and link their own music, reminders and calendar. Voice recognition is not perfect, so check the results. You need an Alexa+ setup and an Echo device, and some Alexa+ features may depend on your plan.\n\nThis guide shows you how to set up a voice profile for each person in your household, so the same Echo speaker can greet each person by name and answer with their own reminders, calendar and music. It is written for someone who already uses Alexa for simple tasks like setting timers or playing a song.\n\n## Before you start\n- **Assumed:** you already have an Amazon account, an Echo device connected to Wi-Fi, and the **Alexa app** on a phone or tablet. You know how to talk to Alexa and ask a question.\n- **Plan:** Alexa+ is Amazon's newer, more conversational version of Alexa. Access and pricing can differ by country and plan, and some features may require Prime or a paid subscription. Check Amazon's official Alexa pages for current details.\n- **Each person's phone or accounts:** to link personal calendars or music, each person needs their own account for that service.\n- **Time:** about 30 to 40 minutes, plus a few minutes for each person to train their voice.\n\n## Step 1 — Create a profile for each person\nOpen the **Alexa app** and tap the **menu icon** (often three lines or a row of dots in a corner). Look for a section called **Settings**, then a part about **Your Profile**, **Profiles** or **Voice**. The exact label may vary by app version, so look for anything that mentions people or voices. Tap **Add** or **+** and enter each person's name. Use the name you want Alexa to say out loud, such as \"Maya\" or \"Dad.\"\n\nOnce you save a name, the app usually moves on to a screen asking how to set up that person's voice. You may also see a choice for an adult or a child profile. Choose the option that matches each person.\n\n💬 Example: add a profile named \"Jordan\" and then one named \"Sam.\"\n\nIf it looks different: if you can't find a profiles section, try the **Devices** tab, select your Echo, and look for a setting about people or voice recognition.\n\nYou'll know it worked when each person's name appears in the list of profiles inside the app.\n\n## Step 2 — Train the Echo to recognize each voice\nSelect the profile you just created and look for a button like **Set up voice recognition** or **Teach Alexa your voice**. Tap it. The app will ask you to say a few short phrases out loud, one at a time. Hold the phone at a normal distance and use a quiet room with no TV or music.\n\nSpeak naturally, as you would to a friend. Don't whisper or exaggerate. After each phrase, the app usually shows a checkmark or a progress bar. Repeat this for every family member, one person at a time, so the voices don't get mixed up.\n\n💬 Example phrase to say when prompted: \"Alexa, what's on my schedule today?\"\n\nIf it looks different: some setups let you finish voice training directly on the Echo instead of in the app. If the app asks you to say a phrase that isn't shown, follow the on-screen instructions, since prompts change over time.\n\nYou'll know it worked when the app confirms the voice is set up for that person, and Alexa responds with that person's name after you say the wake word.\n\n## Step 3 — Link each person's music service\nStill in the same profile, look for a section about **Music**, **Default music** or **Connected services**. Tap it, then choose the music service that person uses, such as Amazon Music or another service Alexa supports. Sign in with that person's own account. Your music choices stay with that account, so this is the step that makes \"play my music\" work differently for each person.\n\nBe aware that some music services are only available with a subscription, and not every service supports every feature.\n\n💬 Example: ask Alexa, \"Play my workout playlist.\" If it works, the playlist comes from the signed-in account.\n\nIf it looks different: if you don't see a music section inside the profile, check the app's main **Music** settings and see if there's a way to assign a default service to each person.\n\nYou'll know it worked when the right person's music starts playing after they speak to Alexa and ask for a playlist.\n\n## Step 4 — Add personal reminders and calendars\nThis is where each person's briefing becomes personal. Look for a section called **Calendar**, **Accounts** or **Connected calendars** inside that person's profile. Choose the calendar service they use and sign in. If you don't see the option, look under the main settings for **Calendar** and link it there.\n\nThen set up reminders the same way you did for music. Ask Alexa to create a reminder while you're speaking as that person. That reminder should belong to that profile only.\n\n💬 Example: say, \"Alexa, remind me to call the dentist tomorrow at nine a.m.\" Then ask, \"Alexa, what are my reminders?\"\n\nIf it looks different: calendar linking can change, and some options may appear only on certain plans or regions. If a calendar doesn't appear, try linking it from the Alexa app's **Calendar** menu instead.\n\nYou'll know it worked when Alexa reads back only that person's events and reminders when they ask.\n\n## Step 5 — Try a morning briefing for each person\nNow test the full experience. Speak to Alexa as one family member and ask for a short summary of the day. Something like: \"Alexa, what's my day look like?\" Listen to the answer. It should include that person's calendar events and reminders, not someone else's.\n\nThen switch to another family member and repeat the same question. Compare the two answers. Each should be different, and each should use the right name.\n\n💬 Example: \"Alexa, good morning. What do I have today, and what music should I hear while I get ready?\"\n\nIf it looks different: if Alexa gives the wrong person's information, the voice may not be recognized. Go back to Step 2 and train that voice again in a quieter room, then test again.\n\nYou'll know it worked when each person hears their own schedule and their own music choices without mixing up the two.\n\n## Step 6 — Review the privacy settings\nVoice profiles store information about how each person sounds, so it's worth checking what's saved. In the Alexa app, look for **Privacy** or **Voice history** under settings. Review what's stored, and look for an option to delete a voice profile or old recordings. Options vary, so look for words like \"delete\" or \"remove.\"\n\nAlso think about who can hear the answers. Alexa may read calendar events out loud, so use voice profiles mainly for adults and keep sensitive details out of shared rooms.\n\n💬 Example of a good habit: after a few weeks, ask Alexa, \"What's on my calendar this week?\" If you hear something you don't want said in the kitchen, remove that calendar link or switch that information off.\n\nIf it looks different: if you can't find a privacy page, look under the main settings menu for a section about your device or your data, then use the search option if your app has one.\n\nYou'll know it worked when you have reviewed the voice settings, and you know how to delete a profile if you ever need to.\n\n## Common mistakes\n- **Training voices together:** If two people speak at the same time during setup, Alexa may mix up their voices. **Fix:** train one person at a time and wait for the confirmation before starting the next.\n- **Assuming it's always right:** Colds, background noise and similar voices can confuse recognition, and Alexa can't always tell who is speaking. **Fix:** test each profile regularly and retrain a voice if answers look wrong.\n- **Expecting Alexa to handle everything:** Alexa can read your calendar and reminders, but it can't replace a shared family calendar or take actions in apps you haven't linked. **Fix:** link the services each person actually uses and keep a shared calendar for family plans everyone must see.\n\n## What this means for you\n- **In everyday life:** Each person in your home can ask the same Echo for their own morning schedule, reminders and playlists, without everyone hearing each other's events.\n- **For your business or work:** If you work from home, you can keep your work calendar and reminders separate from family routines by setting up your own profile.\n- **If you want to go further:** Once you're comfortable with profiles, try building a simple routine that combines a morning briefing with lights or a thermostat, if your devices support it.\n\n## Try it now\nOpen the Alexa app and check whether a profiles or voice section is already there. If it is, add one profile for yourself, then say, \"Alexa, what's on my calendar today?\" in the next two minutes to see whether it reads your own schedule.",
+  "original_title": "Set up Alexa+ voice profiles so each family member gets their own briefing"
+}

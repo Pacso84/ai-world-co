@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-10-22T02:30:30.308Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0032395,
+    "original_draft": "2026-10-22T02-27-20-162Z_google-workspace_An_easier_way_to_customize_how_Gemini_works_for_yo.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/10/an-easier-way-to-customize-how-gemini-works-for-you.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/10/an-easier-way-to-customize-how-gemini-works-for-you.html"
+    ],
+    "source_snippet": "We’ve introduced a centralized ”customize” hub in the Gemini app, providing a single place to tailor how Gemini responds and connects with your tools. Users can discover apps and add skills to automate repetitive workflows such as adapting to your personal writing style or adhering to specific formatting guidelines. \nBringing custom skills and connected apps together into a unified space makes it easy to discover and manage how you customize your experience when using Gemini.\nThe new hub includes:\n\n\nSkills: Configure custom skills and prompt preferences to tackle repetitive tasks, preserve tone and voice, or enforce specific response structures.\nConnected apps: Add more than 40 external services, as well as Google apps. You choose which apps to connect, and permissions can be audited or disconnected at any time.\n\n\nPlatform & regional availability:\n\n\nThe ”customize” menu is rolling out globally across web, mobile, and the Gemini desktop app on Windows and macOS for all user tiers.\nMost connected apps are currently available in English in the U.S., with select apps available in additional English-speaking regions, Brazil, and India.\n\n\nGetting started\n\n\nAdmins: Connected apps and third-party tool integrations for Gemini can be reviewed and managed in the Admin console under Apps > Additional Google services > Gemini.\nEnd users: In Gemini (web, mobile, or desktop app), open the left navigation menu and select Customize to add skills, explore apps, and manage connected services.\n\n",
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-10-22T02:34:28.950Z",
+    "slug": "what-gemini-s-new-customize-hub-does-and-who-it-s-for",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 660
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that correctly attributes all claims to Google, explains terms accessibly (tier, skills, connected apps), avoids prohibited content and clichés, and ends with actionable guidance for different reader levels. A strong piece.",
+      "_aiCost": 0.0016194,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-22T02:35:28.976Z",
+    "guide_worthy": true,
+    "related_guide_topic": "gemini-getting-started",
+    "image_v": 2,
+    "image_at": "2026-10-22T02:38:08.408Z",
+    "seo": {
+      "meta_description": "Google's new Gemini Customize hub puts your custom instructions and connected apps in one place. See what it does and who benefits from this update.",
+      "keywords": [
+        "Gemini Customize hub",
+        "Google Gemini customization",
+        "Gemini custom instructions",
+        "Gemini connected apps",
+        "how to customize Gemini AI",
+        "Google Gemini app features"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific details about what custom skills and connected apps actually do to improve keyword relevance",
+        "Consider adding a brief explanation of who the feature is for in the opening to boost topical authority",
+        "Include the exact rollout timeline if available to increase time-sensitive search value"
+      ],
+      "optimised_at": "2026-10-22T02:39:30.402Z"
+    },
+    "fact_verified_at": "2026-10-22T02:42:02.693Z",
+    "fact_check_skip": "a forrás nem olvasható (0/1)"
+  },
+  "article_markdown": "---\ntitle: \"What Gemini's New Customize Hub Does and Who It's For\"\nsubtitle: \"Google's Customize menu puts your saved preferences and connected apps in one place, so you can see and control how Gemini works for you.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"gemini\", \"customization\", \"connected-apps\", \"getting-started\"]\n---\n\n# What Gemini's New Customize Hub Does and Who It's For\n\n> **In short:** Google has added a single Customize area to the Gemini app. It brings together custom skills (saved instructions for how Gemini should respond) and connected apps (outside services you choose to link), so you can manage both in one place. It's rolling out to all user tiers.\n\nHave you ever found yourself repeating the same instructions to an AI chatbot, like \"keep it short\" or \"write in my usual tone\"? Or wished it could work with the other apps you already use? Google's new Customize hub is designed to handle both in one spot.\n\n## What the Customize hub holds\n\nAccording to Google's announcement, the hub has two main parts.\n\n**Skills** are saved instructions you set up once. Google describes them as a way to handle repetitive tasks, keep a consistent tone and voice, or make sure responses follow a specific structure. Think of a skill like a recipe card: you write the steps once, and Gemini follows them each time you need that kind of result. Google specifically mentions adapting to your personal writing style and following formatting guidelines as examples.\n\n**Connected apps** are outside services you can link to Gemini. Google says more than 40 external services are supported, along with Google's own apps. You pick which ones to connect. Google also says you can review the permissions for each connection and disconnect any app at any time.\n\nGoogle's stated goal is simple: keep your skills and connected apps in one unified space, so you can find and manage them without hunting through menus.\n\n## Where it's available\n\nGoogle says the Customize menu is rolling out globally. It's available on the web, on mobile, and in the Gemini desktop app for Windows and macOS, for all user tiers. (A \"tier\" is a plan level, such as free or paid.)\n\nConnected apps have a narrower launch. Google says most are currently available in English in the U.S., with select apps available in other English-speaking regions, Brazil, and India. If an app you want isn't listed for your location yet, Google's announcement doesn't say when it will arrive, so check back later.\n\n## What this means for you\n\n- **In everyday life**: If you often ask Gemini for the same kind of help, such as a friendly reply to a message, a specific layout for a shopping list, or a particular tone for emails, a saved skill can save you from retyping those instructions.\n- **For your business or work**: Your organization's admin may manage which connected apps are available. Google says admins can review and manage Gemini's connected apps and third-party integrations in the Admin console under Apps > Additional Google services > Gemini.\n- **If you're just getting started**: Open the left navigation menu in Gemini (on web, mobile, or the desktop app) and select Customize. Look around before connecting anything. You can explore what's there and only add what you actually need.\n- **If you already use it**: Review your connected apps regularly. Google says permissions can be audited and disconnected at any time, so it's a good habit to check what's linked and remove anything you no longer use.\n\n## Wrap-up\n\nGoogle's new Customize hub gathers skills and connected apps into one place, so you can shape how Gemini responds and what it can work with. It's rolling out to all user tiers across web, mobile, and the Windows and macOS desktop apps. Today, open the Gemini app, tap the left navigation menu, select Customize, and look at what's already there. Then decide whether one repeated task is worth saving as a skill.",
+  "original_title": "An easier way to customize how Gemini works for you"
+}

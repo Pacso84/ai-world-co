@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-22T02:29:51.706Z",
+  "drafts_total": 5,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 1,
+  "merged_total": 1,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.015170594999999999,
+  "by_article": [
+    {
+      "draft": "2026-10-22T02-26-55-947Z_nvidia-blog_NVIDIA_Open_Models_Advance_Europe_s_Sovereign_Inte.json",
+      "writer_output": "WRITER_2026-10-22T02-26-55-947Z_nvidia-blog_NVIDIA_Open_Models_Advance_Europe_s_Sovereign_Inte.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "NVIDIA AI push in Europe with open models and local intelligence",
+      "cost_usd": 0.0035612,
+      "duration_ms": 14220,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-22T02-27-20-162Z_google-workspace_An_easier_way_to_customize_how_Gemini_works_for_yo.json",
+      "writer_output": "WRITER_2026-10-22T02-27-20-162Z_google-workspace_An_easier_way_to_customize_how_Gemini_works_for_yo.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0032395,
+      "duration_ms": 10421,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-22T02-27-20-161Z_google-workspace_Gain_more_creative_control_over_Slide_Decks_and_Vi.json",
+      "writer_output": "WRITER_2026-10-22T02-27-20-161Z_google-workspace_Gain_more_creative_control_over_Slide_Decks_and_Vi.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0035519,
+      "duration_ms": 13407,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-22T02-26-44-202Z_openai-blog_How_we_built_ChatGPT_s_novel_ad_stack_for_user_tru.json",
+      "writer_output": "WRITER_2026-10-22T02-26-44-202Z_openai-blog_How_we_built_ChatGPT_s_novel_ad_stack_for_user_tru.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0031642,
+      "duration_ms": 10736,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-10-22T02:30:55.747Z",
+  "duration_seconds": 64.041
+}
