@@ -483,22 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179112093204540",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready — you've got a nice mix of practical, everyday AI use cases (complaints, resumes, emails, speeches) that regular people can actually use. A quick note: articles 8 and",
-      "agent": "publisher",
-      "at": "2026-10-04T13:35:32.045Z",
-      "loud": false
-    },
-    {
-      "id": "n179112095057752",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0030).",
-      "agent": "ceo",
-      "at": "2026-10-04T13:35:50.577Z",
-      "loud": false
-    },
-    {
       "id": "n179114008087236",
       "level": "success",
       "text": "Kiadás kész (10 cikk). The lineup is solid — practical, everyday AI use cases that resonate with regular people. Everything's on-brand and ready to go. One heads-up: double-check that cover images, SEO meta, and internal li",
@@ -1281,27 +1265,25 @@
       "agent": "fact-check",
       "at": "2026-10-22T02:42:16.560Z",
       "loud": false
+    },
+    {
+      "id": "n179269788971499",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"Analyze BigQuery data using natural language with \" ",
+      "agent": "fact-check",
+      "at": "2026-10-22T19:38:09.714Z",
+      "loud": false
+    },
+    {
+      "id": "n179269792308950",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „If Gmail AI matters to you, the off",
+      "agent": "fact-check",
+      "at": "2026-10-22T19:38:43.089Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17910845203077",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-04T03:28:40.307Z"
-    },
-    {
-      "id": "m179108459093985",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a polite 'out of office' reply with Meta AI \" — The claim that meta.ai \"always works\" as a guaranteed website — this may no longer be accurate; The specific UI description of finding Meta AI via a \"circle icon\" at the top of chat lists in WhatsApp/Messenger/Instagram — these UI elements have likely changed",
-      "ref": "ARTICLE_GUIDE_draft-a-polite-out-of-office-reply-with-meta-ai-before-your-.json",
-      "at": "2026-10-04T03:29:50.939Z"
-    },
     {
       "id": "m179108518067836",
       "from": "social",
@@ -2650,6 +2632,26 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-22T03:06:41.940Z"
+    },
+    {
+      "id": "m179269788971415",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"Analyze BigQuery data using natural language with \" — The source explicitly states there is no admin control for this feature - it's on by default for all eligible users.",
+      "ref": "ARTICLE_2026-10-20T02-33-12-849Z_google-workspace_Analyze_BigQuery_data_using_natural_language_with_.json",
+      "open": true,
+      "at": "2026-10-22T19:38:09.714Z"
+    },
+    {
+      "id": "m179269792308911",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „If Gmail AI matters to you, the official Google Workspace updates blog is where those deta”): \"This Week in AI: The 5 Stories That Matter (Octobe\" — The article incorrectly states the source didn't include specific details when the source actually does contain pricing ($2,399), feature names (AI Inbox, Gmail Live,",
+      "ref": "ARTICLE_2026-10-18T02-16-12-366Z_aiworld-editorial_This_Week_in_AI.json",
+      "open": true,
+      "at": "2026-10-22T19:38:43.089Z"
     }
   ]
 }
