@@ -265,6 +265,9 @@ function fotoNyersanyag(pub, now) {
 
 // A 4:5 álló borítókép — ugyanaz, amit a Facebook kap (Threads/X/TikTok-fotó; a TikTok videót is kap).
 const imageUrl = slug => `${SITE}/assets/fb/${slug}.jpg`;
+// 🧵 THREADS-MÉRÉS (2026-10-22): a Threads-app nem küld hivatkozót → a link jelölve (?src=th); a honlap
+// middleware-je ebből számol (functions/_middleware.js → Worker /src-hit → napi riport).
+const forrasJel = (u, s) => { try { const x = new URL(u); x.searchParams.set('src', s); return x.toString(); } catch { return u; } };
 
 // ⚠️ A KÉP NEM MINDIG VAN MEG (2026-08-14, mérve: 18 sorban álló posztból 17-nek
 // volt képe, egynek NEM). Az (akkori) Instagram KÖTELEZŐEN képet követelt —
@@ -504,7 +507,7 @@ async function main() {
       const slug = realSlug(item.post);
       const cta = followCta(slug);
       // A követésre hívás a link UTÁN, hogy ne tolja el a mondanivalót.
-      const alap = composePost({ text: item.post.facebook, url: item.post.url, channel: ch.key });
+      const alap = composePost({ text: item.post.facebook, url: ch.key === 'threads' ? forrasJel(item.post.url, 'th') : item.post.url, channel: ch.key });
       if (!alap) { console.log(`   ⏭️  ${slug.slice(0, 40)} — nem fér ki erre a csatornára`); return false; }
       const szoveg = cta && (alap.weight + cta.length + 2) <= cfg.limit ? `${alap.body}\n\n${cta}` : alap.body;
 

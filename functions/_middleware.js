@@ -29,6 +29,14 @@ import { letoltesFajl } from '../core/pdf-download.js';
 
 const CANONICAL_HOST = 'aiworldhq.com';
 const DL_JEL = 'https://api.aiworldhq.com/dl-hit';
+// 🧵 FORRÁS-JEL (2026-10-22): a jelölt közösségi linkkel (?src=th) érkező EMBERI oldalletöltés számlálása.
+const SRC_JEL = 'https://api.aiworldhq.com/src-hit';
+export const FORRASOK = ['th'];
+const ROBOT_UA = /bot|crawl|spider|slurp|facebookexternalhit|meta-external|preview|headless|curl|wget|python|node-fetch/i;
+/** Számolandó-e: ismert forrás-jel, GET, 200-as HTML-oldal, nem robot. */
+export function forrasJel({ src, method, status, ua, tipus }) {
+  return FORRASOK.includes(src) && method === 'GET' && status === 200 && /text\/html/.test(tipus || '') && !ROBOT_UA.test(ua || '') ? src : null;
+}
 
 export async function onRequest({ request, next, waitUntil }) {
   const url = new URL(request.url);
@@ -48,6 +56,13 @@ export async function onRequest({ request, next, waitUntil }) {
         // Saját UA: a Cloudflare a robotgyanús (pl. curl) UA-t 403-mal fogja meg — mérve 10-08.
         method: 'POST', headers: { 'Content-Type': 'application/json', 'User-Agent': 'aiworldhq-pages/1.0 (+https://aiworldhq.com)' },
         body: JSON.stringify({ f })
+      }).catch(() => {}));
+    }
+    const s = forrasJel({ src: url.searchParams.get('src'), method: request.method, status: res.status, ua: request.headers.get('User-Agent'), tipus: res.headers.get('Content-Type') });
+    if (s) {
+      waitUntil(fetch(SRC_JEL, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'User-Agent': 'aiworldhq-pages/1.0 (+https://aiworldhq.com)' },
+        body: JSON.stringify({ s })
       }).catch(() => {}));
     }
   } catch { /* a számláló hibája nem a látogató gondja */ }

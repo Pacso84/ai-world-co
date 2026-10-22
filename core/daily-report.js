@@ -979,6 +979,12 @@ async function main() {
         // 📚 INGYENES PDF-LETÖLTÉS (2026-10-07): a Worker számlálója; csend, ha 7 napja 0.
         const dlSor = pdfLetoltesSor(exp.__dl);
         if (dlSor) lines.push(dlSor);
+        // 🧵 THREADS PONTOSAN (10-22): a jelölt linkkel (?src=th) érkezők, a tegnapi UTC-nap + 7 nap
+        if (exp.__src && !exp.__src.error) {
+          const tegnap = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
+          const het = Object.entries(exp.__src).filter(([n]) => n > new Date(Date.now() - 8 * 864e5).toISOString().slice(0, 10)).reduce((s, [, v]) => s + (v.th || 0), 0);
+          lines.push(`🧵 Threads-linkről tegnap: ${exp.__src[tegnap]?.th || 0} látogató (7 nap: ${het}) — jelölt link, pontos`);
+        }
         const affSor = partnerKattintasSor(exp.__aff);
         if (affSor) lines.push(affSor);
         const total = (cs.chat || 0) + (cs.mail || 0);
