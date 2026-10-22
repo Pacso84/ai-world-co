@@ -52,7 +52,7 @@ t('🔴 lefedettség-kapu: hiányzó nap, üres nap, elavult vagy üres napló �
 });
 
 t('🔴 I4: a 200 sornál nem rövidebb nap csonka lehet (Cloudflare limit: 200) → NINCS törlés', () => {
-  assert.equal(CSONKA_SOR, 200);
+  assert.equal(CSONKA_SOR, 1000);   // 10-22: a napló NAPI_LIMIT-je (robotszűrő)
   const days = naplo();
   days[d(20)] = Array.from({ length: CSONKA_SOR }, (_, i) => ({ path: `/x${i}`, visits: 1, views: 1 }));
   const lf = lefedettseg(days, MOST, 60);

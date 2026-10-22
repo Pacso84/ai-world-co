@@ -150,6 +150,41 @@ export function depthTrend(days, win = 7) {
   };
 }
 
+// ===================================================================
+// 🤖 ROBOTSZŰRŐ (2026-10-22, user: „ez nagyon torzítja a munkánkat!”)
+// ===================================================================
+// 10-22-én 16 UTC-kor egy szingapúri, Windows + Chrome asztali „látogató” EGY óra alatt 527 oldalt
+// töltött be — 521 KÜLÖNBÖZŐ angol cikket, hivatkozó nélkül: végiglapozó robot. Valódi böngészőként
+// futott, ezért a Cloudflare RUM és az AdSense is látogatónak számolta (az AdSense ~500 megtekintést
+// mutatott). A naplóban az olvasatlan cikkeket „olvasottnak” mutatná → a törlés 2–3 hónapot csúszna,
+// és minden forgalmi szám torzulna.
+// ISMÉRV: egy (ország, óra, eszköztípus) vödörben legalább ROBOT_MIN látogatás, és a látogatások
+// legalább ROBOT_SZORAS része KÜLÖNBÖZŐ oldalra megy. A valódi napokon a legnagyobb vödör 10–20
+// (mérve 10-19…21); egy Facebookon berobbanó cikk sok látogatást hoz, de UGYANARRA az oldalra.
+export const ROBOT_MIN = 60;
+export const ROBOT_SZORAS = 0.6;
+// A napi lekérdezés sorkorlátja (200 volt; a robotos napon 500+ különböző útvonal jön — a levonás előtt
+// mindet látni kell). A core/guide-prune.js CSONKA_SOR-ja ezt követi.
+export const NAPI_LIMIT = 1000;
+
+/** A robotos vödrök: [{orszag, ora, eszkoz, latogatas, oldalak}] közül a végiglapozók. */
+export function robotVodrok(vodrok) {
+  return (vodrok || []).filter(v => (Number(v?.latogatas) || 0) >= ROBOT_MIN && (Number(v?.oldalak) || 0) >= ROBOT_SZORAS * v.latogatas);
+}
+
+/** A robot sorainak levonása a nap soraiból (útvonalanként); a nullára fogyott sor kiesik. */
+export function robotLevonas(sorok, robotSorok) {
+  const le = new Map();
+  for (const r of robotSorok || []) {
+    const x = le.get(r.path) || { visits: 0, views: 0 };
+    x.visits += Number(r.visits) || 0; x.views += Number(r.views) || 0;
+    le.set(r.path, x);
+  }
+  return (sorok || [])
+    .map(r => { const x = le.get(r.path); return x ? { ...r, visits: Math.max(0, (r.visits || 0) - x.visits), views: Math.max(0, (r.views || 0) - x.views) } : r; })
+    .filter(r => (r.visits || 0) > 0 || (r.views || 0) > 0);
+}
+
 // ---------- I/O ----------
 
 export function loadLog() {
@@ -171,7 +206,21 @@ function saveLog(days) {
 
 // Egy NAP oldalankénti forgalma a Cloudflare-től. 1 napos ablak, mert a
 // hosszabb ablak tízesre kerekít.
-async function fetchDay(day) {
+async function gql(query, variables) {
+  const token = (process.env.CF_ANALYTICS_TOKEN || '').trim();
+  const r = await fetch('https://api.cloudflare.com/client/v4/graphql', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query, variables }),
+    signal: AbortSignal.timeout(20000)
+  });
+  if (!r.ok) throw new Error('CF GraphQL HTTP ' + r.status);
+  const data = await r.json();
+  if (data.errors?.length) throw new Error('CF GraphQL: ' + String(data.errors[0].message).slice(0, 90));
+  return data.data?.viewer?.accounts?.[0] || {};
+}
+
+export async function fetchDay(day) {   // exportálva: a robotszűrő élő próbájához (írás nélkül)
   const token = (process.env.CF_ANALYTICS_TOKEN || '').trim();
   const account = (process.env.CLOUDFLARE_ACCOUNT_ID || '').trim();
   if (!token || !account) throw new Error('nincs CF_ANALYTICS_TOKEN vagy CLOUDFLARE_ACCOUNT_ID');
@@ -180,25 +229,44 @@ async function fetchDay(day) {
   const until = new Date(Date.parse(since) + 86400000).toISOString();
   const q = `query($account: String!, $since: Time!, $until: Time!) {
     viewer { accounts(filter: {accountTag: $account}) {
-      pages: rumPageloadEventsAdaptiveGroups(filter: {datetime_geq: $since, datetime_leq: $until}, limit: 200, orderBy: [count_DESC]) {
+      pages: rumPageloadEventsAdaptiveGroups(filter: {datetime_geq: $since, datetime_leq: $until}, limit: ${NAPI_LIMIT}, orderBy: [count_DESC]) {
         count sum { visits } avg { sampleInterval } dimensions { requestPath }
       }
     } }
   }`;
-  const r = await fetch('https://api.cloudflare.com/client/v4/graphql', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query: q, variables: { account, since, until } }),
-    signal: AbortSignal.timeout(20000)
-  });
-  if (!r.ok) throw new Error('CF GraphQL HTTP ' + r.status);
-  const data = await r.json();
-  if (data.errors?.length) throw new Error('CF GraphQL: ' + String(data.errors[0].message).slice(0, 90));
-  const rows = data.data?.viewer?.accounts?.[0]?.pages || [];
-  if (mintavetelezett(rows)) throw new Error('mintavételezett Cloudflare-adat — a meglévőt nem írom felül');
-  return rows
+  const nyers = (await gql(q, { account, since, until })).pages || [];
+  if (mintavetelezett(nyers)) throw new Error('mintavételezett Cloudflare-adat — a meglévőt nem írom felül');
+  const rows = nyers
     .filter(x => x.dimensions?.requestPath)
     .map(x => ({ path: x.dimensions.requestPath, visits: x.sum?.visits || 0, views: x.count || 0 }));
+
+  // 🤖 ROBOTSZŰRŐ: (ország, óra, eszköz) vödrök; a nagyoknál megnézzük, hány KÜLÖNBÖZŐ oldalra ment
+  const vq = `query($account: String!, $since: Time!, $until: Time!) {
+    viewer { accounts(filter: {accountTag: $account}) {
+      v: rumPageloadEventsAdaptiveGroups(filter: {datetime_geq: $since, datetime_leq: $until}, limit: 2000, orderBy: [sum_visits_DESC]) {
+        sum { visits } dimensions { countryName datetimeHour deviceType }
+      }
+    } }
+  }`;
+  const vodrok = [], robotSorok = [];
+  for (const x of ((await gql(vq, { account, since, until })).v || []).filter(x => (x.sum?.visits || 0) >= ROBOT_MIN)) {
+    const d = x.dimensions || {};
+    const h1 = new Date(Date.parse(d.datetimeHour) + 3600e3 - 1000).toISOString();
+    const pq = `query($account: String!, $since: Time!, $until: Time!, $c: String!, $d: String!) {
+      viewer { accounts(filter: {accountTag: $account}) {
+        p: rumPageloadEventsAdaptiveGroups(filter: {datetime_geq: $since, datetime_leq: $until, countryName: $c, deviceType: $d}, limit: ${NAPI_LIMIT}) {
+          count sum { visits } dimensions { requestPath }
+        }
+      } }
+    }`;
+    const p = (await gql(pq, { account, since: d.datetimeHour, until: h1, c: d.countryName, d: d.deviceType })).p || [];
+    const v = { orszag: d.countryName, ora: d.datetimeHour, eszkoz: d.deviceType, latogatas: x.sum.visits, oldalak: p.length };
+    if (robotVodrok([v]).length) {
+      vodrok.push(v);
+      for (const r of p) if (r.dimensions?.requestPath) robotSorok.push({ path: r.dimensions.requestPath, visits: r.sum?.visits || 0, views: r.count || 0 });
+    }
+  }
+  return { rows: robotLevonas(rows, robotSorok), robot: vodrok };
 }
 
 // ---------- riport (helyben is futtatható, csak olvas) ----------
@@ -273,13 +341,14 @@ async function main() {
     const known = day in merged;
     if (known && dayAge(day, today) >= RECENT_DAYS) { skipped++; continue; }
     try {
-      const rows = await fetchDay(day);
+      const { rows, robot } = await fetchDay(day);
       const regi = merged[day];
       merged = mergeDay(merged, day, rows, today);
       const v = rows.reduce((s, r) => s + r.visits, 0);
       console.log('  ' + day + ': ' + v + ' belépő, ' + rows.length + ' oldal'
         + (!known ? ' (új)' : merged[day] !== regi ? ' (frissítve)'
           : ` (⚠️ szegényebb válasz a meglévő ${regi.length} soros napnál — megtartva)`));
+      for (const v of robot) console.log(`  🤖 ${day}: robot kiszűrve — ${v.orszag} ${String(v.ora).slice(11, 16)} UTC ${v.eszkoz}: ${v.latogatas} látogatás, ${v.oldalak} különböző oldal`);
       ok++;
     } catch (e) {
       console.log('  ' + day + ': kihagyva — ' + String(e.message).slice(0, 70));

@@ -20,7 +20,7 @@ export const SITE = 'https://aiworldhq.com';
 const NAP = 864e5;
 const UTVONAL_RX = /^\/(?:hu\/|es\/)?article\/([^/?#]+)/;
 const GYANUS_ARANY = 0.6;
-export const CSONKA_SOR = 200;   // a core/traffic-log.js ennyi útvonalat kér naponta (limit: 200)
+export const CSONKA_SOR = 1000;  // a core/traffic-log.js ennyi útvonalat kér naponta (NAPI_LIMIT; 10-22 előtt 200)
 const SZEGENY_ARANY = 0.25;      // ennél kevesebb sor a szokásoshoz képest = hibás naplónap (10-16)
 const datum = t => new Date(t).toISOString().slice(0, 10);
 

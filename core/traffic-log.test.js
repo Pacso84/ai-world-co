@@ -7,7 +7,7 @@
 
 import assert from 'assert/strict';
 import { readFileSync } from 'fs';
-import { mergeDay, mintavetelezett, pruneOld, topPages, depth, depthTrend, isAudiencePath, RECENT_DAYS, KEEP_DAYS } from './traffic-log.js';
+import { mergeDay, mintavetelezett, pruneOld, topPages, depth, depthTrend, isAudiencePath, RECENT_DAYS, KEEP_DAYS, robotVodrok, robotLevonas, ROBOT_MIN, NAPI_LIMIT } from './traffic-log.js';
 
 let pass = 0;
 const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
@@ -78,7 +78,7 @@ t('🔴 mintavételezett Cloudflare-válasz felismerése (sampleInterval > 1 = e
 t('🔌 a lekérdezés kéri a mintavételi közt, és mintavételezett napot nem ír', () => {
   const src = readFileSync(new URL('./traffic-log.js', import.meta.url), 'utf-8');
   assert.match(src, /avg \{ sampleInterval \}/, 'a Cloudflare-lekérdezés nem kéri a sampleInterval-t');
-  assert.match(src, /if \(mintavetelezett\(rows\)\) throw/, 'a mintavételezett válasz átmenne');
+  assert.match(src, /if \(mintavetelezett\(nyers\)\) throw/, 'a mintavételezett válasz átmenne');
 });
 
 // ---------- metszés ----------
@@ -206,6 +206,32 @@ t('a trend is a megtisztított számot adja', () => {
     ];
   }
   assert.equal(depthTrend(days, 7).recent, 1, 'a saját böngészés a trendbe se szivárogjon be');
+});
+
+// 🤖 ROBOTSZŰRŐ (2026-10-22, user: „ez nagyon torzítja a munkánkat!”) — valódi számokkal
+t('🤖 a 10-22-i szingapúri végiglapozó (527 látogatás, 521 különböző oldal egy óra alatt) ROBOT', () => {
+  assert.equal(robotVodrok([{ orszag: 'SG', ora: '2026-10-22T16:00:00Z', eszkoz: 'desktop', latogatas: 527, oldalak: 521 }]).length, 1);
+});
+
+t('🤖 a valódi napok legnagyobb vödre (10–20 látogatás) NEM robot; a berobbanó cikk (sok látogatás, KEVÉS oldal) sem', () => {
+  assert.equal(robotVodrok([{ orszag: 'US', ora: 'x', eszkoz: 'mobile', latogatas: 20, oldalak: 18 }]).length, 0);
+  assert.equal(robotVodrok([{ orszag: 'US', ora: 'x', eszkoz: 'mobile', latogatas: 300, oldalak: 4 }]).length, 0, 'egy Facebookon berobbanó cikk');
+  assert.equal(ROBOT_MIN, 60);
+});
+
+t('🤖 a robot sorai levonódnak; ami csak a robottól jött, kiesik; a valódi olvasó megmarad', () => {
+  const nap = [{ path: '/article/a', visits: 3, views: 3 }, { path: '/article/b', visits: 1, views: 1 }, { path: '/', visits: 10, views: 12 }];
+  const robot = [{ path: '/article/a', visits: 1, views: 1 }, { path: '/article/b', visits: 1, views: 1 }];
+  assert.deepEqual(robotLevonas(nap, robot), [{ path: '/article/a', visits: 2, views: 2 }, { path: '/', visits: 10, views: 12 }]);
+  assert.deepEqual(robotLevonas(nap, []), nap);
+});
+
+t('🤖 a napi lekérdezés korlátja 1000 (a robotos napon 500+ útvonal), a fetchDay a levonás UTÁNI sorokat adja', () => {
+  assert.equal(NAPI_LIMIT, 1000);
+  const src = readFileSync(new URL('./traffic-log.js', import.meta.url), 'utf-8');
+  assert.match(src, /limit: \$\{NAPI_LIMIT\}, orderBy: \[count_DESC\]/);
+  assert.match(src, /return \{ rows: robotLevonas\(rows, robotSorok\), robot: vodrok \};/);
+  assert.match(src, /const \{ rows, robot \} = await fetchDay\(day\);/);
 });
 
 console.log('\n✅ traffic-log.test: mind a ' + pass + ' eset rendben');
