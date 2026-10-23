@@ -45,7 +45,7 @@ import { CSOMAG_SZOVEG, PACKS_UI, csomagSzoveg } from '../core/packs-text.js';
 import { CSOMAG_IDK, NAGY_ID } from '../core/packs-data.js';
 import { cimTag } from '../core/title-tag.js';
 import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
-import { kitolthetoHtml } from '../core/kitoltheto-prompt.js';   // 🧩 2026-10-23
+import { kitolthetoHtml, promptJelolt } from '../core/kitoltheto-prompt.js';   // 🧩 2026-10-23
 import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek } from '../core/ads.js';
@@ -2447,18 +2447,21 @@ function guideSectionHtml(bodyMd) {
       const isPrompt = /^[„“"'«‘]/.test(body.trim());
       const lbl = isPrompt ? tr('tryTyping') : tr('exampleLabel');
       const send = isPrompt ? '<span class="g-prompt__send">➤</span>' : '';
-      // KITÖLTHETŐ PROMPT (2026-10-23, core/kitoltheto-prompt.js): csak beírandó promptban
-      const content = isPrompt ? kitolthetoHtml(escapeHtml(body).replace(/\n/g, '<br>')) : escapeHtml(body).replace(/\n/g, '<br>');
-      return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span>' + kitoltesTipp(content) + '<span class="g-prompt__box">' + content + send + '</span>' + masolGomb(isPrompt) + '</div>\n\n';
+      // KITÖLTHETŐ PROMPT + MÁSOLÁS (2026-10-23, core/kitoltheto-prompt.js): a 💬 utáni kódblokk az
+      // író „másold be az egészet” blokkja — a Prompt-tár (core/prompt-library.js, 1. szabály) MINDIG
+      // promptnak veszi, idézőjel nélkül is. Eddig itt csak az idézőjeles kapott gombot (mérve: 1 a 82-ből).
+      const content = kitolthetoHtml(escapeHtml(body).replace(/\n/g, '<br>'));
+      return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span>' + kitoltesTipp(content) + '<span class="g-prompt__box">' + content + send + '</span>' + masolGomb(true) + '</div>\n\n';
     });
   // (1) csak-címke 💬 sor ("💬 **Példa prompt:**") → fűzzük hozzá a következő
   // sort (kód-kerítést SOHA — azt a (0) kezeli)
   pre = pre.replace(/^([ \t>]*💬[^\n]*:\*{0,2})[ \t]*\n+[ \t]*(?=[^\s`])/gm, '$1 ');
   // (2) többnyelvű címke leszedése (Example/Példa/Ejemplo/Beispiel/Exemple, félkövérrel is)
   pre = pre.replace(/^[ \t>]*💬[ \t]*(?:\*\*[^*\n]{1,40}\*\*[ \t]*:?[ \t]*|(?:example|p[ée]lda(?:[ \t]*prompt)?|ejemplo|beispiel|exemple)[ \t]*:?[ \t]*)?(.+)$/gmi,
-    (m, txt) => {
-      // Idézőjellel kezdődik = tényleg beírandó prompt; különben csak példa-leírás
-      const isPrompt = /^[„“"'«‘]/.test(txt.trim());
+    (m, eredeti) => {
+      // Idézőjellel kezdődik = tényleg beírandó prompt; különben csak példa-leírás.
+      // 10-23: a dőlt idézet (*"…"*) is prompt, a burkoló csillag nélkül (core/kitoltheto-prompt.js promptJelolt)
+      const { prompt: isPrompt, szoveg: txt } = promptJelolt(eredeti);
       const lbl = isPrompt ? tr('tryTyping') : tr('exampleLabel');
       const send = isPrompt ? '<span class="g-prompt__send">➤</span>' : '';
       const box = isPrompt ? kitolthetoHtml(txt) : txt;

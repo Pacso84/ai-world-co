@@ -60,4 +60,20 @@ export function kitoltottSzoveg(sablon, ertekek = []) {
   });
 }
 
-export default { KITOLTHETO_BE, igaziHelykitolto, kitolthetoHtml, kitoltottSzoveg };
+// BEÍRANDÓ PROMPT-E AZ EGYSOROS 💬 SZÖVEG? (2026-10-23, előnézetben mérve)
+// Az író gyakran dőlt idézetként írja: *"Plan a trip from [your city]…"*. Az útmutató-sablon
+// eddig csak a csupasz idézőjelet ismerte → „Példa” címke, nincs Másolás gomb, és a csillagok
+// nyersen látszottak. A Prompt-tár (core/prompt-library.js, 2. szabály) a `*{0,2}"` alakot már
+// promptnak veszi — itt ugyanazt követjük. A burkolót csak TELJES körbezárásnál vesszük le.
+const IDEZO_ELEJE = /^(?:\*{1,2}|_)?[„“"'«‘]/;
+const BURKOLT = /^(\*\*|\*|_)([„“"'«‘][\s\S]*[”"'»’“])\1$/;
+
+export function promptJelolt(txt) {
+  const s = String(txt ?? '');
+  const t = s.trim();
+  const b = t.match(BURKOLT);
+  if (b) return { prompt: true, szoveg: b[2] };
+  return { prompt: IDEZO_ELEJE.test(t), szoveg: s };
+}
+
+export default { KITOLTHETO_BE, igaziHelykitolto, kitolthetoHtml, kitoltottSzoveg, promptJelolt };

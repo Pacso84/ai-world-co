@@ -7,7 +7,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { kitolthetoHtml, kitoltottSzoveg, igaziHelykitolto } from './kitoltheto-prompt.js';
+import { kitolthetoHtml, kitoltottSzoveg, igaziHelykitolto, promptJelolt } from './kitoltheto-prompt.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const olvas = p => readFileSync(join(ROOT, ...p.split('/')), 'utf-8');
@@ -46,11 +46,23 @@ assert.equal(kitoltottSzoveg('[REDACTED] for [name]', ['Bob']), '[REDACTED] for 
 assert.ok(!/placeholder="a"/.test(kitolthetoHtml('[a&quot;b]')));
 assert.ok(!kitolthetoHtml('[a"b]').includes('placeholder="a"b"'));
 
+// 7b) dőlt idézet (*"…"*) is beírandó prompt — a Prompt-tár (core/prompt-library.js) szabályával egyezően;
+//     a burkoló csillag/aláhúzás eltűnik (élőben 10-23 nyersen látszott: *"Tervezz…"*)
+assert.deepEqual(promptJelolt('"Hello [name]"'), { prompt: true, szoveg: '"Hello [name]"' });
+assert.deepEqual(promptJelolt('*"Plan a trip from [your city]."*'), { prompt: true, szoveg: '"Plan a trip from [your city]."' });
+assert.deepEqual(promptJelolt('**„Írj levelet [név] részére.”**'), { prompt: true, szoveg: '„Írj levelet [név] részére.”' });
+assert.deepEqual(promptJelolt('_"Hola [nombre]"_ '), { prompt: true, szoveg: '"Hola [nombre]"' });
+assert.deepEqual(promptJelolt('nevezd el a chatet *"Smith"* néven.'), { prompt: false, szoveg: 'nevezd el a chatet *"Smith"* néven.' });
+assert.deepEqual(promptJelolt('*"Starts quoted"* but continues after.'), { prompt: true, szoveg: '*"Starts quoted"* but continues after.' }, 'csak a TELJES burkolót vesszük le');
+
 // 8) BEKÖTÉS-ŐR (Task 2): a build és a böngészős szkript tényleg használja
 {
   const build = olvas('website/build.js'), app = olvas('website/assets/app.js');
   assert.match(build, /import \{[^}]*kitolthetoHtml[^}]*\} from '\.\.\/core\/kitoltheto-prompt\.js'/, 'a build nem importálja');
   assert.equal((build.match(/kitolthetoHtml\(/g) || []).length, 2, 'mindkét prompt-ágban kell');
+  assert.match(build, /promptJelolt\(eredeti\)/,'az egysoros ág a közös prompt-felismerőt használja');
+  // a 💬 utáni kódblokk MINDIG másolható (a Prompt-tár 1. szabálya), akkor is, ha nem idézőjellel kezdődik
+  assert.match(build, /\+ masolGomb\(true\) \+/);
   assert.match(build, /class="g-vote" hidden/);
   assert.match(build, /class="g-tovabb"/);
   assert.ok(build.indexOf('${reszek.siker ?') < build.indexOf('${reszek.maskepp ?'), 'a ✅ a 🔄 elé kerüljön');
