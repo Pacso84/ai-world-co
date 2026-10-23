@@ -53,7 +53,9 @@ assert.deepEqual(promptJelolt('*"Plan a trip from [your city]."*'), { prompt: tr
 assert.deepEqual(promptJelolt('**„Írj levelet [név] részére.”**'), { prompt: true, szoveg: '„Írj levelet [név] részére.”' });
 assert.deepEqual(promptJelolt('_"Hola [nombre]"_ '), { prompt: true, szoveg: '"Hola [nombre]"' });
 assert.deepEqual(promptJelolt('nevezd el a chatet *"Smith"* néven.'), { prompt: false, szoveg: 'nevezd el a chatet *"Smith"* néven.' });
-assert.deepEqual(promptJelolt('*"Starts quoted"* but continues after.'), { prompt: true, szoveg: '*"Starts quoted"* but continues after.' }, 'csak a TELJES burkolót vesszük le');
+// félig burkolt sor (élőben 40 db, pl. *"Google launches …"* → magyarázat) NEM prompt — a régi „Példa” marad
+assert.deepEqual(promptJelolt('*"Starts quoted"* but continues after.'), { prompt: false, szoveg: '*"Starts quoted"* but continues after.' });
+assert.deepEqual(promptJelolt('*"Google launches Gemini 2.5 Flash-Lite"* → Fast, cheap model'), { prompt: false, szoveg: '*"Google launches Gemini 2.5 Flash-Lite"* → Fast, cheap model' });
 
 // 8) BEKÖTÉS-ŐR (Task 2): a build és a böngészős szkript tényleg használja
 {
@@ -68,6 +70,8 @@ assert.deepEqual(promptJelolt('*"Starts quoted"* but continues after.'), { promp
   assert.ok(build.indexOf('${reszek.siker ?') < build.indexOf('${reszek.maskepp ?'), 'a ✅ a 🔄 elé kerüljön');
   for (const k of ['voteQ', 'voteThanks', 'fillHint', 'tovWiz', 'tovPb'])
     assert.equal((build.match(new RegExp('\\b' + k + ':', 'g')) || []).length, 3, k + ' mindhárom nyelven');
+  // a lecsatolt klón innerText-je = textContent → a <br> eltűnne; a másoló sortörésre cseréli (átnézés 10-23)
+  assert.match(app, /clone\.querySelectorAll\('br'\)\.forEach\(function \(br\) \{ br\.replaceWith\('\\n'\); \}\)/);
   assert.match(app, /fbp-hit/); assert.match(app, /\.g-fill/); assert.match(app, /g-vote/); assert.match(app, /data-h/);
 }
 

@@ -41,7 +41,7 @@ import { bufferSor, tiktokSor } from './buffer-guard.js';
 import { riportSor as fbRiportSor, threadsRiportSor } from './fb-link-guard.js';
 import { tesztSor } from './test-guard.js';
 import { pdfLetoltesSor } from './pdf-download.js';
-import { bevaltSor } from './bevalt-jelzes.js';   // 👍 „Bevált?” 10-23
+import { bevaltSor, EXPORT_HIBA } from './bevalt-jelzes.js';   // 👍 „Bevált?” 10-23
 import { partnerKattintasSor } from './affiliate.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -1027,9 +1027,9 @@ async function main() {
           lines.push(`✉️ AUTO-VÁLASZ NEM MENT KI: ${cs.replyfail} db — a feladó nem kapott visszajelzést.`
             + (cs.replyfailWhy ? ` Ok: ${String(cs.replyfailWhy).slice(0, 120)}` : ''));
         }
-      }
-    }
-  } catch { /* a riport ettől még kimegy */ }
+      } else lines.push(EXPORT_HIBA);   // 10-23: rossz státusz ≠ „senki nem szavazott”
+    } else lines.push(EXPORT_HIBA);     // hiányzó kulcs
+  } catch { lines.push(EXPORT_HIBA); /* a riport ettől még kimegy */ }
 
   // Hierarchia-műszerfal (2026-07-13): visszaadások + főnöki döntések + tanulságok
   try {

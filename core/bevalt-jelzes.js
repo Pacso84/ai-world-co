@@ -36,4 +36,8 @@ export function bevaltSor(fbp, now = Date.now()) {
   return `👍 Bevált? tegnap: ${tu}👍 ${td}👎 · 7 nap: ${hu}👍 ${hd}👎` + (rosszak ? ` · ⚠️ sok 👎: ${rosszak}` : '');
 }
 
-export default { bevaltSor };
+// Ha maga a Worker-export nem érhető el (rossz státusz, időtúllépés, hiányzó kulcs), a 📚/🧵/👍/🛒
+// sorok MIND elmaradnának — ez a mondat mondja ki, hogy nem csend volt, hanem kiesés.
+export const EXPORT_HIBA = '📮 A visszajelzés-számlálók (feedback-export) nem érhetők el — a 📚 PDF, 🧵 Threads, 👍 Bevált és 🛒 sorok ma hiányoznak.';
+
+export default { bevaltSor, EXPORT_HIBA };

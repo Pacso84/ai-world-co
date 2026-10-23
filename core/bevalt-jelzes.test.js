@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { bevaltSor } from './bevalt-jelzes.js';
+import { bevaltSor, EXPORT_HIBA } from './bevalt-jelzes.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const NOW = Date.parse('2026-10-24T08:00:00Z');   // tegnap = 2026-10-23
@@ -41,8 +41,12 @@ assert.equal(bevaltSor({ error: true }, NOW), '👍 Bevált-jelzés: a számlál
 // 5) BEKÖTÉS-ŐR: a napi riport tényleg kiírja
 {
   const dr = readFileSync(join(ROOT, 'core', 'daily-report.js'), 'utf-8');
-  assert.match(dr, /import \{ bevaltSor \} from '\.\/bevalt-jelzes\.js'/);
   assert.match(dr, /bevaltSor\(exp\.__fbp\)/);
+  // ha maga az export nem érhető el (rossz státusz / időtúllépés / nincs kulcs), az se legyen csend
+  // — különben „senki nem szavazott”-nak látszik (független átnézés 10-23)
+  assert.match(dr, /import \{ bevaltSor, EXPORT_HIBA \} from '\.\/bevalt-jelzes\.js'/);
+  assert.equal((dr.match(/lines\.push\(EXPORT_HIBA\)/g) || []).length, 3, 'nincs kulcs + rossz státusz + kivétel: mindhárom ágon szóljon');
 }
+assert.match(EXPORT_HIBA, /nem érhetők? el/);
 
 console.log('✅ bevalt-jelzes: riport-sor rendben');

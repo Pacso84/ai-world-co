@@ -64,8 +64,9 @@ export function kitoltottSzoveg(sablon, ertekek = []) {
 // Az író gyakran dőlt idézetként írja: *"Plan a trip from [your city]…"*. Az útmutató-sablon
 // eddig csak a csupasz idézőjelet ismerte → „Példa” címke, nincs Másolás gomb, és a csillagok
 // nyersen látszottak. A Prompt-tár (core/prompt-library.js, 2. szabály) a `*{0,2}"` alakot már
-// promptnak veszi — itt ugyanazt követjük. A burkolót csak TELJES körbezárásnál vesszük le.
-const IDEZO_ELEJE = /^(?:\*{1,2}|_)?[„“"'«‘]/;
+// promptnak veszi — itt csak a TELJES körbezárást (*"…"*) követjük, a burkolót levéve. A félig
+// burkolt sor (*"hírcím"* → magyarázat; független átnézés 10-23: élőben 40 db) „Példa” marad.
+const IDEZO_ELEJE = /^[„“"'«‘]/;
 const BURKOLT = /^(\*\*|\*|_)([„“"'«‘][\s\S]*[”"'»’“])\1$/;
 
 export function promptJelolt(txt) {

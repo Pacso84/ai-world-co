@@ -271,6 +271,9 @@
       var v = ((mezok[i] && mezok[i].value) || '').trim();
       m.replaceWith(document.createTextNode(v || '[' + m.getAttribute('data-h') + ']'));
     });
+    // a lecsatolt klónon az innerText = textContent → a <br> nyomtalanul eltűnne, a többsoros
+    // prompt egy sorba ragadna (független átnézés 10-23) — ezért előbb valódi sortörésre cseréljük
+    clone.querySelectorAll('br').forEach(function (br) { br.replaceWith('\n'); });
     var text = (clone.innerText || clone.textContent || '').trim();
     var eredeti = btn.textContent;
     function kesz() {
