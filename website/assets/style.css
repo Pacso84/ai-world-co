@@ -583,6 +583,7 @@ body {
 .g-step__no { flex-shrink:0; width: 38px; height: 38px; border-radius: 50%; background: var(--ink); color: var(--paper);
   font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; }
 .g-step__grid { flex: 1; min-width: 0; display: grid; grid-template-columns: 1fr 190px; gap: 24px; align-items: center; }
+.g-step__grid--szoveg { grid-template-columns: 1fr; }   /* 10-23: nincs odaillő kép → a szöveg kitölti a helyet (core/lepes-kep.js) */
 .g-step__body { min-width: 0; }
 .g-step__art { color: var(--gc, var(--accent)); align-self: center; }
 .g-step__art .g-art__svg { display: block; width: 100%; height: auto; }
