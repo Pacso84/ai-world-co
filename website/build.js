@@ -46,6 +46,8 @@ import { CSOMAG_IDK, NAGY_ID } from '../core/packs-data.js';
 import { cimTag } from '../core/title-tag.js';
 import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
 import { kitolthetoHtml, promptJelolt } from '../core/kitoltheto-prompt.js';   // 🧩 2026-10-23
+import { lepesKepKulcs, elsoMondat } from '../core/lepes-kep.js';   // 🖼️ 2026-10-23
+import { olvasoiKedvencek } from '../core/olvasoi-kedvenc.js';   // 🔥 2026-10-23
 import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek } from '../core/ads.js';
@@ -79,6 +81,8 @@ let VERIFY = { google: '', bing: '' };
 let CF_BEACON = '';
 // KAPCSOLÓK (2026-09-29, user: „vissza lehessen állítani") — config.json → website.*
 let KAPCSOLO = { vazlat: true, kovetkezo: true, csomagMind: true };
+// 🔥 OLVASÓINK KEDVENCE (2026-10-23, core/olvasoi-kedvenc.js): az elmúlt 30 nap top 10 útmutatója (slugok, sorrendben)
+let KEDVENCEK = [];
 // HIRDETÉS (2026-10-01): config.json → website.ads; alapból KI (core/ads.js).
 let HIRDETES = hirdetesBeallitas(null);
 // Amazon partnerlink-próba (2026-10-09, core/affiliate.js) — KI, amíg nincs érvényes azonosító.
@@ -299,7 +303,7 @@ const UI_GUIDES = {
         kindOther: 'Other <span class="muted-word">AI tools</span>',
         comingSoon: 'Guides are on their way — check back shortly.',
         audPersonal: 'Everyday life', audBusiness: 'Business', audBoth: 'Life & Business',
-        aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', stepOf: 'Step {n} of {m}', okLabel: 'You\'ll know it worked when', diffLabel: 'If it looks different', nextStep: 'Next step', nextGuide: 'Next guide', copyBtn: 'Copy', copiedBtn: 'Copied!', voteQ: 'Worked?', voteThanks: 'Thanks! 💛', fillHint: 'Type your own details into the dashed boxes, then copy.', tovWiz: 'Using a different AI? <b>Find the right one for you</b>', tovPb: 'Want your own prompt? <b>Prompt Builder</b>', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
+        aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', stepOf: 'Step {n} of {m}', okLabel: 'You\'ll know it worked when', diffLabel: 'If it looks different', nextStep: 'Next step', nextGuide: 'Next guide', copyBtn: 'Copy', copiedBtn: 'Copied!', favBadge: 'Readers’ favorite', favRowH: 'Readers’ favorites — last 30 days', voteQ: 'Worked?', voteThanks: 'Thanks! 💛', fillHint: 'Type your own details into the dashed boxes, then copy.', tovWiz: 'Using a different AI? <b>Find the right one for you</b>', tovPb: 'Want your own prompt? <b>Prompt Builder</b>', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
         // ⚠️ MI-JELÖLÉS (2026-09-12, EU AI Act 50. cikk). A régi szöveg („AI editorial
         // team") félreérthető volt, és csak a lap ALJÁN állt. Most egyértelmű, és a
         // cikk TETEJÉN is megjelenik (aiLabel*). Őrzi: core/ai-disclosure.test.js.
@@ -320,7 +324,7 @@ const UI_GUIDES = {
         kindOther: 'Egyéb <span class="muted-word">AI-eszközök</span>',
         comingSoon: 'Az útmutatók úton vannak — nézz vissza hamarosan.',
         audPersonal: 'Hétköznapok', audBusiness: 'Üzlet', audBoth: 'Otthon és munka',
-        aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', stepOf: '{n}. lépés / {m}', okLabel: 'Akkor sikerült, ha', diffLabel: 'Ha másképp néz ki', nextStep: 'Következő lépés', nextGuide: 'Következő útmutató', copyBtn: 'Másolás', copiedBtn: 'Kimásolva!', voteQ: 'Bevált?', voteThanks: 'Köszönjük! 💛', fillHint: 'A szaggatott keretes mezőkbe írd a saját adataidat, aztán másold ki.', tovWiz: 'Nem ezt az MI-t használod? <b>Melyik való neked?</b>', tovPb: 'Saját promptot raknál össze? <b>Promptépítő</b>', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
+        aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', stepOf: '{n}. lépés / {m}', okLabel: 'Akkor sikerült, ha', diffLabel: 'Ha másképp néz ki', nextStep: 'Következő lépés', nextGuide: 'Következő útmutató', copyBtn: 'Másolás', copiedBtn: 'Kimásolva!', favBadge: 'Olvasóink kedvence', favRowH: 'Olvasóink kedvencei — az elmúlt 30 nap', voteQ: 'Bevált?', voteThanks: 'Köszönjük! 💛', fillHint: 'A szaggatott keretes mezőkbe írd a saját adataidat, aztán másold ki.', tovWiz: 'Nem ezt az MI-t használod? <b>Melyik való neked?</b>', tovPb: 'Saját promptot raknál össze? <b>Promptépítő</b>', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
         disclosureNews: '✦ Az AI World HQ automatikus szerkesztőségében mesterséges intelligencia készítette, hivatalos forrásokból. Automatikus tény- és minőség-ellenőrzésen ment át, és a szerkesztőnk naponta szúrópróbaszerűen átnézi a megjelent cikkeket. Hibát látsz? Jelezd a fenti gombokkal.',
         disclosureGuide: '✦ Az AI World HQ automatikus szerkesztőségében mesterséges intelligencia készítette, közérthető nyelven. Automatikus tény- és minőség-ellenőrzésen ment át, és a szerkesztőnk naponta szúrópróbaszerűen átnézi a megjelent útmutatókat. Hibát látsz? Jelezd a fenti gombokkal.',
         aiLabelNews: 'Ezt a cikket mesterséges intelligencia írta. Automatikus tény- és minőség-ellenőrzésen ment át, és a szerkesztőnk naponta szúrópróbaszerűen átnézi a megjelent cikkeket.',
@@ -338,7 +342,7 @@ const UI_GUIDES = {
         kindOther: 'Otras <span class="muted-word">herramientas de IA</span>',
         comingSoon: 'Las guías están en camino — vuelve pronto.',
         audPersonal: 'Día a día', audBusiness: 'Negocios', audBoth: 'Vida y negocios',
-        aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', stepOf: 'Paso {n} de {m}', okLabel: 'Sabrás que funcionó cuando', diffLabel: 'Si se ve distinto', nextStep: 'Siguiente paso', nextGuide: 'Siguiente guía', copyBtn: 'Copiar', copiedBtn: '¡Copiado!', voteQ: '¿Te funcionó?', voteThanks: '¡Gracias! 💛', fillHint: 'Escribe tus datos en los recuadros punteados y luego copia.', tovWiz: '¿Usas otra IA? <b>Encuentra la tuya</b>', tovPb: '¿Quieres tu propio prompt? <b>Creador de prompts</b>', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
+        aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', stepOf: 'Paso {n} de {m}', okLabel: 'Sabrás que funcionó cuando', diffLabel: 'Si se ve distinto', nextStep: 'Siguiente paso', nextGuide: 'Siguiente guía', copyBtn: 'Copiar', copiedBtn: '¡Copiado!', favBadge: 'Favorito de los lectores', favRowH: 'Los favoritos de los lectores — últimos 30 días', voteQ: '¿Te funcionó?', voteThanks: '¡Gracias! 💛', fillHint: 'Escribe tus datos en los recuadros punteados y luego copia.', tovWiz: '¿Usas otra IA? <b>Encuentra la tuya</b>', tovPb: '¿Quieres tu propio prompt? <b>Creador de prompts</b>', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
         disclosureNews: '✦ Generado por IA en la redacción automática de AI World HQ, a partir de fuentes oficiales. Pasó controles automáticos de datos y calidad, y nuestro editor comprueba cada día una muestra de los artículos publicados. ¿Ves un error? Usa los botones de arriba.',
         disclosureGuide: '✦ Generada por IA en la redacción automática de AI World HQ, en lenguaje claro. Pasó controles automáticos de datos y calidad, y nuestro editor comprueba cada día una muestra de las guías publicadas. ¿Ves un error? Usa los botones de arriba.',
         aiLabelNews: 'Este artículo fue escrito por IA. Pasó controles automáticos de datos y calidad, y nuestro editor comprueba cada día una muestra de los artículos publicados.',
@@ -1153,6 +1157,9 @@ function loadArticles() {
         seoKeywords: (data._meta?.seo?.keywords || meta.tags || []).join(', '),
         bodyHtml: wrapTables(wrapInShort(wrapImpactSection(stripLeadH1(marked.parse(body))))),
         bodyMd: body,
+        // AZ ANGOL TÖRZS MEGŐRZÉSE (2026-10-23): a lokalizáló felülírja a bodyMd-t, a lépés-ikon
+        // viszont az angol lépésből jön (core/lepes-kep.js) — így minden nyelven ugyanaz a kép
+        bodyMdEn: body,
         // „Útmutató-e?" — a közös core/guide-kind.js dönt (2026-09-16). Ez a
         // mező vezérli a SABLONVÁLASZTÁST (buildGuidePage vs buildArticlePage),
         // a /guides listát, a kb.json-t és a kereszthivatkozást; korábban a
@@ -1888,7 +1895,11 @@ function guideTile(a) {
 }
 
 // ÁLTALÁNOS (mindennapi) útmutatók — guides.html
-function buildGuidesPage(generalGuides, counts, temaCsoportok = new Map()) {
+function buildGuidesPage(generalGuides, counts, temaCsoportok = new Map(), kedvencek = []) {
+  // 🔥 OLVASÓINK KEDVENCEI (2026-10-23): a top 10 legolvasott útmutató a lap tetején (üres → nincs sor)
+  const kedvencSor = kedvencek.length
+    ? `<section class="kedvenc-sor"><h2 class="kedvenc-sor__h">🔥 ${escapeHtml(tr('favRowH'))}</h2><div class="gtiles">${kedvencek.map(guideTile).join('')}</div></section>`
+    : '';
   const tiles = generalGuides.length
     ? `<div class="gtiles">${generalGuides.map(guideTile).join('')}</div>`
     : `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
@@ -1897,7 +1908,7 @@ function buildGuidesPage(generalGuides, counts, temaCsoportok = new Map()) {
     <h1 class="guides-hero__title">${tr('guidesTitle')}</h1>
     <p class="guides-hero__tag">${tr('guidesTag')}</p>
   </section>`;
-  const body = designStyleBlock() + header + temaSav(temaCsoportok)
+  const body = designStyleBlock() + header + kedvencSor + temaSav(temaCsoportok)
     + `<p class="start__wizcta"><a href="prompts">📋 ${escapeHtml(tr('plBanner'))}</a></p>` + tiles;
   return pageShell({
     // LOKALIZÁLT CÍM + LEÍRÁS (2026-08-04): eddig beégetett ANGOL szöveg ment
@@ -2288,65 +2299,11 @@ const GUIDE_ART = {
     <path d="M80 110 a20 20 0 0 1 40 0"/>`),
 };
 
-// Lépéscím → illusztráció kulcs (specifikusabb előbb!)
-const STEP_ART_RULES = [
-  [/voice|speak|talk|audio|listen|record|dictat|sound|microphone/i, 'mic'],
-  [/image|picture|photo|visual|drawing|artwork|illustrat|generate an image|create an image/i, 'image'],
-  [/search|find\b|explore|browse|discover|look up|research|sources?/i, 'search'],
-  [/privac|secur|safe|protect|your data|be careful|permission|consent|sensitive/i, 'shield'],
-  [/setting|configur|option|preferenc|customi|control|toggle|enable|turn (it )?on|choose a model|pick a model/i, 'sliders'],
-  [/save|export|download|share|copy|publish|send it to/i, 'download'],
-  [/send|run\b|submit|generat|press enter|hit enter|press send|get your (answer|result|response)/i, 'plane'],
-  [/review|check|refine|edit\b|improve|fix\b|adjust|iterate|verif|proofread|polish|double-check/i, 'check'],
-  [/format|structure|outline|template|organi|layout|section|make a list|bullet/i, 'doc'],
-  [/context|detail|background|be specific|example|describe|explain|add (more )?|include|provide|give it/i, 'layers'],
-  [/type|write|prompt|ask\b|message|enter your|chat|tell it|input|conversation|question|your request/i, 'chat'],
-  [/define|goal|what you want|decide|choose what|pick what|plan\b|aim\b|outcome|result you|identify/i, 'target'],
-  [/tip|note|remember|understand|learn|know\b|why\b|what (it|this) means|matters/i, 'bulb'],
-  [/open\b|start\b|begin|sign ?up|sign ?in|account|log ?in|install|get started|access|set ?up|first/i, 'login'],
-];
-const STEP_ART_CYCLE = ['target', 'chat', 'layers', 'doc', 'check', 'plane', 'sliders', 'search'];
-
-// Többnyelvű kulcsszavak (hu/es/de/fr) — a fordított fejlécekhez is témára találjon
-const STEP_ART_RULES_I18N = [
-  [/hang\b|mikrofon|diktál|hangosan|\bvoz\b|dicta|aufnahme|sprich|diktier|parle|dicte/i, 'mic'],
-  [/\bkép|fotó|\bimagen|\bfoto\b|\bbild|\bphoto/i, 'image'],
-  [/keres|kutat|búsq|busca|\bsuch|recherch|cherch/i, 'search'],
-  [/bizton|adatvéd|privát|magánél|segur|privacidad|datenschutz|sicher|sécur|confidentialité/i, 'shield'],
-  [/beállít|testreszab|kapcsold|ajusta|einstell|paramèt|réglage|personnalis/i, 'sliders'],
-  [/ments|mentsd|letölt|megoszt|guarda|descarg|comparte|speicher|herunterlad|\bteilen|enregistr|télécharg|partag/i, 'download'],
-  [/küldd?\b|futtat|envía|enviar|\bsende|ausführ|envoy|lance/i, 'plane'],
-  [/ellenőriz|finomít|javítsd|szerkeszt|átnéz|revisa|corrig|prüf|überprüf|verbesser|vérif|améliore|peaufine/i, 'check'],
-  [/formáz|szerkezet|vázlat|sablon|listá|estructura|formato|plantilla|gliederung|vorlage|modèle/i, 'doc'],
-  [/csevegés|beszélget|írd be|gépeld|írj\b|escribe|conversac|tippe|eingabe|converse|saisis|écris/i, 'chat'],
-  [/fiók|belép|jelentkez|kulcs\b|cuenta|inicia sesión|anmeld|konto\b|connexion|compte|clé\b/i, 'login'],
-  [/ötlet|\bidea|einfall|idée/i, 'bulb'],
-  [/\bcél|objetivo|\bziel|objectif/i, 'target']
-];
+// A lépés-ikon kiválasztása: core/lepes-kep.js (2026-10-23 — odaillő ikon vagy semmi; a régi ciklus/dedup kivéve)
 
 // Többnyelvű lépés-fejléc felismerő: "Step 1 —", "1. lépés —", "Paso 1", "Schritt 1", "Étape 1"
 // (a lépés-dobozok, a folyamat-térkép, a stepsTotal ÉS a HowTo jsonld közös alapja)
 const STEP_RX = /^(?:(?:step|paso|schritt|[ée]tape)\s*\d*|\d+\s*\.?\s*l[ée]p[ée]s)\s*[—:–.-]?\s*/i;
-
-// A lépéshez tartozó illusztráció KULCSA (téma-egyeztetés + oldalon belüli dedup).
-// Determinisztikus: azonos cím-sorozatra azonos kulcs-sorozat → a folyamat-térkép
-// és a lépés-dobozok ikonjai garantáltan egyeznek.
-function stepArtKey(title, idx, used) {
-  const t = title || '';
-  let key = null;
-  for (const [re, k] of STEP_ART_RULES) { if (re.test(t)) { key = k; break; } }
-  if (!key) for (const [re, k] of STEP_ART_RULES_I18N) { if (re.test(t)) { key = k; break; } }
-  if (!key) key = STEP_ART_CYCLE[idx % STEP_ART_CYCLE.length];
-  // OLDALON BELÜLI DEDUP: ugyanaz az illusztráció ne ismétlődjön (zavaró volt)
-  if (used) {
-    if (used.has(key)) {
-      const free = STEP_ART_CYCLE.find(k => !used.has(k));
-      if (free) key = free;
-    }
-    used.add(key);
-  }
-  return key;
-}
 
 // ⚠️ AZ ALT NEM MARADHAT ÜRES (2026-09-23, Bing Webmaster „Oldalvizsgálat"):
 // az üres alt a szabvány szerint „díszítő kép", a Bing viszont HIÁNYZÓNAK
@@ -2372,6 +2329,7 @@ function kitoltesTipp(boxHtml) {
 }
 
 function stepArtHtml(key, heading = '') {
+  if (!key) return '';   // 10-23: nincs odaillő ikon → nincs kép (core/lepes-kep.js)
   // Színes 3D illusztráció (a borítók stílusában) — ha létezik; különben SVG tartalék
   if (existsSync(join(__dirname, 'assets', 'art', key + '.jpg')))
     return `<div class="g-step__art"><img class="g-art__img" src="/assets/art/${key}.jpg" alt="${altSzoveg(heading)}" loading="lazy" decoding="async" width="640" height="480"></div>`;
@@ -2385,13 +2343,13 @@ function guideMapHtml(headings, artKeys) {
   if (headings.length < 3) return '';   // 1-2 lépésnél nincs értelme térképnek
   const nodes = headings.map((h, i) => {
     const key = artKeys[i];
-    const img = existsSync(join(__dirname, 'assets', 'art', key + '.jpg'))
+    const img = key && existsSync(join(__dirname, 'assets', 'art', key + '.jpg'))
       ? `<img class="g-map__img" src="/assets/art/${key}.jpg" alt="${altSzoveg(h)}" loading="lazy" decoding="async" width="124" height="124">`
       : `<span class="g-map__img g-map__img--f" aria-hidden="true">${i + 1}</span>`;
     let label = h;
     if (label.length > 34) label = label.slice(0, 31).trimEnd() + '…';
     return `<a class="g-map__node" href="#step-${i + 1}">
-      <span class="g-map__badge">${i + 1}</span>${img}
+      ${key ? `<span class="g-map__badge">${i + 1}</span>` : ''}${img}
       <span class="g-map__lbl">${escapeHtml(label)}</span></a>`;
   }).join('<span class="g-map__arr" aria-hidden="true">➜</span>');
   return `<nav class="g-map" aria-label="${escapeHtml(tr('mapTitle'))}">
@@ -2476,9 +2434,16 @@ function buildGuidePage(a) {
   const { intro, sections } = parseGuideSections(a.bodyMd);
 
   // ELŐSZÖR a lépés-címek + ikon-kulcsok (a térkép ÉS a dobozok közös forrása)
-  const stepHeadings = sections.filter(s => STEP_RX.test(s.title)).map(s => s.title.replace(STEP_RX, ''));
-  const artSet = new Set();
-  const artKeys = stepHeadings.map((h, i) => stepArtKey(h, i, artSet));
+  const stepSections = sections.filter(s => STEP_RX.test(s.title));
+  const stepHeadings = stepSections.map(s => s.title.replace(STEP_RX, ''));
+  // ODAILLŐ IKON VAGY SEMMI (2026-10-23, core/lepes-kep.js): null → nincs kép, a térképen a sorszám
+  // Az ANGOL lépésből (ha a lépésszám egyezik): a fordított címekre kevesebb kulcsszó illik
+  // (mérve 10-23: hu 292 / es 259 kép nélküli lépés az angol 48 helyett), és így minden nyelven ugyanaz a kép.
+  const enLepesek = (a.bodyMdEn ? parseGuideSections(a.bodyMdEn).sections : []).filter(s => STEP_RX.test(s.title));
+  const kepForras = enLepesek.length === stepSections.length ? enLepesek : null;
+  const artKeys = stepSections.map((s, i) => kepForras
+    ? lepesKepKulcs(kepForras[i].title.replace(STEP_RX, ''), elsoMondat(lepesReszek(kepForras[i].body, 'en').fo))
+    : lepesKepKulcs(stepHeadings[i], elsoMondat(lepesReszek(s.body, LANG).fo)));
 
   let stepNo = 0;
   let faqPrepBody = '', faqMistBody = '';   // GYIK-hoz: meglévő szekciók újracsomagolva
@@ -2492,10 +2457,11 @@ function buildGuidePage(a) {
       // A szöveg NEM változik, csak a helye (core/guide-step-parts.js) → minden
       // útmutatóra érvényes, átírás nélkül.
       const reszek = lepesReszek(s.body, LANG);
+      const oldalsoKep = (KAPCSOLO.vazlat && vazlatHtml(reszek.fo, LANG, a.tool)) || stepArtHtml(artKeys[stepNo - 1], heading);
       const osszes = stepHeadings.length;
       const szazalek = Math.round(stepNo / Math.max(1, osszes) * 100);
       return `<div class="g-step g-slide" id="step-${stepNo}"><div class="g-step__no">${stepNo}</div>
-        <div class="g-step__grid">
+        <div class="g-step__grid${oldalsoKep ? '' : ' g-step__grid--szoveg'}">
           <div class="g-step__body">
             <div class="g-slide__top"><span class="g-slide__cnt">${escapeHtml(tr('stepOf').replace('{n}', stepNo).replace('{m}', osszes))}</span><span class="g-slide__bar" aria-hidden="true"><i style="width:${szazalek}%"></i></span></div>
             <h3 class="g-step__h">${inlineHeadingHtml(heading)}</h3>${guideSectionHtml(reszek.fo)}
@@ -2504,7 +2470,7 @@ function buildGuidePage(a) {
             ${reszek.maskepp ? `<div class="g-diff"><span class="g-diff__lbl">🔄 ${escapeHtml(tr('diffLabel'))}</span>${guideSectionHtml(dobozSzoveg(reszek.maskepp, 'maskepp', LANG))}</div>` : ''}
             ${stepNo < osszes ? `<a class="g-next" href="#step-${stepNo + 1}">${escapeHtml(tr('nextStep'))} ↓</a>` : ''}
           </div>
-          ${(KAPCSOLO.vazlat && vazlatHtml(reszek.fo, LANG, a.tool)) || stepArtHtml(artKeys[stepNo - 1], heading)}
+          ${oldalsoKep}
         </div></div>`;
     }
     if (/before you start|before we start|prerequisit|miel[őo]tt elkezd|kezd[ée]s el[őo]tt|antes de (?:empezar|comenzar)|bevor (?:du|sie) (?:loslegst|beginn)|vorbereitung|avant de commencer/i.test(t)) {
@@ -2615,7 +2581,7 @@ function buildGuidePage(a) {
     <div class="article__head">
       <div class="article__badges">
         <span class="tag ${cat.cls}">📘 ${tr('stepByStep')}</span>
-        ${toolChip}${officialBtn}${levelChip}
+        ${toolChip}${officialBtn}${levelChip}${KEDVENCEK.includes(a.slug) ? `<span class="g-fav">🔥 ${escapeHtml(tr('favBadge'))}</span>` : ''}
         <span class="aud ${aud.cls}">${aud.icon} ${tr(aud.key)}</span>
       </div>
       <h1 class="article__title">${escapeHtml(a.title)}</h1>
@@ -3663,6 +3629,12 @@ function main() {
 
   // Cikkek betöltése (egyszer) + kereszthivatkozás-index
   const articles = loadArticles();
+  // 🔥 Olvasóink kedvencei: a CI által írt forgalmi naplóból (hiba/hiány → nincs kiemelés, a build megy tovább)
+  try {
+    const tl = JSON.parse(readFileSync(join(PROJECT_ROOT, 'memory', 'traffic-log.json'), 'utf-8'));
+    KEDVENCEK = olvasoiKedvencek(tl.days, new Set(articles.filter(a => a.isGuide).map(a => a.slug)));
+  } catch { KEDVENCEK = []; }
+  console.log(`🔥 olvasóink kedvencei: ${KEDVENCEK.length} útmutató`);
   buildXref(articles);
   buildRelated(articles);
   buildGuideLinks(articles);   // terméknév → útmutató térkép a szövegbeli linkeléshez
@@ -3738,7 +3710,7 @@ function main() {
       writeFileSync(join(outBase, temaHubUt(t.id) + '.html'), buildTopicPage(t, lista), 'utf-8');
       if (!noindexNyelv(lang)) sitemapUrls.push({ loc: `${SITE.url}${langPrefix(lang)}/${temaHubUt(t.id)}`, date: gyujtoLastmod(lista) });
     }
-    writeFileSync(join(outBase, 'guides.html'), buildGuidesPage(generalGuides, guideCounts, temaCsoportok), 'utf-8');
+    writeFileSync(join(outBase, 'guides.html'), buildGuidesPage(generalGuides, guideCounts, temaCsoportok, KEDVENCEK.map(sl => guides.find(g => g.slug === sl)).filter(Boolean)), 'utf-8');
     writeFileSync(join(outBase, 'tools.html'), buildToolsPage(companyGuides, guideCounts), 'utf-8');
     writeFileSync(join(outBase, 'glossary.html'), buildGlossaryPage(), 'utf-8');   // AI-kisszótár
     writeFileSync(join(outBase, 'prompts.html'), buildPromptsPage(articles, loc), 'utf-8');   // Prompt-tár (2026-10-16)
