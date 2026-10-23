@@ -41,6 +41,7 @@ import { bufferSor, tiktokSor } from './buffer-guard.js';
 import { riportSor as fbRiportSor, threadsRiportSor } from './fb-link-guard.js';
 import { tesztSor } from './test-guard.js';
 import { pdfLetoltesSor } from './pdf-download.js';
+import { bevaltSor, EXPORT_HIBA } from './bevalt-jelzes.js';   // 👍 „Bevált?” 10-23
 import { partnerKattintasSor } from './affiliate.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -985,6 +986,9 @@ async function main() {
           const het = Object.entries(exp.__src).filter(([n]) => n > new Date(Date.now() - 8 * 864e5).toISOString().slice(0, 10)).reduce((s, [, v]) => s + (v.th || 0), 0);
           lines.push(`🧵 Threads-linkről tegnap: ${exp.__src[tegnap]?.th || 0} látogató (7 nap: ${het}) — jelölt link, pontos`);
         }
+        // 👍 „BEVÁLT?” (10-23): a promptok alatti jelzés; csend, ha 7 napja 0
+        const bevalt = bevaltSor(exp.__fbp);
+        if (bevalt) lines.push(bevalt);
         const affSor = partnerKattintasSor(exp.__aff);
         if (affSor) lines.push(affSor);
         const total = (cs.chat || 0) + (cs.mail || 0);
@@ -1023,9 +1027,9 @@ async function main() {
           lines.push(`✉️ AUTO-VÁLASZ NEM MENT KI: ${cs.replyfail} db — a feladó nem kapott visszajelzést.`
             + (cs.replyfailWhy ? ` Ok: ${String(cs.replyfailWhy).slice(0, 120)}` : ''));
         }
-      }
-    }
-  } catch { /* a riport ettől még kimegy */ }
+      } else lines.push(EXPORT_HIBA);   // 10-23: rossz státusz ≠ „senki nem szavazott”
+    } else lines.push(EXPORT_HIBA);     // hiányzó kulcs
+  } catch { lines.push(EXPORT_HIBA); /* a riport ettől még kimegy */ }
 
   // Hierarchia-műszerfal (2026-07-13): visszaadások + főnöki döntések + tanulságok
   try {

@@ -88,7 +88,8 @@ t('a honlap TÉNYLEG használja (lépéskártya + feliratok 3 nyelven + Másolá
   const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
   assert.match(b, /const reszek = lepesReszek\(s\.body, LANG\);/);
   assert.equal((b.match(/stepOf: '/g) || []).length, 3, 'a „Step n of m" felirat nem mind a 3 nyelven van meg');
-  assert.equal((b.match(/masolGomb\(isPrompt\)/g) || []).length, 3, 'a Másolás gomb nem mindkét példa-ágon van');
+  // 10-23: a kódblokk-ág MINDIG másolható (masolGomb(true)) — lásd core/kitoltheto-prompt.js
+  assert.equal((b.match(/masolGomb\((?:isPrompt|true)\)/g) || []).length, 3, 'a Másolás gomb nem mindkét példa-ágon van');
   const app = readFileSync(join(ROOT, 'website', 'assets', 'app.js'), 'utf-8');
   assert.match(app, /closest\('\.g-copy'\)/);
 });

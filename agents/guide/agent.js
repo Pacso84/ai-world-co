@@ -625,6 +625,13 @@ every step without getting lost or misled; the Reviewer rejects guides that fail
   (4) an "IF IT LOOKS DIFFERENT" fallback (apps vary by device and change often),
   (5) a 💬 Example to copy where the step involves typing, and
   (6) a SUCCESS CHECK: end with "You'll know it worked when …".
+- FILL-IN PROMPTS: when the 💬 Example is a prompt the reader types into the AI, it
+  starts with a straight quote mark (") and the reader's OWN details go in
+  square brackets, so the website turns them into fill-in boxes:
+  💬 Example: "Plan a 3-day road trip from [your city] to [your destination] in [month] for [number] kids."
+  Use 1–5 brackets, each 1–4 plain words naming what to type ([your city], [job title],
+  [paste your email here]). Everything else stays a complete, concrete sentence.
+  Never bracket the instruction itself, never use [REDACTED] or [X].
 - Each step is 60–140 words. Two thin sentences per step is NOT acceptable.
 - HONESTY: never state uncertain UI details as fact (use "look for a button
   like …"); never over-promise what the tool will do — say what USUALLY happens
@@ -682,7 +689,7 @@ this is for. Write it as plain prose — do NOT print a label like "Hook:" or
 ## Step 1 — <short action>
 The exact action + what you see on screen + what happens next + what to do if
 it looks different on your device + "You'll know it worked when …" (60-140 words).
-💬 Example: a concrete example the reader can copy.
+💬 Example: a concrete example the reader can copy (a typed prompt: "…[your detail]…" — see FILL-IN PROMPTS).
 
 ## Step 2 — <short action>
 …(write 4 to 7 steps total, EACH with the six parts; 💬 Example where the reader types something)…
