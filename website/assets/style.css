@@ -1313,6 +1313,10 @@ body {
 .fx-chip-t { flex: none; padding: 2px 7px; border-radius: 4px; background: var(--ink); color: var(--paper); font-size: 10.5px; font-weight: 800; letter-spacing: .04em; }
 .fx-chip--ki { color: var(--muted); text-decoration: line-through; }
 .fx-chip--ki .fx-chip-t { background: var(--line-strong); color: var(--ink-soft); }
+/* 10-23: „Lehet, hogy név?” — felajánlott, MÉG NEM rejtett nevek */
+.fx-jav-h { margin-top: 14px; }
+.fx-chip--jav { border-style: dashed; border-color: var(--c-creative); }
+.fx-chip--jav .fx-chip-t { background: var(--c-creative); color: #fff; }
 .fx-warn { margin: 16px 0 0; padding: 10px 14px; border-radius: 12px; background: color-mix(in srgb, var(--c-creative) 13%, var(--card)); font-size: 14.5px; line-height: 1.45; color: var(--ink); }
 .fx-valasz { margin-top: 26px; padding: 20px; border: 1px solid var(--line); border-radius: 20px; background: var(--card); }
 .fx-valasz .fx-lap-h { margin-bottom: 8px; }

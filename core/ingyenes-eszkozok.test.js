@@ -36,6 +36,35 @@ t('🙅 nem jelöl: dátum, ár, rendelésszám, hibás kártyaszám, TAJ-kulcss
   assert.deepEqual(tipusok('Kedves Ügyfelünk! Hi there, Dear Customer,'), []);
 });
 
+// 2026-10-23 BŐVÍTÉS (user: „jó lenne bővíteni!”) — új adatfajták, valódi mintákkal
+t('🆕 privát link, IP (v4/v6), rendszám (HU/ES/US), okmányszám, irányítószám + település, US ZIP', () => {
+  const v = [
+    'Belépés: https://example.com/reset?token=abc123XYZ&x=1 ma',
+    'A szerverem címe 192.168.1.20, a másik 2001:db8:85a3::8a2e:370:7334.',
+    'A rendszámom ABC-123, a régi AA BB-123. My license plate is 7ABC123. Matrícula: 1234 BCD',
+    'Útlevélszám: BA1234567. Személyi: 123456AB. Driver license D1234567.',
+    'Szállítási cím: 1051 Budapest, Petőfi utca 12.\n28013 Madrid\nNew York, NY 10001'
+  ].flatMap(tipusok);
+  for (const k of ['link:https://example.com/reset?token=abc123XYZ&x=1', 'ip:192.168.1.20', 'ip:2001:db8:85a3::8a2e:370:7334', 'rendszam:ABC-123', 'rendszam:AA BB-123',
+    'rendszam:7ABC123', 'rendszam:1234 BCD', 'azonosito:BA1234567', 'azonosito:123456AB', 'azonosito:D1234567', 'cim:1051 Budapest', 'cim:28013 Madrid', 'cim:NY 10001'])
+    assert.ok(v.includes(k), 'hiányzik: ' + k + ' — kaptam: ' + v.join(' | '));
+});
+
+t('🙅 az új szabályok zaja: évszám + szó, termékkód, rendelésszám, időpont, összeg, sima link NEM', () => {
+  assert.deepEqual(tipusok('2026 Olympics. Order 1234 shipped. Model GPT-4 and ABC-123 product. In 2026 October we met. 1500 Euro. 12:30:45. https://example.com/blog/post'), []);
+});
+
+t('💡 „Lehet, hogy név?”: a mondat közepi nevet FELAJÁNLJA (nem rejti); terméknevet, már rejtettet nem', () => {
+  const sz = 'Tegnap beszéltem Tóth Péterrel, aki szerint Kovács Anna ráér. I met John Smith at Google Maps.';
+  const jav = M.javaslatok(sz, M.keres(sz));
+  for (const n of ['Tóth Péterrel', 'Kovács Anna', 'John Smith']) assert.ok(jav.includes(n), 'hiányzik: ' + n + ' — ' + jav.join(' | '));
+  assert.equal(jav.some(n => /Google/.test(n)), false, 'a terméknév nem név');
+  assert.deepEqual(M.keres(sz).filter(t => t.tipus === 'nev'), [], 'magától NEM rejti el');
+  assert.deepEqual(M.javaslatok('Kedves Kovács Anna! Kovács Anna szerint jó.', M.keres('Kedves Kovács Anna! Kovács Anna szerint jó.')), [], 'ami már rejtve van, azt nem ajánlja');
+  const k = M.kitakar(sz, M.keres(sz, { nevek: ['Tóth Péterrel'] }), ESZKOZ_SZ.hu.labels);
+  assert.match(k.szoveg, /beszéltem \[NÉV 1\], aki/, 'az elfogadott javaslat NÉV-ként rejtődik');
+});
+
 t('➕ saját kifejezés: minden előfordulás elrejtve, szóhatáron (a „Bob” nem rejti a „Bobby”-t)', () => {
   const v = M.keres('Acme Kft. és az Acme kft. ügye. Bob és Bobby.', { sajat: ['Acme Kft.', 'Bob'] });
   assert.equal(v.filter(x => x.tipus === 'sajat' && /acme/i.test(x.ertek)).length, 2);

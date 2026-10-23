@@ -40,7 +40,19 @@ export function eszkozMag() {
     return n >= 9 && n <= 15 && (/^[+(0]/.test(t) || /\d[\s.-]\d/.test(t));
   }
 
+  var HONAP = /^(January|February|March|April|May|June|July|August|September|October|November|December|Január|Február|Március|Április|Május|Június|Július|Augusztus|Szeptember|Október|Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre)$/i;
   var SZABALYOK = [
+    // ── 2026-10-23 BŐVÍTÉS (user: „jó lenne bővíteni!”) — a zajos fajták CSAK a kulcsszó / sor eleje mellett ──
+    // privát link: belépési kulcsot / azonosítót hordozó URL
+    { tipus: 'link', rx: /https?:\/\/[^\s<>"']+[?&](?:token|access_token|key|api_key|apikey|session|sessionid|sid|auth|sig|signature|code|otp|id|uid|invite|reset)=[^\s<>"']+/gi },
+    { tipus: 'ip', rx: /\b(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)\b/g },
+    { tipus: 'ip', rx: /\b[0-9a-f]{1,4}(?::[0-9a-f]{0,4}){2,7}\b/gi, ok: function (s) { var k = s.split(':').length - 1; return k >= 3 && (/[a-f]/i.test(s) || k >= 5); } },
+    { tipus: 'rendszam', elotte: /rendszám|forgalmi|plate|matrícula|placa/i, rx: /\b(?:[A-Z]{2}[ -]?[A-Z]{2}[ -]?\d{3}|[A-Z]{3}[ -]?\d{3}|\d{4}[ -]?[B-DF-HJ-NP-TV-Z]{3}|[A-Z0-9]{2,4}[ -]?[A-Z0-9]{3,4})\b/g, ok: function (s) { return /\d/.test(s) && /[A-Z]/.test(s); } },
+    { tipus: 'azonosito', elotte: /útlevél|passport|pasaporte|személyi|igazolvány|ID card|identity card|jogosítvány|driver'?s? licen[cs]e|licencia|carnet|permiso de conducir/i, rx: /\b[A-Z0-9]{1,3}[ -]?\d{5,9}[A-Z0-9]{0,2}\b/g },
+    { tipus: 'azonosito', rx: /\b\d{6}[A-Z]{2}\b/g },
+    // irányítószám + település: sor elején vagy vessző / kettőspont után (HU 4 jegy, ES 5 jegy); US: állam + ZIP
+    { tipus: 'cim', elotte: /(^|[\n,:;])\s*$/, rx: new RegExp('\\b\\d{4,5}[ \\t]+[' + NAGY + '][' + BETU + '-]{2,}(?:[ \\t]+[' + NAGY + '][' + BETU + '-]+)?(?=[ \\t]*(?:[,\\n]|$))', 'g'), ok: function (s) { return !HONAP.test(s.split(/\s+/)[1] || ''); } },
+    { tipus: 'cim', rx: /\b(?:AL|AK|AZ|AR|CA|CO|CT|DE|FL|GA|HI|ID|IL|IN|IA|KS|KY|LA|ME|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VT|VA|WA|WV|WI|WY|DC)\s\d{5}(?:-\d{4})?\b/g },
     { tipus: 'email', rx: /[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/g },
     { tipus: 'iban', rx: /\b[A-Z]{2}\d{2}(?: ?[A-Z0-9]){11,30}\b/g, ok: ibanOk },
     { tipus: 'kartya', rx: /\b\d(?:[ -]?\d){12,18}\b/g, ok: function (s) { return luhn(s.replace(/\D/g, '')); } },
@@ -94,7 +106,7 @@ export function eszkozMag() {
         if (start > 0 && /[0-9A-Za-z+]/.test(sz[start - 1]) && r.tipus !== 'szuletes') continue;
         ertek = ertek.replace(/[\s.,]+$/, ''); end = start + ertek.length;
         if (r.ok && !r.ok(ertek)) continue;
-        if (r.elotte && !r.elotte.test(sz.slice(Math.max(0, start - 25), start))) continue;
+        if (r.elotte && !r.elotte.test(sz.slice(Math.max(0, start - 40), start))) continue;
         if (atfed(ki, start, end)) continue;
         ki.push({ start: start, end: end, ertek: ertek, tipus: r.tipus });
       }
@@ -114,6 +126,7 @@ export function eszkozMag() {
     });
     var keresendo = nevek.map(function (n) { return { s: n, tipus: 'nev' }; })
       .concat((o.sajat || []).map(function (s) { return { s: String(s).trim(), tipus: 'sajat' }; }).filter(function (x) { return x.s.length >= 2; }))
+      .concat((o.nevek || []).map(function (s) { return { s: String(s).trim(), tipus: 'nev' }; }).filter(function (x) { return x.s.length >= 2; }))   // elfogadott „Lehet, hogy név?” (10-23)
       .sort(function (a, b) { return b.s.length - a.s.length; });
     var kis = sz.toLowerCase();
     keresendo.forEach(function (k) {
@@ -125,6 +138,24 @@ export function eszkozMag() {
       }
     });
     return ki.filter(function (x) { return !kihagy[x.ertek.toLowerCase()]; }).sort(function (a, b) { return a.start - b.start; });
+  }
+
+  // „LEHET, HOGY NÉV?” (2026-10-23): a mondat KÖZEPÉN álló két egymás utáni nagybetűs szó. NEM rejtjük el
+  // magától (sok a cég-, termék- és helynév) — csak felajánljuk; a látogató egy koppintással rejti el.
+  var NEM_NEV_JAV = /^(ChatGPT|OpenAI|Google|Gemini|Claude|Anthropic|Microsoft|Copilot|Apple|Amazon|Alexa|Meta|Facebook|Instagram|WhatsApp|YouTube|TikTok|Threads|Netflix|Windows|Android|iPhone|Excel|Word|Gmail|Outlook|Zoom|Slack|Notion|Canva|Perplexity|AI|MI|IA|GPT|New|North|South|East|West|San|Los|Las|The|A|An|El|La|Los|Las|De|Del|Hello|Hi|Dear|Kedves)$/;
+  function javaslatok(sz, talalatok) {
+    sz = String(sz || '');
+    var mar = {}; (talalatok || []).forEach(function (t) { mar[t.ertek.toLowerCase()] = 1; });
+    var rx = new RegExp('[a-záéíóöőúüűñ,;]\\s+(' + NEVSZO + '\\s+' + NEVSZO + ')', 'g');
+    var ki = [], m;
+    while ((m = rx.exec(sz))) {
+      var n = m[1], szavak = n.split(/\s+/);
+      rx.lastIndex = m.index + m[0].length - szavak[1].length;   // átfedő párok is („Anna Kovács Péter”)
+      if (szavak.some(function (w) { return NEM_NEV.test(w) || NEM_NEV_JAV.test(w) || HONAP.test(w); })) continue;
+      if (mar[n.toLowerCase()] || ki.indexOf(n) >= 0) continue;
+      ki.push(n);
+    }
+    return ki.slice(0, 8);
   }
 
   /**
@@ -186,7 +217,7 @@ export function eszkozMag() {
     return { feladat: v(a.feladat), hatter: v(a.hatter), kinek: v(a.kinek) || v(a.hangnem), formatum: v(a.formatum) || v(a.hossz) };
   }
 
-  return { keres: keres, kitakar: kitakar, visszaallit: visszaallit, promptEpit: promptEpit, hozzavalok: hozzavalok,
+  return { keres: keres, javaslatok: javaslatok, kitakar: kitakar, visszaallit: visszaallit, promptEpit: promptEpit, hozzavalok: hozzavalok,
     _: { luhn: luhn, ibanOk: ibanOk, tajOk: tajOk, adoOk: adoOk, dniOk: dniOk } };
 }
 
@@ -268,7 +299,7 @@ export function eszkozSavHtml(sz, { lp = '' } = {}) {
 /** 🛡️ Biztonságos bemásolás: a te lapod → pajzs → az AI lapja (kitakarva) → visszaállítás. */
 export function biztonsagosHtml(sz, { lp = '', hirdetes = '' } = {}) {
   const s = sz.sp;
-  const adat = { labels: sz.labels, sp: { found: s.found, unhide: s.unhide, none: s.none, empty2: s.empty2, copied: s.copied, restored: s.restored, sample: s.sample, stamp: s.stamp, stampNone: s.stampNone }, kulcs: ATADAS_KULCS };
+  const adat = { labels: sz.labels, sp: { found: s.found, unhide: s.unhide, none: s.none, empty2: s.empty2, copied: s.copied, restored: s.restored, sample: s.sample, stamp: s.stamp, stampNone: s.stampNone, javaslatH: s.javaslatH, javaslatTip: s.javaslatTip }, kulcs: ATADAS_KULCS };
   return `<div class="fx-page fx-sp">
   <a class="fx-vissza-link" href="${lp}/prompts">← ${esc(sz.vissza)}</a>
   <section class="fx-top">
@@ -325,10 +356,10 @@ export function biztonsagosHtml(sz, { lp = '', hirdetes = '' } = {}) {
   var S = ${jsonBe(adat)};${KOZOS_JS}
   var inp = $('spIn'), cust = $('spCustom'), found = $('spFound'), out = $('spOut'), copyB = $('spCopy'), stamp = $('spStamp');
   var ans = $('spAns'), res = $('spRes'), resNote = $('spResNote'), resCopy = $('spResCopy');
-  var lathato = {}, utolso = { szoveg: '', terkep: [] }, visszaSz = '';
+  var lathato = {}, utolso = { szoveg: '', terkep: [] }, visszaSz = '', elfogadott = [];
   function sajat(){ return cust.value.split(',').map(function(x){ return x.trim(); }).filter(Boolean); }
   function frissit(){
-    var sz = inp.value, mind = M.keres(sz, { sajat: sajat() });
+    var sz = inp.value, mind = M.keres(sz, { sajat: sajat(), nevek: elfogadott });
     var rejt = mind.filter(function(t){ return !lathato[t.ertek.toLowerCase()]; });
     utolso = M.kitakar(sz, rejt, S.labels);
     var jel = {}; utolso.terkep.forEach(function(t){ jel[t.tipus + '|' + t.ertek.toLowerCase()] = t.jel; });
@@ -350,14 +381,19 @@ export function biztonsagosHtml(sz, { lp = '', hirdetes = '' } = {}) {
     found.innerHTML = mind.length
       ? '<p class="fx-found-h"><strong>' + esc(S.sp.found) + ': ' + db + '</strong> <span>' + esc(S.sp.unhide) + '</span></p><div class="fx-chips">' + chips + '</div>'
       : (sz.trim() ? '<p class="fx-found-none">' + esc(S.sp.none) + '</p>' : '');
+    // „Lehet, hogy név?” (10-23): a mondat közepén álló nevek — csak felajánlva, koppintásra rejtjük
+    var jav = M.javaslatok(sz, mind);
+    if (jav.length) found.innerHTML += '<p class="fx-found-h fx-jav-h"><strong>' + esc(S.sp.javaslatH) + '</strong> <span>' + esc(S.sp.javaslatTip) + '</span></p><div class="fx-chips">'
+      + jav.map(function(n){ return '<button type="button" class="fx-chip fx-chip--jav" data-jav="' + esc(n) + '"><span class="fx-chip-t">?</span>' + esc(n) + '</button>'; }).join('') + '</div>';
   }
   inp.addEventListener('input', frissit); cust.addEventListener('input', frissit);
   found.addEventListener('click', function(e){
     var b = e.target.closest ? e.target.closest('.fx-chip') : null; if (!b) return;
+    var j = b.getAttribute('data-jav'); if (j) { if (elfogadott.indexOf(j) < 0) elfogadott.push(j); frissit(); return; }
     var v = b.getAttribute('data-v'); if (lathato[v]) delete lathato[v]; else lathato[v] = 1; frissit();
   });
-  $('spEx').addEventListener('click', function(){ inp.value = S.sp.sample; lathato = {}; frissit(); });
-  $('spClr').addEventListener('click', function(){ inp.value = ''; cust.value = ''; lathato = {}; frissit(); inp.focus(); });
+  $('spEx').addEventListener('click', function(){ inp.value = S.sp.sample; lathato = {}; elfogadott = []; frissit(); });
+  $('spClr').addEventListener('click', function(){ inp.value = ''; cust.value = ''; lathato = {}; elfogadott = []; frissit(); inp.focus(); });
   copyB.addEventListener('click', function(){ masol(utolso.szoveg, copyB, S.sp.copied); });
   $('spRestore').addEventListener('click', function(){
     var r = M.visszaallit(ans.value, utolso.terkep); visszaSz = r.szoveg;
