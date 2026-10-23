@@ -1157,6 +1157,9 @@ function loadArticles() {
         seoKeywords: (data._meta?.seo?.keywords || meta.tags || []).join(', '),
         bodyHtml: wrapTables(wrapInShort(wrapImpactSection(stripLeadH1(marked.parse(body))))),
         bodyMd: body,
+        // AZ ANGOL TÖRZS MEGŐRZÉSE (2026-10-23): a lokalizáló felülírja a bodyMd-t, a lépés-ikon
+        // viszont az angol lépésből jön (core/lepes-kep.js) — így minden nyelven ugyanaz a kép
+        bodyMdEn: body,
         // „Útmutató-e?" — a közös core/guide-kind.js dönt (2026-09-16). Ez a
         // mező vezérli a SABLONVÁLASZTÁST (buildGuidePage vs buildArticlePage),
         // a /guides listát, a kb.json-t és a kereszthivatkozást; korábban a
@@ -2434,7 +2437,13 @@ function buildGuidePage(a) {
   const stepSections = sections.filter(s => STEP_RX.test(s.title));
   const stepHeadings = stepSections.map(s => s.title.replace(STEP_RX, ''));
   // ODAILLŐ IKON VAGY SEMMI (2026-10-23, core/lepes-kep.js): null → nincs kép, a térképen a sorszám
-  const artKeys = stepSections.map((s, i) => lepesKepKulcs(stepHeadings[i], elsoMondat(lepesReszek(s.body, LANG).fo)));
+  // Az ANGOL lépésből (ha a lépésszám egyezik): a fordított címekre kevesebb kulcsszó illik
+  // (mérve 10-23: hu 292 / es 259 kép nélküli lépés az angol 48 helyett), és így minden nyelven ugyanaz a kép.
+  const enLepesek = (a.bodyMdEn ? parseGuideSections(a.bodyMdEn).sections : []).filter(s => STEP_RX.test(s.title));
+  const kepForras = enLepesek.length === stepSections.length ? enLepesek : null;
+  const artKeys = stepSections.map((s, i) => kepForras
+    ? lepesKepKulcs(kepForras[i].title.replace(STEP_RX, ''), elsoMondat(lepesReszek(kepForras[i].body, 'en').fo))
+    : lepesKepKulcs(stepHeadings[i], elsoMondat(lepesReszek(s.body, LANG).fo)));
 
   let stepNo = 0;
   let faqPrepBody = '', faqMistBody = '';   // GYIK-hoz: meglévő szekciók újracsomagolva

@@ -38,6 +38,12 @@ assert.equal(lepesKepKulcs('Define your goal'), 'target');
 assert.equal(lepesKepKulcs('Ellenőrizd a tényeket'), 'check');
 assert.equal(lepesKepKulcs('Töltsd fel a fájlt'), 'doc');
 assert.equal(lepesKepKulcs('Sube tu archivo'), 'doc');
+// élő előnézetből (10-23): ezek eddig kép nélkül maradtak volna
+assert.equal(lepesKepKulcs('Mondd el az AI-nak, mire van szükséged'), 'chat');
+assert.equal(lepesKepKulcs('Tell the AI what you need'), 'chat');
+assert.equal(lepesKepKulcs('Másold át az e-mail programodba'), 'download');
+assert.equal(lepesKepKulcs('Dile a la IA lo que necesitas'), 'chat');
+assert.equal(lepesKepKulcs('Copia el texto a tu correo'), 'download');
 
 // 6) első mondat: markdown nélkül, csak az első mondat
 assert.equal(elsoMondat('Tap the **microphone icon** at the bottom. Then speak.'), 'Tap the microphone icon at the bottom.');
@@ -50,6 +56,10 @@ assert.equal(elsoMondat(''), '');
   assert.ok(!/STEP_ART_CYCLE/.test(b), 'a kényszer-ciklus maradt a buildben');
   assert.ok(!/function stepArtKey/.test(b), 'a régi választó maradt a buildben');
   assert.match(b, /g-step__grid--szoveg/, 'kép nélküli lépésnél a szöveg kapja a teljes szélességet');
+  // MINDEN NYELVEN AZ ANGOL LÉPÉSBŐL (mérve 10-23: hu-n 292, es-en 259 lépés maradt volna kép nélkül,
+  // angolul 48) — így a három nyelven ugyanaz a kép áll ugyanannál a lépésnél
+  assert.match(b, /bodyMdEn: body,/, 'a betöltés nem teszi el az angol szöveget');
+  assert.match(b, /parseGuideSections\(a\.bodyMdEn/, 'a kép-kulcs nem az angol lépésből jön');
 }
 
 console.log('✅ lepes-kep: odaillő ikon vagy semmi');
