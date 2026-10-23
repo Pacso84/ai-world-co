@@ -46,4 +46,17 @@ assert.equal(kitoltottSzoveg('[REDACTED] for [name]', ['Bob']), '[REDACTED] for 
 assert.ok(!/placeholder="a"/.test(kitolthetoHtml('[a&quot;b]')));
 assert.ok(!kitolthetoHtml('[a"b]').includes('placeholder="a"b"'));
 
+// 8) BEKÖTÉS-ŐR (Task 2): a build és a böngészős szkript tényleg használja
+{
+  const build = olvas('website/build.js'), app = olvas('website/assets/app.js');
+  assert.match(build, /import \{[^}]*kitolthetoHtml[^}]*\} from '\.\.\/core\/kitoltheto-prompt\.js'/, 'a build nem importálja');
+  assert.equal((build.match(/kitolthetoHtml\(/g) || []).length, 2, 'mindkét prompt-ágban kell');
+  assert.match(build, /class="g-vote" hidden/);
+  assert.match(build, /class="g-tovabb"/);
+  assert.ok(build.indexOf('${reszek.siker ?') < build.indexOf('${reszek.maskepp ?'), 'a ✅ a 🔄 elé kerüljön');
+  for (const k of ['voteQ', 'voteThanks', 'fillHint', 'tovWiz', 'tovPb'])
+    assert.equal((build.match(new RegExp('\\b' + k + ':', 'g')) || []).length, 3, k + ' mindhárom nyelven');
+  assert.match(app, /fbp-hit/); assert.match(app, /\.g-fill/); assert.match(app, /g-vote/); assert.match(app, /data-h/);
+}
+
 console.log('✅ kitoltheto-prompt: modul rendben');

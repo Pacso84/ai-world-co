@@ -45,6 +45,7 @@ import { CSOMAG_SZOVEG, PACKS_UI, csomagSzoveg } from '../core/packs-text.js';
 import { CSOMAG_IDK, NAGY_ID } from '../core/packs-data.js';
 import { cimTag } from '../core/title-tag.js';
 import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
+import { kitolthetoHtml } from '../core/kitoltheto-prompt.js';   // 🧩 2026-10-23
 import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek } from '../core/ads.js';
@@ -298,7 +299,7 @@ const UI_GUIDES = {
         kindOther: 'Other <span class="muted-word">AI tools</span>',
         comingSoon: 'Guides are on their way — check back shortly.',
         audPersonal: 'Everyday life', audBusiness: 'Business', audBoth: 'Life & Business',
-        aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', stepOf: 'Step {n} of {m}', okLabel: 'You\'ll know it worked when', diffLabel: 'If it looks different', nextStep: 'Next step', nextGuide: 'Next guide', copyBtn: 'Copy', copiedBtn: 'Copied!', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
+        aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', stepOf: 'Step {n} of {m}', okLabel: 'You\'ll know it worked when', diffLabel: 'If it looks different', nextStep: 'Next step', nextGuide: 'Next guide', copyBtn: 'Copy', copiedBtn: 'Copied!', voteQ: 'Worked?', voteThanks: 'Thanks! 💛', fillHint: 'Type your own details into the dashed boxes, then copy.', tovWiz: 'Using a different AI? <b>Find the right one for you</b>', tovPb: 'Want your own prompt? <b>Prompt Builder</b>', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
         // ⚠️ MI-JELÖLÉS (2026-09-12, EU AI Act 50. cikk). A régi szöveg („AI editorial
         // team") félreérthető volt, és csak a lap ALJÁN állt. Most egyértelmű, és a
         // cikk TETEJÉN is megjelenik (aiLabel*). Őrzi: core/ai-disclosure.test.js.
@@ -319,7 +320,7 @@ const UI_GUIDES = {
         kindOther: 'Egyéb <span class="muted-word">AI-eszközök</span>',
         comingSoon: 'Az útmutatók úton vannak — nézz vissza hamarosan.',
         audPersonal: 'Hétköznapok', audBusiness: 'Üzlet', audBoth: 'Otthon és munka',
-        aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', stepOf: '{n}. lépés / {m}', okLabel: 'Akkor sikerült, ha', diffLabel: 'Ha másképp néz ki', nextStep: 'Következő lépés', nextGuide: 'Következő útmutató', copyBtn: 'Másolás', copiedBtn: 'Kimásolva!', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
+        aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', stepOf: '{n}. lépés / {m}', okLabel: 'Akkor sikerült, ha', diffLabel: 'Ha másképp néz ki', nextStep: 'Következő lépés', nextGuide: 'Következő útmutató', copyBtn: 'Másolás', copiedBtn: 'Kimásolva!', voteQ: 'Bevált?', voteThanks: 'Köszönjük! 💛', fillHint: 'A szaggatott keretes mezőkbe írd a saját adataidat, aztán másold ki.', tovWiz: 'Nem ezt az MI-t használod? <b>Melyik való neked?</b>', tovPb: 'Saját promptot raknál össze? <b>Promptépítő</b>', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
         disclosureNews: '✦ Az AI World HQ automatikus szerkesztőségében mesterséges intelligencia készítette, hivatalos forrásokból. Automatikus tény- és minőség-ellenőrzésen ment át, és a szerkesztőnk naponta szúrópróbaszerűen átnézi a megjelent cikkeket. Hibát látsz? Jelezd a fenti gombokkal.',
         disclosureGuide: '✦ Az AI World HQ automatikus szerkesztőségében mesterséges intelligencia készítette, közérthető nyelven. Automatikus tény- és minőség-ellenőrzésen ment át, és a szerkesztőnk naponta szúrópróbaszerűen átnézi a megjelent útmutatókat. Hibát látsz? Jelezd a fenti gombokkal.',
         aiLabelNews: 'Ezt a cikket mesterséges intelligencia írta. Automatikus tény- és minőség-ellenőrzésen ment át, és a szerkesztőnk naponta szúrópróbaszerűen átnézi a megjelent cikkeket.',
@@ -337,7 +338,7 @@ const UI_GUIDES = {
         kindOther: 'Otras <span class="muted-word">herramientas de IA</span>',
         comingSoon: 'Las guías están en camino — vuelve pronto.',
         audPersonal: 'Día a día', audBusiness: 'Negocios', audBoth: 'Vida y negocios',
-        aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', stepOf: 'Paso {n} de {m}', okLabel: 'Sabrás que funcionó cuando', diffLabel: 'Si se ve distinto', nextStep: 'Siguiente paso', nextGuide: 'Siguiente guía', copyBtn: 'Copiar', copiedBtn: '¡Copiado!', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
+        aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', stepOf: 'Paso {n} de {m}', okLabel: 'Sabrás que funcionó cuando', diffLabel: 'Si se ve distinto', nextStep: 'Siguiente paso', nextGuide: 'Siguiente guía', copyBtn: 'Copiar', copiedBtn: '¡Copiado!', voteQ: '¿Te funcionó?', voteThanks: '¡Gracias! 💛', fillHint: 'Escribe tus datos en los recuadros punteados y luego copia.', tovWiz: '¿Usas otra IA? <b>Encuentra la tuya</b>', tovPb: '¿Quieres tu propio prompt? <b>Creador de prompts</b>', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
         disclosureNews: '✦ Generado por IA en la redacción automática de AI World HQ, a partir de fuentes oficiales. Pasó controles automáticos de datos y calidad, y nuestro editor comprueba cada día una muestra de los artículos publicados. ¿Ves un error? Usa los botones de arriba.',
         disclosureGuide: '✦ Generada por IA en la redacción automática de AI World HQ, en lenguaje claro. Pasó controles automáticos de datos y calidad, y nuestro editor comprueba cada día una muestra de las guías publicadas. ¿Ves un error? Usa los botones de arriba.',
         aiLabelNews: 'Este artículo fue escrito por IA. Pasó controles automáticos de datos y calidad, y nuestro editor comprueba cada día una muestra de los artículos publicados.',
@@ -618,7 +619,7 @@ for (const l of SITE_LANGS) Object.assign(UI[l], UI_ABOUT[l] || {});
 const UI_PRIV = {
   en: { privNav: 'Privacy', privTitle: 'Privacy', privTag: 'What we collect, what we don’t, and the choices you have.',
         privStatsH: 'Visitor statistics', privStatsP: 'We count visits with Cloudflare Web Analytics. It uses no cookies and does not identify you: we only see totals such as page views, country and the site that sent you.',
-        privFbH: 'The 👍/👎 buttons', privFbP: 'A vote only adds one to that article’s counter. We do not store who voted.',
+        privFbH: 'The 👍/👎 buttons', privFbP: 'A vote only adds one to that article’s counter. We do not store who voted. The “Worked?” button under prompts works the same way.',
         privCsH: 'Chat, contact form and email', privCsP: 'What you write to us is used only to answer you. Contact-form messages and emails are deleted after 30 days. Against spam we use Cloudflare Turnstile and keep a scrambled (hashed) form of your IP address for two days — never the address itself.',
         privLocalH: 'Saved on your device', privLocalP: 'Your light/dark mode choice and the guide steps you tick off are saved in your own browser. They never leave your device. Our free tools (Safe Paste, Prompt Builder) also run only in your browser: what you type there is never uploaded or saved.',
         privPayH: 'Tips and PDF packs', privPayP: 'Payments are handled by Ko-fi and PayPal. We never see your card details.',
@@ -629,7 +630,7 @@ const UI_PRIV = {
         privAskH: 'Questions or deletion requests', privAskP: 'Write to support@aiworldhq.com — we will answer, and delete your data on request.' },
   hu: { privNav: 'Adatvédelem', privTitle: 'Adatvédelem', privTag: 'Mit gyűjtünk, mit nem, és milyen választásod van.',
         privStatsH: 'Látogatási statisztika', privStatsP: 'A látogatásokat a Cloudflare Web Analytics számolja. Nem használ sütit, és nem azonosít téged: csak összesítéseket látunk, például oldalletöltést, országot és azt, honnan érkeztél.',
-        privFbH: 'A 👍/👎 gombok', privFbP: 'Egy szavazat csak eggyel növeli a cikk számlálóját. Azt nem tároljuk, ki szavazott.',
+        privFbH: 'A 👍/👎 gombok', privFbP: 'Egy szavazat csak eggyel növeli a cikk számlálóját. Azt nem tároljuk, ki szavazott. A promptok alatti „Bevált?” gomb ugyanígy működik.',
         privCsH: 'Chat, kapcsolati űrlap és e-mail', privCsP: 'Amit nekünk írsz, csak a válaszhoz használjuk. Az űrlapon küldött üzeneteket és az e-maileket 30 nap után töröljük. A kéretlen üzenetek ellen a Cloudflare Turnstile-t használjuk, és az IP-címed összekevert (hash-elt) változatát két napig őrizzük — magát a címet soha.',
         privLocalH: 'Amit a saját eszközöd tárol', privLocalP: 'A világos/sötét mód választását és az útmutatókban kipipált lépéseket a saját böngésződ menti. Nem hagyják el az eszközödet. Az ingyenes eszközeink (Biztonságos bemásolás, Promptépítő) is csak a böngésződben futnak: amit ott beírsz, azt nem töltjük fel és nem mentjük.',
         privPayH: 'Támogatás és PDF-csomagok', privPayP: 'A fizetést a Ko-fi és a PayPal intézi. A kártyaadataidat soha nem látjuk.',
@@ -640,7 +641,7 @@ const UI_PRIV = {
         privAskH: 'Kérdés vagy törlési kérés', privAskP: 'Írj a support@aiworldhq.com címre — válaszolunk, és kérésre töröljük az adataidat.' },
   es: { privNav: 'Privacidad', privTitle: 'Privacidad', privTag: 'Qué recogemos, qué no, y qué opciones tienes.',
         privStatsH: 'Estadísticas de visitas', privStatsP: 'Contamos las visitas con Cloudflare Web Analytics. No usa cookies y no te identifica: solo vemos totales, como páginas vistas, país y el sitio desde el que llegaste.',
-        privFbH: 'Los botones 👍/👎', privFbP: 'Un voto solo suma uno al contador de ese artículo. No guardamos quién votó.',
+        privFbH: 'Los botones 👍/👎', privFbP: 'Un voto solo suma uno al contador de ese artículo. No guardamos quién votó. El botón «¿Te funcionó?» bajo los prompts funciona igual.',
         privCsH: 'Chat, formulario de contacto y correo', privCsP: 'Lo que nos escribes solo se usa para responderte. Los mensajes del formulario y los correos se borran a los 30 días. Contra el spam usamos Cloudflare Turnstile y guardamos una forma cifrada (hash) de tu dirección IP durante dos días, nunca la dirección en sí.',
         privLocalH: 'Lo que guarda tu dispositivo', privLocalP: 'Tu elección de modo claro/oscuro y los pasos que marcas en las guías se guardan en tu propio navegador. Nunca salen de tu dispositivo. Nuestras herramientas gratis (Pegado seguro, Creador de prompts) también funcionan solo en tu navegador: lo que escribes ahí nunca se sube ni se guarda.',
         privPayH: 'Apoyo y packs PDF', privPayP: 'Los pagos los gestionan Ko-fi y PayPal. Nunca vemos los datos de tu tarjeta.',
@@ -2360,7 +2361,14 @@ function altSzoveg(s) {
 
 // „Másolás" gomb a beírandó mintához (2026-09-27) — a kattintást az app.js kezeli.
 function masolGomb(isPrompt) {
-  return isPrompt ? `<button class="g-copy" type="button" data-copied="${escapeHtml(tr('copiedBtn'))}">${escapeHtml(tr('copyBtn'))}</button>` : '';
+  // „BEVÁLT?” (2026-10-23): rejtve, a Másolás után jelenik meg (app.js) — csak az kérdezzük, aki használta
+  return isPrompt ? `<button class="g-copy" type="button" data-copied="${escapeHtml(tr('copiedBtn'))}">${escapeHtml(tr('copyBtn'))}</button>`
+    + `<span class="g-vote" hidden data-thanks="${escapeHtml(tr('voteThanks'))}">${escapeHtml(tr('voteQ'))} <button class="g-vote__btn" type="button" data-v="up" aria-label="👍">👍</button><button class="g-vote__btn" type="button" data-v="down" aria-label="👎">👎</button></span>` : '';
+}
+
+// Kitölthető promptnál egy rövid útmutató-sor a címke alatt (ha nincs mező, semmi)
+function kitoltesTipp(boxHtml) {
+  return boxHtml.includes('class="g-fill"') ? `<span class="g-fill__tip">${escapeHtml(tr('fillHint'))}</span>` : '';
 }
 
 function stepArtHtml(key, heading = '') {
@@ -2439,8 +2447,9 @@ function guideSectionHtml(bodyMd) {
       const isPrompt = /^[„“"'«‘]/.test(body.trim());
       const lbl = isPrompt ? tr('tryTyping') : tr('exampleLabel');
       const send = isPrompt ? '<span class="g-prompt__send">➤</span>' : '';
-      const content = escapeHtml(body).replace(/\n/g, '<br>');
-      return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span><span class="g-prompt__box">' + content + send + '</span>' + masolGomb(isPrompt) + '</div>\n\n';
+      // KITÖLTHETŐ PROMPT (2026-10-23, core/kitoltheto-prompt.js): csak beírandó promptban
+      const content = isPrompt ? kitolthetoHtml(escapeHtml(body).replace(/\n/g, '<br>')) : escapeHtml(body).replace(/\n/g, '<br>');
+      return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span>' + kitoltesTipp(content) + '<span class="g-prompt__box">' + content + send + '</span>' + masolGomb(isPrompt) + '</div>\n\n';
     });
   // (1) csak-címke 💬 sor ("💬 **Példa prompt:**") → fűzzük hozzá a következő
   // sort (kód-kerítést SOHA — azt a (0) kezeli)
@@ -2452,7 +2461,8 @@ function guideSectionHtml(bodyMd) {
       const isPrompt = /^[„“"'«‘]/.test(txt.trim());
       const lbl = isPrompt ? tr('tryTyping') : tr('exampleLabel');
       const send = isPrompt ? '<span class="g-prompt__send">➤</span>' : '';
-      return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span><span class="g-prompt__box">' + txt + send + '</span>' + masolGomb(isPrompt) + '</div>\n\n';
+      const box = isPrompt ? kitolthetoHtml(txt) : txt;
+      return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span>' + kitoltesTipp(box) + '<span class="g-prompt__box">' + box + send + '</span>' + masolGomb(isPrompt) + '</div>\n\n';
     });
   return wrapTables(marked.parse(pre));
 }
@@ -2486,8 +2496,9 @@ function buildGuidePage(a) {
           <div class="g-step__body">
             <div class="g-slide__top"><span class="g-slide__cnt">${escapeHtml(tr('stepOf').replace('{n}', stepNo).replace('{m}', osszes))}</span><span class="g-slide__bar" aria-hidden="true"><i style="width:${szazalek}%"></i></span></div>
             <h3 class="g-step__h">${inlineHeadingHtml(heading)}</h3>${guideSectionHtml(reszek.fo)}
-            ${reszek.maskepp ? `<div class="g-diff"><span class="g-diff__lbl">🔄 ${escapeHtml(tr('diffLabel'))}</span>${guideSectionHtml(dobozSzoveg(reszek.maskepp, 'maskepp', LANG))}</div>` : ''}
+            ${/* ELŐTTE → UTÁNA (2026-10-23): a ✅ „akkor sikerült” közvetlenül a prompt után, a 🔄 tartalék utána */ ''}
             ${reszek.siker ? `<div class="g-ok"><span class="g-ok__lbl">✅ ${escapeHtml(tr('okLabel'))}</span>${guideSectionHtml(dobozSzoveg(reszek.siker, 'siker', LANG))}</div>` : ''}
+            ${reszek.maskepp ? `<div class="g-diff"><span class="g-diff__lbl">🔄 ${escapeHtml(tr('diffLabel'))}</span>${guideSectionHtml(dobozSzoveg(reszek.maskepp, 'maskepp', LANG))}</div>` : ''}
             ${stepNo < osszes ? `<a class="g-next" href="#step-${stepNo + 1}">${escapeHtml(tr('nextStep'))} ↓</a>` : ''}
           </div>
           ${(KAPCSOLO.vazlat && vazlatHtml(reszek.fo, LANG, a.tool)) || stepArtHtml(artKeys[stepNo - 1], heading)}
@@ -2615,6 +2626,8 @@ function buildGuidePage(a) {
     ${introHtml ? `<div class="g-intro">${introHtml}</div>` : ''}
     ${blocksLinked ? `<p class="g-steptip">💡 <strong>${tr('stepTipLabel')}:</strong> ${escapeHtml(tr('stepTip'))}</p>` : ''}
     <div class="g-steps">${lepesTorzs.html}</div>
+    ${/* TOVÁBBVEZETÉS (2026-10-23): a varázsló eddig csak a Rólunk oldalról volt elérhető. A tr-szöveg <b>-t tartalmaz — saját, megbízható felirat, ezért nincs escape. */ ''}
+    <nav class="g-tovabb"><a href="../wizard">🧭 ${tr('tovWiz')}</a><a href="../${ESZKOZ_UTAK.pb}">🧩 ${tr('tovPb')}</a></nav>
     ${KAPCSOLO.kovetkezo ? nextGuideHtml(a) : ''}
     ${partnerDoboz(PARTNER, a, LANG)}
     ${faqHtml}

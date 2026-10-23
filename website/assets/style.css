@@ -1003,6 +1003,23 @@ body {
 .g-copy--ok { background: #2e9d5b; border-color: #2e9d5b; color: #fff; }
 @media (max-width: 560px) { .g-ok, .g-diff { font-size: 14.5px; } .g-next { display: block; text-align: center; } }
 
+/* ── KITÖLTHETŐ PROMPT + „BEVÁLT?” + TOVÁBBVEZETÉS (2026-10-23, core/kitoltheto-prompt.js) ── */
+.g-fill { font: inherit; font-size: 14px; line-height: 1.3; padding: 3px 9px; margin: 0 2px; border: 1.5px dashed var(--gc, var(--accent)); border-radius: 8px; background: var(--card); color: var(--ink); max-width: 100%; }
+.g-fill:focus { outline: none; border-style: solid; background: var(--paper); }
+.g-fill:not(:placeholder-shown) { border-style: solid; background: color-mix(in srgb, var(--gc, var(--accent)) 10%, var(--card)); }
+.g-prompt__box:has(.g-fill) { line-height: 2.1; }
+.g-fill__tip { display: block; font-size: 13px; color: var(--ink-soft); margin: -3px 0 7px; }
+.g-vote { display: inline-flex; align-items: center; gap: 6px; margin-left: 10px; font-size: 14px; color: var(--ink-soft); vertical-align: middle; }
+.g-vote[hidden] { display: none; }
+.g-vote__btn { border: 1px solid var(--line); background: var(--card); border-radius: 99px; padding: 3px 10px; font-size: 15px; cursor: pointer; }
+.g-vote__btn:hover { border-color: var(--gc, var(--accent)); }
+.g-step__body .g-prompt ~ .g-ok { position: relative; margin-top: 22px; }
+.g-step__body .g-prompt ~ .g-ok::before { content: "↓"; position: absolute; left: 50%; top: -20px; transform: translateX(-50%); color: var(--muted); font-size: 15px; line-height: 1; }
+.g-tovabb { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 22px 0; }
+.g-tovabb a { padding: 14px 18px; background: var(--card); color: var(--ink); font-size: 14px; text-decoration: none; }
+.g-tovabb a:hover b { color: var(--gc, var(--accent-dark)); }
+@media (max-width: 560px) { .g-tovabb { grid-template-columns: 1fr; } .g-vote { margin: 8px 0 0; } }
+
 /* ── LÉPÉS-VÁZLAT (2026-09-29, core/guide-sketch.js) — kóddal rajzolt telefon, CSS-változókkal (sötét mód is) ── */
 .g-sketch { margin: 0; text-align: center; }
 .g-sk { display: block; width: 100%; max-width: 230px; height: auto; margin: 0 auto; }

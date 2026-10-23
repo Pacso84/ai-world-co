@@ -264,12 +264,25 @@
     var clone = box.cloneNode(true);
     var send = clone.querySelector('.g-prompt__send');
     if (send) send.remove();
+    // KITÖLTHETŐ PROMPT (2026-10-23): a mező helyére a beírt érték, üresen az eredeti [helykitöltő]
+    // — ugyanaz a szabály, mint a core/kitoltheto-prompt.js `kitoltottSzoveg` függvényében.
+    var mezok = box.querySelectorAll('.g-fill');
+    clone.querySelectorAll('.g-fill').forEach(function (m, i) {
+      var v = ((mezok[i] && mezok[i].value) || '').trim();
+      m.replaceWith(document.createTextNode(v || '[' + m.getAttribute('data-h') + ']'));
+    });
     var text = (clone.innerText || clone.textContent || '').trim();
     var eredeti = btn.textContent;
     function kesz() {
       btn.textContent = btn.getAttribute('data-copied') || '✓';
       btn.classList.add('g-copy--ok');
       setTimeout(function () { btn.textContent = eredeti; btn.classList.remove('g-copy--ok'); }, 2000);
+      // „BEVÁLT?” csak a Másolás után, és csak ha ezen az útmutatón még nem szavazott
+      var vote = btn.parentNode.querySelector('.g-vote');
+      var fb = document.querySelector('.fb[data-slug]');
+      var szavazott = false;
+      try { szavazott = !!(fb && localStorage.getItem('fbp:' + fb.getAttribute('data-slug'))); } catch (err) { /* privát mód */ }
+      if (vote && !szavazott) vote.hidden = false;
     }
     try {
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(kesz, function () {});
@@ -278,5 +291,29 @@
         document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); kesz();
       }
     } catch (err) { /* a másolás nem kritikus */ }
+  });
+})();
+
+// ---------- „Bevált?” a promptok alatt (2026-10-23) ----------
+// Csak számláló (Worker /fbp-hit → KV fbp:<nap>:<slug>:<up|down>); azt nem tároljuk, ki szavazott.
+// Útmutatónként egy szavazat böngészőnként; a jel hibája néma.
+(function () {
+  document.addEventListener('click', function (e) {
+    var btn = e.target && e.target.closest ? e.target.closest('.g-vote__btn') : null;
+    if (!btn) return;
+    var fb = document.querySelector('.fb[data-slug]');
+    if (!fb) return;
+    var slug = fb.getAttribute('data-slug');
+    var seg = location.pathname.split('/')[1];
+    var lang = ['hu', 'es'].indexOf(seg) !== -1 ? seg : 'en';
+    var v = btn.getAttribute('data-v');
+    try { localStorage.setItem('fbp:' + slug, v); } catch (err) { /* privát mód */ }
+    document.querySelectorAll('.g-vote').forEach(function (el) { el.textContent = el.getAttribute('data-thanks') || '✓'; });
+    try {
+      fetch('https://api.aiworldhq.com/fbp-hit', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: slug, lang: lang, v: v })
+      }).catch(function () { /* csendes */ });
+    } catch (err) { /* régi böngésző */ }
   });
 })();
