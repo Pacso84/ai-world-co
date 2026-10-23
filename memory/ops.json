@@ -483,14 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179121865476423",
-      "level": "info",
-      "text": "SEO: 3 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-10-05T16:44:14.764Z",
-      "loud": false
-    },
-    {
       "id": "n179121867061923",
       "level": "success",
       "text": "Kiadás kész (10 cikk). The line-up looks solid and ready — practical, varied, and directly useful for everyday people. A couple of notes: three complaint email templates (DeepSeek, ChatRTX, Grok) might feel repetitive to re",
@@ -1281,18 +1273,17 @@
       "agent": "fact-check",
       "at": "2026-10-23T02:48:26.371Z",
       "loud": false
+    },
+    {
+      "id": "n179278434768825",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Kling 4.0 is now in Pic",
+      "agent": "fact-check",
+      "at": "2026-10-23T19:39:07.688Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179121866410544",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-05T16:44:24.105Z"
-    },
     {
       "id": "m17912190315527",
       "from": "social",
@@ -2654,6 +2645,16 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-23T03:01:36.823Z"
+    },
+    {
+      "id": "m179278434768896",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Kling 4.0 is now in Picsart, letting you generate up to 30 seconds of continuo”): \"Kling 4.0 is now in Picsart with 30-second and 4K \" — The article incorrectly limits Omni references to just images when the source specifies 15 total assets including videos",
+      "ref": "ARTICLE_2026-10-19T15-08-45-040Z_picsart_Kling_4_0_is_now_in_Picsart_with_30-second_and_4K_.json",
+      "open": true,
+      "at": "2026-10-23T19:39:07.688Z"
     }
   ]
 }
