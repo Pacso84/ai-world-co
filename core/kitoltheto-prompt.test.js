@@ -75,4 +75,15 @@ assert.deepEqual(promptJelolt('*"Google launches Gemini 2.5 Flash-Lite"* → Fas
   assert.match(app, /fbp-hit/); assert.match(app, /\.g-fill/); assert.match(app, /g-vote/); assert.match(app, /data-h/);
 }
 
+// 9) AZ ÍRÓ SZABÁLYA (spec B, user 10-23: „mindegyik legyen ilyen”): az új útmutatók promptja
+//    idézőjellel kezdődik (különben nem ismerjük fel) és a személyes részek [szögletes] helyek
+{
+  const iro = olvas('agents/guide/agent.js'), szabaly = olvas('shared/guide-quality-rules.md');
+  for (const [nev, s] of [['agents/guide/agent.js', iro], ['shared/guide-quality-rules.md', szabaly]]) {
+    assert.match(s, /\[your city\]/, nev + ': nincs [helykitöltő]-minta');
+    assert.match(s, /square brackets/i, nev + ': nincs kimondva a szögletes zárójel');
+    assert.match(s, /starts? with a (?:straight )?quot/i, nev + ': nincs kimondva, hogy idézőjellel kezdődjön');
+  }
+}
+
 console.log('✅ kitoltheto-prompt: modul rendben');

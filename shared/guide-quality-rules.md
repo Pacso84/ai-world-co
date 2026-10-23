@@ -34,6 +34,12 @@ Each `## Step N — …` section must contain, woven into natural prose:
    icon or a menu with three lines instead."
 5. **💬 Example** — a concrete, copy-paste-ready example wherever the step
    involves typing something. Keep the `💬 Example:` marker exactly as is.
+   **Fill-in prompts (2026-10-23):** if the example is a prompt the reader types,
+   it starts with a straight quote mark (") and the reader's own details go in
+   square brackets — the website turns them into fill-in boxes:
+   `💬 Example: "Write a polite refund request to [store name] for [product]."`
+   1–5 brackets, each 1–4 plain words ([your city], [job title], [paste your text here]);
+   the rest stays a complete sentence. Never [REDACTED] or [X].
 6. **SUCCESS CHECK** — end the step with a sentence like
    "You'll know it worked when …" so the reader can verify before moving on.
 
