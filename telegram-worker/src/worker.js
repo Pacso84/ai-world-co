@@ -43,6 +43,7 @@ import { pipelineWatchdog } from './watchdog.js';
 // 📚 Ingyenes PDF-letöltés számláló (2026-10-07) — a jelet a honlap middleware-je küldi.
 import { handleDlHit, dlExport } from './pdf-dl.js';
 import { handleSrcHit, srcExport } from './forras-szamlalo.js';   // 🧵 10-22
+import { handleFbpHit, fbpExport } from './bevalt-szamlalo.js';   // 👍 „Bevált?” 10-23
 // 🛒 Amazon partnerlink kattintás-számláló (2026-10-09) — a jelet a honlap app.js-e küldi.
 import { handleAffHit, affExport } from './aff-hit.js';
 
@@ -93,6 +94,7 @@ async function handleFeedbackExport(request, env) {
   // A PDF-letöltések (14 nap) a napi riport 📚 sorához; hibánál {error:true}, nem üres.
   out.__dl = await dlExport(env);
   out.__src = await srcExport(env);   // 🧵 jelölt közösségi linkek (10-22)
+  out.__fbp = await fbpExport(env);   // 👍 „Bevált?” a promptok alatt (10-23)
   // Az Amazon-kattintások (14 nap) a napi riport 🛒 sorához; ugyanígy {error:true} hibánál.
   out.__aff = await affExport(env);
   return new Response(JSON.stringify(out), { status: 200, headers: { 'Content-Type': 'application/json' } });
@@ -108,6 +110,7 @@ export default {
     if (path === '/contact') return handleContact(request, env);
     if (path === '/dl-hit') return handleDlHit(request, env);
     if (path === '/src-hit') return handleSrcHit(request, env);
+    if (path === '/fbp-hit') return handleFbpHit(request, env);
     if (path === '/aff-hit') return handleAffHit(request, env);
 
     // Egészség-ellenőrzés / böngészős megnyitás
