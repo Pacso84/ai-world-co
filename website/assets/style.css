@@ -1018,7 +1018,7 @@ body {
 .g-tovabb { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 22px 0; }
 .g-tovabb a { padding: 14px 18px; background: var(--card); color: var(--ink); font-size: 14px; text-decoration: none; }
 .g-tovabb a:hover b { color: var(--gc, var(--accent-dark)); }
-@media (max-width: 560px) { .g-tovabb { grid-template-columns: 1fr; } .g-vote { margin: 8px 0 0; } }
+@media (max-width: 560px) { .g-tovabb { grid-template-columns: 1fr; } }
 
 /* ── LÉPÉS-VÁZLAT (2026-09-29, core/guide-sketch.js) — kóddal rajzolt telefon, CSS-változókkal (sötét mód is) ── */
 .g-sketch { margin: 0; text-align: center; }

@@ -2630,7 +2630,7 @@ function buildGuidePage(a) {
     ${blocksLinked ? `<p class="g-steptip">💡 <strong>${tr('stepTipLabel')}:</strong> ${escapeHtml(tr('stepTip'))}</p>` : ''}
     <div class="g-steps">${lepesTorzs.html}</div>
     ${/* TOVÁBBVEZETÉS (2026-10-23): a varázsló eddig csak a Rólunk oldalról volt elérhető. A tr-szöveg <b>-t tartalmaz — saját, megbízható felirat, ezért nincs escape. */ ''}
-    <nav class="g-tovabb"><a href="../wizard">🧭 ${tr('tovWiz')}</a><a href="../${ESZKOZ_UTAK.pb}">🧩 ${tr('tovPb')}</a></nav>
+    <nav class="g-tovabb"><a class="g-tovabb__a" href="../wizard">🧭 ${tr('tovWiz')}</a><a class="g-tovabb__a" href="../${ESZKOZ_UTAK.pb}">🧩 ${tr('tovPb')}</a></nav>
     ${KAPCSOLO.kovetkezo ? nextGuideHtml(a) : ''}
     ${partnerDoboz(PARTNER, a, LANG)}
     ${faqHtml}
