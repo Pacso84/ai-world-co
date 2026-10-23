@@ -554,6 +554,11 @@ body {
 .g-tool, .g-level { display:inline-block; font-size:12px; font-weight:700; padding:4px 11px; border-radius:100px; }
 .g-tool { background: color-mix(in srgb, #4f7a86 14%, var(--paper)); color:#3a5b65; border:1px solid color-mix(in srgb,#4f7a86 30%,transparent); }
 .g-level { background: var(--paper-2); color: var(--ink-soft); text-transform: capitalize; }
+/* 🔥 OLVASÓINK KEDVENCE (2026-10-23, core/olvasoi-kedvenc.js) — címke + az Útmutatók-oldal sora */
+.g-fav { display:inline-block; font-size:12px; font-weight:700; padding:4px 11px; border-radius:100px; background: color-mix(in srgb, #d9731e 14%, var(--paper)); color: #9a4a10; border: 1px solid color-mix(in srgb, #d9731e 35%, transparent); }
+.kedvenc-sor { margin: 8px 0 30px; padding: 18px 16px 20px; border-radius: 20px; background: color-mix(in srgb, #d9731e 7%, var(--paper-2)); border: 1px solid color-mix(in srgb, #d9731e 22%, var(--line)); }
+[data-theme="dark"] .g-fav { color: #f2a65a; }
+.kedvenc-sor__h { margin: 0 0 14px; text-align: center; font-family: 'Schibsted Grotesk', sans-serif; font-size: 20px; font-weight: 800; color: var(--ink); }
 .g-intro { font-size: 19px; line-height: 1.6; color: var(--ink); margin: 6px 0 30px; }
 .g-intro strong { font-weight: 700; }
 /* 2026-09-12: a globális reset (* { margin: 0 }) miatt a bevezető egymás
