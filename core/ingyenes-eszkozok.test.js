@@ -180,5 +180,10 @@ t('🧭 bekötés: az eszközök a PROMPT-TÁR tetején (nincs külön menüpont
   assert.ok(h.indexOf('<!--AD-->') > h.indexOf('id="spRestore"'), 'a hirdetés az eszköz alatt');
 });
 
+t('📣 a promó-képek mappája kikerül az élő oldalra (10-23: a Safe Paste poszt képe 404 volt — a build nem másolta)', () => {
+  const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  assert.match(b, /for \(const dir of \[[^\]]*'promo'[^\]]*\]\)/, 'a website/assets/promo/ nincs a másolt mappák között');
+});
+
 if (hiba) { console.log(`\n❌ ingyenes-eszkozok.test: ${hiba} hiba`); process.exit(1); }
 console.log('✅ ingyenes-eszkozok.test: mind rendben');

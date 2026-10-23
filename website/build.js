@@ -3584,7 +3584,9 @@ function main() {
 
   // Saját kiszolgálású betűtípusok (2026-07-10, sebesség). A vendor/ mappa
   // 2026-08-05-ig az AOS-t vitte; azzal együtt kikerült.
-  for (const dir of ['fonts']) {
+  // promo/ (2026-10-23): a közösségi posztok képei (FB/Threads/TikTok a nyilvános URL-ről veszi) —
+  // kimaradt a másolásból, a Safe Paste poszt képe élőben 404 volt (core/ingyenes-eszkozok.test.js őrzi)
+  for (const dir of ['fonts', 'promo']) {
     const p = join(ASSETS_SRC, dir);
     if (existsSync(p)) {
       cpSync(p, join(OUT_ASSETS_DIR, dir), { recursive: true });
