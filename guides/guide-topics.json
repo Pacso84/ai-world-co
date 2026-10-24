@@ -5442,7 +5442,11 @@
       "icon": "📸",
       "proposed_at": "2026-08-21T00:57:49.384Z",
       "proposed_by": "guide-ideas",
-      "written_at": "2026-08-28T08:20:33.562Z"
+      "written_at": "2026-08-28T08:20:33.562Z",
+      "source_news": {
+        "file": "ARTICLE_2026-10-24T02-27-21-100Z_google-workspace_Take_actions_on_your_notebooks_from_Gemini_Noteboo.json",
+        "title": "Take actions on your notebooks from Gemini Notebook directly in the Gemini app"
+      }
     },
     {
       "id": "use-claude-to-rewrite-an-angry-email-so-it-says-what-you-act",
@@ -7502,10 +7506,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Drop in a raw transcript from any recorder and get a clean summary, decisions made, action items with owners, and open questions in one pass.",
-      "status": "todo",
+      "status": "done",
       "icon": "📋",
       "proposed_at": "2026-10-09T03:55:57.154Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-10-24T02:32:29.233Z"
     },
     {
       "id": "chatgpt-for-teens-how-to-use-the-new-college-planner-and-fla",
@@ -7541,10 +7546,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "OpenAI says GPT-6 adds interactive visuals, charts, and faster replies — five practical tasks (planning a trip, comparing two options, learning a topic) where the new UI actually saves time.",
-      "status": "todo",
+      "status": "done",
       "icon": "✨",
       "proposed_at": "2026-10-09T03:56:55.198Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-10-24T02:35:36.774Z"
     },
     {
       "id": "build-a-reusable-prompt-library-in-claude-you-can-remix-for-",
@@ -8111,6 +8117,70 @@
         "datum": "2026-10-23"
       },
       "written_at": "2026-10-23T02:36:08.055Z"
+    },
+    {
+      "id": "how-to-use-gemini-to-plan-a-week-of-simple-dinners-from-food",
+      "company": "Google",
+      "tool": "Gemini",
+      "title": "How to Use Gemini to Plan a Week of Simple Dinners From Food You Already Have",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "List what's already in your fridge and pantry, then ask for dinners that use those ingredients, which cuts both food waste and last-minute takeout.",
+      "status": "done",
+      "icon": "🥗",
+      "proposed_at": "2026-10-24T02:31:47.010Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "can ai help with daily tasks",
+        "forras": [
+          "bing-lehetoseg"
+        ],
+        "datum": "2026-10-24"
+      },
+      "written_at": "2026-10-24T02:32:59.442Z"
+    },
+    {
+      "id": "turn-meeting-notes-into-a-clear-summary-and-action-list-with",
+      "company": "DeepSeek",
+      "tool": "DeepSeek",
+      "title": "Turn meeting notes into a clear summary and action list with DeepSeek",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Paste your rough notes from a meeting into DeepSeek and ask for a short summary, the decisions made, and a to-do list with names, so nothing gets lost after the call.",
+      "status": "todo",
+      "icon": "📝",
+      "priority": "balance",
+      "proposed_at": "2026-10-24T02:34:36.297Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "make-study-flashcards-from-your-class-notes-with-deepseek",
+      "company": "DeepSeek",
+      "tool": "DeepSeek",
+      "title": "Make study flashcards from your class notes with DeepSeek",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Paste a page of notes or a textbook section into DeepSeek and ask for question-and-answer flashcards, then quiz yourself by covering the answers and checking what you missed.",
+      "status": "todo",
+      "icon": "🃏",
+      "priority": "balance",
+      "proposed_at": "2026-10-24T02:34:46.272Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "plan-a-weekend-trip-itinerary-with-deepseek",
+      "company": "DeepSeek",
+      "tool": "DeepSeek",
+      "title": "Plan a weekend trip itinerary with DeepSeek",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Share your destination, how many days you have, and what you enjoy, and ask DeepSeek for a day-by-day plan with morning, afternoon, and evening ideas you can adjust yourself.",
+      "status": "todo",
+      "icon": "🗺️",
+      "priority": "balance",
+      "proposed_at": "2026-10-24T02:34:55.341Z",
+      "proposed_by": "guide-balance"
     }
   ],
   "trend_proba": [
@@ -8149,6 +8219,10 @@
     {
       "kifejezes": "how to use grok for free",
       "at": "2026-10-23T02:35:04.901Z"
+    },
+    {
+      "kifejezes": "can ai help with daily tasks",
+      "at": "2026-10-24T02:31:25.449Z"
     }
   ]
 }

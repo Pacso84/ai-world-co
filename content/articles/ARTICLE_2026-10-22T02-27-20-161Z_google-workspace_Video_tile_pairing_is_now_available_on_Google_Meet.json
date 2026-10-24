@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-10-24T02:28:26.315Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0043954,
+    "original_draft": "2026-10-22T02-27-20-161Z_google-workspace_Video_tile_pairing_is_now_available_on_Google_Meet.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/10/video-tile-pairing-is-now-available-on-Google-Meet-mobile-to-improve-accessibility-for-users-and-language-interpreters.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/10/video-tile-pairing-is-now-available-on-Google-Meet-mobile-to-improve-accessibility-for-users-and-language-interpreters.html",
+      "http://workspaceupdates.googleblog.com/2026/10/create-structured-documents-using-just-your-voice-with-Docs-Live-in-Google-Docs-on-mobile.html"
+    ],
+    "source_snippet": "Following our original feature announcement for the web, we are excited to expand video tile pairing in Google Meet to both iOS and Android mobile devices. This update allows users to pair their video tile with another meeting participant, ensuring both tiles are displayed side-by-side for other attendees.\nTile pairing is particularly valuable for accessibility, giving participants who are Deaf or hard of hearing (HoH) the capability to pair their video tile with a sign language interpreter. By empowering users to keep both tiles visible in the same frame, regardless of who is speaking, video calls can be a more inclusive experience for all participants.\nWhether you are co-presenting a session or requiring interpretation services, this mobile expansion ensures that important visual connections remain intact, even when you are on the go. Once paired, meeting participants will see both video tiles highlighted and positioned together in the meeting layout, with live captions displayed and attributed to both speakers.\n\n\n\n\n\nVideo tile pairing offers a side-by-side viewing experience for linked speakers on a mobile interface\n\nGetting started\n\n\nAdmins: This feature will be ON by default and can be turned off at the OU level. Visit the Help Center to learn more about managing Meet settings and accessibility in Google Meet.\nEnd users: This feature will be ON by default and can be enabled by the user. Visit the Help Center to learn more.\n\n\nRollout pace\n\n\nAndroid Devices\n\nRapid Release \n\n---\n\nDocs Live is now rolling out to eligible Workspace users of the Google Docs mobile app on Android and iOS. This new feature acts as a hands-free thought partner and co-writer that helps you build structured, context-aware documents on the fly using natural conversation.\nStarting a new document from scratch on a phone can be tricky, but it’s often necessary when ideas are fresh right after a meeting or during a commute. Even if your thoughts are unstructured or you're rambling, Docs Live can reference and pull context from your emails, chats, and Drive files to help you draft project updates, feature proposals, customer pitches, event plans, talk tracks for presentations, and more.\n\n\n\n\nBrainstorm requirements, pull context from Workspace, and generate a structured first draft using your voice in the Google Docs mobile app.\n\nGetting started\n\n\nAdmins: This feature will be ON by default for user with Gemini in Docs enabled. Visit the Help Center to learn more about managing access to Gemini features in Workspace.\nEnd users:\n\nSpeak naturally and openly: Say what you need and Gemini will help write and polish your ideas right on the page.\nBe clear about your goal: Are you trying to put together a summary of a meeting or a project proposal based on notes from a recent call? Be clear and prescriptive. Whatever you need, Gemini can help create the right deliverable based on what you tell it.\nSynthesizes information: Gemini automatically and securely draws from relevant content ",
+    "merged_from": 2,
+    "merged_theme": "Google Workspace mobile features: Docs Live voice docs and Meet video tile pairing",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-10-24T02:30:18.152Z",
+    "slug": "google-s-new-phone-features-voice-built-docs-and-side-by-side-meet-til",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 937
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with clear hook, good term explanations (tile, organizational unit, Rapid Release), helpful use cases, and a practical 'What this means for you' section. Google-sourced claims are properly attributed. No prohibited content, clichés, or British spellings found.",
+      "_aiCost": 0.00160218,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-24T02:31:16.130Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-start-a-new-google-docs-document-with-gemini-s-built-",
+    "image_v": 2,
+    "image_at": "2026-10-24T02:36:45.145Z",
+    "seo": {
+      "meta_description": "Google's new phone features: talk to create documents in Docs and keep sign language interpreters visible in Meet video calls on mobile.",
+      "keywords": [
+        "Google Docs voice typing mobile",
+        "Google Meet interpreter tile phone",
+        "Google Docs Live feature Android iOS",
+        "Google Meet side by side tiles mobile",
+        "voice to document Google phone app"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more context about what 'eligible Workspace users' means to improve relevance for business users searching",
+        "Consider mentioning the release timing or availability to help users find current information",
+        "Add a brief intro about who these features help (remote workers, deaf users, on-the-go professionals) to improve intent matching"
+      ],
+      "optimised_at": "2026-10-24T02:38:24.225Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"Google's New Phone Features: Voice-Built Docs and Side-by-Side Meet Tiles\"\nsubtitle: \"Google is bringing two work tools to phones: talk your way into a first draft, and keep an interpreter beside the speaker in video calls.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"google-workspace\", \"google-docs\", \"google-meet\", \"accessibility\", \"gemini\", \"mobile\"]\n---\n\n# Google's New Phone Features: Voice-Built Docs and Side-by-Side Meet Tiles\n\n> **In short:** Google says Docs Live lets eligible Workspace users draft structured documents by talking in the Google Docs mobile app on Android and iOS. Meet video tile pairing now works on phones too, keeping a sign language interpreter beside the person they interpret for.\n\nYou finish a meeting with a head full of ideas and a ten-minute walk ahead of you. By the time you reach a desk, half of them are gone. Google's latest mobile updates for its work apps aim at exactly that gap, and at a second problem: making video calls easier to follow for people who rely on sign language.\n\n## What Workspace is, in plain terms\n\nGoogle Workspace is the set of work apps many offices and schools use, including Docs (word processing), Gmail, Drive (file storage), and Meet (video calls). Gemini is Google's AI assistant, and it runs inside several of these apps. Your employer or school may manage the account, which affects which features you can use. Keep that in mind as you read.\n\n## Talk your way into a first draft\n\nGoogle says Docs Live is now rolling out to eligible Workspace users in the Google Docs mobile app. Docs Live is a hands-free co-writer: you speak, and Gemini helps build a structured document on the page as you talk.\n\nThis matters most when a blank screen on a small phone feels like a wall. You do not need clean notes. Google describes the feature as useful even when your thoughts are scattered or you are rambling, because it can pull context from your emails, chats, and Drive files.\n\nGoogle lists several everyday uses:\n\n- A project update after a team check-in\n- A feature proposal or customer pitch\n- Event plans\n- Talk tracks for a presentation\n\nGoogle offers two simple habits for better results:\n\n- **Speak naturally.** Say what you need the way you would say it to a colleague.\n- **Be clear about your goal.** Say whether you want a meeting summary or a project proposal based on a recent call. Google says Gemini can produce the right kind of document when you are specific.\n\nGoogle also says that for admins, the feature is on by default for users who have Gemini in Docs enabled. If you do not see it, your organization's settings may be the reason.\n\n## Keeping both faces in view in Meet\n\nVideo tile pairing is the newer idea. A \"tile\" is the box that shows one person's camera in a video call. Pairing links two tiles, so they sit side by side for everyone else in the meeting.\n\nGoogle highlights two situations. A Deaf or hard of hearing participant can pair their tile with a sign language interpreter, so everyone can see both at once. Two people co-presenting a session can also keep their tiles together, no matter who is talking.\n\nGoogle says that once tiles are paired, both are highlighted and placed together in the layout. Live captions, the text that appears on screen as people speak, are attributed to both speakers. Google says the expansion from the web to iOS and Android phones means this works when you join from your phone.\n\nOn settings, Google says admins can turn the feature off at the organizational unit level. An organizational unit (OU) is a group of accounts that an admin manages together. For end users, Google says the feature is on by default and that individuals can also enable it themselves. Google points to its Help Center for the details of managing Meet settings and accessibility.\n\nGoogle's rollout notes list Android devices under \"Rapid Release,\" which is the label for its faster-moving update track. If you do not see a feature yet, keeping your Google apps up to date is the sensible first check.\n\n## What this means for you\n\n- **In everyday life**: If you dictate notes on your commute, Docs Live may help you turn a rough voice-to-text mess into a clean first draft you can finish later on a computer.\n- **For your business or work**: If you run a team or write proposals, you can talk through a customer pitch while the context from your emails and files is pulled in. Always review what Gemini writes before you send it.\n- **If you're just getting started**: Pick one recent meeting and talk through a short summary out loud in the Docs mobile app. Notice whether you get more out of it when you state the goal first.\n- **If you already use it**: Ask Gemini to turn one voice-built project update into a version for a different reader, such as a client instead of your team. You keep the facts, but change the tone and level of detail.\n\n## Wrap-up\n\nGoogle's two updates share one lesson: work increasingly happens on the phone in your pocket, and Google wants the tools to keep up. Docs Live helps you capture and shape ideas by talking, and tile pairing helps video calls stay readable and inclusive. Your next step is simple: the next time you are on your phone, open the Docs app and check whether Docs Live appears for your account, or join a Meet call and see how a paired tile looks.",
+  "original_title": "Video tile pairing is now available on Google Meet mobile to improve accessibility for users and language interpreters"
+}

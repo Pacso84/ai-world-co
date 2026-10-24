@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "try-gpt-6-s-intelligent-ui-5-everyday-ways-to-use-the-new-vi",
+    "company": "OpenAI",
+    "tool": "ChatGPT",
+    "icon": "✨",
+    "level": "intermediate",
+    "source_news": null,
+    "trend": null,
+    "written_at": "2026-10-24T02:35:36.773Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.005371,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "rejected",
+    "rejected_at": "2026-10-24T02:36:20.403Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1281
+    },
+    "ai_review": {
+      "overall_score": 4,
+      "clarity_score": 9,
+      "decision": "FAIL",
+      "issues": [
+        "CRITICAL: GPT-6 does not exist. OpenAI has not released a model by this name. The article is built entirely on a hallucinated product name.",
+        "Article cannot be published under any circumstances because the entire premise is false.",
+        "If the source material described a real upcoming feature, the writer must use the correct product name."
+      ],
+      "verdict": "The article is well-structured, clearly written, and follows all style guidelines, but it is anchored to a product that does not exist. GPT-6 has not been released by OpenAI as of current knowledge. Publishing this would be a factual accuracy failure that could seriously mislead readers.",
+      "_aiCost": 0.00198369,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The article is well-structured, clearly written, and follows all style guidelines, but it is anchored to a product that does not exist. GPT-6 has not been released by OpenAI as of current knowledge. Publishing this would be a factual accuracy failure that could seriously mislead readers.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"Try GPT-6's Intelligent UI: 5 everyday ways to use the new visuals\"\nsubtitle: \"Learn five practical prompts that get tables, charts and clickable answers from ChatGPT, for trips, comparisons and study.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"OpenAI\"\ntool: \"ChatGPT\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"intermediate\", \"chatgpt\", \"gpt-6\", \"prompts\", \"visuals\"]\n---\n\n# Try GPT-6's Intelligent UI: 5 everyday ways to use the new visuals\n\n> **In short:** OpenAI says GPT-6 is rolling out globally in ChatGPT with an \"Intelligent UI\" that can add visuals, interactive elements and faster replies. You can ask for tables and charts in your prompt, but the reply may or may not include them, so always check the result.\n\nYou'll finish this guide with five ready-to-use prompts for planning a trip, comparing two options, learning a topic, building a weekly plan and checking your work. It's for anyone who already chats with ChatGPT and is tired of long walls of text.\n\n## Before you start\n- **An account and a few chats behind you.** You should already know how to start a new chat and send a message. We won't cover that here.\n- **A device:** the ChatGPT app on your phone or tablet, or the website on a computer. Visuals may look a little different on each.\n- **Your plan:** OpenAI says the update is rolling out, and access may depend on your plan or timing. If you don't see visuals, the steps still work with plain text.\n- **Time:** about 25 minutes. Keep a notes app open to save prompts.\n\n## Step 1 — Plan a trip as a day-by-day table\nStart a new chat and type a prompt that gives three things: your goal, your details and the layout you want. A good layout request is the key to getting a visual answer. Send your message and wait for the reply to finish typing. You may see a table with days down the side, or a structured list if the model decides a table doesn't fit. If you get plain paragraphs, reply with \"Please put this in a table with columns for morning, afternoon and evening.\" Replies are usually faster now, but the first one can still take a few seconds.\n\n💬 Example: \"Plan a 3-day trip from [your city] to [destination] in [month] for [number] adults. Show each day as a table with morning, afternoon and evening columns.\"\n\nYou'll know it worked when the plan appears in a grid or clearly separated sections, and each day has all three time slots filled in.\n\n## Step 2 — Compare two options side by side\nUse a new chat, or the same one if you want to keep your trip plan nearby. Name your two options and your situation so the model knows what matters. Ask for a table of differences, then ask for the factors to weigh. Look for a table with rows for each factor, or a chart if the question involves numbers. Because the model doesn't know live prices, treat the output as a starting point, not a final answer.\n\n💬 Example: \"Compare [option one] and [option two] for my situation: [your situation]. Put the differences in a table, then list the three factors I should weigh most.\"\n\nYou'll know it worked when both options appear as columns or rows, and the factors you asked for are listed clearly, not buried in a paragraph.\n\n## Step 3 — Learn a new topic with a simple visual\nThis technique works well when you're new to a subject. Ask the model to explain it in plain words, and request a diagram or chart if it helps. Then ask for a short self-test so you can check your understanding. If a visual appears, it might be a labeled diagram, a timeline or a small chart. If nothing visual appears, ask: \"Draw this as a simple step-by-step diagram using text arrows.\" Read the explanation once, then answer the quiz questions before looking back.\n\n💬 Example: \"Explain [topic] as if I'm new to it. Use a simple chart or diagram if it helps, then give me three quiz questions with answers hidden at the bottom.\"\n\nYou'll know it worked when you see a clear visual or diagram next to the explanation, and the quiz questions match what you just read.\n\n## Step 4 — Plan a week of meals or chores in a grid\nHere's a useful habit for intermediate users: keep the chat going. The model remembers what was said earlier in the same conversation, so you can refer back to \"the table above\" and ask for changes. Ask for a grid with days as columns and tasks as rows. Then make one change at a time, such as swapping a dish or moving a chore. Small follow-ups usually produce cleaner results than starting over. If the change confuses the table, say \"Rebuild the table with only these changes\" and paste the rules.\n\n💬 Example: \"Create a weekly meal plan for [number] people as a table, days across the top and breakfast, lunch and dinner down the side. Keep it under [budget style] ingredients.\"\n\nYou'll know it worked when the table has seven columns and every row is filled in, and your follow-up changes update only the parts you asked about.\n\n## Step 5 — Check the answer before you use it\nVisuals can look convincing even when a detail is wrong, so this step matters. Ask the model to list which parts of its answer you should confirm yourself. Then copy the best version into your notes app, with the date. Next time you need a similar plan, reuse the prompt and swap the brackets. Verify opening hours, travel times, prices and rules with the official source, because the model can't see live information for your trip or check it for you.\n\n💬 Example: \"Which parts of this plan should I double-check before I rely on them, such as opening hours, travel times or prices?\"\n\nYou'll know it worked when the model names specific items to verify, and you save the final version in your notes with a note of what you still need to confirm.\n\n## Common mistakes\n- **Expecting visuals every time.** The model decides when a table or chart fits. Fix it by asking for the layout directly, like \"Show this as a table,\" and accept a plain list if that's what you get.\n- **Starting a new chat for every change.** You lose the context. Fix it by staying in one chat and saying \"Using the table above…\" when you want changes.\n- **Trusting facts without checking.** The model can organize information well but can't confirm live prices, schedules or availability. Fix it by verifying the key details with the official source before you book or buy.\n\n## What this means for you\n- **In everyday life:** a trip plan, a weekly meal grid or a study chart can take minutes to create, and you can change one row at a time.\n- **For your business or work:** side-by-side comparisons and simple diagrams can help you prepare a meeting summary or a project timeline for a team, as long as you check the facts.\n- **If you want to go further:** try asking the model to build a table, then paste your own notes into the same chat and ask it to fill in the blanks. Note that you can't rely on it to remember details across separate chats.\n\n## Try it now\nOpen ChatGPT and send the trip prompt from Step 1, filling in your real city and a destination you'd like to visit. Look at the layout it returns, then ask for one change in a follow-up message.",
+  "original_title": "Try GPT-6's Intelligent UI: 5 everyday ways to use the new visuals"
+}

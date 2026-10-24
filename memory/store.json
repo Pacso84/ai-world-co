@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "AI World rétegzett memória (hot/warm/cold, salience decay).",
-    "updated": "2026-10-23T19:46:10.067Z"
+    "updated": "2026-10-24T02:39:07.838Z"
   },
   "items": [
     {
@@ -12,10 +12,10 @@
         "rejection"
       ],
       "created": "2026-06-10T19:08:58.085Z",
-      "lastAccessed": "2026-08-28T08:10:31.283Z",
-      "accessCount": 931,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:29:38.033Z",
+      "accessCount": 935,
+      "salience": 0.65,
+      "tier": "hot"
     },
     {
       "id": "m1781992865694902",
@@ -26,9 +26,9 @@
         "lesson"
       ],
       "created": "2026-06-20T22:01:05.694Z",
-      "lastAccessed": "2026-10-23T02:33:40.398Z",
-      "accessCount": 1233,
-      "salience": 0.999457224537037,
+      "lastAccessed": "2026-10-24T02:29:38.033Z",
+      "accessCount": 1237,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -99,9 +99,9 @@
         "design-rule"
       ],
       "created": "2026-06-22T19:24:53.845Z",
-      "lastAccessed": "2026-10-23T02:42:11.695Z",
-      "accessCount": 286,
-      "salience": 0.9996939361111111,
+      "lastAccessed": "2026-10-24T02:39:07.838Z",
+      "accessCount": 287,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -112,9 +112,9 @@
         "design-rule"
       ],
       "created": "2026-06-22T19:33:18.784Z",
-      "lastAccessed": "2026-10-23T02:42:11.695Z",
-      "accessCount": 283,
-      "salience": 0.9996939361111111,
+      "lastAccessed": "2026-10-24T02:39:07.838Z",
+      "accessCount": 284,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -142,9 +142,9 @@
         "design-rule"
       ],
       "created": "2026-06-28T19:44:51.115Z",
-      "lastAccessed": "2026-10-23T02:42:11.695Z",
-      "accessCount": 276,
-      "salience": 0.9996939361111111,
+      "lastAccessed": "2026-10-24T02:39:07.838Z",
+      "accessCount": 277,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -1824,10 +1824,10 @@
         "guide"
       ],
       "created": "2026-07-19T09:48:23.812Z",
-      "lastAccessed": "2026-08-27T05:40:14.079Z",
-      "accessCount": 205,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:35:09.822Z",
+      "accessCount": 208,
+      "salience": 0.5,
+      "tier": "warm"
     },
     {
       "id": "m1784454503843125",
@@ -2178,10 +2178,10 @@
         "guide"
       ],
       "created": "2026-07-21T01:33:34.238Z",
-      "lastAccessed": "2026-08-30T12:10:16.297Z",
-      "accessCount": 220,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:35:09.822Z",
+      "accessCount": 223,
+      "salience": 0.5,
+      "tier": "warm"
     },
     {
       "id": "m1784597614271536",
@@ -2658,9 +2658,9 @@
         "article"
       ],
       "created": "2026-07-22T10:30:10.241Z",
-      "lastAccessed": "2026-10-23T02:33:40.398Z",
-      "accessCount": 617,
-      "salience": 0.999457224537037,
+      "lastAccessed": "2026-10-24T02:29:38.033Z",
+      "accessCount": 621,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -3594,12 +3594,12 @@
         "guide"
       ],
       "created": "2026-07-24T02:05:34.262Z",
-      "lastAccessed": "2026-10-23T02:35:46.281Z",
-      "accessCount": 209,
-      "salience": 0.9995155037037037,
+      "lastAccessed": "2026-10-24T02:33:42.734Z",
+      "accessCount": 210,
+      "salience": 1,
       "tier": "hot",
-      "repeats": 15,
-      "lastRepeat": "2026-10-13T15:29:51.349Z"
+      "repeats": 16,
+      "lastRepeat": "2026-10-24T02:33:42.734Z"
     },
     {
       "id": "m1784858734295472",
@@ -6071,10 +6071,10 @@
         "guide"
       ],
       "created": "2026-08-16T00:49:01.483Z",
-      "lastAccessed": "2026-08-25T01:16:59.047Z",
-      "accessCount": 55,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:35:09.822Z",
+      "accessCount": 58,
+      "salience": 0.5,
+      "tier": "warm"
     },
     {
       "id": "m1786841341485818",
@@ -6127,10 +6127,10 @@
         "guide"
       ],
       "created": "2026-08-16T00:49:20.048Z",
-      "lastAccessed": "2026-08-25T01:16:59.047Z",
-      "accessCount": 55,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:35:09.822Z",
+      "accessCount": 58,
+      "salience": 0.5,
+      "tier": "warm"
     },
     {
       "id": "m1786841360051898",
@@ -6865,10 +6865,10 @@
         "guide"
       ],
       "created": "2026-08-21T00:53:58.868Z",
-      "lastAccessed": "2026-08-24T00:41:42.713Z",
-      "accessCount": 16,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:35:09.822Z",
+      "accessCount": 19,
+      "salience": 0.5,
+      "tier": "warm"
     },
     {
       "id": "m1787273638872674",
@@ -9082,10 +9082,10 @@
         "guide"
       ],
       "created": "2026-09-11T02:12:51.935Z",
-      "lastAccessed": "2026-09-11T02:12:51.935Z",
-      "accessCount": 0,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:35:09.822Z",
+      "accessCount": 3,
+      "salience": 0.5,
+      "tier": "warm"
     },
     {
       "id": "m178909277193952",
@@ -9127,10 +9127,10 @@
         "guide"
       ],
       "created": "2026-09-11T12:30:56.497Z",
-      "lastAccessed": "2026-09-11T12:30:56.497Z",
-      "accessCount": 0,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:35:09.822Z",
+      "accessCount": 3,
+      "salience": 0.5,
+      "tier": "warm"
     },
     {
       "id": "m1789129956955492",
@@ -9620,10 +9620,10 @@
         "article"
       ],
       "created": "2026-09-16T02:22:29.456Z",
-      "lastAccessed": "2026-09-16T02:22:29.456Z",
-      "accessCount": 0,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:29:38.033Z",
+      "accessCount": 4,
+      "salience": 0.65,
+      "tier": "hot"
     },
     {
       "id": "m1789525420584207",
@@ -10581,10 +10581,10 @@
         "article"
       ],
       "created": "2026-10-03T02:56:52.992Z",
-      "lastAccessed": "2026-10-03T02:56:52.992Z",
-      "accessCount": 0,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:29:38.033Z",
+      "accessCount": 4,
+      "salience": 0.65,
+      "tier": "hot"
     },
     {
       "id": "m1790996212996194",
@@ -10726,10 +10726,10 @@
         "article"
       ],
       "created": "2026-10-07T03:18:53.689Z",
-      "lastAccessed": "2026-10-07T03:18:53.689Z",
-      "accessCount": 0,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:29:38.033Z",
+      "accessCount": 4,
+      "salience": 0.65,
+      "tier": "hot"
     },
     {
       "id": "m1791430393250286",
@@ -10968,10 +10968,10 @@
         "guide"
       ],
       "created": "2026-10-13T15:25:23.949Z",
-      "lastAccessed": "2026-10-13T15:25:23.949Z",
-      "accessCount": 0,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:35:09.822Z",
+      "accessCount": 3,
+      "salience": 0.5,
+      "tier": "warm"
     },
     {
       "id": "m1791905123953979",
@@ -11073,12 +11073,12 @@
         "guide"
       ],
       "created": "2026-10-16T02:19:19.304Z",
-      "lastAccessed": "2026-10-23T02:37:11.447Z",
-      "accessCount": 2,
-      "salience": 0.7456731472222222,
+      "lastAccessed": "2026-10-24T02:33:42.728Z",
+      "accessCount": 3,
+      "salience": 0.8956731472222222,
       "tier": "hot",
-      "repeats": 2,
-      "lastRepeat": "2026-10-23T02:37:11.447Z"
+      "repeats": 3,
+      "lastRepeat": "2026-10-24T02:33:42.728Z"
     },
     {
       "id": "m1792202867944633",
@@ -11090,10 +11090,10 @@
         "article"
       ],
       "created": "2026-10-17T02:07:47.944Z",
-      "lastAccessed": "2026-10-17T02:07:47.944Z",
-      "accessCount": 0,
-      "salience": 0.1541216439814815,
-      "tier": "cold"
+      "lastAccessed": "2026-10-24T02:29:38.033Z",
+      "accessCount": 4,
+      "salience": 0.7541216439814815,
+      "tier": "hot"
     },
     {
       "id": "m1792202867950229",
@@ -11150,10 +11150,10 @@
         "article"
       ],
       "created": "2026-10-17T02:11:07.698Z",
-      "lastAccessed": "2026-10-18T02:05:30.176Z",
-      "accessCount": 7,
-      "salience": 0.394203399074074,
-      "tier": "warm"
+      "lastAccessed": "2026-10-24T02:29:38.033Z",
+      "accessCount": 11,
+      "salience": 0.9942033990740741,
+      "tier": "hot"
     },
     {
       "id": "m1792203067705998",
@@ -11385,6 +11385,66 @@
       "lastAccessed": "2026-10-23T02:33:21.972Z",
       "accessCount": 0,
       "salience": 0.9994486935185185,
+      "tier": "hot"
+    },
+    {
+      "id": "m1792809222738568",
+      "scope": "guide",
+      "text": "Step 6 says 'look for a rename or edit option' without specifying where on screen to find it or what it might be labeled",
+      "tags": [
+        "rejection",
+        "lesson",
+        "guide"
+      ],
+      "created": "2026-10-24T02:33:42.738Z",
+      "lastAccessed": "2026-10-24T02:33:42.738Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1792809222742343",
+      "scope": "guide",
+      "text": "Step 5 mentions 'recording's timestamps' but Step 1 treats transcripts as plain text, creating potential confusion about whether readers have access to timestamps",
+      "tags": [
+        "rejection",
+        "lesson",
+        "guide"
+      ],
+      "created": "2026-10-24T02:33:42.742Z",
+      "lastAccessed": "2026-10-24T02:33:42.742Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1792809380409127",
+      "scope": "guide",
+      "text": "Article cannot be published under any circumstances because the entire premise is false.",
+      "tags": [
+        "rejection",
+        "lesson",
+        "guide"
+      ],
+      "created": "2026-10-24T02:36:20.409Z",
+      "lastAccessed": "2026-10-24T02:36:20.409Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1792809380413823",
+      "scope": "guide",
+      "text": "If the source material described a real upcoming feature, the writer must use the correct product name.",
+      "tags": [
+        "rejection",
+        "lesson",
+        "guide"
+      ],
+      "created": "2026-10-24T02:36:20.413Z",
+      "lastAccessed": "2026-10-24T02:36:20.413Z",
+      "accessCount": 0,
+      "salience": 1,
       "tier": "hot"
     }
   ],

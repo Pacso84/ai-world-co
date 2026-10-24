@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-10-24T02:32:59.591Z",
+  "total": 3,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0089272,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-summarize-and-organize-a-long-meeting-transcript-you-.json",
+      "rejected": "REJECTED_GUIDE_how-to-summarize-and-organize-a-long-meeting-transcript-you-.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.0050292
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-use-gemini-to-plan-a-week-of-simple-dinners-from-food.json",
+      "article": "ARTICLE_GUIDE_how-to-use-gemini-to-plan-a-week-of-simple-dinners-from-food.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0020415
+    }
+  ],
+  "truth_held": 1,
+  "finished_at": "2026-10-24T02:34:01.183Z",
+  "duration_seconds": 61.592
+}

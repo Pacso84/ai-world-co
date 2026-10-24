@@ -1,142 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179242277167245",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-19T15:12:51.672Z",
-      "updated": "2026-10-19T15:13:23.301Z"
-    },
-    {
-      "id": "t179242280338736",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-19T15:13:23.387Z",
-      "updated": "2026-10-19T15:13:23.593Z"
-    },
-    {
-      "id": "t179242280359554",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-19T15:13:23.595Z",
-      "updated": "2026-10-19T15:15:45.438Z"
-    },
-    {
-      "id": "t179242294544076",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-19T15:15:45.440Z",
-      "updated": "2026-10-19T15:16:33.640Z"
-    },
-    {
-      "id": "t179242299364286",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-19T15:16:33.642Z",
-      "updated": "2026-10-19T15:16:46.525Z"
-    },
-    {
-      "id": "t179242300652786",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-19T15:16:46.527Z",
-      "updated": "2026-10-19T15:17:14.837Z"
-    },
-    {
-      "id": "t179246355547034",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-20T02:32:35.470Z",
-      "updated": "2026-10-20T02:32:35.666Z"
-    },
-    {
-      "id": "t179246355566855",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-20T02:32:35.668Z",
-      "updated": "2026-10-20T02:33:24.530Z"
-    },
-    {
-      "id": "t179246360453216",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-20T02:33:24.532Z",
-      "updated": "2026-10-20T02:33:24.750Z"
-    },
-    {
-      "id": "t179246360475321",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-20T02:33:24.753Z",
-      "updated": "2026-10-20T02:36:20.898Z"
-    },
-    {
-      "id": "t179246378090039",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-20T02:36:20.900Z",
-      "updated": "2026-10-20T02:37:37.879Z"
-    },
-    {
-      "id": "t179246385788277",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-20T02:37:37.882Z",
-      "updated": "2026-10-20T02:38:30.425Z"
-    },
-    {
-      "id": "t179246391047547",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-20T02:38:30.475Z",
-      "updated": "2026-10-20T02:42:27.826Z"
-    },
-    {
-      "id": "t17924641478272",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-20T02:42:27.827Z",
-      "updated": "2026-10-20T02:43:38.349Z"
-    },
-    {
-      "id": "t179246421838897",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-20T02:43:38.388Z",
-      "updated": "2026-10-20T02:43:38.578Z"
-    },
-    {
-      "id": "t179246421861893",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-20T02:43:38.618Z",
-      "updated": "2026-10-20T02:45:52.840Z"
-    },
-    {
-      "id": "t179246435284144",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-20T02:45:52.841Z",
-      "updated": "2026-10-20T02:46:54.459Z"
-    },
-    {
       "id": "t17924644144607",
       "title": "Run designer",
       "status": "done",
@@ -479,49 +343,145 @@
       "agent": "publisher",
       "created": "2026-10-23T02:42:17.954Z",
       "updated": "2026-10-23T02:42:38.941Z"
+    },
+    {
+      "id": "t179280874841022",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-24T02:25:48.410Z",
+      "updated": "2026-10-24T02:25:48.552Z"
+    },
+    {
+      "id": "t179280874855391",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-24T02:25:48.553Z",
+      "updated": "2026-10-24T02:27:37.487Z"
+    },
+    {
+      "id": "t179280885748969",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-24T02:27:37.489Z",
+      "updated": "2026-10-24T02:27:37.644Z"
+    },
+    {
+      "id": "t179280885764681",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-24T02:27:37.646Z",
+      "updated": "2026-10-24T02:30:01.058Z"
+    },
+    {
+      "id": "t179280900105922",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-24T02:30:01.059Z",
+      "updated": "2026-10-24T02:31:07.161Z"
+    },
+    {
+      "id": "t179280906716343",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-24T02:31:07.163Z",
+      "updated": "2026-10-24T02:31:25.263Z"
+    },
+    {
+      "id": "t179280908530316",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-24T02:31:25.303Z",
+      "updated": "2026-10-24T02:32:59.454Z"
+    },
+    {
+      "id": "t179280917945642",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-24T02:32:59.456Z",
+      "updated": "2026-10-24T02:34:01.192Z"
+    },
+    {
+      "id": "t179280924122678",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-24T02:34:01.226Z",
+      "updated": "2026-10-24T02:34:01.377Z"
+    },
+    {
+      "id": "t179280924141183",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-24T02:34:01.411Z",
+      "updated": "2026-10-24T02:34:01.581Z"
+    },
+    {
+      "id": "t179280924158211",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-24T02:34:01.582Z",
+      "updated": "2026-10-24T02:34:55.360Z"
+    },
+    {
+      "id": "t179280929536513",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-24T02:34:55.365Z",
+      "updated": "2026-10-24T02:35:36.784Z"
+    },
+    {
+      "id": "t179280933678525",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-24T02:35:36.785Z",
+      "updated": "2026-10-24T02:36:20.426Z"
+    },
+    {
+      "id": "t179280938042775",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-24T02:36:20.427Z",
+      "updated": "2026-10-24T02:38:16.261Z"
+    },
+    {
+      "id": "t179280949626330",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-24T02:38:16.263Z",
+      "updated": "2026-10-24T02:39:07.694Z"
+    },
+    {
+      "id": "t179280954769588",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-24T02:39:07.695Z",
+      "updated": "2026-10-24T02:39:16.114Z"
+    },
+    {
+      "id": "t179280955611642",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-24T02:39:16.116Z",
+      "updated": "2026-10-24T02:39:49.330Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179121867061923",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready — practical, varied, and directly useful for everyday people. A couple of notes: three complaint email templates (DeepSeek, ChatRTX, Grok) might feel repetitive to re",
-      "agent": "publisher",
-      "at": "2026-10-05T16:44:30.619Z",
-      "loud": false
-    },
-    {
-      "id": "n179121868960132",
-      "level": "success",
-      "text": "3 hír + 0 útmutató publikálva (költség: $0.0617).",
-      "agent": "ceo",
-      "at": "2026-10-05T16:44:49.601Z",
-      "loud": false
-    },
-    {
-      "id": "n179125938870092",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 7.2/10).",
-      "agent": "seo",
-      "at": "2026-10-06T04:03:08.700Z",
-      "loud": false
-    },
-    {
-      "id": "n179125940911764",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid — practical, everyday AI writing help across professional documents, personal correspondence, and community moments. There's one small inconsistency worth noting: most articles ",
-      "agent": "publisher",
-      "at": "2026-10-06T04:03:29.117Z",
-      "loud": false
-    },
-    {
-      "id": "n179125942747361",
-      "level": "success",
-      "text": "4 hír + 1 útmutató publikálva (költség: $0.0734).",
-      "agent": "ceo",
-      "at": "2026-10-06T04:03:47.473Z",
-      "loud": false
-    },
     {
       "id": "n179129740519556",
       "level": "info",
@@ -1281,72 +1241,49 @@
       "agent": "fact-check",
       "at": "2026-10-23T19:39:07.688Z",
       "loud": false
+    },
+    {
+      "id": "n179280954768665",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-10-24T02:39:07.686Z",
+      "loud": false
+    },
+    {
+      "id": "n179280957583564",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Line-up looks coherent and on-brand: a nice anchor in #2 for everyday readers, plus trust-and-safety pieces (fact-checking, privacy) bracketing a run of practical writing how-tos that people can use r",
+      "agent": "publisher",
+      "at": "2026-10-24T02:39:35.835Z",
+      "loud": false
+    },
+    {
+      "id": "n179280958936454",
+      "level": "success",
+      "text": "4 hír + 1 útmutató publikálva (költség: $0.0568).",
+      "agent": "ceo",
+      "at": "2026-10-24T02:39:49.364Z",
+      "loud": false
+    },
+    {
+      "id": "n179280962841561",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „The company has shared no pricing o",
+      "agent": "fact-check",
+      "at": "2026-10-24T02:40:28.415Z",
+      "loud": false
+    },
+    {
+      "id": "n179280965656817",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „Google says the Connected App is on",
+      "agent": "fact-check",
+      "at": "2026-10-24T02:40:56.568Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17912190315527",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "3 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-05T16:50:31.552Z"
-    },
-    {
-      "id": "m179125928596489",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to build a reusable personal-assistant prompt you save once and use weekly\" — mi a baj: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 4: 'save the file' and 'pin it somewhere' don't explain HOW for readers unfamiliar with their device's notes system — suggest adding 'look for a pin or star icon at the top of the note'; Step 2 a",
-      "ref": "GUIDE_how-to-build-a-reusable-personal-assistant-prompt-you-save-o.json",
-      "at": "2026-10-06T04:01:25.964Z"
-    },
-    {
-      "id": "m179125940001028",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-06T04:03:20.010Z"
-    },
-    {
-      "id": "m17912598985418",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-06T04:11:38.541Z"
-    },
-    {
-      "id": "m179129736965132",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to build a reusable personal-assistant prompt you save once and use weekly\" — javítva: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 4: 'save the file' and 'pin it somewhere' don't explain HOW for readers unfamiliar with their device's notes system — suggest adding 'look for a pin or star icon at the top of the note'; újraküldöm.",
-      "ref": "GUIDE_how-to-build-a-reusable-personal-assistant-prompt-you-save-o.json",
-      "at": "2026-10-06T14:36:09.651Z"
-    },
-    {
-      "id": "m179129739180160",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to build a reusable personal-assistant prompt you save once and use weekly\" (?/10)",
-      "ref": "GUIDE_how-to-build-a-reusable-personal-assistant-prompt-you-save-o.json",
-      "at": "2026-10-06T14:36:31.801Z"
-    },
-    {
-      "id": "m179129741753645",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-06T14:36:57.536Z"
-    },
     {
       "id": "m179129778814765",
       "from": "social",
@@ -2655,6 +2592,71 @@
       "ref": "ARTICLE_2026-10-19T15-08-45-040Z_picsart_Kling_4_0_is_now_in_Picsart_with_30-second_and_4K_.json",
       "open": true,
       "at": "2026-10-23T19:39:07.688Z"
+    },
+    {
+      "id": "m179280907618538",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Video tile pairing is now available on Google Meet mobi\" hír a meglévő útmutatóra mutat: how-to-start-a-new-google-docs-document-with-gemini-s-built-",
+      "ref": "how-to-start-a-new-google-docs-document-with-gemini-s-built-",
+      "at": "2026-10-24T02:31:16.185Z"
+    },
+    {
+      "id": "m179280908140850",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Take actions on your notebooks from Gemini Notebook dir\" hír a meglévő útmutatóra mutat: use-gemini-on-your-phone-to-pull-editable-text-from-any-phot",
+      "ref": "use-gemini-on-your-phone-to-pull-editable-text-from-any-phot",
+      "at": "2026-10-24T02:31:21.408Z"
+    },
+    {
+      "id": "m179280922274585",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to summarize and organize a long meeting transcript you recorded\" — mi a baj: OPENING_REPETITIVE: A legutóbbi 20 cikkből 5 kezdődik ugyanígy (\"this guide…\"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel.; Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 6 says 'look for a rename or edit option' without specifying",
+      "ref": "GUIDE_how-to-summarize-and-organize-a-long-meeting-transcript-you-.json",
+      "at": "2026-10-24T02:33:42.745Z"
+    },
+    {
+      "id": "m179280938041675",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Try GPT-6's Intelligent UI: 5 everyday ways to use the new visuals\" — mi a baj: CRITICAL: GPT-6 does not exist. OpenAI has not released a model by this name. The article is built entirely on a hallucinated product name.; Article cannot be published under any circumstances because the entire premise is false.; If the source material described a real upcoming feature, the writ",
+      "ref": "GUIDE_try-gpt-6-s-intelligent-ui-5-everyday-ways-to-use-the-new-vi.json",
+      "at": "2026-10-24T02:36:20.416Z"
+    },
+    {
+      "id": "m179280955610541",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-24T02:39:16.105Z"
+    },
+    {
+      "id": "m179280962841587",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „The company has shared no pricing or release date in this announcement, so check Kimi's of”): \"Kimi K3.1 Pro Tech Blog: Advancing Open Intelligen\" — The source explicitly states availability dates and pricing details that the article claims are absent",
+      "ref": "ARTICLE_2026-10-24T02-27-37-476Z_kimi-blog_Kimi_K3_1_Pro_Tech_Blog__Advancing_Open_Intelligen.json",
+      "open": true,
+      "at": "2026-10-24T02:40:28.415Z"
+    },
+    {
+      "id": "m17928096565685",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „Google says the Connected App is on by default for administrators, and that it is managed ”): \"Take actions on your notebooks from Gemini Noteboo\" — Article misrepresents admin control as a special default-on status and incorrectly claims source text is truncated when the end-user rollout information is complete.",
+      "ref": "ARTICLE_2026-10-24T02-27-21-100Z_google-workspace_Take_actions_on_your_notebooks_from_Gemini_Noteboo.json",
+      "open": true,
+      "at": "2026-10-24T02:40:56.568Z"
     }
   ]
 }

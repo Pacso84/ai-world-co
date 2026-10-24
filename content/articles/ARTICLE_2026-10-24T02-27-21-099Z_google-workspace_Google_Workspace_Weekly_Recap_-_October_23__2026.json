@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-10-24T02:28:57.255Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0034824,
+    "original_draft": "2026-10-24T02-27-21-099Z_google-workspace_Google_Workspace_Weekly_Recap_-_October_23__2026.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/10/weekly-recap-10-23-2026.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/10/weekly-recap-10-23-2026.html",
+      "http://workspaceupdates.googleblog.com/2026/10/follow-through-on-your-meeting-tasks-with-meeting-recaps-in-Google-Chat.html"
+    ],
+    "source_snippet": "Follow through on your meeting tasks with meeting recaps in Google Chat\nTo make it easier for teams to move from planning to action, we’re introducing meeting recaps in Google Chat. Meeting recaps provide a convenient summary directly in Google Chat. | Learn more.\nGemini in Google Sheets is now available on iOS devices\nBuilding upon the power of Gemini in Sheets on the web and our recent launch on Android devices, we’re excited to announce that you can now use Gemini in Google Sheets on your iOS device to quickly analyze and understand your data while on the go. | Learn more.\nPublish interactive apps from the Gemini app to Google Sites\nYou can now export interactive apps built in the Gemini app directly to Google Sites. With one click, your app is added to a new, private site draft — fully interactive and ready to customize. From there, you can add more content, publish the site, and share it just like any other Google Site. | Learn more.\nAnalyze BigQuery data using natural language with Gemini in Google Sheets\nWe’re introducing a new way to analyze BigQuery data in Google Sheets. After connecting to BigQuery data with Connected Sheets, you can use Gemini to interact and analyze that data conversationally, right in Google Sheets. Gemini queries run against the full dataset in BigQuery, not just what’s visible in your spreadsheet. | Learn more.\nTeacher-led Gemini Notebook in Google Classroom now offers insight summaries for educators and updated sharing settings for admins, in\n\n---\n\nTo make it easier for teams to move from planning to action, we’re introducing meeting recaps in Google Chat. Meeting recaps provide a convenient summary directly in Google Chat, including:\n\n\nMeeting summary: A high-level overview highlighting key discussion topics and takeaways.\nDirect artifact links: One-click access to the full Gemini meeting notes document, the meeting recording, and the transcript.\nKey decisions: Core conclusions and agreements reached during the call.\nAction items: Assigned next steps with designated owners so team members can immediately take action.\n\n\n\n\n\n\nAutomatically review key decisions, action items, and artifact links directly in Google Chat after your meeting ends.\n\n\n\nMeeting recaps will appear automatically for any conversation with ‘Take notes for me’ enabled in Google  Meet, in the Chat space associated with that meeting, bringing essential post-call takeaways directly into the flow of your team's ongoing conversations. Participants can review agreed-upon next steps, and colleagues who missed the meeting or joined late can catch up on what happened without reading lengthy transcripts or hunting for files.\nAdditional details\n\n\nRequirements: Meeting recaps are generated when “Take notes for me” is active during a Google Meet call and an associated meeting chat conversation exists.\nNotes sharing settings: If the meeting host sets “Send notes to” in Google Meet to “Hosts and co-hosts only,” a recap card will not be posted to the group chat",
+    "merged_from": 2,
+    "merged_theme": "Google Workspace meeting recaps in Chat",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-10-24T02:35:49.954Z",
+    "slug": "google-chat-meeting-recaps-what-they-include-and-when-they-appear",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 650
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear definitions, proper attribution to Google's announcement, friendly tone, and a useful What this means for you section. No prohibited content, no clichés, and all terms are explained for a general audience.",
+      "_aiCost": 0.00095664,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-24T02:37:04.317Z",
+    "seo": {
+      "meta_description": "Google Chat meeting recaps put decisions, action items, and links to notes in your chat after Meet calls. Here's what they include and when they appear.",
+      "keywords": [
+        "google chat meeting recaps",
+        "google meet recap feature",
+        "meeting recap google chat",
+        "google meet action items",
+        "take notes for me google meet",
+        "google workspace meeting summary",
+        "google chat meeting summary"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a section explaining how to turn on 'Take notes for me' to capture meeting recaps, since this is a key requirement for the feature to work",
+        "Include the exact timing of when recaps appear (e.g., immediately after the call or after a delay) to match informational search intent",
+        "Add an FAQ section targeting 'what is a meeting recap' and 'how do meeting recaps work' queries for featured snippet opportunities"
+      ],
+      "optimised_at": "2026-10-24T02:38:41.932Z"
+    },
+    "fact_verified_at": "2026-10-24T02:39:51.587Z",
+    "fact_check_skip": "a forrás nem olvasható (0/2)"
+  },
+  "article_markdown": "---\ntitle: \"Google Chat Meeting Recaps: What They Include and When They Appear\"\nsubtitle: \"Google's new meeting recaps put decisions, action items, and links to notes right in your team's chat after a call.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 3\ntags: [\"google-chat\", \"google-meet\", \"gemini\", \"meeting-notes\", \"workplace-ai\"]\n---\n\n# Google Chat Meeting Recaps: What They Include and When They Appear\n\n> **In short:** Google is adding meeting recaps to Google Chat. After a Google Meet call ends, a summary card with key decisions, action items with owners, and links to the meeting notes, recording, and transcript appears in the call's Chat space, if \"Take notes for me\" was turned on during the meeting.\n\nYou've probably been on a call where everyone agreed on something, then spent the next day asking, \"Wait, who was doing that again?\" Google's new feature aims to cut down on that follow-up work.\n\n## What a meeting recap is\n\nA **recap** is a short summary card that Google Chat posts after a meeting. Think of it as the highlights reel of your call. Google says each recap includes four things:\n\n- **A meeting summary:** a high-level overview of the main topics and takeaways.\n- **Key decisions:** the conclusions and agreements the group reached.\n- **Action items:** the next steps, each with a named owner.\n- **Direct links:** one-click access to the full Gemini meeting notes document, the meeting recording, and the transcript. A **transcript** is a word-for-word text version of what people said, and **Gemini** is Google's AI assistant that creates the notes.\n\nThe point is that teammates who missed the call, or joined late, can catch up in a minute instead of reading a long transcript or searching Drive for the right file.\n\n## When the recap appears\n\nGoogle's announcement describes a few conditions that have to line up:\n\n1. **\"Take notes for me\" must be on during the Google Meet call.** This is the Gemini note-taking option inside Meet.\n2. **The meeting needs an associated Chat conversation.** The recap is posted in the Chat space linked to that meeting.\n3. **The host's notes-sharing setting matters.** If the meeting host sets \"Send notes to\" to \"Hosts and co-hosts only,\" the recap card will not be posted to the group chat.\n\nIf you run a meeting and want the whole team to see the recap, check that last setting before the call starts. If the recap doesn't show up, that setting is the first thing to look at.\n\n## What this means for you\n\n- **For your team:** Recaps help people stay on the same page. Action items with named owners make it easier to see who's responsible for what.\n- **For meeting hosts:** Decide ahead of time who should receive notes. Choosing \"Hosts and co-hosts only\" keeps the recap out of the group chat.\n- **For people who miss meetings:** Check the Chat space after a call. A recap there can save you from asking colleagues what you missed.\n- **If you're just getting started:** Turn on \"Take notes for me\" for your next meeting that has a Chat space, then see whether the recap appears afterward.\n- **If you already use it:** Use the linked transcript to check a specific decision. Open the recap, follow the link to the transcript, and search for the exact wording used, so your follow-up email quotes what was actually agreed.\n\n## Wrap-up\n\nGoogle's new meeting recaps in Google Chat turn the end of a call into a short, shareable summary of decisions, action items, and links to the full notes. They appear when \"Take notes for me\" is on and the meeting has a linked Chat space, and they won't post to the group chat if the host limits notes to hosts and co-hosts. Your next step: at your next meeting, check that \"Take notes for me\" is on, and look in the Chat space when the call ends.",
+  "original_title": "Google Workspace Weekly Recap - October 23, 2026"
+}
