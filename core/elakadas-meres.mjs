@@ -50,12 +50,12 @@ async function cikkSzoveg(url) {
 async function modell(rendszer, felhasznalo) {
   const r = await fetch('https://openrouter.ai/api/v1/chat/completions', {
     method: 'POST', headers: { Authorization: 'Bearer ' + KULCS, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model: MODELL, messages: [{ role: 'system', content: rendszer }, { role: 'user', content: felhasznalo }], max_tokens: 1500, temperature: 0.2, usage: { include: true } }),
+    body: JSON.stringify({ model: MODELL, messages: [{ role: 'system', content: rendszer }, { role: 'user', content: felhasznalo }], max_tokens: 8000, temperature: 0.2, reasoning: { effort: 'low' }, usage: { include: true } }),   // 10-24 mérés: 1500-nál a gondolkodás elvitte a keretet (üres / félbevágott válasz) — a router is 8000-es padlót ad
     signal: AbortSignal.timeout(180000)
   });
   const j = await r.json();
   if (!r.ok) throw new Error('OpenRouter ' + r.status + ': ' + JSON.stringify(j).slice(0, 200));
-  return { szoveg: j.choices?.[0]?.message?.content || '', koltseg: Number(j.usage?.cost) || 0, be: j.usage?.prompt_tokens, ki: j.usage?.completion_tokens };
+  return { veg: j.choices?.[0]?.finish_reason, szoveg: j.choices?.[0]?.message?.content || '', koltseg: Number(j.usage?.cost) || 0, be: j.usage?.prompt_tokens, ki: j.usage?.completion_tokens };
 }
 
 const indexek = {};
@@ -76,7 +76,7 @@ for (const slug of process.argv.slice(2)) {
     osszKoltseg += v.koltseg;
     const tetelek = valaszErtelmez(v.szoveg, cikkek);
     const doboz = dobozKeszit(tetelek, Object.fromEntries(cikkek.map(c => [c.url, c.szoveg])), utm.hibak);
-    Object.assign(sor, { koltseg: v.koltseg, tokenBe: v.be, tokenKi: v.ki, modellTetel: tetelek.length, doboz, cikkCimek: Object.fromEntries(cikkek.map(c => [c.url, c.cim])), nyers: v.szoveg.slice(0, 3000) });
+    Object.assign(sor, { veg: v.veg, koltseg: v.koltseg, tokenBe: v.be, tokenKi: v.ki, modellTetel: tetelek.length, doboz, cikkCimek: Object.fromEntries(cikkek.map(c => [c.url, c.cim])), nyers: v.szoveg.slice(0, 3000) });
   }
   eredmeny.push(sor);
   console.log(`${slug}: index ${sor.indexMeret} · jelölt ${jeloltek.length} · letöltve ${sor.letoltve} · modell-tétel ${sor.modellTetel ?? '-'} · DOBOZ ${sor.doboz ? sor.doboz.items.length + ' tétel' : 'nincs'} · $${(sor.koltseg || 0).toFixed(5)}`);
