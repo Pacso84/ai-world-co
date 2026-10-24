@@ -1,0 +1,33 @@
+# EDGE TTS PRÓBA (2026-10-24) — CSAK KÉZI INDÍTÁS, a napi gépsort NEM futtatja, költsége $0.
+# Miért: 10-24-én mind a 3 futásban „Edge TTS WebSocket error: Unexpected server response: 200" → 0 Reel/TikTok-videó.
+# A Microsoft új tokent kér (Sec-MS-GEC v2, „2-" verzió-előtag; edge-tts #492/#507). Helyben (HU) a régi
+# végpont 403 (országos tiltás), ezért a próbát az USA-beli futtatón végezzük, ahol a valódi gyártás is fut.
+name: Edge TTS próba
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  proba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Függőségek (edge-tts rögzített commit + a projekt npm csomagjai)
+        run: |
+          pip install "git+https://github.com/rany2/edge-tts@bd44c1d1aaebdc1db7f47456ee12431b42ec7cac"
+          npm ci --no-audit --no-fund
+      - name: 1) Python edge-tts önmagában
+        run: |
+          edge-tts --voice en-US-AriaNeural --text "Hello, this is a short test." --write-media py.mp3 && ls -l py.mp3 || echo "PY HIBA"
+      - name: 2) Minta-tokenek (rögzített időpontokra) a JS-ellenőrzéshez
+        run: |
+          python3 -c "from edge_tts.drm import generate_sec_ms_gec_v2 as g; from edge_tts.constants import SEC_MS_GEC_VERSION as v; print('verzio', v); [print(t, g(t)) for t in (1761350400, 1761350699, 1761350700, 1793000000)]"
+      - name: 3) msedge-tts a Pythontól kapott v2 tokennel (régi és új hoszt)
+        run: node core/edge-tts-proba.mjs
