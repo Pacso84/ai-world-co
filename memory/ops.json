@@ -1,94 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17924644144607",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-20T02:46:54.460Z",
-      "updated": "2026-10-20T02:47:15.589Z"
-    },
-    {
-      "id": "t179246443559259",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-20T02:47:15.592Z",
-      "updated": "2026-10-20T02:47:41.717Z"
-    },
-    {
-      "id": "t17925496073376",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-21T02:26:47.337Z",
-      "updated": "2026-10-21T02:26:47.459Z"
-    },
-    {
-      "id": "t179254960746072",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-21T02:26:47.460Z",
-      "updated": "2026-10-21T02:28:33.139Z"
-    },
-    {
-      "id": "t179254971314038",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-21T02:28:33.140Z",
-      "updated": "2026-10-21T02:28:33.277Z"
-    },
-    {
-      "id": "t179254971327974",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-21T02:28:33.279Z",
-      "updated": "2026-10-21T02:29:38.713Z"
-    },
-    {
-      "id": "t179254977871412",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-21T02:29:38.714Z",
-      "updated": "2026-10-21T02:31:16.897Z"
-    },
-    {
-      "id": "t179254987690029",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-21T02:31:16.900Z",
-      "updated": "2026-10-21T02:32:16.602Z"
-    },
-    {
-      "id": "t179254993663823",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-21T02:32:16.638Z",
-      "updated": "2026-10-21T02:33:09.685Z"
-    },
-    {
-      "id": "t17925499896861",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-21T02:33:09.686Z",
-      "updated": "2026-10-21T02:34:14.234Z"
-    },
-    {
-      "id": "t179255005425956",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-21T02:34:14.259Z",
-      "updated": "2026-10-21T02:34:29.900Z"
-    },
-    {
       "id": "t179255006992860",
       "title": "Run designer",
       "status": "done",
@@ -479,57 +391,97 @@
       "agent": "publisher",
       "created": "2026-10-24T02:39:16.116Z",
       "updated": "2026-10-24T02:39:49.330Z"
+    },
+    {
+      "id": "t179284443998171",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-24T12:20:39.981Z",
+      "updated": "2026-10-24T12:20:40.103Z"
+    },
+    {
+      "id": "t179284444010449",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-24T12:20:40.104Z",
+      "updated": "2026-10-24T12:20:40.249Z"
+    },
+    {
+      "id": "t17928444402512",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-24T12:20:40.251Z",
+      "updated": "2026-10-24T12:20:40.380Z"
+    },
+    {
+      "id": "t179284444038316",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-24T12:20:40.383Z",
+      "updated": "2026-10-24T12:21:12.402Z"
+    },
+    {
+      "id": "t179284447240467",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-24T12:21:12.404Z",
+      "updated": "2026-10-24T12:21:47.077Z"
+    },
+    {
+      "id": "t179284450707918",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-24T12:21:47.079Z",
+      "updated": "2026-10-24T12:22:00.121Z"
+    },
+    {
+      "id": "t179284452017612",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-24T12:22:00.176Z",
+      "updated": "2026-10-24T12:22:00.309Z"
+    },
+    {
+      "id": "t179284452033818",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-24T12:22:00.338Z",
+      "updated": "2026-10-24T12:22:33.924Z"
+    },
+    {
+      "id": "t179284455392892",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-24T12:22:33.928Z",
+      "updated": "2026-10-24T12:22:49.741Z"
+    },
+    {
+      "id": "t179284456974291",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-24T12:22:49.742Z",
+      "updated": "2026-10-24T12:23:01.736Z"
+    },
+    {
+      "id": "t179284458173771",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-24T12:23:01.737Z",
+      "updated": "2026-10-24T12:23:16.958Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179129740519556",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-10-06T14:36:45.195Z",
-      "loud": false
-    },
-    {
-      "id": "n179129742166810",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, everyday use cases that will genuinely help readers. Just one note: articles 1, 3, 8, and 10 don't specify which AI tool they use, so you may want to add that for ",
-      "agent": "publisher",
-      "at": "2026-10-06T14:37:01.668Z",
-      "loud": false
-    },
-    {
-      "id": "n17912974409365",
-      "level": "success",
-      "text": "0 hír + 1 útmutató publikálva (költség: $0.0034).",
-      "agent": "ceo",
-      "at": "2026-10-06T14:37:20.936Z",
-      "loud": false
-    },
-    {
-      "id": "n179134370413877",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 7.8/10).",
-      "agent": "seo",
-      "at": "2026-10-07T03:28:24.138Z",
-      "loud": false
-    },
-    {
-      "id": "n179134371832166",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready—practical, everyday AI writing templates that cover real needs from complaints to sympathy notes. A quick consistency check: articles 8 and 10 just say \"AI\" while othe",
-      "agent": "publisher",
-      "at": "2026-10-07T03:28:38.321Z",
-      "loud": false
-    },
-    {
-      "id": "n179134373688995",
-      "level": "success",
-      "text": "3 hír + 2 útmutató publikálva (költség: $0.0717).",
-      "agent": "ceo",
-      "at": "2026-10-07T03:28:56.889Z",
-      "loud": false
-    },
     {
       "id": "n179138540344913",
       "level": "warn",
@@ -1281,90 +1233,57 @@
       "agent": "fact-check",
       "at": "2026-10-24T02:40:56.568Z",
       "loud": false
+    },
+    {
+      "id": "n179284447239124",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"Try GPT-6's Intelligent UI: 5 everyday ways to use the new visuals\" — az Ellenőrző tényt/forrást kér, am",
+      "agent": "guide",
+      "at": "2026-10-24T12:21:12.391Z",
+      "loud": false
+    },
+    {
+      "id": "n179284456973224",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-10-24T12:22:49.732Z",
+      "loud": false
+    },
+    {
+      "id": "n179284458645369",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, everyday AI use cases that directly help busy people, from privacy awareness to writing real stuff faster. The mix of tools (Perplexity, ChatGPT, Cohere, DeepSeek,",
+      "agent": "publisher",
+      "at": "2026-10-24T12:23:06.453Z",
+      "loud": false
+    },
+    {
+      "id": "n179284459698634",
+      "level": "success",
+      "text": "0 hír + 2 útmutató publikálva (költség: $0.0050).",
+      "agent": "ceo",
+      "at": "2026-10-24T12:23:16.986Z",
+      "loud": false
+    },
+    {
+      "id": "n179284467516863",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „Google's rollout notes list Android",
+      "agent": "fact-check",
+      "at": "2026-10-24T12:24:35.168Z",
+      "loud": false
+    },
+    {
+      "id": "n179284471342994",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-24T12:25:13.429Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179134301506373",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How Jump Trading is scaling quant research with ChatGPT\" — mi a baj: Article claims three enterprise partnerships (Jump Trading, Atlassian, Ironclad) but source only covers Jump Trading; Atlassian and Ironclad partnerships are not verifiable from the single source provided; Factual accuracy compromised — cannot confirm the Atlassian or Ironclad announcements exist in the sou",
-      "ref": "2026-10-07T03-13-46-175Z_openai-blog_How_Jump_Trading_is_scaling_quant_research_with_Ch.json",
-      "at": "2026-10-07T03:16:55.063Z"
-    },
-    {
-      "id": "m179134305778280",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Zapier Agents is now AI by Zapier\" — mi a baj: Invented product name: 'Gemini 3.8 Flash' does not appear to be a real Google model — real versions are Gemini 1.5, Gemini 2.0; confirm with source before using; Invented product name: 'Gemini Enterprise' is not a known Google product tier; if real, needs verification; Duplicate audience bullet: Two separate 'If you already use'",
-      "ref": "2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
-      "at": "2026-10-07T03:17:37.782Z"
-    },
-    {
-      "id": "m179134307142692",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How Jump Trading is scaling quant research with ChatGPT\" — javítva: Article claims three enterprise partnerships (Jump Trading, Atlassian, Ironclad) but source only covers Jump Trading; Atlassian and Ironclad partnerships are not verifiable from the single source provided; újraküldöm.",
-      "ref": "2026-10-07T03-13-46-175Z_openai-blog_How_Jump_Trading_is_scaling_quant_research_with_Ch.json",
-      "at": "2026-10-07T03:17:51.426Z"
-    },
-    {
-      "id": "m179134309996650",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Zapier Agents is now AI by Zapier\" — javítva: Invented product name: 'Gemini 3.8 Flash' does not appear to be a real Google model — real versions are Gemini 1.5, Gemini 2.0; confirm with source before using; Invented product name: 'Gemini Enterprise' is not a known Google product tier; if real, needs verification; újraküldöm.",
-      "ref": "2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
-      "at": "2026-10-07T03:18:19.966Z"
-    },
-    {
-      "id": "m179134311974478",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How Jump Trading is scaling quant research with ChatGPT\" (?/10)",
-      "ref": "2026-10-07T03-13-46-175Z_openai-blog_How_Jump_Trading_is_scaling_quant_research_with_Ch.json",
-      "at": "2026-10-07T03:18:39.744Z"
-    },
-    {
-      "id": "m17913431336935",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Zapier Agents is now AI by Zapier\" — mi a baj: Duplicate 'If you already use' bullet point in 'What this means for you' section — third bullet should specify a distinct user type or use case",
-      "ref": "2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
-      "at": "2026-10-07T03:18:53.693Z"
-    },
-    {
-      "id": "m17913437134297",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 22 → 8/4/2 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-07T03:28:33.429Z"
-    },
-    {
-      "id": "m179134428507323",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-07T03:38:05.073Z"
-    },
-    {
-      "id": "m179138537186474",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Zapier Agents is now AI by Zapier\" — javítva: Duplicate 'If you already use' bullet point in 'What this means for you' section — third bullet should specify a distinct user type or use case; Reviewer verdict: The article is friendly, well-structured, and explains key terms like AI step, prompt, and trigger clearly. However, it has a structural error: the 'What this means for you' sec",
-      "ref": "2026-10-07T03-14-03-959Z_zapier-blog_Zapier_Agents_is_now_AI_by_Zapier.json",
-      "at": "2026-10-07T15:02:51.864Z"
-    },
     {
       "id": "m179138539984786",
       "from": "ellenorzo",
@@ -2657,6 +2576,91 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-24T02:45:45.255Z"
+    },
+    {
+      "id": "m179284445973712",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to summarize and organize a long meeting transcript you recorded\" — javítva: OPENING_REPETITIVE: A legutóbbi 20 cikkből 5 kezdődik ugyanígy (\"this guide…\"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel.; Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; újraküldöm.",
+      "ref": "GUIDE_how-to-summarize-and-organize-a-long-meeting-transcript-you-.json",
+      "at": "2026-10-24T12:20:59.737Z"
+    },
+    {
+      "id": "m179284447239094",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Try GPT-6's Intelligent UI: 5 everyday ways to use the new visuals\" — javítva: CRITICAL: GPT-6 does not exist. OpenAI has not released a model by this name. The article is built entirely on a hallucinated product name.; Article cannot be published under any circumstances because the entire premise is false.; újraküldöm.",
+      "ref": "GUIDE_try-gpt-6-s-intelligent-ui-5-everyday-ways-to-use-the-new-vi.json",
+      "at": "2026-10-24T12:21:12.390Z"
+    },
+    {
+      "id": "m179284447239127",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"Try GPT-6's Intelligent UI: 5 everyday ways to use the new visuals\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: If the source material described a real upcoming feature, the writer must use the correct product name.",
+      "ref": "GUIDE_try-gpt-6-s-intelligent-ui-5-everyday-ways-to-use-the-new-vi.json",
+      "open": false,
+      "at": "2026-10-24T12:21:12.391Z",
+      "resolved_at": "2026-10-24T12:21:47.066Z"
+    },
+    {
+      "id": "m179284448705282",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to summarize and organize a long meeting transcript you recorded\" (?/10)",
+      "ref": "GUIDE_how-to-summarize-and-organize-a-long-meeting-transcript-you-.json",
+      "at": "2026-10-24T12:21:27.052Z"
+    },
+    {
+      "id": "m179284450706439",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Try GPT-6's Intelligent UI: 5 everyday ways to use the new visuals\" (?/10)",
+      "ref": "GUIDE_try-gpt-6-s-intelligent-ui-5-everyday-ways-to-use-the-new-vi.json",
+      "at": "2026-10-24T12:21:47.064Z"
+    },
+    {
+      "id": "m179284452010915",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Google Workspace Weekly Recap - October 23, 2026\" hír a meglévő útmutatóra mutat: gemini-getting-started",
+      "ref": "gemini-getting-started",
+      "at": "2026-10-24T12:22:00.109Z"
+    },
+    {
+      "id": "m179284458172881",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-24T12:23:01.728Z"
+    },
+    {
+      "id": "m179284467516830",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „Google's rollout notes list Android devices under \"Rapid Release,\" which is the label for ”): \"Video tile pairing is now available on Google Meet\" — The article incorrectly states Android is only under Rapid Release when the source specifies both Rapid Release and Scheduled Release domains; also omits the iOS roll",
+      "ref": "ARTICLE_2026-10-22T02-27-20-161Z_google-workspace_Video_tile_pairing_is_now_available_on_Google_Meet.json",
+      "open": true,
+      "at": "2026-10-24T12:24:35.168Z"
+    },
+    {
+      "id": "m179284471342925",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Set up an Alexa+ routine that runs different steps\" — The guide's core technical claims about Alexa+ routines appear accurate, but one statement needs softening to account for potential UI variations across app versions.",
+      "ref": "ARTICLE_GUIDE_set-up-an-alexa-routine-that-runs-different-steps-on-weekday.json",
+      "open": true,
+      "at": "2026-10-24T12:25:13.429Z"
     }
   ]
 }

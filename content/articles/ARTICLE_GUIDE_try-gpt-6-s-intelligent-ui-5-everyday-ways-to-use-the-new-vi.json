@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "try-gpt-6-s-intelligent-ui-5-everyday-ways-to-use-the-new-vi",
+    "company": "OpenAI",
+    "tool": "ChatGPT",
+    "icon": "✨",
+    "level": "intermediate",
+    "source_news": null,
+    "trend": null,
+    "written_at": "2026-10-24T12:21:12.389Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0042766,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-10-24T02:36:20.403Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1286
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide with clear structure, practical prompts, explicit placeholders, success criteria for each step, and a useful Common mistakes section. No prohibited content, no clichés, and the honest-limit disclaimer appropriately frames what ChatGPT cannot do without sounding like financial advice.",
+      "_aiCost": 0.00184977,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The article is well-structured, clearly written, and follows all style guidelines, but it is anchored to a product that does not exist. GPT-6 has not been released by OpenAI as of current knowledge. Publishing this would be a factual accuracy failure that could seriously mislead readers.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_try-gpt-6-s-intelligent-ui-5-everyday-ways-to-use-the-new-vi.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-10-24T12:21:47.059Z",
+    "slug": "get-tables-charts-and-clear-layouts-from-chatgpt-5-everyday-prompts",
+    "image_v": 2,
+    "image_at": "2026-10-24T12:22:33.910Z",
+    "seo": {
+      "meta_description": "Learn 5 prompts to get ChatGPT to create tables, charts and clear layouts for trips, comparisons, studying and weekly plans.",
+      "keywords": [
+        "ChatGPT tables and charts",
+        "ChatGPT formatting prompts",
+        "how to get tables from ChatGPT",
+        "ChatGPT prompts for layouts",
+        "ChatGPT structured responses",
+        "ChatGPT prompts for planning",
+        "AI formatting tips"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the word 'prompt' earlier in the title for better keyword alignment",
+        "Include specific prompt examples in the meta description to improve click-through rate",
+        "Consider adding '2024' or current year to the title if this is time-sensitive content"
+      ],
+      "optimised_at": "2026-10-24T12:22:49.728Z"
+    },
+    "fact_verified_at": "2026-10-24T12:24:01.756Z"
+  },
+  "article_markdown": "---\ntitle: \"Get Tables, Charts and Clear Layouts from ChatGPT: 5 Everyday Prompts\"\nsubtitle: \"Learn five practical prompts that ask ChatGPT for tables, charts and clear layouts for trips, comparisons, studying and weekly plans.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"OpenAI\"\ntool: \"ChatGPT\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"intermediate\", \"chatgpt\", \"prompts\", \"tables\", \"study-tips\"]\n---\n\n# Get Tables, Charts and Clear Layouts from ChatGPT: 5 Everyday Prompts\n\n> **In short:** ChatGPT can organize answers into tables, lists and simple diagrams when your prompt asks for them. It decides the layout itself, so the reply may differ from what you asked for, and it can't see live prices or schedules.\n\nBy the end of this guide, you'll have five copy-and-paste prompts for planning a trip, comparing two options, learning a topic, building a weekly plan and checking your work. It's for anyone who already chats with ChatGPT and is tired of long walls of text.\n\n## Before you start\n- **A ChatGPT account and a few chats behind you.** You should already know how to start a new chat and send a message. We won't cover that here.\n- **A device:** the ChatGPT app on your phone or tablet, or the website on a computer. Layouts can look a little different on each, so the fallbacks below matter.\n- **Time:** about 25 minutes. Keep a notes app open so you can save the prompts that work for you.\n- **Honest limit:** ChatGPT can organize information you give it and what it already knows, but it can't check today's prices, opening hours or availability.\n\n## Step 1 — Plan a trip as a day-by-day table\nStart a new chat and type one message that includes three things: your goal, your details and the layout you want. Asking for a table directly gives the best chance of a grid. Send your message, then wait until the reply stops typing. You may see a table with days down the side, or a structured list if ChatGPT decides a table doesn't fit. If you get plain paragraphs, send a follow-up asking for a table with columns for morning, afternoon and evening. The first reply can take a few seconds.\n\n💬 Example: \"Plan a 3-day trip from [your city] to [destination] in [month] for [number] adults. Show each day as a table with morning, afternoon and evening columns.\"\n\nYou'll know it worked when the plan appears as a grid or clearly separated sections, and each day has all three time slots filled in.\n\n## Step 2 — Compare two options side by side\nYou can start a new chat, or stay in the trip chat if you want to keep the plan nearby. Name your two options and describe your situation, so ChatGPT knows what matters to you. Ask for a table of differences first, then ask for the factors to weigh most. Look for a table with rows for each factor. If your question involves numbers, you can ask for a simple chart, though a table is often clearer. Because ChatGPT doesn't know live prices, treat the output as a starting point and confirm the details yourself.\n\n💬 Example: \"Compare [option one] and [option two] for my situation: [your situation]. Put the differences in a table, then list the three factors I should weigh most.\"\n\nYou'll know it worked when both options appear as columns or rows, and the factors you asked for are easy to scan instead of buried in a paragraph.\n\n## Step 3 — Learn a new topic with a simple visual\nThis works well when a subject is new to you. Ask ChatGPT to explain the topic in plain words, and request a diagram or chart if it would help. Then ask for a short self-test so you can check what you understood. A visual might appear as a labeled diagram, a timeline or a small table. If nothing visual shows up, send a follow-up asking for a step-by-step diagram made of text arrows. Read the explanation once, then answer the quiz questions before you look for the answers.\n\n💬 Example: \"Explain [topic] as if I'm new to it. Use a simple chart or diagram if it helps, then give me three quiz questions with the answers hidden at the bottom.\"\n\nYou'll know it worked when a clear visual or diagram appears next to the explanation, and the quiz questions match what you just read.\n\n## Step 4 — Build a week of meals or chores in a grid\nNow use the same chat to build a schedule. Ask for a grid with days as columns and tasks as rows. Within a single chat, ChatGPT can usually see your earlier messages, so you can refer to \"the table above\" when you want changes. Make one change at a time, such as swapping a dish or moving a chore. Small follow-ups usually produce cleaner results than starting over. If a change scrambles the table, ask it to rebuild the table using only your updated rules.\n\n💬 Example: \"Create a weekly meal plan for [number] people as a table, with days across the top and breakfast, lunch and dinner down the side. Keep the ingredients [budget style] and simple.\"\n\nYou'll know it worked when the table has seven day columns, every row is filled in, and your follow-up changes update only the parts you asked about.\n\n## Step 5 — Check the answer before you use it\nTables and charts can look convincing even when a detail is wrong, so this step matters. Ask ChatGPT to point out which parts of its answer you should confirm yourself. Then copy the best version into your notes app with today's date. The next time you need something similar, reuse the prompt and swap in your own details. Confirm opening hours, travel times, prices and rules with the official source, because ChatGPT can't see live information for you.\n\n💬 Example: \"Which parts of this plan should I double-check before I rely on them, such as opening hours, travel times or prices?\"\n\nYou'll know it worked when ChatGPT names specific items to verify, and you've saved the final version with a note about what you still need to confirm.\n\n## Common mistakes\n- **Expecting a table every time.** ChatGPT chooses the layout, so a request doesn't guarantee one. Fix it by asking for the layout directly, like \"Show this as a table,\" and accept a list if that's what you get. You can always ask again.\n- **Starting a new chat for every change.** You lose the context you built up. Fix it by staying in one chat and saying \"Using the table above…\" when you want edits.\n- **Trusting facts without checking.** ChatGPT can organize information well, but it can't confirm live prices, schedules or availability. Fix it by checking the key details with the official source before you book or buy.\n\n## What this means for you\n- **In everyday life:** a trip plan, a weekly meal grid or a study chart can take a few minutes to create, and you can change one row at a time.\n- **For your business or work:** side-by-side comparisons and simple diagrams can help you draft a meeting summary or a project timeline for your team, as long as you verify the facts first.\n- **If you're just getting started:** ask for a table on any question that has more than two parts. It's the easiest way to see the difference a clear layout makes.\n\n## Try it now\nOpen ChatGPT and send the trip prompt from Step 1, filling in your real city and a destination you'd like to visit. Look at the layout it returns, then send one follow-up asking for a single change.",
+  "original_title": "Try GPT-6's Intelligent UI: 5 everyday ways to use the new visuals"
+}
