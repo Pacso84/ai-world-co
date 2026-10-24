@@ -52,9 +52,11 @@ body {
 }
 .navbar--scrolled { box-shadow: 0 1px 20px -10px rgba(0,0,0,0.25); }
 .navbar__inner {
-  /* 10-21: a fejléc SZÉLESEBB lehet a tartalomnál (9 menüpont; a hu/es sor már 1159/1189 px volt az 1080-as dobozban, túllógott) */
-  max-width: 1400px; margin: 0 auto; padding: 15px 24px;
-  display: flex; align-items: center; gap: 24px;
+  /* 10-21: a fejléc SZÉLESEBB lehet a tartalomnál (9 menüpont; a hu/es sor már 1159/1189 px volt az 1080-as dobozban, túllógott).
+     10-24 (user: „a felső menü nagyon elcsúszott! nincs középen!”): 1400 px-nél 1536-os képernyőn a logó és a gombok messze
+     a tartalom (1080) mellé kerültek → 1200 px + 16 px köz; élőben mérve mindhárom nyelven egy sorban fér el (es: ~19 px tartalék). */
+  max-width: 1200px; margin: 0 auto; padding: 15px 24px;
+  display: flex; align-items: center; gap: 16px;
 }
 .navbar__logo {
   font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800;
@@ -64,7 +66,7 @@ body {
 }
 .navbar__mark { width: 30px; height: 30px; display: block; }
 .navbar__dot { color: var(--accent); }
-.navbar__nav { display: flex; gap: clamp(10px, 1.1vw, 22px); margin-left: auto; align-items: center; }   /* 10-18: 8 menüpont → szűkebb köz */
+.navbar__nav { display: flex; gap: clamp(10px, 1.1vw, 22px); margin: 0 auto; align-items: center; }   /* 10-18: 8 menüpont → szűkebb köz · 10-24 (user: „az egész jobbra van csúsztatva”): középen, nem a jobb gombokhoz tapadva */
 .navbar__nav a {
   font-size: 14px; font-weight: 600; color: var(--ink-soft);
   text-decoration: none; position: relative; padding: 4px 0;

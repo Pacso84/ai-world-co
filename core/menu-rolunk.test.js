@@ -88,5 +88,17 @@ t('💬 a chatbot GYIK-ja nem a /start-ra küld', () => {
   assert.equal((src.match(/p: '\/about'/g) || []).length >= 3, true, 'a kezdő útmutatós GYIK nem a Rólunk oldalra mutat (3 nyelv)');
 });
 
+t('↔️ 10-24 (user: „a felső menü nagyon elcsúszott! nincs középen!”): a fejléc legfeljebb 1200 px — a tartalomhoz (1080) igazodik', () => {
+  const css = readFileSync(join(ROOT, 'website', 'assets', 'style.css'), 'utf-8');
+  const blokk = css.slice(css.indexOf('.navbar__inner {'), css.indexOf('}', css.indexOf('.navbar__inner {')));
+  const mw = Number((blokk.match(/max-width:\s*(\d+)px/) || [])[1]);
+  assert.ok(mw > 0 && mw <= 1200, 'a fejléc ' + mw + ' px — 1536 px-es képernyőn messze kilóg a tartalom szélességéből');
+  // élőben mérve 10-24: 1200 px-ben 16 px-es közzel a leghosszabb (spanyol) sor is elfér, egy sorban
+  assert.match(blokk, /gap:\s*16px/);
+  // „…az egész jobbra van csúsztatva a sor!” — a menüpontok KÖZÉPEN (mindkét oldalon auto margó), nem a jobb gombokhoz tapadva
+  const nav = css.slice(css.indexOf('.navbar__nav {'), css.indexOf('}', css.indexOf('.navbar__nav {')));
+  assert.match(nav, /margin:\s*0 auto/, 'a menü a jobb oldalra csúszik (margin-left: auto)');
+});
+
 if (hiba) { console.log(`\n❌ menu-rolunk.test: ${hiba} hiba`); process.exit(1); }
 console.log('✅ menu-rolunk.test: mind rendben');
