@@ -42,7 +42,7 @@ async function cikkSzoveg(url) {
     const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'en-US,en;q=0.9' }, signal: AbortSignal.timeout(30000) });
     if (!r.ok) return null;
     const html = await r.text();
-    const cim = (html.match(/<title>([^<]*)<\/title>/i) || [])[1]?.replace(/\s*[|–-]\s*(OpenAI Help Center|Gemini Apps Help|Google .* Help|Microsoft Support|Claude Help Center|Mistral AI).*$/i, '').trim();
+    const cim = (html.match(/<title>([^<]*)<\/title>/i) || [])[1]?.replace(/&amp;/g, '&').replace(/&#39;|&#x27;/g, "'").replace(/\s*[|–-]\s*(OpenAI Help Center|Gemini Apps Help|Google .* Help|Microsoft Support|Claude Help Center|Mistral AI).*$/i, '').trim();
     return { szoveg: forrasSzoveg(html, 6000), cim };
   } catch { return null; }
 }
