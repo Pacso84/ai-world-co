@@ -17,23 +17,57 @@
 // ez a felülírás ártalmatlan.
 // ===================================================================
 
-export const SZINTEZIS_HOST = 'api.msedgeservices.com';
-// A msedge-tts 2.0.7 saját értéke — a Sec-MS-GEC ehhez a verzióhoz illik.
-export const GEC_VERZIO = '1-143.0.3650.96';
+import { execFileSync } from 'node:child_process';
+
+// ── 2026-10-24: ÚJ TOKEN (Sec-MS-GEC v2) ────────────────────────────
+// MI TÖRTÉNT: 10-24-én mind a 3 futásban „Unexpected server response: 200" → 0 Reel, 0 TikTok-videó.
+// A Microsoft új tokent kér (edge-tts #492: Sec-MS-GEC v2; #507: a verzió-előtag „2-"), és az
+// api.msedgeservices.com most minden kapcsolódásra 200-at ad. USA-beli próbafutással igazolva
+// (.github/workflows/tts-proba.yml, 10-24): a v2 tokennel a speech.platform.bing.com ad mp3-at ÉS
+// szóidőzítést (a Reel-feliratokhoz kell), az új hoszt nem.
+// A v2 token egy visszafejtett számítás az edge-tts csomagban (LGPLv3) — NEM másoljuk át: a CI a
+// RÖGZÍTETT commitot telepíti (auto.yml), és mi csak a tokent kérjük tőle. Helyben (HU) a régi hoszt
+// országos tiltás miatt amúgy is 403 — a videó a CI-ban készül.
+export const SZINTEZIS_HOST = 'speech.platform.bing.com';
+export const SZINTEZIS_UT = '/consumer/speech/synthesize/readaloud/edge/v1';
+export const EDGE_TTS_COMMIT = 'bd44c1d1aaebdc1db7f47456ee12431b42ec7cac';   // edge-tts master, 2026-10-14 (v2 token + „2-")
+
+/** A szintézis websocket-címe — tiszta függvény. */
+export function szintezisUrl({ kulcs, token, verzio, kapcsolat }) {
+  return `wss://${SZINTEZIS_HOST}${SZINTEZIS_UT}?TrustedClientToken=${kulcs}`
+    + `&Sec-MS-GEC=${token}&Sec-MS-GEC-Version=${verzio}&ConnectionId=${kapcsolat}`;
+}
+
+// A token 5 perces ablakra szól (a Windows-idő 300 mp-re kerekítve) → ablakonként egyszer kérjük.
+let gyorsTar = { ablak: -1, adat: null };
+function pythonToken() {
+  const ablak = Math.floor(Date.now() / 300000);
+  if (gyorsTar.ablak === ablak) return gyorsTar.adat;
+  const py = process.env.EDGE_TTS_PYTHON || 'python3';
+  let ki;
+  try {
+    ki = execFileSync(py, ['-c', 'from edge_tts.drm import DRM; from edge_tts.constants import SEC_MS_GEC_VERSION as v; print(DRM.generate_sec_ms_gec()); print(v)'],
+      { encoding: 'utf-8', timeout: 20000 }).trim().split(/\r?\n/);
+  } catch (e) {
+    throw new Error('Edge TTS: a Python edge-tts (v2 token) nem érhető el — a CI „Függőségek” lépése telepíti (' + String(e.message).slice(0, 120) + ')');
+  }
+  gyorsTar = { ablak, adat: { token: ki[0], verzio: ki[1] } };
+  return gyorsTar.adat;
+}
+let tokenForras = pythonToken;
+/** Csak teszthez: a token forrása (hálózat/Python nélkül). */
+export function beallitTokenForras(fn) { tokenForras = fn; }
 
 let kesz = null;
 
-/** A msedge-tts osztálya az új hostra állítva. { MsEdgeTTS, OUTPUT_FORMAT } */
+/** A msedge-tts osztálya a v2 tokennel a működő végpontra állítva. { MsEdgeTTS, OUTPUT_FORMAT } */
 export async function edgeTts() {
   if (kesz) return kesz;
   const mod = await import('msedge-tts');
   const { MsEdgeTTS } = mod;
   MsEdgeTTS.getSynthUrl = async function () {
-    const kapcsolat = MsEdgeTTS.generateUUID();
-    const gec = await MsEdgeTTS.generateSecMsGec(MsEdgeTTS.TRUSTED_CLIENT_TOKEN);
-    return `wss://${SZINTEZIS_HOST}/tts/cognitiveservices/websocket/v1`
-      + `?Ocp-Apim-Subscription-Key=${MsEdgeTTS.TRUSTED_CLIENT_TOKEN}`
-      + `&Sec-MS-GEC=${gec}&Sec-MS-GEC-Version=${GEC_VERZIO}&ConnectionId=${kapcsolat}`;
+    const { token, verzio } = tokenForras();
+    return szintezisUrl({ kulcs: MsEdgeTTS.TRUSTED_CLIENT_TOKEN, token, verzio, kapcsolat: MsEdgeTTS.generateUUID() });
   };
   kesz = { MsEdgeTTS, OUTPUT_FORMAT: mod.OUTPUT_FORMAT };
   return kesz;
@@ -68,4 +102,4 @@ export async function hangSzintezis({ MsEdgeTTS, OUTPUT_FORMAT }, voice, szoveg,
   }
 }
 
-export default { SZINTEZIS_HOST, GEC_VERZIO, edgeTts, hangSzintezis };
+export default { SZINTEZIS_HOST, SZINTEZIS_UT, EDGE_TTS_COMMIT, szintezisUrl, edgeTts, hangSzintezis };

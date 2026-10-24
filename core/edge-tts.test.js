@@ -1,21 +1,41 @@
 // core/edge-tts.js — a felolvasó az ÚJ Microsoft-hoston (2026-10-12). Hálózat nélkül.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
-import { edgeTts, SZINTEZIS_HOST } from './edge-tts.js';
+import { edgeTts, SZINTEZIS_HOST, SZINTEZIS_UT, szintezisUrl, beallitTokenForras, EDGE_TTS_COMMIT } from './edge-tts.js';
+
+// 10-24: a v2 tokent a Python edge-tts adja (CI-ban telepítve) — a tesztben hamis forrás, hálózat/Python nélkül.
+// A minta-token VALÓDI: az USA-beli próbafutás (tts-proba.yml, 10-24) írta ki az 1761350400-as időpontra.
+const MINTA = { token: 'E45DDD5265B0ACED-C260B75EA2BD06259C3E20F40CD77408BA7657605E984C424A85203C8EADC4F8', verzio: '2-143.0.3650.75' };
+beallitTokenForras(() => MINTA);
 
 let hiba = 0;
 const t = async (nev, fn) => { try { await fn(); console.log('  ✅ ' + nev); } catch (e) { hiba++; console.log('  ❌ ' + nev + '\n     ' + e.message); } };
 console.log('\n🧪 edge-tts');
 
-await t('🔴 a szintézis az ÚJ hostra megy (a régi speech.platform.bing.com 403-at ad, US-ban 10-12 óta)', async () => {
+await t('🔴 10-24: a szintézis a v2 tokennel a speech.platform.bing.com-ra megy (az api.msedgeservices.com „200”-at ad — USA-beli próbafutással igazolva)', async () => {
   const { MsEdgeTTS } = await edgeTts();
   const url = await MsEdgeTTS.getSynthUrl();
-  assert.ok(url.startsWith('wss://' + SZINTEZIS_HOST + '/tts/cognitiveservices/websocket/v1?'), 'régi host: ' + url.slice(0, 80));
-  assert.match(url, /[?&]Ocp-Apim-Subscription-Key=[0-9A-F]{32}(&|$)/, 'a kulcs nem Ocp-Apim-Subscription-Key-ként megy');
-  assert.match(url, /[?&]Sec-MS-GEC=[0-9A-F]{64}(&|$)/, 'hiányzik a Sec-MS-GEC');
-  assert.match(url, /[?&]Sec-MS-GEC-Version=1-\d+\.\d+\.\d+\.\d+(&|$)/);
-  assert.match(url, /[?&]ConnectionId=[0-9a-f-]{32,36}(&|$)/);   // a msedge-tts kötőjeles UUID-t ad — élőben így működik
-  assert.ok(!url.includes('speech.platform.bing.com'));
+  assert.equal(SZINTEZIS_HOST, 'speech.platform.bing.com');
+  assert.ok(url.startsWith('wss://' + SZINTEZIS_HOST + SZINTEZIS_UT + '?'), 'rossz végpont: ' + url.slice(0, 90));
+  assert.match(url, /[?&]TrustedClientToken=[0-9A-F]{32}(&|$)/, 'a kulcs nem TrustedClientToken-ként megy');
+  assert.ok(url.includes('&Sec-MS-GEC=' + MINTA.token + '&'), 'nem a v2 token megy');
+  assert.match(url, /[?&]Sec-MS-GEC-Version=2-\d+\.\d+\.\d+\.\d+(&|$)/, 'a verzió-előtag „2-” kell legyen (edge-tts #507)');
+  assert.match(url, /[?&]ConnectionId=[0-9a-f-]{32,36}(&|$)/);
+  assert.ok(!url.includes('msedgeservices'));
+});
+
+await t('a cím-építő tiszta függvény, a sorrend és a kódolás rögzített', async () => {
+  assert.equal(szintezisUrl({ kulcs: 'K', token: 'A-B', verzio: '2-1.2.3.4', kapcsolat: 'c' }),
+    'wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=K&Sec-MS-GEC=A-B&Sec-MS-GEC-Version=2-1.2.3.4&ConnectionId=c');
+});
+
+await t('🔴 a GitHub-futás telepíti a RÖGZÍTETT edge-tts-t, a videógyártás ELŐTT', async () => {
+  const yml = readFileSync(new URL('../.github/workflows/auto.yml', import.meta.url), 'utf-8');
+  const pip = yml.indexOf('pip install "git+https://github.com/rany2/edge-tts@' + EDGE_TTS_COMMIT + '"');
+  assert.ok(pip > 0, 'nincs telepítve (vagy nem a rögzített commit)');
+  assert.match(EDGE_TTS_COMMIT, /^[0-9a-f]{40}$/, 'teljes commit-hash kell (ellátási lánc)');
+  assert.ok(pip < yml.indexOf('name: Reel — napi videó gyártása'), 'a videógyártás után települ');
+  assert.ok(yml.lastIndexOf('actions/setup-python@v5', pip) > 0, 'a rendszer-pip az Ubuntu 24-en tiltott → setup-python kell');
 });
 
 await t('ugyanazt az osztályt adja vissza (a javítás egyszer fut, nem halmozódik)', async () => {

@@ -27,4 +27,19 @@ for (const [nev, url] of Object.entries(VALTOZATOK)) {
     tts.close?.();
   } catch (e) { console.log('❌', nev, '→', e.message); }
 }
+// ÉLES ÚT: maga a core/edge-tts.js (amit a Reel-, TikTok- és napi videó-gyártó hív) — friss betöltés
+{
+  const et = await import('./edge-tts.js?eles');
+  try {
+    const k = await et.edgeTts();
+    const buf = await et.hangSzintezis(k, 'en-US-AriaNeural', 'Hello from the production module.', { varasok: [] });
+    console.log('✅ core/edge-tts.js hangSzintezis →', buf.length, 'bájt mp3');
+    const tts = new k.MsEdgeTTS();
+    await tts.setMetadata('en-US-GuyNeural', k.OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3, { wordBoundaryEnabled: true });
+    const { audioStream, metadataStream } = tts.toStream('Word timing for subtitles works.');
+    let meta = 0; metadataStream?.on('data', () => meta++);
+    await new Promise((ok, no) => { audioStream.on('data', () => {}); audioStream.on('end', ok); audioStream.on('error', no); setTimeout(() => no(new Error('időtúllépés')), 25000); });
+    console.log('✅ core/edge-tts.js szóidőzítés (agents/video útja) →', meta, 'metaadat-csomag');
+  } catch (e) { console.log('❌ core/edge-tts.js →', e.message); }
+}
 process.exit(0);

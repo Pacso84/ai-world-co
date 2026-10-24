@@ -79,6 +79,17 @@ jobs:
       - name: Függőségek
         run: npm install
 
+      # 🔊 EDGE TTS v2 TOKEN (2026-10-24): 10-24-én mind a 3 futásban „Unexpected server response: 200"
+      # → 0 Reel/TikTok-videó. A Microsoft új tokent kér; ezt a RÖGZÍTETT edge-tts commit számolja
+      # (core/edge-tts.js kéri tőle; a hangot továbbra is a msedge-tts adja, szóidőzítéssel).
+      # setup-python kell: az Ubuntu 24 rendszer-pipje tiltja a telepítést (PEP 668).
+      # Igazolva: .github/workflows/tts-proba.yml (USA-beli futtató, 10-24).
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Edge TTS token (edge-tts, rögzített commit)
+        run: pip install "git+https://github.com/rany2/edge-tts@bd44c1d1aaebdc1db7f47456ee12431b42ec7cac"
+
       # 🧠 BEÁGYAZÁS-GYORSÍTÓTÁR — VISSZATÖLTÉS (2026-09-06)
       #
       # MIÉRT: a vektorok 2026-09-06 óta külön, GITIGNORE-OLT fájlokban élnek
