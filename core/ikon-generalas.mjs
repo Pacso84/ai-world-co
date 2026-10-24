@@ -13,10 +13,10 @@ const IKONOK = {
 };
 fs.mkdirSync('ikonok', { recursive: true });
 for (const [nev, targy] of Object.entries(IKONOK)) {
-  for (const seed of [7, 42, 1234]) {
+  for (const seed of [1, 2, 3]) {   // változat-sorszám (a seed nem küldhető)
     const r = await fetch(`https://api.cloudflare.com/client/v4/accounts/${ACCT}/ai/run/@cf/black-forest-labs/flux-1-schnell`, {
       method: 'POST', headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt: `${targy}. ${STILUS}`, steps: 8, seed })
+      body: JSON.stringify({ prompt: `${targy}. ${STILUS}` })   // a width/height/seed/steps paramétert a Cloudflare 2026-ban kivezette
     });
     if (!r.ok) { console.log('❌', nev, seed, r.status, (await r.text()).slice(0, 160)); continue; }
     const b64 = (await r.json())?.result?.image;
