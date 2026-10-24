@@ -23,6 +23,11 @@
 const SZABALYOK = [
   [/voice|speak|talk|audio|listen|record|dictat|sound|microphone/i, 'mic'],
   [/image|picture|photo|visual|drawing|artwork|illustrat|generate an image|create an image/i, 'image'],
+  // 10-24 este — ÚJ IKONOK (a meglévő 14 mellé; Cloudflare Flux, ugyanabban a 3D stílusban): élőben a
+  // „Compare two options” csúszkát, a „Plan a trip as a … table” céltáblát kapott
+  [/compar|side by side|side-by-side|\bvs\.?\s(?!code)|versus|pros and cons|weigh (up )?(the |your )?options/i, 'compare'],
+  [/\btables?\b|\bgrid\b|\bcharts?\b|\bgraph\b|columns?\b|spreadsheet layout/i, 'table'],
+  [/\bweek(ly)?\b|\bdaily\b|schedule|calendar|day-by-day|routine|itinerary|timeline|\bplan (a|your|the) (week|day|month|trip|meals|dinners)/i, 'calendar'],
   [/search|find\b|explore|browse|discover|look up|look for|locate|\bspot\b|research|sources?/i, 'search'],
   [/privac|secur|safe|protect|your data|be careful|permission|consent|sensitive/i, 'shield'],
   [/api key|secret key|\bkey\b|password|token/i, 'login'],
@@ -32,6 +37,8 @@ const SZABALYOK = [
   [/review|check|refine|edit\b|improve|fix\b|adjust|iterate|verif|proofread|polish|double-check/i, 'check'],
   [/upload|attach|\bfiles?\b|document|\bpdf\b|spreadsheet|\bsheet\b|excel|\bcsv\b/i, 'doc'],
   [/format|structure|outline|template|organi|layout|section|make a list|bullet|summar/i, 'doc'],
+  // a „list” csak CÍMBEN dönt: egy mondatban („type a short list…”) a fő cselekvés más lehet
+  [/\blists?\b|inventory|checklist|shopping/i, 'doc', 'cim'],
   [/context|detail|background|be specific|example|describe|explain|add (more )?|include|provide|give it/i, 'layers'],
   [/type|write|prompt|ask\b|message|enter your|chat|\btell\b|input|conversation|question|your request|paste/i, 'chat'],
   [/define|goal|what you want|decide|choose what|pick what|plan\b|aim\b|outcome|result you|identify/i, 'target', 'cim'],
@@ -43,6 +50,9 @@ const SZABALYOK = [
 const SZABALYOK_I18N = [
   [/hang\b|mikrofon|diktál|hangosan|\bvoz\b|dicta/i, 'mic'],
   [/\bkép|fotó|\bimagen|\bfoto\b/i, 'image'],
+  [/hasonlítsd|összehasonl|egymás mellett|compara|comparar|lado a lado/i, 'compare'],
+  [/\brács|diagram|\btabla\b|cuadrícula|gráfico/i, 'table'],
+  [/\bheti\b|\bhét\b|naptár|napirend|ütemterv|menetrend|\bsemana|calendario|horario|itinerario/i, 'calendar'],
   [/keres|kutat|búsq|busca/i, 'search'],
   [/bizton|adatvéd|privát|magánél|segur|privacidad/i, 'shield'],
   [/beállít|testreszab|kapcsold|ajusta/i, 'sliders'],
@@ -74,6 +84,27 @@ export function lepesKepKulcs(cim, elsoMondatSzoveg = '') {
   return keres(cim, false) || keres(elsoMondatSzoveg, true);
 }
 
+/** Csak az első mondatból (konkrét cselekvés-szabályok) — az ismétlés-töréshez. */
+export function elsoMondatKulcs(mondat) {
+  return keres(mondat, true);
+}
+
+/**
+ * LEGFELJEBB 2 EGYFORMA EGYMÁS UTÁN (10-24 este, élőben: a vacsoraterv-útmutató sávjában 5× 💬).
+ * A harmadik egyformától az `alternativak[i]` (a lépés első mondatából) lép a helyére, HA van és MÁS;
+ * különben marad az ismétlés — kitalált kép soha. A null (nincs kép) nem számít ismétlésnek.
+ */
+export function ismetlesTores(kulcsok, alternativak = []) {
+  const ki = [...(kulcsok || [])];
+  for (let i = 2; i < ki.length; i++) {
+    if (ki[i] && ki[i] === ki[i - 1] && ki[i] === ki[i - 2]) {
+      const alt = alternativak[i];
+      if (alt && alt !== ki[i]) ki[i] = alt;
+    }
+  }
+  return ki;
+}
+
 /** A lépés-markdown első mondata, jelölések nélkül. */
 export function elsoMondat(md) {
   const s = String(md || '')
@@ -82,4 +113,4 @@ export function elsoMondat(md) {
   return m ? m[0] : s;
 }
 
-export default { lepesKepKulcs, elsoMondat };
+export default { lepesKepKulcs, elsoMondat, elsoMondatKulcs, ismetlesTores };

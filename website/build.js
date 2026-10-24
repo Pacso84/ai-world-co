@@ -46,7 +46,7 @@ import { CSOMAG_IDK, NAGY_ID } from '../core/packs-data.js';
 import { cimTag } from '../core/title-tag.js';
 import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
 import { kitolthetoHtml, promptJelolt } from '../core/kitoltheto-prompt.js';   // 🧩 2026-10-23
-import { lepesKepKulcs, elsoMondat } from '../core/lepes-kep.js';   // 🖼️ 2026-10-23
+import { lepesKepKulcs, elsoMondat, elsoMondatKulcs, ismetlesTores } from '../core/lepes-kep.js';   // 🖼️ 2026-10-23/24
 import { olvasoiKedvencek } from '../core/olvasoi-kedvenc.js';   // 🔥 2026-10-23
 import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
@@ -2441,9 +2441,11 @@ function buildGuidePage(a) {
   // (mérve 10-23: hu 292 / es 259 kép nélküli lépés az angol 48 helyett), és így minden nyelven ugyanaz a kép.
   const enLepesek = (a.bodyMdEn ? parseGuideSections(a.bodyMdEn).sections : []).filter(s => STEP_RX.test(s.title));
   const kepForras = enLepesek.length === stepSections.length ? enLepesek : null;
-  const artKeys = stepSections.map((s, i) => kepForras
-    ? lepesKepKulcs(kepForras[i].title.replace(STEP_RX, ''), elsoMondat(lepesReszek(kepForras[i].body, 'en').fo))
-    : lepesKepKulcs(stepHeadings[i], elsoMondat(lepesReszek(s.body, LANG).fo)));
+  const kepLepesek = stepSections.map((s, i) => kepForras
+    ? { cim: kepForras[i].title.replace(STEP_RX, ''), mondat: elsoMondat(lepesReszek(kepForras[i].body, 'en').fo) }
+    : { cim: stepHeadings[i], mondat: elsoMondat(lepesReszek(s.body, LANG).fo) });
+  // LEGFELJEBB 2 EGYFORMA EGYMÁS UTÁN (10-24 este): a 3.-tól az első mondat adhat másik illő ikont
+  const artKeys = ismetlesTores(kepLepesek.map(k => lepesKepKulcs(k.cim, k.mondat)), kepLepesek.map(k => elsoMondatKulcs(k.mondat)));
 
   let stepNo = 0;
   let faqPrepBody = '', faqMistBody = '';   // GYIK-hoz: meglévő szekciók újracsomagolva
