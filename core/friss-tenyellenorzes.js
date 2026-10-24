@@ -81,6 +81,8 @@ Output ONLY JSON (no prose, no code fence):
 const SZAMSZO = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, fifteen: 15, twenty: 20, thirty: 30, fifty: 50, hundred: 100 };
 const TOLTELEK = new Set('about above after again also because been before being between both could does doing down during each from further have having here into itself just more most much need only other over same should some such than that their them then there these they this those through under until very what when where which while with would your yours youre will what\'s it\'s that\'s company says said according announcement post blog article'.split(' '));
 const mondatok = md => String(md || '').replace(/^---[\s\S]*?\n---\n/, '').split(/\n+|(?<=[.!?])\s+(?=[A-Z"„“])/).map(s => s.replace(/^[#>*\-\d.\s]+/, '').trim()).filter(s => s.split(/\s+/).length >= 4);
+/** A szöveg mondatainak száma UGYANAZZAL a bontással, mint a forrasAlatamasztja (≥4 szavas mondatok) — az arány nevezője (core/elakadas.js, 2026-10-24). */
+export const mondatSzam = md => mondatok(md).length;
 const szamok = s => [...String(s).toLowerCase().matchAll(/\b(\d+(?:[.,]\d+)?|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|fifty|hundred)\b/g)].map(m => String(SZAMSZO[m[1]] ?? m[1].replace(',', '.')));
 const szavak = s => [...new Set((String(s).toLowerCase().replace(/[’']s\b/g, '').match(/[a-z][a-z-]{3,}/g) || []).filter(w => !TOLTELEK.has(w)))];
 
