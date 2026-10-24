@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import {
   SITE, CSONKA_SOR, pruneBeallitas, latogatasok, lefedettseg, torlendok,
-  linkAlakok, linkekKi, toroltListaFrissit, toroltUrlek, maiToroltDb
+  linkAlakok, linkekKi, toroltListaFrissit, toroltUrlek, maiToroltDb, toroltHalottak
 } from './guide-prune.js';
 
 let pass = 0;
@@ -141,7 +141,7 @@ const forras = p => readFileSync(new URL('../' + p, import.meta.url), 'utf-8').r
 
 t('🔌 Házmester: a hírtörlés UTÁN, az árva-takarítás ELŐTT fut; a 3 kaput a modul adja', () => {
   const hk = forras('core/housekeeping.js');
-  assert.match(hk, /import \{ pruneBeallitas, torlendok, linkekKi, toroltListaFrissit, maiToroltDb \} from '\.\/guide-prune\.js';/);
+  assert.match(hk, /import \{ pruneBeallitas, torlendok, linkekKi, toroltListaFrissit, maiToroltDb, toroltHalottak \} from '\.\/guide-prune\.js';/);
   assert.match(hk, /pruneOldNews\(\);\n\s*pruneUnreadGuides\(\);/, '🔴 a takarító nincs bekötve, vagy rossz helyen fut');
   const fn = hk.slice(hk.indexOf('function pruneUnreadGuides()'), hk.indexOf('function linkekKiMindenhol('));
   assert.ok(fn.length > 100, 'nincs pruneUnreadGuides()');
@@ -182,6 +182,24 @@ t('🔴 10-15: a forgalmi napló a törlés ELŐTT frissül (az előző nap olva
   assert.ok(naplo > 0 && hazmester > naplo, '🔴 a Házmester a friss napló NÉLKÜL dönt a törlésről');
   assert.match(yml.slice(naplo, hazmester), /run: node core\/traffic-log\.js \|\| true/);
   assert.match(yml.slice(naplo, hazmester), /CF_ANALYTICS_TOKEN: \$\{\{ secrets\.CF_ANALYTICS_TOKEN \}\}/, 'kulcs nélkül a lépés üresen fut');
+});
+
+t('🧹 UTÓTAKARÍTÁS (10-24, napi riport: 5 halott belső link maradt egy már törölt hírre): a törölt-listák NEM élő slugjai, egyszer', () => {
+  const hirek = [{ slug: 'old-news', at: 'x' }, { slug: 'old-news', at: 'y' }, { slug: 'came-back', at: 'x' }];
+  const utm = [{ slug: 'old-guide', at: 'x' }, { nincs: 'slug' }];
+  assert.deepEqual(toroltHalottak([hirek, utm, null, 'szemét'], new Set(['came-back', 'live'])), ['old-news', 'old-guide']);
+  assert.deepEqual(toroltHalottak([], new Set()), []);
+});
+
+t('🔌 Házmester: az utótakarítás MINDEN futásban lefut, az élő cikkek újraolvasása UTÁN', () => {
+  const hk = forras('core/housekeeping.js');
+  const main = hk.slice(hk.indexOf('async function main()'));
+  assert.match(main, /\(\{ files, slugs \} = liveArticles\(\)\);\n\s*halottLinkUtotakaritas\(slugs\);/, '🔴 nincs bekötve, vagy az újraolvasás előtt fut');
+  const fn = hk.slice(hk.indexOf('function halottLinkUtotakaritas('), hk.indexOf('function halottLinkUtotakaritas(') + 1400);
+  assert.match(fn, /toroltHalottak\(\[/);
+  assert.match(fn, /torolt-hirek\.json/); assert.match(fn, /torolt-utmutatok\.json/);
+  assert.match(fn, /linkekKiMindenhol\(/);
+  assert.match(fn, /if \(DRY/, 'a --dry próba is írna');
 });
 
 console.log('\n✅ guide-prune.test: mind a ' + pass + ' eset rendben');

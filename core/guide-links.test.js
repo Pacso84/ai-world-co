@@ -28,6 +28,14 @@ t('🔑 a halott link kiesik, a SZÖVEG marad; az élő és a puszta URL érinte
   assert.equal(r.md, 'Open the ChatGPT site or [Gemini](https://gemini.google.com). Raw: https://dead.example.com/x');
 });
 
+t('🖼️ KÉPRE tett halott link (10-24, napi riport: 5 halott belső link a heti összefoglalóból): a link kiesik, a KÉP marad', () => {
+  const url = 'https://aiworldhq.com/article/ai-in-the-classroom-what-you-can-learn-from-a-nationwide-education-pus.html';
+  const md = `[![AI in the Classroom: What You Can Learn](/assets/images/ai-in-the-classroom.jpg)](${url})\n\nSchools are [reading more](${url}).`;
+  const r = halottLinkTorles(md, [url]);
+  assert.equal(r.db, 2);
+  assert.equal(r.md, '![AI in the Classroom: What You Can Learn](/assets/images/ai-in-the-classroom.jpg)\n\nSchools are reading more.');
+});
+
 t('csak a külső markdown linket tartalmazó útmutató kerül sorra', () => {
   assert.ok(vanKulsoLink('see [x](https://a.example.com)'));
   assert.ok(!vanKulsoLink('see https://a.example.com and [y](/article/abc)'));

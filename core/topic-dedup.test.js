@@ -153,7 +153,9 @@ if (ELES_LOG_ELOTTE) {
   assert.ok(valodiKulcsok.has('by'),
     '🔴 a `by` mező ELTŰNT az éles naplóból — a dedup-döntés indoka megint láthatatlan');
   const elesBy = new Set(valodiak.map(e => e.by).filter(Boolean));
-  for (const b of elesBy) assert.ok(['embedding', 'jaccard'].includes(b),
+  // 'exact' (10-24): a betűre egyező cím ága (topic-dedup.js 73. sor) — 10-24-én fordult elő először
+  // élesben, és a CI-ben pirosra vitte ezt a tesztet, pedig szabályos döntés.
+  for (const b of elesBy) assert.ok(['embedding', 'jaccard', 'exact'].includes(b),
     '🔴 ismeretlen `by` érték az éles naplóban: ' + b);
 }
 

@@ -112,6 +112,22 @@ export function linkekKi(md, slugok, site = SITE) {
   return halottLinkTorles(md, (slugok || []).flatMap(s => linkAlakok(s, site)));
 }
 
+/**
+ * UTÓTAKARÍTÁSHOZ (2026-10-24): a törölt-listák (hírek + útmutatók) azon slugjai, amelyek MÁR NEM élnek,
+ * ismétlés nélkül. A házmester minden futásban kiveszi a rájuk mutató linkeket — ha egy korábbi körben
+ * valami kimaradt (10-24: a képre tett link a heti összefoglalóban), a következő pótolja.
+ */
+export function toroltHalottak(listak, eloSlugok) {
+  const ki = [];
+  for (const l of Array.isArray(listak) ? listak : []) {
+    for (const x of Array.isArray(l) ? l : []) {
+      const s = x?.slug;
+      if (s && !eloSlugok?.has(s) && !ki.includes(s)) ki.push(s);
+    }
+  }
+  return ki;
+}
+
 /** A törölt-lista frissítése: az új bejegyzések be, a `megorzesNap`-nál régebbiek ki. */
 export function toroltListaFrissit(lista, ujSlugok, now = Date.now(), megorzesNap = 30) {
   const hatar = now - megorzesNap * NAP;

@@ -60,7 +60,15 @@ export const UTMUTATO_ELOTAG = [/^g-/, /^guide-/, /^guide$/, /^cat-guide$/];
 export const TAG_SZANDEKOS = {
   nav: 'A folyamat-térkép (g-map) lépés-navigációja — a hírnek nincs lépéssora.',
   details: 'A GYIK nyitható elemei — a hírben nincs GYIK.',
-  summary: 'A GYIK-elemek fejléce, a <details> párja.'
+  summary: 'A GYIK-elemek fejléce, a <details> párja.',
+  // 10-24: ezek napok óta a napi riport ⚠️ sorában álltak, pedig mind útmutató-saját elemből jönnek
+  b: 'A lépések utáni továbbvezető sor (g-tovabb, 10-23) kiemelt szava — a hírnek nincs lépéssora, így ilyen sora sem.',
+  i: 'A lépés-kártya haladásjelző csíkja (g-slide__bar belső <i>) — a hírnek nincsenek lépései.',
+  figure: 'A kóddal rajzolt telefon-vázlat burkolója a lépés mellett (core/guide-sketch.js) — csak lépésnél van.',
+  figcaption: 'A telefon-vázlat felirata („Vázlat — a te képernyőd kicsit másképp nézhet ki”), a <figure> párja.',
+  rect: 'A telefon-vázlat SVG-alakzata (keret, sávok, gomb) — core/guide-sketch.js, csak útmutató-lépésben.',
+  circle: 'A telefon-vázlat SVG-ben a koppintás-gyűrű — core/guide-sketch.js, csak útmutató-lépésben.',
+  text: 'A telefon-vázlat SVG-felirata (alkalmazás neve, gomb neve) — core/guide-sketch.js, csak útmutató-lépésben.'
 };
 
 /** Útmutató-e a lap? (A lépéssor jelenléte a műfaj biztos jele.) */

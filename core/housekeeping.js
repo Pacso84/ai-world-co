@@ -42,7 +42,7 @@ import { dirname, join } from 'path';
 import { decay, purgeStoreEmbeddings } from './memory-manager.js';
 import { utmutatoE } from './guide-kind.js';
 import { lejartCeluakNelkul } from './redirect-chain.js';
-import { pruneBeallitas, torlendok, linkekKi, toroltListaFrissit, maiToroltDb } from './guide-prune.js';
+import { pruneBeallitas, torlendok, linkekKi, toroltListaFrissit, maiToroltDb, toroltHalottak } from './guide-prune.js';
 import { hirTorlendok } from './news-prune.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -365,6 +365,22 @@ function linkekKiMindenhol(slugok) {
   return db;
 }
 
+// ── 2c. HALOTT BELSŐ LINKEK UTÓTAKARÍTÁSA (2026-10-24) ────────────────────
+// A törléskor csak az AKKOR törölt cikkekre mutató linkek mennek ki. 10-24-én a napi riport 5 halott
+// belső linket jelzett: a heti összefoglaló KÉPRE tett linkkel mutatott törölt hírekre, és a
+// link-törlő ezt az alakot nem ismerte (core/guide-links.js, javítva). Hogy egy kimaradás ne maradjon
+// örökre: minden futásban a törölt-listák (30 napos) még nem élő slugjaira is lefut — ismételten futtatva
+// nem változtat semmit (idempotens), mert a már kivett link nem talál újra.
+function halottLinkUtotakaritas(slugs) {
+  const olvas = nev => { try { return JSON.parse(readFileSync(join(ROOT, 'memory', nev), 'utf-8')); } catch { return []; } };
+  const halottak = toroltHalottak([olvas('torolt-hirek.json'), olvas('torolt-utmutatok.json')], slugs);
+  if (!halottak.length) return;
+  if (DRY) { console.log(`   (próba) utótakarítás: ${halottak.length} törölt cikk linkjei`); return; }
+  let db = 0;
+  try { db = linkekKiMindenhol(halottak); } catch { /* a link-takarítás hibája ne állítsa meg a házmestert */ }
+  if (db) report.push(`🔗 halott belső link kivéve (utótakarítás): ${db} link ${halottak.length} törölt cikkre`);
+}
+
 // ── 3. ÁRVA BORÍTÓKÉPEK ──────────────────────────────────────────────
 // A kép a cikk SLUGJÁHOZ tartozik (build.js: `${slug}.jpg`). Ami mögött
 // nincs élő cikk, az törölt vagy átnevezett cikk maradványa.
@@ -468,6 +484,7 @@ async function main() {
   // a futásban. E nélkül egy körrel később takarítanánk — vagy soha, ha
   // közben a lista megint feltöltődik.
   ({ files, slugs } = liveArticles());
+  halottLinkUtotakaritas(slugs);
   pruneImages(slugs);
   pruneTranslations(files);
   memoriaHalvanyitas();

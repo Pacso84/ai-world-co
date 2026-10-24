@@ -111,6 +111,13 @@ t('kevés lapon nem mondunk ítéletet', () => {
   assert.equal(paritasElemzes(sok(60, () => hirLap())).utmutato, 0);
 });
 
+t('🏷️ 10-24: a napi riportban napok óta álló tag-eltérések szándékos útmutató-elemek — magyarázva', () => {
+  // <b>: a lépések utáni továbbvezető sor (g-tovabb, 10-23) · <i>: a lépés-haladásjelző csík ·
+  // <figure>/<figcaption>/<rect>/<circle>/<text>: a kóddal rajzolt telefon-vázlat (core/guide-sketch.js)
+  for (const k of ['b', 'i', 'figure', 'figcaption', 'rect', 'circle', 'text'])
+    assert.ok(k in TAG_SZANDEKOS, '<' + k + '> nincs megmagyarázva — a napi riport ⚠️ sora zajos marad');
+});
+
 t('minden felsorolt eltérés mellett VAN indok', () => {
   // Egy üres vagy odavetett indok ugyanolyan rossz, mint a hiányzó — ez az
   // állítás 2026-09-12-én azonnal elkapta egy lusta bejegyzésemet.

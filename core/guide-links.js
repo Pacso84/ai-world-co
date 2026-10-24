@@ -49,6 +49,10 @@ export function halottLinkTorles(md, halottak) {
   let s = String(md || '');
   let db = 0;
   for (const url of halottak || []) {
+    // KÉPRE tett link előbb: [![alt](kép)](url) → a kép marad (10-24: a heti összefoglalók így linkelnek,
+    // és a sima minta a belső `]` miatt átugrotta — 5 halott belső link maradt a riportban)
+    const kepRx = new RegExp(`\\[(!\\[[^\\]]*\\]\\([^)\\s]*\\))\\]\\(${escRx(url)}\\/?\\)`, 'g');
+    s = s.replace(kepRx, (_, kep) => { db++; return kep; });
     const rx = new RegExp(`\\[([^\\]]+)\\]\\(${escRx(url)}\\/?\\)`, 'g');
     s = s.replace(rx, (_, szoveg) => { db++; return szoveg; });
   }
