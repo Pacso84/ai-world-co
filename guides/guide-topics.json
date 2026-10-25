@@ -7560,10 +7560,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Save your best prompts once in Claude, group them by topic (work, home, study), and pull them into any new chat with a one-line shortcut so you stop rewriting from scratch.",
-      "status": "todo",
+      "status": "done",
       "icon": "🗂️",
       "proposed_at": "2026-10-09T03:56:57.588Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-10-25T02:16:50.113Z"
     },
     {
       "id": "use-gemini-in-gmail-to-draft-faster-replies-that-still-sound",
@@ -8181,6 +8182,28 @@
       "priority": "balance",
       "proposed_at": "2026-10-24T02:34:55.341Z",
       "proposed_by": "guide-balance"
+    },
+    {
+      "id": "how-to-teach-claude-a-repeat-task-by-writing-down-the-steps-",
+      "company": "Anthropic",
+      "tool": "Claude",
+      "title": "How to Teach Claude a Repeat Task by Writing Down the Steps Once",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Write the steps of a task you repeat in plain English, then ask Claude to turn them into a clear instruction set you can reuse in future chats.",
+      "status": "done",
+      "icon": "📝",
+      "proposed_at": "2026-10-25T02:16:30.497Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "claude record a skill",
+        "forras": [
+          "bing-lehetoseg"
+        ],
+        "datum": "2026-10-25"
+      },
+      "written_at": "2026-10-25T02:17:13.449Z"
     }
   ],
   "trend_proba": [
@@ -8223,6 +8246,10 @@
     {
       "kifejezes": "can ai help with daily tasks",
       "at": "2026-10-24T02:31:25.449Z"
+    },
+    {
+      "kifejezes": "claude record a skill",
+      "at": "2026-10-25T02:16:18.936Z"
     }
   ]
 }

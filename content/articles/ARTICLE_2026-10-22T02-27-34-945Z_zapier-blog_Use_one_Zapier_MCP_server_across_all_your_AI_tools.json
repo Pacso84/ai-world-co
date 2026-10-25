@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "written_at": "2026-10-25T02:14:45.230Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0030703,
+    "original_draft": "2026-10-22T02-27-34-945Z_zapier-blog_Use_one_Zapier_MCP_server_across_all_your_AI_tools.json",
+    "source_id": "zapier-blog",
+    "source_name": "Zapier Blog (hivatalos)",
+    "source_link": "https://zapier.com/blog/connect-multiple-ai-clients-zapier-mcp",
+    "source_links": [
+      "https://zapier.com/blog/connect-multiple-ai-clients-zapier-mcp"
+    ],
+    "source_snippet": "Most teams don't stick to one AI tool. Your support team works in Claude, a few people swear by ChatGPT, and your engineers live in Cursor. Until now, each of those tools needed its own Zapier MCP server, with its own apps and skills to set up. Now you can connect all of them to one Zapier MCP server, and they share everything on it. Set up your apps and skills once Say your support team uses Claude and your engineers use Cursor, and both connect to the same server. Add Zendesk and its actions t",
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-10-25T02:14:58.590Z",
+    "slug": "what-zapier-s-shared-mcp-server-means-when-your-team-uses-several-ai-t",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 567
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article meets all quality gates: it explains technical terms clearly, attributes all claims to Zapier appropriately, maintains a friendly and accessible tone for business audiences, follows the correct structure with a hook, definitions, and a 'What this means for you' section, and contains no prohibited content or clichés.",
+      "_aiCost": 0.0013122,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-25T02:15:59.303Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-add-an-ai-step-to-your-zapier-workflow",
+    "image_v": 2,
+    "image_at": "2026-10-25T02:18:38.208Z",
+    "seo": {
+      "meta_description": "Zapier's shared MCP server connects multiple AI tools like Claude, ChatGPT, and Cursor to one server. Configure apps and skills once and share them across your whole team.",
+      "keywords": [
+        "Zapier MCP server",
+        "shared MCP server",
+        "connect multiple AI tools",
+        "Zapier Claude ChatGPT integration",
+        "MCP protocol setup",
+        "team AI tools integration",
+        "Zapier AI assistant setup"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a step-by-step setup section to capture 'how to set up Zapier MCP server' search traffic",
+        "Include a visual diagram showing how one shared server connects to multiple AI tools",
+        "Add a practical use-case example showing a specific workflow with the shared MCP server"
+      ],
+      "optimised_at": "2026-10-25T02:20:25.413Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What Zapier's Shared MCP Server Means When Your Team Uses Several AI Tools\"\nsubtitle: \"Zapier says one server can now serve all your AI tools at once, so you set up your apps and skills a single time.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 3\ntags: [\"zapier\", \"mcp\", \"ai-tools\", \"teams\", \"automation\"]\n---\n\n# What Zapier's Shared MCP Server Means When Your Team Uses Several AI Tools\n\n> **In short:** Zapier says you can now connect several AI tools, such as Claude, ChatGPT and Cursor, to one Zapier MCP server. The apps and skills you set up on that server are shared across all of them, so you configure them once instead of once per tool.\n\nIf your team has ever said \"Which tool is that in again?\", this update is for you. Different people often prefer different AI assistants, and until now, keeping their connections in sync was extra work.\n\n## First, the terms\n\n- **MCP (Model Context Protocol)** is a standard way of giving an AI assistant access to outside apps. Think of it as a universal plug: if the AI tool and the app both understand the plug, they can connect.\n- **An MCP server** is the middle piece that holds those connections. It is the place where the apps and the actions they allow are listed.\n- **Zapier** is a service that links thousands of everyday apps together. In this announcement, Zapier provides the MCP server.\n\n## What changed\n\nAccording to Zapier's announcement, each AI tool used to need its own Zapier MCP server, with its own apps and skills set up separately. Now, several tools can connect to the same server, and they all see the same setup.\n\nZapier gives a simple example. Imagine your support team works in Claude while your engineers work in Cursor (an AI coding assistant). Both groups can connect to the same server. Add an app such as Zendesk (a customer support platform) and its actions to that server, and both teams can use them from their own tool.\n\n## What this means for you\n\n- **In everyday life:** If you have more than one AI assistant at home, a shared setup means you don't have to repeat the same connections in each one.\n- **For your business or work:** If different teams use different AI tools, one shared server can keep everyone working from the same list of apps. Decide which apps your team actually needs before you add them.\n- **If you're just getting started:** Begin by learning what MCP is and which apps your work relies on most. Then look at Zapier's own documentation to see how it describes the setup process. The announcement does not walk through the steps, so check the current instructions there.\n- **If you already use it:** If you already run a Zapier MCP server, review which apps and skills are shared with every connected tool. Remove anything a team no longer needs, so each tool offers only the actions that group should be able to take.\n\n## Wrap-up\n\nThe main idea is simple: connect once, share everywhere. Zapier says this removes the need to rebuild the same app setup for each AI tool your team uses. Your next step is small. List the AI tools your team uses and the apps they touch most often. That list will show you what a shared setup would need to cover.",
+  "original_title": "Use one Zapier MCP server across all your AI tools"
+}

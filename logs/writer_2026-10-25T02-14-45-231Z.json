@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-25T02:13:45.715Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.014353099999999999,
+  "by_article": [
+    {
+      "draft": "2026-10-24T02-27-37-475Z_snowflake_How_Finance_Cut_Forecasting_to_Hours_With_AI.json",
+      "writer_output": "WRITER_2026-10-24T02-27-37-475Z_snowflake_How_Finance_Cut_Forecasting_to_Hours_With_AI.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0032813,
+      "duration_ms": 12973,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-24T02-27-21-099Z_openai-blog_OpenAI_and_Poland_s_NASK_partner_to_advance_AI_saf.json",
+      "writer_output": "WRITER_2026-10-24T02-27-21-099Z_openai-blog_OpenAI_and_Poland_s_NASK_partner_to_advance_AI_saf.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0032926,
+      "duration_ms": 11941,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-23T02-28-31-816Z_nvidia-blog_Pioneers_Across_Europe_Deploy_NVIDIA_Earth-2_Open_.json",
+      "writer_output": "WRITER_2026-10-23T02-28-31-816Z_nvidia-blog_Pioneers_Across_Europe_Deploy_NVIDIA_Earth-2_Open_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0034195,
+      "duration_ms": 13743,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-22T02-27-34-945Z_zapier-blog_Use_one_Zapier_MCP_server_across_all_your_AI_tools.json",
+      "writer_output": "WRITER_2026-10-22T02-27-34-945Z_zapier-blog_Use_one_Zapier_MCP_server_across_all_your_AI_tools.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0030703,
+      "duration_ms": 9390,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-10-25T02:14:45.231Z",
+  "duration_seconds": 59.516
+}

@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "build-a-reusable-prompt-library-in-claude-you-can-remix-for-",
+    "company": "Anthropic",
+    "tool": "Claude",
+    "icon": "🗂️",
+    "level": "intermediate",
+    "source_news": null,
+    "trend": null,
+    "written_at": "2026-10-25T02:16:50.113Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0043876,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-25T02:17:37.769Z",
+    "slug": "build-a-reusable-prompt-library-in-claude-you-can-remix-for-weekly-tas",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1322
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide that clearly explains prompt templates and iteration in plain language, with appropriate hedging on Claude features and honest warnings about AI limitations. Steps are actionable and include concrete examples. Minor note: Step 4 could clarify where to find Projects in the sidebar, but the flexible approach to notes apps and the fallback statement adequately cover different reader scenarios.",
+      "_aiCost": 0.00191511,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-25T02:19:47.876Z",
+    "seo": {
+      "meta_description": "Build a reusable prompt library in Claude for work, home, and study. Store your best prompts, remix them weekly, and save time instead of rewriting from scratch each time.",
+      "keywords": [
+        "Claude prompt library",
+        "reusable prompts Claude",
+        "how to organize Claude prompts",
+        "Claude prompt templates",
+        "save prompts in Claude",
+        "Claude productivity tips"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add an FAQ section targeting questions like 'does Claude remember my prompts' to capture featured snippet opportunities",
+        "Include a brief comparison table of free vs paid plans regarding prompt storage and Projects features",
+        "Add internal links to other Claude how-to guides on AI World HQ to improve site navigation and time on page"
+      ],
+      "optimised_at": "2026-10-25T02:21:38.852Z"
+    },
+    "fact_verified_at": "2026-10-25T02:23:54.032Z"
+  },
+  "article_markdown": "---\ntitle: \"Build a reusable prompt library in Claude you can remix for weekly tasks\"\nsubtitle: \"Save your best prompts once, sort them into work, home and study folders, and reuse them in any Claude chat instead of rewriting from scratch.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Anthropic\"\ntool: \"Claude\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"prompts\", \"claude\", \"productivity\", \"templates\"]\n---\n\n# Build a reusable prompt library in Claude you can remix for weekly tasks\n\n> **In short:** You can keep a small library of tested prompts in a notes file, fill in the blanks each week, and paste the result into Claude. Claude does not store this library for you across chats unless you use a feature such as Projects, which may depend on your plan.\n\nIf you have ever typed the same long request into Claude three weeks in a row, this guide is for you. By the end, you will have a simple library of reusable prompts, sorted into work, home and study, that you can reuse with a few changes. It assumes you already have a Claude account and can start a chat and send a message.\n\n## Before you start\n- A Claude account, and a chat you can start at claude.ai or in the Claude app.\n- A notes app or a plain document on your phone or computer. Any will do.\n- About 30 minutes for the first setup, then a few minutes a week.\n\n## Step 1 — Create your library file and three sections\nOpen your notes app or document and create one new note called something like \"Prompt library.\" Inside it, add three headings: **Work**, **Home** and **Study**. These are just labels you write yourself. You can add more later.\n\nNext, list three tasks you repeat most often, such as a weekly report summary, a meal plan, or a study summary. Put each one under the right heading. Don't worry about the wording yet. The goal is to see your library take shape in one place.\n\nIf your app looks different, it doesn't matter. Any text file works, even an email you send to yourself. Use whatever you will open again next week.\n\nYou'll know it worked when you have one file with three headings and at least three task names listed under them.\n\n## Step 2 — Turn a repeated request into a template\nA **prompt** is simply the instruction you type to Claude. A **template** is a prompt with blank spots you fill in each time. The blank spots are shown in square brackets, like [your city].\n\nTake one task from your list and rewrite it with brackets wherever the details change. Keep the instructions the same every time, because those are the part that works. For example, you might have written this once and typed it again and again:\n\n💬 Example: \"Summarize these meeting notes into five bullet points for [audience], highlight any deadlines in bold, and end with two questions I should ask my team.\"\n\nPaste that into your note under the right heading. When you use it later, you only replace the bracketed words. Be honest with yourself about limits: Claude will follow the pattern closely, but it can still give a slightly different answer each time, so treat the result as a draft.\n\nYou'll know it worked when your template has a few bracketed blanks and the rest reads as one complete instruction.\n\n## Step 3 — Test the template and tune it once\nOpen a new Claude chat. Copy your template from the note, replace each bracket with real details, and send it. Read the reply and ask yourself: did it give me the format I wanted, the right length, and the tone for this audience?\n\nIf the answer missed the mark, don't start over. Send a follow-up in the same chat, such as \"Shorter, and put the deadlines first.\" Then copy the improved wording back into your template. This is called **iteration**, which is just a fancy word for making a draft better one round at a time.\n\nIf the reply is very long or off-topic, add one more sentence to the template, such as \"Keep it under 150 words.\" Small additions like this often make the biggest difference.\n\n💬 Example: \"Make this shorter, under 100 words, and put the most urgent item first.\"\n\nYou'll know it worked when your template produces a reply you would actually use with only small edits.\n\n## Step 4 — Save a one-line shortcut for each prompt\nA shortcut is a short label that reminds you which prompt to grab. Claude does not expand shortcuts on its own, so you will still paste the full text. The shortcut just makes the library quick to scan.\n\nAt the top of each template in your note, add a label in the same style, such as `#work-summary` or `#study-quiz`. When you want to use it, find the label, copy the whole block beneath it, and paste it into a new chat.\n\nIf you're on a plan that includes Projects, you may see a section for that in the Claude sidebar. A Project can hold instructions and files for related chats, so you may not need to copy the full template every time. Look for a section with that name, and if you don't see it, your plan may not include it. The label method works either way.\n\nYou'll know it worked when you can find any template in your note within about ten seconds.\n\n## Step 5 — Remix two prompts into a multi-step workflow\nNow try the more capable move: using one answer to shape the next request. This is a **multi-step prompt**, meaning you ask Claude to do one job, check the result, and then build on it.\n\nPick two templates, such as a study summary and a quiz. In one chat, paste the first one, get the summary, then paste the second template and add a line telling Claude to use that summary as its source. Claude can only see what is in the chat, so the earlier text must still be there.\n\n💬 Example: \"Using only the summary above, write five quiz questions for [topic], with answers listed at the bottom.\"\n\nBe clear about what Claude cannot do here: it cannot check your notes against the real textbook or the official source. You still need to read the output and confirm the facts.\n\nYou'll know it worked when the second answer clearly uses content from the first one.\n\n## Common mistakes\n- **Saving prompts that are too vague.** A prompt that says \"write something good\" will give loose results. Fix it by naming the format, length and audience in the template.\n- **Expecting Claude to remember your library automatically.** Each new chat starts fresh unless you paste the template again or use a feature like Projects. Fix it by copying the template into the chat each time.\n- **Trusting the first answer blindly.** Claude can make mistakes or invent details. Fix it by reading the output, checking names, numbers and dates, and asking a follow-up when something looks wrong.\n\n## What this means for you\n- **In everyday life:** Keep a Home template for a weekly meal plan or shopping list, then swap in this week's ingredients and budget-free preferences you choose.\n- **For your business or work:** Save a template for meeting summaries or client emails, and update the bracketed details before each use so every message sounds consistent.\n- **If you want to go further:** Try building a short chain of three templates, such as research, outline and draft, and see how far you can push one chat before the answers drift off track.\n\n## Try it now\nOpen your notes app, create the three headings Work, Home and Study, and paste in one prompt you typed recently. Replace one detail with a bracketed blank, and you will have your first reusable template in under two minutes.",
+  "original_title": "Build a reusable prompt library in Claude you can remix for weekly tasks"
+}
