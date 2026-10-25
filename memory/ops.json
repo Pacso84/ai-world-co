@@ -483,22 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179138550813745",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is nicely task-focused and on-brand—real writing help (complaints, resumes, sympathy notes, agreements) that everyday readers will actually use. One real concern: articles 2, 3, and 4 are ",
-      "agent": "publisher",
-      "at": "2026-10-07T15:05:08.137Z",
-      "loud": false
-    },
-    {
-      "id": "n179138552712134",
-      "level": "success",
-      "text": "2 hír + 0 útmutató publikálva (költség: $0.0132).",
-      "agent": "ceo",
-      "at": "2026-10-07T15:05:27.122Z",
-      "loud": false
-    },
-    {
       "id": "n179143120014141",
       "level": "info",
       "text": "SEO: 6 cikk optimalizálva (átlag 8.2/10).",
@@ -1281,27 +1265,25 @@
       "agent": "ceo",
       "at": "2026-10-25T02:22:44.774Z",
       "loud": false
+    },
+    {
+      "id": "n179293277806789",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"Use one Zapier MCP server across all your AI tools\" ",
+      "agent": "fact-check",
+      "at": "2026-10-25T12:52:58.067Z",
+      "loud": false
+    },
+    {
+      "id": "n179293281423423",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-25T12:53:34.234Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179143039325865",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Building AI builders: Playbook for closing the AI knowledge-capability gap\" — mi a baj: HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-7, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés.; The article attributes a six-week 'AI Builder' internal training program to Google, but the SOURCE block is from AWS Machine Learning Blog, n",
-      "ref": "2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
-      "at": "2026-10-08T03:33:13.258Z"
-    },
-    {
-      "id": "m179143071025818",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Building AI builders: Playbook for closing the AI knowledge-capability gap\" — javítva: HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-7, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés.; The article attributes a six-week 'AI Builder' internal training program to Google, but the SOURCE block is from AWS Machine Learning Blog, not Google.",
-      "ref": "2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
-      "at": "2026-10-08T03:38:30.258Z"
-    },
     {
       "id": "m179143072977621",
       "from": "ellenorzo",
@@ -2659,6 +2641,26 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-25T02:29:40.405Z"
+    },
+    {
+      "id": "m17929327780679",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"Use one Zapier MCP server across all your AI tools\" — The article oversimplifies a conditional feature. The source explicitly states skills are only shared in agentic mode, not in managed mode, but the article presents skills sharing as unconditional.",
+      "ref": "ARTICLE_2026-10-22T02-27-34-945Z_zapier-blog_Use_one_Zapier_MCP_server_across_all_your_AI_tools.json",
+      "open": true,
+      "at": "2026-10-25T12:52:58.067Z"
+    },
+    {
+      "id": "m179293281423464",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Build a Simple Household Budget Calculator with Gi\" — The 'free tier exists' claim may be outdated; the description of what paid tiers offer is also imprecise. Softened to direct readers to check official pricing rather than stating tiers as fact.",
+      "ref": "ARTICLE_GUIDE_build-a-simple-household-budget-calculator-with-github-copil.json",
+      "open": true,
+      "at": "2026-10-25T12:53:34.234Z"
     }
   ]
 }
