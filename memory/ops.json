@@ -483,22 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179143120014141",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 8.2/10).",
-      "agent": "seo",
-      "at": "2026-10-08T03:46:40.141Z",
-      "loud": false
-    },
-    {
-      "id": "n179143122496376",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is solid and coherent — all articles focus on practical, everyday writing tasks (complaints, emails, resumes, agreements), which gives the site a clear, helpful identity. One note: with so ",
-      "agent": "publisher",
-      "at": "2026-10-08T03:47:04.963Z",
-      "loud": false
-    },
-    {
       "id": "n179143124329411",
       "level": "success",
       "text": "4 hír + 2 útmutató publikálva (költség: $0.0647).",
@@ -1281,27 +1265,25 @@
       "agent": "fact-check",
       "at": "2026-10-25T12:53:34.234Z",
       "loud": false
+    },
+    {
+      "id": "n179295351412978",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-25T18:38:34.129Z",
+      "loud": false
+    },
+    {
+      "id": "n179295355924611",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-25T18:39:19.246Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179143072977621",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Building AI builders: Playbook for closing the AI knowledge-capability gap\" (?/10)",
-      "ref": "2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
-      "at": "2026-10-08T03:38:49.776Z"
-    },
-    {
-      "id": "m179143073974997",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"GPT-6 and Intelligent UI for everyone\" hír a meglévő útmutatóra mutat: create-your-own-custom-gpt-in-chatgpt-no-coding",
-      "ref": "create-your-own-custom-gpt-in-chatgpt-no-coding",
-      "at": "2026-10-08T03:38:59.749Z"
-    },
     {
       "id": "m17914312144935",
       "from": "designer",
@@ -2661,6 +2643,26 @@
       "ref": "ARTICLE_GUIDE_build-a-simple-household-budget-calculator-with-github-copil.json",
       "open": true,
       "at": "2026-10-25T12:53:34.234Z"
+    },
+    {
+      "id": "m179295351412952",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Draft quick text messages with Apple Intelligence’\" — The Writing Tools / predictive writing feature still exists and is accurate in substance, but the specific UI description (predictions as 'light-gray bubbles' appearing 'above the keyboard') is a visual detail I cannot",
+      "ref": "ARTICLE_GUIDE_draft-quick-text-messages-with-apple-intelligence-s-predicti.json",
+      "open": true,
+      "at": "2026-10-25T18:38:34.129Z"
+    },
+    {
+      "id": "m179295355924695",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Drafting a Polite but Firm Resignation Letter from\" — The guide references 'National Employment Standards' and 'industry award,' which are Australian employment law concepts — but the frontmatter specifies US readers. US federal law does not mandate a minimum notice perio",
+      "ref": "ARTICLE_GUIDE_drafting-a-polite-but-firm-resignation-letter-from-your-job.json",
+      "open": true,
+      "at": "2026-10-25T18:39:19.246Z"
     }
   ]
 }
