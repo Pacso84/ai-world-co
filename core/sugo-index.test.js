@@ -52,6 +52,43 @@ assert.equal(slugCim('https://support.microsoft.com/en-us/microsoft-copilot/conv
   ]);
 }
 
+// 5b) CÍMEK (független átnézés 10-24): az OpenAI-gyűjtőlap linkje „Cím + Leírás” → a jelölt-pontozás a leírás
+// szavaira is illett (pl. CarPlay-cikk a „resume” szóra). Csak a cím kell.
+{
+  const A = 'https://help.openai.com', M = /^\/en\/articles\/\d+/;
+  // blokkelemes horgony: az első címsor (h1–h6) a cím
+  assert.deepEqual(linkCikkek('<a href="/en/articles/8555545-uploading-files"><div><h3>Uploading files and audio to ChatGPT</h3><p>Upload documents, spreadsheets, presentations</p></div></a>', A, M),
+    [{ url: 'https://help.openai.com/en/articles/8555545-uploading-files', cim: 'Uploading files and audio to ChatGPT' }]);
+  // címsor nélkül: az első (belső) blokk
+  assert.equal(linkCikkek('<a href="/en/articles/1-x"><div><div>Chat and file retention</div><div>Understand how chats are kept</div></div></a>', A, M)[0].cim, 'Chat and file retention');
+  // sima szöveg >80 karakter: vágás az első mondatkezdő nagybetűs szónál (≥3 szó után)
+  const vag = t => linkCikkek(`<a href="/en/articles/2-x">${t}</a>`, A, M)[0].cim;
+  assert.equal(vag('Uploading files and audio to ChatGPT Upload documents, spreadsheets, presentations and more to ChatGPT'), 'Uploading files and audio to ChatGPT');
+  assert.equal(vag('ChatGPT capabilities overview Learn about ChatGPT&#8217;s tools for working with files, images and more'), 'ChatGPT capabilities overview');
+  assert.equal(vag('Using ChatGPT in CarPlay Use ChatGPT in Apple CarPlay to start or resume conversations hands-free'), 'Using ChatGPT in CarPlay');
+  assert.equal(vag('Using ChatGPT with Apple Music Learn how to connect your Apple Music account and build playlists'), 'Using ChatGPT with Apple Music',
+    'két nagybetűs szó egymás után (Apple Music) = név, nem mondatkezdés');
+  assert.equal(vag('Use Gemini Apps with Google Workspace'), 'Use Gemini Apps with Google Workspace', '80 karakter alatt nincs vágás');
+  // általános első linkszöveg („Learn more”) → a később jövő valódi cím felülírja (a sorrend marad)
+  const G = 'https://support.google.com', GM = /^\/gemini\/answer\/\d+$/;
+  assert.deepEqual(linkCikkek('<a href="/gemini/answer/123?hl=en">Learn more</a><a href="/gemini/answer/9">Use Gems</a>' +
+    '<a href="/gemini/answer/123">Generate &amp; edit images &quot;fast&quot;</a><a href="/gemini/answer/9">Read more</a>', G, GM), [
+    { url: 'https://support.google.com/gemini/answer/123', cim: 'Generate & edit images "fast"' },
+    { url: 'https://support.google.com/gemini/answer/9', cim: 'Use Gems' }
+  ]);
+  for (const g of ['Read more', 'Here', 'Learn more about this'])
+    assert.equal(linkCikkek(`<a href="/gemini/answer/5">${g}</a><a href="/gemini/answer/5">Manage your Gemini activity</a>`, G, GM)[0].cim, 'Manage your Gemini activity', g);
+  // HTML-entitások
+  assert.equal(vag('Gemini&#8217;s &rsquo;new&rsquo; tools&nbsp;for &#x27;you&#39; &amp; me'), 'Gemini’s ’new’ tools for \'you\' & me');
+}
+// slugCim: a Microsoft-cikkek végén álló GUID nem a cím része
+assert.equal(slugCim('https://support.microsoft.com/en-us/office/use-copilot-in-word-2c3e4f5a-1b2c-3d4e-5f6a-7b8c9d0e1f2a'), 'Use copilot in word');
+assert.equal(slugCim('https://support.microsoft.com/en-us/topic/copilot-faq-2C3E4F5A-1B2C-4D5E-8F90-1234567890AB'), 'Copilot faq');
+// engedélylista: normalizált URL (független átnézés 10-24) — a „..” szakasz kiléphetne az engedélyezett előtagból
+for (const u of ['https://support.google.com/gemini/../accounts/x', 'https://support.google.com/gemini/x/../answer/1', 'https://support.google.com/gemini/%2e%2e/accounts/x',
+  'https://help.openai.com:8443/en/articles/1', 'https://user@help.openai.com/en/articles/1'])
+  assert.ok(!engedelyezett(u), 'nem lett volna szabad elfogadni: ' + u);
+
 // 6) letöltési hiba → üres lista, nem kivétel
 {
   const rossz = async () => { throw new Error('hálózat'); };

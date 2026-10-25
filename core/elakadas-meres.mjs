@@ -7,7 +7,7 @@ import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { szolgaltatok, indexLetolt } from './sugo-index.js';
-import { jeloltCikkek, promptEpit, valaszErtelmez, dobozKeszit } from './elakadas.js';
+import { ELAKADAS_BE, jeloltCikkek, promptEpit, valaszErtelmez, dobozKeszit } from './elakadas.js';
 import { forrasSzoveg } from './friss-tenyellenorzes.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -75,7 +75,7 @@ for (const slug of process.argv.slice(2)) {
     const v = await modell(rendszer, felhasznalo);
     osszKoltseg += v.koltseg;
     const tetelek = valaszErtelmez(v.szoveg, cikkek);
-    const doboz = dobozKeszit(tetelek, Object.fromEntries(cikkek.map(c => [c.url, c.szoveg])), utm.hibak);
+    const doboz = dobozKeszit(tetelek, Object.fromEntries(cikkek.map(c => [c.url, c.szoveg])), utm.hibak, ELAKADAS_BE, utm);   // utm: eszköz nélküli útmutatónál „In ChatGPT|Gemini|Claude:” kötelező (független átnézés 10-24)
     Object.assign(sor, { veg: v.veg, koltseg: v.koltseg, tokenBe: v.be, tokenKi: v.ki, modellTetel: tetelek.length, doboz, cikkCimek: Object.fromEntries(cikkek.map(c => [c.url, c.cim])), nyers: v.szoveg.slice(0, 3000) });
   }
   eredmeny.push(sor);

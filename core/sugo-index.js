@@ -25,7 +25,35 @@ export const ENGEDELY = [
 /** Jóváhagyott forrás-e (pontos előtag, https)? */
 export function engedelyezett(url) {
   const u = String(url || '');
-  return ENGEDELY.some(p => u.startsWith(p));
+  if (!ENGEDELY.some(p => u.startsWith(p))) return false;
+  // NORMALIZÁLVA (független átnézés 10-24): a „..” / „%2e%2e” szakasz kiléphetne az engedélyezett előtagból;
+  // port és felhasználónév nem lehet a hivatalos súgó címében
+  if (/(^|\/)(\.|%2e){1,2}(\/|$|\?|#)/i.test(u.replace(/^https:\/\/[^/]+/, ''))) return false;
+  try {
+    const p = new URL(u);
+    return p.protocol === 'https:' && !p.port && !p.username && !p.password && ENGEDELY.some(e => p.href.startsWith(e));
+  } catch { return false; }
+}
+
+// HTML-entitások a címekben (független átnézés 10-24: eddig csak &amp; és &#39;)
+const ENTITAS = { '&amp;': '&', '&quot;': '"', '&#8217;': '’', '&rsquo;': '’', '&lsquo;': '‘', '&nbsp;': ' ', '&#x27;': "'", '&#39;': "'", '&ldquo;': '“', '&rdquo;': '”' };
+const entitasMentes = s => String(s).replace(/&(?:amp|quot|#8217|rsquo|lsquo|nbsp|#x27|#39|ldquo|rdquo);/g, m => ENTITAS[m]);
+const szovegbol = h => entitasMentes(String(h).replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
+// A gyűjtőlapok leírása tipikusan ilyen igével kezdődik („… ChatGPT Upload documents…”, „… overview Learn about…”)
+const LEIRAS_KEZDET = /^(Learn|Use|Upload|Understand|Find|Get|See|Manage|Discover|Explore|How|This|Set|Create|Turn|Read|Check|Access|Connect|Ask|Start|Share|Control|Review|Customize|View|Delete|Download|Change|Choose|Add|Remove|Try|Keep)$/;
+const GENERIKUS = /^(learn more( about this)?|read more|here|more|details|see more|click here|more info)$/i;
+
+/** A horgony belső HTML-jéből a cím: címsor > legbelső blokk > hosszú szövegnél a leírás előtti rész. */
+function horgonyCim(belso) {
+  const cimsor = String(belso).match(/<h[1-6][^>]*>([\s\S]*?)<\/h[1-6]>/i);
+  if (cimsor) return szovegbol(cimsor[1]);
+  const blokk = String(belso).match(/<(div|p)\b[^>]*>([^<]+)<\/\1>/i);   // a <span> szövegközi, nem blokk
+  if (blokk && szovegbol(blokk[2]).length >= 4) return szovegbol(blokk[2]);
+  const t = szovegbol(belso);
+  if (t.length <= 80) return t;
+  const szavak = t.split(' ');
+  for (let i = 3; i < szavak.length; i++) if (LEIRAS_KEZDET.test(szavak[i])) return szavak.slice(0, i).join(' ');
+  return t.slice(0, 120);
 }
 
 /** Melyik súgó(k) illenek az útmutató eszközéhez? Üres = nincs doboz. */
@@ -45,7 +73,9 @@ export function szolgaltatok(tool, company) {
 /** A cikk URL-jének utolsó része olvasható címmé („8555545-uploading-files” → „Uploading files”). */
 export function slugCim(url) {
   const utolso = String(url || '').split('?')[0].replace(/\/+$/, '').split('/').pop() || '';
-  const s = utolso.replace(/^\d+-/, '').replace(/-/g, ' ').trim();
+  // a Microsoft-cikkek végén álló GUID nem a cím része (független átnézés 10-24)
+  const s = utolso.replace(/-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i, '')
+    .replace(/^\d+-/, '').replace(/-/g, ' ').trim();
   return s ? s[0].toUpperCase() + s.slice(1) : '';
 }
 
@@ -71,13 +101,19 @@ export function linkCikkek(html, alap, minta) {
     const ut = href.split('?')[0].split('#')[0];
     if (!minta.test(ut)) continue;
     const url = alap + ut;
-    if (!engedelyezett(url) || latott.has(url)) continue;
-    const cim = m[2].replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&#39;|&#x27;/g, "'").replace(/\s+/g, ' ').trim();
-    if (cim.length < 4) continue;
+    if (!engedelyezett(url)) continue;
+    const cim = horgonyCim(m[2]);
+    if (cim.length < 4 && !GENERIKUS.test(cim)) continue;
+    if (latott.has(url)) {
+      // az általános első szöveget („Learn more”) a később jövő valódi cím felülírja — a sorrend marad
+      const regi = ki.find(x => x.url === url);
+      if (regi && GENERIKUS.test(regi.cim) && !GENERIKUS.test(cim) && cim.length >= 4) regi.cim = cim;
+      continue;
+    }
     latott.add(url);
     ki.push({ url, cim });
   }
-  return ki;
+  return ki.filter(x => !GENERIKUS.test(x.cim));   // valódi cím nélkül nem jelölt
 }
 
 // Szolgáltatónkénti forrás — élőben ellenőrizve 10-24 (darabszám akkor).
