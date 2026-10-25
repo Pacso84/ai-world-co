@@ -65,6 +65,41 @@ export function mintavetelezett(nyers) {
   return (Array.isArray(nyers) ? nyers : []).some(x => Number(x?.avg?.sampleInterval) > 1);
 }
 
+// ── A MINTAVÉTELEZETT NAP PÓTLÁSA (2026-10-25) ───────────────────────
+// 10-23-at a Cloudflare egész napra csak mintavételezve adta → a nap kimaradt a naplóból, és a
+// hírtörlés (75 egybefüggő nap kell) leállt volna 75 napra. A kisebb lekérdezést a Cloudflare
+// pontosan adja → a mintavételezett napot 6 órás, kell esetén 1 órás darabokban kérjük le.
+// A hiányzó napot 6 napig újrapróbáljuk (7 napon túl a Cloudflare tízesre kerekít → hamis nullák).
+const POTLAS_NAP = 6;
+
+/** Lekérdezendő napok: az utolsó `recent` nap + az utolsó `potlas` nap HIÁNYZÓ (vagy üres) napjai, újabb elöl. */
+export function lekerdezendoNapok(today, log, recent = RECENT_DAYS, potlas = POTLAS_NAP) {
+  const ki = [];
+  for (let i = 1; i <= Math.max(recent, potlas); i++) {
+    const day = new Date(Date.parse(today + 'T00:00:00Z') - i * 86400000).toISOString().slice(0, 10);
+    const van = Array.isArray(log?.[day]) && log[day].length > 0;
+    if (i <= recent || !van) ki.push(day);
+  }
+  return ki;
+}
+
+/** A nap `darab` egyenlő időablakra bontva: [[since, until], …] (ISO). */
+export function napAblakok(day, darab) {
+  const t0 = Date.parse(day + 'T00:00:00Z'), lepes = 86400000 / darab;
+  return Array.from({ length: darab }, (_, i) => [new Date(t0 + i * lepes).toISOString(), new Date(t0 + (i + 1) * lepes).toISOString()]);
+}
+
+/** Darabok sorai útvonalanként összeadva (az első előfordulás sorrendjében). */
+export function sorokOsszevonasa(reszek) {
+  const m = new Map();
+  for (const sorok of reszek || []) for (const r of sorok || []) {
+    const v = m.get(r.path) || { path: r.path, visits: 0, views: 0 };
+    v.visits += Number(r.visits) || 0; v.views += Number(r.views) || 0;
+    m.set(r.path, v);
+  }
+  return [...m.values()];
+}
+
 export function pruneOld(log, today) {
   const out = {};
   for (const [day, rows] of Object.entries(log)) {
@@ -234,11 +269,28 @@ export async function fetchDay(day) {   // exportálva: a robotszűrő élő pr�
       }
     } }
   }`;
-  const nyers = (await gql(q, { account, since, until })).pages || [];
-  if (mintavetelezett(nyers)) throw new Error('mintavételezett Cloudflare-adat — a meglévőt nem írom felül');
-  const rows = nyers
+  const lekerAblak = async (s, u) => (await gql(q, { account, since: s, until: u })).pages || [];
+  const sorokbol = nyers => nyers
     .filter(x => x.dimensions?.requestPath)
     .map(x => ({ path: x.dimensions.requestPath, visits: x.sum?.visits || 0, views: x.count || 0 }));
+  const nyers = await lekerAblak(since, until);
+  let rows;
+  if (!mintavetelezett(nyers)) rows = sorokbol(nyers);
+  else {
+    // 10-25: mintavételezett nap → 6 órás, kell esetén 1 órás darabok (a határ előtt 1 ms-mal zárva: nincs dupla számolás)
+    const reszek = [];
+    const veg = u => new Date(Date.parse(u) - 1).toISOString();
+    for (const [s, u] of napAblakok(day, 4)) {
+      const n = await lekerAblak(s, veg(u));
+      if (!mintavetelezett(n)) { reszek.push(sorokbol(n)); continue; }
+      for (const [hs, hu] of napAblakok(day, 24).filter(([a]) => a >= s && a < u)) {
+        const hn = await lekerAblak(hs, veg(hu));
+        if (mintavetelezett(hn)) throw new Error('mintavételezett Cloudflare-adat még órás bontásban is — a meglévőt nem írom felül');
+        reszek.push(sorokbol(hn));
+      }
+    }
+    rows = sorokOsszevonasa(reszek);
+  }
 
   // 🤖 ROBOTSZŰRŐ: (ország, óra, eszköz) vödrök; a nagyoknál megnézzük, hány KÜLÖNBÖZŐ oldalra ment
   const vq = `query($account: String!, $since: Time!, $until: Time!) {
@@ -336,8 +388,8 @@ async function main() {
 
   // Az utolsó RECENT_DAYS napot próbáljuk — a késve érkező adat így beér,
   // és egy kihagyott futás sem hagy lyukat a naplóban.
-  for (let i = 1; i <= RECENT_DAYS; i++) {
-    const day = new Date(Date.parse(today + 'T00:00:00Z') - i * 86400000).toISOString().slice(0, 10);
+  // 10-25: + az utolsó 6 nap HIÁNYZÓ napjai is (a mintavételezés miatt kimaradt nap pótlása)
+  for (const day of lekerdezendoNapok(today, merged)) {
     const known = day in merged;
     if (known && dayAge(day, today) >= RECENT_DAYS) { skipped++; continue; }
     try {

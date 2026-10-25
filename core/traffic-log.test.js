@@ -7,7 +7,7 @@
 
 import assert from 'assert/strict';
 import { readFileSync } from 'fs';
-import { mergeDay, mintavetelezett, pruneOld, topPages, depth, depthTrend, isAudiencePath, RECENT_DAYS, KEEP_DAYS, robotVodrok, robotLevonas, ROBOT_MIN, NAPI_LIMIT } from './traffic-log.js';
+import { mergeDay, mintavetelezett, pruneOld, topPages, depth, depthTrend, isAudiencePath, RECENT_DAYS, KEEP_DAYS, robotVodrok, robotLevonas, ROBOT_MIN, NAPI_LIMIT, lekerdezendoNapok, napAblakok, sorokOsszevonasa } from './traffic-log.js';
 
 let pass = 0;
 const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
@@ -78,7 +78,10 @@ t('🔴 mintavételezett Cloudflare-válasz felismerése (sampleInterval > 1 = e
 t('🔌 a lekérdezés kéri a mintavételi közt, és mintavételezett napot nem ír', () => {
   const src = readFileSync(new URL('./traffic-log.js', import.meta.url), 'utf-8');
   assert.match(src, /avg \{ sampleInterval \}/, 'a Cloudflare-lekérdezés nem kéri a sampleInterval-t');
-  assert.match(src, /if \(mintavetelezett\(nyers\)\) throw/, 'a mintavételezett válasz átmenne');
+  // 10-25: az egész napos mintavételezett válasz NEM kerül a naplóba — darabokban kérjük le; ha még órásan is
+  // mintavételezett, akkor dob (a meglévőt nem írja felül)
+  assert.match(src, /if \(!mintavetelezett\(nyers\)\) rows = sorokbol\(nyers\);/, 'a mintavételezett válasz átmenne');
+  assert.match(src, /if \(mintavetelezett\(hn\)\) throw/, 'az órás bontásban is mintavételezett válasz átmenne');
 });
 
 // ---------- metszés ----------
@@ -232,6 +235,33 @@ t('🤖 a napi lekérdezés korlátja 1000 (a robotos napon 500+ útvonal), a fe
   assert.match(src, /limit: \$\{NAPI_LIMIT\}, orderBy: \[count_DESC\]/);
   assert.match(src, /return \{ rows: robotLevonas\(rows, robotSorok\), robot: vodrok \};/);
   assert.match(src, /const \{ rows, robot \} = await fetchDay\(day\);/);
+});
+
+// ── 10-25: A MINTAVÉTELEZETT NAP PÓTLÁSA (napi riport: „hírtörlés kihagyva: hiányzó nap 10-23 — hiánytalan 1 nap, kell 75”) ──
+t('🧩 lekérdezendő napok: az utolsó 3 + az utolsó 6 nap HIÁNYZÓ napjai (7 napon belül a Cloudflare még pontos)', () => {
+  const log = { '2026-10-24': [{ path: '/a', visits: 1 }], '2026-10-22': [{ path: '/b', visits: 1 }], '2026-10-21': [], '2026-10-20': [{ path: '/c', visits: 1 }] };
+  assert.deepEqual(lekerdezendoNapok('2026-10-25', log), ['2026-10-24', '2026-10-23', '2026-10-22', '2026-10-21', '2026-10-19']);
+  assert.deepEqual(lekerdezendoNapok('2026-10-25', {}), ['2026-10-24', '2026-10-23', '2026-10-22', '2026-10-21', '2026-10-20', '2026-10-19']);
+});
+
+t('🧩 a nap egyenlő időablakokra bontva (a lekérdezés kisebb → a Cloudflare nem mintavételez)', () => {
+  assert.deepEqual(napAblakok('2026-10-23', 4), [
+    ['2026-10-23T00:00:00.000Z', '2026-10-23T06:00:00.000Z'], ['2026-10-23T06:00:00.000Z', '2026-10-23T12:00:00.000Z'],
+    ['2026-10-23T12:00:00.000Z', '2026-10-23T18:00:00.000Z'], ['2026-10-23T18:00:00.000Z', '2026-10-24T00:00:00.000Z']]);
+  assert.equal(napAblakok('2026-10-23', 24).length, 24);
+});
+
+t('🧩 a darabok sorai útvonalanként összeadva', () => {
+  assert.deepEqual(sorokOsszevonasa([[{ path: '/a', visits: 2, views: 3 }, { path: '/b', visits: 1, views: 1 }], [{ path: '/a', visits: 1, views: 1 }], []]),
+    [{ path: '/a', visits: 3, views: 4 }, { path: '/b', visits: 1, views: 1 }]);
+});
+
+t('🔌 bekötés: a fő ciklus a lekerdezendoNapok-ot, a fetchDay mintavételnél a napAblakok-at használja', () => {
+  const src = readFileSync(new URL('./traffic-log.js', import.meta.url), 'utf-8');
+  assert.match(src, /for \(const day of lekerdezendoNapok\(today, merged\)\)/);
+  const fd = src.slice(src.indexOf('export async function fetchDay'), src.indexOf('export async function fetchDay') + 3000);
+  assert.match(fd, /napAblakok\(day, 4\)/);
+  assert.match(fd, /napAblakok\(day, 24\)/);
 });
 
 console.log('\n✅ traffic-log.test: mind a ' + pass + ' eset rendben');
