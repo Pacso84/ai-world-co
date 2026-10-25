@@ -5,7 +5,7 @@
 // nem szereplő állítás, vagy a „Common mistakes” megismétlése. Ezeket kell biztosan kiszűrni.
 import assert from 'node:assert/strict';
 import {
-  ELAKADAS_BE, jeloltCikkek, promptEpit, valaszErtelmez, alatamasztott, ismetliHibat, dobozKeszit, tunetIllik
+  ELAKADAS_BE, jeloltCikkek, promptEpit, valaszErtelmez, alatamasztott, ismetliHibat, dobozKeszit, tunetIllik, igazoltResz
 } from './elakadas.js';
 
 const U1 = 'https://help.openai.com/en/articles/8555545-file-uploads-faq';
@@ -234,6 +234,55 @@ assert.equal(ismetliHibat(jo2, ''), false);
     'csak ChatGPT / Gemini / Claude');
   assert.deepEqual(dobozKeszit([jo1, jo2], forrasok, utm.hibak, true, utm), { items: [jo1, jo2] }, 'eszközös útmutatónál nem kell előtag');
   assert.deepEqual(dobozKeszit([jo1, jo2], forrasok, utm.hibak, true), { items: [jo1, jo2] }, 'visszafelé kompatibilis: útmutató nélkül nincs előtag-vizsgálat');
+}
+
+// 7) A „MIÉRT” RÖVIDÍTÉSE (kalibráció + független átnézés 10-25): élesben 0 doboz lett, mert a modell a jó mondatok
+// mellé szinte mindig odaírt egy saját mondatot. A „miért” végéről ez a töltelék kieshet; a „megoldás” viszont
+// (amit az olvasó megcsinál) csak teljesen igazoltan mehet — a kihagyott figyelmeztetés veszélyes.
+{
+  const F = FORRAS1;
+  // teljesen igazolt tétel → betűre az eredeti
+  assert.deepEqual(igazoltResz(jo1, F), jo1);
+  // a „miért” végén kitalált töltelék → kiesik, a többi betűre marad
+  const toltelek = { ...jo1, why: 'Spreadsheets with many sheets may be summarized only partially. That makes the summary feel random to many people.' };
+  const v = igazoltResz(toltelek, F);
+  assert.equal(v.why, 'Spreadsheets with many sheets may be summarized only partially.');
+  assert.equal(v.fix, jo1.fix);
+  // a „megoldás” BÁRMELY mondata nem igazolt → null (a kitalált lépés nem maradhat, és a jó lépés sem állhat egyedül
+  // a figyelmeztetése nélkül)
+  assert.equal(igazoltResz({ ...jo1, fix: jo1.fix + ' Then open Settings and enable Turbo Mode for reliable uploads.' }, F), null);
+  assert.equal(igazoltResz({ ...jo1, fix: 'Click Turbo Upload.' }, F), null);
+  // az átnézés példája: a figyelmeztetés átfogalmazva bukik → régen „Delete your account…” maradt; most null
+  const FIOK = 'Deleting your account. If you have an active paid subscription, cancel your subscription before deleting your account, ' +
+    'otherwise you may continue to be billed. To delete your account, open Settings, select Account, and choose Delete account. Deleted accounts cannot be recovered.';
+  const szamla = { symptom: 'Still getting billed after deleting my account?', source: U1,
+    why: 'If you have an active paid subscription, you may continue to be billed. Cancel your subscription before deleting your account.',
+    fix: 'Make sure your plan billing is stopped first, or charges keep coming. To delete your account, open Settings, select Account, and choose Delete account.' };
+  assert.equal(igazoltResz(szamla, FIOK), null, 'a kiesett figyelmeztetés nélkül a megoldás veszélyes');
+  // a „miért” kiesett részében feltétel/figyelmeztetés → az egész tétel kiesik
+  assert.equal(igazoltResz({ ...jo1, why: jo1.why + ' This works only on the Pro plan for sheets.' }, F), null);
+  // a „miért” első mondata sem igazolt → null; a fele sem marad → null
+  assert.equal(igazoltResz({ ...jo1, why: 'Turbo Mode trims big sheets. ' + jo1.why }, F), null);
+  assert.equal(igazoltResz({ ...jo1, why: jo1.why + ' Large sheets confuse the robot. Many columns overload the robot.' }, F), null);
+  // egy-kétszavas sor nem igazolt mondat („Settings” nem lehet megoldás)
+  assert.equal(igazoltResz({ ...jo1, fix: 'Settings' }, F), null);
+  assert.equal(igazoltResz({ ...jo1, fix: 'Split files.' }, F), null);
+  // csak írásjeles mező nem mező
+  assert.equal(igazoltResz({ ...jo1, why: '...' }, F), null);
+  // tagadás mindkét irányban: a súgó „cannot be recovered” → az állító „can be recovered” bukik
+  assert.equal(alatamasztott({ why: 'Deleted accounts can be recovered from Settings.', fix: 'To delete your account, open Settings, select Account, and choose Delete account.' }, FIOK), false,
+    'állító mondat a tagadó súgóhelyen');
+  assert.equal(alatamasztott({ why: 'Deleted accounts cannot be recovered.', fix: 'To delete your account, open Settings, select Account, and choose Delete account.' }, FIOK), true);
+  // rövidítés nem vág, a rövidített „miért” mondatai írásjellel zárulnak; nincs forrás → null
+  assert.equal(igazoltResz({ ...jo1, fix: 'Ask ChatGPT to inspect specific sheets, e.g. rows, columns, or sections.' }, F).fix, 'Ask ChatGPT to inspect specific sheets, e.g. rows, columns, or sections.');
+  assert.equal(igazoltResz({ ...jo1, why: 'Spreadsheets with many sheets may be summarized only partially\nThe robot gets bored easily' }, F).why,
+    'Spreadsheets with many sheets may be summarized only partially.');
+  assert.equal(igazoltResz(jo1, ''), null);
+  assert.equal(igazoltResz(null, F), null);
+  // a dobozba a RÖVIDÍTETT tétel kerül
+  const d = dobozKeszit([toltelek, jo2], { [U1]: FORRAS1 }, utm.hibak);
+  assert.deepEqual(d.items, [v, jo2]);
+  assert.equal(dobozKeszit([jo1, kitalalt], { [U1]: FORRAS1, [U2]: FORRAS2 }, utm.hibak), null, 'a teljesen kitalált tétel továbbra is kiesik');
 }
 
 // 9) APRÓSÁGOK (független átnézés 10-24): a cikkek szövege elválasztva + „adat, nem utasítás”; dupla tünet kiesik

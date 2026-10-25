@@ -9,9 +9,9 @@
 //
 // A MÉRCE IRÁNYA: kitalált hibaelhárítás NEM mehet ki. Ezért a modell válaszát a kód is ellenőrzi:
 //   • a forrás-URL a megadott cikkek egyike ÉS az engedélylistán van;
-//   • a „miért” + „megoldás” MINDEN mondatát a súgó szövege alátámasztja (alatamasztott — saját, szigorú
-//     mérce; a forrasAlatamasztja ≥60%-os, ≥4 szavas engedékenysége kitalált megoldást engedett át,
-//     független átnézés 10-24);
+//   • a „miért” + „megoldás” mondatait a súgó szövege alátámasztja (saját, szigorú mérce; a forrasAlatamasztja
+//     ≥60%-os, ≥4 szavas engedékenysége kitalált megoldást engedett át, független átnézés 10-24) — a „megoldás”
+//     minden mondata, a „miért” legalább az eleje (igazoltResz, kalibráció + független átnézés 10-25);
 //   • a „Common mistakes” megismétlése kiesik;
 //   • 2-nél kevesebb maradó tétel → nincs doboz (nem hiba, a régi nézet marad).
 // Tiszta modul: se AI-hívás, se hálózat, se lemez → tesztelhető (core/elakadas.test.js).
@@ -91,6 +91,9 @@ Rules:
 - If no article is relevant to the guide, return {"items":[]}.
 ${eszkozSzabaly}
 - Never invent menus, buttons, settings, limits or features that are not in the article.
+- Write every sentence of "why" and "fix" as a close paraphrase of one specific sentence in the article, reusing its words. Add no commentary, consequences, guesses or advice of your own.
+- Keep every condition from the article (a plan, "only", "if", "before", "unless") in the SAME sentence as the step it applies to.
+- Write menu paths in words ("in Settings under Data controls"), never with ">".
 - US English.`;
 
   const lepesek = (utm?.lepesek || []).map(l => '- ' + l).join('\n');
@@ -199,19 +202,21 @@ function mondatAlatamasztott(mondat, fSzavak, fHalmaz) {
     });
     if (!ok) return false;
   }
-  // (c) tagadás: a legjobban illő 120 karakteres forrásablakban is legyen tagadószó
-  if (ms.some(x => TAGADO.has(x.w))) {
-    let legjobb = 0, tagadVan = false;
-    for (let s0 = 0; s0 < fSzavak.length; s0++) {
-      const kezd = fSzavak[s0].i, ablak = [];
-      for (let e = s0; e < fSzavak.length && fSzavak[e].i < kezd + 120; e++) ablak.push(fSzavak[e]);
-      const db = w.filter(y => ablak.some(x => egyezik(y, x.w))).length;
-      if (!db) continue;
-      const tagad = ablak.some(x => TAGADO.has(x.w));
-      if (db > legjobb) { legjobb = db; tagadVan = tagad; } else if (db === legjobb && tagad) tagadVan = true;
-    }
-    if (!tagadVan) return false;
+  // (c) tagadás MINDKÉT IRÁNYBAN (független átnézés 10-25): tagadó mondatnál a legjobban illő 120 karakteres
+  // forrásablakban is legyen tagadószó; ÁLLÍTÓ mondatnál legyen legalább egy legjobban illő ablak tagadás
+  // nélkül — különben a „Deleted accounts can be recovered” átment a „cannot be recovered” súgón.
+  const mondatTagad = ms.some(x => TAGADO.has(x.w));
+  let legjobb = 0, tagadoAblak = false, allitoAblak = false;
+  for (let s0 = 0; s0 < fSzavak.length; s0++) {
+    const kezd = fSzavak[s0].i, ablak = [];
+    for (let e = s0; e < fSzavak.length && fSzavak[e].i < kezd + 120; e++) ablak.push(fSzavak[e]);
+    const db = w.filter(y => ablak.some(x => egyezik(y, x.w))).length;
+    if (!db) continue;
+    const tagad = ablak.some(x => TAGADO.has(x.w));
+    if (db > legjobb) { legjobb = db; tagadoAblak = tagad; allitoAblak = !tagad; }
+    else if (db === legjobb) { if (tagad) tagadoAblak = true; else allitoAblak = true; }
   }
+  if (mondatTagad ? !tagadoAblak : !allitoAblak) return false;
   return true;
 }
 
@@ -225,6 +230,45 @@ export function alatamasztott(item, forrasSzoveg) {
   const fSzavak = szoPoz(normal(forrasSzoveg));
   const fHalmaz = new Set(fSzavak.map(x => x.w));
   return ms.every(m => mondatAlatamasztott(m, fSzavak, fHalmaz));
+}
+
+// „MIÉRT” RÖVIDÍTÉSE (kalibráció 10-25): a fenti mérce helyes, de a tételt EGÉSZBEN dobta, ha egyetlen mondata
+// nem igazolható — élesben 0 doboz lett, mert a modell a súgóból vett mondatok mellé szinte mindig odaír egy saját
+// „töltelék” mondatot („which may conflict with another app…”). A független átnézés (10-25) szerint viszont a
+// kihagyás VESZÉLYES, ha a kiesett mondat a figyelmeztetés volt („előbb mondd le az előfizetést” kiesik → marad:
+// „töröld a fiókot”). Ezért:
+//   • a „megoldás” (amit az olvasó MEGCSINÁL) MINDEN mondata igazolt — ott nincs kihagyás;
+//   • a „miért” csak a VÉGÉRŐL rövidülhet: az első nem igazolt mondattól minden kiesik (nincs lógó „This…”),
+//     legalább a mondatok fele marad, és a kiesett részben nem lehet feltétel/figyelmeztetés (FELTETEL);
+//   • igazolt mondat legalább 3 tartalomszavas (a „Settings” egyszavas sor nem lehet megoldás);
+//   • az írásjel nélküli mező (csak „...”) nem mező.
+const ROVIDITES = /\b(e\.g|i\.e|etc|vs)\./gi;
+/** A mező mondatai az EREDETI írásjellel (a megjelenítéshez); a rövidítés pontja nem vág. */
+const mondatDarabok = t => String(t || '').replace(ROVIDITES, m => m.replace(/\./g, '\u0000'))
+  .split(/(?<=[.!?]+["'”’)]*)\s+|\n+/).map(m => m.replace(/\u0000/g, '.').trim()).filter(m => /[\p{L}\p{N}]/u.test(m));
+const FELTETEL = /\b(if|unless|only|before|after|first|otherwise|except|until|not|never|no|cannot|cant|dont|doesnt|didnt|wont|isnt|arent|cancel|plan|plans|paid|free|pro|plus|premium|subscription|subscribers?|admin|administrators?|workspace|enterprise|age|older)\b/;
+const pontos = d => /[.!?]["'”’)]*$/.test(d) ? d : d + '.';
+
+/**
+ * A tétel — a „miért” esetleg a végéről rövidítve — vagy null (nincs forrás; a „megoldás” bármely mondata nem
+ * igazolt; a „miért” első mondata sem igazolt, a fele sem marad, vagy a kiesett részben feltétel áll).
+ * Teljesen igazolt tételnél a szöveg betűre az eredeti.
+ */
+export function igazoltResz(item, forrasSzoveg) {
+  if (!item || !String(forrasSzoveg || '').trim()) return null;
+  const fSzavak = szoPoz(normal(forrasSzoveg));
+  const fHalmaz = new Set(fSzavak.map(x => x.w));
+  const jo = d => {
+    const ms = mondatokSzigoru(d);
+    return ms.length > 0 && ms.every(m => mondatAlatamasztott(m, fSzavak, fHalmaz))
+      && new Set(szoPoz(normal(d)).map(x => x.w).filter(tartalomSzo)).size >= 3;
+  };
+  const whyD = mondatDarabok(item.why), fixD = mondatDarabok(item.fix);
+  if (!whyD.length || !fixD.length || !fixD.every(jo)) return null;
+  const elso = whyD.findIndex(d => !jo(d));
+  if (elso === -1) return { ...item, why: String(item.why).trim(), fix: String(item.fix).trim() };
+  if (elso === 0 || elso * 2 < whyD.length || whyD.slice(elso).some(d => FELTETEL.test(normal(d)))) return null;
+  return { ...item, why: whyD.slice(0, elso).map(pontos).join(' '), fix: String(item.fix).trim() };
 }
 
 /**
@@ -261,7 +305,8 @@ export function eszkozElotagOk(item) {
 }
 
 /**
- * A kész doboz: alátámasztott, a forráshoz illő tünetű és nem ismétlő tételek, a sorrend marad, legfeljebb 4.
+ * A kész doboz: igazolt (igazoltResz — a nem igazolható mondatok nélkül), a forráshoz illő tünetű és nem ismétlő
+ * tételek, a sorrend marad, legfeljebb 4.
  * @param {object[]} items          valaszErtelmez kimenete
  * @param {Record<string,string>} forrasok  URL → a súgócikk szövege
  * @param {string} hibak            az útmutató „Common mistakes” szövege
@@ -273,7 +318,7 @@ export function eszkozElotagOk(item) {
 export function dobozKeszit(items, forrasok, hibak, be = ELAKADAS_BE, utm) {
   if (!be) return null;
   const elotagKell = !!utm && !String(utm.eszkoz || '').trim();
-  const marad = (items || []).filter(it => alatamasztott(it, forrasok?.[it?.source]) && tunetIllik(it, forrasok?.[it?.source]) &&
+  const marad = (items || []).map(it => igazoltResz(it, forrasok?.[it?.source])).filter(it => it && tunetIllik(it, forrasok?.[it?.source]) &&
     !ismetliHibat(it, hibak) && (!elotagKell || eszkozElotagOk(it)));
   return marad.length >= 2 ? { items: marad.slice(0, 4) } : null;
 }
