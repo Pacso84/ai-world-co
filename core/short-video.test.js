@@ -21,7 +21,9 @@ import {
   MIN_LEPES, SAV_FELSO, SAV_ALSO, W,
   ALCIM_MERET, ALCIM_MIN_MERET, ALCIM_ARANY,
   SZOVEG_MAX_SZELES, BETU_ARANY, SZOVEG_MIN_MERET, SAV_JELZO_Y, MARKAJEL_Y,
-  REEL_MARKA, KARTYA_SZOVEG_MAX
+  REEL_MARKA, KARTYA_SZOVEG_MAX,
+  horogSzovegbol, horogTordel, horogSvg, horogSzeles,
+  HOROG_SZELES, HOROG_X, HOROG_JOBB, HOROG_MIN_MERET, HOROG_MAX_SOR
 } from './short-video.js';
 import { BETU_CSALAD } from './video-font.js';
 import { fm } from './frontmatter.js';
@@ -1386,6 +1388,99 @@ t('🔤 a mérce a KIRENDERELT szöveget nézi — a nyers kártyán még ott a 
       'a tablaSvg kimenetében már nem lehet kirajzolhatatlan karakter: «' + szoveg + '»');
   }
   assert.ok(/day-by-day/.test(svg), 'a nem törhető kötőjel helyén közönséges kötőjel áll');
+});
+
+// ── AZ ÚJ NYITÓKÉP (HOROG) A VALÓDI BETŰVEL MÉRVE (2026-10-25) ──────
+//
+// MIÉRT ITT: a horog-kártya sorait a kód egy BEÉPÍTETT karakterszélesség-
+// táblával tördeli (horogSzeles). Ha a teszt ugyanazzal a táblával mérne,
+// önmagát hitelesítené. Ezért itt a FÜGGETLEN, kalibrált TTF-olvasó
+// (szovegSzeles) dönt — MINDEN valódi közösségi horogra (content/social/*.json),
+// nem kitalált példára. A user-döntés: „B szerintem, a kabala az összesítőnél
+// legyen változatlanul!"
+
+const SOCIAL_DIR = join(__dirname, '..', 'content', 'social');
+
+t('📏 HOROG: a beépített szélesség-tábla a betűfájlból jön — és sosem becsül ALÁ', () => {
+  // Ha valaki kicseréli a betűt, a tábla elavul: ez a lépés szól.
+  const baj = [];
+  for (let c = 32; c < 127; c++) {
+    const ch = String.fromCharCode(c);
+    const valodi = szovegSzeles(ch, 1000).px, becsult = horogSzeles(ch, 1000);
+    if (becsult < valodi - 1e-6 || becsult - valodi > 1.01) baj.push(`«${ch}» tábla ${becsult} vs betű ${valodi.toFixed(2)}`);
+  }
+  for (const ch of '’‘“”—–…↓') {
+    const valodi = szovegSzeles(ch, 1000).px, becsult = horogSzeles(ch, 1000);
+    if (becsult < valodi - 1e-6) baj.push(`«${ch}» tábla ${becsult} < betű ${valodi.toFixed(2)}`);
+  }
+  assert.deepEqual(baj, [], baj.join('\n     '));
+});
+
+t('📐 HOROG: MINDEN valódi közösségi horog minden sora befér a biztonságos sávba (valódi betűvel)', () => {
+  let vizsgalt = 0, befert = 0, visszaesett = 0, sorok = 0, legszelesebb = { px: 0 };
+  const kifut = [], ismeretlen = [], visszaLista = [];
+  for (const f of readdirSync(SOCIAL_DIR).filter(x => x.endsWith('.json'))) {
+    let j; try { j = JSON.parse(readFileSync(join(SOCIAL_DIR, f), 'utf-8')); } catch { continue; }
+    const q = horogSzovegbol(j.facebook);
+    if (!q) continue;
+    vizsgalt++;
+    const r = horogTordel(q);
+    if (!r) { visszaesett++; visszaLista.push(q); continue; }   // a régi első kártya megy — ez is rendben
+    befert++;
+    assert.ok(r.sorok.length <= HOROG_MAX_SOR && r.meret >= HOROG_MIN_MERET, q);
+    for (const s of r.sorok) {
+      sorok++;
+      const m = szovegSzeles(s, r.meret);
+      if (m.ismeretlen.length) ismeretlen.push(`«${s}» ${m.ismeretlen.join(',')} — ${f}`);
+      if (m.px > legszelesebb.px) legszelesebb = { px: m.px, s, meret: r.meret };
+      if (m.px > HOROG_SZELES) kifut.push(`«${s}» ${r.meret} px → ${m.px.toFixed(0)} px (max ${HOROG_SZELES}) — ${f}`);
+    }
+  }
+  // kiürülés-védelem: 2026-10-25-én 149 horog felelt meg a szabályoknak, ebből
+  // 130 fért ki (a 19 visszaeső mind ~78+ karakteres → a régi első kártya megy).
+  // A 80%-os küszöb a TÖMEGES visszaesést fogja (pl. elrontott szélesség-tábla).
+  assert.ok(vizsgalt >= 100, 'csak ' + vizsgalt + ' horogot látott — romlott a minta');
+  assert.ok(befert >= vizsgalt * 0.8, 'túl sok visszaesés (' + visszaesett + '/' + vizsgalt + '): ' + visszaLista.slice(0, 5).join(' | '));
+  assert.deepEqual(ismeretlen, [], 'a betűben nincs ilyen karakter (üres téglalap lenne):\n     ' + ismeretlen.join('\n     '));
+  assert.deepEqual(kifut, [], kifut.length + ' horog-sor a jobb oldali gombsor alá futna:\n     ' + kifut.slice(0, 10).join('\n     '));
+  console.log('       ' + vizsgalt + ' horog · ' + befert + ' befér · ' + visszaesett + ' visszaesik · ' + sorok
+    + ' sor · legszélesebb: ' + legszelesebb.px.toFixed(0) + ' px («' + legszelesebb.s + '», ' + legszelesebb.meret + ' px)');
+});
+
+t('📐 HOROG: a KIRENDERELT SVG minden szövege a jobb margó (W−170) előtt véget ér', () => {
+  // A kész SVG-ből olvasunk (a tspan-ok összefűzve), nem a tördelő kimenetéből:
+  // a nézőhöz az kerül, ami az SVG-ben van — a márkajel, az AI-jel és a zöld
+  // válasz is.
+  const MD = (n) => '---\ntitle: "How to Do a Thing Well"\n---\n'
+    + Array.from({ length: n }, (_, i) => `## Step ${i + 1} — Do part ${i + 1}`).join('\n');
+  let elem = 0;
+  const kint = [];
+  for (const f of readdirSync(SOCIAL_DIR).filter(x => x.endsWith('.json'))) {
+    let j; try { j = JSON.parse(readFileSync(join(SOCIAL_DIR, f), 'utf-8')); } catch { continue; }
+    const q = horogSzovegbol(j.facebook);
+    if (!q || !horogTordel(q)) continue;
+    const kartya = cardsFromGuide(MD(6), { horog: q }).cards[0];
+    const svg = horogSvg(kartya).toString();
+    for (const m of svg.matchAll(/<text\b([^>]*)>([\s\S]*?)<\/text>/g)) {
+      elem++;
+      const x = parseFloat((m[1].match(/\sx="([-\d.]+)"/) || [])[1]);
+      const meret = parseFloat((m[1].match(/\sfont-size="([\d.]+)"/) || [])[1]);
+      const tav = parseFloat((m[1].match(/\sletter-spacing="([-\d.]+)"/) || [0, 0])[1]);
+      const szoveg = xmlVissza(m[2].replace(/<[^>]+>/g, ''));
+      const px = szovegSzeles(szoveg, meret).px + tav * Math.max(0, [...szoveg].length - 1);
+      if (!(x >= HOROG_X - 1) || x + px > W - HOROG_JOBB) kint.push(`«${szoveg}» ${x.toFixed(0)}+${px.toFixed(0)} > ${W - HOROG_JOBB} — ${f}`);
+    }
+  }
+  assert.ok(elem >= 500, 'csak ' + elem + ' szöveg-elemet mért — romlott a mérőeszköz');
+  assert.deepEqual(kint, [], kint.length + ' szöveg lóg a jobb oldali gombsor alá:\n     ' + kint.slice(0, 10).join('\n     '));
+});
+
+t('📐 HOROG: a mérce FOG — a túl nagy betűvel tördelt sort kifutónak látja', () => {
+  // ISMERT POZITÍV: ugyanaz a sor 200 px-szel már nem fér a sávba.
+  const r = horogTordel('Got a long meeting transcript sitting in your inbox?');
+  const leghosszabb = r.sorok.reduce((a, b) => (szovegSzeles(b, 1).px > szovegSzeles(a, 1).px ? b : a));
+  assert.ok(szovegSzeles(leghosszabb, r.meret).px <= HOROG_SZELES);
+  assert.ok(szovegSzeles(leghosszabb, 200).px > HOROG_SZELES, 'a mérce vak: 200 px-en is befér?');
 });
 
 console.log('\n✅ short-video.test: mind a ' + pass + ' eset rendben');

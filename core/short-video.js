@@ -23,7 +23,7 @@
 // ===================================================================
 
 import { execFileSync } from 'child_process';
-import { mkdirSync, rmSync, writeFileSync, existsSync } from 'fs';
+import { mkdirSync, rmSync, writeFileSync, existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { fm, findArticleBySlug } from './frontmatter.js';
 import { BETU_CSALAD, betuRendben } from './video-font.js';
@@ -395,7 +395,217 @@ export const MARKA_MERET = 40;     // a régi, rövid felirat mérete — nem v�
 export const MARKA_TAV = 5;        // betűköz (letter-spacing)
 export const MARKA_ARANY = 0.75;   // nagybetűs félkövér: mért ~0,725 (AIWORLDHQ.COM) → felfelé kerekítve
 
-export function cardsFromGuide(md, { maxSteps = LEPES_MAX } = {}) {
+// ── AZ ÚJ NYITÓKÉP: FÁJDALOM-KÉRDÉS A MEGOLDÁS HELYETT (2026-10-25) ──
+//
+// MIÉRT. Mérve (2026-10-25): a FB Reels és a TikTok nézői átlagosan 2 mp-ig
+// néznek, a 3 mp-et csak ~8% éri el. A 4 poszt, ami 500 megtekintés fölé ment,
+// MIND egy FÁJDALOM-kérdéssel / problémával nyitott („Stop rewriting the same
+// instructions…", „Need a name for your side project…?"). A régi első kártya
+// a MEGOLDÁST írta ki (az útmutató címét, néha csak annyit: „Use Grok"), és
+// ALUL, egy papírkártyán — ott, ahol a TikTok/Reels saját felülete takarja.
+//
+// A user a „B" tervet hagyta jóvá: „B szerintem, a kabala az összesítőnél
+// legyen változatlanul!" — tehát ezen a képen NINCS kabala. A terv: a borító
+// sötétítve, középen nagy fehér kérdés, a címmel közös szavak sárga
+// kiemeléssel, alatta zöld „Fix it in N steps ↓", és egy rövid „pop"
+// (nagyítás) az első 0,2 mp-ben.
+//
+// A KÉRDÉS FORRÁSA a content/social/<slug>.json `facebook` mezője: azt az LLM
+// úgy írja, hogy az ELSŐ mondata egy fájdalom-horog („Got a long meeting
+// transcript sitting in your inbox?"). Ha nincs használható első mondat, vagy
+// nem fér ki, a RÉGI első kártya megy — a HALLGATÁS A BIZTONSÁGOS IRÁNY.
+//
+// 🔌 KAPCSOLÓ: false → mindig a régi első kártya, akkor is, ha a hívó horgot
+// ad. (A config `enabled` mezője NEM kapcsol ki semmit — ezért kód-oldali.)
+export const UJ_NYITOKEP_BE = true;
+
+// A biztonságos terület a horog-képen. JOBBRA 170 px: ott ülnek a TikTok/FB
+// függőleges gombjai (like, komment, megosztás). ALUL 1190: eddig érhet a zöld
+// pirula alja — alatta, a MARKAJEL_Y vonalon a „FULL GUIDE: AIWORLDHQ.COM" sor,
+// mint minden más kártyán (a SAV_ALSO alatt már a leírás és a link takar).
+// A kérdés a 520-as vonalnál kezdődik — a fejléc-sor alatt.
+export const HOROG_X = 90;
+export const HOROG_JOBB = 170;
+export const HOROG_SZELES = 1080 - HOROG_X - HOROG_JOBB;   // = 820
+export const HOROG_TETO = 520;
+export const HOROG_ALJA = 1190;
+export const HOROG_MAX_MERET = 116;
+export const HOROG_MIN_MERET = 84;       // ennél kisebb betű már nem „megállító" — inkább a régi kártya
+export const HOROG_MAX_SOR = 5;
+export const HOROG_SOR_TAV = 1.12;       // sormagasság a betűméret arányában (a jóváhagyott mintán)
+// A márkajel + AI-jel sorának teteje. FÜGGETLEN ÁTNÉZÉS 10-25: a mintán 140 volt, de a
+// felső ~250 px-et a Facebook/TikTok fejléce takarja (SAV_FELSO) — az EU AI-jelölés
+// eltűnt volna. 270 = ugyanott, ahol a régi kártyák AI-doboza áll.
+export const HOROG_FEJ_Y = 270;
+export const POP_MP = 0.2;               // ennyi ideig látszik a „pop" kocka
+// A POP BEUGRÁS (független átnézés 10-25): eredetileg az egész kép 108%-ra nagyítva —
+// így a fejléc a takart sávba, a szöveg a gombsor alá csúszott 0,2 mp-re. Helyette a
+// kérdés + pirula 92%-ról ugrik a végleges méretre; a háttér, a fejléc és a márkasor
+// áll → semmi nem lép ki a biztonságos sávból.
+export const POP_SKALA = 0.92;
+// a zöld válasz-pirula méretei (a tördelés is ezzel számol: a pirula aljának is be kell férnie)
+const PIR_MERET = 46, PIR_BELSO = 36, PIR_MAG = 100, PIR_TAV = 64;
+const horogPirTeto = (meret, sorDb) => HOROG_TETO + meret * 0.92 + (sorDb - 1) * meret * HOROG_SOR_TAV + meret * 0.26 + PIR_TAV;
+
+const HOROG_SARGA = '#f5d547';
+const HOROG_MENTA = '#9cc7b2';           // a márkajel pontja
+
+/**
+ * A horog a közösségi szöveg ELSŐ mondatából — vagy `null` (→ régi kártya).
+ *
+ * Szabály (2026-10-25): az első mondat (. ? ! UTÁN, szóköznél vágva — így a
+ * „“how do I do this?” calls" belső kérdőjele nem vág), URL és emoji nélkül;
+ * 12–95 karakter, és nem maradhat benne „http".
+ */
+export function horogSzovegbol(szoveg) {
+  if (typeof szoveg !== 'string') return null;
+  // egybetűs rövidítés („U.S.", „e.g.") pontja nem mondatvég (független átnézés 10-25)
+  const elso = (szoveg.trim().split(/(?<=[.?!])(?<!\b\p{L}\.)\s+/u)[0] || '')
+    .replace(/https?:\/\/\S+/gi, ' ')
+    .replace(/[\p{Extended_Pictographic}\u{FE0F}\u{200D}\u{20E3}\u{1F3FB}-\u{1F3FF}]/gu, '')
+    .replace(/\s+/g, ' ').trim();
+  if (elso.length < 12 || elso.length > 95 || /http/i.test(elso)) return null;
+  return elso;
+}
+
+/**
+ * A horog a cikk slugjához: content/social/<slug>.json → horogSzovegbol.
+ * SOHA nem dob: hiányzó / hibás fájl → null (és a régi első kártya megy).
+ */
+export function horogSlugbol(ROOT, slug) {
+  const s = String(slug == null ? '' : slug);
+  if (!/^[a-z0-9][a-z0-9-]*$/i.test(s)) return null;      // útvonal-trükk („../") nem jut ki
+  try {
+    const j = JSON.parse(readFileSync(join(ROOT, 'content', 'social', s + '.json'), 'utf-8'));
+    return horogSzovegbol(j && j.facebook);
+  } catch { return null; }
+}
+
+// ── A HOROG SZÉLESSÉG-TÁBLÁJA ───────────────────────────────────────
+//
+// MIÉRT NEM A BETU_ARANY (0,65). Az a táblák rövid, sokszor nagybetűs soraihoz
+// készült FELSŐ becslés. Egy kisbetűs kérdés valódi átlaga ~0,55 — a 0,65-tel
+// a „Got a long meeting transcript sitting in your inbox?" sem férne 116 px-en
+// 5 sorba, pedig a jóváhagyott mintán befér. Ezért itt KARAKTERENKÉNTI tábla
+// van: a becsomagolt betű (shared/fonts/schibsted-grotesk-900.ttf) valódi
+// előretolásai ezredekben, FELFELÉ kerekítve (U+0020…U+007E). Alávágást nem
+// számol, tehát inkább szélesebbnek lát — ez a jó irány.
+//
+// 🔑 A teszt (core/short-video.test.js) egy FÜGGETLEN TTF-olvasóval ellenőrzi
+// a táblát is, és MINDEN valódi horog minden sorát is. Betűcsere → ott bukik.
+const HOROG_ASCII = (
+  '176,313,437,771,628,960,703,239,380,380,378,635,314,445,324,507,648,453,616,625,'
+  + '662,645,632,598,639,635,324,318,635,635,635,592,951,769,707,729,768,622,604,741,'
+  + '780,484,630,779,606,989,798,767,718,767,734,677,725,753,743,1067,801,688,666,403,'
+  + '507,403,635,500,500,632,659,608,658,615,393,597,632,318,327,651,327,945,646,623,'
+  + '659,659,503,570,412,646,645,935,645,658,573,386,300,385,635').split(',').map(Number);
+const HOROG_EGYEB = { '’': 314, '‘': 314, '“': 588, '”': 588, '—': 1000, '–': 500, '…': 902, '↓': 673 };
+
+const horogKarSzeles = ch => {
+  const k = ch.codePointAt(0);
+  if (k >= 32 && k < 127) return HOROG_ASCII[k - 32];
+  return HOROG_EGYEB[ch];                                    // undefined = a tábla nem ismeri
+};
+
+/** Becsült szélesség pixelben; ismeretlen karakter 1 em (óvatos). */
+export function horogSzeles(szoveg, meret) {
+  let e = 0;
+  for (const ch of String(szoveg)) e += horogKarSzeles(ch) ?? 1000;
+  return e / 1000 * meret;
+}
+
+const horogSzavak = s => String(s == null ? '' : s).replace(/\s+/g, ' ').trim().split(' ').filter(Boolean);
+
+/** Mohó tördelés `max` pixeles sorokra, adott betűmérettel. */
+function horogMoho(szavak, max, meret) {
+  const sorok = [];
+  let most = '';
+  for (const sz of szavak) {
+    if (most && horogSzeles(most + ' ' + sz, meret) <= max) most += ' ' + sz;
+    else { if (most) sorok.push(most); most = sz; }
+  }
+  if (most) sorok.push(most);
+  return sorok;
+}
+
+/**
+ * A kérdés tördelése KÉZZEL (az SVG nem tördel): a legnagyobb betű 116-tól
+ * 4-esével lefelé, amivel legfeljebb 5 sorba fér a 820 px-es sávba; a sorokat
+ * kiegyensúlyozzuk (a mintán `text-wrap: balance` volt — ne lógjon egy szó
+ * egyedül az utolsó sorban, ha nem muszáj).
+ *
+ * `null`, ha 84 px-szel sem fér, vagy a betű nem ismer egy karaktert (üres
+ * téglalap lenne a Reelen) → a hívó a régi első kártyát adja.
+ *
+ * @returns {{sorok: string[], meret: number}|null}
+ */
+export function horogTordel(kerdes) {
+  const szavak = horogSzavak(kerdes);
+  if (!szavak.length) return null;
+  if ([...szavak.join(' ')].some(ch => horogKarSzeles(ch) === undefined)) return null;
+  for (let meret = HOROG_MAX_MERET; meret >= HOROG_MIN_MERET; meret -= 4) {
+    const legszelesebbSzo = Math.max(...szavak.map(sz => horogSzeles(sz, meret)));
+    if (legszelesebbSzo > HOROG_SZELES) continue;
+    const moho = horogMoho(szavak, HOROG_SZELES, meret);
+    if (moho.length > HOROG_MAX_SOR) continue;
+    if (horogPirTeto(meret, moho.length) + PIR_MAG > HOROG_ALJA) continue;   // a pirula a márkasorra lógna
+    // kiegyensúlyozás: a LEGKESKENYEBB sorhossz, ami mellett a sorok száma nem nő
+    let lo = legszelesebbSzo, hi = HOROG_SZELES;
+    for (let k = 0; k < 24; k++) {
+      const kozep = (lo + hi) / 2;
+      if (horogMoho(szavak, kozep, meret).length <= moho.length) hi = kozep; else lo = kozep;
+    }
+    return { sorok: horogMoho(szavak, hi, meret), meret };
+  }
+  return null;
+}
+
+// Kötőszavak: a kiemelés szakaszát nem kezdhetik/zárhatják, és nem számítanak
+// „tartalmas" szónak (az „on", „to" közös egyezése semmit nem mond).
+const KOTOSZO = new Set(('a an the and or but nor of to in on at by for with from into onto about as up out off over '
+  + 'your you yours my me i we our us they them their it its this that these those is are was were be been am '
+  + 'do does did have has had can could will would should just so than then too very how what when where why who '
+  + 'which if not no all any every some one').split(' '));
+
+/** Egy szó összevetési alakja: kisbetű, írásjel és birtokos „'s" nélkül. TELJES szóalak — nem előtag. */
+const szoNorm = w => String(w).toLowerCase().replace(/’/g, "'")
+  .replace(/[^\p{L}\p{N}'-]+/gu, '').replace(/'s$/, '').replace(/'/g, '').replace(/^-+|-+$/g, '');
+
+/**
+ * Melyik szavak kapjanak SÁRGA kiemelést: a kérdés leghosszabb olyan
+ * összefüggő szakasza, amelynek minden szava a címben is szerepel, a két
+ * végéről a kötőszavak levágva, és legalább 2 tartalmas szóval. Ha nincs ilyen
+ * → üres tömb (nincs kiemelés).
+ *
+ * ⚠️ TELJES SZÓALAKRA illeszt (Set), SOHA előtagra — a projektben kétszer
+ * fogott meg az előtag-illesztés csapdája („analysis → analyzis").
+ *
+ * @returns {number[]} szó-indexek a kérdés szóközzel tagolt szavai közt
+ */
+export function kiemeltSzavak(kerdes, cim) {
+  const szavak = horogSzavak(kerdes);
+  const cimSzavak = new Set(horogSzavak(cim).map(szoNorm).filter(Boolean));
+  if (!szavak.length || !cimSzavak.size) return [];
+  const norm = szavak.map(szoNorm);
+  let legjobb = [], legjobbTart = 0;
+  for (let i = 0; i < norm.length;) {
+    if (!norm[i] || !cimSzavak.has(norm[i])) { i++; continue; }
+    let j = i;
+    while (j < norm.length && norm[j] && cimSzavak.has(norm[j])) j++;
+    let a = i, b = j - 1;
+    while (a <= b && KOTOSZO.has(norm[a])) a++;
+    while (b >= a && KOTOSZO.has(norm[b])) b--;
+    const tart = norm.slice(a, b + 1).filter(n => !KOTOSZO.has(n)).length;
+    if (tart >= 2 && tart > legjobbTart) {
+      legjobbTart = tart;
+      legjobb = Array.from({ length: b - a + 1 }, (_, k) => a + k);
+    }
+    i = j;
+  }
+  return legjobb;
+}
+
+export function cardsFromGuide(md, { maxSteps = LEPES_MAX, horog = null, ujNyitokep = UJ_NYITOKEP_BE } = {}) {
   if (typeof md !== 'string' || !md.trim()) return { cards: null, reason: 'nincs szöveg' };
 
   const cim = fm(md, 'title');
@@ -422,7 +632,22 @@ export function cardsFromGuide(md, { maxSteps = LEPES_MAX } = {}) {
   // nem körülírás: a „How to Spot a Deepfake…" címből „Spot a Deepfake…" lesz.
   // Az első változat „Here is how to Spot a…"-t mondott — hosszabb és sutább.
   const horogMondat = cim.replace(/^how to\s+/i, '').replace(/[.:]\s*$/, '');
-  const cards = [{
+  // 🆕 AZ ÚJ NYITÓKÉP (2026-10-25, user: „B szerintem…"): ha van használható
+  // fájdalom-kérdés ÉS kifér, az első kártya a kérdés lesz. Minden más esetben
+  // a régi kártya megy, BETŰRE ugyanúgy, mint eddig (teszt őrzi).
+  const kerdes = (ujNyitokep && typeof horog === 'string') ? horogSzavak(horog).join(' ') : '';
+  const lepesSzo = SORSZAM[valasztott.length - 1]?.toLowerCase() || valasztott.length;
+  const cards = [(kerdes && horogTordel(kerdes)) ? {
+    tipus: 'horog',
+    kerdes,
+    kiemeles: kiemeltSzavak(kerdes, cim),
+    // a zöld válasz számjeggyel (a jóváhagyott mintán így), a hang szóval —
+    // ugyanúgy, ahogy a régi kártya is mondta („in four steps"). Kijelentés után
+    // („Your home can now run…") a „Fix it" furcsa → „See how" (független átnézés 10-25)
+    valasz: `${/\?$/.test(kerdes) ? 'Fix it' : 'See how'} in ${valasztott.length} steps ↓`,
+    mond: `${kerdes}${/[.?!]$/.test(kerdes) ? '' : '.'} Here's how, in ${lepesSzo} steps.`,
+    marka: REEL_MARKA
+  } : {
     cimke: '',
     nagy: tordel(horogCim),
     kicsi: `In ${SORSZAM[valasztott.length - 1]?.toLowerCase() || valasztott.length} steps`,
@@ -609,6 +834,151 @@ export function tablaSvg({ cimke, nagy, kicsi, marka }, i, db, { alap = true, ka
 </svg>`);
 }
 
+/**
+ * AZ ÚJ NYITÓKÉP rárajzolt rétege (2026-10-25, „B" terv, user-jóváhagyással).
+ * A háttér (a borító kivágása) NEM része: azt a renderVideo / horogKep teszi alá.
+ *
+ * Rétegek: sötétítő függőleges átmenet → márkajel + AI-jelölés felül →
+ * a SÁRGA kiemelő téglalapok → a kérdés sorai → a zöld válasz-pirula.
+ *
+ * ⚠️ ELŐBB AZ ÖSSZES SÁRGA TÉGLALAP, UTÁNA AZ ÖSSZES SZÖVEG. A jóváhagyott
+ * HTML-mintán a következő sor kiemelése rálógott a fenti sor betűszáraira
+ * (a „long" g-jének alját levágta a „meeting" sárga doboza). SVG-ben a később
+ * rajzolt elem van felül — tehát ha minden téglalap előbb jön, egyetlen betűt
+ * sem takarhat le. Teszt őrzi a sorrendet.
+ *
+ * ⚠️ AZ AI-JELÖLÉS MARAD (EU AI Act): ugyanúgy „AI" felirat egy dobozban, mint
+ * a többi táblán — itt a minta szerinti világos pirulában, a jobb margón BELÜL
+ * (a gombsor alá nem kerülhet szöveg).
+ *
+ * Minden szöveg balra zárt (text-anchor alapértelmezés), x ≥ 90, és a jobb
+ * széle ≤ 1080 − 170 — a valódi betűvel mért teszt ezt MINDEN valódi horogra
+ * ellenőrzi. 1500 alá semmi nem kerül.
+ */
+export function horogSvg(kartya, { W: w = W, H: h = H, skala = 1 } = {}) {
+  const kerdes = horogSzavak(kartya && kartya.kerdes).join(' ');
+  const t = horogTordel(kerdes);
+  if (!t) throw new Error('horogSvg: a kérdés nem fér ki — a cardsFromGuide-nak a régi kártyát kellett volna adnia');
+  const { sorok, meret } = t;
+  const kiemelt = new Set((kartya && kartya.kiemeles) || []);
+  const sorMag = meret * HOROG_SOR_TAV;
+  const elsoAlap = HOROG_TETO + meret * 0.92;
+  const FEHER = '#ffffff';
+
+  const teglak = [], szovegek = [];
+  let szoIdx = 0;
+  sorok.forEach((sor, k) => {
+    const alap = Math.round(elsoAlap + k * sorMag);
+    const szavak = sor.split(' ');
+    // Elemek: szó, szóköz, szó, … — mindegyik a saját színével. A szóköz csak
+    // akkor sárga, ha MINDKÉT szomszédja kiemelt; így a sárga téglalap pontosan
+    // a szavakat fogja, és nem lóg ki egy szóköznyit. Az azonos színű egymás
+    // melletti elemek egy <tspan>-ba kerülnek.
+    const elemek = [];
+    szavak.forEach((sz, n) => {
+      const ki = kiemelt.has(szoIdx + n);
+      if (n > 0) elemek.push({ ki: ki && kiemelt.has(szoIdx + n - 1), szoveg: ' ' });
+      elemek.push({ ki, szoveg: sz });
+    });
+    const darabok = [];
+    let x = HOROG_X;
+    for (const e of elemek) {
+      const sz = horogSzeles(e.szoveg, meret);
+      const el = darabok[darabok.length - 1];
+      if (el && el.ki === e.ki) { el.szoveg += e.szoveg; el.vegx = x + sz; }
+      else darabok.push({ ki: e.ki, szoveg: e.szoveg, x, vegx: x + sz });
+      x += sz;
+    }
+    for (const d of darabok) {
+      if (!d.ki) continue;
+      const pad = meret * 0.12;
+      teglak.push(`<rect x="${Math.round(d.x - pad)}" y="${Math.round(alap - meret * 0.86)}" `
+        + `width="${Math.round(d.vegx - d.x + 2 * pad)}" height="${Math.round(sorMag)}" rx="${Math.round(meret * 0.12)}" fill="${HOROG_SARGA}"/>`);
+    }
+    // xml:space="preserve": a darabok szélén álló szóközt a renderelő különben eldobná
+    szovegek.push(`<text x="${HOROG_X}" y="${alap}" font-size="${meret}" font-family="${BETU_CSALAD}" `
+      + `font-weight="900" xml:space="preserve">`
+      + darabok.map(d => `<tspan fill="${d.ki ? TINTA : FEHER}">${esc(d.szoveg)}</tspan>`).join('')
+      + `</text>`);
+    szoIdx += szavak.length;
+  });
+
+  // a zöld válasz-pirula a kérdés alatt
+  const valasz = String((kartya && kartya.valasz) || '');
+  const pirTeto = Math.round(horogPirTeto(meret, sorok.length));
+  const pirSzeles = Math.round(horogSzeles(valasz, PIR_MERET) + 2 * PIR_BELSO);
+
+  // a márkasor alul — ugyanaz a felirat és vonal, mint a többi kártyán (REEL_MARKA, MARKAJEL_Y)
+  const marka = String((kartya && kartya.marka) || REEL_MARKA);
+  const markaHossz = [...marka].length;
+  const markaMeret = Math.min(MARKA_MERET,
+    Math.floor((HOROG_SZELES - MARKA_TAV * (markaHossz - 1)) / (markaHossz * MARKA_ARANY)));
+
+  // pop: a kérdés + pirula a blokk közepe körül kicsinyítve (a fejléc és a márkasor áll)
+  const kx = HOROG_X + HOROG_SZELES / 2, ky = (HOROG_TETO + pirTeto + PIR_MAG) / 2;
+  const csoport = skala === 1 ? '<g>'
+    : `<g transform="translate(${kx} ${Math.round(ky)}) scale(${skala}) translate(${-kx} ${-Math.round(ky)})">`;
+
+  // a felső sor: márkajel balra, AI-jelölés a jobb margón belül
+  const FEJ_MERET = 34, AI_BELSO = 22, AI_MAG = 66;
+  const aiSzeles = Math.round(horogSzeles('AI', FEJ_MERET) + 2 * AI_BELSO);
+  const aiX = w - HOROG_JOBB - aiSzeles;
+  const fejAlap = Math.round(HOROG_FEJ_Y + AI_MAG / 2 + FEJ_MERET * 0.35);
+
+  return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">
+  <defs><linearGradient id="horogArnyek" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="rgb(20,18,14)" stop-opacity="0.55"/>
+    <stop offset="0.38" stop-color="rgb(20,18,14)" stop-opacity="0.78"/>
+    <stop offset="0.62" stop-color="rgb(20,18,14)" stop-opacity="0.82"/>
+    <stop offset="1" stop-color="rgb(20,18,14)" stop-opacity="0.60"/>
+  </linearGradient></defs>
+  <rect width="${w}" height="${h}" fill="url(#horogArnyek)"/>
+  <rect x="${aiX}" y="${HOROG_FEJ_Y}" width="${aiSzeles}" height="${AI_MAG}" rx="12" fill="${PAPIR}"/>
+  <text x="${HOROG_X}" y="${fejAlap}" font-size="${FEJ_MERET}" letter-spacing="0.7" font-family="${BETU_CSALAD}" font-weight="900" fill="${PAPIR}" fill-opacity="0.92">AI WORLD HQ<tspan fill="${HOROG_MENTA}">.</tspan></text>
+  <text x="${aiX + AI_BELSO}" y="${fejAlap}" font-size="${FEJ_MERET}" font-family="${BETU_CSALAD}" font-weight="900" fill="${TINTA}">AI</text>
+  <text x="${HOROG_X}" y="${MARKAJEL_Y}" font-size="${markaMeret}" letter-spacing="${MARKA_TAV}" font-family="${BETU_CSALAD}" font-weight="bold" fill="${PAPIR}" fill-opacity="0.8">${esc(marka)}</text>
+  ${csoport}
+  ${teglak.join('\n  ')}
+  <rect x="${HOROG_X}" y="${pirTeto}" width="${pirSzeles}" height="${PIR_MAG}" rx="${PIR_MAG / 2}" fill="${ZSALYA}"/>
+  ${szovegek.join('\n  ')}
+  <text x="${HOROG_X + PIR_BELSO}" y="${Math.round(pirTeto + PIR_MAG / 2 + PIR_MERET * 0.35)}" font-size="${PIR_MERET}" font-family="${BETU_CSALAD}" font-weight="900" fill="#ffffff">${esc(valasz)}</text>
+  </g>
+</svg>`);
+}
+
+/**
+ * A horog-kártya KÉT képkockája: a normál és a „pop" (a kérdés + pirula
+ * POP_SKALA méretben) változat — mindkettő JPEG. A háttér a borító kivágása
+ * (hatterekKepbol) vagy a papírszín.
+ *
+ * MIÉRT A POP (2026-10-25): a görgetés közben a mozgás állítja meg a szemet;
+ * az első 0,2 mp-ben a kérdés „beugrik" a végleges méretére, aztán megáll.
+ * Ugyanaz a szöveg, tehát semmi új nem kerül rá, amit ellenőrizni kellene.
+ */
+export async function horogKep(sharp, kartya, hatter) {
+  const kep = await sharp(hatter).composite([{ input: horogSvg(kartya) }]).jpeg({ quality: 92 }).toBuffer();
+  const pop = await sharp(hatter).composite([{ input: horogSvg(kartya, { skala: POP_SKALA }) }]).jpeg({ quality: 92 }).toBuffer();
+  return { kep, pop };
+}
+
+/**
+ * Az ffmpeg concat-lista (kepek.txt) szövege. Pop nélkül BETŰRE a régi kimenet.
+ * Pop-pal az első kártya KÉT bejegyzés: előbb a pop-kocka (`k0p.jpg`) POP_MP-ig
+ * (legfeljebb a kártya felééig), aztán a normál `k0.jpg` a maradék időre — a
+ * kettő összege PONTOSAN idok[0], mert a kártya hossza a hanghoz van kötve
+ * (lásd a fájl elején: a szünet a HANGBA is kell, különben elcsúszik).
+ */
+export function kepListaSor(idok, { pop = false } = {}) {
+  const sorok = idok.map((d, i) => {
+    if (i === 0 && pop) {
+      const p = Math.min(POP_MP, d / 2);
+      return `file 'k0p.jpg'\nduration ${p.toFixed(3)}\nfile 'k0.jpg'\nduration ${(d - p).toFixed(3)}`;
+    }
+    return `file 'k${i}.jpg'\nduration ${d.toFixed(3)}`;
+  });
+  return sorok.join('\n') + `\nfile 'k${idok.length - 1}.jpg'\n`;
+}
+
 const hossz = f => parseFloat(execFileSync('ffprobe',
   ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]).toString().trim());
 
@@ -782,6 +1152,9 @@ export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMulti
     ? await hatterekKepekbol(sharp, kepUtak)
     : await hatterekKepbol(sharp, kepUt, cards.length);
   const papir = await sharp({ create: { width: W, height: H, channels: 3, background: PAPIR } }).png().toBuffer();
+  // 🆕 AZ ÚJ NYITÓKÉP (2026-10-25): ha az első kártya fájdalom-kérdés, más
+  // rétegű képet kap (horogSvg) és egy „pop" kockát elé (kepListaSor).
+  const horogKartya = cards[0]?.tipus === 'horog';
 
   const idok = [];
   for (let i = 0; i < cards.length; i++) {
@@ -795,6 +1168,13 @@ export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMulti
       '-c:a', 'libmp3lame', mp3], { stdio: 'pipe' });
     idok.push(hossz(mp3));
 
+    if (i === 0 && horogKartya) {
+      const { kep, pop } = await horogKep(sharp, cards[0], hatterek ? hatterek[0] : papir);
+      writeFileSync(join(workDir, 'k0.jpg'), kep);
+      writeFileSync(join(workDir, 'k0p.jpg'), pop);
+      continue;
+    }
+
     const tabla = hatterek
       ? tablaSvg(cards[i], i, cards.length, { alap: false, kartya: true })
       : tablaSvg(cards[i], i, cards.length, { alap: false });
@@ -802,9 +1182,7 @@ export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMulti
       .jpeg({ quality: 92 }).toFile(join(workDir, `k${i}.jpg`));
   }
 
-  writeFileSync(join(workDir, 'kepek.txt'),
-    cards.map((_, i) => `file 'k${i}.jpg'\nduration ${idok[i].toFixed(3)}`).join('\n')
-    + `\nfile 'k${cards.length - 1}.jpg'\n`, 'utf-8');
+  writeFileSync(join(workDir, 'kepek.txt'), kepListaSor(idok, { pop: horogKartya }), 'utf-8');
   writeFileSync(join(workDir, 'hangok.txt'), cards.map((_, i) => `file 'h${i}.mp3'`).join('\n'), 'utf-8');
 
   execFileSync('ffmpeg', ['-y', '-f', 'concat', '-safe', '0', '-i', join(workDir, 'hangok.txt'),
@@ -819,6 +1197,7 @@ export async function renderVideo(cards, { out, workDir, voice = 'en-US-AvaMulti
 
 export default {
   cardsFromGuide, splitHeading, horogCimbol, nagybetusHorog, becsultHossz, renderVideo, tablaSvg,
+  horogSzovegbol, horogSlugbol, kiemeltSzavak, horogTordel, horogSvg, horogKep, kepListaSor,
   MIN_LEPES, W, H, SAV_FELSO, SAV_ALSO
 };
 
@@ -852,11 +1231,14 @@ async function main() {
 
   const a = talalt.article;
   const slug = a._meta?.slug || kulcs;
-  const { cards, reason } = cardsFromGuide(a.article_markdown || '');
+  // A parancssor (a CI „csak_render" gombja, .github/workflows/reel-test.yml)
+  // UGYANAZT a nyitóképet kapja, mint az automatika — különben a kézi próba
+  // a régi első kártyát mutatná (2026-10-25, ugyanaz a lecke, mint a borítónál).
+  const { cards, reason } = cardsFromGuide(a.article_markdown || '', { horog: horogSlugbol(ROOT, slug) });
   if (!cards) { console.log('⏭️  kihagyva — ' + reason); return; }
 
   console.log('🎬 ' + slug);
-  for (const c of cards) console.log('   ' + (c.cimke || '  ') + '  «' + c.mond + '»');
+  for (const c of cards) console.log('   ' + (c.cimke || (c.tipus === 'horog' ? '❓' : '  ')) + '  «' + c.mond + '»');
   console.log('   becsült hossz: ' + becsultHossz(cards).toFixed(1) + ' mp');
   if (dry) { console.log('   (--dry: itt megállunk)'); return; }
 

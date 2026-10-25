@@ -533,11 +533,12 @@ async function prepare(ROOT, join) {
 async function prepareTiktokExtra(ROOT, join) {
   const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync } = await import('fs');
   const { tiktokExtra, maiTiktokExtra, tiktokPotlas } = await import('./reel-queue.js');
-  const { cardsFromGuide, renderVideo } = await import('./short-video.js');
+  const { cardsFromGuide, renderVideo, horogSlugbol } = await import('./short-video.js');
   const cikkek = await cikkekBetolt(ROOT, join);
   const kiDir = join(ROOT, 'website', 'assets', 'video', 'shorts');
   const gyart = async (c) => {
-    const { cards } = cardsFromGuide(c.md);
+    // 2026-10-25: az új nyitókép (fájdalom-kérdés) — lásd core/short-video.js UJ_NYITOKEP_BE
+    const { cards } = cardsFromGuide(c.md, { horog: horogSlugbol(ROOT, c.slug) });
     if (!cards) return null;
     mkdirSync(kiDir, { recursive: true });
     const r = await renderVideo(cards, { out: join(kiDir, c.slug + '.mp4'), kepUt: boritoUt(ROOT, join, c.slug), workDir: join(ROOT, '.video-munka') });
@@ -579,7 +580,7 @@ async function prepareReel(ROOT, join) {
   const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync, readdirSync } = await import('fs');
   const { kovetkezoReel } = await import('./reel-queue.js');
   const fokusz = (await import('./guide-focus.js')).fokuszConfigbol();
-  const { cardsFromGuide, renderVideo } = await import('./short-video.js');
+  const { cardsFromGuide, renderVideo, horogSlugbol } = await import('./short-video.js');
   const { promoKell, promoKartyak, promoKepUtak, PROMO_SLUG } = await import('./packs-reel.js');
 
   const { maiReelCikkek } = await import('./reel-queue.js');
@@ -676,7 +677,8 @@ async function prepareReel(ROOT, join) {
         console.log('💤 Reel: ma már ment, a videó megvan — nincs teendő (' + mai.slug + ').');
         continue;
       }
-      const { cards } = cardsFromGuide(mai.md);
+      // 2026-10-25: az újragyártott videó is UGYANAZT a nyitóképet kapja, mint a reggeli
+      const { cards } = cardsFromGuide(mai.md, { horog: horogSlugbol(ROOT, mai.slug) });
       if (!cards) { console.log('💤 Reel: ma már ment (a videó nem gyártható újra).'); continue; }
       console.log('♻️  Reel: ma már ment, de a videó hiányzik — újragyártom, hogy kint maradjon.');
       mkdirSync(kiDir0, { recursive: true });
@@ -705,7 +707,9 @@ async function prepareReel(ROOT, join) {
     return;
   }
 
-  const { cards } = cardsFromGuide(valasztott.md);
+  // 🆕 2026-10-25: az első kártya a cikk FB-szövegének fájdalom-kérdése, ha van és kifér
+  // (core/short-video.js horogSlugbol → content/social/<slug>.json); különben a régi kártya
+  const { cards } = cardsFromGuide(valasztott.md, { horog: horogSlugbol(ROOT, valasztott.slug) });
   console.log('🎬 Reel készül: ' + valasztott.slug);
   console.log('   ' + cards.length + ' kártya (' + (cards.length - 2) + ' lépés)');
 
@@ -732,7 +736,7 @@ async function prepareReel(ROOT, join) {
   for (const mai of maiReelCikkek(cikkek)) {
     const ut = join(kiDir, mai.slug + '.mp4');
     if (mai.slug === valasztott.slug || existsSync(ut)) continue;
-    const k = cardsFromGuide(mai.md).cards;
+    const k = cardsFromGuide(mai.md, { horog: horogSlugbol(ROOT, mai.slug) }).cards;
     if (!k) continue;
     const r1 = await renderVideo(k, { out: ut, kepUt: boritoUt(ROOT, join, mai.slug), workDir: join(ROOT, '.video-munka') });
     try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
