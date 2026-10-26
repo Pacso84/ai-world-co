@@ -483,22 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179160282649035",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 7.5/10).",
-      "agent": "seo",
-      "at": "2026-10-10T03:27:06.490Z",
-      "loud": false
-    },
-    {
-      "id": "n179160284994469",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready—cohesive theme of practical AI writing tools for everyday life situations (complaints, resumes, pet-sitting, sympathy). One small note: the articles span many AI tools",
-      "agent": "publisher",
-      "at": "2026-10-10T03:27:29.944Z",
-      "loud": false
-    },
-    {
       "id": "n179160286890971",
       "level": "success",
       "text": "4 hír + 2 útmutató publikálva (költség: $0.0829).",
@@ -1281,27 +1265,25 @@
       "agent": "fact-check",
       "at": "2026-10-26T14:42:42.045Z",
       "loud": false
+    },
+    {
+      "id": "n179304782450990",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-26T20:50:24.509Z",
+      "loud": false
+    },
+    {
+      "id": "n179304785231858",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-26T20:50:52.318Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179160325950212",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-10T03:34:19.502Z"
-    },
-    {
-      "id": "m179168716644387",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Build a custom morning briefing with news, weather, and calendar in Alexa+\" — mi a baj: UI_CLAIMS_UNSOURCED: 7 konkrét képernyő-feliratot állít tényként forrás nélkül (\"create routine\", \"voice\", \"calendar\", \"google calendar\", …). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; Beginner clarity too low (7/10): steps are vague or could mislead a ",
-      "ref": "GUIDE_build-a-custom-morning-briefing-with-news-weather-and-calend.json",
-      "at": "2026-10-11T02:52:46.443Z"
-    },
     {
       "id": "m179168750335270",
       "from": "designer",
@@ -2665,6 +2647,26 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-26T14:46:33.790Z"
+    },
+    {
+      "id": "m179304782450988",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"How to fact-check an AI answer in under a minute\" — Three specific claims need softening: a $69M AI art sale is unverifiable (likely fabricated), a dated March 2024 unemployment stat should not be presented as current fact, and a UI detail about the send button is too spe",
+      "ref": "ARTICLE_GUIDE_fact-check-ai.json",
+      "open": true,
+      "at": "2026-10-26T20:50:24.509Z"
+    },
+    {
+      "id": "m179304785231885",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"How to use Gemini Deep Research for thorough repor\" — Google has significantly updated the Gemini interface since this guide was published. The 'Extensions' toggle with puzzle piece icon and separate 'Google Search' switch described in Step 1 no longer exists in that form",
+      "ref": "ARTICLE_GUIDE_gemini-deep-research.json",
+      "open": true,
+      "at": "2026-10-26T20:50:52.318Z"
     }
   ]
 }
