@@ -6,7 +6,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import {
   NAPI_PLAFON, NAPI_HATAR, FUTASONKENT_MAX, UJRAPROBA_NAP, UJ_NAP, NYELVEK,
-  utmutatoAdat, cikkSzoveg, sorrend, forditasPrompt, forditasErtelmez, dobozHash, keretOk, cikkJelol, feldolgoz
+  utmutatoAdat, cikkSzoveg, sorrend, forditasPrompt, forditasErtelmez, dobozHash, keretOk, cikkJelol, feldolgoz, ATMENETI_NAP, jelolendok, kor
 } from './elakadas-gen.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -299,13 +299,17 @@ await t('feldolgoz general: nincs jelölt → null-fájl modellhívás nélkül;
   assert.equal(r1.fajl.doboz, null); assert.deepEqual(c1.hivasok, []);
   const c2 = ctxEpit({ indexLetolt: async () => [] });
   const r2 = await feldolgoz({ slug: 'sl', feladat: 'general' }, c2);
-  assert.equal(r2.fajl, null); assert.match(r2.kimaradt, /index/);
+  assert.equal(r2.fajl, null); assert.match(r2.kimaradt, /index/); assert.equal(r2.kihagyva, true);
+  // cikk-letöltési / modell-hiba: NINCS doboz, de rövid (ATMENETI_NAP) várakozás-jelölés kerül a fájlba
   const c3 = ctxEpit({ cikkSzoveg: async () => null });
   const r3 = await feldolgoz({ slug: 'sl', feladat: 'general' }, c3);
-  assert.equal(r3.fajl, null); assert.deepEqual(c3.hivasok, []);
+  assert.equal(r3.fajl.doboz, null); assert.equal(r3.fajl.atmeneti, true); assert.ok(r3.fajl.probalva); assert.deepEqual(c3.hivasok, []);
   const c4 = ctxEpit({ ask: async () => null });
   const r4 = await feldolgoz({ slug: 'sl', feladat: 'general' }, c4);
-  assert.equal(r4.fajl, null); assert.match(r4.kimaradt, /modell/);
+  assert.equal(r4.fajl.doboz, null); assert.equal(r4.fajl.atmeneti, true); assert.match(r4.kimaradt, /modell/);
+  // a „nincs igazolható tétel” NEM átmeneti (30 napos várakozás)
+  const c5 = ctxEpit({ ask: async () => ({ text: '{"items":[]}', costUsd: 0 }) });
+  assert.ok(!(await feldolgoz({ slug: 'sl', feladat: 'general' }, c5)).fajl.atmeneti);
 });
 
 await t('feldolgoz: keret nélkül SEMMI hívás; a keret a generálás után a fordítás előtt is számít', async () => {
@@ -336,6 +340,87 @@ await t('feldolgoz fordit: csak a hiányzó nyelv; az en és a másik nyelv éri
   const r2 = await feldolgoz({ slug: 'sl', feladat: 'fordit' }, c2);
   assert.equal(r2.forditva, 0); assert.equal(r2.fajl.doboz.es, null);
   assert.equal(fajl.doboz.es, null, 'a bemeneti fájlt nem módosítja');
+});
+
+// ── 1. javítási kör (független átnézés 10-26) ───────────────────────────────────────────
+const EN1 = [{ symptom: 'Upload fails in ChatGPT', why: 'The file is too large.', fix: 'Open Settings and split the file.', source: 'https://help.openai.com/en/articles/1-a' }];
+const echo = items => JSON.stringify({ items: items.map(({ symptom, why, fix }) => ({ symptom, why, fix })) });
+
+t('forditasErtelmez: a visszamásolt (angol) doboz → null, a 40 szavas küszöb alatt is (1 és 2 tétel)', () => {
+  assert.equal(forditasErtelmez(echo(EN1), EN1), null);
+  assert.equal(forditasErtelmez(echo(EN), EN), null);
+  // kis-nagybetű, írásjel, szóköz-eltérés sem segít
+  const o = JSON.parse(echo(EN1)); o.items[0].symptom = '  UPLOAD fails, in ChatGPT! '; o.items[0].why = 'the file is too large'; o.items[0].fix = 'Open  Settings and split the file';
+  assert.equal(forditasErtelmez(JSON.stringify(o), EN1), null);
+});
+
+t('forditasErtelmez: ha CSAK a tünet maradt angolul (vagy csak a why/fix) → null', () => {
+  const hu = { symptom: 'A feltöltés nem sikerül a ChatGPT-ben', why: 'A fájl túl nagy.', fix: 'Nyisd meg a Settings menüt, és oszd fel a fájlt.' };
+  for (const mezo of ['symptom', 'why', 'fix']) {
+    const o = { items: [{ ...hu, [mezo]: EN1[0][mezo] }] };
+    assert.equal(forditasErtelmez(JSON.stringify(o), EN1), null, mezo + ' angolul maradt');
+  }
+});
+
+t('forditasErtelmez: valódi RÖVID magyar fordítás (terméknév / menünév eredetiben) elfogadva', () => {
+  const hu = { symptom: 'A feltöltés nem sikerül a ChatGPT-ben', why: 'A fájl túl nagy.', fix: 'Nyisd meg a Settings menüt, és oszd fel a fájlt.' };
+  const r = forditasErtelmez(JSON.stringify({ items: [hu] }), EN1);
+  assert.equal(r.length, 1); assert.equal(r[0].fix, hu.fix); assert.equal(r[0].source, EN1[0].source);
+});
+
+t('sorrend: az átmeneti hibájú fájl 1 nap után újrapróbálható (0,5 nap → kimarad, 1,5 nap → general); a sima null 30 napig vár', () => {
+  assert.equal(ATMENETI_NAP, 1);
+  const kesz = {
+    fel: { slug: 'fel', probalva: nap(0.5), doboz: null, atmeneti: true },
+    masfel: { slug: 'masfel', probalva: nap(1.5), doboz: null, atmeneti: true },
+    sima: { slug: 'sima', probalva: nap(1.5), doboz: null }
+  };
+  const r = sorrend({ utmutatok: [U('fel', nap(40)), U('masfel', nap(41)), U('sima', nap(42))], kesz, latogatas: new Map(), now: NOW, n: 10 });
+  assert.deepEqual(r.map(x => x.slug), ['masfel']);
+  assert.equal(r[0].feladat, 'general');
+});
+
+await t('kor: az egyik szolgáltató indexe üres → a többi szolgáltató útmutatói feldolgozódnak, a kihagyottak nem foglalnak helyet', async () => {
+  const hivasok = [], indexHivasok = [];
+  const eszkoz = { o1: 'ChatGPT', o2: 'ChatGPT', o3: 'ChatGPT', g1: 'Gemini', g2: 'Gemini', g3: 'Gemini' };
+  const indexek = {};
+  const alap = ctxEpit();
+  const sor = ['o1', 'o2', 'o3', 'g1', 'g2', 'g3'].map(slug => ({ slug, feladat: 'general' }));
+  const ered = await kor(sor, {
+    limit: 2, keret: () => true,
+    ctxEpit: f => ({
+      ...alap, indexek, utm: { ...UTM, slug: f.slug, tool: eszkoz[f.slug] },
+      indexLetolt: async s => { indexHivasok.push(s); return s === 'openai' ? [] : [{ url: U1, cim: 'Upload spreadsheet files and analyze sheets with ChatGPT file uploads FAQ' }]; },
+      ask: async (p, o) => { hivasok.push(o.agentName); return alap.ask(p, o); }
+    })
+  });
+  assert.deepEqual(indexHivasok.filter(s => s === 'openai'), ['openai'], 'a letiltott szolgáltató indexét csak egyszer kérjük');
+  assert.equal(hivasok.filter(x => x === 'elakadas').length, 2, 'a limit (2) a Gemini-útmutatókra jut');
+  assert.equal(ered.hely, 2);
+  assert.equal(ered.kimaradtOk.index, 3);
+  assert.equal(ered.ujDb, 2);
+});
+
+await t('feldolgoz: a modell prompt-mezejét NEM tároljuk (a tétel alakja {symptom, why, fix, source})', async () => {
+  const valasz = JSON.parse(MODELL_VALASZ); valasz.items[0].prompt = '"Check [my sheet] for incomplete results"';
+  const base = ctxEpit();
+  const c = ctxEpit({ ask: async (p, o) => o.agentName === 'elakadas' ? { text: JSON.stringify(valasz), costUsd: 0.01 } : base.ask(p, o) });
+  const r = await feldolgoz({ slug: 'sl', feladat: 'general' }, c);
+  assert.equal(r.uj, true);
+  for (const x of r.fajl.doboz.en) assert.deepEqual(Object.keys(x).sort(), ['fix', 'source', 'symptom', 'why']);
+  assert.equal(r.fajl.doboz.enHash, dobozHash(r.fajl.doboz.en));
+});
+
+t('jelolendok: van doboz, de a cikkből hiányzik az elakadas_at → jelölendő (nem csak az új doboznál); doboz nélkül / jelöltnél nem', () => {
+  const cikk = at => ({ json: { _meta: at ? { elakadas_at: at } : {} } });
+  const cikkek = { jelolt: cikk('2026-10-20T00:00:00Z'), hianyzo: cikk(), nincsdoboz: cikk(), nullfajl: cikk() };
+  const kesz = {
+    jelolt: { slug: 'jelolt', doboz: { keszult: '2026-10-20T00:00:00Z' } },
+    hianyzo: { slug: 'hianyzo', doboz: { keszult: '2026-10-25T08:00:00.000Z' } },
+    nullfajl: { slug: 'nullfajl', probalva: nap(1), doboz: null }
+  };
+  assert.deepEqual(jelolendok(cikkek, kesz), [{ slug: 'hianyzo', at: '2026-10-25T08:00:00.000Z' }]);
+  assert.deepEqual(jelolendok(cikkek, new Map(Object.entries(kesz))), [{ slug: 'hianyzo', at: '2026-10-25T08:00:00.000Z' }]);
 });
 
 // ── bekötés (forrásszöveg) ─────────────────────────────────────────────────────────────

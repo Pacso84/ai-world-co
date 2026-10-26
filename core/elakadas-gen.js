@@ -48,6 +48,8 @@ export const NAPI_HATAR = 0.60;
 export const FUTASONKENT_MAX = 10;
 /** Az eredménytelen (doboz: null) próba után ennyi nap múlva próbáljuk újra. */
 export const UJRAPROBA_NAP = 30;
+/** Átmeneti hiba (nem jött le a cikk, a modell nem válaszolt) után ennyi nap múlva próbáljuk újra. */
+export const ATMENETI_NAP = 1;
 /** Az ennél frissebb, még doboz nélküli útmutató a sor ELEJÉRE kerül. */
 export const UJ_NAP = 3;
 /** A dobozt lefordítjuk ezekre (az angol az eredeti). */
@@ -115,7 +117,7 @@ export function sorrend({ utmutatok, kesz, latogatas, now, n }) {
     if (!f) { (now - pub(u) < UJ_NAP * NAP ? uj : regi).push(u); continue; }
     if (!f.doboz) {
       const t = Date.parse(f.probalva || '');
-      if (!(now - t < UJRAPROBA_NAP * NAP)) regi.push(u);     // NaN-ra is újrapróbál (ne ragadjon be örökre)
+      if (!(now - t < (f.atmeneti ? ATMENETI_NAP : UJRAPROBA_NAP) * NAP)) regi.push(u);     // NaN-ra is újrapróbál (ne ragadjon be örökre)
       continue;
     }
     if (!f.doboz.hu || !f.doboz.es) fordit.push(u);
@@ -164,6 +166,9 @@ Rules:
   return { rendszer, felhasznalo };
 }
 
+/** Összehasonlító alak: kisbetű, írásjelek ki, szóközök összevonva. */
+const egyAlak = v => String(v || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+
 const LINK_VAGY_HTML = /https?:\/\/|www\.|[<>]|\]\(/i;
 const MAX_MEZO = { symptom: 300, why: 900, fix: 1200 };
 
@@ -198,6 +203,9 @@ export function forditasErtelmez(szoveg, items) {
       if (typeof v !== 'string' || !v.trim() || v.trim().length > MAX_MEZO[mezo] || LINK_VAGY_HTML.test(v)) return null;
       tetel[mezo] = v.trim();
     }
+    // VISSZAMÁSOLT (angol) mező: a 40 szavas küszöb alatt a bodyLooksUntranslated nem lát semmit, a tünetet pedig sosem
+    // nézi → bármelyik mező egyezése az eredetivel az EGÉSZ fordítást elveti (független átnézés 10-26)
+    if (['symptom', 'why', 'fix'].some(mezo => egyAlak(tetel[mezo]) === egyAlak(items[i][mezo]))) return null;
     ki.push({ ...tetel, source: items[i].source });
   }
   if (bodyLooksUntranslated(ki.map(x => x.why + ' ' + x.fix).join(' '))) return null;   // angolul maradt
@@ -251,6 +259,8 @@ async function forditHianyzo(doboz, ctx) {
  */
 export async function feldolgoz(feladat, ctx) {
   const ures = kimaradt => ({ fajl: null, uj: false, forditva: 0, kimaradt });
+  // átmeneti hiba: rövid (ATMENETI_NAP) várakozás-jelölés, hogy a sor elejéről ne szorítsa ki a többi útmutatót
+  const atmeneti = kimaradt => ({ ...ures(kimaradt), fajl: { slug: feladat.slug, probalva: new Date(ctx.now).toISOString(), doboz: null, atmeneti: true } });
   if (!ctx.be) return ures('kikapcsolva');
   if (!ctx.keret()) return ures('keret');
   const slug = feladat.slug;
@@ -265,9 +275,12 @@ export async function feldolgoz(feladat, ctx) {
   const utm = ctx.utm;
   const probalva = new Date(ctx.now).toISOString();
   const szolg = szolgaltatok(utm.tool, utm.company);
+  // SZOLGÁLTATÓ-SZINTŰ hiba: ha a súgó-index nem jött le (a futáson belül gyorsítótárazott üres lista), a szolgáltató
+  // MINDEN útmutatója kimarad — fetch nélkül, és a hívó nem számolja el helyfoglalásnak (kihagyva)
+  if (szolg.length && szolg.every(s => ctx.indexek[s] && !ctx.indexek[s].length)) return { ...ures('index'), kihagyva: true };
   const index = [];
   for (const s of szolg) index.push(...(ctx.indexek[s] ||= await ctx.indexLetolt(s)));
-  if (szolg.length && !index.length) return ures('index');                 // átmeneti: a súgó-index nem jött le
+  if (szolg.length && !index.length) return { ...ures('index'), kihagyva: true };
   const jeloltek = jeloltCikkek(utm, index, 4);
   if (!jeloltek.length) return { fajl: { slug, probalva, doboz: null }, uj: false, forditva: 0 };
 
@@ -276,11 +289,11 @@ export async function feldolgoz(feladat, ctx) {
     const t = await ctx.cikkSzoveg(c.url);
     if (t?.szoveg?.length > 400) cikkek.push({ url: c.url, cim: t.cim || c.cim, szoveg: t.szoveg });
   }
-  if (!cikkek.length) return ures('letöltés');                               // átmeneti: a súgócikkek nem jöttek le
+  if (!cikkek.length) return atmeneti('letöltés');                           // átmeneti: a súgócikkek nem jöttek le
 
   const { rendszer, felhasznalo } = promptEpit(utm, cikkek);
   const r = await ctx.ask(felhasznalo, { agentName: 'elakadas', systemPrompt: rendszer, maxTokens: 8000 });
-  if (!r) return ures('modell');
+  if (!r) return atmeneti('modell');
   ctx.koltseg(Number(r.costUsd) || 0);
 
   const tetelek = valaszErtelmez(r.text, cikkek);
@@ -289,7 +302,9 @@ export async function feldolgoz(feladat, ctx) {
 
   const forrasok = {};
   for (const it of kesz.items) forrasok[it.source] = cikkek.find(c => c.url === it.source)?.cim || '';
-  const doboz = { keszult: probalva, enHash: dobozHash(kesz.items), forrasok, en: kesz.items, hu: null, es: null };
+  // a tárolt tétel alakja {symptom, why, fix, source}: a modell `prompt` mezejét NEM tároljuk (nem ellenőrzött szöveg)
+  const en = kesz.items.map(({ symptom, why, fix, source }) => ({ symptom, why, fix, source }));
+  const doboz = { keszult: probalva, enHash: dobozHash(en), forrasok, en, hu: null, es: null };
   ctx.kimaradt = undefined;
   const forditva = await forditHianyzo(doboz, ctx);
   return { fajl: { slug, probalva, doboz }, uj: true, forditva, kimaradt: ctx.kimaradt };
@@ -306,6 +321,50 @@ function irAtomi(ut, szoveg) {
 
 function olvasJson(ut) {
   try { return existsSync(ut) ? JSON.parse(readFileSync(ut, 'utf-8')) : null; } catch { return null; }
+}
+
+/**
+ * Azok a cikkek, amelyeknél van doboz, de a cikk-JSON-ból hiányzik a `_meta.elakadas_at` (új doboz első megjelenése,
+ * vagy egy korábbi sikertelen cikk-írás): minden futásban pótoljuk, nem csak az új doboznál.
+ * @returns {{slug: string, at: string}[]}
+ */
+export function jelolendok(cikkek, kesz) {
+  const ki = [];
+  for (const [slug, c] of Object.entries(cikkek || {})) {
+    const f = olvas(kesz, slug);
+    if (f?.doboz && !c?.json?._meta?.elakadas_at) ki.push({ slug, at: f.doboz.keszult || f.probalva });
+  }
+  return ki;
+}
+
+/**
+ * A sor feldolgozása. A `limit` a HELYFOGLALÓ útmutatókra vonatkozik: a szolgáltató-szintű (index) hiba miatt
+ * kihagyottak nem számítanak bele, így egy letiltott súgó nem éheztetheti ki a többi szolgáltató útmutatóit.
+ * @param {{slug: string, feladat: string}[]} sor
+ * @param {{limit: number, keret: () => boolean, ctxEpit: (f: object) => object, mentes?: (f: object, e: object) => void, naplo?: (s: string) => void}} p
+ */
+export async function kor(sor, { limit, keret, ctxEpit, mentes, naplo }) {
+  const kimaradtOk = {};
+  const kimaradt = (ok, db = 1) => { kimaradtOk[ok] = (kimaradtOk[ok] || 0) + db; };
+  let hely = 0, ujDb = 0, forditvaDb = 0;
+  for (let i = 0; i < sor.length && hely < limit; i++) {
+    const f = sor[i];
+    if (!keret()) { kimaradt('keret', Math.min(limit - hely, sor.length - i)); break; }
+    try {
+      const e = await feldolgoz(f, ctxEpit(f));
+      if (!e.kihagyva) hely++;
+      mentes?.(f, e);
+      if (e.uj) ujDb++;
+      forditvaDb += e.forditva;
+      if (e.kimaradt) kimaradt(e.kimaradt);
+      naplo?.(`   ${e.uj ? '✅' : e.fajl ? '·' : '⏭️'} ${f.slug}: ${f.feladat}${e.uj ? ' — új doboz' : ''}${e.forditva ? ', fordítás ' + e.forditva : ''}${e.kimaradt ? ' (' + e.kimaradt + ')' : ''}`);
+    } catch (e) {
+      hely++;
+      kimaradt('hiba');
+      naplo?.(`   ⚠️ ${f.slug}: ${String(e.message || e).slice(0, 120)}`);
+    }
+  }
+  return { hely, ujDb, forditvaDb, kimaradtOk };
 }
 
 async function main() {
@@ -338,42 +397,43 @@ async function main() {
   const napok = Object.keys(naplo).sort();
   const lat = napok.length ? latogatasok(naplo, napok[napok.length - 1], 60) : new Map();
 
-  const sor = sorrend({ utmutatok, kesz, latogatas: lat, now, n: limit });
-  const indexek = {}, kimaradtOk = {};
+  // az n a teljes lista: a limitet a kor() számolja (a szolgáltató-hiba miatt kihagyottak nem foglalnak helyet)
+  const sor = sorrend({ utmutatok, kesz, latogatas: lat, now, n: utmutatok.length });
+  const indexek = {};
   let ujDb = 0, forditvaDb = 0;
   const keret = () => keretOk({ napiOsszes: spentToday(), elakadasMa: allapot.koltseg });
   const mentAllapot = () => { allapot.koltseg = +allapot.koltseg.toFixed(6); irAtomi(ALLAPOT, JSON.stringify(allapot, null, 2)); };
-  const kimaradt = ok => { kimaradtOk[ok] = (kimaradtOk[ok] || 0) + 1; };
 
-  for (let i = 0; i < sor.length; i++) {
-    const f = sor[i];
-    if (!keret()) { for (let k = i; k < sor.length; k++) kimaradt('keret'); break; }
-    try {
-      const ctx = {
-        utm: utmutatoAdat(cikkek[f.slug].json), fajl: kesz[f.slug] || null, now, be: ELAKADAS_BE,
-        indexek, indexLetolt, cikkSzoveg, keret, ask,
-        koltseg: usd => { allapot.koltseg += usd; }
-      };
-      const e = await feldolgoz(f, ctx);
-      if (e.fajl) irAtomi(join(KI_DIR, f.slug + '.json'), JSON.stringify(e.fajl, null, 2));
-      if (e.uj) {
-        ujDb++;
-        const szoveg = readFileSync(cikkek[f.slug].fajl, 'utf-8');
-        const jelolt = cikkJelol(szoveg, new Date(now).toISOString());
-        if (jelolt) irAtomi(cikkek[f.slug].fajl, jelolt);
-      }
-      forditvaDb += e.forditva;
-      if (e.kimaradt) kimaradt(e.kimaradt);
-      console.log(`   ${e.uj ? '✅' : e.fajl ? '·' : '⏭️'} ${f.slug}: ${f.feladat}${e.uj ? ' — új doboz' : ''}${e.forditva ? ', fordítás ' + e.forditva : ''}${e.kimaradt ? ' (' + e.kimaradt + ')' : ''}`);
-    } catch (e) {
-      kimaradt('hiba');
-      console.log(`   ⚠️ ${f.slug}: ${String(e.message || e).slice(0, 120)}`);
+  // a cikk jelölése (_meta.elakadas_at) MINDEN dobozos cikknél, amelyiken még nincs — egy korábbi sikertelen írás is gyógyul
+  const jelolMind = () => {
+    for (const { slug, at } of jelolendok(cikkek, kesz)) {
+      try {
+        const jelolt = cikkJelol(readFileSync(cikkek[slug].fajl, 'utf-8'), at);
+        if (jelolt) irAtomi(cikkek[slug].fajl, jelolt);
+        cikkek[slug].json._meta.elakadas_at = at;
+      } catch (e) { console.log(`   ⚠️ ${slug}: a cikk jelölése nem sikerült: ${String(e.message || e).slice(0, 100)}`); }
     }
-    allapot.uj = alap.uj + ujDb;
-    allapot.forditva = alap.forditva + forditvaDb;
-    mentAllapot();                                   // minden útmutató után: a költség ne vesszen el egy későbbi hibán
-  }
-  allapot.kimaradt = Object.entries(kimaradtOk).map(([ok, db]) => `${ok} ×${db}`).join(', ');
+  };
+  jelolMind();
+
+  const k = await kor(sor, {
+    limit, keret, naplo: s => console.log(s),
+    ctxEpit: f => ({
+      utm: utmutatoAdat(cikkek[f.slug].json), fajl: kesz[f.slug] || null, now, be: ELAKADAS_BE,
+      indexek, indexLetolt, cikkSzoveg, keret, ask,
+      koltseg: usd => { allapot.koltseg += usd; }
+    }),
+    mentes: (f, e) => {
+      if (e.fajl) { irAtomi(join(KI_DIR, f.slug + '.json'), JSON.stringify(e.fajl, null, 2)); kesz[f.slug] = e.fajl; }
+      if (e.uj) ujDb++;
+      forditvaDb += e.forditva;
+      allapot.uj = alap.uj + ujDb;
+      allapot.forditva = alap.forditva + forditvaDb;
+      mentAllapot();                                 // minden útmutató után: a költség ne vesszen el egy későbbi hibán
+    }
+  });
+  jelolMind();
+  allapot.kimaradt = Object.entries(k.kimaradtOk).map(([ok, db]) => `${ok} ×${db}`).join(', ');
   mentAllapot();
   console.log(`🔧 Ha elakadsz: ${ujDb} új doboz, ${forditvaDb} fordítás, $${(allapot.koltseg).toFixed(4)} (kimaradt: ${allapot.kimaradt || 'semmi'})`);
 }
