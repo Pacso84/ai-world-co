@@ -25,6 +25,14 @@ t('🕰️ valódi módosítás: a legkésőbbi TARTALMI változás', () => {
   assert.equal(valodiModositas(null), '');
 });
 
+t('🔧 a „Ha elakadsz" doboz megjelenése (elakadas_at) valódi módosítás', () => {
+  const alap = { published_at: '2026-10-01T10:00:00Z' };
+  assert.equal(valodiModositas({ ...alap, elakadas_at: '2026-10-27T10:00:00Z' }), '2026-10-27T10:00:00Z');
+  assert.equal(valodiModositas({ ...alap, fresh_updated_at: '2026-10-30T10:00:00Z', elakadas_at: '2026-10-27T10:00:00Z' }), '2026-10-30T10:00:00Z', 'a későbbi marad');
+  assert.equal(valodiModositas(alap), '2026-10-01T10:00:00Z', 'elakadas_at nélkül a régi eredmény');
+  assert.equal(valodiModositas({ ...alap, elakadas_at: 'nem-datum' }), '2026-10-01T10:00:00Z', 'érvénytelen dátumot nem fogad el');
+});
+
 t('🚩 a tény-ellenőrző MEGJELÖLÉSE nem módosítás (a szöveg nem változott)', () => {
   assert.equal(valodiModositas({ published_at: '2026-08-01T10:00:00Z', fact_checked_at: '2026-10-10T10:00:00Z', fact_check_flag: 'may-be-obsolete' }), '2026-08-01T10:00:00Z');
 });

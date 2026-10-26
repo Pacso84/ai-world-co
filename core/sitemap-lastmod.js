@@ -44,12 +44,14 @@ export function sitemapSor(u) {
 // UGYANEBBŐL a függvényből számol — két külön képlet előbb-utóbb szétcsúszna.
 // A tény-ellenőrző MEGJELÖLÉSE (fact_check_flag) nem módosítás: olyankor a
 // szöveg nem változott, csak a fact_checked_at íródott (agents/fact-check).
+// A „Ha elakadsz" doboz első megjelenése (elakadas_at, core/elakadas-gen.js) viszont új
+// tartalom az oldalon → valódi módosítás (2026-10-26).
 // ===================================================================
 
 /** A cikk utolsó TARTALMI változása (ISO), annak híján a megjelenés; semmi esetén ''. */
 export function valodiModositas(meta) {
   const m = meta || {};
-  return [m.published_at, m.howto_upgraded_at, m.fresh_updated_at, m.fact_check_flag ? null : m.fact_checked_at]
+  return [m.published_at, m.howto_upgraded_at, m.fresh_updated_at, m.elakadas_at, m.fact_check_flag ? null : m.fact_checked_at]
     .filter(x => napja(x)).sort().pop() || '';
 }
 
