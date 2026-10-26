@@ -379,4 +379,43 @@ t('🔌 a napi jelentés tényleg ezt használja (nem a régi feltétel nélkül
   assert.ok(!/push\(``, `Minden megy magától\. ✅`\)/.test(src), 'a feltétel nélküli ✅ visszakerült');
 });
 
+// ---------- 🔧 Ha elakadsz: napi sor (2b bekötés, Task 4) ----------
+const { elakadasLine } = await import('./report-lines.js');
+
+t('🔧 mai állapot → a brief szerinti sor, 3 tizedes költséggel', () => {
+  assert.equal(elakadasLine({ nap: '2026-10-27', uj: 2, forditva: 4, koltseg: 0.012 }, '2026-10-27'),
+    '🔧 Ha elakadsz: 2 új doboz, 4 fordítás ($0.012)');
+});
+
+t('🔧 a kimaradás oka a sor végére kerül', () => {
+  const sor = elakadasLine({ nap: '2026-10-27', uj: 1, forditva: 2, koltseg: 0.5, kimaradt: 'keret' }, '2026-10-27');
+  assert.equal(sor, '🔧 Ha elakadsz: 1 új doboz, 2 fordítás ($0.500) · kimaradt: keret');
+  assert.ok(!elakadasLine({ nap: '2026-10-27', uj: 0, forditva: 0, koltseg: 0, kimaradt: '' }, '2026-10-27').includes('kimaradt'));
+});
+
+t('🔧 tegnapi vagy hiányzó állapot → null (nem állítjuk, hogy ma futott)', () => {
+  assert.equal(elakadasLine({ nap: '2026-10-26', uj: 2, forditva: 4, koltseg: 0.012 }, '2026-10-27'), null);
+  for (const rossz of [null, undefined, {}, 'hopp', 42, [], { uj: 1 }]) {
+    assert.equal(elakadasLine(rossz, '2026-10-27'), null, String(rossz));
+  }
+});
+
+t('🔧 hibás számmezők nem borítanak, és NaN-t nem írnak ki', () => {
+  const sor = elakadasLine({ nap: '2026-10-27', uj: 'x', forditva: null, koltseg: 'y' }, '2026-10-27');
+  assert.equal(sor, '🔧 Ha elakadsz: 0 új doboz, 0 fordítás ($0.000)');
+  assert.ok(!/NaN|undefined/.test(sor));
+});
+
+t('🔧 a kimaradt-szöveg egy sorba tördelve, rövidítve kerül ki (nincs sortörés)', () => {
+  const sor = elakadasLine({ nap: '2026-10-27', uj: 0, forditva: 0, koltseg: 0, kimaradt: 'a\nb ' + 'x'.repeat(200) }, '2026-10-27');
+  assert.ok(!sor.includes('\n'));
+  assert.ok(sor.length < 200, String(sor.length));
+});
+
+t('🔌 a napi jelentés beköti a sort, hibás/hiányzó fájlra sem dől el', () => {
+  const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
+  assert.match(src, /elakadasLine\(/);
+  assert.match(src, /elakadas-state\.json/);
+});
+
 console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');

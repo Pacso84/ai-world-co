@@ -177,6 +177,34 @@ export function huSpellingLine(store) {
 }
 
 /**
+ * 🔧 „Ha elakadsz” doboz — a napi generátor (core/elakadas-gen.js) mai munkája egy sorban.
+ *
+ * A generátor a memory/elakadas-state.json fájlba írja: { nap (UTC), koltseg, uj, forditva, kimaradt }.
+ * ⚠️ CSAK A MAI ÁLLAPOTOT mutatjuk: egy tegnapi fájlból „🔧 2 új doboz” azt sugallná, hogy ma is futott
+ * a generátor — a „nem volt dolga” és az „el sem indult” így kívülről egyformán nézne ki. Régi vagy
+ * hiányzó állapotra `null` (a hívó ilyenkor semmit sem ír ki). A hibás számmező 0, sosem NaN.
+ * A `kimaradt` (pl. „keret”) egy sorba tördelve és rövidítve kerül a sor végére.
+ *
+ * @param {object|null} allapot  a memory/elakadas-state.json tartalma
+ * @param {string} maNap         YYYY-MM-DD (UTC) — a riport mai napja
+ * @returns {string|null}
+ */
+export function elakadasLine(allapot, maNap) {
+  if (!allapot || typeof allapot !== 'object' || Array.isArray(allapot)) return null;
+  if (!allapot.nap || allapot.nap !== maNap) return null;
+
+  const szam = x => (Number.isFinite(Number(x)) && x !== null && x !== '' ? Number(x) : 0);
+  const uj = Math.max(0, Math.round(szam(allapot.uj)));
+  const forditva = Math.max(0, Math.round(szam(allapot.forditva)));
+  const koltseg = Math.max(0, szam(allapot.koltseg));
+
+  let sor = `🔧 Ha elakadsz: ${uj} új doboz, ${forditva} fordítás ($${koltseg.toFixed(3)})`;
+  const kimaradt = String(allapot.kimaradt ?? '').replace(/\s+/g, ' ').trim().slice(0, 80);
+  if (kimaradt) sor += ` · kimaradt: ${kimaradt}`;
+  return sor;
+}
+
+/**
  * 🔁 Ismétlés-őr — hány készülő cikket fogott meg, mert már írtunk róla?
  *
  * MIÉRT KELL EZ A SOR (2026-08-25). A témaismétlés-őr beágyazása HÓNAPOK ÓTA
