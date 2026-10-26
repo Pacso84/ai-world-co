@@ -7574,10 +7574,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Turn on Gemini in Workspace, feed it three sample emails you actually wrote, and let it draft replies in your voice — you review, tweak a sentence or two, and hit send.",
-      "status": "todo",
+      "status": "done",
       "icon": "✉️",
       "proposed_at": "2026-10-09T03:56:58.438Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-10-26T02:22:24.829Z"
     },
     {
       "id": "move-midjourney-images-into-a-canva-design-without-losing-qu",
@@ -8204,6 +8205,28 @@
         "datum": "2026-10-25"
       },
       "written_at": "2026-10-25T02:17:13.449Z"
+    },
+    {
+      "id": "how-to-make-your-first-ai-video-by-starting-with-a-simple-st",
+      "company": "",
+      "tool": "",
+      "title": "How to Make Your First AI Video by Starting with a Simple Storyboard",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Sketch your video as 4 to 6 numbered shots (what is on screen, how long it lasts, what is said) before you generate anything, because a clear plan gives you a better video on the first try.",
+      "status": "done",
+      "icon": "🎬",
+      "proposed_at": "2026-10-26T02:21:49.200Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "how to make ai videos",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-10-26"
+      },
+      "written_at": "2026-10-26T02:22:50.682Z"
     }
   ],
   "trend_proba": [
@@ -8250,6 +8273,10 @@
     {
       "kifejezes": "claude record a skill",
       "at": "2026-10-25T02:16:18.936Z"
+    },
+    {
+      "kifejezes": "how to make ai videos",
+      "at": "2026-10-26T02:21:35.311Z"
     }
   ]
 }

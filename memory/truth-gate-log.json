@@ -1,24 +1,4 @@
 {
-  "2026-09-25": [
-    {
-      "at": "2026-09-25T02:29:46.048Z",
-      "file": "WRITER_2026-09-25T02-23-56-385Z_picsart_Draft_mode_for_Seedance_2_5__preview_in_480p__deli.json",
-      "action": "block",
-      "reasons": [
-        "Picsart's AI Playground is described with a specific count of 'more than 190 AI models' — this specific number is not supported by the source, which only covers Seedance 2.5 draft mode functionality.",
-        "The claim that PicsArt's AI Playground 'connects directly to AI assistants like Google Gemini' is not supported by the source article, which is solely about Seedance 2.5 draft mode."
-      ],
-      "confidence": 6
-    },
-    {
-      "at": "2026-09-25T02:37:10.913Z",
-      "file": "WRITER_GUIDE_use-qwen-to-translate-a-short-message-for-a-friend-or-family.json",
-      "action": "hold",
-      "reasons": [
-        "AI-bíró nem elérhető (érthetetlen AI-válasz: Unexpected token 'i', \"ible\": tru\"... is not valid JSON) — visszatartva a következő futásig"
-      ]
-    }
-  ],
   "2026-09-26": [
     {
       "at": "2026-09-26T02:32:29.377Z",
@@ -210,6 +190,17 @@
       "reasons": [
         "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
       ]
+    }
+  ],
+  "2026-10-26": [
+    {
+      "at": "2026-10-26T02:16:57.011Z",
+      "file": "WRITER_2026-10-22T02-26-55-947Z_microsoft-ai_Before_the_ambulance_arrives__How_AI_is_helping_th.json",
+      "action": "block",
+      "reasons": [
+        "The article says the NHS published or issued the announcement and repeatedly calls it an “NHS announcement.” The supplied source identifies Microsoft AI/Microsoft Source—not the NHS—as the publisher of the post about the NHS."
+      ],
+      "confidence": 9
     }
   ]
 }
