@@ -348,6 +348,19 @@
       "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős, MiniMax-tiering). CSÚCS = MiniMax M3 — minőség/biztonság-kritikus (olvasó-látott írás / bíró / hitelesség / fő döntés). Fallback M2.7, majd PAID_POOL(M3), vég-tartalék az ingyenes VÉSZHÁLÓ (csak ha minden fizetős elhal).",
       "routing": "paid-only"
     },
+    "elakadas": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "anthropic/claude-haiku-5.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "comment": "„🔧 Ha elakadsz” doboz generátora (core/elakadas-gen.js, 2026-10-26): a guide agent modelljei (Haiku 5.5, tartalék M3) — 10-24 mérés: a szigorú kódos ellenőrzés (core/elakadas.js) a modell kimenetét szűri, ezért nem kell nagyobb modell. A fordítást a translator agent végzi. Napi költség-plafon a kódban (NAPI_PLAFON $0,10).",
+      "routing": "paid-only"
+    },
     "api-expert": {
       "deterministic": true,
       "enabled": false,

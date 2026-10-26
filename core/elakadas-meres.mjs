@@ -8,43 +8,23 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { szolgaltatok, indexLetolt } from './sugo-index.js';
 import { ELAKADAS_BE, jeloltCikkek, promptEpit, valaszErtelmez, dobozKeszit } from './elakadas.js';
-import { forrasSzoveg } from './friss-tenyellenorzes.js';
+import { utmutatoAdat, cikkSzoveg } from './elakadas-gen.js';   // közös a CI-generátorral (10-26): egy megvalósítás
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const KI = process.env.ELAKADAS_KI || join(ROOT, 'elakadas-meres.json');
 const MODELL = 'anthropic/claude-haiku-5.5';
 const env = readFileSync(join(ROOT, '.env'), 'utf-8');
 const KULCS = ((env.match(/^OPENROUTER_API_KEY\s*=\s*(.*)$/m) || [])[1] || '').trim().replace(/^['"]|['"]$/g, '');
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36';
-const STEP_RX = /^(?:(?:step|paso|schritt|[ée]tape)\s*\d*|\d+\s*\.?\s*l[ée]p[ée]s)\s*[—:–.-]?\s*/i;
 
-function utmutato(slug) {
+/** A slug-hoz tartozó útmutató — a feldolgozás a közös utmutatoAdat() (core/elakadas-gen.js). */
+function utmutatoSlugra(slug) {
   const d = join(ROOT, 'content', 'articles');
   for (const f of readdirSync(d)) {
     if (!f.endsWith('.json')) continue;
     const j = JSON.parse(readFileSync(join(d, f), 'utf-8'));
-    if (j._meta?.slug !== slug) continue;
-    const md = j.article_markdown;
-    const szek = md.split(/^## /m).slice(1);
-    return {
-      slug, tool: j._meta.tool || '', company: j._meta.company || '',
-      cim: (md.match(/^#\s+(.+)$/m) || [])[1] || slug,
-      eszkoz: j._meta.tool || '',
-      lepesek: szek.filter(s => STEP_RX.test(s.split('\n')[0])).map(s => s.split('\n')[0].replace(STEP_RX, '').trim()),
-      hibak: (szek.find(s => /^common mistakes/i.test(s)) || '').split('\n').slice(1).join('\n').trim()
-    };
+    if (j._meta?.slug === slug) return utmutatoAdat(j);
   }
   throw new Error('nincs ilyen útmutató: ' + slug);
-}
-
-async function cikkSzoveg(url) {
-  try {
-    const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'en-US,en;q=0.9' }, signal: AbortSignal.timeout(30000) });
-    if (!r.ok) return null;
-    const html = await r.text();
-    const cim = (html.match(/<title>([^<]*)<\/title>/i) || [])[1]?.replace(/&amp;/g, '&').replace(/&#39;|&#x27;/g, "'").replace(/\s*[|–-]\s*(OpenAI Help Center|Gemini Apps Help|Google .* Help|Microsoft Support|Claude Help Center|Mistral AI).*$/i, '').trim();
-    return { szoveg: forrasSzoveg(html, 6000), cim };
-  } catch { return null; }
 }
 
 async function modell(rendszer, felhasznalo) {
@@ -62,7 +42,7 @@ const indexek = {};
 const eredmeny = [];
 let osszKoltseg = 0;
 for (const slug of process.argv.slice(2)) {
-  const utm = utmutato(slug);
+  const utm = utmutatoSlugra(slug);
   const szolg = szolgaltatok(utm.tool, utm.company);
   const index = [];
   for (const s of szolg) index.push(...(indexek[s] ||= await indexLetolt(s)));
