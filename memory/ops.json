@@ -483,22 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179151843488959",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0969).",
-      "agent": "ceo",
-      "at": "2026-10-09T04:00:34.890Z",
-      "loud": false
-    },
-    {
-      "id": "n179160250668558",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"How to use Nano Banana 2.1 in Picsart for AI image generation\" — az Ellenőrző tényt/forrást kér, amit ne",
-      "agent": "guide",
-      "at": "2026-10-10T03:21:46.685Z",
-      "loud": false
-    },
-    {
       "id": "n179160282649035",
       "level": "info",
       "text": "SEO: 6 cikk optimalizálva (átlag 7.5/10).",
@@ -1281,27 +1265,25 @@
       "agent": "ceo",
       "at": "2026-10-26T02:39:16.875Z",
       "loud": false
+    },
+    {
+      "id": "n179302570096974",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"How to make spooky Halloween invitations guests ca\" ",
+      "agent": "fact-check",
+      "at": "2026-10-26T14:41:40.969Z",
+      "loud": false
+    },
+    {
+      "id": "n179302576204575",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-26T14:42:42.045Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179160256731413",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to use Nano Banana 2.1 in Picsart for AI image generation\" (?/10)",
-      "ref": "GUIDE_how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio.json",
-      "at": "2026-10-10T03:22:47.314Z"
-    },
-    {
-      "id": "m179160259923331",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"HeyGen Video explained: give it a photo, a clip, and a \" hír a meglévő útmutatóra mutat: how-to-use-picsart-ai-playground-on-your-desktop",
-      "ref": "how-to-use-picsart-ai-playground-on-your-desktop",
-      "at": "2026-10-10T03:23:19.233Z"
-    },
     {
       "id": "m179160283682132",
       "from": "designer",
@@ -2663,6 +2645,26 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-26T02:53:44.208Z"
+    },
+    {
+      "id": "m17930257009697",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"How to make spooky Halloween invitations guests ca\" — The source explicitly states the hero photo should be an object like a candy bucket or pumpkin, not a person or pet.",
+      "ref": "ARTICLE_2026-10-22T02-27-27-493Z_picsart_How_to_make_spooky_Halloween_invitations_guests_ca.json",
+      "open": true,
+      "at": "2026-10-26T14:41:40.969Z"
+    },
+    {
+      "id": "m179302576204589",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Drafting Professional Presentations from Scratch U\" — The guide's core workflow (Copilot button, outline generation, Add to presentation, speaker notes, content refinement) aligns with known Microsoft 365 Copilot functionality, but the specific phrasing around speaker not",
+      "ref": "ARTICLE_GUIDE_drafting-professional-presentations-from-scratch-using-micro.json",
+      "open": true,
+      "at": "2026-10-26T14:42:42.045Z"
     }
   ]
 }
