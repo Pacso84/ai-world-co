@@ -49,9 +49,18 @@ export function hetiOsszefoglalo(cikkek, ma = new Date().toISOString()) {
     .sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at))[0] || null;
 }
 
-/** A számozott alcímek („## 1. Cím") — a hírek címe, szó szerint. */
+// A heti cikk ZÁRÓ részei — nem hírek (10-26: a 10-25-i cikk számozás nélküli alcímekkel jött, és ezek is ## alcímek)
+const NEM_HIR = /^(what (this|it) means|wrap[\s-]?up|bottom line|key takeaways?|why (this|it) matters|in summary|summary|conclusion|final thoughts|faq|frequently asked)/i;
+
+/**
+ * A hírek címe, szó szerint: a számozott alcímek („## 1. Cím"); ha nincs számozott, a sima „## Cím" alcímek a
+ * záró részek nélkül. 10-26: a 10-25-i heti cikk számozás nélkül jött → a híradó „nincs hír-alcím”-mel kimaradt.
+ */
 export function focimek(md, n = 2) {
-  return [...String(md || '').matchAll(/^##\s+\d+\.\s+(.+?)\s*$/gm)].map(m => m[1].replace(/[*_`]/g, '').trim()).filter(Boolean).slice(0, n);
+  const tisztit = s => s.replace(/[*_`]/g, '').trim();
+  const szamozott = [...String(md || '').matchAll(/^##\s+\d+\.\s+(.+?)\s*$/gm)].map(m => tisztit(m[1])).filter(Boolean);
+  if (szamozott.length) return szamozott.slice(0, n);
+  return [...String(md || '').matchAll(/^##\s+(?!#)(.+?)\s*$/gm)].map(m => tisztit(m[1])).filter(c => c && !NEM_HIR.test(c)).slice(0, n);
 }
 
 /** Szóhatáron rövidített cím a hírszalagra. */

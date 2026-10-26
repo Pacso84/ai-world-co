@@ -40,6 +40,12 @@ t('📰 a legfrissebb heti összefoglalót választja, de csak ha 3 napon belül
 t('🗞️ a hírek címe a számozott alcímekből jön (szó szerint, semmit nem talál ki)', () => {
   assert.deepEqual(focimek(HETI_MD, 2), ['Gmail AI Updates for Paid Workspace Users', "NVIDIA's New Line of AI-Capable Laptops"]);
   assert.deepEqual(focimek('# nincs számozott alcím', 2), []);
+  // 10-26: a 10-25-i heti cikk számozás nélkül jött → a sima alcímek, a záró részek nélkül
+  const SZAMOZATLAN = '# This Week in AI: The 5 Stories That Matter (October 25, 2026)\n## Meeting Recaps Show Up in Google Chat\ntext\n' +
+    '## Google Meet Translates Speech in 63 Languages\ntext\n## What This Means for You\ntext\n## Wrap-up\ntext';
+  assert.deepEqual(focimek(SZAMOZATLAN, 2), ['Meeting Recaps Show Up in Google Chat', 'Google Meet Translates Speech in 63 Languages']);
+  assert.deepEqual(focimek('# Cím\n## What This Means for You\n## Wrap-up', 2), [], 'csak záró rész → nincs hír');
+  assert.deepEqual(focimek(HETI_MD + '\n## Wrap-up', 5).includes('Wrap-up'), false, 'számozottnál a záró rész nem kerül be');
 });
 
 t('✂️ a hosszú cím szóhatáron rövidül, a rövid változatlan', () => {
