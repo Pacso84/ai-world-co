@@ -46,6 +46,7 @@ import { CSOMAG_IDK, NAGY_ID } from '../core/packs-data.js';
 import { cimTag } from '../core/title-tag.js';
 import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
 import { kitolthetoHtml, promptJelolt } from '../core/kitoltheto-prompt.js';   // 🧩 2026-10-23
+import { elakadasBetolt, elakadasHtml } from '../core/elakadas-html.js';   // 🔧 2026-10-26 „Ha elakadsz” doboz
 import { lepesKepKulcs, elsoMondat, elsoMondatKulcs, ismetlesTores } from '../core/lepes-kep.js';   // 🖼️ 2026-10-23/24
 import { olvasoiKedvencek } from '../core/olvasoi-kedvenc.js';   // 🔥 2026-10-23
 import { vazlatHtml } from '../core/guide-sketch.js';
@@ -303,7 +304,7 @@ const UI_GUIDES = {
         kindOther: 'Other <span class="muted-word">AI tools</span>',
         comingSoon: 'Guides are on their way — check back shortly.',
         audPersonal: 'Everyday life', audBusiness: 'Business', audBoth: 'Life & Business',
-        aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', stepOf: 'Step {n} of {m}', okLabel: 'You\'ll know it worked when', diffLabel: 'If it looks different', nextStep: 'Next step', nextGuide: 'Next guide', copyBtn: 'Copy', copiedBtn: 'Copied!', favBadge: 'Readers’ favorite', favRowH: 'Readers’ favorites — last 30 days', voteQ: 'Worked?', voteThanks: 'Thanks! 💛', fillHint: 'Type your own details into the dashed boxes, then copy.', tovWiz: 'Using a different AI? <b>Find the right one for you</b>', tovPb: 'Want your own prompt? <b>Prompt Builder</b>', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
+        aiSkills: 'AI skills', coverSub: 'For everyday people', exampleLabel: 'Example', tryTyping: 'Try typing this', stepOf: 'Step {n} of {m}', okLabel: 'You\'ll know it worked when', diffLabel: 'If it looks different', nextStep: 'Next step', nextGuide: 'Next guide', copyBtn: 'Copy', copiedBtn: 'Copied!', favBadge: 'Readers’ favorite', favRowH: 'Readers’ favorites — last 30 days', voteQ: 'Worked?', voteThanks: 'Thanks! 💛', fillHint: 'Type your own details into the dashed boxes, then copy.', tovWiz: 'Using a different AI? <b>Find the right one for you</b>', tovPb: 'Want your own prompt? <b>Prompt Builder</b>', elakCim: '🔧 If you get stuck', elakMiert: 'Why:', elakMit: 'What to do:', elakForras: 'Source:', xrefNews: 'What prompted this guide', xrefGuide: 'Want to try it? Step-by-step guide',
         // ⚠️ MI-JELÖLÉS (2026-09-12, EU AI Act 50. cikk). A régi szöveg („AI editorial
         // team") félreérthető volt, és csak a lap ALJÁN állt. Most egyértelmű, és a
         // cikk TETEJÉN is megjelenik (aiLabel*). Őrzi: core/ai-disclosure.test.js.
@@ -324,7 +325,7 @@ const UI_GUIDES = {
         kindOther: 'Egyéb <span class="muted-word">AI-eszközök</span>',
         comingSoon: 'Az útmutatók úton vannak — nézz vissza hamarosan.',
         audPersonal: 'Hétköznapok', audBusiness: 'Üzlet', audBoth: 'Otthon és munka',
-        aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', stepOf: '{n}. lépés / {m}', okLabel: 'Akkor sikerült, ha', diffLabel: 'Ha másképp néz ki', nextStep: 'Következő lépés', nextGuide: 'Következő útmutató', copyBtn: 'Másolás', copiedBtn: 'Kimásolva!', favBadge: 'Olvasóink kedvence', favRowH: 'Olvasóink kedvencei — az elmúlt 30 nap', voteQ: 'Bevált?', voteThanks: 'Köszönjük! 💛', fillHint: 'A szaggatott keretes mezőkbe írd a saját adataidat, aztán másold ki.', tovWiz: 'Nem ezt az MI-t használod? <b>Melyik való neked?</b>', tovPb: 'Saját promptot raknál össze? <b>Promptépítő</b>', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
+        aiSkills: 'AI-készségek', coverSub: 'Hétköznapi embereknek', exampleLabel: 'Példa', tryTyping: 'Írd be ezt', stepOf: '{n}. lépés / {m}', okLabel: 'Akkor sikerült, ha', diffLabel: 'Ha másképp néz ki', nextStep: 'Következő lépés', nextGuide: 'Következő útmutató', copyBtn: 'Másolás', copiedBtn: 'Kimásolva!', favBadge: 'Olvasóink kedvence', favRowH: 'Olvasóink kedvencei — az elmúlt 30 nap', voteQ: 'Bevált?', voteThanks: 'Köszönjük! 💛', fillHint: 'A szaggatott keretes mezőkbe írd a saját adataidat, aztán másold ki.', tovWiz: 'Nem ezt az MI-t használod? <b>Melyik való neked?</b>', tovPb: 'Saját promptot raknál össze? <b>Promptépítő</b>', elakCim: '🔧 Ha elakadsz', elakMiert: 'Miért:', elakMit: 'Mit tegyél:', elakForras: 'Forrás:', xrefNews: 'Ebből a hírből született az útmutató', xrefGuide: 'Kipróbálnád? Lépésről lépésre útmutató',
         disclosureNews: '✦ Az AI World HQ automatikus szerkesztőségében mesterséges intelligencia készítette, hivatalos forrásokból. Automatikus tény- és minőség-ellenőrzésen ment át, és a szerkesztőnk naponta szúrópróbaszerűen átnézi a megjelent cikkeket. Hibát látsz? Jelezd a fenti gombokkal.',
         disclosureGuide: '✦ Az AI World HQ automatikus szerkesztőségében mesterséges intelligencia készítette, közérthető nyelven. Automatikus tény- és minőség-ellenőrzésen ment át, és a szerkesztőnk naponta szúrópróbaszerűen átnézi a megjelent útmutatókat. Hibát látsz? Jelezd a fenti gombokkal.',
         aiLabelNews: 'Ezt a cikket mesterséges intelligencia írta. Automatikus tény- és minőség-ellenőrzésen ment át, és a szerkesztőnk naponta szúrópróbaszerűen átnézi a megjelent cikkeket.',
@@ -342,7 +343,7 @@ const UI_GUIDES = {
         kindOther: 'Otras <span class="muted-word">herramientas de IA</span>',
         comingSoon: 'Las guías están en camino — vuelve pronto.',
         audPersonal: 'Día a día', audBusiness: 'Negocios', audBoth: 'Vida y negocios',
-        aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', stepOf: 'Paso {n} de {m}', okLabel: 'Sabrás que funcionó cuando', diffLabel: 'Si se ve distinto', nextStep: 'Siguiente paso', nextGuide: 'Siguiente guía', copyBtn: 'Copiar', copiedBtn: '¡Copiado!', favBadge: 'Favorito de los lectores', favRowH: 'Los favoritos de los lectores — últimos 30 días', voteQ: '¿Te funcionó?', voteThanks: '¡Gracias! 💛', fillHint: 'Escribe tus datos en los recuadros punteados y luego copia.', tovWiz: '¿Usas otra IA? <b>Encuentra la tuya</b>', tovPb: '¿Quieres tu propio prompt? <b>Creador de prompts</b>', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
+        aiSkills: 'Habilidades de IA', coverSub: 'Para el día a día', exampleLabel: 'Ejemplo', tryTyping: 'Escribe esto', stepOf: 'Paso {n} de {m}', okLabel: 'Sabrás que funcionó cuando', diffLabel: 'Si se ve distinto', nextStep: 'Siguiente paso', nextGuide: 'Siguiente guía', copyBtn: 'Copiar', copiedBtn: '¡Copiado!', favBadge: 'Favorito de los lectores', favRowH: 'Los favoritos de los lectores — últimos 30 días', voteQ: '¿Te funcionó?', voteThanks: '¡Gracias! 💛', fillHint: 'Escribe tus datos en los recuadros punteados y luego copia.', tovWiz: '¿Usas otra IA? <b>Encuentra la tuya</b>', tovPb: '¿Quieres tu propio prompt? <b>Creador de prompts</b>', elakCim: '🔧 Si te atascas', elakMiert: 'Por qué:', elakMit: 'Qué hacer:', elakForras: 'Fuente:', xrefNews: 'La noticia detrás de esta guía', xrefGuide: '¿Quieres probarlo? Guía paso a paso',
         disclosureNews: '✦ Generado por IA en la redacción automática de AI World HQ, a partir de fuentes oficiales. Pasó controles automáticos de datos y calidad, y nuestro editor comprueba cada día una muestra de los artículos publicados. ¿Ves un error? Usa los botones de arriba.',
         disclosureGuide: '✦ Generada por IA en la redacción automática de AI World HQ, en lenguaje claro. Pasó controles automáticos de datos y calidad, y nuestro editor comprueba cada día una muestra de las guías publicadas. ¿Ves un error? Usa los botones de arriba.',
         aiLabelNews: 'Este artículo fue escrito por IA. Pasó controles automáticos de datos y calidad, y nuestro editor comprueba cada día una muestra de los artículos publicados.',
@@ -1190,6 +1191,8 @@ function loadArticles() {
         // 2026-10-19: közös képlet (core/sitemap-lastmod.js) — a sitemap, a JSON-LD, a látható
         // „Frissítve” sor és az IndexNow ugyanazt a dátumot mondja.
         modifiedAt: valodiModositas(data._meta),
+        // 🔧 „Ha elakadsz” doboz (2026-10-26): a content/elakadas/<slug>.json-ból; fájl nélkül null → nincs doboz.
+        elakadas: elakadasBetolt(PROJECT_ROOT, slug),
         sourceName: data._meta?.source_name || '',
         sourceLink: data._meta?.source_link || '',
         reviewScore: data._meta?.ai_review?.overall_score || null
@@ -2597,6 +2600,8 @@ function buildGuidePage(a) {
     ${introHtml ? `<div class="g-intro">${introHtml}</div>` : ''}
     ${blocksLinked ? `<p class="g-steptip">💡 <strong>${tr('stepTipLabel')}:</strong> ${escapeHtml(tr('stepTip'))}</p>` : ''}
     <div class="g-steps">${lepesTorzs.html}</div>
+    ${/* 🔧 HA ELAKADSZ (2026-10-26): a lépések után, a továbbvezetés előtt; fájl nélkül / kill-switch mellett üres. Nem hirdetés-hely. */ ''}
+    ${elakadasHtml(a.elakadas, LANG, { cim: tr('elakCim'), miert: tr('elakMiert'), mitTegyel: tr('elakMit'), forras: tr('elakForras') })}
     ${/* TOVÁBBVEZETÉS (2026-10-23): a varázsló eddig csak a Rólunk oldalról volt elérhető. A tr-szöveg <b>-t tartalmaz — saját, megbízható felirat, ezért nincs escape. */ ''}
     <nav class="g-tovabb"><a class="g-tovabb__a" href="../wizard">🧭 ${tr('tovWiz')}</a><a class="g-tovabb__a" href="../${ESZKOZ_UTAK.pb}">🧩 ${tr('tovPb')}</a></nav>
     ${KAPCSOLO.kovetkezo ? nextGuideHtml(a) : ''}

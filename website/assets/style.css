@@ -1027,6 +1027,18 @@ body {
 .g-tovabb a { padding: 14px 18px; background: var(--card); color: var(--ink); font-size: 14px; text-decoration: none; }
 .g-tovabb a:hover b { color: var(--gc, var(--accent-dark)); }
 @media (max-width: 560px) { .g-tovabb { grid-template-columns: 1fr; } }
+/* 🔧 HA ELAKADSZ doboz (2026-10-26, core/elakadas-html.js): a lépések után; csak változókkal → világos/sötét módban is jó; egy oszlop */
+.g-elakad { margin: 26px 0; padding: 18px 20px; background: var(--card); border: 1px solid var(--line-strong); border-left: 4px solid var(--gc, var(--accent)); border-radius: var(--radius); }
+.g-elakad .g-elakad__cim { margin: 0 0 6px; font-size: 20px; line-height: 1.3; color: var(--ink); }
+.g-elakad__t { padding: 14px 0 0; margin-top: 14px; border-top: 1px solid var(--line); }
+.g-elakad__t:first-of-type { border-top: 0; margin-top: 4px; padding-top: 6px; }
+.g-elakad__t h3 { margin: 0 0 6px; font-size: 16px; line-height: 1.4; color: var(--ink); }
+.g-elakad__t p { margin: 0 0 6px; font-size: 15px; line-height: 1.55; color: var(--ink-soft); overflow-wrap: anywhere; }
+.g-elakad__t p b { color: var(--ink); font-weight: 600; }
+.g-elakad__t .g-elakad__forras { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
+.g-elakad__forras a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 2px; }
+[data-theme="dark"] .g-elakad__forras a { color: var(--accent); }
+@media (max-width: 560px) { .g-elakad { margin: 22px 0; padding: 14px 14px; } .g-elakad .g-elakad__cim { font-size: 18px; } }
 
 /* ── LÉPÉS-VÁZLAT (2026-09-29, core/guide-sketch.js) — kóddal rajzolt telefon, CSS-változókkal (sötét mód is) ── */
 .g-sketch { margin: 0; text-align: center; }
