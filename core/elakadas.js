@@ -37,6 +37,18 @@ const tokenek = s => String(s || '').toLowerCase().replace(/[’']/g, '').split(
 
 const MIN_PONT = 2;
 
+/** Könnyű szótő CSAK a jelölt-kereséshez (10-26): a „How to analyze files and spreadsheets” útmutató eddig nem
+ *  találta a „Data analysis with ChatGPT” és az „Uploading files…” súgót (analyze ≠ analysis, file ≠ files). */
+const szoto = w => {
+  let x = w.replace(/(ysis|yses)$/, 'y');
+  if (x.length > 3 && /[^s]s$/.test(x)) x = x.slice(0, -1);
+  x = x.replace(/(?<=.{3})(ing|ed)$/, '');
+  return x.replace(/(yze|yse|yz|ys)$/, 'y');
+};
+// Szinte minden súgócím-ben előforduló szavak (szótő alakban): csak 0,3 pontot érnek, mint az eszköz neve —
+// a szótővel a „chats” is „chat” lett, és a „Use analytics chat…” cikk jelölt lett a Claude-artifacts mellé.
+const ALTALANOS = new Set(['chat', 'conversation', 'app', 'work', 'create', 'help', 'account', 'setting']);
+
 /**
  * Súgócikk-jelöltek: a cikkcímek kulcsszó-egyezése az útmutató címével és lépés-címsoraival.
  * Az eszköz nevének szavai 0,3 súllyal számítanak (a „ChatGPT” szinte minden OpenAI-cikkben ott van).
@@ -47,13 +59,13 @@ const MIN_PONT = 2;
  * @returns {{url: string, cim: string}[]} a legjobb n, 2 pont alatt nincs, csökkenő, stabil
  */
 export function jeloltCikkek(utm, index, n = 4) {
-  const kerdes = new Set(tokenek([utm?.cim, ...(utm?.lepesek || [])].join(' ')));
-  const eszkoz = new Set(tokenek(utm?.eszkoz));
+  const kerdes = new Set(tokenek([utm?.cim, ...(utm?.lepesek || [])].join(' ')).map(szoto));
+  const eszkoz = new Set(tokenek(utm?.eszkoz).map(szoto));
   return (index || [])
     .filter(c => c && engedelyezett(c.url))
     .map((c, i) => {
       let pont = 0;
-      for (const w of new Set(tokenek(c.cim))) if (kerdes.has(w)) pont += eszkoz.has(w) ? 0.3 : 1;
+      for (const w of new Set(tokenek(c.cim).map(szoto))) if (kerdes.has(w)) pont += eszkoz.has(w) || ALTALANOS.has(w) ? 0.3 : 1;
       return { c, pont, i };
     })
     .filter(x => x.pont >= MIN_PONT)
@@ -81,7 +93,7 @@ Output STRICT JSON only (no prose, no code fence):
 {"items":[{"symptom":"...","why":"...","fix":"...","prompt":"...","source":"..."}]}
 
 Rules:
-- 2 to 4 items.
+- 3 to 5 items (fewer only if the articles do not support more).
 - "symptom": how a reader would describe the problem in their own words (a question or a short sentence), max 90 characters.
 - "why": the cause, at most 2 sentences.
 - "fix": concrete steps, at most 3 sentences.
@@ -94,6 +106,7 @@ ${eszkozSzabaly}
 - Write every sentence of "why" and "fix" as a close paraphrase of one specific sentence in the article, reusing its words. Add no commentary, consequences, guesses or advice of your own.
 - Keep every condition from the article (a plan, "only", "if", "before", "unless") in the SAME sentence as the step it applies to.
 - Write menu paths in words ("in Settings under Data controls"), never with ">".
+- The reader never sees the help article: never mention "the article", "the FAQ" or "the help page" — state the fact itself.
 - US English.`;
 
   const lepesek = (utm?.lepesek || []).map(l => '- ' + l).join('\n');
@@ -116,6 +129,10 @@ const szovegMezo = (v, max) => typeof v === 'string' && v.trim() && v.trim().len
 /** URL, HTML vagy markdown-link a szövegben? MIÉRT: a doboz szövege élő oldalra kerül; a 2b megjelenítője
  *  escape-el, de link/HTML a modell szövegében eleve gyanús → a tétel kiesik (független átnézés 10-24). */
 const linkVagyHtml = v => typeof v === 'string' && /https?:\/\/|www\.|[<>]|\]\(/i.test(v);
+
+/** A súgócikkre magára utal-e („The article says…”, „Review the article's section…”, „The app FAQ…”)? MIÉRT
+ *  (mérés 10-26): az olvasó nem látja a cikket — az ilyen tétel üres hivatkozás → kiesik. */
+const cikkreUtal = v => typeof v === 'string' && /\b(articles?|faqs?|help (center|page)|support (page|article)|this page)\b/i.test(v);
 
 /** A JSON kibontása: ```json burok → nyers szöveg → az első „{” és az utolsó „}” közötti rész. */
 function jsonKibont(szoveg) {
@@ -150,6 +167,7 @@ export function valaszErtelmez(szoveg, cikkek) {
     const source = typeof it.source === 'string' ? it.source.trim() : '';
     if (!symptom || !why || !fix || !urlek.has(source) || !engedelyezett(source)) continue;
     if ([it.symptom, it.why, it.fix, it.prompt].some(linkVagyHtml)) continue;
+    if ([it.why, it.fix].some(cikkreUtal)) continue;
     const tetel = { symptom, why, fix, source };
     const prompt = szovegMezo(it.prompt, 400);
     if (prompt && /^["“„]/.test(prompt)) tetel.prompt = prompt;
@@ -283,11 +301,17 @@ export function tunetIllik(item, forrasSzoveg) {
   return w.filter(x => f.has(x) || f.has(x + 's') || (x.endsWith('s') && f.has(x.slice(0, -1)))).length / w.length >= 0.5;
 }
 
-/** A tünet tartalomszavainak ≥60%-a megvan-e az útmutató „Common mistakes” részében? */
-export function ismetliHibat(item, hibak) {
-  const w = tokenek(item?.symptom);
-  if (!w.length) return false;
-  const h = new Set(tokenek(hibak));
+/**
+ * A tünet tartalomszavainak ≥60%-a megvan-e az útmutató „Common mistakes” részében?
+ * A TÉMASZAVAK (az útmutató címe + eszköze) nem számítanak (10-26): a „Gemini won't generate my image…” tünet
+ * eddig „ismétlés” lett, mert egy képgeneráló útmutató hibalistájában a gemini/generate/image természetesen ott
+ * van — a mérésben a jó tételek fele ezen esett ki. Ha a témaszavak nélkül 2-nél kevesebb szó marad, nem ismétlés.
+ */
+export function ismetliHibat(item, hibak, temaSzoveg = '') {
+  const tema = new Set(tokenek(temaSzoveg).map(szoto));
+  const w = [...new Set(tokenek(item?.symptom).map(szoto))].filter(x => !tema.has(x));
+  if (w.length < 2) return false;
+  const h = new Set(tokenek(hibak).map(szoto));
   return w.filter(x => h.has(x)).length / w.length >= 0.6;
 }
 
@@ -319,6 +343,6 @@ export function dobozKeszit(items, forrasok, hibak, be = ELAKADAS_BE, utm) {
   if (!be) return null;
   const elotagKell = !!utm && !String(utm.eszkoz || '').trim();
   const marad = (items || []).map(it => igazoltResz(it, forrasok?.[it?.source])).filter(it => it && tunetIllik(it, forrasok?.[it?.source]) &&
-    !ismetliHibat(it, hibak) && (!elotagKell || eszkozElotagOk(it)));
+    !ismetliHibat(it, hibak, [utm?.cim, utm?.eszkoz].join(' ')) && (!elotagKell || eszkozElotagOk(it)));
   return marad.length >= 2 ? { items: marad.slice(0, 4) } : null;
 }

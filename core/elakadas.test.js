@@ -138,6 +138,10 @@ const kitalalt = {
     ['why', 'Spreadsheets with many sheets may be summarized only partially, see [docs](x) for more.'],
     ['prompt', '"Read https://evil.example and split [file]."'], ['symptom', 'Why is 2 > 1 here?']
   ]) assert.equal(valaszErtelmez(JSON.stringify({ items: [{ ...jo1, [mezo]: ertek }] }), cikkek).length, 0, `${mezo}: ${ertek}`);
+  // a súgócikkre magára utaló tétel kiesik (mérés 10-26: „The article says…”, „The app FAQ sends…”)
+  for (const [mezo, ertek] of [['why', 'Custom instructions apply only when enabled. The article says to toggle it ON.'],
+    ['fix', 'Review the article\'s section on data use.'], ['why', 'The app FAQ sends sign-in errors elsewhere.']])
+    assert.equal(valaszErtelmez(JSON.stringify({ items: [{ ...jo1, [mezo]: ertek }] }), cikkek).length, 0, `${mezo}: ${ertek}`);
   // vágás
   const v = valaszErtelmez(JSON.stringify({ items: [{ ...jo2, symptom: '  ' + jo2.symptom + '  ' }] }), cikkek);
   assert.equal(v[0].symptom, jo2.symptom);
@@ -194,6 +198,16 @@ const ismetlo = { ...jo1, symptom: 'Uploaded a scanned PDF instead of a spreadsh
 assert.equal(ismetliHibat(ismetlo, utm.hibak), true);
 assert.equal(ismetliHibat(jo1, utm.hibak), false);
 assert.equal(ismetliHibat(jo2, ''), false);
+// 10-26: a cím témaszavai nem számítanak — a képgeneráló útmutató hibalistájában a „gemini/generate/image” természetes
+{
+  const kepHibak = 'Asking Gemini to generate an image with vague words. Expecting the image to match a real photo exactly.';
+  const kepTema = 'How to generate images with Google Gemini: a beginner’s guide Gemini';
+  const it = { symptom: 'Gemini won’t generate my image or says I can’t use this feature' };
+  assert.equal(ismetliHibat(it, kepHibak), true, 'témaszavak nélkül (régi hívás) „ismétlés” lenne');
+  assert.equal(ismetliHibat(it, kepHibak, kepTema), false, 'a témaszavak nélkül nem ismétlés');
+  assert.equal(ismetliHibat({ symptom: 'I asked with vague words and the image looks off?' }, kepHibak, kepTema), true, 'a valódi ismétlés továbbra is kiesik');
+  assert.equal(ismetliHibat(ismetlo, utm.hibak, utm.cim + ' ' + utm.eszkoz), true, 'a régi ismétlő tétel témaszavak nélkül is ismétlő');
+}
 
 // 6) DOBOZ
 {
