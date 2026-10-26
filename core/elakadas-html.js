@@ -40,11 +40,25 @@ export function elakadasBetolt(ROOT, slug) {
   } catch { return null; }
 }
 
-/** A forrás-link szövege: a súgócikk címe, annak híján a domain. */
-function forrasCim(url, forrasok) {
+// A szolgáltató neve a súgó gazdagépéből (a core/sugo-index.js ENGEDELY listája). Nem angol oldalon a link szövege
+// ebből készül: a súgócikk eredeti, ANGOL címe nem kerülhet magyar/spanyol oldalra („nem angol oldalon nincs angol mondat”).
+const SZOLGALTATO = {
+  'help.openai.com': 'OpenAI', 'support.claude.com': 'Anthropic', 'support.anthropic.com': 'Anthropic',
+  'support.google.com': 'Google', 'support.microsoft.com': 'Microsoft', 'support.apple.com': 'Apple',
+  'help.mistral.ai': 'Mistral', 'www.amazon.com': 'Amazon'
+};
+const FORRAS_SZOVEG = { hu: n => `${n} súgó (angol nyelvű)`, es: n => `Ayuda de ${n} (en inglés)` };
+
+/** A forrás-link szövege és (csak angolul) a súgócikk címe. */
+function forrasLink(url, forrasok, lang) {
+  let host = '';
+  try { host = new URL(url).hostname; } catch { /* a hívó már engedelyezett()-et ellenőrzött */ }
+  if (lang !== 'en') {
+    const nev = SZOLGALTATO[host];
+    return { szoveg: nev && FORRAS_SZOVEG[lang] ? FORRAS_SZOVEG[lang](nev) : host, cim: '' };
+  }
   const c = forrasok && typeof forrasok === 'object' ? forrasok[url] : '';
-  if (szoveg(c)) return c.trim();
-  try { return new URL(url).hostname; } catch { return ''; }
+  return szoveg(c) ? { szoveg: c.trim(), cim: c.trim() } : { szoveg: host, cim: '' };
 }
 
 /**
@@ -64,11 +78,11 @@ export function elakadasHtml(fajl, lang, felirat, be = ELAKADAS_BE) {
     szoveg(it.source) && engedelyezett(it.source));
   if (jok.length < MIN_TETEL) return '';
   const tetelek = jok.map(it => {
-    const cim = forrasCim(it.source, forrasok);
+    const l = forrasLink(it.source, forrasok, lang);
     return `<div class="g-elakad__t"><h3>${esc(it.symptom)}</h3>` +
       `<p><b>${esc(felirat.miert)}</b> ${esc(it.why)}</p>` +
       `<p><b>${esc(felirat.mitTegyel)}</b> ${esc(it.fix)}</p>` +
-      `<p class="g-elakad__forras">${esc(felirat.forras)} <a href="${esc(it.source)}" rel="noopener" target="_blank">${esc(cim)}</a></p></div>`;
+      `<p class="g-elakad__forras">${esc(felirat.forras)} <a href="${esc(it.source)}" rel="noopener" target="_blank"${l.cim ? ` title="${esc(l.cim)}"` : ''}>${esc(l.szoveg)}</a></p></div>`;
   }).join('');
   return `<section class="g-elakad"><h2 class="g-elakad__cim">${esc(felirat.cim)}</h2>${tetelek}</section>`;
 }

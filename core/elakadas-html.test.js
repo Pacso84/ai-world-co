@@ -32,10 +32,31 @@ t('🔧 2 engedélyezett tétel → doboz: g-elakad, mindkét tünet, a nyelvi f
   assert.match(h, /<h3>Tünet 2<\/h3>/);
   assert.match(h, /<b>Why:<\/b> ok 1/);
   assert.match(h, /<b>What to do:<\/b> megoldás 2/);
-  assert.ok(h.includes(`Source: <a href="${U1}" rel="noopener" target="_blank">Fix upload errors</a>`));
+  assert.ok(h.includes(`Source: <a href="${U1}" rel="noopener" target="_blank" title="Fix upload errors">Fix upload errors</a>`));
   // a spanyol a saját tételeit mutatja
   const es = elakadasHtml(fajl(), 'es', { ...felirat, cim: '🔧 Si te atascas' }, true);
   assert.match(es, /Si te atascas/); assert.match(es, /Tünet 3/); assert.doesNotMatch(es, /Tünet 1/);
+});
+
+t('🌐 hu/es: a forrás-link szövege a szolgáltató súgója, SOHA nem az angol cím (és nincs title attribútum)', () => {
+  const f = fajl({ hu: [tetel(5, U1), tetel(6, U2)] });
+  const hu = elakadasHtml(f, 'hu', felirat, true);
+  assert.ok(hu.includes(`<a href="${U1}" rel="noopener" target="_blank">OpenAI súgó (angol nyelvű)</a>`), hu);
+  assert.ok(hu.includes('Anthropic súgó (angol nyelvű)'));
+  const es = elakadasHtml(f, 'es', felirat, true);
+  assert.ok(es.includes(`<a href="${U1}" rel="noopener" target="_blank">Ayuda de OpenAI (en inglés)</a>`), es);
+  assert.ok(es.includes('Ayuda de Anthropic (en inglés)'));
+  for (const h of [hu, es]) {
+    assert.ok(!h.includes('Fix upload errors') && !h.includes('Claude limits'), 'angol cím került az oldalra');
+    assert.ok(!/title=/.test(h), 'title attribútum nem angol oldalon');
+  }
+  // minden engedélyezett gazdagép neve
+  const mind = { 'https://support.google.com/gemini/a': 'Google', 'https://support.microsoft.com/a': 'Microsoft', 'https://support.apple.com/a': 'Apple',
+    'https://help.mistral.ai/a': 'Mistral', 'https://www.amazon.com/gp/help/a': 'Amazon', 'https://support.anthropic.com/a': 'Anthropic' };
+  for (const [u, nev] of Object.entries(mind)) {
+    const o = elakadasHtml(fajl({ hu: [tetel(1, u), tetel(2, u)], forrasok: { [u]: 'English Title' } }), 'hu', felirat, true);
+    assert.ok(o.includes(`>${nev} súgó (angol nyelvű)</a>`), u);
+  }
 });
 
 t('🌐 hu: null (nincs még fordítás) → üres string; ismeretlen nyelv is üres', () => {
@@ -70,6 +91,15 @@ t('🚫 nem engedélyezett forrású tétel kimarad; 1 marad → nincs doboz', (
 t('🧩 hiányos tétel (üres mező / nem objektum) kimarad', () => {
   const f = fajl({ en: [{ symptom: 'x', why: '', fix: 'y', source: U1 }, tetel(2, U2), null, 5] });
   assert.equal(elakadasHtml(f, 'en', felirat, true), '');
+});
+
+t('🏷️ ismeretlen (de engedélyezett) gazdagép → a nyers hosztnév; en címhiányra is a hosztnév', () => {
+  const U3 = 'https://support.google.com/notebooklm/answer/1';
+  // a SZOLGALTATO-táblából hiányzó gazdagépet a teszt nem tudja engedélyeztetni, ezért az en-ágat (cím nélkül) nézzük
+  const f = fajl({ forrasok: {} });
+  const en = elakadasHtml(f, 'en', felirat, true);
+  assert.ok(en.includes('>help.openai.com</a>') && !/title=/.test(en));
+  assert.ok(elakadasHtml(fajl({ en: [tetel(1, U3), tetel(2, U3)], forrasok: {} }), 'en', felirat, true).includes('>support.google.com</a>'));
 });
 
 t('⛔ kill-switch ki (paraméterrel) → üres; nincs doboz / nincs fájl → üres', () => {
