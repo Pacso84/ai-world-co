@@ -140,8 +140,13 @@ const kitalalt = {
   ]) assert.equal(valaszErtelmez(JSON.stringify({ items: [{ ...jo1, [mezo]: ertek }] }), cikkek).length, 0, `${mezo}: ${ertek}`);
   // a súgócikkre magára utaló tétel kiesik (mérés 10-26: „The article says…”, „The app FAQ sends…”)
   for (const [mezo, ertek] of [['why', 'Custom instructions apply only when enabled. The article says to toggle it ON.'],
-    ['fix', 'Review the article\'s section on data use.'], ['why', 'The app FAQ sends sign-in errors elsewhere.']])
+    ['fix', 'Review the article\'s section on data use.'], ['why', 'The app FAQ sends sign-in errors elsewhere.'],
+    ['fix', 'Split the file into smaller files. See Troubleshooting ChatGPT sign-in.'], ['fix', 'Follow the troubleshooting guide for sign-in.'],
+    ['why', 'The documentation explains file limits.']])
     assert.equal(valaszErtelmez(JSON.stringify({ items: [{ ...jo1, [mezo]: ertek }] }), cikkek).length, 0, `${mezo}: ${ertek}`);
+  // valódi tartalom marad (a „news articles” forrás, a „share this page” funkció)
+  for (const ertek of ['NotebookLM can use PDFs, websites and news articles as sources.', 'Select Share to share this page with others.'])
+    assert.equal(valaszErtelmez(JSON.stringify({ items: [{ ...jo1, why: ertek }] }), cikkek).length, 1, ertek);
   // vágás
   const v = valaszErtelmez(JSON.stringify({ items: [{ ...jo2, symptom: '  ' + jo2.symptom + '  ' }] }), cikkek);
   assert.equal(v[0].symptom, jo2.symptom);
@@ -207,6 +212,19 @@ assert.equal(ismetliHibat(jo2, ''), false);
   assert.equal(ismetliHibat(it, kepHibak, kepTema), false, 'a témaszavak nélkül nem ismétlés');
   assert.equal(ismetliHibat({ symptom: 'I asked with vague words and the image looks off?' }, kepHibak, kepTema), true, 'a valódi ismétlés továbbra is kiesik');
   assert.equal(ismetliHibat(ismetlo, utm.hibak, utm.cim + ' ' + utm.eszkoz), true, 'a régi ismétlő tétel témaszavak nélkül is ismétlő');
+  // független átnézés 10-26: rövid tünetnél a régi mérce dönt
+  assert.equal(ismetliHibat({ symptom: 'Gemini image is vague' }, kepHibak, kepTema), true);
+}
+// független átnézés 10-26: a szótő ne tegye relevánssá az általános súgókat (születésnap ≠ enterprise plans)
+{
+  const idx = [{ url: 'https://support.claude.com/en/articles/1-set-up-role-based-permissions', cim: 'Set up role based permissions on enterprise plans' },
+    { url: 'https://support.claude.com/en/articles/2-faq', cim: 'Frequently asked questions about Claude' },
+    { url: 'https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt', cim: 'Data analysis with ChatGPT' },
+    { url: 'https://help.openai.com/en/articles/8555545-uploading-files', cim: 'Uploading files and audio to ChatGPT' }];
+  const parti = { cim: 'How to Plan a Kids’ Birthday Party with Claude', eszkoz: 'Claude', lepesek: ['Set the budget', 'Ask Claude for a theme', 'Start the guest list'] };
+  assert.deepEqual(jeloltCikkek(parti, idx), [], 'a „plan/set/ask/start” egyezés nem elég');
+  const tabla = { cim: 'How to analyze files and spreadsheets with ChatGPT', eszkoz: 'ChatGPT', lepesek: ['Upload your spreadsheet', 'Ask ChatGPT to analyze the data'] };
+  assert.deepEqual(jeloltCikkek(tabla, idx).map(c => c.cim), ['Data analysis with ChatGPT', 'Uploading files and audio to ChatGPT']);
 }
 
 // 6) DOBOZ

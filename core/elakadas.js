@@ -47,7 +47,11 @@ const szoto = w => {
 };
 // Szinte minden súgócím-ben előforduló szavak (szótő alakban): csak 0,3 pontot érnek, mint az eszköz neve —
 // a szótővel a „chats” is „chat” lett, és a „Use analytics chat…” cikk jelölt lett a Claude-artifacts mellé.
-const ALTALANOS = new Set(['chat', 'conversation', 'app', 'work', 'create', 'help', 'account', 'setting']);
+// Független átnézés (10-26, a valódi súgó-listákon): a szótő a „plans/asked/questions/practices” szavakat is
+// teljes pontú egyezéssé tette → a születésnapi-parti útmutató „Set up … on enterprise plans” súgót kapott. Ezért
+// ezek is 0,3-at érnek (a szótő alakjukban: „settings” → „sett”, „creating” → „creat”).
+const ALTALANOS = new Set(['chat', 'conversation', 'app', 'work', 'create', 'creat', 'help', 'account', 'setting', 'sett',
+  'ask', 'question', 'plan', 'set', 'start', 'practice', 'learn', 'verify', 'need', 'sign', 'check', 'best', 'faq', 'frequently']);
 
 /**
  * Súgócikk-jelöltek: a cikkcímek kulcsszó-egyezése az útmutató címével és lépés-címsoraival.
@@ -132,7 +136,10 @@ const linkVagyHtml = v => typeof v === 'string' && /https?:\/\/|www\.|[<>]|\]\(/
 
 /** A súgócikkre magára utal-e („The article says…”, „Review the article's section…”, „The app FAQ…”)? MIÉRT
  *  (mérés 10-26): az olvasó nem látja a cikket — az ilyen tétel üres hivatkozás → kiesik. */
-const cikkreUtal = v => typeof v === 'string' && /\b(articles?|faqs?|help (center|page)|support (page|article)|this page)\b/i.test(v);
+// (független átnézés 10-26: a „news articles” / „share this page” valódi tartalom; a „See <cikkcím>.” és a
+//  „documentation / the guide / Help Centre” viszont hivatkozás)
+const cikkreUtal = v => typeof v === 'string' && (/\b(the|this|that) (help |support )?(articles?|faqs?)\b|\b(article|faq)'s\b|\bfaqs?\b|\bhelp (center|centre|page)\b|\bsupport (page|article)\b|\bdocumentation\b|\bthe (troubleshooting )?guide\b/i.test(v) ||
+  /(^|[.!?]\s+)See [A-Z]/.test(v));
 
 /** A JSON kibontása: ```json burok → nyers szöveg → az első „{” és az utolsó „}” közötti rész. */
 function jsonKibont(szoveg) {
@@ -308,11 +315,14 @@ export function tunetIllik(item, forrasSzoveg) {
  * van — a mérésben a jó tételek fele ezen esett ki. Ha a témaszavak nélkül 2-nél kevesebb szó marad, nem ismétlés.
  */
 export function ismetliHibat(item, hibak, temaSzoveg = '') {
-  const tema = new Set(tokenek(temaSzoveg).map(szoto));
-  const w = [...new Set(tokenek(item?.symptom).map(szoto))].filter(x => !tema.has(x));
-  if (w.length < 2) return false;
   const h = new Set(tokenek(hibak).map(szoto));
-  return w.filter(x => h.has(x)).length / w.length >= 0.6;
+  const arany = w => w.length > 0 && w.filter(x => h.has(x)).length / w.length >= 0.6;
+  const mind = [...new Set(tokenek(item?.symptom).map(szoto))];
+  const tema = new Set(tokenek(temaSzoveg).map(szoto));
+  const w = mind.filter(x => !tema.has(x));
+  // független átnézés 10-26: rövid tünetnél (2-nél kevesebb nem-téma szó) a régi, teljes mérce dönt — különben a
+  // „Gemini image is vague” valódi ismétlés átcsúszna
+  return w.length < 2 ? arany(mind) : arany(w);
 }
 
 // ESZKÖZ NÉLKÜLI ÚTMUTATÓ (független átnézés 10-24): a prompt kérte az „In ChatGPT: …” kezdést, de a kód nem
