@@ -1,13 +1,12 @@
 {
-  "at": "2026-10-26T02:52:15.306Z",
+  "at": "2026-10-26T14:46:27.613Z",
   "send": {
     "fazis": "send",
     "ok": true
   },
   "prepare": {
     "fazis": "prepare",
-    "ok": false,
-    "hiba": "Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.",
+    "ok": true,
     "betu": {
       "ok": true,
       "reason": "",
