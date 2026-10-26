@@ -2,7 +2,7 @@
 // „ha 60 napig nem volt olvasó, minek tartjuk!"). Ingyenes, hálózat nélküli.
 import assert from 'node:assert/strict';
 import {
-  SITE, CSONKA_SOR, pruneBeallitas, latogatasok, lefedettseg, torlendok,
+  SITE, CSONKA_SOR, MAX_BECSULT, pruneBeallitas, latogatasok, lefedettseg, torlendok,
   linkAlakok, linkekKi, toroltListaFrissit, toroltUrlek, maiToroltDb, toroltHalottak
 } from './guide-prune.js';
 
@@ -200,6 +200,31 @@ t('🔌 Házmester: az utótakarítás MINDEN futásban lefut, az élő cikkek �
   assert.match(fn, /torolt-hirek\.json/); assert.match(fn, /torolt-utmutatok\.json/);
   assert.match(fn, /linkekKiMindenhol\(/);
   assert.match(fn, /if \(DRY/, 'a --dry próba is írna');
+});
+
+t('🟡 10-26: a becsült (mintavételezett) nap jelen lévőnek számít, a szegény-nap mérce alól kivétel — de legfeljebb MAX_BECSULT', () => {
+  const days = {};
+  for (let i = 1; i <= 70; i++) days[d(i)] = Array.from({ length: 40 }, (_, k) => ({ path: '/p' + k, visits: 1, views: 1 }));
+  const becsult = (n, elso) => [elso, ...Array.from({ length: n - 1 }, (_, k) => ({ path: '/b' + k, visits: 1, views: 1, becsult: true }))];
+  // egy becsült nap (a szokásos sorszám negyede felett): régen „hiányzó” → most rendben
+  days[d(3)] = becsult(30, { path: '/article/olvasott', visits: 4, views: 4, becsult: true });
+  assert.equal(lefedettseg(days, MOST, 60).ok, true);
+  // ami a becsült napon olvasott, olvasott marad
+  assert.equal(latogatasok(days, d(1), 60).get('olvasott'), 4);
+  // 🔴 független átnézés 10-26: a 10-16-i hibás válasz („1 sor, 100 látogató”) becsültként se menjen át
+  const jo = days[d(9)];
+  days[d(9)] = [{ path: '/', visits: 100, views: 100, becsult: true }];
+  assert.match(lefedettseg(days, MOST, 60).ok_ok, /becsült .* gyanúsan kevés/);
+  days[d(9)] = becsult(20, { path: '/x', visits: 1, views: 1, becsult: true });
+  assert.equal(lefedettseg(days, MOST, 60).ok, true, `${MAX_BECSULT} becsült nap még rendben`);
+  days[d(20)] = becsult(20, { path: '/y', visits: 1, views: 1, becsult: true });
+  const lf = lefedettseg(days, MOST, 60);
+  assert.equal(lf.ok, false, 'a 3. becsült nap → nincs törlés');
+  assert.match(lf.ok_ok, /túl sok becsült/);
+  // a jelöletlen szegény nap továbbra is megállít
+  days[d(20)] = [{ path: '/y', visits: 1, views: 1 }];
+  assert.match(lefedettseg(days, MOST, 60).ok_ok, /gyanúsan kevés/);
+  void jo;
 });
 
 console.log('\n✅ guide-prune.test: mind a ' + pass + ' eset rendben');

@@ -100,5 +100,21 @@ t('🔌 a Házmester ezt a döntést használja (nem a puszta kort)', () => {
   assert.doesNotMatch(src, /if \(t >= cutoff\) continue;/, 'a régi, csak-kor szabály maradt');
 });
 
+t('🟡 10-26: egy becsült (mintavételezett) nap nem állítja le a törlést, és a rajta olvasott hír marad', () => {
+  const d = naplo();
+  d[nap(3)] = [{ path: '/article/csak-becsult-napon', visits: 1, becsult: true },
+    ...Array.from({ length: 25 }, (_, k) => ({ path: `/article/kitolto-${k}`, visits: 1, becsult: true }))];
+  const r = hirTorlendok({ hirek: [hir('senki', 120), hir('csak-becsult-napon', 120)], days: d, now: NOW, minAblak: 75 });
+  assert.equal(r.ok, true, r.ok_ok);
+  assert.deepEqual(r.torlendo.map(h => h.slug), ['senki']);
+  assert.deepEqual(r.olvasott.map(h => h.slug), ['csak-becsult-napon']);
+  // a hibás, 1 soros „becsült” válasz megállít (független átnézés 10-26)
+  const hibas = { ...d, [nap(3)]: [{ path: '/', visits: 100, becsult: true }] };
+  assert.equal(hirTorlendok({ hirek: [hir('senki', 120)], days: hibas, now: NOW, minAblak: 75 }).ok, false);
+  // VALÓDI hiányzó nap továbbra is megállít
+  delete d[nap(5)];
+  assert.equal(hirTorlendok({ hirek: [hir('senki', 120)], days: d, now: NOW, minAblak: 75 }).ok, false);
+});
+
 if (hiba) { console.log(`\n❌ news-prune.test: ${hiba} hiba`); process.exit(1); }
 console.log('✅ news-prune.test: mind rendben');

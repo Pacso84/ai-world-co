@@ -75,13 +75,13 @@ t('🔴 mintavételezett Cloudflare-válasz felismerése (sampleInterval > 1 = e
   assert.equal(mintavetelezett(null), false);
 });
 
-t('🔌 a lekérdezés kéri a mintavételi közt, és mintavételezett napot nem ír', () => {
+t('🔌 a lekérdezés kéri a mintavételi közt, és mintavételezett napot csak jelölve ír', () => {
   const src = readFileSync(new URL('./traffic-log.js', import.meta.url), 'utf-8');
   assert.match(src, /avg \{ sampleInterval \}/, 'a Cloudflare-lekérdezés nem kéri a sampleInterval-t');
-  // 10-25: az egész napos mintavételezett válasz NEM kerül a naplóba — darabokban kérjük le; ha még órásan is
-  // mintavételezett, akkor dob (a meglévőt nem írja felül)
+  // 10-25: az egész napos mintavételezett válasz NEM kerül a naplóba — darabokban kérjük le; 10-26: ha még órásan
+  // is mintavételezett, BECSÜLT jelöléssel kerül be (pontos napot nem ír felül — lásd lent)
   assert.match(src, /if \(!mintavetelezett\(nyers\)\) rows = sorokbol\(nyers\);/, 'a mintavételezett válasz átmenne');
-  assert.match(src, /if \(mintavetelezett\(hn\)\) throw/, 'az órás bontásban is mintavételezett válasz átmenne');
+  assert.match(src, /if \(mintavetelezett\(hn\)\) becsult = true/, 'az órás bontásban is mintavételezett válasz jelöletlenül menne át');
 });
 
 // ---------- metszés ----------
@@ -233,8 +233,9 @@ t('🤖 a napi lekérdezés korlátja 1000 (a robotos napon 500+ útvonal), a fe
   assert.equal(NAPI_LIMIT, 1000);
   const src = readFileSync(new URL('./traffic-log.js', import.meta.url), 'utf-8');
   assert.match(src, /limit: \$\{NAPI_LIMIT\}, orderBy: \[count_DESC\]/);
-  assert.match(src, /return \{ rows: robotLevonas\(rows, robotSorok\), robot: vodrok \};/);
-  assert.match(src, /const \{ rows, robot \} = await fetchDay\(day\);/);
+  assert.match(src, /const tisztitott = robotLevonas\(rows, robotSorok\);/);
+  assert.match(src, /return \{ rows: becsult \? tisztitott\.map\(r => \(\{ \.\.\.r, becsult: true \}\)\) : tisztitott, robot: vodrok, becsult \};/);
+  assert.match(src, /const \{ rows, robot, becsult \} = await fetchDay\(day\);/);
 });
 
 // ── 10-25: A MINTAVÉTELEZETT NAP PÓTLÁSA (napi riport: „hírtörlés kihagyva: hiányzó nap 10-23 — hiánytalan 1 nap, kell 75”) ──
@@ -262,6 +263,45 @@ t('🔌 bekötés: a fő ciklus a lekerdezendoNapok-ot, a fetchDay mintavételn�
   const fd = src.slice(src.indexOf('export async function fetchDay'), src.indexOf('export async function fetchDay') + 3000);
   assert.match(fd, /napAblakok\(day, 4\)/);
   assert.match(fd, /napAblakok\(day, 24\)/);
+});
+
+// ---------- becsült nap (10-26): a 10-23 órásan is mintavételezett volt ----------
+
+t('🟡 becsült nap: a sorok jelölve kerülnek be (a hiányzó nap ne állítsa le a törlést)', () => {
+  const out = mergeDay({}, '2026-10-23', [{ path: '/article/a', visits: 3, views: 3, becsult: true }], '2026-10-26');
+  assert.deepEqual(out['2026-10-23'], [{ path: '/article/a', visits: 3, views: 3, becsult: true }]);
+  const pontos = mergeDay({}, '2026-10-23', [{ path: '/a', visits: 3, views: 3 }], '2026-10-26');
+  assert.ok(!('becsult' in pontos['2026-10-23'][0]), 'pontos napon nincs jelölés');
+});
+
+t('🟡 pontos napot becsült adat NEM ír felül; a becsültet a pontos igen (kevesebb sorral is)', () => {
+  const pontosNap = { '2026-10-23': [{ path: '/a', visits: 5, views: 5 }] };
+  const b = [{ path: '/a', visits: 9, views: 9, becsult: true }, { path: '/b', visits: 9, views: 9, becsult: true }];
+  // FRISS napon (a régebbi nap a szokásos szabály miatt amúgy sem mozdulna — az a tesztet vakká tenné)
+  assert.deepEqual(mergeDay(pontosNap, '2026-10-23', b, '2026-10-24')['2026-10-23'], pontosNap['2026-10-23']);
+  const sok = Array.from({ length: 80 }, (_, k) => ({ path: '/q' + k, visits: 1, views: 1, becsult: true }));
+  assert.deepEqual(mergeDay(pontosNap, '2026-10-23', sok, '2026-10-24')['2026-10-23'], pontosNap['2026-10-23'], 'több sorú becsült sem írja felül');
+  const becsultNap = { '2026-10-23': Array.from({ length: 10 }, (_, k) => ({ path: '/p' + k, visits: 1, views: 1, becsult: true })) };
+  // (friss napon — a RECENT_DAYS-nél régebbi nap a szokásos szabály szerint már nem mozdul)
+  const uj = mergeDay(becsultNap, '2026-10-23', [{ path: '/a', visits: 2, views: 2 }], '2026-10-24');
+  assert.deepEqual(uj['2026-10-23'], [{ path: '/a', visits: 2, views: 2 }], 'a pontos 1 sor is nyer a becsült 10 ellen');
+});
+
+t('🟡 két becsült válasz ÖSSZEVONÓDIK (oldalanként a nagyobb szám) — az újabb minta nem törli a régebbi olvasást', () => {
+  const regi = { '2026-10-23': [{ path: '/article/real-read', visits: 1, views: 1, becsult: true }, { path: '/a', visits: 2, views: 2, becsult: true }] };
+  const uj = [{ path: '/a', visits: 5, views: 5, becsult: true }, { path: '/b', visits: 1, views: 1, becsult: true }];
+  const out = mergeDay(regi, '2026-10-23', uj, '2026-10-24')['2026-10-23'];
+  const v = Object.fromEntries(out.map(r => [r.path, r.visits]));
+  assert.deepEqual(v, { '/article/real-read': 1, '/a': 5, '/b': 1 });
+  assert.ok(out.every(r => r.becsult));
+});
+
+t('🔌 bekötés: órás mintavételnél NEM dob, hanem becsültként jelöl', () => {
+  const src = readFileSync(new URL('./traffic-log.js', import.meta.url), 'utf-8');
+  const fd = src.slice(src.indexOf('export async function fetchDay'), src.indexOf('// ---------- riport'));
+  assert.ok(!/throw new Error\('mintavételezett/.test(fd), 'a régi dobás maradt — a nap megint kimaradna');
+  assert.match(fd, /becsult = true/);
+  assert.match(fd, /becsult: true/);
 });
 
 console.log('\n✅ traffic-log.test: mind a ' + pass + ' eset rendben');

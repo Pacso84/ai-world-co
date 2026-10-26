@@ -54,13 +54,26 @@ export function mergeDay(log, day, rows, today) {
   const known = day in out;
   const fresh = dayAge(day, today) < RECENT_DAYS;
   if (known && !fresh) return out;                // a történelem nem mozdul
-  if (known && rows.length < SZEGENY_ARANY * (out[day]?.length || 0)) return out;   // hibás válasz: ne rontsunk
-  out[day] = rows.map(r => ({ path: r.path, visits: r.visits, views: r.views }));
+  // BECSÜLT NAP (10-26): a még órás bontásban is mintavételezett nap jelölve kerül be. Pontos napot
+  // becsült adat nem ír felül; a becsültet a később érkező pontos igen (akkor is, ha kevesebb sora van).
+  const regiBecsult = known && (out[day] || []).some(r => r.becsult), ujBecsult = rows.some(r => r.becsult);
+  if (known && ujBecsult && !regiBecsult) return out;
+  // két becsült válasz: minden minta véletlen → ÖSSZEVONVA, oldalanként a nagyobb szám (az újabb minta ne
+  // törölje a régebbiben látott olvasást — független átnézés 10-26)
+  if (regiBecsult && ujBecsult) {
+    const m = new Map(out[day].map(r => [r.path, r]));
+    for (const r of rows) if (!m.has(r.path) || r.visits > m.get(r.path).visits) m.set(r.path, { path: r.path, visits: r.visits, views: r.views, becsult: true });
+    out[day] = [...m.values()];
+    return out;
+  }
+  if (known && !(regiBecsult && !ujBecsult) && rows.length < SZEGENY_ARANY * (out[day]?.length || 0)) return out;   // hibás válasz: ne rontsunk
+  out[day] = rows.map(r => ({ path: r.path, visits: r.visits, views: r.views, ...(r.becsult ? { becsult: true } : {}) }));
   return out;
 }
 
 // Mintavételezett-e a Cloudflare-válasz? (sampleInterval > 1: egy rögzített esemény N látogatást
-// jelent — a 10-16-i „1 sor, 100 látogató" erre vall.) Ilyen napot nem írunk a naplóba.
+// jelent — a 10-16-i „1 sor, 100 látogató" erre vall.) Ilyen napot órás darabokban kérünk le; ha még
+// úgy is mintavételezett, BECSÜLT jelöléssel kerül be (10-26, lásd mergeDay és guide-prune MAX_BECSULT).
 export function mintavetelezett(nyers) {
   return (Array.isArray(nyers) ? nyers : []).some(x => Number(x?.avg?.sampleInterval) > 1);
 }
@@ -274,7 +287,7 @@ export async function fetchDay(day) {   // exportálva: a robotszűrő élő pr�
     .filter(x => x.dimensions?.requestPath)
     .map(x => ({ path: x.dimensions.requestPath, visits: x.sum?.visits || 0, views: x.count || 0 }));
   const nyers = await lekerAblak(since, until);
-  let rows;
+  let rows, becsult = false;
   if (!mintavetelezett(nyers)) rows = sorokbol(nyers);
   else {
     // 10-25: mintavételezett nap → 6 órás, kell esetén 1 órás darabok (a határ előtt 1 ms-mal zárva: nincs dupla számolás)
@@ -285,7 +298,9 @@ export async function fetchDay(day) {   // exportálva: a robotszűrő élő pr�
       if (!mintavetelezett(n)) { reszek.push(sorokbol(n)); continue; }
       for (const [hs, hu] of napAblakok(day, 24).filter(([a]) => a >= s && a < u)) {
         const hn = await lekerAblak(hs, veg(hu));
-        if (mintavetelezett(hn)) throw new Error('mintavételezett Cloudflare-adat még órás bontásban is — a meglévőt nem írom felül');
+        // 10-26 (user: „csináld!”): a 10-23 órásan is mintavételezett volt, és a kimaradt nap a hírtörlést
+        // ~januárig leállította volna → az ilyen óra BECSÜLT adatként kerül be (a sorok jelölve, lásd mergeDay)
+        if (mintavetelezett(hn)) becsult = true;
         reszek.push(sorokbol(hn));
       }
     }
@@ -318,7 +333,8 @@ export async function fetchDay(day) {   // exportálva: a robotszűrő élő pr�
       for (const r of p) if (r.dimensions?.requestPath) robotSorok.push({ path: r.dimensions.requestPath, visits: r.sum?.visits || 0, views: r.count || 0 });
     }
   }
-  return { rows: robotLevonas(rows, robotSorok), robot: vodrok };
+  const tisztitott = robotLevonas(rows, robotSorok);
+  return { rows: becsult ? tisztitott.map(r => ({ ...r, becsult: true })) : tisztitott, robot: vodrok, becsult };
 }
 
 // ---------- riport (helyben is futtatható, csak olvas) ----------
@@ -393,13 +409,14 @@ async function main() {
     const known = day in merged;
     if (known && dayAge(day, today) >= RECENT_DAYS) { skipped++; continue; }
     try {
-      const { rows, robot } = await fetchDay(day);
+      const { rows, robot, becsult } = await fetchDay(day);
       const regi = merged[day];
       merged = mergeDay(merged, day, rows, today);
       const v = rows.reduce((s, r) => s + r.visits, 0);
       console.log('  ' + day + ': ' + v + ' belépő, ' + rows.length + ' oldal'
         + (!known ? ' (új)' : merged[day] !== regi ? ' (frissítve)'
-          : ` (⚠️ szegényebb válasz a meglévő ${regi.length} soros napnál — megtartva)`));
+          : ` (⚠️ szegényebb vagy becsült válasz a meglévő ${regi.length} soros napnál — megtartva)`)
+        + (becsult ? ' (becsült — a Cloudflare órásan is mintavételezett)' : ''));
       for (const v of robot) console.log(`  🤖 ${day}: robot kiszűrve — ${v.orszag} ${String(v.ora).slice(11, 16)} UTC ${v.eszkoz}: ${v.latogatas} látogatás, ${v.oldalak} különböző oldal`);
       ok++;
     } catch (e) {
