@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "written_at": "2026-10-27T03:00:52.010Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0032195,
+    "original_draft": "2026-10-27T02-51-00-950Z_openai-blog_ChatGPT_s_expanding_world_of_work.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/chatgpt-expanding-world-of-work",
+    "source_links": [
+      "https://openai.com/index/chatgpt-expanding-world-of-work"
+    ],
+    "source_snippet": "Explore OpenAI Signals data on 165 work activities across nearly 100 countries, revealing how people use ChatGPT for work and how usage changes over time.",
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-10-27T03:03:58.635Z",
+    "slug": "how-people-use-chatgpt-for-work-what-openai-s-new-data-covers",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 598
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured, friendly, and honest article that explains the announcement without overclaiming. Proper sourcing, clear explanations of terms, diverse reader personas in the impact section, and a useful wrap-up with a concrete next step.",
+      "_aiCost": 0.0014292,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-27T03:06:02.637Z",
+    "guide_worthy": false,
+    "pairing_reason": "Signals is a data tracking initiative for OpenAI, not a consumer-facing feature; the article announces aggregate data collection rather than introducing a specific tool or setting users can interact with.",
+    "image_v": 2,
+    "image_at": "2026-10-27T03:11:29.249Z",
+    "seo": {
+      "meta_description": "OpenAI's new data reveals how workers use ChatGPT—covering 165 activities across nearly 100 countries. See what tasks people use AI for at work.",
+      "keywords": [
+        "how people use ChatGPT for work",
+        "ChatGPT workplace usage",
+        "OpenAI Signals data",
+        "ChatGPT job tasks statistics",
+        "AI at work trends",
+        "OpenAI workplace data 2024",
+        "ChatGPT work activities"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Include specific examples of work activities people use ChatGPT for (e.g., email drafting, coding, research) to capture long-tail search queries and improve relevance signals",
+        "Add a section with actionable insights readers can apply, which can support featured snippet opportunities and increase time-on-page",
+        "Cite the OpenAI Signals page directly and link to related OpenAI research announcements to build topical authority and internal linking opportunities"
+      ],
+      "optimised_at": "2026-10-27T03:19:24.390Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How People Use ChatGPT for Work: What OpenAI's New Data Covers\"\nsubtitle: \"OpenAI says its Signals data tracks 165 work activities across nearly 100 countries, and what that could mean for your job.\"\ncategory: \"news\"\naudience: \"business\"\nread_time_minutes: 3\ntags: [\"chatgpt\", \"openai\", \"work\", \"ai-at-work\", \"workplace-ai\"]\n---\n\n# How People Use ChatGPT for Work: What OpenAI's New Data Covers\n\n> **In short:** OpenAI's announcement, titled \"ChatGPT's expanding world of work,\" points to its Signals data, which covers 165 work activities across nearly 100 countries. It is meant to show how people use ChatGPT for work and how that use changes over time.\n\nIf you have ever wondered whether other people use AI for the same tasks you do, you are not alone. Many workers are asking that question right now. OpenAI has published a new look at exactly that.\n\n## What OpenAI announced\n\nOpenAI pointed readers to its Signals data. According to the announcement, the data covers 165 work activities, collected across nearly 100 countries. The company says it is meant to show two things:\n\n- **How people use ChatGPT for work.** That is, which kinds of tasks people bring to the tool.\n- **How usage changes over time.** That is, whether those patterns shift as people get more familiar with AI.\n\nA quick note on terms: a \"work activity\" here means a specific kind of job task, such as writing, analyzing information, or organizing a project. The announcement itself is a pointer to the data rather than a long list of findings, so this article sticks to what the company has said publicly and does not guess at specific results.\n\n## Why a broad view like this matters\n\nMost of what people hear about AI at work comes from anecdotes, headlines, or product demos. A dataset that covers many activities across many countries gives a wider picture. It shows what is common, not just what is possible.\n\nThink of it like a grocery store checking which items sell most often across many stores. One shopper's cart tells you very little. Patterns across thousands of carts tell you far more.\n\n## What this means for you\n\n- **If you're an employee**: Use the announcement as a prompt to think about your own week. Which tasks take the most time, and which ones could a chatbot (a tool that answers and writes in plain language) realistically help with? Start small, and always check its work.\n- **If you run a business or manage a team**: Treat broad usage data as a conversation starter, not a rulebook. Ask your team which tasks they already try with AI, and set clear guidelines for sensitive information before anyone uses it.\n- **If you're just getting started**: You do not need to act on the data yet. Pick one low-stakes task, like drafting an email or summarizing meeting notes, and see how the tool handles it.\n- **If you're worried about your job**: Data like this describes how people use AI, not what your employer will decide. Focus on the skills you bring that a tool cannot replace, such as judgment, relationships, and knowing your industry.\n\n## Wrap-up\n\nOpenAI's Signals data is meant to show how people use ChatGPT for 165 work activities across nearly 100 countries, and how that shifts over time. The announcement is a useful signal, but it is not a guide to your specific job. Your next step is simple: write down the three tasks you repeat most often at work, and ask yourself which one you would be willing to test with an AI tool this week.",
+  "original_title": "ChatGPT’s expanding world of work"
+}

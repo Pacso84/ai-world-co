@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "written_at": "2026-10-27T03:04:49.253Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.003404,
+    "original_draft": "2026-10-27T02-51-00-950Z_google-ai-blog_Our_newest_AI_Quest__Mapping_the_human_brain.json",
+    "source_id": "google-ai-blog",
+    "source_name": "Google AI (hivatalos, blog.google)",
+    "source_link": "https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks/",
+    "source_links": [
+      "https://blog.google/products-and-platforms/products/education/ai-quests-polar-peaks/"
+    ],
+    "source_snippet": "Learn AI literacy via Google’s latest AI Quests lesson on neuroscience, “Polar Peaks.”",
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "rejected_at": "2026-10-27T03:02:53.237Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 609
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article meets quality standards: it has a warm hook, explains technical terms in plain language, includes a solid What this means for you section with four audience-specific takeaways, and correctly attributes all claims to Google while being transparent about limited source information. No prohibited content, no clichés, and respectful throughout.",
+      "_aiCost": 0.001425,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The article meets quality standards: it has a strong hook, explains key terms in plain language, includes the required 'What this means for you' section with audience-specific takeaways, and maintains a friendly, encouraging tone throughout. Factual accuracy is solid—the Writer sticks to what Google's announcement actually says and correctly avoids inventing schedules, prices, or delivery details. The wrap-up gives a concrete next step. No prohibited content, no cliches, no British spellings detected.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-10-27T02-51-00-950Z_google-ai-blog_Our_newest_AI_Quest__Mapping_the_human_brain.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-10-27T03:05:44.827Z",
+    "slug": "google-s-new-ai-quests-lesson-on-neuroscience-what-it-covers-and-who-i",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-27T03:05:57.398Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article describes a vaguely announced lesson without concrete access instructions or named tool details users could act on",
+    "image_v": 2,
+    "image_at": "2026-10-27T03:10:46.393Z",
+    "seo": {
+      "meta_description": "Google's AI Quests 'Polar Peaks' lesson uses brain science to teach AI basics — discover how neuroscience helps explain AI mistakes.",
+      "keywords": [
+        "Google AI Quests",
+        "AI Quests Polar Peaks lesson",
+        "neuroscience and AI",
+        "how to learn AI basics",
+        "brain science for beginners",
+        "Google AI education"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add a direct link or clear call-to-action to help readers access the actual Polar Peaks lesson",
+        "Include 1-2 specific examples of what the lesson covers (e.g., how neurons inspired neural networks)",
+        "Specify the target audience more clearly (complete beginners, students, educators) so readers know if it's right for them"
+      ],
+      "optimised_at": "2026-10-27T03:19:04.634Z"
+    },
+    "fact_verified_at": "2026-10-27T03:26:35.905Z"
+  },
+  "article_markdown": "---\ntitle: \"Google's New AI Quests Lesson on Neuroscience: What It Covers and Who It's For\"\nsubtitle: \"Google's latest AI Quests lesson, 'Polar Peaks,' pairs brain science with AI basics, according to the company.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"ai-literacy\", \"google\", \"learning\", \"neuroscience\", \"ai-quests\"]\n---\n\n# Google's New AI Quests Lesson on Neuroscience: What It Covers and Who It's For\n\n> **In short:** Google says the newest entry in its AI Quests series, titled \"Mapping the human brain,\" includes a lesson called \"Polar Peaks\" that uses neuroscience (the study of the brain and nervous system) to help people learn about AI. The announcement is brief, so this guide explains the idea and what it could mean for you.\n\nHave you ever wondered how a computer can seem to \"think\" and still get simple things wrong? A lesson about the brain is a surprisingly good place to start asking that question.\n\n## Why brain science and AI overlap\n\nYour brain is made of billions of nerve cells, called neurons, that pass signals to each other. Neuroscientists try to map those connections, a bit like drawing a road map of a city so you can see which streets lead where.\n\nAI researchers have borrowed ideas from brain science for decades. Many AI systems are loosely inspired by how neurons connect, although they work very differently from a human brain. Knowing that difference is a big part of AI literacy, which simply means understanding what AI is, what it can do, and where it falls short.\n\n## What Google's announcement says\n\nAccording to Google, the new entry in its AI Quests series is titled \"Mapping the human brain.\" Inside it is a lesson called \"Polar Peaks,\" which Google describes as a neuroscience lesson meant to help people learn about AI.\n\nThat is the full set of facts in the announcement. It doesn't cover a schedule, a price, or exactly how the lesson is delivered, so don't assume details beyond what Google has shared. When you find the lesson, check the page itself for those answers.\n\n## How to get more from a lesson like this\n\nYou don't need a science background to benefit. A few habits help:\n\n- **Read with a question in mind.** For example: \"Where does the brain comparison hold up, and where does it break down?\"\n- **Write down one new term.** Explaining it in your own words is one of the fastest ways to remember it.\n- **Pause at the analogies.** Lessons often use comparisons, and noticing where they stop working teaches you as much as the comparison itself.\n\n## What this means for you\n\n- **In everyday life**: Lessons that connect AI to familiar topics, like your own brain, can make AI feel less mysterious and easier to talk about with family or friends.\n- **For your work or studies**: If you're a student, or you need to explain AI to others at work, a plain-language lesson gives you a shared starting point.\n- **If you're just getting started**: Choose one short lesson, finish it, and write down two things you learned. That small habit builds real understanding.\n- **If you already use it**: Notice where the lesson's ideas match your daily experience with AI tools and where they don't. Spotting those gaps helps you decide when to trust an answer and when to double-check it.\n\n## Wrap-up\n\nGoogle's new AI Quests lesson, \"Polar Peaks,\" connects neuroscience to AI literacy, which makes it a friendly entry point for anyone curious about AI. Today, open the AI Quests series, find the lesson, and spend ten minutes on it. Then jot down one thing that surprised you.",
+  "original_title": "Our newest AI Quest: Mapping the human brain"
+}

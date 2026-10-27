@@ -7588,10 +7588,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Export at the right resolution, drop into a Canva layout, and use one Canva setting to avoid the blurry-text trap so your social posts and slides stay sharp.",
-      "status": "todo",
+      "status": "done",
       "icon": "🎨",
       "proposed_at": "2026-10-09T03:56:58.987Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-10-27T03:06:41.069Z"
     },
     {
       "id": "how-to-set-up-a-shared-family-grocery-list-in-alexa-anyone-c",
@@ -8227,6 +8228,28 @@
         "datum": "2026-10-26"
       },
       "written_at": "2026-10-26T02:22:50.682Z"
+    },
+    {
+      "id": "how-to-use-claude-code-to-sort-a-messy-downloads-folder-on-y",
+      "company": "Anthropic",
+      "tool": "Claude Code",
+      "title": "How to Use Claude Code to Sort a Messy Downloads Folder on Your Computer",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Show how to point Claude Code at one folder, ask it to propose a sorting plan first, and approve the moves only after you have read the plan.",
+      "status": "done",
+      "icon": "🗂️",
+      "proposed_at": "2026-10-27T03:06:17.041Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "how to use claude code",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-10-27"
+      },
+      "written_at": "2026-10-27T03:07:03.640Z"
     }
   ],
   "trend_proba": [
@@ -8277,6 +8300,10 @@
     {
       "kifejezes": "how to make ai videos",
       "at": "2026-10-26T02:21:35.311Z"
+    },
+    {
+      "kifejezes": "how to use claude code",
+      "at": "2026-10-27T03:06:07.150Z"
     }
   ]
 }

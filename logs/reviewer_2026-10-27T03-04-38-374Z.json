@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-10-27T03:01:17.727Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.006710680000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-21T02-28-08-988Z_snowflake_How_to_Build_a_Modern_Fraud_Detection_Platform_wit.json",
+      "article": "ARTICLE_2026-10-21T02-28-08-988Z_snowflake_How_to_Build_a_Modern_Fraud_Detection_Platform_wit.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00117201
+    },
+    {
+      "writer": "WRITER_2026-10-27T02-51-00-950Z_google-ai-blog_Our_newest_AI_Quest__Mapping_the_human_brain.json",
+      "rejected": "REJECTED_2026-10-27T02-51-00-950Z_google-ai-blog_Our_newest_AI_Quest__Mapping_the_human_brain.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.00116088
+    },
+    {
+      "writer": "WRITER_2026-10-27T02-51-00-950Z_openai-blog_ChatGPT_s_expanding_world_of_work.json",
+      "article": "ARTICLE_2026-10-27T02-51-00-950Z_openai-blog_ChatGPT_s_expanding_world_of_work.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0014292
+    },
+    {
+      "writer": "WRITER_2026-10-27T02-51-00-950Z_openai-blog_How_Fanatics_and_OpenAI_streamline_the_fan_experie.json",
+      "article": "ARTICLE_2026-10-27T02-51-00-950Z_openai-blog_How_Fanatics_and_OpenAI_streamline_the_fan_experie.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00136431
+    }
+  ],
+  "finished_at": "2026-10-27T03:04:38.374Z",
+  "duration_seconds": 200.647
+}

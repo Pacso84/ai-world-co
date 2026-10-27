@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "move-midjourney-images-into-a-canva-design-without-losing-qu",
+    "company": "Midjourney",
+    "tool": "Midjourney",
+    "icon": "🎨",
+    "level": "intermediate",
+    "source_news": null,
+    "trend": null,
+    "written_at": "2026-10-27T03:06:41.069Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.004729,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-27T03:09:25.746Z",
+    "slug": "move-midjourney-images-into-a-canva-design-without-losing-quality",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"upscale\", \"text\", \"png\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\")."
+      ],
+      "wordCount": 1359
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid guide with clear step-by-step instructions, appropriate hedging on UI elements that vary, concrete size examples (1080x1080, 1920x1080), and a helpful What this means for you section. The tone is encouraging and non-judgmental throughout. No invented facts, quotes, or hard UI promises — all variable elements are hedged with 'often,' 'may be,' and 'look for.' Recommended for publication.",
+      "_aiCost": 0.0019464,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-27T03:12:54.010Z",
+    "seo": {
+      "meta_description": "Learn how to use Midjourney images in Canva without losing quality. Export high-res files, size your page first, and add text in Canva for sharp designs.",
+      "keywords": [
+        "how to use Midjourney in Canva",
+        "Midjourney export quality",
+        "Midjourney to Canva",
+        "Canva image quality",
+        "Midjourney high resolution export",
+        "keeping AI images sharp",
+        "Midjourney image resolution"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the specific file format recommendations (PNG vs JPG) for preserving quality",
+        "Include actual pixel dimensions for optimal Canva page sizing",
+        "Add a section on Midjourney's upscaling options (2x, 4x) for better source images"
+      ],
+      "optimised_at": "2026-10-27T03:20:56.434Z"
+    },
+    "fact_verified_at": "2026-10-27T03:26:14.580Z"
+  },
+  "article_markdown": "---\ntitle: \"Move Midjourney images into a Canva design without losing quality\"\nsubtitle: \"Export the right file, size your Canva page correctly, and keep text crisp so your social posts and slides stay sharp.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"\"\ntool: \"Midjourney\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"midjourney\", \"canva\", \"image-editing\", \"social-media\", \"design\"]\n---\n\n# Move Midjourney images into a Canva design without losing quality\n\n> **In short:** You can place a Midjourney image into a Canva design and keep it sharp by saving the largest version you can download, sizing your Canva page first, and typing all text in Canva instead of asking Midjourney to draw it. Nothing can make a small image sharper after the fact.\n\nMidjourney is excellent at making pictures, but it is less reliable at writing clear words inside them, and a picture that looks crisp on your screen can turn soft once it's stretched across a slide or a post. Canva is where you add layout and text. This guide shows you how to bring the two together so your final design looks clean. It's written for people who already make images in Midjourney and have used Canva a little.\n\n## Before you start\n- A Midjourney account with at least one finished image you want to use. Midjourney generally requires a paid plan, so check the official pricing page if you're not sure what you have.\n- A free or paid Canva account, opened in a web browser or the Canva app.\n- A computer is easiest for this workflow, since you'll be watching file sizes and zoom levels.\n- Plan about 20 minutes for your first run.\n\n## Step 1 — Download the largest version of your image\nOpen the image you want in Midjourney. Look for a download icon (often a small arrow pointing down) or a **Download** option in a menu. If you don't see it, check the **three-dot menu** on the image, since layouts change. If you see an **Upscale** button on the image, consider using it first, because a larger version gives you more room to crop and resize without blur. Save the file to a folder you'll remember, and keep its original name.\n\nUpscaling may depend on your plan or on which version of the tool you're using, so if the button isn't there, use the image as it is.\n\nYou'll know it worked when the file lands in your Downloads folder (or wherever your browser saves files) and it opens as a picture on your computer.\n\n## Step 2 — Create a Canva design at the exact size you need\nSign in to Canva and start a new design. Look for a **Custom size** or **Create a design** option, and enter the width and height in pixels. For a square social post, a common size is 1080 by 1080 pixels. For a widescreen slide, 1920 by 1080 is a standard choice. Setting the size first means you won't have to stretch the picture later, and stretching is the main cause of mushy images.\n\nIf you can't find a custom size option, search the template library for your platform and open a blank template from there. It will still give you a fixed page size.\n\n💬 Example: \"Create a square social post, 1080 by 1080 pixels, with a bold headline for [your business name].\" (Use this as a reminder for your own page setup; you don't type it into Canva.)\n\nYou'll know it worked when your blank page appears with the dimensions shown near the top of the screen.\n\n## Step 3 — Upload the image and place it without stretching\nFind the **Uploads** area in the left-hand side panel. It may be labeled **Uploads**, **Upload files**, or represented by an upward arrow. Choose your Midjourney file, or drag it onto the page. Once it appears on the page, click it and drag one of the **corner handles** inward or outward. Hold the **Shift** key while you drag, which keeps the width and height in proportion so the image doesn't look squashed.\n\nFill the page with the image, or cover part of it and leave space for text. If the image looks blurry at this point, it's usually because the source file was small, so go back and try a larger download.\n\n💬 Example prompt for Midjourney (type this before you download): \"A quiet lighthouse on a rocky cliff at sunrise, [your chosen style], soft light, with open empty sky on the left for a headline, no text in the image.\"\n\nYou'll know it worked when the image fills the space you planned, edges look straight, and nothing is distorted.\n\n## Step 4 — Add all text as Canva text, not inside the picture\nClick **Text** in the left panel and choose a heading style or a plain text box. Type your words directly onto the page, then move the box over the open space in your image. Keep the font size large enough that it reads well on a phone. Midjourney often writes letters that look almost right but have small errors, and enlarging those letters makes the errors more obvious. Canva text stays crisp at any size because it's drawn fresh, not stretched.\n\nIf your text lands on a busy part of the picture, try the **color** setting for the text or add a simple shape behind it so the words stand out.\n\n💬 Example: \"Spring sale: [your offer] this weekend only\" (type this into a Canva text box, not into Midjourney).\n\nYou'll know it worked when your words are sharp when you zoom in and the text is easy to read against the background.\n\n## Step 5 — Download with the right file type and check it at full size\nClick the **Share** button in the top-right corner, then choose **Download**. A file-type menu usually appears. For social posts and screens, choose **PNG**, which keeps edges clean. For printing, look for **PDF Print**. Some file types or quality options may be limited on the free plan, so check the menu. Once downloaded, open the file and zoom to 100 percent. Look at the edges of the image and the letters. If anything looks soft, go back to Step 1 and check which size of image you downloaded.\n\nYou'll know it worked when the finished file looks sharp at 100 percent zoom and your text has clean edges.\n\n## Common mistakes\n- **Stretching the picture to fill the page.** This blurs edges and warps shapes. Fix it by setting the page size first (Step 2) and resizing with the corner handles while holding Shift.\n- **Asking Midjourney to draw your headline.** Text inside generated images is often misspelled or fuzzy. Fix it by typing all words in Canva (Step 4) and telling Midjourney to leave empty space instead.\n- **Downloading a tiny preview.** A small file can't be made sharp later. Fix it by using the largest version you can download and checking the file opens clearly before you start designing.\n\n## What this means for you\n- **In everyday life:** Make a birthday card, a family photo album cover, or a recipe card with a generated picture and your own handwritten-style text, all sharp enough to print at home.\n- **For your business or work:** Create social posts and presentation slides where the picture is generated in Midjourney and the headlines, prices, and logos are placed in Canva, so your words are always accurate and readable.\n- **If you want to go further:** Build a reusable Canva template with your favorite page size and text styles, then drop in a new Midjourney image each time you need a new post. Canva's own help pages describe how to save templates; look for a **Save as template** or similar option in the menu.\n\n## Try it now\nPick one Midjourney image you already like, download it, and place it into a new Canva page sized 1080 by 1080 pixels. Type one short headline in a Canva text box, export it as a PNG, and open it at 100 percent zoom. You'll see the difference between a crisp image and a blurry one in about two minutes.",
+  "original_title": "Move Midjourney images into a Canva design without losing quality"
+}

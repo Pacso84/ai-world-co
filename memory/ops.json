@@ -1,126 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179272308477893",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-23T02:38:04.778Z",
-      "updated": "2026-10-23T02:41:12.476Z"
-    },
-    {
-      "id": "t179272327247759",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-23T02:41:12.477Z",
-      "updated": "2026-10-23T02:42:11.586Z"
-    },
-    {
-      "id": "t179272333158727",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-23T02:42:11.587Z",
-      "updated": "2026-10-23T02:42:17.953Z"
-    },
-    {
-      "id": "t179272333795478",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-23T02:42:17.954Z",
-      "updated": "2026-10-23T02:42:38.941Z"
-    },
-    {
-      "id": "t179280874841022",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-24T02:25:48.410Z",
-      "updated": "2026-10-24T02:25:48.552Z"
-    },
-    {
-      "id": "t179280874855391",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-10-24T02:25:48.553Z",
-      "updated": "2026-10-24T02:27:37.487Z"
-    },
-    {
-      "id": "t179280885748969",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-24T02:27:37.489Z",
-      "updated": "2026-10-24T02:27:37.644Z"
-    },
-    {
-      "id": "t179280885764681",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-10-24T02:27:37.646Z",
-      "updated": "2026-10-24T02:30:01.058Z"
-    },
-    {
-      "id": "t179280900105922",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-24T02:30:01.059Z",
-      "updated": "2026-10-24T02:31:07.161Z"
-    },
-    {
-      "id": "t179280906716343",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-24T02:31:07.163Z",
-      "updated": "2026-10-24T02:31:25.263Z"
-    },
-    {
-      "id": "t179280908530316",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-24T02:31:25.303Z",
-      "updated": "2026-10-24T02:32:59.454Z"
-    },
-    {
-      "id": "t179280917945642",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-24T02:32:59.456Z",
-      "updated": "2026-10-24T02:34:01.192Z"
-    },
-    {
-      "id": "t179280924122678",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-24T02:34:01.226Z",
-      "updated": "2026-10-24T02:34:01.377Z"
-    },
-    {
-      "id": "t179280924141183",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-24T02:34:01.411Z",
-      "updated": "2026-10-24T02:34:01.581Z"
-    },
-    {
-      "id": "t179280924158211",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-24T02:34:01.582Z",
-      "updated": "2026-10-24T02:34:55.360Z"
-    },
-    {
       "id": "t179280929536513",
       "title": "Run guide",
       "status": "done",
@@ -479,49 +359,129 @@
       "agent": "publisher",
       "created": "2026-10-26T02:38:41.684Z",
       "updated": "2026-10-26T02:39:16.830Z"
+    },
+    {
+      "id": "t17930694014323",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-27T02:50:01.432Z",
+      "updated": "2026-10-27T02:50:01.569Z"
+    },
+    {
+      "id": "t179306940157081",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-27T02:50:01.570Z",
+      "updated": "2026-10-27T02:53:59.774Z"
+    },
+    {
+      "id": "t179306963977510",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-27T02:53:59.775Z",
+      "updated": "2026-10-27T02:59:43.652Z"
+    },
+    {
+      "id": "t179306998365359",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-27T02:59:43.653Z",
+      "updated": "2026-10-27T03:01:17.608Z"
+    },
+    {
+      "id": "t179307007761083",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-27T03:01:17.610Z",
+      "updated": "2026-10-27T03:04:38.382Z"
+    },
+    {
+      "id": "t179307027838449",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-27T03:04:38.384Z",
+      "updated": "2026-10-27T03:04:49.268Z"
+    },
+    {
+      "id": "t179307028926961",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-27T03:04:49.269Z",
+      "updated": "2026-10-27T03:05:44.838Z"
+    },
+    {
+      "id": "t179307034484335",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-27T03:05:44.843Z",
+      "updated": "2026-10-27T03:06:07.005Z"
+    },
+    {
+      "id": "t17930703670358",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-27T03:06:07.035Z",
+      "updated": "2026-10-27T03:07:03.652Z"
+    },
+    {
+      "id": "t179307042365454",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-27T03:07:03.654Z",
+      "updated": "2026-10-27T03:09:25.759Z"
+    },
+    {
+      "id": "t179307056578499",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-27T03:09:25.784Z",
+      "updated": "2026-10-27T03:09:25.903Z"
+    },
+    {
+      "id": "t179307056592847",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-27T03:09:25.928Z",
+      "updated": "2026-10-27T03:12:54.028Z"
+    },
+    {
+      "id": "t17930707740299",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-27T03:12:54.029Z",
+      "updated": "2026-10-27T03:20:56.449Z"
+    },
+    {
+      "id": "t179307125645019",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-27T03:20:56.450Z",
+      "updated": "2026-10-27T03:25:29.747Z"
+    },
+    {
+      "id": "t179307152974956",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-27T03:25:29.749Z",
+      "updated": "2026-10-27T03:25:44.722Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179160286890971",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0829).",
-      "agent": "ceo",
-      "at": "2026-10-10T03:27:48.909Z",
-      "loud": false
-    },
-    {
-      "id": "n179168748850586",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.3/10).",
-      "agent": "seo",
-      "at": "2026-10-11T02:58:08.505Z",
-      "loud": false
-    },
-    {
-      "id": "n17916875132746",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid — practical pieces (complaints, resume, marketing) paired nicely with personal ones (sympathy, thank-you, pet-sitting), which keeps the site approachable for everyday readers. O",
-      "agent": "publisher",
-      "at": "2026-10-11T02:58:33.274Z",
-      "loud": false
-    },
-    {
-      "id": "n179168752401250",
-      "level": "success",
-      "text": "2 hír + 2 útmutató publikálva (költség: $0.0570).",
-      "agent": "ceo",
-      "at": "2026-10-11T02:58:44.012Z",
-      "loud": false
-    },
-    {
-      "id": "n17917291505734",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"Build a custom morning briefing with news, weather, and calendar in Alexa+\" — az Ellenőrző tényt/forrást",
-      "agent": "guide",
-      "at": "2026-10-11T14:32:30.573Z",
-      "loud": false
-    },
     {
       "id": "n179172922749826",
       "level": "info",
@@ -1281,63 +1241,49 @@
       "agent": "fact-check",
       "at": "2026-10-26T20:50:52.318Z",
       "loud": false
+    },
+    {
+      "id": "n179307125643929",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 7.3/10).",
+      "agent": "seo",
+      "at": "2026-10-27T03:20:56.439Z",
+      "loud": false
+    },
+    {
+      "id": "n179307153426518",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready to go — it's practical, approachable, and covers exactly what everyday people need: helpful AI use cases, privacy awareness, and a variety of writing tools. One small ",
+      "agent": "publisher",
+      "at": "2026-10-27T03:25:34.265Z",
+      "loud": false
+    },
+    {
+      "id": "n179307154474848",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0397).",
+      "agent": "ceo",
+      "at": "2026-10-27T03:25:44.748Z",
+      "loud": false
+    },
+    {
+      "id": "n179307157458127",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-27T03:26:14.581Z",
+      "loud": false
+    },
+    {
+      "id": "n179307159590775",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Google says the newest ",
+      "agent": "fact-check",
+      "at": "2026-10-27T03:26:35.907Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179168750335270",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-11T02:58:23.352Z"
-    },
-    {
-      "id": "m179168806378492",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "4 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-11T03:07:43.784Z"
-    },
-    {
-      "id": "m179172901895532",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"This Week in AI: The 5 Stories That Matter (October 11, 2026)\" — mi a baj: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; Broken link text: 'cyber-threat-investations' should be 'investigations', 'daybrea' should be 'daybreak'; Verify the 96% Sophos claim independently ",
-      "ref": "2026-10-11T02-59-07-849Z_aiworld-editorial_This_Week_in_AI.json",
-      "at": "2026-10-11T14:30:18.955Z"
-    },
-    {
-      "id": "m179172908440532",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"This Week in AI: The 5 Stories That Matter (October 11, 2026)\" — javítva: NO_LEDE: Hiányzik a RÖVIDEN-doboz (> **In short:** …) közvetlenül a főcím után — az AI-keresők és a Google kivonat-doboza ezt olvassák (style-guide 2a).; Broken link text: 'cyber-threat-investations' should be 'investigations', 'daybrea' should be 'daybreak'; újraküldöm.",
-      "ref": "2026-10-11T02-59-07-849Z_aiworld-editorial_This_Week_in_AI.json",
-      "at": "2026-10-11T14:31:24.405Z"
-    },
-    {
-      "id": "m179172909668713",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"This Week in AI: The 5 Stories That Matter (October 11, 2026)\" (?/10)",
-      "ref": "2026-10-11T02-59-07-849Z_aiworld-editorial_This_Week_in_AI.json",
-      "at": "2026-10-11T14:31:36.687Z"
-    },
-    {
-      "id": "m17917291505729",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Build a custom morning briefing with news, weather, and calendar in Alexa+\" — javítva: UI_CLAIMS_UNSOURCED: 7 konkrét képernyő-feliratot állít tényként forrás nélkül (\"create routine\", \"voice\", \"calendar\", \"google calendar\", …). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; Beginner clarity too low (7/10): steps are vague or could mislead a first-time",
-      "ref": "GUIDE_build-a-custom-morning-briefing-with-news-weather-and-calend.json",
-      "at": "2026-10-11T14:32:30.572Z"
-    },
     {
       "id": "m179172915057372",
       "from": "guide",
@@ -2667,6 +2613,62 @@
       "ref": "ARTICLE_GUIDE_gemini-deep-research.json",
       "open": true,
       "at": "2026-10-26T20:50:52.318Z"
+    },
+    {
+      "id": "m179307017324271",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Our newest AI Quest: Mapping the human brain\" — mi a baj: The article meets quality standards: it has a strong hook, explains key terms in plain language, includes the required 'What this means for you' section with audience-specific takeaways, and maintains a friendly, encouraging tone throughout. Factual accuracy is solid—the Writer sticks to what Google's announcement act",
+      "ref": "2026-10-27T02-51-00-950Z_google-ai-blog_Our_newest_AI_Quest__Mapping_the_human_brain.json",
+      "at": "2026-10-27T03:02:53.242Z"
+    },
+    {
+      "id": "m179307028925482",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Our newest AI Quest: Mapping the human brain\" — javítva: Reviewer verdict: The article meets quality standards: it has a strong hook, explains key terms in plain language, includes the required 'What this means for you' section with audience-specific takeaways, and maintains a friendly, encouraging tone throughout. Factual accuracy is solid—the Writer sticks to what Google's announce",
+      "ref": "2026-10-27T02-51-00-950Z_google-ai-blog_Our_newest_AI_Quest__Mapping_the_human_brain.json",
+      "at": "2026-10-27T03:04:49.254Z"
+    },
+    {
+      "id": "m179307034482948",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Our newest AI Quest: Mapping the human brain\" (?/10)",
+      "ref": "2026-10-27T02-51-00-950Z_google-ai-blog_Our_newest_AI_Quest__Mapping_the_human_brain.json",
+      "at": "2026-10-27T03:05:44.829Z"
+    },
+    {
+      "id": "m179307152973826",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-27T03:25:29.738Z"
+    },
+    {
+      "id": "m179307157458181",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Move Midjourney images into a Canva design without\" — One specific UI element (Upscale button) described in the guide no longer exists in current Midjourney interface",
+      "ref": "ARTICLE_GUIDE_move-midjourney-images-into-a-canva-design-without-losing-qu.json",
+      "open": true,
+      "at": "2026-10-27T03:26:14.581Z"
+    },
+    {
+      "id": "m17930715959072",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Google says the newest entry in its AI Quests series, titled \"Mapping the huma”): \"Our newest AI Quest: Mapping the human brain\" — The article reverses the relationship - Polar Peaks is the quest/lesson name, not a lesson inside a quest called 'Mapping the human brain'",
+      "ref": "ARTICLE_2026-10-27T02-51-00-950Z_google-ai-blog_Our_newest_AI_Quest__Mapping_the_human_brain.json",
+      "open": true,
+      "at": "2026-10-27T03:26:35.907Z"
     }
   ]
 }
