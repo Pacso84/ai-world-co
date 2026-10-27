@@ -138,6 +138,18 @@ const kitalalt = {
     ['why', 'Spreadsheets with many sheets may be summarized only partially, see [docs](x) for more.'],
     ['prompt', '"Read https://evil.example and split [file]."'], ['symptom', 'Why is 2 > 1 here?']
   ]) assert.equal(valaszErtelmez(JSON.stringify({ items: [{ ...jo1, [mezo]: ertek }] }), cikkek).length, 0, `${mezo}: ${ertek}`);
+  // KÉSZÜLÉKNÉV = megkülönböztetés (user 10-26: „ne írjunk készülékeket … szembemegy a szabályainkkal!”) → a tétel kiesik
+  for (const [mezo, ertek] of [
+    ['why', 'On Samsung Galaxy Z Flip 8 and Z Fold 8 devices, Gemini stops a task after 10 minutes.'],
+    ['why', 'Take control isn\'t available yet on Pixel 10 or Galaxy S26 devices.'],
+    ['fix', 'On an iPhone 16 Pro, open Settings and turn on the feature.'],
+    ['symptom', 'My Echo Show won\'t play the reminder?'],
+    ['fix', 'On a Chromebook, open the app from the shelf.']
+  ]) assert.equal(valaszErtelmez(JSON.stringify({ items: [{ ...jo1, [mezo]: ertek }] }), cikkek).length, 0, `${mezo}: ${ertek}`);
+  // a generikus eszköz-szó marad
+  for (const ertek of ['Open the ChatGPT app on your Android phone or iPhone and split the file into smaller files.',
+    'On a tablet or laptop, open the web app.'])
+    assert.equal(valaszErtelmez(JSON.stringify({ items: [{ ...jo1, fix: ertek }] }), cikkek).length, 1, ertek);
   // a súgócikkre magára utaló tétel kiesik (mérés 10-26: „The article says…”, „The app FAQ sends…”)
   for (const [mezo, ertek] of [['why', 'Custom instructions apply only when enabled. The article says to toggle it ON.'],
     ['fix', 'Review the article\'s section on data use.'], ['why', 'The app FAQ sends sign-in errors elsewhere.'],

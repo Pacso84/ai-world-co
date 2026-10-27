@@ -111,6 +111,7 @@ ${eszkozSzabaly}
 - Keep every condition from the article (a plan, "only", "if", "before", "unless") in the SAME sentence as the step it applies to.
 - Write menu paths in words ("in Settings under Data controls"), never with ">".
 - The reader never sees the help article: never mention "the article", "the FAQ" or "the help page" — state the fact itself.
+- Never name specific devices, hardware models or device brands (e.g. phone, tablet, laptop or speaker models) and never contrast what works on one device versus another. Leave out any problem that only applies to particular devices.
 - US English.`;
 
   const lepesek = (utm?.lepesek || []).map(l => '- ' + l).join('\n');
@@ -140,6 +141,12 @@ const linkVagyHtml = v => typeof v === 'string' && /https?:\/\/|www\.|[<>]|\]\(/
 //  „documentation / the guide / Help Centre” viszont hivatkozás)
 const cikkreUtal = v => typeof v === 'string' && (/\b(the|this|that) (help |support )?(articles?|faqs?)\b|\b(article|faq)'s\b|\bfaqs?\b|\bhelp (center|centre|page)\b|\bsupport (page|article)\b|\bdocumentation\b|\bthe (troubleshooting )?guide\b/i.test(v) ||
   /(^|[.!?]\s+)See [A-Z]/.test(v));
+
+/** Konkrét készüléket / hardvermodellt / készülékgyártót említ-e? MIÉRT (user 10-26): „ne írjunk készülékeket, ez
+ *  megkülönböztetés és összehasonlítás, szembemegy a szabályainkkal!” — az előnézetben „Galaxy Z Flip 8 … Pixel 10 …
+ *  Galaxy S26” állt. Generikus szó („Android phone”, „iPhone”, „tablet”) marad; a modell / márka-típus kiesik. */
+const keszulekNev = v => typeof v === 'string' &&
+  /\b(samsung|galaxy|pixel\s*\d|pixel\s+(pro|fold|tablet|watch|buds)|z\s*(flip|fold)\s*\d*|iphone\s*\d+|ipad\s+(pro|air|mini)|macbook|surface\s+(pro|laptop|go|book)|oneplus|xiaomi|huawei|motorola|oppo|vivo|nokia|xperia|echo\s+(show|dot|pop|hub|studio|spot|frames|buds)|fire\s+(tv|hd|tablet)|kindle|chromebook|apple\s+watch|galaxy\s+watch)\b/i.test(v);
 
 /** A JSON kibontása: ```json burok → nyers szöveg → az első „{” és az utolsó „}” közötti rész. */
 function jsonKibont(szoveg) {
@@ -175,6 +182,7 @@ export function valaszErtelmez(szoveg, cikkek) {
     if (!symptom || !why || !fix || !urlek.has(source) || !engedelyezett(source)) continue;
     if ([it.symptom, it.why, it.fix, it.prompt].some(linkVagyHtml)) continue;
     if ([it.why, it.fix].some(cikkreUtal)) continue;
+    if ([it.symptom, it.why, it.fix].some(keszulekNev)) continue;   // készüléknév = megkülönböztetés (user 10-26)
     const tetel = { symptom, why, fix, source };
     const prompt = szovegMezo(it.prompt, 400);
     if (prompt && /^["“„]/.test(prompt)) tetel.prompt = prompt;
