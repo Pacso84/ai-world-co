@@ -468,5 +468,18 @@ t('config: az elakadas agent a guide modelljeivel, paid-only', () => {
   assert.ok(cfg.agents.translator);
 });
 
+// ── CI-BEKÖTÉS (Task 5, 10-27): a fordítás UTÁN, a build ELŐTT, és a hibája nem dönti el a futást ──
+t('auto.yml: a doboz-gyártás a fordítás után és a build előtt fut, || true-val, kulccsal', () => {
+  const yml = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', '.github', 'workflows', 'auto.yml'), 'utf-8');
+  const ford = yml.indexOf('node agents/translator/agent.js');
+  const gen = yml.indexOf('node core/elakadas-gen.js --limit 10 || true');
+  const build = yml.indexOf('run: node website/build.js');
+  assert.ok(ford > 0 && gen > 0 && build > 0, 'hiányzó lépés');
+  assert.ok(ford < gen && gen < build, 'a sorrend: fordítás → doboz-gyártás → build');
+  const lepes = yml.slice(yml.lastIndexOf('- name:', gen), gen);
+  assert.match(lepes, /OPENROUTER_API_KEY: \$\{\{ secrets\.OPENROUTER_API_KEY \}\}/);
+  assert.match(lepes, /if: always\(\)/);
+});
+
 if (hiba) { console.log(`\n❌ elakadas-gen.test: ${hiba} hiba`); process.exit(1); }
 console.log('\n✅ elakadas-gen.test: mind rendben');
