@@ -135,6 +135,9 @@ t('forditasPrompt: angol rendszerprompt, célnyelv megnevezve, a source nem megy
   assert.match(hu.felhasznalo, /Upload fails/);
   assert.doesNotMatch(hu.felhasznalo, /help\.openai\.com/);
   assert.doesNotMatch(hu.felhasznalo, /Make a chart/, 'a prompt-mezőt nem fordítjuk');
+  // 10-27 előnézet: az oldal tegez (hu) / tú-formát használ (es) — a fordító se magázzon
+  assert.match(hu.rendszer, /informal "te" form/); assert.match(hu.rendszer, /never the formal/);
+  assert.match(es.rendszer, /informal "tú" form/); assert.match(es.rendszer, /never "usted"/);
 });
 
 const HU_JO = JSON.stringify({ items: [

@@ -149,6 +149,13 @@ export function dobozHash(items) {
  * A fordítás promptja: a tételek symptom/why/fix mezői (a forrás-URL és a másolható prompt NEM megy a modellnek).
  * @returns {{rendszer: string, felhasznalo: string}}
  */
+// MEGSZÓLÍTÁS (előnézet 10-27): az egyik doboz magázott („koppintson”), a másik tegezett — az oldal mindenhol tegez
+// („Mit tegyél”, „Írd be ezt”), a spanyol oldal tú-formát használ.
+const MEGSZOLITAS = {
+  hu: 'Address the reader with the informal "te" form throughout (tegezés: „koppints”, „nyisd meg”, „ellenőrizd”) — never the formal „Ön” form („koppintson”, „nyissa meg”).',
+  es: 'Address the reader with the informal "tú" form throughout ("toca", "abre", "comprueba") — never "usted".'
+};
+
 export function forditasPrompt(items, lang) {
   const nyelv = NYELV_NEV[lang] || lang;
   const rendszer = `You translate the "If you get stuck" troubleshooting box of an AI how-to guide from US English into ${nyelv}.
@@ -161,6 +168,7 @@ Rules:
 - Return exactly the same number of items, in the same order, with the three fields translated.
 - Translate faithfully, sentence by sentence. Add nothing, remove nothing, explain nothing; keep every condition ("only", "if", "before", "unless") and every number exactly.
 - Product names and names of menus, buttons and settings may stay in the original English; everything else must be natural ${nyelv}.
+- ${MEGSZOLITAS[lang] || 'Address the reader informally and consistently.'}
 - Never write a URL, an HTML tag or a markdown link.`;
   const felhasznalo = `Translate into ${nyelv}:\n${JSON.stringify({ items: (items || []).map(i => ({ symptom: i.symptom, why: i.why, fix: i.fix })) })}`;
   return { rendszer, felhasznalo };
