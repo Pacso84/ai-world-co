@@ -177,4 +177,16 @@ assert.equal(composePost({ text: 'a', url: '', channel: 'x' }), null,
   }
 }
 
+// --- A POSZTÍRÓ SZABÁLYA (2026-10-27, user: „mehet! az estiek ezzel menjenek ki!”, „TikTokra, mindenre!”) ----
+// Piackutatás: a Facebook a „See more” előtt ~125 karaktert mutat; a 209–219 karakteres szövegeinkben a lényeg és a
+// link rejtve volt. Ugyanez a szöveg megy a TikTok-fotóposztra és a Threadsre is (buffer-poster composePost).
+{
+  const { readFileSync } = await import('fs');
+  const src = readFileSync(new globalThis.URL('../agents/social/agent.js', import.meta.url), 'utf-8');   // a fájl saját URL-konstansa eltakarja a beépítettet
+  assert.match(src, /At most 150 characters before \{LINK\}/, 'a posztíró rövid szöveget kér');
+  assert.match(src, /FIRST sentence must be under 125 characters/, 'a lényeg az első 125 karakterben');
+  assert.match(src, /No hashtags/, 'hashtag nem tolja el a mondanivalót');
+  assert.doesNotMatch(src, /1-2 friendly sentences/, 'a régi, hosszú szöveget kérő szabály maradt');
+}
+
 console.log('✅ social-text: minden teszt átment');
