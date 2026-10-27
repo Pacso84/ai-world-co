@@ -1,0 +1,54 @@
+{
+  "slug": "how-to-generate-images-with-google-gemini-a-beginner-s-guide",
+  "probalva": "2026-10-27T20:23:46.711Z",
+  "doboz": {
+    "keszult": "2026-10-27T20:23:46.711Z",
+    "enHash": "48edffb554ec96b67df751d86b0a48e1e4d3ced2",
+    "forrasok": {
+      "https://support.google.com/gemini/answer/14286560": "Generate & edit images with Gemini Apps - Computer",
+      "https://support.google.com/gemini/answer/16722517": "Verify AI-generated images, videos, and audio - Computer"
+    },
+    "en": [
+      {
+        "symptom": "Gemini won't start creating my image when I open the app.",
+        "why": "Image features require you to be signed in to Gemini Apps. Age requirements also apply to personal accounts.",
+        "fix": "Sign in to Gemini Apps before you start your image request. To generate images, you must be 13 (or the applicable age in your country) or over. To generate and edit images, you must be 18 or over.",
+        "source": "https://support.google.com/gemini/answer/14286560"
+      },
+      {
+        "symptom": "Gemini says it can't tell whether my image is AI-generated.",
+        "why": "Gemini can currently only recognize content created by Google AI tools. In some cases it isn't clear whether an image was created or edited by Google AI.",
+        "fix": "If a SynthID watermark isn't detected, the image wasn't created or edited by Google AI, but it could have been created by other AI systems. Check other signs, such as garbled text, errors in hands or teeth, and inconsistent shadows and lighting.",
+        "source": "https://support.google.com/gemini/answer/16722517"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A Gemini nem kezdi el létrehozni a képemet, amikor megnyitom az alkalmazást.",
+        "why": "A képfunkciók használatához be kell jelentkezned a Gemini Appsba. A személyes fiókokra életkori követelmények is vonatkoznak.",
+        "fix": "Jelentkezz be a Gemini Appsba, mielőtt elküldöd a képkérésedet. Képek létrehozásához legalább 13 évesnek kell lenned (vagy az országodban érvényes alsó korhatárt kell elérned). Képek létrehozásához és szerkesztéséhez legalább 18 évesnek kell lenned.",
+        "source": "https://support.google.com/gemini/answer/14286560"
+      },
+      {
+        "symptom": "A Gemini azt mondja, nem tudja megállapítani, hogy a képemet mesterséges intelligencia hozta-e létre.",
+        "why": "A Gemini jelenleg csak a Google AI-eszközeivel létrehozott tartalmakat tudja felismerni. Egyes esetekben nem egyértelmű, hogy egy képet a Google AI hozott-e létre vagy szerkesztett-e.",
+        "fix": "Ha a rendszer nem észlel SynthID-vízjelet, a képet nem a Google AI hozta létre vagy szerkesztette, de előfordulhat, hogy más AI-rendszerek hozták létre. Ellenőrizd az egyéb jeleket is, például az értelmetlen szöveget, a kezeken vagy fogakon látható hibákat, valamint az egymásnak ellentmondó árnyékokat és fényviszonyokat.",
+        "source": "https://support.google.com/gemini/answer/16722517"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "Gemini no empieza a crear mi imagen cuando abro la aplicación.",
+        "why": "Las funciones de imagen requieren que hayas iniciado sesión en Gemini Apps. También se aplican requisitos de edad a las cuentas personales.",
+        "fix": "Inicia sesión en Gemini Apps antes de comenzar tu solicitud de imagen. Para generar imágenes, debes tener 13 años (o la edad aplicable en tu país) o más. Para generar y editar imágenes, debes tener 18 años o más.",
+        "source": "https://support.google.com/gemini/answer/14286560"
+      },
+      {
+        "symptom": "Gemini dice que no puede determinar si mi imagen se generó con IA.",
+        "why": "Actualmente, Gemini solo puede reconocer contenido creado por herramientas de IA de Google. En algunos casos, no está claro si Google AI creó o editó una imagen.",
+        "fix": "Si no se detecta una marca de agua de SynthID, la imagen no fue creada ni editada por Google AI, pero podría haber sido creada por otros sistemas de IA. Comprueba otros indicios, como texto ilegible, errores en las manos o los dientes y sombras e iluminación incoherentes.",
+        "source": "https://support.google.com/gemini/answer/16722517"
+      }
+    ]
+  }
+}
