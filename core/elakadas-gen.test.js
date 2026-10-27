@@ -6,7 +6,8 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import {
   NAPI_PLAFON, NAPI_HATAR, FUTASONKENT_MAX, UJRAPROBA_NAP, UJ_NAP, NYELVEK,
-  utmutatoAdat, cikkSzoveg, sorrend, forditasPrompt, forditasErtelmez, dobozHash, keretOk, cikkJelol, feldolgoz, ATMENETI_NAP, jelolendok, kor
+  utmutatoAdat, cikkSzoveg, sorrend, forditasPrompt, forditasErtelmez, dobozHash, keretOk, cikkJelol, feldolgoz, ATMENETI_NAP, jelolendok, kor,
+  maxPerc, forditasEsedekes, FORDITAS_PROBA_MAX, FUTAS_PERC
 } from './elakadas-gen.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -271,7 +272,7 @@ await t('feldolgoz general: doboz + mindkét fordítás, hash, forrás-cím, kö
   const r = await feldolgoz({ slug: 'sl', feladat: 'general' }, c);
   assert.equal(r.uj, true);
   assert.equal(r.forditva, 2);
-  assert.deepEqual(c.hivasok, ['elakadas', 'translator', 'translator']);
+  assert.deepEqual(c.hivasok, ['elakadas', 'elakadas-forditas', 'elakadas-forditas']);   // saját agent: a translator cikk-leckéi nem kerülnek a JSON-promptba
   const d = r.fajl.doboz;
   assert.equal(r.fajl.slug, 'sl'); assert.ok(r.fajl.probalva);
   assert.equal(d.en.length, 2); assert.equal(d.hu.length, 2); assert.equal(d.es.length, 2);
@@ -334,7 +335,7 @@ await t('feldolgoz fordit: csak a hiányzó nyelv; az en és a másik nyelv éri
   const fajl = { slug: 'sl', probalva: nap(2), doboz: { keszult: nap(2), enHash: dobozHash(en), forrasok: { [U1]: 'T' }, en, hu, es: null } };
   const c = ctxEpit({ fajl });
   const r = await feldolgoz({ slug: 'sl', feladat: 'fordit' }, c);
-  assert.deepEqual(c.hivasok, ['translator']);
+  assert.deepEqual(c.hivasok, ['elakadas-forditas']);
   assert.equal(r.uj, false); assert.equal(r.forditva, 1);
   assert.equal(r.fajl.doboz.es.length, 2); assert.deepEqual(r.fajl.doboz.hu, hu); assert.deepEqual(r.fajl.doboz.en, en);
   assert.equal(r.fajl.doboz.keszult, fajl.doboz.keszult);
@@ -426,6 +427,149 @@ t('jelolendok: van doboz, de a cikkből hiányzik az elakadas_at → jelölendő
   assert.deepEqual(jelolendok(cikkek, new Map(Object.entries(kesz))), [{ slug: 'hianyzo', at: '2026-10-25T08:00:00.000Z' }]);
 });
 
+// ── 10-27 záró átnézés ──────────────────────────────────────────────────────────────────
+// (2) BELSŐ HATÁRIDŐ: a CI-lépésnek nincs timeout-minutes-a (a job lépés-költségvetése tele) → a kor() maga áll meg
+await t('kor: a határidő után nem indít új útmutatót (beinjektált óra); a kimaradás oka „idő”; határidő nélkül mind lefut', async () => {
+  const mk = ora => {
+    const alap = ctxEpit();
+    return f => ({ ...alap, utm: { ...UTM, slug: f.slug }, ask: async (p, o) => { ora.ido += 100; return alap.ask(p, o); } });
+  };
+  const sor = ['a', 'b', 'c', 'd'].map(slug => ({ slug, feladat: 'general' }));
+  const ora = { ido: 0 }; const feldolgozott = [];
+  const e = await kor(sor, { limit: 10, keret: () => true, ctxEpit: mk(ora), hatarido: 250, ora: () => ora.ido, mentes: f => feldolgozott.push(f.slug) });
+  // az 1. útmutató 3 hívása 300 „ms”-et visz el → a 2. már nem indul
+  assert.deepEqual(feldolgozott, ['a']);
+  assert.equal(e.hely, 1); assert.equal(e.ujDb, 1);
+  assert.equal(e.kimaradtOk['idő'], 3, 'a megmaradt 3 útmutató „idő” miatt maradt ki');
+  // a határidő pontosan elérve is megáll; előtte (1 ms-mal) még indul
+  const o2 = { ido: 0 }; const f2 = [];
+  await kor(sor, { limit: 10, keret: () => true, ctxEpit: mk(o2), hatarido: 300, ora: () => o2.ido, mentes: f => f2.push(f.slug) });
+  assert.deepEqual(f2, ['a'], 'a 300-as határidőt a 300-as óra eléri');
+  const o3 = { ido: 0 }; const f3 = [];
+  await kor(sor, { limit: 10, keret: () => true, ctxEpit: mk(o3), hatarido: 301, ora: () => o3.ido, mentes: f => f3.push(f.slug) });
+  assert.deepEqual(f3, ['a', 'b'], 'a 301-es határidő előtt a 2. még elindul (300 < 301), a 3. már nem');
+  // határidő nélkül (régi hívás) minden lefut
+  const o4 = { ido: 0 }; const f4 = [];
+  const e4 = await kor(sor, { limit: 10, keret: () => true, ctxEpit: mk(o4), mentes: f => f4.push(f.slug) });
+  assert.deepEqual(f4, ['a', 'b', 'c', 'd']); assert.equal(e4.kimaradtOk['idő'], undefined);
+});
+
+t('maxPerc: --max-minutes N (alap 6); hibás / nulla / negatív érték → az alap', () => {
+  assert.equal(FUTAS_PERC, 6);
+  assert.equal(maxPerc(['node', 'x.js']), 6);
+  assert.equal(maxPerc(['node', 'x.js', '--limit', '10', '--max-minutes', '3']), 3);
+  assert.equal(maxPerc(['node', 'x.js', '--max-minutes', '2.5']), 2.5);
+  for (const rossz of ['0', '-4', 'abc', '']) assert.equal(maxPerc(['node', 'x.js', '--max-minutes', rossz]), 6, rossz);
+  assert.equal(maxPerc(['node', 'x.js', '--max-minutes']), 6);
+});
+
+// (3) FORDÍTÁSI PRÓBÁK: a mindig bukó fordítást nem fizetjük újra meg újra
+const dobozFordProba = (proba, extra = {}) => {
+  const en = [{ symptom: 'S1', why: 'W1', fix: 'F1', source: U1 }, { symptom: 'S2', why: 'W2', fix: 'F2', source: U1 }];
+  const hu = [{ symptom: 'h1', why: 'h1', fix: 'h1', source: U1 }, { symptom: 'h2', why: 'h2', fix: 'h2', source: U1 }];
+  return { slug: 'sl', probalva: nap(5), doboz: { keszult: nap(5), enHash: dobozHash(en), forrasok: { [U1]: 'T' }, en, hu, es: null, ...(proba ? { forditasProba: proba } : {}), ...extra } };
+};
+
+t('forditasEsedekes: nincs próba → igen; 1 napnál frissebb → nem; ≥ 1 nap és db < 3 → igen; db ≥ 3 → soha; hibás dátum → igen', () => {
+  assert.equal(FORDITAS_PROBA_MAX, 3);
+  const d = proba => ({ hu: null, es: null, forditasProba: proba });
+  assert.equal(forditasEsedekes(d(undefined), 'hu', NOW), true);
+  assert.equal(forditasEsedekes(d({}), 'hu', NOW), true);
+  assert.equal(forditasEsedekes(d({ hu: { db: 1, utolso: nap(0.5) } }), 'hu', NOW), false);
+  assert.equal(forditasEsedekes(d({ hu: { db: 1, utolso: nap(ATMENETI_NAP) } }), 'hu', NOW), true);
+  assert.equal(forditasEsedekes(d({ hu: { db: 2, utolso: nap(5) } }), 'hu', NOW), true);
+  assert.equal(forditasEsedekes(d({ hu: { db: 3, utolso: nap(90) } }), 'hu', NOW), false);
+  assert.equal(forditasEsedekes(d({ hu: { db: 1, utolso: 'hibas' } }), 'hu', NOW), true);
+  assert.equal(forditasEsedekes(d({ hu: { db: 3, utolso: nap(90) } }), 'es', NOW), true, 'a másik nyelv próbája független');
+  assert.equal(forditasEsedekes({ hu: [{}], es: null }, 'hu', NOW), false, 'ami már megvan, azt nem fordítjuk');
+});
+
+t('sorrend: a bukott fordítás csak ≥ 1 nap után és 3 sikertelen próbáig kerül újra a sorba', () => {
+  const futtat = proba => sorrend({ utmutatok: [U('sl', nap(40))], kesz: { sl: dobozFordProba(proba) }, latogatas: new Map(), now: NOW, n: 10 }).map(x => x.feladat);
+  assert.deepEqual(futtat(undefined), ['fordit'], 'próba nélkül (régi fájl) fordít');
+  assert.deepEqual(futtat({ es: { db: 1, utolso: nap(0.5) } }), [], 'fél napja próbáltuk → vár');
+  assert.deepEqual(futtat({ es: { db: 1, utolso: nap(1.5) } }), ['fordit']);
+  assert.deepEqual(futtat({ es: { db: 2, utolso: nap(1.5) } }), ['fordit']);
+  assert.deepEqual(futtat({ es: { db: 3, utolso: nap(30) } }), [], '3 bukás után feladjuk — nincs doboz azon a nyelven (a biztonságos irány)');
+  // csak az es hiányzik, a hu próbája nem számít
+  assert.deepEqual(futtat({ hu: { db: 9, utolso: nap(0) } }), ['fordit']);
+  // mindkét nyelv hiányzik: elég, ha az egyik esedékes
+  const ketto = proba => { const f = dobozFordProba(proba); f.doboz.hu = null; return sorrend({ utmutatok: [U('sl', nap(40))], kesz: { sl: f }, latogatas: new Map(), now: NOW, n: 10 }).length; };
+  assert.equal(ketto({ hu: { db: 3, utolso: nap(30) }, es: { db: 1, utolso: nap(2) } }), 1);
+  assert.equal(ketto({ hu: { db: 3, utolso: nap(30) }, es: { db: 3, utolso: nap(30) } }), 0);
+  assert.equal(ketto({ hu: { db: 1, utolso: nap(0.2) }, es: { db: 1, utolso: nap(0.2) } }), 0);
+});
+
+await t('feldolgoz fordit: a bukott fordítás próbát jegyez (db+1, utolso); sikernél a jegyzés törlődik; a bemenet érintetlen', async () => {
+  const rossz = f => async (p, o) => { f.hivasok.push(o.agentName); return { text: 'nem json', costUsd: 0.001 }; };
+  const fajl = dobozFordProba(undefined);
+  const c = ctxEpit({ fajl }); c.ask = rossz(c);
+  const r = await feldolgoz({ slug: 'sl', feladat: 'fordit' }, c);
+  assert.equal(r.forditva, 0);
+  assert.deepEqual(r.fajl.doboz.forditasProba, { es: { db: 1, utolso: new Date(NOW).toISOString() } });
+  assert.equal(fajl.doboz.forditasProba, undefined, 'a bemeneti fájlt nem módosítja');
+  // második bukás: db 2; a hu-t (megvan) nem érinti
+  const fajl2 = dobozFordProba({ es: { db: 1, utolso: nap(2) } });
+  const c2 = ctxEpit({ fajl: fajl2 }); c2.ask = rossz(c2);
+  const r2 = await feldolgoz({ slug: 'sl', feladat: 'fordit' }, c2);
+  assert.equal(r2.fajl.doboz.forditasProba.es.db, 2); assert.deepEqual(c2.hivasok, ['elakadas-forditas']);
+  // még nem esedékes (fél napja próbáltuk) → NINCS hívás, nincs költség
+  const fajl3 = dobozFordProba({ es: { db: 1, utolso: nap(0.5) } });
+  const c3 = ctxEpit({ fajl: fajl3 });
+  const r3 = await feldolgoz({ slug: 'sl', feladat: 'fordit' }, c3);
+  assert.deepEqual(c3.hivasok, []); assert.equal(r3.forditva, 0); assert.deepEqual(c3.koltsegek, []);
+  // 3 bukás után sincs hívás
+  const fajl4 = dobozFordProba({ es: { db: 3, utolso: nap(40) } });
+  const c4 = ctxEpit({ fajl: fajl4 });
+  await feldolgoz({ slug: 'sl', feladat: 'fordit' }, c4);
+  assert.deepEqual(c4.hivasok, []);
+  // siker: az es megvan, a próba-jegyzés törlődik
+  const fajl5 = dobozFordProba({ es: { db: 2, utolso: nap(2) } });
+  const c5 = ctxEpit({ fajl: fajl5 });
+  const r5 = await feldolgoz({ slug: 'sl', feladat: 'fordit' }, c5);
+  assert.equal(r5.forditva, 1); assert.equal(r5.fajl.doboz.es.length, 2);
+  assert.equal(r5.fajl.doboz.forditasProba?.es, undefined);
+  // a modell nem válaszolt (null): nem fizettünk → a próba-darabszám nem nő, de az idő igen (nincs azonnali újrapróba)
+  const fajl6 = dobozFordProba({ es: { db: 2, utolso: nap(2) } });
+  const c6 = ctxEpit({ fajl: fajl6 }); c6.ask = async (p, o) => { c6.hivasok.push(o.agentName); return null; };
+  const r6 = await feldolgoz({ slug: 'sl', feladat: 'fordit' }, c6);
+  assert.deepEqual(r6.fajl.doboz.forditasProba.es, { db: 2, utolso: new Date(NOW).toISOString() });
+});
+
+await t('feldolgoz general: ha mindkét fordítás bukik, a próbák rögzülnek (a következő futás nem fizet újra azonnal)', async () => {
+  const c = ctxEpit();
+  const jo = c.ask;
+  c.ask = async (p, o) => o.agentName === 'elakadas' ? jo(p, o) : (c.hivasok.push(o.agentName), { text: 'nem json', costUsd: 0.002 });
+  const r = await feldolgoz({ slug: 'sl', feladat: 'general' }, c);
+  assert.equal(r.uj, true); assert.equal(r.forditva, 0);
+  const iso = new Date(NOW).toISOString();
+  assert.deepEqual(r.fajl.doboz.forditasProba, { hu: { db: 1, utolso: iso }, es: { db: 1, utolso: iso } });
+  // ugyanez a fájl a sorrendben: egy nap múlva újra esedékes, előtte nem
+  const kesz = { sl: r.fajl };
+  assert.deepEqual(sorrend({ utmutatok: [U('sl', nap(40))], kesz, latogatas: new Map(), now: NOW + 0.5 * NAP, n: 10 }), []);
+  assert.deepEqual(sorrend({ utmutatok: [U('sl', nap(40))], kesz, latogatas: new Map(), now: NOW + 1.5 * NAP, n: 10 }).map(x => x.feladat), ['fordit']);
+});
+
+// (5) a támogatott súgó nélküli eszköz útmutatója: nincs fájl, nincs helyfoglalás
+await t('feldolgoz + kor: az eszköz súgó-forrás nélkül ($0) → nincs fájl, kihagyva, nem foglal helyet a 10-ből', async () => {
+  const c = ctxEpit({ utm: { ...UTM, tool: 'Midjourney', company: 'Midjourney Inc.' } });
+  const r = await feldolgoz({ slug: 'sl', feladat: 'general' }, c);
+  assert.equal(r.fajl, null); assert.equal(r.kihagyva, true); assert.equal(r.uj, false);
+  assert.deepEqual(c.hivasok, []); assert.deepEqual(c.koltsegek, []);
+  // kor: 2 forrás nélküli útmutató elöl, limit 1 → a támogatott a helyet megkapja
+  const alap = ctxEpit(); const mentve = []; const hivasok = [];
+  const eszkoz = { n1: 'Midjourney', n2: 'Runway', ok: 'ChatGPT' };
+  const sor = ['n1', 'n2', 'ok'].map(slug => ({ slug, feladat: 'general' }));
+  const e = await kor(sor, {
+    limit: 1, keret: () => true, mentes: (f, x) => { if (x.fajl) mentve.push(f.slug); },
+    ctxEpit: f => ({ ...alap, indexek: {}, utm: { ...UTM, slug: f.slug, tool: eszkoz[f.slug], company: '' }, ask: async (p, o) => { hivasok.push(o.agentName); return alap.ask(p, o); } })
+  });
+  assert.deepEqual(mentve, ['ok'], 'csak a támogatott kap fájlt');
+  assert.equal(e.hely, 1); assert.equal(e.ujDb, 1);
+  assert.equal(hivasok.filter(x => x === 'elakadas').length, 1);
+  assert.deepEqual(e.kimaradtOk, {}, 'a forrás nélküli nem zajlik a riportba');
+});
+
 // ── bekötés (forrásszöveg) ─────────────────────────────────────────────────────────────
 const FORRAS = readFileSync(join(ROOT, 'core', 'elakadas-gen.js'), 'utf-8');
 const mainTest = FORRAS.slice(FORRAS.indexOf('async function main'));
@@ -435,6 +579,12 @@ t('bekötés: a main az ELAKADAS_BE-t nézi, és az ai-router importja ELŐTT ki
   const imp = mainTest.search(/import\(['"]\.\/ai-router\.js['"]\)/);
   assert.ok(be >= 0 && imp > be, 'ELAKADAS_BE-vizsgálat előbb, mint az ai-router importja');
   assert.match(mainTest.slice(be, imp), /return/);
+});
+
+t('bekötés: a main --max-minutes határidőt ad a kor()-nak; a forrás nélküli útmutatót a sorból kiszűri', () => {
+  assert.match(mainTest, /maxPerc\(process\.argv\)/);
+  assert.match(mainTest, /hatarido/);
+  assert.match(mainTest, /szolgaltatok\(/);
 });
 
 t('bekötés: az ai-router / budget / traffic-log importja LUSTA (a teszt nem érint hálózatot, állapotot)', () => {
@@ -468,14 +618,33 @@ t('config: az elakadas agent a guide modelljeivel, paid-only', () => {
   assert.ok(cfg.agents.translator);
 });
 
+t('config: az elakadas-forditas agent a translator modelljeivel, paid-only, reasoning off (a translator leckéi nem kerülnek a JSON-promptba)', () => {
+  const cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
+  const a = cfg.agents['elakadas-forditas'], tr = cfg.agents.translator;
+  assert.ok(a, 'agents.elakadas-forditas');
+  assert.deepEqual(a.primary_model, tr.primary_model);
+  assert.deepEqual(a.fallback_model, tr.fallback_model);
+  assert.equal(a.routing, 'paid-only');
+  assert.equal(a.reasoning, 'off');
+  assert.doesNotMatch(FORRAS, /agentName: 'translator'/, 'a doboz-fordítás nem a translator agentet hívja');
+  assert.match(FORRAS, /agentName: 'elakadas-forditas'/);
+});
+
 // ── CI-BEKÖTÉS (Task 5, 10-27): a fordítás UTÁN, a build ELŐTT, és a hibája nem dönti el a futást ──
-t('auto.yml: a doboz-gyártás a fordítás után és a build előtt fut, || true-val, kulccsal', () => {
+t('auto.yml: a doboz-gyártás a fordítás, az összevonás és a Házmester után, a build előtt fut, || true-val, saját időkerettel, kulccsal', () => {
   const yml = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', '.github', 'workflows', 'auto.yml'), 'utf-8');
   const ford = yml.indexOf('node agents/translator/agent.js');
-  const gen = yml.indexOf('node core/elakadas-gen.js --limit 10 || true');
+  const gen = yml.indexOf('node core/elakadas-gen.js --limit 10 --max-minutes 6 || true');
+  const osszevon = yml.indexOf('node core/utmutato-osszevonas.js --auto');
+  const haz = yml.indexOf('node core/housekeeping.js');
   const build = yml.indexOf('run: node website/build.js');
-  assert.ok(ford > 0 && gen > 0 && build > 0, 'hiányzó lépés');
+  assert.ok(ford > 0 && gen > 0 && build > 0 && osszevon > 0 && haz > 0, 'hiányzó lépés');
   assert.ok(ford < gen && gen < build, 'a sorrend: fordítás → doboz-gyártás → build');
+  assert.ok(haz < gen, 'a Házmester (törli az útmutatókat) a doboz-gyártás ELŐTT fut: törölt útmutatóra nem fizetünk dobozt');
+  assert.ok(osszevon < gen, 'az útmutató-összevonás (törli az ismétlődőt) a doboz-gyártás ELŐTT fut');
+  assert.equal(yml.split('node core/elakadas-gen.js').length - 1, 1, 'a generátor egyszer fut');
+  // időkeret: a lépésnek NINCS timeout-minutes-a (a job lépés-költségvetése tele van, ci-timeouts.test.js) — belső --max-minutes
+  assert.doesNotMatch(yml.slice(yml.lastIndexOf('- name:', gen), gen), /timeout-minutes/);
   const lepes = yml.slice(yml.lastIndexOf('- name:', gen), gen);
   assert.match(lepes, /OPENROUTER_API_KEY: \$\{\{ secrets\.OPENROUTER_API_KEY \}\}/);
   assert.match(lepes, /if: always\(\)/);

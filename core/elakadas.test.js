@@ -5,7 +5,7 @@
 // nem szereplő állítás, vagy a „Common mistakes” megismétlése. Ezeket kell biztosan kiszűrni.
 import assert from 'node:assert/strict';
 import {
-  ELAKADAS_BE, jeloltCikkek, promptEpit, valaszErtelmez, alatamasztott, ismetliHibat, dobozKeszit, tunetIllik, igazoltResz
+  ELAKADAS_BE, jeloltCikkek, promptEpit, valaszErtelmez, alatamasztott, ismetliHibat, dobozKeszit, tunetIllik, igazoltResz, keszulekNev
 } from './elakadas.js';
 
 const U1 = 'https://help.openai.com/en/articles/8555545-file-uploads-faq';
@@ -150,6 +150,19 @@ const kitalalt = {
   for (const ertek of ['Open the ChatGPT app on your Android phone or iPhone and split the file into smaller files.',
     'On a tablet or laptop, open the web app.'])
     assert.equal(valaszErtelmez(JSON.stringify({ items: [{ ...jo1, fix: ertek }] }), cikkek).length, 1, ertek);
+  // 10-27 záró átnézés: a „pixel\s*\d” csak az egyjegyűt fogta („Pixel 10”, „Pixel 8a”, „Pixel phones” átment) — minden
+  // név EGYEDÜL áll a mondatban (nem fedi el egy másik, elkapott név), és a tétel kiesik
+  for (const nev of ['Pixel 10', 'Pixel 8a', 'Pixel 10 Pro', 'Pixel phones', 'Pixel 9 Pro Fold', 'Pixel Watch', 'Pixel Buds',
+    'Nest Hub', 'Nest Audio', 'Nest Mini', 'Google TV', 'Fitbit', 'Android Auto', 'CarPlay', 'AirPods', 'Vision Pro',
+    'Copilot+ PC', 'Copilot+ PCs', 'Wear OS']) {
+    assert.equal(keszulekNev(`This only works on ${nev}.`), true, nev);
+    for (const mezo of ['symptom', 'why', 'fix'])
+      assert.equal(valaszErtelmez(JSON.stringify({ items: [{ ...jo1, [mezo]: mezo === 'symptom' ? `Does it work on ${nev}?` : `It is available on ${nev}.` }] }), cikkek).length, 0, `${mezo}: ${nev}`);
+  }
+  // generikus szavak továbbra is mehetnek
+  for (const ertek of ['Open the app on your Android phone.', 'It works on an iPhone or a tablet.', 'Use a laptop or a smart speaker.',
+    'Open Android Studio settings.', 'Install Wear on your own schedule.', 'Ask Pixelmator to export it.', 'The nest of folders is deep.'])
+    assert.equal(keszulekNev(ertek), false, ertek);
   // a súgócikkre magára utaló tétel kiesik (mérés 10-26: „The article says…”, „The app FAQ sends…”)
   for (const [mezo, ertek] of [['why', 'Custom instructions apply only when enabled. The article says to toggle it ON.'],
     ['fix', 'Review the article\'s section on data use.'], ['why', 'The app FAQ sends sign-in errors elsewhere.'],

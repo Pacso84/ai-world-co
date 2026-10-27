@@ -17,6 +17,11 @@
 //   • a „nem sikerült” és a „nem volt dolga” KÜLÖN eset: a hiányzó doboz-jelöltre {doboz: null, probalva}
 //     kerül (UJRAPROBA_NAP múlva újra), de az átmeneti hiba (nincs index, nem jött le a cikk, a modell nem
 //     válaszolt) NEM ír fájlt → a következő futás azonnal újrapróbálja.
+//   • FORDÍTÁSI PRÓBÁK (10-27): a doboz-fájl `forditasProba` mezője nyelvenként jegyzi a bukott próbákat ({db, utolso});
+//     a sorrend / forditHianyzo csak ≥ ATMENETI_NAP nap után és db < FORDITAS_PROBA_MAX esetén próbál újra — a mindig
+//     bukó fordítást nem fizetjük meg futásonként; 3 bukás után nincs doboz azon a nyelven (a biztonságos irány);
+//   • BELSŐ IDŐKERET: --max-minutes N (alap FUTAS_PERC) — a CI-lépésnek nincs timeout-minutes-a, ezért a kor() maga
+//     nem indít új útmutatót a határidő után (kimaradt: idő);
 //   • ELAKADAS_BE=false → semmi sem fut, a modell sincs meghívva.
 // Állapot a napi riportnak: memory/elakadas-state.json (nap, koltseg, uj, forditva, kimaradt).
 //
@@ -54,6 +59,10 @@ export const ATMENETI_NAP = 1;
 export const UJ_NAP = 3;
 /** A dobozt lefordítjuk ezekre (az angol az eredeti). */
 export const NYELVEK = ['hu', 'es'];
+/** Egy nyelv fordítását ennyi sikertelen (válaszolt, de használhatatlan) próba után feladjuk: nincs doboz azon a nyelven. */
+export const FORDITAS_PROBA_MAX = 3;
+/** A CI-lépés belső időkerete (perc): ennyi után a kor() nem indít új útmutatót (a lépésnek nincs timeout-minutes-a). */
+export const FUTAS_PERC = 6;
 
 const NAP = 86400000;
 const NYELV_NEV = { hu: 'Hungarian', es: 'Spanish' };
@@ -98,9 +107,22 @@ export async function cikkSzoveg(url, fetchFn = fetch) {
 const olvas = (gyujtemeny, kulcs) => gyujtemeny instanceof Map ? gyujtemeny.get(kulcs) : gyujtemeny?.[kulcs];
 
 /**
+ * Esedékes-e a doboz egy nyelvének (újra)fordítása? Nem, ha megvan; nem, ha FORDITAS_PROBA_MAX bukás volt; nem, ha az
+ * utolsó próba ATMENETI_NAP napnál frissebb. Hibás dátumú jegyzés esedékes (ne ragadjon be örökre).
+ */
+export function forditasEsedekes(doboz, nyelv, now) {
+  if (!doboz || doboz[nyelv]) return false;
+  const p = doboz.forditasProba?.[nyelv];
+  if (!p) return true;
+  if ((Number(p.db) || 0) >= FORDITAS_PROBA_MAX) return false;
+  const t = Date.parse(p.utolso || '');
+  return !(now - t < ATMENETI_NAP * NAP);
+}
+
+/**
  * Mit csináljon ez a futás, milyen sorrendben? Előbb a generálás, utána a (olcsóbb) fordítás.
  *  • generálás: nincs fájl; VAGY doboz: null és a próba ≥ UJRAPROBA_NAP napos (vagy a dátum hibás);
- *  • fordítás: van doboz, de a hu vagy az es hiányzik;
+ *  • fordítás: van doboz, de a hu vagy az es hiányzik ÉS esedékes (forditasEsedekes: bukás után 1 nap, 3 bukás után soha);
  *  • a generálandók: elöl az UJ_NAP-nál frissebb, fájl nélküli útmutatók (a legfrissebb az első), utánuk
  *    látogatás szerint csökkenőben (egyenlőnél a frissebb); a fordítandók ugyanígy.
  * @param {{utmutatok: {slug: string, published_at: string}[], kesz: Record<string, object>|Map, latogatas?: Map<string, number>, now: number, n: number}} p
@@ -120,7 +142,7 @@ export function sorrend({ utmutatok, kesz, latogatas, now, n }) {
       if (!(now - t < (f.atmeneti ? ATMENETI_NAP : UJRAPROBA_NAP) * NAP)) regi.push(u);     // NaN-ra is újrapróbál (ne ragadjon be örökre)
       continue;
     }
-    if (!f.doboz.hu || !f.doboz.es) fordit.push(u);
+    if (NYELVEK.some(ny => forditasEsedekes(f.doboz, ny, now))) fordit.push(u);
   }
   uj.sort((a, b) => pub(b) - pub(a));
   regi.sort(frissebb);
@@ -242,19 +264,30 @@ export function cikkJelol(szoveg, iso) {
 
 // ── egy útmutató feldolgozása (beinjektált függőségekkel → tesztelhető) ───────────────────
 
-/** A doboz hiányzó nyelveinek fordítása; a `doboz` helyben módosul. @returns {number} a sikeres fordítások száma */
+/**
+ * A doboz hiányzó, ESEDÉKES nyelveinek fordítása; a `doboz` helyben módosul. A próbák a `doboz.forditasProba[nyelv]`
+ * = {db, utolso} mezőben: a használhatatlan válasz db-t növel (FORDITAS_PROBA_MAX bukás után feladjuk), a válasz
+ * nélküli hívás (nem fizettünk) csak az időt frissíti — így egyik sem próbál újra azonnal; siker törli a jegyzést.
+ * Saját agent (elakadas-forditas): a translator cikk-fordítási leckéi nem kerülnek a szigorú JSON-promptba.
+ * @returns {number} a sikeres fordítások száma
+ */
 async function forditHianyzo(doboz, ctx) {
   let db = 0;
+  const iso = new Date(ctx.now).toISOString();
   for (const nyelv of NYELVEK) {
-    if (doboz[nyelv]) continue;
+    if (!forditasEsedekes(doboz, nyelv, ctx.now)) continue;
     if (!ctx.keret()) { ctx.kimaradt = 'keret'; break; }
     const { rendszer, felhasznalo } = forditasPrompt(doboz.en, nyelv);
-    const r = await ctx.ask(felhasznalo, { agentName: 'translator', systemPrompt: rendszer, maxTokens: 6000 });
-    if (!r) continue;
+    const r = await ctx.ask(felhasznalo, { agentName: 'elakadas-forditas', systemPrompt: rendszer, maxTokens: 6000 });
+    const proba = (doboz.forditasProba ||= {});
+    const regiDb = Number(proba[nyelv]?.db) || 0;
+    if (!r) { proba[nyelv] = { db: regiDb, utolso: iso }; continue; }
     ctx.koltseg(Number(r.costUsd) || 0);
     const items = forditasErtelmez(r.text, doboz.en);
-    if (items) { doboz[nyelv] = items; db++; }
+    if (items) { doboz[nyelv] = items; delete proba[nyelv]; db++; }
+    else proba[nyelv] = { db: regiDb + 1, utolso: iso };
   }
+  if (doboz.forditasProba && !Object.keys(doboz.forditasProba).length) delete doboz.forditasProba;
   return db;
 }
 
@@ -283,12 +316,15 @@ export async function feldolgoz(feladat, ctx) {
   const utm = ctx.utm;
   const probalva = new Date(ctx.now).toISOString();
   const szolg = szolgaltatok(utm.tool, utm.company);
+  // NINCS TÁMOGATOTT SÚGÓ-FORRÁS az eszközhöz (10-27): se fájl, se helyfoglalás — $0, és nincs értelme „doboz: null”-t
+  // írni (30 napig tartó, haszontalan várakozás-jelölés, és a 10-es keretből elvenné a helyet a valódi útmutatóktól)
+  if (!szolg.length) return { ...ures(undefined), kihagyva: true };
   // SZOLGÁLTATÓ-SZINTŰ hiba: ha a súgó-index nem jött le (a futáson belül gyorsítótárazott üres lista), a szolgáltató
   // MINDEN útmutatója kimarad — fetch nélkül, és a hívó nem számolja el helyfoglalásnak (kihagyva)
-  if (szolg.length && szolg.every(s => ctx.indexek[s] && !ctx.indexek[s].length)) return { ...ures('index'), kihagyva: true };
+  if (szolg.every(s => ctx.indexek[s] && !ctx.indexek[s].length)) return { ...ures('index'), kihagyva: true };
   const index = [];
   for (const s of szolg) index.push(...(ctx.indexek[s] ||= await ctx.indexLetolt(s)));
-  if (szolg.length && !index.length) return { ...ures('index'), kihagyva: true };
+  if (!index.length) return { ...ures('index'), kihagyva: true };
   const jeloltek = jeloltCikkek(utm, index, 4);
   if (!jeloltek.length) return { fajl: { slug, probalva, doboz: null }, uj: false, forditva: 0 };
 
@@ -349,14 +385,17 @@ export function jelolendok(cikkek, kesz) {
  * A sor feldolgozása. A `limit` a HELYFOGLALÓ útmutatókra vonatkozik: a szolgáltató-szintű (index) hiba miatt
  * kihagyottak nem számítanak bele, így egy letiltott súgó nem éheztetheti ki a többi szolgáltató útmutatóit.
  * @param {{slug: string, feladat: string}[]} sor
- * @param {{limit: number, keret: () => boolean, ctxEpit: (f: object) => object, mentes?: (f: object, e: object) => void, naplo?: (s: string) => void}} p
+ * A `hatarido` (ms időbélyeg, az `ora()` órája szerint; alap Date.now) után nem indul új útmutató: a folyamatban lévő
+ * befejeződik, a többi „idő” miatt marad ki (a CI-lépésnek nincs timeout-minutes-a — ez a belső időkeret).
+ * @param {{limit: number, keret: () => boolean, ctxEpit: (f: object) => object, mentes?: (f: object, e: object) => void, naplo?: (s: string) => void, hatarido?: number, ora?: () => number}} p
  */
-export async function kor(sor, { limit, keret, ctxEpit, mentes, naplo }) {
+export async function kor(sor, { limit, keret, ctxEpit, mentes, naplo, hatarido, ora = Date.now }) {
   const kimaradtOk = {};
   const kimaradt = (ok, db = 1) => { kimaradtOk[ok] = (kimaradtOk[ok] || 0) + db; };
   let hely = 0, ujDb = 0, forditvaDb = 0;
   for (let i = 0; i < sor.length && hely < limit; i++) {
     const f = sor[i];
+    if (Number.isFinite(hatarido) && ora() >= hatarido) { kimaradt('idő', Math.min(limit - hely, sor.length - i)); naplo?.('   ⏱️ az időkeret elfogyott — a többi útmutató a következő futásra marad'); break; }
     if (!keret()) { kimaradt('keret', Math.min(limit - hely, sor.length - i)); break; }
     try {
       const e = await feldolgoz(f, ctxEpit(f));
@@ -375,6 +414,13 @@ export async function kor(sor, { limit, keret, ctxEpit, mentes, naplo }) {
   return { hely, ujDb, forditvaDb, kimaradtOk };
 }
 
+/** A --max-minutes N értéke (perc, tizedes is lehet); hiányzó / hibás / ≤ 0 → FUTAS_PERC. */
+export function maxPerc(argv) {
+  const i = (argv || []).indexOf('--max-minutes');
+  const n = i >= 0 ? Number(argv[i + 1]) : NaN;
+  return Number.isFinite(n) && n > 0 ? n : FUTAS_PERC;
+}
+
 async function main() {
   if (!ELAKADAS_BE) { console.log('🔧 Ha elakadsz: kikapcsolva (ELAKADAS_BE=false)'); return; }
   const li = process.argv.indexOf('--limit');
@@ -383,7 +429,8 @@ async function main() {
   const [{ ask }, { spentToday }, { loadLog }] = await Promise.all([import('./ai-router.js'), import('./budget.js'), import('./traffic-log.js')]);
 
   const now = Date.now();
-  const ma = new Date(now).toISOString().slice(0, 10);
+  const hatarido = now + maxPerc(process.argv) * 60000;      // belső időkeret (a CI-lépésnek nincs timeout-minutes-a)
+  const ma =new Date(now).toISOString().slice(0, 10);
   const elozo = olvasJson(ALLAPOT);
   const mai = elozo && elozo.nap === ma ? elozo : {};            // a CI napi 3 futása EGY napi számlálóra ír
   const alap = { uj: Number(mai.uj) || 0, forditva: Number(mai.forditva) || 0 };
@@ -406,7 +453,10 @@ async function main() {
   const lat = napok.length ? latogatasok(naplo, napok[napok.length - 1], 60) : new Map();
 
   // az n a teljes lista: a limitet a kor() számolja (a szolgáltató-hiba miatt kihagyottak nem foglalnak helyet)
-  const sor = sorrend({ utmutatok, kesz, latogatas: lat, now, n: utmutatok.length });
+  // a támogatott súgó-forrás nélküli eszköz útmutatója ($0, nincs mit generálni) ki sem kerül a sorba — nem zajlik a naplóba
+  // (a feldolgoz maga is kihagyja, ha mégis bekerülne). Csak a LÉTEZŐ cikkfájlú útmutatók vannak a listában (readdirSync).
+  const sor = sorrend({ utmutatok, kesz, latogatas: lat, now, n: utmutatok.length })
+    .filter(f => f.feladat !== 'general' || szolgaltatok(cikkek[f.slug]?.json?._meta?.tool, cikkek[f.slug]?.json?._meta?.company).length);
   const indexek = {};
   let ujDb = 0, forditvaDb = 0;
   const keret = () => keretOk({ napiOsszes: spentToday(), elakadasMa: allapot.koltseg });
@@ -425,7 +475,7 @@ async function main() {
   jelolMind();
 
   const k = await kor(sor, {
-    limit, keret, naplo: s => console.log(s),
+    limit, keret, hatarido, naplo: s => console.log(s),
     ctxEpit: f => ({
       utm: utmutatoAdat(cikkek[f.slug].json), fajl: kesz[f.slug] || null, now, be: ELAKADAS_BE,
       indexek, indexLetolt, cikkSzoveg, keret, ask,

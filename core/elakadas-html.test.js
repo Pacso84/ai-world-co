@@ -156,5 +156,35 @@ t('🌍 a 3 nyelvi tábla mindegyikében megvan a 4 felirat, a CSS pedig g- elő
   assert.match(css, /@media \(max-width: 560px\)[^}]*\.g-elakad/s, 'nincs mobil szabály');
 });
 
+// 10-27 záró átnézés: a készüléknév-szűrő a MEGJELENÍTÉSKOR is fut — egy későbbi regex-javítás a már tárolt dobozokat is eltünteti.
+// Az angol i. tétele dönt: a hu/es i. tétele is kiesik (a fordítás ugyanazt a készüléket említi, de nem biztos, hogy angolul).
+t('📵 készüléknevet említő angol tétel: minden nyelven kiesik a megfelelő sorszámú tétel; a 2-nél kevesebb → nincs doboz', () => {
+  const harom = (en1) => ({
+    slug: 'x', probalva: '2026-10-26T00:00:00Z',
+    doboz: { keszult: '2026-10-26T00:00:00Z', enHash: 'h', forrasok: { [U1]: 'A' },
+      en: [tetel(1, U1), { ...tetel(2, U1), ...en1 }, tetel(3, U1)],
+      hu: [{ ...tetel(1, U1), symptom: 'hu egy' }, { ...tetel(2, U1), symptom: 'hu kettő (magyarul nincs készüléknév)' }, { ...tetel(3, U1), symptom: 'hu három' }],
+      es: [{ ...tetel(1, U1), symptom: 'es uno' }, { ...tetel(2, U1), symptom: 'es dos' }, { ...tetel(3, U1), symptom: 'es tres' }] }
+  });
+  for (const [mezo, ertek] of [['why', 'It is not available on Pixel 10 phones.'], ['symptom', 'Does it work on Pixel 8a?'], ['fix', 'Open it on your Pixel Watch.']]) {
+    const f = harom({ [mezo]: ertek });
+    const en = elakadasHtml(f, 'en', felirat, true);
+    assert.doesNotMatch(en, /Pixel/); assert.match(en, /Tünet 1/); assert.match(en, /Tünet 3/);
+    const hu = elakadasHtml(f, 'hu', felirat, true);
+    assert.match(hu, /hu egy/); assert.match(hu, /hu három/); assert.doesNotMatch(hu, /hu kettő/, 'a hu 2. tétel kiesik, mert az en 2. tétel készüléknevet említ');
+    const es = elakadasHtml(f, 'es', felirat, true);
+    assert.match(es, /es uno/); assert.match(es, /es tres/); assert.doesNotMatch(es, /es dos/);
+  }
+  // tiszta doboz változatlan: mindhárom tétel megjelenik
+  assert.equal((elakadasHtml(harom({}), 'hu', felirat, true).match(/g-elakad__t/g) || []).length, 3);
+  // két tételből egy kiesik → 1 maradó < 2 → nincs doboz (minden nyelven)
+  const ketto = fajl({ hu: [tetel(5, U1), tetel(6, U2)] });
+  ketto.doboz.en[0].fix = 'Use Google TV.';
+  for (const lang of ['en', 'hu', 'es']) assert.equal(elakadasHtml(ketto, lang, felirat, true), '', lang);
+  // generikus eszköz-szó nem szűr
+  const gen = fajl(); gen.doboz.en[0].fix = 'Open the app on your Android phone or tablet.';
+  assert.match(elakadasHtml(gen, 'en', felirat, true), /Tünet 1/);
+});
+
 if (hiba) { console.log(`\n❌ elakadas-html.test: ${hiba} hiba`); process.exit(1); }
 console.log('✅ elakadas-html.test: mind rendben');

@@ -144,9 +144,14 @@ const cikkreUtal = v => typeof v === 'string' && (/\b(the|this|that) (help |supp
 
 /** Konkrét készüléket / hardvermodellt / készülékgyártót említ-e? MIÉRT (user 10-26): „ne írjunk készülékeket, ez
  *  megkülönböztetés és összehasonlítás, szembemegy a szabályainkkal!” — az előnézetben „Galaxy Z Flip 8 … Pixel 10 …
- *  Galaxy S26” állt. Generikus szó („Android phone”, „iPhone”, „tablet”) marad; a modell / márka-típus kiesik. */
-const keszulekNev = v => typeof v === 'string' &&
-  /\b(samsung|galaxy|pixel\s*\d|pixel\s+(pro|fold|tablet|watch|buds)|z\s*(flip|fold)\s*\d*|iphone\s*\d+|ipad\s+(pro|air|mini)|macbook|surface\s+(pro|laptop|go|book)|oneplus|xiaomi|huawei|motorola|oppo|vivo|nokia|xperia|echo\s+(show|dot|pop|hub|studio|spot|frames|buds)|fire\s+(tv|hd|tablet)|kindle|chromebook|apple\s+watch|galaxy\s+watch)\b/i.test(v);
+ *  Galaxy S26” állt. Generikus szó („Android phone”, „iPhone”, „tablet”) marad; a modell / márka-típus kiesik.
+ *  10-27 (záró átnézés): a „pixel\s*\d” csak az egyjegyű modellt fogta („Pixel 10”, „Pixel 8a”, „Pixel phones” átment) →
+ *  számjegy-sor + betű-utótag; új nevek: Nest, Google TV, Fitbit, Android Auto, CarPlay, AirPods, Vision Pro, Copilot+ PC,
+ *  Wear OS. Exportált: a megjelenítő (core/elakadas-html.js) is ezzel szűr, így egy későbbi javítás a már TÁROLT
+ *  dobozokat is eltünteti. */
+export const keszulekNev = v => typeof v === 'string' &&
+  (/\b(samsung|galaxy|pixel\s*\d+[a-z]*|pixel\s+(phones?|devices?|pro|fold|tablet|watch|buds)|z\s*(flip|fold)\s*\d*|iphone\s*\d+|ipad\s+(pro|air|mini)|macbook|surface\s+(pro|laptop|go|book)|oneplus|xiaomi|huawei|motorola|oppo|vivo|nokia|xperia|echo\s+(show|dot|pop|hub|studio|spot|frames|buds)|fire\s+(tv|hd|tablet)|kindle|chromebook|apple\s+watch|galaxy\s+watch|nest\s+(hub|audio|mini)|google\s+tv|fitbit|android\s+auto|carplay|air\s*pods?|vision\s+pro|wear\s*os)\b/i.test(v) ||
+    /\bcopilot\s*\+\s*pcs?\b/i.test(v));
 
 /** A JSON kibontása: ```json burok → nyers szöveg → az első „{” és az utolsó „}” közötti rész. */
 function jsonKibont(szoveg) {

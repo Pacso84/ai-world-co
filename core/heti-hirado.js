@@ -50,7 +50,8 @@ export function hetiOsszefoglalo(cikkek, ma = new Date().toISOString()) {
 }
 
 // A heti cikk ZÁRÓ részei — nem hírek (10-26: a 10-25-i cikk számozás nélküli alcímekkel jött, és ezek is ## alcímek)
-const NEM_HIR = /^(what (this|it) means|wrap[\s-]?up|bottom line|key takeaways?|why (this|it) matters|in summary|summary|conclusion|final thoughts|faq|frequently asked)/i;
+const NEM_HIR = /^(what (this|it) means|wrap[\s-]?up|bottom line|key takeaways?|why (this|it) matters|in summary|summary|conclusion|final thoughts|faq|frequently asked)|^(introduction|intro|overview|the big picture|big picture|looking ahead|what['’]?s next)\b/i;
+// (10-27, záró átnézés: a bevezető / áttekintő / előretekintő alcímek sem hírek; a \b miatt az „Introducing …” / „Overviews …” hír marad)
 
 /**
  * A hírek címe, szó szerint: a számozott alcímek („## 1. Cím"); ha nincs számozott, a sima „## Cím" alcímek a

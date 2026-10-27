@@ -14,7 +14,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { engedelyezett } from './sugo-index.js';
-import { ELAKADAS_BE } from './elakadas.js';
+import { ELAKADAS_BE, keszulekNev } from './elakadas.js';
 
 const MIN_TETEL = 2;
 const NYELVEK = ['en', 'hu', 'es'];
@@ -74,7 +74,12 @@ export function elakadasHtml(fajl, lang, felirat, be = ELAKADAS_BE) {
   const lista = fajl.doboz[lang];
   if (!Array.isArray(lista)) return '';
   const forrasok = fajl.doboz.forrasok;
-  const jok = lista.filter(it => it && szoveg(it.symptom) && szoveg(it.why) && szoveg(it.fix) &&
+  // KÉSZÜLÉKNÉV MEGJELENÍTÉSKOR IS (10-27, záró átnézés): az angol i. tétele dönt, MINDEN nyelven az i. tétel esik ki —
+  // így a keszulekNev egy későbbi javítása a már TÁROLT dobozokat is eltünteti (a hu/es tétel az en tételből készült,
+  // azonos sorrendben). A „kevesebb mint 2 tétel” szabály ezután érvényes.
+  const en = Array.isArray(fajl.doboz.en) ? fajl.doboz.en : [];
+  const keszulekes = i => ['symptom', 'why', 'fix'].some(m => keszulekNev(en[i]?.[m]));
+  const jok = lista.filter((it, i) => !keszulekes(i) && it && szoveg(it.symptom) && szoveg(it.why) && szoveg(it.fix) &&
     szoveg(it.source) && engedelyezett(it.source));
   if (jok.length < MIN_TETEL) return '';
   const tetelek = jok.map(it => {

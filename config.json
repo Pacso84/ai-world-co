@@ -358,8 +358,22 @@
         "model": "minimax/minimax-m3"
       },
       "enabled": true,
-      "comment": "„🔧 Ha elakadsz” doboz generátora (core/elakadas-gen.js, 2026-10-26): a guide agent modelljei (Haiku 5.5, tartalék M3) — 10-24 mérés: a szigorú kódos ellenőrzés (core/elakadas.js) a modell kimenetét szűri, ezért nem kell nagyobb modell. A fordítást a translator agent végzi. Napi költség-plafon a kódban (NAPI_PLAFON $0,10).",
+      "comment": "„🔧 Ha elakadsz” doboz generátora (core/elakadas-gen.js, 2026-10-26): a guide agent modelljei (Haiku 5.5, tartalék M3) — 10-24 mérés: a szigorú kódos ellenőrzés (core/elakadas.js) a modell kimenetét szűri, ezért nem kell nagyobb modell. A doboz fordítását az elakadas-forditas agent végzi (lásd lent). Napi költség-plafon a kódban (NAPI_PLAFON $0,10).",
       "routing": "paid-only"
+    },
+    "elakadas-forditas": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "openai/gpt-5.6-luna"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "comment": "„🔧 Ha elakadsz” doboz FORDÍTÁSA (core/elakadas-gen.js, 2026-10-27, záró átnézés): a translator agent modelljei (Luna, tartalék M3), DE külön agent — az ai-router a translator „cikk-fordítási leckéit” (memory-manager lessonsBlock) a rendszer-promptba tenné, ami a szigorú JSON-kimenetet törhetné. Ha a translator modellje változik, ezt is igazítsd (core/elakadas-gen.test.js őrzi az egyezést).",
+      "routing": "paid-only",
+      "reasoning": "off"
     },
     "api-expert": {
       "deterministic": true,

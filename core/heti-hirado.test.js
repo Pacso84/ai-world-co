@@ -114,5 +114,17 @@ t('🌐 a HONLAPON is kint van (user 10-19: „de a honlapon is legyen kint!"): 
   assert.match(b, /existsSync\(join\(__dirname, 'assets', 'video', 'shorts', `\$\{j\.video_slug\}\.mp4`\)\)/, 'videó nélküli jelölőre is lejátszót rakna');
 });
 
+// 10-27 záró átnézés: a számozás nélküli heti cikk „Introduction” / „Overview” / „The Big Picture” / „What's next” alcímei sem hírek
+t('🗞️ a bevezető / áttekintő / előretekintő alcímek nem hírek', () => {
+  const NEM = ['Introduction', 'Intro', 'Overview', 'The Big Picture', 'Big picture', 'Looking ahead', "What's next", 'What’s Next', 'Looking Ahead: Next Week'];
+  const md = '# This Week in AI (October 25, 2026)\n' + NEM.map(c => `## ${c}\ntext`).join('\n') +
+    '\n## Meeting Recaps Show Up in Google Chat\ntext\n## Google Meet Translates Speech in 63 Languages\ntext';
+  assert.deepEqual(focimek(md, 5), ['Meeting Recaps Show Up in Google Chat', 'Google Meet Translates Speech in 63 Languages']);
+  assert.deepEqual(focimek('# Cím\n## Introduction\n## Overview\n## The Big Picture', 2), []);
+  // valódi hír, amely csak hasonlóan kezdődik, marad
+  assert.deepEqual(focimek('# Cím\n## Overviews of New Chips Arrive\ntext', 2), ['Overviews of New Chips Arrive']);
+  assert.deepEqual(focimek('# Cím\n## Introducing Gemini 4\ntext', 2), ['Introducing Gemini 4']);
+});
+
 if (hiba) { console.log(`\n❌ heti-hirado.test: ${hiba} hiba`); process.exit(1); }
 console.log('✅ heti-hirado.test: mind rendben');
