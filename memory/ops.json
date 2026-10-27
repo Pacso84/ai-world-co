@@ -483,38 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179172922749826",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-10-11T14:33:47.498Z",
-      "loud": false
-    },
-    {
-      "id": "n179172926035423",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). **Publish Summary:**\n\nThe lineup is solid and ready — practical, everyday use cases (complaint letters, resumes, pet-sitting agreements, sympathy messages) that will genuinely help busy people. Great ",
-      "agent": "publisher",
-      "at": "2026-10-11T14:34:20.354Z",
-      "loud": false
-    },
-    {
-      "id": "n179172927877496",
-      "level": "success",
-      "text": "1 hír + 1 útmutató publikálva (költség: $0.0069).",
-      "agent": "ceo",
-      "at": "2026-10-11T14:34:38.774Z",
-      "loud": false
-    },
-    {
-      "id": "n179174640207979",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid — practical, everyday AI writing tasks that cover both work (resumes, LinkedIn bios, marketing emails) and personal life (complaint letters, sympathy messages, pet-sitting agree",
-      "agent": "publisher",
-      "at": "2026-10-11T19:20:02.079Z",
-      "loud": false
-    },
-    {
       "id": "n179174642053696",
       "level": "info",
       "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
@@ -1281,45 +1249,41 @@
       "agent": "fact-check",
       "at": "2026-10-27T03:26:35.907Z",
       "loud": false
+    },
+    {
+      "id": "n179313240082769",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-27T20:20:00.827Z",
+      "loud": false
+    },
+    {
+      "id": "n179313246786864",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-27T20:21:07.868Z",
+      "loud": false
+    },
+    {
+      "id": "n179313252600898",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-27T20:22:06.008Z",
+      "loud": false
+    },
+    {
+      "id": "n179313257530753",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-27T20:22:55.307Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179172917361797",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Build a custom morning briefing with news, weather, and calendar in Alexa+\" (?/10)",
-      "ref": "GUIDE_build-a-custom-morning-briefing-with-news-weather-and-calend.json",
-      "at": "2026-10-11T14:32:53.617Z"
-    },
-    {
-      "id": "m179172924350070",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-11T14:34:03.500Z"
-    },
-    {
-      "id": "m179172972236724",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-11T14:42:02.367Z"
-    },
-    {
-      "id": "m179174639004357",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-11T19:19:50.043Z"
-    },
     {
       "id": "m179174815799025",
       "from": "designer",
@@ -2667,6 +2631,46 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-27T03:34:03.983Z"
+    },
+    {
+      "id": "m179313240082753",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"How to use Gemini on your Android phone\" — Step 1 describes two activation methods (power button hold, diagonal swipe) that are inaccurate or outdated for Gemini on most Android phones today — these were Assistant gestures that no longer reliably launch Gemini. The core g",
+      "ref": "ARTICLE_GUIDE_gemini-phone.json",
+      "open": true,
+      "at": "2026-10-27T20:20:00.827Z"
+    },
+    {
+      "id": "m179313246786827",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Using Gemini in Gmail and Docs to save time\" — Several UI descriptions (star icon, sparkle icon, floating margin button, Extensions menu path) are too specific to verify as current, and the outline generator feature in Docs is unconfirmed.",
+      "ref": "ARTICLE_GUIDE_gemini-workspace.json",
+      "open": true,
+      "at": "2026-10-27T20:21:07.868Z"
+    },
+    {
+      "id": "m179313252600812",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Generate a custom illustration for a slide or docu\" — iOS 18.1 / macOS 15.1 are too old — by late 2026 Apple Intelligence requires much newer OS versions, but I cannot verify the exact current minimum without a live source, so I will soften those claims.",
+      "ref": "ARTICLE_GUIDE_generate-a-custom-illustration-for-a-slide-or-document-with-.json",
+      "open": true,
+      "at": "2026-10-27T20:22:06.008Z"
+    },
+    {
+      "id": "m179313257530787",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Generate a quick FAQ page for a small business web\" — UI text descriptions are unverifiable and should use conditional language; example phone number should be generic.",
+      "ref": "ARTICLE_GUIDE_generate-a-quick-faq-page-for-a-small-business-website-using.json",
+      "open": true,
+      "at": "2026-10-27T20:22:55.307Z"
     }
   ]
 }
