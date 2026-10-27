@@ -21,17 +21,18 @@
 // ("befejezetlen") is, mert a kimeneti modul ott sem futott le; élesben
 // pontosan ezen a státuszon állt le a Pinterest-forgatókönyv.
 const SUCCESS = 1;
+const FIGYELMEZTETES = 2;   // displayStatus WARNING
 
 /**
  * Egy forgatókönyv futásainak összegzése egy időablakra.
  *
  * @param {Array}  logs     a Make /scenarios/{id}/logs válasza
  * @param {string} sinceIso ettől az időponttól számolunk
- * @returns {{ok:number, failed:number, topReason:string}}
+ * @returns {{ok:number, failed:number, warned:number, topReason:string}}  warned = a failed-ből a 2-es („figyelmeztetéssel”) futás
  */
 export function summarizeRuns(logs, sinceIso) {
   const since = Date.parse(sinceIso);
-  let ok = 0, failed = 0;
+  let ok = 0, failed = 0, warned = 0;
   const reasons = new Map();
 
   for (const row of (logs || [])) {
@@ -43,12 +44,13 @@ export function summarizeRuns(logs, sinceIso) {
 
     if (row.status === SUCCESS) { ok++; continue; }
     failed++;
+    if (row.status === FIGYELMEZTETES) warned++;
     const msg = String(row.error?.message || row.detail?.reason || '').trim();
     if (msg) reasons.set(msg, (reasons.get(msg) || 0) + 1);
   }
 
   const topReason = [...reasons].sort((a, b) => b[1] - a[1])[0]?.[0] || '';
-  return { ok, failed, topReason };
+  return { ok, failed, warned, topReason };
 }
 
 // A Make hibaüzenete nyers JSON-t tartalmaz:
@@ -66,10 +68,22 @@ function humanReason(raw) {
  * Hibátlan napról SEMMIT nem írunk: a riport akkor hasznos, ha a benne
  * lévő sorok mind jelentenek valamit.
  */
-export function describeFailures(name, summary) {
+// A REEL-NÉL A 2-ES KÉTÉRTELMŰ (2026-10-27): 10-26-án a „figyelmeztetéssel” (status 2, 9 mp) zárult Reel KINT VOLT
+// a Facebookon, a riport mégis „ELBUKOTT … újrajátszható”-t írt → az újraküldés DUPLA posztot csinált (user: „duplán
+// ment ki a poszt! ez hiba!”). 10-11-én viszont a 2-es valóban bukás volt. Ezért a `bizonytalan` forgatókönyvnél a
+// csak-figyelmeztetéses napon szelíd 🟡 sor jön (nem hibajel), ami ELLENŐRZÉST kér, nem újraküldést.
+/**
+ * @param {{bizonytalan?: boolean}} [opt]  bizonytalan: a 2-es futás nem biztos bukás (a Reel-forgatókönyv)
+ */
+export function describeFailures(name, summary, { bizonytalan = false } = {}) {
   if (!summary || !summary.failed) return null;
   const why = humanReason(summary.topReason);
   const total = summary.ok + summary.failed;
+  const warned = Number(summary.warned) || 0;
+  if (bizonytalan && warned === summary.failed) {
+    return `🟡 ${name}: ${warned}/${total} futás figyelmeztetéssel zárult ma — lehet, hogy KINT VAN. `
+      + 'Újraküldés ELŐTT nézd meg a Business Suite Tervezőben (különben dupla poszt lesz).';
+  }
   return `⚠️ ${name}: ${summary.failed}/${total} poszt ELBUKOTT ma`
     + (why ? ` — "${why}"` : '')
     + '. A Make hibasorában megvan, újrajátszható.';

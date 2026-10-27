@@ -2,6 +2,7 @@
 // MAKE-EGÉSZSÉG — tesztek
 // ===================================================================
 import assert from 'assert/strict';
+import { readFileSync } from 'fs';
 import { summarizeRuns, describeFailures } from './make-health.js';
 
 let pass = 0;
@@ -87,6 +88,35 @@ t('ismeretlen ok esetén is ad használható sort', () => {
   const line = describeFailures('FB-POSZTOLÓ', { ok: 1, failed: 1, topReason: '' });
   assert.match(line, /FB-POSZTOLÓ/);
   assert.match(line, /1/);
+});
+
+// 10-27: a Reelnél a 2-es (WARNING) kétértelmű — 10-26-án kint volt, az „újrajátszható” tanács dupla posztot okozott
+t('a 2-es futás külön számolódik (warned), a 3-as nem', () => {
+  const most = new Date().toISOString();
+  const r = summarizeRuns([{ status: 1, timestamp: most }, { status: 2, timestamp: most }, { status: 3, timestamp: most }],
+    new Date(Date.now() - 3600e3).toISOString());
+  assert.deepEqual([r.ok, r.failed, r.warned], [1, 2, 1]);
+});
+
+t('bizonytalan forgatókönyv, csak figyelmeztetés → szelíd 🟡 sor, ellenőrzést kér, nem újraküldést', () => {
+  const line = describeFailures('REEL-POSZTOLÓ', { ok: 2, failed: 1, warned: 1, topReason: '' }, { bizonytalan: true });
+  assert.match(line, /^🟡 REEL-POSZTOLÓ: 1\/3 futás figyelmeztetéssel/);
+  assert.match(line, /Business Suite/);
+  assert.doesNotMatch(line, /ELBUKOTT|újrajátszható|elbukott|nem sikerült|leállt/);
+});
+
+t('bizonytalan forgatókönyv, valódi (3-as) bukással → marad a ⚠️ ELBUKOTT', () => {
+  assert.match(describeFailures('REEL-POSZTOLÓ', { ok: 1, failed: 2, warned: 1, topReason: '' }, { bizonytalan: true }), /^⚠️ REEL-POSZTOLÓ: 2\/3 poszt ELBUKOTT/);
+});
+
+t('nem bizonytalan forgatókönyv (FB-link): a 2-es is ⚠️ ELBUKOTT, mint eddig', () => {
+  assert.match(describeFailures('FB-POSZTOLÓ', { ok: 1, failed: 1, warned: 1, topReason: '' }), /^⚠️ FB-POSZTOLÓ: 1\/2 poszt ELBUKOTT/);
+});
+
+t('bekötés: a daily-report a Reel-forgatókönyvet bizonytalannak jelöli, és átadja', () => {
+  const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
+  assert.match(src, /name: 'REEL-POSZTOLÓ'[^}]*bizonytalan: true/);
+  assert.match(src, /describeFailures\(w\.name, summarizeRuns\(.*, since\), \{ bizonytalan: !!w\.bizonytalan \}\)/);
 });
 
 console.log('\n✅ make-health.test: mind a ' + pass + ' eset rendben');

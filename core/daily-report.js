@@ -538,7 +538,9 @@ async function main() {
         // ellenőrzés (lásd a Pinterest-sor kigyomlálását 08-09-én).
         // Amit csomagnév NÉLKÜL is biztosan tudunk: ha a forgatókönyvben CSAK a
         // webhook ('gateway') van, semmi nem megy ki. Ezt a lenti ág elkapja.
-        { id: REEL_SCENARIO_ID, pkg: null, name: 'REEL-POSZTOLÓ', fix: 'Facebook Pages → a Reel-feltöltő modul' },
+        // bizonytalan (10-27): a Reelnél a Make 2-es (WARNING) futása mellett a poszt KINT LEHET (10-26: dupla lett
+        // az „újrajátszható” tanács miatt) → csak-figyelmeztetéses napon szelíd, ellenőrzést kérő sor (core/make-health.js)
+        { id: REEL_SCENARIO_ID, pkg: null, name: 'REEL-POSZTOLÓ', fix: 'Facebook Pages → a Reel-feltöltő modul', bizonytalan: true },
         ...(process.env.THREADS_MAKE_SCENARIO_ID
           ? [{ id: process.env.THREADS_MAKE_SCENARIO_ID, pkg: 'threads', name: 'THREADS-POSZTOLÓ', fix: 'Threads → Create a Thread' }] : []),
         ...(process.env.X_MAKE_SCENARIO_ID
@@ -575,7 +577,7 @@ async function main() {
           if (lr.ok) {
             const lj = await lr.json().catch(() => ({}));
             const since = new Date(Date.now() - 24 * 3600e3).toISOString();
-            const line = describeFailures(w.name, summarizeRuns(lj.scenarioLogs || lj.logs || [], since));
+            const line = describeFailures(w.name, summarizeRuns(lj.scenarioLogs || lj.logs || [], since), { bizonytalan: !!w.bizonytalan });
             if (line) lines.push(line);
           }
         } catch { /* a napló hiánya nem némítja el a többi őrszemet */ }
