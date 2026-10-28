@@ -7,7 +7,7 @@ import { LAP_SZ, SZOTAR_CSOPORT, szotarCsoportok, napSzava, fooldalHeroHtml, szo
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SZOTAR = JSON.parse(readFileSync(join(ROOT, 'website', 'glossary-data.json'), 'utf-8')).terms;
-const BUILD = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+const BUILD = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8').replace(/\r\n/g, '\n');   // sorvég-független (munkamodszer-tanulsagok)
 const CSS = readFileSync(join(ROOT, 'website', 'assets', 'style.css'), 'utf-8');
 let hiba = 0;
 const t = (nev, fn) => { try { fn(); console.log('  ✅ ' + nev); } catch (e) { hiba++; console.log('  ❌ ' + nev + '\n     ' + e.message); } };
@@ -72,7 +72,7 @@ t('🛡️ a cím és a cikkcímek escape-elve kerülnek a HTML-be', () => {
 });
 
 t('🔌 a build.js a főoldalt és a szótárt az új fejléccel építi, a régi kártyarács-szótár eltűnt', () => {
-  assert.match(BUILD, /import \{ fooldalHeroHtml, szotarOldalHtml \} from '\.\.\/core\/lap-hero\.js'/);
+  assert.match(BUILD, /import \{ fooldalHeroHtml, szotarOldalHtml[^}]*\} from '\.\.\/core\/lap-hero\.js'/);
   assert.match(BUILD, /bodyContent: fooldalHero \+ featuredHtml/);
   assert.match(BUILD, /const body = szotarOldalHtml\(/);
   const fv = BUILD.slice(BUILD.indexOf('function buildGlossaryPage'), BUILD.indexOf('function buildGlossaryPage') + 1200);

@@ -55,7 +55,8 @@ import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdet
 import { promptTar, promptTarHtml } from '../core/prompt-library.js';
 import { eszkozSavHtml, biztonsagosHtml, promptEpitoHtml, ESZKOZ_UTAK } from '../core/ingyenes-eszkozok.js';   // 🧰 2026-10-21
 import { eszkozSzoveg } from '../core/ingyenes-eszkozok-szoveg.js';
-import { fooldalHeroHtml, szotarOldalHtml } from '../core/lap-hero.js';   // 📄 2026-10-28
+import { fooldalHeroHtml, szotarOldalHtml, lapHeroHtml } from '../core/lap-hero.js';   // 📄 2026-10-28
+import { lapoSz, utmutatoLapHtml, eszkozLapHtml, honapLapHtml, honapId, kerdesLapHtml, szovegLapHtml, napIndex, TEMA_IKON, nagyKezdo } from '../core/lap-oldalak.js';
 import { trendRadar, trendRadarHtml } from '../core/trend-radar.js';
 import { szotarBetolt, kerdesForditas } from '../core/trend-forditas.js';
 const TREND_SZOTAR = szotarBetolt();   // a Felkapott oldal kereséseinek fordítása (2026-10-20)
@@ -1919,11 +1920,17 @@ function buildGuidesPage(generalGuides, counts, temaCsoportok = new Map(), kedve
   const tiles = generalGuides.length
     ? `<div class="gtiles">${generalGuides.map(guideTile).join('')}</div>`
     : `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
-  const header = `<section class="guides-hero">
-    <p class="intro__kicker">${tr('stepByStep')}</p>
-    <h1 class="guides-hero__title">${tr('guidesTitle')}</h1>
-    <p class="guides-hero__tag">${tr('guidesTag')}</p>
-  </section>`;
+  // 📄 2026-10-28: papírlapos fejléc — a lapon a legújabb általános útmutató első lépései
+  const legujabb = [...generalGuides].sort((x, y) => (y.publishedAt || '').localeCompare(x.publishedAt || ''))[0];
+  const so = lapoSz(LANG);
+  const header = lapHeroHtml({
+    badge: so.utmutatoDb(generalGuides.length), badgeIkon: '🧭', h1: plainText(tr('guidesTitle')), lead: tr('guidesTag'),
+    lap: legujabb ? utmutatoLapHtml({
+      lang: LANG, fej: so.ujUtmutato(formatDate(legujabb.publishedAt || new Date().toISOString())),
+      pecset: (legujabb.publishedAt || '').slice(0, 10) === new Date().toISOString().slice(0, 10) ? so.ujMa : so.ujFriss,
+      href: `article/${legujabb.slug}`, cim: legujabb.title, lepesek: lepesCimek(legujabb)
+    }) : ''
+  });
   const body = designStyleBlock() + header + kedvencSor + temaSav(temaCsoportok)
     + `<p class="start__wizcta"><a href="prompts">📋 ${escapeHtml(tr('plBanner'))}</a></p>` + tiles;
   return pageShell({
@@ -1982,11 +1989,16 @@ function buildTopicPage(t, cikkek) {
   const tiles = cikkek.length
     ? `<div class="gtiles">${cikkek.map(guideTile).join('')}</div>`
     : `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
-  const header = `<section class="guides-hero">
-    <p class="intro__kicker">${escapeHtml(sz.rovid)}</p>
-    <h1 class="guides-hero__title">${escapeHtml(sz.cim)}</h1>
-    <p class="guides-hero__tag">${cikkek.length} ${tr('stepByStep').toLowerCase()}</p>
-  </section>`;
+  // 📄 2026-10-28: papírlapos fejléc — bevezetőnek a már lefordított témaleírás, a lapon a téma első útmutatója
+  const so = lapoSz(LANG);
+  const elso = cikkek[0];
+  const header = lapHeroHtml({
+    badge: sz.rovid, badgeIkon: TEMA_IKON[t.id] || '📘', h1: sz.cim, lead: temaLeiras(sz.rovid, cikkek.length, LANG),
+    lap: elso ? utmutatoLapHtml({
+      lang: LANG, fej: so.temaElso, pecset: elso.level ? nagyKezdo(tr('lvl_' + elso.level) || '') : '',
+      href: `article/${elso.slug}`, cim: elso.title, lepesek: lepesCimek(elso)
+    }) : ''
+  });
   return pageShell({
     title: `${sz.cim} — ${SITE.name}`,
     description: temaLeiras(sz.rovid, cikkek.length, LANG),
@@ -2030,21 +2042,25 @@ function buildToolsPage(companyGuides, counts) {
       <div class="brandtiles">${companies.map(brandTile).join('')}</div></section>` : '';
   // Hivatalos linkek a szekció fejléce alatt (2026-07-12): az adott cég
   // eszközeinek hivatalos oldalai; ÚJ eszköznél automatikusan a cég oldala.
-  const officialRow = (c) => {
+  const officialLinks = (c) => {
     // URL-DEDUP (2026-07-12, user: "van duplikát link"): ugyanarra a címre
     // csak EGY chip mehet — pl. Perplexity eszköz + Perplexity cég ugyanoda
     // mutat, vagy ChatGPT + GPT-5.6 mindkettő a chatgpt.com-ra.
     const seen = new Set();
-    const chips = [];
+    const links = [];
     const norm = (u) => u.replace(/\/+$/, '').toLowerCase();
     for (const t of [...new Set(groups[c].map(g => g.tool).filter(Boolean))]) {
       const u = TOOL_LINKS[t];
       if (!u || seen.has(norm(u))) continue;
       seen.add(norm(u));
-      chips.push(`<a href="${u}" target="_blank" rel="noopener">${escapeHtml(t)} ↗</a>`);
+      links.push({ href: u, felirat: t });
     }
     const cu = COMPANY_LINKS[c];
-    if (cu && !seen.has(norm(cu))) chips.push(`<a href="${cu}" target="_blank" rel="noopener">${escapeHtml(c)} ↗</a>`);
+    if (cu && !seen.has(norm(cu))) links.push({ href: cu, felirat: c });
+    return links;
+  };
+  const officialRow = (c) => {
+    const chips = officialLinks(c).map(l => `<a href="${l.href}" target="_blank" rel="noopener">${escapeHtml(l.felirat)} ↗</a>`);
     return chips.length ? `<p class="official-row"><span class="official-row__l">${tr('officialRow')}:</span> ${chips.join(' ')}</p>` : '';
   };
   // A cég-szekció H3 (2026-08-17): fölé fajta-fejléc (H2) került, és a
@@ -2083,11 +2099,20 @@ function buildToolsPage(companyGuides, counts) {
   };
   const sections = KIND_ORDER.map(kindBlock).join('');
 
-  const header = `<section class="guides-hero">
-    <p class="intro__kicker">${tr('stepByStep')}</p>
-    <h1 class="guides-hero__title">${tr('toolsTitle')}</h1>
-    <p class="guides-hero__tag">${tr('toolsTag')}</p>
-  </section>`;
+  // 📄 2026-10-28: papírlapos fejléc — a lapon „a nap eszköze” (dátumból, mint a szótár nap szava);
+  // EGY eszköz, összehasonlítás nélkül. Azonos feliratú hivatalos linkeknél a lap a domaint írja ki.
+  const napCeg = companies[napIndex(companies.length)];
+  const napLinkek = napCeg ? officialLinks(napCeg) : [];
+  const felirat = l => napLinkek.filter(x => x.felirat === l.felirat).length > 1 ? new URL(l.href).hostname.replace(/^www\./, '') : l.felirat;
+  const header = lapHeroHtml({
+    badge: lapoSz(LANG).eszkozDb(companies.length), badgeIkon: '🧰', h1: plainText(tr('toolsTitle')), lead: tr('toolsTag'),
+    lap: napCeg ? eszkozLapHtml({
+      lang: LANG, nev: napCeg, logo: companyGlyph(napCeg), db: groups[napCeg].length,
+      hivatalos: napLinkek.map(l => ({ href: l.href, felirat: felirat(l) })),
+      elso: groups[napCeg][0] ? { href: `article/${groups[napCeg][0].slug}`, cim: groups[napCeg][0].title } : null,
+      horgony: `c-${companySlug(napCeg)}`
+    }) : ''
+  });
   const empty = `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
   const body = designStyleBlock() + header + (companyGuides.length ? (brandRow + sections) : empty);
   return pageShell({
@@ -2371,6 +2396,11 @@ function guideMapHtml(headings, artKeys) {
   return `<nav class="g-map" aria-label="${escapeHtml(tr('mapTitle'))}">
     <div class="g-map__head"><span class="g-map__kicker">🗺️ ${tr('mapTitle')}</span><span class="g-map__count">${headings.length} ${tr('mapSteps')}</span></div>
     <div class="g-map__row">${nodes}</div></nav>`;
+}
+
+/** Egy útmutató lépés-címei (a „Step N:” előtag nélkül) — a papírlapos fejlécek belepillantásához (2026-10-28). */
+function lepesCimek(a) {
+  return parseGuideSections(a.bodyMd).sections.filter(s => STEP_RX.test(s.title)).map(s => plainText(s.title.replace(STEP_RX, '')).replace(/[*`]/g, ''));
 }
 
 function parseGuideSections(bodyMd) {
@@ -3284,22 +3314,21 @@ function buildArchivePage(loc) {
     const key = (a.publishedAt || '').slice(0, 7) || '????-??';
     if (!byMonth.has(key)) {
       const d = new Date((a.publishedAt || Date.now()));
-      byMonth.set(key, { label: d.toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { year: 'numeric', month: 'long' }), items: [] });
+      byMonth.set(key, { id: honapId(key), label: d.toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { year: 'numeric', month: 'long' }), items: [] });
     }
     byMonth.get(key).items.push(a);
   }
-  const groups = [...byMonth.values()].map(g => `<section class="arch__month"><h2 class="arch__mh">${escapeHtml(g.label)}</h2>
+  const groups = [...byMonth.values()].map(g => `<section class="arch__month" id="${g.id}"><h2 class="arch__mh">${escapeHtml(g.label)}</h2>
     ${g.items.map(a => {
       const cat = CATEGORIES[a.category] || CATEGORIES.other;
       const day = a.publishedAt ? new Date(a.publishedAt).toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { day: 'numeric', month: 'short' }) : '';
       return `<a class="arch__row" href="article/${a.slug}"><span class="arch__d">${escapeHtml(day)}</span><span class="arch__i">${cat.icon}</span><span class="arch__t">${escapeHtml(a.title)}</span></a>`;
     }).join('\n')}</section>`).join('\n');
-  const body = `<section class="guides-hero">
-      <p class="intro__kicker">🗂️</p>
-      <h1 class="guides-hero__title">${escapeHtml(tr('archTitle'))}</h1>
-      <p class="guides-hero__tag">${escapeHtml(tr('archTag'))} (${news.length})</p>
-    </section>
-    <div class="arch">${groups}</div>`;
+  // 📄 2026-10-28: papírlapos fejléc — a lapon a hónap-mutató, a hónapokra ugró horgonnyal
+  const body = lapHeroHtml({
+    badge: lapoSz(LANG).archBadge, badgeIkon: '🗂️', h1: tr('archTitle'), lead: tr('archTag'),
+    lap: byMonth.size ? honapLapHtml({ lang: LANG, honapok: [...byMonth.values()].map(g => ({ id: g.id, nev: g.label, db: g.items.length })) }) : ''
+  }) + `<div class="arch">${groups}</div>`;
   return pageShell({
     title: `${tr('archTitle')} — ${SITE.name}`,
     // Ugyanaz az elv, mint a "Kezdd itt" oldalnál: a látható mottó marad,
@@ -3340,15 +3369,15 @@ function buildAboutPage(allLoc) {
   </section>`;
   // FENT a régi „Kezdd itt” (a „Mi ez az oldal?” egyszer: az aboutWho viszi, benne a nyelvszám),
   // ALATTA a bizalmi rész. 2026-10-17, user: „a Kezdd itt és a Rólunkat … összerakni egybe”.
-  const body = `<section class="guides-hero">
-      <p class="intro__kicker">${escapeHtml(tr('aboutNav'))}</p>
-      <h1 class="guides-hero__title">${escapeHtml(tr('startTitle'))}</h1>
-      <p class="guides-hero__tag">${escapeHtml(tr('startTag'))}</p>
-    </section>
+  // 📄 2026-10-28: papírlapos fejléc — a lapon a két aranyszabály (eddig a 3. kártya; onnan átköltözött,
+  // hogy ne álljon kétszer). Számozott sáv NINCS: az „első 5 útmutató” lent, leírással, egyszer szerepel.
+  const body = lapHeroHtml({
+    badge: lapoSz(LANG).rolunk, badgeIkon: '👋', h1: tr('startTitle'), lead: tr('startTag'),
+    lap: szovegLapHtml({ fej: `🛡️ ${plainText(tr('startS3h'))}`, szoveg: plainText(tr('startS3p')), pecset: lapoSz(LANG).elsoNap })
+  }) + `
     <div class="start__cols">
       <div class="start__card"><h2>🌏 ${escapeHtml(tr('aboutWhoH'))}</h2><p>${escapeHtml(tr('aboutWhoP'))}</p></div>
       <div class="start__card"><h2>👣 ${tr('startS2h')}</h2><p>${tr('startS2p')}</p></div>
-      <div class="start__card"><h2>🛡️ ${tr('startS3h')}</h2><p>${tr('startS3p')}</p></div>
     </div>
     <p class="start__wizcta"><a href="wizard">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>
     <p class="start__wizcta"><a href="prompts">📋 ${escapeHtml(tr('plBanner'))}</a></p>
@@ -3417,11 +3446,12 @@ function buildWizardPage() {
     q: W.q, r: W.r,
     ui: { step: tr('wizStep'), resultH: tr('wizResultH'), also: tr('wizAlso'), cta: tr('wizCta'), again: tr('wizAgain') }
   };
-  const body = `<section class="guides-hero">
-      <p class="intro__kicker">🧭</p>
-      <h1 class="guides-hero__title">${escapeHtml(tr('wizTitle'))}</h1>
-      <p class="guides-hero__tag">${escapeHtml(tr('wizTag'))}</p>
-    </section>
+  // 📄 2026-10-28: papírlapos fejléc — a lapon a kvíz kérdései (a kvíz saját adatából); gomb a kvízhez (mobilon a fejléc alá csúszik)
+  const body = `${lapHeroHtml({
+      badge: lapoSz(LANG).kviz, badgeIkon: '🧭', h1: tr('wizTitle'), lead: tr('wizTag'),
+      extra: `<a class="lh-gomb" href="#wizCard">${escapeHtml(lapoSz(LANG).kezdes)} <span aria-hidden="true">↓</span></a>`,
+      lap: kerdesLapHtml({ lang: LANG, kerdesek: W.q.map(q => ({ t: q.t, db: (q.o || []).length })) })
+    })}
     <div class="wiz">
       <p class="wiz__progress" id="wizProgress"></p>
       <div class="wiz__card" id="wizCard"></div>

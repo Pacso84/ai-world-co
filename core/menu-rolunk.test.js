@@ -49,7 +49,8 @@ t('🧭 menü 2 (10-18, user: „nem látom se a Prompt-tárat, se a másikat”
 
 t('📄 a Rólunk oldal TETEJÉN a „Kezdd itt” rész, ALATTA a bizalmi kártyák', () => {
   const s = sablon('buildAboutPage');
-  const sorrend = ["tr('startTitle')", "'startS2h'", "'startS3h'", 'href="wizard"', 'href="prompts"', 'startPicks(', "tr('aboutTitle')", '${cards}'];
+  // 2026-10-28: az aranyszabály (startS3) a fejléc papírlapjára költözött → a startTitle után, a startS2 ELÉ
+  const sorrend = ["tr('startTitle')", "'startS3h'", "'startS2h'", 'href="wizard"', 'href="prompts"', 'startPicks(', "tr('aboutTitle')", '${cards}'];
   assert.ok(s.includes("'aboutTeamH'") && s.includes("'aboutAiH'"), 'eltűnt egy bizalmi kártya');
   const torzs = s.slice(s.indexOf('const body'));
   let elozo = -1;
