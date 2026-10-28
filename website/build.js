@@ -56,7 +56,8 @@ import { promptTar, promptTarHtml } from '../core/prompt-library.js';
 import { eszkozSavHtml, biztonsagosHtml, promptEpitoHtml, ESZKOZ_UTAK } from '../core/ingyenes-eszkozok.js';   // 🧰 2026-10-21
 import { eszkozSzoveg } from '../core/ingyenes-eszkozok-szoveg.js';
 import { fooldalHeroHtml, szotarOldalHtml, lapHeroHtml } from '../core/lap-hero.js';   // 📄 2026-10-28
-import { lapoSz, utmutatoLapHtml, eszkozLapHtml, honapLapHtml, honapId, kerdesLapHtml, szovegLapHtml, napIndex, TEMA_IKON, nagyKezdo } from '../core/lap-oldalak.js';
+import { lapoSz, utmutatoLapHtml, eszkozLapHtml, honapLapHtml, honapId, kerdesLapHtml, szovegLapHtml, napIndex, TEMA_IKON, nagyKezdo,
+  pdfLapHtml, csomagRovid, keresesLapHtml, promptLapHtml } from '../core/lap-oldalak.js';
 import { trendRadar, trendRadarHtml } from '../core/trend-radar.js';
 import { szotarBetolt, kerdesForditas } from '../core/trend-forditas.js';
 const TREND_SZOTAR = szotarBetolt();   // a Felkapott oldal kereséseinek fordítása (2026-10-20)
@@ -2854,13 +2855,22 @@ function buildPacksPage() {
     ? `<p class="packs__shopall"><a class="packs__btn" href="${escapeHtml(PACKS.shopUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(tr('packsShopAll'))}</a></p>`
     : '';
 
-  const body = `<section class="packs">
+  // 📄 2026-10-28: papírlapos fejléc — a lapon a gyűjtemény tartalomjegyzéke (csomag + oldalszám, a nagy fájl külön);
+  // a fejléc a keskeny (860 px) .packs szekció ELÉ kerül, hogy ugyanolyan széles legyen, mint a többi oldalon
+  const nagyCsomag = PACKS.list.find(p => p.id === NAGY_ID);
+  const pdfHref = p => PACKS.free ? freePdfUt(p.id) : '';
+  const fejlec = lapHeroHtml({
+    badge: plainText(tr('packsPill')), badgeIkon: '📘', h1: plainText(tr('packsTitle')), lead: tr('packsLead'),
+    extra: `<p class="lh-lap-meta" style="margin-top:14px">${escapeHtml(tr('packsLangs'))}</p>`
+      + (PACKS.updated ? `<p class="packs__updated" style="margin:14px 0 0">🔄 ${escapeHtml(tr('packsUpdated'))} <time datetime="${escapeHtml(PACKS.updated)}">${escapeHtml(formatDate(PACKS.updated))}</time></p>` : ''),
+    lap: pdfLapHtml({
+      lang: LANG, fej: (csomagSzoveg(NAGY_ID, LANG) || {}).cim || '',
+      tetelek: PACKS.list.filter(p => p.id !== NAGY_ID).map(p => ({ nev: csomagRovid((csomagSzoveg(p.id, LANG) || {}).cim || p.id), href: pdfHref(p), oldal: packMeres(p).pages })),
+      egyben: nagyCsomag ? { oldal: packMeres(nagyCsomag).pages, href: pdfHref(nagyCsomag) } : null
+    })
+  });
+  const body = `${fejlec}<section class="packs">
     ${packsStyleBlock()}
-    <span class="pill">${tr('packsPill')}</span>
-    <h1 class="support__title">${tr('packsTitle')}</h1>
-    <p class="packs__lead">${escapeHtml(tr('packsLead'))}</p>
-    <p class="packs__langs">${escapeHtml(tr('packsLangs'))}</p>
-    ${PACKS.updated ? `<p class="packs__updated">🔄 ${escapeHtml(tr('packsUpdated'))} <time datetime="${escapeHtml(PACKS.updated)}">${escapeHtml(formatDate(PACKS.updated))}</time></p>` : ''}
 
     <div class="packs__grid">${kartyak}</div>
 
@@ -3230,7 +3240,16 @@ function buildPromptsPage(alap, loc) {
     // 2026-10-20 (user: „ez van a prompttárban is”): nem angol oldalon a FORDÍTOTT prompt, angol mondat nincs
     helyi: LANG !== 'en', mdHelyi: LANG !== 'en' ? (helyi.get(a.slug)?.bodyMd || '') : ''
   })));
+  // 📄 2026-10-28: papírlapos fejléc — a lapon EGY kitölthető prompt (naponta másik; nem „A nap promptja”, az lent áll)
+  const jeloltek = [...tar.kiemelt.slice(1), ...tar.temak.flatMap(x => x.lista), ...tar.egyeb]
+    .filter(e => /\[[^\]\n]{2,80}\]/.test(e.szoveg || '') && e.szoveg.length <= 240);
+  const peldaPrompt = jeloltek[napIndex(jeloltek.length)];
+  const fejlecHtml = lapHeroHtml({
+    badge: tr('plCount').replace('{n}', tar.ossz), badgeIkon: '📋', h1: tr('plTitle'), lead: tr('plTag'),
+    lap: peldaPrompt ? promptLapHtml({ lang: LANG, szoveg: peldaPrompt.szoveg, cim: peldaPrompt.title, href: `article/${peldaPrompt.slug}` }) : ''
+  });
   const body = promptTarHtml(tar, {
+    fejlecHtml,
     sz: { kicker: tr('plNav'), cim: tr('plTitle'), tag: tr('plTag'), kiemeltCim: tr('plTrending'), egyebCim: tr('plMore'),
       masol: tr('plCopy'), masolva: tr('plCopied'), utmutato: tr('plGuide'), db: n => tr('plCount').replace('{n}', n), kereses: tr('plSearch'),
       nap: tr('plDay'), mutasd: tr('plExpand'), kevesebb: tr('plCollapse'), nincs: tr('plNone') },
@@ -3293,7 +3312,21 @@ function buildTrendingPage(alap, loc) {
     rovidNap: iso => new Date(iso).toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { weekday: 'short', timeZone: 'UTC' }),
     napSzam: iso => String(new Date(iso).getUTCDate()),
     nyelvTipp: '',   // a prompt már a megjelenítés nyelvén van (2026-10-20)
-    hirdetes: hirdetesBlokk(HIRDETES, LANG)   // EGY, két napló-sor közé (user 10-18)
+    hirdetes: hirdetesBlokk(HIRDETES, LANG),   // EGY, két napló-sor közé (user 10-18)
+    // 📄 2026-10-28: papírlapos fejléc — a lapon a hét keresései (az „újra felkapott” nélkül), a nap horgonyára ugranak;
+    // a hét-sáv a fejléc aljára kerül (az maga a napok sorrendje, ezért nem kell számozott sáv)
+    fejlec: ({ hetSav }) => {
+      const ma = new Date().toISOString().slice(0, 10);
+      const tetelek = radar.het.filter(e => !e.ujra && e.kerdes).slice(0, 6).map(e => ({
+        kerdes: e.kerdes, nap: e.nap,
+        napFelirat: new Date(e.nap + 'T12:00:00Z').toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
+      }));
+      return lapHeroHtml({
+        badge: lapoSz(LANG).trendBadge, badgeIkon: '🔥', h1: tr('trTitle'), lead: tr('trTag'),
+        lap: tetelek.length ? keresesLapHtml({ lang: LANG, tetelek, ma, megvalaszolva: radar.het.length }) : '',
+        sav: hetSav
+      });
+    }
   });
   return pageShell({
     title: `${tr('trTitle')} — ${SITE.name}`,

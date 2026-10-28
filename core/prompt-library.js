@@ -233,7 +233,8 @@ export const SZKRIPT = `<script>(function(){document.addEventListener('click',fu
  */
 // 📢 2026-10-21 (user: „ide is rakjunk erre az oldalra reklámot!”): EGY hirdetés, az első („Felkapott és új”)
 // szakasz UTÁN, a témák előtt — szakaszok közti térközben, a Másolás gomboktól távol (mint a /trending-en).
-export function promptTarHtml(tar, { sz, temaNev, nyelvTipp = '', eszkozok = '', promptokCim = '', hirdetes = '' }) {
+// 📄 2026-10-28: `fejlecHtml` = papírlapos fejléc (core/lap-hero.js) a régi pl-hero cím+bevezető helyett.
+export function promptTarHtml(tar, { sz, temaNev, nyelvTipp = '', eszkozok = '', promptokCim = '', hirdetes = '', fejlecHtml = '' }) {
   const fejlec = (id, cim, db) => `<h2 class="pl-h"><span class="pl-h-i" aria-hidden="true">${TEMA_JEL[id] || '✨'}</span>${esc(cim)}<span class="pl-h-db">${db}</span></h2>`;
   const szakasz = (id, cim, lista) => lista.length ? `<section class="pl-sec" id="${esc(id)}">
     ${fejlec(id, cim, lista.length)}
@@ -244,12 +245,17 @@ export function promptTarHtml(tar, { sz, temaNev, nyelvTipp = '', eszkozok = '',
     ...tar.temak.map(x => [x.id, temaNev(x.id), x.lista.length]),
     ...(tar.egyeb.length ? [['more', sz.egyebCim, tar.egyeb.length]] : [])]
     .map(([id, c, db]) => `<a class="pl-chip" href="#${esc(id)}"><span aria-hidden="true">${TEMA_JEL[id] || '✨'}</span>${esc(c)}<span class="pl-chip-db">${db}</span></a>`).join('');
-  return `<div class="pl-page"><section class="pl-hero">
+  const promptokH = `<h2 class="pl-h"><span class="pl-h-i" aria-hidden="true">📋</span>${esc(promptokCim)}</h2>`;
+  const eleje = fejlecHtml
+    ? `${fejlecHtml}${eszkozok}
+    <section class="pl-hero pl-hero--promptok">${eszkozok ? promptokH : ''}`
+    : `<section class="pl-hero">
       <h1 class="pl-h1">${esc(sz.cim)}</h1>
       <p class="pl-lead">${esc(sz.tag)}</p>
       ${eszkozok ? `</section>
     ${eszkozok}
-    <section class="pl-hero pl-hero--promptok"><h2 class="pl-h"><span class="pl-h-i" aria-hidden="true">📋</span>${esc(promptokCim)}</h2>` : ''}
+    <section class="pl-hero pl-hero--promptok">${promptokH}` : ''}`;
+  return `<div class="pl-page">${eleje}
       <label class="pl-compose">${KERES_IKON}<input id="plSearch" class="pl-search" type="search" placeholder="${esc(sz.kereses)}" aria-label="${esc(sz.kereses)}"><span class="pl-total">${esc(sz.db(tar.ossz))}</span></label>
       <nav class="pl-chips" aria-label="${esc(sz.kicker || '')}">${gombok}</nav>
     </section>

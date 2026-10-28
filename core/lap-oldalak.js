@@ -9,6 +9,9 @@ const NYIL = '<span aria-hidden="true">→</span>';
 
 export const LAPO_SZ = {
   en: {
+    pdfPecset: 'Free PDF', oldal: n => `${n} pp.`, egyFajl: 'All in one file', letolt: 'Download the full collection',
+    keresFej: 'What people searched this week', ma: 'Today', megvalaszolva: n => `${n} answered`, trendBadge: 'Updated every day · last 7 days',
+    promptFej: 'A prompt to fill in', promptPecset: 'Copy-ready', utmutatobol: 'From the guide:',
     ujUtmutato: d => `Newest guide · ${d}`, ujMa: 'New today', ujFriss: 'Fresh', megnyit: 'Open the guide',
     tobbLepes: n => `+ ${n} more step${n > 1 ? 's' : ''}`,
     utmutatoDb: n => `Step-by-step · ${n} guides`,
@@ -20,6 +23,9 @@ export const LAPO_SZ = {
     kviz: '1-minute quiz', kerdesek: n => `The ${n} questions`, perc: 'About 1 minute', valasz: n => `${n} answers to pick from`, kezdes: 'Start with question 1'
   },
   hu: {
+    pdfPecset: 'Ingyenes PDF', oldal: n => `${n} old.`, egyFajl: 'Mind egy fájlban', letolt: 'A teljes gyűjtemény letöltése',
+    keresFej: 'Amit a héten kerestek', ma: 'Ma', megvalaszolva: n => `${n} megválaszolva`, trendBadge: 'Naponta frissül · az elmúlt 7 nap',
+    promptFej: 'Kitölthető prompt', promptPecset: 'Másolásra kész', utmutatobol: 'Az útmutatóból:',
     ujUtmutato: d => `Legújabb útmutató · ${d}`, ujMa: 'Ma új', ujFriss: 'Friss', megnyit: 'Az útmutató megnyitása',
     tobbLepes: n => `+ még ${n} lépés`,
     utmutatoDb: n => `Lépésről lépésre · ${n} útmutató`,
@@ -31,6 +37,9 @@ export const LAPO_SZ = {
     kviz: '1 perces kvíz', kerdesek: n => `A kvíz ${n} kérdése`, perc: 'Kb. 1 perc', valasz: n => `${n} válasz közül választhatsz`, kezdes: 'Kezdd az 1. kérdéssel'
   },
   es: {
+    pdfPecset: 'PDF gratis', oldal: n => `${n} pág.`, egyFajl: 'Todo en un archivo', letolt: 'Descarga la colección completa',
+    keresFej: 'Lo que se buscó esta semana', ma: 'Hoy', megvalaszolva: n => `${n} respondidas`, trendBadge: 'Se actualiza cada día · últimos 7 días',
+    promptFej: 'Un prompt para completar', promptPecset: 'Listo para copiar', utmutatobol: 'De la guía:',
     ujUtmutato: d => `Guía más reciente · ${d}`, ujMa: 'Nueva hoy', ujFriss: 'Reciente', megnyit: 'Abrir la guía',
     tobbLepes: n => `+ ${n} paso${n > 1 ? 's' : ''} más`,
     utmutatoDb: n => `Paso a paso · ${n} guías`,
@@ -91,3 +100,29 @@ export function szovegLapHtml({ fej, szoveg, pecset }) {
 // A témaoldalak címkéjének ikonja (core/topics.js azonosítói szerint).
 export const TEMA_IKON = { safe: '🛡️', money: '💰', home: '🏠', create: '🎨', learn: '📚', work: '💼', explain: '💡', automate: '⚙️' };
 export const nagyKezdo = s => (s ? s[0].toUpperCase() + s.slice(1) : '');
+
+/** PDF-tartalomjegyzék: tetelek [{ nev, href, oldal }], egyben { oldal, href } — pontozott vezetővel. */
+export function pdfLapHtml({ lang, fej, tetelek, egyben = null }) {
+  const s = lapoSz(lang);
+  const nev = t => t.href ? `<a class="lh-toc-t" href="${esc(t.href)}" target="_blank" rel="noopener">${esc(t.nev)}</a>` : `<span class="lh-toc-t">${esc(t.nev)}</span>`;
+  return lapHtml({ ikon: 'PDF', fej, pecset: s.pdfPecset, torzs: `<ol class="lh-toc">${tetelek.map(t => `<li>${nev(t)}<span class="lh-toc-n">${esc(s.oldal(t.oldal))}</span></li>`).join('')}</ol>
+      ${egyben ? `<p class="lh-toc-ossz"><span>${esc(s.egyFajl)}</span><span>${esc(s.oldal(egyben.oldal))}</span></p>
+      ${egyben.href ? `<a class="lh-lap-link" href="${esc(egyben.href)}" target="_blank" rel="noopener">${esc(s.letolt)} ${NYIL}</a>` : ''}` : ''}` });
+}
+/** A csomagnév rövid alakja a tartalomjegyzékbe („Work and Email: The AI Pack” → „Work and Email”). */
+export const csomagRovid = cim => String(cim || '').split(/:\s| — /)[0].trim();
+
+const KERES_IKON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+/** A hét keresései (Felkapott): tetelek [{ kerdes, nap (YYYY-MM-DD), napFelirat }]; a mai nap „Ma”; a lap a nap horgonyára ugrik. */
+export function keresesLapHtml({ lang, tetelek, ma, megvalaszolva }) {
+  const s = lapoSz(lang);
+  return lapHtml({ fej: s.keresFej, pecset: s.megvalaszolva(megvalaszolva), torzs: `<ul class="lh-q">${tetelek.map(t => `<li><a href="#d-${esc(t.nap)}">${KERES_IKON}<span class="lh-q-t">${esc(t.kerdes)}</span><span class="lh-q-d${t.nap === ma ? ' lh-q-d--ma' : ''}">${esc(t.nap === ma ? s.ma : t.napFelirat)}</span></a></li>`).join('')}</ul>` });
+}
+
+/** Kitölthető prompt a lapon: a szöveg chat-buborékban, a [helyek] kiemelve; alatta a forrás-útmutató. */
+export function promptLapHtml({ lang, szoveg, cim, href }) {
+  const s = lapoSz(lang);
+  const buborek = esc(szoveg).replace(/\[[^\]\n]{2,80}\]/g, m => `<span class="pl-fill">${m}</span>`);
+  return lapHtml({ fej: s.promptFej, pecset: s.promptPecset, torzs: `<div class="pl-bubble"><pre class="pl-text">${buborek}</pre></div>
+      <p class="lh-lap-meta">${esc(s.utmutatobol)} <a href="${esc(href)}">${esc(cim)}</a></p>` });
+}

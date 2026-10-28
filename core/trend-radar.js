@@ -152,19 +152,21 @@ function hetSav(napok, { rovidNap, napSzam }) {
 /**
  * Az oldal törzse. `sz`: felületi szövegek (db: n → „…megválaszolva: n”; ujra: „Újra felkapott”);
  * `datum(iso)`: rövid dátum; `hetnap(iso)`: a hét napja; `rovidNap`/`napSzam`: a sáv feliratai;
- * `nyelvTipp`: nem angol oldalon (a promptok angolok); `hirdetes`: EGY hirdetés-blokk (core/ads.js) vagy ''.
+ * `nyelvTipp`: nem angol oldalon (a promptok angolok); `hirdetes`: EGY hirdetés-blokk (core/ads.js) vagy '';
+ * `fejlec({ hetSav })`: 📄 2026-10-28 — a papírlapos fejléc (core/lap-hero.js); a hét-sávot megkapja, az alá kerül.
  */
 export function trendRadarHtml(radar, { sz, datum = s => String(s).slice(0, 10), hetnap = () => '', nyelvTipp = '', hirdetes = '',
   rovidNap = iso => new Date(iso).toLocaleDateString('en-US', { weekday: 'short', timeZone: 'UTC' }),
-  napSzam = iso => String(new Date(iso).getUTCDate()) }) {
+  napSzam = iso => String(new Date(iso).getUTCDate()), fejlec = null }) {
   const vanPrompt = radar.het.some(e => e.prompt);
-  const hero = `<section class="tr-hero">
-      <h1 class="tr-h1">${esc(sz.cim)}</h1>
-      <p class="tr-tag">${esc(sz.tag)}</p>
-      ${radar.napok?.length ? `<nav class="tr-weekbar" aria-label="${esc(sz.het)}">
+  const weekbar = radar.napok?.length ? `<nav class="tr-weekbar" aria-label="${esc(sz.het)}">
         ${hetSav(radar.napok, { rovidNap, napSzam })}
         <p class="tr-range"><strong>${esc(datum(radar.napok[0].iso))} – ${esc(datum(radar.napok.at(-1).iso))}</strong><span>${esc(sz.db(radar.het.length))}</span></p>
-      </nav>` : ''}
+      </nav>` : '';
+  const hero = fejlec ? fejlec({ hetSav: weekbar }) : `<section class="tr-hero">
+      <h1 class="tr-h1">${esc(sz.cim)}</h1>
+      <p class="tr-tag">${esc(sz.tag)}</p>
+      ${weekbar}
     </section>`;
   const elso = new Set();   // napi első sor kapja a horgonyt (a sáv oda ugrik)
   const sorok = radar.het.map(e => {

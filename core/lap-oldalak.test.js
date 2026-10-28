@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { LAPO_SZ, utmutatoLapHtml, eszkozLapHtml, honapLapHtml, honapId, kerdesLapHtml, szovegLapHtml, napIndex, TEMA_IKON, nagyKezdo } from './lap-oldalak.js';
+import { LAPO_SZ, utmutatoLapHtml, eszkozLapHtml, honapLapHtml, honapId, kerdesLapHtml, szovegLapHtml, napIndex, TEMA_IKON, nagyKezdo, pdfLapHtml, csomagRovid, keresesLapHtml, promptLapHtml } from './lap-oldalak.js';
 import { TEMAK } from './topics.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -77,6 +77,24 @@ t('🎨 a lapokban használt minden lh- osztálynak van stílusa', () => {
     + BUILD.match(/class="lh-gomb"/)[0];
   const osztalyok = new Set([...html.matchAll(/class="([^"]+)"/g)].flatMap(m => m[1].split(/\s+/)).filter(c => c.startsWith('lh-')));
   for (const c of osztalyok) assert.ok(CSS.includes('.' + c), 'nincs stílus: .' + c);
+});
+
+t('📘🔥📋 PDF-, kereső- és prompt-lap: tartalom, horgony, rövid név, escape, hu/es angol nélkül', () => {
+  assert.equal(csomagRovid('Work and Email: The AI Pack'), 'Work and Email');
+  assert.equal(csomagRovid('Munka és email — az AI-csomag'), 'Munka és email');
+  const pdf = pdfLapHtml({ lang: 'en', fej: 'All', tetelek: [{ nev: 'A', href: '/a.pdf', oldal: 9 }, { nev: 'B', href: '', oldal: 3 }], egyben: { oldal: 12, href: '/all.pdf' } });
+  assert.match(pdf, /9 pp\./); assert.match(pdf, /All in one file/); assert.match(pdf, /href="\/all\.pdf"/); assert.match(pdf, /<span class="lh-toc-t">B</);
+  const ker = keresesLapHtml({ lang: 'en', tetelek: [{ kerdes: 'how <x>', nap: '2026-10-28', napFelirat: 'Oct 28' }, { kerdes: 'q2', nap: '2026-10-27', napFelirat: 'Oct 27' }], ma: '2026-10-28', megvalaszolva: 9 });
+  assert.match(ker, /href="#d-2026-10-28"/); assert.match(ker, />Today</); assert.match(ker, />Oct 27</); assert.match(ker, /9 answered/); assert.ok(!ker.includes('<x>'));
+  const pr = promptLapHtml({ lang: 'en', szoveg: 'Write about [your topic] <b>', cim: 'Guide', href: 'article/g' });
+  assert.match(pr, /<span class="pl-fill">\[your topic\]<\/span>/); assert.ok(!pr.includes('<b>'));
+  for (const lang of ['hu', 'es']) {
+    const h = pdfLapHtml({ lang, fej: 'x', tetelek: [{ nev: 'a', oldal: 1 }], egyben: { oldal: 2, href: 'h' } })
+      + keresesLapHtml({ lang, tetelek: [{ kerdes: 'k', nap: 'n', napFelirat: 'f' }], ma: 'n', megvalaszolva: 1 }) + promptLapHtml({ lang, szoveg: 's', cim: 'c', href: 'h' });
+    for (const angol of ['pp.', 'All in one file', 'Download', 'Free PDF', 'What people searched', 'Today', 'answered', 'A prompt to fill', 'Copy-ready', 'From the guide'])
+      assert.ok(!h.includes(angol), `${lang}: ${angol}`);
+  }
+  for (const nev of ['buildTrendingPage', 'buildPromptsPage', 'buildPacksPage']) assert.match(fv(nev), /lapHeroHtml\(/, nev);
 });
 
 if (hiba) { console.log(`\n❌ lap-oldalak.test: ${hiba} hiba`); process.exit(1); }

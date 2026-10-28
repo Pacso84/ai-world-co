@@ -1565,3 +1565,22 @@ body {
   .lh-gomb { margin-top: 18px; }
   .lh-ma--suru .lh-t small { display: none; }
 }
+
+/* 📄 papírlapos fejléc — Felkapott, Prompt-tár, PDF-ek (2026-10-28) */
+.lh-lap-meta { margin: 12px 0 0; font-size: 13.5px; color: var(--ink-soft); }
+.lh-lap-meta a { font-weight: 700; color: var(--accent-dark); }
+.lh-toc-ossz { display: flex; justify-content: space-between; gap: 8px; margin: 6px 0 0; padding-top: 10px; border-top: 1px solid var(--line-strong); font-size: 15px; font-weight: 800; color: var(--ink); }
+.lh-q { list-style: none; margin: 4px 0 0; padding: 0; }
+.lh-q li { border-bottom: 1px dashed var(--line); }
+.lh-q li:last-child { border-bottom: 0; }
+.lh-q a { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 10px 0; color: var(--ink); text-decoration: none; }
+.lh-q svg { width: 16px; height: 16px; color: var(--ink-soft); }
+.lh-q-t { font-size: 15.5px; font-weight: 650; line-height: 1.35; }
+.lh-q a:hover .lh-q-t { text-decoration: underline; text-underline-offset: 3px; }
+.lh-q-d { font-size: 12.5px; font-weight: 700; white-space: nowrap; color: var(--ink-soft); }
+.lh-q-d--ma { color: var(--accent-dark); }
+.lh-lap .pl-bubble { margin: 12px 0 0; }
+.lh-hero .tr-weekbar { margin-top: 34px; }
+@media (max-width: 760px) {
+  .lh-q li:nth-child(n+5) { display: none; }
+}
