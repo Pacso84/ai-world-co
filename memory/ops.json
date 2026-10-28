@@ -483,30 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179177526571030",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and coherent — practical, everyday AI use cases that match your \"AI for everyone\" mission perfectly. One small note: the mix of tools (ChatGPT, DeepSeek, Grok, Cohere, Qwen, ChatR",
-      "agent": "publisher",
-      "at": "2026-10-12T03:21:05.710Z",
-      "loud": false
-    },
-    {
-      "id": "n179177528499139",
-      "level": "success",
-      "text": "0 hír + 2 útmutató publikálva (költség: $0.0239).",
-      "agent": "ceo",
-      "at": "2026-10-12T03:21:24.991Z",
-      "loud": false
-    },
-    {
-      "id": "n17918250417219",
-      "level": "info",
-      "text": "🧭 Forráskutató: 1 ÚJ megbízható forrás-javaslat (küszöb 100).\n• [100] Character AI Blog (hivatalos)\nJóváhagyod valamelyiket?",
-      "agent": "source-scout",
-      "at": "2026-10-12T17:10:41.721Z",
-      "loud": false
-    },
-    {
       "id": "n179182552278032",
       "level": "info",
       "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
@@ -1281,36 +1257,33 @@
       "agent": "fact-check",
       "at": "2026-10-28T03:20:34.179Z",
       "loud": false
+    },
+    {
+      "id": "n179319853895971",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Ideogram has announced ",
+      "agent": "fact-check",
+      "at": "2026-10-28T14:42:18.959Z",
+      "loud": false
+    },
+    {
+      "id": "n179319861575275",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-28T14:43:35.752Z",
+      "loud": false
+    },
+    {
+      "id": "n179319866173857",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-28T14:44:21.738Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179182594276478",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "4 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-12T17:25:42.764Z"
-    },
-    {
-      "id": "m179186587388345",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Find your routine next steps on the post-meeting screen\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-10-13T04:31:13.883Z"
-    },
-    {
-      "id": "m179186605151763",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — mi a baj: LEDE_TOO_LONG: A RÖVIDEN-doboz 67 szó (max ~45) — ami hosszú, az már nem \"röviden\".; HOWTO_TOO_LONG: 1839 szó (~9.2 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; Beginner clarity too low (7/10): steps are vague or",
-      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
-      "at": "2026-10-13T04:34:11.517Z"
-    },
     {
       "id": "m17918662491739",
       "from": "ellenorzo",
@@ -2672,6 +2645,36 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-28T03:33:35.023Z"
+    },
+    {
+      "id": "m179319853895936",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Ideogram has announced two tools for making SVG files, which are images built ”): \"Ideogram Vector explained: SVGs from a prompt or a\" — The article misattributes the source - it was published by Picsart, not Ideogram",
+      "ref": "ARTICLE_2026-10-28T02-59-50-363Z_picsart_Ideogram_Vector_explained__SVGs_from_a_prompt_or_a.json",
+      "open": true,
+      "at": "2026-10-28T14:42:18.959Z"
+    },
+    {
+      "id": "m179319861575269",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Generate AI‑powered email replies using Hugging Fa\" — The `curl` command syntax `-X POST` and the `return_full_text` parameter are documented as legacy by Hugging Face; the guide should soften these to 'if available' or 'current format' rather than presenting them as the ",
+      "ref": "ARTICLE_GUIDE_generate-ai-powered-email-replies-using-hugging-face-inferen.json",
+      "open": true,
+      "at": "2026-10-28T14:43:35.752Z"
+    },
+    {
+      "id": "m179319866173816",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Generate AI‑powered tweet threads on X with Grok\" — The claim that Grok is 'free to use' cannot be verified against current xAI pricing — softened to conditional. No feature removals detected; workflow and character-limit claim (280 for free X accounts) remain accurate.",
+      "ref": "ARTICLE_GUIDE_generate-ai-powered-tweet-threads-on-x-with-grok.json",
+      "open": true,
+      "at": "2026-10-28T14:44:21.738Z"
     }
   ]
 }
