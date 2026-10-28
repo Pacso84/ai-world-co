@@ -55,6 +55,7 @@ import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdet
 import { promptTar, promptTarHtml } from '../core/prompt-library.js';
 import { eszkozSavHtml, biztonsagosHtml, promptEpitoHtml, ESZKOZ_UTAK } from '../core/ingyenes-eszkozok.js';   // 🧰 2026-10-21
 import { eszkozSzoveg } from '../core/ingyenes-eszkozok-szoveg.js';
+import { fooldalHeroHtml, szotarOldalHtml } from '../core/lap-hero.js';   // 📄 2026-10-28
 import { trendRadar, trendRadarHtml } from '../core/trend-radar.js';
 import { szotarBetolt, kerdesForditas } from '../core/trend-forditas.js';
 const TREND_SZOTAR = szotarBetolt();   // a Felkapott oldal kereséseinek fordítása (2026-10-20)
@@ -1760,6 +1761,17 @@ function buildIndex(articles) {
     <span class="guides-cta__t"><strong>${tr('ctaTitle')}</strong><br>${tr('ctaText')}</span>
     <span class="guides-cta__arrow">→</span></a>`;
 
+  // 📄 PAPÍRLAPOS FEJLÉC (2026-10-28): jobbra a „mai szám” lapja a mai cikkekkel;
+  // hajnalban (ma még nincs cikk) a legfrissebbek, heti számmal (core/lap-hero.js).
+  const maiak = [featured, ...rest].filter(a => (a.publishedAt || '').slice(0, 10) === todayKey);
+  const lapCikk = a => ({ href: `article/${a.slug}`, cim: a.title });
+  const fooldalHero = fooldalHeroHtml({
+    lang: LANG,
+    kicker: `${tr('heroKicker').replace('01', String(ISSUE_NO).padStart(2, '0'))} · ${formatDate(new Date().toISOString())}`,
+    maiak: maiak.map(lapCikk), frissek: recent.slice(0, 4).map(lapCikk), hetiDb: [featured, ...rest].filter(a => new Date(a.publishedAt).getTime() >= cutoff).length,
+    eszkozHref: ESZKOZ_UTAK.sp, utmutatoHref: 'guides'
+  });
+
   // Kiemelt HETI ÖSSZEFOGLALÓ blokk (a kabalával) — a hero UTÁN, mindig látszik.
   const WEEKLY_LABEL = { en: 'This week in AI', hu: 'A hét összefoglalója', es: 'Esta semana en IA' };
   const weeklyHtml = weeklyPin ? `<section class="grid-section weekly-pin">
@@ -1780,8 +1792,9 @@ function buildIndex(articles) {
     // hanem magát az oldalt, ami nyelvtől független entitás. (Ugyanígy az
     // Organization a Rólunk oldalon.) NE „javítsd meg" ${LP}-vel.
     jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: tr('siteDesc') || SITE.description },
-    bodyContent: featuredHtml + weeklyHtml + guidesCta + grid
+    bodyContent: fooldalHero + featuredHtml + weeklyHtml + guidesCta + grid
       + `<p class="start__wizcta"><a href="archive">🗂️ ${escapeHtml(tr('archNav'))} →</a></p>`,
+    noIntro: true,   // 📄 2026-10-28: a középre igazított intro helyett a papírlapos fejléc
     pagePath: ''
   });
 }
@@ -3161,20 +3174,12 @@ function glossAutolink(html, state) {
 }
 
 function buildGlossaryPage() {
-  const cards = GLOSSARY.map(t => {
-    const loc = t[LANG] || t.en;
-    return `<div class="gloss__card" id="${t.id}">
-      <h2 class="gloss__term">${escapeHtml(loc.term)}</h2>
-      <p class="gloss__def">${escapeHtml(loc.def)}</p>
-    </div>`;
-  }).join('\n');
-  const body = `<section class="guides-hero">
-      <p class="intro__kicker">${tr('glossNav')}</p>
-      <h1 class="guides-hero__title">${escapeHtml(tr('glossTitle'))}</h1>
-      <p class="guides-hero__tag">${escapeHtml(tr('glossTag'))}</p>
-    </section>
-    <div class="gloss__grid">${cards}</div>
-    <p class="start__wizcta"><a href="wizard">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>`;
+  // 📄 2026-10-28: papírlapos fejléc + témacsoportos szótári lista (core/lap-hero.js);
+  // a #<id> horgonyok változatlanok — a cikkekből a kisszótár-autolink ide mutat.
+  const body = szotarOldalHtml({
+    terms: GLOSSARY, lang: LANG, cim: tr('glossTitle'),
+    utoHtml: `<p class="start__wizcta"><a href="wizard">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>`
+  });
   return pageShell({
     title: `${tr('glossTitle')} — ${SITE.name}`,
     description: tr('glossTag'),

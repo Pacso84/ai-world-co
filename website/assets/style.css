@@ -1457,3 +1457,71 @@ body {
   .fx-goal-d { font-size: 12.5px; line-height: 1.3; }
   .fx-lead { font-size: 17px; }
 }
+
+/* ===================================================================
+   📄 PAPÍRLAPOS FEJLÉC (2026-10-28, core/lap-hero.js) — a Biztonságos bemásolás
+   (fx-akta / fx-stamp / fx-num) nyelve közös építőkockaként: főoldal + szótár,
+   utána a többi oldal. user: „ez tetszik, de minden oldalra kéne!”
+   =================================================================== */
+.lh-hero { margin: 0 0 48px; }
+.lh-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: center; padding: 0 0 18px; }
+.lh-badge { display: inline-flex; align-items: center; gap: 7px; margin: 0 0 16px; padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 14%, var(--card)); color: var(--accent-dark); font-size: 13.5px; font-weight: 700; }
+.lh-h1 { margin: 0 0 16px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: clamp(34px, 5.2vw, 60px); line-height: 1.02; letter-spacing: -0.03em; color: var(--ink); max-width: 16ch; }
+.lh-lead { margin: 0; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.6; color: var(--ink-soft); max-width: 46ch; }
+.lh-lap { position: relative; padding: 18px 22px 24px; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--card); box-shadow: 10px 10px 0 -1px var(--paper-2), 10px 10px 0 0 var(--line); transform: rotate(-1.2deg); }
+.lh-lap-fej { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; padding-bottom: 10px; border-bottom: 1px solid var(--line); font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+.lh-lap-ai { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 10px; font-weight: 800; }
+.lh-stamp { position: absolute; bottom: -14px; right: 18px; padding: 4px 10px; border: 2px solid var(--accent); border-radius: 8px; background: color-mix(in srgb, var(--accent) 9%, var(--card)); color: var(--accent-dark); font-size: 12.5px; font-weight: 800; transform: rotate(5deg); }
+.lh-num { display: inline-grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 14px; font-weight: 800; box-shadow: 0 0 0 4px var(--paper); }
+.lh-sav { position: relative; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 12px; margin: 40px 0 0; padding: 0; list-style: none; }
+.lh-sav::before { content: ''; position: absolute; top: 15px; left: 15px; right: calc(100% / var(--n, 3)); height: 2px; background: var(--line-strong); }
+.lh-sav li { position: relative; }
+.lh-sav a { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.lh-sav-t { position: relative; padding-right: 10px; background: var(--paper); }
+.lh-sav a:hover .lh-sav-t { text-decoration: underline; text-underline-offset: 3px; }
+.lh-sav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
+.lh-sav small { display: block; margin: 4px 0 0 40px; font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+/* főoldal: a mai szám listája */
+.lh-ma { list-style: none; margin: 0; padding: 0; counter-reset: ma; }
+.lh-ma li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; padding: 11px 0; border-bottom: 1px dashed var(--line); }
+.lh-ma li:last-child { border-bottom: 0; }
+.lh-ma li::before { counter-increment: ma; content: counter(ma); font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 15px; line-height: 1.45; color: var(--accent-dark); }
+.lh-ma a { color: var(--ink); text-decoration: none; font-size: 15.5px; font-weight: 650; line-height: 1.4; }
+.lh-ma a:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* szótár */
+.lh-kereso { position: relative; display: block; max-width: 440px; margin: 24px 0 0; }
+.lh-kereso input { width: 100%; padding: 14px 16px 14px 46px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--card); color: var(--ink); font: inherit; font-size: 16px; }
+.lh-kereso input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent); }
+.lh-kereso svg { position: absolute; left: 17px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); color: var(--ink-soft); }
+.lh-szo { margin: 10px 0 10px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 38px); line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
+.lh-szo-def { margin: 0; font-size: 16.5px; line-height: 1.6; color: var(--ink); }
+.lh-csoport { margin: 56px 0 0; scroll-margin-top: 90px; }
+.lh-csoport-h { display: flex; align-items: center; gap: 12px; margin: 0 0 6px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: clamp(22px, 2.6vw, 28px); letter-spacing: -0.02em; color: var(--ink); }
+.lh-csoport-h .lh-num { box-shadow: none; }
+.lh-csoport-p { margin: 0 0 14px 42px; font-size: 15px; color: var(--ink-soft); }
+.lh-lista { margin: 0; padding: 0; border-top: 1px solid var(--line-strong); }
+.lh-tetel { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 8px 32px; padding: 18px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 90px; }
+.lh-tetel:target { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.lh-tetel dt { margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: 17.5px; line-height: 1.35; color: var(--ink); }
+.lh-tetel dt a { color: inherit; text-decoration: none; }
+.lh-tetel dt a:hover::after { content: ' #'; color: var(--accent); }
+.lh-tetel dd { margin: 0; max-width: 62ch; font-size: 16px; line-height: 1.65; color: var(--ink-soft); }
+.lh-nincs { margin: 40px 0; padding: 18px 20px; border: 1px dashed var(--line-strong); border-radius: 12px; color: var(--ink-soft); }
+.lh-csoport[hidden], .lh-tetel[hidden], .lh-nincs[hidden] { display: none; }
+@media (max-width: 760px) {
+  .lh-top { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .lh-lap { transform: none; margin-right: 10px; padding: 14px 18px 20px; }
+  .lh-sav { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 30px; }
+  .lh-sav::before { top: 15px; bottom: 15px; left: 14px; right: auto; width: 2px; height: auto; }
+  .lh-szo { font-size: 26px; margin-top: 6px; }
+  .lh-szo-def { font-size: 15px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .lh-ma a { font-size: 15px; }
+  .lh-tetel { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 16px 0; }
+  .lh-csoport-p { margin-left: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lh-lap { animation: lh-le .5s cubic-bezier(.2, .8, .2, 1) both; }
+  .lh-stamp { animation: lh-pecset .35s .55s ease-out both; }
+}
+@keyframes lh-le { from { opacity: 0; transform: translateY(-10px) rotate(-3deg); } }
+@keyframes lh-pecset { from { opacity: 0; transform: scale(1.6) rotate(12deg); } }
