@@ -1,126 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179280929536513",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-24T02:34:55.365Z",
-      "updated": "2026-10-24T02:35:36.784Z"
-    },
-    {
-      "id": "t179280933678525",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-24T02:35:36.785Z",
-      "updated": "2026-10-24T02:36:20.426Z"
-    },
-    {
-      "id": "t179280938042775",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-24T02:36:20.427Z",
-      "updated": "2026-10-24T02:38:16.261Z"
-    },
-    {
-      "id": "t179280949626330",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-24T02:38:16.263Z",
-      "updated": "2026-10-24T02:39:07.694Z"
-    },
-    {
-      "id": "t179280954769588",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-24T02:39:07.695Z",
-      "updated": "2026-10-24T02:39:16.114Z"
-    },
-    {
-      "id": "t179280955611642",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-10-24T02:39:16.116Z",
-      "updated": "2026-10-24T02:39:49.330Z"
-    },
-    {
-      "id": "t179284443998171",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-10-24T12:20:39.981Z",
-      "updated": "2026-10-24T12:20:40.103Z"
-    },
-    {
-      "id": "t179284444010449",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-10-24T12:20:40.104Z",
-      "updated": "2026-10-24T12:20:40.249Z"
-    },
-    {
-      "id": "t17928444402512",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-24T12:20:40.251Z",
-      "updated": "2026-10-24T12:20:40.380Z"
-    },
-    {
-      "id": "t179284444038316",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-24T12:20:40.383Z",
-      "updated": "2026-10-24T12:21:12.402Z"
-    },
-    {
-      "id": "t179284447240467",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-10-24T12:21:12.404Z",
-      "updated": "2026-10-24T12:21:47.077Z"
-    },
-    {
-      "id": "t179284450707918",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-10-24T12:21:47.079Z",
-      "updated": "2026-10-24T12:22:00.121Z"
-    },
-    {
-      "id": "t179284452017612",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-10-24T12:22:00.176Z",
-      "updated": "2026-10-24T12:22:00.309Z"
-    },
-    {
-      "id": "t179284452033818",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-10-24T12:22:00.338Z",
-      "updated": "2026-10-24T12:22:33.924Z"
-    },
-    {
-      "id": "t179284455392892",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-10-24T12:22:33.928Z",
-      "updated": "2026-10-24T12:22:49.741Z"
-    },
-    {
       "id": "t179284456974291",
       "title": "Run designer",
       "status": "done",
@@ -479,41 +359,129 @@
       "agent": "publisher",
       "created": "2026-10-27T03:25:29.749Z",
       "updated": "2026-10-27T03:25:44.722Z"
+    },
+    {
+      "id": "t179315628120794",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-10-28T02:58:01.207Z",
+      "updated": "2026-10-28T02:58:01.366Z"
+    },
+    {
+      "id": "t17931562813683",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-10-28T02:58:01.368Z",
+      "updated": "2026-10-28T02:59:50.376Z"
+    },
+    {
+      "id": "t179315639037911",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-10-28T02:59:50.379Z",
+      "updated": "2026-10-28T02:59:50.551Z"
+    },
+    {
+      "id": "t179315639055420",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-28T02:59:50.554Z",
+      "updated": "2026-10-28T03:01:32.482Z"
+    },
+    {
+      "id": "t179315649248485",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-28T03:01:32.484Z",
+      "updated": "2026-10-28T03:03:40.356Z"
+    },
+    {
+      "id": "t179315662035974",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-10-28T03:03:40.359Z",
+      "updated": "2026-10-28T03:03:55.898Z"
+    },
+    {
+      "id": "t179315663589932",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-28T03:03:55.899Z",
+      "updated": "2026-10-28T03:04:11.846Z"
+    },
+    {
+      "id": "t17931566518490",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-10-28T03:04:11.849Z",
+      "updated": "2026-10-28T03:05:13.270Z"
+    },
+    {
+      "id": "t179315671332028",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-28T03:05:13.320Z",
+      "updated": "2026-10-28T03:06:08.787Z"
+    },
+    {
+      "id": "t179315676878929",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-10-28T03:06:08.789Z",
+      "updated": "2026-10-28T03:15:03.791Z"
+    },
+    {
+      "id": "t179315730383450",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-10-28T03:15:03.834Z",
+      "updated": "2026-10-28T03:15:03.996Z"
+    },
+    {
+      "id": "t179315730403990",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-28T03:15:04.039Z",
+      "updated": "2026-10-28T03:18:26.675Z"
+    },
+    {
+      "id": "t179315750667695",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-10-28T03:18:26.677Z",
+      "updated": "2026-10-28T03:19:18.438Z"
+    },
+    {
+      "id": "t179315755843979",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-10-28T03:19:18.439Z",
+      "updated": "2026-10-28T03:19:28.874Z"
+    },
+    {
+      "id": "t179315756887693",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-10-28T03:19:28.876Z",
+      "updated": "2026-10-28T03:19:49.306Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179174642053696",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-10-11T19:20:20.536Z",
-      "loud": false
-    },
-    {
-      "id": "n17917481636886",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid — practical, everyday AI use cases that anyone can relate to, from complaint letters to pet-sitting agreements. This mix of personal and professional scenarios hits exactly what",
-      "agent": "publisher",
-      "at": "2026-10-11T19:49:23.688Z",
-      "loud": false
-    },
-    {
-      "id": "n179174817858419",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-10-11T19:49:38.584Z",
-      "loud": false
-    },
-    {
-      "id": "n179177523055962",
-      "level": "info",
-      "text": "SEO: 2 cikk optimalizálva (átlag 7.5/10).",
-      "agent": "seo",
-      "at": "2026-10-12T03:20:30.559Z",
-      "loud": false
-    },
     {
       "id": "n179177526571030",
       "level": "success",
@@ -1281,63 +1249,41 @@
       "agent": "fact-check",
       "at": "2026-10-27T20:22:55.307Z",
       "loud": false
+    },
+    {
+      "id": "n179315755842390",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 7.8/10).",
+      "agent": "seo",
+      "at": "2026-10-28T03:19:18.423Z",
+      "loud": false
+    },
+    {
+      "id": "n179315757450892",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — it's a practical mix of everyday AI use cases (emails, resumes, privacy, fact-checking) that speaks directly to what busy people actually need. One small note: a few articles ",
+      "agent": "publisher",
+      "at": "2026-10-28T03:19:34.508Z",
+      "loud": false
+    },
+    {
+      "id": "n17931575893482",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0498).",
+      "agent": "ceo",
+      "at": "2026-10-28T03:19:49.348Z",
+      "loud": false
+    },
+    {
+      "id": "n179315763417919",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Google has announced Ge",
+      "agent": "fact-check",
+      "at": "2026-10-28T03:20:34.179Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179174815799025",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-11T19:49:17.990Z"
-    },
-    {
-      "id": "m179177525116611",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-12T03:20:51.166Z"
-    },
-    {
-      "id": "m179177559225996",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-12T03:26:32.259Z"
-    },
-    {
-      "id": "m179182541269397",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"AI 3D modeling is now live in Picsart Flow, from text o\" hír a meglévő útmutatóra mutat: create-ai-generated-grocery-shopping-lists-from-pantry-photo",
-      "ref": "create-ai-generated-grocery-shopping-lists-from-pantry-photo",
-      "at": "2026-10-12T17:16:52.693Z"
-    },
-    {
-      "id": "m179182541990876",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Picsart Flow now adds AI captioning in 30 animated styl\" hír a meglévő útmutatóra mutat: how-to-use-picsart-ai-playground-on-your-desktop",
-      "ref": "how-to-use-picsart-ai-playground-on-your-desktop",
-      "at": "2026-10-12T17:16:59.908Z"
-    },
-    {
-      "id": "m179182542902733",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Reshoot brings AI video-to-video editing to Picsart Flo\" hír a meglévő útmutatóra mutat: how-to-use-picsart-ai-playground-on-your-desktop",
-      "ref": "how-to-use-picsart-ai-playground-on-your-desktop",
-      "at": "2026-10-12T17:17:09.027Z"
-    },
     {
       "id": "m179182553874549",
       "from": "designer",
@@ -2671,6 +2617,61 @@
       "ref": "ARTICLE_GUIDE_generate-a-quick-faq-page-for-a-small-business-website-using.json",
       "open": true,
       "at": "2026-10-27T20:22:55.307Z"
+    },
+    {
+      "id": "m179315653750516",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"What advanced AI models are included in my subscription? - Perplexity\" — mi a baj: Article never answers its own title question — no specific models or plan tiers named; Substantive content is just 'check Perplexity's official pages' repeated four times; 'How to check' section lacks any actual steps or verification path",
+      "ref": "2026-10-28T02-59-31-452Z_perplexity-news_What_advanced_AI_models_are_included_in_my_subscri.json",
+      "at": "2026-10-28T03:02:17.505Z"
+    },
+    {
+      "id": "m17931566358873",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"What advanced AI models are included in my subscription? - Perplexity\" — javítva: Article never answers its own title question — no specific models or plan tiers named; Substantive content is just 'check Perplexity's official pages' repeated four times; újraküldöm.",
+      "ref": "2026-10-28T02-59-31-452Z_perplexity-news_What_advanced_AI_models_are_included_in_my_subscri.json",
+      "at": "2026-10-28T03:03:55.887Z"
+    },
+    {
+      "id": "m179315665183682",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"What advanced AI models are included in my subscription? - Perplexity\" (?/10)",
+      "ref": "2026-10-28T02-59-31-452Z_perplexity-news_What_advanced_AI_models_are_included_in_my_subscri.json",
+      "at": "2026-10-28T03:04:11.836Z"
+    },
+    {
+      "id": "m179315669127624",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Ideogram Vector explained: SVGs from a prompt or a phot\" hír a meglévő útmutatóra mutat: how-to-use-ideogram-character-for-consistent-ai-mascot-visua",
+      "ref": "how-to-use-ideogram-character-for-consistent-ai-mascot-visua",
+      "at": "2026-10-28T03:04:51.276Z"
+    },
+    {
+      "id": "m179315756886644",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-10-28T03:19:28.866Z"
+    },
+    {
+      "id": "m179315763417990",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Google has announced Gemini Omni, which it calls its latest model.”): \"Gemini Omni: What it is and how to use it\" — The source provides explicit access instructions and pricing, contradicting the article's claim that these are unknown",
+      "ref": "ARTICLE_2026-10-28T02-59-50-364Z_zapier-blog_Gemini_Omni__What_it_is_and_how_to_use_it.json",
+      "open": true,
+      "at": "2026-10-28T03:20:34.179Z"
     }
   ]
 }

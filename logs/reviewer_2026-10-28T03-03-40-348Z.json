@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-10-28T03:01:32.632Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.010160029999999999,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-28T02-59-31-452Z_perplexity-news_What_advanced_AI_models_are_included_in_my_subscri.json",
+      "rejected": "REJECTED_2026-10-28T02-59-31-452Z_perplexity-news_What_advanced_AI_models_are_included_in_my_subscri.json",
+      "decision": "FAIL",
+      "score": 4,
+      "cost_usd": 0.0036534
+    },
+    {
+      "writer": "WRITER_2026-10-28T02-59-50-363Z_picsart_Ideogram_Vector_explained__SVGs_from_a_prompt_or_a.json",
+      "article": "ARTICLE_2026-10-28T02-59-50-363Z_picsart_Ideogram_Vector_explained__SVGs_from_a_prompt_or_a.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0012672
+    },
+    {
+      "writer": "WRITER_2026-10-28T02-59-50-364Z_dropbox-blog__Bring_trusted_Dropbox_context_directly_into_Micro.json",
+      "article": "ARTICLE_2026-10-28T02-59-50-364Z_dropbox-blog__Bring_trusted_Dropbox_context_directly_into_Micro.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00096453
+    },
+    {
+      "writer": "WRITER_2026-10-28T02-59-50-364Z_zapier-blog_Gemini_Omni__What_it_is_and_how_to_use_it.json",
+      "article": "ARTICLE_2026-10-28T02-59-50-364Z_zapier-blog_Gemini_Omni__What_it_is_and_how_to_use_it.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00111594
+    }
+  ],
+  "finished_at": "2026-10-28T03:03:40.347Z",
+  "duration_seconds": 127.715
+}

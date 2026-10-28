@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-start-your-first-claude-task-on-a-folder-of-files-ste",
+    "company": "Anthropic",
+    "tool": "Claude",
+    "icon": "📁",
+    "level": "beginner",
+    "source_news": null,
+    "trend": {
+      "kifejezes": "how to use claude cowork",
+      "forras": [
+        "google-javaslat"
+      ],
+      "datum": "2026-10-28"
+    },
+    "written_at": "2026-10-28T03:06:08.776Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0043638,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-28T03:15:03.782Z",
+    "slug": "how-to-start-your-first-claude-task-on-a-folder-of-files-step-by-step",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1554
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with clear step-by-step structure, appropriate safety reminders (backup copies, read the plan first), and helpful fallbacks for readers who may not see the same interface. Language is accessible, tone is encouraging, and the What this means for you section provides practical context. No factual issues detected.",
+      "_aiCost": 0.0041682,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-28T03:18:26.650Z",
+    "seo": {
+      "meta_description": "Learn how to use Claude to sort, summarize, or rename files in any folder. A beginner's step-by-step guide with simple safety tips.",
+      "keywords": [
+        "how to use Claude AI",
+        "Claude file organization",
+        "AI file management beginners",
+        "organize files with AI",
+        "Claude Code tutorial",
+        "bulk file renaming AI",
+        "AI folder organization guide",
+        "Claude for beginners"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a keyword-rich intro paragraph (50-80 words) that naturally includes the main terms people search: 'how to use Claude Code for file management'",
+        "Include an FAQ section targeting related long-tail searches like 'can Claude organize my downloads folder' to capture more search intent",
+        "Add more subheadings (H2s) with natural keyword variations like 'Setting Up Your First Claude File Task' to improve structure and SEO"
+      ],
+      "optimised_at": "2026-10-28T03:19:18.410Z"
+    },
+    "fact_verified_at": "2026-10-28T03:20:08.257Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Start Your First Claude Task on a Folder of Files, Step by Step\"\nsubtitle: \"Give Claude one folder and one clear goal, read its plan first, and only then let it make changes.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Anthropic\"\ntool: \"Claude\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"claude\", \"files\", \"beginner\"]\n---\n\n# How to Start Your First Claude Task on a Folder of Files, Step by Step\n\n> **In short:** You can ask Claude to sort, summarize, or rename files in one folder you choose, after first reading its plan. You need a Claude account, and features that work with whole folders may depend on your app and plan. Claude only sees what you share, and it can make mistakes, so keep a backup copy first.\n\nIf your downloads, school papers, or household receipts are a mess, Claude can help you tidy them. This guide is for complete beginners. By the end, you'll have given Claude one folder and one specific goal, reviewed the plan it proposes, and approved one small change you can check yourself.\n\n## Before you start\n- **A Claude account.** Sign in at claude.ai, or open the Claude app if you use it on your phone or computer.\n- **The files, copied.** Make a duplicate of your folder first, so you always have the original.\n- **About 20–30 minutes.** Start with a small folder of 5 to 20 files.\n- **A plan note.** Some file features may need a paid plan or a specific version of the app. Check the official pricing page on the Claude website before you rely on them.\n\n## Step 1 — Pick one folder and one goal\nChoose a single folder, such as \"Receipts 2025\" or \"Class notes.\" Then write one goal in a sentence, like \"List every receipt with its date and total.\" Keep the goal narrow. A clear, small job is much easier for Claude to get right than \"organize my whole computer.\"\n\nOpen a plain notes app or a piece of paper and write the folder name and the goal. You'll paste this into Claude in a few steps.\n\n💬 Example: \"I have a folder called [folder name] with [number] files. My goal is to [one clear goal].\"\n\nYou'll know it worked when you have a single folder name and a one-sentence goal written down, and you can explain them in under ten seconds.\n\n## Step 2 — Share the files with Claude\nOpen a new chat in Claude. Look near the message box for a paperclip, a plus sign, or a button that says something like \"Attach\" or \"Add files.\" Tap it, then choose the files from your folder. You can usually select several at once by holding Ctrl (Windows) or Command (Mac) while clicking.\n\nSome apps also offer folder access, which is an opt-in permission. If you see an option like that, read the permission prompt carefully and only allow access to the folder you chose. If you don't see any attach or folder option, your app or plan may not support it, so check the official help pages for your version.\n\n💬 Example: \"Here are the files I want help with. Please tell me what you see before doing anything else.\"\n\nYou'll know it worked when Claude shows the file names back to you, or confirms that it can read the contents.\n\n## Step 3 — Describe your goal in your own words\nType your goal into the message box, using the sentence from Step 1 plus a little context about what the files are. The more specific you are, the more useful the answer. Include what format you want the result in, such as a table, a list, or a short summary.\n\nPress Enter or tap the send arrow. Claude usually starts writing a reply within a few seconds. Long folders can take longer, so give it a moment before you retry.\n\n💬 Example: \"These are my [type of files] from [time period]. My goal is to [one clear goal]. Please give me the result as a [table or list].\"\n\nIf the reply misses the point, don't worry. Rephrase with more detail, such as \"Only include files from March\" or \"Skip anything that isn't a receipt.\" You can keep refining in the same chat.\n\nYou'll know it worked when Claude's reply talks about your files specifically, not in general terms.\n\n## Step 4 — Ask for a plan before any changes\nThis is the most important step. Before Claude renames, moves, or rewrites anything, ask it to describe what it intends to do, step by step, and to wait for your approval. A plan lets you catch a mistake before it happens.\n\nExpect a numbered list of actions, such as \"Rename each file to the date and store name\" or \"Create a summary table.\" If Claude's plan is vague, ask it to name the exact files it will touch.\n\n💬 Example: \"Before changing anything, list the exact steps you would take, including which files each step affects. Wait for my approval before you continue.\"\n\nIf Claude starts doing things without showing a plan, stop it by typing \"Please stop and show me the plan first.\" Remember that Claude can explain a plan and draft new versions of your files, but it cannot promise perfect results, and it cannot guarantee it will read every file correctly.\n\nYou'll know it worked when Claude replies with a plan and asks for your okay, rather than announcing that the job is finished.\n\n## Step 5 — Read the plan and push back\nRead the plan slowly, as if you were checking a recipe before cooking. Look for anything that seems wrong: a file that shouldn't be touched, a name that would overwrite something, or a step you don't understand. Tell Claude what to change.\n\nThis is also where you can say no. A good plan is one you understand and agree with, and you're allowed to ask for a smaller version of it.\n\n💬 Example: \"Step 2 would rename files that aren't receipts. Please remove that step, and explain step 3 in simpler words.\"\n\nYou'll know it worked when you can describe each step in your own words and you're comfortable with every file it will touch.\n\n## Step 6 — Approve one small change and check it\nDon't approve the whole plan at once. Ask Claude to do only the first step, or to do the task for just two or three files. Then check the result yourself by opening the file or looking at the table it made. Compare it to the original in your backup copy.\n\nIf the result looks right, you can approve the next step. If it doesn't, describe the problem and ask Claude to try again. Small batches are the safest way to build trust with the tool.\n\n💬 Example: \"Please do only the first step, on the first three files. Show me the result so I can check it.\"\n\nYou'll know it worked when the small result matches what you expected, and the original files in your backup are still unchanged.\n\n## Step 7 — Save the result as a new file\nWhen the task is finished, ask Claude to put its output in a new file, such as a summary document or a table, instead of overwriting your originals. Then save that output in your folder, with a clear name like \"Receipts 2025 summary.\"\n\nFinally, keep your backup copy for a few days before you delete anything. If something looks off later, you'll still have the untouched originals.\n\n💬 Example: \"Please put the final summary into a single document I can copy into a new file. Don't change the original files.\"\n\nYou'll know it worked when you have a new file with the result and your original folder is intact.\n\n## Common mistakes\n- **Giving Claude a huge, messy folder.** Start with a small folder of 5 to 20 files. The fix is to split big jobs into smaller ones, one folder at a time.\n- **Approving the whole plan without reading it.** Read every step and ask about anything unclear. The fix is to approve one step at a time, as in Step 6.\n- **Letting Claude overwrite your originals.** Always keep a backup copy, and ask for output in new files. The fix is to check that the originals still match your backup before you delete anything.\n\n## What this means for you\n- **In everyday life:** You could ask Claude to pull the totals from a folder of household receipts into one table, then check a few entries yourself.\n- **For your business or work:** You could share a folder of meeting notes and ask for a summary of decisions and action items, then review the summary before sharing it with your team.\n- **If you're just getting started:** Begin with five files and one simple goal, like \"Give me a one-paragraph summary of each file.\" That's a low-risk way to learn how Claude reads your documents.\n\n## Try it now\nPick five files from any folder, copy them to a backup location, and attach them in a new Claude chat. Then type: \"Please list what each file is about in one sentence, and don't change anything.\" You'll see how Claude handles your files without touching them.",
+  "original_title": "How to Start Your First Claude Task on a Folder of Files, Step by Step"
+}
