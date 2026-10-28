@@ -79,7 +79,9 @@ export async function edgeTts() {
 // visszaszólt. Egyetlen 429 az EGÉSZ gyártást megállította, a pótló TikTok-videó el sem
 // készült (10-14: 2/3). Ezért a túlterheléses hibára NÖVEKVŐ várakozással újrapróbálunk;
 // minden más hiba (pl. rossz hang) azonnal továbbmegy — azt az újrapróba nem javítja.
-export const TULTERHELES_RX = /\b429\b|too many requests|Unexpected server response: 5\d\d/i;
+// 10-28: „Stream closed before the synthesis completed (no turn.end received)” — a Microsoft félúton bontotta a
+// kapcsolatot, és a nap második Reelje emiatt nem készült el (TikTok 2/3). Átmeneti hálózati hiba → újrapróba.
+export const TULTERHELES_RX = /\b429\b|too many requests|Unexpected server response: 5\d\d|stream closed before the synthesis completed|no turn\.end/i;
 export const VARASOK_MS = [20000, 60000];
 
 /** Egy szöveg hangja (mp3 Buffer). A 429-re / 5xx-re VARASOK_MS szerint újrapróbál. */

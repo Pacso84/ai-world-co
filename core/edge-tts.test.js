@@ -90,6 +90,13 @@ await t('más hibára NEM próbál újra (pl. rossz hang) — azonnal szól', as
   assert.equal(h.hivasok(), 1);
 });
 
+await t('🔴 10-28: a félbeszakadt adás („Stream closed … no turn.end”) is újrapróbálandó — a napi Reel emiatt maradt el', async () => {
+  const h = hamisTts(1, 'Stream closed before the synthesis completed (no turn.end received). The audio is likely truncated.');
+  const buf = await hangSzintezis(h.mod, 'hang', 'Hi', { alvas: async () => {} });
+  assert.equal(buf.toString(), 'hang:Hi');
+  assert.equal(h.hivasok(), 2);
+});
+
 await t('🔌 a Reel-gyártó (short-video.js) az újrapróbáló szintézist használja', async () => {
   const src = readFileSync(new URL('../core/short-video.js', import.meta.url), 'utf-8');
   assert.match(src, /await et\.hangSzintezis\(\{ MsEdgeTTS, OUTPUT_FORMAT \}, voice, cards\[i\]\.mond\)/);
