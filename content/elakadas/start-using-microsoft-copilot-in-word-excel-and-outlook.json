@@ -1,0 +1,72 @@
+{
+  "slug": "start-using-microsoft-copilot-in-word-excel-and-outlook",
+  "probalva": "2026-10-28T03:23:44.025Z",
+  "doboz": {
+    "keszult": "2026-10-28T03:23:44.025Z",
+    "enHash": "75103f4da13560f74b86547bd710a65795c24021",
+    "forrasok": {
+      "https://support.microsoft.com/en-us/microsoft-365-copilot/create-a-quick-draft-with-the-microsoft-365-copilot-app": "Create a Quick Draft with the Microsoft Copilot App",
+      "https://support.microsoft.com/en-us/microsoft-365-copilot/manage-automatic-replies-with-microsoft-365-copilot-chat": "Manage automatic replies with Microsoft Copilot Chat"
+    },
+    "en": [
+      {
+        "symptom": "My draft doesn't match the style or format I'm aiming for.",
+        "why": "Copilot can use a document as a model for the style or format you want.",
+        "fix": "Select + Add a file in the Describe the draft you'd like to create prompt box and direct Copilot to use it as a reference. For organizations, you can also choose Style, Audience, and Length options before selecting the right arrow to start the draft.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/create-a-quick-draft-with-the-microsoft-365-copilot-app"
+      },
+      {
+        "symptom": "Copilot draft creation isn't available on my account.",
+        "why": "To use this feature, you need an eligible Microsoft 365 subscription. Some Copilot capabilities may have usage limits if you're subscribed to Microsoft 365 Personal, Family, Premium, or Pro.",
+        "fix": "Sign in with an account that has a valid Microsoft Copilot subscription to access the Create section. If you're subscribed to Microsoft 365 Personal, Family, Premium, or Pro, some Copilot capabilities may have usage limits and are subject to change over time.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/create-a-quick-draft-with-the-microsoft-365-copilot-app"
+      },
+      {
+        "symptom": "Copilot won't set up my automatic reply in my language.",
+        "why": "Automatic replies with Copilot are currently available only in English. Support for additional languages is coming later.",
+        "fix": "Write your automatic reply request in English for now, since Copilot supports automatic replies only in English. Use Copilot to set up or update the reply in the Microsoft Copilot app.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/manage-automatic-replies-with-microsoft-365-copilot-chat"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A piszkozatom nem felel meg annak a stílusnak vagy formátumnak, amelyet szeretnék.",
+        "why": "A Copilot egy dokumentumot használhat mintaként a kívánt stílushoz vagy formátumhoz.",
+        "fix": "Válaszd a + Add a file lehetőséget a Describe the draft you'd like to create promptmezőben, és utasítsd a Copilotot, hogy referenciaként használja. Szervezetek esetén a piszkozat elindításához a jobbra mutató nyíl kiválasztása előtt a Style, Audience és Length lehetőségeket is kiválaszthatod.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/create-a-quick-draft-with-the-microsoft-365-copilot-app"
+      },
+      {
+        "symptom": "A Copilot piszkozatkészítése nem érhető el a fiókomban.",
+        "why": "A funkció használatához jogosult Microsoft 365-előfizetésre van szükséged. Ha Microsoft 365 Personal, Family, Premium vagy Pro csomagra fizettél elő, egyes Copilot-funkciók használata korlátozott lehet.",
+        "fix": "Jelentkezz be egy érvényes Microsoft Copilot-előfizetéssel rendelkező fiókkal a Create szakasz eléréséhez. Ha Microsoft 365 Personal, Family, Premium vagy Pro csomagra fizettél elő, egyes Copilot-funkciók használata korlátozott lehet, és ezek a korlátozások idővel változhatnak.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/create-a-quick-draft-with-the-microsoft-365-copilot-app"
+      },
+      {
+        "symptom": "A Copilot nem állítja be az automatikus válaszomat a nyelvemen.",
+        "why": "A Copilot használatával beállítható automatikus válaszok jelenleg csak angolul érhetők el. További nyelvek támogatása később érkezik.",
+        "fix": "Egyelőre angolul írd meg az automatikus válaszra vonatkozó kérésedet, mivel a Copilot csak angol nyelvű automatikus válaszokat támogat. A Microsoft Copilot alkalmazásban a Copilot segítségével állítsd be vagy frissítsd a választ.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/manage-automatic-replies-with-microsoft-365-copilot-chat"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "Mi borrador no coincide con el estilo o el formato que busco.",
+        "why": "Copilot puede usar un documento como modelo para el estilo o el formato que quieres.",
+        "fix": "Selecciona + Add a file en el cuadro de aviso Describe the draft you'd like to create y dile a Copilot que lo use como referencia. Para las organizaciones, también puedes elegir las opciones Style, Audience y Length antes de seleccionar la flecha derecha para iniciar el borrador.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/create-a-quick-draft-with-the-microsoft-365-copilot-app"
+      },
+      {
+        "symptom": "La creación de borradores con Copilot no está disponible en mi cuenta.",
+        "why": "Para usar esta función, necesitas una suscripción elegible a Microsoft 365. Algunas capacidades de Copilot pueden tener límites de uso si tienes una suscripción a Microsoft 365 Personal, Family, Premium o Pro.",
+        "fix": "Inicia sesión con una cuenta que tenga una suscripción válida a Microsoft Copilot para acceder a la sección Create. Si tienes una suscripción a Microsoft 365 Personal, Family, Premium o Pro, algunas capacidades de Copilot pueden tener límites de uso y están sujetas a cambios con el tiempo.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/create-a-quick-draft-with-the-microsoft-365-copilot-app"
+      },
+      {
+        "symptom": "Copilot no configura mi respuesta automática en mi idioma.",
+        "why": "Las respuestas automáticas con Copilot actualmente solo están disponibles en inglés. La compatibilidad con idiomas adicionales llegará más adelante.",
+        "fix": "Por ahora, escribe tu solicitud de respuesta automática en inglés, ya que Copilot admite respuestas automáticas solo en inglés. Usa la aplicación Microsoft Copilot para configurar o actualizar la respuesta.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/manage-automatic-replies-with-microsoft-365-copilot-chat"
+      }
+    ]
+  }
+}
