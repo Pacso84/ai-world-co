@@ -1,0 +1,53 @@
+{
+  "slug": "how-to-summarize-a-long-youtube-video-in-60-seconds-with-any-ai",
+  "probalva": "2026-10-28T14:45:47.398Z",
+  "doboz": {
+    "keszult": "2026-10-28T14:45:47.398Z",
+    "enHash": "fcef658d8a5d0f96d29b65068384ba7b71aeae71",
+    "forrasok": {
+      "https://support.claude.com/en/articles/14729294-open-claude-desktop-with-a-link": "Open claude desktop with a link"
+    },
+    "en": [
+      {
+        "symptom": "Can I send Claude the video link and my summary request in one step?",
+        "why": "Text passed in q is prefilled in the prompt field. If you include q, the prompt field is prefilled with that text so you can review and send it.",
+        "fix": "In Claude: use a link such as claude://claude.ai/new?q=... with your summary request in q, so the prompt field is prefilled with that text so you can review and send it. All parameter values must be URL-encoded.",
+        "source": "https://support.claude.com/en/articles/14729294-open-claude-desktop-with-a-link"
+      },
+      {
+        "symptom": "My link opened Claude but not the chat I wanted.",
+        "why": "The ID is the UUID you see at the end of the chat or project URL in Claude. If the ID is missing or invalid, Claude opens your recent chats or your projects list instead.",
+        "fix": "In Claude: copy the UUID you see at the end of the chat's URL and place it in claude://claude.ai/chat/{conversation-id}. If the ID is missing or invalid, Claude opens your recent chats or your projects list instead.",
+        "source": "https://support.claude.com/en/articles/14729294-open-claude-desktop-with-a-link"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Elküldhetem Claude-nak egy lépésben a videó linkjét és az összefoglalási kérésemet?",
+        "why": "A q paraméterben átadott szöveg előre kitölti a promptmezőt. Ha megadod a q paramétert, a promptmező előre kitöltődik azzal a szöveggel, így átnézheted és elküldheted.",
+        "fix": "A Claude-ban használj egy ehhez hasonló linket: claude://claude.ai/new?q=..., amelyben a q paraméterben szerepel az összefoglalási kérésed, így a promptmező előre kitöltődik azzal a szöveggel, és átnézheted, majd elküldheted. Minden paraméterértéket URL-kódolni kell.",
+        "source": "https://support.claude.com/en/articles/14729294-open-claude-desktop-with-a-link"
+      },
+      {
+        "symptom": "A linkem megnyitotta a Claude-ot, de nem azt a csevegést, amelyiket szerettem volna.",
+        "why": "Az azonosító az a UUID, amelyet a Claude-ban a csevegés vagy a projekt URL-címének végén látsz. Ha az azonosító hiányzik vagy érvénytelen, a Claude helyette a legutóbbi csevegéseidet vagy a projektlistádat nyitja meg.",
+        "fix": "A Claude-ban másold ki a csevegés URL-címének végén látható UUID-t, és illeszd be ide: claude://claude.ai/chat/{conversation-id}. Ha az azonosító hiányzik vagy érvénytelen, a Claude helyette a legutóbbi csevegéseidet vagy a projektlistádat nyitja meg.",
+        "source": "https://support.claude.com/en/articles/14729294-open-claude-desktop-with-a-link"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "¿Puedo enviarle a Claude el enlace del video y mi solicitud de resumen en un solo paso?",
+        "why": "El texto incluido en q se completa previamente en el campo de solicitud. Si incluyes q, el campo de solicitud se completa previamente con ese texto para que puedas revisarlo y enviarlo.",
+        "fix": "En Claude: usa un enlace como claude://claude.ai/new?q=... con tu solicitud de resumen en q, para que el campo de solicitud se complete previamente con ese texto y puedas revisarlo y enviarlo. Todos los valores de los parámetros deben estar codificados para URL.",
+        "source": "https://support.claude.com/en/articles/14729294-open-claude-desktop-with-a-link"
+      },
+      {
+        "symptom": "Mi enlace abrió Claude, pero no el chat que quería.",
+        "why": "El ID es el UUID que ves al final de la URL del chat o del proyecto en Claude. Si falta el ID o no es válido, Claude abre tus chats recientes o la lista de tus proyectos en su lugar.",
+        "fix": "En Claude: copia el UUID que ves al final de la URL del chat y colócalo en claude://claude.ai/chat/{conversation-id}. Si falta el ID o no es válido, Claude abre tus chats recientes o la lista de tus proyectos en su lugar.",
+        "source": "https://support.claude.com/en/articles/14729294-open-claude-desktop-with-a-link"
+      }
+    ]
+  }
+}
