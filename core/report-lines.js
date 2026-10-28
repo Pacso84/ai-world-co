@@ -328,7 +328,13 @@ export function hibaSorok(sorok) {
 }
 
 /** A jelentés utolsó sora: ✅ csak akkor, ha egyetlen hibajelzés sincs fent. */
+// A hibasor rövid neve a zárósorba („🎬 REEL-ŐRSZEM: a videó-gyártás…” → „REEL-ŐRSZEM”). 10-28: a zárósor csak
+// a számot írta („3 hibajelzés fent”), és a Reel-hiba a 25 sor között elveszett (user: „szerintem nem írta a Telegram”).
+const hibaNev = s => String(s || '').replace(/^[^\p{L}\p{N}]+/u, '').split(/\s*[:—]\s|\s+\(/)[0].trim().slice(0, 32);
+
 export function zaroSor(sorok) {
-  const db = hibaSorok(sorok).length;
-  return db ? `⚠️ Nem minden ment magától: ${db} hibajelzés fent — ezeket nézd meg.` : 'Minden megy magától. ✅';
+  const hibak = hibaSorok(sorok);
+  if (!hibak.length) return 'Minden megy magától. ✅';
+  const nevek = [...new Set(hibak.map(hibaNev).filter(Boolean))];
+  return `⚠️ Nem minden ment magától: ${hibak.length} hibajelzés — ${nevek.join(' · ')}. Fent a részletek.`;
 }

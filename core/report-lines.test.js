@@ -365,6 +365,18 @@ t('🔴 a 10-12-i ÉLŐ jelentés: Reel-hiba mellett a zárósor NEM mondhat ✅
   const z = zaroSor(elo);
   assert.ok(!z.includes('✅'), 'hiba mellett is ✅: ' + z);
   assert.match(z, /2 hibajelzés/);
+  // 10-28: a zárósor a hibák NEVÉT is mondja (a szám magában elveszett a 25 sor között)
+  assert.match(z, /REEL-POSZTOLÓ · REEL-ŐRSZEM/);
+});
+
+t('10-28 élő riport: a zárósor megnevezi a 3 hibát', () => {
+  const z = zaroSor([
+    '🎬 REEL-ŐRSZEM: a videó-gyártás elbukott — Stream closed before the synthesis completed',
+    '⚠️ TIKTOK: ma csak 2 videó ment ki (cél: 3) + 2 fotó — nézd meg a REEL- és BUFFER-sorokat.',
+    '⚠️ AI-LASSULÁS (2026-10-28) — 95 hívásból: 1 AI-hívás lógott bele a türelem-plafonba',
+    '📘 Facebook-poszt: 5 kiküldve, mind megjelent'
+  ]);
+  assert.equal(z, '⚠️ Nem minden ment magától: 3 hibajelzés — REEL-ŐRSZEM · TIKTOK · AI-LASSULÁS. Fent a részletek.');
 });
 
 t('hibajelzés nélkül marad a „Minden megy magától. ✅"; a krónikus 🧩/♻️ lelet nem hiba', () => {
