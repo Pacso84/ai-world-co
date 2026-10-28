@@ -119,7 +119,10 @@ t('🧵 Threads: a hivatkozó felismerése és a napi riport-sor (user 10-22)', 
   const napok = { '2026-10-20': { fb: 1 }, '2026-10-21': { fb: 2, th: 3 }, '2026-10-22': { fb: 4, th: 5 } };
   assert.equal(threadsRiportSor({ napok }), '🧵 Threadsről tegnap: 5 látogató (utolsó 2 nap: 8)');
   const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
-  assert.match(src, /const th = threadsRiportSor\(fbg\);/);
+  // 10-28 (user: „duplán jön … a Threadsnél”): a hivatkozó-alapú sor KIVÉVE a riportból (0-t mutatott, miközben a
+  // jelölt linkes 10-et) — csak a pontos, jelölt linkes Threads-sor marad
+  assert.doesNotMatch(src, /threadsRiportSor\(fbg\)/, 'a pontatlan, dupla Threads-sor visszakerült');
+  assert.match(src, /Threads-linkről tegnap/, 'a pontos (jelölt linkes) Threads-sor eltűnt');
 });
 
 if (hiba) { console.log(`\n❌ fb-link-guard.test: ${hiba} hiba`); process.exit(1); }

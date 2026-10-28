@@ -38,7 +38,7 @@ import { latenciaSor } from './ai-latency-guard.js';
 import { futasokLekerdez, sodrodasVizsgalat, sodrodasSor } from './watchdog-drift.js';
 import { linkSor } from './internal-link-guard.js';
 import { bufferSor, tiktokSor } from './buffer-guard.js';
-import { riportSor as fbRiportSor, threadsRiportSor } from './fb-link-guard.js';
+import { riportSor as fbRiportSor } from './fb-link-guard.js';
 import { tesztSor } from './test-guard.js';
 import { pdfLetoltesSor } from './pdf-download.js';
 import { bevaltSor, EXPORT_HIBA } from './bevalt-jelzes.js';   // 👍 „Bevált?” 10-23
@@ -713,9 +713,9 @@ async function main() {
     const fbg = JSON.parse(readFileSync(join(ROOT, 'memory', 'fb-link-guard.json'), 'utf-8'));
     const sor = fbRiportSor(fbg);
     if (sor) lines.push(sor);
-    // 🧵 THREADS (2026-10-22, user: „threadsre kéne még, hogy hány látogatónk volt”)
-    const th = threadsRiportSor(fbg);
-    if (th) lines.push(th);
+    // 🧵 THREADS: a hivatkozó-alapú sor KIVÉVE (10-28, user: „van olyan jelentés, ami duplán jön … a Threadsnél”).
+    // A Threads-app nem küld hivatkozót, ezért ez a sor 0-t mutatott (10-28: „0 látogató”), miközben a jelölt
+    // linkes sor (?src=th, lent) pontosan 10-et — két ellentmondó Threads-sor. A pontos marad.
   } catch { /* még nem futott — nem baj */ }
 
   // 🧪 TESZT-ŐRSZEM (2026-09-06). 2026-08-31-én a tény-ellenőrző agent egy ÉLŐ
