@@ -45,14 +45,36 @@ t('📺 Alexa+ nem „fizetős szolgáltatás”: az USA-ban a Prime része', ()
   for (const [nyelv, s] of NYELVEK(c)) assert.doesNotMatch(s, /Amazon's paid service|fizetős szolgáltatása|el servicio de pago de Amazon|az Amazon fizetős előfizetése|la suscripción de pago de Amazon/, nyelv);
 });
 
-t('🚩 a 3 tévesen „elavultnak” jelölt útmutatóról lekerült a jelölés, és ember-ellenőrzött; a 3 jogos jelölés marad', () => {
+t('🚩 a 3 tévesen „elavultnak” jelölt útmutatóról lekerült a jelölés; a 3 jogos jelölt le lett véve 301-gyel', () => {
   for (const id of ['amazon-alexa-plus', 'chatgpt-gpts', 'build-a-basic-ai-chatbot-for-your-website-using-openai-s']) {
     const m = cikk(id).a._meta;
     assert.equal(m.fact_check_flag, undefined, id + ': a téves jelölés maradt');
     assert.match(String(m.fact_human_ok), /^2026-10-29$/); assert.ok(m.fact_human_note);
   }
-  for (const id of ['automate-basic-email-replies-in-outlook-with-meta-ai', 'build-a-smart-recipe-finder-that-suggests-meals', 'create-ai-generated-meeting-summaries-directly-in-apple-cale'])
-    assert.equal(cikk(id).a._meta.fact_check_flag, 'may-be-obsolete', id + ': a jogos jelölés eltűnt — ez felhasználói döntés');
+  // a 3 jogos jelölt útmutató (nem létező funkciót írt le) a user jóváhagyásával LEVÉVE (10-29): nincs fájl, 301 az új helyre
+  const hist = JSON.parse(readFileSync(join(ROOT, 'content', 'slug-history.json'), 'utf-8'));
+  const levett = { 'turn-a-short-note-into-a-polished-email-reply-with-meta-ai-in-outlook': 'how-to-use-ai-to-write-quick-polite-emails-and-replies',
+    'build-a-smart-recipe-finder-that-suggests-meals-from-ingredients-in-th': 'how-to-plan-meals-and-a-grocery-budget-with-ai',
+    'summarise-apple-calendar-events-with-apple-intelligence': 'summarize-long-web-articles-in-safari-with-apple-intelligence' };
+  const elo = new Set(readdirSync(join(ROOT, 'content', 'articles')).map(x => { try { return JSON.parse(readFileSync(join(ROOT, 'content', 'articles', x), 'utf-8'))._meta?.slug; } catch { return null; } }));
+  for (const [regi, uj] of Object.entries(levett)) {
+    assert.ok(!elo.has(regi), regi + ': a levett cikk visszajött');
+    assert.equal(hist[regi], uj, regi + ': nincs 301 az új helyre');
+    assert.ok(elo.has(uj), uj + ': az átirányítás célja nem létezik');
+  }
+  assert.equal(hist['automate-basic-email-replies-in-outlook-with-meta-ai'], 'how-to-use-ai-to-write-quick-polite-emails-and-replies', 'a régi átirányítás lánca nincs kilapítva');
+});
+
+t('🏷️ minden „Le Chat” útmutatóban ott a névváltozás-jegyzet (Vibe, korábban Le Chat) mindhárom nyelven', () => {
+  let db = 0;
+  for (const fn of readdirSync(join(ROOT, 'content', 'articles')).filter(x => x.includes('GUIDE'))) {
+    const a = JSON.parse(readFileSync(join(ROOT, 'content', 'articles', fn), 'utf-8'));
+    if (a._meta.tool !== 'Le Chat') continue;
+    db++;
+    const tr = JSON.parse(readFileSync(join(ROOT, 'content', 'translations', fn), 'utf-8'));
+    for (const [nyelv, s] of [['en', a.article_markdown], ['hu', tr.hu], ['es', tr.es]]) assert.ok(s.includes('**Vibe**'), fn + ' [' + nyelv + ']: nincs névváltozás-jegyzet');
+  }
+  assert.ok(db >= 8, 'kevés Le Chat-útmutató: ' + db);
 });
 
 t('🛡️ emberOk: 180 napig kikerül az automata sorból; lejárat után visszakerül; hibás dátum nem véd', () => {
