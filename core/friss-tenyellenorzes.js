@@ -20,13 +20,23 @@ const NAP = 86400e3;
 
 const pub = m => Date.parse(m?.published_at || '') || 0;
 
+// 🧑 EMBER ÁLTAL MEGERŐSÍTETT cikk (2026-10-29): a tény-ellenőrző a SAJÁT elavult emlékezete alapján 75 útmutatót írt át
+// és 6-ot jelölt „elavultnak” — a Le Chat „megszűnt”, a GPT Store „bezárt”, az Alexa+ „nincs kint”: mind téves volt
+// (helyreállítva, hivatalos forrással). Amit ember (vagy a hivatalos forrás) megerősített, azt az automata HUMAN_OK_NAP
+// napig nem nézi újra — különben ugyanazt a tévedést újra beírná / újra megjelölné.
+export const HUMAN_OK_NAP = 180;
+export const emberOk = (meta, now = Date.now()) => {
+  const t = Date.parse(meta?.fact_human_ok || '');
+  return Number.isFinite(t) && now - t < HUMAN_OK_NAP * NAP;
+};
+
 /**
  * Az automata kör sorrendje: friss (még át nem nézett) cikkek a legújabbal kezdve, utána a
  * 30 napnál régebbi útmutatók a legrégebben átnézettel kezdve. A megjelölt (emberre váró) kimarad.
  * @param {{file: string, data: object}[]} cikkek  publikált cikkek (hír + útmutató)
  */
 export function ellenorzesiSor(cikkek, now = Date.now()) {
-  const elo = (cikkek || []).filter(c => c?.data?._meta && !c.data._meta.fact_check_flag && pub(c.data._meta));
+  const elo = (cikkek || []).filter(c => c?.data?._meta && !c.data._meta.fact_check_flag && !emberOk(c.data._meta, now) && pub(c.data._meta));
   const friss = elo
     .filter(c => now - pub(c.data._meta) < FRISS_NAP * NAP && !c.data._meta.fact_verified_at)
     .sort((a, b) => pub(b.data._meta) - pub(a.data._meta));

@@ -317,6 +317,20 @@ async function main() {
     }
 
     const claims = (decision.removed_claims || decision.errors || []).slice(0, 3).join('; ');   // hír-ág: errors
+    // 🧑 2026-10-29: AUTOMATA KÖRBEN A „TÁRGYTALAN” ÍTÉLET CSAK GYANÚ. A modell a SAJÁT emlékezetéből ítél, az pedig
+    // régebbi a termékeinknél: 10-29-én kiderült, hogy a „Le Chat megszűnt”, „a GPT Store bezárt”, „az OpenAI Playground
+    // megszűnt”, „az Alexa+ még nincs kint” mind téves volt — a jelölés + a memóriába írt „Do not claim this exists”
+    // tanulság (amit az útmutató-író is olvas) hamis ítéletet vitt tovább. Ezért itt NINCS jelölés és NINCS tanulság:
+    // a gyanú csak a naplóba/üzenetbe megy, és a cikk „átnézettként” kerül el a sor elejéről (fact_check_suspect).
+    if (decision.verdict === 'unpublish' && auto) {
+      console.log(`🙋 GYANÚ (emlékezetből, nem megerősített — nem jelölök, nem írok tanulságot): ${title}… — ${decision.reason}`);
+      if (!args.dry) {
+        guide.data._meta = { ...guide.data._meta, fact_check_suspect: String(decision.reason || '').slice(0, 300) };
+        saveGuide(guide);
+        message('fact-check', 'ceo', 'need', `Gyanú (nem megerősített, a gép emlékezetből ítél): "${title}" — ${decision.reason}. Nem nyúltam hozzá; ha valódi, forrással erősítsd meg.`, { ref: guide.file });
+      }
+      continue;
+    }
     if (decision.verdict === 'unpublish') {
       // NEM TÖRLÜNK. Egy oldal levétele emberi döntés (404 + elveszett rangsor
       // + 301 kellene hozzá). A gép megjelöl és szól — a user dönt.
