@@ -538,10 +538,14 @@ async function main() {
           : await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, image: vanKep ? kep : null });
       // 2026-10-13: a Buffer a SAJÁT szervereiről tölti le a videót — nálunk már 200 volt,
       // náluk még nem („Video could not be read from its URL"). Várunk, és újra próbáljuk.
-      for (let ujra = 1; video && r.error && VIDEO_NEM_OLVASHATO.test(r.error) && ujra <= 2; ujra++) {
-        console.log(`   ⏳ a Buffer még nem éri el a videót — ${ujra}. újrapróba 60 mp múlva`);
+      // 2026-10-29: a FOTÓRA is (éles eset: a Databricks-hír képe a deploy után 1,5 perccel még
+      // „Image could not be read from its URL” — nálunk 200 volt, a Buffer még nem érte el).
+      for (let ujra = 1; (video || item.kep) && r.error && VIDEO_NEM_OLVASHATO.test(r.error) && ujra <= 2; ujra++) {
+        console.log(`   ⏳ a Buffer még nem éri el a ${video ? 'videót' : 'fotót'} — ${ujra}. újrapróba 60 mp múlva`);
         await new Promise(res => setTimeout(res, 60000));
-        r = await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, video });
+        r = video
+          ? await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, video })
+          : await createPost({ channelId: ch.id, channelKey: ch.key, text: szoveg, image: item.kep });
       }
       if (video) console.log(`   🎬 videó: ${slug.slice(0, 44)}`);
       if (item.kep) console.log(`   🖼️ fotó: ${slug.slice(0, 44)}`);

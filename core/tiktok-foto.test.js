@@ -208,4 +208,12 @@ t('🔌 I1: a poszter fotó-ciklusa a fotoLepes-t használja, és nem megy tová
   assert.ok(!src.includes('if (ok || DRY) elkuldve++'), '🔴 a régi „csak siker számít” logika maradt');
 });
 
+t('⏳ a „could not be read from its URL” újrapróba a FOTÓRA is vonatkozik (10-29: Databricks-kép a deploy után 1,5 perccel)', () => {
+  const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'agents', 'social', 'buffer-poster.js'), 'utf-8').replace(/\r\n/g, '\n');
+  const i = src.indexOf('VIDEO_NEM_OLVASHATO.test(r.error) && ujra <= 2');
+  assert.ok(i > 0, 'nincs újrapróba-ciklus');
+  assert.ok(src.slice(i - 120, i).includes('(video || item.kep)'), '🔴 az újrapróba csak a videóra vonatkozik');
+  assert.ok(src.slice(i, i + 500).includes('image: item.kep'), '🔴 az újrapróba nem a fotót küldi újra');
+});
+
 console.log('\n✅ tiktok-foto.test: mind a ' + pass + ' eset rendben');
