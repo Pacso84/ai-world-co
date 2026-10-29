@@ -483,14 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179186635430336",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready — practical, everyday AI use cases that match your \"AI news for ordinary people\" mission. A few quick checks before publish: verify each article clearly names the corr",
-      "agent": "publisher",
-      "at": "2026-10-13T04:39:14.303Z",
-      "loud": false
-    },
-    {
       "id": "n179186637299276",
       "level": "success",
       "text": "4 hír + 1 útmutató publikálva (költség: $0.0884).",
@@ -1281,20 +1273,17 @@
       "agent": "fact-check",
       "at": "2026-10-29T03:47:54.740Z",
       "loud": false
+    },
+    {
+      "id": "n179328520318033",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"Thin, Light and Built for Everything: NVIDIA RTX S\" ",
+      "agent": "fact-check",
+      "at": "2026-10-29T14:46:43.180Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179190507668110",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Step 5: 'it does not interrupt the recipe audio unless you ask' stated as fact — cannot verify this behavior; readers may experience interruptions on their device",
-      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
-      "open": false,
-      "at": "2026-10-13T15:24:36.681Z",
-      "resolved_at": "2026-10-13T15:31:54.041Z"
-    },
     {
       "id": "m179190509611522",
       "from": "guide",
@@ -2676,6 +2665,16 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-29T03:58:38.268Z"
+    },
+    {
+      "id": "m179328520318069",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"Thin, Light and Built for Everything: NVIDIA RTX S\" — The source explicitly details new models, agent tools and games that the article incorrectly says were not confirmed",
+      "ref": "ARTICLE_2026-10-29T03-26-39-436Z_nvidia-blog_Thin__Light_and_Built_for_Everything__NVIDIA_RTX_S.json",
+      "open": true,
+      "at": "2026-10-29T14:46:43.180Z"
     }
   ]
 }
