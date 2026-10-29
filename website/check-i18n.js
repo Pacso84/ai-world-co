@@ -17,6 +17,7 @@
 
 import { readFileSync, readdirSync, existsSync, writeFileSync } from 'fs';
 import { chromePhraseHits, decodeEntities } from '../core/ui-phrases.js';
+import { megszolitasJelek } from '../core/megszolitas.js';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -46,6 +47,10 @@ function visibleText(html) {
     html
       .replace(/<script[\s\S]*?<\/script>/gi, ' ')
       .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+      // FÉLKÖVÉR GOMBNÉV = IDÉZETT GOMBNÉV (2026-10-29, éles téves riasztás: „keresd a **Try it now**
+      // (Próbáld ki) feliratú részt” — a Cohere gombja, amit épp hogy NEM fordítunk). A rövid <strong>
+      // szöveget idézőjelbe tesszük, így a chromePhraseHits idézett-gombnév kivétele rá is vonatkozik.
+      .replace(/<strong>([^<]{1,40})<\/strong>/gi, '“$1”')
       .replace(/<[^>]+>/g, ' ')
   )
     // Az IDÉZŐJELEKET meg kell őrizni (decodeEntities már visszaadta őket):
@@ -137,14 +142,8 @@ for (const lang of LANGS) {
       // de=du, es=tú, fr=vous — az ettől eltérő megszólítás stílustörés.
       // Küszöb 2, hogy egy véletlen szóalak ne riasszon. (User szúrta ki a
       // Roosevelt-cikkben; a fordító-prompt azóta előírja, ez a védőháló.)
-      const FORMALITY = {
-        // 'hozzon létre'/'adja meg' SZÁNDÉKOSAN nincs itt: 3. személyben az
-        // AI-ra is vonatkozhat ("kérd meg, hogy hozzon létre...") — álriasztás.
-        hu: ['kattintson', 'nyissa meg', 'jelentkezzen be', 'írja be', 'válassza ki', 'nyisson'],
-        es: ['haga clic', 'inicie sesión', 'seleccione', 'escriba su', 'abra su', 'pulse '],
-      };
-      const marks = FORMALITY[lang] || [];
-      const mHits = marks.filter(w => text.includes(w)).length;
+      // 2026-10-29: a jelek számítása core/megszolitas.js-ben — egész szó, „hogy …” 3. személy nélkül
+      const mHits = megszolitasJelek(text, lang).length;
       if (mHits >= 2) {
         console.log(`⚠️  [${lang}] MEGSZÓLÍTÁS-TÖRÉS GYANÚ (${mHits} jel — norma: hu=tegezés/de=du/es=tú/fr=vous): ${short}`);
         chromeHits++;
