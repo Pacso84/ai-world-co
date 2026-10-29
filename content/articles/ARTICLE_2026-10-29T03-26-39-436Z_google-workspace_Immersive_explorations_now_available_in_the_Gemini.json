@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "written_at": "2026-10-29T03:27:05.929Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0035259,
+    "original_draft": "2026-10-29T03-26-39-436Z_google-workspace_Immersive_explorations_now_available_in_the_Gemini.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/10/immersive-explorations-now-available-in-the-Gemini-app.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/10/immersive-explorations-now-available-in-the-Gemini-app.html",
+      "http://workspaceupdates.googleblog.com/2026/10/fill-with-gemini-now-provides-cell-level-citations-for-web-sources-and-supports-larger-requests.html"
+    ],
+    "source_snippet": "We’re introducing a library of immersive explorations in the Gemini app, giving users an interactive, visual way to explore topics layer-by-layer, from microscopic systems to deep space. Users can access this library in the Gemini student hub by clicking on “Try immersive explorations” and will soon be able to access these immersive explorations directly in a chat conversation with Gemini.\nWhether it’s tracing trade routes on the Silk Road, peering inside a jet engine, or studying the physics of lightning, each scene unfolds into interactive nodes with guided explanations. Users can tap a layer to dig deeper, journeying from sweeping planetary scales straight down to molecules and atoms. Immersive explorations will soon include audio narration to walk users through each layer.\nThis feature is available on web and mobile to all users in the following languages: English, Indonesian, Hindi, Brazilian Portuguese, French, and simplified Chinese. Users in all other languages currently receive an English-only experience, with more languages coming soon.\n\n\n\nGetting started\n\n\nAdmins: There is no admin control for this feature. Visit the Help Center for more information on turning the Gemini app on or off.\nEnd users: There is no end user setting for this feature. To get started, visit gemini.google.com/immersive-explorations or select Students in the Gemini app menu.\n\n\nRollout pace\n\n\nRapid Release and Scheduled Release domains: Available now\n\n\nAvailability\nIn the Gemini student hub:\n\n\n\n\n---\n\nWe are making it easier to verify your AI-generated data and scale your workflows in Google Sheets. When you use the AI function to generate cell values, Gemini will now provide the exact web sources referenced directly within each individual cell. This cell-level source attribution gives you full visibility to audit, verify, and cross-reference outputs for greater trust and accuracy. Sources are attributed to each individual cell and are available in Google Sheets on the web.\nIn addition, upgraded processing delivers faster response times and improved cell-over-cell consistency, performing up to 55 times faster than manual entry for 500 cell tasks*. Combined with expanded capacity supporting up to 3,000 cells per request, you can summarize, categorize, and process more data in a single request.\n*Data based on a 95-participant internal study comparing manual entry against Fill with Gemini on a 500-cell task using English prompts for English language users.\n\n\n\n\nEasily audit and verify your Gemini-generated data in Google Sheets using the new cell-level web source citations.\n\n\nGetting started\n\n\nAdmins: This feature will be available by default to users with Gemini in Sheets enabled. Visit our Help Center to learn more about managing access to Gemini features in Workspace services.\nEnd users: You can access Gemini for Sheets in the side panel by clicking on “Ask Gemini” (spark button) in the top right corner of Sheets. Visit the Help Center to learn more about using the A",
+    "merged_from": 2,
+    "merged_theme": "Gemini AI features in Google Workspace",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-10-29T03:28:23.774Z",
+    "slug": "what-s-new-in-gemini-layered-explorations-and-source-citations-in-shee",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 711
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article hits all required elements: a hook, plain-language explanations of Gemini and Sheets, a comprehensive 'What this means for you' section with audience-specific bullets, and a wrap-up with a next step. Claims are properly attributed to Google throughout, the tone is friendly and accessible for everyday readers, and no clichés or prohibited content appear. Ready to publish.",
+      "_aiCost": 0.0031026,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-29T03:30:50.748Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article describes two separate features from different products (immersive explorations in Gemini app and source citations in Sheets) - this is essentially a roundup of multiple updates",
+    "image_v": 2,
+    "image_at": "2026-10-29T03:35:44.154Z",
+    "seo": {
+      "meta_description": "Google's Gemini adds layered topic explorations and source citations in Sheets. Two new features help you learn step-by-step and verify AI-generated data.",
+      "keywords": [
+        "Google Gemini new features",
+        "Gemini AI assistant",
+        "Google Sheets source citations",
+        "layered learning AI",
+        "verify AI generated data",
+        "Gemini app features"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the specific release date or time frame when these features became available to improve freshness signals",
+        "Include a brief how-to example showing the layered exploration in action for better reader understanding",
+        "Consider adding keywords like 'AI homework help' or 'fact check AI answers' to capture more search intent"
+      ],
+      "optimised_at": "2026-10-29T03:41:06.764Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What's New in Gemini: Layered Explorations and Source Citations in Sheets\"\nsubtitle: \"Two recent Google updates can help you learn a topic step by step and check the data you generate in Sheets.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"gemini\", \"google-workspace\", \"google-sheets\", \"students\", \"productivity\"]\n---\n\n# What's New in Gemini: Layered Explorations and Source Citations in Sheets\n\n> **In short:** Google has added a library of interactive, layer-by-layer explorations to the Gemini app, and its AI feature in Google Sheets now shows the web source for each generated cell. Both help you learn faster and check your work.\n\nHave you ever looked up something for school or work and ended up with a wall of text? Or filled a spreadsheet with AI-generated answers and wondered where they came from? Google's two recent updates to Gemini target both situations.\n\n## Explore a topic one layer at a time\n\nGemini is Google's AI assistant (a program you chat with by typing or speaking). Google has added a library of **immersive explorations**: interactive scenes you move through layer by layer, from very large scales, like planets and deep space, down to molecules and atoms.\n\nGoogle's examples include tracing trade routes on the Silk Road, looking inside a jet engine, and studying the physics of lightning. Each scene splits into interactive \"nodes.\" You tap a layer to dig deeper, and each one comes with a guided explanation.\n\nAccording to Google, the library is in the Gemini student hub, reached through the Students option in the Gemini app menu, or at gemini.google.com/immersive-explorations. Google says audio narration for each layer is coming soon, and that explorations will later be available directly inside a chat with Gemini.\n\nThe feature works on web and mobile in English, Indonesian, Hindi, Brazilian Portuguese, French, and simplified Chinese. Other languages currently get an English-only version, and Google says more languages are coming.\n\n## Check AI-generated data in Sheets\n\nGoogle Sheets is the spreadsheet app in Google Workspace (the bundle of work and school tools that includes Docs and Gmail). Gemini can fill cells for you using its AI function, the feature that generates values in a spreadsheet from your instructions.\n\nGoogle now attaches the **exact web sources** to each individual cell. That means you can see where a value came from, check it, and compare it with other sources. Google says this helps you audit and verify AI-generated data.\n\nGoogle also says the update speeds things up. It reports that, in an internal study with 95 participants, the feature was up to 55 times faster than manual entry on a 500-cell task using English prompts. It can now handle up to 3,000 cells in one request. Treat those numbers as Google's own test results, not guarantees for your spreadsheet.\n\n## What this means for you\n\n- **In everyday life**: If you're studying a subject, the layered explorations let you go as deep as you want, one tap at a time. Use them to build a picture before you read a textbook chapter.\n- **For your business or work**: If you use Sheets to summarize or sort information, the cell-level sources make it easier to show where each number or label came from before you share it.\n- **If you're just getting started**: Open the explorations library and pick a topic you're curious about. Tap a few layers and notice how each explanation builds on the last.\n- **If you already use it**: Try the Sheets feature on a small list first, then open the source for a few cells and check them against the original pages. Ask a colleague to spot-check a sample before you rely on the full sheet.\n\nGoogle notes that admins don't have a control for the explorations feature, and that the Sheets feature is on by default for users with Gemini in Sheets enabled. The explorations are rolling out now on Rapid Release and Scheduled Release domains.\n\n## Wrap-up\n\nGoogle's two updates have a shared lesson: AI is most useful when you can see its work. Explore a topic layer by layer to understand it, and check the sources behind generated data before you trust it. Today, open the Gemini student hub or visit gemini.google.com/immersive-explorations, and tap into one topic you've always wanted to understand.",
+  "original_title": "Immersive explorations now available in the Gemini app"
+}

@@ -7298,10 +7298,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Get a short, warm reply you can send by text or email that says no gracefully without sounding cold or making excuses.",
-      "status": "todo",
+      "status": "done",
       "icon": "✉️",
       "proposed_at": "2026-10-06T03:54:13.210Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-10-29T03:33:20.540Z"
     },
     {
       "id": "how-to-plan-a-kids-birthday-party-on-a-tight-budget-in-one-a",
@@ -8273,6 +8274,28 @@
         "datum": "2026-10-28"
       },
       "written_at": "2026-10-28T03:06:08.776Z"
+    },
+    {
+      "id": "how-to-use-claude-as-a-writing-partner-draft-first-then-ask-",
+      "company": "Anthropic",
+      "tool": "Claude",
+      "title": "How to Use Claude as a Writing Partner: Draft First, Then Ask It to Critique",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Ask Claude for a rough draft, then switch roles and ask it to review that same draft as a tough editor, so you get two passes of feedback from one conversation.",
+      "status": "done",
+      "icon": "✍️",
+      "proposed_at": "2026-10-29T03:32:56.272Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "how to use claude duet",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-10-29"
+      },
+      "written_at": "2026-10-29T03:33:39.842Z"
     }
   ],
   "trend_proba": [
@@ -8331,6 +8354,10 @@
     {
       "kifejezes": "how to use claude cowork",
       "at": "2026-10-28T03:05:13.472Z"
+    },
+    {
+      "kifejezes": "how to use claude duet",
+      "at": "2026-10-29T03:32:46.882Z"
     }
   ]
 }

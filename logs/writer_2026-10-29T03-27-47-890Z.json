@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-29T03:26:46.969Z",
+  "drafts_total": 6,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 2,
+  "merged_total": 2,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.014973750000000001,
+  "by_article": [
+    {
+      "draft": "2026-10-29T03-26-39-436Z_google-workspace_Immersive_explorations_now_available_in_the_Gemini.json",
+      "writer_output": "WRITER_2026-10-29T03-26-39-436Z_google-workspace_Immersive_explorations_now_available_in_the_Gemini.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Gemini AI features in Google Workspace",
+      "cost_usd": 0.0035259,
+      "duration_ms": 12859,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-29T03-26-46-638Z_picsart_How_to_make_a_worksheet_with_AI__6_printables_in_o.json",
+      "writer_output": "WRITER_2026-10-29T03-26-46-638Z_picsart_How_to_make_a_worksheet_with_AI__6_printables_in_o.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "PicsArt Flow AI tools for education content creation",
+      "cost_usd": 0.0035896,
+      "duration_ms": 13912,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-29T03-26-46-638Z_databricks_Voice_Agents_are_here__Context_turns_them_into_rea.json",
+      "writer_output": "WRITER_2026-10-29T03-26-46-638Z_databricks_Voice_Agents_are_here__Context_turns_them_into_rea.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.003205,
+      "duration_ms": 11513,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-29T03-26-39-436Z_nvidia-blog_Thin__Light_and_Built_for_Everything__NVIDIA_RTX_S.json",
+      "writer_output": "WRITER_2026-10-29T03-26-39-436Z_nvidia-blog_Thin__Light_and_Built_for_Everything__NVIDIA_RTX_S.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0035611,
+      "duration_ms": 14042,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-10-29T03:27:47.890Z",
+  "duration_seconds": 60.921
+}

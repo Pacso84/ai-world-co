@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-use-claude-as-a-writing-partner-draft-first-then-ask-",
+    "company": "Anthropic",
+    "tool": "Claude",
+    "icon": "✍️",
+    "level": "beginner",
+    "source_news": null,
+    "trend": {
+      "kifejezes": "how to use claude duet",
+      "forras": [
+        "google-javaslat"
+      ],
+      "datum": "2026-10-29"
+    },
+    "written_at": "2026-10-29T03:33:39.841Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0043388,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-29T03:34:25.408Z",
+    "slug": "how-to-use-claude-as-a-writing-partner-draft-first-then-ask-it-to-crit",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1506
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide with clear structure, helpful examples at every step, practical common mistakes section, and a strong What this means for you section. The two-pass method is well-explained, prerequisites are in Before you start, and success criteria are explicit. Pass with no issues.",
+      "_aiCost": 0.0019452,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-29T03:40:22.046Z",
+    "seo": {
+      "meta_description": "Learn a two-pass method to use Claude as a writing partner: get a rough draft first, then ask it to critique like a strict editor.",
+      "keywords": [
+        "how to use Claude for writing",
+        "Claude AI writing assistant",
+        "use Claude as editor",
+        "AI writing feedback",
+        "Claude writing partner",
+        "AI draft and critique",
+        "improve writing with AI"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Consider adding keywords like 'Claude AI tutorial' or 'Claude code tips' in subheadings to capture more search traffic",
+        "Add 1-2 more long-tail keywords in the article body, such as 'how to ask AI to edit my writing' or 'Claude writing tool guide'"
+      ],
+      "optimised_at": "2026-10-29T03:42:59.399Z"
+    },
+    "fact_verified_at": "2026-10-29T03:46:30.879Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Use Claude as a Writing Partner: Draft First, Then Ask It to Critique\"\nsubtitle: \"Get two rounds of feedback from one conversation: a rough draft first, then a tough-editor review of that same draft.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Anthropic\"\ntool: \"Claude\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"claude\", \"writing\", \"feedback\"]\n---\n\n# How to Use Claude as a Writing Partner: Draft First, Then Ask It to Critique\n\n> **In short:** In one Claude conversation, you can ask for a rough draft, then ask Claude to switch roles and critique that same draft like a strict editor. You need a Claude account and a web browser or the Claude app. Claude's feedback is a starting point, so you still decide what to keep.\n\nMaybe you have a cover letter, a birthday toast, a work email, or a short story that feels almost right but not quite. In this guide, you'll learn a two-pass method: first you get a simple draft, then you ask Claude to review that draft as a demanding editor. By the end, you'll have a revised piece and a clear sense of how to repeat the process on your own writing.\n\n## Before you start\n\n- **An account:** Sign up or sign in at claude.ai, or open the Claude app on your phone or tablet.\n- **A plan:** A free account usually works for this. Heavy use may hit usage limits, and the exact limits change, so check the official Claude pricing page if you want details.\n- **Your topic:** Have a few facts ready, like the purpose, the reader, and any must-include details.\n- **Time:** About 20 to 30 minutes.\n\n## Step 1: Start a new conversation and describe your writing task\n\nOpen Claude and look for a text box, usually near the bottom of the screen, that says something like \"Message\" or \"Ask anything.\" Click or tap it, and then type a clear description of what you want to write. Name the purpose, the audience, and the length. Good details make the first draft much closer to what you need. When you send the message, Claude usually starts typing a reply within a few seconds. If the text box looks different on your device, look for a button labeled \"New chat\" or a plus sign to begin a fresh conversation.\n\n💬 Example: \"Help me write a short thank-you note to [coworker name] for covering my shift on [day]. Keep it warm, under 100 words, and for a friend-level tone.\"\n\nYou'll know it worked when Claude replies with a complete first draft you can read from top to bottom.\n\n## Step 2: Ask for a rough draft, not a perfect one\n\nRead Claude's first response carefully, and resist the urge to judge it too harshly. The purpose of this pass is to get words on the page so you have something to react to. If the draft misses the mark, tell Claude what to change in one or two specific sentences. Then copy the draft into a notes app or document so you can find it later. Claude doesn't always keep every detail you mention, so it helps to save a clean copy. If the draft comes back much too long, look for a line in your message asking for a shorter version, and add it to your next request.\n\n💬 Example: \"This is a good start. Make the opening more personal, and cut the last paragraph down to one sentence.\"\n\nYou'll know it worked when you have a draft you can paste somewhere safe and a clear idea of one or two things you'd like to change.\n\n## Step 3: Switch roles and ask for a tough-editor critique\n\nNow comes the second pass. In the same conversation, tell Claude to stop being the writer and become the editor. Be specific about what kind of critique you want: clarity, tone, structure, or word choice. Asking Claude to be tough is a helpful request, but you can also ask it to be honest and kind. The conversation stays in place, so Claude can see the draft it just wrote. If it seems confused, paste the draft again into the message. Expect a list of observations, not a rewritten version.\n\n💬 Example: \"Now act as a tough but fair editor. Review the draft above for clarity, tone, and anything that sounds generic. List your top three problems and explain each one in plain words.\"\n\nYou'll know it worked when Claude responds with a short, organized list of problems and explanations rather than a brand-new draft.\n\n## Step 4: Ask Claude to explain and prioritize the feedback\n\nRead the critique slowly. If a point is unclear, ask Claude to explain it with an example from the draft. This is where the method pays off, because you can question the feedback. Some points will sound right to you, and others may not fit your intent. Ask Claude to rank the problems from most to least important, so you know where to start. This step is also where you should remember that you are the author. Claude can suggest, but you decide what your words should say.\n\n💬 Example: \"Explain problem number two using one sentence from the draft as an example, and tell me which of your three problems matters most for [your audience].\"\n\nYou'll know it worked when each point of feedback has a clear reason and a specific place in the draft you can point to.\n\n## Step 5: Ask for a revision that keeps your voice\n\nOnce you know what to fix, ask Claude to revise the draft. Tell it which changes to make and which parts to keep, because otherwise it may rewrite sections you liked. Ask it to explain briefly what it changed. Compare the new version against your saved copy. If the revision sounds too stiff or too polished for you, say so, and ask it to keep sentences short and conversational. You can also ask for two options for one tricky sentence and pick the one that sounds more like you.\n\n💬 Example: \"Revise the draft using your top two fixes. Keep my opening line exactly as it is, and tell me in two bullet points what you changed.\"\n\nYou'll know it worked when the new draft still sounds like you, and the changes you requested are easy to spot.\n\n## Step 6: Run one final check, then finish it yourself\n\nFinish with a quick second critique of the revised version. This shows whether the fixes worked and whether anything new went wrong. Then read the final piece out loud, which is one of the best editing tools anyone can use. Claude can miss small facts, mix up names, or add details that were never in your notes, so check every name, date, and number yourself before you send or publish anything. If you're writing for work, a careful human review is still important.\n\n💬 Example: \"Review this revised version using the same editor standards. Tell me whether my two fixes worked, and point out any facts I should double-check.\"\n\nYou'll know it worked when the final review mostly confirms your changes, and you've checked the facts yourself.\n\n## Common mistakes\n\n- **Asking for perfection in the first request.** A vague request usually gets a generic draft. Fix it by giving Claude the purpose, audience, and length in your first message, then refine from there.\n- **Accepting every suggestion.** A critique can be wrong about your intent. Fix it by asking Claude to explain each point, then keeping only the changes that match what you want to say.\n- **Trusting facts without checking.** Claude may invent or misstate details, especially names, dates, and numbers. Fix it by checking every fact against your own notes or a reliable source before you share the text.\n\n## What this means for you\n\n- **In everyday life:** Use this method for a birthday card message, a complaint letter to a store, or a note to your child's teacher. Draft first, then ask for a critique to make it clearer and kinder.\n- **For your business or work:** Use it to tighten a project update, a client email, or a job application. Ask for a critique focused on clarity and length, then make the final decisions yourself.\n- **If you're just getting started:** Begin with something short, like a three-sentence message to a friend. Run both passes once, and you'll see how the method feels.\n\nClaude cannot know your personal history, your relationships, or your exact goals unless you tell it, and it cannot send your message or confirm that it's accurate. The final judgment is yours.\n\n## Try it now\n\nOpen claude.ai, or the Claude app, and start a new chat. Ask for a rough draft of a three-sentence note you need to write this week. Then, in the same chat, ask Claude to critique that draft as a tough but fair editor and list its top two problems. You'll have two passes of feedback in about two minutes.",
+  "original_title": "How to Use Claude as a Writing Partner: Draft First, Then Ask It to Critique"
+}
