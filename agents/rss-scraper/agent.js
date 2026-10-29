@@ -28,7 +28,8 @@ import Parser from 'rss-parser';
 import { ask } from '../../core/ai-router.js';
 import { skillsBlock } from '../../core/skills.js';
 import { extractJsonArray } from '../../core/extract-json.js';
-import { tulRegiTetel } from '../../core/hir-frissesseg.js';   // 🕰️ 2026-10-29 korhatár
+import { tulRegiTetel } from '../../core/hir-frissesseg.js';
+import { isStaticPage, googleNewsForras, keszulekBemutato } from '../../core/statikus-lap.js';   // 2026-10-29   // 🕰️ 2026-10-29 korhatár
 
 // ===================================================================
 // SETUP
@@ -80,7 +81,8 @@ const AI_KEYWORDS = [
   'copilot', 'midjourney', 'dall-e', 'dalle', 'sora', 'stable diffusion',
   'generative', 'chatbot', 'agent', 'automation', 'algorithm', 'model',
   'hugging face', 'nvidia', 'transformer', 'prompt', 'fine-tun', 'inference',
-  'robot', 'autonomous', 'multimodal'
+  'robot', 'autonomous', 'multimodal',
+  'alexa'   // 2026-10-29: az Alexa+ MI-asszisztens (24 útmutatónk) — az Amazon Alexa-csatorna funkcióhírei eddig kiestek
 ];
 
 
@@ -129,16 +131,8 @@ export function isListicle(title) {
 // Igazi hír ("DeepSeek V4 Preview Release", "Personal Computer is now
 // available on Windows") mindkettőn átmegy.
 // ===================================================================
-const NAV_PAGE = /^(home|about|pricing|contact|careers|docs?|documentation|platform|api|api platform|connectors?|blog|news|products?|features?|enterprise|login|sign ?up|download|help|support|faq|terms|privacy|what is .+\?)$/i;
-
-export function isStaticPage(title) {
-  // A Google News a forrás nevét " - Forrás" alakban fűzi a cím végére.
-  const bare = String(title || '').replace(/\s+-\s+[^-]+$/, '').trim();
-  if (!bare) return true;
-  if (NAV_PAGE.test(bare)) return true;
-  // 1-3 szavas cím állítás nélkül = szinte biztosan menüpont, nem hír.
-  return bare.split(/\s+/).length <= 3;
-}
+// A függvény 2026-10-29 óta a core/statikus-lap.js-ben (a rövid-cím szabály csak Google News-forrásra).
+export { isStaticPage };
 
 function everydayRelevant(title) {
   const t = String(title || '');
@@ -395,6 +389,13 @@ async function main() {
         continue;
       }
 
+      // 📵 Készülékbemutató a készülék-kapus forrásokból (2026-10-29, core/statikus-lap.js) → nem hír nálunk.
+      if (feedConfig.eszkoz_kapu && keszulekBemutato(item.title || '')) {
+        audFiltered++;
+        seen[feedConfig.id].push(item.link);
+        continue;
+      }
+
       // Versenytárs-összehasonlító lista → a márkaszabály tiltja (MINDEN forrás).
       if (isListicle(item.title || '')) {
         audFiltered++;
@@ -405,7 +406,7 @@ async function main() {
       // Statikus weboldal-lap a Google News "site:" keresésből — nem hír.
       // (NEM jelöljük "látottnak": a menüpontok linkje állandó, és ha egyszer
       // mégis valódi tartalom kerül rá, jöjjön be. Ingyen kiszűrni is elég.)
-      if (isStaticPage(item.title || '')) {
+      if (isStaticPage(item.title || '', { googleNews: googleNewsForras(feedConfig) })) {
         audFiltered++;
         continue;
       }

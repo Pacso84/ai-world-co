@@ -42,6 +42,8 @@ import { aiContentRatio, usefulnessVerdict } from '../../core/source-usefulness.
 import { kozonsegKapu, atiranyitas } from '../../core/source-audience.js';
 import { discoverSitemapFeed } from '../../core/sitemap-discovery.js';
 import { discoverHtmlListFeed } from '../../core/html-list-feed.js';
+import { forrasRes, utmutatoEszkoz, hirCim, futasiGyakorisag, marKovetett } from '../../core/forras-res.js';   // 🕳️ 2026-10-29
+import { readdirSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..', '..');
@@ -166,7 +168,7 @@ For each, give the blog's base domain (https://...), with NO path.
 Respond ONLY with a JSON array (no markdown):
 [{"name": "Company Official Blog", "domain": "https://example.com", "type": "official", "country": "US", "note": "what they make / cover"}]
 
-Give 15-25 entries. type must be "official". Prefer a global mix (US, EU, Asia); our readers are mostly in the US and read English. Do NOT include any organization we already cover.`;
+Give 15-25 entries. type must be "official". Prefer a global mix (US, EU, Asia); our readers are mostly in the US and read English. Do NOT include any organization we already cover — EXCEPT in part (d) of the request, where a DIFFERENT, product-specific feed of a company we already follow is exactly what we want (then give its exact feed URL in "feed_url").`;
 
 // FORGÓ VADÁSZMEZŐK (2026-07-05, user-jelzés: "nem küld új forrásokat"):
 // a fix példa-lista kimerült — futásonként 2 VÉLETLEN fülkéből kérünk
@@ -221,7 +223,7 @@ const LLM_NICHE = 'companies that make AI chat assistants / large language model
 // „power user", funkció-mélyfúrás. Minden futás (c) pontja.
 const KOZEP_NICHE = 'official "tips & tricks", "power user" or feature deep-dive blogs of mainstream AI and productivity tools ordinary people already use (e.g. Google Workspace, Microsoft 365 Copilot, Notion, Canva, Adobe Express, Grammarly, ChatGPT/Claude/Gemini) — practical, one level deeper than beginner, still for non-developers';
 
-async function getCandidateOrgs(coverage) {
+async function getCandidateOrgs(coverage, res = []) {
   const known = [...coverage.brands].filter(b => b.length >= 4).slice(0, 30).join(', ');
   // (a) mindig az LLM-mező, (b) egy véletlen fülke — minden futás máshol is vadászik
   const niches = [LLM_NICHE, [...SCOUT_NICHES].sort(() => Math.random() - 0.5)[0], KOZEP_NICHE];
@@ -230,7 +232,11 @@ async function getCandidateOrgs(coverage) {
   // kértünk — arra a cégek KUTATÁSI és SAJTÓ-blogját kaptuk, amiből 0 útmutató lesz.
   // Most kifejezetten a "mi újság a termékben" típusú hírfolyamot kérjük: pontosan
   // ilyen a Google Workspace Updates, a legjobb forrásunk (59% útmutató).
-  const prompt = `List 18 official PRODUCT-UPDATE feeds (release notes, changelogs, "what's new" or product newsroom) from: (a) ${niches[0]}, (b) ${niches[1]}, and (c) ${niches[2]}.
+  // (d) A RÉS (2026-10-29, core/forras-res.js): sok útmutató, alig hír — ezekhez az eszközökhöz a már követett
+  // cég MÁSIK, termék-specifikus hírfolyama is kell (pl. a Gemini saját csatornája a blog.google általános MI-blogja mellett).
+  const resSor = res.length ? `, and (d) the OFFICIAL product-update / release-notes feed of each of these consumer AI tools — we have many how-to guides about them but almost no news source: ${res.map(r => r.eszkoz).join(', ')}. For (d) the company may already be covered; give the product-specific feed's EXACT URL in a "feed_url" field` : '';
+  if (res.length) console.log(`🕳️ Rés (sok útmutató, alig hír): ${res.map(r => `${r.eszkoz} ${r.utmutato}/${r.hir}`).join(' · ')}`);
+  const prompt = `List 18 official PRODUCT-UPDATE feeds (release notes, changelogs, "what's new" or product newsroom) from: (a) ${niches[0]}, (b) ${niches[1]}, and (c) ${niches[2]}${resSor}.
 
 HARD REQUIREMENTS:
 - First-party official sources only. No news media, no aggregators, no review sites.
@@ -243,7 +249,7 @@ HARD REQUIREMENTS:
   marketing blog) and "best X" / "X vs Y" listicle blogs — give the PRODUCT-UPDATE feed URL itself.
 - A feed may be RSS OR a sitemap with news/blog pages — give the company's main domain.
 
-Do NOT include any of these already-covered feeds: ${known}. Return a complete, valid JSON array only.${skillsBlock('source-scout')}`;
+Do NOT include any of these already-covered feeds (except a different product-specific feed for part (d)): ${known}. Return a complete, valid JSON array only.${skillsBlock('source-scout')}`;
   let totalCost = 0;
 
   for (let attempt = 1; attempt <= 3; attempt++) {
@@ -310,7 +316,7 @@ function newestItemAgeDays(items) {
 }
 
 // Visszaad: { ok, score, reasons[], hardFail }
-function reliabilityCheck(org, hostname, feed, coverage, tipus = 'rss') {
+function reliabilityCheck(org, hostname, feed, coverage, tipus = 'rss', feedUrl = '') {
   const reasons = [];
   const items = feed.items || [];
 
@@ -325,8 +331,10 @@ function reliabilityCheck(org, hostname, feed, coverage, tipus = 'rss') {
   const media = MEDIA_DENYLIST.find(m => hay.includes(m));
   if (media) return { ok: false, hardFail: `média/aggregátor (${media})`, score: 0, reasons };
 
-  if (coverage.domains.has(hostname)) {
-    return { ok: false, hardFail: 'ezt a domaint már követjük', score: 0, reasons };
+  // 2026-10-29: a DOMAIN-egyezés már nem kizáró, csak a PONTOS hírfolyamé — ugyanazon a domainen egy másik
+  // termék-csatorna (blog.google/products/gemini a blog.google/technology/ai mellett) új forrás lehet.
+  if (marKovetett(feedUrl || org.domain, coverage.urls) || (coverage.domains.has(hostname) && !feedUrl)) {
+    return { ok: false, hardFail: 'ezt a hírfolyamot már követjük', score: 0, reasons };
   }
   // ══ CÉG-SZINTŰ → TERMÉK-SZINTŰ deduplikáció (2026-08-01) ═══════════
   // A régi szabály MINDEN olyan forrást kizárt, aminek a cégét már követtük.
@@ -404,6 +412,36 @@ function reliabilityCheck(org, hostname, feed, coverage, tipus = 'rss') {
 }
 
 // ===================================================================
+// 🕳️ RÉS + PONTOS HÍRFOLYAM + RITKÍTÁS (2026-10-29, core/forras-res.js)
+// ===================================================================
+/** A saját adatunkból: mely eszközökről van sok útmutatónk, de alig hírünk (utolsó 30 nap). */
+function resSzamol() {
+  try {
+    const dir = join(PROJECT_ROOT, 'content', 'articles');
+    const utmutatok = [], hirCimek = [];
+    for (const f of readdirSync(dir).filter(x => x.endsWith('.json'))) {
+      let a; try { a = JSON.parse(readFileSync(join(dir, f), 'utf-8')); } catch { continue; }
+      const md = a.article_markdown || '';
+      if (f.includes('GUIDE')) { utmutatok.push(utmutatoEszkoz(md)); continue; }
+      const t = Date.parse(a._meta?.published_at || a._meta?.written_at || 0);
+      if (Date.now() - t < 30 * DAY) hirCimek.push(hirCim(md));
+    }
+    return forrasRes({ utmutatok, hirCimek });
+  } catch { return []; }
+}
+/** Az MI által megadott PONTOS hírfolyam-cím kipróbálása (a domain-mintákon túl). */
+async function pontosHirfolyam(url) {
+  try {
+    const feed = await parser.parseURL(url);
+    return feed.items && feed.items.length ? { url, feed, type: 'rss' } : null;
+  } catch { return null; }
+}
+/** Hány egymás utáni futás volt üres (az előző javaslat-fájlból)? */
+function elozoUres() {
+  try { return Number(JSON.parse(readFileSync(OUTPUT_PATH, 'utf-8'))._meta?.ures_futasok) || 0; } catch { return 0; }
+}
+
+// ===================================================================
 // THROTTLE — csak ha elég régen futott (--if-stale N nap)
 // ===================================================================
 function lastRunAgeDays() {
@@ -427,8 +465,10 @@ async function main() {
   // Throttle: a pipeline minden futáskor hívhatja, de csak N naponta dolgozik.
   if (IF_STALE_DAYS !== null && !FORCE) {
     const age = lastRunAgeDays();
-    if (age < IF_STALE_DAYS) {
-      console.log(`⏭️  Legutóbb ${age.toFixed(1)} napja futott (< ${IF_STALE_DAYS}). Kihagyom (--if-stale).`);
+    // RITKÍTÁS (2026-10-29): 4 egymás utáni üres futás után hetente (08-15 óta ~25 futás, 0 találat — mind pénzbe került)
+    const kell = Math.max(IF_STALE_DAYS, futasiGyakorisag(elozoUres()));
+    if (age < kell) {
+      console.log(`⏭️  Legutóbb ${age.toFixed(1)} napja futott (< ${kell}${elozoUres() ? `, ${elozoUres()} üres futás után` : ''}). Kihagyom (--if-stale).`);
       return;
     }
   }
@@ -439,7 +479,7 @@ async function main() {
 
   // 1. AI javaslatok (a lefedett cégek kizárva a kérésből)
   console.log('🤖 AI-tól ÚJ, megbízható forrás-jelöltek kérése...');
-  const { orgs, cost } = await getCandidateOrgs(coverage);
+  const { orgs, cost } = await getCandidateOrgs(coverage, resSzamol());
   console.log(`   ${orgs.length} jelölt szervezet érkezett (AI költség: $${(cost || 0).toFixed(4)})\n`);
 
   if (orgs.length === 0) {
@@ -469,7 +509,9 @@ async function main() {
     catch { continue; }
 
     // Gyors elő-kizárás (AI-hívás nélkül): már követjük / feketelista
-    if (coverage.domains.has(hostname)) { console.log(`⏭️  ${org.name} (${hostname}) — már a listában`); continue; }
+    const pontosUrl = typeof org.feed_url === 'string' && org.feed_url.startsWith('https://') ? org.feed_url : '';
+    if (pontosUrl && marKovetett(pontosUrl, coverage.urls)) { console.log(`⏭️  ${org.name} — ezt a hírfolyamot már követjük`); continue; }
+    if (!pontosUrl && coverage.domains.has(hostname)) { console.log(`⏭️  ${org.name} (${hostname}) — már a listában`); continue; }
     // AMIT A USER EGYSZER VISSZADOBOTT, TÖBBÉ NE JÖJJÖN VISSZA (2026-08-01).
     // Enélkül minden futás újra felajánlaná ugyanazokat a 100 pontos, de
     // számunkra haszontalan forrásokat, és a user újra és újra dönthetne
@@ -480,10 +522,10 @@ async function main() {
     // „nincs RSS"-sel, pedig a sitemap-forrást ugyanúgy be tudjuk kötni).
     // Harmadik út: a hivatalos blog-/hírlistaoldal (csak dátumos, saját domainű
     // bejegyzésekkel — lásd core/html-list-feed.js).
-    const found = await discoverFeedForDomain(org.domain) || await discoverSitemapFeed(org.domain) || await discoverHtmlListFeed(org.domain);
+    const found = (pontosUrl && await pontosHirfolyam(pontosUrl)) || await discoverFeedForDomain(org.domain) || await discoverSitemapFeed(org.domain) || await discoverHtmlListFeed(org.domain);
     if (!found) { console.log(`❌ ${org.name} (${hostname}) — nincs beköthető hírfolyam (se RSS, se sitemap, se listaoldal)`); continue; }
 
-    const verdict = reliabilityCheck(org, hostname, found.feed, coverage, found.type);
+    const verdict = reliabilityCheck(org, hostname, found.feed, coverage, found.type, found.url);
     if (!verdict.ok) {
       const why = verdict.hardFail || `pont ${verdict.score} < ${MIN_SCORE}`;
       console.log(`🚫 ${org.name} (${hostname}) — KIZÁRVA: ${why}`);
@@ -549,6 +591,7 @@ async function main() {
     });
   }
 
+  const ujMost = discovered.length;   // 🕳️ a ritkításhoz: ebben a futásban talált új (a megőrzött régiek nélkül)
   // KORÁBBI, még érvényes javaslatok MEGŐRZÉSE: ami a múltkori kutatásból
   // még nincs se lefedve, se az új listában, azt nem dobjuk el (már átment
   // a megbízhatóság-kapun). Így egy újrafuttatás nem "felejti el" a várólistát.
@@ -587,6 +630,8 @@ async function main() {
       min_score: MIN_SCORE,
       checked_orgs: checked,
       newly_discovered: discovered.length,
+      uj_most: ujMost,
+      ures_futasok: ujMost ? 0 : elozoUres() + 1,
       rejected_count: rejected.length,
       rejected_examples: rejected.slice(0, 8)
     },

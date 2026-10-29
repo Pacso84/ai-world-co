@@ -46,6 +46,43 @@
       "enabled": true
     },
     {
+      "id": "google-gemini",
+      "name": "Google Gemini termékhírek (hivatalos, blog.google)",
+      "url": "https://blog.google/products/gemini/rss/",
+      "category": "ai-company-official",
+      "priority": 1,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "comment": "HIVATALOS Gemini app-újdonságok (blog.google/products/gemini). 22 Gemini-útmutatónk van, eddig csak az általános Google AI blog fedte. Élőben ellenőrizve 2026-10-29 (HTTP 200, aznapi bejegyzés). User-jóváhagyás 10-29. eszkoz_kapu: a hardver-bejegyzések (pl. XR-szemüveg) kiesnek.",
+      "eszkoz_kapu": true
+    },
+    {
+      "id": "amazon-alexa",
+      "name": "Amazon hírek – Alexa (hivatalos)",
+      "url": "https://www.aboutamazon.com/news/tag/alexa/feed",
+      "category": "ai-company-official",
+      "priority": 1,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "audience_gate": "everyday",
+      "eszkoz_kapu": true,
+      "comment": "HIVATALOS Amazon Alexa-hírek (aboutamazon.com, alexa címke). Alexa+ a legtöbb útmutatónk témája (24), eddig nem volt fogyasztói Amazon-forrás. eszkoz_kapu: a készülékbemutatók (Echo, Photo Frame, „devices lineup”) kiesnek (készüléknév-tilalom, user 10-26). Élőben ellenőrizve 2026-10-29. User-jóváhagyás 10-29."
+    },
+    {
+      "id": "microsoft-blog",
+      "name": "Official Microsoft Blog (hivatalos)",
+      "url": "https://blogs.microsoft.com/feed/",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "audience_gate": "everyday",
+      "comment": "HIVATALOS Microsoft blog (Copilot-bejelentések). 18 Copilot-útmutatónk van; a microsoft-ai és a microsoft-365 mellé. Sok vállalati anyag → audience_gate. Élőben ellenőrizve 2026-10-29. User-jóváhagyás 10-29."
+    },
+    {
       "id": "meta-ai",
       "name": "Meta Newsroom (hivatalos)",
       "url": "https://about.fb.com/news/category/technology-and-innovation/feed/",
