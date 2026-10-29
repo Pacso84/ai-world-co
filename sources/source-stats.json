@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-10-29T14:57:26.120Z",
+    "updated": "2026-10-29T20:54:49.793Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -20,7 +20,7 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 22,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -53,6 +53,66 @@
       "lastArticle": "2026-10-27",
       "verdict": "ok",
       "reason": ""
+    },
+    "google-gemini": {
+      "name": "Google Gemini termékhírek (hivatalos, blog.google)",
+      "feedAgeDays": 0,
+      "published30d": 0,
+      "truthBlocks": 0,
+      "truthUnfixed": 0,
+      "totalAttempts": 0,
+      "alreadyDisabled": false,
+      "lastArticle": null,
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+    },
+    "google-photos": {
+      "name": "Google Fotók termékhírek (hivatalos, blog.google)",
+      "feedAgeDays": 0,
+      "published30d": 0,
+      "truthBlocks": 0,
+      "truthUnfixed": 0,
+      "totalAttempts": 0,
+      "alreadyDisabled": false,
+      "lastArticle": null,
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+    },
+    "google-labs": {
+      "name": "Google Labs (hivatalos, blog.google) — NotebookLM, Project Genie",
+      "feedAgeDays": 23,
+      "published30d": 0,
+      "truthBlocks": 0,
+      "truthUnfixed": 0,
+      "totalAttempts": 0,
+      "alreadyDisabled": false,
+      "lastArticle": null,
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+    },
+    "amazon-alexa": {
+      "name": "Amazon hírek – Alexa (hivatalos)",
+      "feedAgeDays": 0,
+      "published30d": 0,
+      "truthBlocks": 0,
+      "truthUnfixed": 0,
+      "totalAttempts": 0,
+      "alreadyDisabled": false,
+      "lastArticle": null,
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+    },
+    "microsoft-blog": {
+      "name": "Official Microsoft Blog (hivatalos)",
+      "feedAgeDays": 1,
+      "published30d": 0,
+      "truthBlocks": 0,
+      "truthUnfixed": 0,
+      "totalAttempts": 0,
+      "alreadyDisabled": false,
+      "lastArticle": null,
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
     },
     "meta-ai": {
       "name": "Meta Newsroom (hivatalos)",
@@ -128,7 +188,7 @@
     },
     "microsoft-research": {
       "name": "Microsoft Research (hivatalos)",
-      "feedAgeDays": 7,
+      "feedAgeDays": 0,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -150,9 +210,21 @@
       "verdict": "ok",
       "reason": ""
     },
+    "github-copilot-changelog": {
+      "name": "GitHub Changelog – Copilot (hivatalos)",
+      "feedAgeDays": 1,
+      "published30d": 0,
+      "truthBlocks": 0,
+      "truthUnfixed": 0,
+      "totalAttempts": 0,
+      "alreadyDisabled": false,
+      "lastArticle": null,
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+    },
     "aws-ml": {
       "name": "AWS Machine Learning (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 5,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -195,6 +267,18 @@
       "totalAttempts": 0,
       "alreadyDisabled": false,
       "lastArticle": "2026-09-20",
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+    },
+    "apple-newsroom": {
+      "name": "Apple Newsroom (hivatalos)",
+      "feedAgeDays": null,
+      "published30d": 0,
+      "truthBlocks": 0,
+      "truthUnfixed": 0,
+      "totalAttempts": 0,
+      "alreadyDisabled": false,
+      "lastArticle": null,
       "verdict": "no-yield",
       "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
     },
@@ -440,7 +524,7 @@
     },
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -464,7 +548,7 @@
     },
     "together": {
       "name": "Together AI Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -548,7 +632,7 @@
     },
     "perplexity-news": {
       "name": "Perplexity (hivatalos, Google News szűrve)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -620,7 +704,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 31,
+      "feedAgeDays": 32,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -644,7 +728,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 120,
+      "feedAgeDays": 121,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -652,7 +736,7 @@
       "alreadyDisabled": false,
       "lastArticle": "2026-10-21",
       "verdict": "stale",
-      "reason": "⚠️ a feed 120 napja néma, mégis 1 \"friss\" cikket írtunk belőle — régi anyag újdonságként!"
+      "reason": "⚠️ a feed 121 napja néma, mégis 1 \"friss\" cikket írtunk belőle — régi anyag újdonságként!"
     },
     "notion-releases": {
       "name": "Notion – Mi újság (hivatalos)",
@@ -668,7 +752,7 @@
     },
     "microsoft-365": {
       "name": "Microsoft 365 Insider (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -680,7 +764,7 @@
     },
     "pixlr": {
       "name": "Pixlr Blog (hivatalos)",
-      "feedAgeDays": 10,
+      "feedAgeDays": 11,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -704,7 +788,7 @@
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 7,
       "truthBlocks": 0,
       "truthUnfixed": 0,

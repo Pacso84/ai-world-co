@@ -1,26 +1,17 @@
 {
-  "at": "2026-10-29T14:57:06.946Z",
+  "at": "2026-10-29T20:54:33.029Z",
   "kikuldve": 3,
-  "keres": 5,
+  "keres": 3,
   "csatornak": [
     "tiktok",
     "threads"
   ],
-  "problems": [
-    {
-      "code": "POSZT_BUKOTT",
-      "detail": "tiktok: InvalidInputError: Invalid post: Image could not be read from its URL."
-    },
-    {
-      "code": "POSZT_BUKOTT",
-      "detail": "threads: InvalidInputError: Invalid post: Image could not be read from its URL."
-    }
-  ],
+  "problems": [],
   "tiktokMa": {
     "nap": "2026-10-29",
-    "db": 4,
+    "db": 5,
     "plafon": 6,
     "video": 3,
-    "foto": 1
+    "foto": 2
   }
 }

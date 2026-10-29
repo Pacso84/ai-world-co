@@ -1,0 +1,72 @@
+{
+  "slug": "how-to-organize-a-chaotic-shared-family-calendar-in-one-afternoon",
+  "probalva": "2026-10-29T20:48:11.088Z",
+  "doboz": {
+    "keszult": "2026-10-29T20:48:11.088Z",
+    "enHash": "263b3d9ad5423a3fadf8d1d7f4f9e2015ed27ad7",
+    "forrasok": {
+      "https://support.google.com/gemini/answer/15305236": "Create & manage your calendar events with Gemini Apps - Computer",
+      "https://help.openai.com/en/articles/12512241-outlook-email-and-calendar-apps-in-chatgpt": "Outlook Email and Calendar apps in ChatGPT"
+    },
+    "en": [
+      {
+        "symptom": "Gemini put the event on my work calendar instead of the family one.",
+        "why": "Gemini creates events on your default calendar unless you specify a different calendar. Adding @Google Calendar to your prompt tells Gemini to use Google Calendar.",
+        "fix": "In Gemini: name the calendar you want in your prompt, and add @Google Calendar to your prompt to tell it to use Google Calendar. Gemini creates events on your default calendar unless you specify a different one.",
+        "source": "https://support.google.com/gemini/answer/15305236"
+      },
+      {
+        "symptom": "Gemini put an event on the wrong day and I need to move it.",
+        "why": "Gemini can't edit some event details, like the location or description, for calendar apps other than Google Calendar. You can always edit your events in your calendar app.",
+        "fix": "In Gemini: ask it to reschedule the event to the new day and time, and add \"event\" or \"calendar\" to your prompt so it knows you want to update the event. You can always edit your events in your calendar app.",
+        "source": "https://support.google.com/gemini/answer/15305236"
+      },
+      {
+        "symptom": "In ChatGPT, I can't see my partner's shared calendar.",
+        "why": "ChatGPT does not grant Microsoft sharing or delegation permissions. For a shared or delegated calendar, the Microsoft account that already has access to that resource must be connected.",
+        "fix": "In ChatGPT: connect the Microsoft account that already has access to the shared calendar. If you need access, ask the resource owner or your Microsoft administrator.",
+        "source": "https://help.openai.com/en/articles/12512241-outlook-email-and-calendar-apps-in-chatgpt"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A Gemini az eseményt a családi naptár helyett a munkahelyi naptáramba tette.",
+        "why": "A Gemini alapértelmezett naptáradban hoz létre eseményeket, hacsak nem adsz meg másik naptárat. Ha hozzáadod a @Google Calendar elemet a promptodhoz, azt jelzed a Gemininek, hogy a Google Calendart használja.",
+        "fix": "A Geminiben: írd bele a promptodba a kívánt naptár nevét, és add hozzá a @Google Calendar elemet, hogy jelezd neki, a Google Calendart használja. A Gemini az alapértelmezett naptáradban hoz létre eseményeket, hacsak nem adsz meg másikat.",
+        "source": "https://support.google.com/gemini/answer/15305236"
+      },
+      {
+        "symptom": "A Gemini rossz napra tette az eseményt, és át kell helyeznem.",
+        "why": "A Gemini nem tud bizonyos eseményadatokat, például a helyszínt vagy a leírást, szerkeszteni a Google Calendartól eltérő naptáralkalmazásokban. Az eseményeidet mindig szerkesztheted a naptáralkalmazásodban.",
+        "fix": "A Geminiben: kérd meg, hogy ütemezze át az eseményt az új napra és időpontra, és add hozzá az „event” vagy „calendar” szót a promptodhoz, hogy tudja, az eseményt szeretnéd frissíteni. Az eseményeidet mindig szerkesztheted a naptáralkalmazásodban.",
+        "source": "https://support.google.com/gemini/answer/15305236"
+      },
+      {
+        "symptom": "A ChatGPT-ben nem látom a partnerem megosztott naptárát.",
+        "why": "A ChatGPT nem ad Microsoft-megosztási vagy delegálási engedélyeket. Megosztott vagy delegált naptár esetén azt a Microsoft-fiókot kell csatlakoztatni, amely már hozzáfér az adott erőforráshoz.",
+        "fix": "A ChatGPT-ben: csatlakoztasd azt a Microsoft-fiókot, amely már hozzáfér a megosztott naptárhoz. Ha hozzáférésre van szükséged, kérdezd meg az erőforrás tulajdonosát vagy a Microsoft-rendszergazdádat.",
+        "source": "https://help.openai.com/en/articles/12512241-outlook-email-and-calendar-apps-in-chatgpt"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "Gemini puso el evento en mi calendario de trabajo en lugar del familiar.",
+        "why": "Gemini crea eventos en tu calendario predeterminado a menos que especifiques otro calendario. Añadir @Google Calendar a tu mensaje le indica a Gemini que use Google Calendar.",
+        "fix": "En Gemini: menciona en tu mensaje el calendario que quieres usar y añade @Google Calendar para indicarle que use Google Calendar. Gemini crea eventos en tu calendario predeterminado a menos que especifiques otro.",
+        "source": "https://support.google.com/gemini/answer/15305236"
+      },
+      {
+        "symptom": "Gemini puso un evento en el día equivocado y necesito cambiarlo.",
+        "why": "Gemini no puede editar algunos detalles de eventos, como la ubicación o la descripción, en aplicaciones de calendario que no sean Google Calendar. Siempre puedes editar tus eventos en tu aplicación de calendario.",
+        "fix": "En Gemini: pídele que reprograme el evento para el nuevo día y la nueva hora, y añade \"evento\" o \"calendario\" a tu mensaje para que sepa que quieres actualizar el evento. Siempre puedes editar tus eventos en tu aplicación de calendario.",
+        "source": "https://support.google.com/gemini/answer/15305236"
+      },
+      {
+        "symptom": "En ChatGPT, no puedo ver el calendario compartido de mi pareja.",
+        "why": "ChatGPT no concede permisos de uso compartido ni de delegación de Microsoft. Para usar un calendario compartido o delegado, debes conectar la cuenta de Microsoft que ya tiene acceso a ese recurso.",
+        "fix": "En ChatGPT: conecta la cuenta de Microsoft que ya tiene acceso al calendario compartido. Si necesitas acceso, pídeselo al propietario del recurso o al administrador de Microsoft.",
+        "source": "https://help.openai.com/en/articles/12512241-outlook-email-and-calendar-apps-in-chatgpt"
+      }
+    ]
+  }
+}
