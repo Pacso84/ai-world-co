@@ -1,0 +1,71 @@
+{
+  "slug": "how-to-summarize-and-organize-a-long-meeting-transcript-you-recorded",
+  "probalva": "2026-10-29T03:50:09.618Z",
+  "doboz": {
+    "keszult": "2026-10-29T03:50:09.618Z",
+    "enHash": "48eeb8b332d4fc347426829bfc8bf89eec150c4b",
+    "forrasok": {
+      "https://help.openai.com/en/articles/11487532-chatgpt-record": "ChatGPT Record"
+    },
+    "en": [
+      {
+        "symptom": "The transcript labels people as Speaker 1 and Speaker 2 instead of names.",
+        "why": "When ChatGPT can't identify a speaker by name, it uses a generic speaker label such as Speaker 1. Speakers can be renamed after the recording is created.",
+        "fix": "In ChatGPT: Rename speakers after the recording is created, because it uses a generic speaker label such as Speaker 1 when it can't identify a speaker by name.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "The transcript is less accurate because my meeting was not in English.",
+        "why": "ChatGPT record mode works best in English today. Accuracy for other languages is improving but can vary.",
+        "fix": "In ChatGPT: Expect accuracy to vary for non-English speech, since record mode works best in English today. Check important information in the transcript before relying on it.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "I can't find the Record button or Record is missing from my work account.",
+        "why": "Currently, ChatGPT record is available for Plus, Enterprise, Edu, Business, and Pro workspaces, and only available for the macOS desktop app. Workspace owners can toggle Record for their workspace.",
+        "fix": "In ChatGPT: Record is available only in the macOS desktop app for Plus, Enterprise, Edu, Business, and Pro workspaces. Workspace owners can toggle Record in Settings under Workspace Controls.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Az átirat Speaker 1 és Speaker 2 néven jelöli az embereket nevek helyett.",
+        "why": "Amikor a ChatGPT nem tudja név szerint azonosítani a beszélőt, általános beszélőcímkét használ, például a Speaker 1 címkét. A beszélők a felvétel elkészítése után átnevezhetők.",
+        "fix": "A ChatGPT-ben: Nevezd át a beszélőket a felvétel elkészítése után, mert amikor nem tudja név szerint azonosítani a beszélőt, általános beszélőcímkét használ, például a Speaker 1 címkét.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "Az átirat kevésbé pontos, mert a megbeszélésem nem angolul zajlott.",
+        "why": "A ChatGPT rögzítési módja jelenleg angolul működik a legjobban. Más nyelvek pontossága javul, de eltérő lehet.",
+        "fix": "A ChatGPT-ben: Számíts rá, hogy a nem angol nyelvű beszéd pontossága változó lehet, mivel a rögzítési mód jelenleg angolul működik a legjobban. Mielőtt támaszkodnál rá, ellenőrizd az átiratban szereplő fontos információkat.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "Nem találom a Record gombot, vagy a Record hiányzik a munkahelyi fiókomból.",
+        "why": "Jelenleg a ChatGPT Record Plus, Enterprise, Edu, Business és Pro-munkaterületeken érhető el, és csak a macOS asztali alkalmazásban. A munkaterület tulajdonosai be- vagy kikapcsolhatják a Record funkciót a munkaterületükön.",
+        "fix": "A ChatGPT-ben: A Record csak a macOS asztali alkalmazásban érhető el Plus, Enterprise, Edu, Business és Pro-munkaterületeken. A munkaterület tulajdonosai a Settings menü Workspace Controls részében kapcsolhatják be vagy ki a Record funkciót.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "La transcripción etiqueta a las personas como Speaker 1 y Speaker 2 en lugar de usar sus nombres.",
+        "why": "Cuando ChatGPT no puede identificar a un hablante por su nombre, utiliza una etiqueta genérica como Speaker 1. Puedes cambiar el nombre de los hablantes después de crear la grabación.",
+        "fix": "En ChatGPT: cambia el nombre de los hablantes después de crear la grabación, porque utiliza una etiqueta genérica como Speaker 1 cuando no puede identificar a un hablante por su nombre.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "La transcripción es menos precisa porque mi reunión no fue en inglés.",
+        "why": "Actualmente, el modo de grabación de ChatGPT funciona mejor en inglés. La precisión en otros idiomas está mejorando, pero puede variar.",
+        "fix": "En ChatGPT: espera que la precisión varíe en el caso del habla que no sea en inglés, ya que el modo de grabación funciona mejor en inglés actualmente. Comprueba la información importante de la transcripción antes de confiar en ella.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "No encuentro el botón Record o Record no aparece en mi cuenta de trabajo.",
+        "why": "Actualmente, ChatGPT Record está disponible para los espacios de trabajo Plus, Enterprise, Edu, Business y Pro, y solo está disponible en la aplicación de escritorio para macOS. Los propietarios del espacio de trabajo pueden activar o desactivar Record para su espacio de trabajo.",
+        "fix": "En ChatGPT: Record solo está disponible en la aplicación de escritorio para macOS para los espacios de trabajo Plus, Enterprise, Edu, Business y Pro. Los propietarios del espacio de trabajo pueden activar o desactivar Record en Settings, en Workspace Controls.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      }
+    ]
+  }
+}

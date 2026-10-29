@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-10-28T20:56:08.721Z",
+    "updated": "2026-10-29T04:00:16.199Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -20,8 +20,8 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 0,
-      "published30d": 23,
+      "feedAgeDays": 1,
+      "published30d": 22,
       "truthBlocks": 0,
       "truthUnfixed": 0,
       "totalAttempts": 8,
@@ -33,10 +33,10 @@
     "google-deepmind": {
       "name": "Google DeepMind (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 2,
+      "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 1,
+      "totalAttempts": 0,
       "alreadyDisabled": false,
       "lastArticle": "2026-10-14",
       "verdict": "ok",
@@ -92,25 +92,25 @@
     },
     "nvidia-blog": {
       "name": "NVIDIA Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 7,
       "truthBlocks": 0,
       "truthUnfixed": 0,
       "totalAttempts": 5,
       "alreadyDisabled": false,
-      "lastArticle": "2026-10-25",
+      "lastArticle": "2026-10-29",
       "verdict": "ok",
       "reason": ""
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 16,
+      "published30d": 17,
       "truthBlocks": 0,
       "truthUnfixed": 0,
       "totalAttempts": 12,
       "alreadyDisabled": false,
-      "lastArticle": "2026-10-24",
+      "lastArticle": "2026-10-29",
       "verdict": "ok",
       "reason": ""
     },
@@ -128,7 +128,7 @@
     },
     "microsoft-research": {
       "name": "Microsoft Research (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 7,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -164,7 +164,7 @@
     },
     "mistral-ai": {
       "name": "Mistral AI (hivatalos)",
-      "feedAgeDays": 7,
+      "feedAgeDays": 8,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -416,7 +416,7 @@
     },
     "salesforce": {
       "name": "Salesforce AI Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -441,12 +441,12 @@
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 3,
+      "published30d": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 0,
+      "totalAttempts": 1,
       "alreadyDisabled": false,
-      "lastArticle": "2026-10-09",
+      "lastArticle": "2026-10-29",
       "verdict": "ok",
       "reason": ""
     },
@@ -476,7 +476,7 @@
     },
     "pinecone": {
       "name": "Pinecone Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -488,7 +488,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -540,7 +540,7 @@
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 2,
+      "totalAttempts": 1,
       "alreadyDisabled": false,
       "lastArticle": "2026-10-15",
       "verdict": "ok",
@@ -632,7 +632,7 @@
     },
     "d-id-news": {
       "name": "D-ID (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -651,8 +651,8 @@
       "totalAttempts": 1,
       "alreadyDisabled": false,
       "lastArticle": "2026-10-21",
-      "verdict": "ok",
-      "reason": ""
+      "verdict": "stale",
+      "reason": "⚠️ a feed 120 napja néma, mégis 1 \"friss\" cikket írtunk belőle — régi anyag újdonságként!"
     },
     "notion-releases": {
       "name": "Notion – Mi újság (hivatalos)",
@@ -692,13 +692,13 @@
     },
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
-      "feedAgeDays": 0,
-      "published30d": 18,
+      "feedAgeDays": 1,
+      "published30d": 19,
       "truthBlocks": 1,
       "truthUnfixed": 0,
-      "totalAttempts": 7,
+      "totalAttempts": 8,
       "alreadyDisabled": false,
-      "lastArticle": "2026-10-28",
+      "lastArticle": "2026-10-29",
       "verdict": "ok",
       "reason": ""
     },
@@ -716,7 +716,7 @@
     },
     "dropbox-blog": {
       "name": "Dropbox Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,

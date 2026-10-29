@@ -1,0 +1,72 @@
+{
+  "slug": "what-you-should-never-share-with-an-ai-assistant-a-privacy-guide",
+  "probalva": "2026-10-29T03:50:09.618Z",
+  "doboz": {
+    "keszult": "2026-10-29T03:50:09.618Z",
+    "enHash": "2625e033a78625b213a7877b6457f4b196f92f98",
+    "forrasok": {
+      "https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations": "I would like to input sensitive data into my chats with claude who can view my conversations",
+      "https://help.openai.com/en/articles/7260999-exporting-your-chatgpt-history-and-data": "Exporting your ChatGPT history and data"
+    },
+    "en": [
+      {
+        "symptom": "Is it okay to paste my health records or a password into Claude?",
+        "why": "We recommend being thoughtful about sharing highly sensitive personal details, such as health records, passwords or private login credentials, and confidential business or personal documents.",
+        "fix": "In Claude: be thoughtful about sharing health records, passwords or private login credentials, and confidential business or personal documents in your chats. You can adjust your privacy and model improvement settings at any time.",
+        "source": "https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations"
+      },
+      {
+        "symptom": "Will my Claude chats be used to train the model?",
+        "why": "Your incognito chats are not used to improve Claude, even if you have enabled Model Improvement in your privacy settings. Model Improvement is a separate setting you control.",
+        "fix": "In Claude: use incognito chats, which are not used to improve Claude even if you have enabled Model Improvement in your privacy settings. You can adjust your privacy and model improvement settings at any time.",
+        "source": "https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations"
+      },
+      {
+        "symptom": "I don't see an export option in ChatGPT at work.",
+        "why": "Self-service export is not available in ChatGPT Business, Enterprise, or ChatGPT for Healthcare workspaces. Those workspaces have organization-managed data access.",
+        "fix": "In ChatGPT: if you use a Business, Enterprise, or ChatGPT for Healthcare workspace, contact your workspace owner about organization-managed data access, because self-service export is not available in these workspaces.",
+        "source": "https://help.openai.com/en/articles/7260999-exporting-your-chatgpt-history-and-data"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Rendben van, ha egészségügyi nyilvántartásokat vagy jelszót illesztek be a Claude-ba?",
+        "why": "Azt javasoljuk, hogy körültekintően oszd meg a rendkívül érzékeny személyes adatokat, például egészségügyi nyilvántartásokat, jelszavakat vagy privát bejelentkezési adatokat, valamint bizalmas üzleti vagy személyes dokumentumokat.",
+        "fix": "A Claude-ban: körültekintően oszd meg az egészségügyi nyilvántartásokat, jelszavakat vagy privát bejelentkezési adatokat, valamint bizalmas üzleti vagy személyes dokumentumokat a csevegéseidben. Az adatvédelmi és modellfejlesztési beállításaidat bármikor módosíthatod.",
+        "source": "https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations"
+      },
+      {
+        "symptom": "Felhasználják a Claude-dal folytatott csevegéseimet a modell betanítására?",
+        "why": "Az inkognitó csevegéseidet nem használják a Claude fejlesztésére akkor sem, ha engedélyezted a Model Improvement beállítást az adatvédelmi beállításaidban. A Model Improvement külön beállítás, amelyet te szabályozol.",
+        "fix": "A Claude-ban: használj inkognitó csevegéseket, amelyeket nem használnak a Claude fejlesztésére akkor sem, ha engedélyezted a Model Improvement beállítást az adatvédelmi beállításaidban. Az adatvédelmi és modellfejlesztési beállításaidat bármikor módosíthatod.",
+        "source": "https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations"
+      },
+      {
+        "symptom": "Nem látok exportálási lehetőséget a munkahelyi ChatGPT-ben.",
+        "why": "Az önkiszolgáló exportálás nem érhető el a ChatGPT Business, Enterprise vagy ChatGPT for Healthcare munkaterületein. Ezeken a munkaterületeken a szervezet által kezelt adathozzáférés van érvényben.",
+        "fix": "A ChatGPT-ben: ha Business, Enterprise vagy ChatGPT for Healthcare munkaterületet használsz, a szervezet által kezelt adathozzáféréssel kapcsolatban keresd meg a munkaterület tulajdonosát, mert az önkiszolgáló exportálás ezeken a munkaterületeken nem érhető el.",
+        "source": "https://help.openai.com/en/articles/7260999-exporting-your-chatgpt-history-and-data"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "¿Está bien pegar mis registros médicos o una contraseña en Claude?",
+        "why": "Te recomendamos que seas prudente al compartir datos personales muy confidenciales, como registros médicos, contraseñas o credenciales privadas de inicio de sesión, así como documentos empresariales o personales confidenciales.",
+        "fix": "En Claude: sé prudente al compartir registros médicos, contraseñas o credenciales privadas de inicio de sesión, así como documentos empresariales o personales confidenciales en tus chats. Puedes ajustar tu configuración de privacidad y de mejora del modelo en cualquier momento.",
+        "source": "https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations"
+      },
+      {
+        "symptom": "¿Se usarán mis chats de Claude para entrenar el modelo?",
+        "why": "Tus chats de incógnito no se utilizan para mejorar Claude, aunque hayas activado Model Improvement en tu configuración de privacidad. Model Improvement es una configuración independiente que tú controlas.",
+        "fix": "En Claude: usa chats de incógnito, que no se utilizan para mejorar Claude aunque hayas activado Model Improvement en tu configuración de privacidad. Puedes ajustar tu configuración de privacidad y de mejora del modelo en cualquier momento.",
+        "source": "https://support.claude.com/en/articles/8325621-i-would-like-to-input-sensitive-data-into-my-chats-with-claude-who-can-view-my-conversations"
+      },
+      {
+        "symptom": "No veo una opción de exportación en ChatGPT en el trabajo.",
+        "why": "La exportación de autoservicio no está disponible en los espacios de trabajo de ChatGPT Business, Enterprise o ChatGPT for Healthcare. Esos espacios de trabajo tienen acceso a los datos gestionado por la organización.",
+        "fix": "En ChatGPT: si utilizas un espacio de trabajo de Business, Enterprise o ChatGPT for Healthcare, ponte en contacto con el propietario de tu espacio de trabajo sobre el acceso a los datos gestionado por la organización, porque la exportación de autoservicio no está disponible en estos espacios de trabajo.",
+        "source": "https://help.openai.com/en/articles/7260999-exporting-your-chatgpt-history-and-data"
+      }
+    ]
+  }
+}

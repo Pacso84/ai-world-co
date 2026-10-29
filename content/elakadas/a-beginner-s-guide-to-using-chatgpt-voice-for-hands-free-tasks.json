@@ -1,0 +1,89 @@
+{
+  "slug": "a-beginner-s-guide-to-using-chatgpt-voice-for-hands-free-tasks",
+  "probalva": "2026-10-29T03:50:09.618Z",
+  "doboz": {
+    "keszult": "2026-10-29T03:50:09.618Z",
+    "enHash": "b6dd2e700d3157f56c79ea94b5b1e500dd264411",
+    "forrasok": {
+      "https://help.openai.com/en/articles/20001274-chatgpt-voice": "ChatGPT Voice"
+    },
+    "en": [
+      {
+        "symptom": "ChatGPT gives the wrong day or time when I ask about \"today\" or \"tomorrow.\"",
+        "why": "Voice uses your device or browser time zone to understand terms such as \"today\" or \"tomorrow.\" ChatGPT can make mistakes, especially for date-sensitive, time-sensitive, or location-sensitive questions.",
+        "fix": "If an answer seems off, check your time zone or include the exact date, time zone, or location in your question. Check important information before you rely on it.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      },
+      {
+        "symptom": "ChatGPT asks me to approve an action, but I can't say yes out loud.",
+        "why": "Spoken approval is not supported. Voice prompts you to review an action that needs your approval on screen.",
+        "fix": "On web and mobile, when an action needs your approval, Voice will prompt you to review it on screen. Use the on-screen controls to approve or decline.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      },
+      {
+        "symptom": "I want to share my screen during a voice chat, but the option isn't working.",
+        "why": "Live does not support video or screen sharing. The previous real-time Voice experience, Advanced, supports these capabilities.",
+        "fix": "In Settings under Voice, select Advanced when you need supported mobile capabilities such as video or screen sharing. Then start a new Voice conversation.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      },
+      {
+        "symptom": "I can't find the Live option in Voice settings.",
+        "why": "The options available to you may depend on your plan, workspace settings, region, app version, and parental controls. For a linked teen account, a parent or guardian can manage access to Voice through Parental controls.",
+        "fix": "To switch between available options, open Settings under Voice and select Live, Advanced, or Standard. If Live is missing, check whether your plan or workspace settings limit it.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A ChatGPT rossz napot vagy időpontot ad meg, amikor a „ma” vagy a „holnap” kifejezésről kérdezem.",
+        "why": "A Voice az eszközöd vagy a böngésződ időzónáját használja az olyan kifejezések értelmezéséhez, mint a „ma” vagy a „holnap”. A ChatGPT hibázhat, különösen dátum-, idő- vagy helyfüggő kérdéseknél.",
+        "fix": "Ha egy válasz helytelennek tűnik, ellenőrizd az időzónádat, vagy írd bele a kérdésedbe a pontos dátumot, időzónát vagy helyet. Fontos információkra való támaszkodás előtt ellenőrizd őket.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      },
+      {
+        "symptom": "A ChatGPT arra kér, hogy hagyjak jóvá egy műveletet, de ezt nem tudom hangosan kimondani.",
+        "why": "A hangos jóváhagyás nem támogatott. A Voice arra kér, hogy a képernyőn tekints át egy jóváhagyást igénylő műveletet.",
+        "fix": "Weben és mobilon, amikor egy művelethez jóváhagyásodra van szükség, a Voice arra kér, hogy a képernyőn tekintsd át. A jóváhagyáshoz vagy elutasításhoz használd a képernyőn megjelenő vezérlőket.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      },
+      {
+        "symptom": "Meg szeretném osztani a képernyőmet egy hangalapú csevegés közben, de ez a lehetőség nem működik.",
+        "why": "A Live nem támogatja a videó- vagy képernyőmegosztást. A korábbi valós idejű Voice-élmény, az Advanced, támogatja ezeket a funkciókat.",
+        "fix": "A Settings Voice részében válaszd az Advanced lehetőséget, amikor olyan támogatott mobilfunkciókra van szükséged, mint a videó- vagy képernyőmegosztás. Ezután indíts új Voice-beszélgetést.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      },
+      {
+        "symptom": "Nem találom a Live lehetőséget a Voice beállításaiban.",
+        "why": "A számodra elérhető lehetőségek a csomagodtól, a munkaterület beállításaitól, a régiódtól, az alkalmazás verziójától és a szülői felügyeleti beállításoktól függhetnek. Összekapcsolt tinédzserfiók esetén a szülő vagy gondviselő a Parental controls segítségével kezelheti a Voice-hoz való hozzáférést.",
+        "fix": "Az elérhető lehetőségek közötti váltáshoz nyisd meg a Settings Voice részét, és válaszd a Live, az Advanced vagy a Standard lehetőséget. Ha a Live hiányzik, ellenőrizd, hogy a csomagod vagy a munkaterületed beállításai korlátozzák-e.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "ChatGPT me da el día o la hora incorrectos cuando pregunto por «hoy» o «mañana».",
+        "why": "Voice usa la zona horaria de tu dispositivo o navegador para interpretar términos como «hoy» o «mañana». ChatGPT puede cometer errores, especialmente con preguntas que dependen de la fecha, la hora o la ubicación.",
+        "fix": "Si una respuesta parece incorrecta, comprueba tu zona horaria o incluye la fecha exacta, la zona horaria o la ubicación en tu pregunta. Comprueba la información importante antes de confiar en ella.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      },
+      {
+        "symptom": "ChatGPT me pide que apruebe una acción, pero no puedo decir que sí en voz alta.",
+        "why": "La aprobación por voz no es compatible. Voice te pide que revises en pantalla una acción que necesita tu aprobación.",
+        "fix": "En la web y en dispositivos móviles, cuando una acción necesita tu aprobación, Voice te pedirá que la revises en pantalla. Usa los controles en pantalla para aprobarla o rechazarla.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      },
+      {
+        "symptom": "Quiero compartir mi pantalla durante un chat de voz, pero la opción no funciona.",
+        "why": "Live no admite video ni compartir pantalla. La experiencia anterior de Voice en tiempo real, Advanced, admite estas funciones.",
+        "fix": "En Settings, dentro de Voice, selecciona Advanced cuando necesites funciones móviles compatibles, como video o compartir pantalla. Después, inicia una nueva conversación de Voice.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      },
+      {
+        "symptom": "No encuentro la opción Live en la configuración de Voice.",
+        "why": "Las opciones disponibles para ti pueden depender de tu plan, la configuración de tu espacio de trabajo, tu región, la versión de la aplicación y los controles parentales. En el caso de una cuenta de adolescente vinculada, uno de tus padres o tutores puede gestionar el acceso a Voice mediante Parental controls.",
+        "fix": "Para cambiar entre las opciones disponibles, abre Settings dentro de Voice y selecciona Live, Advanced o Standard. Si no aparece Live, comprueba si tu plan o la configuración de tu espacio de trabajo lo limitan.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      }
+    ]
+  }
+}

@@ -389,7 +389,9 @@
     "chen",
     "chetet",
     "chilipor",
+    "chipben",
     "chipből",
+    "chipcsaládjának",
     "chipek",
     "chipekből",
     "chipeken",
@@ -419,6 +421,7 @@
     "chipnek",
     "chippel",
     "chipre",
+    "chiprészletet",
     "chipről",
     "chipset",
     "chiptervezés",
@@ -884,6 +887,7 @@
     "feladatvégrehajtási",
     "felbérlását",
     "felbűg",
+    "feldolgozóegységet",
     "feleleket",
     "felelősséget",
     "felesleget",
@@ -995,6 +999,7 @@
     "gmail",
     "gondolatsorokat",
     "gradio",
+    "grafikuschip",
     "greenleaf",
     "greenshinecleaners",
     "gsheet",
@@ -1408,6 +1413,7 @@
     "korok",
     "korokat",
     "korokhoz",
+    "korrepetitorok",
     "korunk",
     "kozvetlenul",
     "kozvetlenül",
@@ -1545,6 +1551,7 @@
     "legkövetkező",
     "legközebb",
     "legtöbbben",
+    "lehetőségen",
     "lehetőséget",
     "lejátsza",
     "leltárjának",
@@ -1598,6 +1605,7 @@
     "légitársaságoknál",
     "légitársaságoktól",
     "lépcsőfokja",
+    "lépéssorok",
     "lökés",
     "macos",
     "macos-en",
@@ -2538,6 +2546,7 @@
     "szundítsd",
     "szundíztatom",
     "szuperbaktérium",
+    "szuperchip",
     "szuperchipben",
     "szuperchipet",
     "szuperfelbontás",
@@ -2795,6 +2804,7 @@
     "tárgysorod",
     "tárgysorok",
     "tárgysorokat",
+    "társaságod",
     "társaságodnak",
     "távolságok",
     "távolságokat",
@@ -4523,6 +4533,11 @@
       "correct": "érd",
       "at": "2026-10-20",
       "mondattal": true
+    },
+    "ször": {
+      "correct": "szer",
+      "at": "2026-10-29",
+      "mondattal": true
     }
   },
   "review": {
@@ -6202,11 +6217,16 @@
       "correct": "stílusösszefoglalódat",
       "at": "2026-10-26",
       "mondattal": true
+    },
+    "mélyűrtől": {
+      "correct": "mélyűrtől (nem standard szó)",
+      "at": "2026-10-29",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-10-28",
-    "files": 812,
-    "candidates": 0
+    "at": "2026-10-29",
+    "files": 818,
+    "candidates": 12
   }
 }
