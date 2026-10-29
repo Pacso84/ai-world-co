@@ -1,0 +1,71 @@
+{
+  "slug": "how-to-turn-a-long-voice-memo-into-a-short-summary-in-minutes",
+  "probalva": "2026-10-29T14:48:10.708Z",
+  "doboz": {
+    "keszult": "2026-10-29T14:48:10.708Z",
+    "enHash": "cf44a0b85a74463e16076d53d6392d1b794c45c0",
+    "forrasok": {
+      "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt": "Uploading files and audio to ChatGPT"
+    },
+    "en": [
+      {
+        "symptom": "I can't attach audio at all on my account.",
+        "why": "Audio uploads are not available on the Free plan at this time.",
+        "fix": "In ChatGPT: audio uploads are available with paid ChatGPT subscriptions and workspaces, including Enterprise.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      },
+      {
+        "symptom": "My audio file fails to upload with no clear reason.",
+        "why": "WebM and MP4 files identified as video are not supported by audio uploads. The file must contain a valid, decodable audio stream.",
+        "fix": "In ChatGPT: if an audio upload fails, check that the file uses a supported audio format and contains a valid, decodable audio stream.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      },
+      {
+        "symptom": "I get an \"upload limit reached\" message after only a few uploads.",
+        "why": "Failed upload attempts can sometimes count toward the upload-rate limit. ChatGPT does not currently show how much of your rolling upload-rate quota has been used or remains.",
+        "fix": "In ChatGPT: if the error message shows a retry time, wait until that time before uploading again. Check that you're signed in to the correct account and subscription plan.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Egyáltalán nem tudok hanganyagot csatolni a fiókomban.",
+        "why": "A hanganyagok feltöltése jelenleg nem érhető el a Free csomagban.",
+        "fix": "A ChatGPT-ben: a hanganyagok feltöltése fizetős ChatGPT-előfizetésekkel és munkaterületekkel érhető el, beleértve az Enterprise csomagot is.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      },
+      {
+        "symptom": "A hangfájlom egyértelmű ok nélkül nem töltődik fel.",
+        "why": "A videóként azonosított WebM- és MP4-fájlokat a hanganyagok feltöltése nem támogatja. A fájlnak érvényes, dekódolható hangfolyamot kell tartalmaznia.",
+        "fix": "A ChatGPT-ben: ha egy hanganyag feltöltése sikertelen, ellenőrizd, hogy a fájl támogatott hangformátumot használ-e, és tartalmaz-e érvényes, dekódolható hangfolyamot.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      },
+      {
+        "symptom": "Már néhány feltöltés után az „elérted a feltöltési korlátot” üzenetet kapom.",
+        "why": "A sikertelen feltöltési kísérletek néha beleszámíthatnak a feltöltési gyakoriság korlátjába. A ChatGPT jelenleg nem jeleníti meg, hogy a gördülő feltöltési gyakorisági kvótádból mennyit használtál fel, illetve mennyi maradt.",
+        "fix": "A ChatGPT-ben: ha a hibaüzenet újrapróbálkozási időpontot jelenít meg, várj addig az időpontig, mielőtt újra feltöltenél. Ellenőrizd, hogy a megfelelő fiókba és előfizetési csomagba vagy-e bejelentkezve.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "No puedo adjuntar audio de ninguna manera en mi cuenta.",
+        "why": "Las cargas de audio no están disponibles en el plan Free en este momento.",
+        "fix": "En ChatGPT: las cargas de audio están disponibles con las suscripciones y los espacios de trabajo de ChatGPT de pago, incluido Enterprise.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      },
+      {
+        "symptom": "Mi archivo de audio no se puede cargar y no aparece un motivo claro.",
+        "why": "Los archivos WebM y MP4 identificados como video no son compatibles con las cargas de audio. El archivo debe contener un flujo de audio válido y decodificable.",
+        "fix": "En ChatGPT: si no se puede cargar un archivo de audio, comprueba que use un formato de audio compatible y que contenga un flujo de audio válido y decodificable.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      },
+      {
+        "symptom": "Aparece el mensaje «se alcanzó el límite de carga» después de solo unas pocas cargas.",
+        "why": "A veces, los intentos de carga fallidos pueden contar para el límite de frecuencia de carga. Actualmente, ChatGPT no muestra cuánto de tu cuota móvil de frecuencia de carga has usado o cuánto te queda.",
+        "fix": "En ChatGPT: si el mensaje de error muestra una hora para volver a intentarlo, espera hasta esa hora antes de volver a cargar el archivo. Comprueba que hayas iniciado sesión en la cuenta y el plan de suscripción correctos.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      }
+    ]
+  }
+}
