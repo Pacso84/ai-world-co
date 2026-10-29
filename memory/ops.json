@@ -483,30 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179186637299276",
-      "level": "success",
-      "text": "4 hír + 1 útmutató publikálva (költség: $0.0884).",
-      "agent": "ceo",
-      "at": "2026-10-13T04:39:32.992Z",
-      "loud": false
-    },
-    {
-      "id": "n179190507668176",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — az Ellenőrző tényt/fo",
-      "agent": "guide",
-      "at": "2026-10-13T15:24:36.681Z",
-      "loud": false
-    },
-    {
-      "id": "n179190509611787",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"How to send a quick voice message to a family member's Echo with Alexa+\" — az Ellenőrző tényt/forrást ké",
-      "agent": "guide",
-      "at": "2026-10-13T15:24:56.117Z",
-      "loud": false
-    },
-    {
       "id": "n179190546380213",
       "level": "warn",
       "text": "📨 guide → ceo: Kell még adat: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — az Ellenőrző tényt/fo",
@@ -1281,38 +1257,33 @@
       "agent": "fact-check",
       "at": "2026-10-29T14:46:43.180Z",
       "loud": false
+    },
+    {
+      "id": "n179330674386970",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-29T20:45:43.869Z",
+      "loud": false
+    },
+    {
+      "id": "n179330676633810",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs meg az útmutató-szerkezet): \"Getting started with GitHub Copilot: a",
+      "agent": "fact-check",
+      "at": "2026-10-29T20:46:06.338Z",
+      "loud": false
+    },
+    {
+      "id": "n179330680876737",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs meg az útmutató-szerkezet): \"Getting started with NVIDIA ChatRTX: a",
+      "agent": "fact-check",
+      "at": "2026-10-29T20:46:48.767Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179190509611522",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to send a quick voice message to a family member's Echo with Alexa+\" — javítva: UI_CLAIMS_UNSOURCED: 5 konkrét képernyő-feliratot állít tényként forrás nélkül (\"edit name\", \"all devices\", \"communicate\", \"contacts\", …). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").; Article relies on Alexa+ which is still rolling out; some readers won't have access ",
-      "ref": "GUIDE_how-to-send-a-quick-voice-message-to-a-family-member-s-echo-.json",
-      "at": "2026-10-13T15:24:56.115Z"
-    },
-    {
-      "id": "m179190509611714",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"How to send a quick voice message to a family member's Echo with Alexa+\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: UI_CLAIMS_UNSOURCED: 5 konkrét képernyő-feliratot állít tényként forrás nélkül (\"edit name\", \"all devices\", \"communicate\", \"contacts\", …). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").",
-      "ref": "GUIDE_how-to-send-a-quick-voice-message-to-a-family-member-s-echo-.json",
-      "open": false,
-      "at": "2026-10-13T15:24:56.117Z",
-      "resolved_at": "2026-10-13T15:25:53.459Z"
-    },
-    {
-      "id": "m179190512396170",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — mi a baj: HOWTO_TOO_LONG: 2221 szó (~11.1 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; Step 4 fabricates a specific voice command flow: 'Alexa, walk me through this recipe' followed by reading a URL aloud, or 'Alexa, read ",
-      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
-      "at": "2026-10-13T15:25:23.961Z"
-    },
     {
       "id": "m17919051534580",
       "from": "ellenorzo",
@@ -2675,6 +2646,36 @@
       "ref": "ARTICLE_2026-10-29T03-26-39-436Z_nvidia-blog_Thin__Light_and_Built_for_Everything__NVIDIA_RTX_S.json",
       "open": true,
       "at": "2026-10-29T14:46:43.180Z"
+    },
+    {
+      "id": "m17933067438694",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Getting quick, easy-to-understand summaries of lon\" — The URL tongyi.aliyun.com may not be the current primary access point for Qwen — the service has likely migrated to qwen.ai. The specific UI button names cannot be verified as unchanged since publication.",
+      "ref": "ARTICLE_GUIDE_getting-quick-easy-to-understand-summaries-of-long-policy-do.json",
+      "open": true,
+      "at": "2026-10-29T20:45:43.869Z"
+    },
+    {
+      "id": "m17933067663381",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (nincs meg az útmutató-szerkezet): \"Getting started with GitHub Copilot: a beginner's \" — GitHub Copilot now has a free tier for individual developers — the guide's claim that it 'requires a paid subscription' is no longer accurate.",
+      "ref": "ARTICLE_GUIDE_getting-started-github-copilot.json",
+      "open": true,
+      "at": "2026-10-29T20:46:06.338Z"
+    },
+    {
+      "id": "m179330680876747",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (nincs meg az útmutató-szerkezet): \"Getting started with NVIDIA ChatRTX: a beginner's \" — Several technical details in this guide (model size, command syntax) may have changed since publication and should be presented with appropriate uncertainty",
+      "ref": "ARTICLE_GUIDE_getting-started-nvidia-chatrtx.json",
+      "open": true,
+      "at": "2026-10-29T20:46:48.767Z"
     }
   ]
 }
