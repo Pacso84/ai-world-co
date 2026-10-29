@@ -28,6 +28,7 @@ import Parser from 'rss-parser';
 import { ask } from '../../core/ai-router.js';
 import { skillsBlock } from '../../core/skills.js';
 import { extractJsonArray } from '../../core/extract-json.js';
+import { tulRegiTetel } from '../../core/hir-frissesseg.js';   // 🕰️ 2026-10-29 korhatár
 
 // ===================================================================
 // SETUP
@@ -356,10 +357,18 @@ async function main() {
       recent = uj;
     }
 
-    let newCount = 0, kwFiltered = 0, alreadySeen = 0, audFiltered = 0;
+    let newCount = 0, kwFiltered = 0, alreadySeen = 0, audFiltered = 0, regiKiszurve = 0;
     for (const item of recent) {
       if (!item.link) continue;
       if (seenLinks.has(item.link)) { alreadySeen++; continue; }
+
+      // 🕰️ KORHATÁR (2026-10-29, core/hir-frissesseg.js): új link, de régi bejegyzés (pl. a Sony júniusi
+      // összefoglalója októberben) → nem hír. Látottnak jelöljük, hogy holnap se jöjjön vissza.
+      if (tulRegiTetel(item, { forras: feedConfig })) {
+        regiKiszurve++;
+        seen[feedConfig.id].push(item.link);
+        continue;
+      }
 
       if (!keywordPrefilter(item)) {
         // Nem AI téma - ingyen kiszűrjük ÉS megjelöljük látottként
@@ -411,7 +420,7 @@ async function main() {
 
     stats.items_seen_before += alreadySeen;
     stats.items_keyword_filtered += kwFiltered;
-    console.log(`✅ ${feedConfig.name.padEnd(28)} ${newCount} jelölt | ${kwFiltered} kiszűrve${audFiltered ? ` | ${audFiltered} közönség-kapu` : ''} | ${alreadySeen} régi`);
+    console.log(`✅ ${feedConfig.name.padEnd(28)} ${newCount} jelölt | ${kwFiltered} kiszűrve${audFiltered ? ` | ${audFiltered} közönség-kapu` : ''} | ${alreadySeen} régi${regiKiszurve ? ` | ${regiKiszurve} túl régi bejegyzés` : ''}`);
   }
 
   stats.candidates_for_ai = candidates.length;
