@@ -98,6 +98,7 @@ const NEM_ORSZEM = {
   'daily-report-state.json': 'a napi riport SAJÁT küldés- és zajszűrő-állapota (last_sent, orszem) — nem őrszem-kimenet',
   'forditas-javitas.json': 'a fordítás-javító kihagyás-listája (szándékosan idegen nyelvű darabok ujjlenyomata, agents/translator) — munkaállapot, nem lelet',
   'digest-state.json': 'a heti összefoglaló agent futás-kapuja (last_week, hibaszámláló) — ismétlés-védelem',
+  'kitoltheto-regi-state.json': 'a „régi promptok kitölthetővé tétele” generátor napi számlálója (nap, költség, útmutató, mező; core/kitoltheto-regi-gen.js) — költség-keret és riport-forrás, nem ellenőrzési lelet; a napi riport sora olvassa',
   'elakadas-state.json': 'a „Ha elakadsz” generátor napi számlálója (nap, költség, új doboz, fordítás; core/elakadas-gen.js) — költség-keret és riport-forrás, nem ellenőrzési lelet; a napi riport sora olvassa',
   'emergency-fallback-state.json': 'a vészháló-riasztás napi dedup-kulcsa (core/ai-router.js) — a riasztás maga Telegramra megy',
   'handbacks.json': 'a visszaküldött cikkek postafiókja (core/handback.js) — munkasor, nem ellenőrzési eredmény',

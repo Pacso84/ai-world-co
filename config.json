@@ -361,6 +361,19 @@
       "comment": "„🔧 Ha elakadsz” doboz generátora (core/elakadas-gen.js, 2026-10-26): a guide agent modelljei (Haiku 5.5, tartalék M3) — 10-24 mérés: a szigorú kódos ellenőrzés (core/elakadas.js) a modell kimenetét szűri, ezért nem kell nagyobb modell. A doboz fordítását az elakadas-forditas agent végzi (lásd lent). Napi költség-plafon a kódban (NAPI_PLAFON $0,10).",
       "routing": "paid-only"
     },
+    "kitoltheto-regi": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "anthropic/claude-haiku-5.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "comment": "Régi promptok kitölthetővé tétele (core/kitoltheto-regi-gen.js, 2026-10-29): útmutatónként egy rövid hívás, ami megjelöli a személyre szabható példaszavakat; a kód-biztosíték (core/kitoltheto-regi.js) szűri a kimenetet. Napi költség-plafon a kódban (NAPI_PLAFON $0,05).",
+      "routing": "paid-only"
+    },
     "elakadas-forditas": {
       "primary_model": {
         "provider": "openrouter",

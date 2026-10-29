@@ -46,6 +46,7 @@ import { CSOMAG_IDK, NAGY_ID } from '../core/packs-data.js';
 import { cimTag } from '../core/title-tag.js';
 import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
 import { kitolthetoHtml, promptJelolt } from '../core/kitoltheto-prompt.js';   // 🧩 2026-10-23
+import { regiBetolt, mezosites, promptKulcs } from '../core/kitoltheto-regi.js';   // 🧩 2026-10-29 régi promptok
 import { elakadasBetolt, elakadasHtml } from '../core/elakadas-html.js';   // 🔧 2026-10-26 „Ha elakadsz” doboz
 import { lepesKepKulcs, elsoMondat, elsoMondatKulcs, ismetlesTores } from '../core/lepes-kep.js';   // 🖼️ 2026-10-23/24
 import { olvasoiKedvencek } from '../core/olvasoi-kedvenc.js';   // 🔥 2026-10-23
@@ -2367,7 +2368,7 @@ function masolGomb(isPrompt) {
 
 // Kitölthető promptnál egy rövid útmutató-sor a címke alatt (ha nincs mező, semmi)
 function kitoltesTipp(boxHtml) {
-  return boxHtml.includes('class="g-fill"') ? `<span class="g-fill__tip">${escapeHtml(tr('fillHint'))}</span>` : '';
+  return boxHtml.includes('class="g-fill') ?`<span class="g-fill__tip">${escapeHtml(tr('fillHint'))}</span>` : '';
 }
 
 function stepArtHtml(key, heading = '') {
@@ -2434,6 +2435,11 @@ function stripInlineMd(s) {
     .trim();
 }
 
+// 🧩 2026-10-29 (core/kitoltheto-regi.js): az ÉPPEN épülő útmutató régi promptjainak mezői ({kulcs: [mezok]}); csak az angol
+// oldalon (a fordított prompt szövege más → a kulcs nem egyezne), a buildGuidePage állítja be.
+let REGI_MEZOK = null;
+const regiMezok = szoveg => (REGI_MEZOK && REGI_MEZOK[promptKulcs(szoveg)]) || [];
+
 function guideSectionHtml(bodyMd) {
   // Fölösleges ön-hivatkozó markdown-link [X](X) → X (2026-07-21 audit): a modell
   // néha "[https://x](https://x)" alakot ír, ami a példa-dobozban nyersen látszott.
@@ -2455,7 +2461,7 @@ function guideSectionHtml(bodyMd) {
       // KITÖLTHETŐ PROMPT + MÁSOLÁS (2026-10-23, core/kitoltheto-prompt.js): a 💬 utáni kódblokk az
       // író „másold be az egészet” blokkja — a Prompt-tár (core/prompt-library.js, 1. szabály) MINDIG
       // promptnak veszi, idézőjel nélkül is. Eddig itt csak az idézőjeles kapott gombot (mérve: 1 a 82-ből).
-      const content = kitolthetoHtml(escapeHtml(body).replace(/\n/g, '<br>'));
+      const content = mezosites(kitolthetoHtml(escapeHtml(body).replace(/\n/g, '<br>')), regiMezok(body), { escaped: true });
       return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span>' + kitoltesTipp(content) + '<span class="g-prompt__box">' + content + send + '</span>' + masolGomb(true) + '</div>\n\n';
     });
   // (1) csak-címke 💬 sor ("💬 **Példa prompt:**") → fűzzük hozzá a következő
@@ -2469,13 +2475,14 @@ function guideSectionHtml(bodyMd) {
       const { prompt: isPrompt, szoveg: txt } = promptJelolt(eredeti);
       const lbl = isPrompt ? tr('tryTyping') : tr('exampleLabel');
       const send = isPrompt ? '<span class="g-prompt__send">➤</span>' : '';
-      const box = isPrompt ? kitolthetoHtml(txt) : txt;
+      const box = isPrompt ? mezosites(kitolthetoHtml(txt), regiMezok(txt), { escaped: false }) : txt;
       return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span>' + kitoltesTipp(box) + '<span class="g-prompt__box">' + box + send + '</span>' + masolGomb(isPrompt) + '</div>\n\n';
     });
   return wrapTables(marked.parse(pre));
 }
 
 function buildGuidePage(a) {
+  REGI_MEZOK = LANG === 'en' ? regiBetolt(PROJECT_ROOT, a.slug) : null;   // 🧩 2026-10-29
   const cat = CATEGORIES.guide;
   const aud = AUDIENCES[a.audience] || AUDIENCES.both;
   const { intro, sections } = parseGuideSections(a.bodyMd);

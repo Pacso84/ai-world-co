@@ -431,3 +431,14 @@ t('🔌 a napi jelentés beköti a sort, hibás/hiányzó fájlra sem dől el', 
 });
 
 console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');
+
+// 🧩 2026-10-29: régi promptok kitölthetővé tétele — napi riport-sor
+{
+  const { kitolthetoRegiLine } = await import('./report-lines.js');
+  assert.equal(kitolthetoRegiLine({ nap: '2026-10-29', uj: 3, mezo: 7, koltseg: 0.0123 }, '2026-10-29'), '🧩 Régi promptok kitölthetővé: 3 útmutató, 7 mező ($0.012)');
+  assert.match(kitolthetoRegiLine({ nap: '2026-10-29', uj: 1, mezo: 0, koltseg: 0.05, kimaradt: 'keret' }, '2026-10-29'), /kimaradt: keret$/);
+  assert.equal(kitolthetoRegiLine({ nap: '2026-10-28', uj: 3, mezo: 7, koltseg: 0.01 }, '2026-10-29'), null, 'tegnapi állapotból nincs sor');
+  for (const rossz of [null, undefined, 5, 'x', [], {}]) assert.equal(kitolthetoRegiLine(rossz, '2026-10-29'), null, String(rossz));
+  assert.equal(kitolthetoRegiLine({ nap: '2026-10-29', uj: 'x', mezo: null, koltseg: NaN }, '2026-10-29'), '🧩 Régi promptok kitölthetővé: 0 útmutató, 0 mező ($0.000)', 'hibás szám 0, sosem NaN');
+  console.log('  ✅ kitolthetoRegiLine');
+}

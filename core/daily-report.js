@@ -27,7 +27,7 @@ import { summarizeRuns, describeFailures } from './make-health.js';
 // A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
 // összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
 import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
-import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, elakadasLine, repeatLine, visitorLine, orFutott, zaroSor } from './report-lines.js';
+import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, elakadasLine, kitolthetoRegiLine, repeatLine, visitorLine, orFutott, zaroSor } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
@@ -490,6 +490,11 @@ async function main() {
   // lesz sor (elakadasLine) — hiányzó vagy hibás fájl = nincs sor, a riport ettől még kimegy.
   try {
     const sor = elakadasLine(JSON.parse(readFileSync(join(ROOT, 'memory', 'elakadas-state.json'), 'utf-8')), today());
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott a generátor */ }
+  // 🧩 RÉGI PROMPTOK kitölthetővé tétele (2026-10-29): ugyanígy, csak MAI állapotból
+  try {
+    const sor = kitolthetoRegiLine(JSON.parse(readFileSync(join(ROOT, 'memory', 'kitoltheto-regi-state.json'), 'utf-8')), today());
     if (sor) lines.push(sor);
   } catch { /* még nem futott a generátor */ }
   // HITELESSÉG-KAPU összegzés (2026-07-16): mit fogott a publikálás előtti

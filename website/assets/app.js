@@ -269,7 +269,9 @@
     var mezok = box.querySelectorAll('.g-fill');
     clone.querySelectorAll('.g-fill').forEach(function (m, i) {
       var v = ((mezok[i] && mezok[i].value) || '').trim();
-      m.replaceWith(document.createTextNode(v || '[' + m.getAttribute('data-h') + ']'));
+      // 2026-10-29 (régi promptok, core/kitoltheto-regi.js): az előre kitöltött mező üresen az ERETEDI szót adja,
+      // nem a [helykitöltőt] — így aki nem ír bele, betűre a régi promptot másolja ki
+      m.replaceWith(document.createTextNode(v || m.getAttribute('data-o') || '[' + m.getAttribute('data-h') + ']'));
     });
     // a lecsatolt klónon az innerText = textContent → a <br> nyomtalanul eltűnne, a többsoros
     // prompt egy sorba ragadna (független átnézés 10-23) — ezért előbb valódi sortörésre cseréljük

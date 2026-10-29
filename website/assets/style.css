@@ -1584,3 +1584,7 @@ body {
 @media (max-width: 760px) {
   .lh-q li:nth-child(n+5) { display: none; }
 }
+
+/* 🧩 régi promptok (2026-10-29, core/kitoltheto-regi.js): az előre kitöltött mező is szaggatott keretes marad (nem „kitöltött”) */
+.g-fill.g-fill--regi { border-style: dashed; background: var(--card); }
+.g-fill.g-fill--regi:focus { border-style: solid; background: var(--paper); }

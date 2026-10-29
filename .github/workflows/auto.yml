@@ -536,7 +536,11 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
-        run: node core/elakadas-gen.js --limit 10 --max-minutes 6 || true
+        run: |
+          node core/elakadas-gen.js --limit 10 --max-minutes 6 || true
+          # 🧩 RÉGI PROMPTOK KITÖLTHETŐVÉ TÉTELE (2026-10-29, core/kitoltheto-regi-gen.js): ugyanebben a lépésben (a job
+          # lépés-költségvetése tele; core/ci-timeouts.test.js). Saját napi plafon $0,05, belső időkeret 4 perc, max 12 útmutató.
+          node core/kitoltheto-regi-gen.js --limit 12 --max-minutes 4 || true
 
       # 🎬 REEL — 1. LÉPÉS: a napi álló videó legyártása.
       #

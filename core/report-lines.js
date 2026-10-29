@@ -205,6 +205,23 @@ export function elakadasLine(allapot, maNap) {
 }
 
 /**
+ * 🧩 Régi promptok kitölthetővé tétele — a napi generátor (core/kitoltheto-regi-gen.js) mai munkája egy sorban.
+ * Az elakadasLine mintájára: CSAK a MAI állapot ad sort (régi/hiányzó/hibás állapot → null), a hibás szám 0.
+ * @param {object|null} allapot  a memory/kitoltheto-regi-state.json tartalma: { nap, koltseg, uj (útmutató), mezo, kimaradt }
+ * @param {string} maNap         YYYY-MM-DD (UTC)
+ */
+export function kitolthetoRegiLine(allapot, maNap) {
+  if (!allapot || typeof allapot !== 'object' || Array.isArray(allapot)) return null;
+  if (!allapot.nap || allapot.nap !== maNap) return null;
+  const szam = x => (Number.isFinite(Number(x)) && x !== null && x !== '' ? Number(x) : 0);
+  const uj = Math.max(0, Math.round(szam(allapot.uj))), mezo = Math.max(0, Math.round(szam(allapot.mezo)));
+  let sor = `🧩 Régi promptok kitölthetővé: ${uj} útmutató, ${mezo} mező ($${Math.max(0, szam(allapot.koltseg)).toFixed(3)})`;
+  const kimaradt = String(allapot.kimaradt ?? '').replace(/s+/g, ' ').trim().slice(0, 80);
+  if (kimaradt) sor += ` · kimaradt: ${kimaradt}`;
+  return sor;
+}
+
+/**
  * 🔁 Ismétlés-őr — hány készülő cikket fogott meg, mert már írtunk róla?
  *
  * MIÉRT KELL EZ A SOR (2026-08-25). A témaismétlés-őr beágyazása HÓNAPOK ÓTA
