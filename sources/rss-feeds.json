@@ -58,6 +58,30 @@
       "eszkoz_kapu": true
     },
     {
+      "id": "google-photos",
+      "name": "Google Fotók termékhírek (hivatalos, blog.google)",
+      "url": "https://blog.google/products/photos/rss/",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "eszkoz_kapu": true,
+      "comment": "HIVATALOS Google Fotók-újdonságok (MI-szerkesztés, keresés). Élőben ellenőrizve 2026-10-29. User-kérés 10-29: „minden cégről, amiről útmutatónk van, legyen hivatalos forrás”."
+    },
+    {
+      "id": "google-labs",
+      "name": "Google Labs (hivatalos, blog.google) — NotebookLM, Project Genie",
+      "url": "https://blog.google/technology/google-labs/rss/",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "eszkoz_kapu": true,
+      "comment": "HIVATALOS Google Labs (NotebookLM, Project Genie és más kísérleti MI-eszközök). Élőben ellenőrizve 2026-10-29. User-kérés 10-29: „minden cégről, amiről útmutatónk van, legyen hivatalos forrás”."
+    },
+    {
       "id": "amazon-alexa",
       "name": "Amazon hírek – Alexa (hivatalos)",
       "url": "https://www.aboutamazon.com/news/tag/alexa/feed",
@@ -172,6 +196,18 @@
       "enabled": true
     },
     {
+      "id": "github-copilot-changelog",
+      "name": "GitHub Changelog – Copilot (hivatalos)",
+      "url": "https://github.blog/changelog/label/copilot/feed/",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "audience_gate": "everyday",
+      "comment": "HIVATALOS GitHub Copilot-újdonságok (14 GitHub Copilot-útmutatónk van). Sok fejlesztői tétel → audience_gate. Élőben ellenőrizve 2026-10-29. User-kérés 10-29: „minden cégről, amiről útmutatónk van, legyen hivatalos forrás”."
+    },
+    {
       "id": "aws-ml",
       "name": "AWS Machine Learning (hivatalos)",
       "url": "https://aws.amazon.com/blogs/machine-learning/feed/",
@@ -216,6 +252,19 @@
       "country": "US",
       "comment": "HIVATALOS Apple ML Research (Apple Intelligence háttér). Tesztelve 2026-06-21: 200 FEED.",
       "enabled": true
+    },
+    {
+      "id": "apple-newsroom",
+      "name": "Apple Newsroom (hivatalos)",
+      "url": "https://www.apple.com/newsroom/rss-feed.rss",
+      "category": "ai-company-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "audience_gate": "everyday",
+      "eszkoz_kapu": true,
+      "comment": "HIVATALOS Apple sajtószoba — Apple Intelligence / Siri-hírek (16 Apple-útmutatónk van; eddig csak a kutatói blog). A hírek többsége készülékbemutató → eszkoz_kapu + kulcsszó-szűrő (Mac/iPhone-bemutató nem lesz hír). Élőben ellenőrizve 2026-10-29. User-kérés 10-29: „minden cégről, amiről útmutatónk van, legyen hivatalos forrás”."
     },
     {
       "id": "perplexity-blog",

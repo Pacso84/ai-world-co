@@ -28,5 +28,5 @@ export function isStaticPage(title, { googleNews = false } = {}) {
 // („Echo Show 16”, „newest lineup of Alexa devices”, „Alexa Photo Frame”). Ezekből nálunk nem lehet cikk
 // (user 10-26: készüléknév = megkülönböztetés). A forrás `eszkoz_kapu: true` jelzővel kapja meg; a
 // funkcióhírek („Alexa for Shopping adds 100+ new capabilities”) átmennek.
-const HARDVER = /\b(devices?|lineup|photo frame|cameras?|speakers?|smart display|displays?|earbuds|headphones|doorbell|thermostat|smart glasses|glasses|ring)\b/i;
+const HARDVER = /\b(devices?|lineup|photo frame|cameras?|speakers?|smart display|displays?|earbuds|headphones|doorbell|thermostat|smart glasses|glasses|ring|imac|ipad|iphone|mac\s+(?:mini|studio|pro)|macbook)\b/i;   // Apple-készülékek: 10-29, Apple Newsroom
 export const keszulekBemutato = title => keszulekNev(String(title || '')) || HARDVER.test(String(title || ''));

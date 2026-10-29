@@ -41,9 +41,11 @@ t('🔌 az rss-scraper a forrás típusával hívja (nem a régi, mindenre érv�
 
 t('📵 készülék-kapu (Amazon Alexa-csatorna, valódi címek 10-29)', () => {
   for (const c of ['Amazon unveils its newest lineup of Alexa devices', 'Amazon introduces Alexa Photo Frame—the smartest way to bring your photos into the home',
-    'Amazon introduces the all-new Echo Show 16—our most advanced, versatile smart display yet', 'Introducing the new Echo Dot and all-new Echo Studio with Home Camera'])
+    'Amazon introduces the all-new Echo Show 16—our most advanced, versatile smart display yet', 'Introducing the new Echo Dot and all-new Echo Studio with Home Camera',
+    'Apple unveils new iMac with M6', 'Apple gives iPad mini its biggest update ever', 'iPhone Duo arrives at Apple Store locations worldwide'])
     assert.equal(keszulekBemutato(c), true, c);
-  for (const c of ['Alexa for Shopping adds 100+ new capabilities to make shopping even faster and easier', 'Meet Alexa Home Map, an interactive 3D map that lets you see and control your home'])
+  for (const c of ['Alexa for Shopping adds 100+ new capabilities to make shopping even faster and easier', 'Meet Alexa Home Map, an interactive 3D map that lets you see and control your home',
+    'Siri AI is available in more languages starting today', 'Apple Creator Studio adds powerful new AI features and even more creative tools'])
     assert.equal(keszulekBemutato(c), false, c);
   const src = readFileSync(join(ROOT, 'agents', 'rss-scraper', 'agent.js'), 'utf-8').replace(/^\s*\/\/.*$/gm, '');
   const i = src.indexOf('feedConfig.eszkoz_kapu && keszulekBemutato(item.title');
