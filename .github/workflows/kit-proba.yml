@@ -1,0 +1,16 @@
+name: Kit-próba (csak olvas)
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  proba:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Kit fiók + űrlapok
+        env:
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+        run: node core/kit-proba.js
