@@ -2,8 +2,8 @@
   "newsletter": {
     "_comment": "2026-10-30 — heti hírlevél a Kit-en (core/hirlevel.js küld, core/hirlevel-doboz.js a feliratkozó doboz, Worker /subscribe). enabled:true = vasárnap kiküldés (KIT_API_KEY GitHub-secret kell); signup:true = a doboz is kint (CSAK enabled mellett, hogy ne legyen újra feliratkozás küldés nélkül, mint 07-ben). A Worker-hez KIT_API_KEY + KIT_FORM_ID secret kell.",
     "provider": "kit",
-    "enabled": false,
-    "signup": false
+    "enabled": true,
+    "signup": true
   },
   "website": {
     "_comment": "2026-09-29 — a user kérte, hogy vissza lehessen állítani. false = a régi nézet a következő build-től. guide_sketch: kóddal rajzolt telefon-vázlat a lépés mellett (core/guide-sketch.js); next_guide: 'Következő útmutató' kártya az utolsó lépés után (core/next-guide.js).",

@@ -25,7 +25,9 @@ await t('🔒 KIKAPCSOLVA: config nélkül, kulcs nélkül, hibás feladóval NI
   assert.equal(hirlevelBeallitas({ newsletter: { ...ok.newsletter, sender_email: 'rossz' } }, { BREVO_API_KEY: 'x'.repeat(40) }).be, false);
   assert.equal(hirlevelBeallitas(ok, { BREVO_API_KEY: 'x'.repeat(40) }).be, true);
   const cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
-  assert.notEqual(cfg.newsletter?.enabled, true, 'a Kit-fiók + KIT_API_KEY + a Kit-postacím beállítása ELŐTT nem kapcsolható be');
+  // 10-30 este BEKAPCSOLVA (user: „csináld meg”): Kit-fiók, KIT_API_KEY (GitHub + Worker), űrlap #10121836, dupla megerősítés élőben igazolva.
+  // A szolgáltató KIT kell legyen: a Brevo-ághoz saját postacím kellene (a user lakcímet nem ad meg).
+  if (cfg.newsletter?.enabled === true) assert.notEqual(cfg.newsletter.provider, 'brevo', 'a Brevo-ág saját postacímet kívánna');
 });
 
 await t('✉️ tartalom: 5 hír (a záró rész nélkül), jelölt link, MI-jelölés, leiratkozás; tárgy dátum nélkül', () => {
@@ -83,7 +85,7 @@ await t('📬 doboz: CSAK enabled ÉS signup mellett, CSAK angol oldalon; kulcs 
   assert.match(h, /class="nl__hp"/, 'nincs honeypot'); assert.ok(h.includes(VEGPONT));
   assert.doesNotMatch(h, /api\.kit\.com|X-Kit-Api-Key/, 'a Kit-kulcs/végpont nem kerülhet a böngészőbe');
   const cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
-  assert.equal(dobozBe(cfg), false, 'a doboz a Kit beállítása előtt nem lehet kint');
+  if (dobozBe(cfg)) assert.equal(cfg.newsletter.enabled, true, 'doboz csak bekapcsolt küldés mellett (07-27 tanulság)');
 });
 
 await t('🔌 bekötés: cikk + útmutató alja + főoldal; /privacy feltételes kártya; CI vasárnapi lépés; Worker /subscribe', () => {
