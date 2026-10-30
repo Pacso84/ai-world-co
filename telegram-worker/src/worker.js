@@ -46,6 +46,7 @@ import { handleSrcHit, srcExport } from './forras-szamlalo.js';   // 🧵 10-22
 import { handleFbpHit, fbpExport } from './bevalt-szamlalo.js';   // 👍 „Bevált?” 10-23
 // 🛒 Amazon partnerlink kattintás-számláló (2026-10-09) — a jelet a honlap app.js-e küldi.
 import { handleAffHit, affExport } from './aff-hit.js';
+import { handleSubscribe } from './hirlevel-feliratkozas.js';   // 📬 2026-10-30 (Kit)
 
 // ===================================================================
 // OLVASÓI 👍/👎 VISSZAJELZÉS (2026-07-07) — a weboldal cikkeiről érkezik.
@@ -97,6 +98,7 @@ async function handleFeedbackExport(request, env) {
   out.__fbp = await fbpExport(env);   // 👍 „Bevált?” a promptok alatt (10-23)
   // Az Amazon-kattintások (14 nap) a napi riport 🛒 sorához; ugyanígy {error:true} hibánál.
   out.__aff = await affExport(env);
+  try { out.__nl_signups = parseInt(await env.FEEDBACK.get('nl:signups') || '0', 10); } catch { /* skip */ }   // 📬 10-30
   return new Response(JSON.stringify(out), { status: 200, headers: { 'Content-Type': 'application/json' } });
 }
 
@@ -112,6 +114,7 @@ export default {
     if (path === '/src-hit') return handleSrcHit(request, env);
     if (path === '/fbp-hit') return handleFbpHit(request, env);
     if (path === '/aff-hit') return handleAffHit(request, env);
+    if (path === '/subscribe') return handleSubscribe(request, env);
 
     // Egészség-ellenőrzés / böngészős megnyitás
     if (request.method !== 'POST') {

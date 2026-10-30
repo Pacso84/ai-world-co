@@ -10,7 +10,9 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 let hiba = 0;
 const t = (nev, fn) => { try { fn(); console.log('  ✅ ' + nev); } catch (e) { hiba++; console.log('  ❌ ' + nev + '\n     ' + e.message); } };
 const css = readFileSync(join(ROOT, 'website', 'assets', 'style.css'), 'utf-8').replace(/\r\n/g, '\n');
-const blokk = css.slice(css.indexOf('/* 📄 papírlapos dizájn a cikkoldalakon'));
+const kezd = css.indexOf('/* 📄 papírlapos dizájn a cikkoldalakon');
+const veg = css.indexOf('/* 📬 hírlevél-feliratkozó', kezd);   // a 10-30-i hírlevél-doboz szabályai már nem a papírlapéi
+const blokk = css.slice(kezd, veg > kezd ? veg : undefined);
 
 console.log('\n🧪 cikk-papirlap');
 

@@ -52,6 +52,7 @@ import { lepesKepKulcs, elsoMondat, elsoMondatKulcs, ismetlesTores } from '../co
 import { olvasoiKedvencek } from '../core/olvasoi-kedvenc.js';   // 🔥 2026-10-23
 import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
+import { dobozBe, hirlevelDoboz } from '../core/hirlevel-doboz.js';   // 📬 2026-10-30: csak bekapcsolt küldés mellett
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek, hirdetesKozbe, hirdetesRacsba } from '../core/ads.js';
 import { promptTar, promptTarHtml } from '../core/prompt-library.js';
 import { eszkozSavHtml, biztonsagosHtml, promptEpitoHtml, ESZKOZ_UTAK } from '../core/ingyenes-eszkozok.js';   // 🧰 2026-10-21
@@ -92,6 +93,8 @@ let KEDVENCEK = [];
 let HIRDETES = hirdetesBeallitas(null);
 // Amazon partnerlink-próba (2026-10-09, core/affiliate.js) — KI, amíg nincs érvényes azonosító.
 let PARTNER = partnerBeallitas(null);
+// 📬 HÍRLEVÉL-DOBOZ (2026-10-30, core/hirlevel-doboz.js): KI, amíg a küldés (config.newsletter) nincs bekapcsolva.
+let HIRLEVEL_DOBOZ = false;
 // Ügyfélszolgálati chat-doboz kapcsoló + Worker-végpont (Task 3 config: customer_service.*).
 // enabled csak akkor igaz, ha a config engedélyezi ÉS van Turnstile site-key.
 let CS = { enabled: false, base: '', key: '' };
@@ -128,6 +131,7 @@ try {
   KAPCSOLO = { vazlat: web.guide_sketch !== false, kovetkezo: web.next_guide !== false, csomagMind: web.pack_line_all !== false };
   HIRDETES = hirdetesBeallitas(web);
   PARTNER = partnerBeallitas(web);
+  HIRLEVEL_DOBOZ = dobozBe(rawConfig);
   CF_BEACON = (company.cf_beacon_token || '').trim();
   SITE_URL = (company.website_url || SITE_URL).replace(/\/$/, '');
   SUPPORT = {
@@ -636,6 +640,8 @@ const UI_PRIV = {
         privAdsSet: 'Turn off personalized ads in Google’s Ads Settings', privAdsHow: 'How Google uses information from sites that use its services',
         privAffH: 'Amazon affiliate link', privAffP: 'Some guides end with a labelled link to Amazon. We only count that the link was clicked — not who clicked it. If you follow it, Amazon’s own privacy notice applies on amazon.com. As an Amazon Associate I earn from qualifying purchases.',
         privNoH: 'What we don’t do', privNoP: 'No accounts, no comments, no newsletter and no Google Analytics. We do not sell your data.',
+        privNoPNl: 'No accounts, no comments and no Google Analytics. We do not sell your data.',
+        privNlH: 'Newsletter', privNlP: 'If you sign up for our weekly email, your email address is stored by our email provider, Kit (kit.com), and used only to send that newsletter. You confirm your signup by email first, and every email has an unsubscribe link. We never sell or share your address.',
         privAskH: 'Questions or deletion requests', privAskP: 'Write to support@aiworldhq.com — we will answer, and delete your data on request.' },
   hu: { privNav: 'Adatvédelem', privTitle: 'Adatvédelem', privTag: 'Mit gyűjtünk, mit nem, és milyen választásod van.',
         privStatsH: 'Látogatási statisztika', privStatsP: 'A látogatásokat a Cloudflare Web Analytics számolja. Nem használ sütit, és nem azonosít téged: csak összesítéseket látunk, például oldalletöltést, országot és azt, honnan érkeztél.',
@@ -647,6 +653,8 @@ const UI_PRIV = {
         privAdsSet: 'A személyre szabott hirdetéseket a Google hirdetési beállításaiban kapcsolhatod ki', privAdsHow: 'Hogyan használja a Google a szolgáltatásait használó oldalak adatait',
         privAffH: 'Amazon partnerlink', privAffP: 'Néhány útmutató végén egy jelölt Amazon-link áll. Csak azt számoljuk, hogy rákattintottak — azt nem, hogy ki. Ha követed, az amazon.com-on az Amazon saját adatvédelmi szabályai érvényesek. As an Amazon Associate I earn from qualifying purchases.',
         privNoH: 'Amit nem csinálunk', privNoP: 'Nincs regisztráció, nincs komment, nincs hírlevél és nincs Google Analytics. Az adataidat nem adjuk el.',
+        privNoPNl: 'Nincs regisztráció, nincs komment és nincs Google Analytics. Az adataidat nem adjuk el.',
+        privNlH: 'Hírlevél', privNlP: 'Ha feliratkozol a heti (angol nyelvű) levelünkre, az e-mail címedet a levelezőszolgáltatónk, a Kit (kit.com) tárolja, és csak ennek a hírlevélnek a kiküldésére használjuk. A feliratkozást előbb e-mailben megerősíted, és minden levélben van leiratkozó link. A címedet soha nem adjuk el és nem adjuk tovább.',
         privAskH: 'Kérdés vagy törlési kérés', privAskP: 'Írj a support@aiworldhq.com címre — válaszolunk, és kérésre töröljük az adataidat.' },
   es: { privNav: 'Privacidad', privTitle: 'Privacidad', privTag: 'Qué recogemos, qué no, y qué opciones tienes.',
         privStatsH: 'Estadísticas de visitas', privStatsP: 'Contamos las visitas con Cloudflare Web Analytics. No usa cookies y no te identifica: solo vemos totales, como páginas vistas, país y el sitio desde el que llegaste.',
@@ -658,6 +666,8 @@ const UI_PRIV = {
         privAdsSet: 'Desactiva los anuncios personalizados en la configuración de anuncios de Google', privAdsHow: 'Cómo usa Google la información de los sitios que usan sus servicios',
         privAffH: 'Enlace de afiliado de Amazon', privAffP: 'Algunas guías terminan con un enlace marcado a Amazon. Solo contamos que se hizo clic en él, no quién lo hizo. Si lo sigues, en amazon.com se aplica el aviso de privacidad de Amazon. As an Amazon Associate I earn from qualifying purchases.',
         privNoH: 'Lo que no hacemos', privNoP: 'Sin cuentas, sin comentarios, sin boletín y sin Google Analytics. No vendemos tus datos.',
+        privNoPNl: 'Sin cuentas, sin comentarios y sin Google Analytics. No vendemos tus datos.',
+        privNlH: 'Boletín', privNlP: 'Si te suscribes a nuestro correo semanal (en inglés), tu dirección la guarda nuestro proveedor de correo, Kit (kit.com), y solo la usamos para enviarte ese boletín. Primero confirmas la suscripción por correo, y cada correo tiene un enlace para darte de baja. Nunca vendemos ni compartimos tu dirección.',
         privAskH: 'Preguntas o solicitudes de borrado', privAskP: 'Escribe a support@aiworldhq.com: te responderemos y borraremos tus datos si lo pides.' }
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_PRIV[l] || {});
@@ -1796,7 +1806,7 @@ function buildIndex(articles) {
     // hanem magát az oldalt, ami nyelvtől független entitás. (Ugyanígy az
     // Organization a Rólunk oldalon.) NE „javítsd meg" ${LP}-vel.
     jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: tr('siteDesc') || SITE.description },
-    bodyContent: fooldalHero + featuredHtml + weeklyHtml + guidesCta + grid
+    bodyContent: fooldalHero + featuredHtml + weeklyHtml + guidesCta + grid + hirlevelDoboz(HIRLEVEL_DOBOZ, LANG)
       + `<p class="start__wizcta"><a href="archive">🗂️ ${escapeHtml(tr('archNav'))} →</a></p>`,
     noIntro: true,   // 📄 2026-10-28: a középre igazított intro helyett a papírlapos fejléc
     pagePath: ''
@@ -2192,6 +2202,7 @@ function buildArticlePage(a) {
     ${xrefBox(a)}
     ${relatedBox(a)}
     <div class="article__foot">
+      ${hirlevelDoboz(HIRLEVEL_DOBOZ, LANG)}
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureNews')}</p>
       ${supportLine()}
@@ -2665,6 +2676,7 @@ function buildGuidePage(a) {
     ${relatedBox(a)}
     ${a.trend ? `<p class="tr-more"><a href="../trending">🔥 ${escapeHtml(tr('trMore'))} →</a></p>` : ''}
     <div class="article__foot">
+      ${hirlevelDoboz(HIRLEVEL_DOBOZ, LANG)}
       <div class="fb" data-slug="${a.slug}" data-thanks="${escapeHtml(tr('fbThanks'))}"><span class="fb__q">${tr('fbQ')}</span><button class="fb__btn" data-vote="up" aria-label="👍">👍</button><button class="fb__btn" data-vote="down" aria-label="👎">👎</button></div>
       <p class="ai-disclosure">${tr('disclosureGuide')}</p>
       ${(KAPCSOLO.csomagMind || a.reelAt) ? packLine(temaOf(a.titleEn || a.title)) : ''}
@@ -3464,7 +3476,8 @@ function buildPrivacyPage() {
     SUPPORT.enabled || (PACKS.enabled && !PACKS.free) ? kartya('☕', 'privPayH', 'privPayP') : '',
     hirdetes,
     PARTNER.be ? kartya('🛒', 'privAffH', 'privAffP') : '',
-    kartya('🚫', 'privNoH', 'privNoP'),
+    HIRLEVEL_DOBOZ ? kartya('📬', 'privNlH', 'privNlP') : '',   // 📬 2026-10-30: csak bekapcsolt hírlevélnél
+    kartya('🚫', 'privNoH', HIRLEVEL_DOBOZ ? 'privNoPNl' : 'privNoP'),
     kartya('✉️', 'privAskH', 'privAskP')
   ].join('\n');
   const body = `<section class="guides-hero">

@@ -72,5 +72,34 @@ await t('🌐 Kit: EGY hívás a broadcasts végpontra, azonnali send_at, nem ny
   await assert.rejects(kitKuldes({ kulcs: 'k' }, x, { fetchFn: async () => ({ ok: false, status: 422, text: async () => 'bad' }) }), /HTTP 422/);
 });
 
+await t('📬 doboz: CSAK enabled ÉS signup mellett, CSAK angol oldalon; kulcs nincs benne; 07-es tanulság őrizve', async () => {
+  const { dobozBe, hirlevelDoboz, VEGPONT } = await import('./hirlevel-doboz.js');
+  assert.equal(dobozBe({ newsletter: { enabled: false, signup: true } }), false, 'küldés nélkül NINCS doboz (07-27 tanulság)');
+  assert.equal(dobozBe({ newsletter: { enabled: true, signup: false } }), false);
+  assert.equal(dobozBe({ newsletter: { enabled: true, signup: true } }), true);
+  assert.equal(hirlevelDoboz(true, 'hu'), '', 'angol levelet nem ígérünk magyar oldalon');
+  assert.equal(hirlevelDoboz(false, 'en'), '');
+  const h = hirlevelDoboz(true, 'en');
+  assert.match(h, /class="nl__hp"/, 'nincs honeypot'); assert.ok(h.includes(VEGPONT));
+  assert.doesNotMatch(h, /api\.kit\.com|X-Kit-Api-Key/, 'a Kit-kulcs/végpont nem kerülhet a böngészőbe');
+  const cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
+  assert.equal(dobozBe(cfg), false, 'a doboz a Kit beállítása előtt nem lehet kint');
+});
+
+await t('🔌 bekötés: cikk + útmutató alja + főoldal; /privacy feltételes kártya; CI vasárnapi lépés; Worker /subscribe', () => {
+  const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  assert.equal((b.match(/\$\{hirlevelDoboz\(HIRLEVEL_DOBOZ, LANG\)\}/g) || []).length, 2, 'a hír és az útmutató alján');
+  assert.match(b, /grid \+ hirlevelDoboz\(HIRLEVEL_DOBOZ, LANG\)/, 'főoldal');
+  assert.match(b, /HIRLEVEL_DOBOZ = dobozBe\(rawConfig\)/);
+  assert.match(b, /HIRLEVEL_DOBOZ \? kartya\('📬', 'privNlH', 'privNlP'\)/);
+  assert.match(b, /kartya\('🚫', 'privNoH', HIRLEVEL_DOBOZ \? 'privNoPNl' : 'privNoP'\)/, 'bekapcsolt hírlevélnél a „nincs hírlevél” állítás hamis lenne');
+  for (const k of ['privNlH', 'privNlP', 'privNoPNl']) assert.equal((b.match(new RegExp(k + ':', 'g')) || []).length, 3, k + ': nem mindhárom nyelven');
+  const ci = readFileSync(join(ROOT, '.github', 'workflows', 'auto.yml'), 'utf-8');
+  assert.match(ci, /KIT_API_KEY: \$\{\{ secrets\.KIT_API_KEY \}\}\s+run: node core\/hirlevel\.js --send \|\| true/);
+  assert.ok(ci.indexOf('core/hirlevel.js --send') > ci.indexOf('core/indexnow.js'), 'a küldés a deploy UTÁN kell (élő linkek)');
+  const w = readFileSync(join(ROOT, 'telegram-worker', 'src', 'worker.js'), 'utf-8');
+  assert.match(w, /if \(path === '\/subscribe'\) return handleSubscribe\(request, env\);/);
+});
+
 if (hiba) { console.log(`\n❌ hirlevel.test: ${hiba} hiba`); process.exit(1); }
 console.log('✅ hirlevel.test: mind rendben');

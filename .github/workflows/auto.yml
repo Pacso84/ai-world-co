@@ -740,6 +740,16 @@ jobs:
           BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
         run: node core/hirado-kuldes.js --auto || true
 
+      # ✉️ HETI HÍRLEVÉL (2026-10-30, core/hirlevel.js — Kit). A vasárnapi heti összefoglalóból; a deploy UTÁN,
+      # hogy a levél linkjei már éljenek. KI van kapcsolva, amíg config.newsletter.enabled != true vagy nincs
+      # KIT_API_KEY — akkor csendben kihagyja. Egy heti cikket csak egyszer küld (content/hirlevel-naplo.json,
+      # a záró visszacommit menti).
+      - name: Heti hírlevél — kiküldés (a deploy UTÁN)
+        if: always()
+        env:
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+        run: node core/hirlevel.js --send || true
+
       # Social: poszt-szöveg az új cikkekhez + kiküldés (Make webhook → FB oldal).
       # Max 2 poszt/futás (kulturált tempó); hiba nem dönti el a futást.
       - name: Social — poszt-gyártás + kiküldés
