@@ -1588,3 +1588,22 @@ body {
 /* 🧩 régi promptok (2026-10-29, core/kitoltheto-regi.js): az előre kitöltött mező is szaggatott keretes marad (nem „kitöltött”) */
 .g-fill.g-fill--regi { border-style: dashed; background: var(--card); }
 .g-fill.g-fill--regi:focus { border-style: solid; background: var(--paper); }
+
+/* 📄 papírlapos dizájn a cikkoldalakon (2026-10-28): CSAK stílus — a hír „Röviden” doboza és az
+   útmutató „Útvonalad” térképe papírlap lesz pecséttel; a sablon, a hirdetés helye és a szöveg nem változik.
+   A pecsét felirata a lap nyelvét követi (:lang), mert a doboz a cikkszövegből készül. */
+.lede { position: relative; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--card); box-shadow: 8px 8px 0 -1px var(--paper-2), 8px 8px 0 0 var(--line); transform: rotate(-0.5deg); padding: 20px 24px 22px; margin: 0 8px 36px 0; }
+.lede strong:first-child { display: block; margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-family: 'Schibsted Grotesk', sans-serif; font-size: 13px; font-weight: 800; color: var(--ink-soft); }
+.lede::after { content: '30 seconds'; position: absolute; bottom: -13px; right: 18px; padding: 3px 9px; border: 2px solid var(--accent); border-radius: 8px; background: color-mix(in srgb, var(--accent) 9%, var(--card)); color: var(--accent-dark); font-size: 12px; font-weight: 800; transform: rotate(4deg); }
+:lang(hu) .lede::after { content: '30 másodperc'; }
+:lang(es) .lede::after { content: '30 segundos'; }
+[data-theme="dark"] .lede { background: var(--card); }
+.g-map { position: relative; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--card); box-shadow: 8px 8px 0 -1px var(--paper-2), 8px 8px 0 0 var(--line); transform: rotate(-0.5deg); margin-right: 8px; margin-bottom: 28px; }
+.g-map__head { padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.g-map__count { position: absolute; top: -12px; right: 16px; padding: 3px 9px; border: 2px solid var(--accent); border-radius: 8px; background: color-mix(in srgb, var(--accent) 9%, var(--card)); color: var(--accent-dark); font-size: 12px; font-weight: 800; transform: rotate(5deg); }
+/* a pecsét felirata olvasható legyen (10-30 mérve: világos 4,49 → 5,75 · sötét 2,9 → 8,21; a küszöb 4,5) */
+.lede::after, .g-map__count { color: color-mix(in srgb, var(--accent-dark) 80%, var(--ink)); }
+[data-theme="dark"] .lede::after, [data-theme="dark"] .g-map__count { color: color-mix(in srgb, var(--accent) 40%, var(--ink)); }
+@media (max-width: 760px) {
+  .lede, .g-map { transform: none; }
+}
