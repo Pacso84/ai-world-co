@@ -30,6 +30,7 @@ import { skillsBlock } from '../../core/skills.js';
 import { extractJsonArray } from '../../core/extract-json.js';
 import { tulRegiTetel } from '../../core/hir-frissesseg.js';
 import { isStaticPage, googleNewsForras, keszulekBemutato } from '../../core/statikus-lap.js';   // 2026-10-29   // 🕰️ 2026-10-29 korhatár
+import { cimSzuronAtmegy, datumCimPotlas } from '../../core/forras-cimszuro.js';   // 🎯 2026-10-30 forrásonkénti címszűrő
 
 // ===================================================================
 // SETUP
@@ -355,11 +356,20 @@ async function main() {
     for (const item of recent) {
       if (!item.link) continue;
       if (seenLinks.has(item.link)) { alreadySeen++; continue; }
+      item.title = datumCimPotlas(feedConfig, item.title, item['content:encoded'] || item.content || item.contentSnippet);   // Z.ai: a cím csak dátum
 
       // 🕰️ KORHATÁR (2026-10-29, core/hir-frissesseg.js): új link, de régi bejegyzés (pl. a Sony júniusi
       // összefoglalója októberben) → nem hír. Látottnak jelöljük, hogy holnap se jöjjön vissza.
       if (tulRegiTetel(item, { forras: feedConfig })) {
         regiKiszurve++;
+        seen[feedConfig.id].push(item.link);
+        continue;
+      }
+
+      // 🎯 Forrásonkénti címszűrő (2026-10-30, core/forras-cimszuro.js): a vegyes hírfolyamból (Proton, Brave,
+      // DuckDuckGo) csak a MI-asszisztensükről szóló cím megy tovább — a többi ingyen kiesik, látottnak jelölve.
+      if (!cimSzuronAtmegy(feedConfig, item.title)) {
+        kwFiltered++;
         seen[feedConfig.id].push(item.link);
         continue;
       }

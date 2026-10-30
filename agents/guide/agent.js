@@ -194,7 +194,22 @@ const COMPANY_CATALOG = [
   { company: 'GitHub',       tool: 'GitHub Copilot',     icon: '🐙', audience: 'business',
     angle: 'GitHub Copilot for absolute beginners: what an AI coding helper does, where it appears, and how to try it safely on a tiny first project.' },
   { company: 'Cohere',       tool: 'Cohere',             icon: '🔵', audience: 'business',
-    angle: 'What is Cohere? A friendly, plain-English intro to its AI tools for businesses and what everyday users should know.' }
+    angle: 'What is Cohere? A friendly, plain-English intro to its AI tools for businesses and what everyday users should know.' },
+  // 2026-10-30 (user: „bővítsük az LLM-céglistát”, „mindegyikhez kell hivatalos forrás”): mind a hatnak van
+  // hivatalos forrása a sources/rss-feeds.json-ban (kimi-blog, minimax-blog, zai-release-notes, duckduckgo-duck-ai,
+  // brave-leo, proton-lumo). Az angle csak azt állítja, ami a hivatalos oldalukon áll.
+  { company: 'Moonshot AI',  tool: 'Kimi',               icon: '🌙', audience: 'both',
+    angle: 'A plain-English first look at Kimi, the free AI assistant from Moonshot AI: how to open it in your browser, ask your first question, and get useful answers.' },
+  { company: 'MiniMax',      tool: 'MiniMax Code',       icon: '🧩', audience: 'both',
+    angle: 'A beginner-friendly first look at MiniMax Code (agent.minimax.io): what this AI helper can do for everyday tasks, not only coding, and how to try it safely.' },
+  { company: 'Z.ai',         tool: 'Z.ai',               icon: '🔷', audience: 'both',
+    angle: 'A plain-English first look at Z.ai (chat.z.ai), the free AI chatbot built on the GLM models: how to start, what to ask, and what to keep private.' },
+  { company: 'DuckDuckGo',   tool: 'Duck.ai',            icon: '🦆', audience: 'personal',
+    angle: 'How to use Duck.ai, the free private AI chat from DuckDuckGo: how to start a chat without an account and what its privacy settings mean for you.' },
+  { company: 'Brave',        tool: 'Brave Leo',          icon: '🦁', audience: 'personal',
+    angle: 'How to use Leo, the AI assistant built into the Brave browser: where to find it, how to summarize a page or ask a question, and its privacy basics.' },
+  { company: 'Proton',       tool: 'Lumo',               icon: '🔒', audience: 'personal',
+    angle: 'How to use Lumo, the privacy-first AI assistant from Proton: how to start, what it can help with, and how it keeps your chats confidential.' }
 ];
 
 function normCompany(s) { return (s || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }

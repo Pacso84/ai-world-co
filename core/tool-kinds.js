@@ -85,7 +85,11 @@ const ASSISTANT_NAMES = [
   // Genie One útmutatónál megtörtént (olyan termékhez írtunk, amit az
   // olvasónk nem tud használni). Chat-ablak, tehát asszisztens.
   'Microsoft 365 Copilot',
-  'Meta AI', 'Mistral AI', 'NotebookLM', 'Qwen', 'Qwen Chat'
+  'Meta AI', 'Mistral AI', 'NotebookLM', 'Qwen', 'Qwen Chat',
+  // 2026-10-30: bővített LLM-céglista (agents/guide COMPANY_CATALOG), mind hivatalos forrással.
+  // A puszta 'Leo' szándékosan NINCS: köznév/keresztnév is, téves egyezést adna.
+  'Brave', 'DuckDuckGo', 'MiniMax', 'Moonshot AI', 'Proton', 'Z.ai',
+  'Brave Leo', 'Duck.ai', 'Kimi', 'Lumo', 'MiniMax Code'
 ];
 
 /** Kép- és videógenerálás. Ezek NEM asszisztensek. */
