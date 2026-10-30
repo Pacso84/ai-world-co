@@ -24,6 +24,7 @@ GH_REPO = "Pacso84/ai-world-co"
 # ÉLESÍTVE 2026-07-20: "true" (valódi Turnstile-secret + site-widget is bekapcsolva).
 # Vészleállítás = ezt "false"-ra + wrangler deploy (a végpontok azonnal 503).
 CS_ENABLED = "true"
+KIT_FORM_ID = "10121836"   # 📬 2026-10-30: a Kit „Newsletter site” űrlapja (nem titok) — a megerősítő levelet ez küldi
 
 # Olvasói 👍/👎 visszajelzés tárolója (2026-07-07)
 [[kv_namespaces]]
