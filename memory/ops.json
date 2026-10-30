@@ -483,14 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179194643903384",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, everyday AI use cases that anyone can relate to, with nice variety across tools (DeepSeek, Grok, ChatGPT, Le Chat, Cohere, Qwen). Articles 1 & 2 have similar topic",
-      "agent": "publisher",
-      "at": "2026-10-14T02:53:59.033Z",
-      "loud": false
-    },
-    {
       "id": "n179194645857053",
       "level": "success",
       "text": "4 hír + 2 útmutató publikálva (költség: $0.1123).",
@@ -1281,18 +1273,17 @@
       "agent": "fact-check",
       "at": "2026-10-30T03:47:47.391Z",
       "loud": false
+    },
+    {
+      "id": "n179337156082331",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-30T14:46:00.823Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179190546380079",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to ask Alexa+ to read recipe steps out loud while you cook with messy hands\" — javítva: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 4 fabricates specific voice commands: 'Alexa, read me the recipe in my notes' and 'Alexa, read this recipe step by step' — these are not confirmed real commands; the company lessons prohibit inventing spe",
-      "ref": "GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
-      "at": "2026-10-13T15:31:03.800Z"
-    },
     {
       "id": "m179190546380266",
       "from": "guide",
@@ -2678,6 +2669,16 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-30T03:58:06.901Z"
+    },
+    {
+      "id": "m179337156082342",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Getting started with Grok (xAI) for everyday quest\" — Multiple UI and access claims are likely outdated — Grok access has expanded beyond Premium-only, and the mode names/interface elements described may have changed since publication.",
+      "ref": "ARTICLE_GUIDE_grok-getting-started.json",
+      "open": true,
+      "at": "2026-10-30T14:46:00.823Z"
     }
   ]
 }
