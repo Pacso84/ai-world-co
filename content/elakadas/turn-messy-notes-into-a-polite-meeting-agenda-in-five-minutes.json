@@ -1,0 +1,71 @@
+{
+  "slug": "turn-messy-notes-into-a-polite-meeting-agenda-in-five-minutes",
+  "probalva": "2026-10-30T14:46:55.741Z",
+  "doboz": {
+    "keszult": "2026-10-30T14:46:55.741Z",
+    "enHash": "0615e58dc06c23dbdf86d264ed2715ae2d9ca64f",
+    "forrasok": {
+      "https://help.openai.com/en/articles/11487532-chatgpt-record": "ChatGPT Record"
+    },
+    "en": [
+      {
+        "symptom": "I can't find a way to record my meeting in ChatGPT.",
+        "why": "Record is currently available for Plus, Enterprise, Edu, Business, and Pro workspaces, and only for the desktop app. Recording is started from the Record button at the bottom of any chat.",
+        "fix": "In ChatGPT: click the Record button at the bottom of any chat. If recording others, make sure you get the right consents before you start recording. You may need to grant microphone and/or system-audio permissions on first use.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "My recording stopped on its own before the meeting ended.",
+        "why": "Recording length for Record meeting sessions is currently capped at 4 hours (240 minutes) per session. Sessions that exceed this limit stop automatically and generate notes which are uploaded as a private canvas.",
+        "fix": "In ChatGPT: a single recording session is capped at 4 hours (240 minutes), so start a new session for anything longer. A session that goes over that limit stops automatically and its notes are saved as a private canvas.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "The transcript has wrong words or names in it.",
+        "why": "ChatGPT may make mistakes, including in its transcriptions. ChatGPT record mode works best in English today, and accuracy for other languages can vary.",
+        "fix": "In ChatGPT: check important information in the generated notes before you copy it into your agenda. Record in English for the best results, since accuracy for other languages can vary.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Nem találom, hogyan rögzíthetném a megbeszélésemet a ChatGPT-ben.",
+        "why": "A Record jelenleg Plus, Enterprise, Edu, Business és Pro munkaterületeken érhető el, és csak az asztali alkalmazásban. A rögzítést bármelyik csevegés alján található Record gombbal indíthatod el.",
+        "fix": "A ChatGPT-ben: kattints bármelyik csevegés alján a Record gombra. Ha másokat is rögzítesz, a rögzítés megkezdése előtt győződj meg róla, hogy beszerezted a megfelelő hozzájárulásokat. Az első használatkor előfordulhat, hogy engedélyezned kell a mikrofon és/vagy a rendszerhang használatát.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "A rögzítés magától leállt, mielőtt véget ért volna a megbeszélés.",
+        "why": "A Record megbeszélés-munkamenetek rögzítési hossza jelenleg munkamenetenként legfeljebb 4 óra (240 perc). Az ezt a korlátot túllépő munkamenetek automatikusan leállnak, és jegyzeteket hoznak létre, amelyeket privát vászonként töltenek fel.",
+        "fix": "A ChatGPT-ben: egyetlen rögzítési munkamenet legfeljebb 4 óra (240 perc) lehet, ezért ennél hosszabb megbeszéléshez indíts új munkamenetet. Az ezt a korlátot túllépő munkamenet automatikusan leáll, a jegyzetei pedig privát vászonként lesznek elmentve.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "A leiratban hibás szavak vagy nevek szerepelnek.",
+        "why": "A ChatGPT hibázhat, többek között a leiratok készítésekor is. A ChatGPT rögzítési módja jelenleg angolul működik a legjobban, a többi nyelv pontossága pedig változó lehet.",
+        "fix": "A ChatGPT-ben: ellenőrizd a létrehozott jegyzetekben szereplő fontos információkat, mielőtt bemásolod őket a napirendedbe. A legjobb eredmény érdekében angolul rögzíts, mivel a többi nyelv pontossága változó lehet.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "No encuentro la forma de grabar mi reunión en ChatGPT.",
+        "why": "Record está disponible actualmente para los espacios de trabajo Plus, Enterprise, Edu, Business y Pro, y solo para la aplicación de escritorio. La grabación se inicia desde el botón Record situado en la parte inferior de cualquier chat.",
+        "fix": "En ChatGPT: haz clic en el botón Record situado en la parte inferior de cualquier chat. Si grabas a otras personas, asegúrate de obtener los consentimientos adecuados antes de empezar a grabar. Es posible que tengas que conceder permisos para el micrófono o el audio del sistema, o ambos, la primera vez que lo uses.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "La grabación se detuvo por sí sola antes de que terminara la reunión.",
+        "why": "La duración de las sesiones de reuniones de Record está limitada actualmente a 4 horas (240 minutos) por sesión. Las sesiones que superan este límite se detienen automáticamente y generan notas que se cargan como un canvas privado.",
+        "fix": "En ChatGPT: una sola sesión de grabación está limitada a 4 horas (240 minutos), así que inicia una sesión nueva para cualquier reunión más larga. Una sesión que supera ese límite se detiene automáticamente y sus notas se guardan como un canvas privado.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "La transcripción contiene palabras o nombres incorrectos.",
+        "why": "ChatGPT puede cometer errores, incluso en sus transcripciones. Actualmente, el modo de grabación de ChatGPT funciona mejor en inglés, y la precisión puede variar en otros idiomas.",
+        "fix": "En ChatGPT: comprueba la información importante de las notas generadas antes de copiarla en tu agenda. Graba en inglés para obtener los mejores resultados, ya que la precisión puede variar en otros idiomas.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      }
+    ]
+  }
+}
