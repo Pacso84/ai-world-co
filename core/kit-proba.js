@@ -4,6 +4,8 @@ const kulcs = (process.env.KIT_API_KEY || '').trim();
 if (!kulcs) { console.log('❌ nincs KIT_API_KEY'); process.exit(1); }
 const get = async ut => { const r = await fetch('https://api.kit.com/v4' + ut, { headers: { 'X-Kit-Api-Key': kulcs, accept: 'application/json' } }); return { status: r.status, j: await r.json().catch(() => ({})) }; };
 const a = await get('/account');
+console.log('fiók-mezők:', Object.keys(a.j?.account || {}).join(', '));
+const cim = a.j?.account?.address || a.j?.account?.mailing_address; console.log('postacím beállítva:', cim ? 'IGEN' : 'nem látszik az API-ban');
 console.log('fiók:', a.status, a.status === 200 ? `OK (${a.j?.account?.plan_type || '?'} csomag)` : 'HIBA');
 const f = await get('/forms?status=all');
 console.log('űrlapok:', f.status);

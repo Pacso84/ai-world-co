@@ -24,7 +24,7 @@ const kit = (allapotok) => { const hivasok = []; let i = 0;
 // rendes út: létrehozás, majd az űrlapra (a megerősítő levélhez); számláló nő; kulcs fejlécben
 { const k = kit([201, 201]); const env = ENV(); const r = await handleSubscribe(keres({ email: ' A@B.co ' }), env, k.f);
   assert.equal(r.status, 200);
-  assert.equal(k.hivasok[0][0], 'https://api.kit.com/v4/subscribers'); assert.equal(k.hivasok[0][1].email_address, 'a@b.co');
+  assert.equal(k.hivasok[0][0], 'https://api.kit.com/v4/subscribers'); assert.equal(k.hivasok[0][1].email_address, 'a@b.co'); assert.equal(k.hivasok[0][1].state, 'inactive', 'megerősítés előtt nem lehet aktív (dupla megerősítés)');
   assert.equal(k.hivasok[1][0], 'https://api.kit.com/v4/forms/311/subscribers');
   assert.equal(k.hivasok[0][2]['X-Kit-Api-Key'], 'kulcs');
   assert.equal(env.FEEDBACK.t.get('nl:signups'), '1'); }

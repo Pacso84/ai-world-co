@@ -27,7 +27,7 @@ export async function handleSubscribe(request, env, fetchFn = fetch) {
   if (!EMAIL.test(email)) return valasz('bad email', 400);
   const fej = { 'X-Kit-Api-Key': kulcs, 'Content-Type': 'application/json', Accept: 'application/json' };
   try {
-    const a = await fetchFn('https://api.kit.com/v4/subscribers', { method: 'POST', headers: fej, body: JSON.stringify({ email_address: email }) });
+    const a = await fetchFn('https://api.kit.com/v4/subscribers', { method: 'POST', headers: fej, body: JSON.stringify({ email_address: email, state: 'inactive' }) });   // 10-30 élőben: state nélkül rögtön „active” lett → nem ment megerősítő levél
     if (![200, 201, 202].includes(a.status)) return valasz('upstream ' + a.status, 502);
     const b = await fetchFn(`https://api.kit.com/v4/forms/${urlap}/subscribers`, { method: 'POST', headers: fej,
       body: JSON.stringify({ email_address: email, referrer: 'https://aiworldhq.com' }) });
