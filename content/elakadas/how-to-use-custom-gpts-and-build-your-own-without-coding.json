@@ -1,0 +1,71 @@
+{
+  "slug": "how-to-use-custom-gpts-and-build-your-own-without-coding",
+  "probalva": "2026-10-30T20:19:56.618Z",
+  "doboz": {
+    "keszult": "2026-10-30T20:19:56.618Z",
+    "enHash": "96b147be880d2eaec45273fc0c9c5e69bf996959",
+    "forrasok": {
+      "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq": "Custom GPT retirement and migration FAQ"
+    },
+    "en": [
+      {
+        "symptom": "Where do I start moving my GPT to a plugin?",
+        "why": "Migration uses the GPT's latest published version. Drafts and unpublished edits do not transfer.",
+        "fix": "Finish and publish any essential edits before migrating, since public sharing is not required. When migration is available for your account, go to My GPTs and select Migrate to plugin for the GPT you want to migrate.",
+        "source": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq"
+      },
+      {
+        "symptom": "Why don't I see a Migrate to plugin option?",
+        "why": "Migration may not be available to your account yet, or plugin access may be disabled. Permission to use someone else's GPT does not give you permission to migrate it.",
+        "fix": "Check the notice in your account and make sure you're using the account or workspace where you created the GPT. Only the creator's own account or workspace can migrate it, so a GPT you only use from someone else does not qualify.",
+        "source": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq"
+      },
+      {
+        "symptom": "Will my GPT's custom actions still work after migrating?",
+        "why": "GPT custom actions do not transfer through the migration workflow. Features that depend on them will not work in the plugin until you set up a replacement.",
+        "fix": "Check whether an available app supports the tasks you need, since rebuilding the connection may require a custom MCP server and technical setup. Test the integration before switching.",
+        "source": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Honnan kezdjem a GPT-m bővítménnyé alakítását?",
+        "why": "A migrálás a GPT legutóbb közzétett verzióját használja. A piszkozatok és a közzé nem tett módosítások nem kerülnek át.",
+        "fix": "A migrálás előtt fejezd be és tedd közzé a szükséges módosításokat, mivel a nyilvános megosztás nem kötelező. Amikor a migrálás elérhetővé válik a fiókodban, nyisd meg a My GPTs oldalt, és válaszd a Migrate to plugin lehetőséget a migrálni kívánt GPT-nél.",
+        "source": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq"
+      },
+      {
+        "symptom": "Miért nem látom a Migrate to plugin lehetőséget?",
+        "why": "Lehet, hogy a migrálás még nem érhető el a fiókodban, vagy a bővítményekhez való hozzáférés le van tiltva. Ha engedélyed van valaki más GPT-jének használatára, az nem jogosít fel annak migrálására.",
+        "fix": "Ellenőrizd a fiókodban megjelenő értesítést, és győződj meg róla, hogy azt a fiókot vagy munkaterületet használod, ahol létrehoztad a GPT-t. Csak a létrehozó saját fiókja vagy munkaterülete migrálhatja, ezért egy olyan GPT, amelyet csak valaki mástól használva érsz el, nem felel meg.",
+        "source": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq"
+      },
+      {
+        "symptom": "A GPT-m egyéni műveletei továbbra is működni fognak a migrálás után?",
+        "why": "A GPT egyéni műveletei nem kerülnek át a migrálási folyamat során. Az ezektől függő funkciók nem fognak működni a bővítményben, amíg be nem állítasz egy helyettesítő megoldást.",
+        "fix": "Ellenőrizd, hogy valamelyik elérhető alkalmazás támogatja-e a szükséges feladatokat, mivel a kapcsolat újjáépítéséhez egyéni MCP-szerverre és technikai beállításra lehet szükség. A váltás előtt teszteld az integrációt.",
+        "source": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "¿Por dónde empiezo a migrar mi GPT a un complemento?",
+        "why": "La migración usa la última versión publicada del GPT. Los borradores y las ediciones no publicadas no se transfieren.",
+        "fix": "Termina y publica las ediciones esenciales antes de migrar, ya que no es necesario compartirlo públicamente. Cuando la migración esté disponible para tu cuenta, ve a My GPTs y selecciona Migrate to plugin para el GPT que quieras migrar.",
+        "source": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq"
+      },
+      {
+        "symptom": "¿Por qué no veo la opción Migrate to plugin?",
+        "why": "Es posible que la migración todavía no esté disponible para tu cuenta o que el acceso a los complementos esté desactivado. El permiso para usar el GPT de otra persona no te da permiso para migrarlo.",
+        "fix": "Comprueba el aviso de tu cuenta y asegúrate de usar la cuenta o el espacio de trabajo donde creaste el GPT. Solo la cuenta o el espacio de trabajo del creador puede migrarlo, así que un GPT que solo usas porque te lo compartió otra persona no cumple los requisitos.",
+        "source": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq"
+      },
+      {
+        "symptom": "¿Seguirán funcionando las acciones personalizadas de mi GPT después de migrarlo?",
+        "why": "Las acciones personalizadas de los GPT no se transfieren mediante el proceso de migración. Las funciones que dependen de ellas no funcionarán en el complemento hasta que configures un reemplazo.",
+        "fix": "Comprueba si alguna aplicación disponible admite las tareas que necesitas, ya que reconstruir la conexión puede requerir un servidor MCP personalizado y configuración técnica. Prueba la integración antes de cambiar.",
+        "source": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq"
+      }
+    ]
+  }
+}

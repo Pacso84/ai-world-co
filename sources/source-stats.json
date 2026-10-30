@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-10-30T14:52:00.225Z",
+    "updated": "2026-10-30T20:26:40.783Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -20,7 +20,7 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 20,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -152,7 +152,7 @@
     },
     "nvidia-blog": {
       "name": "NVIDIA Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 7,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -224,7 +224,7 @@
     },
     "aws-ml": {
       "name": "AWS Machine Learning (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -524,7 +524,7 @@
     },
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -690,6 +690,54 @@
       "verdict": "ok",
       "reason": ""
     },
+    "zai-release-notes": {
+      "name": "Z.ai / Zhipu GLM (hivatalos változásnapló)",
+      "feedAgeDays": 65,
+      "published30d": 0,
+      "truthBlocks": 0,
+      "truthUnfixed": 0,
+      "totalAttempts": 0,
+      "alreadyDisabled": false,
+      "lastArticle": null,
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+    },
+    "duckduckgo-duck-ai": {
+      "name": "DuckDuckGo / Duck.ai (hivatalos blog, csak Duck.ai)",
+      "feedAgeDays": 5,
+      "published30d": 0,
+      "truthBlocks": 0,
+      "truthUnfixed": 0,
+      "totalAttempts": 0,
+      "alreadyDisabled": false,
+      "lastArticle": null,
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+    },
+    "brave-leo": {
+      "name": "Brave / Leo (hivatalos blog, csak MI)",
+      "feedAgeDays": 16,
+      "published30d": 0,
+      "truthBlocks": 0,
+      "truthUnfixed": 0,
+      "totalAttempts": 0,
+      "alreadyDisabled": false,
+      "lastArticle": null,
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+    },
+    "proton-lumo": {
+      "name": "Proton / Lumo (hivatalos blog, csak Lumo)",
+      "feedAgeDays": 3,
+      "published30d": 0,
+      "truthBlocks": 0,
+      "truthUnfixed": 0,
+      "totalAttempts": 0,
+      "alreadyDisabled": false,
+      "lastArticle": null,
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
+    },
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
       "feedAgeDays": 0,
@@ -704,7 +752,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 32,
+      "feedAgeDays": 33,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -728,7 +776,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 121,
+      "feedAgeDays": 122,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -736,7 +784,7 @@
       "alreadyDisabled": false,
       "lastArticle": "2026-10-21",
       "verdict": "stale",
-      "reason": "⚠️ a feed 121 napja néma, mégis 1 \"friss\" cikket írtunk belőle — régi anyag újdonságként!"
+      "reason": "⚠️ a feed 122 napja néma, mégis 1 \"friss\" cikket írtunk belőle — régi anyag újdonságként!"
     },
     "notion-releases": {
       "name": "Notion – Mi újság (hivatalos)",
@@ -752,7 +800,7 @@
     },
     "microsoft-365": {
       "name": "Microsoft 365 Insider (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -776,7 +824,7 @@
     },
     "picsart": {
       "name": "PicsArt Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 19,
       "truthBlocks": 1,
       "truthUnfixed": 0,
@@ -788,7 +836,7 @@
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 7,
       "truthBlocks": 0,
       "truthUnfixed": 0,
