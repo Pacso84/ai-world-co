@@ -42,7 +42,7 @@ import { aiContentRatio, usefulnessVerdict } from '../../core/source-usefulness.
 import { kozonsegKapu, atiranyitas } from '../../core/source-audience.js';
 import { discoverSitemapFeed } from '../../core/sitemap-discovery.js';
 import { discoverHtmlListFeed } from '../../core/html-list-feed.js';
-import { forrasRes, utmutatoEszkoz, hirCim, futasiGyakorisag, marKovetett } from '../../core/forras-res.js';   // 🕳️ 2026-10-29
+import { forrasRes, resAblak, utmutatoEszkoz, hirCim, futasiGyakorisag, marKovetett } from '../../core/forras-res.js';   // 🕳️ 2026-10-29
 import { readdirSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -426,7 +426,8 @@ function resSzamol() {
       const t = Date.parse(a._meta?.published_at || a._meta?.written_at || 0);
       if (Date.now() - t < 30 * DAY) hirCimek.push(hirCim(md));
     }
-    return forrasRes({ utmutatok, hirCimek });
+    // 10-30 (user: „ne csak Alexa és Grok”): minden ≥3 útmutatós, kevés hírű eszköz, futásonként 6-os forgó ablakkal
+    return resAblak(forrasRes({ utmutatok, hirCimek, minUtmutato: 3, max: 50 }), 6);
   } catch { return []; }
 }
 /** Az MI által megadott PONTOS hírfolyam-cím kipróbálása (a domain-mintákon túl). */

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { forrasRes, utmutatoEszkoz, hirCim, hirDb, futasiGyakorisag, marKovetett } from './forras-res.js';
+import { forrasRes, resAblak, utmutatoEszkoz, hirCim, hirDb, futasiGyakorisag, marKovetett } from './forras-res.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 let hiba = 0;
@@ -51,6 +51,16 @@ t('🔌 a forráskutató bekötve: rés a kérésben, pontos URL kipróbálva, c
   assert.doesNotMatch(src, /hardFail: 'ezt a domaint már követjük'/, 'a régi domain-szintű kizárás maradt');
   assert.match(src, /ures_futasok: ujMost \? 0 : elozoUres\(\) \+ 1/);
   assert.match(src, /futasiGyakorisag\(elozoUres\(\)\)/);
+});
+
+t('🔄 forgó ablak (10-30): futásonként 6, és néhány egymást követő futás alatt MINDEN eszköz sorra kerül', () => {
+  const l = Array.from({ length: 16 }, (_, i) => ({ eszkoz: 'E' + i }));
+  const latott = new Set();
+  for (let k = 0; k < 3; k++) { const a = resAblak(l, 6, new Date(Date.UTC(2026, 9, 30 + k * 3))); assert.equal(a.length, 6); a.forEach(x => latott.add(x.eszkoz)); }
+  assert.equal(latott.size, 16, '3 futás alatt nem került sorra mind a 16: ' + latott.size);
+  assert.deepEqual(resAblak(l.slice(0, 4), 6), l.slice(0, 4), 'kevés eszköznél mind');
+  const src = readFileSync(join(ROOT, 'agents', 'source-scout', 'agent.js'), 'utf-8');
+  assert.ok(src.includes('resAblak(forrasRes({ utmutatok, hirCimek, minUtmutato: 3, max: 50 }), 6)'), 'a kutató nem a forgó ablakot használja');
 });
 
 if (hiba) { console.log(`\n❌ forras-res.test: ${hiba} hiba`); process.exit(1); }

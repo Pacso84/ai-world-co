@@ -49,3 +49,16 @@ export function hirCim(md) {
   const m = String(md || '').match(/^title:\s*"?([^"\n]+)/m);
   return m ? m[1].trim() : '';
 }
+
+/**
+ * FORGÓ ABLAK (2026-10-30, user: „ne csak Alexa és Grok legyen a prioritás!”): a rés MINDEN eszköze sorra kerül —
+ * futásonként `n` darab, a napból számolt eltolással körbe forogva (a lista elejéről indulva), így néhány futás alatt
+ * mind a 16 eszköz csatornáját keresi a kutató, nem mindig ugyanazt a 4-et.
+ */
+export function resAblak(res, n = 6, datum = new Date()) {
+  const l = Array.isArray(res) ? res : [];
+  if (l.length <= n) return l;
+  const kor = Math.floor(Date.UTC(datum.getUTCFullYear(), datum.getUTCMonth(), datum.getUTCDate()) / 864e5 / 3);   // a kutató 3 naponta fut
+  const kezd = (kor * n) % l.length;
+  return Array.from({ length: n }, (_, i) => l[(kezd + i) % l.length]);
+}
