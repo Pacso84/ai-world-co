@@ -1,13 +1,28 @@
 {
   "_meta": {
-    "generated_at": "2026-10-27T02:59:43.643Z",
+    "generated_at": "2026-10-30T03:34:05.268Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 0,
-    "rejected_count": 0,
-    "rejected_examples": []
+    "uj_most": 0,
+    "ures_futasok": 1,
+    "rejected_count": 2,
+    "rejected_examples": [
+      {
+        "name": "Moonshot AI Kimi",
+        "host": "kimi.moonshot.cn",
+        "reason": "pont 94 < 100",
+        "score": 94
+      },
+      {
+        "name": "Otter.ai",
+        "host": "otter.ai",
+        "reason": "pont 94 < 100",
+        "score": 94
+      }
+    ]
   },
   "user_rejected_hosts": [
     "aisingapore.org",

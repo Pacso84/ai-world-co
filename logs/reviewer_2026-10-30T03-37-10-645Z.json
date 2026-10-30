@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-10-30T03:35:23.188Z",
+  "total": 4,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.008214480000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-30T03-26-19-950Z_google-gemini_Dive_into_new_topics_with_immersive_explorations_i.json",
+      "article": "ARTICLE_2026-10-30T03-26-19-950Z_google-gemini_Dive_into_new_topics_with_immersive_explorations_i.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0014703
+    },
+    {
+      "writer": "WRITER_2026-10-30T03-26-53-525Z_google-workspace_Create__preview__and_edit_files_directly_in_the_Ge.json",
+      "article": "ARTICLE_2026-10-30T03-26-53-525Z_google-workspace_Create__preview__and_edit_files_directly_in_the_Ge.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0011475
+    },
+    {
+      "writer": "WRITER_2026-10-30T03-27-19-371Z_github-copilot-changelog_Build_shared_workflows_for_your_team_with_Copilot_.json",
+      "article": "ARTICLE_2026-10-30T03-27-19-371Z_github-copilot-changelog_Build_shared_workflows_for_your_team_with_Copilot_.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0015717
+    },
+    {
+      "writer": "WRITER_2026-10-30T03-27-19-371Z_github-copilot-changelog_Security_extension_for_the_GitHub_Copilot_app.json",
+      "article": "ARTICLE_2026-10-30T03-27-19-371Z_github-copilot-changelog_Security_extension_for_the_GitHub_Copilot_app.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.001623
+    }
+  ],
+  "finished_at": "2026-10-30T03:37:10.645Z",
+  "duration_seconds": 107.457
+}

@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "written_at": "2026-10-30T03:34:58.833Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0038543,
+    "original_draft": "2026-10-30T03-27-19-371Z_github-copilot-changelog_Build_shared_workflows_for_your_team_with_Copilot_.json",
+    "source_id": "github-copilot-changelog",
+    "source_name": "GitHub Changelog – Copilot (hivatalos)",
+    "source_link": "https://github.blog/changelog/2026-10-28-build-shared-workflows-for-your-team-with-copilot-automations",
+    "source_links": [
+      "https://github.blog/changelog/2026-10-28-build-shared-workflows-for-your-team-with-copilot-automations",
+      "https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion"
+    ],
+    "source_snippet": "Shared Copilot Automations are rolling out, enabling teams to build and maintain AI-powered workflows together. With Copilot Automations, you can combine prompts, triggers, and tools to design workflows around the…\nThe post Build shared workflows for your team with Copilot Automations appeared first on The GitHub Blog.\n\n---\n\nGitHub Copilot Fusion is generally available. Instead of picking a model for each task, choose Copilot Fusion and let Copilot intelligently route and orchestrate which models it uses for you.…\nThe post Route and orchestrate models with GitHub Copilot Fusion appeared first on The GitHub Blog.",
+    "merged_from": 2,
+    "merged_theme": "GitHub Copilot Fusion and Automations",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-10-30T03:36:43.175Z",
+    "slug": "what-github-copilot-automations-and-copilot-fusion-are-and-who-they-re",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 757
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that clearly defines terms, maintains accessible language for the business audience, includes a helpful 'What this means for you' section with role-specific guidance, and ends with appropriate caveats and a concrete next step.",
+      "_aiCost": 0.0015717,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-30T03:37:38.597Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is an explainer about features still rolling out with limited availability, aimed at teams writing code rather than everyday consumers",
+    "image_v": 2,
+    "image_at": "2026-10-30T03:40:49.467Z",
+    "seo": {
+      "meta_description": "GitHub Copilot Automations help teams build and share AI workflows. Copilot Fusion automatically picks the best AI model for each task. Here's what each does.",
+      "keywords": [
+        "GitHub Copilot Automations",
+        "GitHub Copilot Fusion",
+        "GitHub AI features 2024",
+        "AI code completion teams",
+        "GitHub Copilot workflow automation"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a section with step-by-step examples of how a team would use Copilot Automations for common tasks",
+        "Include specific use cases showing when Copilot Fusion's automatic model selection provides benefits over manual choice",
+        "Consider adding a comparison table between Automations and Fusion for quick reference"
+      ],
+      "optimised_at": "2026-10-30T03:42:45.058Z"
+    },
+    "fact_verified_at": "2026-10-30T03:47:47.388Z"
+  },
+  "article_markdown": "---\ntitle: \"What GitHub Copilot Automations and Copilot Fusion Are, and Who They're For\"\nsubtitle: \"GitHub says shared workflows and automatic model choice are arriving, here's what each one does and why a team might care.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 3\ntags: [\"github-copilot\", \"ai-workflows\", \"teams\", \"ai-models\", \"explainer\"]\n---\n\n# What GitHub Copilot Automations and Copilot Fusion Are, and Who They're For\n\n> **In short:** GitHub is rolling out shared Copilot Automations, which let a team build and maintain AI-powered workflows together. Its other announcement says GitHub Copilot Fusion is now generally available, so Copilot can choose and combine AI models for each task instead of you picking one yourself.\n\nPicture a team that keeps doing the same chores: checking every proposed change to shared code, writing the same summary, or tagging the same kinds of requests. Each person does it a little differently, and nobody is sure who keeps the process up to date. GitHub's two recent announcements are about exactly this kind of team work.\n\n## What Copilot Automations are\n\nGitHub Copilot is GitHub's AI assistant, built into the platform where many teams store and share their code. GitHub says Copilot Automations are shared workflows, which means a group can build them together and keep them running.\n\nA workflow is a set of steps that happens in order. GitHub describes three building blocks you can combine:\n\n- **Prompts**: the instructions you give the AI, written in plain language (for example, \"summarize this change in three sentences\").\n- **Triggers**: the event that starts the workflow, such as someone opening a new request for review.\n- **Tools**: the other apps or actions the workflow is allowed to use.\n\nGitHub says the aim is to design a workflow around a task, then let the whole team maintain it. The announcement says these are rolling out, which means not every account may have them yet.\n\n## What Copilot Fusion changes\n\nAn AI model is the trained system that actually produces the answer, and different models handle different jobs with different strengths. Normally you pick one for each task.\n\nGitHub says that with GitHub Copilot Fusion, you choose Fusion once and Copilot decides which models to use. It calls this \"routing\" (sending each request to a suitable model) and \"orchestrating\" (coordinating those models so they work together). Think of it like a dispatcher who assigns each job to the right worker, instead of you deciding for every single job. Fusion is generally available, and GitHub's announcement does not list the individual models it uses, so check GitHub's own documentation for those details.\n\n## How to think about the two together\n\nAutomations shape the work: what starts a task, what steps follow, and who maintains it. Fusion affects the AI side: which model handles each step. The announcements describe them separately, so the exact way they connect is something to confirm in GitHub's documentation.\n\n## What this means for you\n\n- **If you work on a team that writes code**: a shared workflow could take a repeated review or summary step off each person's plate, and the whole team can improve it over time.\n- **If you lead or manage a team**: shared automations mean a process doesn't depend on one person's private setup. Ask who will maintain a workflow before you rely on it.\n- **If you don't write code**: you may still be asked to review AI-generated output. Check that a workflow's results match what your team actually needs.\n- **If you're just getting started**: read the GitHub Copilot documentation first, and learn what a prompt and a trigger are before you build anything.\n- **If you already use it**: once you can see Automations in your account, try writing a short prompt for one repeated step and watch what the workflow does before you share it with your team.\n\n## What isn't confirmed yet\n\nThe announcements don't say which plans include these features, and they don't give step-by-step menus. Because Automations are rolling out, your screen may look different from what's described, or the feature may not be there yet. Don't assume it's available until you see it.\n\n## Wrap-up\n\nGitHub's two announcements point the same way: less repeated setup for teams, and less need to pick an AI model by hand. Automations are about shared, maintained workflows, and Fusion is about letting Copilot route tasks across models. The next step is simple: open GitHub's documentation for Copilot today, find the section on Automations, and note one repeated task on your team that a shared workflow could handle.",
+  "original_title": "Build shared workflows for your team with Copilot Automations"
+}

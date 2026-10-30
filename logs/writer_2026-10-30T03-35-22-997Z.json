@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-30T03:34:05.469Z",
+  "drafts_total": 11,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 6,
+  "merged_total": 4,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.01681651,
+  "by_article": [
+    {
+      "draft": "2026-10-30T03-27-19-371Z_github-copilot-changelog_Security_extension_for_the_GitHub_Copilot_app.json",
+      "writer_output": "WRITER_2026-10-30T03-27-19-371Z_github-copilot-changelog_Security_extension_for_the_GitHub_Copilot_app.json",
+      "success": true,
+      "merged_from": 5,
+      "merged_theme": "GitHub Copilot app new features and extensions",
+      "cost_usd": 0.0036289,
+      "duration_ms": 14532,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-30T03-27-19-371Z_github-copilot-changelog_Build_shared_workflows_for_your_team_with_Copilot_.json",
+      "writer_output": "WRITER_2026-10-30T03-27-19-371Z_github-copilot-changelog_Build_shared_workflows_for_your_team_with_Copilot_.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "GitHub Copilot Fusion and Automations",
+      "cost_usd": 0.0038543,
+      "duration_ms": 17087,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-30T03-26-53-525Z_google-workspace_Create__preview__and_edit_files_directly_in_the_Ge.json",
+      "writer_output": "WRITER_2026-10-30T03-26-53-525Z_google-workspace_Create__preview__and_edit_files_directly_in_the_Ge.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Gemini file creation and editing features",
+      "cost_usd": 0.0033682,
+      "duration_ms": 11241,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-30T03-26-19-950Z_google-gemini_Dive_into_new_topics_with_immersive_explorations_i.json",
+      "writer_output": "WRITER_2026-10-30T03-26-19-950Z_google-gemini_Dive_into_new_topics_with_immersive_explorations_i.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Gemini student and learning features",
+      "cost_usd": 0.0032633,
+      "duration_ms": 11389,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-10-30T03:35:22.997Z",
+  "duration_seconds": 77.528
+}
