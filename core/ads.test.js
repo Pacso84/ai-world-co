@@ -6,7 +6,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { readdirSync } from 'fs';
 import { marked } from 'marked';
-import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, CIMKE, URES_VARAS_MS, hirdetesHirbe, hirdetesLepesek, lepesHirdetesHely } from './ads.js';
+import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, CIMKE, URES_VARAS_MS, hirdetesHirbe, hirdetesLepesek, lepesHirdetesHely, hirdetesKozbe, hirdetesRacsba, RACS_LEPES, helyreallitasKod } from './ads.js';
 import { midStepNo, masodikStepNo } from './mid-guide.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -56,7 +56,7 @@ t('2. szakasz (azonosító + egység): EGY blokk, jelölve, a saját nyelvén', 
   assert.equal(hirdetesBlokk(h, 'xx').includes(CIMKE.en), true, 'ismeretlen nyelv → angol címke');
 });
 
-t('🫥 10-14: ÜRES DOBOZ NEM MARAD — töltve látszik; „unfilled” vagy 8 mp csend után eltűnik', () => {
+t('🫥 10-14: ÜRES DOBOZ NEM MARAD — töltve látszik; „unfilled” vagy 20 mp TELJES csend után eltűnik', () => {
   // 10-14 élőben: a személyazonosság-igazolásig a Google 280 px-t foglalt, de hirdetést
   // nem küldött → minden cikk alján üres „ADVERTISEMENT” sáv. A doboz-kód futtatva:
   const h = hirdetesBeallitas({ ads: { enabled: true, client: KLIENS, slot: '9876543210' } });
@@ -80,6 +80,10 @@ t('🫥 10-14: ÜRES DOBOZ NEM MARAD — töltve látszik; „unfilled” vagy 8
   assert.equal(csend.ido().ms, URES_VARAS_MS);
   csend.ido().f();
   assert.ok(csend.osztaly.has('ad-slot--ures'), '🔴 hirdetés nélkül is ott marad az üres doboz');
+  // 10-30: ha a Google már válaszolt (van data-ad-status), az időzítő NEM írja felül a döntését
+  assert.equal(URES_VARAS_MS, 20000, 'lassú mobilneten 8 mp kevés volt');
+  const keso = futtat(); keso.lathato(); keso.attr['data-ad-status'] = 'filled'; keso.ido().f(); keso.valt();
+  assert.ok(!keso.osztaly.has('ad-slot--ures') && keso.osztaly.has('ad-slot--tele'), '🔴 a jelzett, de még ki nem rajzolt hirdetést elrejtette az időzítő');
   const nincs = futtat(); nincs.attr['data-ad-status'] = 'unfilled'; nincs.valt();
   assert.ok(nincs.osztaly.has('ad-slot--ures'), '🔴 a Google „nincs hirdetés” jelzése után is látszik');
   nincs.attr['data-ad-status'] = 'filled'; nincs.valt();
@@ -218,6 +222,62 @@ t('📘 PDF-oldal (/packs): EGY hirdetés, a letöltés-gombos kártyák ALATT, 
   // AdSense: ne lehessen letöltés-gombnak nézni → a kártyarács után előbb egy szöveges blokk jön
   assert.ok(ad > s.indexOf('packs__grid') && ad > s.indexOf("tr('packsBuildP')"), '🔴 a hirdetés a letöltés-gombok közvetlen közelében');
   assert.ok(ad < s.indexOf("tr('packsAiH')"), 'a hirdetés a „Hogyan készül” és az MI-jelölés rész közé kerüljön');
+});
+
+t('📢 10-30 gyűjtőoldalak: szakaszok KÖZÖTT (~40%), soha nem az első előtt; rácsnál a két rács között, sorhatáron', () => {
+  const AD = '<AD>';
+  assert.equal(hirdetesKozbe(['a', 'b', 'c', 'd', 'e'], AD), 'a\nb\n<AD>\nc\nd\ne');
+  assert.equal(hirdetesKozbe(['a', 'b'], AD), 'a\n<AD>\nb', 'két szakasznál az első után');
+  assert.equal(hirdetesKozbe(['a'], AD), 'a\n<AD>', 'egy szakasznál utána');
+  assert.equal(hirdetesKozbe([], AD), '', 'üres oldalon nincs hirdetés');
+  assert.equal(hirdetesKozbe(['a', 'b'], ''), 'a\nb', 'kikapcsolt hirdetésnél csak összefűz');
+  const keret = cs => `[${cs.join('')}]`;
+  const csempek = n => Array.from({ length: n }, (_, i) => String(i % 10));
+  for (const n of [12, 30, 61, 129]) {
+    const h = hirdetesRacsba(csempek(n), AD, keret);
+    assert.equal(h.split(AD).length, 2, n + ': nem pontosan egy hirdetés');
+    const elotte = h.split(AD)[0].replace(/[^0-9]/g, '').length;
+    assert.equal(elotte % RACS_LEPES, 0, n + ': nem sorhatáron vág (1/2/3 oszlopnál is egész sor kell)');
+    assert.ok(elotte >= RACS_LEPES && elotte < n, n + ': az első sor előtt vagy a legvégén');
+    assert.ok(!/\[[^\]]*<AD>/.test(h), n + ': a hirdetés rácscellába került');
+  }
+  assert.equal(hirdetesRacsba(csempek(8), AD, keret), '[01234567]\n<AD>', 'kevés csempénél a rács alá');
+  assert.equal(hirdetesRacsba(csempek(30), '', keret), keret(csempek(30)), 'kikapcsolt hirdetésnél érintetlen rács');
+});
+
+t('🔌 10-30 build.js: a főoldal, /guides, témaoldal, /tools, /glossary, /archive kap EGY hirdetést; /about, /privacy, /wizard NEM', () => {
+  const src = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8').replace(/\r\n/g, '\n');
+  const fn = nev => { const i = src.indexOf(`function ${nev}(`); const j = src.indexOf('\nfunction ', i + 10); return src.slice(i, j); };
+  assert.match(fn('buildIndex'), /const dayGroups = hirdetesKozbe\(/);
+  assert.match(fn('buildGuidesPage'), /hirdetesRacsba\(generalGuides\.map\(guideTile\), hirdetesBlokk\(HIRDETES, LANG\)/);
+  assert.match(fn('buildTopicPage'), /hirdetesRacsba\(cikkek\.map\(guideTile\), hirdetesBlokk\(HIRDETES, LANG\)/);
+  assert.match(fn('buildToolsPage'), /brandRow \+ hirdetesBlokk\(HIRDETES, LANG\) \+ sections/);
+  assert.match(fn('buildGlossaryPage'), /hirdetes: hirdetesBlokk\(HIRDETES, LANG\)/);
+  assert.match(fn('buildArchivePage'), /const groups = hirdetesKozbe\(/);
+  for (const nev of ['buildIndex', 'buildGuidesPage', 'buildTopicPage', 'buildToolsPage', 'buildGlossaryPage', 'buildArchivePage'])
+    assert.equal((fn(nev).match(/hirdetesBlokk\(/g) || []).length, 1, nev + ': nem pontosan EGY hirdetés-hívás');
+  for (const nev of ['buildAboutPage', 'buildPrivacyPage', 'buildWizardPage'])
+    assert.doesNotMatch(fn(nev), /hirdetesBlokk\(|hirdetesKozbe\(|hirdetesRacsba\(/, nev + ': itt nem lehet hirdetés');
+  const lap = readFileSync(join(ROOT, 'core', 'lap-hero.js'), 'utf-8');
+  assert.match(lap, /const csoportok = hirdetesKozbe\(/, 'a szótár nem a közös segéddel teszi be');
+});
+
+t('🙏 10-30 blokkoló-üzenet: CSAK kapcsolóval, alapból KI; a config KI-n áll; a /privacy őszintén leírja (bezárható)', () => {
+  const ki = hirdetesBeallitas({ ads: { enabled: true, client: KLIENS, slot: '9876543210' } });
+  assert.equal(ki.helyreallitas, false); assert.equal(helyreallitasKod(ki), ''); assert.doesNotMatch(fejKod(ki), /fundingchoicesmessages/);
+  const nem = hirdetesBeallitas({ ads: { enabled: true, client: KLIENS, adblock_recovery: 'true' } });
+  assert.equal(nem.helyreallitas, false, 'csak a valódi true kapcsol');
+  const off = hirdetesBeallitas({ ads: { enabled: false, client: KLIENS, adblock_recovery: true } });
+  assert.equal(fejKod(off), '', 'kikapcsolt hirdetésnél semmi');
+  const be = hirdetesBeallitas({ ads: { enabled: true, client: KLIENS, adblock_recovery: true } });
+  assert.match(fejKod(be), /fundingchoicesmessages\.google\.com\/i\/pub-1234567890123456\?ers=1/);
+  assert.match(fejKod(be), /googlefcPresent/);
+  const cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
+  assert.equal(cfg.website.ads.adblock_recovery, false, 'a user jóváhagyásáig KI kell maradnia');
+  const src = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  assert.match(src, /at most one ad per page, placed within the content/);
+  assert.match(src, /you can close the message, and the content stays readable/);
+  assert.doesNotMatch(src, /We show one ad at the end of pages/, 'az elavult „az oldal végén” szöveg maradt');
 });
 
 if (hiba) { console.log(`\n❌ ads.test: ${hiba} hiba`); process.exit(1); }

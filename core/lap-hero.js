@@ -3,6 +3,8 @@
 // számozott sáv) közös építőkockaként: előbb a főoldal és a szótár, utána a többi oldal.
 // Tiszta függvények, hálózat és fájl nélkül — a build.js hívja, a lap-hero.test.js őrzi.
 
+import { hirdetesKozbe } from './ads.js';   // 📢 2026-10-30: a szótárban EGY hirdetés két csoport között
+
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 export const LAP_SZ = {
@@ -128,7 +130,7 @@ export function fooldalHeroHtml({ lang, kicker, maiak = [], frissek = [], hetiDb
 const KERESO_IKON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
 
 /** A teljes szótár-oldal törzse (a pageShell bodyContent-je). */
-export function szotarOldalHtml({ terms, lang, cim, datum = new Date(), utoHtml = '' }) {
+export function szotarOldalHtml({ terms, lang, cim, datum = new Date(), utoHtml = '', hirdetes = '' }) {
   const s = sz(lang);
   const loc = t => t[lang] || t.en;
   const csop = szotarCsoportok(terms);
@@ -140,11 +142,11 @@ export function szotarOldalHtml({ terms, lang, cim, datum = new Date(), utoHtml 
   }) : '';
   const extra = `<label class="lh-kereso">${KERESO_IKON}<input id="lhQ" type="search" placeholder="${esc(s.glKeres)}" autocomplete="off" aria-label="${esc(s.glKeresL)}"></label>`;
   const sav = lapSavHtml(csop.map(c => ({ href: '#' + c.id, cimke: s.csop[c.id][0], al: s.glDb(c.szavak.length) })));
-  const csoportok = csop.map((c, i) => `<section class="lh-csoport" id="${c.id}" aria-labelledby="${c.id}-h">
+  const csoportok = hirdetesKozbe(csop.map((c, i) => `<section class="lh-csoport" id="${c.id}" aria-labelledby="${c.id}-h">
     <h2 class="lh-csoport-h" id="${c.id}-h"><span class="lh-num">${i + 1}</span>${esc(s.csop[c.id][0])}</h2>
     <p class="lh-csoport-p">${esc(s.csop[c.id][1])}</p>
     <dl class="lh-lista">${c.szavak.map(t => `<div class="lh-tetel" id="${esc(t.id)}"><dt><a href="#${esc(t.id)}">${esc(loc(t).term)}</a></dt><dd>${esc(loc(t).def)}</dd></div>`).join('')}</dl>
-  </section>`).join('\n');
+  </section>`), hirdetes);
   return lapHeroHtml({ badge: s.glBadge(terms.length), badgeIkon: '📖', h1: cim, lead: s.glLead, extra, lap, sav })
     + csoportok
     + `<p class="lh-nincs" id="lhNincs" hidden>${esc(s.glNincs)}</p>`

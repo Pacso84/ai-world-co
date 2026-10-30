@@ -194,7 +194,7 @@ Nem PR-hírek vakon átvéve — saját kommentárral, gyakorlati kontextussal. 
 > AdSense. Ezek közül EGYIK SEM él, és a promptokba kerülve ellentmondtak a
 > tényleges döntéseknek. A mostani állapot:
 
-- 📢 **Hirdetés (2026-10-01-től)** — Google AdSense, EGY jelölt hirdetés a cikkek legalján. Cikkben ne említsd.
+- 📢 **Hirdetés (2026-10-01-től)** — Google AdSense, oldalanként legfeljebb EGY jelölt hirdetés a tartalom között (cikkek közepén, 10-30-tól a gyűjtőoldalakon is). Cikkben ne említsd.
 - ⛔ **Ko-fi támogatás és PDF-bolt: MEGSZŰNT (2026-10-01, user-döntés)** — ne említsd, ne ígérd.
 - 🆓 **INGYENES PDF-csomagok (2026-10-07)**: a 9 téma-csomag (angol + spanyol) ingyen letölthető a /packs oldalon, regisztráció és fizetés nélkül, CC BY-NC 4.0 licenccel (megosztható forrásmegjelöléssel, nem árulható).
 - Fizetőfal NINCS — minden cikk ingyen olvasható.
@@ -222,7 +222,7 @@ Nem PR-hírek vakon átvéve — saját kommentárral, gyakorlati kontextussal. 
 
 **Tempó**: naponta legfeljebb 4 hír + 2 útmutató, heti 1 összefoglaló. **Üres nap jobb mint gyenge nap.**
 
-**Bevétel**: egyetlen jelölt Google-hirdetés a cikkek alján (2026-10-01-től) + jelölt Amazon partnerlink az Alexa+ útmutatók végén (2026-10-09-től). NINCS szponzor, hírlevél, Ko-fi, bolt.
+**Bevétel**: oldalanként legfeljebb egy jelölt Google-hirdetés a tartalom között (2026-10-01-től) + jelölt Amazon partnerlink az Alexa+ útmutatók végén (2026-10-09-től). NINCS szponzor, hírlevél, Ko-fi, bolt.
 
 ---
 

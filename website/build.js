@@ -52,7 +52,7 @@ import { lepesKepKulcs, elsoMondat, elsoMondatKulcs, ismetlesTores } from '../co
 import { olvasoiKedvencek } from '../core/olvasoi-kedvenc.js';   // 🔥 2026-10-23
 import { vazlatHtml } from '../core/guide-sketch.js';
 import { kovetkezoUtmutato } from '../core/next-guide.js';
-import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek } from '../core/ads.js';
+import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek, hirdetesKozbe, hirdetesRacsba } from '../core/ads.js';
 import { promptTar, promptTarHtml } from '../core/prompt-library.js';
 import { eszkozSavHtml, biztonsagosHtml, promptEpitoHtml, ESZKOZ_UTAK } from '../core/ingyenes-eszkozok.js';   // 🧰 2026-10-21
 import { eszkozSzoveg } from '../core/ingyenes-eszkozok-szoveg.js';
@@ -632,8 +632,8 @@ const UI_PRIV = {
         privCsH: 'Chat, contact form and email', privCsP: 'What you write to us is used only to answer you. Contact-form messages and emails are deleted after 30 days. Against spam we use Cloudflare Turnstile and keep a scrambled (hashed) form of your IP address for two days — never the address itself.',
         privLocalH: 'Saved on your device', privLocalP: 'Your light/dark mode choice and the guide steps you tick off are saved in your own browser. They never leave your device. Our free tools (Safe Paste, Prompt Builder) also run only in your browser: what you type there is never uploaded or saved.',
         privPayH: 'Tips and PDF packs', privPayP: 'Payments are handled by Ko-fi and PayPal. We never see your card details.',
-        privAdsH: 'Advertising', privAdsP: 'We show one ad at the end of pages, served by Google AdSense. Google and its partners use cookies to show ads based on your visits to this and other websites. In the EEA, the UK and Switzerland you are asked for your consent first.',
-        privAdsSet: 'Turn off personalised ads in Google’s Ads Settings', privAdsHow: 'How Google uses information from sites that use its services',
+        privAdsH: 'Advertising', privAdsP: 'We show at most one ad per page, placed within the content and served by Google AdSense. If you use an ad blocker, we may politely ask you once to allow ads on our site — you can close the message, and the content stays readable either way. Google and its partners use cookies to show ads based on your visits to this and other websites. In the EEA, the UK and Switzerland you are asked for your consent first.',
+        privAdsSet: 'Turn off personalized ads in Google’s Ads Settings', privAdsHow: 'How Google uses information from sites that use its services',
         privAffH: 'Amazon affiliate link', privAffP: 'Some guides end with a labelled link to Amazon. We only count that the link was clicked — not who clicked it. If you follow it, Amazon’s own privacy notice applies on amazon.com. As an Amazon Associate I earn from qualifying purchases.',
         privNoH: 'What we don’t do', privNoP: 'No accounts, no comments, no newsletter and no Google Analytics. We do not sell your data.',
         privAskH: 'Questions or deletion requests', privAskP: 'Write to support@aiworldhq.com — we will answer, and delete your data on request.' },
@@ -643,7 +643,7 @@ const UI_PRIV = {
         privCsH: 'Chat, kapcsolati űrlap és e-mail', privCsP: 'Amit nekünk írsz, csak a válaszhoz használjuk. Az űrlapon küldött üzeneteket és az e-maileket 30 nap után töröljük. A kéretlen üzenetek ellen a Cloudflare Turnstile-t használjuk, és az IP-címed összekevert (hash-elt) változatát két napig őrizzük — magát a címet soha.',
         privLocalH: 'Amit a saját eszközöd tárol', privLocalP: 'A világos/sötét mód választását és az útmutatókban kipipált lépéseket a saját böngésződ menti. Nem hagyják el az eszközödet. Az ingyenes eszközeink (Biztonságos bemásolás, Promptépítő) is csak a böngésződben futnak: amit ott beírsz, azt nem töltjük fel és nem mentjük.',
         privPayH: 'Támogatás és PDF-csomagok', privPayP: 'A fizetést a Ko-fi és a PayPal intézi. A kártyaadataidat soha nem látjuk.',
-        privAdsH: 'Hirdetés', privAdsP: 'Az oldalak végén egy hirdetést mutatunk, amelyet a Google AdSense szolgál ki. A Google és partnerei sütiket használnak, hogy az ezen és más oldalakon tett látogatásaid alapján mutassanak hirdetést. Az EGT-ben, az Egyesült Királyságban és Svájcban előbb a hozzájárulásodat kérjük.',
+        privAdsH: 'Hirdetés', privAdsP: 'Oldalanként legfeljebb egy hirdetést mutatunk a tartalom között, amelyet a Google AdSense szolgál ki. Ha hirdetésblokkolót használsz, egyszer udvariasan megkérhetünk, hogy engedélyezd nálunk a hirdetéseket — az üzenet bezárható, és a tartalom mindenképp olvasható marad. A Google és partnerei sütiket használnak, hogy az ezen és más oldalakon tett látogatásaid alapján mutassanak hirdetést. Az EGT-ben, az Egyesült Királyságban és Svájcban előbb a hozzájárulásodat kérjük.',
         privAdsSet: 'A személyre szabott hirdetéseket a Google hirdetési beállításaiban kapcsolhatod ki', privAdsHow: 'Hogyan használja a Google a szolgáltatásait használó oldalak adatait',
         privAffH: 'Amazon partnerlink', privAffP: 'Néhány útmutató végén egy jelölt Amazon-link áll. Csak azt számoljuk, hogy rákattintottak — azt nem, hogy ki. Ha követed, az amazon.com-on az Amazon saját adatvédelmi szabályai érvényesek. As an Amazon Associate I earn from qualifying purchases.',
         privNoH: 'Amit nem csinálunk', privNoP: 'Nincs regisztráció, nincs komment, nincs hírlevél és nincs Google Analytics. Az adataidat nem adjuk el.',
@@ -654,7 +654,7 @@ const UI_PRIV = {
         privCsH: 'Chat, formulario de contacto y correo', privCsP: 'Lo que nos escribes solo se usa para responderte. Los mensajes del formulario y los correos se borran a los 30 días. Contra el spam usamos Cloudflare Turnstile y guardamos una forma cifrada (hash) de tu dirección IP durante dos días, nunca la dirección en sí.',
         privLocalH: 'Lo que guarda tu dispositivo', privLocalP: 'Tu elección de modo claro/oscuro y los pasos que marcas en las guías se guardan en tu propio navegador. Nunca salen de tu dispositivo. Nuestras herramientas gratis (Pegado seguro, Creador de prompts) también funcionan solo en tu navegador: lo que escribes ahí nunca se sube ni se guarda.',
         privPayH: 'Apoyo y packs PDF', privPayP: 'Los pagos los gestionan Ko-fi y PayPal. Nunca vemos los datos de tu tarjeta.',
-        privAdsH: 'Publicidad', privAdsP: 'Mostramos un anuncio al final de las páginas, servido por Google AdSense. Google y sus socios usan cookies para mostrar anuncios basados en tus visitas a este y otros sitios web. En el EEE, el Reino Unido y Suiza primero te pedimos tu consentimiento.',
+        privAdsH: 'Publicidad', privAdsP: 'Mostramos como máximo un anuncio por página, dentro del contenido, servido por Google AdSense. Si usas un bloqueador de anuncios, podemos pedirte una vez, con amabilidad, que permitas los anuncios en nuestro sitio; puedes cerrar el mensaje y el contenido sigue siendo legible. Google y sus socios usan cookies para mostrar anuncios basados en tus visitas a este y otros sitios web. En el EEE, el Reino Unido y Suiza primero te pedimos tu consentimiento.',
         privAdsSet: 'Desactiva los anuncios personalizados en la configuración de anuncios de Google', privAdsHow: 'Cómo usa Google la información de los sitios que usan sus servicios',
         privAffH: 'Enlace de afiliado de Amazon', privAffP: 'Algunas guías terminan con un enlace marcado a Amazon. Solo contamos que se hizo clic en él, no quién lo hizo. Si lo sigues, en amazon.com se aplica el aviso de privacidad de Amazon. As an Amazon Associate I earn from qualifying purchases.',
         privNoH: 'Lo que no hacemos', privNoP: 'Sin cuentas, sin comentarios, sin boletín y sin Google Analytics. No vendemos tus datos.',
@@ -1743,10 +1743,11 @@ function buildIndex(articles) {
     if (!byDay.has(key)) byDay.set(key, []);
     byDay.get(key).push(a);
   }
-  const dayGroups = [...byDay.entries()].map(([key, items]) => `<section class="day-group">
+  // 📢 2026-10-30: EGY hirdetés a napok KÖZÖTT (~40%), legalább egy nap után (core/ads.js hirdetesKozbe)
+  const dayGroups = hirdetesKozbe([...byDay.entries()].map(([key, items]) => `<section class="day-group">
       <h3 class="day-head">${dayLabel(key)}</h3>
       <div class="grid">${items.map(a => articleCard(a)).join('\n')}</div>
-    </section>`).join('\n');
+    </section>`), hirdetesBlokk(HIRDETES, LANG));
 
   const grid = rest.length > 0 ? `<section class="grid-section">
     <div class="section-head">
@@ -1919,8 +1920,9 @@ function buildGuidesPage(generalGuides, counts, temaCsoportok = new Map(), kedve
   const kedvencSor = kedvencek.length
     ? `<section class="kedvenc-sor"><h2 class="kedvenc-sor__h">🔥 ${escapeHtml(tr('favRowH'))}</h2><div class="gtiles">${kedvencek.map(guideTile).join('')}</div></section>`
     : '';
+  // 📢 2026-10-30: EGY hirdetés a csemperács két fele KÖZÖTT (core/ads.js hirdetesRacsba)
   const tiles = generalGuides.length
-    ? `<div class="gtiles">${generalGuides.map(guideTile).join('')}</div>`
+    ? hirdetesRacsba(generalGuides.map(guideTile), hirdetesBlokk(HIRDETES, LANG), cs => `<div class="gtiles">${cs.join('')}</div>`)
     : `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
   // 📄 2026-10-28: papírlapos fejléc — a lapon a legújabb általános útmutató első lépései
   const legujabb = [...generalGuides].sort((x, y) => (y.publishedAt || '').localeCompare(x.publishedAt || ''))[0];
@@ -1988,8 +1990,8 @@ function buildTopicPage(t, cikkek) {
   // A szövegek a core/topics.js-ben laknak, a BESOROLÁS MELLETT, hogy egy új
   // téma felvételekor a kettő együtt mozduljon.
   const sz = temaSzoveg(t, LANG);
-  const tiles = cikkek.length
-    ? `<div class="gtiles">${cikkek.map(guideTile).join('')}</div>`
+  const tiles = cikkek.length   // 📢 2026-10-30: EGY hirdetés a rács két fele között
+    ? hirdetesRacsba(cikkek.map(guideTile), hirdetesBlokk(HIRDETES, LANG), cs => `<div class="gtiles">${cs.join('')}</div>`)
     : `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
   // 📄 2026-10-28: papírlapos fejléc — bevezetőnek a már lefordított témaleírás, a lapon a téma első útmutatója
   const so = lapoSz(LANG);
@@ -2116,7 +2118,8 @@ function buildToolsPage(companyGuides, counts) {
     }) : ''
   });
   const empty = `<p class="muted" style="color:var(--ink-soft)">${tr('comingSoon')}</p>`;
-  const body = designStyleBlock() + header + (companyGuides.length ? (brandRow + sections) : empty);
+  // 📢 2026-10-30: EGY hirdetés a cégválasztó sor UTÁN, a cég-szakaszok előtt (természetes szünet)
+  const body = designStyleBlock() + header + (companyGuides.length ? (brandRow + hirdetesBlokk(HIRDETES, LANG) + sections) : empty);
   return pageShell({
     title: `${plainText(tr('toolsTitle'))} — ${SITE.name}`,
     description: tr('toolsMetaDesc'),
@@ -3224,7 +3227,7 @@ function buildGlossaryPage() {
   // 📄 2026-10-28: papírlapos fejléc + témacsoportos szótári lista (core/lap-hero.js);
   // a #<id> horgonyok változatlanok — a cikkekből a kisszótár-autolink ide mutat.
   const body = szotarOldalHtml({
-    terms: GLOSSARY, lang: LANG, cim: tr('glossTitle'),
+    terms: GLOSSARY, lang: LANG, cim: tr('glossTitle'), hirdetes: hirdetesBlokk(HIRDETES, LANG),   // 📢 2026-10-30
     utoHtml: `<p class="start__wizcta"><a href="wizard">🧭 ${escapeHtml(tr('wizBanner'))}</a></p>`
   });
   return pageShell({
@@ -3358,12 +3361,13 @@ function buildArchivePage(loc) {
     }
     byMonth.get(key).items.push(a);
   }
-  const groups = [...byMonth.values()].map(g => `<section class="arch__month" id="${g.id}"><h2 class="arch__mh">${escapeHtml(g.label)}</h2>
+  // 📢 2026-10-30: EGY hirdetés két hónap-blokk KÖZÖTT (~40%)
+  const groups = hirdetesKozbe([...byMonth.values()].map(g => `<section class="arch__month" id="${g.id}"><h2 class="arch__mh">${escapeHtml(g.label)}</h2>
     ${g.items.map(a => {
       const cat = CATEGORIES[a.category] || CATEGORIES.other;
       const day = a.publishedAt ? new Date(a.publishedAt).toLocaleDateString(DATE_LOCALES[LANG] || 'en-US', { day: 'numeric', month: 'short' }) : '';
       return `<a class="arch__row" href="article/${a.slug}"><span class="arch__d">${escapeHtml(day)}</span><span class="arch__i">${cat.icon}</span><span class="arch__t">${escapeHtml(a.title)}</span></a>`;
-    }).join('\n')}</section>`).join('\n');
+    }).join('\n')}</section>`), hirdetesBlokk(HIRDETES, LANG));
   // 📄 2026-10-28: papírlapos fejléc — a lapon a hónap-mutató, a hónapokra ugró horgonnyal
   const body = lapHeroHtml({
     badge: lapoSz(LANG).archBadge, badgeIkon: '🗂️', h1: tr('archTitle'), lead: tr('archTag'),
