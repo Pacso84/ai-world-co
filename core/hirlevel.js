@@ -25,11 +25,19 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 /** A config.json `newsletter` blokkjából. Bármi hiányzik/hibás → be: false. */
 export function hirlevelBeallitas(cfg, env = {}) {
   const n = (cfg && cfg.newsletter) || {};
+  // 10-30: a FŐ szolgáltató a Kit (ingyenes csomag, 10 000 feliratkozóig; a levél aljára a Kit SAJÁT postacíme kerülhet —
+  // a user lakcímet nem ad meg; help.kit.com/en/articles/2502494). A Brevo-ág megmarad tartaléknak.
+  const szolg = n.provider === 'brevo' ? 'brevo' : 'kit';
+  if (szolg === 'kit') {
+    const kulcs = String(env.KIT_API_KEY || '').trim();
+    const be = n.enabled === true && kulcs.length > 10;
+    return { be, szolg, kulcs: be ? kulcs : '' };
+  }
   const lista = Number(n.list_id);
   const felado = { name: String(n.sender_name || 'AI World HQ').trim(), email: String(n.sender_email || '').trim() };
   const kulcs = String(env.BREVO_API_KEY || '').trim();
   const be = n.enabled === true && Number.isInteger(lista) && lista > 0 && EMAIL.test(felado.email) && kulcs.length > 10;
-  return { be, lista, felado, kulcs: be ? kulcs : '' };
+  return { be, szolg, lista, felado, kulcs: be ? kulcs : '' };
 }
 
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -44,10 +52,7 @@ export function hirlevelTartalom(heti, utmutatok = []) {
   const rov = roviden(heti.md);
   const ut = utmutatok.slice(0, 2);
   const targy = cim.replace(/\s*\((?:[A-Z][a-z]+ \d{1,2}, \d{4})\)\s*$/, '') || 'This Week in AI';
-  const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(cim)}</title></head>
-<body style="margin:0;background:#f3efe6;font-family:Helvetica,Arial,sans-serif;color:#1f1d18">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:580px;background:#fffdf8;border:1px solid #d9d1c0;border-radius:8px">
+  const torzs = leiratkozas => `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:580px;font-family:Helvetica,Arial,sans-serif;color:#1f1d18;background:#fffdf8;border:1px solid #d9d1c0;border-radius:8px">
 <tr><td style="padding:28px 28px 8px"><p style="margin:0 0 6px;font-size:13px;font-weight:700;color:#4d7563">AI WORLD HQ · weekly</p>
 <h1 style="margin:0 0 12px;font-size:24px;line-height:1.25">${esc(cim)}</h1>
 ${rov ? `<p style="margin:0 0 18px;font-size:16px;line-height:1.55;color:#4a463d">${esc(rov)}</p>` : ''}</td></tr>
@@ -57,13 +62,15 @@ ${rov ? `<p style="margin:0 0 18px;font-size:16px;line-height:1.55;color:#4a463d
 ${ut.length ? `<tr><td style="padding:0 28px 8px;border-top:1px solid #e6dfcf"><p style="margin:18px 0 8px;font-size:14px;font-weight:700">New step-by-step guides</p>
 ${ut.map(u => `<p style="margin:0 0 10px;font-size:16px;line-height:1.5"><a href="${link(u.slug)}" style="color:#3b5e4f">${esc(u.cim)}</a></p>`).join('')}</td></tr>` : ''}
 <tr><td style="padding:16px 28px 26px;border-top:1px solid #e6dfcf;font-size:12px;line-height:1.5;color:#7a7466">
-This newsletter is put together from articles written by AI. They pass automated fact and quality checks, and our editor spot-checks published articles every day.<br>
-You get this email because you subscribed at aiworldhq.com. <a href="{{ unsubscribe }}" style="color:#7a7466">Unsubscribe</a></td></tr>
-</table></td></tr></table></body></html>`;
+This newsletter is put together from articles written by AI. They pass automated fact and quality checks, and our editor spot-checks published articles every day.${leiratkozas ? `<br>
+You get this email because you subscribed at aiworldhq.com. <a href="{{ unsubscribe }}" style="color:#7a7466">Unsubscribe</a>` : ''}</td></tr>
+</table>`;
+  const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(cim)}</title></head>
+<body style="margin:0;background:#f3efe6"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px">${torzs(true)}</td></tr></table></body></html>`;
   const szoveg = [cim, '', rov, '', "This week's stories:", ...hirek.map((h, i) => `${i + 1}. ${h}`), '', `Read the full roundup: ${link(heti.slug)}`,
     ...(ut.length ? ['', 'New step-by-step guides:', ...ut.map(u => `- ${u.cim}: ${link(u.slug)}`)] : []), '',
     'This newsletter is put together from articles written by AI; our editor spot-checks published articles every day.', 'Unsubscribe: {{ unsubscribe }}'].join('\n');
-  return { targy, html, szoveg, hirDb: hirek.length };
+  return { targy, html, kitHtml: torzs(false), elonezet: rov.slice(0, 140), szoveg, hirDb: hirek.length };
 }
 
 /** Mit kell kiküldeni? A friss (≤3 napos) heti cikk, ha még nincs a naplóban; különben null. */
@@ -86,6 +93,17 @@ export async function brevoKuldes(b, t, { fetchFn = fetch, nev } = {}) {
   const s = await fetchFn(`https://api.brevo.com/v3/emailCampaigns/${id}/sendNow`, { method: 'POST', headers: fej });
   if (!s.ok) throw new Error(`Brevo küldés (kampány ${id}): HTTP ${s.status} ${(await s.text()).slice(0, 200)}`);
   return id;
+}
+
+/** Kit (API v4): broadcast azonnali küldési idővel, minden feliratkozónak (developers.kit.com/api-reference/broadcasts). */
+export async function kitKuldes(b, t, { fetchFn = fetch, nev, most = new Date().toISOString() } = {}) {
+  const r = await fetchFn('https://api.kit.com/v4/broadcasts', { method: 'POST',
+    headers: { 'X-Kit-Api-Key': b.kulcs, 'content-type': 'application/json', accept: 'application/json' },
+    body: JSON.stringify({ subject: t.targy, preview_text: t.elonezet || t.targy, content: t.kitHtml, description: nev || t.targy,
+      public: false, published_at: most, send_at: most }) });
+  if (!r.ok) throw new Error(`Kit broadcast: HTTP ${r.status} ${(await r.text()).slice(0, 200)}`);
+  const j = await r.json();
+  return j?.broadcast?.id ?? j?.id ?? '?';
 }
 
 function cikkekBetolt() {
@@ -112,16 +130,17 @@ if (kozvetlen) {
     writeFileSync(arg[1] || 'hirlevel-elonezet.html', t.html); console.log(`✉️ előnézet: ${arg[1]} — tárgy: ${t.targy} · ${t.hirDb} hír · ${k.utmutatok.length} útmutató`);
   } else if (arg[0] === '--send') {
     const b = hirlevelBeallitas(cfg, process.env);
-    if (!b.be) { console.log('✉️ hírlevél: nincs bekapcsolva (config.newsletter / BREVO_API_KEY) — kihagyom'); process.exit(0); }
+    if (!b.be) { console.log('✉️ hírlevél: nincs bekapcsolva (config.newsletter / KIT_API_KEY) — kihagyom'); process.exit(0); }
     const naplo = naploBe(); const k = kuldendo(cikkekBetolt(), naplo);
     if (!k) { console.log('✉️ hírlevél: nincs új heti összefoglaló — kihagyom'); process.exit(0); }
     const t = hirlevelTartalom(k.heti, k.utmutatok);
     if (t.hirDb < 3) { console.log(`⚠️ hírlevél: a heti cikkben csak ${t.hirDb} hír-alcím — nem küldöm`); process.exit(0); }
     try {
-      const id = await brevoKuldes(b, t, { nev: `Weekly ${k.heti.published_at.slice(0, 10)}` });
+      const nev = `Weekly ${k.heti.published_at.slice(0, 10)}`;
+      const id = b.szolg === 'kit' ? await kitKuldes(b, t, { nev }) : await brevoKuldes(b, t, { nev });
       naplo.kuldve = { ...(naplo.kuldve || {}), [k.heti.slug]: { at: new Date().toISOString(), kampany: id } };
       writeFileSync(NAPLO_UT, JSON.stringify(naplo, null, 2) + '\n');
-      console.log(`✉️ hírlevél KIMENT: „${t.targy}” (Brevo kampány ${id})`);
+      console.log(`✉️ hírlevél KIMENT: „${t.targy}” (${b.szolg} ${id})`);
     } catch (e) { console.log('⚠️ hírlevél-küldés hiba: ' + e.message); process.exit(0); }
   }
 }
