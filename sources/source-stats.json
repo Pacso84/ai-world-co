@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-10-31T14:10:40.414Z",
+    "updated": "2026-10-31T19:50:06.382Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -704,7 +704,7 @@
     },
     "duckduckgo-duck-ai": {
       "name": "DuckDuckGo / Duck.ai (hivatalos blog, csak Duck.ai)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -752,7 +752,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 33,
+      "feedAgeDays": 34,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -776,7 +776,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 122,
+      "feedAgeDays": 123,
       "published30d": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -784,7 +784,7 @@
       "alreadyDisabled": false,
       "lastArticle": "2026-10-21",
       "verdict": "stale",
-      "reason": "⚠️ a feed 122 napja néma, mégis 1 \"friss\" cikket írtunk belőle — régi anyag újdonságként!"
+      "reason": "⚠️ a feed 123 napja néma, mégis 1 \"friss\" cikket írtunk belőle — régi anyag újdonságként!"
     },
     "notion-releases": {
       "name": "Notion – Mi újság (hivatalos)",
