@@ -273,7 +273,8 @@ t('🙏 10-30 blokkoló-üzenet: CSAK kapcsolóval, alapból KI; a config KI-n �
   assert.match(fejKod(be), /fundingchoicesmessages\.google\.com\/i\/pub-1234567890123456\?ers=1/);
   assert.match(fejKod(be), /googlefcPresent/);
   const cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
-  assert.equal(cfg.website.ads.adblock_recovery, false, 'a user jóváhagyásáig KI kell maradnia');
+  // 10-31: a user jóváhagyta („mehet”), az AdSense-üzenet KÖZZÉTÉVE (bezárható, en/hu/es) → a kapcsoló BE.
+  assert.equal(cfg.website.ads.adblock_recovery, true, 'a jóváhagyott, közzétett blokkoló-üzenet kódja kimaradt');
   const src = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
   assert.match(src, /at most one ad per page, placed within the content/);
   assert.match(src, /you can close the message, and the content stays readable/);
