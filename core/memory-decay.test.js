@@ -111,7 +111,12 @@ t('⚠️ NAPI KAPU: egy napon belül a második hívás NEM von le újra', () =
   tarBeallit([emlek('a', 5, 'öt napja')]);          // 5 × 0,04 = 0,2 → 0,8
   decay();
   const elso = olvas().items[0].salience;
-  assert.ok(Math.abs(elso - 0.8) < 1e-9, 'az első halványulás nem a várt: ' + elso);
+  // ⚠️ 2026-10-31 (CI-ben 10 futásból 1× bukott): a `daysSince` TÖRT napot
+  // számol a beírás és a decay() közti ezredmásodpercekkel együtt; 1 ms =
+  // 0,04/86 400 000 ≈ 4,6e-10 levonás. A régi 1e-9-es tűrés már ~2 ms
+  // lassúságnál (terhelt CI-lemez) bukott. 1e-6 ≈ 2 mp mozgástér — a hiba,
+  // amit a teszt keres (dupla levonás), 0,2 nagyságrendű, azt ez is elkapja.
+  assert.ok(Math.abs(elso - 0.8) < 1e-6, 'az első halványulás nem a várt: ' + elso);
 
   const masodik = decay();
   assert.equal(olvas().items[0].salience, elso, 'ugyanaznap MÁSODSZOR is levont');

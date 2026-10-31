@@ -70,7 +70,16 @@ try {
       console.log('  ❌ ' + f.nev);
       // Csak a lényeg: az utolsó pár sor mondja meg, mi bukott.
       const out = ((r.stderr || '') + (r.stdout || '')).trim().split(/\r?\n/);
-      for (const line of out.slice(-6)) console.log('       ' + line);
+      // 2026-10-31: a ❌ alteszt-sor (+ az utána jövő hibaüzenet) gyakran
+      // FENTEBB van, mint az utolsó 6 sor — a CI-naplóból így nem derült ki,
+      // MELYIK alteszt bukott. Előbb ezeket írjuk ki, utána a farkat.
+      const farok = out.slice(-6);
+      const bukottSorok = [];
+      out.forEach((line, i) => {
+        if (/❌/.test(line) && !farok.includes(line)) bukottSorok.push(line, out[i + 1] || '');
+      });
+      for (const line of bukottSorok.slice(0, 12)) console.log('       ' + line);
+      for (const line of farok) console.log('       ' + line);
     }
   }
 } catch (e) {
