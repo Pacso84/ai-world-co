@@ -483,14 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n17921172965345",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Hi! The line-up is solid and on-brand for practical, everyday AI help, but there are two small things worth a quick look before publish: articles 1 and 2 cover almost the same topic (a polite complain",
-      "agent": "publisher",
-      "at": "2026-10-16T02:21:36.534Z",
-      "loud": false
-    },
-    {
       "id": "n179211731617693",
       "level": "success",
       "text": "4 hír + 2 útmutató publikálva (költség: $0.0661).",
@@ -1281,18 +1273,17 @@
       "agent": "ceo",
       "at": "2026-10-31T03:22:09.818Z",
       "loud": false
+    },
+    {
+      "id": "n179347554015322",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
+      "agent": "fact-check",
+      "at": "2026-10-31T19:39:00.153Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179203156069472",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-15T02:32:40.694Z"
-    },
     {
       "id": "m179203227440749",
       "from": "social",
@@ -2680,6 +2671,16 @@
       "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use Gemini to update your resume\" — Article says 'We do not have those four steps in the material we are working from, so we will not invent them here' — but source HAS the four steps numbered 1-4",
       "ref": "ARTICLE_2026-10-30T03-26-19-950Z_google-gemini_How_to_use_Gemini_to_update_your_resume.json",
       "at": "2026-10-31T14:02:18.535Z"
+    },
+    {
+      "id": "m17934755401532",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"How GitHub Copilot Can Write Unit Tests for Your C\" — GitHub Copilot now has a free tier with limited monthly suggestions — the specific 30-day trial claim is no longer accurate and pricing details should not be stated in evergreen guides.",
+      "ref": "ARTICLE_GUIDE_how-github-copilot-can-write-unit-tests-for-your-code.json",
+      "open": true,
+      "at": "2026-10-31T19:39:00.153Z"
     }
   ]
 }
