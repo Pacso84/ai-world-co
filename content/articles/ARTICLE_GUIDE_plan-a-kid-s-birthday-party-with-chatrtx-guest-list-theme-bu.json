@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "plan-a-kid-s-birthday-party-with-chatrtx-guest-list-theme-bu",
+    "company": "NVIDIA",
+    "tool": "ChatRTX",
+    "icon": "🎂",
+    "level": "beginner",
+    "source_news": null,
+    "trend": null,
+    "written_at": "2026-10-31T03:15:49.546Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.004367,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-10-31T03:16:29.353Z",
+    "slug": "plan-a-kid-s-birthday-party-with-chatrtx-guest-list-theme-budget-sched",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1249
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with clear structure, helpful examples in every step, appropriate caveats about tool limitations, and a warm tone that builds confidence. All technical terms are explained, the audience is clearly everyday people planning a party, and the What this means for you and Try it now sections provide solid wrap-up.",
+      "_aiCost": 0.00140322,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-10-31T03:19:46.107Z",
+    "seo": {
+      "meta_description": "Plan your kid's birthday party with ChatRTX. Enter age, guest count and budget to get theme ideas, a guest list, schedule and shopping list.",
+      "keywords": [
+        "how to plan a kid's birthday party with AI",
+        "ChatRTX birthday party planning",
+        "birthday party planning app",
+        "AI party planning tools",
+        "birthday party theme ideas",
+        "kids birthday party checklist",
+        "birthday party schedule planner",
+        "NVIDIA ChatRTX for parents"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a comparison section showing ChatRTX vs traditional planning methods to target 'how to make birthday party planning easier' searches",
+        "Include a FAQ section addressing 'what graphics card do I need for ChatRTX' to capture related hardware requirement searches",
+        "Add a related searches section linking to other ChatRTX use cases (meal planning, travel planning) to build internal linking structure"
+      ],
+      "optimised_at": "2026-10-31T03:21:37.563Z"
+    },
+    "fact_verified_at": "2026-10-31T03:22:19.298Z"
+  },
+  "article_markdown": "---\ntitle: \"Plan a kid's birthday party with ChatRTX: guest list, theme, budget, schedule\"\nsubtitle: \"Give ChatRTX your kid's age, guest count and budget, and get a guest list, theme ideas, a schedule and a shopping list.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"NVIDIA\"\ntool: \"ChatRTX\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"chatrtx\", \"party-planning\", \"family\"]\n---\n\n# Plan a kid's birthday party with ChatRTX: guest list, theme, budget, schedule\n\n> **In short:** You can use ChatRTX, NVIDIA's free app that runs on your own Windows computer, to draft a guest list template, three theme ideas, a party schedule and a shopping list. It needs a compatible NVIDIA graphics card, so check NVIDIA's official requirements first.\n\nYou'll be able to turn a few facts about your child's party (their age, how many guests, what you can spend) into a plan you can print and tick off. This guide is for parents, grandparents and anyone helping with a birthday who is new to AI tools.\n\n## Before you start\n\n- **A Windows computer with a compatible NVIDIA RTX graphics card.** ChatRTX is built for these machines, and it won't run on most laptops or Macs. Check the requirements on NVIDIA's official ChatRTX page before you download anything.\n- **About 30 to 60 minutes** for the download, setup and first planning session. Downloads of this size can take a while on a slow connection.\n- **A rough budget and a guest count.** You don't need exact numbers. \"About 12 kids\" and \"around $150\" are enough to start.\n\n## Step 1 — Download and install ChatRTX\n\nGo to NVIDIA's official website and search for \"ChatRTX.\" Look for a download button on the ChatRTX page and save the installer file. Open it and follow the on-screen steps, accepting the default options unless you know you want something different. The installer may take several minutes and may ask you to restart your computer.\n\nIf the page looks different or you can't find a download button, search \"NVIDIA ChatRTX official\" and make sure you land on nvidia.com before clicking anything. Avoid third-party download sites.\n\nYou'll know it worked when ChatRTX appears in your Start menu or on your desktop, and opening it shows a window with a text box where you can type.\n\n## Step 2 — Gather your party facts in one text file\n\nChatRTX works best when it has your own information to work from. Open Notepad, or any plain text editor, and type your facts in a short list. For example:\n\n💬 Example: \"Child's name: [child's name]. Turning [number] years old on [month]. Guest count: about [number] kids and [number] adults. Total budget: [amount you can spend]. Venue: [home, park or hall].\"\n\nSave the file in a folder you'll remember, such as Documents > Party. If you prefer Word, a .docx file also works. Keep the wording simple. The app can only use what you give it.\n\nIf you're unsure which file type ChatRTX accepts, plain .txt is the safest choice.\n\nYou'll know it worked when the file is saved and you can find it again in File Explorer.\n\n## Step 3 — Point ChatRTX at your planning folder\n\nOpen ChatRTX and look for a setting that lets you choose a folder or dataset, often in a side panel or a settings menu. Select the Party folder you made in Step 2. Depending on the version, you may need to click a button like \"Refresh\" or \"Update\" so the app reads the new file.\n\nChatRTX runs on your own computer, so your file stays on your machine. The first time it reads the folder can take a few minutes, and the chat box may look busy while it works. If you don't see a folder option at all, look for a \"Dataset\" or \"Files\" label in the menu, since layouts vary between versions.\n\nYou'll know it worked when the app confirms the folder is loaded, or when your next question gets an answer that mentions your child's details.\n\n## Step 4 — Ask for a guest list template and three theme ideas\n\nClick the chat box and type a request that includes your facts. Keep it specific.\n\n💬 Example: \"Using my party file, make a simple guest list template with columns for name, parent phone, RSVP yes or no, and allergies. Then suggest three party themes for a [number]-year-old with a budget of about [amount].\"\n\nRead the reply carefully. The template may come back as a plain list, which you can copy into a spreadsheet. Theme ideas should be easy to carry out, not elaborate. If the answer misses the point, rephrase with more detail, such as \"Make the themes indoor only.\"\n\nYou'll know it worked when you get a list of columns and three named themes that match your child's age.\n\n## Step 5 — Ask for a schedule and a shopping list\n\nOnce you've picked a theme, ask for the schedule and the shopping list in one request so the details match.\n\n💬 Example: \"Pick the [theme you chose] theme. Write a two-hour party schedule with arrival, games, food and cake times. Then make a shopping list grouped by decorations, food and games, and keep the total within [amount].\"\n\nThe reply should give you a timeline and grouped items. Check that the list fits your budget. ChatRTX doesn't know today's store prices, so it can't add up real costs for you. Use the list to shop, and check prices yourself at the stores you use.\n\nYou'll know it worked when you have a time-by-time schedule and a shopping list with clear groups.\n\n## Step 6 — Save and adjust your plan\n\nCopy the good parts of the answers into one document: the guest list, the theme, the schedule and the shopping list. Then ask a follow-up to tighten things up.\n\n💬 Example: \"Cut the shopping list to the most important items, and move the cake to the middle of the party.\"\n\nRepeat until the plan feels right. Save the final version in your Party folder so the next time you open ChatRTX, you can pick up where you left off.\n\nYou'll know it worked when you have one clean document you could hand to a helper or a partner.\n\n## Common mistakes\n\n- **Expecting it to send invitations or buy things.** ChatRTX can draft an invitation message, but it can't send it or place an order. Copy the text into your messaging app yourself.\n- **Trusting prices or safety rules without checking.** The app doesn't know current prices or local rules for events. Confirm costs with stores and any venue rules with the venue.\n- **Asking vague questions.** \"Plan a party\" gets a generic answer. Fix it by including the age, guest count and budget, just like the example prompts above.\n\n## What this means for you\n\n- **In everyday life:** Use it to plan a birthday, a school party or a family gathering without starting from a blank page.\n- **For your business or work:** If you organize events for a club, team or small business, the same approach can draft agendas and checklists for meetings.\n- **If you're just getting started:** Begin with the guest list template only. It's the smallest step and it works even if the rest of the setup takes longer.\n\n## Try it now\n\nOpen a blank text file and type your child's age, your guest count and your budget. Save it. That single file is all you need to start your first ChatRTX planning session.",
+  "original_title": "Plan a kid's birthday party with ChatRTX (guest list, theme, budget, schedule)"
+}

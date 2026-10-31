@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-10-31T03:13:16.712Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.003345,
+    "original_draft": "2026-10-31T03-11-23-766Z_openai-blog_Credit_Saison_achieves_954__ROI_in_a_ChatGPT_Enter.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/credit-saison",
+    "source_links": [
+      "https://openai.com/index/credit-saison"
+    ],
+    "source_snippet": "Credit Saison’s ChatGPT Enterprise pilot delivered 954% ROI. See how leaders and employees helped turn the results into companywide adoption.",
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-10-31T03:14:29.578Z",
+    "slug": "credit-saison-reports-954-roi-from-a-chatgpt-enterprise-pilot",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 706
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured with a clear hook, educational explanations of ROI and pilot concepts, actionable 'What this means for you' guidance, and a helpful wrap-up. It appropriately attributes all claims to Credit Saison, transparently notes missing details about the pilot, and avoids prohibited content or clichés. Language is accessible for business readers without being condescending.",
+      "_aiCost": 0.00101199,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-31T03:15:02.890Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a company case study about Credit Saison's own pilot results and adoption process, not the introduction of a specific named feature. The article teaches generic lessons about measuring AI ROI and running pilots that readers must infer, rather than teaching how to use a specific named tool or feature introduced in this article.",
+    "image_v": 2,
+    "image_at": "2026-10-31T03:17:19.357Z",
+    "seo": {
+      "meta_description": "A Japanese company reports 954% ROI from a ChatGPT Enterprise pilot. Here's what that number means and what small AI trials can teach any business team.",
+      "keywords": [
+        "ChatGPT Enterprise ROI",
+        "AI pilot results business",
+        "how to measure AI ROI at work",
+        "ChatGPT business use case",
+        "enterprise AI trial",
+        "AI implementation ROI"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add the company location (Credit Saison is a Japanese firm) to the title or opening to improve geographic search relevance",
+        "Include a concrete use case or specific role mentioned in the pilot to capture long-tail searches like 'AI for finance teams'",
+        "Add an FAQ or structured data markup targeting the question 'what is a good ROI for AI at work?'"
+      ],
+      "optimised_at": "2026-10-31T03:20:43.961Z"
+    },
+    "fact_verified_at": "2026-10-31T03:22:29.509Z",
+    "fact_check_skip": "a forrás nem olvasható (0/1)"
+  },
+  "article_markdown": "---\ntitle: \"Credit Saison Reports 954% ROI From a ChatGPT Enterprise Pilot\"\nsubtitle: \"What the company announced, what the ROI figure means, and what a small AI trial can teach any team.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 3\ntags: [\"chatgpt-enterprise\", \"business-ai\", \"roi\", \"company-adoption\", \"ai-at-work\"]\n---\n\n# Credit Saison Reports 954% ROI From a ChatGPT Enterprise Pilot\n\n> **In short:** Credit Saison says its small trial of ChatGPT Enterprise, a business version of ChatGPT, returned a 954% ROI. The company also says leaders and employees helped turn those results into use across the whole company.\n\nA trial that starts small can tell a company a lot before it spends big. If you manage a team or make decisions about new software, the story of one company's pilot shows how to think about AI at work.\n\n## What the announcement says\n\nCredit Saison, a company that announced the result itself, says its pilot of ChatGPT Enterprise delivered a 954% return on investment (ROI). The announcement also says that leaders and employees worked together to move from the pilot to adoption across the company. Adoption means people actually start using a tool as part of their normal work, not just trying it once.\n\nThat is the full picture from the company's own announcement. It does not say how long the pilot ran, how many people took part, or how the figure was calculated. Those details matter, so keep them in mind when you read any ROI number.\n\n## How to read an ROI number\n\nROI (return on investment) is a simple way to measure whether something paid off. You take the value you gained, subtract what you spent, and divide by what you spent. Multiply by 100 and you get a percentage.\n\n- **Zero percent** means you got back exactly what you put in.\n- **100 percent** means you doubled your money.\n- **954 percent** means the net gain was about nine and a half times the cost.\n\nHere is the catch. The result depends entirely on how \"value\" is measured. Time saved, errors avoided, and extra work finished can all be counted, and each one takes judgment. That is why a percentage on its own tells you less than it seems to. Ask what was counted, and how.\n\n## Why \"pilot\" and \"adoption\" matter\n\nA pilot is a small test run before a wider launch. The idea is to learn what works in a limited setting so you can make a better decision later. Credit Saison's announcement puts its focus on the step after the test: getting the rest of the company to use the tool.\n\nAdoption is often harder than the test itself. People have habits, questions, and worries about their jobs. The company's announcement credits leaders and employees with helping make that shift happen, though it does not describe the specific steps they took.\n\n## What this means for you\n\n- **If you run a team**: Before you roll out any AI tool, decide how you will measure success. Pick one or two tasks, record how long they take now, and check again after a trial period.\n- **If you work for someone else**: Ask what problem a new tool is meant to solve. If you can name a task it helps with, you will get more out of it and be better placed to give feedback.\n- **If you're just getting started**: Try AI on one small, routine task you already do, like drafting a short email or summarizing meeting notes. Compare the result to how you did it before.\n- **If you already use it**: Share what you learned with a colleague and compare notes on one task. A shared trial is easier to judge than a single person's experience.\n\n## Wrap-up\n\nThe headline number is eye-catching, but the most useful part of this announcement is the process it describes: test small, measure, then bring people along. The company itself is the source of the 954% figure, so treat it as its claim, not a guaranteed result for your business. Your next step is simple. Choose one repeated task on your own team, time it this week, and decide in advance what \"better\" would look like before you try any AI tool on it.",
+  "original_title": "Credit Saison achieves 954% ROI in a ChatGPT Enterprise pilot"
+}
