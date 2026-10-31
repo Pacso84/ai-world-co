@@ -1,0 +1,89 @@
+{
+  "slug": "how-to-pick-the-right-free-ai-app-when-you-re-just-getting-started",
+  "probalva": "2026-10-31T14:04:53.043Z",
+  "doboz": {
+    "keszult": "2026-10-31T14:04:53.043Z",
+    "enHash": "739d50ce264ea55dd21d9e832d0be0d8733110b7",
+    "forrasok": {
+      "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq": "ChatGPT Free Tier FAQ"
+    },
+    "en": [
+      {
+        "symptom": "ChatGPT says my chat is full, so what do I do?",
+        "why": "\"Context window full\" and \"Chat memory full\" refer to how much information ChatGPT can use in the current conversation. Your messages and ChatGPT's replies both take up space.",
+        "fix": "In ChatGPT: on the Free tier, you can start a new chat right away, and the full-chat notice doesn't give a reset time for the original conversation. If the notice offers an upgrade, you can choose it to continue in the same chat.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "My new chat fills up after only a few messages",
+        "why": "A few long exchanges can take up more room than many short ones, so there's no fixed number of messages per chat.",
+        "fix": "In ChatGPT: if you continued with a summary and hit the limit again, start a separate chat from the sidebar. Send just the question or passage you want to work on, and add earlier instructions as you need them.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "I can't send messages in an old chat, but I need its details",
+        "why": "You can still read earlier messages even when you can't send another one in that chat. If the chat doesn't show in the sidebar, you can search your chat history for a phrase you remember.",
+        "fix": "In ChatGPT: if the conversation is saved in your history, open it and copy any details you need. If you don't see it in the sidebar, search your chat history for a phrase you remember.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "I hit a limit on file uploads or images, but regular chat still works",
+        "why": "File uploads, image generation, voice, data analysis, and other tools have separate usage limits. Free users have unlimited everyday text chats, subject to abuse-prevention safeguards.",
+        "fix": "In ChatGPT: if you reach a rate limit for one of these tools, you will need to wait for a later time to use any of these tools. If you reached a rate limit on your Free tier account, your usage rates reset when you update your account to a Plus plan, a Pro plan, or a Business plan.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A ChatGPT azt írja, hogy megtelt a csevegésem. Mit tegyek?",
+        "why": "A „Context window full” és a „Chat memory full” azt jelenti, hogy mennyi információt tud a ChatGPT felhasználni az aktuális beszélgetésben. Az üzeneteid és a ChatGPT válaszai is helyet foglalnak.",
+        "fix": "A ChatGPT-ben: az ingyenes csomagban azonnal új csevegést indíthatsz, és a megtelt csevegésről szóló értesítés nem adja meg, mikor áll vissza az eredeti beszélgetés. Ha az értesítés frissítést ajánl fel, kiválaszthatod, hogy ugyanabban a csevegésben folytasd.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "Az új csevegésem már néhány üzenet után megtelik",
+        "why": "Néhány hosszú üzenetváltás több helyet foglalhat, mint sok rövid, ezért nincs csevegésenként rögzített üzenetszám.",
+        "fix": "A ChatGPT-ben: ha összefoglalóval folytattad, és ismét elérted a korlátot, indíts külön csevegést az oldalsávból. Küldd el csak azt a kérdést vagy szövegrészletet, amelyen dolgozni szeretnél, és szükség szerint add hozzá a korábbi utasításokat.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "Nem tudok üzeneteket küldeni egy régi csevegésben, de szükségem van a részleteire",
+        "why": "A korábbi üzeneteket akkor is elolvashatod, ha már nem tudsz újabbat küldeni abban a csevegésben. Ha a csevegés nem jelenik meg az oldalsávban, rákereshetsz a csevegési előzményeidben egy emlékezetedben lévő kifejezésre.",
+        "fix": "A ChatGPT-ben: ha a beszélgetés el van mentve az előzményeidben, nyisd meg, és másold ki a szükséges részleteket. Ha nem látod az oldalsávban, keress rá a csevegési előzményeidben egy emlékezetedben lévő kifejezésre.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "Elértem a fájlfeltöltési vagy képkorlátot, de a normál csevegés továbbra is működik",
+        "why": "A fájlfeltöltésnek, a képgenerálásnak, a hangfunkciónak, az adatelemzésnek és más eszközöknek külön használati korlátjuk van. Az ingyenes felhasználók számára a mindennapi szöveges csevegések korlátlanok, a visszaélések megelőzését szolgáló biztonsági intézkedések mellett.",
+        "fix": "A ChatGPT-ben: ha elérted ezen eszközök valamelyikének használati korlátját, várnod kell egy későbbi időpontig, hogy bármelyiküket használhasd. Ha az ingyenes csomagban érted el a használati korlátot, a használati korlátaid visszaállnak, amikor Plus csomagra, Pro csomagra vagy Business csomagra frissíted a fiókodat.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "ChatGPT dice que mi chat está lleno, ¿qué hago?",
+        "why": "«Ventana de contexto llena» y «Memoria del chat llena» se refieren a cuánta información puede usar ChatGPT en la conversación actual. Tus mensajes y las respuestas de ChatGPT ocupan espacio.",
+        "fix": "En ChatGPT: con el plan Free, puedes iniciar un chat nuevo de inmediato, y el aviso de chat lleno no indica un tiempo de restablecimiento para la conversación original. Si el aviso ofrece una actualización, puedes elegirla para continuar en el mismo chat.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "Mi chat nuevo se llena después de solo unos pocos mensajes",
+        "why": "Unos pocos intercambios largos pueden ocupar más espacio que muchos intercambios cortos, así que no hay un número fijo de mensajes por chat.",
+        "fix": "En ChatGPT: si continuaste con un resumen y volviste a alcanzar el límite, inicia un chat separado desde la barra lateral. Envía solo la pregunta o el fragmento en el que quieres trabajar y añade las instrucciones anteriores según las necesites.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "No puedo enviar mensajes en un chat antiguo, pero necesito sus detalles",
+        "why": "Aún puedes leer los mensajes anteriores aunque no puedas enviar otro en ese chat. Si el chat no aparece en la barra lateral, puedes buscar en tu historial de chats una frase que recuerdes.",
+        "fix": "En ChatGPT: si la conversación está guardada en tu historial, ábrela y copia los detalles que necesites. Si no la ves en la barra lateral, busca en tu historial de chats una frase que recuerdes.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "Alcancé un límite de carga de archivos o imágenes, pero el chat normal sigue funcionando",
+        "why": "Las cargas de archivos, la generación de imágenes, la voz, el análisis de datos y otras herramientas tienen límites de uso independientes. Los usuarios de Free tienen chats de texto cotidianos ilimitados, sujetos a medidas de protección contra el uso indebido.",
+        "fix": "En ChatGPT: si alcanzas un límite de frecuencia para una de estas herramientas, tendrás que esperar hasta más tarde para usar cualquiera de ellas. Si alcanzaste un límite de frecuencia en tu cuenta del plan Free, tus límites de uso se restablecen cuando actualizas tu cuenta al plan Plus, al plan Pro o al plan Business.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      }
+    ]
+  }
+}
