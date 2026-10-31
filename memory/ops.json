@@ -1285,24 +1285,6 @@
   ],
   "messages": [
     {
-      "id": "m179203120614233",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to ask Alexa+ for outfit suggestions based on the day's weather forecast\" — javítva: Az AI-bíró kitalált állítást talált (részletek nélkül); Reviewer verdict: Hitelesség-kapu blokkolta: Az AI-bíró kitalált állítást talált (részletek nélkül); újraküldöm.",
-      "ref": "GUIDE_how-to-ask-alexa-for-outfit-suggestions-based-on-the-day-s-w.json",
-      "at": "2026-10-15T02:26:46.142Z"
-    },
-    {
-      "id": "m17920312350136",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to ask Alexa+ for outfit suggestions based on the day's weather forecast\" (?/10)",
-      "ref": "GUIDE_how-to-ask-alexa-for-outfit-suggestions-based-on-the-day-s-w.json",
-      "at": "2026-10-15T02:27:15.013Z"
-    },
-    {
       "id": "m179203156069472",
       "from": "designer",
       "to": "team",
@@ -2680,6 +2662,24 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-10-31T03:31:43.471Z"
+    },
+    {
+      "id": "m179345531265681",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"New Gemini tools for small business owners\" — Article says 'announcement does not yet list what each tool does' and 'is light on specifics', but source provides specific details about tools: connect to apps (Google Business Profile, Google Ads, Google Workspace, Adobe, Canva, Dropbox, Shopify, Wix, Zoho, Xero), upload brand kits/fonts/c",
+      "ref": "ARTICLE_2026-10-30T03-26-53-524Z_google-gemini_New_Gemini_tools_for_small_business_owners.json",
+      "at": "2026-10-31T14:01:52.656Z"
+    },
+    {
+      "id": "m179345533853522",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use Gemini to update your resume\" — Article says 'We do not have those four steps in the material we are working from, so we will not invent them here' — but source HAS the four steps numbered 1-4",
+      "ref": "ARTICLE_2026-10-30T03-26-19-950Z_google-gemini_How_to_use_Gemini_to_update_your_resume.json",
+      "at": "2026-10-31T14:02:18.535Z"
     }
   ]
 }
