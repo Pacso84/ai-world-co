@@ -92,6 +92,7 @@ const FRISSESSEG_KIVETEL = {
 
 /** Memória-író, ami NEM őrszem-kimenet. Új állapotfájl → ide, egy mondat indoklással. */
 const NEM_ORSZEM = {
+  'halott-url-allapot.json': 'az IndexNow halott-link sora (core/halott-url.js): élő slugok + eltűnt címek bejelentési állapota — munkaállapot, nem lelet',
   'ceo-desk-log.json': 'a CEO-asztal napi döntés-naplója (agents/ceo/desk.js) — a riport statisztikát olvas belőle, nem lelet',
   'chat-history.json': 'a Telegram-bot beszélgetés-előzménye (core/telegram.js) — munkaanyag, nincs benne ellenőrzés',
   'compare-state.json': 'a heti összehasonlító agent futás-kapuja (last_week, hibaszámláló) — ismétlés-védelem',

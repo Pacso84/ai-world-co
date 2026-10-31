@@ -17,13 +17,14 @@
 // ===================================================================
 
 import 'dotenv/config';
-import { readFileSync, readdirSync, existsSync } from 'fs';
+import { readFileSync, readdirSync, existsSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { noindexNyelv } from './noindex-langs.js';
 import { toroltUrlek } from './guide-prune.js';
 import { valodiModositas } from './sitemap-lastmod.js';
 import { osszevontUrlek } from './utmutato-osszevonas.js';
+import { frissit as halottFrissit, esedekes as halottEsedekes, bejelentve as halottBejelentve } from './halott-url.js';   // 🪦 2026-10-31
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -59,12 +60,14 @@ export async function submitIndexNow({ all = false, dry = false } = {}) {
   // Friss cikkek összegyűjtése
   const urls = new Set();
   const now = Date.now();
+  const eloSlugok = [];   // 🪦 a halott-link őrnek: MINDEN élő cikk, nem csak a friss
   if (existsSync(ARTICLES_DIR)) {
     for (const f of readdirSync(ARTICLES_DIR).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
       try {
         const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
         // 2026-10-19: a MÓDOSÍTOTT cikk is friss (felújító, tény-ellenőrző javítása) — ugyanaz a dátum,
         // ami az oldalon „Frissítve”-ként és a sitemapban lastmod-ként látszik (core/sitemap-lastmod.js).
+        if (d._meta?.slug) eloSlugok.push(d._meta.slug);
         const pub = new Date(valodiModositas(d._meta) || 0).getTime();
         const written = new Date(d._meta?.written_at || 0).getTime();
         if (!all && (now - Math.max(pub, written)) > FRESH_HOURS * 3600e3) continue;
@@ -94,6 +97,19 @@ export async function submitIndexNow({ all = false, dry = false } = {}) {
     const lista = JSON.parse(readFileSync(join(ROOT, 'memory', 'torolt-hirek.json'), 'utf-8'));
     for (const u of toroltUrlek(lista, site, LANGS, now, FRESH_HOURS)) urls.add(u);
   } catch { /* nincs törölt hír — nem baj */ }
+  // 🪦 HALOTT-LINK ŐR (2026-10-31, core/halott-url.js): ami az előző futás óta eltűnt — BÁRMILYEN okból —, azt is
+  // bejelentjük; kipipálni CSAK sikeres válasz után (lent), így egy elbukott futás után a következő pótolja.
+  const HALOTT_UT = join(ROOT, 'memory', 'halott-url-allapot.json');
+  let halott = null, halottSlugok = [];
+  try {
+    let elozo = null; try { elozo = JSON.parse(readFileSync(HALOTT_UT, 'utf-8')); } catch { /* első futás: alapállapot */ }
+    if (eloSlugok.length > 50) {   // ha a cikkmappa valamiért üres/sérült, NE jelentsünk mindent halottnak
+      halott = halottFrissit(elozo, eloSlugok, now);
+      halottSlugok = halottEsedekes(halott, now);
+      for (const s of halottSlugok) for (const lp of LANGS) urls.add(`${site}${lp}/article/${s}`);
+      if (halottSlugok.length) console.log(`   🪦 halott link bejelentésre: ${halottSlugok.length} (${halottSlugok.slice(0, 3).join(', ')}${halottSlugok.length > 3 ? '…' : ''})`);
+    }
+  } catch (e) { console.log('   ⚠️ halott-link őr hiba (nem kritikus): ' + e.message.slice(0, 80)); }
   // ÖSSZEVONT ÚTMUTATÓK (2026-10-19, core/utmutato-osszevonas.js): a régi cím (most 301) és a megmaradó.
   try {
     const naplo = JSON.parse(readFileSync(join(ROOT, 'content', 'osszevonas-naplo.json'), 'utf-8'));
@@ -103,7 +119,10 @@ export async function submitIndexNow({ all = false, dry = false } = {}) {
   if (urls.size > 0 || all) {
     for (const lp of LANGS) { urls.add(`${site}${lp}/`); urls.add(`${site}${lp}/guides`); urls.add(`${site}${lp}/tools`); }
   }
-  if (urls.size === 0) { console.log('   💤 IndexNow: nincs friss URL — nincs bejelentés.'); return { submitted: 0 }; }
+  if (urls.size === 0) {
+    if (halott && !dry) { try { writeFileSync(HALOTT_UT, JSON.stringify(halott, null, 2) + '\n'); } catch { /* nem kritikus */ } }   // az élő-lista így is frissüljön
+    console.log('   💤 IndexNow: nincs friss URL — nincs bejelentés.'); return { submitted: 0 };
+  }
 
   const list = [...urls].slice(0, 10000);   // protokoll-limit
 
@@ -111,6 +130,10 @@ export async function submitIndexNow({ all = false, dry = false } = {}) {
   // Azért kellett, mert évekig észrevétlenül .html-es (átirányító) címeket
   // hirdettünk — pont azt a hibát táplálva, amit a Search Console jelzett.
   // Ilyet csak úgy lehet elkapni, ha meg tudjuk NÉZNI a kimenetet küldés nélkül.
+  const halottMent = (ok) => {   // az állapot mentése; kipipálás CSAK sikeres bejelentés után
+    if (!halott || dry) return;
+    try { writeFileSync(HALOTT_UT, JSON.stringify(ok ? halottBejelentve(halott, halottSlugok, now) : halott, null, 2) + '\n'); } catch { /* nem kritikus */ }
+  };
   if (dry) {
     console.log(`   🧪 PRÓBA — ${list.length} URL menne ki, bejelentés NÉLKÜL:`);
     for (const u of list.slice(0, 8)) console.log('      ' + u);
@@ -134,12 +157,14 @@ export async function submitIndexNow({ all = false, dry = false } = {}) {
     // 200 = feldolgozva, 202 = elfogadva (első alkalommal tipikus, amíg a kulcsot ellenőrzi)
     if (r.status === 200 || r.status === 202) {
       console.log(`   📣 IndexNow: ${list.length} URL bejelentve (HTTP ${r.status})`);
+      halottMent(true);
       return { submitted: list.length };
     }
     console.log(`   ⚠️ IndexNow HTTP ${r.status}: ${(await r.text()).slice(0, 120)}`);
   } catch (e) {
     console.log(`   ⚠️ IndexNow hiba (nem kritikus): ${e.message.slice(0, 80)}`);
   }
+  halottMent(false);
   return { submitted: 0 };
 }
 
