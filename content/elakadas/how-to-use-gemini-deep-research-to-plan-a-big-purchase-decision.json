@@ -1,6 +1,89 @@
 {
   "slug": "how-to-use-gemini-deep-research-to-plan-a-big-purchase-decision",
-  "probalva": "2026-11-03T21:26:14.807Z",
-  "doboz": null,
-  "atmeneti": true
+  "probalva": "2026-11-04T21:41:10.227Z",
+  "doboz": {
+    "keszult": "2026-11-04T21:41:10.227Z",
+    "enHash": "dab6b909078b22b38b385b90fd73b9af3e592759",
+    "forrasok": {
+      "https://support.google.com/gemini/answer/15719111": "Use Deep Research in Gemini Apps - Computer"
+    },
+    "en": [
+      {
+        "symptom": "The research plan isn't what I wanted. Can I change it before it runs?",
+        "why": "Gemini will create a research plan for your topic. You can update the research plan before you create a report.",
+        "fix": "To update the research plan before you create a report, click Edit plan. Then click Start research.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "My report only uses Google Search. How do I add my Gmail or Drive?",
+        "why": "By default, Gemini includes Google Search as a source for your research. You can change or add other sources, like your personal Gmail or Drive, for your research.",
+        "fix": "Click Sources and select the sources you want to include, like Gmail or Drive. Other Google services, like Gmail and Drive, are only available if the Google Workspace app is connected to Gemini Apps. To limit your research to other selected sources, deselect Google Search.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "No charts or visuals appear in my Deep Research report.",
+        "why": "With a Google AI Ultra plan, Deep Research reports can include animations and visuals. For now, this feature isn't available if you include any Google Workspace services, like Gmail and Drive, as a source.",
+        "fix": "Visuals are included directly in the report and can include charts, diagrams, and interactive simulators. Visuals are not available if you include Google Workspace services, like Gmail and Drive, as a source.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "I can't find my research report from last week.",
+        "why": "You can only find past research reports if your Keep Activity setting is on.",
+        "fix": "Go to gemini.google.com, and if your chats are hidden, at the top, click Menu. Under 'Recent,' find your research chat, but only if your Keep Activity setting is on.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A kutatási terv nem az, amit szerettem volna. Módosíthatom, mielőtt lefut?",
+        "why": "A Gemini kutatási tervet készít a témádhoz. A jelentés létrehozása előtt frissítheted a kutatási tervet.",
+        "fix": "A jelentés létrehozása előtt a kutatási terv frissítéséhez kattints az Edit plan lehetőségre. Ezután kattints a Start research lehetőségre.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "A jelentésem csak a Google Search szolgáltatást használja. Hogyan adhatom hozzá a Gmailt vagy a Drive-ot?",
+        "why": "A Gemini alapértelmezés szerint a Google Search szolgáltatást is forrásként használja a kutatásodhoz. Más forrásokat is módosíthatsz vagy hozzáadhatsz a kutatásodhoz, például a saját Gmail- vagy Drive-fiókodat.",
+        "fix": "Kattints a Sources lehetőségre, és válaszd ki a használni kívánt forrásokat, például a Gmailt vagy a Drive-ot. Más Google-szolgáltatások, például a Gmail és a Drive, csak akkor érhetők el, ha a Google Workspace alkalmazás csatlakoztatva van a Gemini Apps szolgáltatáshoz. Ha a kutatást a többi kiválasztott forrásra szeretnéd korlátozni, szüntesd meg a Google Search kijelölését.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "Nem jelennek meg diagramok vagy vizuális elemek a Deep Research-jelentésemben.",
+        "why": "Google AI Ultra-csomaggal a Deep Research-jelentések animációkat és vizuális elemeket is tartalmazhatnak. Ez a funkció jelenleg nem érhető el, ha bármely Google Workspace-szolgáltatást, például a Gmailt vagy a Drive-ot forrásként adod meg.",
+        "fix": "A vizuális elemek közvetlenül a jelentésben jelennek meg, és tartalmazhatnak diagramokat, ábrákat és interaktív szimulátorokat. A vizuális elemek nem érhetők el, ha Google Workspace-szolgáltatásokat, például a Gmailt vagy a Drive-ot forrásként adod meg.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "Nem találom a múlt heti kutatási jelentésemet.",
+        "why": "Korábbi kutatási jelentéseidet csak akkor találhatod meg, ha a Keep Activity beállítás be van kapcsolva.",
+        "fix": "Nyisd meg a gemini.google.com oldalt, és ha a csevegéseid rejtve vannak, kattints felül a Menu lehetőségre. A „Recent” alatt keresd meg a kutatási csevegésedet, de csak akkor, ha a Keep Activity beállítás be van kapcsolva.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "El plan de investigación no es lo que quería. ¿Puedo cambiarlo antes de que se ejecute?",
+        "why": "Gemini creará un plan de investigación para tu tema. Puedes actualizar el plan de investigación antes de crear un informe.",
+        "fix": "Para actualizar el plan de investigación antes de crear un informe, haz clic en Edit plan. Luego, haz clic en Start research.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "Mi informe solo usa Google Search. ¿Cómo añado mi Gmail o Drive?",
+        "why": "De forma predeterminada, Gemini incluye Google Search como fuente para tu investigación. Puedes cambiar o añadir otras fuentes, como tu Gmail o Drive personales, para tu investigación.",
+        "fix": "Haz clic en Sources y selecciona las fuentes que quieras incluir, como Gmail o Drive. Otros servicios de Google, como Gmail y Drive, solo están disponibles si la aplicación Google Workspace está conectada a Gemini Apps. Para limitar tu investigación a otras fuentes seleccionadas, desmarca Google Search.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "No aparecen gráficos ni elementos visuales en mi informe de Deep Research.",
+        "why": "Con un plan Google AI Ultra, los informes de Deep Research pueden incluir animaciones y elementos visuales. Por ahora, esta función no está disponible si incluyes servicios de Google Workspace, como Gmail y Drive, como fuente.",
+        "fix": "Los elementos visuales se incluyen directamente en el informe y pueden incluir gráficos, diagramas y simuladores interactivos. Los elementos visuales no están disponibles si incluyes servicios de Google Workspace, como Gmail y Drive, como fuente.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "No encuentro mi informe de investigación de la semana pasada.",
+        "why": "Solo puedes encontrar informes de investigación anteriores si la opción Keep Activity está activada.",
+        "fix": "Ve a gemini.google.com y, si tus chats están ocultos, haz clic en Menu en la parte superior. En «Recent», busca tu chat de investigación, pero solo si la opción Keep Activity está activada.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      }
+    ]
+  }
 }
