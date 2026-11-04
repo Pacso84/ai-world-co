@@ -1,0 +1,71 @@
+{
+  "slug": "how-to-use-claude-code-to-sort-a-messy-downloads-folder-on-your-comput",
+  "probalva": "2026-10-27T20:23:46.711Z",
+  "doboz": {
+    "keszult": "2026-10-27T20:23:46.711Z",
+    "enHash": "42afe9665c0e8166702501d998d745d426b0ea95",
+    "forrasok": {
+      "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code": "Your first day in claude code"
+    },
+    "en": [
+      {
+        "symptom": "A change Claude made gave an unexpected result. How do I undo it?",
+        "why": "Your git history remains untouched until you commit.",
+        "fix": "If a change produces an unexpected result, git checkout will undo it, and your git history stays untouched until you commit.",
+        "source": "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code"
+      },
+      {
+        "symptom": "Claude Code seems to be looking at the wrong folder.",
+        "why": "Claude Code reads your files on demand, so there's nothing to upload or attach.",
+        "fix": "In the terminal, run cd path/to/your/project to go to the folder you want. Then start Claude Code from inside the repository by running claude.",
+        "source": "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code"
+      },
+      {
+        "symptom": "I don't know which way to sign in to Claude Code.",
+        "why": "If you are unsure which method applies, check with your administrator or try /login first. Using /login is the default for most organizations.",
+        "fix": "If your organization uses a paid Claude plan, run claude, then /login, and approve the request in your browser. Include SSO if prompted.",
+        "source": "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A Claude által végrehajtott módosítás váratlan eredményt hozott. Hogyan vonhatom vissza?",
+        "why": "A git-előzményeid érintetlenek maradnak, amíg nem végzel commitot.",
+        "fix": "Ha egy módosítás váratlan eredményt hoz, a git checkout visszavonja, és a git-előzményeid érintetlenek maradnak, amíg nem végzel commitot.",
+        "source": "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code"
+      },
+      {
+        "symptom": "Úgy tűnik, a Claude Code rossz mappát néz.",
+        "why": "A Claude Code igény szerint olvassa be a fájljaidat, ezért nincs mit feltölteni vagy csatolni.",
+        "fix": "A terminálban futtasd a cd path/to/your/project parancsot, hogy a kívánt mappába lépj. Ezután a claude parancs futtatásával indítsd el a Claude Code-ot a repository belsejéből.",
+        "source": "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code"
+      },
+      {
+        "symptom": "Nem tudom, hogyan jelentkezzek be a Claude Code-ba.",
+        "why": "Ha nem vagy biztos benne, melyik módszer vonatkozik rád, kérdezd meg az adminisztrátorodat, vagy először próbáld ki a /login parancsot. A legtöbb szervezetnél alapértelmezés szerint a /login használatos.",
+        "fix": "Ha a szervezeted fizetős Claude-csomagot használ, futtasd a claude, majd a /login parancsot, és hagyd jóvá a kérést a böngésződben. Ha erre felszólít, válaszd az SSO-t.",
+        "source": "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "Un cambio que hizo Claude produjo un resultado inesperado. ¿Cómo lo deshago?",
+        "why": "Tu historial de git permanece intacto hasta que haces un commit.",
+        "fix": "Si un cambio produce un resultado inesperado, git checkout lo deshará y tu historial de git permanecerá intacto hasta que hagas un commit.",
+        "source": "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code"
+      },
+      {
+        "symptom": "Parece que Claude Code está mirando la carpeta equivocada.",
+        "why": "Claude Code lee tus archivos cuando los necesita, así que no hay nada que subir ni adjuntar.",
+        "fix": "En la terminal, ejecuta cd path/to/your/project para ir a la carpeta que quieres. Después, inicia Claude Code desde dentro del repositorio ejecutando claude.",
+        "source": "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code"
+      },
+      {
+        "symptom": "No sé qué método usar para iniciar sesión en Claude Code.",
+        "why": "Si no tienes claro qué método corresponde, consulta a tu administrador o prueba primero con /login. Usar /login es la opción predeterminada para la mayoría de las organizaciones.",
+        "fix": "Si tu organización usa un plan de pago de Claude, ejecuta claude y después /login, y aprueba la solicitud en tu navegador. Incluye SSO si se te solicita.",
+        "source": "https://support.claude.com/en/articles/14552382-your-first-day-in-claude-code"
+      }
+    ]
+  }
+}

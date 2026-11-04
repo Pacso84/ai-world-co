@@ -1,0 +1,1149 @@
+// ===================================================================
+// NAPI ÖNJELENTÉS — a cég reggel magától beszámol Telegramon
+// ===================================================================
+//
+// User-ötlet (2026-07-07): "jó érzés lenne kávé mellé olvasni, mit csinált
+// éjjel a cég". A cron minden futáskor meghívja, de csak NAPONTA EGYSZER
+// küld (a `last_sent` dedup), és csak a 07-20 UTC sávban — így a hajnali
+// futás nem ébreszt. A DEDUP adja a napi egyet, NEM az időablak; a sáv
+// egyetlen feladata a csendes órák védelme. Lásd: core/report-window.js
+// (2026-08-27: a régi 7-15 túl szűk volt, aznap egy futás sem fért bele).
+//
+// Tartalom: új tartalom (24h), FB-posztok, költés (tegnap + havi),
+// fordítás-hiány, kvóta-tiltások, várólistás forrás-javaslatok.
+//
+// FUTTATÁS:  node core/daily-report.js            (sáv+dedup őrrel)
+//            node core/daily-report.js --force    (azonnal, teszthez)
+// ===================================================================
+
+import 'dotenv/config';
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { sendMessage } from './telegram.js';
+import { canonicalChip } from './quality-guard.js';
+import { utmutatoE } from './guide-kind.js';
+import { summarizeRuns, describeFailures } from './make-health.js';
+// A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
+// összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
+import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
+import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, repeatLine, visitorLine, orFutott, zaroSor } from './report-lines.js';
+import { bodyLooksUntranslated } from './translation-guard.js';
+import { shouldSendReport, sikeresKuldes } from './report-window.js';
+import { szurZajt, csendesSor } from './report-noise.js';
+import { elavultOrszemek, frissessegSor } from './guard-freshness.js';
+import { embedSor } from './embed-guard.js';
+import { szemantikusSor } from './semantic-guard.js';
+import { latenciaSor } from './ai-latency-guard.js';
+import { futasokLekerdez, sodrodasVizsgalat, sodrodasSor } from './watchdog-drift.js';
+import { linkSor } from './internal-link-guard.js';
+import { bufferSor, tiktokSor } from './buffer-guard.js';
+import { riportSor as fbRiportSor } from './fb-link-guard.js';
+import { tesztSor } from './test-guard.js';
+import { pdfLetoltesSor } from './pdf-download.js';
+import { bevaltSor, EXPORT_HIBA } from './bevalt-jelzes.js';   // 👍 „Bevált?” 10-23
+import { partnerKattintasSor } from './affiliate.js';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const ROOT = join(__dirname, '..');
+const STATE_PATH = join(ROOT, 'memory', 'daily-report-state.json');
+const FORCE = process.argv.includes('--force');
+// Havi vész-stop — A BUDGET.JS-TŐL kérdezzük, nem a nyers config-mezőből.
+// 2026-08-01: a riport a `monthly_budget_usd_hard_cap`-et olvasta közvetlenül
+// (=50), miközben a cég valójában 40-nél áll le, mert a hónapra bontott
+// felülírás (`..._by_month`) augusztus 1-jén életbe lépett. A user tehát egy
+// olyan keretet látott, ami nem az, ami tényleg megállítja a céget.
+// TANULSÁG: ha egy értéknek van kiszámított, hiteles forrása, a jelentés NE
+// számolja ki újra — kérdezze meg. A duplikált logika addig néma, amíg a két
+// eredmény véletlenül egyezik, és pont a váltás pillanatában hazudik.
+let HARD_CAP = 40, DAY_CAP = null;
+try {
+  const bs = (await import('./budget.js')).budgetStatus();
+  HARD_CAP = bs.monthHardCap ?? HARD_CAP;
+  DAY_CAP = bs.dayHardCap ?? null;
+} catch { /* marad az alap */ }
+
+function today() { return new Date().toISOString().slice(0, 10); }
+
+// ── FORDÍTÁSI HÁTRALÉK VÁRHATÓ KÖLTSÉGE (2026-08-01) ────────────────
+// User kérdése: "miért volt tegnap a napi költés az átlaghoz képest drasztikus?"
+// Válasz: egy tömeges cikkjavítás (137 szivárgó sablon-címke) TÖRÖLTE 136 cikk
+// fordítás-gyorsítótárát — helyesen, hiszen az angol szöveg megváltozott —,
+// és ezzel 544 újrafordítást indított. A napi költés $0,60-ról $2,51-re ugrott,
+// és SEMMI nem szólt előre. A riport eddig csak a darabszámot mutatta ("86 pár"),
+// ami egy nem-technikus olvasónak nem mond semmit a pénzről.
+//
+// Mostantól: ha a hátralék szokatlanul nagy, a riport odaírja, mibe fog kerülni.
+// Az egy fordításra jutó árat a fordító méri (memory/translation-cost.json,
+// gördülő átlag) — beégetett konstans némán elavulna.
+//
+// KÜSZÖB: a napi rendes termés ~35 fordítás (2 élő nyelv × ~17 cikk). A 100
+// fölötti hátralék tehát már nem a szokásos menet, hanem valami tömeges dolog.
+const FORECAST_MIN = 100;
+function translationForecast(missing) {
+  if (!missing || missing < FORECAST_MIN) return '';
+  try {
+    const s = JSON.parse(readFileSync(join(ROOT, 'memory', 'translation-cost.json'), 'utf-8'));
+    const avg = s.avg_usd_per_translation;
+    if (!avg) return '';
+    return ` · ⏳ várható költség kb. $${(missing * avg).toFixed(2)}`;
+  } catch { return ''; }
+}
+
+// ── EGYENLEG-ŐR (2026-08-01) ────────────────────────────────────────
+// User: "ennyi a keretünk, most töltöttem fel, és vidd le a havi keretet
+// 25-re, ez kb elég lesz egy hónapra" — majd: "az egyenleg minden hónap
+// elsején újra kezdődik" (havonta tölt fel).
+//
+// A HAVI KERET ÉS AZ EGYENLEG NEM UGYANAZ A KORLÁT. A keret egy szabály,
+// amit mi tartunk be; az egyenleg fizikai valóság. Ha a költés megugrik,
+// a pénz elfogy, és a havi keret SOSEM sül el — a cég némán elhallgat
+// (a fizetős hívások elhasalnak, a vészháló gyengébb ingyenes modellekre
+// esik, a minőség leromlik) anélkül, hogy bármi szólna róla.
+//
+// AMIT KÉRDEZÜNK: nem az, hogy "hány napra elég" — az absztrakt szám nem
+// mond semmit. Havi feltöltésnél a valódi kérdés, hogy ELÉR-E A KÖVETKEZŐ
+// FELTÖLTÉSIG. Egy hó eleji "20 napra elég" nyugtatónak hangzik, pedig ha
+// 30 nap van hátra, akkor baj van; egy hó végi "3 napra elég" ijesztő,
+// pedig épp elég. Ezért a hónap végéhez mérünk.
+//
+// Read-only hívás, $0. Kulcs nélkül (helyi futás) csendben kimarad.
+async function openrouterBalance(burnPerDay) {
+  const key = process.env.OPENROUTER_API_KEY;
+  if (!key) return '';
+  try {
+    const r = await fetch('https://openrouter.ai/api/v1/credits', {
+      headers: { Authorization: 'Bearer ' + key }, signal: AbortSignal.timeout(15000)
+    });
+    if (!r.ok) return '';
+    const d = (await r.json()).data || {};
+    const left = Number(d.total_credits) - Number(d.total_usage);
+    if (!isFinite(left)) return '';
+    if (!(burnPerDay > 0.005)) return `🏦 Egyenleg: $${left.toFixed(2)}`;
+
+    // A SÜRGŐSSÉGHEZ IGAZODÓ HANG (2026-08-02).
+    //
+    // Eddig a mérce az volt, hogy "eléri-e a hónap végét" — ezért MINDEN NAP
+    // ugyanazt kiabálta ("NEM ÉRI EL"), akkor is, amikor még 19 nap volt hátra.
+    // Egy figyelmeztetés, ami mindennap szól, egy hét alatt láthatatlanná válik,
+    // és pont azon a napon nem nézzük meg, amikor tényleg számít.
+    //
+    // Az új mérce a HÁTRALÉVŐ NAPOK SZÁMA, három hangerővel — és a DÁTUM is
+    // kimegy, mert a user azt tudja összevetni a fizetése napjával; a "19 nap"
+    // ehhez fejben számolást kér, a "augusztus 21." nem.
+    const days = Math.floor(left / burnPerDay);
+    const out = new Date(Date.now() + days * 86400000);
+    const HU_MONTH = ['jan.', 'febr.', 'márc.', 'ápr.', 'máj.', 'jún.', 'júl.', 'aug.', 'szept.', 'okt.', 'nov.', 'dec.'];
+    const when = `${HU_MONTH[out.getMonth()]} ${out.getDate()}.`;
+
+    if (days <= 5) {
+      return `🚨 *EGYENLEG: $${left.toFixed(2)} — kb. ${days} nap múlva ELFOGY (${when})*, utána megáll a termelés. Tölts fel!`;
+    }
+    if (days <= 13) {
+      return `⚠️ Egyenleg: $${left.toFixed(2)} — kb. ${days} napra elég (${when}), érdemes feltölteni.`;
+    }
+    return `🏦 Egyenleg: $${left.toFixed(2)} — kb. ${days} napra elég (${when}).`;
+  } catch { return ''; }
+}
+
+// A DÖNTÉS a core/report-window.js-ben él, mert ez a modul feltétel nélkül
+// hívja a main()-t — importálni sem lehet, tehát tesztelni sem lehetett.
+// (2026-08-27: aznap egyetlen futás sem fért be a régi 7-15 UTC sávba, és
+// a jelentés némán elmaradt. Lásd a report-window.js fejlécét.)
+/**
+ * A riport állapotfájlja. Két dolgot tart:
+ *   last_sent — melyik napra ment már ki (dedup)
+ *   orszem    — melyik őrszem-sort láttuk utoljára milyennek (zajszűrés)
+ * Hiányzó vagy sérült fájlra ÜRES objektum, nem hiba.
+ */
+function allapotOlvas() {
+  try { return JSON.parse(readFileSync(STATE_PATH, 'utf-8')) || {}; }
+  catch { return {}; }
+}
+
+function guard() {
+  const lastSent = allapotOlvas().last_sent || null;
+
+  const d = shouldSendReport({
+    hour: new Date().getUTCHours(),
+    lastSent,
+    today: today(),
+    force: FORCE
+  });
+  if (!d.send) console.log('⏭️  Napi jelentés: ' + d.reason + ' — kihagyom.');
+  return d.send;
+}
+
+function collect() {
+  const now = Date.now();
+  const h24 = 24 * 3600e3;
+
+  // Új tartalom — NAPTÁRI NAP szerint (2026-07-23 fix, user: "nincs 16 hír mára").
+  // Régen 24 ÓRÁS gördülő ablak volt, ami "most"-hoz képest nézett vissza — így
+  // átnyúlt a TEGNAP ESTI futásba, és a napi 8-as plafon ellenére 16-ot mutatott
+  // (7 tegnap este + 9 ma). A user "Napi jelentés — MA" fejlécet olvas, tehát a
+  // szám a MAI napra vonatkozzon.
+  //
+  // ⚠️ 2026-08-27 óta a jelentés NEM biztosan dél körül megy (az időablak
+  // 07-20 UTC, lásd core/report-window.js). Ez a szám tehát a nap addig
+  // eltelt részét fedi: egy 08:00-s jelentés kevesebbet lát, mint egy
+  // 18:00-s. A napok EGYMÁSSAL való összevetésekor ezt vedd figyelembe —
+  // a különbség lehet a kiküldés időpontja, nem a termelés.
+  const dayStr = today();
+  let news = 0, guides = 0; const titles = []; const maiCikkek = [];
+  const artDir = join(ROOT, 'content', 'articles');
+  if (existsSync(artDir)) {
+    for (const f of readdirSync(artDir).filter(x => x.endsWith('.json'))) {
+      try {
+        const d = JSON.parse(readFileSync(join(artDir, f), 'utf-8'));
+        if ((d._meta?.published_at || '').slice(0, 10) !== dayStr) continue;
+        // ÖSSZEVONÁS-SOR (2026-08-18): ugyanebből a ciklusból gyűjtjük, hogy a
+        // 744 cikk NE olvasódjon be másodszor is.
+        maiCikkek.push(d);
+        // Útmutató: a _meta.type MINDIG megbízható a guide-oknál; a hír-cikkeknek
+        // nincs type mezőjük — a fájlnév-előtag a biztos tartalék (2026-07-23).
+        // 2026-09-16 óta a közös core/guide-kind.js dönt: ha a riport MÁS
+        // szabállyal számolna, mint amivel a rendszer publikál, a napi
+        // „N hír + M útmutató" sor valótlan adatot küldene a usernek.
+        utmutatoE(f, d) ? guides++ : news++;
+        if (titles.length < 3) {
+          let title = d.original_title || f;
+          try {
+            const hu = JSON.parse(readFileSync(join(ROOT, 'content', 'translations', f), 'utf-8')).hu || '';
+            const m = hu.match(/^title:\s*["']?(.+?)["']?\s*$/m);
+            if (m) title = m[1];
+          } catch { /* marad az angol, ha még nincs fordítás */ }
+          titles.push(title);
+        }
+      } catch { /* skip */ }
+    }
+  }
+
+  // FB-posztok (24 óra)
+  let fbPosts = 0;
+  const socDir = join(ROOT, 'content', 'social');
+  if (existsSync(socDir)) {
+    for (const f of readdirSync(socDir).filter(x => x.endsWith('.json'))) {
+      try {
+        const p = JSON.parse(readFileSync(join(socDir, f), 'utf-8'));
+        if (p.posted_fb === true && p.posted_at && (now - new Date(p.posted_at).getTime()) < h24) fbPosts++;
+      } catch { /* skip */ }
+    }
+  }
+
+  // Költés (budget-state: days)
+  let spentYesterday = 0, spentMonth = 0, spentToday = 0, burnPerDay = 0;
+  try {
+    const b = JSON.parse(readFileSync(join(ROOT, 'core', 'budget-state.json'), 'utf-8'));
+    const days = b.days || {};
+    const y = new Date(now - h24).toISOString().slice(0, 10);
+    const month = today().slice(0, 7);
+    spentYesterday = days[y]?.total || 0;
+    spentToday = days[today()]?.total || 0;        // a napi kerethez (2026-08-01)
+    for (const [d, v] of Object.entries(days)) if (d.startsWith(month)) spentMonth += v.total || 0;
+    // Napi tempó a 7 LEGUTÓBBI TELJES napból (a mai félkész nap kihagyva).
+    // KÖZÉPÉRTÉK, NEM ÁTLAG: egyetlen rendellenes nap az átlagot elviszi —
+    // a 07-31-i $2,51 (tömeges újrafordítás) a hetes átlagot $0,40-ról
+    // $0,85-re emelte, vagyis a maradék pénzt feleannyi napra becsülte
+    // volna. A középértéket egy kilengő nap nem mozdítja el.
+    const full = Object.entries(days).filter(([d]) => d < today()).sort().slice(-7);
+    if (full.length) {
+      const v = full.map(([, x]) => x.total || 0).sort((a, b) => a - b);
+      burnPerDay = v.length % 2 ? v[(v.length - 1) / 2] : (v[v.length / 2 - 1] + v[v.length / 2]) / 2;
+    }
+  } catch { /* skip */ }
+
+  // Fordítás-hiány
+  // 2026-08-10: a szám mellé a NEVEK is kellenek. A 08-09-i heti összefoglaló
+  // magyarul üresen maradt és angolul ment ki; a riport ezt "1 pár"-ként írta
+  // le, és a hibát végül a user vette észre az oldalon, nem a rendszer.
+  // Azóta a TARTALMAT is nézzük: a megléte nem jelenti, hogy le is fordult.
+  let missing = 0;
+  const gaps = [];
+  if (existsSync(artDir)) {
+    for (const f of readdirSync(artDir).filter(x => x.endsWith('.json'))) {
+      let t = {};
+      try { t = JSON.parse(readFileSync(join(ROOT, 'content', 'translations', f), 'utf-8')); } catch { /* nincs */ }
+      let slug = f, kiemelt = false;
+      try {
+        const en = JSON.parse(readFileSync(join(artDir, f), 'utf-8'));
+        slug = en._meta?.slug || f;
+        kiemelt = /weekly-digest/.test(en.article_markdown || '');
+      } catch { /* a fájlnév is elég azonosítónak */ }
+      // CSAK AZ ÉLŐ NYELVEK (2026-08-01). A de/fr 2026-07-31-én kivezetve —
+      // a számláló viszont tovább kereste őket, és minden reggel 86-90 "hiányzó
+      // párt" jelentett a usernek. Mérve: az élő nyelveken a hiány NULLA volt,
+      // vagyis a riport hónapokig létező lemaradást mutatott volna ott, ahol a
+      // munka valójában hibátlan. Forrás: agents/translator/agent.js LANGS
+      // (onnan importálni nem lehet: a modul betöltéskor elindítja a fordítást).
+      for (const l of ['hu', 'es']) {
+        const md = t[l];
+        if (!md) { missing++; gaps.push({ slug, lang: l, ok: 'ÜRES', kiemelt }); continue; }
+        const body = String(md).replace(/^---[\s\S]*?---/, '');
+        if (bodyLooksUntranslated(body)) {
+          missing++; gaps.push({ slug, lang: l, ok: 'angolul maradt', kiemelt });
+        }
+      }
+    }
+  }
+
+  // ÚJ eszköz/cég HIVATALOS LINK nélkül (2026-07-12, "model-bővítés legyen
+  // automatikus"): ha egy guide tool-jához ÉS cégéhez sincs link a térképben,
+  // a gomb nem jelenik meg — ilyenkor itt szólunk, hogy 1 sor bővítés kell.
+  let missingLinks = [];
+  try {
+    const tl = JSON.parse(readFileSync(join(ROOT, 'website', 'tool-links.json'), 'utf-8'));
+    const seen = new Set();
+    for (const f of readdirSync(artDir).filter(x => x.endsWith('.json'))) {
+      try {
+        const d = JSON.parse(readFileSync(join(artDir, f), 'utf-8'));
+        if (!utmutatoE(f, d)) continue;          // közös szabály (2026-09-16)
+        const md = d.article_markdown || '';
+        const strip = (s) => (s || '').trim().replace(/^["']+|["']+$/g, '').trim();
+        // Frontmatter az elsődleges — a build is azt mutatja; kanonikus névvel
+        // keresünk linket, hogy ne legyen hamis "nincs link" riasztás (2026-07-13)
+        const comp = strip((md.match(/^company:\s*(.*)$/m) || [])[1] || d._meta?.company);
+        const tool = canonicalChip((md.match(/^tool:\s*(.*)$/m) || [])[1] || d._meta?.tool, comp);
+        if ((tl.ignore || []).includes(tool) || (tl.ignore || []).includes(comp)) continue;
+        if (!tl.tools[tool] && !tl.companies[comp]) {
+          const key = tool || comp;
+          if (key && !seen.has(key)) { seen.add(key); missingLinks.push(key); }
+        }
+      } catch { /* skip */ }
+    }
+  } catch { /* nincs térkép-fájl */ }
+
+  // Aktív kvóta-tiltások + várólistás forrás-javaslatok
+  let bans = 0, pendingSources = 0;
+  try {
+    const q = JSON.parse(readFileSync(join(ROOT, 'core', 'quota-state.json'), 'utf-8'));
+    bans = Object.values(q).filter(v => new Date(v.until) > new Date()).length;
+  } catch { /* skip */ }
+  try {
+    pendingSources = (JSON.parse(readFileSync(join(ROOT, 'agents', 'source-scout', 'discovered-sources.json'), 'utf-8')).discovered_sources || []).length;
+  } catch { /* skip */ }
+
+  return { news, guides, titles, maiCikkek, fbPosts, spentYesterday, spentToday, spentMonth, burnPerDay, missing, gaps, bans, pendingSources, missingLinks };
+}
+
+// Hány FB-poszt MENT KI valóban az elmúlt 24 órában? A saját jelölésünk
+// (posted_fb) csak annyit tud, hogy a Make ÁTVETTE a kérést — a tényleges
+// megjelenést a Make futási naplója mondja meg. null = nincs adat.
+async function deliveredPosts(scenarioId) {
+  const token = (process.env.MAKE_API_TOKEN || '').trim();
+  if (!token) return null;
+  try {
+    const r = await fetch(`https://eu1.make.com/api/v2/scenarios/${scenarioId}/logs`, {
+      headers: { Authorization: 'Token ' + token }, signal: AbortSignal.timeout(15000)
+    });
+    if (!r.ok) return null;
+    const j = await r.json().catch(() => ({}));
+    const since = new Date(Date.now() - 24 * 3600e3).toISOString();
+    return summarizeRuns(j.scenarioLogs || j.logs || [], since).ok;
+  } catch { return null; }
+}
+
+async function main() {
+  if (!guard()) return;
+  const r = collect();
+  const fbDelivered = await deliveredPosts(FB_SCENARIO_ID);
+
+  // 🚦 MAKE MŰVELET-KERET (2026-08-30). A keret-logika 2026-08-09 óta létezik,
+  // de a szám EDDIG CSAK A CI-NAPLÓBA került — vagyis senkihez.
+  // 🔑 És most már SZOROS: mérve teljes tempón 29 művelet/nap, ami 31 napos
+  // hónapban 899 a 900-as biztonsági plafonnál — EGYETLEN művelet tartalék.
+  // A Reel 08-25-i bekötése ette be a korábbi tartalékot; ez visszatérő,
+  // szerkezeti szorítás minden 31 napos hónap végén.
+  // A sor CSENDES, amíg van hely, és a mért tempóból vetít, nem a maximumból.
+  let keret = '';
+  try {
+    const { usedThisMonth, keretSor } = await import('./make-budget.js');
+    const used = await usedThisMonth({ token: process.env.MAKE_API_TOKEN, day: today() });
+    keret = keretSor(used, today());
+  } catch { /* a riport ettől még kimegy */ }
+
+  // A forgalom-napló olvasása SOSEM dönthet el egy riportot: ha nincs adat,
+  // a sor egyszerűen kimarad (a `lines` szűri az üres elemeket).
+  let latogatoSor = '';
+  try {
+    const { loadLog } = await import('./traffic-log.js');
+    latogatoSor = visitorLine(loadLog(), today());
+  } catch { /* marad üres */ }
+
+  const lines = [
+    `📊 *Napi jelentés — ${today()}*`,
+    ``,
+    `📰 Új tartalom ma: ${r.news} hír + ${r.guides} útmutató`,
+    ...r.titles.map(t => `   • ${t.slice(0, 60)}`),
+    // 👥 A LEGFONTOSABB SZÁM (2026-08-28, user: „amit küld, az nem releváns").
+    // Az adat hónapok óta megvolt a forgalom-naplóban, de sosem került a
+    // jelentésbe — miközben hét sor egy nem létező fejlesztőnek szólt.
+    // Rögtön a tartalom után: „mit csináltunk" → „hányan olvasták".
+    // ⚠️ Szórással, nem üres sztringgel: a tömb 2. eleme egy SZÁNDÉKOS üres
+    // sor (a fejléc alatt), tehát a végén nem lehet csak úgy falsy-t szűrni.
+    ...(latogatoSor ? [latogatoSor] : []),
+    describePosts(r.fbPosts, fbDelivered),
+    ...(keret ? [keret] : []),
+    // A NAPI keret is látszik (2026-08-01) — a user maga kérte a korlátot,
+    // tehát látnia kell, hol tart benne, ne csak akkor derüljön ki, ha betelt.
+    // A keret a MAI költés mellé kerül, nem a tegnapi mellé: a "$2.51 / $1"
+    // úgy olvasódna, mintha tegnap megsértettük volna a keretet.
+    `💰 Tegnap: $${r.spentYesterday.toFixed(2)} · ma: $${r.spentToday.toFixed(2)}${DAY_CAP ? ` / $${DAY_CAP}` : ''} · e havi: $${r.spentMonth.toFixed(2)} / $${HARD_CAP}`,
+    // A hiányzó fordításokat MEGNEVEZZÜK (2026-08-10) — a puszta szám nem
+    // mondja meg, mit kell megnézni, és így csúszott ki egy angol heti
+    // összefoglaló a magyar főoldal tetejére.
+    (describeTranslationGaps(r.gaps) || '🌍 Fordítás: hiánytalan')
+      + `${r.bans ? ` · 🚦 kvóta-tiltás: ${r.bans}` : ''}${translationForecast(r.missing)}`,
+  ];
+  const bal = await openrouterBalance(r.burnPerDay);
+  if (bal) lines.push(bal);
+  if (r.pendingSources > 0) lines.push(`🔭 Jóváhagyásra váró forrás-javaslat: ${r.pendingSources} (írd: "mik a javaslatok?")`);
+  if (r.missingLinks?.length) lines.push(`🔗 Hivatalos link nélküli új eszköz: ${r.missingLinks.join(', ')} — a fejlesztő 1 sorral pótolja (tool-links.json)`);
+  // Minőség-őr összegzés (chip-szabályok + duplikált linkek) — ha talál valamit
+  try {
+    const { qualityFindings } = await import('./quality-guard.js');
+    const qf = qualityFindings();
+    if (qf.length) lines.push(`🧹 Minőség-őr: ${qf.length} találat (pl. ${qf[0].slice(0, 70)}…) — szólj a fejlesztőnek!`);
+  } catch { /* az őr hibája ne állítsa meg a jelentést */ }
+  // Önjavító napló (2026-07-13): amit a cég MAGÁTÓL kijavított, arról csak
+  // beszámol — ehhez már nem kell emberi kéz.
+  try {
+    const flog = JSON.parse(readFileSync(join(ROOT, 'memory', 'quality-fix-log.json'), 'utf-8'));
+    const tf = flog[today()] || [];
+    if (tf.length) lines.push(`🔧 Önjavító: ${tf.length} hibát magamtól kijavítottam (pl. ${tf[0].slice(0, 60)}…)`);
+  } catch { /* még nincs javítás-napló */ }
+  // HAVI VÉSZFÉK-ÁLLAPOT (2026-07-19, user-döntés: cap-nél tiszta szünet):
+  // ha a havi keret betelt, a riport mondja meg, mi van és mikor indul újra.
+  try {
+    const { meteredBlocked } = await import('./budget.js');
+    const mb = meteredBlocked();
+    if (mb.blocked && mb.hard) {
+      // KÉTFÉLE STOP, KÉTFÉLE ÜZENET (2026-08-01). A napi keret bevezetéséig
+      // minden hard-block havi volt, ezért a riport egy NAPI stopra is azt
+      // írta volna, hogy "a cég SZÜNETEL a hónap végéig" — hamis és ijesztő.
+      // Egy órányi várakozás és egy hónapnyi leállás nem ugyanaz.
+      if (mb.daily) {
+        lines.push(`⏸️ Napi keret elérve ($${DAY_CAP}) — a mai munka szünetel, holnap magától folytatódik. Az oldal él, semmi nem veszett el.`);
+      } else {
+        const nextMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1).toISOString().slice(0, 10);
+        lines.push(`⛔ Havi költségkeret elérve ($${HARD_CAP}) — a cég SZÜNETEL a hónap végéig. Az oldal él; ${nextMonth}-én magától újraindul (MiniMax-tervvel olcsóbban).`);
+      }
+    }
+  } catch { /* budget-őr nélkül is megy a riport */ }
+  // KÖZELI-TÉMA-ŐR összegzés (2026-07-18): hány ismétlődő útmutató-témát
+  // szűrtünk ki, mielőtt megíródott volna.
+  try {
+    const dlog = JSON.parse(readFileSync(join(ROOT, 'memory', 'topic-dedup-log.json'), 'utf-8'));
+    const dd = dlog[today()] || [];
+    if (dd.length) lines.push(`🔁 Ismétlődő téma kiszűrve: ${dd.length} (pl. „${(dd[0].rejected || '').slice(0, 45)}” ≈ „${(dd[0].closest || '').slice(0, 45)}”)`);
+  } catch { /* még nincs dedup-napló */ }
+  // 🔗 HÍR-ÖSSZEVONÁS (2026-08-18): AKKOR IS kimegy, ha nem volt összevonás —
+  // a néma hiba pont az lenne, hogy az ítélet sosem csoportosít, és a hiányzó
+  // sorból ez nem derülne ki. Az őrszem csak akkor őr, ha odaszól, ahol nézed.
+  lines.push(mergeLine(r.maiCikkek, 1));
+  // 🔁 ISMÉTLÉS-ŐR (2026-08-25): hány készülő cikket fogott meg, mert már
+  // írtunk róla. AKKOR IS kimegy, ha nulla — sőt, KÜLÖN üzenet jár arra, ha
+  // az őr EL SEM INDULT. Előzmény: a témaismétlés-őr beágyazása hónapokig
+  // halott volt (elfogyott Google-keret), 7%-os érzékenységgel futott, és
+  // közben végig zöldnek látszott. A „nem volt" és a „nem futott" kívülről
+  // egyformán néz ki — ezért kell a kettőt megkülönböztetni.
+  //
+  // A MAI ÖSSZES futást összegezzük: a CI naponta háromszor fut, egyetlen
+  // futás naplója a nap harmadát mutatná.
+  try {
+    const napi = { skipped_repeat: 0, repeats: [] };
+    let writerNaplok = 0;
+    const ma = today();
+    for (const f of readdirSync(join(ROOT, 'logs'))) {
+      if (!f.startsWith('writer_') || !f.endsWith('.json')) continue;
+      if (!f.includes(ma)) continue;
+      let s; try { s = JSON.parse(readFileSync(join(ROOT, 'logs', f), 'utf-8')); } catch { continue; }
+      if (!Number.isFinite(Number(s.skipped_repeat)) || !Array.isArray(s.repeats)) continue;
+      writerNaplok++;
+      napi.skipped_repeat += Number(s.skipped_repeat);
+      napi.repeats.push(...s.repeats);
+    }
+    // ⚠️ A MÁSODIK FORRÁS (2026-08-30, hibavadászat). Az őr KÉT helyen dolgozik:
+    // a hír-írónál (writer-napló) ÉS az útmutató-ágon (`guide-balance`,
+    // `guide-ideas` → `memory/topic-dedup-log.json`). A riport eddig csak az
+    // elsőt nézte, ezért egy csak-útmutatós napon „⚠️ NEM FUTOTT — ez hiba"-t
+    // írt. Élesben mérve ma: 0 writer-napló, DE 4 mai dedup-bejegyzés — és a
+    // riport tizenöt sorral feljebb ki is írta, hogy „Ismétlődő téma
+    // kiszűrve: 4". Két egymásnak ellentmondó sor ugyanabban az üzenetben.
+    // 🔑 A hamis vészjelzés rosszabb a néma hibánál: leszoktat a ⚠️ olvasásáról.
+    let dedupMai = 0;
+    try {
+      const dl = JSON.parse(readFileSync(join(ROOT, 'memory', 'topic-dedup-log.json'), 'utf-8'));
+      dedupMai = Array.isArray(dl[ma]) ? dl[ma].length : 0;
+    } catch { /* nincs napló — marad 0 */ }
+
+    lines.push(repeatLine(orFutott({ writerNaplok, dedupMai }) ? napi : {}));
+  } catch { lines.push(repeatLine({})); }
+  // 📝 MAGYAR HELYESÍRÁS (2026-08-20): csak az kerül ide, amit a gép nem
+  // javíthatott magától. Az őrszem csak akkor őr, ha odaszól, ahol nézed.
+  try {
+    const { loadStore } = await import('./hu-review.js');
+    const sor = huSpellingLine(loadStore());
+    if (sor) lines.push(sor);
+  } catch { /* a riport ettől még kimegy */ }
+  // 🔧 HA ELAKADSZ doboz (2026-10-26, 2b bekötés): a napi generátor mai munkája. Csak MAI állapotból
+  // lesz sor (elakadasLine) — hiányzó vagy hibás fájl = nincs sor, a riport ettől még kimegy.
+  try {
+    const sor = elakadasLine(JSON.parse(readFileSync(join(ROOT, 'memory', 'elakadas-state.json'), 'utf-8')), today());
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott a generátor */ }
+  // 🧩 RÉGI PROMPTOK kitölthetővé tétele (2026-10-29): ugyanígy, csak MAI állapotból
+  try {
+    const sor = kitolthetoRegiLine(JSON.parse(readFileSync(join(ROOT, 'memory', 'kitoltheto-regi-state.json'), 'utf-8')), today());
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott a generátor */ }
+  // 🕵️ TÉNY-ELLENŐRZŐ (2026-11-01, 4. rész): az elmúlt 24 óra logs/factcheck_*.json naplói (a fact-check lépés a
+  // riport ELŐTT fut). Eddig a visszautasítások és gyanúk csak a memory/ops.json-ba mentek — senki nem olvasta.
+  // A fájlnév a futás ideje (factcheck_2026-11-01T14-39-03-165Z.json) → csak a tegnapi és mai fájlokat olvassuk.
+  try {
+    const ldir = join(ROOT, 'logs');
+    const tegnap = new Date(Date.now() - 86400e3).toISOString().slice(0, 10);
+    const naplok = existsSync(ldir) ? readdirSync(ldir)
+      .filter(f => /^factcheck_\d{4}-\d{2}-\d{2}T.*\.json$/.test(f) && f.slice(10, 20) >= tegnap)
+      .map(f => { try { return JSON.parse(readFileSync(join(ldir, f), 'utf-8')); } catch { return null; } })
+      .filter(Boolean) : [];
+    lines.push(tenyellenorzoLine(naplok, Date.now()));
+  } catch { /* a riport ettől még kimegy */ }
+  // HITELESSÉG-KAPU összegzés (2026-07-16): mit fogott a publikálás előtti
+  // hallucináció-szűrő — blokk = rejected-be ment, hold = bíró-hiba, várakozik.
+  try {
+    const tlog = JSON.parse(readFileSync(join(ROOT, 'memory', 'truth-gate-log.json'), 'utf-8'));
+    const tt = tlog[today()] || [];
+    const blocked = tt.filter(x => x.action === 'block'), held = tt.filter(x => x.action === 'hold');
+    if (blocked.length || held.length) {
+      const sample = (blocked[0] || held[0])?.reasons?.[0] || '';
+      lines.push(`🛡️ Hitelesség-kapu: ${blocked.length} blokkolva · ${held.length} visszatartva (pl. ${sample.slice(0, 70)}…)`);
+    }
+  } catch { /* még nincs kapu-napló */ }
+  // MAKE-ŐRSZEM (2026-07-15, a 9 napos néma FB-leállás tanulsága): a webhook
+  // válaszából NEM látszik, ha a Make-forgatókönyv áll (200-zal nyeli a sorba) —
+  // ezért közvetlenül a Make API-tól kérdezzük. Csak BAJ esetén szól.
+  // 2026-07-27 BŐVÍTÉS: az "aktív?" kérdés NEM elég. A Pinterest-forgatókönyv
+  // AKTÍV volt, de CSAK a webhook-modult tartalmazta — a Make 200-zal nyelte a
+  // pineket, amiket mi "kiküldve"-nek jelöltünk, és 38 pin némán elveszett.
+  // A `usedPackages` mező elárulja, mi van benne: ["gateway"] = csak a webhook,
+  // kimeneti modul nélkül. Ezt is figyeljük, mindkét csatornán.
+  try {
+    if (process.env.MAKE_API_TOKEN) {
+      // A PINTEREST KIKERÜLT INNEN (2026-08-09): a csatornát leállítottuk
+      // (0 látogató 189 pinből, miközben a Make-keret 62%-át vitte). Ha itt
+      // maradt volna, a riport MINDEN NAP "⛔ PINTEREST-POSZTOLÓ LEÁLLT"
+      // vészjelzést küldött volna egy szándékosan kikapcsolt csatornáról —
+      // pontosan az a fajta valótlan sor, amit 08-06-án kigyomláltunk.
+      // Új csatorna felvétele ide: egy sor, ha megvan a Make-forgatókönyv
+      // azonosítója — ÉS egy sor a core/make-budget.js SHARED_SCENARIOS
+      // listájába, mert a művelet-keret a FIÓKÉ, nem a forgatókönyvé.
+      // A kettő külön kérdés: itt a MŰKÖDIK-E, ott a MENNYIT FOGYASZT.
+      // (A Reel 08-25-én éles lett, és 5 napig egyikben sem szerepelt.)
+      const WATCH = [
+        { id: FB_SCENARIO_ID, pkg: 'facebook-pages', name: 'FB-POSZTOLÓ', fix: 'Facebook Pages → Upload a Photo' },
+        // 🎬 A REEL FELVÉVE (2026-08-30). A csatorna 08-25 óta automata, de
+        // eddig KIMARADT mind a három rétegből (áll-e? · van-e kimeneti modul? ·
+        // bukott-e ma?) — pontosan abból, amit a 9 napos néma FB-leállás után
+        // építettünk. Az azonosító végig ismert volt (core/reel-post.js), csak
+        // ez az egy sor nem került be.
+        //
+        // ⚠️ A `pkg: null` SZÁNDÉKOS. Nem mértük, milyen csomagnéven jelenti a
+        // Make a Reel-feltöltő modult (a fotós posztnál 'facebook-pages'), és egy
+        // rossz csomagnév MINDEN NAP hamis vészjelzést küldene egy működő
+        // csatornáról — az elhitetlenített riport drágább, mint egy hiányzó
+        // ellenőrzés (lásd a Pinterest-sor kigyomlálását 08-09-én).
+        // Amit csomagnév NÉLKÜL is biztosan tudunk: ha a forgatókönyvben CSAK a
+        // webhook ('gateway') van, semmi nem megy ki. Ezt a lenti ág elkapja.
+        // bizonytalan (10-27): a Reelnél a Make 2-es (WARNING) futása mellett a poszt KINT LEHET (10-26: dupla lett
+        // az „újrajátszható” tanács miatt) → csak-figyelmeztetéses napon szelíd, ellenőrzést kérő sor (core/make-health.js)
+        { id: REEL_SCENARIO_ID, pkg: null, name: 'REEL-POSZTOLÓ', fix: 'Facebook Pages → a Reel-feltöltő modul', bizonytalan: true },
+        ...(process.env.THREADS_MAKE_SCENARIO_ID
+          ? [{ id: process.env.THREADS_MAKE_SCENARIO_ID, pkg: 'threads', name: 'THREADS-POSZTOLÓ', fix: 'Threads → Create a Thread' }] : []),
+        ...(process.env.X_MAKE_SCENARIO_ID
+          ? [{ id: process.env.X_MAKE_SCENARIO_ID, pkg: 'twitter', name: 'X-POSZTOLÓ', fix: 'X (Twitter) → Create a Post' }] : [])
+      ];
+      for (const w of WATCH) {
+        const mr = await fetch(`https://eu1.make.com/api/v2/scenarios/${w.id}`, { headers: { Authorization: 'Token ' + process.env.MAKE_API_TOKEN }, signal: AbortSignal.timeout(15000) });
+        const mj = await mr.json().catch(() => ({}));
+        if (!mr.ok || !mj.scenario) continue;
+        const s = mj.scenario;
+        if (s.isActive === false || s.isPaused === true) {
+          lines.push(`⛔ ${w.name} LEÁLLT (Make-forgatókönyv inaktív)! Kapcsold vissza: eu1.make.com → Scenarios → kapcsoló a sor végén.`);
+        } else if (w.pkg
+          ? !(s.usedPackages || []).includes(w.pkg)
+          // Csomagnév nélkül CSAK a biztosat állítjuk: a lista nem üres, és
+          // nincs benne más, mint a webhook → nincs kimeneti modul. Hiányzó
+          // vagy üres listára NEM szólunk: az adathiány nem bizonyíték.
+          : (Array.isArray(s.usedPackages) && s.usedPackages.length > 0
+            && s.usedPackages.every(p => p === 'gateway'))) {
+          lines.push(`⛔ ${w.name}: a Make-forgatókönyv HIÁNYOS — nincs benne kimeneti modul (csak: ${(s.usedPackages || []).join(', ') || '—'}). A webhook 200-at ad, de SEMMI nem megy ki! Javítás: eu1.make.com → a forgatókönyv → + → ${w.fix} → mentés.`);
+        }
+
+        // 2026-08-05 BŐVÍTÉS: a FUTÓ forgatókönyv is veszíthet posztot.
+        // A Pinterest 8 pint bukott el egyetlen napon ("could not fetch the
+        // image"), miközben aktív volt ÉS megvolt benne a kimeneti modul —
+        // az "áll-e?" és a "teljes-e?" kérdés egyikre sem világít rá.
+        // Mi mindet "kiküldve"-nek jelöltük, tehát soha nem próbáljuk újra.
+        // A napi bukás-számot ezért külön nézzük, a futási naplóból.
+        try {
+          const lr = await fetch(`https://eu1.make.com/api/v2/scenarios/${w.id}/logs`, {
+            headers: { Authorization: 'Token ' + process.env.MAKE_API_TOKEN },
+            signal: AbortSignal.timeout(15000)
+          });
+          if (lr.ok) {
+            const lj = await lr.json().catch(() => ({}));
+            const since = new Date(Date.now() - 24 * 3600e3).toISOString();
+            const line = describeFailures(w.name, summarizeRuns(lj.scenarioLogs || lj.logs || [], since), { bizonytalan: !!w.bizonytalan });
+            if (line) lines.push(line);
+          }
+        } catch { /* a napló hiánya nem némítja el a többi őrszemet */ }
+      }
+    }
+  } catch { /* a Make-őr hibája nem állítja meg a jelentést */ }
+  // SEO-ŐRSZEM (2026-07-27): a kanonikus URL / rögzített slug / sitemap
+  // visszaesését jelezzük. Csendes, ha nincs baj — a user így tudja, hogy a
+  // Search Console-ban jelzett hibák nem jönnek vissza észrevétlenül.
+  try {
+    const seo = JSON.parse(readFileSync(join(ROOT, 'memory', 'seo-guard.json'), 'utf-8'));
+    if (seo.problems?.length) {
+      lines.push(`🔍 SEO-ŐRSZEM: ${seo.problems.length} lelet — ${seo.problems.slice(0, 2).map(p => p.code).join(', ')}${seo.problems.length > 2 ? '…' : ''}. Részletek a futás naplójában.`);
+    }
+  } catch { /* még nincs SEO-lelet vagy nem futott — nem baj */ }
+
+  // ÉLŐ-ŐRSZEM (2026-07-31): a kintről-befelé nézés leletei. Csendes, ha
+  // minden rendben; hangos, ha az ÉLŐ oldal máshogy viselkedik, mint amit
+  // gyártottunk (www/http, 404, canonical, H1, sitemap). Ez a réteg fogja
+  // meg a kiszolgálói-beállítás szintű hibákat, amiket a fájl-alapú őrök nem.
+  try {
+    const lg = JSON.parse(readFileSync(join(ROOT, 'memory', 'live-guard.json'), 'utf-8'));
+    if (lg.problems?.length) {
+      lines.push(`🌐 ÉLŐ-ŐRSZEM: ${lg.problems.length} lelet — ${lg.problems.slice(0, 2).map(p => p.code).join(', ')}${lg.problems.length > 2 ? '…' : ''}`);
+    }
+  } catch { /* még nem futott — nem baj */ }
+
+  // I18N-ŐRSZEM (2026-08-10). Ez az őrszem 2026-07-06 óta fut, és 08-09-én
+  // PONTOSAN azt látta, amit kellett: a magyar heti összefoglaló 161 angol
+  // jellel ment ki. Csakhogy egyedül a CI naplójába írt, oda pedig senki nem
+  // néz — a hibát a user vette észre az oldalon, egy nappal később.
+  // A "FORDITATLAN_CIKK" a legdrágább lelet: egy TELJES cikk idegen nyelven.
+  try {
+    const i18n = JSON.parse(readFileSync(join(ROOT, 'memory', 'i18n-guard.json'), 'utf-8'));
+    const p = i18n.problems || [];
+    if (p.length) {
+      const cikkek = p.filter(x => x.code === 'FORDITATLAN_CIKK');
+      lines.push(cikkek.length
+        ? `🈳 I18N-ŐRSZEM: ${cikkek.length} cikk ANGOLUL ment ki — ${cikkek.slice(0, 2).map(x => `${x.lang}: ${x.page.split('/').pop()}`).join(', ')}${cikkek.length > 2 ? '…' : ''}`
+        : `🈳 I18N-ŐRSZEM: ${p.length} felület-folt — ${p.slice(0, 2).map(x => `${x.lang}: ${x.detail}`).join(', ')}${p.length > 2 ? '…' : ''}`);
+    }
+  } catch { /* még nem futott — nem baj */ }
+
+  // BORÍTÓKÉP-ŐRSZEM (2026-08-14). A user vette észre a főoldalon, hogy a
+  // CÍMLAPSZTORI borítója üres bézs felület — a képfájl nem létezett, mert a
+  // Cloudflare kivezette a width/height paramétert, és a designer 400-at kapott.
+  // A designer ezt BE IS ÍRTA: a CI naplójába, ahová senki nem néz.
+  // A címlapsztori külön kiemelve: azt MINDEN látogató elsőként látja.
+  try {
+    const ig = JSON.parse(readFileSync(join(ROOT, 'memory', 'image-guard.json'), 'utf-8'));
+    const p = ig.problems || [];
+    if (p.length) {
+      const cimlap = p.find(x => x.cimlap);
+      lines.push(`🖼️ BORÍTÓKÉP-ŐRSZEM: ${p.length} friss cikknek nincs képe — ${p.slice(0, 2).map(x => x.slug.slice(0, 34)).join(', ')}${p.length > 2 ? '…' : ''}`
+        + (cimlap ? ' ⚠️ ebből a CÍMLAPSZTORI — az a főoldal tetején van!' : ''));
+    }
+  } catch { /* még nem futott — nem baj */ }
+
+  // ÁTIRÁNYÍTÁS-ŐRSZEM (2026-08-15). A _redirects a Cloudflare 2100-as kemény
+  // plafonja felé kúszott (1755-nél tartott, napi +22 sorral), és a build
+  // vágás-figyelmeztetése CSAK a CI naplójába ment volna. Itt 75%-nál szólal
+  // meg, nem a szakadéknál — a lényeg, hogy legyen idő reagálni.
+  try {
+    const rg = JSON.parse(readFileSync(join(ROOT, 'memory', 'redirect-guard.json'), 'utf-8'));
+    for (const p of rg.problems || []) {
+      if (p.code === 'REDIRECTS_TRUNCATED') {
+        lines.push(`🔀 ÁTIRÁNYÍTÁS-ŐRSZEM: ${p.count} szabály > ${p.cap} — a lista VÁGVA, a leggyengébb 301-ek kimaradtak.`);
+      } else {
+        lines.push(`🔀 ÁTIRÁNYÍTÁS-ŐRSZEM: ${p.count}/${p.cap} szabály (${p.pct}%) — közelít a Cloudflare-plafonhoz.`);
+      }
+    }
+  } catch { /* még nem futott — nem baj */ }
+
+  // 🎬 REEL-ŐRSZEM (2026-08-26). Az ELSŐ automata Reel elbukott a CI-ban
+  // ("spawnSync ffmpeg ENOENT" — az ubuntu-latest futtatón nincs ffmpeg), és
+  // ez CSAK a CI naplójába került. A workflow `|| true`-ja helyesen nem
+  // dönti el a futást — de emiatt kívülről a BUKÁS és a "ma nem volt dolga"
+  // egyformán néz ki: mindkettő néma. Ez a sor csak akkor szólal meg, ha
+  // tényleg baj van; a csendes napokon nem zajong.
+  try {
+    const rg = JSON.parse(readFileSync(join(ROOT, 'memory', 'reel-guard.json'), 'utf-8'));
+    // 'send_extra' (2026-10-15): a TikTok-extra videó Facebook-Reelje, külön rekord.
+    for (const fazis of ['prepare', 'send', 'send_extra']) {
+      const f = rg[fazis];
+      if (f && f.ok === false) {
+        const nev = fazis === 'prepare' ? 'videó-gyártás' : fazis === 'send' ? 'kiküldés' : 'extra Reel kiküldése';
+        lines.push(`🎬 REEL-ŐRSZEM: a ${nev} elbukott — ${String(f.hiba || 'ismeretlen ok').slice(0, 90)}`);
+      }
+    }
+
+    // ⚠️ BETŰTÍPUS-VISSZAESÉS (2026-09-17). A Reel-táblák „Arial Black"-et
+    // kértek; az a futtatón NINCS, és a betűmotor ilyenkor nem hibázik,
+    // hanem NÉMÁN egy vékonyabb alapbetűt használ. Három hétig, 24 kiküldött
+    // videón nem az ment ki, amit terveztünk — a gyártás közben végig
+    // „sikeres" volt. Egy telepítő CI-lépés ezt NEM bizonyítja (elég egy
+    // átnevezett fájl vagy egy kihagyott `fc-cache`), ezért a gyártás
+    // MEGMÉRI a saját eredményét (core/video-font.js), és a lelet ide jön.
+    //
+    // A „nem sikerült megmérni" KÜLÖN eset, és NEM hallgatunk róla: a
+    // projekt visszatérő hibája, hogy a mérhetetlent zöldnek vettük.
+    // Mindkét sor ⚠️-vel kezdődik, tehát átjut a zajszűrőn is.
+    const betu = rg.prepare && rg.prepare.betu;
+    if (betu && betu.ok === false) {
+      lines.push(`⚠️ REEL-BETŰ: a videó NEM a saját betűnkkel készült — ${String(betu.reason || 'ismeretlen ok').slice(0, 90)}`);
+    } else if (betu && betu.ok === null) {
+      lines.push(`⚠️ REEL-BETŰ: nem tudtam megmérni, milyen betűvel készült a videó — ${String(betu.reason || 'ismeretlen ok').slice(0, 90)}`);
+    }
+  } catch { /* még nem futott — nem baj */ }
+
+  // 📤 BUFFER-ŐRSZEM (2026-08-30). A Threads és az Instagram a Bufferen megy
+  // (agents/social/buffer-poster.js), és ez a riport EDDIG EGYETLEN SZÓVAL SEM
+  // említette a Buffert. Ha lejárt a BUFFER_ACCESS_TOKEN, levált egy csatorna
+  // vagy a createPost hibát adott, a posztolás NÉMÁN állt le: a poszter csak a
+  // CI naplójába írt, ráadásul összeomláskor is 0-val lépett ki, tehát a
+  // GitHub Actions zöld pipát adott. 2026 nyarán volt már egy 9 napos néma
+  // Facebook-leállás pontosan ebből a mintából.
+  // A sor ⚠️-vel kezdődik (core/buffer-guard.js), tehát a zajszűrő
+  // vészjelzés-mintája alá esik: egy napokig VÁLTOZATLAN néma leállás sem
+  // némulhat el. Ha nincs gond, ez a blokk hallgat — hogy a poszter egyáltalán
+  // futott-e, azt lentebb a frissesség-őr nézi meg az `at` bélyegből.
+  try {
+    const bufg = JSON.parse(readFileSync(join(ROOT, 'memory', 'buffer-guard.json'), 'utf-8'));
+    const sor = bufferSor(bufg);
+    if (sor) lines.push(sor);
+    const tt = tiktokSor(bufg);   // 10-13: hány TikTok-videó ment ki ma a 3-ból
+    if (tt) lines.push(tt);
+  } catch { /* még nem futott — nem baj */ }
+
+  // 📘 FACEBOOK-LINKKORLÁT-ŐR (2026-10-19). A forgalom ~82%-a a Facebookról jön; a
+  // Meta havi 2 linkes korlátja napok alatt elviheti. Az őr maga is riaszt, ha
+  // összeesik — ez a sor naponta megmutatja a számot, riasztás alatt ⚠️-vel.
+  try {
+    const fbg = JSON.parse(readFileSync(join(ROOT, 'memory', 'fb-link-guard.json'), 'utf-8'));
+    const sor = fbRiportSor(fbg);
+    if (sor) lines.push(sor);
+    // 🧵 THREADS: a hivatkozó-alapú sor KIVÉVE (10-28, user: „van olyan jelentés, ami duplán jön … a Threadsnél”).
+    // A Threads-app nem küld hivatkozót, ezért ez a sor 0-t mutatott (10-28: „0 látogató”), miközben a jelölt
+    // linkes sor (?src=th, lent) pontosan 10-et — két ellentmondó Threads-sor. A pontos marad.
+  } catch { /* még nem futott — nem baj */ }
+
+  // 🧪 TESZT-ŐRSZEM (2026-09-06). 2026-08-31-én a tény-ellenőrző agent egy ÉLŐ
+  // cikkben átírta a valódi „ChatRTX" nevet a nem létező „NVIDIA Chat"-re. A
+  // `core/tool-kinds.test.js` EZT PONTOSAN ELKAPTA — csakhogy a munkafolyamat
+  // NEM FUTTATOTT TESZTEKET, így a teszt ÖT NAPIG pirosan állt, és a kitalált
+  // név öt napig kint volt, három nyelven. (A `budget.test.js` ugyanígy piros
+  // volt szeptember 1-je óta.) A CI mostantól futtatja őket — de a bukás a
+  // `|| true` miatt a CI-naplóban maradna, ahová senki nem néz.
+  //
+  // ⚠️ A HIÁNYZÓ FÁJL ITT NEM CSEND. Minden más őrszemnél a `catch` némán
+  // átsiklik („még nem futott — nem baj"), mert azoknak van dolguk-nélküli
+  // napjuk. A teszteknek NINCS: minden futásban le kell futniuk. A `tesztSor()`
+  // ezért hiányzó/sérült állapotra „NEM TUDOM"-ot ad — a hallgatást
+  // jóváhagyásnak venni pont az a hiba, amit ez a sor javít.
+  try {
+    let tg = null;
+    try { tg = JSON.parse(readFileSync(join(ROOT, 'memory', 'test-guard.json'), 'utf-8')); } catch { tg = null; }
+    const sor = tesztSor(tg);
+    if (sor) lines.push(sor);
+  } catch { /* a riport ettől még kimegy */ }
+
+  // 💰 KÖLTÉS-NYILVÁNTARTÁS ŐRE (2026-08-29, hibavadászat).
+  // A `core/budget.js` `load()`-ja BÁRMILYEN JSON-hibára némán `{days:{}}`-t
+  // adott, a következő `recordSpend` pedig ezt írta vissza — vagyis a napi $1
+  // ÉS a havi $25 plafon EGYSZERRE kikapcsolt a hónap végéig.
+  // 🔑 A kár azért volt nagy, mert OLCSÓ NAPNAK LÁTSZOTT: a riport $0.00-t
+  // mutatott, ami megnyugtató, nem riasztó. Innentől hangosan szól.
+  try {
+    const bg = JSON.parse(readFileSync(join(ROOT, 'memory', 'budget-guard.json'), 'utf-8'));
+    for (const p of bg.problems || []) {
+      const mikor = p.count > 1 ? ` (${p.count}× ${String(p.firstAt || '').slice(0, 10)} óta)` : '';
+      lines.push(p.code === 'BUDGET_STATE_WRITE_FAILED'
+        ? `🚨 *A KÖLTÉS-NYILVÁNTARTÁS ÍRÁSA ELBUKOTT*${mikor} — a plafon NEM SÜL EL. Szólj a fejlesztőnek!`
+        : `🚨 *SÉRÜLT KÖLTÉS-NYILVÁNTARTÁS*${mikor} — a mentett napok visszaálltak, de nézd meg a naplót.`);
+    }
+  } catch { /* nincs jel — ez a jó eset */ }
+
+  // 📚 ÚTMUTATÓ-LEFEDETTSÉG (2026-08-29). A `website/build.js` minden buildnél
+  // írja ezt a fájlt („minden útmutató pontosan egy gyűjtőoldalon van"), de
+  // EDDIG SENKI NEM OLVASTA — az egész repóban egyetlen hivatkozás volt rá: az
+  // írás. A 08-17-i hibát (17 cikk sehonnan nem volt kattintható) a USER vette
+  // észre, nem az őrszem.
+  try {
+    const gc = JSON.parse(readFileSync(join(ROOT, 'memory', 'guide-coverage-guard.json'), 'utf-8'));
+    const p = gc.problems || [];
+    if (p.length) {
+      lines.push(`📚 ÚTMUTATÓ-LEFEDETTSÉG: ${p.length} gond — `
+        + p.slice(0, 2).map(x => String(x.code || x).slice(0, 50)).join(', ') + (p.length > 2 ? '…' : ''));
+    }
+  } catch { /* még nem futott build — nem baj */ }
+
+  // ⚠️ BEÁGYAZÁS-ŐR (2026-08-30, hibavadászat). A 08-25-i lelet: a Google-kulcs
+  // kerete elfogyott, az `embedText()` némán `null`-t adott, és a
+  // témaismétlés-őr szó nélkül a gyengébb Jaccard-tartalékra váltott — MÉRVE
+  // 15 ismert ismétlésből 1-et fogott meg (7%), miközben ZÖLDNEK látszott.
+  // Akkor született rá az `embedStatus()`, „amit a napi riport kiír" — de
+  // SOHA NEM ÍRTA KI: nulla hívója volt, és folyamat-lokális változóból
+  // dolgozott, tehát ez a külön processz akkor sem látta volna, ha meghívja.
+  // Vagyis a „nem futott" eset le volt zárva, a LEBUTULT nem — pedig épp az
+  // volt az eredeti hiba.
+  try {
+    const eg = JSON.parse(readFileSync(join(ROOT, 'memory', 'embed-guard.json'), 'utf-8'));
+    const sor = embedSor(eg);
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott beágyazás — nem baj */ }
+
+  // 🧠 SZEMANTIKUS MEMÓRIA-MÉRLEG (2026-09-07). Az `embedSor()` fölötte azt
+  // mondja meg, hogy a beágyazó ÉL-E. EZ a sor mást mér: hogy a KERESÉSBŐL
+  // hány emlék MARADT KI, mert a saját beágyazásuk elhasalt (pl. 429). A kettő
+  // független: egy működő szolgáltató mellett is kieshet az emlékek fele.
+  //
+  // ⚠️ Enélkül a `recallSemantic()` mérlege csak a CI-naplóig jutott (a
+  // `szemantikusAllapot()` FOLYAMAT-LOKÁLIS — a riport másik processzben fut,
+  // tehát sosem láthatná). Pontosan az az alak, ami az `embedStatus()`-t
+  // megbuktatta 2026-08-30-ig: a komment szerint „a riport kiírja", és nem írta.
+  try {
+    const sg = JSON.parse(readFileSync(join(ROOT, 'memory', 'semantic-guard.json'), 'utf-8'));
+    const sor = szemantikusSor(sg);
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott szemantikus keresés — nem baj */ }
+
+  // ⏱️ AI-KÉSLELTETÉS-ŐR (2026-09-16). A 09-16 02:13 UTC-s futás Pipeline-lépése
+  // 45,5 percig tartott — átlag 8,9, addigi csúcs 21,9 —, közben a napi költés
+  // $0,23 maradt. Vagyis a 45 perc NEM munkával telt: két hívás PONTOSAN 8,0
+  // percig lógott, majd „aborted due to timeout"-tal elhasalt, 0+0 tokennel
+  // ([designer] és [seo], mindkettő minimax-m2.5). Ebből az egészből EGYETLEN
+  // jel sem jutott ki: a router `logCall()`-ja időt nem ír, és a konzol a CI
+  // naplója, „ahová senki nem néz".
+  //
+  // CSENDES, ha nem volt sem időtúllépés, sem a türelem-plafon közelébe érő
+  // hívás. A sor ⚠️-vel kezdődik (core/ai-latency-guard.js), tehát a zajszűrő
+  // vészjelzés-mintája alá esik: egy napokig VÁLTOZATLAN beragadás sem
+  // némulhat el — épp a KITARTÓ lassulás lenne a hír.
+  //
+  // ⚠️ A HIÁNYZÓ FÁJL ITT NEM „LEFAGYOTT ŐRSZEM". Ha a HAVI keret betelt
+  // (user-döntés: teljes szünet hónapfordulóig), egyetlen AI-hívás sem indul,
+  // tehát nincs mit feljegyezni — ezért nincs a frissesség-térképben sem.
+  try {
+    const lat = JSON.parse(readFileSync(join(ROOT, 'memory', 'ai-latency-guard.json'), 'utf-8'));
+    const sor = latenciaSor(lat);
+    if (sor) lines.push(sor);
+  } catch { /* ma nem volt AI-hívás — nem baj */ }
+
+  // 🕰️ ŐRKUTYA-SODRÓDÁS (2026-09-07). A többi őr a REPÓ kódját méri. Ez az
+  // egy a KÜLVILÁGOT — mert az őrkutya döntését nem a repó futtatja, hanem a
+  // Cloudflare Worker, egy `wrangler deploy`-jal befagyasztott bundle-ből, és
+  // a Worker-telepítés NINCS a CI-ban. A 09-06-i türelem-javítás (9,5 → 14
+  // óra) ezért 7 napig PAPÍRON volt meg: a commit bement, a tesztje zöld volt,
+  // közben az élő Worker a régi küszöbbel dolgozott, napi egy fölösleges
+  // pótfutás árán (09-01, 09-02, 09-03, 09-04, 09-07 — mindegyik után
+  // perceken belül megjött az ütemezett futás magától).
+  //
+  // A jel: ha egy pótfutás a türelem-küszöbnél KISEBB résnél sült el, az
+  // cáfolhatatlan bizonyíték, hogy az élő kód nem a repóé. Forrást olvasó
+  // teszt ezt SOHA nem látja — a forrásban minden rendben van.
+  try {
+    const sor = sodrodasSor(sodrodasVizsgalat(await futasokLekerdez()));
+    if (sor) lines.push(sor);
+  } catch { /* a sodródás-vizsgálat SOHA ne buktassa el a jelentést */ }
+
+  // 🔗 HALOTT BELSŐ LINK (2026-09-08). A saját oldalunk küld-e sehova?
+  // A 09-08-i pásztázás hármat talált 2822 oldalon: kettőt a 404-lap
+  // nyelvváltója gyártott, a harmadik egy heti összefoglaló „Read the full
+  // story" gombja volt — HAT HETE 404, mert az amerikai-helyesírás javítónk
+  // (a 08-30-i URL-védelem előtt) a „personalise" slugot „personalize"-ra
+  // írta át a linkben is. Semmi nem szólt róla: a halott link nem dob hibát,
+  // és a tesztek is zöldek maradnak tőle. Csak az olvasó akad el rajta.
+  try {
+    const lg = JSON.parse(readFileSync(join(ROOT, 'memory', 'link-guard.json'), 'utf-8'));
+    const sor = linkSor(lg);
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott őrjárat — nem baj */ }
+
+  // 🕰️ ŐRSZEM-FRISSESSÉG (2026-08-29, hibavadászat). A riport eddig MINDEN
+  // őrszem-fájlból csak a `problems`-et nézte, az `at` bélyeget EGYIKBŐL SEM.
+  // Egy lefagyott őrszem (pl. a seo-guard bukott buildnél visszatér az írás
+  // előtt) ezért ott hagyja az ELŐZŐ futás `problems: []`-jét — és az a
+  // riportban azonos a „minden rendben"-nel.
+  try {
+    const nevek = {
+      'seo-guard.json': 'SEO', 'live-guard.json': 'élő oldal', 'i18n-guard.json': 'nyelvi',
+      'image-guard.json': 'borítókép', 'redirect-guard.json': 'átirányítás',
+      'reel-guard.json': 'Reel', 'truncation-guard.json': 'csonka', 'guide-coverage-guard.json': 'útmutató-lefedettség', 'embed-guard.json': 'beágyazás',
+      // A Buffer-poszter őre (2026-08-30). ITT dől el az „el sem indult" eset:
+      // a poszter SIKERES futásnál is ír (üres problems), tehát ha az `at`
+      // megáll, az azt jelenti, hogy a lépés maga maradt ki — enélkül a
+      // „nem volt mit posztolni" és a „nem futott le" egyformán nézne ki.
+      'buffer-guard.json': 'Buffer',
+      // A Facebook-linkkorlát-őr (2026-10-19) MINDEN futásban ír (`at`), riasztás nélkül is.
+      'fb-link-guard.json': 'Facebook-őr',
+      // A teszt-futtató őre (2026-09-06). A `tesztSor()` a TARTALMAT nézi
+      // (piros-e), ez az `at` BÉLYEGET: ha a CI tesztlépése kimarad (pl. egy
+      // korábbi lépés elhasal, és a step nem `always()`), a lemezen az ELŐZŐ
+      // futás zöld állapota marad — és az a riportban azonos a „minden
+      // rendben"-nel. Ezt a rést csak a frissesség-őr zárja be.
+      'test-guard.json': 'teszt',
+      // A kimenet-őr (2026-09-12) a build UTÁN fut. Ha a build elbukik, a lépés
+      // kimarad, és a lemezen az ELŐZŐ futás üres `problems`-e marad — ezt csak
+      // az `at` bélyeg különbözteti meg a „minden rendben"-től.
+      'output-guard.json': 'kimenet',
+      // A belső hivatkozás-őr (2026-09-08) MINDEN sikeres build után ír, üres
+      // `problems`-szel is (core/internal-link-guard.js parancssori ága), ugyanabban
+      // a lépés-láncban, mint a SEO- és a kimenet-őr. Ha a lépés kimarad, a lemezen
+      // az előző futás „0 halott link"-je marad — az pedig azonos a „minden
+      // rendben"-nel. A térképből kimaradt; a core/guard-registry.test.js mutatta ki.
+      'link-guard.json': 'belső link',
+      // A Házmester (core/housekeeping.js) a CI MINDEN futásában ír, és a beépített
+      // hízás-őre (watchGrowth) ide teszi a figyelmeztetést. Ha a lépés elmarad, a
+      // „semmi nem hízik" csend nem bizonyíték. (Ugyanaz a lelet, 2026-09-15.)
+      'housekeeping.json': 'házmester'
+    };
+    const beolvasott = {};
+    for (const [f, nev] of Object.entries(nevek)) {
+      try { beolvasott[nev] = JSON.parse(readFileSync(join(ROOT, 'memory', f), 'utf-8')); } catch { /* nincs fájl */ }
+    }
+    const sor = frissessegSor(elavultOrszemek(beolvasott));
+    if (sor) lines.push(sor);
+  } catch { /* a riport ettől még kimegy */ }
+
+  // ✂️ CSONKA-ŐRSZEM (2026-08-25). A feltáráskor 53 elvágott szöveg volt kint:
+  // 11 angol cikk és 42 fordítás, mind mondat közepén — némelyik SZÓ közepén.
+  // A gyökérok a routerben volt (a keret-mentő csak ÜRES válaszra lépett), az
+  // már javítva; ez a sor azt őrzi, hogy ÚJ ne keletkezzen.
+  // A LEFEDETTSÉGET is kiírjuk: a néma siker és a néma vakság enélkül
+  // egyformán néz ki (lásd a magyar helyesírás-őrszem 773→12-es esetét).
+  try {
+    const tg = JSON.parse(readFileSync(join(ROOT, 'memory', 'truncation-guard.json'), 'utf-8'));
+    const p = tg.problems || [];
+    const fedes = `${tg.cikkNezve ?? '?'} cikk + ${tg.parNezve ?? '?'} fordítás átnézve`;
+    if (!p.length) {
+      lines.push(`✂️ Csonka-őrszem: nincs elvágott szöveg (${fedes})`);
+    } else {
+      const en = p.filter(x => x.code === 'ARTICLE_TRUNCATED').length;
+      lines.push(`✂️ CSONKA-ŐRSZEM: ${p.length} elvágott szöveg (${en} angol cikk, ${p.length - en} fordítás) — ${fedes}`);
+    }
+  } catch { /* még nem futott — nem baj */ }
+
+  // 🧩 KIMENET-ŐR (2026-09-12). A kiépített lapokat néző ellenőrzések (a két
+  // cikk-sablon paritása, szövegbeli linkek, „In short"-doboz, közép-doboz)
+  // eddig CSAK tesztként léteztek, és friss kimenetet SEHOL nem láttak: a
+  // CI-ban a tesztek a build ELŐTT futnak (a website/public még nincs), helyben
+  // pedig egy befagyott, napokkal korábbi build volt. Most a CI a build UTÁN
+  // futtatja őket (core/output-guard.js).
+  // CSENDES, ha minden rendben — a user 08-28-i panasza óta a zöld sor zaj. Hogy
+  // a „nem futott le" ne nézzen ki „minden rendben"-nek, azt a fenti
+  // frissesség-térkép `at`-ellenőrzése zárja ki; a túl kevés lap pedig maga is
+  // leletként (KEVES_LAP) jön ki, a lefedettséggel együtt.
+  try {
+    const og = JSON.parse(readFileSync(join(ROOT, 'memory', 'output-guard.json'), 'utf-8'));
+    const p = og.problems || [];
+    const fedes = `${og.hir ?? '?'} hír + ${og.utmutato ?? '?'} útmutató átnézve`;
+    if (p.length) lines.push(`🧩 KIMENET-ŐR: ${p.length} lelet — ${p.slice(0, 3).map(x => x.uzenet).join(' · ')} — ${fedes}`);
+    if ((og.megjavult || []).length) lines.push(`🧩 Kimenet-őr: megjavult, a FOLYAMATBAN listából törölhető: ${og.megjavult.join(', ')}`);
+  } catch { /* még nem futott — nem baj */ }
+
+  // HÁZMESTER (2026-07-30): mit takarított el, és hízik-e valami vissza.
+  // CSENDES a hétköznapokon: napi pár régi napló törlése nem hír. Csak akkor
+  // szólal meg, ha ÉRDEMI takarítás történt (kép/fordítás/embedding), vagy ha
+  // a beépített őrszem szerint valami újra nőni kezdett — ez utóbbi a fontos,
+  // mert pont az a hiba, ami fél évig észrevétlen marad.
+  try {
+    const hk = JSON.parse(readFileSync(join(ROOT, 'memory', 'housekeeping.json'), 'utf-8'));
+    const worth = (hk.actions || []).filter(a => !a.startsWith('📄'));
+    if (worth.length) lines.push('🧹 HÁZMESTER: ' + worth.join(' · '));
+  } catch { /* nem futott — nem baj */ }
+
+  // TRENDKUTATÓ (2026-10-14, user ötlete): mi felkapott ma, és él-e minden forrás.
+  // Ha még sosem futott, csend; ha egy forrás kiesett vagy a lista régi, ⚠️ (a záró sor
+  // ezt hibának számolja — a user ott nézi).
+  try {
+    const { trendRiportSorok, trendekBetolt, bingListaBetolt } = await import('./trend-kutato.js');
+    for (const s of trendRiportSorok(trendekBetolt(), bingListaBetolt(), Date.now())) lines.push(s);
+  } catch { /* a riport ettől még kimegy */ }
+
+  // FORRÁS-BIZONYÍTVÁNY (2026-07-22): a külön lépés által kiírt osztályzatokból.
+  // Csendes, ha nincs teendő; hangos, ha forrást kapcsoltunk ki vagy elavultból írunk.
+  try {
+    const { reportLineFromFile } = await import('./source-report-card.js');
+    const srcLine = reportLineFromFile();
+    if (srcLine) lines.push(srcLine);
+  } catch { /* a riport ettől még kimegy */ }
+
+  // OLVASÁSI MÉLYSÉG (2026-08-15) — hány oldalt néz meg egy belépő?
+  // Mérve 1,04 a VALÓDI olvasókra: gyakorlatilag mindenki EGY cikket olvas és
+  // távozik. Ez az egyetlen forgalmi szám, amit új közönség nélkül is tudunk
+  // mozgatni, ezért kikerül oda, ahol a user nézi. Az irány fontosabb, mint az
+  // abszolút érték. ⚠️ 2026-08-19-ig 1,17-et írt ide, mert a saját magyar
+  // böngészésünket is beleszámolta (core/traffic-log.js → NEM_KOZONSEG).
+  try {
+    const { loadLog, depthTrend } = await import('./traffic-log.js');
+    const tr = depthTrend(loadLog(), 7);
+    if (tr.days >= 3) {
+      const d = tr.previous !== null ? tr.recent - tr.previous : null;
+      lines.push(`📖 Olvasási mélység: ${tr.recent.toFixed(2)} oldal/látogató (${tr.days} nap)`
+        + (d !== null ? ` · előző hét: ${tr.previous.toFixed(2)} (${d >= 0 ? '+' : ''}${d.toFixed(2)})` : ''));
+    }
+  } catch { /* a riport ettől még kimegy */ }
+
+  // ÜGYFÉLSZOLGÁLAT (2026-07-20): napi darabszámok a Workerből (💬 sor).
+  // Csak akkor szól, ha volt forgalom — csendes, ha 0.
+  try {
+    const exportKey = (process.env.FEEDBACK_EXPORT_KEY || '').trim();
+    if (exportKey) {
+      const cr = await fetch('https://api.aiworldhq.com/feedback-export',
+        { headers: { 'X-Export-Key': exportKey }, signal: AbortSignal.timeout(15000) });
+      if (cr.ok) {
+        const exp = await cr.json();
+        const cs = exp.__cs || {};
+        // 📚 INGYENES PDF-LETÖLTÉS (2026-10-07): a Worker számlálója; csend, ha 7 napja 0.
+        const dlSor = pdfLetoltesSor(exp.__dl);
+        if (dlSor) lines.push(dlSor);
+        // 🧵 THREADS PONTOSAN (10-22): a jelölt linkkel (?src=th) érkezők, a tegnapi UTC-nap + 7 nap
+        if (exp.__src && !exp.__src.error) {
+          const tegnap = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
+          const het = Object.entries(exp.__src).filter(([n]) => n > new Date(Date.now() - 8 * 864e5).toISOString().slice(0, 10)).reduce((s, [, v]) => s + (v.th || 0), 0);
+          lines.push(`🧵 Threads-linkről tegnap: ${exp.__src[tegnap]?.th || 0} látogató (7 nap: ${het}) — jelölt link, pontos`);
+        }
+        // 👍 „BEVÁLT?” (10-23): a promptok alatti jelzés; csend, ha 7 napja 0
+        const bevalt = bevaltSor(exp.__fbp);
+        if (bevalt) lines.push(bevalt);
+        const affSor = partnerKattintasSor(exp.__aff);
+        if (affSor) lines.push(affSor);
+        const total = (cs.chat || 0) + (cs.mail || 0);
+        if (total + (cs.esc || 0) > 0) lines.push(`💬 Ügyfélszolgálat ma: ${cs.chat || 0} chat-válasz · ${cs.mail || 0} email · ${cs.esc || 0} emberi kézbe adva`
+          // A „nem válaszolható" NEM külön riasztás-sor, hanem itt egy utótag.
+          // Ez a feladó domainjének hiányzó DMARC-ja miatt van, a mi oldalunkon
+          // NINCS mit tenni vele — tipikusan hanyag tömeges küldő. Külön sort
+          // adni neki azt jelentené, hogy minden marketing-levélre riasztunk,
+          // és a zajban a VALÓDI kudarc veszne el. Látszik, de nem kiabál.
+          + ((cs.noreply || 0) > 0 ? ` · ${cs.noreply} levélre nem lehetett válaszolni (a feladó domainje nem hitelesített — nem a mi hibánk)` : ''));
+
+        // 📮 KÉZBESÍTETLEN KAPCSOLAT-ÜZENET (2026-08-29, hibavadászat).
+        // A worker `tg()`-je nem nézte a Telegram válaszát, a KV-be mentett
+        // másolatot (`cs:msg:*`) pedig SOHA SENKI nem olvasta — vagyis egy
+        // bukott értesítés esetén a látogató `{ok:true}`-t kapott, azt hitte,
+        // válaszolunk, te pedig sosem tudtál róla.
+        // ⚠️ A `total > 0` feltételen KÍVÜL: egy elveszett üzenetről akkor is
+        // szólni kell, ha aznap semmi más forgalom nem volt.
+        if (cs.unsent > 0) {
+          lines.push(`📮 KÉZBESÍTETLEN kapcsolat-üzenet: ${cs.unsent} db`
+            + (cs.unsentLast ? ` (utolsó: ${cs.unsentLast})` : '')
+            + ' — a Telegram-értesítés NEM ment ki. Az üzenetek megvannak a KV-ben (`cs:unsent:*`).');
+        }
+        // A sikertelen ELLENŐRZÉS nem ugyanaz, mint a „0 kézbesítetlen" —
+        // enélkül a kettő kívülről egyformán nézne ki.
+        if (cs.unsentError) lines.push('📮 A kézbesítetlen üzeneteket NEM tudtam ellenőrizni (KV-listázás hibája).');
+
+        // ✉️ A FELADÓ NEM KAPOTT VÁLASZT (2026-09-08).
+        // A `cs-email.js` `message.reply()`-ja eddig NÉMÁN nyelte a hibát:
+        // csak `console.log`, ami sehova nem jut el. Élesben megtörtént, és
+        // kizárólag abból derült ki, hogy egy KV-kulcs HIÁNYZOTT — az, amit
+        // a SIKERES ág írt volna. A `total > 0` feltételen KÍVÜL van, mint a
+        // kézbesítetlen sor: egy elmaradt válaszról akkor is szólni kell, ha
+        // aznap semmi más forgalom nem volt.
+        if (cs.replyfail > 0) {
+          lines.push(`✉️ AUTO-VÁLASZ NEM MENT KI: ${cs.replyfail} db — a feladó nem kapott visszajelzést.`
+            + (cs.replyfailWhy ? ` Ok: ${String(cs.replyfailWhy).slice(0, 120)}` : ''));
+        }
+      } else lines.push(EXPORT_HIBA);   // 10-23: rossz státusz ≠ „senki nem szavazott”
+    } else lines.push(EXPORT_HIBA);     // hiányzó kulcs
+  } catch { lines.push(EXPORT_HIBA); /* a riport ettől még kimegy */ }
+
+  // Hierarchia-műszerfal (2026-07-13): visszaadások + főnöki döntések + tanulságok
+  try {
+    const { handbackStats } = await import('./handback.js');
+    const hb = handbackStats();
+    if (hb.open + hb.deliveredToday + hb.escalated > 0)
+      lines.push(`↩️ Visszaadott munkák: ${hb.deliveredToday} kézbesítve ma · ${hb.open} nyitott · ${hb.escalated} a Főnök asztalán`);
+  } catch { /* iroda nélkül is megy */ }
+  try {
+    const dlog = JSON.parse(readFileSync(join(ROOT, 'memory', 'ceo-desk-log.json'), 'utf-8'));
+    const td = dlog[today()] || [];
+    if (td.length) lines.push(`👔 Főnöki döntés ma: ${td.length} (pl. ${td[0].slice(0, 70)}…)`);
+  } catch { /* még nincs asztal-napló */ }
+  try {
+    const store = JSON.parse(readFileSync(join(ROOT, 'memory', 'store.json'), 'utf-8'));
+    const todays = (store.items || []).filter(it => (it.created || '').startsWith(today())).length;
+    if (todays) lines.push(`📖 Új tanulság ma: ${todays} — a cég minden tagja látja a következő munkájánál`);
+    // ♻️ ISMÉTLŐDŐ HIBA (2026-07-19, user: "ne forduljon elő még egyszer —
+    // nem költséghatékony"): ha egy hiba a MÁR MEGLÉVŐ lecke ellenére ma újra
+    // megtörtént, az a jel, hogy kemény kód-szabály kell — szólunk hangosan.
+    // 2026-08-06 (user: "ne küldjön valótlan adatokat"): a régi sor a lecke
+    // TELJES élettartamára vonatkozó ismétlés-számot írta ki úgy, mintha az
+    // MA történt volna ("legmakacsabb 4×"), és minden alkalommal kemény
+    // szabályt sürgetett. Élesben: 4 előfordulás 34 nap alatt — az a
+    // minőségkapu normál működése, nem vészhelyzet. Most az IDŐTÁV is
+    // kimegy, a sürgetés pedig heti ütemhez kötött.
+    const rep = (store.items || []).filter(it => (it.lastRepeat || '').startsWith(today()));
+    const repLine = describeRepeat(rep, rep.length, today());
+    if (repLine) lines.push(repLine);
+  } catch { /* könyv nélkül is megy */ }
+  // ── ZAJSZŰRÉS (2026-08-28, user-döntés: „csak ha VÁLTOZIK") ────────
+  // A user panasza: „kapok napi jelentést, de amit küld, az nem releváns."
+  // A 14 sorból 7 egy nem létező fejlesztőnek szólt, és napról napra
+  // BETŰRE UGYANAZ volt. Innentől az őrszem-sor csak akkor megy ki, ha
+  // változott — a részletes szabályok a core/report-noise.js-ben.
+  //
+  // ⚠️ A 🔇 SOR NEM DÍSZ: enélkül a „nincs változás" és a „elromlott az
+  // őrszem" kívülről egyformán nézne ki. Hét sor helyett egy, de látszik,
+  // hogy az őrszemek lefutottak.
+  const zaj = szurZajt(lines, allapotOlvas().orszem || {});
+  const szurtSorok = zaj.sorok.slice();
+  const csendes = csendesSor(zaj.csendes);
+  if (csendes) szurtSorok.push(csendes);
+  if (zaj.csendes.length) {
+    console.log('🔇 elnémítva ' + zaj.csendes.length + ' változatlan őrszem-sor: '
+      + Object.entries(zaj.indokok).map(([k, v]) => k + '=' + v).join(' · '));
+  }
+  szurtSorok.push(``, zaroSor(szurtSorok));   // 10-12: ✅ csak hibajelzés nélkül (report-lines.js)
+  lines.length = 0;
+  lines.push(...szurtSorok);
+
+  // A TELJES riport a CI-naplóba is (2026-07-31, user: "te is olvasd el
+  // mindig a telegramot, ne csak a rendszert ellenőrizd"). Eddig csak az
+  // "elküldve" sor látszott a naplóban — a fejlesztő-asszisztens a nyers
+  // állapotfájlokat nézte, nem azt, amit a user TÉNYLEGESEN kap. Mostantól
+  // a napló őrzi a szó szerinti üzenetet, így visszaolvasható.
+  console.log('── A MA KIKÜLDÖTT RIPORT ──────────────────────────');
+  console.log(lines.join('\n'));
+  console.log('───────────────────────────────────────────────────');
+
+  // ⚠️ A KÜLDÉS EREDMÉNYÉT MEG KELL NÉZNI (2026-08-27, független átnézés
+  // találta). A `sendMessage()` SOHA nem dob: hiányzó tokenre, Telegram-
+  // hibára és hálózati hibára is `{ok:false}`-t ad vissza. Eddig a
+  // dedup-kulcsot ilyenkor is beírtuk — vagyis EGY SIKERTELEN KÜLDÉS
+  // „ma már ment"-nek számított, a nap többi futása kihagyta, és a
+  // jelentés NÉMÁN elveszett. Pontosan a 08-27-i hiba, csak másik ajtón.
+  //
+  // A „✅ elküldve" sor is feltétel nélkül futott: a napló sikert mutatott
+  // olyankor is, amikor semmi nem ment ki. (Házi szabály: a „sikeres"
+  // válasz nem elvégzett munka — a láncot a VÉGÉRŐL mérd.)
+  const kuldes = await sendMessage(lines.join('\n'));
+  if (!sikeresKuldes(kuldes)) {
+    console.log('⚠️  Napi jelentés: a küldés NEM sikerült (' +
+      (kuldes?.skipped ? 'nincs Telegram-token' : (kuldes?.description || kuldes?.error || 'ismeretlen ok')) +
+      ') — a dedup-kulcsot NEM írom be, a következő futás újrapróbálja.');
+    return;
+  }
+  // ⚠️ AZ ŐRSZEM-ÁLLAPOT IS CSAK SIKERES KÜLDÉS UTÁN mentődik. Ha a küldés
+  // elbukott, a user nem látta a sorokat — ilyenkor „megjegyezni", hogy már
+  // megmutattuk őket, pont az a néma vesztés lenne, amit tegnap javítottunk.
+  try { writeFileSync(STATE_PATH, JSON.stringify({ last_sent: today(), orszem: zaj.allapot }, null, 2), 'utf-8'); }
+  catch (e) {
+    // Régen „nem kritikus" volt, mert a szűk sávba amúgy is egy futás fért
+    // bele. A tágabb sávval viszont a dedup EGYEDÜL tartja a napi egyet —
+    // ha ez a mentés elvész, a következő futás DUPLIKÁL. Legyen látható.
+    console.log('⚠️  Napi jelentés: a dedup-kulcs mentése nem sikerült (' + e.message +
+      ') — a következő futás ma másodszor is küldhet.');
+  }
+  console.log('✅ Napi jelentés elküldve.');
+}
+
+main().then(() => process.exit(0)).catch(e => { console.error('💥 NAPI JELENTÉS HIBA:', e); process.exit(1); });

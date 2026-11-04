@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-10-23T02:27:53.639Z",
+  "feeds_total": 39,
+  "feeds_ok": 38,
+  "feeds_failed": 1,
+  "items_seen_before": 297,
+  "items_keyword_filtered": 11,
+  "candidates_for_ai": 27,
+  "ai_calls": 3,
+  "items_relevant": 4,
+  "items_saved": 4,
+  "ai_cost_usd": 0.0055276200000000004,
+  "failed_feeds": [
+    {
+      "id": "microsoft-research",
+      "error": "Status code 502"
+    }
+  ],
+  "finished_at": "2026-10-23T02:29:41.503Z",
+  "duration_seconds": 107.864
+}

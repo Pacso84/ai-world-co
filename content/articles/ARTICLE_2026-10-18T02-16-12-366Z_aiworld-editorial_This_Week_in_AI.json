@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "written_at": "2026-10-19T15:12:40.403Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.00849621,
+    "original_draft": null,
+    "source_id": "aiworld-editorial",
+    "source_name": "AI World HQ (AI-written weekly roundup)",
+    "source_link": "https://aiworldhq.com",
+    "status": "published",
+    "rejected_at": "2026-10-19T02:22:17.841Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 755
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Honest, well-structured digest that transparently communicates its source limitations rather than inventing details. The explanations of AI agents and local processing are clear, the tone is friendly and empowering, and the 'What this means for you' section gives readers concrete next steps. No prohibited content, no clichés, no invented facts.",
+      "_aiCost": 0.0014865,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: Item 4 attributes a 'four real examples of AI agents in cities, hospitals, and sports' announcement to NVIDIA, including specific claims that one routes citizen requests across government departments ",
+    "can_retry": true,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-10-18T02-16-12-366Z_aiworld-editorial_This_Week_in_AI.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-10-19T15:12:51.657Z",
+    "slug": "this-week-in-ai-5-headlines-to-follow-october-18-2026",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-19T15:12:58.550Z",
+    "guide_worthy": false,
+    "pairing_reason": "Weekly news roundup covering five unrelated topics without specific actionable features",
+    "image_v": 2,
+    "image_at": "2026-10-19T15:13:55.876Z",
+    "seo": {
+      "meta_description": "Stay updated on this week's AI news: Gmail updates, NVIDIA laptops, banking AI, public-sector agents, and education tools. Your October 18, 2026 roundup.",
+      "keywords": [
+        "this week in AI news",
+        "AI news October 2026",
+        "Gmail AI features",
+        "NVIDIA AI laptops",
+        "AI in banking",
+        "AI agents government",
+        "AI in education"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add specific date in title tag for better chronological ranking",
+        "Include more specific subheadings for each topic to capture long-tail searches",
+        "Add schema markup for news article type to improve Google News inclusion"
+      ],
+      "optimised_at": "2026-10-19T15:15:57.860Z"
+    },
+    "social": true,
+    "social_at": "2026-10-19T15:29:22.878Z",
+    "fact_verified_at": "2026-10-22T19:38:43.087Z",
+    "fact_checked_at": "2026-11-01T18:55:55.518Z",
+    "fact_human_ok": "2026-11-01",
+    "fact_human_note": "Javítva 11-01: a heti összefoglaló azt állította, hogy a forrás nem közöl részleteket (ár, funkciónevek), pedig a hivatalos forrásai igen; a szakaszok átírva a hivatalos posztok alapján (Google Workspace Updates, NVIDIA blog, OpenAI/Itaú, NVIDIA városok, Zapier Google Vids, OpenAI Study Mode)."
+  },
+  "article_markdown": "---\ntitle: \"This Week in AI: 5 Headlines to Follow (October 18, 2026)\"\nsubtitle: \"Gmail, NVIDIA laptops, banking AI, public-sector agents, and classroom tools made the news — here's what was confirmed and where to find the rest.\"\ncategory: \"ai-news\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"weekly-digest\", \"gmail\", \"nvidia\", \"ai-agents\", \"education\"]\n---\n\n# This Week in AI: 5 Headlines to Follow (October 18, 2026)\n\n> **In short:** This week's AI headlines came with more detail than our first draft let on. Google is rolling out AI Inbox and Gmail Live to paid Workspace users in the US with English (US) settings. NVIDIA says its RTX Spark laptops are now on sale. Brazil's Itaú described its ia.i assistant and IARA governance platform. NVIDIA showed how AI agents are being tested in European city operations. And two education tools, Google Vids and ChatGPT's Study Mode, were in the spotlight.\n\nFive threads caught attention in this week's roundup. Each one traces back to an official announcement or guide, so below you'll find what was confirmed, who it applies to, and what is still open. Everything described is the company's own account of its product.\n\n## 1. Gmail AI Updates for Paid Workspace Users\n\nGoogle is rolling out two AI features to paid Google Workspace users. **AI Inbox** pulls suggested to-dos (action items, deliverables and deadlines) out of your email conversations and adds a \"topics to catch up on\" section with summaries of your most important threads. **Gmail Live** is voice search for your inbox on Android and iOS: you ask a question out loud, and it answers from your email using Google's latest Gemini models, with a source card showing which emails the answer came from and a choice of voices. Google says both are currently available only to users in the US with English (US) as their language. The AI Inbox rollout began October 12 on Rapid Release domains (Scheduled Release domains follow on October 26), and Gmail Live began rolling out on October 15; either can take up to 15 days to show up for you. Google lists paid Workspace editions for both, and Gmail Live also lists Google AI Plus, Pro and Ultra subscribers. For AI Inbox, Google says there is no admin control.\n\n## 2. NVIDIA's New Line of AI-Capable Laptops\n\nAccording to NVIDIA, its RTX Spark laptops are now available. The company describes them as slim, premium Windows laptops with NVIDIA Blackwell RTX graphics and up to 128GB of unified memory (a pool of memory the processor and graphics chip share), built to run AI tools locally, meaning the work happens on your machine, not on a remote server. Think of it like doing math in your head instead of calling a friend. The first models come from ASUS, Dell, HP, Lenovo, Microsoft and MSI, and NVIDIA says more systems are on the way. The performance claims are NVIDIA's own, so wait for independent reviews to see how they hold up on your tasks.\n\n## 3. AI in Banking\n\nOpenAI shared how Brazil's Itaú is using AI. Its customer assistant, **ia.i**, is a conversational layer that customers can use by text or voice for checking accounts, credit, cards, insurance and other services, and it connects people to human support when needed; the first phase reached about 300,000 customers. Behind it sits **IARA**, a governance and orchestration platform that gives the bank's teams controlled access to different AI models under internal policies. One example from the bank: its legal department uses the platform to read and analyze documents, running more than 2 million tasks a month. These figures are the bank's own account, and they show the pattern to expect elsewhere: a friendly assistant on the surface and a rule-keeping layer underneath.\n\n## 4. AI Agents in Public Services\n\nNVIDIA described how cities and local partners across Europe and the wider region are using its accelerated computing to build AI agents (software that can take actions on your behalf, not just answer questions) and digital twins (virtual models of real places and systems). The aim is to help teams decide things like when to repair a road or how to use energy more efficiently. Two examples NVIDIA gives: in France, agents supporting the Côte-d'Or department across more than 500 public buildings, which NVIDIA says cut document search time from weeks to minutes and reduced total operating costs by 10%; and in Italy's Milan region, a locally run AI factory starting in Cinisello Balsamo, with services including real-time translation, citizen chatbots and help with procurement and funding. NVIDIA and its partners supply these figures, and some of the projects are pilots or plans rather than finished services.\n\n## 5. AI Tools for Teachers and Students\n\nTwo education stories stood out. Zapier's guide to Google Vids describes it as Google's AI video generator, which can turn a written prompt, or an existing Slides deck or Doc, into a short video with narration (your own voice or an AI avatar) and music. The guide says Vids can be used with a personal Google account, with limits on its AI features, and that heavier use calls for a Google AI plan. With a Workspace account, your administrator decides whether you can use Vids and its AI features. Separately, for Brazil's Teachers' Day, OpenAI launched its free AI for Educators course in Brazilian Portuguese on OpenAI Academy and described Study Mode in ChatGPT (choose Study from the tools menu), which walks a student through a subject step by step with questions, hints, explanations and checks for understanding. If you have kids in school or teach yourself, ask what AI tools are being piloted in your district.\n\n## What this means for you\n\n- **For everyone**: This week's headlines came with real details, but they are each company's own description. Pick the thread that touches your life and read the official post behind it.\n- **For Workspace users**: AI Inbox and Gmail Live are limited, for now, to paid editions and to users in the US with English (US) settings. If you don't see them, those settings and the rollout window of up to 15 days are the first things to check.\n- **For laptop shoppers**: RTX Spark laptops are premium machines. If you're considering one, wait for independent reviews of the AI features you care about. Don't buy on the announcement alone.\n- **For parents and teachers**: Ask your school which AI tools it is testing. If it uses a school Workspace account, check with the administrator whether Vids and its AI features are switched on.\n\n## Wrap-up\n\nThe pattern this week is the same one we've been tracking: AI is moving from demos into everyday systems, such as your inbox, your bank, your city and your kids' classroom. This week's announcements came with concrete details, but each is still the company's own account. Pick the one thread that affects your life, open the official post behind it, and check back for independent reviews.",
+  "original_title": "This Week in AI: The 5 Stories That Matter (October 18, 2026)"
+}

@@ -1,0 +1,32 @@
+{
+  "at": "2026-11-04T19:11:44.301Z",
+  "hir": 454,
+  "utmutato": 374,
+  "problems": [
+    {
+      "code": "PARITAS_CSAK_HIR",
+      "uzenet": "csak a hírben van, az útmutatóban nincs: midread, midread__arrow, midread__lbl, midread__link",
+      "elemek": [
+        "midread",
+        "midread__arrow",
+        "midread__lbl",
+        "midread__link"
+      ]
+    },
+    {
+      "code": "PARITAS_CSAK_UTMUTATO",
+      "uzenet": "nem műfaji elem csak az útmutatóban: pack-foot",
+      "elemek": [
+        "pack-foot"
+      ]
+    },
+    {
+      "code": "PARITAS_TAG",
+      "uzenet": "meg nem magyarázott tag-eltérés: <h3>",
+      "elemek": [
+        "h3"
+      ]
+    }
+  ],
+  "megjavult": []
+}

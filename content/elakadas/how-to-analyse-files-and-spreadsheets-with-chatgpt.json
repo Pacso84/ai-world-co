@@ -1,0 +1,72 @@
+{
+  "slug": "how-to-analyse-files-and-spreadsheets-with-chatgpt",
+  "probalva": "2026-10-28T14:45:47.398Z",
+  "doboz": {
+    "keszult": "2026-10-28T14:45:47.398Z",
+    "enHash": "462e1ca3de6c48bb29e34f91a683be1a8a5f3cd8",
+    "forrasok": {
+      "https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt": "Data analysis with ChatGPT",
+      "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt": "Uploading files and audio to ChatGPT"
+    },
+    "en": [
+      {
+        "symptom": "ChatGPT gives wrong numbers when I upload a scanned PDF or image of a table.",
+        "why": "ChatGPT may not reliably extract exact values from image-based tables, scanned files, or files with complex visual layouts. Exact values can be lost when the data is not in a text-based format.",
+        "fix": "When exact values matter, upload a spreadsheet or text-based file instead. Then ask for the specific figures you need from that file.",
+        "source": "https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt"
+      },
+      {
+        "symptom": "The answer covers only part of my spreadsheet, not all the rows.",
+        "why": "A file may upload successfully but still be too large, complex, image-heavy, or poorly structured for complete analysis. For spreadsheets, the number and complexity of formulas can also affect processing.",
+        "fix": "If the result seems incomplete, ask ChatGPT to inspect specific sheets, rows, columns, or sections. You can also split the file into smaller files and upload each one.",
+        "source": "https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt"
+      },
+      {
+        "symptom": "I see an \"upload limit reached\" message even though I haven't uploaded much.",
+        "why": "Failed upload attempts can sometimes count toward the upload-rate limit. Library storage is separate from upload-rate limits.",
+        "fix": "Confirm that you're signed in to the correct account and subscription plan. If the error message shows a retry time, wait until that time before uploading again.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A ChatGPT hibás számokat ad, amikor egy beolvasott PDF-et vagy egy táblázatot ábrázoló képet töltök fel.",
+        "why": "Előfordulhat, hogy a ChatGPT nem tudja megbízhatóan kinyerni a pontos értékeket képalapú táblázatokból, beolvasott fájlokból vagy összetett vizuális elrendezésű fájlokból. A pontos értékek elveszhetnek, ha az adatok nem szövegalapú formátumban vannak.",
+        "fix": "Ha a pontos értékek számítanak, inkább táblázatkezelő-fájlt vagy szövegalapú fájlt tölts fel. Ezután kérd meg, hogy abból a fájlból adja meg a szükséges konkrét számadatokat.",
+        "source": "https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt"
+      },
+      {
+        "symptom": "A válasz csak a táblázatom egy részét fedi le, nem az összes sort.",
+        "why": "Előfordulhat, hogy egy fájl sikeresen feltöltődik, de mégis túl nagy, túl összetett, túl sok képet tartalmaz, vagy rosszul strukturált a teljes elemzéshez. Táblázatok esetében a képletek száma és összetettsége is befolyásolhatja a feldolgozást.",
+        "fix": "Ha az eredmény hiányosnak tűnik, kérd meg a ChatGPT-t, hogy vizsgáljon meg konkrét munkalapokat, sorokat, oszlopokat vagy szakaszokat. A fájlt kisebb fájlokra is feloszthatod, és mindegyiket feltöltheted.",
+        "source": "https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt"
+      },
+      {
+        "symptom": "A „feltöltési korlát elérve” üzenetet látom, pedig nem töltöttem fel sok mindent.",
+        "why": "A sikertelen feltöltési kísérletek néha beleszámíthatnak a feltöltési gyakoriság korlátjába. A könyvtár tárhelye különálló a feltöltési gyakoriság korlátjától.",
+        "fix": "Ellenőrizd, hogy a megfelelő fiókba és előfizetési csomagba vagy-e bejelentkezve. Ha a hibaüzenet újrapróbálkozási időpontot jelenít meg, várj addig, mielőtt újra feltöltesz.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "ChatGPT da cifras incorrectas cuando subo un PDF escaneado o una imagen de una tabla.",
+        "why": "Es posible que ChatGPT no extraiga de forma fiable los valores exactos de tablas basadas en imágenes, archivos escaneados o archivos con diseños visuales complejos. Los valores exactos pueden perderse cuando los datos no están en un formato basado en texto.",
+        "fix": "Cuando los valores exactos sean importantes, sube una hoja de cálculo o un archivo basado en texto. Después, pide las cifras específicas que necesitas de ese archivo.",
+        "source": "https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt"
+      },
+      {
+        "symptom": "La respuesta cubre solo parte de mi hoja de cálculo, no todas las filas.",
+        "why": "Es posible que un archivo se suba correctamente, pero aun así sea demasiado grande, complejo, abundante en imágenes o esté mal estructurado para un análisis completo. En las hojas de cálculo, el número y la complejidad de las fórmulas también pueden afectar al procesamiento.",
+        "fix": "Si el resultado parece incompleto, pide a ChatGPT que inspeccione hojas, filas, columnas o secciones específicas. También puedes dividir el archivo en archivos más pequeños y subir cada uno.",
+        "source": "https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt"
+      },
+      {
+        "symptom": "Veo un mensaje de «límite de carga alcanzado» aunque no he subido mucho.",
+        "why": "A veces, los intentos fallidos de carga pueden contar para el límite de frecuencia de carga. El almacenamiento de la biblioteca es independiente de los límites de frecuencia de carga.",
+        "fix": "Confirma que has iniciado sesión en la cuenta y el plan de suscripción correctos. Si el mensaje de error muestra una hora para volver a intentarlo, espera hasta esa hora antes de volver a cargar el archivo.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      }
+    ]
+  }
+}

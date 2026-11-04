@@ -1,0 +1,53 @@
+{
+  "slug": "how-to-turn-messy-voice-memos-into-clean-searchable-notes",
+  "probalva": "2026-10-30T03:49:59.675Z",
+  "doboz": {
+    "keszult": "2026-10-30T03:49:59.675Z",
+    "enHash": "d1a0f493d2ebae331e758368468fecd77cfeb9f7",
+    "forrasok": {
+      "https://help.openai.com/en/articles/11487532-chatgpt-record": "ChatGPT Record"
+    },
+    "en": [
+      {
+        "symptom": "The transcript has mistakes. Can I trust it as it is?",
+        "why": "ChatGPT may make mistakes, including in its transcriptions.",
+        "fix": "In ChatGPT: check important information in the transcript, because ChatGPT may make mistakes, including in its transcriptions.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "Where did my notes go after I finished the recording?",
+        "why": "Summaries from record mode are saved as canvases in your chat history. Depending on how the recording was started, the notes may appear as a canvas in your chat or as notes attached to the recording.",
+        "fix": "In ChatGPT: after you select Send, the generated notes open. Look for them as a canvas in your chat or as notes attached to the recording, depending on how you started it.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Hibák vannak az átiratban. Megbízhatok benne így is?",
+        "why": "A ChatGPT hibázhat, többek között az átirataiban is.",
+        "fix": "A ChatGPT-ben: ellenőrizd az átiratban szereplő fontos információkat, mert a ChatGPT hibázhat, többek között az átirataiban is.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "Hová lettek a jegyzeteim, miután befejeztem a felvételt?",
+        "why": "A rögzítési módban készült összefoglalók vászonként lesznek elmentve a csevegési előzményeidbe. Attól függően, hogyan indítottad el a felvételt, a jegyzetek vászonként jelenhetnek meg a csevegésedben, vagy a felvételhez csatolt jegyzetekként.",
+        "fix": "A ChatGPT-ben: miután kiválasztod a Send lehetőséget, megnyílnak a létrehozott jegyzetek. Keresd őket vászonként a csevegésedben, vagy a felvételhez csatolt jegyzetekként, attól függően, hogyan indítottad el.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "La transcripción tiene errores. ¿Puedo confiar en ella tal como está?",
+        "why": "ChatGPT puede cometer errores, incluso en sus transcripciones.",
+        "fix": "En ChatGPT: comprueba la información importante de la transcripción, porque ChatGPT puede cometer errores, incluso en sus transcripciones.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      },
+      {
+        "symptom": "¿Dónde quedaron mis notas después de terminar la grabación?",
+        "why": "Los resúmenes del modo de grabación se guardan como lienzos en tu historial de chats. Según cómo se haya iniciado la grabación, las notas pueden aparecer como un lienzo en tu chat o como notas adjuntas a la grabación.",
+        "fix": "En ChatGPT: después de seleccionar Send, se abren las notas generadas. Búscalas como un lienzo en tu chat o como notas adjuntas a la grabación, según cómo la hayas iniciado.",
+        "source": "https://help.openai.com/en/articles/11487532-chatgpt-record"
+      }
+    ]
+  }
+}

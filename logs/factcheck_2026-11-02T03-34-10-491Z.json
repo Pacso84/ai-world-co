@@ -1,0 +1,62 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.019624739999999998,
+  "at": "2026-11-02T03:34:10.491Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-design-a-custom-birthday-card-with-midjourney-in-10-m.json",
+      "cim": "How to design a custom birthday card with Midjourney in 10 minutes",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-ask-chatgpt-for-step-by-step-photo-editing-help-in-yo.json",
+      "cim": "How to Ask ChatGPT for Step-by-Step Photo Editing Help in Your Phone's Editor",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató pontos általános tanácsokat ad a ChatGPT fotószerkesztési segítségként való használatáról. Nem találtunk konkrét hibákat."
+    },
+    {
+      "file": "ARTICLE_2026-11-01T03-15-41-244Z_aiworld-editorial_This_Week_in_AI.json",
+      "cim": "This Week in AI: The 5 Stories That Matter (November 1, 2026)",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a forrás alátámasztja, amit kivenne: „This Week in AI: The 5 Stories That Matter (November 1, 2026)”",
+      "modell_hu": "A cím dátuma ellentmond a forrás főcímének dátumának"
+    },
+    {
+      "file": "ARTICLE_2026-10-31T03-11-44-458Z_zapier-blog_What_is_AI_transformation_in_2027__How_to_build_a_.json",
+      "cim": "What is AI transformation in 2027? How to build a strategy for your business",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrásokat: a Zapier definíció megfelel, a Snowflake 97%/5% adatok helyesek, a token/ügynök leírások egyeznek a Zapier forrással, és a Salesforce felmérés statisztikái (68%, 66%, 3,6 óra, 73% vs 37%, 72%) helyesen vannak jelentve."
+    },
+    {
+      "file": "ARTICLE_2026-10-31T03-11-44-458Z_picsart_How_to_make_AI_short_films__from_idea_to_final_cut.json",
+      "cim": "How to make AI short films, from idea to final cut",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi mindkét hivatalos forrást: mind a hat szakasznev, az időtartam (15 másodperctől 10 percig), a nyolc stílusopció, a hárommodelles rendszer (konkrét modellek megnevezése nélkül), a referencialapok részletei, a hat storyboard-kép epizódonként, a folytonossági ellenőrzés, a termé"
+    },
+    {
+      "file": "ARTICLE_2026-10-31T03-11-44-458Z_brave-leo_Another_Brave_User-First_AI_Win__Leo_adds_End-to-e.json",
+      "cim": "Another Brave User-First AI Win: Leo adds End-to-end Encryption, Oblivious HTTP, and Verifiable Confidential Computing",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrásokat: a Brave eszközön titkosítást használ TEE védelemmel és AI Gateway proxyval az IP-címek elrejtésére; a DuckDuckGo a megosztott chat-eket a # utáni URL-fragmentumban lévő kulcsokkal titkosítja, blokkolja a keresőmotorok indexelését, és 48 órás alapértelmezett lejá"
+    }
+  ]
+}

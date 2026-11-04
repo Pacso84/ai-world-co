@@ -1,0 +1,42 @@
+{
+  "started_at": "2026-10-26T02:15:36.885Z",
+  "total": 5,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.010458307999999998,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-22T02-26-44-202Z_google-ai-blog_Southeast_Asia_s_digital_economy_to_hit__368_billi.json",
+      "article": "ARTICLE_2026-10-22T02-26-44-202Z_google-ai-blog_Southeast_Asia_s_digital_economy_to_hit__368_billi.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0013548
+    },
+    {
+      "writer": "WRITER_2026-10-22T02-27-27-493Z_picsart_How_to_make_spooky_Halloween_invitations_guests_ca.json",
+      "article": "ARTICLE_2026-10-22T02-27-27-493Z_picsart_How_to_make_spooky_Halloween_invitations_guests_ca.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00143532
+    },
+    {
+      "writer": "WRITER_2026-10-22T02-27-34-945Z_zapier-blog_How_to_implement_AI_training_for_employees.json",
+      "article": "ARTICLE_2026-10-22T02-27-34-945Z_zapier-blog_How_to_implement_AI_training_for_employees.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00134148
+    },
+    {
+      "writer": "WRITER_2026-10-25T02-23-20-042Z_aiworld-editorial_This_Week_in_AI.json",
+      "rejected": "REJECTED_2026-10-25T02-23-20-042Z_aiworld-editorial_This_Week_in_AI.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0017118
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-10-26T02:18:59.576Z",
+  "duration_seconds": 202.691
+}

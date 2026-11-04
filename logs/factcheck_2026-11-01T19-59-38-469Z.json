@@ -1,0 +1,65 @@
+{
+  "ok": 2,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.01110669,
+  "at": "2026-11-01T19:59:38.469Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 2,
+    "javitva": 0,
+    "visszautasitva": 3,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-10-31T03-11-23-766Z_openai-blog_Making_it_easier_for_websites_to_express_AI_traini.json",
+      "cim": "Making it easier for websites to express AI training preferences",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a forrás alátámasztja, amit kivenne: „Three of them, according to the announcement, are sound judgment, human agency (keeping pe”",
+      "modell_hu": "A cikk hibásan 'sound judgment'-nak nevezi az egyik alapértéket, holott a forrás szerint 'harm minimization' a helyes elnevezés"
+    },
+    {
+      "file": "ARTICLE_2026-10-31T03-11-23-767Z_google-workspace_Edit_entire_presentations_with_Gemini_in_Google_Sl.json",
+      "cim": "Edit entire presentations with Gemini in Google Slides",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrást: leírja a négy fő felhasználási módot, megemlíti az angol nyelvű indulást, utal az undo/verziótörténet funkcióra, és általános jelen időt használ a funkció leírásához. Nincs tényleges ellentmondás."
+    },
+    {
+      "file": "ARTICLE_2026-10-31T03-11-23-766Z_openai-blog_Credit_Saison_achieves_954__ROI_in_a_ChatGPT_Enter.json",
+      "cim": "Credit Saison achieves 954% ROI in a ChatGPT Enterprise pilot",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás a forrásban nem szereplő állítást hozna be: „It does not describe how the ROI figure was calculated.”",
+      "modell_hu": "A cikk azt állítja, hogy a forrás nem közli, meddig tartott a pilot, illetve hányan vettek részt, holott a forrás egyértelműen megadja mindkét adatot."
+    },
+    {
+      "file": "ARTICLE_2026-10-28T02-59-31-452Z_perplexity-news_What_advanced_AI_models_are_included_in_my_subscri.json",
+      "cim": "What advanced AI models are included in my subscription? - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-10-28T02-59-50-364Z_dropbox-blog__Bring_trusted_Dropbox_context_directly_into_Micro.json",
+      "cim": " Bring trusted Dropbox context directly into Microsoft Copilot ",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a forrás alátámasztja, amit kivenne: „It also does not say which plans or accounts get access.”",
+      "modell_hu": "Megjelenik a megjelenési dátum (most), és a forrás az összes Dropbox-csomagot megnevezi"
+    },
+    {
+      "file": "ARTICLE_2026-10-27T02-51-00-950Z_openai-blog_How_Fanatics_and_OpenAI_streamline_the_fan_experie.json",
+      "cim": "How Fanatics and OpenAI streamline the fan experience",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "minden konkrét állítás egyezik a forrással"
+    }
+  ]
+}

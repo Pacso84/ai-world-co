@@ -1,0 +1,64 @@
+{
+  "ok": 2,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.0144332,
+  "at": "2026-11-03T15:37:43.015Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 2,
+    "javitva": 0,
+    "visszautasitva": 2,
+    "gyanu": 1,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-10-28T02-59-31-452Z_perplexity-news_What_advanced_AI_models_are_included_in_my_subscri.json",
+      "cim": "What advanced AI models are included in my subscription? - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-07-22T10-14-03-156Z_deeparteffects_Run_Stable_Diffusion_Locally___The_Easy_Way_with_D.json",
+      "cim": "Run Stable Diffusion Locally – The Easy Way with Deep Art Creator Desktop",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk és a forrás különböző szoftvereket tárgyal; a forrás nem támasztja alá a WebUI Forge-ról szóló állításokat"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-build-a-simple-study-schedule-in-the-weeks-before-a-b.json",
+      "cim": "How to build a simple study schedule in the weeks before a big exam",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-02T14-18-34-311Z_picsart_How_to_make_YouTube_Shorts_from_your_long_videos.json",
+      "cim": "How to make YouTube Shorts from your long videos",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a forrás alátámasztja, amit kivenne: „YouTube's new AI turns long videos into up to 12 captioned Shorts”",
+      "modell_hu": "A cikk a mesterséges intelligencia vágóeszközt a YouTube-nak tulajdonítja, holott a forrás a Picsart eszközéről szól"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-build-a-simple-weekly-schedule-in-google-sheets-with-.json",
+      "cim": "How to build a simple weekly schedule in Google Sheets with Gemini",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-17T02-02-59-662Z_zapier-blog_What_is_Google_Vids__And_how_to_use_it_.json",
+      "cim": "What is Google Vids? And how to use it ",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a forrás alátámasztja, amit kivenne: „A college teacher who had been building every lecture in Google Slides recently tried some”",
+      "modell_hu": "A cikk az OpenAI Study Mode-ját és az AI for Educators tanfolyamot a Google-nak tulajdonítja, és két külön vállalati bejelentést egyetlen Google-bejelentésként kezel"
+    }
+  ]
+}

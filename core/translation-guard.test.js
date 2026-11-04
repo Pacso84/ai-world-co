@@ -1,0 +1,260 @@
+// ===================================================================
+// CÍM-FORDÍTÁS VÉDELEM TESZT — futtatás: node core/translation-guard.test.js
+//
+// A teszt-esetek NEM kitaláltak: mind a 611 élő fordítás átméréséből valók
+// (2026-08-04). A három "angolul maradt" eset az, amit a napi ellenőrzés
+// talált; a két "csak úgy néz ki" eset az, amit a mérés HAMISAN jelzett,
+// amíg a küszöb 0.7 volt. A teszt tehát egyszerre méri, mit KELL megfogni
+// és mit NEM SZABAD.
+// ===================================================================
+import { strict as assert } from 'assert';
+import {
+  titleLooksUntranslated,
+  bodyLooksUntranslated,
+  stripNonProse,
+  UNTRANSLATED_BODY_THRESHOLD,
+  FAIL,
+  shouldRetryTranslation,
+  retryTokenFrame,
+  RETRY_TOKEN_CAP,
+  RETRY_WAIT_MS,
+  looksLikePromptLeak
+} from './translation-guard.js';
+
+// ── 1) ANGOLUL MARADT — ezeket MEG KELL fognia (élő esetek) ──────────
+const UNTRANSLATED = [
+  ['What Is a Voice Agent Builder, and Could It Help Your Small Business?',
+   'What Is a Voice Agent Builder, and Could It Help Your Small Business?'],
+  ['Interactive AI Avatars: What They Are and How You Might Use Them',
+   'Interactive AI Avatars: What They Are and How You Might Use Them'],
+  // Ez a legalattomosabb: NEM betű szerint azonos (más kisbetűzés, hiányzó
+  // "A"), csak ANGOL. Az egyszerű string-egyezés ezt átengedte volna.
+  ['Plan a Family Weekend Getaway with DeepSeek: A Step-by-Step Guide',
+   'Plan a family weekend getaway with DeepSeek: step-by-step guide']
+];
+for (const [en, tr] of UNTRANSLATED) {
+  assert.equal(titleLooksUntranslated(en, tr), true,
+    'angolul maradt címet meg kell fognia: ' + tr.slice(0, 50));
+}
+
+// ── 2) VALÓDI FORDÍTÁS — ezeket NEM szabad megfognia ─────────────────
+// A két első a mérés HAMIS RIASZTÁSA volt 0.7-es küszöbnél (71% és 75%):
+// spanyol mondat, sok terméknévvel.
+const TRANSLATED = [
+  ['Get started with Microsoft Copilot in Word, Excel and Outlook',
+   'Empieza a usar Microsoft Copilot en Word, Excel y Outlook'],
+  ['Introduction to Alibaba\'s Qwen chatbot',
+   'Introducción al chatbot Qwen de Alibaba'],
+  ['How to spot AI-generated scam messages before you click or reply',
+   'Cómo detectar mensajes de estafa generados con IA antes de hacer clic o responder'],
+  ['Write a polite complaint email to a company with DeepSeek',
+   'Escribe un correo de reclamación educado a una empresa con DeepSeek'],
+  ['Plan a Family Weekend Getaway with DeepSeek: A Step-by-Step Guide',
+   'Planifica una escapada familiar de fin de semana con DeepSeek: guía paso a paso'],
+  ['How to practise a job interview out loud with ChatGPT voice mode',
+   'Cómo practicar una entrevista de trabajo en voz alta con el modo de voz de ChatGPT']
+];
+for (const [en, tr] of TRANSLATED) {
+  assert.equal(titleLooksUntranslated(en, tr), false,
+    'valódi fordítást NEM szabad megfognia: ' + tr.slice(0, 50));
+}
+
+// ── 3) RÖVID CÍM — nem ítélünk (a terméknév jogosan azonos) ──────────
+{
+  assert.equal(titleLooksUntranslated('Gemini 3 Pro', 'Gemini 3 Pro'), false,
+    'rövid, terméknév-címnél nem ítélünk');
+  assert.equal(titleLooksUntranslated('', 'bármi'), false, 'üres angol címnél nem ítélünk');
+  assert.equal(titleLooksUntranslated('valami', ''), false, 'üres fordításnál nem ítélünk');
+}
+
+// ── 4) MAGYAR is átmegy (a mérés szerint hu-ban 0 hiba volt) ─────────
+{
+  assert.equal(titleLooksUntranslated(
+    'Turn on two-factor authentication on your phone',
+    'Kapcsold be a kétlépcsős azonosítást a telefonodon'), false);
+}
+
+// ===================================================================
+// TÖRZS-OLDAL — 2026-08-10
+// ===================================================================
+// A 2026-08-09-i heti összefoglaló magyar fordítása HATSZOR bukott el
+// némán (memory/translation-failures.json: "…This_Week_in_AI.json|hu": 6),
+// és a cikk magyarul ANGOLUL ment ki. A spanyol átment.
+//
+// OK: a nem-fordítás védelem (2026-07-25) a saját URL-jeinket is beleszámolta
+// a szövegbe. A slugjaink angol szavakból állnak:
+//     /article/how-people-are-really-using-chatgpt-and-what-that-means
+// Élesben mérve a spanyol digesten: 54 angol találat — MIND az URL-ekből,
+// a tényleges spanyol prózában NULLA. A spanyol 0.0584-gyel épp elcsúszott
+// a 0.06 alatt; a magyar tömörebb (kevesebb szó, ugyanannyi URL), így a
+// hányados fölé ment, és a JÓ fordítást dobta el.
+//
+// A heti összefoglaló a legsérülékenyebb: 10 belső link van benne.
+// ===================================================================
+
+// A valódi digest szerkezete: minden hírhez egy kép és egy "teljes cikk" link,
+// a linkek célja pedig mindig ANGOL slug — bármelyik nyelven olvassuk.
+const DIGEST_LINKEK = `
+![Your Teen and AI Chatbots](/assets/images/ai-and-your-teen-what-families-should-know.jpg)
+[Olvasd el a teljes cikket](https://aiworldhq.com/article/ai-and-your-teen-what-families-should-know)
+![What People Actually Use ChatGPT For](/assets/images/how-people-are-really-using-chatgpt.jpg)
+[Olvasd el a teljes cikket](https://aiworldhq.com/article/how-people-are-really-using-chatgpt-and-what-that-means)
+![AI Video Tools Are Getting Real](/assets/images/ai-video-generators-like-seedance.jpg)
+[Olvasd el a teljes cikket](https://aiworldhq.com/article/ai-video-generators-like-seedance-in-pictures)
+`;
+
+// ── 5) A JÓ MAGYAR FORDÍTÁST NEM SZABAD ELDOBNI ──────────────────────
+{
+  const magyarProza = `
+Ezen a héten öt olyan hír történt, ami tényleg számít neked. Nem a szokásos
+szakzsargon, hanem az, ami a mindennapjaidra hatással lehet. Végigvesszük,
+hogy melyik eszköz mit tud most, és melyiket érdemes kipróbálnod, ha eddig
+csak nézelődtél. Az első téma a tinédzserek és a csevegőrobotok kapcsolata,
+mert egyre több szülő kérdezi, hogy ez mennyire biztonságos. Utána megnézzük,
+mire használják az emberek valójában a mesterséges intelligenciát, és ez
+meglepő lehet. A harmadik hír a videókészítő eszközökről szól, amelyek most
+értek el oda, hogy hétköznapi felhasználóként is van értelme elindítani őket.
+A negyedik téma a munkahelyeket érinti, az ötödik pedig azt, hogyan védheted
+meg a saját adataidat. Minden szakaszban megtalálod a teljes cikkre mutató
+linket, ha valamelyik téma közelebbről is érdekel téged.
+`;
+  assert.equal(bodyLooksUntranslated(magyarProza + DIGEST_LINKEK), false,
+    'a tiszta magyar próza nem bukhat el a saját URL-jeinktől');
+}
+
+// ── 6) A VÉDELEM TOVÁBBRA IS FOG ─────────────────────────────────────
+// Enélkül a javítás kinyitná a kaput, amit 2026-07-25-ben pont azért
+// zártunk be, mert 10 cikk angolul csúszott a fordítás-helyre.
+{
+  const angolulMaradt = `
+Every week we look at the five stories that matter for you and your family.
+This is what you can expect from the tools that are changing how you work.
+The first story is about teenagers and chatbots, and what parents should know
+when their children are using them. Then we look at what people are really
+doing with these assistants, and how that differs from what you would think.
+The third story is about video tools that are finally good enough for you to
+try at home, and the fourth is about how this will change the work that you do.
+` + DIGEST_LINKEK;
+  assert.equal(bodyLooksUntranslated(angolulMaradt), true,
+    'a valóban angolul maradt törzs továbbra is elbukik');
+}
+
+// ── 7) Az URL-kivágás a link SZÖVEGÉT megtartja ──────────────────────
+// A link szövege fordítandó tartalom. Ha azt is kivágnánk, egy angolul
+// hagyott linkgyűjtemény észrevétlenül átcsúszna a szűrőn.
+{
+  const t = stripNonProse('Nézd meg [ezt a friss cikket](https://aiworldhq.com/article/how-to-use-ai) ma.');
+  assert.ok(t.includes('ezt a friss cikket'), 'a link szövege bent marad');
+  assert.ok(!t.includes('how-to-use-ai'), 'a link CÉLJA kikerül');
+  assert.ok(!t.includes('https'), 'a csupasz URL is kikerül');
+}
+
+// ── 8) Képútvonal és kódblokk sem próza ──────────────────────────────
+{
+  const t = stripNonProse('Kép: ![alt](/assets/images/what-you-can-do-with-ai.jpg)\n\n```\nconst the = "and";\n```\n');
+  assert.ok(!t.includes('/assets/'), 'a képútvonal kikerül');
+  assert.ok(!t.includes('const the'), 'a kódblokk kikerül');
+}
+
+// ── 9) Rövid szövegre nem ítélünk ────────────────────────────────────
+{
+  assert.equal(bodyLooksUntranslated('The AI tool that you can use.'), false,
+    'rövid szövegnél nincs ítélet');
+  assert.equal(bodyLooksUntranslated(''), false, 'üres szöveg nem ítélhető');
+  assert.equal(bodyLooksUntranslated(null), false, 'hiányzó szöveg nem ítélhető');
+}
+
+// ── 10) A küszöb marad, ahol a 2026-07-25-ös kalibráció hagyta ───────
+assert.equal(UNTRANSLATED_BODY_THRESHOLD, 0.06);
+
+// ── 11) AZONNALI ÚJRAPRÓBA (2026-08-13) ──────────────────────────────
+// Két friss cikk magyar fordítása elbukott, a magyar oldalra ANGOL került.
+// Ugyanabból a forrásból a spanyol lefordult; kézzel újrafuttatva mindkettő
+// ELSŐRE sikerült. A bukás átmeneti volt — a rendszer mégis 8 órán át tartott
+// kint angol szöveget, mert nem próbálta újra a futáson belül.
+{
+  // Forrás-hibán az újrapróba nem segít, csak pénz.
+  assert.equal(shouldRetryTranslation(FAIL.NO_FRONTMATTER), false,
+    'a hiányzó frontmatter a FORRÁS hibája — újrapróba nem javítja');
+
+  // Minden más ok a modell pillanatnyi viselkedése.
+  for (const ok of [FAIL.NO_RESPONSE, FAIL.TOO_SHORT, FAIL.TRUNCATED, FAIL.ENGLISH_BODY, FAIL.ENGLISH_TITLE]) {
+    assert.equal(shouldRetryTranslation(ok), true, `újrapróbálandó: ${ok}`);
+  }
+
+  // Nincs ok = nincs bukás = nincs újrapróba.
+  assert.equal(shouldRetryTranslation(null), false);
+  assert.equal(shouldRetryTranslation(''), false);
+  assert.equal(shouldRetryTranslation(undefined), false);
+
+  // Az emelt keret: 1,5× ráhagyás, kemény plafonnal. A 16000-es alapkeretből
+  // 24000 lesz — a mért eset 14039 kimeneti tokent használt a 16000-ből.
+  assert.equal(retryTokenFrame(16000), 24000, 'a fordító alapkeretéből 24000');
+  assert.equal(retryTokenFrame(8000), 12000, '1,5x a plafon alatt');
+  assert.equal(retryTokenFrame(20000), RETRY_TOKEN_CAP, 'a plafont nem lépi túl');
+  assert.equal(retryTokenFrame(0), RETRY_TOKEN_CAP, 'rossz bemenetre a plafon');
+  assert.equal(retryTokenFrame(null), RETRY_TOKEN_CAP);
+  assert.ok(retryTokenFrame(16000) > 16000, 'az újrapróba SOSEM szűkebb kerettel megy');
+
+  // Az okok emberi szövegek — a naplóba mennek, ott kell érteni őket.
+  for (const [kulcs, szoveg] of Object.entries(FAIL)) {
+    assert.ok(szoveg.length > 8, `a(z) ${kulcs} indoka mondja is meg, mi történt`);
+  }
+
+  // VÁRAKOZÁS az újrapróba előtt (2026-08-14). Az azonnali újrapróba ELSŐ éles
+  // próbáján mindkét kísérlet elbukott; órákkal később ugyanaz elsőre sikerült,
+  // 1033 kimeneti tokennel — tehát nem a keret volt szűk, hanem a szolgáltatónak
+  // volt egy rossz perce. Két másodpercekre lévő hívás ugyanabba fut bele.
+  assert.ok(RETRY_WAIT_MS >= 15000, 'legyen érdemi szünet, ne csak formalitás');
+  assert.ok(RETRY_WAIT_MS <= 60000, 'de ne egye meg a futás időkeretét (9 perc)');
+  // A legrosszabb eset se boruljon: ha egy futásban 4 pár bukik, a várakozás
+  // összesen se vigyen el többet a keret negyedénél.
+  assert.ok(4 * RETRY_WAIT_MS < 9 * 60 * 1000 / 4, 'négy bukás várakozása is belefér');
+}
+
+// ── 12) PROMPT-SZIVÁRGÁS (2026-08-14) ────────────────────────────────
+// Élesben megtörtént: a modell a SAJÁT UTASÍTÁSÁT és a hangos gondolkodását
+// mentette el cikk-tartalomként, és 2026-06-24 óta ez volt kint a magyar
+// oldalon (ARTICLE_GUIDE_ai-summarise-long):
+//    cím  : "Summarize Any Long Document or Article with AI → Hungarian native headline"
+//    törzs: "<the full translated body in Markdown>\n\nAnd I need to add the
+//            »Röviden:« blockquote after the # title. Let me also double check…"
+//
+// MIÉRT NEM FOGTA MEG EGYIK KAPU SEM:
+//   • a nyelv-őr: a törzs TÖBBSÉGE valódi magyar volt → az angol sűrűség alacsony
+//   • a cím-őr:   a hozzátoldott "→ Hungarian native headline" HÍGÍTOTTA az
+//                 átfedést 6/9 = 0,67-re, a 0,85-ös küszöb ALÁ
+//   • a csonkulás-őr: a szöveg HOSSZABB lett, nem rövidebb
+//
+// KALIBRÁCIÓ: a minták az ÖSSZES élő fordításon lefuttatva (1400 pár) pontosan
+// EGY találatot adtak — a valódi hibásat. Nulla hamis pozitív.
+{
+  assert.equal(looksLikePromptLeak('<the full translated body in Markdown>\n\nValami szöveg.'), true,
+    'a rendszer-prompt helykitöltője');
+  assert.equal(looksLikePromptLeak('Summarize Any Long Document with AI → Hungarian native headline'), true,
+    'a cím-utasítás visszaírva');
+  assert.equal(looksLikePromptLeak('Szöveg.\n\nBODY:\n\nMás szöveg.'), true,
+    'a kimeneti formátum címkéje a törzsben');
+  assert.equal(looksLikePromptLeak('And I need to add the blockquote. Let me also double check the brand name rule.'), true,
+    'a modell hangos gondolkodása');
+
+  // NE fogjon meg valódi cikkszöveget. A honlapunk AI-ról szól, tehát a
+  // "prompt", "AI", "model" szavak SŰRŰN szerepelnek jogosan — ezekre tilos ütni.
+  const valodi = [
+    'Írd be a promptot: "Foglald össze ezt a cikket három mondatban." Ez a legjobb kezdés.',
+    'A modell néha téved, ezért mindig ellenőrizd a fontos tényeket egy másik forrásból.',
+    'Az AI-asszisztensek a következő szót jósolják meg, ezért hangzanak magabiztosnak.',
+    'Escribe este prompt: "Resume este artículo en tres frases." Funciona en ChatGPT y Gemini.',
+    '## Mit írj a chatbe\n\nMásold be a szöveget, majd kérd meg: foglalja össze pontokba.'
+  ];
+  for (const v of valodi) {
+    assert.equal(looksLikePromptLeak(v), false, 'valódi cikkszöveg NEM szivárgás: ' + v.slice(0, 40));
+  }
+
+  assert.equal(looksLikePromptLeak(''), false);
+  assert.equal(looksLikePromptLeak(null), false);
+  assert.ok(FAIL.PROMPT_LEAK, 'van hozzá indok a naplóhoz');
+  assert.equal(shouldRetryTranslation(FAIL.PROMPT_LEAK), true, 'ezt érdemes újrapróbálni — modell-hiba');
+}
+
+console.log('✅ translation-guard.test: minden átment');

@@ -1,0 +1,53 @@
+{
+  "slug": "how-to-set-up-a-custom-gpt-in-chatgpt-for-tasks-you-repeat-weekly",
+  "probalva": "2026-10-30T14:46:55.741Z",
+  "doboz": {
+    "keszult": "2026-10-30T14:46:55.741Z",
+    "enHash": "4e1298432d67f868af81b01b760291aed8b8ad0a",
+    "forrasok": {
+      "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt": "Uploading files and audio to ChatGPT"
+    },
+    "en": [
+      {
+        "symptom": "I get an \"upload limit reached\" message even though I haven't uploaded much.",
+        "why": "Failed upload attempts can sometimes count toward the upload-rate limit. ChatGPT does not currently show how much of your rolling upload-rate quota has been used or remains.",
+        "fix": "If the error message shows a retry time, wait until that time before uploading again. Confirm that you're signed in to the correct account and subscription plan.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      },
+      {
+        "symptom": "ChatGPT shows an error when I try to upload a file, and I can't save more files.",
+        "why": "Shared upload storage is capped at 25 GB per user and 100 GB per organization. ChatGPT displays an error when a user or organization reaches a cap.",
+        "fix": "Open Storage in Settings to check your saved-file storage usage. Then, if you need room, review your saved files in Library before uploading again.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "„feltöltési korlát elérve” üzenetet kapok, annak ellenére, hogy nem töltöttem fel sok mindent.",
+        "why": "A sikertelen feltöltési kísérletek néha beleszámíthatnak a feltöltési gyakoriság korlátjába. A ChatGPT jelenleg nem mutatja, hogy a gördülő feltöltési gyakorisági keretedből mennyit használtál fel, illetve mennyi maradt.",
+        "fix": "Ha a hibaüzenet újrapróbálkozási időpontot jelenít meg, várj addig az időpontig, mielőtt újra feltöltesz. Ellenőrizd, hogy a megfelelő fiókba és előfizetési csomagba vagy-e bejelentkezve.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      },
+      {
+        "symptom": "A ChatGPT hibát jelez, amikor megpróbálok feltölteni egy fájlt, és nem tudok több fájlt menteni.",
+        "why": "A megosztott feltöltési tárhely felhasználónként 25 GB-ra, szervezetenként pedig 100 GB-ra van korlátozva. A ChatGPT hibaüzenetet jelenít meg, amikor egy felhasználó vagy szervezet eléri a korlátot.",
+        "fix": "A mentett fájlok tárhelyhasználatának ellenőrzéséhez nyisd meg a Storage lehetőséget a Settingsben. Ezután, ha helyre van szükséged, a Libraryban nézd át a mentett fájljaidat, mielőtt újra feltöltesz.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "Recibo el mensaje «se alcanzó el límite de carga» aunque no he cargado mucho.",
+        "why": "A veces, los intentos fallidos de carga pueden contar para el límite de frecuencia de carga. ChatGPT actualmente no muestra cuánto de tu cuota de frecuencia de carga acumulada has usado o cuánto te queda.",
+        "fix": "Si el mensaje de error muestra una hora para volver a intentarlo, espera hasta entonces antes de volver a cargar archivos. Confirma que has iniciado sesión en la cuenta y el plan de suscripción correctos.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      },
+      {
+        "symptom": "ChatGPT muestra un error cuando intento cargar un archivo y no puedo guardar más archivos.",
+        "why": "El almacenamiento compartido para cargas está limitado a 25 GB por usuario y 100 GB por organización. ChatGPT muestra un error cuando un usuario o una organización alcanza el límite.",
+        "fix": "Abre Storage en Settings para comprobar el uso del almacenamiento de tus archivos guardados. Después, si necesitas espacio, revisa tus archivos guardados en Library antes de volver a cargar archivos.",
+        "source": "https://help.openai.com/en/articles/8555545-uploading-files-and-audio-to-chatgpt"
+      }
+    ]
+  }
+}

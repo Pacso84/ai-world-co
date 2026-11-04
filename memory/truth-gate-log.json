@@ -1,0 +1,205 @@
+{
+  "2026-09-28": [
+    {
+      "at": "2026-09-28T02:33:45.839Z",
+      "file": "WRITER_2026-09-23T02-19-31-347Z_openai-blog_Introducing_GPT-6_Sol_and_Luna.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
+    }
+  ],
+  "2026-09-30": [
+    {
+      "at": "2026-09-30T03:03:01.327Z",
+      "file": "WRITER_2026-09-30T02-55-14-270Z_dropbox-blog__Put_your_Dropbox_project_context_to_work_with_Mus.json",
+      "action": "block",
+      "reasons": [
+        "\"Meta's Muse\" AI agent is not a known product. Meta has not announced a personal AI agent called 'Muse' with Dropbox and Zapier integrations. This appears to be a fabricated product.",
+        "Muse for Small Business as described — a personal AI agent for small business owners — is not a real, announced Meta product.",
+        "The claim that Meta made Zapier a 'named connector inside Muse' with access to '9,000 apps and 40,000 actions' via MCP is unverified and likely fabricated.",
+        "Attributing specific quotes ('works in the background to help' framed as Meta describing Muse, and characterizing Muse as 'its answer' to agents) to a 'Meta's announcement' that does not appear to exist constitutes invented specifics."
+      ],
+      "confidence": 9
+    }
+  ],
+  "2026-10-01": [
+    {
+      "at": "2026-10-01T03:06:55.494Z",
+      "file": "WRITER_2026-10-01T03-00-56-728Z_databricks_How_to_scale_agentic_applications_without_creating.json",
+      "action": "block",
+      "reasons": [
+        "The source is from Databricks (databricks.com/blog), but the article attributes the guide to Datadog, a completely different company ('Datadog, a company that helps businesses monitor their software, recently published a guide titled...'). Datadog did not publish this guide; Databricks did."
+      ],
+      "confidence": 9
+    }
+  ],
+  "2026-10-03": [
+    {
+      "at": "2026-10-03T02:56:19.597Z",
+      "file": "WRITER_2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
+      "action": "block",
+      "reasons": [
+        "The article states that 'Claude Frontier Academy' is an Anthropic program with a '$100 million commitment to train 10,000' Frontier Deployed Engineers by end of 2027, but the SOURCE block only contains GitHub's announcement about three skills. Claude Frontier Academy, its $100M funding, the 10,000-engineer target, and the 'Frontier Deployed Engineers' title are not supported by the provided source — they appear to be added fabrications about Anthropic.",
+        "The article states 'more than 1 million Genie Agents were created in 2026 alone' as from GitHub, but the SOURCE block excerpt only contains GitHub's three-skills announcement. This 1 million Genie Agents statistic is not supported by the provided source excerpt and is an added fabrication."
+      ],
+      "confidence": 7
+    },
+    {
+      "at": "2026-10-03T03:07:00.983Z",
+      "file": "WRITER_2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
+      "action": "block",
+      "reasons": [
+        "The claim that 'Claude Frontier Academy' is an Anthropic program 'with a $100 million commitment to train 10,000 by the end of 2027' is a fabricated specific — it is presented as fact in the article's source-quoted block but does not appear in the official GitHub announcement and constitutes an invented program name, dollar figure, headcount, and timeline.",
+        "The claim that 'more than 1 million Genie Agents [were] created in 2026 alone' is an invented statistic presented as fact; it does not appear in the GitHub source and Genie One's agent creation metric is not stated there."
+      ],
+      "confidence": 9
+    },
+    {
+      "at": "2026-10-03T12:54:24.494Z",
+      "file": "WRITER_2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
+      "action": "block",
+      "reasons": [
+        "The 'Claude Frontier Academy' is described as 'an Anthropic program with a $100 million commitment to train 10,000 Frontier Deployed Engineers by the end of 2027' — this is a fabricated program name with invented financial commitment, headcount, and deadline not supported by the source or any verified information."
+      ],
+      "confidence": 9
+    }
+  ],
+  "2026-10-08": [
+    {
+      "at": "2026-10-08T03:33:13.259Z",
+      "file": "WRITER_2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
+      "action": "block",
+      "reasons": [
+        "The article attributes a six-week 'AI Builder' internal training program to Google, but the SOURCE block is from AWS Machine Learning Blog, not Google. The article fabricates Google's authorship of this playbook. Specifics like 'six-week structured program,' weekly cadence (Foundations, First build, Iteration, Sharing, Real customer problem, Public showcase), 'internal AI champions,' and the customer-facing staff description are not in the provided source excerpt and are attributed to the wrong company.",
+        "Confidence: 9 — the source is explicitly labeled as AWS, the article repeatedly and falsely attributes the playbook to Google."
+      ],
+      "confidence": 9
+    }
+  ],
+  "2026-10-13": [
+    {
+      "at": "2026-10-13T15:25:23.962Z",
+      "file": "WRITER_GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "action": "block",
+      "reasons": [
+        "Step 4 fabricates a specific voice command flow: 'Alexa, walk me through this recipe' followed by reading a URL aloud, or 'Alexa, read me this recipe' followed by pasting steps. Alexa+ does not have a documented recipe-walking feature triggered by these specific phrasings, and the article presents these as if they are confirmed flows. The behaviors described (repeating ingredients, asking 'are you ready to start', responding to 'next', 'pause', 'resume', 'repeat that', 'what step am I on?', 'go back one step', 'skip to the last step') are not verified Alexa+ features.",
+        "Step 8 fabricates the command 'Alexa, save this recipe' to save within the Alexa app and 'Alexa, send this recipe to my phone' to receive a text version, presented as features that exist on Alexa+ devices.",
+        "Step 1 instructs the user to look for a specific 'banner, badge, or label that says \"Alexa+\"' on a device's page in the Alexa app, presented as the way to verify Alexa+ is active. This UI element as described is not verified to exist in the Alexa app.",
+        "Step 2 instructs the user to 'read the URL aloud' for Alexa+ to use a webpage recipe. There is no verified Alexa+ feature that fetches a recipe from a URL spoken aloud by the user.",
+        "Step 7 fabricates that Alexa+ can convert metric measurements on the fly during a recipe session and resume the recipe with 'continue' at the same step, as a specific Alexa+ capability."
+      ],
+      "confidence": 7
+    }
+  ],
+  "2026-10-14": [
+    {
+      "at": "2026-10-14T02:46:48.081Z",
+      "file": "WRITER_GUIDE_how-to-ask-alexa-for-outfit-suggestions-based-on-the-day-s-w.json",
+      "action": "block",
+      "reasons": [
+        "Az AI-bíró kitalált állítást talált (részletek nélkül)"
+      ],
+      "confidence": null
+    }
+  ],
+  "2026-10-15": [
+    {
+      "at": "2026-10-15T02:30:02.405Z",
+      "file": "WRITER_GUIDE_how-to-write-a-gemini-prompt-that-turns-a-casual-selfie-into.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
+    }
+  ],
+  "2026-10-17": [
+    {
+      "at": "2026-10-17T02:08:26.488Z",
+      "file": "WRITER_2026-10-17T02-02-59-662Z_picsart_How_to_turn_a_photo_into_a_3D_model_of_your_produc.json",
+      "action": "block",
+      "reasons": [
+        "Picsart Flow is referenced as the name of a visual workspace, but the source only says \"Picsart Flow\" without confirming it as the official product name. However, this is mentioned in the source excerpt itself, so it is real.",
+        "The claim that Picsart's cartoon video tutorial outlines a full loop including monetization through Picsart Earn is partly supported, but the article states that Picsart Earn is \"the company's program for creators to earn from their work, according to Picsart\" — this attribution is acceptable as it hedges with \"according to Picsart\"."
+      ],
+      "confidence": 3
+    },
+    {
+      "at": "2026-10-17T11:51:58.895Z",
+      "file": "WRITER_2026-10-17T02-02-59-662Z_picsart_How_to_turn_a_photo_into_a_3D_model_of_your_produc.json",
+      "action": "block",
+      "reasons": [
+        "Picsart Earn is described as a program creators can earn from, with a 'signup flow' and qualification process — the source only mentions 'Picsart Earn' as a monetization option referenced in a sidebar link, not as a verified program with documented features.",
+        "The article claims a specific 'Flow workspace' exists as a visual area with connectable AI nodes ('connect small AI tasks together, like LEGO blocks') — the source only mentions 'Picsart Flow' once in passing and 'a 3D node' in a single workflow, not a documented visual workspace product with chained-project capabilities.",
+        "Step 5 ('Chain two projects in one Flow') describes chaining generated characters, animations, and banners into one project — this chained workflow is not supported by the source, which describes four separate tutorials.",
+        "The article specifies YouTube banner dimensions as '2560 × 1440 pixels' as Picsart's recommended size — the source mentions this dimension but the article presents the tutorial as a Picsart-issued YouTube banner spec, when YouTube's actual recommended upload size is 2560 × 1440; fine, but the framing implies Picsart sets these specs.",
+        "Example prompts ('white ceramic mug with handle facing left', 'hip-hop routine', 'slow-motion spin', 'friendly cartoon chef with a red bandana') are presented as phrases from Picsart's tutorials — the source does not provide these example prompts."
+      ],
+      "confidence": 6
+    }
+  ],
+  "2026-10-18": [
+    {
+      "at": "2026-10-18T02:09:44.874Z",
+      "file": "WRITER_GUIDE_set-up-an-alexa-routine-that-runs-different-steps-on-weekday.json",
+      "action": "block",
+      "reasons": [
+        "The article repeatedly describes per-action day-of-week filtering as a feature of Alexa+ routines (e.g., 'the app will usually ask When? — choose Weekday mornings', 'Conditions section at the bottom of the routine form', and tagging individual actions with Mon–Fri vs Sat–Sun filters). Alexa routines apply day-of-week selection to the entire routine via its schedule, not to individual actions. There is no per-action day-of-week condition in Alexa+ routines.",
+        "The article claims a 'Test routine' button (sometimes labeled 'Try it now' or 'Run routine') exists inside routines for manual testing, and that Alexa+ can simulate dates. Alexa routines do not have an in-app 'Test routine' feature and do not support date simulation.",
+        "The article describes Alexa+ being able to 'branch on device, location (home/away), and alarm state' as part of routine conditional logic. Alexa routines do not have conditional 'if/then' branching across these dimensions in the way described."
+      ],
+      "confidence": 8
+    }
+  ],
+  "2026-10-19": [
+    {
+      "at": "2026-10-19T02:22:17.850Z",
+      "file": "WRITER_2026-10-18T02-16-12-366Z_aiworld-editorial_This_Week_in_AI.json",
+      "action": "block",
+      "reasons": [
+        "Item 4 attributes a 'four real examples of AI agents in cities, hospitals, and sports' announcement to NVIDIA, including specific claims that one routes citizen requests across government departments and another helps hospital staff with scheduling — the source block only references the weekly roundup headline and provides no detail about such an NVIDIA announcement; these specific agent examples appear fabricated or unsupported.",
+        "Item 1 claims Google announced two specific Gmail AI features (inbox grouping by theme with summaries, and natural-language Q&A search) for paid US Workspace users — these specific feature descriptions are not supported by the source block and may be fabricated specifics."
+      ],
+      "confidence": 5
+    }
+  ],
+  "2026-10-24": [
+    {
+      "at": "2026-10-24T02:30:35.731Z",
+      "file": "WRITER_2026-10-24T02-27-21-099Z_google-workspace_Google_Workspace_Weekly_Recap_-_October_23__2026.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
+    },
+    {
+      "at": "2026-10-24T02:33:14.337Z",
+      "file": "WRITER_2026-10-24T02-27-21-099Z_google-workspace_Google_Workspace_Weekly_Recap_-_October_23__2026.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
+    }
+  ],
+  "2026-10-26": [
+    {
+      "at": "2026-10-26T02:16:57.011Z",
+      "file": "WRITER_2026-10-22T02-26-55-947Z_microsoft-ai_Before_the_ambulance_arrives__How_AI_is_helping_th.json",
+      "action": "block",
+      "reasons": [
+        "The article says the NHS published or issued the announcement and repeatedly calls it an “NHS announcement.” The supplied source identifies Microsoft AI/Microsoft Source—not the NHS—as the publisher of the post about the NHS."
+      ],
+      "confidence": 9
+    }
+  ],
+  "2026-11-04": [
+    {
+      "at": "2026-11-04T03:55:04.838Z",
+      "file": "WRITER_2026-11-04T03-51-29-898Z_samsung-newsroom_Upgraded_Sleep_Apnea_Feature_Now_Available_on_Gala.json",
+      "action": "hold",
+      "reasons": [
+        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
+      ]
+    }
+  ]
+}

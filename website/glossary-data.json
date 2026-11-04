@@ -1,0 +1,695 @@
+{
+  "_comment": "AI-kisszótár adatai — 46 kezdőbarát fogalom, minden élő nyelven. A build.js buildGlossaryPage() olvassa. Kézzel karbantartott, örökzöld tartalom (2026-07-08, bővítve 2026-07-26, 2026-08-01: skill/plugin/MCP — user-kérés). Új fogalom: ide vedd fel mind az 5 nyelven. A megjelenés SORRENDJE = a tömb sorrendje (nincs rendezés), ezért a rokon fogalmakat egymás mellé tedd.",
+  "terms": [
+    {
+      "id": "ai",
+      "en": {
+        "term": "AI (artificial intelligence)",
+        "def": "Computer programs that can do tasks which normally need human thinking — writing, answering questions, recognizing pictures. The AI you meet online today is clever software, not a thinking robot."
+      },
+      "hu": {
+        "term": "AI (mesterséges intelligencia)",
+        "def": "Olyan számítógépes programok, amelyek emberi gondolkodást igénylő feladatokat oldanak meg — írnak, kérdésekre válaszolnak, képeket ismernek fel. A mai AI okos szoftver, nem gondolkodó robot."
+      },
+      "es": {
+        "term": "IA (inteligencia artificial)",
+        "def": "Programas informáticos capaces de hacer tareas que normalmente requieren pensamiento humano: escribir, responder preguntas, reconocer imágenes. La IA que encuentras hoy en internet es software ingenioso, no un robot que piensa."
+      }
+    },
+    {
+      "id": "chatbot",
+      "en": {
+        "term": "Chatbot / AI assistant",
+        "def": "A program you talk to by typing or speaking — like ChatGPT, Gemini or Claude. You ask in normal sentences, it answers in normal sentences. No commands or code needed."
+      },
+      "hu": {
+        "term": "Chatbot / AI-asszisztens",
+        "def": "Program, amellyel gépelve vagy beszélve társalogsz — ilyen a ChatGPT, a Gemini vagy a Claude. Hétköznapi mondatokban kérdezel, hétköznapi mondatokban válaszol. Se parancs, se kód nem kell hozzá."
+      },
+      "es": {
+        "term": "Chatbot / asistente de IA",
+        "def": "Un programa con el que conversas escribiendo o hablando — como ChatGPT, Gemini o Claude. Preguntas con frases normales y responde con frases normales. Sin comandos ni código."
+      }
+    },
+    {
+      "id": "llm",
+      "en": {
+        "term": "LLM (large language model)",
+        "def": "The engine inside a chatbot. It learned from enormous amounts of text how words follow each other, which is how it writes and summarizes so well. It predicts likely words — it doesn't \"know\" facts the way you do."
+      },
+      "hu": {
+        "term": "LLM (nagy nyelvi modell)",
+        "def": "A chatbot belsejében dolgozó motor. Hatalmas mennyiségű szövegből tanulta meg, hogyan követik egymást a szavak — ezért ír és foglal össze ilyen ügyesen. Valószínű szavakat jósol, nem úgy \"tudja\" a tényeket, ahogy te."
+      },
+      "es": {
+        "term": "LLM (gran modelo de lenguaje)",
+        "def": "El motor dentro de un chatbot. Aprendió de cantidades enormes de texto cómo se suceden las palabras, y por eso escribe y resume tan bien. Predice palabras probables — no \"sabe\" los hechos como tú."
+      }
+    },
+    {
+      "id": "prompt",
+      "en": {
+        "term": "Prompt",
+        "def": "The instruction or question you type to an AI. A better prompt gets a better answer: say what you want, who it's for and in what style — like briefing a helpful colleague."
+      },
+      "hu": {
+        "term": "Prompt",
+        "def": "Az utasítás vagy kérdés, amit az AI-nak írsz. Jobb prompt = jobb válasz: mondd el, mit szeretnél, kinek készül és milyen stílusban — mintha egy segítőkész kollégának adnál feladatot."
+      },
+      "es": {
+        "term": "Prompt",
+        "def": "La instrucción o pregunta que le escribes a una IA. Mejor prompt, mejor respuesta: di qué quieres, para quién es y en qué estilo — como si informaras a un colega servicial."
+      }
+    },
+    {
+      "id": "prompt-engineering",
+      "en": {
+        "term": "Prompt engineering",
+        "def": "The craft of phrasing your requests so the AI gives you what you actually need. No coding involved — just clear instructions, examples and context. Anyone can learn the basics in an afternoon."
+      },
+      "hu": {
+        "term": "Prompt-írás (prompt engineering)",
+        "def": "Az a mesterség, hogy úgy fogalmazod meg a kérésed, hogy az AI tényleg azt adja, amire szükséged van. Semmi programozás — csak világos utasítás, példa és háttér-információ. Az alapokat bárki megtanulja egy délután alatt."
+      },
+      "es": {
+        "term": "Ingeniería de prompts",
+        "def": "El arte de formular tus peticiones para que la IA te dé lo que realmente necesitas. No hay programación: solo instrucciones claras, ejemplos y contexto. Cualquiera aprende lo básico en una tarde."
+      }
+    },
+    {
+      "id": "token",
+      "en": {
+        "term": "Token",
+        "def": "The small chunks of text an AI reads and writes — a word is usually one or two tokens. Prices and limits of AI services are often measured in tokens, which is why the word pops up everywhere."
+      },
+      "hu": {
+        "term": "Token",
+        "def": "A szöveg apró darabkái, amelyekben az AI olvas és ír — egy szó általában egy-két token. Az AI-szolgáltatások árait és korlátait gyakran tokenben mérik, ezért bukkan fel a szó mindenhol."
+      },
+      "es": {
+        "term": "Token",
+        "def": "Los pequeños trozos de texto que una IA lee y escribe — una palabra suele ser uno o dos tokens. Los precios y límites de los servicios de IA se miden a menudo en tokens; por eso la palabra aparece por todas partes."
+      }
+    },
+    {
+      "id": "context-window",
+      "en": {
+        "term": "Context window",
+        "def": "How much text the AI can keep \"in mind\" within one conversation. If a chat gets very long, the oldest parts slip out — which is why the AI sometimes seems to forget what you said earlier."
+      },
+      "hu": {
+        "term": "Kontextusablak",
+        "def": "Az a szövegmennyiség, amennyit az AI egy beszélgetésen belül \"fejben tud tartani\". Ha a csevegés nagyon hosszúra nyúlik, a legrégebbi részek kicsúsznak — ezért tűnik néha úgy, hogy az AI elfelejti, amit korábban mondtál."
+      },
+      "es": {
+        "term": "Ventana de contexto",
+        "def": "Cuánto texto puede mantener \"en mente\" la IA dentro de una conversación. Si el chat se alarga mucho, las partes más antiguas se caen — por eso a veces parece que la IA olvida lo que dijiste antes."
+      }
+    },
+    {
+      "id": "hallucination",
+      "en": {
+        "term": "Hallucination",
+        "def": "When an AI states something false with full confidence — an invented fact, source or date. It's not lying on purpose; it's predicting plausible-sounding text. Always double-check facts that matter."
+      },
+      "hu": {
+        "term": "Hallucináció",
+        "def": "Amikor az AI teljes magabiztossággal állít valótlant — kitalált tényt, forrást vagy dátumot. Nem szándékosan hazudik: hihetően hangzó szöveget jósol. A fontos tényeket ezért mindig ellenőrizd."
+      },
+      "es": {
+        "term": "Alucinación",
+        "def": "Cuando una IA afirma algo falso con total seguridad — un dato, una fuente o una fecha inventados. No miente a propósito: predice texto que suena verosímil. Verifica siempre los datos importantes."
+      }
+    },
+    {
+      "id": "generative-ai",
+      "en": {
+        "term": "Generative AI",
+        "def": "AI that creates new content — text, pictures, music, video — rather than just sorting or finding existing things. ChatGPT writing a poem and an app drawing a picture from your description are both generative AI."
+      },
+      "hu": {
+        "term": "Generatív AI",
+        "def": "Olyan AI, amely új tartalmat hoz létre — szöveget, képet, zenét, videót —, nem csak meglévő dolgokat rendez vagy keres ki. A verset író ChatGPT és a leírásodból képet rajzoló app egyaránt generatív AI."
+      },
+      "es": {
+        "term": "IA generativa",
+        "def": "IA que crea contenido nuevo — texto, imágenes, música, vídeo — en lugar de solo ordenar o encontrar cosas existentes. ChatGPT escribiendo un poema y una app dibujando a partir de tu descripción son ambas IA generativa."
+      }
+    },
+    {
+      "id": "image-generator",
+      "en": {
+        "term": "Image generator",
+        "def": "An AI that draws a picture from your written description — \"a koala on a surfboard at sunset\" becomes an actual image in seconds. Built into tools like ChatGPT, Gemini and Canva."
+      },
+      "hu": {
+        "term": "Képgenerátor",
+        "def": "Olyan AI, amely a leírásodból képet rajzol — a \"koala szörfdeszkán naplementében\" másodpercek alatt valódi képpé válik. Beépítve megtalálod a ChatGPT-ben, a Geminiben és a Canvában is."
+      },
+      "es": {
+        "term": "Generador de imágenes",
+        "def": "Una IA que dibuja una imagen a partir de tu descripción escrita — \"un koala en una tabla de surf al atardecer\" se convierte en imagen real en segundos. Está integrado en herramientas como ChatGPT, Gemini y Canva."
+      }
+    },
+    {
+      "id": "multimodal",
+      "en": {
+        "term": "Multimodal",
+        "def": "An AI that understands more than text: you can show it a photo, a document or a voice message, and it can work with those too — describe the photo, summarize the document, answer the voice note."
+      },
+      "hu": {
+        "term": "Multimodális",
+        "def": "Olyan AI, amely nem csak szöveget ért: mutathatsz neki fotót, dokumentumot vagy hangüzenetet, és azokkal is dolgozik — leírja a fotót, összefoglalja a dokumentumot, válaszol a hangüzenetre."
+      },
+      "es": {
+        "term": "Multimodal",
+        "def": "Una IA que entiende más que texto: puedes mostrarle una foto, un documento o un mensaje de voz, y también trabaja con ellos — describe la foto, resume el documento, responde a la nota de voz."
+      }
+    },
+    {
+      "id": "ai-agent",
+      "en": {
+        "term": "AI agent",
+        "def": "An AI that doesn't just answer but carries out multi-step tasks with some independence — searching, comparing, filling things in, booking. You give the goal; it works through the steps."
+      },
+      "hu": {
+        "term": "AI-ügynök (agent)",
+        "def": "Olyan AI, amely nem csak válaszol, hanem többlépéses feladatokat hajt végre bizonyos önállósággal — keres, összehasonlít, kitölt, foglal. Te a célt adod meg, a lépéseken ő megy végig."
+      },
+      "es": {
+        "term": "Agente de IA",
+        "def": "Una IA que no solo responde, sino que realiza tareas de varios pasos con cierta independencia — buscar, comparar, rellenar, reservar. Tú das el objetivo; ella recorre los pasos."
+      }
+    },
+    {
+      "id": "ai-skill",
+      "en": {
+        "term": "Skill (AI skill)",
+        "def": "A ready-made packet of instructions an AI loads only when that particular job comes up — like handing a colleague the checklist for one specific task. It is how an assistant follows your proven way of working instead of guessing."
+      },
+      "hu": {
+        "term": "Skill (AI-készség)",
+        "def": "Előre megírt utasításcsomag, amit az AI csak akkor tölt be, amikor épp az a feladat jön — mintha egy kollégának odaadnád a kész forgatókönyvet egyetlen munkához. Így az asszisztens a te bevált módszered szerint dolgozik, nem találgat."
+      },
+      "es": {
+        "term": "Skill (habilidad de IA)",
+        "def": "Un paquete de instrucciones ya preparado que la IA carga solo cuando toca esa tarea concreta, como darle a un compañero el guion de un trabajo específico. Así el asistente sigue tu método probado en lugar de adivinar."
+      }
+    },
+    {
+      "id": "plugin",
+      "en": {
+        "term": "Plugin (add-on)",
+        "def": "A small add-on that gives an AI or an app one ability it did not have — reading your calendar, searching a shop, drawing a chart. You switch it on once, and the tool can do one more thing."
+      },
+      "hu": {
+        "term": "Plugin (bővítmény)",
+        "def": "Kis kiegészítő, amely egyetlen új képességet ad az AI-nak vagy egy appnak — elolvassa a naptáradat, keres egy webáruházban, diagramot rajzol. Egyszer bekapcsolod, és onnantól az eszköz eggyel többet tud."
+      },
+      "es": {
+        "term": "Plugin (complemento)",
+        "def": "Un pequeño complemento que da a una IA o a una app una capacidad que antes no tenía: leer tu calendario, buscar en una tienda, dibujar un gráfico. Lo activas una vez y la herramienta sabe hacer una cosa más."
+      }
+    },
+    {
+      "id": "mcp",
+      "en": {
+        "term": "MCP (Model Context Protocol)",
+        "def": "An agreed standard that lets AI assistants plug into other programs and data — think of it as a common socket. Before it, every connection was built separately; now a tool that speaks MCP works with any assistant that speaks it too."
+      },
+      "hu": {
+        "term": "MCP (Model Context Protocol)",
+        "def": "Közösen elfogadott szabvány arra, hogy az AI-asszisztensek más programokhoz és adatokhoz csatlakozzanak — olyan, mint egy egységes konnektor. Korábban minden kapcsolatot külön kellett megépíteni; ma bármelyik MCP-t beszélő eszköz működik bármelyik MCP-t beszélő asszisztenssel."
+      },
+      "es": {
+        "term": "MCP (Model Context Protocol)",
+        "def": "Un estándar acordado que permite a los asistentes de IA conectarse a otros programas y datos: piensa en un enchufe común. Antes cada conexión se construía por separado; ahora una herramienta que habla MCP funciona con cualquier asistente que también lo habla."
+      }
+    },
+    {
+      "id": "fine-tuning",
+      "en": {
+        "term": "Fine-tuning",
+        "def": "Extra training that specialises a general AI for a specific job — say, medical texts or one company's writing style. Like sending a good all-round student to trade school."
+      },
+      "hu": {
+        "term": "Finomhangolás (fine-tuning)",
+        "def": "Kiegészítő tanítás, amely egy általános AI-t egy konkrét feladatra szakosít — például orvosi szövegekre vagy egy cég stílusára. Mintha egy jó általános tanulót szakiskolába küldenél."
+      },
+      "es": {
+        "term": "Ajuste fino (fine-tuning)",
+        "def": "Entrenamiento extra que especializa una IA general en un trabajo concreto — por ejemplo, textos médicos o el estilo de una empresa. Como mandar a un buen estudiante generalista a una escuela de oficios."
+      }
+    },
+    {
+      "id": "open-source-model",
+      "en": {
+        "term": "Open-source model",
+        "def": "An AI model whose \"recipe\" is public: anyone can download it, run it and build on it, often for free. Meta's Llama family is a well-known example."
+      },
+      "hu": {
+        "term": "Nyílt forráskódú modell",
+        "def": "Olyan AI-modell, amelynek a \"receptje\" nyilvános: bárki letöltheti, futtathatja és építkezhet rá, gyakran ingyen. Ismert példa a Meta Llama-családja."
+      },
+      "es": {
+        "term": "Modelo de código abierto",
+        "def": "Un modelo de IA cuya \"receta\" es pública: cualquiera puede descargarlo, ejecutarlo y construir sobre él, a menudo gratis. La familia Llama de Meta es un ejemplo conocido."
+      }
+    },
+    {
+      "id": "api",
+      "en": {
+        "term": "API",
+        "def": "The plug through which programs talk to each other. Developers use AI companies' APIs to build AI into their own apps and websites — that's how AI shows up inside so many tools you already use."
+      },
+      "hu": {
+        "term": "API",
+        "def": "A csatlakozó, amelyen keresztül programok beszélgetnek egymással. A fejlesztők az AI-cégek API-jain át építik be az AI-t a saját appjaikba és honlapjaikba — ezért bukkan fel az AI annyi eszközben, amit már most is használsz."
+      },
+      "es": {
+        "term": "API",
+        "def": "El enchufe por el que los programas hablan entre sí. Los desarrolladores usan las API de las empresas de IA para integrar la IA en sus propias apps y webs — así aparece la IA dentro de tantas herramientas que ya usas."
+      }
+    },
+    {
+      "id": "deepfake",
+      "en": {
+        "term": "Deepfake",
+        "def": "An AI-made fake video, photo or voice that looks or sounds real. If a shocking clip of a famous person appears out of nowhere, check a trusted news source before believing or sharing it."
+      },
+      "hu": {
+        "term": "Deepfake",
+        "def": "AI-val készített hamis videó, fotó vagy hang, amely valódinak tűnik. Ha a semmiből felbukkan egy megdöbbentő felvétel egy ismert emberről, előbb nézz utána megbízható hírforrásban, mielőtt elhiszed vagy továbbküldöd."
+      },
+      "es": {
+        "term": "Deepfake",
+        "def": "Un vídeo, foto o voz falsos creados con IA que parecen reales. Si aparece de la nada un clip impactante de una persona famosa, consulta una fuente de noticias fiable antes de creerlo o compartirlo."
+      }
+    },
+    {
+      "id": "voice-cloning",
+      "en": {
+        "term": "Voice cloning",
+        "def": "AI copying a real person's voice from a short sample. Useful for audiobooks and accessibility — and abused in phone scams. Agree on a family password for \"urgent money\" calls."
+      },
+      "hu": {
+        "term": "Hangklónozás",
+        "def": "Az AI egy rövid minta alapján lemásolja egy valódi ember hangját. Hasznos hangoskönyvekhez és akadálymentesítéshez — és visszaélnek vele telefonos csalásokban. Beszéljetek meg családi jelszót a \"sürgősen pénz kell\" hívásokra."
+      },
+      "es": {
+        "term": "Clonación de voz",
+        "def": "La IA copia la voz de una persona real a partir de una muestra corta. Útil para audiolibros y accesibilidad — y usada en estafas telefónicas. Acordad una contraseña familiar para las llamadas de \"dinero urgente\"."
+      }
+    },
+    {
+      "id": "training-data",
+      "en": {
+        "term": "Training data",
+        "def": "The huge pile of text and images an AI learned from. Whatever wasn't in it — very recent events, your private files — the AI can't know by itself, though many assistants can now search the web to catch up."
+      },
+      "hu": {
+        "term": "Tanítóadat",
+        "def": "Az a hatalmas szöveg- és képhalmaz, amelyből az AI tanult. Ami nem volt benne — friss események, a te privát fájljaid —, azt az AI magától nem tudhatja, bár sok asszisztens ma már rá tud keresni a neten."
+      },
+      "es": {
+        "term": "Datos de entrenamiento",
+        "def": "La enorme pila de texto e imágenes de la que aprendió la IA. Lo que no estaba ahí — sucesos muy recientes, tus archivos privados — la IA no puede saberlo por sí sola, aunque muchos asistentes ya pueden buscar en la web."
+      }
+    },
+    {
+      "id": "agi",
+      "en": {
+        "term": "AGI (artificial general intelligence)",
+        "def": "A still-hypothetical AI that could think as flexibly as a human across every area. Today's AI is not this — it's very capable at specific tasks, which is exactly why it's useful and predictable."
+      },
+      "hu": {
+        "term": "AGI (általános mesterséges intelligencia)",
+        "def": "Egyelőre elméleti AI, amely minden területen olyan rugalmasan gondolkodna, mint egy ember. A mai AI nem ilyen — konkrét feladatokban nagyon ügyes, és pont ettől hasznos és kiszámítható."
+      },
+      "es": {
+        "term": "AGI (inteligencia artificial general)",
+        "def": "Una IA todavía hipotética que pensaría con la flexibilidad de un humano en cualquier ámbito. La IA de hoy no es eso — es muy capaz en tareas concretas, y justo por eso es útil y predecible."
+      }
+    },
+    {
+      "id": "machine-learning",
+      "en": {
+        "term": "Machine learning",
+        "def": "A way of building AI: instead of being given step-by-step rules, the computer learns patterns from lots of examples — like learning to recognize cats by seeing thousands of cat photos."
+      },
+      "hu": {
+        "term": "Gépi tanulás",
+        "def": "Az AI építésének egyik módja: a számítógép nem kész szabályokat kap, hanem rengeteg példából tanulja meg a mintázatokat — ahogy több ezer macskaképből megtanulja felismerni a macskát."
+      },
+      "es": {
+        "term": "Aprendizaje automático",
+        "def": "Una forma de construir IA: en vez de recibir reglas paso a paso, la computadora aprende patrones a partir de muchos ejemplos — como aprender a reconocer gatos viendo miles de fotos de gatos."
+      }
+    },
+    {
+      "id": "neural-network",
+      "en": {
+        "term": "Neural network",
+        "def": "The kind of software design most modern AI uses, loosely inspired by how brain cells connect. It's not a real brain — just a maths structure that's very good at spotting patterns."
+      },
+      "hu": {
+        "term": "Neurális hálózat",
+        "def": "A legtöbb mai AI ilyen szoftver-felépítést használ, amelyet lazán az agysejtek kapcsolódása ihletett. Nem valódi agy — csak egy matematikai szerkezet, amely nagyon jól ismeri fel a mintázatokat."
+      },
+      "es": {
+        "term": "Red neuronal",
+        "def": "El tipo de diseño de software que usa la mayoría de la IA moderna, inspirado a grandes rasgos en cómo se conectan las células del cerebro. No es un cerebro real — solo una estructura matemática muy buena detectando patrones."
+      }
+    },
+    {
+      "id": "gpt",
+      "en": {
+        "term": "GPT",
+        "def": "The letters stand for ‘Generative Pre-trained Transformer’ — the technology behind ChatGPT and many other assistants. In plain terms: an AI trained on huge amounts of text that generates new text word by word."
+      },
+      "hu": {
+        "term": "GPT",
+        "def": "A betűk jelentése angolul ‘Generative Pre-trained Transformer’ — a ChatGPT és sok más asszisztens mögötti technológia. Egyszerűen: hatalmas szövegmennyiségen tanult AI, amely szóról szóra új szöveget hoz létre."
+      },
+      "es": {
+        "term": "GPT",
+        "def": "Las siglas significan ‘Generative Pre-trained Transformer’ (transformador generativo preentrenado), la tecnología detrás de ChatGPT y muchos otros asistentes. En simple: una IA entrenada con enormes cantidades de texto que genera texto nuevo palabra por palabra."
+      }
+    },
+    {
+      "id": "reasoning-model",
+      "en": {
+        "term": "Reasoning model",
+        "def": "A newer kind of AI that ‘thinks’ step by step before answering, instead of replying instantly. It's slower but often better at maths, logic and tricky problems."
+      },
+      "hu": {
+        "term": "Gondolkodó modell",
+        "def": "Újabb AI-fajta, amely válasz előtt lépésről lépésre ‘végiggondolja’ a feladatot, nem azonnal felel. Lassabb, de gyakran jobb a matekban, a logikában és a nehéz kérdésekben."
+      },
+      "es": {
+        "term": "Modelo de razonamiento",
+        "def": "Un tipo más nuevo de IA que ‘piensa’ paso a paso antes de responder, en vez de contestar al instante. Es más lento, pero suele ser mejor en matemáticas, lógica y problemas difíciles."
+      }
+    },
+    {
+      "id": "knowledge-cutoff",
+      "en": {
+        "term": "Knowledge cutoff",
+        "def": "The date after which an AI hasn't learned anything new. Ask about events after that date and it may not know — unless it can search the web. Always check recent facts."
+      },
+      "hu": {
+        "term": "Tudás-határnap",
+        "def": "Az a dátum, ami után az AI már nem tanult újat. Ha ez utáni eseményről kérdezed, lehet, hogy nem tudja — hacsak nem tud rákeresni a neten. A friss tényeket mindig ellenőrizd."
+      },
+      "es": {
+        "term": "Fecha de corte de conocimiento",
+        "def": "La fecha después de la cual una IA no ha aprendido nada nuevo. Si preguntas por hechos posteriores, puede que no los sepa — salvo que pueda buscar en la web. Verifica siempre los datos recientes."
+      }
+    },
+    {
+      "id": "bias",
+      "en": {
+        "term": "Bias",
+        "def": "When an AI's answers unfairly favor or disadvantage certain groups, because the data it learned from was unbalanced. It's a known problem — treat AI output as a helpful draft, not the final word."
+      },
+      "hu": {
+        "term": "Elfogultság (torzítás)",
+        "def": "Amikor az AI válaszai igazságtalanul kedveznek vagy hátrányba hoznak bizonyos csoportokat, mert a tanuló-adat kiegyensúlyozatlan volt. Ismert probléma — az AI válaszát tekintsd segítő vázlatnak, ne végszónak."
+      },
+      "es": {
+        "term": "Sesgo",
+        "def": "Cuando las respuestas de una IA favorecen o perjudican injustamente a ciertos grupos, porque los datos con los que aprendió estaban desequilibrados. Es un problema conocido — trata la respuesta de la IA como un borrador útil, no como la última palabra."
+      }
+    },
+    {
+      "id": "watermark",
+      "en": {
+        "term": "AI watermark",
+        "def": "A hidden or visible mark added to AI-made images, video or text so it can be recognized as AI-generated. Still patchy — its absence doesn't prove something is real."
+      },
+      "hu": {
+        "term": "AI-vízjel",
+        "def": "Rejtett vagy látható jelölés az AI által készített képen, videón vagy szövegen, hogy felismerhető legyen AI-eredetűként. Még hiányos — a hiánya nem bizonyítja, hogy valami valódi."
+      },
+      "es": {
+        "term": "Marca de agua de IA",
+        "def": "Una marca oculta o visible añadida a imágenes, vídeos o textos hechos por IA para reconocerlos como generados por IA. Aún es irregular — su ausencia no prueba que algo sea real."
+      }
+    },
+    {
+      "id": "copilot",
+      "en": {
+        "term": "Copilot",
+        "def": "A common name for an AI helper built into a tool you already use — writing code, documents or emails alongside you. Microsoft and GitHub use the name, but the idea is general: AI as your assistant, not the pilot."
+      },
+      "hu": {
+        "term": "Copilot (másodpilóta)",
+        "def": "Gyakori név a már használt eszközbe épített AI-segédre — veled együtt ír kódot, dokumentumot vagy e-mailt. A Microsoft és a GitHub is így hívja, de az ötlet általános: az AI a segéded, nem a pilóta."
+      },
+      "es": {
+        "term": "Copilot (copiloto)",
+        "def": "Un nombre habitual para un asistente de IA integrado en una herramienta que ya usas — que escribe código, documentos o correos contigo. Microsoft y GitHub usan el nombre, pero la idea es general: la IA como ayudante, no como piloto."
+      }
+    },
+    {
+      "id": "jailbreak",
+      "en": {
+        "term": "Jailbreak",
+        "def": "Tricking an AI into ignoring its own safety rules — for example to get it to say something it normally wouldn't. Companies keep patching these, and trying them can break a service's terms of use."
+      },
+      "hu": {
+        "term": "Feltörés (jailbreak)",
+        "def": "Az AI rászedése, hogy figyelmen kívül hagyja a saját biztonsági szabályait — például hogy olyat mondjon, amit normál esetben nem. A cégek folyton foltozzák, és a próbálgatásuk sértheti a szolgáltatás felhasználási feltételeit."
+      },
+      "es": {
+        "term": "Jailbreak (burlar los límites)",
+        "def": "Engañar a una IA para que ignore sus propias reglas de seguridad — por ejemplo, para que diga algo que normalmente no diría. Las empresas lo corrigen constantemente, e intentarlo puede violar las condiciones de uso del servicio."
+      }
+    },
+    {
+      "id": "benchmark",
+      "en": {
+        "term": "Benchmark",
+        "def": "A standard test used to compare AI models — like exams for AI. When you read ‘model X beats Y on a benchmark’, it means X scored higher on that particular test, not that it's better at everything."
+      },
+      "hu": {
+        "term": "Teljesítmény-teszt (benchmark)",
+        "def": "Szabványos teszt AI-modellek összehasonlítására — mintha vizsga lenne az AI-nak. Ha azt olvasod, ‘az X modell veri az Y-t egy benchmarkon’, az annyit tesz, hogy X jobb pontszámot ért el azon a teszten, nem azt, hogy mindenben jobb."
+      },
+      "es": {
+        "term": "Prueba de referencia (benchmark)",
+        "def": "Un examen estándar para comparar modelos de IA — como exámenes para IA. Cuando lees ‘el modelo X supera al Y en un benchmark’, significa que X sacó mejor nota en esa prueba concreta, no que sea mejor en todo."
+      }
+    },
+    {
+      "id": "chip-gpu",
+      "en": {
+        "term": "AI chip (GPU)",
+        "def": "The powerful computer chips that run AI. Graphics chips (GPUs), first made for video games, turned out to be brilliant at AI maths — which is why companies like Nvidia are in the news so much."
+      },
+      "hu": {
+        "term": "AI-chip (GPU)",
+        "def": "A nagy teljesítményű számítógép-chipek, amelyek az AI-t futtatják. A grafikus chipek (GPU-k), amelyeket eredetileg videojátékokhoz készítettek, kiválónak bizonyultak az AI-matekhoz — ezért van annyit a hírekben az Nvidia és a többi hasonló cég."
+      },
+      "es": {
+        "term": "Chip de IA (GPU)",
+        "def": "Los potentes chips que hacen funcionar la IA. Los chips gráficos (GPU), creados al principio para videojuegos, resultaron ser buenísimos para las matemáticas de la IA — por eso empresas como Nvidia salen tanto en las noticias."
+      }
+    },
+    {
+      "id": "guardrails",
+      "en": {
+        "term": "Guardrails",
+        "def": "The built-in limits that stop an AI from doing harmful things — like refusing dangerous instructions. They're not perfect, but they're why an assistant will politely decline some requests."
+      },
+      "hu": {
+        "term": "Védőkorlátok (guardrails)",
+        "def": "Beépített korlátok, amelyek megakadályozzák, hogy az AI káros dolgokat tegyen — például elutasítja a veszélyes utasításokat. Nem tökéletesek, de ezért utasít vissza udvariasan bizonyos kéréseket egy asszisztens."
+      },
+      "es": {
+        "term": "Barreras de seguridad (guardrails)",
+        "def": "Los límites integrados que impiden que una IA haga cosas dañinas — como rechazar instrucciones peligrosas. No son perfectos, pero por eso un asistente rechaza con educación ciertas peticiones."
+      }
+    },
+    {
+      "id": "model",
+      "en": {
+        "term": "AI model",
+        "def": "The 'brain' behind an AI tool — the trained program that actually does the work, like writing text or making pictures. When you hear names like GPT, Gemini or Claude, those are AI models."
+      },
+      "hu": {
+        "term": "AI-modell",
+        "def": "Az AI-eszköz 'agya' — a betanított program, ami a tényleges munkát végzi: szöveget ír, képet készít. Amikor olyan neveket hallasz, mint GPT, Gemini vagy Claude, azok AI-modellek."
+      },
+      "es": {
+        "term": "Modelo de IA",
+        "def": "El 'cerebro' detrás de una herramienta de IA: el programa entrenado que hace el trabajo, como escribir textos o crear imágenes. Cuando oyes nombres como GPT, Gemini o Claude, son modelos de IA."
+      }
+    },
+    {
+      "id": "algorithm",
+      "en": {
+        "term": "Algorithm",
+        "def": "A set of step-by-step rules a computer follows to decide or sort things — like what appears first in your social media feed. 'The algorithm' usually means the hidden rules that decide what you see online."
+      },
+      "hu": {
+        "term": "Algoritmus",
+        "def": "Lépésről lépésre követett szabályok, amiket a számítógép betart egy döntéshez vagy rendezéshez — például mi jelenik meg elöl a közösségi médiában. 'Az algoritmus' általában a rejtett szabályokat jelenti, amik eldöntik, mit látsz online."
+      },
+      "es": {
+        "term": "Algoritmo",
+        "def": "Un conjunto de reglas paso a paso que sigue un ordenador para decidir u ordenar cosas, como qué aparece primero en tu feed de redes sociales. 'El algoritmo' suele referirse a las reglas ocultas que deciden lo que ves en internet."
+      }
+    },
+    {
+      "id": "machine-translation",
+      "en": {
+        "term": "Machine translation",
+        "def": "When software automatically translates text or speech from one language to another, like Google Translate. It's fast and handy, but can still miss jokes, slang or fine nuance."
+      },
+      "hu": {
+        "term": "Gépi fordítás",
+        "def": "Amikor egy szoftver automatikusan lefordít szöveget vagy beszédet egyik nyelvről a másikra, mint a Google Fordító. Gyors és hasznos, de a poénokat, a szlenget vagy a finom árnyalatokat még elvétheti."
+      },
+      "es": {
+        "term": "Traducción automática",
+        "def": "Cuando un software traduce texto o voz de un idioma a otro de forma automática, como Google Translate. Es rápida y práctica, pero aún puede fallar con chistes, jerga o matices sutiles."
+      }
+    },
+    {
+      "id": "voice-assistant",
+      "en": {
+        "term": "Voice assistant",
+        "def": "An AI you talk to out loud that answers or does small tasks — like Siri, Alexa or Google Assistant. You speak, it listens, then replies, sets a timer or plays music."
+      },
+      "hu": {
+        "term": "Hangasszisztens",
+        "def": "Egy AI, amivel hangosan beszélsz, és válaszol vagy kis feladatokat végez — mint a Siri, az Alexa vagy a Google Asszisztens. Te beszélsz, ő figyel, majd felel, időzítőt állít vagy zenét indít."
+      },
+      "es": {
+        "term": "Asistente de voz",
+        "def": "Una IA con la que hablas en voz alta y que responde o hace pequeñas tareas, como Siri, Alexa o el Asistente de Google. Tú hablas, ella escucha y luego responde, pone un temporizador o reproduce música."
+      }
+    },
+    {
+      "id": "facial-recognition",
+      "en": {
+        "term": "Facial recognition",
+        "def": "Technology that identifies or verifies a person from their face, like unlocking your phone just by looking at it. It's convenient, but also raises privacy questions when used in public places."
+      },
+      "hu": {
+        "term": "Arcfelismerés",
+        "def": "Technológia, amely az arc alapján azonosít vagy ellenőriz valakit — például így oldod fel a telefonodat egy pillantással. Kényelmes, de nyilvános helyeken adatvédelmi kérdéseket is felvet."
+      },
+      "es": {
+        "term": "Reconocimiento facial",
+        "def": "Tecnología que identifica o verifica a una persona por su cara, como desbloquear el móvil con solo mirarlo. Es cómodo, pero también plantea dudas de privacidad cuando se usa en lugares públicos."
+      }
+    },
+    {
+      "id": "recommendation-system",
+      "en": {
+        "term": "Recommendation system",
+        "def": "The AI that suggests what you might like next — the 'Recommended for you' on Netflix, YouTube or online shops. It learns from what you (and others) watched or bought to guess your next pick."
+      },
+      "hu": {
+        "term": "Ajánlórendszer",
+        "def": "Az az AI, amely megtippeli, mi tetszhet legközelebb — a Netflix, a YouTube vagy a webshopok 'Neked ajánljuk' része. Abból tanul, amit te (és mások) néztetek vagy vettetek, hogy kitalálja a következő választásod."
+      },
+      "es": {
+        "term": "Sistema de recomendación",
+        "def": "La IA que sugiere lo que te puede gustar a continuación: el 'Recomendado para ti' de Netflix, YouTube o las tiendas online. Aprende de lo que tú (y otros) visteis o comprasteis para adivinar tu próxima elección."
+      }
+    },
+    {
+      "id": "ai-avatar",
+      "en": {
+        "term": "AI avatar",
+        "def": "A digital character or lifelike video version of a person, created by AI — used for videos, presentations or virtual hosts. It can look and speak like a real person, with no camera crew."
+      },
+      "hu": {
+        "term": "AI-avatár",
+        "def": "Egy digitális karakter vagy élethű videós mása egy személynek, AI-val készítve — videókhoz, prezentációkhoz vagy virtuális műsorvezetőhöz. Úgy nézhet ki és beszélhet, mint egy valódi ember, kamerastáb nélkül."
+      },
+      "es": {
+        "term": "Avatar de IA",
+        "def": "Un personaje digital o una versión en vídeo muy realista de una persona, creado por IA, que se usa para vídeos, presentaciones o presentadores virtuales. Puede parecer y hablar como una persona real, sin equipo de cámara."
+      }
+    },
+    {
+      "id": "foundation-model",
+      "en": {
+        "term": "Foundation model",
+        "def": "A big, general-purpose AI trained on huge amounts of data that many tools are then built on top of. 'Frontier model' means the newest, most capable ones at the cutting edge."
+      },
+      "hu": {
+        "term": "Alapmodell (foundation model)",
+        "def": "Egy nagy, általános célú AI, amelyet hatalmas adatmennyiségen tanítottak be, és sok eszköz épül rá. A 'frontier model' a legújabb, legfejlettebb modelleket jelenti, a technológia élén."
+      },
+      "es": {
+        "term": "Modelo base (foundation model)",
+        "def": "Una IA grande y de propósito general, entrenada con enormes cantidades de datos, sobre la que luego se construyen muchas herramientas. 'Frontier model' se refiere a los más nuevos y capaces, en la vanguardia."
+      }
+    },
+    {
+      "id": "rag",
+      "en": {
+        "term": "RAG (retrieval-augmented generation)",
+        "def": "A method that lets a chatbot look things up in a trusted source before answering, instead of relying only on memory. It's why some AI assistants can cite documents or give up-to-date facts."
+      },
+      "hu": {
+        "term": "RAG (forrásból kiegészített válasz)",
+        "def": "Módszer, amely lehetővé teszi, hogy egy chatbot válasz előtt megbízható forrásban nézzen utána valaminek, ne csak a memóriájára hagyatkozzon. Ezért tud néhány AI-asszisztens dokumentumokra hivatkozni vagy naprakész tényeket adni."
+      },
+      "es": {
+        "term": "RAG (generación aumentada por recuperación)",
+        "def": "Un método que permite a un chatbot buscar información en una fuente fiable antes de responder, en vez de fiarse solo de su memoria. Por eso algunos asistentes de IA pueden citar documentos o dar datos actualizados."
+      }
+    },
+    {
+      "id": "nlp",
+      "en": {
+        "term": "NLP (natural language processing)",
+        "def": "The part of AI that deals with human language — understanding, writing and translating text or speech. It's what lets you type or talk to a computer in plain words instead of code."
+      },
+      "hu": {
+        "term": "NLP (természetesnyelv-feldolgozás)",
+        "def": "Az AI azon területe, amely az emberi nyelvvel foglalkozik — szöveg vagy beszéd megértése, írása és fordítása. Ennek köszönhető, hogy hétköznapi szavakkal írhatsz vagy beszélhetsz a géphez, nem kóddal."
+      },
+      "es": {
+        "term": "PLN (procesamiento del lenguaje natural)",
+        "def": "La parte de la IA que se ocupa del lenguaje humano: entender, escribir y traducir texto o voz. Es lo que te permite escribir o hablar a un ordenador con palabras normales en vez de código."
+      }
+    },
+    {
+      "id": "computer-vision",
+      "en": {
+        "term": "Computer vision",
+        "def": "The part of AI that 'sees' — making sense of photos and video, like spotting a face, reading a sign or telling a cat from a dog. It powers things like photo search and self-driving car cameras."
+      },
+      "hu": {
+        "term": "Gépi látás (computer vision)",
+        "def": "Az AI azon területe, amely 'lát' — fényképeket és videókat értelmez: arcot ismer fel, táblát olvas, vagy megkülönbözteti a macskát a kutyától. Ez működteti például a fotókeresést és az önvezető autók kameráit."
+      },
+      "es": {
+        "term": "Visión por computador",
+        "def": "La parte de la IA que 've': entiende fotos y vídeos, como detectar una cara, leer un cartel o distinguir un gato de un perro. Está detrás de cosas como la búsqueda de fotos y las cámaras de los coches autónomos."
+      }
+    },
+    {
+      "id": "superintelligence",
+      "en": {
+        "term": "Superintelligence",
+        "def": "A hypothetical future AI that would be far smarter than humans at almost everything. It doesn't exist today — it's a topic of research and debate about where AI might eventually lead."
+      },
+      "hu": {
+        "term": "Szuperintelligencia",
+        "def": "Egy elméleti, jövőbeli AI, amely szinte mindenben messze okosabb lenne az embernél. Ma még nem létezik — kutatások és viták tárgya arról, hová vezethet végül az AI."
+      },
+      "es": {
+        "term": "Superinteligencia",
+        "def": "Una IA futura e hipotética que sería mucho más inteligente que los humanos en casi todo. Hoy no existe: es un tema de investigación y debate sobre a dónde podría llevar la IA con el tiempo."
+      }
+    }
+  ]
+}

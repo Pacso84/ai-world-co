@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-11-04T03:55:23.108Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00344958,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-11-04T03-51-02-908Z_openai-blog_Heimstaden_is_changing_residential_real_estate_man.json",
+      "rejected": "REJECTED_2026-11-04T03-51-02-908Z_openai-blog_Heimstaden_is_changing_residential_real_estate_man.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0020553
+    },
+    {
+      "writer": "WRITER_2026-11-04T03-51-29-898Z_samsung-newsroom_Upgraded_Sleep_Apnea_Feature_Now_Available_on_Gala.json",
+      "article": "ARTICLE_2026-11-04T03-51-29-898Z_samsung-newsroom_Upgraded_Sleep_Apnea_Feature_Now_Available_on_Gala.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0011835
+    }
+  ],
+  "finished_at": "2026-11-04T03:56:32.490Z",
+  "duration_seconds": 69.382
+}

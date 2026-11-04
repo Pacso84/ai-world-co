@@ -1,0 +1,54 @@
+{
+  "slug": "how-to-lock-in-lower-ai-costs-with-reserved-capacity",
+  "probalva": "2026-10-31T19:43:34.517Z",
+  "doboz": {
+    "keszult": "2026-10-31T19:43:34.517Z",
+    "enHash": "18c064bc51baef4e3652435e2af54a8cd7e4b9d6",
+    "forrasok": {
+      "https://support.claude.com/en/articles/15363606-why-claude-switched-models-in-your-conversation-with-fable-5-or-fable-5-1": "Why claude switched models in your conversation with fable 5 or fable 5 1",
+      "https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-ultra-and-team-plans": "Monthly api credits for max ultra and team plans"
+    },
+    "en": [
+      {
+        "symptom": "Why did Claude switch to a different model in the middle of my chat?",
+        "why": "Automatic switching is enabled by default the first time you select Claude Fable 5 or Fable 5.1. When your request falls back, Claude re-runs your blocked request on an Opus model in the same conversation.",
+        "fix": "In Claude: to stop automatic switching, go to Settings under Capabilities and turn off Switch models when a message is flagged. With it off, a blocked request pauses the conversation instead of switching models.",
+        "source": "https://support.claude.com/en/articles/15363606-why-claude-switched-models-in-your-conversation-with-fable-5-or-fable-5-1"
+      },
+      {
+        "symptom": "I can't find the API credits offer, or linking my organization shows an error.",
+        "why": "We're rolling out API credits over a few days, so we might not have reached your account yet.",
+        "fix": "In Claude: if you see errors during the linking flow, try again in a few hours.",
+        "source": "https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-ultra-and-team-plans"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Miért váltott át a Claude egy másik modellre a beszélgetésem közben?",
+        "why": "Az automatikus váltás alapértelmezés szerint engedélyezve van, amikor először kiválasztod a Claude Fable 5 vagy a Fable 5.1 modellt. Amikor a kérésed visszaesik, a Claude ugyanabban a beszélgetésben újra lefuttatja a letiltott kérésedet egy Opus modellen.",
+        "fix": "A Claude-ban: az automatikus váltás leállításához nyisd meg a Settings menüt, azon belül a Capabilities részt, és kapcsold ki a Switch models when a message is flagged beállítást. Ha ki van kapcsolva, egy letiltott kérés szünetelteti a beszélgetést a modellek közötti váltás helyett.",
+        "source": "https://support.claude.com/en/articles/15363606-why-claude-switched-models-in-your-conversation-with-fable-5-or-fable-5-1"
+      },
+      {
+        "symptom": "Nem találom az API-kreditekre vonatkozó ajánlatot, vagy hiba jelenik meg a szervezetem összekapcsolásakor.",
+        "why": "Az API-krediteket néhány nap alatt fokozatosan tesszük elérhetővé, ezért lehet, hogy a fiókodhoz még nem jutott el.",
+        "fix": "A Claude-ban: ha hibákat látsz az összekapcsolási folyamat közben, próbáld újra néhány óra múlva.",
+        "source": "https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-ultra-and-team-plans"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "¿Por qué Claude cambió a otro modelo en medio de mi chat?",
+        "why": "El cambio automático está activado de forma predeterminada la primera vez que seleccionas Claude Fable 5 o Fable 5.1. Cuando tu solicitud se bloquea, Claude vuelve a ejecutar tu solicitud bloqueada en un modelo Opus dentro de la misma conversación.",
+        "fix": "En Claude: para detener el cambio automático, ve a Settings, en Capabilities, y desactiva Switch models when a message is flagged. Cuando está desactivado, una solicitud bloqueada pausa la conversación en lugar de cambiar de modelo.",
+        "source": "https://support.claude.com/en/articles/15363606-why-claude-switched-models-in-your-conversation-with-fable-5-or-fable-5-1"
+      },
+      {
+        "symptom": "No encuentro la oferta de créditos de API o aparece un error al vincular mi organización.",
+        "why": "Estamos implementando los créditos de API a lo largo de varios días, así que es posible que todavía no hayamos llegado a tu cuenta.",
+        "fix": "En Claude: si ves errores durante el proceso de vinculación, inténtalo de nuevo en unas horas.",
+        "source": "https://support.claude.com/en/articles/17154008-monthly-api-credits-for-max-ultra-and-team-plans"
+      }
+    ]
+  }
+}

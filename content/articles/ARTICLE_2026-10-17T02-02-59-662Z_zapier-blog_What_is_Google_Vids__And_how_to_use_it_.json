@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "written_at": "2026-10-17T02:07:30.552Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.01055148,
+    "original_draft": "2026-10-17T02-02-59-662Z_zapier-blog_What_is_Google_Vids__And_how_to_use_it_.json",
+    "source_id": "zapier-blog",
+    "source_name": "Zapier Blog (hivatalos)",
+    "source_link": "https://zapier.com/blog/google-vids",
+    "source_links": [
+      "https://zapier.com/blog/google-vids",
+      "https://openai.com/index/teaching-students-to-think-and-learn-through-questions"
+    ],
+    "source_snippet_len": 656,
+    "merged_from": 2,
+    "merged_theme": "AI in education",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-10-17T02:08:46.072Z",
+    "slug": "how-ai-is-helping-teachers-create-lessons-and-teach-step-by-step",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-7, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés."
+      ],
+      "wordCount": 701
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explanatory article with a clear hook, plain-language definitions (AI avatar, natural-language prompt), four-persona 'What this means for you' section, and actionable wrap-up. All claims attributed to Google's announcements, no clichés, no prohibited content, and language is accessible for everyday readers.",
+      "_aiCost": 0.00136968,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-17T02:11:30.666Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article covers two features (Google Vids and Study Mode) making it a multi-feature roundup, and availability and concrete usage steps are vague",
+    "image_v": 2,
+    "image_at": "2026-10-17T02:15:39.332Z",
+    "seo": {
+      "meta_description": "Google Vids turns prompts, slides, and docs into narrated videos; Study Mode in ChatGPT guides students with questions. What each AI tool means for classrooms.",
+      "keywords": [
+        "AI tools for teachers",
+        "Google Vids for education",
+        "AI lesson planning",
+        "ChatGPT Study Mode",
+        "AI in classroom",
+        "automated video lessons teachers"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Consider adding the year or context to the title to improve freshness signals for search",
+        "The subtitle contains valuable keywords (Google Vids, Study Mode) - consider integrating more naturally into the body content",
+        "Add more specific use cases or teacher testimonials to increase word count and topical authority"
+      ],
+      "optimised_at": "2026-10-17T02:16:55.885Z"
+    },
+    "howto_upgraded_at": "2026-10-17T02:18:24.477Z",
+    "howto_upgrade_attempts": 1,
+    "social": true,
+    "social_at": "2026-10-17T02:37:55.264Z",
+    "fact_verified_at": "2026-11-03T15:38:57.807Z",
+    "fact_checked_at": "2026-11-03T20:13:42.574Z",
+    "fact_human_ok": "2026-11-03",
+    "fact_human_note": "Javítva 11-03 (tény-ellenőrző agent lelete): a cikk a Study Mode-ot a Google eszközének írta — valójában az OpenAI ChatGPT-funkciója (a cikk 2. forrása: https://openai.com/index/teaching-students-to-think-and-learn-through-questions — „select Study from the tools menu in ChatGPT”, AI for Educators az OpenAI Academyn, brazil portugálul); a Zapier-szerző (főiskolai tanár) élményét is a Google-nak tulajdonította, és tévesen írta, hogy nem tudni, ki használhatja a Vids-et (Zapier: személyes Google-fiókkal ingyen, korlátozott havi MI-kredittel; nagyobb használathoz fizetős Google AI-csomag; Workspace-ben a rendszergazda dönt — https://zapier.com/blog/google-vids). Cím, alcím, szöveg, SEO-leírás átírva en/hu/es, ár nélkül."
+  },
+  "article_markdown": "---\ntitle: \"Google Vids and ChatGPT's Study Mode: What Two AI Classroom Tools Mean for Teachers and Students\"\nsubtitle: \"Google Vids turns prompts, slides, and docs into narrated videos, while OpenAI's Study Mode in ChatGPT walks students through a subject with questions — here's what each one does\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 5\ntags: [\"ai-in-education\", \"google-vids\", \"study-mode\", \"teaching-tools\"]\n---\n\n# Google Vids and ChatGPT's Study Mode: What Two AI Classroom Tools Mean for Teachers and Students\n\n> **In short:** Google Vids can turn a written prompt — or an existing Google Slides deck or Google Doc — into a short video with narration and music. Separately, OpenAI's Study Mode in ChatGPT guides students through a subject step by step, with questions, hints, and checks for understanding. They come from two different companies, but both are aimed at the classroom.\n\nTwo education stories landed close together. In a Zapier guide, a writer who teaches classes asynchronously at a local college, with every lecture built in Google Slides, describes trying Google Vids, Google's AI video generator. Around the same time, OpenAI marked Teachers' Day in Brazil by launching its AI for Educators course in Brazilian Portuguese and pointing teachers to Study Mode in ChatGPT, which is built for active, step-by-step learning.\n\n## What Google Vids does\n\nGoogle Vids is Google's AI video tool. According to the Zapier guide, you describe what you want in a **natural-language prompt** — the way you'd explain a video idea to a person — and Vids generates video clips with narration, music, and on-screen actions. The narration can be your own voice or an **AI avatar** (a computer-generated presenter who reads a script you type in). You can also describe the background music you want — genre, mood, instruments — and Vids generates it.\n\nThe part that matters most for teachers: you can turn an existing **Google Slides deck** or **Google Doc** into a video. For someone who has used the same slides for years, the appeal is not having to learn a video editor, set up a camera, or record with a microphone.\n\n**Who can use it:** the guide says Vids is free to use with a personal Google account, with a limited monthly allowance of AI credits, and heavier use requires a paid Google AI plan. Vids is also included in Google Workspace plans, but with a work or school account, your administrator decides whether you can use Vids and its AI features.\n\n## What Study Mode in ChatGPT does\n\nStudy Mode is a ChatGPT feature from OpenAI, not a Google tool. OpenAI says it helps you explore a subject step by step, with questions, hints, explanations, and checks for understanding, and that it was developed with teachers, scientists, and experts in pedagogy to encourage active participation.\n\nTo turn it on, select **Study** from the tools menu in ChatGPT. In OpenAI's example, a student reviewing biology asks it to quiz them on enzymes one question at a time, wait for each answer, and point out what they still need to review. OpenAI also suggests that teachers try Study Mode on subjects they know well and check whether the questions push students to reason and whether the explanations fit their class.\n\nAlongside it, OpenAI launched **AI for Educators** in Brazilian Portuguese on OpenAI Academy, its free learning platform. The course is aimed at primary, secondary, and higher-education teachers and covers using AI to plan lessons, create activities and assessments, and prepare communications, while the teacher's own judgment stays in charge.\n\n## What we don't know yet\n\n- **Which ChatGPT plans include Study Mode.** OpenAI's Teachers' Day post explains how to turn it on but doesn't list plans, so check ChatGPT's own help pages before you build a lesson around it.\n- **How well the videos turn out.** AI-generated videos from a short prompt can range from surprisingly useful to awkward and off-topic — the real test is a real classroom.\n- **What your school allows.** With a school Workspace account, Vids depends on what your administrator has switched on, and schools set their own rules for students using AI chatbots.\n\n## What this means for you\n\n- **If you're a teacher:** start with materials you already have. Pick one Slides deck or Doc you've been meaning to refresh and try turning it into a short Vids video. Test Study Mode first on a topic you know well, and see whether its questions make students reason.\n- **If you're a student:** if you use Study Mode, treat its questions as the actual lesson. The point isn't to test what you've memorized — it's to walk you through the reasoning.\n- **If you're a parent:** ask your child's teacher which AI tools the class uses and what the school's rules are. You'll get a clearer picture of how lessons are changing.\n- **If you're a school administrator:** check what's switched on for Vids and its AI features in your Google Workspace admin settings, and agree on a clear policy for AI study tools like ChatGPT before students start using them on their own.\n\n## Wrap-up\n\nAI in the classroom is doing two different jobs. Google Vids helps teachers *create* — turning prompts or old slides into narrated videos without a video team. Study Mode in ChatGPT helps students *think* — guiding them with questions instead of handing over answers. They're separate products from separate companies, and access depends on your account and your school's settings. But the direction is clear: AI in education is moving from one-off experiments toward everyday tools, on both sides of the desk.",
+  "original_title": "What is Google Vids? And how to use it "
+}

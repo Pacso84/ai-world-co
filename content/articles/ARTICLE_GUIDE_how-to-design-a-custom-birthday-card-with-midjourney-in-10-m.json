@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-design-a-custom-birthday-card-with-midjourney-in-10-m",
+    "company": "Midjourney",
+    "tool": "Midjourney",
+    "icon": "🎂",
+    "level": "intermediate",
+    "source_news": null,
+    "trend": null,
+    "written_at": "2026-11-02T03:24:04.596Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0044908,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-11-02T03:25:24.033Z",
+    "slug": "how-to-design-a-custom-birthday-card-with-midjourney-in-10-minutes",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1355
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This is a well-structured guide with clear step-by-step instructions, a helpful 'Before you start' section, and a 'What this means for you' section. It explains technical terms, acknowledges Midjourney's limitations honestly, and uses friendly encouraging language throughout. The 'Vary/Variations/Upscale' button names are appropriately hedged as approximate since UI varies between Discord and web. The guide respects the reader's intelligence while staying accessible.",
+      "_aiCost": 0.00176634,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-02T03:29:13.229Z",
+    "seo": {
+      "meta_description": "Create a custom birthday card with Midjourney in 10 minutes. Step-by-step prompts, refine results, and add a personal name or message for a unique greeting.",
+      "keywords": [
+        "how to design a birthday card with Midjourney",
+        "Midjourney birthday card tutorial",
+        "create birthday card with AI",
+        "custom birthday card prompts",
+        "Midjourney greeting card design",
+        "AI birthday card maker"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a step-by-step example of an actual Midjourney prompt with a sample result image to increase engagement",
+        "Include a section with 2-3 ready-to-copy birthday card prompts for common themes (e.g., whimsical, elegant, funny)",
+        "Add FAQ addressing common issues like 'Why does Midjourney mess up text?' with solutions"
+      ],
+      "optimised_at": "2026-11-02T03:31:08.561Z"
+    },
+    "fact_verified_at": "2026-11-02T03:31:44.520Z",
+    "tiktok_video_at": "2026-11-02T03:41:00.425Z",
+    "reel_at": "2026-11-02T17:42:01.874Z",
+    "social": true,
+    "social_at": "2026-11-02T17:42:24.402Z"
+  },
+  "article_markdown": "---\ntitle: \"How to design a custom birthday card with Midjourney in 10 minutes\"\nsubtitle: \"Build a one-of-a-kind birthday card with a name and a personal line, using a few prompts you refine step by step.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Midjourney\"\ntool: \"Midjourney\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"birthday\", \"midjourney\", \"image-prompts\", \"creative\"]\n---\n\n# How to design a custom birthday card with Midjourney in 10 minutes\n\n> **In short:** You'll learn to build a birthday card image in Midjourney by writing one base prompt, refining it through a few rounds, and leaving room for a name and a personal line. Midjourney generally needs a paid plan, and it often garbles written words, so add the final text in a design app.\n\nYou already know how to type a prompt and get a picture back. This guide shows you a more useful workflow: building a prompt in layers, comparing results, and tweaking one piece at a time. By the end, you'll have a card image that fits a specific person, ready for a little text overlay.\n\n## Before you start\n- A Midjourney account and access to the place you usually generate images (the web interface or Discord, depending on how you use it). We assume you already know how to send a prompt.\n- A paid Midjourney plan is usually required. Check the official site for current plan options, since they change.\n- A free design app or your phone's photo editor, for the final text. Any simple tool with a text box works.\n- The recipient's name, one short personal line (for example, \"Happy birthday, Dana, here's to the garden year!\"), and about 10 to 15 minutes.\n\n## Step 1 — Write a base prompt for the card's look\nStart by describing the picture, not the words. Name the mood, the main subject and the style in one sentence. Midjourney reads your prompt as a set of visual ideas, so the more concrete the picture, the better. Keep it to one or two sentences for now. Don't ask for a name or sentence yet, because image generators usually struggle with written words.\n\n💬 Example: \"A cheerful birthday card scene with a watercolor bouquet of sunflowers and soft paper texture, warm yellow and sage green tones, [birthday style] mood.\"\n\nIf the image comes back too busy or too dark, that's normal for a first try. You'll refine it in the next steps.\n\nYou'll know it worked when the image shows the main subject and mood you described, even if the details are off.\n\n## Step 2 — Leave room for your text\nCards need empty space where the message will go. Tell Midjourney exactly where that space should be, so your name and line have a clean place to land later. Add a simple phrase to the end of your base prompt. Midjourney doesn't always obey placement words perfectly, so treat this as a strong hint, not a guarantee.\n\n💬 Example: \"...with open, uncluttered space across the top third for a message.\"\n\nAlso check the shape. Midjourney lets you request a proportion, such as a portrait card, by adding a parameter like `--ar 5:7` to the end of the prompt. If you're unsure about the exact syntax for your version, leave the shape out and crop later in your design app.\n\nIf the top is still full of flowers, try a stronger phrase like \"plain background at the top\" and generate again.\n\nYou'll know it worked when the top area of the picture looks calmer and has room for a short line of text.\n\n## Step 3 — Add a personal detail, not a name\nInstead of putting the name in the image, add a personal detail that makes the card feel made for someone. Think of a hobby, a favorite color, or a place. This is the \"custom\" part: the picture reflects the person, and you'll add the name yourself afterward. Be specific, but keep the prompt short enough that the main subject stays clear.\n\n💬 Example: \"...with a tiny garden bench and a teal bicycle in the background, since [recipient's hobby] is gardening.\"\n\nGenerate once and compare with your Step 2 result. Ask yourself: does this feel like it belongs to this one person? If one detail dominates, remove it and try a softer version.\n\nIf the results look random, the prompt may have too many ideas. Cut the least important item and try again.\n\nYou'll know it worked when the picture includes your personal detail in a way that still feels like one cohesive scene.\n\n## Step 4 — Refine with variations\nMidjourney usually shows a grid of images. Pick the one you like best and look for a button labeled something like Vary, Variations, or Upscale. The exact wording and layout can differ between the web interface and Discord, so look for any option that creates new versions of one image. Use Vary when you like the overall direction and want small changes. Use Upscale when you want a larger, sharper version of the one you chose.\n\n💬 Example: \"Keep the sunflower bouquet and the open space at the top, but make the light warmer and the paper texture more visible.\"\n\nRefining is a conversation with the image: each round changes one or two things. If the result drifts too far, go back to the last version you liked and make a smaller change.\n\nRemember that the strongest, most detailed images may take longer to produce and may use more of your plan's allowance.\n\nYou'll know it worked when the new version keeps what you liked and improves one specific thing you asked for.\n\n## Step 5 — Add the name and message outside Midjourney\nSave your favorite image to your device. Open a simple design or photo app, add a text box over the open area at the top, and type the recipient's name and your personal line. Check the spelling carefully, because Midjourney isn't reliable for exact text. Choose a readable font and a color that contrasts with the background. Many designers keep text in a single line at the top. If you want a printed card, check your printer's paper size and set the image to fit.\n\n💬 Example: type \"Happy birthday, [recipient name]! Here's to a year full of sunshine.\" in the open space.\n\nIf the app's text tools look different, look for an option called Text, Add text, or a letter \"T\" icon.\n\nYou'll know it worked when your name and message sit clearly over the image and you can read every word at phone size.\n\n## Common mistakes\n- **Asking Midjourney to write the name.** Generated text often comes out misspelled or scrambled. The fix: leave the name out of the prompt and add it in a design app, as in Step 5.\n- **Changing everything at once.** A new prompt with five new ideas makes it hard to know what helped. The fix: change one or two things per round, and keep the version you liked.\n- **Assuming it's free.** Many people expect to use Midjourney for free, but it generally requires a paid plan. The fix: check the official site before you start, so you aren't surprised mid-project.\n\nMidjourney can create the picture, but it can't send the card, know the recipient's real preferences, or guarantee perfect spelling. You're still the one who checks the final result.\n\n## What this means for you\n- **In everyday life:** Make a personal card for a grandparent, friend, or coworker in one evening, with a picture tied to their hobby.\n- **For your business or work:** Create a themed birthday card for a team member or a client's celebration, then match the style to your brand colors.\n- **If you want to go further:** Try building a reusable prompt template with blanks for the hobby, colors, and mood. Then you can make a set of cards for a whole family in minutes.\n\n## Try it now\nOpen Midjourney, type the base prompt from Step 1 with a hobby of someone you know, and generate one image. Then ask yourself which single detail you'd change first.",
+  "original_title": "How to design a custom birthday card with Midjourney in 10 minutes"
+}

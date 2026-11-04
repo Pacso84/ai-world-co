@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "written_at": "2026-11-01T03:07:22.564Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0036756,
+    "original_draft": "2026-10-31T03-11-23-766Z_openai-blog_Making_it_easier_for_websites_to_express_AI_traini.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/helping-websites-express-ai-training-preferences",
+    "source_links": [
+      "https://openai.com/index/helping-websites-express-ai-training-preferences",
+      "https://openai.com/index/community-safety-report-and-new-protections-for-teens",
+      "https://openai.com/index/how-we-detect-frontier-model-misalignment",
+      "https://openai.com/index/updated-model-spec"
+    ],
+    "source_snippet_len": 617,
+    "merged_from": 4,
+    "merged_theme": "OpenAI safety and policy updates",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-01T03:09:12.184Z",
+    "slug": "openai-s-safety-and-policy-updates-what-they-mean-for-you",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 772
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article explains OpenAI's announcements in friendly, accessible language with clear definitions of terms like robots.txt and misalignment. It has the required structure including a hook, plain-language explanations, a practical What this means for you section, and a wrap-up with a next step. The content stays factual to OpenAI's own announcements with no prohibited content, no product comparisons, and no invented claims. A minor note: the headline says policy updates but the wrap-up correctly notes these are intentions and commitments rather than implemented changes, which is appropriately honest.",
+      "_aiCost": 0.00158706,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-01T03:10:06.247Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a roundup of multiple policy announcements rather than introducing one specific usable feature; the robots.txt mechanism targets website owners, not everyday users",
+    "image_v": 2,
+    "image_at": "2026-11-01T03:12:57.785Z",
+    "seo": {
+      "meta_description": "OpenAI announces new safety and policy updates including robots.txt for AI training preferences, violence prevention, teen protections, and updated behavior guidelines.",
+      "keywords": [
+        "OpenAI safety updates",
+        "OpenAI policy changes",
+        "ChatGPT safety features",
+        "AI training preferences",
+        "robots.txt AI training",
+        "OpenAI teen protection",
+        "AI behavior guidelines"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the current year to the title for better timeliness and search relevance",
+        "Include more specific details about the violence prevention and monitoring features in the excerpt"
+      ],
+      "optimised_at": "2026-11-01T03:14:22.889Z"
+    },
+    "fact_verified_at": "2026-11-01T19:58:51.217Z",
+    "social": true,
+    "social_at": "2026-11-01T03:25:56.239Z"
+  },
+  "article_markdown": "---\ntitle: \"OpenAI's Safety and Policy Updates: What They Mean for You\"\nsubtitle: \"OpenAI describes new steps on website AI preferences, violence prevention, monitoring, and its AI behavior guide, and what each one means in daily life.\"\ncategory: \"ai-news\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"ai-safety\", \"openai\", \"chatgpt\", \"privacy\", \"getting-started\"]\n---\n\n# OpenAI's Safety and Policy Updates: What They Mean for You\n\n> **In short:** According to OpenAI, it will honor a shared robots.txt signal so website owners can state their AI training preferences. It is also strengthening violence prevention and teen protections in ChatGPT, adding layered monitoring for misaligned models, and updating its Model Spec, the document that guides how its AI should behave.\n\nHave you ever wondered what happens to the things you write online, or whether an AI chatbot is quietly being watched for trouble? OpenAI has recently published several announcements about exactly these questions. Together they show how one company is thinking about safety, and they are worth a calm read.\n\n## Four pieces, one goal\n\nOpenAI's announcements cover different parts of the same problem: keeping AI useful without letting it cause harm. Here is what each one says, in plain terms.\n\n- **Website preferences.** OpenAI says it will honor a shared robots.txt signal. A robots.txt file is a small text file that a website uses to tell automated visitors which parts they may read. OpenAI says this helps website owners express their AI training preferences to participating providers. In other words, a site owner can say \"use my pages for training\" or \"please don't.\"\n- **Violence prevention and teens.** OpenAI says it is strengthening violence prevention in ChatGPT, its chatbot. It mentions expanded safeguards, earlier interventions, and a new commitment to public safety reporting. The announcement also highlights new protections for teens.\n- **Monitoring.** OpenAI describes layered monitoring for what it calls frontier model misalignment. A frontier model is one of the most advanced AI systems. Misalignment means the AI's behavior drifts away from what its makers intended. Layered monitoring means several checks run at the same time, so one missed signal does not leave a gap. OpenAI says this also covers unauthorized agent behavior, where an agent (an AI that can take actions, not just answer questions) does something it was not permitted to do. The goal is for responders to step in before a problem grows.\n- **The Model Spec.** The Model Spec is a written guide to how OpenAI wants its models to think and act. OpenAI says its updated version lists five core values. Three of them, according to the announcement, are sound judgment, human agency (keeping people in control of their own decisions), and faithfulness to human intent (doing what people actually mean, not just what the words literally say).\n\n## Why these pieces fit together\n\nRead together, the announcements share one lesson: safety is not a single switch. It is a set of overlapping protections. A website preference signal protects the content people publish. Safeguards and monitoring protect people who chat with the AI. The Model Spec describes the standard all of this is meant to meet.\n\nThe announcements describe intentions and commitments. They do not give a timeline for every change, and they do not promise that any one protection is perfect. It is fair to read them as OpenAI's account of what it is trying to do.\n\n## What this means for you\n\n- **In everyday life**: If you chat with an AI about personal or stressful topics, you can expect the company to describe safeguards around harmful content. Keep your own judgment in the loop, especially on health, money, or legal questions, and talk to a qualified professional for real decisions.\n- **For your business or work**: If you publish content on a website, the robots.txt idea is worth knowing about. Ask whoever manages your site how robots.txt is set up, and decide what you want your AI training preferences to say.\n- **If you're just getting started**: Read the Model Spec summary in your own words and notice the phrase \"human agency.\" Ask yourself whether the AI helps you make your own choices or nudges you toward its answer.\n\n## Wrap-up\n\nOpenAI's recent announcements describe website preference signals, stronger violence prevention and teen protections in ChatGPT, layered monitoring for misaligned models, and an updated Model Spec with five core values. Safety, as OpenAI presents it, is a combination of many checks rather than one fix. Your next step is simple: the next time you use an AI chatbot, take a minute to notice what it is designed to do, and what you still need to decide for yourself.",
+  "original_title": "Making it easier for websites to express AI training preferences"
+}

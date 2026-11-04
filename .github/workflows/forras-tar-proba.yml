@@ -1,0 +1,33 @@
+# 🔒 FORRÁS-TÁR PRÓBA (2026-11-03) — $0, kézi indítás: gh workflow run forras-tar-proba.yml
+# Ellenőrzi, hogy a CI eléri-e a PRIVÁT forrás-tárat (Pacso84/ai-world-co-forrasok) a FORRAS_TAR_SSH_KEY
+# deploy key-jel: letölti, megszámolja a fájlokat, és a visszatolást csak PRÓBÁBAN (--dry-run) futtatja.
+# Semmit nem ír, semmit nem tol fel. Fájltartalmat NEM ír ki (a tár kiadói szöveget tartalmaz).
+name: Forrás-tár próba
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: Pacso84/ai-world-co-forrasok
+          ssh-key: ${{ secrets.FORRAS_TAR_SSH_KEY }}
+          path: _forrasok
+          fetch-depth: 1
+      - name: Tartalom és írási jog (próba)
+        run: |
+          cd _forrasok
+          echo "📁 kivonat: $(ls kivonat 2>/dev/null | wc -l) · forras: $(ls forras 2>/dev/null | wc -l) · hirfolyam: $(ls hirfolyam 2>/dev/null | wc -l)"
+          git config user.name "AI World Bot"
+          git config user.email "bot@aiworld.local"
+          date -u +%FT%TZ > .proba
+          git add .proba
+          git commit -q -m "próba (nem kerül fel)"
+          timeout 60 git push --dry-run origin HEAD:main && echo "✅ írási jog OK (dry-run, semmi nem ment fel)"

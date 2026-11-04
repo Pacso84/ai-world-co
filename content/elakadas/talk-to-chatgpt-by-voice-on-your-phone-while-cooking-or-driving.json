@@ -1,0 +1,53 @@
+{
+  "slug": "talk-to-chatgpt-by-voice-on-your-phone-while-cooking-or-driving",
+  "probalva": "2026-10-28T14:45:47.398Z",
+  "doboz": {
+    "keszult": "2026-10-28T14:45:47.398Z",
+    "enHash": "1429a767dab9161ab02b0c60f62bc9ba67179b16",
+    "forrasok": {
+      "https://help.openai.com/en/articles/20001274-chatgpt-voice": "ChatGPT Voice"
+    },
+    "en": [
+      {
+        "symptom": "ChatGPT gets \"today\" or \"tomorrow\" wrong in voice mode.",
+        "why": "Voice uses your device or browser time zone to understand terms such as \"today\" or \"tomorrow.\" If the time zone is off, the answer can seem wrong.",
+        "fix": "Check your time zone. If an answer still seems off, include the exact date, time zone, or location in your question.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      },
+      {
+        "symptom": "Voice stopped and ChatGPT says I've reached a limit.",
+        "why": "In Chat mode, Live usage is measured over a rolling 24-hour period. Limits depend on your plan and may change.",
+        "fix": "ChatGPT will notify you when you reach a limit. Check your plan's Voice allowance to see how much time you have.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A ChatGPT hangmódban rosszul értelmezi a „ma” vagy a „holnap” kifejezést.",
+        "why": "A hangmód az eszközöd vagy a böngésződ időzónáját használja az olyan kifejezések értelmezéséhez, mint a „ma” vagy a „holnap”. Ha az időzóna helytelen, a válasz hibásnak tűnhet.",
+        "fix": "Ellenőrizd az időzónádat. Ha egy válasz továbbra is hibásnak tűnik, írd bele a kérdésedbe a pontos dátumot, az időzónát vagy a helyszínt.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      },
+      {
+        "symptom": "A hang leállt, és a ChatGPT azt írja, hogy elérted a korlátot.",
+        "why": "Csevegési módban a Live-használatot gördülő 24 órás időszak alapján mérik. A korlátok a csomagodtól függnek, és változhatnak.",
+        "fix": "A ChatGPT értesít, amikor eléred a korlátot. Ellenőrizd a csomagod Voice-keretét, hogy lásd, mennyi idő áll még rendelkezésedre.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "ChatGPT interpreta mal «hoy» o «mañana» en el modo de voz.",
+        "why": "La voz utiliza la zona horaria de tu dispositivo o navegador para entender términos como «hoy» o «mañana». Si la zona horaria no es correcta, la respuesta puede parecer incorrecta.",
+        "fix": "Comprueba tu zona horaria. Si una respuesta sigue pareciendo incorrecta, incluye la fecha exacta, la zona horaria o la ubicación en tu pregunta.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      },
+      {
+        "symptom": "La voz se detuvo y ChatGPT dice que has alcanzado un límite.",
+        "why": "En el modo Chat, el uso de Live se mide durante un periodo móvil de 24 horas. Los límites dependen de tu plan y pueden cambiar.",
+        "fix": "ChatGPT te avisará cuando alcances un límite. Comprueba la asignación de Voice de tu plan para ver cuánto tiempo tienes.",
+        "source": "https://help.openai.com/en/articles/20001274-chatgpt-voice"
+      }
+    ]
+  }
+}

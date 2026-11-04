@@ -1,0 +1,39 @@
+{
+  "started_at": "2026-11-04T15:53:08.791Z",
+  "drafts_total": 1,
+  "articles_written": 1,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 1,
+    "html": 0,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.0049524,
+  "by_article": [
+    {
+      "draft": "2026-11-04T15-53-08-489Z_google-workspace_Educators_can_now_add_Guided_Learning_to_assignmen.json",
+      "writer_output": "WRITER_2026-11-04T15-53-08-489Z_google-workspace_Educators_can_now_add_Guided_Learning_to_assignmen.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 4494,
+      "source_overlap_words": 9,
+      "cost_usd": 0.0034857,
+      "duration_ms": 15275,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-11-04T15:53:46.310Z",
+  "duration_seconds": 37.519
+}

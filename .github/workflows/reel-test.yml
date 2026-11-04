@@ -1,0 +1,130 @@
+name: Reel — kézi próbaküldés
+
+# KÉZZEL indított, EGYSZERI Reel-küldés a Facebookra.
+#
+# MIÉRT VAN KÜLÖN GOMB (2026-08-24, user-döntés: „előbb EGY kézi próba"):
+# a napi automatikába építeni valamit, ami még sosem működött, azt jelenti,
+# hogy az első hibás poszt már kint van. Ez a gomb egyszer, szándékosan süt
+# el egy Reelt — és a titkos webhook-cím közben nem hagyja el a GitHubot.
+#
+# ⚠️ AZ ALAPÉRTELMEZÉS A PRÓBA (dry = true). Aki gondolkodás nélkül
+# rákattint, az NEM posztol a Facebookra — csak megnézi, mi menne ki.
+# A küldéshez kifejezetten át kell állítani.
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Melyik útmutató? (a cikk slugja)'
+        required: true
+        default: 'how-to-spot-a-deepfake-video-or-voice-clone-before-you-share-it'
+      dry:
+        description: 'Csak próba? (igaz = NEM posztol, csak megmutatja)'
+        type: boolean
+        required: true
+        default: true
+      csak_gyartas:
+        description: 'Csak a videó legyártása? (a CI-környezet ellenőrzésére — nem küld semmit)'
+        type: boolean
+        required: false
+        default: false
+      csak_render:
+        description: 'Csak a MEGADOTT cikk videója, sorra és jelölésre nem nyúlva (dizájn-ellenőrzésre)'
+        type: boolean
+        required: false
+        default: false
+
+# Csak olvasunk — ez a lépés nem commitol semmit.
+permissions:
+  contents: read
+
+# Két egyszerre indított futás két Reelt jelentene ugyanarról.
+concurrency:
+  group: aiworld-reel-test
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Függőségek
+        run: npm install
+
+      # ⚠️ Az ubuntu-latest futtatón NINCS ffmpeg — az első automata Reel
+      # emiatt bukott (2026-08-26, "spawnSync ffmpeg ENOENT").
+      - name: ffmpeg telepítése
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && ffmpeg -version | head -1
+
+      # A táblák betűje a repóval utazik — részletek az auto.yml ugyanilyen
+      # lépésénél. Itt azért KELL, hogy ez a gomb ugyanazt a videót gyártsa,
+      # amit a napi futás: enélkül a „próba" mást bizonyítana, mint az éles.
+      - name: Betűtípus telepítése
+        run: |
+          command -v fc-cache >/dev/null || sudo apt-get install -y -qq fontconfig
+          mkdir -p "$HOME/.local/share/fonts"
+          cp shared/fonts/schibsted-grotesk-900.ttf "$HOME/.local/share/fonts/"
+          fc-cache -f >/dev/null
+          # Itt KEMÉNY a kapu (az auto.yml-ben csak hangos): ez a gomb pont
+          # az ellenőrzésre való, és egy olyan „próba", ami a rossz betűt
+          # átengedi, rosszabb a semminél. Az `fc-match` magától mindig
+          # 0-val lép ki, ezért kell a saját fájlunkra szűrni.
+          fc-match -f '%{file}\n' "Schibsted Grotesk" | grep -qi schibsted || {
+            echo "🔴 A BETŰ NEM TELEPÜLT — a fontconfig ezt adja helyette:"; fc-match "Schibsted Grotesk"; exit 1; }
+          echo "✅ betű telepítve: $(fc-match -f '%{file}\n' 'Schibsted Grotesk')"
+
+      # ⚠️ A SLUG KÖRNYEZETI VÁLTOZÓN MEGY BE, nem közvetlen behelyettesítéssel.
+      # A `"${{ inputs.slug }}"` alak idézőjelen belül is végrehajtaná a `$( )`
+      # és a backtick tartalmát — ez a lépés pedig hozzáfér a webhook-titokhoz.
+      # A GitHub saját ajánlása is ez.
+      #
+      # ⚠️ `inputs.dry` ÉS NEM `github.event.inputs.dry`. Az `inputs` típusos
+      # logikai értéket ad, a `github.event.inputs` SZÖVEGET — ott a `== true`
+      # mindig hamis lenne, a `--dry` NÉMÁN kiesne, és egy „csak megnézem"
+      # kattintásból valódi Facebook-poszt lenne. A hiba iránya itt veszélyes.
+      - name: Reel küldése
+        env:
+          MAKE_REEL_WEBHOOK_URL: ${{ secrets.MAKE_REEL_WEBHOOK_URL }}
+          SLUG: ${{ inputs.slug }}
+          DRY: ${{ inputs.dry }}
+          GYARTAS: ${{ inputs.csak_gyartas }}
+          RENDER: ${{ inputs.csak_render }}
+        run: |
+          # A "csak render" mód a MEGADOTT cikkből gyárt videót, és semmi
+          # mást nem tesz: nem néz sort, nem ír `reel_at` jelölést, nem küld.
+          # Ez a DIZÁJN ellenőrzésének útja (2026-09-17): a `--prepare` a napi
+          # sorból választ, és ha aznap már ment Reel, nem is renderel — a
+          # kézi, slug-os ág viszont eddig CSAK küldött, videót nem gyártott.
+          # A kész fájl a lépés után artifactként letölthető.
+          if [ "$RENDER" = "true" ]; then
+            node core/short-video.js "$SLUG"
+          elif [ "$GYARTAS" = "true" ]; then
+            node core/reel-post.js --prepare
+          elif [ "$DRY" = "true" ]; then
+            node core/reel-post.js "$SLUG" --dry
+          else
+            node core/reel-post.js "$SLUG"
+          fi
+
+      # ⚠️ EZ A LÉPÉS A DIZÁJN EGYETLEN HITELES ELLENŐRZÉSE (2026-09-17).
+      # A videót eddig csak a fejlesztői gépen tudtam megnézni — és pont az
+      # derült ki, hogy a KÉT KÖRNYEZET MÁST GYÁRT (betűtípus). Amit a
+      # Windowson látok, az semmit nem bizonyít arról, ami kimegy.
+      # Innentől a futtatón készült fájl letölthető, tehát AZT nézzük meg,
+      # ami a Facebookra is menne.
+      #
+      # `if: always()`: ha a küldés elhasal, a videó ATTÓL MÉG érdekes —
+      # gyakran épp az mondja meg, mi volt a baj.
+      - name: A legyártott videó letölthetővé tétele
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reel-video
+          path: website/assets/video/shorts/*.mp4
+          if-no-files-found: warn
+          retention-days: 7

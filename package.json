@@ -1,0 +1,35 @@
+{
+  "name": "ai-world-co",
+  "version": "1.0.0",
+  "description": "AI World Co. - Multi-agent AI system serving a US/international audience with daily AI news in plain language",
+  "type": "module",
+  "main": "core/orchestrator.js",
+  "scripts": {
+    "router-smoke": "node core/ai-router.smoke.js",
+    "test": "node core/run-tests.js"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "news",
+    "usa"
+  ],
+  "author": "AI World HQ",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.102.0",
+    "@google/genai": "^2.8.0",
+    "dictionary-en": "^4.0.0",
+    "dictionary-hu": "^3.0.0",
+    "dotenv": "^17.4.2",
+    "groq-sdk": "^1.2.1",
+    "hunspell-asm": "^4.0.2",
+    "marked": "^18.0.5",
+    "msedge-tts": "^2.0.7",
+    "rss-parser": "^3.13.0",
+    "sharp": "^0.35.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-11-01T03:07:45.108Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0040394,
+    "original_draft": "2026-10-31T03-11-23-767Z_cohere-blog_Cohere_Advances_C_4_Billion_AI_Commitment_in_Canad.json",
+    "source_id": "cohere-blog",
+    "source_name": "Cohere (hivatalos)",
+    "source_link": "https://cohere.com/blog/cohere-canada-commitment",
+    "source_links": [
+      "https://cohere.com/blog/cohere-canada-commitment",
+      "https://cohere.com/blog/rerank-5"
+    ],
+    "source_snippet_len": 325,
+    "merged_from": 2,
+    "merged_theme": "Cohere company news and product update",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-01T03:09:31.481Z",
+    "slug": "cohere-s-canada-plan-and-rerank-5-what-the-new-ai-search-tool-means-fo",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 725
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid news article that explains technical concepts clearly, attributes all claims to Cohere, provides useful audience-segmented advice, and follows the required structure without prohibited content or clichés.",
+      "_aiCost": 0.0016308,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-01T03:10:20.044Z",
+    "guide_worthy": false,
+    "pairing_reason": "Rerank 5 is an enterprise/developer API tool, not a consumer product; no ordinary person can go use it today, and the article gives only generic AI search tips rather than actionable Rerank 5 steps.",
+    "image_v": 2,
+    "image_at": "2026-11-01T03:13:07.512Z",
+    "seo": {
+      "meta_description": "Cohere invests C$4B in Canada through 2031, creating 1,500+ jobs. Learn how new AI search tool Rerank 5 improves answers.",
+      "keywords": [
+        "Cohere Rerank 5",
+        "AI search tool",
+        "Cohere Canada investment",
+        "Rerank 5 AI",
+        "Cohere jobs Canada",
+        "AI document search",
+        "enterprise AI search"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the exact Rerank 5 release date or availability to improve recency signals",
+        "Include a brief explanation of what 'reranking' means for readers unfamiliar with AI terminology",
+        "Add a CTA or link to learn more about Cohere's Canada plan for better user engagement"
+      ],
+      "optimised_at": "2026-11-01T03:14:31.555Z"
+    },
+    "fact_verified_at": "2026-11-01T03:16:47.118Z",
+    "social": true,
+    "social_at": "2026-11-01T03:26:17.439Z"
+  },
+  "article_markdown": "---\ntitle: \"Cohere's Canada Plan and Rerank 5: What the New AI Search Tool Means for You\"\nsubtitle: \"Cohere is expanding its Canadian investment through 2031 and has announced Rerank 5, a tool that helps AI find the exact text it needs.\"\ncategory: \"news\"\naudience: \"business\"\nread_time_minutes: 3\ntags: [\"cohere\", \"ai-search\", \"reranking\", \"enterprise-ai\", \"ai-news\"]\n---\n\n# Cohere's Canada Plan and Rerank 5: What the New AI Search Tool Means for You\n\n> **In short:** Cohere says it is advancing a C$4 billion commitment in Canada through 2031, with 1,500+ jobs. Its new Rerank 5 aims to find the exact passages an AI needs to answer a question, which the company says leads to better answers from fewer tokens.\n\nEvery time an AI assistant answers a question about a long report or a pile of documents, it first has to find the right pieces of text. How well it does that search step shapes how useful the final answer is. Two recent Cohere announcements focus on exactly that, along with the company's plans for its home country.\n\n## What Rerank 5 does\n\nStart with the search step. Many AI systems first pull a batch of possible text passages from a library of documents. Then a **reranker** (a tool that re-sorts those passages by how relevant they are to your question) decides which ones matter most. Think of it like a librarian who grabs twenty books and then hands you the three pages that actually answer your question.\n\nCohere says Rerank 5 pinpoints the exact passages a **large language model** (or LLM, the kind of AI that writes and reads text, like the engine behind ChatGPT) needs for each query. The company says this means you get better answers from fewer **tokens**. A token is a small chunk of text, roughly a word or part of one, and AI systems count and charge by tokens. Less text sent to the model can mean a shorter, more focused input.\n\nCohere presents this as its own claim. The company describes the improvement, and independent results are not included in the announcement.\n\n## What the Canada commitment says\n\nThe second announcement covers the company's plans in Canada. Cohere says it is advancing a C$4 billion commitment to strengthen Canada's AI leadership, expand its national workforce, and invest in AI research and **infrastructure** (the physical backbone of AI, such as data centers and the computer hardware that runs them). The plan runs through 2031, and the company says it expects to create more than 1,500 jobs.\n\nThe announcement does not give a breakdown of how the money will be spent year by year, so it is best to treat the details as what Cohere has said so far.\n\n## What this means for you\n\n- **In everyday life**: The quality of an AI answer depends heavily on the search step behind it. When you ask a tool about your own documents, give it the specific section you care about if you can. Pasting the exact paragraph into your prompt (the instruction you type to the AI) gives it less to sort through.\n- **For your business or work**: If your company uses or builds AI that searches internal files, ask your vendor or technical team whether the system ranks and filters results before the AI reads them. Fewer, better passages can keep costs and confusion down. Cohere's announcement describes this approach, but you should confirm how any specific product works before relying on it.\n- **If you're just getting started**: You don't need to understand the technical details to benefit. Notice when an AI answer seems off-target, then ask it to quote the exact source text it used. That habit teaches you where the answer came from and makes errors easier to spot.\n\n## Wrap-up\n\nCohere's two announcements point in one direction: better AI depends on finding the right information first, and the company is investing in both that search technology and the infrastructure and people behind it. Rerank 5 is aimed at making answers more precise while using less text, according to Cohere. The Canada plan, which runs through 2031, signals the scale of its long-term commitment. Your next step is simple: the next time an AI tool gives you a summary, ask it to show the original passage. You'll learn quickly how much the search step shapes the answer.",
+  "original_title": "Cohere Advances C$4 Billion AI Commitment in Canada, Creating 1,500+ Jobs"
+}

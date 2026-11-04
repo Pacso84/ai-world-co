@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "written_at": "2026-11-04T03:53:02.561Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0037421,
+    "original_draft": "2026-11-04T03-51-29-898Z_d-id-news_What_Enterprise_Teams_Should_Know_About_AI_Video_P.json",
+    "source_id": "d-id-news",
+    "source_name": "D-ID (hivatalos)",
+    "source_link": "https://www.d-id.com/blog/enterprise-teams-ai-video-platforms/",
+    "source_links": [
+      "https://www.d-id.com/blog/enterprise-teams-ai-video-platforms/"
+    ],
+    "source_snippet_len": 440,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "4623c56f44b7c64b",
+    "source_overlap_words": 9,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-04T03:54:45.081Z",
+    "slug": "choosing-an-ai-video-platform-what-to-check-before-your-team-commits",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 897
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clear, well-structured article that explains AI video tools accessibly for business teams. Good use of concrete examples, proper attribution of D-ID's own claims, and the 'What this means for you' section covers different reader situations well.",
+      "_aiCost": 0.001536,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-04T03:56:47.670Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a generic checklist for evaluating AI video platforms generally, not about a specific named feature/tool introduced in this piece",
+    "image_v": 2,
+    "image_at": "2026-11-04T03:59:43.343Z",
+    "seo": {
+      "meta_description": "Before you pick an AI video platform, test it with a real project, check how your data is handled, get proper likeness consent, and understand the true cost.",
+      "keywords": [
+        "AI video platform",
+        "choosing AI video tools",
+        "AI avatar video software",
+        "AI video platform pricing",
+        "AI video data privacy",
+        " likeness consent AI video",
+        "test AI video platform"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add an H2 subheading like 'How to Test an AI Video Platform Before Buying' to capture 'how to test' search queries",
+        "Include a comparison table or checklist format to improve featured snippet potential",
+        "Add a brief example of a specific use case (e.g., 'a monthly training video needing updates') to capture long-tail 'AI video for training' searches"
+      ],
+      "optimised_at": "2026-11-04T04:01:20.936Z"
+    },
+    "fact_verified_at": "2026-11-04T04:03:54.239Z",
+    "social": true,
+    "social_at": "2026-11-04T04:15:13.409Z"
+  },
+  "article_markdown": "---\ntitle: \"Choosing an AI Video Platform: What to Check Before Your Team Commits\"\nsubtitle: \"A simple checklist for testing output quality, data handling, likeness consent and real costs before you sign up.\"\ncategory: \"creative\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-video\", \"avatars\", \"data-privacy\", \"team-tools\", \"creative-tools\"]\n---\n\n# Choosing an AI Video Platform: What to Check Before Your Team Commits\n\n> **In short:** AI video platforms turn scripts into presenter videos with on-screen avatars. Before you pick one, test a real project, ask how your data is stored and deleted, and get clear consent for any real person's face or voice. Cost depends on how much you produce, not just on seats.\n\nMaybe you have a training video that needs updating every few months, or a product explainer that has to exist in three languages. Making a new presenter video each time can feel like a full production project. AI video tools promise a faster route, but the right choice depends on more than how the first video looks.\n\n## Start with a real project, not a demo\n\nA polished demo video tells you very little. The real question is whether the tool fits your everyday work. Pick one approved, non-sensitive project, such as a short training module, and try the whole process:\n\n- Turn existing slides or a script into a short presenter video.\n- Check clarity, how the avatar pronounces product names, and whether the look matches your brand.\n- Change one sentence and regenerate the video. Editing is where many tools slow down.\n- Make a second-language version and ask a native speaker to review it.\n- Send it through your normal approval step.\n\nWrite down every manual step and how long it takes. You will repeat these steps all year, so small delays add up.\n\n## Know what data you are handing over\n\nAI video tools handle more than text. They may store your script, uploaded files, the finished video and, for a custom avatar, a real person's face and voice. Ask about each type separately.\n\n- **Where it is stored.** D-ID, one vendor in this space, says its privacy policy places its software and application data on servers in Oregon, USA. Storage location is only part of the answer, so also ask where processing happens and which outside services, such as voice providers, are involved.\n- **How long it is kept.** Deletion times vary by product and by setting. D-ID describes these periods as \"commercially reasonable efforts,\" so ask each vendor for specifics in writing.\n- **Whether it trains AI models.** D-ID states that biometric information is not used to train its models. Ask every vendor which data categories its no-training promise covers.\n- **Security certifications.** Standards such as SOC 2 and ISO 27001 are independent audits that check how a company protects information. They are a useful starting point, not a guarantee.\n\n## Consent for a presenter who is a real person\n\nA custom avatar built from a real employee raises questions beyond ordinary privacy. Think about four things:\n\n1. **Permission.** The person should agree to specific uses, channels and time periods, and you should decide what happens if they leave the company. Offering a stock avatar as an alternative keeps the choice real.\n2. **Platform verification.** D-ID's process, for example, asks the person to record a spoken consent statement on webcam and checks that the face matches the footage. This helps prevent misuse, but it does not replace your own legal duties.\n3. **Your privacy obligations.** In the EU, GDPR (the European data-protection law) treats a recording of someone's face or voice as personal data. When it is used to identify a person, it can count as especially sensitive biometric data, which needs a specific legal basis. Regulators have also noted that consent given to an employer is often not truly free, so involve your legal or privacy team early.\n4. **Disclosure.** Decide whether viewers should be told that an avatar is AI-generated.\n\n## Count the full cost, not just the seats\n\nA low monthly fee can hide the real price. Usage, the number of avatars and voices, translation, support, and the time people spend reviewing and approving videos all add up. Estimate these across a full year.\n\n## What this means for you\n\n- **In everyday life**: If you make videos for a club, a class or a family business, try one short project before paying for anything. Keep your own photos and voice out of the tool until you understand how the data is handled.\n- **For your business or work**: Bring IT, security and legal into the conversation early. Gathering documents such as certifications and data policies up front can save weeks.\n- **If you're just getting started**: Choose a low-risk script, such as a simple how-to, and note every step you repeat. That list becomes your evaluation checklist.\n- **If you already use it**: Build a shared library of approved scripts and consent records, and review the vendor's retention settings every time your team changes how it uses avatars.\n\n## Wrap-up\n\nAI video platforms can make presenter videos faster, but the best choice depends on your real workflow, your data rules and clear consent. Test one real project this week, write down each step and each question, and bring the list to your team. Then you can compare options based on facts, not a polished demo.\n\n---",
+  "original_title": "What Enterprise Teams Should Know About AI Video Platforms"
+}

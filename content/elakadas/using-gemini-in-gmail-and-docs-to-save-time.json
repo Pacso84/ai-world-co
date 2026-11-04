@@ -1,0 +1,53 @@
+{
+  "slug": "using-gemini-in-gmail-and-docs-to-save-time",
+  "probalva": "2026-10-29T20:48:11.088Z",
+  "doboz": {
+    "keszult": "2026-10-29T20:48:11.088Z",
+    "enHash": "f205d904bc7a1ac4fa6384c3eaaba5189a8f4915",
+    "forrasok": {
+      "https://support.google.com/gemini/answer/18741629": "Draft Gmail messages in Gemini chats - Computer"
+    },
+    "en": [
+      {
+        "symptom": "I don't see the \"Edit in Gmail\" option under Gemini's draft.",
+        "why": "Drafting Gmail messages in Gemini requires Google Workspace to be connected to Gemini Apps.",
+        "fix": "Make sure Google Workspace is connected to Gemini Apps before drafting Gmail messages in Gemini. Then select Edit in Gmail below the draft to open it in a new Gmail compose window.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      },
+      {
+        "symptom": "I want to change only one part of Gemini's email draft, not rewrite it all.",
+        "why": "After Gemini provides an initial draft, you can ask for revisions and improvements directly in the chat. You can also edit the email directly within the editor in the same chat.",
+        "fix": "Highlight text in the email body and select Help me write, then describe your changes. Repeat these steps until you are satisfied with the email draft.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Nem látom az „Edit in Gmail” lehetőséget a Gemini piszkozatában.",
+        "why": "Gmail-üzenetek piszkozatainak létrehozásához a Geminiben a Google Workspace-nek csatlakoztatva kell lennie a Gemini Appshez.",
+        "fix": "Mielőtt Gmail-üzenetek piszkozatait hoznál létre a Geminiben, győződj meg róla, hogy a Google Workspace csatlakoztatva van a Gemini Appshez. Ezután válaszd a piszkozat alatt az Edit in Gmail lehetőséget, hogy új Gmail-üzenetíró ablakban nyisd meg.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      },
+      {
+        "symptom": "Az e-mail-piszkozatnak csak egy részét szeretném módosítani, nem az egészet újraírni.",
+        "why": "Miután a Gemini elkészíti az első piszkozatot, közvetlenül a csevegésben kérhetsz módosításokat és javításokat. Az e-mailt közvetlenül a szerkesztőben is módosíthatod ugyanabban a csevegésben.",
+        "fix": "Jelöld ki a szöveget az e-mail törzsében, és válaszd a Help me write lehetőséget, majd írd le a módosításokat. Ismételd meg ezeket a lépéseket, amíg elégedett nem vagy az e-mail-piszkozattal.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "No veo la opción «Edit in Gmail» debajo del borrador de Gemini.",
+        "why": "Para redactar mensajes de Gmail en Gemini, es necesario conectar Google Workspace a Gemini Apps.",
+        "fix": "Asegúrate de que Google Workspace esté conectado a Gemini Apps antes de redactar mensajes de Gmail en Gemini. Luego, selecciona Edit in Gmail debajo del borrador para abrirlo en una nueva ventana de redacción de Gmail.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      },
+      {
+        "symptom": "Quiero cambiar solo una parte del borrador de correo electrónico de Gemini, no volver a escribirlo entero.",
+        "why": "Después de que Gemini proporcione un borrador inicial, puedes pedir revisiones y mejoras directamente en el chat. También puedes editar el correo electrónico directamente en el editor del mismo chat.",
+        "fix": "Resalta el texto del cuerpo del correo electrónico y selecciona Help me write; luego, describe los cambios. Repite estos pasos hasta que estés satisfecho con el borrador del correo electrónico.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      }
+    ]
+  }
+}

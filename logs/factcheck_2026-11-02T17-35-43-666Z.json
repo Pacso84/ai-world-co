@@ -1,0 +1,65 @@
+{
+  "ok": 2,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.01057338,
+  "at": "2026-11-02T17:35:43.666Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 2,
+    "javitva": 0,
+    "visszautasitva": 2,
+    "gyanu": 0,
+    "kihagyva": 2,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-10-30T03-26-53-525Z_amazon-alexa_Amazon_introduces_2_new_AI_products_from_Bee__Bee_.json",
+      "cim": "Amazon introduces 2 new AI products from Bee: Bee Frontier and Bee Eclipse",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a forrás alátámasztja, amit kivenne: „The announcement doesn't give a shipping date for the Bee devices, so check Amazon's site ”",
+      "modell_hu": "article claims no shipping date given, but source says Bee Frontier is available now and Bee Eclipse coming soon with specific prices"
+    },
+    {
+      "file": "ARTICLE_2026-10-28T02-59-31-452Z_perplexity-news_What_advanced_AI_models_are_included_in_my_subscri.json",
+      "cim": "What advanced AI models are included in my subscription? - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-10-27T02-51-00-950Z_openai-blog_ChatGPT_s_expanding_world_of_work.json",
+      "cim": "ChatGPT’s expanding world of work",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Az összes konkrét tényállítás egyezik a forrással: 165 munkatevékenység, közel 100 ország, Signals adatok, valamint a cél, hogy nyomon kövessék, hogyan használják az emberek a ChatGPT-t munkára és hogyan változnak ezek a minták idővel."
+    },
+    {
+      "file": "ARTICLE_2026-07-22T10-14-03-156Z_deeparteffects_Run_Stable_Diffusion_Locally___The_Easy_Way_with_D.json",
+      "cim": "Run Stable Diffusion Locally – The Easy Way with Deep Art Creator Desktop",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: HTTP 503)",
+      "status": 503
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-build-a-simple-personal-budget-spreadsheet-using-any-.json",
+      "cim": "How to build a simple personal budget spreadsheet using any AI assistant",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-07-23T01-48-34-084Z_google-workspace_Google_Meet_now_organizes_your_meeting_notes__tran.json",
+      "cim": "Google Meet now organizes your meeting notes, transcripts, and recordings in your Google Drive",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a forrás alátámasztja, amit kivenne: „In short:** Google Meet saves recordings, transcripts, and Gemini-written notes into the m”",
+      "modell_hu": "A cikk a régi mappastruktúrát ('Meet Recordings') és azt írja le, hogy a résztvevők csak e-mail linket kapnak, de a forrás szerint a fájlok most egy 'Google Meet' mappába kerülnek, találkozónkénti almappákba rendezve, és a fájlhozzáféréssel rendelkező résztvevők saját Drive mappáikban parancsikonoka"
+    }
+  ]
+}

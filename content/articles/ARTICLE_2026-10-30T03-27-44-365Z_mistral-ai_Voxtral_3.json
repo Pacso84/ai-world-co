@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "written_at": "2026-11-01T03:07:59.601Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0035142,
+    "original_draft": "2026-10-30T03-27-44-365Z_mistral-ai_Voxtral_3.json",
+    "source_id": "mistral-ai",
+    "source_name": "Mistral AI (hivatalos)",
+    "source_link": "https://mistral.ai/news/voxtral-3/",
+    "source_links": [
+      "https://mistral.ai/news/voxtral-3/",
+      "https://mistral.ai/news/mistral-large-4-oss/"
+    ],
+    "source_snippet_len": 282,
+    "merged_from": 2,
+    "merged_theme": "Mistral AI new model releases",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-01T03:08:44.966Z",
+    "slug": "mistral-s-new-voice-and-open-coding-models-what-they-are-and-who-they-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 743
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured article that explains technical terms in plain language, includes all required sections, and correctly attributes Mistral's claims about its model being best. No prohibited content, no clichés, US English maintained throughout.",
+      "_aiCost": 0.0015252,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-01T03:10:02.114Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article covers TWO distinct releases (Voxtral 3 SDK and Mistral Large 4 open weights), both developer-focused with no clear end-user action, and even admits 'you do not need to download anything' for regular readers.",
+    "image_v": 2,
+    "image_at": "2026-11-01T03:12:14.844Z",
+    "seo": {
+      "meta_description": "Mistral AI releases Voxtral 3 voice agent toolkit and opens weights on Mistral Large 4 coding model. See what 50+ language support and 1T parameters mean for developers.",
+      "keywords": [
+        "mistral ai voxtral 3",
+        "mistral large 4",
+        "voice agent toolkit",
+        "open weight coding model",
+        "mistral ai voice model"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a comparison section showing Voxtral 3 specs against other voice AI tools to capture 'best voice AI' searches",
+        "Include a practical use case for developers to capture 'how to build voice agents' long-tail searches",
+        "Add schema markup for the Voxtral 3 release date to improve freshness signals for search"
+      ],
+      "optimised_at": "2026-11-01T03:14:15.269Z"
+    },
+    "social": true,
+    "social_at": "2026-11-01T03:25:34.947Z",
+    "fact_verified_at": "2026-11-01T14:38:22.261Z"
+  },
+  "article_markdown": "---\ntitle: \"Mistral's New Voice and Open Coding Models: What They Are and Who They're For\"\nsubtitle: \"Mistral AI has released a voice agent toolkit and opened the weights of its largest model. Here's what each one means for you.\"\ncategory: \"ai-news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"mistral-ai\", \"voice-ai\", \"open-weight-models\", \"developers\", \"ai-news\"]\n---\n\n# Mistral's New Voice and Open Coding Models: What They Are and Who They're For\n\n> **In short:** Mistral AI has announced Voxtral 3, a toolkit for building real-time voice agents in 50+ languages, and has opened the weights of Mistral Large 4 (nicknamed \"Le Chonk\"), a 1-trillion-parameter model it calls its best open-weight model for coding.\n\nIf you have ever waited for a voice assistant to finish a sentence, or wondered why some AI tools feel more like a checklist than a conversation, these two releases touch that experience. They are aimed mostly at the people who build the tools, but the results eventually reach everyday apps.\n\n## Voxtral 3: a toolkit for talking with AI\n\nVoxtral 3 is a software development kit (SDK, a bundle of code and tools that developers use to build their own apps). According to Mistral's announcement, it is designed for voice agents, which are AI helpers you talk to instead of typing.\n\nMistral lists several capabilities:\n\n- **Real-time speech**: the agent listens and responds as you talk, rather than waiting for you to finish a recording.\n- **Accurate transcription**: turning spoken words into written text. Think of the captions on a video call, but for the AI to read.\n- **Emotional text-to-speech (TTS)**: TTS means the AI reads text out loud. Mistral says its voices can convey emotion, so a reply can sound warm or excited instead of flat.\n- **Deep tool use**: the agent can trigger outside actions, such as checking a calendar or looking something up, while it is holding a conversation.\n- **50+ languages**: Mistral says the toolkit handles more than fifty languages.\n\nKeep in mind that these are Mistral's own descriptions. The announcement does not include pricing or a release schedule in the text we have, so check Mistral's official site before planning around them.\n\n## Mistral Large 4 (\"Le Chonk\"): open weights for coding\n\nThe second release is about the model's weights. The weights are the numbers a model learns during training, and when they are \"open,\" anyone can download them and run or adapt the model under the license terms.\n\nHere is what the announcement says about Mistral Large 4:\n\n- It is a **1 trillion parameter** model. Parameters are the adjustable settings inside a model. More parameters usually mean more capacity, though size alone does not guarantee quality.\n- It is **multimodal**, meaning it can work with more than one kind of input, such as text and images.\n- Mistral describes it as the **best open-weight model for coding**. That is the company's claim, not an independent verdict.\n- Mistral says it was **trained in Europe**.\n\n## What this means for you\n\n- **In everyday life**: Voice tools built on this kind of technology may eventually show up in apps you already use. Expect better spoken conversations, but judge them by how they work for you, not by the marketing.\n- **For your business or work**: If your company builds customer support bots, voice ordering, or internal assistants, Voxtral 3 is the kind of toolkit a developer would evaluate. Ask your technical team whether the language coverage and real-time features match your needs.\n- **If you're just getting started**: You do not need to download anything. Read Mistral's announcement and watch for product pages that describe what end users can actually do.\n- **If you already use it**: If your team already builds with Mistral's models, consider testing the open weights on a small coding task in a private environment first. Compare its output with your current tools on your own code, and keep notes on where it helps and where it struggles.\n\n## Wrap-up\n\nMistral's two announcements cover two directions: a toolkit for spoken AI and a large, downloadable model for coding. Both are described mainly in the company's own words, so the most useful next step is to read the official announcements yourself and note which details matter for your work. If you are not a developer, bookmark the topic and watch for a plain-language product page. Once a tool arrives in an app you use, you will know which features to try first.",
+  "original_title": "Voxtral 3"
+}

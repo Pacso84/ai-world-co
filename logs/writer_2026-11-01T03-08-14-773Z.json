@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-11-01T03:06:43.585Z",
+  "drafts_total": 10,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 6,
+  "merged_total": 4,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.0174816,
+  "by_article": [
+    {
+      "draft": "2026-10-31T03-11-23-766Z_openai-blog_Making_it_easier_for_websites_to_express_AI_traini.json",
+      "writer_output": "WRITER_2026-10-31T03-11-23-766Z_openai-blog_Making_it_easier_for_websites_to_express_AI_traini.json",
+      "success": true,
+      "merged_from": 4,
+      "merged_theme": "OpenAI safety and policy updates",
+      "cost_usd": 0.0036756,
+      "duration_ms": 17573,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-31T03-11-23-767Z_cohere-blog_Cohere_Advances_C_4_Billion_AI_Commitment_in_Canad.json",
+      "writer_output": "WRITER_2026-10-31T03-11-23-767Z_cohere-blog_Cohere_Advances_C_4_Billion_AI_Commitment_in_Canad.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Cohere company news and product update",
+      "cost_usd": 0.0040394,
+      "duration_ms": 20836,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-30T03-27-44-365Z_mistral-ai_Voxtral_3.json",
+      "writer_output": "WRITER_2026-10-30T03-27-44-365Z_mistral-ai_Voxtral_3.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Mistral AI new model releases",
+      "cost_usd": 0.0035142,
+      "duration_ms": 13369,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-30T03-27-44-365Z_databricks_Announcing_General_Availability_of_Real-Time_Mode_.json",
+      "writer_output": "WRITER_2026-10-30T03-27-44-365Z_databricks_Announcing_General_Availability_of_Real-Time_Mode_.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Databricks platform updates",
+      "cost_usd": 0.0036403,
+      "duration_ms": 13506,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-11-01T03:08:14.773Z",
+  "duration_seconds": 91.188
+}

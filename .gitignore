@@ -1,0 +1,97 @@
+# Titkos kulcsok - SOHA ne kerüljön GitHub-ra!
+.env
+.env.local
+*.key
+secrets/
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Naplók
+logs/*.log
+*.log
+
+# Operációs rendszer
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / szerkesztő
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 🔒 PRIVÁT FORRÁS-TÁR (2026-11-03, JOGTISZTA FORRÁSOK): a kiadói szöveg (teljes + kivonat) — a CI-ban a
+# Pacso84/ai-world-co-forrasok PRIVÁT repó van ide kicsekkolva. SOHA nem kerülhet a nyilvános gitbe
+# (őr: core/kiadoi-szoveg-or.test.js).
+_forrasok/
+
+# Memória cache (agentek)
+agents/*/memory.json.bak
+agents/*/cache/
+agents/*/output/
+
+# Közeli-téma-őr embedding-cache (2026-07-18): ingyen, inkrementálisan
+# újraépül; futásonként változna → ne szemetelje a git-történetet.
+guides/topic-embeddings.json
+
+# Build / dist (generált, újraépíthető)
+dist/
+build/
+website/public/
+dashboard/index.html
+
+# Futásidejű állapot (gépenként/naponta változik)
+core/quota-state.json
+core/model-health.json
+
+# Temporary
+tmp/
+temp/
+
+# Cloudflare Worker helyi fejlesztői változók (wrangler dev) — SOHA nem kerül repóba
+.dev.vars
+telegram-worker/.dev.vars
+
+# A wrangler helyi munkaállapota. A repó PUBLIKUS, ide semmi nem kerülhet be.
+# ⚠️ EDDIG CSAK VÉLETLENÜL VOLT VÉDVE (2026-08-27, agent-felderítés találta):
+# a fenti általános `tmp/` szabály elkapta a `.wrangler/tmp/`-t, de a
+# `.wrangler/state/` (helyi KV/D1-másolat), a `.wrangler/config/` (ITT LAKHAT
+# OAUTH-TOKEN) és a `telegram-worker/.wrangler/` NEM volt ignorálva. Egyetlen
+# `git add -A` becommitolhatta volna őket.
+.wrangler/
+
+# Munkaterületek (git worktree) — SOHA nem kerulhet a repoba: a teljes
+# munkamasolatot commitolna be. A .claude/worktrees/ alatt a natív worktree-
+# eszkoz dolgozik; a tartalma mar amugy is verziokovetett a sajat agan.
+.claude/worktrees/
+
+# 🎬 REEL-VIDEÓK — SZÁNDÉKOSAN NEM KERÜLNEK A REPÓBA (2026-08-25).
+# A napi álló videó ~500 KB. Egy év alatt ez ~180 MB lenne a NYILVÁNOS repó
+# történetében, VÉGLEGESEN — a git-történetből utólag nem lehet kivenni.
+# És fölösleges: a videó egyetlen célja, hogy a Facebook letöltse a poszt
+# pillanatában (URL-mód). Utána holt teher.
+# A lánc egyetlen CI-futáson belül zárul: gyártás → build → deploy → küldés,
+# a Facebook percen belül letölti. A következő futás friss checkoutja már
+# nem tartalmazza, tehát a deploy le is veszi az oldalról — ez így helyes.
+website/assets/video/shorts/
+
+# A költés-nyilvántartás sérülés-másolatai (2026-08-29). A `core/budget.js`
+# félreteszi a sérült állapotfájlt forenzikára — de a CI `git add -A`-t futtat,
+# és a repó PUBLIKUS. Számokat tartalmaz, titkot nem, mégsem való ide.
+core/budget-state.json.corrupt-*
+core/*.tmp-*
+
+# 🧠 A memória beágyazás-vektorai (2026-09-06). PONTOS MINTA, NEM a `memory/`
+# mappa — annak minden más fájlja (store.json, *-guard.json, naplók) KÖVETETT,
+# és annak is kell maradnia.
+# MIÉRT: a vektorok eddig a `memory/store.json`-ban laktak, és a Házmester
+# minden futásban letörölte őket (kulcs nélküli lépésben az „él-e a
+# szolgáltatás" próba mindig „halott"-at mondott). A fájl így 13,9 MB ↔ 0,3 MB
+# között hullámzott, és MINDEN hullám egy új teljes példány a NYILVÁNOS
+# git-történetben: mérve 165,9 KB/commit a stabil 14,3 KB helyett (11,6×),
+# ~335 MB/év, VÉGLEGESEN. Ingyenes és újraépíthető adat — nem való ide.
+memory/memory-embeddings.json

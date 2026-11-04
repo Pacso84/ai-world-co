@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-11-03T04:36:04.958Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00714553,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-11-03T04-31-07-299Z_openai-blog_LifeVal.json",
+      "rejected": "REJECTED_2026-11-03T04-31-07-299Z_openai-blog_LifeVal.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.00123291
+    },
+    {
+      "writer": "WRITER_2026-11-03T04-31-07-300Z_google-ai-blog_The_latest_AI_news_we_announced_in_October_2026.json",
+      "article": "ARTICLE_2026-11-03T04-31-07-300Z_google-ai-blog_The_latest_AI_news_we_announced_in_October_2026.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0012999
+    },
+    {
+      "writer": "WRITER_2026-11-03T04-31-12-451Z_google-workspace_Upload_an_image_to_create_a_custom_avatar_in_Googl.json",
+      "article": "ARTICLE_2026-11-03T04-31-12-451Z_google-workspace_Upload_an_image_to_create_a_custom_avatar_in_Googl.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00121506
+    },
+    {
+      "writer": "WRITER_2026-11-03T04-31-12-451Z_salesforce_Salesforce_Signs_Definitive_Agreement_to_Acquire_C.json",
+      "article": "ARTICLE_2026-11-03T04-31-12-451Z_salesforce_Salesforce_Signs_Definitive_Agreement_to_Acquire_C.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00149445
+    }
+  ],
+  "finished_at": "2026-11-03T04:38:03.091Z",
+  "duration_seconds": 118.133
+}

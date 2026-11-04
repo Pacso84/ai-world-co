@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-26T02:14:39.647Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.0138211,
+  "by_article": [
+    {
+      "draft": "2026-10-22T02-27-34-945Z_zapier-blog_How_to_implement_AI_training_for_employees.json",
+      "writer_output": "WRITER_2026-10-22T02-27-34-945Z_zapier-blog_How_to_implement_AI_training_for_employees.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0031914,
+      "duration_ms": 11742,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-22T02-27-27-493Z_picsart_How_to_make_spooky_Halloween_invitations_guests_ca.json",
+      "writer_output": "WRITER_2026-10-22T02-27-27-493Z_picsart_How_to_make_spooky_Halloween_invitations_guests_ca.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0032625,
+      "duration_ms": 11969,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-22T02-26-55-947Z_microsoft-ai_Before_the_ambulance_arrives__How_AI_is_helping_th.json",
+      "writer_output": "WRITER_2026-10-22T02-26-55-947Z_microsoft-ai_Before_the_ambulance_arrives__How_AI_is_helping_th.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0031791,
+      "duration_ms": 11996,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-22T02-26-44-202Z_google-ai-blog_Southeast_Asia_s_digital_economy_to_hit__368_billi.json",
+      "writer_output": "WRITER_2026-10-22T02-26-44-202Z_google-ai-blog_Southeast_Asia_s_digital_economy_to_hit__368_billi.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0032131,
+      "duration_ms": 11745,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-10-26T02:15:36.707Z",
+  "duration_seconds": 57.06
+}

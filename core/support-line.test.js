@@ -1,0 +1,212 @@
+// ===================================================================
+// TESZT — TÁMOGATÁS-SOR: ott van-e, ahol a látogató NÉZ? (2026-09-09)
+// ===================================================================
+// INGYENES, hálózat nélküli. Fut: node core/run-tests.js
+//
+// MI VOLT A BAJ. A Ko-fi támogatás-gomb 2026-07-30 óta „be volt kötve" —
+// KIZÁRÓLAG a `/support` oldalon. Megmérve a forgalmi naplóból, 37 nap:
+//
+//     a /support oldalon járt látogatók száma: 0
+//
+// 🔑 Az egyetlen bevételi csatornánk nem PIACI okból hozott nullát, hanem
+// SZERKEZETILEG: olyan lapon állt, ahova senki nem megy. Ugyanaz az
+// alakzat, mint az i18n-őrszemé, ami csak a CI-naplóba írt.
+// A forgalom 92%-a CIKKRE érkezik — oda került.
+//
+// ⚠️ ÉS EZ A TESZT EGY VALÓDI, FRISS HIBÁBÓL SZÜLETETT. Az első
+// beépítésem CSAK a hír-oldalakra tette ki a sort: a `website/build.js`
+// KÉT külön cikk-építőt tartalmaz (`buildArticlePage` a híreknek,
+// `buildGuidePage` az útmutatóknak). Kimérve a kimeneten: 1539/2805 = 55%.
+// A kimaradt 422 angol útmutató (+ fordításaik) épp az ÖRÖKZÖLD tartalom,
+// ami a forgalom 61%-át hozza. Csak a MÉRÉS mutatta meg — a kód olvasása
+// nem. Ezért néz ez a teszt MINDKÉT irányból: forrás ÉS kimenet.
+// ===================================================================
+
+import assert from 'assert/strict';
+import { readFileSync, readdirSync, existsSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const PUBLIC = join(ROOT, 'website', 'public');
+
+let pass = 0, bukott = 0;
+const t = (nev, fn) => {
+  try { fn(); pass++; console.log('  ✅ ' + nev); }
+  catch (e) { bukott++; console.log('  ❌ ' + nev + '\n     ' + String(e.message).split('\n')[0]); }
+};
+
+console.log('🧪 támogatás-sor — ott van-e, ahol a látogató néz\n');
+
+// ⚠️ A KOMMENTEKET LEVÁGJUK. A `build.js` fejlécei is leírják a függvények
+// nevét — egy kivágott hívást a puszta névkeresés zölden átengedne.
+// (Ez élesben megtörtént velem 2026-09-08-án, a felújítás-kapunál.)
+const nyersBuild = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+const build = nyersBuild.split('\n').filter(s => !s.trim().startsWith('//')).join('\n');
+
+// ===================================================================
+// 1. FORRÁS — MINDEN cikk-lábléc kapja meg
+// ===================================================================
+t('🔑 MINDEN cikk-lábléc hívja a támogatás-sort (nem csak az egyik építő)', () => {
+  // EZ A LÉNYEG. A build.js két külön cikk-oldalt épít, és az első
+  // változatom az egyiket kihagyta. A `article__foot` az a jelölő, ami
+  // MINDEN cikk-oldalon ott van — ha egy HARMADIK építő születne, ez a
+  // lépés arra is szólna.
+  // ⚠️ A LEZÁRÓ `</div>`-ig illeszteni HIBÁS, és ezt élesben megtanultam:
+  // a láblécen BELÜL van egy `<div class="fb">…</div>`, amin a nem-mohó
+  // minta megáll — így a keresett hívás kimarad a befogott szövegből, és a
+  // teszt HAMISAN bukott, miközben a kimenet 2805/2805-ön állt. A `back-link`
+  // a lábléc UTOLSÓ eleme, az a megbízható zárójel.
+  const lablecek = [...build.matchAll(/<div class="article__foot">([\s\S]{0,900}?)back-link/g)];
+  assert.ok(lablecek.length >= 2,
+    'csak ' + lablecek.length + ' cikk-láblécet találok — a teszt elavult, nézd meg a build.js-t');
+  const kimaradt = lablecek.filter(m => !/supportLine\(\)/.test(m[1])).length;
+  assert.equal(kimaradt, 0,
+    '⚠️ ' + kimaradt + ' cikk-lábléc NEM kapja meg a támogatás-sort (' + lablecek.length + '-ből) — '
+    + 'pontosan ez a hiba fordult elő 2026-09-09-én: az útmutatók kimaradtak');
+});
+
+t('🔑 a sor NÉMA, ha nincs beállítva támogatás-cím', () => {
+  // Enélkül egy üres `support_url` csonka linket írna ki minden oldalra.
+  const fv = build.match(/function supportLine\(\)\s*\{([\s\S]*?)\n\}/);
+  assert.ok(fv, 'nincs supportLine() függvény');
+  assert.ok(/if\s*\(!SUPPORT\.enabled\s*\|\|\s*!SUPPORT\.url\)\s*return\s*''/.test(fv[1]),
+    'a supportLine() nem lép ki üres/kikapcsolt beállításnál: ' + fv[1].slice(0, 120));
+});
+
+t('🔑 a link ÚJ ABLAKBAN nyílik, biztonságosan', () => {
+  const fv = build.match(/function supportLine\(\)[\s\S]*?\n\}/)[0];
+  assert.ok(/rel="noopener noreferrer"/.test(fv), 'hiányzik a rel="noopener noreferrer"');
+  assert.ok(/target="_blank"/.test(fv), 'a támogatás-link elviszi az olvasót a cikkről');
+});
+
+// ===================================================================
+// 2. AZ ÁLLÍTÁS IGAZSÁGA — „nincs hirdetés, nincs fizetőfal"
+// ===================================================================
+t('🚨 a „nincs hirdetés" állítás NEM jöhet vissza (2026-10-01 óta AdSense lehet)', () => {
+  // Eddig ez a teszt azt őrizte, hogy hirdetés-kód sehol ne legyen, mert a
+  // sor szó szerint azt állította: „no ads, no paywall". 2026-10-01-én a user
+  // hirdetést kért (core/ads.js, kapcsolóval) — az ÁLLÍTÁS ment, nem a kód.
+  // A mondat most csak a fizetőfalról szól, mert az mérhetően igaz. Ha a
+  // „no ads" visszaszivárog, bekapcsolt hirdetés mellett HAZUDNI fog — és a
+  // hazug mondat rosszabb, mint a hiányzó.
+  const iger = /no ads|ad-free|without ads|sin anuncios|reklámmentes|nincs rajta reklám|hirdetés és fizetőfal nélkül|nincs hirdetés/i;
+  const helyek = [join(ROOT, 'website', 'build.js'), join(ROOT, 'core', 'ebook-build.js'),
+    join(ROOT, 'core', 'packs-text.js'), join(ROOT, 'shared', 'legal-rules-ai.md')];
+  for (const h of helyek) {
+    if (!existsSync(h)) continue;
+    // A magyarázó kommentek idézhetik a régi mondatot — csak a KÓD-sorokat nézzük.
+    const sorok = readFileSync(h, 'utf-8').split(/\r?\n/).filter(s => !/^\s*(\/\/|\/\*|\*)/.test(s));
+    const rossz = sorok.find(s => iger.test(s));
+    assert.ok(!rossz, '⚠️ visszajött egy „nincs hirdetés" ígéret (' + h.replace(ROOT, '') + '): ' + String(rossz).trim().slice(0, 120));
+  }
+});
+
+// ===================================================================
+// 3. AZ ÉPÍTETT KIMENETEN — „a kézzel gyártott minta az ALAKOT nézi"
+// ===================================================================
+console.log('\n🧪 az épített kimeneten (ha van helyi build)');
+
+const cikkOldalak = () => {
+  const ki = [];
+  const jar = (d) => {
+    for (const e of readdirSync(d, { withFileTypes: true })) {
+      const p = join(d, e.name);
+      if (e.isDirectory()) jar(p); else if (e.name.endsWith('.html')) ki.push(p);
+    }
+  };
+  if (existsSync(PUBLIC)) jar(PUBLIC);
+  return ki.filter(p => /[\\/]article[\\/]/.test(p));
+};
+
+t('🔑 ÉLES: MINDEN cikk-oldal megkapja — vagy EGYIK SEM (ez fogta meg az 55%-os hibát)', () => {
+  // 2026-10-01: a user megszüntette a Ko-fit → config company.support_enabled:false.
+  // A kimenetet NEM a config mostani állásához mérjük: a CI a build ELŐTT
+  // tesztel, tehát a kapcsolás napján még a régi kimenet van itt — egy
+  // „a configgal egyezzen" teszt épp azt a buildet akasztaná meg, ami
+  // rendbe tenné. A HIBA a FÉLÚT (mint 09-09-én: 55%), nem a ki/be.
+  const cikkek = cikkOldalak();
+  if (!cikkek.length) { console.log('     (nincs helyi build — kihagyva; a CI a build ELŐTT tesztel)'); return; }
+  const nelkul = cikkek.filter(p => !readFileSync(p, 'utf-8').includes('support-foot'));
+  console.log('     ↳ ' + (cikkek.length - nelkul.length) + '/' + cikkek.length + ' cikk-oldalon ott van');
+  assert.ok(nelkul.length === 0 || nelkul.length === cikkek.length,
+    'FÉLÚT: ' + nelkul.length + '/' + cikkek.length + ' cikk-oldalról hiányzik, pl. ' + (nelkul[0] || '').replace(PUBLIC, ''));
+});
+
+t('🔑 ÉLES: mind a három nyelven a SAJÁT nyelvén szól', () => {
+  const cikkek = cikkOldalak();
+  if (!cikkek.length) return;
+  // A NYELVET nézi, nem a pontos szöveget: a CI a build ELŐTT tesztel, tehát
+  // egy szövegváltás napján a régi kimenet is itt van (2026-10-01: „no ads" ki).
+  const vart = { '': /Free to read/, 'hu': /Ingyenes, /, 'es': /Gratis, / };
+  // 2026-09-10, user-döntés: ÖNKÉNTES HAVI támogatás — fizetőfal NÉLKÜL.
+  // Az előzmény: felmerült, hogy az örökzöld útmutatók legyenek fizetősek.
+  // Kimérve elvetettük: 1,17 oldal/látogató (a tipikus olvasó EGY cikket
+  // olvas), a forgalom 62%-a útmutatóra érkezik, és a fizetőfal leállítaná a
+  // Facebook-motort, ami a forgalom 82%-át hozza. A havi támogatás tehát
+  // KÉRÉS, nem kapu. A szövegnek ezt kell tükröznie: a link mondja ki, hogy
+  // egyszeri VAGY havi lehet.
+  const havi = { '': /one-off or monthly/i, 'hu': /egyszeri vagy havi/i, 'es': /puntual o mensual/i };
+  for (const [nyelv, rx] of Object.entries(vart)) {
+    const d = join(PUBLIC, nyelv, 'article');
+    if (!existsSync(d)) continue;
+    const f = readdirSync(d).filter(x => x.endsWith('.html'))[0];
+    if (!f) continue;
+    const sor = (readFileSync(join(d, f), 'utf-8').match(/<p class="support-foot">[\s\S]*?<\/p>/) || [''])[0];
+    if (!sor) continue;   // kikapcsolt támogatás (2026-10-01) — nincs mit nyelvileg mérni
+    assert.match(sor, rx, '/' + nyelv + ' nem a saját nyelvén kapta a sort: ' + sor.slice(0, 90));
+    assert.match(sor, havi[nyelv],
+      '⚠️ /' + nyelv + ': eltűnt a HAVI lehetőség a támogatás-sorból (user-döntés 2026-09-10): ' + sor.slice(0, 110));
+  }
+});
+
+t('🚨 NINCS fizetőfal-szöveg sehol (a támogatás KÉRÉS, nem KAPU)', () => {
+  // ⚠️ USER-DÖNTÉS 2026-09-10, mérésre alapozva: az örökzöld útmutatók NEM
+  // lesznek fizetősek. 1,17 oldal/látogató — a tipikus olvasó EGY cikket
+  // olvas, tehát egy „olvasd mindet" előfizetésnek nincs közönsége; közben a
+  // fizetőfal a forgalom 62%-át érintené, és leállítaná a Facebook-motort
+  // (a forgalom 82%-a), amit a Meta ajánlómotorja hajt.
+  const tiltott = /paywall.{0,20}(active|enabled)|subscribers only|members only|unlock this (guide|article)|sign in to read/i;
+  const cikkek = cikkOldalak();
+  if (!cikkek.length) return;
+  for (const p of cikkek.slice(0, 60)) {
+    const html = readFileSync(p, 'utf-8');
+    assert.ok(!tiltott.test(html),
+      '⚠️ FIZETŐFAL-SZÖVEG került egy cikkre: ' + p.replace(PUBLIC, ''));
+  }
+});
+
+t('🔑 ÉLES: a meglévő lábléc-elemek ÉPEK maradtak', () => {
+  // A beszúrás nem törhet el mást. Ha bármelyik szám elmarad a cikkszámtól,
+  // a lábléc sérült.
+  const cikkek = cikkOldalak();
+  if (!cikkek.length) return;
+  for (const jel of ['ai-disclosure', 'back-link', 'class="fb"']) {
+    const n = cikkek.filter(p => readFileSync(p, 'utf-8').includes(jel)).length;
+    assert.equal(n, cikkek.length, jel + ' csak ' + n + '/' + cikkek.length + ' oldalon van meg');
+  }
+});
+
+t('a listaoldalakra NEM kerül (csak a cikkek alján van értelme)', () => {
+  const idx = join(PUBLIC, 'index.html');
+  if (!existsSync(idx)) return;
+  assert.ok(!readFileSync(idx, 'utf-8').includes('support-foot'),
+    'a főoldalra is kikerült a támogatás-sor — oda nem szántuk');
+});
+
+// ===================================================================
+// 4. KIKAPCSOLVA (2026-10-01: a user megszüntette a Ko-fit — támogatás + bolt KI)
+// ===================================================================
+t('🔌 kikapcsolt támogatás/bolt: a régi címek 301-gyel a főoldalra, a chatbot nem küld oda', () => {
+  // A régi FB-posztok és Reel-leírások /support és /packs címre is mutathatnak:
+  // kikapcsolva ezek NE 404-et adjanak. A chatbot pedig csak élő oldalt ajánljon.
+  assert.ok(/SUPPORT\.enabled \? \[\] : \['support'\]/.test(build), 'a /support átirányítása hiányzik');
+  assert.ok(/PACKS\.enabled \? \[\] : \['packs'\]/.test(build), 'a /packs átirányítása hiányzik');
+  assert.ok(/\$\{kiRules\}[^`]*`/.test(build), 'az átirányítás nem kerül a _redirects-be');
+  assert.ok(/filter\(f => PACKS\.enabled \|\| f\.p !== '\/packs'\)/.test(build), 'a chatbot kikapcsolt boltba küldhet');
+  const faq = build.slice(build.indexOf('const CS_FAQ = {'), build.indexOf('const CS_FAQ = {') + 9000);
+  assert.ok(!/p: '\/support'/.test(faq), 'a chatbot GY.I.K. a /support oldalra küld');
+});
+
+console.log(`\n${bukott === 0 ? '✅' : '❌'} support-line.test: ${pass} rendben, ${bukott} bukott`);
+process.exit(bukott === 0 ? 0 : 1);

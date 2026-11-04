@@ -1,0 +1,289 @@
+// ===================================================================
+// REEL-SOR — melyik útmutatóból legyen ma videó?
+// ===================================================================
+//
+// ⚠️ EZ AZ EGYETLEN OK, AMIÉRT A REEL EDDIG NEM VOLT AUTOMATIKUS. Minden
+// más 2026-08-24 óta kész és élesben bizonyított (videó-gyártás, Make-
+// forgatókönyv, kiküldés) — de a CI NAPONTA HÁROMSZOR FUT, és jelölés
+// nélkül ugyanaz a Reel naponta háromszor menne ki.
+//
+// A jelölés a cikk `_meta.reel_at` mezője. Ugyanaz a minta, mint a
+// Facebook-poszté (`posted_fb` / `posted_at`), és ugyanabban a fájlban él,
+// amit a CI amúgy is visszacommitol — nem kell külön állapotfájl, ami
+// elszakadhatna a valóságtól.
+//
+// ── MIÉRT A LEGRÉGEBBI ───────────────────────────────────────────────
+// Az útmutató ÖRÖKZÖLD, nincs romlandósága. A Facebook-sornál a friss megy
+// előre (a hír romlik), itt viszont az csak azt érné el, hogy a 358 régi
+// soha ne kerüljön sorra. FIFO: a hátralék kiszámíthatóan fogy.
+// (Ugyanez a felismerés vezetett a core/social-queue.js hátralék-helyéhez.)
+//
+// ── VÁLTOZATOSSÁG (2026-09-09, a user vette észre: „sok az ismétlés") ──
+//
+// A tiszta FIFO helyes volt, de hiányzott belőle egy szempont, és ez élesben
+// kiült a nézőnek. Az utolsó 8 Reelből 6 szó szerint „Getting started with
+// <asszisztens>" volt — ChatGPT, Claude, Gemini, Copilot, DeepSeek, Le Chat.
+//
+// 🔑 AZ OK NEM HIBA, HANEM KÖVETKEZMÉNY: a tartalmunk KÖTEGEKBEN készült. A
+// legrégebbi útmutatók mind a 2026-06-22–24-i „alapító" kezdő-sorozatból
+// valók. FIFO + kötegelt tartalom = TÉMA-CSOMÓSODÁS. A sor pontosan azt
+// csinálta, amit kértek tőle — csak senki nem mondta neki, hogy ne
+// ugyanarról szóljon egy héten át. (Mérve: a következő 30 jelöltből 15
+// osztozik valakivel a cím első három szaván.)
+//
+// A JAVÍTÁS SZŰK: a FIFO marad a gerinc, csak ÁTUGORJUK azt a jelöltet,
+// amelyik az elmúlt hét Reeljeivel azonos ESZKÖZRŐL vagy azonos cím-kezdettel
+// szól. Ha minden jelölt ilyen, a legrégebbi megy — a sor SOHA nem áll meg.
+// Így a hátralék ugyanúgy fogy, csak nem egy témát darál le egyszerre.
+// ===================================================================
+
+import { azonosEszkoz } from './guide-focus.js';
+
+const napja = (x) => {
+  const t = Date.parse(String(x || ''));
+  return Number.isFinite(t) ? new Date(t).toISOString().slice(0, 10) : null;
+};
+
+/**
+ * Ment-e MA már Reel?
+ *
+ * ⚠️ A HIBÁS `reel_at` NEM számít „ma már ment"-nek. Ha a mező szemét,
+ * abból nem következik, hogy ma kiment egy Reel — a rossz irány itt az
+ * lenne, hogy egy elrontott mező ÖRÖKRE elnémítja a Reelt.
+ */
+export function reelMaMar(cikkek, now = Date.now()) {
+  if (!Array.isArray(cikkek)) return false;
+  const ma = new Date(now).toISOString().slice(0, 10);
+  return cikkek.some(c => napja(c?.reel_at) === ma);
+}
+
+/**
+ * A következő útmutató, amiből Reel készülhet.
+ *
+ * @param {Array} cikkek  {slug, type, published_at, reel_at}
+ * @param {number} now
+ * @param {object} [opts]
+ * @param {(c)=>boolean} [opts.alkalmas]  extra szűrő — pl. „elég lépés van-e
+ *        a cikkben". Azt, hogy egy cikkből TELIK-E videó, csak a markdown
+ *        ismeretében lehet eldönteni, ezért a hívó adja be; itt nem
+ *        találgatunk.
+ * @returns {object|null}
+ */
+export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
+  if (!Array.isArray(cikkek) || !cikkek.length) return null;
+  // NAPI KERET (2026-09-27, user: napi 2 — „ha belefér"; a Make-keret ~660/1000).
+  // Kapcsoló nélkül a régi viselkedés: napi egy.
+  const napiMax = Number.isFinite(opts.napiMax) ? opts.napiMax : 1;
+  if (maiReelCikkek(cikkek, now).length >= napiMax) return null;
+
+  const alkalmas = typeof opts.alkalmas === 'function' ? opts.alkalmas : () => true;
+  // CSAK FRISS (2026-09-27, user: „a lemaradásokat töröljük, csak a frissek menjenek,
+  // a régiek már elavultak"): opts.maxKorNap-nál régebbi útmutatóból nincs Reel.
+  const korHatar = Number.isFinite(opts.maxKorNap) ? now - opts.maxKorNap * 864e5 : -Infinity;
+  const jeloltek = cikkek.filter(c =>
+    c && c.type === 'guide'
+    && !napja(c.reel_at) && !napja(c.fb_reel_at)        // még nem volt Reel (TikTok-extraként sem, 10-15)
+    && napja(c.published_at)                          // dátum nélkül nem sorolható
+    && Date.parse(c.published_at) >= korHatar           // csak friss (ha a hívó kéri)
+    && alkalmas(c)
+  );
+  if (!jeloltek.length) return null;
+
+  jeloltek.sort((a, b) => String(a.published_at).localeCompare(String(b.published_at)));
+
+  // MÉG SEHOL NEM VIDEÓZOTT ELŐRE (2026-10-14): a TikTok-extra is a legrégebbi
+  // videó nélküli útmutatót viszi, tehát a tiszta FIFO MÁSNAP PONT AZT választotta
+  // Reelnek — a TikTokra ugyanaz kétszer nem megy, így 10-13-án és 10-14-én is
+  // csak 2/3 videó ment ki. Ha van még sehol nem videózott jelölt, abból választunk;
+  // ha nincs, a TikTokon már járt is mehet (a Facebook-Reel SOHA nem marad el).
+  const tiktokonNemJart = jeloltek.filter(c => !napja(c.tiktok_video_at));
+  const sor = tiktokonNemJart.length ? tiktokonNemJart : jeloltek;
+
+  // FÓKUSZ (2026-10-09, user: „először legyen eladásunk" — core/guide-focus.js):
+  // naponta EGY Reel a fókusz-eszközről (pl. Alexa+, amin a partnerlink van),
+  // a változatossági szabály ELŐTT — különben a „múlt héten már volt Alexa"
+  // ág minden nap kiszorítaná, és a friss útmutató 7 nap után kiöregedne.
+  // Naponta legfeljebb egy: a második Reel ugyanúgy változatos marad.
+  if (opts.fokusz) {
+    const maMarFokusz = maiReelCikkek(cikkek, now).some(c => azonosEszkoz(c.tool, opts.fokusz));
+    const fokuszos = c => azonosEszkoz(c.tool, opts.fokusz);
+    const f = !maMarFokusz && (sor.find(fokuszos) || jeloltek.find(fokuszos));
+    if (f) return f;
+  }
+
+  // VÁLTOZATOSSÁG: az elmúlt hét Reeljének „formája" (eszköz + cím-kezdet).
+  // 2026-10-15: a TikTok-extraként Facebook-Reelt kapott (`fb_reel_at`) cikk is Reel.
+  const reelIdo = c => String(napja(c?.reel_at) ? c.reel_at : (napja(c?.fb_reel_at) ? c.fb_reel_at : ''));
+  const utobbi = cikkek
+    .filter(c => reelIdo(c))
+    .sort((a, b) => reelIdo(b).localeCompare(reelIdo(a)))
+    .slice(0, VALTOZATOSSAG_ABLAK)
+    .map(reelForma);
+  const voltEszkoz = new Set(utobbi.map(x => x.eszkoz).filter(Boolean));
+  const voltKezdet = new Set(utobbi.map(x => x.kezdet).filter(Boolean));
+
+  const valtozatos = sor.find(c => {
+    const f = reelForma(c);
+    if (f.eszkoz && voltEszkoz.has(f.eszkoz)) return false;
+    if (f.kezdet && voltKezdet.has(f.kezdet)) return false;
+    return true;
+  });
+  // ⚠️ A VISSZAESÉS KÖTELEZŐ. Ha minden jelölt hasonlít valamire, akkor is
+  // MEGY Reel — a változatosság kényelem, a napi videó a feladat. Enélkül a
+  // sor némán megállna, és az „elromlott" pontosan úgy nézne ki, mint a
+  // „ma nem volt jelölt".
+  return valtozatos || sor[0];
+}
+
+// ── VÁLTOZATOSSÁG ───────────────────────────────────────────────────
+
+/** Hány legutóbbi Reelhez viszonyítunk. Egy hét: ennyit lát egy néző egyben. */
+export const VALTOZATOSSAG_ABLAK = 7;
+
+/**
+ * Mi teszi két Reelt felismerhetően EGYFORMÁVÁ a nézőnek?
+ *
+ * Két dolog, és mindkettő kellett a valódi eseten:
+ *   • AZ ESZKÖZ — hat egymást követő Reel hat különböző asszisztensről szólt,
+ *     tehát az eszköz önmagában nem fogta volna meg őket…
+ *   • …a CÍM-KEZDET viszont igen: mind a hat „Getting started with…" volt.
+ *
+ * Három szó, mert a „getting started with" és a „how to use" is három.
+ * A címet a markdownból olvassuk ki: a sor-döntés amúgy is azt kapja meg.
+ */
+export function reelForma(cikk) {
+  const cim = (String(cikk?.md || '').match(/^title:\s*"?([^"\n]+)/m) || [])[1] || '';
+  const szavak = String(cim).toLowerCase().replace(/[^a-z0-9]+/g, ' ').split(' ').filter(Boolean);
+  return {
+    eszkoz: String(cikk?.tool || '').trim().toLowerCase(),
+    kezdet: szavak.slice(0, 3).join(' ')
+  };
+}
+
+export default { reelMaMar, kovetkezoReel, reelForma, VALTOZATOSSAG_ABLAK };
+
+/**
+ * A MAI Reel cikke — az, amelyiknek a `reel_at`-ja a mai nap.
+ * Azért kell külön a `reelMaMar`-tól, mert a videót NEM elég egyszer
+ * legyártani: lásd a core/reel-post.js `videoEletbenTart()` fejlécét.
+ * @returns {object|null}
+ */
+export function maiReelCikk(cikkek, now = Date.now()) {
+  return maiReelCikkek(cikkek, now)[0] || null;
+}
+
+/** A MA kiment ÖSSZES Reel cikke (napi 2 óta több is lehet), a korábbi elöl. */
+export function maiReelCikkek(cikkek, now = Date.now()) {
+  if (!Array.isArray(cikkek)) return [];
+  const ma = new Date(now).toISOString().slice(0, 10);
+  return cikkek.filter(c => napja(c?.reel_at) === ma)
+    .sort((a, b) => String(a.reel_at).localeCompare(String(b.reel_at)));
+}
+
+/**
+ * VIDEÓS CSATORNA (TikTok, 2026-10-07): a MAI Reelek, amelyek erre a
+ * csatornára még NEM mentek ki — a korábbi elöl.
+ *
+ * `postOf(slug)` → a cikk SAJÁT közösségi bejegyzése (content/social), vagy
+ * null. Bejegyzés nélkül a videó NEM megy: idegen cikk szövegével kimenni
+ * rosszabb, mint kimaradni (2026-08-25-i próbafutás: szöveg és videó két
+ * különböző cikkről). A tegnapi Reel sem megy — csak friss (user, 09-27).
+ *
+ * @returns {{slug: string, post: object}[]}
+ */
+export function videoCsatornaMai(cikkek, postOf, field, now = Date.now()) {
+  const ki = [];
+  const volt = new Set();
+  // 2026-10-11: a mai Facebook-Reelek UTÁN a mai TikTok-extra videók is (lent).
+  for (const c of [...maiReelCikkek(cikkek, now), ...maiTiktokExtra(cikkek, now)]) {
+    if (!c?.slug || volt.has(c.slug)) continue;
+    volt.add(c.slug);
+    const post = postOf(c.slug);
+    if (!post || post[field]) continue;
+    // 2026-10-15: a TikTok-FOTÓVAL már kiment cikk nem megy videóként is (csak a TikTok-sorra).
+    if (field === 'posted_tiktok' && post.posted_tiktok_photo) continue;
+    ki.push({ slug: c.slug, post });
+  }
+  return ki;
+}
+
+// ===================================================================
+// TIKTOK-EXTRA (2026-10-11, user: „ha belefér a keretbe, mehet több videó
+// is a tiktokra is!")
+// ===================================================================
+// A TikTokra a Buffer posztol (saját ingyenes keret), NEM a Make — tehát egy
+// csak-TikTok videó a szűk Make-keretből (havi 1000) nem eszik, a gyártás
+// pedig ingyenes (ffmpeg + helyi TTS). Mérve 10-11: 11 friss (≤7 nap)
+// útmutatónak nem volt videója — naponta 2 jön, 2 Reel készül, a maradék a 7.
+// napon NÉMÁN kiöregszik. Ezekből a LEGRÉGEBBI kap csak-TikTok videót: az,
+// amelyik a legközelebb áll a kiöregedéshez.
+//
+// A Facebook-Reel sorát NEM szűkíti: ha a TikTokon már járt útmutatón kívül
+// nincs jelölt, a `kovetkezoReel` azt is választja (a TikTokra nem megy ki
+// kétszer — a `posted_tiktok` jelölés véd). 2026-10-14 óta viszont a még sehol
+// nem videózottat ELŐRE veszi, mert a tiszta FIFO naponta ütközött (lásd ott),
+// és ha mégis ütközik, a `tiktokPotlas` +1 extrát ad aznapra.
+// A jelölés: a cikk `_meta.tiktok_video_at` (a gyártás pillanata).
+
+/** A MA csak-TikTokra gyártott videók cikkei, a korábbi elöl. */
+export function maiTiktokExtra(cikkek, now = Date.now()) {
+  if (!Array.isArray(cikkek)) return [];
+  const ma = new Date(now).toISOString().slice(0, 10);
+  return cikkek.filter(c => napja(c?.tiktok_video_at) === ma)
+    .sort((a, b) => String(a.tiktok_video_at).localeCompare(String(b.tiktok_video_at)));
+}
+
+/**
+ * A MAI TikTok-extra, amelyik még NEM ment ki Facebook-Reelként (2026-10-15, user:
+ * „minden napi videó minden csatornán"). Futásonként legfeljebb EGY.
+ *
+ * Kiment-jelölés: `reel_at` (a normál Reel-sorból már ment) VAGY `fb_reel_at`
+ * (extraként ment). Csak a MAI extra jön szóba: a tegnapi nem pótolható (csak
+ * friss videó, user 09-27). A hibás (nem dátum) mező NEM számít „kiment"-nek —
+ * ugyanaz az elv, mint a `reelMaMar`-nál.
+ * @returns {object|null}
+ */
+export function fbReelExtra(cikkek, now = Date.now()) {
+  return maiTiktokExtra(cikkek, now)
+    .find(c => c.slug && !napja(c.reel_at) && !napja(c.fb_reel_at)) || null;
+}
+
+/**
+ * Melyik útmutató kapjon ma csak-TikTok videót? null, ha senki.
+ * @param {object} opts  napiMax (alap 1) · maxKorNap · alkalmas(c) · kizar (slug: a most gyártott FB-Reel)
+ */
+export function tiktokExtra(cikkek, now = Date.now(), opts = {}) {
+  if (!Array.isArray(cikkek) || !cikkek.length) return null;
+  const napiMax = Number.isFinite(opts.napiMax) ? opts.napiMax : 1;
+  if (napiMax <= 0 || maiTiktokExtra(cikkek, now).length >= napiMax) return null;
+  const alkalmas = typeof opts.alkalmas === 'function' ? opts.alkalmas : () => true;
+  const korHatar = Number.isFinite(opts.maxKorNap) ? now - opts.maxKorNap * 864e5 : -Infinity;
+  const jeloltek = cikkek.filter(c =>
+    c && c.type === 'guide' && c.slug
+    && c.slug !== opts.kizar
+    && !napja(c.reel_at) && !napja(c.tiktok_video_at)   // még sehol nem volt videója
+    && napja(c.published_at)
+    && Date.parse(c.published_at) >= korHatar
+    && alkalmas(c)
+  );
+  jeloltek.sort((a, b) => String(a.published_at).localeCompare(String(b.published_at)));
+  return jeloltek[0] || null;
+}
+
+/**
+ * PÓTLÓ EXTRA (2026-10-14): hány MAI Reel NEM hoz új videót a TikTokra, mert egy
+ * KORÁBBI napon már TikTok-extra volt? Ennyivel több csak-TikTok videó mehet ma,
+ * hogy a napi TikTok-szám ne essen vissza (10-13, 10-14: emiatt csak 2/3).
+ *
+ * `fuggoSlug`: a MOST gyártott, még `reel_at` nélküli Reel (memory/reel-pending.json) —
+ * a délutáni futás ugyanis a Reel kiküldése ELŐTT dönt az extráról.
+ * Az ugyanaznapi extra + Reel nem számít: az a TikTokon ma kiment egy videó.
+ */
+export function tiktokPotlas(cikkek, now = Date.now(), fuggoSlug = '') {
+  if (!Array.isArray(cikkek)) return 0;
+  const ma = new Date(now).toISOString().slice(0, 10);
+  const maiak = new Set(maiReelCikkek(cikkek, now).map(c => c.slug));
+  if (fuggoSlug) maiak.add(fuggoSlug);
+  return cikkek.filter(c => c && maiak.has(c.slug)
+    && napja(c.tiktok_video_at) && napja(c.tiktok_video_at) < ma).length;
+}

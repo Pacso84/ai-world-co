@@ -1,0 +1,64 @@
+{
+  "ok": 3,
+  "fixed": 1,
+  "removed": 0,
+  "cost": 0.010369485,
+  "at": "2026-11-04T19:07:02.567Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 1,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
+      "cim": "Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-create-a-custom-bedtime-story-starring-your-child-wit.json",
+      "cim": "How to create a custom bedtime story starring your child with any AI",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-23T02-28-45-946Z_google-workspace_Real-time_speech_translation_in_Google_Meet_expand.json",
+      "cim": "Real-time speech translation in Google Meet expands to 63 languages with automatic language detection",
+      "tipus": "hir",
+      "eredmeny": "javitva",
+      "ok_hu": "A cikk egy konkrét ténykérdésben (a bevezetési dátumok) ellentmond a forrásnak",
+      "modell_hu": "Article says 'The announcement did not give a start date,' but source clearly states rollout starts 'October 22, 2026' for Rapid Release and 'November 2, 2026' for Scheduled Release"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-create-a-personalised-study-plan-with-meta-ai-in-10-m.json",
+      "cim": "How to create a personalised study plan with Meta AI in 10 minutes",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-14T02-37-17-831Z_google-workspace_Switch_from_live_stream_viewer_to_contributor_in_G.json",
+      "cim": "Switch from live stream viewer to contributor in Google Meet on Android",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a forrás alátámasztja, amit kivenne: „In a separate announcement, Google shared that \"skills\" in the Gemini app — pre-built AI h”",
+      "modell_hu": "Nem ellenőrzött állítás a funkció működéséről"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-create-ai-logos-with-recraft-v4-1-vector.json",
+      "cim": "How to create AI logos with Recraft V4.1 Vector",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}

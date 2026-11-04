@@ -1,0 +1,923 @@
+// ===================================================================
+// REEL-KÜLDÉS — a kész álló videó kiküldése a Facebookra
+// ===================================================================
+//
+// A lánc: core/short-video.js legyártja a videót → a build kiteszi az
+// oldalra → EZ a modul szól a Make „Facebook Reel" forgatókönyvének,
+// az pedig felteszi a Facebook-oldalra.
+//
+// A Make két mezőt vár: `video` (a letölthető cím) és `caption` (a
+// leírás). URL-módban a Facebook MAGA tölti le a videót — ezért kerül
+// 1 Make-műveletbe 3 helyett, és ezért KELL a címnek élnie.
+//
+// ── MIÉRT ELLENŐRIZZÜK A CÍMET KÜLDÉS ELŐTT (2026-08-23, éles lecke) ──
+// Aznap háromszor küldtünk ki egy videó-címet, ami még 404 volt, és a
+// Facebook mindháromszor 422/DataError-t adott. Egy HEAD kérés ingyen van
+// és pár ezredmásodperc — a kiküldött hibás poszt viszont nem.
+//
+// ⚠️ A HEAD NEM CSAK A STÁTUSZT NÉZI. Egy félbeszakadt ffmpeg 0 bájtos
+// fájlt hagy maga után, arra a Cloudflare 200-at ad, és a Facebook megint
+// 422-t adna — visszajönne pont az a hiba, ami ellen a kapu épült. Ezért
+// a típust és a méretet is megnézzük, ugyanabból az egy kérésből.
+//
+// ── AMI A PIPELINE-BA KÖTÉSHEZ KELLETT (bekötve 2026-08-25) ──────────
+// Ez a modul eleinte KÉZZEL indult, és a fejléce két feltételt szabott a
+// bekötéshez. Mindkettő megvan:
+//   • „már kiment" jelölés → a cikk `_meta.reel_at` mezője (a send() írja).
+//     Enélkül a 8 óránként futó CI naponta háromszor küldené ki ugyanazt.
+//   • MAKE-KERET → a Reel a 7066389-es forgatókönyvön fut, és UGYANABBÓL az
+//     1000-es havi fiók-keretből eszik, mint a fotós poszt (6452490): napi
+//     ~2 művelet, havi ~60. A művelet-őr 2026-08-30 óta MINDKETTŐT
+//     összegzi — core/make-budget.js → SHARED_SCENARIOS / usedThisMonth().
+//
+// ⚠️ A LECKE: a bekötés megtörtént, a feltétel öt napig pótlatlan maradt, és
+// ezt a fejléc szövege sem árulta el — a kód saját kommentje NEM bizonyíték.
+// A Reel a napi riport Make-őrszemébe is csak 08-30-án került be
+// (core/daily-report.js → WATCH).
+// ===================================================================
+
+import { followCta, trimToWords, AI_JELOLES } from './social-text.js';
+import { guideMeta, findArticleBySlug } from './frontmatter.js';
+import { utmutatoE } from './guide-kind.js';
+
+export const SITE = 'https://aiworldhq.com';
+
+// A mobil Facebook a leírást 125–180 karakter között elvágja (mérve
+// 2026-08-20: a követésre hívás a 358. karakternél állt, és SOHA nem
+// látszott). Az alsó határral számolunk — az a biztos.
+export const MOBIL_VAGAS = 125;
+
+// A legkisebb hihető videóméret. A mi Reeljeink ~450 KB-osak; egy
+// félbeszakadt vagy üres fájl nagyságrendekkel kisebb.
+export const MIN_VIDEO_BAJT = 100000;
+// CSAK FRISS ÚTMUTATÓBÓL REEL (2026-09-27, user: „a régiek már elavultak, azokat hagyjuk").
+// Ugyanaz a 7 nap, ami a posztoknál a „friss" (core/social-published.js FRESH_DAYS).
+export const REEL_FRISS_NAP = 7;
+// NAPI 2 REEL (2026-09-27, user: „ha belefér, rendben") — futásonként legfeljebb 1 új;
+// Make-keret: friss posztok ~540 + 2 Reel ~120 = ~660/1000. Az Instagram marad napi 1.
+export const REEL_NAPI = 2;
+// NAPI +1 CSAK-TIKTOK VIDEÓ (2026-10-11, user: „ha belefér a keretbe, mehet több videó is
+// a tiktokra is!") — Buffer-keret, nem Make; a választás: core/reel-queue.js tiktokExtra().
+export const TIKTOK_EXTRA_NAPI = 1;
+
+/**
+ * Hány útmutató-Reel mehet ma a Facebookra? Csomag-reklámos napon (vasárnap)
+ * eggyel kevesebb — a reklám a második helyet foglalja, így a Make-költség
+ * ugyanaz, mint hétköznap. (2026-10-11, user: vasárnap is legyen útmutató-
+ * videó, különben a TikTok aznap üresen marad — oda reklám nem megy.)
+ */
+export function napiReelKeret(maMarPromo, napi = REEL_NAPI) {
+  return maMarPromo ? Math.max(0, napi - 1) : napi;
+}
+
+export function reelVideoUrl(slug, site = SITE) {
+  const s = String(slug || '');
+  return s ? `${site}/assets/video/shorts/${s}.mp4` : '';
+}
+
+// A kanonikus cikk-URL .html NÉLKÜLI (a lemezen .html-es fájlok vannak,
+// de kifelé sosem azt mutatjuk). A /guides/ útvonal NEM létezik — 404.
+export function reelArticleUrl(slug, site = SITE) {
+  const s = String(slug || '');
+  return s ? `${site}/article/${s}` : '';
+}
+
+/**
+ * A Reel leírása EGY VALÓDI cikk-JSON-ból. INGYENES: a cikk saját
+ * alcíméből épül, nem AI írja — ahogy a videó szövege sem.
+ *
+ * ⚠️ A BEMENET A NYERS CIKK-JSON. Az első változatom `{slug, subtitle}`
+ * alakot várt a JSON gyökerében — olyan alakot, ami MIND A 358 valódi
+ * útmutatónk közül EGYRE SEM illett (a cím és az alcím a markdown
+ * frontmatterében él, a slug a `_meta.slug`-ban). 16 zöld teszt nem vette
+ * észre, mert mind kézzel írt mintát etetett.
+ *
+ * Felépítés (a sorrend szándékos):
+ *   1. sor  — mit kapsz, a mobil vágása ELÉ férve
+ *   2. blokk— a link
+ *   3. blokk— követésre hívás (a videó záró táblája is a domaint mutatja)
+ */
+// A Reel-leírás első sorának eleje (2026-10-16) — utána a cikk linkje.
+export const REEL_LINK_ELO = '📖 Full guide: ';
+
+export function reelCaption(article, { site = SITE, videoSteps = null } = {}) {
+  const { slug, title, subtitle } = guideMeta(article);
+  // SLUG NÉLKÜL NINCS LEÍRÁS. A link a poszt egyetlen célja; slug nélkül
+  // a „👉 https://aiworldhq.com/article/" cím ÉLESBEN 404-et ad (mérve).
+  // Inkább ne menjen ki semmi, mint egy halott linkes Reel.
+  if (!slug) return '';
+
+  // ⚠️ AZ ALCÍM NEM ÍGÉRHET OLYAN SZÁMOT, AMIT A VIDEÓ NEM MUTAT (2026-08-24,
+  // éles eset). Az első kiküldött Reelünk alatt ez állt: „Five quick checks…",
+  // a videó viszont NÉGY lépést mutatott. Egyik állítás sem volt hamis
+  // önmagában (az alcím a CIKKRŐL szól, a videó magáról), de egymás mellett
+  // hibának látszik. Mérve: 358 alcímből mindössze 1 kezdődik számmal, tehát
+  // ez a kapu szinte sosem sül el — de amikor igen, az kifelé látszik.
+  const igert = igertLepesszam(subtitle);
+  const utkozik = igert !== null && Number.isFinite(videoSteps) && igert !== videoSteps;
+
+  const nyers = String((utkozik ? title : (subtitle || title)) || '').trim();
+  if (!nyers) return '';
+  const elso = trimToWords(nyers, MOBIL_VAGAS);
+  const cta = followCta(slug);
+  // 2026-10-16 (user: „a videókból is szeretnék olvasót!"): a Reel alatt a „Továbbiak" előtt
+  // csak ~100–125 karakter látszik (élőben megnézve) — a link eddig a levágott részben állt.
+  // Ezért a LINK az első sor; a leghosszabb cikk-cím is befér (15 + ≤100 < MOBIL_VAGAS).
+  return `${REEL_LINK_ELO}${reelArticleUrl(slug, site)}\n\n${elso}${cta ? `\n\n${cta}` : ''}\n\n${AI_JELOLES}`;
+}
+
+// Kiírt számnevek, amikkel egy alcím kezdődhet („Five quick checks…").
+// Csak a SOR ELEJI szám számít: a mondat közepén álló szám nem a lépések
+// számát ígéri („…in under two minutes" — az idő, nem a lépésszám).
+const SZAMSZAVAK = {
+  one: 1, two: 2, three: 3, four: 4, five: 5,
+  six: 6, seven: 7, eight: 8, nine: 9, ten: 10
+};
+
+/** Hány lépést ígér az alcím? null, ha nem ígér semmit. */
+export function igertLepesszam(subtitle) {
+  const m = String(subtitle == null ? '' : subtitle)
+    .match(/^(one|two|three|four|five|six|seven|eight|nine|ten)\b/i);
+  return m ? SZAMSZAVAK[m[1].toLowerCase()] : null;
+}
+
+/** A cím nyilvános-e? A Facebook a saját szerveréről tölti le. */
+function nyilvanosCim(url) {
+  let u;
+  try { u = new URL(String(url)); } catch { return false; }
+  if (u.protocol !== 'https:') return false;
+  return !/^(localhost|127\.|0\.0\.0\.0|\[?::1\]?|192\.168\.|10\.)/i.test(u.hostname);
+}
+
+/**
+ * Kiküldés a Make webhookra.
+ *
+ * @returns {{ok:boolean, reason?:string, status?:number, dry?:boolean,
+ *            payload?:object, sent?:'unknown'}}
+ *
+ * A NÉMA KIHAGYÁS ITT HIBA. A napi poszter jogosan hallgat, ha nincs
+ * beállítva webhook (a CI-nak nem szabad elhasalnia tőle). Ez viszont
+ * SZÁNDÉKOS, kézzel indított küldés — itt a néma siker megtévesztene.
+ */
+// ── ÚJRAPRÓBA A FRISS DEPLOY UTÁN (2026-09-29, éles eset) ──────────────
+// 03:42:55 „Deployment complete", 03:42:59 HEAD → 404: a Cloudflare a friss
+// fájlt nem azonnal adja minden szerverről. Egyetlen próba után feladtuk, és a
+// napi 2 Reelből egy elveszett. Tartós 404-nél (tényleg hiányzó fájl) marad a
+// régi viselkedés: nem küldünk — csak kb. 45 mp-cel később.
+export const HEAD_PROBAK = 4;
+export const HEAD_VARAS_MS = 15000;
+// ── LECSENGÉS (2026-10-01 15:21, éles eset) ─────────────────────────────
+// A fenti újrapróba a 3. HEAD-re 200-at kapott (GitHub-futtató, USA), a Make
+// viszont Európából tölt le, és 2 mp múlva a Reel elbukott — a videó később
+// hibátlanul ott volt. 🔑 A „nekem már megvan" nem jelenti, hogy „mindenhol
+// megvan": a terjedés szerverenként halad. Ha MI is láttunk még hiányt, a
+// többi szerver is késhet → az első 200 után még várunk. Elsőre meglévő
+// videónál nincs várakozás.
+export const LECSENGES_MS = 45000;
+
+/**
+ * Megvárja, hogy egy frissen kitett videó MINDENHOL elérhető legyen (ugyanaz a
+ * szabály, mint a sendReel-ben). 2026-10-12, éles eset: a Make 18:10:30-kor
+ * kiküldte a Reelt, a Buffer-poszter 4 mp-cel később EGY HEAD-et próbált → 404,
+ * a TikTok-extra pedig „Video could not be read from its URL" → aznap 0 TikTok.
+ * @returns {Promise<{ok:boolean, status:number, voltHiany:boolean}>}
+ */
+export async function varjVideora(url, { fetchFn, probak = HEAD_PROBAK, varasMs = HEAD_VARAS_MS,
+  lecsengesMs = LECSENGES_MS, timeoutMs = 15000, alvas = (ms) => new Promise(r => setTimeout(r, ms)) } = {}) {
+  const f = fetchFn || fetch;
+  let st = 0, voltHiany = false;
+  for (let proba = 1; proba <= Math.max(1, probak); proba++) {
+    const h = await f(url, { method: 'HEAD', signal: AbortSignal.timeout(timeoutMs) }).catch(() => null);
+    st = h ? h.status : 0;
+    if (h && h.ok) {
+      if (voltHiany && lecsengesMs > 0) await alvas(lecsengesMs);   // a többi szerver is késhet
+      return { ok: true, status: st, voltHiany };
+    }
+    if (!(st === 404 || st >= 500 || st === 0) || proba >= probak) break;
+    voltHiany = true;
+    if (varasMs > 0) await alvas(varasMs);
+  }
+  return { ok: false, status: st, voltHiany };
+}
+
+export async function sendReel({ video, caption, hook, fetchFn, dry = false, timeoutMs = 20000,
+  probak = HEAD_PROBAK, varasMs = HEAD_VARAS_MS, lecsengesMs = LECSENGES_MS,
+  alvas = (ms) => new Promise(r => setTimeout(r, ms)) }) {
+  const f = fetchFn || fetch;
+  // Próbamódban NEM követeljük meg a webhookot: azt úgysem hívnánk meg, és
+  // e nélkül helyben egyáltalán nem lehetne próbálni. A hiányát viszont
+  // KIÍRJUK — egy „rendben"-nek látszó próba, ami elhallgatja, hogy éles
+  // futásnál a titok hiányozna, pont a néma siker lenne.
+  if (!hook && !dry) return { ok: false, reason: 'Nincs webhook-cím (MAKE_REEL_WEBHOOK_URL).' };
+  if (!video) return { ok: false, reason: 'Nincs videó-cím.' };
+  if (!String(caption || '').trim()) return { ok: false, reason: 'Üres leírás — nem küldünk.' };
+  if (!nyilvanosCim(video)) {
+    return { ok: false, reason: `A videó címe nem nyilvános https-cím: ${video} — a Facebook nem érné el.` };
+  }
+
+  // 1) Él-e a videó, és videó-e egyáltalán?
+  let fej, voltHiany = false;
+  for (let proba = 1; proba <= Math.max(1, probak); proba++) {
+    try {
+      fej = await f(video, { method: 'HEAD', signal: AbortSignal.timeout(timeoutMs) });
+    } catch (e) {
+      return { ok: false, reason: `A videó címe nem érhető el: ${e.message}` };
+    }
+    // Csak a „még nincs ott" (404) és a szerverhiba (5xx) érdemel újrapróbát.
+    const st = fej ? fej.status : 0;
+    if ((fej && fej.ok) || !(st === 404 || st >= 500) || proba >= probak) break;
+    voltHiany = true;
+    if (varasMs > 0) await alvas(varasMs);
+  }
+  if (!fej || !fej.ok) {
+    return { ok: false, reason: `A videó nem tölthető le (HTTP ${fej ? fej.status : '?'}) — a Facebook ettől bukna el.` };
+  }
+  const fejlec = (n) => (fej.headers && typeof fej.headers.get === 'function' ? fej.headers.get(n) : null);
+  const tipus = String(fejlec('content-type') || '');
+  if (tipus && !/^video\//i.test(tipus)) {
+    return { ok: false, reason: `A cím nem videót ad vissza (content-type: ${tipus}).` };
+  }
+  // ⚠️ A HIÁNYZÓ FEJLÉCET ÉS A 0 BÁJTOT SZÉT KELL VÁLASZTANI. Először
+  // `Number(fejlec(...)) > 0`-t írtam — de a `Number(null)` is 0, tehát a
+  // „nincs fejléc" ellen írt őr épp a 0 bájtos fájlt engedte át, azt, ami
+  // ellen az egész ellenőrzés készült. A NYERS értéket nézzük meg előbb.
+  const nyersMeret = fejlec('content-length');
+  if (nyersMeret !== null && nyersMeret !== undefined && String(nyersMeret).trim() !== '') {
+    const meret = Number(nyersMeret);
+    if (Number.isFinite(meret) && meret < MIN_VIDEO_BAJT) {
+      return { ok: false, reason: `A videó gyanúsan kicsi (${meret} bájt) — félbeszakadt kódolás?` };
+    }
+  }
+
+  if (dry) return { ok: true, dry: true, hookConfigured: !!hook, payload: { video, caption } };
+
+  if (voltHiany && lecsengesMs > 0) {
+    console.log(`   ⏳ A videó csak újrapróbára jelent meg — még ${Math.round(lecsengesMs / 1000)} mp a többi szervernek`);
+    await alvas(lecsengesMs);
+  }
+
+  // 2) Küldés. A Make csak annyit mond: „átvettem" — a TÉNYLEGES sikert
+  //    a forgatókönyv naplójából kell megnézni (status 1 = jó, 2 = bukás).
+  let r;
+  try {
+    r = await f(hook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ video, caption }),
+      signal: AbortSignal.timeout(timeoutMs)
+    });
+  } catch (e) {
+    // ⚠️ AZ IDŐTÚLLÉPÉS NEM BIZONYÍTJA, HOGY NEM MENT KI. A Make már
+    // átvehette a kérést, és később futtatja le. Ha ilyenkor „nem sikerült"-et
+    // mondanánk, az operátor újrakattintana — és két Reel menne ki ugyanarról.
+    return {
+      ok: false, sent: 'unknown',
+      reason: `A webhook nem válaszolt (${e.message}). ⚠️ EZ NEM JELENTI, hogy nem ment ki — `
+        + 'ÚJRAKÜLDÉS ELŐTT nézd meg a Make naplóját (7066389), különben két Reel megy ki.'
+    };
+  }
+  if (!r.ok) return { ok: false, status: r.status, reason: `A webhook HTTP ${r.status}-t adott.` };
+  return { ok: true, status: r.status };
+}
+
+// ===================================================================
+// PARANCSSOR
+// ===================================================================
+//
+//   node core/reel-post.js <slug>          kiküldés (kézzel)
+//   node core/reel-post.js <slug> --dry    csak megmutatja, mit küldene
+//
+//   node core/reel-post.js --prepare       AUTOMATIKA, 1. lépés  (a build ELŐTT)
+//   node core/reel-post.js --send          AUTOMATIKA, 2. lépés  (a deploy UTÁN)
+//
+// ── MIÉRT KÉT LÉPÉS ─────────────────────────────────────────────────
+// A Facebook a SAJÁT szerveréről tölti le a videót, tehát a fájlnak KINT
+// kell lennie a posztolás pillanatában. A CI sorrendje:
+//     … → videó-gyártás → build → deploy → social
+// A `--prepare` kiválasztja a következő útmutatót és legyártja a videót,
+// a választást pedig a `memory/reel-pending.json`-ba írja. A `--send` a
+// deploy után ezt veszi elő, kiküldi, és megjelöli a cikket.
+//
+// ⚠️ EZ A FÁJL AZ IMPORTRA NEM INDUL EL — őrszem van a végén. 25 agentből
+// 21 a fájl végén feltétel nélkül hívja a main()-t, tehát a puszta import
+// pénzt költ és publikál (2026-08-06).
+//
+// ⚠️ A KILÉPŐKÓD NEM NULLA, HA NEM SIKERÜLT. Enélkül a GitHub Actions zöld
+// pipát adna egy ki nem ment Reelre — pont az a néma siker, ami ellen az
+// egész modul íródott.
+
+async function main() {
+  // A dotenv CSAK itt töltődik be, a main()-en belül — a modul maga tiszta
+  // marad, tehát a tesztek nem függenek a helyi .env-től.
+  await import('dotenv/config');
+  const { fileURLToPath } = await import('url');
+  const { dirname, join } = await import('path');
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+
+  const args = process.argv.slice(2);
+  const dry = args.includes('--dry');
+
+  // ÁLLAPOT A NAPI RIPORTNAK (2026-08-26). Az első automata Reel a CI-ban
+  // "spawnSync ffmpeg ENOENT"-tel bukott — és ez CSAK a CI naplójába került,
+  // ahová senki nem néz. A workflow `|| true`-ja (helyesen) nem dönti el a
+  // futást, de emiatt kívülről a bukás és a "ma nem volt dolga" EGYFORMÁN
+  // néz ki: mindkettő néma. Ezért írjuk le, mi történt.
+  if (args.includes('--prepare') || args.includes('--send')) {
+    const fazis = args.includes('--prepare') ? 'prepare' : 'send';
+    const fn = fazis === 'prepare' ? () => prepare(ROOT, join) : () => sendFazis(ROOT, join, dry);
+    await futtatFazis({ ROOT, join, fazis, fn });
+    return;
+  }
+
+  // KÉZI CSOMAG-REKLÁM ÚJRAKÜLDÉS (2026-09-27): a vasárnapi promó a Make-ben
+  // hibára futott (a Facebook 3,5 mp után visszadobta), a user újra akarta
+  // küldeni. A MÁR KINT LÉVŐ videót küldi, ugyanazzal a felirattal, mint az
+  // automata — a heti jelölést (memory/packs-reel.json) nem módosítja.
+  // Használat: node core/reel-post.js --promo [--dry]  (reel-test.yml: slug = --promo)
+  if (args.includes('--promo')) {
+    const { promoCaption, PROMO_SLUG } = await import('./packs-reel.js');
+    const { readdirSync } = await import('fs');
+    const utmutatoDb = readdirSync(join(ROOT, 'content', 'articles')).filter(f => f.startsWith('ARTICLE_GUIDE')).length;
+    const video = reelVideoUrl(PROMO_SLUG);
+    const caption = promoCaption({ utmutatoDb });
+    console.log('📘 Csomag-reklám (kézi)\n   videó : ' + video + '\n   leírás : ' + JSON.stringify(caption));
+    const r = await sendReel({ video, caption, hook: (process.env.MAKE_REEL_WEBHOOK_URL || '').trim(), dry });
+    if (r.ok && r.dry) { console.log('🧪 PRÓBA — nem küldtem el; a videó címe él.'); return; }
+    if (r.ok) { console.log('✅ Átvette a Make (HTTP ' + r.status + ') — a Facebook-oldalon kell megjelennie.'); return; }
+    console.error('❌ ' + r.reason);
+    process.exit(1);
+  }
+
+  const kulcs = args.find(a => !a.startsWith('--'));
+  if (!kulcs) {
+    console.log('Használat: node core/reel-post.js <slug> [--dry]');
+    process.exit(1);
+  }
+
+  // SLUG szerint keres, nem fájlnév szerint — közös a videó-gyártóval.
+  const talalt = findArticleBySlug(join(ROOT, 'content', 'articles'), kulcs);
+  if (!talalt) {
+    console.error(`❌ Nincs cikk ezzel a sluggal: ${kulcs}`);
+    process.exit(1);
+  }
+  const cikk = talalt.article;
+
+  const { slug, title } = guideMeta(cikk);
+  const video = reelVideoUrl(slug);
+
+  // Hány lépés van a VIDEÓBAN? Ugyanaz a számítás, amit a videó-gyártó
+  // futtatott — így a leírás tudja, mit ígérhet. (A kártyák: horog + lépések
+  // + záró, ezért -2.)
+  const { cardsFromGuide } = await import('./short-video.js');
+  const kartyak = cardsFromGuide(cikk.article_markdown || '');
+  const videoSteps = kartyak.cards ? kartyak.cards.length - 2 : null;
+  const caption = reelCaption(cikk, { videoSteps });
+
+  console.log('🎬 ' + (title || slug));
+  console.log('   lépés  : ' + (videoSteps ?? '?') + ' a videóban');
+  console.log('   videó : ' + video);
+  console.log('   leírás : ' + JSON.stringify(caption));
+  if (!caption) {
+    console.error('❌ Nem sikerült leírást építeni (hiányzó slug vagy alcím).');
+    process.exit(1);
+  }
+
+  const hook = (process.env.MAKE_REEL_WEBHOOK_URL || '').trim();
+  const r = await sendReel({ video, caption, hook, dry });
+
+  if (r.ok && r.dry) {
+    console.log('\n🧪 PRÓBA — nem küldtem el. A videó címe él, és tényleg videót ad vissza.');
+    console.log(r.hookConfigured
+      ? '   ✅ A webhook-cím be van állítva — éles futásnál lenne hová küldeni.'
+      : '   ⚠️ NINCS webhook-cím beállítva. Ez a próba rendben ment, de ÉLESBEN itt elhasalna.');
+    return;
+  }
+  if (r.ok) { console.log(`\n✅ Átvette a Make (HTTP ${r.status}).`); console.log('   ⚠️ Ez még csak annyit jelent: „átvettem". Hogy a Facebookra KI IS MENT-e,'); console.log('      azt a Make naplójában látod (forgatókönyv 7066389, status 1 = jó, 2 = bukás).'); return; }
+
+  console.error('\n❌ ' + r.reason);
+  if (r.sent === 'unknown') console.error('   ⚠️ A kimenetel BIZONYTALAN — ne küldd újra vakon.');
+  process.exit(1);
+}
+
+// ── AUTOMATIKA ──────────────────────────────────────────────────────
+
+/**
+ * A cikk borítóképének útvonala — ez lesz a Reel háttere. 2026-09-23 óta
+ * ÉLESEN, lépésenként máshova nézve (vándorló kivágás), a szöveg egy
+ * papírszínű kártyán; így minden Reel a saját cikkének képét hozza.
+ * Részletek: core/short-video.js hatterekKepbol().
+ */
+export function boritoUt(ROOT, join, slug) {
+  return slug ? join(ROOT, 'website', 'assets', 'images', slug + '.jpg') : '';
+}
+
+/** A cikkek betöltése a sor-döntéshez. */
+async function cikkekBetolt(ROOT, join) {
+  const { readFileSync, readdirSync, existsSync } = await import('fs');
+  const DIR = join(ROOT, 'content', 'articles');
+  if (!existsSync(DIR)) return [];
+  const ki = [];
+  for (const f of readdirSync(DIR)) {
+    if (!f.startsWith('ARTICLE_') || !f.endsWith('.json')) continue;
+    let j; try { j = JSON.parse(readFileSync(join(DIR, f), 'utf-8')); } catch { continue; }
+    const m = j._meta || {};
+    // ⚠️ A `tool` 2026-09-09 óta KELL: a sor-döntés ebből látja, hogy ne
+    // menjen két Reel ugyanarról az eszközről egy héten belül. Enélkül a
+    // változatossági szabály fele NÉMÁN vak lenne (a cím-kezdet fogna csak).
+    // ITT normalizálódik a típus EGYSZER, a közös core/guide-kind.js-szel
+    // (2026-09-16) — a sor-döntés (core/reel-queue.js) ezután már csak a kész
+    // `type` mezőt nézi, nem kérdezi meg újra, máshogy.
+    ki.push({ file: f, slug: m.slug || '', type: utmutatoE(f, j) ? 'guide' : 'news',
+      published_at: m.published_at || '', reel_at: m.reel_at || '', tool: m.tool || '',
+      tiktok_video_at: m.tiktok_video_at || '', fb_reel_at: m.fb_reel_at || '',
+      md: j.article_markdown || '' });
+  }
+  return ki;
+}
+
+/** 1. LÉPÉS: kiválasztás + videó-gyártás. A build ELŐTT fut. */
+/**
+ * Feljegyzi, mi történt a Reellel — a napi riport ebből olvas.
+ * SOHA nem dob: az állapot-írás hibája nem ronthatja el magát a Reelt.
+ */
+function reelAllapot(ROOT, join, mit) {
+  try {
+    const { writeFileSync, mkdirSync, existsSync, readFileSync } = require$('fs');
+    const dir = join(ROOT, 'memory');
+    mkdirSync(dir, { recursive: true });
+    const p = join(dir, 'reel-guard.json');
+    let elozo = {};
+    if (existsSync(p)) { try { elozo = JSON.parse(readFileSync(p, 'utf-8')); } catch { /* */ } }
+    // ⚠️ A FÁZIS-REKORD LECSERÉLŐDIK, tehát ami nincs az új rekordban, az
+    // ELVÉSZ. A betű-lelet viszont csak akkor keletkezik, ha aznap tényleg
+    // renderelt valaki; egy „ma nem volt dolgom" futás enélkül ELNÉMÍTANÁ
+    // a tegnapi leletet. Ezért a mérést átmentjük, ha az új rekord nem hoz
+    // sajátot (2026-09-18).
+    const elozoBetu = elozo && elozo[mit.fazis] && elozo[mit.fazis].betu;
+    const rekord = (mit.betu === undefined && elozoBetu) ? { ...mit, betu: elozoBetu } : mit;
+    writeFileSync(p, JSON.stringify({
+      ...elozo, at: new Date().toISOString(), [mit.fazis]: rekord
+    }, null, 2), 'utf-8');
+  } catch { /* a napló akkor is ott van */ }
+}
+// A `fs` szinkron kell (a hibaágon is), ezért createRequire-rel hozzuk be.
+import { createRequire } from 'module';
+const require$ = createRequire(import.meta.url);
+
+/**
+ * Egy fázis (prepare/send) lefuttatása ÚGY, hogy a kimenetele MINDIG
+ * bekerüljön az őrszem-fájlba — sikerkor és bukáskor is.
+ *
+ * ⚠️ EZÉRT VAN KÜLÖN FÜGGVÉNYBEN: a fázis-futtatás a main()-ben élt, ahol
+ * teszt nem érte el. A hívott függvény bármelyik `process.exit()`-je némán
+ * kikerülte volna ezt a try/catch-et (2026-08-30, lásd a send() végét).
+ *
+ * A hibát TOVÁBBADJA: a nem nulla kilépőkód a CI-nak szól, az őrszem-fájl
+ * a napi riportnak. A kettő nem helyettesíti egymást.
+ */
+export async function futtatFazis({ ROOT, join, fazis, fn }) {
+  try {
+    const ki = await fn();
+    // A fázis MELLÉKLELETEI is bekerülnek az őrszem-fájlba (ma: a
+    // betűtípus-mérés a gyártásból). Csak ismert kulcsot veszünk át, hogy
+    // egy jövőbeli visszatérési érték ne szemetelje tele az állapotot.
+    const mellek = ki && typeof ki === 'object' && ki.betu ? { betu: ki.betu } : {};
+    reelAllapot(ROOT, join, { fazis, ok: true, ...mellek });
+    return ki;
+  } catch (e) {
+    reelAllapot(ROOT, join, { fazis, ok: false, hiba: String(e?.message || e).slice(0, 200) });
+    throw e;
+  }
+}
+
+/**
+ * A csomag-reklám állapota: él-e a bolt, és mikor ment az utolsó promó.
+ * SOHA nem dob — hiányzó fájl = nincs promó, nem összeomlás.
+ */
+export function packsAllapot(ROOT, join, readFileSync) {
+  let live = false, utolso = '';
+  try { live = JSON.parse(readFileSync(join(ROOT, 'website', 'packs.json'), 'utf-8')).live === true; }
+  catch { /* nincs packs.json → nincs promó */ }
+  try { utolso = JSON.parse(readFileSync(join(ROOT, 'memory', 'packs-reel.json'), 'utf-8')).last || ''; }
+  catch { /* még sosem ment */ }
+  return { live, utolso };
+}
+
+/** Ma ment-e már csomag-reklám? (A napi Reel-jelölés ezt NEM látja.) */
+export function maiPromo(utolso, now = Date.now()) {
+  return typeof utolso === 'string' && utolso.slice(0, 10) === new Date(now).toISOString().slice(0, 10);
+}
+
+async function prepare(ROOT, join) {
+  // 10-14: a Reel-ág hibája (Edge TTS 429 az újragyártáskor) miatt a TikTok-extra EL SEM
+  // INDULT, és aznap kimaradt a pótló videó. A két ág FÜGGETLEN: bármelyik bukik, a másik
+  // akkor is lefut. A Reel-ág hibája a végén továbbmegy — a riport onnan tud róla.
+  let ki = null, reelHiba = null;
+  try { ki = await prepareReel(ROOT, join); } catch (e) { reelHiba = e; }
+  // A TikTok-extra hibája SOHA nem ronthatja el a Facebook-Reelt — az már kész.
+  try { await prepareTiktokExtra(ROOT, join); }
+  catch (e) { console.log('⚠️  TikTok-extra videó kimaradt: ' + String(e?.message || e).slice(0, 160)); }
+  if (reelHiba) throw reelHiba;
+  return ki;
+}
+
+/**
+ * NAPI +1 CSAK-TIKTOK VIDEÓ (2026-10-11). A Facebook-Reel UTÁN fut, minden
+ * futásban:
+ *   1. a ma már kiválasztott extra videót ÉLETBEN TARTJA (a shorts/ mappa
+ *      gitignore-olt, minden futás üresen indul — a 08-26-i lecke);
+ *   2. ha ma még nem volt, választ egyet (core/reel-queue.js tiktokExtra),
+ *      legyártja, és a cikkbe írja a `_meta.tiktok_video_at`-et.
+ * A kiküldés a Buffer-poszteré (agents/social/buffer-poster.js → videoCsatornaMai).
+ */
+async function prepareTiktokExtra(ROOT, join) {
+  const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync } = await import('fs');
+  const { tiktokExtra, maiTiktokExtra, tiktokPotlas } = await import('./reel-queue.js');
+  const { cardsFromGuide, renderVideo, horogSlugbol } = await import('./short-video.js');
+  const cikkek = await cikkekBetolt(ROOT, join);
+  const kiDir = join(ROOT, 'website', 'assets', 'video', 'shorts');
+  const gyart = async (c) => {
+    // 2026-10-25: az új nyitókép (fájdalom-kérdés) — lásd core/short-video.js UJ_NYITOKEP_BE
+    const { cards } = cardsFromGuide(c.md, { horog: horogSlugbol(ROOT, c.slug) });
+    if (!cards) return null;
+    mkdirSync(kiDir, { recursive: true });
+    const r = await renderVideo(cards, { out: join(kiDir, c.slug + '.mp4'), kepUt: boritoUt(ROOT, join, c.slug), workDir: join(ROOT, '.video-munka') });
+    try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
+    return r;
+  };
+
+  for (const c of maiTiktokExtra(cikkek)) {
+    if (existsSync(join(kiDir, c.slug + '.mp4'))) continue;
+    const r = await gyart(c);
+    if (r) console.log('♻️  TikTok-extra: a mai videó újragyártva (' + c.slug + ') — ' + r.seconds.toFixed(1) + ' mp');
+  }
+
+  // A MOST gyártott Facebook-Reel cikke ne legyen egyben a TikTok-extra is
+  // (a reel_at csak a --send után kerül rá, addig a sor nem látja).
+  let fogalt = '';
+  try { fogalt = JSON.parse(readFileSync(join(ROOT, 'memory', 'reel-pending.json'), 'utf-8')).slug || ''; } catch { /* nincs */ }
+  // PÓTLÁS (2026-10-14): ha egy mai Reel korábbi napon már TikTok-extra volt, a TikTokra
+  // nem megy ki újra — helyette jár még egy extra, hogy a napi szám ne essen vissza.
+  const v = tiktokExtra(cikkek, Date.now(), {
+    napiMax: TIKTOK_EXTRA_NAPI + tiktokPotlas(cikkek, Date.now(), fogalt),
+    maxKorNap: REEL_FRISS_NAP,
+    alkalmas: c => !!cardsFromGuide(c.md).cards,
+    kizar: fogalt
+  });
+  if (!v) return;
+  console.log('🎵 TikTok-extra videó készül: ' + v.slug);
+  const r = await gyart(v);
+  if (!r) return;
+  const ut = join(ROOT, 'content', 'articles', v.file);
+  const cikk = JSON.parse(readFileSync(ut, 'utf-8'));
+  cikk._meta = cikk._meta || {};
+  cikk._meta.tiktok_video_at = new Date().toISOString();
+  writeFileSync(ut, JSON.stringify(cikk, null, 2), 'utf-8');
+  console.log('   ✅ ' + r.seconds.toFixed(1) + ' mp — a TikTokra a Buffer-poszter viszi ki');
+}
+
+async function prepareReel(ROOT, join) {
+  const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync, readdirSync } = await import('fs');
+  const { kovetkezoReel } = await import('./reel-queue.js');
+  const fokusz = (await import('./guide-focus.js')).fokuszConfigbol();
+  const { cardsFromGuide, renderVideo, horogSlugbol } = await import('./short-video.js');
+  const { promoKell, promoKartyak, promoKepUtak, PROMO_SLUG } = await import('./packs-reel.js');
+
+  const { maiReelCikkek } = await import('./reel-queue.js');
+  const cikkek = await cikkekBetolt(ROOT, join);
+
+  // ── CSOMAG-REKLÁM (2026-09-20) ────────────────────────────────────
+  //
+  // ⚠️ EZ AZ ÁG A NAPI ÚTMUTATÓ-REEL HELYÉT VESZI EL, VASÁRNAP. Ezért
+  // áll ELÖL, és ezért `return`-öl: ha alatta lefutna a szokásos
+  // kiválasztás is, vasárnap KÉT videó menne ki — kétszeres Make-költség,
+  // és a két Reel egymással versenyezne a Facebook ajánlómotorjánál.
+  //
+  // 🔑 ÉS AZÉRT KELL A MÁSODIK ÁG IS (maiPromo): a `prepare` naponta
+  // HÁROMSZOR fut. A promó nem jelöl meg cikket, tehát a délutáni futás
+  // `maiReelCikk`-je NEM látná, hogy ma már ment videó — és vidáman
+  // gyártana egy útmutató-Reelt mellé. Pontosan az a csapda, ami
+  // 08-26-án a videó eltűnésénél már megvolt: a napi jelölés és a
+  // tényleges kimenet két külön dolog.
+  const promoA = packsAllapot(ROOT, join, readFileSync);
+  const utmutatoDb = cikkek.filter(c => c.type === 'guide').length;
+  const kellPromo = promoKell({ live: promoA.live, now: Date.now(), utolso: promoA.utolso });
+  const maMarPromo = maiPromo(promoA.utolso);
+
+  //
+  // 🔁 2026-10-11 (user): a „ma már ment" ág NEM áll meg többé — a reklám MELLÉ
+  // jön EGY útmutató-Reel is (napiReelKeret: 2 helyett 1), mert a TikTokra csak
+  // útmutató-videó mehet, és az első TikTokos vasárnapon (10-11) üresen maradt.
+  // A GYÁRTÓ futás viszont továbbra is return-öl: futásonként legfeljebb 1 új videó.
+  let napiKeret = REEL_NAPI;
+  if (kellPromo.kell || maMarPromo) {
+    const kiDirP = join(ROOT, 'website', 'assets', 'video', 'shorts');
+    const utvonalP = join(kiDirP, PROMO_SLUG + '.mp4');
+    if (maMarPromo && existsSync(utvonalP)) {
+      console.log('💤 Csomag-reklám: ma már ment, a videó megvan.');
+    } else {
+      const { cards, reason } = promoKartyak({ utmutatoDb });
+      if (!cards) {
+        console.log('⏭️  Csomag-reklám kimarad: ' + reason);
+      } else {
+        console.log((maMarPromo ? '♻️  Csomag-reklám újragyártása' : '📘 Csomag-reklám készül')
+          + ' — ' + utmutatoDb + ' útmutató, ' + cards.length + ' tábla');
+        mkdirSync(kiDirP, { recursive: true });
+        // 2026-09-27: táblánként illő útmutató-borító — kép nélkül a RÉGI papír-dizájn ment ki.
+        const kepUtak = promoKepUtak({ ROOT, join, fs: { readdirSync, readFileSync, existsSync }, db: cards.length });
+        const rp = await renderVideo(cards, { out: utvonalP, workDir: join(ROOT, '.video-munka'), kepUtak });
+        try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
+        console.log('   ✅ ' + rp.seconds.toFixed(1) + ' mp');
+        if (!maMarPromo) {
+          const memDirP = join(ROOT, 'memory');
+          if (!existsSync(memDirP)) mkdirSync(memDirP, { recursive: true });
+          writeFileSync(join(memDirP, 'reel-pending.json'),
+            JSON.stringify({ kind: 'packs', slug: PROMO_SLUG, utmutatoDb, at: new Date().toISOString() }, null, 2), 'utf-8');
+          return { betu: rp.betu };
+        }
+      }
+    }
+    napiKeret = napiReelKeret(maMarPromo);
+    if (maMarPromo) console.log('   ➕ ma a reklám mellett ' + napiKeret + ' útmutató-Reel mehet');
+  }
+  // ALKALMAS-E? Csak a markdown ismeretében derül ki (kell 3+ lépés).
+  const valasztott = kovetkezoReel(cikkek, Date.now(), {
+    alkalmas: c => !!cardsFromGuide(c.md).cards,
+    maxKorNap: REEL_FRISS_NAP,         // 2026-09-27, user: csak a friss útmutatóból Reel
+    napiMax: napiKeret,                // vasárnap (reklám-nap) 1, egyébként REEL_NAPI
+    fokusz: fokusz.be ? fokusz.tool : ''   // 2026-10-09: napi 1 Reel a fókusz-eszközről (core/guide-focus.js)
+  });
+  if (!valasztott) {
+    // ── A MAI VIDEÓ ÉLETBEN TARTÁSA (2026-08-26) ──────────────────
+    //
+    // MI TÖRTÉNT: a 08:29-es futás legyártotta és kitette a Reel videóját,
+    // a Facebook Reel kiment. A 16:40-es futás viszont — helyesen — nem
+    // gyártott újat („ma már ment"), így a `website/assets/video/shorts/`
+    // ÜRESEN maradt, és a build utáni deploy LETÖRÖLTE a délelőtti videót.
+    // Este már 404 volt.
+    //
+    // A videók szándékosan a .gitignore-ban vannak (napi 500 KB = 180 MB/év
+    // a NYILVÁNOS repóban), tehát minden futás TISZTA lappal indul.
+    //
+    // A FACEBOOKNAK MINDEGY: ő a poszt pillanatában letölti és a saját
+    // szerverén tárolja. Az INSTAGRAMNAK NEM: ha a Buffer-poszter később
+    // fut (vagy egy későbbi futásban próbálkozna újra), a videó már nincs
+    // ott — és az Instagram aznap kimarad. Ez adta a napi EGYETLEN esélyt.
+    //
+    // Az újragyártás INGYENES (ffmpeg + helyi TTS, ~26 mp), ezért inkább
+    // minden futásban meglegyen, mint hogy egy elmulasztott Instagram-poszt
+    // egy egész napba kerüljön.
+    // Napi 2 óta a nap MINDEN Reeljét életben tartjuk (a hiányzó videót újragyártjuk).
+    const maiak = maiReelCikkek(cikkek);
+    let utolsoBetu = null;
+    for (const mai of maiak) {
+      const kiDir0 = join(ROOT, 'website', 'assets', 'video', 'shorts');
+      const utvonal = join(kiDir0, mai.slug + '.mp4');
+      if (existsSync(utvonal)) {
+        console.log('💤 Reel: ma már ment, a videó megvan — nincs teendő (' + mai.slug + ').');
+        continue;
+      }
+      // 2026-10-25: az újragyártott videó is UGYANAZT a nyitóképet kapja, mint a reggeli
+      const { cards } = cardsFromGuide(mai.md, { horog: horogSlugbol(ROOT, mai.slug) });
+      if (!cards) { console.log('💤 Reel: ma már ment (a videó nem gyártható újra).'); continue; }
+      console.log('♻️  Reel: ma már ment, de a videó hiányzik — újragyártom, hogy kint maradjon.');
+      mkdirSync(kiDir0, { recursive: true });
+      // A `cover` 2026-09-17-én megszűnt: a tábla háttere egybefüggő
+      // papírszín, mert az AI-val generált borítók hibás feliratot
+      // tartalmazhatnak („perrplexity", két r-rel). Lásd core/short-video.js.
+      const r0 = await renderVideo(cards, {
+        out: utvonal,
+        kepUt: boritoUt(ROOT, join, mai.slug),
+        workDir: join(ROOT, '.video-munka')
+      });
+      try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
+      console.log('   ✅ ' + r0.seconds.toFixed(1) + ' mp — a deploy után újra elérhető lesz.');
+      // pending-et NEM írunk: a Facebook Reel ma már kiment. A BETŰ-LELETET
+      // viszont IGEN — és élesben pont ez az ág számít (2026-09-18).
+      // Miért: a `website/assets/video/shorts/` gitignore-olt, tehát minden
+      // futás videó nélkül indul; a napi jelentés pedig SOSEM az első
+      // futásban megy ki (riport-ablak 05 UTC-től, az első futás 02-03
+      // körül van). Vagyis a jelentést látó futásban MINDIG ez az
+      // újragyártó ág fut — ha itt eldobnánk a leletet, a betű-őrszem
+      // némán soha nem szólalna meg.
+      utolsoBetu = r0.betu;
+    }
+    if (utolsoBetu) return { betu: utolsoBetu };
+    if (!maiak.length) console.log('💤 Reel: nincs alkalmas friss útmutató — kihagyom.');
+    return;
+  }
+
+  // 🆕 2026-10-25: az első kártya a cikk FB-szövegének fájdalom-kérdése, ha van és kifér
+  // (core/short-video.js horogSlugbol → content/social/<slug>.json); különben a régi kártya
+  const { cards } = cardsFromGuide(valasztott.md, { horog: horogSlugbol(ROOT, valasztott.slug) });
+  console.log('🎬 Reel készül: ' + valasztott.slug);
+  console.log('   ' + cards.length + ' kártya (' + (cards.length - 2) + ' lépés)');
+
+  const kiDir = join(ROOT, 'website', 'assets', 'video', 'shorts');
+  mkdirSync(kiDir, { recursive: true });
+  // Borítókép nélkül — lásd a fenti indoklást és a core/short-video.js-t.
+  const r = await renderVideo(cards, {
+    out: join(kiDir, valasztott.slug + '.mp4'),
+    kepUt: boritoUt(ROOT, join, valasztott.slug),
+    workDir: join(ROOT, '.video-munka')
+  });
+  try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
+
+  const memDir = join(ROOT, 'memory');
+  if (!existsSync(memDir)) mkdirSync(memDir, { recursive: true });
+  writeFileSync(join(memDir, 'reel-pending.json'),
+    JSON.stringify({ slug: valasztott.slug, file: valasztott.file, at: new Date().toISOString() }, null, 2), 'utf-8');
+  console.log('✅ ' + r.seconds.toFixed(1) + ' mp — a küldés a deploy után jön (--send)');
+
+  // ♻️ A NAP KORÁBBI REELJE IS MARADJON KINT (2026-10-13, éles eset): a délutáni
+  // futás új Reelt gyártott, a reggelit viszont NEM gyártotta újra (az életben
+  // tartó ág csak akkor futott, ha nem volt új Reel) → a deploy után a reggeli
+  // videó 404 lett, és a TikTok-poszter nem tudta kiküldeni (aznap 1/3 TikTok).
+  for (const mai of maiReelCikkek(cikkek)) {
+    const ut = join(kiDir, mai.slug + '.mp4');
+    if (mai.slug === valasztott.slug || existsSync(ut)) continue;
+    const k = cardsFromGuide(mai.md, { horog: horogSlugbol(ROOT, mai.slug) }).cards;
+    if (!k) continue;
+    const r1 = await renderVideo(k, { out: ut, kepUt: boritoUt(ROOT, join, mai.slug), workDir: join(ROOT, '.video-munka') });
+    try { rmSync(join(ROOT, '.video-munka'), { recursive: true, force: true }); } catch { /* */ }
+    console.log('♻️  Reel: a nap korábbi videója is újragyártva (' + mai.slug + ') — ' + r1.seconds.toFixed(1) + ' mp');
+  }
+
+  // 🔤 A BETŰ-LELET TOVÁBBADÁSA (2026-09-17). A gyártás megmérte, hogy
+  // tényleg a kért betűt kapta-e (core/video-font.js); a `futtatFazis`
+  // innen teszi be a `memory/reel-guard.json`-ba, ahonnan a napi jelentés
+  // olvassa. Enélkül a mérés csak a CI naplójába kerülne — oda, ahová
+  // senki nem néz, és ahol a betűhiba három hétig el is bújt.
+  return { betu: r.betu };
+}
+
+/** 2. LÉPÉS: kiküldés + megjelölés. A deploy UTÁN fut. */
+export async function send(ROOT, join, dry) {
+  const { readFileSync, writeFileSync, existsSync, unlinkSync } = await import('fs');
+  const { guideMeta } = await import('./frontmatter.js');
+  const { cardsFromGuide } = await import('./short-video.js');
+
+  const P = join(ROOT, 'memory', 'reel-pending.json');
+  if (!existsSync(P)) { console.log('💤 Reel: nincs előkészített videó — kihagyom.'); return; }
+  let pending; try { pending = JSON.parse(readFileSync(P, 'utf-8')); } catch { pending = null; }
+
+  // ── CSOMAG-REKLÁM (2026-09-20) ────────────────────────────────────
+  // Nincs mögötte cikk, ezért a `file` mező is hiányzik — a kind dönt,
+  // MIELŐTT a cikk-ág hibás előkészítésnek minősítené és eldobná.
+  if (pending?.kind === 'packs') {
+    const { promoCaption, PROMO_SLUG } = await import('./packs-reel.js');
+    const videoP = reelVideoUrl(PROMO_SLUG);
+    const hookP = (process.env.MAKE_REEL_WEBHOOK_URL || '').trim();
+    console.log('📘 Csomag-reklám küldése');
+    const rp = await sendReel({ video: videoP, caption: promoCaption({ utmutatoDb: pending.utmutatoDb }), hook: hookP, dry });
+    if (rp.ok && rp.dry) { console.log('   🧪 PRÓBA — nem küldtem el.'); return; }
+    // Bizonytalan kimenetelnél is jelölünk: a kimaradt reklám egy hét
+    // csendje, a duplikált viszont kint van az oldaladon.
+    if (rp.ok || rp.sent === 'unknown') {
+      try {
+        writeFileSync(join(ROOT, 'memory', 'packs-reel.json'),
+          JSON.stringify({ last: new Date().toISOString() }, null, 2), 'utf-8');
+      } catch { /* a jelölés hibája ne rontsa el a küldést */ }
+    }
+    try { unlinkSync(P); } catch { /* */ }
+    if (rp.ok) { console.log('   ✅ Átvette a Make (HTTP ' + rp.status + ')'); return { kiment: true }; }
+    console.error('   ❌ ' + rp.reason);
+    const hibaP = new Error(rp.reason || 'A csomag-reklám kiküldése nem sikerült.');
+    hibaP.sent = rp.sent;
+    throw hibaP;
+  }
+
+  if (!pending?.file) { console.log('💤 Reel: hibás előkészítés — kihagyom.'); try { unlinkSync(P); } catch { /* */ } return; }
+
+  const cikkPath = join(ROOT, 'content', 'articles', pending.file);
+  if (!existsSync(cikkPath)) { console.log('⏭️  Reel: a cikk közben eltűnt — kihagyom.'); try { unlinkSync(P); } catch { /* */ } return; }
+  const cikk = JSON.parse(readFileSync(cikkPath, 'utf-8'));
+
+  const { slug } = guideMeta(cikk);
+  const kartyak = cardsFromGuide(cikk.article_markdown || '');
+  const caption = reelCaption(cikk, { videoSteps: kartyak.cards ? kartyak.cards.length - 2 : null });
+  const video = reelVideoUrl(slug || pending.slug);
+  const hook = (process.env.MAKE_REEL_WEBHOOK_URL || '').trim();
+
+  console.log('🎬 Reel küldése: ' + (slug || pending.slug));
+  const r = await sendReel({ video, caption, hook, dry });
+
+  if (r.ok && r.dry) { console.log('   🧪 PRÓBA — nem küldtem el.'); return; }
+
+  // ⚠️ MEGJELÖLÜNK AKKOR IS, HA A KIMENETEL BIZONYTALAN (időtúllépés). A két
+  // hiba nem egyforma súlyú: a kimaradt Reel egy nap csendje, a duplikált
+  // viszont kint van az oldaladon. Ha a Make mégis kiküldte, a jelölés
+  // pontosan azt akadályozza meg, hogy holnap megismételjük.
+  if (r.ok || r.sent === 'unknown') {
+    cikk._meta = cikk._meta || {};
+    cikk._meta.reel_at = new Date().toISOString();
+    writeFileSync(cikkPath, JSON.stringify(cikk, null, 2), 'utf-8');
+  }
+  try { unlinkSync(P); } catch { /* */ }
+
+  if (r.ok) {
+    console.log('   ✅ Átvette a Make (HTTP ' + r.status + ') — a TÉNYLEGES sikert a napló mondja meg');
+    return { kiment: true };
+  }
+  console.error('   ❌ ' + r.reason);
+  if (r.sent === 'unknown') console.error('   ⚠️ Bizonytalan kimenetel — megjelöltem, hogy ne menjen ki kétszer.');
+
+  // ⚠️ DOBUNK, NEM LÉPÜNK KI (2026-08-30). Itt `process.exit(1)` állt — az
+  // AZONNAL megöli a folyamatot, tehát a hívó futtatFazis() try/catch-e, és
+  // vele az ŐRSZEM-ÍRÁS, SOSEM futott le: a memory/reel-guard.json-ban az
+  // ELŐZŐ futás `ok:true`-ja maradt, a napi riport pedig hallgatott. Pont az
+  // a bukás volt láthatatlan, amiért az őrszem 2026-08-26-án készült.
+  //
+  // ÉS EZ VOLT A TIPIKUS ÁG, nem a kivételes: a sendReel() SOSEM DOB —
+  // hiányzó webhookra, nem elérhető videóra (bukott deploy → 404), rossz
+  // content-type-ra, gyanúsan kicsi fájlra és webhook-HTTP-hibára is
+  // {ok:false}-t ad vissza.
+  //
+  // A nem nulla kilépőkód MEGMARAD: a futtatFazis továbbdobja a hibát, a
+  // fájl végi main().catch() pedig process.exit(1)-gyel zár. A kilépőkód a
+  // CI-nak szól, az őrszem-fájl a napi riportnak — a kettő nem helyettesíti
+  // egymást (a workflow `|| true`-ja miatt a CI-napló amúgy sem jut el senkihez).
+  const hiba = new Error(r.reason || 'A Reel kiküldése nem sikerült.');
+  hiba.sent = r.sent;          // 'unknown' = a Make már átvehette, ne küldd újra vakon
+  throw hiba;
+}
+
+/**
+ * Kiment-e (vagy kimehetett-e) ebben a futásban a rendes Facebook-Reel? A send() sikerkor
+ * `{ kiment: true }`-t ad; bizonytalan kimenetelű dobás (`sent === 'unknown'`) is annak számít,
+ * mert a Make átvehette — inkább kihagyjuk az extrát, mint hogy két Reel menjen egymás után.
+ */
+export function reelKiment(ki, normalHiba) {
+  return ki?.kiment === true || normalHiba?.sent === 'unknown';
+}
+
+/**
+ * A --send FÁZIS (2026-10-15): a normál Reel(ek) küldése, UTÁNA a TikTok-extra
+ * Facebook-Reelje. A kettő FÜGGETLEN (mint a prepare() 10-14-i javítása után):
+ * bármelyik bukik, a másik akkor is lefut. A normál küldés hibája a végén
+ * továbbmegy — a futtatFazis ('send') ebből ír őrszem-rekordot és a kilépőkód
+ * is ebből lesz. Az extra hibája KÜLÖN rekordba kerül ('send_extra'), hogy a
+ * sikeres normál küldést ne bélyegezze bukásnak, és fordítva.
+ */
+export async function sendFazis(ROOT, join, dry) {
+  let ki = null, normalHiba = null;
+  try { ki = await send(ROOT, join, dry); } catch (e) { normalHiba = e; }
+  try {
+    // 2026-10-15 (végső review M6): két Facebook-Reel egymás után egy futásban feltűnő — az extra
+    // csak olyan futásban megy, ahol a rendes Reel NEM ment ki. Az extra egész nap él, később kiküldhető.
+    if (!reelKiment(ki, normalHiba)) await sendTiktokExtraFb(ROOT, join, dry);
+    else console.log('💤 TikTok-extra Facebook-Reel: ebben a futásban már ment rendes Reel — a következő futásra marad.');
+    // Siker VAGY „nem volt dolga" → ok:true: az előző nap bukása ne ragadjon be.
+    reelAllapot(ROOT, join, { fazis: 'send_extra', ok: true });
+  } catch (e) {
+    console.error('⚠️  TikTok-extra Facebook-Reel kimaradt: ' + String(e?.message || e).slice(0, 160));
+    reelAllapot(ROOT, join, { fazis: 'send_extra', ok: false, hiba: String(e?.message || e).slice(0, 200) });
+  }
+  if (normalHiba) throw normalHiba;
+  return ki;
+}
+
+/**
+ * A MAI TikTok-extra videó Facebook-Reelként is (2026-10-15, user: „minden napi
+ * videó minden csatornán"). Futásonként legfeljebb EGY (core/reel-queue.js
+ * fbReelExtra). A videót a --prepare gyártotta (prepareTiktokExtra), a deploy
+ * után ugyanazon az URL-en érhető el, mint a normál Reel.
+ * Jelölés: `_meta.fb_reel_at` — siker VAGY bizonytalan kimenetel után, mert a
+ * duplikált Reel rosszabb, mint a kimaradt (ugyanaz a szabály, mint a send()-nél).
+ * Bukáskor DOB (a sendFazis a 'send_extra' rekordba írja); a jelölés ilyenkor
+ * elmarad, tehát a következő futás újra próbálja.
+ */
+export async function sendTiktokExtraFb(ROOT, join, dry) {
+  const { readFileSync, writeFileSync } = await import('fs');
+  const { fbReelExtra } = await import('./reel-queue.js');
+  const { cardsFromGuide } = await import('./short-video.js');
+  const cikkek = await cikkekBetolt(ROOT, join);
+  const c = fbReelExtra(cikkek);
+  if (!c) { console.log('💤 TikTok-extra Facebook-Reel: nincs ma küldendő — kihagyom.'); return; }
+
+  const cikkPath = join(ROOT, 'content', 'articles', c.file);
+  const cikk = JSON.parse(readFileSync(cikkPath, 'utf-8'));
+  const kartyak = cardsFromGuide(cikk.article_markdown || '');
+  const caption = reelCaption(cikk, { videoSteps: kartyak.cards ? kartyak.cards.length - 2 : null });
+  const video = reelVideoUrl(c.slug);
+  const hook = (process.env.MAKE_REEL_WEBHOOK_URL || '').trim();
+
+  console.log('🎬 TikTok-extra Reel küldése Facebookra: ' + c.slug);
+  const r = await sendReel({ video, caption, hook, dry });
+  if (r.ok && r.dry) { console.log('   🧪 PRÓBA — nem küldtem el.'); return; }
+
+  if (r.ok || r.sent === 'unknown') {
+    cikk._meta = cikk._meta || {};
+    cikk._meta.fb_reel_at = new Date().toISOString();
+    writeFileSync(cikkPath, JSON.stringify(cikk, null, 2), 'utf-8');
+  }
+  if (r.ok) { console.log('   ✅ Átvette a Make (HTTP ' + r.status + ')'); return; }
+  console.error('   ❌ ' + r.reason);
+  if (r.sent === 'unknown') console.error('   ⚠️ Bizonytalan kimenetel — megjelöltem, hogy ne menjen ki kétszer.');
+  const hiba = new Error(r.reason || 'A TikTok-extra Facebook-Reel kiküldése nem sikerült.');
+  hiba.sent = r.sent;
+  throw hiba;
+}
+
+const kozvetlen = process.argv[1] && process.argv[1].endsWith('reel-post.js');
+if (kozvetlen) main().catch(e => { console.error('💥 reel-post hiba:', e.message); process.exit(1); });

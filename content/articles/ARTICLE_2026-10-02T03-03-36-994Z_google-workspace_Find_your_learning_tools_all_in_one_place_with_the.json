@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "written_at": "2026-10-02T03:12:24.435Z",
+    "writer_provider": "openrouter",
+    "writer_model": "minimax/minimax-m3",
+    "writer_cost_usd": 0.005438112,
+    "original_draft": "2026-10-02T03-03-36-994Z_google-workspace_Find_your_learning_tools_all_in_one_place_with_the.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/10/find-your-learning-tools-all-in-one-place-with-the-student-hub-in-Gemini.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/10/find-your-learning-tools-all-in-one-place-with-the-student-hub-in-Gemini.html",
+      "http://workspaceupdates.googleblog.com/2026/09/skills-gemini-app-workspace.html"
+    ],
+    "source_snippet_len": 2753,
+    "merged_from": 2,
+    "merged_theme": "Gemini learning tools and skills features",
+    "status": "published",
+    "published_at": "2026-10-02T03:19:46.242Z",
+    "slug": "how-to-use-gemini-s-new-student-hub-and-skills-for-studying",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "HOWTO_NO_STEPS: A cím utasítást ígér, de csak 0 számozott lépés-szakasz van (kell 4-7, \"## Step 1 — …\" formában), nem egyetlen összevont bekezdés."
+      ],
+      "wordCount": 1224
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [
+        "Step 2 of skills section is vague — 'look for the skills option in the prompt area' doesn't say what the option looks like or what happens when clicked; a beginner may not find it"
+      ],
+      "verdict": "Solid, well-structured how-to with good explanations of technical terms and clear persona-based guidance in the impact section. The skills feature description has one vagueness issue that may confuse beginners, but it's minor and the rest of the guide is actionable and friendly.",
+      "_aiCost": 0.00175419,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-10-02T03:20:25.018Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article covers two separate features (student hub and skills) rather than one specific tool, and is already written as a how-to guide",
+    "image_v": 2,
+    "image_at": "2026-10-02T03:25:08.317Z",
+    "seo": {
+      "meta_description": "Learn how to use Google's new Gemini Student Hub and Skills for studying. A practical guide to these features for homework and class prep.",
+      "keywords": [
+        "how to use Gemini Student Hub",
+        "Gemini skills feature for studying",
+        "Gemini AI for students",
+        "Google Gemini homework help",
+        "Gemini study features"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific details about where exactly to find these features in the Gemini app interface",
+        "Include the specific Google Workspace for Education requirement in the meta description for clarity",
+        "Consider adding keywords like 'Google Gemini tutorial' to capture broader search traffic"
+      ],
+      "optimised_at": "2026-10-02T03:27:27.433Z"
+    },
+    "howto_upgrade_attempts": 2,
+    "social": true,
+    "social_at": "2026-10-02T03:46:29.237Z",
+    "howto_upgraded_at": "2026-10-02T14:31:51.259Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Use Gemini's New Student Hub and Skills for Studying\"\nsubtitle: \"Step-by-step: where to find Google's new student hub, how to open a skill in Gemini, and how to use both for real study tasks.\"\ncategory: \"how-to\"\naudience: \"personal\"\nread_time_minutes: 7\ntags: [\"gemini\", \"google\", \"study-tools\", \"learning-ai\", \"productivity\"]\n---\n\n# How to Use Gemini's New Student Hub and Skills for Studying\n\n> **In short:** Google says it has rolled out a student hub inside Gemini with flashcards, a study notebook, and a practice quiz in one place, plus a new \"skills\" feature for saved, reusable instructions. It works on personal and Workspace for Education accounts globally, except in the EEA; skills are still rolling out.\n\nIf you've ever opened an AI helper, stared at the blank prompt box, and thought, \"I just want to quiz myself on chapter 7,\" Google's latest Gemini changes try to skip that step. Two updates just landed — a dedicated student hub and a new skills feature — and they're built for the same audience: students, teachers, and self-learners who don't want to fight the interface before they can study.\n\nThis guide walks through each one, in order, with the clicks you'll actually make.\n\n## What you need before you start\n\n- **A Google account.** Either a personal Google account or a Google Workspace for Education account from your school. The student hub works on both.\n- **A browser or the Gemini app.** The hub works in any browser at `gemini.google.com`. Skills live in the Gemini app on phone or desktop, and in supported Workspace apps like Google Docs.\n- **Location check.** Google says the student hub is not yet available in the European Economic Area (EEA). If you're in the EEA, the hub steps below won't apply to you yet.\n- **Patience on skills.** According to Google, skills are rolling out over the coming weeks. If you don't see them today, check back in a few days — Google says the rollout is happening in waves.\n\n## Step 1 — Open the student hub at its direct URL\n\nThe fastest way in, according to Google's announcement, is the direct link.\n\n1. Open your browser and go to `gemini.google.com/students`.\n2. Sign in with the Google account you want to study with, if you're not already signed in.\n3. You'll land inside the student hub — you'll see study tools like flashcards, a study notebook, and a practice quiz, all gathered in one place instead of the regular Gemini chat screen.\n\n💬 Example path to copy: `gemini.google.com/students`\n\n**You'll know it worked when** you see a Gemini page titled for students, with at least three tools visible (notebook, flashcards, quiz) rather than the standard chat box.\n\n## Step 2 — Find Students in the Gemini app menu\n\nIf you prefer the Gemini app, you can reach the same hub from the side menu.\n\n1. Open the Gemini app on your phone, or go to `gemini.google.com` in a browser.\n2. Look at the menu — usually on the left on desktop, or behind a \"hamburger\" icon (three horizontal lines) on mobile.\n3. Select **Students**. The same student hub opens, with the same set of tools.\n\n💬 Example path: left-side menu → **Students**\n\n**You'll know it worked when** the page header reads \"Students\" and the study tools (notebook, flashcards, practice quiz) are visible on the screen.\n\n## Step 3 — Use a study tool inside the hub\n\nThe hub isn't just a doorway — it's where the actual learning work happens. Pick one tool to start.\n\n1. From inside the student hub, choose one of the three tools: **study notebook**, **flashcards**, or **practice quiz**.\n2. Type the topic you're studying into the prompt box. For example: *photosynthesis for 9th-grade biology*.\n3. Send the prompt and wait a few seconds. Gemini builds the tool around your topic — flashcards flip one by one, the quiz lists questions, the notebook collects your notes.\n\n💬 Example prompt to copy: *Make a practice quiz on the causes of World War I, 10 questions, mix of multiple choice and short answer.*\n\n**You'll know it worked when** you see a quiz (or flashcards, or a notebook page) built around your specific topic — not a generic Gemini chat reply.\n\n## Step 4 — Open the skills entry point in Gemini\n\nNow for the second feature: skills. Skills are saved, reusable instructions you can apply to any chat. They're still rolling out, so Google says the exact look may vary by account.\n\n1. Open the Gemini app, or a supported Workspace app like Google Docs.\n2. Look near the prompt box — the area where you normally type. Google has been adding a skills entry point there.\n3. Click or tap that entry point. A list opens: built-in skills Google offers, plus any you've already created.\n\n💬 Example label to look for: a button or icon labeled **Skills**, sitting just above or next to the prompt box.\n\n**You'll know it worked when** you see a list of available skills, with at least one built-in option you can apply to your next message.\n\n## Step 5 — Try a built-in skill on a real task\n\nPicking a skill is the easy part. Using it on something you actually need is the point.\n\n1. From the skills list, pick one built-in that fits your task — for example, **Lesson planning** if you teach, or a writing-style skill if you're drafting an essay. Google mentions both in its announcement.\n2. Type the prompt the skill is meant to shape. For a lesson planning skill, a one-line prompt is enough.\n3. Send the message. Gemini responds following the structure or tone the skill is built around — a formatted plan, not a generic essay.\n\n💬 Example prompt with a lesson-planning skill: *Plan a 30-minute lesson on the water cycle for 4th graders.*\n\n**You'll know it worked when** the response is shaped like what the skill promises — a lesson plan with sections and timing, instead of a free-form essay.\n\n## Step 6 — Stack a second skill, or save your own\n\nOnce one skill works, you can layer a second one in the same chat, or start saving your own.\n\n1. In the same conversation, open the skills entry point again.\n2. Add a second skill — for example, a \"concise\" or \"study coach\" skill on top of your first one.\n3. Send another message and compare. The output should reflect both skills at once — structured *and* short, or structured *and* in your saved voice.\n4. To save your own, choose the option to create a new skill, give it a short name, and write the instruction you want it to apply every time.\n\n💬 Example self-made skill prompt to save: *Always end every study summary with three practice questions I can answer without looking at the notes.*\n\n**You'll know it worked when** the new response shows the second skill's effect (shorter, different tone, extra questions), and your saved skill appears in your skills list for next time.\n\n## Common mistakes\n\n- **Searching for the student hub inside Google Classroom.** They're related, but the hub lives in Gemini — at `gemini.google.com/students`, not inside Classroom.\n- **Using the wrong Google account.** If you switch between a personal account and a school Workspace account, the hub and skills may show up in one and not the other. Sign out and sign back in to switch.\n- **Treating Gems and skills as the same thing.** Google says skills will eventually replace Gems. Until then, don't try to open an old Gem where a skill should be — they're separate features right now.\n- **Writing a skill prompt that's too vague.** \"Be a helpful study assistant\" produces unpredictable results. \"Always end with three quiz questions on the topic I asked about\" produces consistent ones.\n\n## What this means for you\n\n- **If you're a student:** start with the student hub. The flashcards and practice quiz are the most directly useful for exam season, and they take about a minute to try.\n- **If you're a teacher or tutor:** the lesson planning skill is the time-saver to try first. One saved prompt, reused every week, adds up across a semester.\n- **If you already use Gems:** Google says skills will eventually replace them. Worth experimenting with skills now so the switch is easier later.\n- **If you're in the EEA:** the student hub isn't there yet. Check back — Google hasn't given a date for that rollout, but the rest of Gemini still works as usual.\n\n## Wrap-up\n\nThe student hub puts Google's learning tools in one place, and skills turn the instructions you keep retyping into something you can apply with one click. Pick one — the hub if you're a student, skills if you teach or write — and spend ten minutes this week trying it. That's all the setup it takes to know whether it earns a permanent spot in your study routine.",
+  "original_title": "Find your learning tools all in one place with the student hub in Gemini"
+}

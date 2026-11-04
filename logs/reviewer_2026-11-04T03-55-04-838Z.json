@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-11-04T03:53:22.444Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00938664,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-11-04T03-51-02-908Z_openai-blog_Heimstaden_is_changing_residential_real_estate_man.json",
+      "rejected": "REJECTED_2026-11-04T03-51-02-908Z_openai-blog_Heimstaden_is_changing_residential_real_estate_man.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0020022
+    },
+    {
+      "writer": "WRITER_2026-11-04T03-51-24-174Z_salesforce_Half_of_Slack_Messages_Are_No_Longer_From_People__.json",
+      "article": "ARTICLE_2026-11-04T03-51-24-174Z_salesforce_Half_of_Slack_Messages_Are_No_Longer_From_People__.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0018573
+    },
+    {
+      "writer": "WRITER_2026-11-04T03-51-29-898Z_d-id-news_What_Enterprise_Teams_Should_Know_About_AI_Video_P.json",
+      "article": "ARTICLE_2026-11-04T03-51-29-898Z_d-id-news_What_Enterprise_Teams_Should_Know_About_AI_Video_P.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.001536
+    }
+  ],
+  "truth_held": 1,
+  "finished_at": "2026-11-04T03:55:04.838Z",
+  "duration_seconds": 102.394
+}

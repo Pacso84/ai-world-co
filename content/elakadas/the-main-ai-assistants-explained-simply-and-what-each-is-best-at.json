@@ -1,0 +1,72 @@
+{
+  "slug": "the-main-ai-assistants-explained-simply-and-what-each-is-best-at",
+  "probalva": "2026-10-30T20:19:56.618Z",
+  "doboz": {
+    "keszult": "2026-10-30T20:19:56.618Z",
+    "enHash": "03c6425891ad673b364e1b6988ae7e03b58a4e1b",
+    "forrasok": {
+      "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search": "Shopping with ChatGPT Search",
+      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt": "Working with writing blocks and code blocks in ChatGPT"
+    },
+    "en": [
+      {
+        "symptom": "The price in the first shopping answer is higher than what I find elsewhere.",
+        "why": "Prices in the initial response usually reflect the first merchant listed. That merchant may not have the lowest available price.",
+        "fix": "In ChatGPT: after selecting the product, check the additional options from other merchants, which may be at the same or different prices. Look for a \"Best price\" label when more than one merchant offers the product.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "The virtual try-on doesn't show how the clothes will actually fit me.",
+        "why": "Try-on images may not represent the product or your appearance exactly. They do not guarantee fit or size.",
+        "fix": "In ChatGPT: before buying, check the merchant's measurements, product details, and return policy.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "My edits to a draft or code disappeared after the chat ended.",
+        "why": "In Temporary Chat, edits may not persist after the conversation ends. Edits to supported blocks save with the conversation only after a short delay.",
+        "fix": "In ChatGPT: after editing a writing block or code block, wait a short delay so the edits save with the conversation. Then ask follow-up questions, since ChatGPT can then use the latest version.",
+        "source": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Az első vásárlási válaszban szereplő ár magasabb, mint amit máshol találok.",
+        "why": "A kezdeti válaszban szereplő ár általában az elsőként felsorolt kereskedő árát tükrözi. Lehet, hogy ez a kereskedő nem a legalacsonyabb elérhető árat kínálja.",
+        "fix": "A ChatGPT-ben: miután kiválasztottad a terméket, nézd meg a többi kereskedő további lehetőségeit is, amelyek ára azonos vagy eltérő lehet. Ha egynél több kereskedő kínálja a terméket, keresd a „Best price” címkét.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "A virtuális felpróbálás nem mutatja meg, hogy a ruha valójában hogyan áll majd rajtam.",
+        "why": "A felpróbálási képek nem feltétlenül ábrázolják pontosan a terméket vagy a megjelenésedet. Nem garantálják a megfelelő fazont vagy méretet.",
+        "fix": "A ChatGPT-ben: vásárlás előtt ellenőrizd a kereskedő méreteit, a termék részleteit és a visszaküldési szabályzatot.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "A vázlaton vagy a kódon végzett módosításaim eltűntek a csevegés befejezése után.",
+        "why": "Temporary Chat használatakor előfordulhat, hogy a módosítások nem maradnak meg a beszélgetés befejezése után. A támogatott blokkok módosításai csak rövid késleltetés után mentődnek a beszélgetéssel együtt.",
+        "fix": "A ChatGPT-ben: miután módosítottál egy írásblokkot vagy kódblokkot, várj rövid ideig, hogy a módosítások elmentődjenek a beszélgetéssel együtt. Ezután tegyél fel további kérdéseket, mert a ChatGPT így már a legújabb verziót tudja használni.",
+        "source": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "El precio de la primera respuesta de compras es más alto que el que encuentro en otros sitios.",
+        "why": "Los precios de la respuesta inicial suelen corresponder al primer vendedor de la lista. Es posible que ese vendedor no ofrezca el precio más bajo disponible.",
+        "fix": "En ChatGPT: después de seleccionar el producto, comprueba las opciones adicionales de otros vendedores, que pueden tener el mismo precio o precios diferentes. Busca la etiqueta «Best price» cuando más de un vendedor ofrezca el producto.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "La prueba virtual no muestra cómo me quedará realmente la ropa.",
+        "why": "Es posible que las imágenes de la prueba no representen exactamente el producto ni tu aspecto. No garantizan el ajuste ni la talla.",
+        "fix": "En ChatGPT: antes de comprar, comprueba las medidas del vendedor, los detalles del producto y la política de devoluciones.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "Mis cambios en un borrador o código desaparecieron después de que terminara el chat.",
+        "why": "En Temporary Chat, es posible que los cambios no se conserven después de que termine la conversación. Los cambios en bloques compatibles se guardan con la conversación solo después de una breve espera.",
+        "fix": "En ChatGPT: después de editar un bloque de texto o un bloque de código, espera un breve momento para que los cambios se guarden con la conversación. Después, haz preguntas de seguimiento, ya que ChatGPT podrá usar entonces la versión más reciente.",
+        "source": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt"
+      }
+    ]
+  }
+}

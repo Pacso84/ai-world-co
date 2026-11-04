@@ -1,0 +1,91 @@
+{
+  "slug": "how-to-find-lost-files-in-onedrive-and-tidy-your-downloads-folder-with",
+  "probalva": "2026-11-01T20:03:03.690Z",
+  "doboz": {
+    "keszult": "2026-11-01T20:03:03.690Z",
+    "enHash": "495240098391b69abad1ecb4e642e3694e30fdc3",
+    "forrasok": {
+      "https://support.microsoft.com/en-us/microsoft-365-copilot/cowork-take-control-actions": "Take control of Microsoft Copilot Cowork actions before they run (Preview)",
+      "https://support.microsoft.com/en-us/microsoft-365-copilot/find-and-convert-a-file-to-a-pdf-in-the-microsoft-365-copilot-app": "Find and convert a file to a PDF in the Microsoft Copilot app",
+      "https://support.microsoft.com/en-us/microsoft-365-copilot/decide-when-copilot-or-an-agent-is-the-right-tool-for-your-work": "Decide when Copilot or an agent is the right tool for your work"
+    },
+    "en": [
+      {
+        "symptom": "Copilot paused and wants my OK before it changes files in my cloud storage.",
+        "why": "Copilot asks for your approval or hands control back to you for some actions to help reduce the risk of unintended outcomes. Account altering actions include deleting files and modifying cloud storage.",
+        "fix": "Review the details in the approval dialog before you proceed. Select Approve only to allow that specific action, or select Cancel to stop it.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/cowork-take-control-actions"
+      },
+      {
+        "symptom": "I can't tell where to start searching for a file in Copilot.",
+        "why": "Search is on the left side of the window in the Microsoft Copilot app. Copilot finds a file from the name or other information you enter.",
+        "fix": "Select Search from the left side of the window. Enter the name or other information about the file you want, or select a file from the suggestions or your files that are shown.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/find-and-convert-a-file-to-a-pdf-in-the-microsoft-365-copilot-app"
+      },
+      {
+        "symptom": "I converted a file to PDF and can't find the PDF anywhere.",
+        "why": "The PDF is created and stored in the same folder that the source file is in. The status of the conversion appears towards the bottom of the window.",
+        "fix": "Hover over the filename, select the option at the right of the filename, and then select Convert to PDF, which works for a Word, Excel, or PowerPoint file. Check the status towards the bottom of the window, then look in the same folder as the original file.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/find-and-convert-a-file-to-a-pdf-in-the-microsoft-365-copilot-app"
+      },
+      {
+        "symptom": "Copilot's suggestion sounds right, but how do I know it's correct?",
+        "why": "Delegating work to AI doesn't transfer accountability. You remain responsible for reviewing, validating, and approving how the work is used.",
+        "fix": "Review and validate the result before you act on it. Check the accuracy of the final content yourself before it is used.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/decide-when-copilot-or-an-agent-is-the-right-tool-for-your-work"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A Copilot szünetet tartott, és a jóváhagyásomat kéri, mielőtt módosítja a felhőtárhelyemen lévő fájlokat.",
+        "why": "A Copilot egyes műveletekhez a jóváhagyásodat kéri, vagy visszaadja neked az irányítást, hogy csökkentse a nem kívánt eredmények kockázatát. A fiókot módosító műveletek közé tartozik a fájlok törlése és a felhőtárhely módosítása.",
+        "fix": "Mielőtt folytatnád, tekintsd át a jóváhagyási párbeszédpanelen megjelenő részleteket. Csak akkor válaszd az Approve lehetőséget, ha engedélyezni szeretnéd az adott műveletet, vagy válaszd a Cancel lehetőséget a leállításához.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/cowork-take-control-actions"
+      },
+      {
+        "symptom": "Nem tudom, hol kezdjem a fájl keresését a Copilotban.",
+        "why": "A keresőablak a Microsoft Copilot alkalmazásablakának bal oldalán található. A Copilot a megadott név vagy egyéb információ alapján találja meg a fájlt.",
+        "fix": "Válaszd a Search lehetőséget az ablak bal oldalán. Írd be a kívánt fájl nevét vagy egyéb adatait, vagy válassz egy fájlt a megjelenő javaslatok, illetve a fájljaid közül.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/find-and-convert-a-file-to-a-pdf-in-the-microsoft-365-copilot-app"
+      },
+      {
+        "symptom": "PDF-fé alakítottam egy fájlt, de sehol sem találom a PDF-et.",
+        "why": "A PDF ugyanabban a mappában jön létre és tárolódik, amelyben a forrásfájl található. Az átalakítás állapota az ablak alsó része felé jelenik meg.",
+        "fix": "Vidd az egérmutatót a fájlnév fölé, válaszd a fájlnévtől jobbra található lehetőséget, majd válaszd a Convert to PDF lehetőséget, amely Word-, Excel- vagy PowerPoint-fájlokkal működik. Ellenőrizd az állapotot az ablak alsó része felé, majd keresd a fájlt az eredeti fájllal azonos mappában.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/find-and-convert-a-file-to-a-pdf-in-the-microsoft-365-copilot-app"
+      },
+      {
+        "symptom": "A Copilot javaslata helyesnek tűnik, de honnan tudhatom, hogy valóban az?",
+        "why": "A munka mesterséges intelligenciára bízása nem ruházza át a felelősséget. Továbbra is te felelsz annak áttekintéséért, ellenőrzéséért és jóváhagyásáért, hogy hogyan használják fel a munkát.",
+        "fix": "Mielőtt cselekednél annak alapján, tekintsd át és ellenőrizd az eredményt. A felhasználás előtt saját magad ellenőrizd a végleges tartalom pontosságát.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/decide-when-copilot-or-an-agent-is-the-right-tool-for-your-work"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "Copilot se detuvo y quiere mi aprobación antes de cambiar archivos en mi almacenamiento en la nube.",
+        "why": "Copilot te pide aprobación o te devuelve el control para algunas acciones con el fin de ayudar a reducir el riesgo de resultados no deseados. Las acciones que modifican la cuenta incluyen eliminar archivos y modificar el almacenamiento en la nube.",
+        "fix": "Revisa los detalles del cuadro de diálogo de aprobación antes de continuar. Selecciona Approve solo para permitir esa acción específica, o selecciona Cancel para detenerla.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/cowork-take-control-actions"
+      },
+      {
+        "symptom": "No sé por dónde empezar a buscar un archivo en Copilot.",
+        "why": "Search está en el lado izquierdo de la ventana de la aplicación Microsoft Copilot. Copilot encuentra un archivo a partir del nombre u otra información que introduzcas.",
+        "fix": "Selecciona Search en el lado izquierdo de la ventana. Introduce el nombre u otra información sobre el archivo que quieres, o selecciona un archivo entre las sugerencias o tus archivos que se muestran.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/find-and-convert-a-file-to-a-pdf-in-the-microsoft-365-copilot-app"
+      },
+      {
+        "symptom": "Convertí un archivo a PDF y no encuentro el PDF por ninguna parte.",
+        "why": "El PDF se crea y se almacena en la misma carpeta en la que está el archivo de origen. El estado de la conversión aparece hacia la parte inferior de la ventana.",
+        "fix": "Pasa el cursor sobre el nombre del archivo, selecciona la opción situada a la derecha del nombre del archivo y, después, selecciona Convert to PDF, que funciona con un archivo de Word, Excel o PowerPoint. Comprueba el estado hacia la parte inferior de la ventana y, después, busca en la misma carpeta que el archivo original.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/find-and-convert-a-file-to-a-pdf-in-the-microsoft-365-copilot-app"
+      },
+      {
+        "symptom": "La sugerencia de Copilot parece correcta, pero ¿cómo sé que lo es?",
+        "why": "Delegar el trabajo a la IA no transfiere la responsabilidad. Sigues siendo responsable de revisar, validar y aprobar cómo se utiliza el trabajo.",
+        "fix": "Revisa y valida el resultado antes de actuar basándote en él. Comprueba tú mismo la exactitud del contenido final antes de utilizarlo.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/decide-when-copilot-or-an-agent-is-the-right-tool-for-your-work"
+      }
+    ]
+  }
+}

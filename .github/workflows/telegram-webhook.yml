@@ -1,0 +1,67 @@
+# ===================================================================
+# TELEGRAM WEBHOOK — ellenőrzés és (kérésre) átállítás. KÉZI, $0.
+# ===================================================================
+# MIÉRT (2026-11-04, user: „ha írok telegramon nem kapok választ!”):
+# a Worker 10-21/22-én átköltözött az api.aiworldhq.com-ra, a régi
+# *.workers.dev címet kikapcsoltuk (404). A Telegram webhookja viszont a
+# régi címen maradt → a parancsok a semmibe mentek (utolsó „Főnök parancs”
+# futás: 10-08). A bot-token csak GitHub-titokként létezik, ezért innen.
+#
+#   gh workflow run telegram-webhook.yml                  # csak lekérdez
+#   gh workflow run telegram-webhook.yml -f beallit=true  # átállít + lekérdez
+#
+# A secret_token (TELEGRAM_WEBHOOK_SECRET) UGYANAZ, mint a Worker
+# WEBHOOK_SECRET-je — a Worker enélkül 403-mal eldob minden kérést.
+# ===================================================================
+name: Telegram webhook (ellenőrzés / átállítás, kézi)
+
+on:
+  workflow_dispatch:
+    inputs:
+      beallit:
+        description: 'Állítsa át a webhookot az api.aiworldhq.com-ra?'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  webhook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Webhook lekérdezése / átállítása
+        env:
+          TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          WH_SECRET: ${{ secrets.TELEGRAM_WEBHOOK_SECRET }}
+          BEALLIT: ${{ inputs.beallit }}
+        run: |
+          node --input-type=module -e '
+          const api = (m) => `https://api.telegram.org/bot${process.env.TOKEN}/${m}`;
+          const CEL = "https://api.aiworldhq.com/";
+          const info = async () => {
+            const j = await (await fetch(api("getWebhookInfo"))).json();
+            const r = j.result || {};
+            console.log("📡 webhook-cím:", r.url || "(nincs beállítva)");
+            console.log("   várakozó üzenet:", r.pending_update_count ?? "?");
+            console.log("   utolsó hiba:", r.last_error_date
+              ? new Date(r.last_error_date * 1000).toISOString() + " — " + r.last_error_message : "nincs");
+            console.log("   allowed_updates:", JSON.stringify(r.allowed_updates || "alap"));
+            return r;
+          };
+          const elotte = await info();
+          if (process.env.BEALLIT === "true") {
+            if (!process.env.WH_SECRET) { console.log("❌ nincs TELEGRAM_WEBHOOK_SECRET — nem állítok át"); process.exit(1); }
+            const j = await (await fetch(api("setWebhook"), {
+              method: "POST", headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ url: CEL, secret_token: process.env.WH_SECRET,
+                allowed_updates: ["message", "edited_message"], drop_pending_updates: false })
+            })).json();
+            console.log(j.ok ? "✅ setWebhook: " + j.description : "❌ setWebhook: " + JSON.stringify(j));
+            await info();
+            if (!j.ok) process.exit(1);
+          } else if (elotte.url !== CEL) {
+            console.log("⚠️ a webhook NEM az " + CEL + " címre mutat → futtasd: -f beallit=true");
+          }
+          '

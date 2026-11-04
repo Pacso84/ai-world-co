@@ -1,0 +1,693 @@
+{
+  "newsletter": {
+    "_comment": "2026-10-30 — heti hírlevél a Kit-en (core/hirlevel.js küld, core/hirlevel-doboz.js a feliratkozó doboz, Worker /subscribe). enabled:true = vasárnap kiküldés (KIT_API_KEY GitHub-secret kell); signup:true = a doboz is kint (CSAK enabled mellett, hogy ne legyen újra feliratkozás küldés nélkül, mint 07-ben). A Worker-hez KIT_API_KEY + KIT_FORM_ID secret kell.",
+    "provider": "kit",
+    "enabled": true,
+    "signup": true
+  },
+  "website": {
+    "_comment": "2026-09-29 — a user kérte, hogy vissza lehessen állítani. false = a régi nézet a következő build-től. guide_sketch: kóddal rajzolt telefon-vázlat a lépés mellett (core/guide-sketch.js); next_guide: 'Következő útmutató' kártya az utolsó lépés után (core/next-guide.js).",
+    "guide_sketch": true,
+    "next_guide": true,
+    "pack_line_all": true,
+    "ads": {
+      "_comment": "2026-10-01 — Google AdSense (core/ads.js). enabled + client (ca-pub-…, NEM titok) = fejléc-kód + ads.txt a Google-igazoláshoz, látható hirdetés még nincs; + slot = oldalanként EGY hirdetés a tartalom között (cikk közepe; 10-30-tól a gyűjtőoldalakon is). enabled:false = minden kikapcsolva a következő build-től. Az AdSense-ben az Auto ads maradjon KI.",
+      "enabled": true,
+      "client": "ca-pub-9171891300317040",
+      "slot": "7128752726",
+      "adblock_recovery": true
+    },
+    "affiliate": {
+      "_comment": "2026-10-09 — Amazon partnerlink-PRÓBA (core/affiliate.js): az Alexa+ útmutatók végén EGY jelölt Echo-link + kattintásszámláló (Worker /aff-hit), 4 hét. enabled:true + tag (…-20, NEM titok) = be a következő build-től; hibás tag = KI. Bekapcsoláskor a shared/legal-rules-ai.md és company-info.md 'NINCS affiliate' sorát is át kell írni (teszt őrzi).",
+      "amazon": {
+        "enabled": true,
+        "tag": "aiworldhq-20"
+      }
+    }
+  },
+  "content": {
+    "guide_focus": {
+      "_comment": "2026-10-09 — user: „először legyen eladásunk”. A napi 2 útmutatóból 1 a fókusz-eszközről (Alexa+, ott az Amazon-partnerlink), ha fogy a téma az ötletelő célzottan pótol (guide --focus), és naponta 1 Reel/TikTok ebből. Lejár: until után minden a régi; enabled:false = azonnal ki. core/guide-focus.js",
+      "enabled": true,
+      "tool": "Alexa+",
+      "company": "Amazon",
+      "until": "2026-10-23",
+      "per_day": 1,
+      "keywords": ["Alexa", "Echo"]
+    },
+    "guide_prune": {
+      "_comment": "2026-10-14 — user: „ha 60 napig nem volt olvasó, akkor minek tartjuk!” · „teljes törlés”. A legalább 60 napos, 60 napja 0 olvasós (en+hu+es együtt) útmutató TELJESEN törlődik (core/guide-prune.js → core/housekeeping.js). Hibavédelem: hiányos/elavult forgalmi napló, 0 cikk-látogatás vagy >60% jelölt → nincs törlés; naponta max_per_run (a CI napi 3 futása együtt). enabled:false = azonnal ki.",
+      "enabled": true,
+      "days": 60,
+      "max_per_run": 25
+    },
+    "trends": {
+      "_comment": "2026-10-14 — user ötlete: AI trendkutató. Naponta 1× ingyen gyűjt (Google keresési javaslatok ezekre az alapkérdésekre, Google napi felkapott AI-tételek, saját legolvasottak, content/trend-bing.json) → memory/trendek.json → a hírek sorrendje + napi 1 trend-útmutató az általános hely helyére (a napi 1 középszintű MARAD, user 10-14). enabled:false = azonnal ki (core/trend-kutato.js aktivTrendek). Mérés ~11-11: node core/trend-kutato.js --meres.",
+      "enabled": true,
+      "seeds": [
+        "ai photo trend", "ai photo prompt", "gemini trending prompt", "chatgpt trend", "ai trend",
+        "viral ai", "ai scam", "ai voice clone scam", "deepfake", "how to use chatgpt",
+        "how to use gemini", "how to use claude", "how to use copilot", "how to use meta ai", "how to use notebooklm",
+        "how to use alexa+", "how to use perplexity", "how to use grok", "chatgpt new feature", "gemini new feature",
+        "can ai help", "how to make ai", "ai image generator", "ai video generator", "ai for students",
+        "ai for seniors", "ai for small business", "ai to write", "chatgpt prompt for", "gemini prompt for"
+      ]
+    },
+    "_comment": "2026-09-29 — user: középszintű tartalom, visszaállíthatóan. false = régi viselkedés a következő futástól. intermediate_guides: napi 1 középszintű útmutató a 2-ből; news_if_you_use: a hírek 'What this means for you' részében 4. pont ('If you already use it'). Olvassa: core/content-switches.js.",
+    "intermediate_guides": true,
+    "news_if_you_use": true
+  },
+  "_meta": {
+    "description": "AI World Co. központi konfiguráció - KÖLTSÉGHATÉKONY beállítás",
+    "version": "2.0",
+    "last_updated": "2026-07-15",
+    "philosophy": "MINŐSÉG-ELŐSZÖR (user-döntés 2026-07-15): tartalmi munkához mindig ERŐS modell — a gyenge modell hibája többe kerül (kézi javítás, olvasó-vesztés), mint az erős felára. Mechanikus rövid feladatokra az erős-ingyenesek (gpt-oss-120b, Qwen3-80B) mehetnek. Gyenge modell (mistral-small, gemini-2.0) tartalmat nem érinthet."
+  },
+  "company": {
+    "name": "AI World Co.",
+    "tagline": "AI News in Plain Language, Curated by Agents",
+    "target_audience": "United States (primary) - written so anyone, anywhere can read it",
+    "language": "en-US",
+    "timezone": "UTC",
+    "website_url": "https://aiworldhq.com",
+    "google_site_verification_file": "google9b2bbe4d952e2ff5.html",
+    "indexnow_key": "298959409ebe114f91438741847c244119439a5c90bbe550",
+    "cf_beacon_token": "4cb10d402f364010af503eeea998074e",
+    "_cf_beacon_comment": "Cloudflare Web Analytics token (latogatas-szamlalo). NYILVANOS by design (minden HTML-oldalban lathato) — nem titok. Ha ures, nincs szamlalo. Beszerzes: CF dashboard -> Web Analytics -> Add a site.",
+    "support_enabled": false,
+    "support_url": "https://ko-fi.com/D3G121RXFK",
+    "support_label": "Buy us a coffee",
+    "_support_comment": "2026-10-01: KIKAPCSOLVA — a user megszuntette a Ko-fit (0 tamogato). true = a tamogatas-sor, a /support oldal es a menupont visszajon. support_url: ide jon a Ko-fi / Buy Me a Coffee / PayPal.me link (maganszemelykent is mukodik). Ha ures, a Support oldal 'hamarosan' allapotot mutat. Onkentes tip, NEM adolevonhato adomany.",
+    "hierarchy": {
+      "_comment": "Cegrend (2026-07-13): ki kinek jelent + ki kinek adhat vissza munkat. A postas (agents/ceo/agent.js) CSAK e menten kezbesit; tiltott el = hangos hiba.",
+      "ceo": {
+        "reports_to": null,
+        "may_handback_to": [
+          "iro",
+          "guide",
+          "translator",
+          "designer",
+          "social"
+        ]
+      },
+      "ellenorzo": {
+        "reports_to": "ceo",
+        "may_handback_to": [
+          "iro",
+          "guide"
+        ]
+      },
+      "iro": {
+        "reports_to": "ellenorzo",
+        "may_handback_to": []
+      },
+      "guide": {
+        "reports_to": "ellenorzo",
+        "may_handback_to": []
+      },
+      "translator": {
+        "reports_to": "ellenorzo",
+        "may_handback_to": [
+          "iro"
+        ]
+      },
+      "designer": {
+        "reports_to": "ceo",
+        "may_handback_to": []
+      },
+      "social": {
+        "reports_to": "ceo",
+        "may_handback_to": []
+      },
+      "digest": {
+        "reports_to": "ceo",
+        "may_handback_to": []
+      },
+      "compare": {
+        "reports_to": "ceo",
+        "may_handback_to": []
+      },
+      "pairing": {
+        "reports_to": "ceo",
+        "may_handback_to": []
+      },
+      "video": {
+        "reports_to": "ceo",
+        "may_handback_to": []
+      }
+    }
+  },
+  "agents": {
+    "rework": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "routing": "paid-only",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). ERŐS-OLCSÓBB = MiniMax M2.7 — ítélet/vezetés/heti tartalom. Fallback M3, vég-tartalék az ingyenes VÉSZHÁLÓ."
+    },
+    "ceo": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős, MiniMax-tiering). CSÚCS = MiniMax M3 — minőség/biztonság-kritikus (olvasó-látott írás / bíró / hitelesség / fő döntés). Fallback M2.7, majd PAID_POOL(M3), vég-tartalék az ingyenes VÉSZHÁLÓ (csak ha minden fizetős elhal).",
+      "routing": "paid-only"
+    },
+    "boss": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). ERŐS-OLCSÓBB = MiniMax M2.7 — ítélet/vezetés/heti tartalom. Fallback M3, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
+    },
+    "trend": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "openai/gpt-5.6-luna"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "anthropic/claude-haiku-5.5"
+      },
+      "enabled": true,
+      "routing": "paid-only",
+      "reasoning": "low",
+      "comment": "TREND-ELLENŐR (2026-10-20, user: „mérd meg mindet … még a trend-ellenőrre is!” → „oké csináld”): a felkapott keresések közül kiszűri, ami nem MI-téma (pl. „dow today”). Mérve: Luna low 20/20 ($0,0009/nap), off 19/20, Haiku 19/20. core/trend-kutato.js aiSzures."
+    },
+    "translator": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "openai/gpt-5.6-luna"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "comment": "MODELL-VÁLTÁS 2026-10-20 (user: „oké” a próba után): a fordító GPT-5.6 Luna (OpenRouter; reasoning-off elfogadva, élőben mérve). 20 trükkös mondaton (memoria/reports/Fordító-modell próba 2026-10-20.md): Luna ~1 apróság, MiniMax M3 ~10 hiba (pl. „szoyaszójam”, „hasügyeseket”, 50→20 számhiba). Ár: $0,20/$1,20 per M (az M3: $0,30/$1,20). Fallback: M3, vég-tartalék az ingyenes VÉSZHÁLÓ. Előtte (07-24): M3 reasoning-off.",
+      "routing": "paid-only",
+      "_routing_comment": "CSAK fizetős: a fordítást senki nem ellenőrzi utólag — a nem-angol oldalak minősége múlik rajta (user-döntés 2026-07-05)",
+      "reasoning": "off",
+      "_reasoning_comment": "2026-07-23: a fordítás MECHANIKUS — a belső gondolkodás csak időt (57 perces pipeline) és pénzt égetett. A/B: ugyanolyan jó fordítás 20% költséggel. 2026-07-24: reasoning-off CSAK M3-on lehetséges (a MiniMax többi modellje HTTP 400-at ad)."
+    },
+    "rss-scraper": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "schedule": "every 4 hours",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
+    },
+    "proofread": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "MAGYAR HELYESIRAS-BIRO (2026-08-20, user: 'ne forduljon elo tobbet ez a hiba'). A user egy elo oldalon vette eszre a 'tobbiunknek' alakot; ugyanabban a cikkben meg ket hiba volt. KETLEPCSOS: a hunspell (core/hu-dictionaries.js) INGYEN szukiti a 2325 szavas cikket ~4 jeloltre, ez a biro pedig CSAK azt a nehany szot latja a mondataval — par szaz token, ezert M2.5 is boven eleg. Amit egyszer megitelt, az a dontes-tarba kerul es tobbe nem kerul penzbe. HIBA ESETEN NINCS ITELET: inkabb atengedunk egy hibat, mint hogy egy jo forditast eldobjunk es ANGOL szoveg maradjon kint.",
+      "routing": "paid-only"
+    },
+    "cluster": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "HIR-OSSZEVONAS (2026-08-18, user: 'tobb hirbol egy cikk'). Gepies dontes: melyik fuggoben levo hirek szolnak ugyanarrol. Ezert M2.5, a legolcsobb mukodo fizetos tier. A bemenet csak cim + kivonat, par szaz token; napi ~1,3 csoportnyi forgalom. HIBA ESETEN NINCS CSOPORT: minden hir kulon cikk lesz, ahogy ma.",
+      "routing": "paid-only"
+    },
+    "iro": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "anthropic/claude-haiku-5.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "_model_comment": "MODELL-VÁLTÁS 2026-10-20 (user: „oké csináld” a mérés után): Claude Haiku 5.5 — 3 cikkes próbán (2 hír + 1 útmutató) az M3 minőségét hozta (9/9/8,5 vs 9/9/7), ~⅓ áron ($0,10/$0,50 per M), 2–3× gyorsabban, üres válasz nélkül. Tartalék: M3. memoria/reports/Modell-mérés minden feladatra 2026-10-20.md",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős, MiniMax-tiering). CSÚCS = MiniMax M3 — minőség/biztonság-kritikus (olvasó-látott írás / bíró / hitelesség / fő döntés). Fallback M2.7, majd PAID_POOL(M3), vég-tartalék az ingyenes VÉSZHÁLÓ (csak ha minden fizetős elhal).",
+      "routing": "paid-only"
+    },
+    "ellenorzo": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). ERŐS-OLCSÓBB = MiniMax M2.7 — ítélet/vezetés/heti tartalom. Fallback M3, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only",
+      "_routing_comment": "CSAK fizetős: minőség-kapu / főnök-agy — itt nem spórolunk (user-döntés 2026-07-05)"
+    },
+    "source-scout": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
+    },
+    "designer": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
+    },
+    "analyst": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": false,
+      "comment": "KOD TOROLVE 2026-08-30 (agents/ ala mar nem letezik). A bejegyzes SIRKO: a kivezetes tenyet es indokat orzi, semmit nem kapcsol ki — a mezot ugyanis SENKI nem olvassa. MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only",
+      "retired_2026_07_30": "KIVEZETVE: szerepét a core/source-report-card.js vette át (2026-07-22) — ugyanazt a sources/source-stats.json fájlt írja, csak jobban (3 jegy + auto-kikapcsolás). A kód a történetben marad."
+    },
+    "seo": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
+    },
+    "publisher": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
+    },
+    "guide": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "anthropic/claude-haiku-5.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "_model_comment": "MODELL-VÁLTÁS 2026-10-20 (user: „oké csináld” a mérés után): Claude Haiku 5.5 — 3 cikkes próbán (2 hír + 1 útmutató) az M3 minőségét hozta (9/9/8,5 vs 9/9/7), ~⅓ áron ($0,10/$0,50 per M), 2–3× gyorsabban, üres válasz nélkül. Tartalék: M3. memoria/reports/Modell-mérés minden feladatra 2026-10-20.md",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős, MiniMax-tiering). CSÚCS = MiniMax M3 — minőség/biztonság-kritikus (olvasó-látott írás / bíró / hitelesség / fő döntés). Fallback M2.7, majd PAID_POOL(M3), vég-tartalék az ingyenes VÉSZHÁLÓ (csak ha minden fizetős elhal).",
+      "routing": "paid-only"
+    },
+    "elakadas": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "anthropic/claude-haiku-5.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "comment": "„🔧 Ha elakadsz” doboz generátora (core/elakadas-gen.js, 2026-10-26): a guide agent modelljei (Haiku 5.5, tartalék M3) — 10-24 mérés: a szigorú kódos ellenőrzés (core/elakadas.js) a modell kimenetét szűri, ezért nem kell nagyobb modell. A doboz fordítását az elakadas-forditas agent végzi (lásd lent). Napi költség-plafon a kódban (NAPI_PLAFON $0,10).",
+      "routing": "paid-only"
+    },
+    "kitoltheto-regi": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "anthropic/claude-haiku-5.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "comment": "Régi promptok kitölthetővé tétele (core/kitoltheto-regi-gen.js, 2026-10-29): útmutatónként egy rövid hívás, ami megjelöli a személyre szabható példaszavakat; a kód-biztosíték (core/kitoltheto-regi.js) szűri a kimenetet. Napi költség-plafon a kódban (NAPI_PLAFON $0,05).",
+      "routing": "paid-only"
+    },
+    "elakadas-forditas": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "openai/gpt-5.6-luna"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "enabled": true,
+      "comment": "„🔧 Ha elakadsz” doboz FORDÍTÁSA (core/elakadas-gen.js, 2026-10-27, záró átnézés): a translator agent modelljei (Luna, tartalék M3), DE külön agent — az ai-router a translator „cikk-fordítási leckéit” (memory-manager lessonsBlock) a rendszer-promptba tenné, ami a szigorú JSON-kimenetet törhetné. Ha a translator modellje változik, ezt is igazítsd (core/elakadas-gen.test.js őrzi az egyezést).",
+      "routing": "paid-only",
+      "reasoning": "off"
+    },
+    "api-expert": {
+      "deterministic": true,
+      "enabled": false,
+      "comment": "KOD TOROLVE 2026-08-30 (agents/ ala mar nem letezik). A bejegyzes SIRKO: a kivezetes tenyet es indokat orzi, semmit nem kapcsol ki — a mezot ugyanis SENKI nem olvassa. MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "routing": "paid-only",
+      "retired_2026_07_30": "KIVEZETVE: modellt választott volna az agenteknek, de a user 2026-07-24-én KÉZZEL döntött a MiniMax-tiering felállásról. Emberi döntést gép nem írhat felül. A kód a történetben marad."
+    },
+    "social": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "type": "custom",
+      "name": "Social Media",
+      "icon": "📱",
+      "role": "Writes short social posts from articles",
+      "instructions": "You write ONE short, friendly social media post (max 280 chars) about the given AI article for everyday readers. No hashtags spam, max 2 relevant hashtags. US English.",
+      "routing": "paid-only",
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ."
+    },
+    "fact-check": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only",
+      "wired_2026_07_30": "BEKÖTVE. 2026-06-22 óta készen állt, de semmi nem hívta — pedig valódi lyukat fed le: a hitelesség-kapu CSAK publikálás előtt ellenőriz, a kint lévő útmutatókat senki nem nézte újra. Bekötés előtt át kellett építeni: az eredeti terv TÖRÖLTE a publikált cikket (404). Most helyben javít, és levételnél csak megjelöl."
+    },
+    "pairing": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
+    },
+    "digest": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
+    },
+    "compare": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
+    },
+    "video": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.5"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": false,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
+      "routing": "paid-only"
+    },
+    "truth": {
+      "primary_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m3"
+      },
+      "fallback_model": {
+        "provider": "openrouter",
+        "model": "minimax/minimax-m2.7"
+      },
+      "enabled": true,
+      "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős, MiniMax-tiering). CSÚCS = MiniMax M3 — minőség/biztonság-kritikus (olvasó-látott írás / bíró / hitelesség / fő döntés). Fallback M2.7, majd PAID_POOL(M3), vég-tartalék az ingyenes VÉSZHÁLÓ (csak ha minden fizetős elhal).",
+      "routing": "paid-only",
+      "_routing_comment": "CSAK fizetős: ez az utolsó kapu a olvasó előtt — itt nem spórolunk"
+    }
+  },
+  "providers": {
+    "anthropic": {
+      "enabled": true,
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "models_available": [
+        "claude-haiku-4-5",
+        "claude-sonnet-4-6",
+        "claude-opus-4-8"
+      ],
+      "pricing_note": "Csak fizetős. Min. $5 betöltés szükséges."
+    },
+    "google": {
+      "enabled": true,
+      "api_key_env": "GOOGLE_API_KEY",
+      "models_available": [
+        "gemini-2.5-flash",
+        "gemini-2.5-pro",
+        "imagen-3"
+      ],
+      "free_tier": "Flash: 1500/nap | Pro: 50/nap | Imagen: 50/nap",
+      "pricing_note": "INGYEN. Bankkártya nem kell."
+    },
+    "groq": {
+      "enabled": true,
+      "api_key_env": "GROQ_API_KEY",
+      "models_available": [
+        "openai/gpt-oss-120b"
+      ],
+      "free_tier": "~30 req/min, napi limit",
+      "pricing_note": "INGYEN. 2026-10-02: a llama-3.3-70b-versatile MEGSZŰNT (404); a vész-háló az openai/gpt-oss-120b (core/ai-router.js FREE_TIER_POOL)."
+    },
+    "cerebras": {
+      "enabled": true,
+      "api_key_env": "CEREBRAS_API_KEY",
+      "models_available": [
+        "gpt-oss-120b"
+      ],
+      "free_tier": "2026-10-02: NEM ingyenes többé — a gpt-oss-120b 402-t ad (fizetést kér), a zai-glm-4.7 archiválva. NEM használjuk.",
+      "pricing_note": "Kivéve a vész-hálóból 2026-10-02 (core/ai-router.js)."
+    },
+    "mistral": {
+      "enabled": true,
+      "api_key_env": "MISTRAL_API_KEY",
+      "models_available": [
+        "mistral-small-latest",
+        "mistral-large-latest"
+      ],
+      "get_key": "https://console.mistral.ai (ingyenes tier, EU adatvédelem)",
+      "comment": "BEKÖTVE (ingyen). Redundancia + EU. Tesztelve: small + large OK."
+    },
+    "openrouter": {
+      "enabled": true,
+      "api_key_env": "OPENROUTER_API_KEY",
+      "get_key": "https://openrouter.ai/keys (sok modell, pár ingyen :free)",
+      "comment": "BEKÖTVE (freemium). Meta-fallback 300+ modellhez egy kulccsal."
+    },
+    "perplexity": {
+      "enabled": false,
+      "api_key_env": "PERPLEXITY_API_KEY",
+      "models_available": [
+        "sonar",
+        "sonar-pro"
+      ],
+      "get_key": "https://www.perplexity.ai/settings/api (korlátozott ingyenes kredit)",
+      "comment": "JAVASOLT webes KUTATÁSHOZ forrásmegjelöléssel — erre nincs más gyártónk."
+    },
+    "deepseek": {
+      "enabled": false,
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "models_available": [
+        "deepseek-chat",
+        "deepseek-reasoner"
+      ],
+      "get_key": "https://platform.deepseek.com (nagyon olcsó)",
+      "comment": "NINCS bekötve. NINCS ingyenes tier (HTTP 402 egyenleg nélkül) — csak fizetős feltöltéssel működne, ezért a free-first elv miatt kihagyjuk."
+    }
+  },
+  "infrastructure": {
+    "deploy": {
+      "method": "none",
+      "_comment": "none = csak helyi build (meg nincs eles tarhely). Kesobb: cloudflare | github-pages | ftp",
+      "target_dir": "website/public"
+    },
+    "hosting": {
+      "platform": "cloudflare-pages",
+      "url": "https://pages.cloudflare.com",
+      "cost": "0 (ingyenes, korlátlan)"
+    },
+    "database": {
+      "platform": "supabase",
+      "url": "https://supabase.com",
+      "cost": "0 (500MB Postgres + auth + storage ingyen)"
+    },
+    "images": {
+      "platform": "cloudinary",
+      "url": "https://cloudinary.com",
+      "cost": "0 (25GB tárhely + 25GB sávszél/hó)"
+    },
+    "analytics": {
+      "platforms": [
+        "google-analytics-4",
+        "cloudflare-web-analytics"
+      ],
+      "cost": "0 (mindkettő ingyenes)"
+    },
+    "monitoring": {
+      "platform": "uptimerobot",
+      "cost": "0 (50 monitor ingyen)"
+    },
+    "automation": {
+      "platform": "github-actions",
+      "cost": "0 (2000 perc/hó ingyen)",
+      "fallback": "Saját PC + Windows Task Scheduler"
+    },
+    "domain": {
+      "tld": ".com",
+      "cost": "~$10-15/év",
+      "registrar_options": [
+        "namecheap",
+        "cloudflare-registrar (legolcsóbb)"
+      ]
+    }
+  },
+  "customer_service": {
+    "_comment": "Automata ügyfélszolgálat (ÉLES 2026-07-20). enabled=true → a build kiteszi a chat-dobozt/űrlapot. A worker-oldali kill-switch KÜLÖN van: telegram-worker/wrangler.toml [vars] CS_ENABLED (vészleállításnál MINDKETTŐT false-ra). turnstile_site_key PUBLIKUS by design (a secret párja CSAK wrangler secret!).",
+    "enabled": true,
+    "worker_base": "https://api.aiworldhq.com",
+    "turnstile_site_key": "0x4AAAAAAD5-0_stUu2LQwDO"
+  },
+  "limits": {
+    "daily_articles_max": 4,
+    "_daily_articles_comment_2026_09_08": "8 -> 4 (USER-DÖNTÉS 2026-09-08): a keresők leminősítettek. A Bing 08-21-én napi 38-76 megjelenésről PONTOSAN nullára esett és ott is maradt, MIKÖZBEN az indexe 785-ről 1415-re nőtt — vagyis indexel, de nem szolgál ki. Négy oldal, amit a Bing maga hozott a 4-8. helyen, ma egyik sem jön vissza a SAJÁT szó szerinti mondatára (a kontroll-keresés viszont működik). A Google ugyanezt lassabban: 2067 'feltérképezve - nincs indexelve', NÖVEKVŐ. A technikai réteg tiszta (robots/canonical/hreflang/200/nincs cloaking) - a valószínű ok a tömeges gépi tartalom 3 bejövő linken: napi 10,2 új cikk x 3 nyelv = ~30 új URL/nap, összesen 2808 beküldve. A visszavétel BIZTONSÁGOS: a selectSocialBatch() 3-4. lépése a 424 örökzöld útmutatóval tölti fel a maradék posztkeretet (core/daily-cap.test.js méri), és 08-04-én kimértük, hogy TÖBB POSZT != TÖBB LÁTOGATÓ (korreláció 0,30). Őrzi: core/daily-cap.test.js.",
+    "_daily_articles_comment": "A HIR napi kerete. 2026-07-22 (user-dontes: \"kevesebb cikk de minosegiek\"): 25 -> 8. Ok: 30 nap alatt 460 oldalletoltes jutott napi 25 cikkre - a mennyiseg messze meghaladta a keresletet, es a koltseg 2/3-a a forditasra ment. Kevesebb, de gondosabb cikk a keresoknek is jobb. Az atmeno-kuszob ezzel egyutt 7-rol 8-ra emelve (agents/ellenorzo MIN_PASSING_SCORE).",
+    "daily_articles_min": 0,
+    "news_keep_days": 90,
+    "_news_keep_days_comment": "HÍR-MEGŐRZÉS (user-döntés 2026-08-02): a hírt 3 hónapig tároljuk, utána a házmester törli (cikk + fordítás + borítókép + közösségi poszt). AZ ÚTMUTATÓRA ÉS AZ ÖSSZEHASONLÍTÁSRA NEM VONATKOZIK — azok örökzöldek, soha nem törlődnek. A heti összefoglaló LEJÁR (dátumos tartalom). Ok: a hír romlandó, egy fél éves 'új funkció' cikk gyakran már nem igaz; napi ~11 hírrel a 90 napos ablak ~1000 cikkes állandósult állapotot jelent, enélkül a tár örökké nő. Biztosíték: dátum nélküli cikket sosem törlünk, és egy futásban legfeljebb 200-at (dátumhiba ellen).",
+    "daily_guides_max": 2,
+    "_daily_guides_comment_2026_09_08": "4 -> 2 (USER-DÖNTÉS 2026-09-08, ugyanaz az ok, mint a daily_articles_max-nál). A két keret EGYÜTT mozog: napi 6 új oldal a korábbi 12-es plafon helyett, három nyelven ~18 új URL/nap a ~30 helyett. Az útmutató örökzöld, ezért arányaiban továbbra is többet hagyunk belőle. NE emeld vissza a keresők állapotának újramérése nélkül.",
+    "_daily_guides_comment": "Az UTMUTATO napi kerete: 6 -> 4 (2026-07-22). Az utmutato orokzold tartalom, ezert aranyaiban tobbet hagyunk belole, mint a hirbol.",
+    "guide_topic_buffer_target": 16,
+    "_guide_topic_buffer_comment": "A KÉSZENLÉTI téma-puffer célja (2026-07-18): a ceo-pipeline eddig csak az aznapi slotokra töltött fel témát, ezért a sor néha kiürült (júl. 15: csak 4 guide a 6 helyett). Most legalább ennyi 'todo' témát tartunk készenlétben, hogy a napi keret (daily_guides_max) TÉNYLEGESEN, folyamatosan teljesüljön — a napi TEMPÓ NEM nő, csak a folytonosság. A közeli-téma-őr (core/topic-dedup.js) gondoskodik róla, hogy ezek friss, nem ismételt témák legyenek.",
+    "guides_per_company_target": 4,
+    "_guides_per_company_comment": "ARÁNYOSSÁG: minden követett céghez legalább ennyi útmutatóra törekszünk, hogy ne tűnjön egyik cég fontosabbnak a másiknál. A balance mód a lemaradó cégeket hozza fel (deficit sorrendben), de a general útmutatók is folyamatosan íródnak (2:1 interleave).",
+    "weekly_deep_articles": 1,
+    "daily_api_cost_usd_max": 3,
+    "monthly_budget_usd_target": 30,
+    "_hard_cap_comment": "AZ ALAPÉRTÉK — az érvényes keretet a `monthly_budget_usd_hard_cap_by_month` adja, ez csak akkor lép életbe, ha ott nincs már hatályos bejegyzés. TÖRTÉNET: 40→45 (07-21) → 50 (07-22, user-döntés: TELJES TEMPÓ aug. 1-ig, mert a MiniMax-váltás feleződést hozott, de a hó eleji drága napok miatt ~4 nap hiányzott). 2026-09-05: 50 → 25. MIÉRT: a csupasz 50 CSAPDA volt. A cég ma 25-nél áll le (a by_month 2026-08-as bejegyzése miatt), de ha valaki valaha kitakarítja onnan az elavult hónap-kulcsokat, ez az alapérték lép be — és a keret NÉMÁN a kétszeresére ugrik, pont ott, ahol pénz fogy. Most a két érték UGYANAZT mondja, tehát a blokk törlése nem változtat semmin. A user kemény kerete: napi $1 + havi $25. Őrszem: core/budget.test.js.",
+    "monthly_budget_usd_hard_cap": 25,
+    "_paid_strategy_comment": "ELV: a fizetős kulcsot (pl. Gemini paid) HASZNÁLJUK, amíg bírja; amikor eléri a saját rate/kvóta limitjét (429), a router AUTOMATIKUSAN a következő kulcsra vált (free pool: Cerebras/Groq/Mistral). A core/budget.js KÖVETI a költést (látható a 'mennyi a keret?' paranccsal). KÉT keret véd, más-más ellen: a NAPI egy elszabaduló nap ellen, a HAVI a hónap végi számla ellen.",
+    "daily_budget_usd_hard_cap": 1,
+    "_daily_cap_comment": "2026-08-01 (user-döntés): 'legyen egy napi korlát ami 1 dollár, ez sokba kerül ezek a javítások így'. ELŐZMÉNY: 07-31-én a napi költés $0,60-ról $2,51-re ugrott, mert egy tömeges cikkjavítás 136 cikk fordítás-gyorsítótárát törölte -> 544 ujrafordítás; a havi keret ezt nem fogta meg ($2,51 belefér $40-ba, csak epp EGY NAP alatt viszi a havi keret 6%-át). A KORÁBBI elv ('nincs napi plafon') ezzel felülírva. Elérésekor a fizetős agentek SZÜNETELNEK (nem esnek gyenge ingyenes modellre), a munka másnap folytatódik; a napi számláló éjfélkor (UTC) magától nullázódik, nincs mit visszakapcsolni. Meret: a rendes napi költés $0,40-0,66, tehát ~50% fejtér. $1 x 31 = $31, ami a $30-as havi CÉL körül van.",
+    "_comment": "Ha eléri a hard_cap-et, az agentek leállnak és felhasználói jóváhagyás kell.",
+    "social_daily_caps": {
+      "tiktok": 6,
+      "_tiktok_2026_10_15": "USER-DÖNTÉS ('minden közösségi médiában ugyanazok jelenjenek meg'): 3 → 6 = a napi 3 videó + legfeljebb 3 FOTÓ-poszt (a Facebookra kiment friss cikk 4:5 képe; core/tiktok-foto.js). A Threads ugyanezt a videót videó-posztként kapja (nincs rá plafon). Buffer-keret, NEM Make. A fotó NEM kap isAiGenerated-et (a TikTok elutasítja) — az MI-jelölés a caption-ben van.",
+      "_tiktok_2026_10_11": "USER-DÖNTÉS ('ha belefér a keretbe mehet több video is a tiktokra is!'): 2 → 3. A 3. a napi csak-TikTok videó egy friss, videó nélkül maradt útmutatóból (core/reel-queue.js tiktokExtra). Buffer-keret, NEM Make — a Make 1000-es havi keretét nem érinti. Vasárnap 2 (reklám + 1 útmutató-Reel; a reklám nem megy TikTokra).",
+      "_tiktok_2026_10_07": "USER-DÖNTÉS ('csináljuk egy tiktokot'): a napi 2 Facebook-Reel videója megy ki TikTokra is (Bufferen át, csak videó, link in bio). [ELAVULT: 4 hetes próba, <10 látogató → leállítás.] ✅ 2026-10-11 USER-DÖNTÉS: a TikTok VÉGLEG MARAD ('nagyon felkapottak a posztjaink, valamelyik 900 felett jár! megtartjuk, ha másnak nem, reklámnak jó lesz') — a látogatószám nem mérce, mert 1000 követő alatt nincs kattintható link. Az Instagram 10-05-én leállítva, 10-07-én a kódból is kivezetve (user: 'az istát töröljük')."
+    },
+    "_social_daily_caps_comment": "CSATORNÁNKÉNTI NAPI POSZT-PLAFON (2026-08-24, user-döntés). MIÉRT KELL: a --limit FUTÁSONKÉNT számol, a CI viszont naponta háromszor fut, tehát a '--limit 2' napi 6 posztot jelentett csatornánként. Napi plafonhoz ez alkalmatlan. MIÉRT AZ INSTAGRAM: 11 napra mérve (Cloudflare RUM, refererHost) a Facebook 435 belépőt hozott, a Threads 1-et, az Instagram 0-t -- miközben napi 6 posztot kapott. A visszafogás mellett szólt az is, hogy egy alig induló fiók magas ütemű, azonos sablonú automata posztolása a platformoknak gépi mintázat. NEM KIVEZETÉS: a profil 'Weboldal' mezője eddig nem volt beállítva, e nélkül pedig az Instagram-posztból nem is vezet út az oldalra (a feed-poszt szövegében a link nem kattintható) -- tehát a 0 nem tiszta mérés. A user beállítja a bio-linket, mi napi 1-re veszünk, és KÉT HÉT MÚLVA (2026-09-07 körül) újramérünk ugyanazzal a lekérdezéssel. Ha akkor is 0, kivezetjük, mint a Pinterestet. A LEÁLLÍTÁS MÓDJA: ide 0-t írni -- az valódi plafon, nem kell hozzá kódot módosítani. Akinek nincs bejegyzése (threads, x), az plafon nélkül megy tovább. Kód: core/channel-cap.js.",
+    "general_guides_min_share": 0.4,
+    "_general_guides_comment": "Az UJ guide-temak mekkora hanyada legyen garantaltan CEGMENTES (Hetkoznapi AI keszsegek). 2026-07-22 (user: itt kene meg utmutato, ami le van maradva): a ceg-lefedettseg ELOSZOR futott es elvitte a teljes keretet, az altalanos otletelés a maradekot kapta - meres: 181 eszkoz-utmutato vs 29 hetkoznapi, az utolso heten 55 vs 2. 0.4 = a keret 40%-a eleve cegmentes.",
+    "monthly_budget_usd_hard_cap_by_month": {
+      "2026-08": 25
+    },
+    "_by_month_comment": "IDŐZÍTETT VÁLTÁS (2026-07-30): a hard cap a FUTÓ hónap költésével számol, ezért a tervezett júl.50→aug.40 csökkentést nem lehetett előre beírni — július 1,91-nél tartott, azonnal leállt volna a cég. Ez a mező hónapra bontva adja meg a keretet: a legkésőbbi MÁR ÉLETBE LÉPETT bejegyzés érvényes, és onnantól MINDEN későbbi hónapra az marad, amíg nincs újabb — tehát a 2026-08-as $25 szeptemberben és utána is ez. (A komment korábban 40-et írt, miközben a beírt érték 25 — javítva 2026-09-05.) ⚠️ EZT A BLOKKOT NE ÜRÍTSD KI abban a hitben, hogy 'elavult hónap': akkor a csupasz `monthly_budget_usd_hard_cap` lép életbe. Az szándékosan szintén 25, hogy a törlés ne duplázza meg némán a keretet."
+  },
+  "fallback_strategy": {
+    "rule_1": "Ha primary provider rate limit -> automatikusan fallback model",
+    "rule_2": "Ha mindkettő failel -> Telegram értesítés felhasználónak",
+    "rule_3": "Naponta egyszer költség report generálódik logs/-ba"
+  },
+  "cost_estimation_monthly_usd": {
+    "claude_haiku_ceo": "5-10 (orkesztrálás)",
+    "claude_sonnet_iro": "20-35 (cikkírás)",
+    "gemini_free_tier": "0 (scraper + ellenőrző + képek)",
+    "groq_free": "0 (Telegram, gyors válaszok)",
+    "hosting_supabase_cloudinary": "0",
+    "domain_yearly_divided": "~1",
+    "TOTAL_ESTIMATED": "$25-45/hó",
+    "WITHIN_BUDGET": "✅ (cél: $30, hard cap: $40 — user-döntés 2026-07-11)"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "how-to-decode-a-confusing-medical-bill-with-ai",
+  "keszult": "2026-11-01T20:03:33.185Z",
+  "promptok": {
+    "6314665c056b": [
+      {
+        "eredeti": "bill-jan2026.pdf",
+        "hely": "your file name"
+      }
+    ],
+    "16b82f4ffd00": [],
+    "5fb954cd8686": [
+      {
+        "eredeti": "a clinic visit",
+        "hely": "your visit type"
+      }
+    ],
+    "e15ad8cb7e3c": [
+      {
+        "eredeti": "CPT 99213",
+        "hely": "your billing code"
+      },
+      {
+        "eredeti": "$84.20",
+        "hely": "your allowed amount"
+      }
+    ],
+    "6dca1b963964": [
+      {
+        "eredeti": "$342.10",
+        "hely": "your hand total"
+      },
+      {
+        "eredeti": "$298.50",
+        "hely": "previous total"
+      }
+    ]
+  }
+}

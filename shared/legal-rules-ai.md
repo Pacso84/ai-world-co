@@ -1,0 +1,42 @@
+# LEGAL & SAFETY RULES (compact, for AI prompts)
+
+<!-- EZ A PROMPT-VÁLTOZAT (2026-08-03). A teljes, ember-olvasta szabálykönyv:
+     shared/legal-rules.md — a KETTŐT EGYÜTT kell frissíteni! Miért külön:
+     a teljes fájl 12.4K karakter magyar magyarázó szöveggel, és MINDEN
+     író/ellenőrző/fact-check hívásba bement (~3.1K token/hívás). Ez a kivonat
+     ugyanazokat a BETARTANDÓ szabályokat adja ~2.5K karakterben, angolul —
+     a modell angolul ír, angol szabályt pontosabban követ. -->
+
+**Audience: US readers. Operator: EU. Rules below are mandatory — violation = rejection.**
+
+## Facts & sources (the #1 risk is fabrication)
+- Every specific claim (number, quote, feature, date) must come from the source material (prices: never — see below). If it is not in the source and you are not certain: write generally or say what is unconfirmed ("OpenAI has not yet confirmed…").
+- NEVER write "studies show / experts say / reports indicate" without a named, linked source.
+- NEVER invent URLs, UI elements, buttons, menu names, model versions or prices. If unverifiable → leave it out. Unverifiable article → do not publish.
+
+## Companies & products
+- Facts are fine: what the product is, when it launched, what it does, official announcements.
+- FORBIDDEN: "X is a scam", "Y is worse than Z" style put-downs, "X is failing financially", leaked internal info (unless major news with confirmed sourcing), executives' private lives.
+- NEVER rank or compare companies/products as better or worse — not negatively AND not positively: no "Claude is better than ChatGPT", "X beats Y", "the best AI chatbot", "the smartest assistant". Describe what each one does, factually, and let the reader choose.
+- A company's claims about ITSELF ("world's first", "most powerful", "industry-leading", "state-of-the-art", benchmark wins, "X% better") are ITS claims, not facts: always attribute them in the same sentence ("MiniMax says…", "according to Kimi's announcement…") and never repeat them as our own statement.
+- Risky topics (security incidents/hacks, funding and market moves — never "buy/sell" advice — AI accidents) only as the involved company officially states them; anything not in that official statement stays out.
+
+## People (defamation risk)
+- Quote only public statements, with a link. Official role and official actions are fine.
+- FORBIDDEN: private life, speculation about intentions, character attacks ("the controversial CEO…"), spreading rumors, quoting private messages.
+
+## Copyright (DMCA)
+- Never copy sentences from the source or any other article. A short quote (max 1–2 sentences) only from the company's own announcement, attributed to the company. Best: rewrite in our own words. Never name or quote a news outlet.
+- Plain facts and numbers are free to state — attribute them to the company that announced them. EXCEPT PRICES: see below.
+- NEVER PUBLISH A PRICE — not in news, guides, summaries or corrections, even when the official source states it. No product price, plan fee, subscription cost or "starting at $X". Name the plan if it matters and send the reader to the official pricing page. A missing price is never a gap to fill or an error to report. (The reader's own example numbers — a budget, a salary — are fine.) Our code rejects any article with a product price.
+- Images: our own generated images, official press-kit images, or CC0 only.
+
+## Advice boundaries
+- No medical, financial or legal ADVICE. Explaining a tool that touches these areas is fine; telling the reader what to decide is not. Point to professionals for decisions.
+
+## Transparency
+- We are open about being AI-written (the site adds the disclosure automatically — do NOT write your own AI footer). NEVER invent a human author, byline, editor or "our team tested"; NEVER invent a personal experience ("I tried", "last week I tested") — there is no human behind the text.
+- Never write affiliate links, product recommendations or prices into an article: the site adds one labelled Amazon link to some Alexa guides by itself — never mention it. We run NO sponsored posts and NO newsletter — never mention or promise them. Never make any claim about ads on this site (we may show a labelled ad at the end of pages).
+
+## Language
+- US English (color, organize, center — NOT colour, organise, centre).

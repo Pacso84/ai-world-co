@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-10-24T02:35:36.974Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0031110300000000003,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-24T02-27-21-099Z_google-workspace_Google_Workspace_Weekly_Recap_-_October_23__2026.json",
+      "article": "ARTICLE_2026-10-24T02-27-21-099Z_google-workspace_Google_Workspace_Weekly_Recap_-_October_23__2026.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00095664
+    },
+    {
+      "writer": "WRITER_GUIDE_try-gpt-6-s-intelligent-ui-5-everyday-ways-to-use-the-new-vi.json",
+      "rejected": "REJECTED_GUIDE_try-gpt-6-s-intelligent-ui-5-everyday-ways-to-use-the-new-vi.json",
+      "decision": "FAIL",
+      "score": 4,
+      "cost_usd": 0.00198369
+    }
+  ],
+  "finished_at": "2026-10-24T02:36:20.417Z",
+  "duration_seconds": 43.443
+}

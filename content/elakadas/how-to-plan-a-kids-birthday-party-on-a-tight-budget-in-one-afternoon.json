@@ -1,0 +1,71 @@
+{
+  "slug": "how-to-plan-a-kids-birthday-party-on-a-tight-budget-in-one-afternoon",
+  "probalva": "2026-10-30T03:49:59.675Z",
+  "doboz": {
+    "keszult": "2026-10-30T03:49:59.675Z",
+    "enHash": "c83c2ddf14f573af998ded499a5657d98b528438",
+    "forrasok": {
+      "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search": "Shopping with ChatGPT Search"
+    },
+    "en": [
+      {
+        "symptom": "The price shown for an item is not the lowest one I can find.",
+        "why": "Prices shown in ChatGPT's initial response typically reflect the price from the first merchant listed, which may not be the lowest available price. When merchants update their pricing, there may be some delay before it is reflected in the information you see.",
+        "fix": "In ChatGPT: After selecting a product, check the additional options from other merchants, since they may be at the same or different prices. Look for the \"Best price\" label when more than one merchant offers the product.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "The results ignore the budget I mentioned.",
+        "why": "If you specify a budget, ChatGPT will focus more on price, whereas if price isn't mentioned, it may focus on other aspects instead. Include your budget, preferences, and any requirements when you ask it to compare products.",
+        "fix": "In ChatGPT: Ask it to compare the products and include your budget, preferences, and any requirements in the same message. If the results don't match what you need, ask it to adjust them.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "Some items I need never appear in the results.",
+        "why": "Not all available products will necessarily be shown. Since the model interprets user intent, it can occasionally make mistakes.",
+        "fix": "In ChatGPT: If something looks off, clarify your preferences and ask it to adjust the results. Ask it to suggest alternatives when the results don't match what you need.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Egy terméknél feltüntetett ár nem a legalacsonyabb, amit találni tudok.",
+        "why": "A ChatGPT kezdeti válaszában feltüntetett árak jellemzően az elsőként felsorolt kereskedő árát tükrözik, ami nem feltétlenül a rendelkezésre álló legalacsonyabb ár. Amikor a kereskedők frissítik az áraikat, előfordulhat némi késés, mire ez megjelenik az általad látott információkban.",
+        "fix": "A ChatGPT-ben: Miután kiválasztottál egy terméket, ellenőrizd a többi kereskedő további lehetőségeit is, mivel ugyanazon az áron vagy eltérő árakon kínálhatják. Ha egynél több kereskedő kínálja a terméket, keresd a „Best price” címkét.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "A találatok figyelmen kívül hagyják az általam megadott költségkeretet.",
+        "why": "Ha megadsz egy költségkeretet, a ChatGPT nagyobb hangsúlyt helyez az árra, míg ha nem említesz árat, előfordulhat, hogy inkább más szempontokra összpontosít. Amikor arra kéred, hogy hasonlítsa össze a termékeket, add meg a költségkeretedet, a preferenciáidat és az esetleges követelményeidet.",
+        "fix": "A ChatGPT-ben: Kérd meg, hogy hasonlítsa össze a termékeket, és ugyanabban az üzenetben add meg a költségkeretedet, a preferenciáidat és az esetleges követelményeidet. Ha a találatok nem felelnek meg annak, amire szükséged van, kérd meg, hogy módosítsa őket.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "A szükséges termékek közül néhány soha nem jelenik meg a találatok között.",
+        "why": "Nem feltétlenül jelenik meg az összes elérhető termék. Mivel a modell értelmezi a felhasználó szándékát, időnként hibázhat.",
+        "fix": "A ChatGPT-ben: Ha valami nem tűnik megfelelőnek, pontosítsd a preferenciáidat, és kérd meg, hogy módosítsa a találatokat. Kérd meg, hogy javasoljon alternatívákat, ha a találatok nem felelnek meg annak, amire szükséged van.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "El precio mostrado de un artículo no es el más bajo que puedo encontrar.",
+        "why": "Los precios que se muestran en la respuesta inicial de ChatGPT normalmente reflejan el precio del primer vendedor que aparece en la lista, que puede no ser el precio disponible más bajo. Cuando los vendedores actualizan sus precios, puede haber cierto retraso antes de que se refleje en la información que ves.",
+        "fix": "En ChatGPT: Después de seleccionar un producto, comprueba las opciones adicionales de otros vendedores, ya que pueden tener el mismo precio o uno diferente. Busca la etiqueta \"Best price\" cuando más de un vendedor ofrezca el producto.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "Los resultados ignoran el presupuesto que mencioné.",
+        "why": "Si especificas un presupuesto, ChatGPT se centrará más en el precio, mientras que, si no mencionas el precio, puede centrarse en otros aspectos. Incluye tu presupuesto, tus preferencias y cualquier requisito cuando le pidas que compare productos.",
+        "fix": "En ChatGPT: Pídele que compare los productos e incluye tu presupuesto, tus preferencias y cualquier requisito en el mismo mensaje. Si los resultados no coinciden con lo que necesitas, pídele que los ajuste.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "Algunos artículos que necesito nunca aparecen en los resultados.",
+        "why": "No necesariamente se mostrarán todos los productos disponibles. Como el modelo interpreta la intención del usuario, ocasionalmente puede cometer errores.",
+        "fix": "En ChatGPT: Si algo parece extraño, aclara tus preferencias y pídele que ajuste los resultados. Pídele que sugiera alternativas cuando los resultados no coincidan con lo que necesitas.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+# LÉPÉS-IKON GENERÁLÁS (2026-10-24) — CSAK KÉZI INDÍTÁS, a napi gépsort NEM futtatja.
+# Cloudflare Workers AI Flux (ingyenes napi keret). A képek artifactként tölthetők le; a repóba
+# csak a kézzel kiválasztott, 640×480-ra vágott kép kerül (website/assets/art/).
+name: Lépés-ikon generálás
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  ikonok:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Ikonok generálása
+        env:
+          CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node core/ikon-generalas.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ikonok
+          path: ikonok/
+          retention-days: 3

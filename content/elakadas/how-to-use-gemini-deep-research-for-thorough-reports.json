@@ -1,0 +1,89 @@
+{
+  "slug": "how-to-use-gemini-deep-research-for-thorough-reports",
+  "probalva": "2026-10-31T19:43:34.517Z",
+  "doboz": {
+    "keszult": "2026-10-31T19:43:34.517Z",
+    "enHash": "81f68d1bbc7b8a57be0a9a29c30653b1c5658e6c",
+    "forrasok": {
+      "https://support.google.com/gemini/answer/15719111": "Use Deep Research in Gemini Apps - Computer"
+    },
+    "en": [
+      {
+        "symptom": "Why does my research report include web results when I only wanted my own files?",
+        "why": "By default, Gemini includes Google Search as a source for your research. Other Google services, like Gmail and Drive, are only available if the Google Workspace app is connected to Gemini Apps.",
+        "fix": "To limit your research to other selected sources, deselect Google Search. Click Sources and select the sources you want, such as Gmail or Drive. Connect the Google Workspace app to Gemini Apps first if you want Gmail and Drive available.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "My Deep Research report has no charts or diagrams, even though I have a Google AI Ultra plan.",
+        "why": "For now, this feature isn't available if you include any Google Workspace services, like Gmail and Drive, as a source. Visuals are included directly in the report and can include charts, diagrams, and interactive simulators.",
+        "fix": "Visuals with a Google AI Ultra plan are not available for now when Gmail or Drive is included as a source. Reports without those sources can include animations and visuals.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "I can't find my past research reports in Gemini.",
+        "why": "You can only find past research reports if your Keep Activity setting is on.",
+        "fix": "Make sure your Keep Activity setting is on. Go to gemini.google.com and, if your chats are hidden, click Menu at the top. Under Recent, find your research chat.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "My research report is taking a long time to appear. Is that normal?",
+        "why": "It usually takes about 5-10 minutes to generate the report since Gemini analyzes many sources. For more complex reports, it may take longer.",
+        "fix": "While you wait for the report, you can leave the chat. When it's ready, Gemini notifies you next to the chat thread with your completed report in the web app.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Miért tartalmaz a kutatási jelentésem webes találatokat, amikor csak a saját fájljaimat szerettem volna használni?",
+        "why": "A Gemini alapértelmezés szerint a Google Keresést is forrásként használja a kutatáshoz. Más Google-szolgáltatások, például a Gmail és a Drive, csak akkor érhetők el, ha a Google Workspace alkalmazás csatlakozik a Gemini Appshez.",
+        "fix": "Ha a kutatásodat más kiválasztott forrásokra szeretnéd korlátozni, szüntesd meg a Google Keresés kijelölését. Kattints a Sources lehetőségre, és válaszd ki a kívánt forrásokat, például a Gmailt vagy a Drive-ot. Először csatlakoztasd a Google Workspace alkalmazást a Gemini Appshoz, ha azt szeretnéd, hogy a Gmail és a Drive elérhető legyen.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "A Deep Research jelentésemben nincsenek diagramok vagy ábrák, pedig Google AI Ultra csomagom van.",
+        "why": "Ez a funkció jelenleg nem érhető el, ha bármely Google Workspace-szolgáltatást, például a Gmailt vagy a Drive-ot forrásként adod meg. A vizuális elemek közvetlenül a jelentésben jelennek meg, és tartalmazhatnak diagramokat, ábrákat és interaktív szimulátorokat.",
+        "fix": "Google AI Ultra csomaggal a vizuális elemek jelenleg nem érhetők el, ha a Gmail vagy a Drive forrásként szerepel. Az ezeket a forrásokat nem tartalmazó jelentések animációkat és vizuális elemeket is tartalmazhatnak.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "Nem találom a korábbi kutatási jelentéseimet a Geminiben.",
+        "why": "Korábbi kutatási jelentéseidet csak akkor találod meg, ha a Keep Activity beállítás be van kapcsolva.",
+        "fix": "Győződj meg róla, hogy a Keep Activity beállítás be van kapcsolva. Nyisd meg a gemini.google.com oldalt, és ha a csevegéseid rejtve vannak, kattints felül a Menu lehetőségre. A Recent részben keresd meg a kutatási csevegésedet.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "Sokáig tart, mire megjelenik a kutatási jelentésem. Ez normális?",
+        "why": "A jelentés létrehozása általában körülbelül 5-10 percet vesz igénybe, mivel a Gemini számos forrást elemez. Összetettebb jelentések esetén ez tovább tarthat.",
+        "fix": "Amíg a jelentésre vársz, elhagyhatod a csevegést. Amikor elkészül, a Gemini értesít a csevegésszál mellett, és a webes alkalmazásban megjelenik a kész jelentésed.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "¿Por qué mi informe de investigación incluye resultados de la Web si solo quería mis propios archivos?",
+        "why": "De forma predeterminada, Gemini incluye Google Search como fuente para tu investigación. Otros servicios de Google, como Gmail y Drive, solo están disponibles si la aplicación Google Workspace está conectada a Gemini Apps.",
+        "fix": "Para limitar tu investigación a otras fuentes seleccionadas, deselecciona Google Search. Haz clic en Sources y selecciona las fuentes que quieras, como Gmail o Drive. Conecta primero la aplicación Google Workspace a Gemini Apps si quieres que Gmail y Drive estén disponibles.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "Mi informe de Deep Research no tiene gráficos ni diagramas, aunque tengo un plan Google AI Ultra.",
+        "why": "Por ahora, esta función no está disponible si incluyes algún servicio de Google Workspace, como Gmail y Drive, como fuente. Los elementos visuales se incluyen directamente en el informe y pueden incluir gráficos, diagramas y simuladores interactivos.",
+        "fix": "Por ahora, los elementos visuales con un plan Google AI Ultra no están disponibles cuando Gmail o Drive se incluyen como fuente. Los informes sin esas fuentes pueden incluir animaciones y elementos visuales.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "No encuentro mis informes de investigación anteriores en Gemini.",
+        "why": "Solo puedes encontrar informes de investigación anteriores si tu configuración Keep Activity está activada.",
+        "fix": "Asegúrate de que tu configuración Keep Activity esté activada. Ve a gemini.google.com y, si tus chats están ocultos, haz clic en Menu en la parte superior. En Recent, busca tu chat de investigación.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      },
+      {
+        "symptom": "Mi informe de investigación tarda mucho en aparecer. ¿Es normal?",
+        "why": "Normalmente, el informe tarda unos 5-10 minutos en generarse, ya que Gemini analiza muchas fuentes. En el caso de informes más complejos, puede tardar más.",
+        "fix": "Mientras esperas el informe, puedes salir del chat. Cuando esté listo, Gemini te avisará junto al hilo del chat con tu informe completo en la aplicación web.",
+        "source": "https://support.google.com/gemini/answer/15719111"
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "_meta": {
+    "written_at": "2026-11-02T03:18:48.289Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0041035,
+    "original_draft": "2026-10-31T03-11-44-458Z_zapier-blog_What_is_AI_transformation_in_2027__How_to_build_a_.json",
+    "source_id": "zapier-blog",
+    "source_name": "Zapier Blog (hivatalos)",
+    "source_link": "https://zapier.com/blog/ai-transformation",
+    "source_links": [
+      "https://zapier.com/blog/ai-transformation",
+      "https://www.snowflake.com/content/snowflake-site/global/en/blog/waiting-for-ready-data-riskier-than-starting-ai-now",
+      "https://zapier.com/blog/ai-cost-management",
+      "https://www.salesforce.com/news/stories/work-stalls-isolated-ai-tools/"
+    ],
+    "source_snippet_len": 1504,
+    "source_text_via": [
+      "html",
+      "hirfolyam",
+      "html",
+      "hirfolyam"
+    ],
+    "source_text_len": 9018,
+    "source_text_key": "2d30ffe71816d778",
+    "source_overlap_words": 14,
+    "merged_from": 4,
+    "merged_theme": "Enterprise AI strategy and adoption challenges",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-02T03:21:54.954Z",
+    "slug": "why-company-ai-projects-stall-and-four-practical-fixes-to-try",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 688
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with proper hook, plain-language definitions of technical terms (token, agent), clear source attribution, practical actionable advice, and an encouraging tone throughout. No prohibited content or clichéd language found.",
+      "_aiCost": 0.0015723,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-02T03:23:21.208Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a generic business strategy explainer about AI blockers and fixes, not an introduction of a specific named feature or tool for users to go use.",
+    "image_v": 2,
+    "image_at": "2026-11-02T03:26:57.065Z",
+    "seo": {
+      "meta_description": "Why do company AI projects stall? Learn three blockers from Zapier, Snowflake & Salesforce data, plus four practical fixes to try.",
+      "keywords": [
+        "why AI projects fail",
+        "AI implementation challenges",
+        "business AI adoption problems",
+        "enterprise AI projects stalling",
+        "how to implement AI successfully"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding the year to the title if this covers current data (e.g., '2024'), as readers often search for recent stats",
+        "Add more specific location/context keywords if targeting a specific region",
+        "The subtitle mentions 'four practical fixes' — ensure the meta reflects this actionable angle more clearly"
+      ],
+      "optimised_at": "2026-11-02T03:30:07.003Z"
+    },
+    "fact_verified_at": "2026-11-02T03:33:34.020Z",
+    "social": true,
+    "social_at": "2026-11-02T03:44:49.457Z"
+  },
+  "article_markdown": "---\ntitle: \"Why Company AI Projects Stall, and Four Practical Fixes to Try\"\nsubtitle: \"Three common blockers, what the latest figures say about them, and simple ways to get past each one\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 3\ntags: [\"enterprise-ai\", \"ai-strategy\", \"ai-costs\", \"team-productivity\", \"work\"]\n---\n\n# Why Company AI Projects Stall, and Four Practical Fixes to Try\n\n> **In short:** Zapier says AI transformation means building AI into the core of how a company runs, not just testing a tool. Snowflake reports that 97% of global enterprises run active AI projects, but only 5% say their data is ready. A Salesforce survey of 250 U.S. executives found that many AI insights never leave one person's desk.\n\nMaybe your boss has asked about your company's AI plan, or a competitor seems to be shipping faster. You want to act, but starting is where many teams get stuck. The good news is that the common blockers are well documented, and most of them have practical fixes.\n\n## Blocker 1: Waiting until your data is perfect\n\nA lot of organizations believe they must finish a big data cleanup before they can use AI. Snowflake's ebook \"Break the Sequence\" argues that this belief is the biggest brake on enterprise AI. Its point is that a \"finished\" data setup may never arrive, so waiting can delay value you could start proving today.\n\n**Fix:** Pick one small, useful workflow, such as summarizing support tickets or drafting internal reports. Use the data you already have, and improve it as you go.\n\n## Blocker 2: Spending you can't see\n\nZapier describes AI cost management as tracking what you spend on AI tools, including the less obvious costs. Many AI tools bill by the **token** (a small chunk of text, roughly a few characters, that the AI reads and writes). An agent, which is an AI that can take multistep actions on its own, can use a lot of tokens before anyone notices.\n\nZapier says its own rollout began with open access and very little measurement. Its fix was to let every employee see their own AI spend by tool and model. Its guide also suggests matching cheaper models to simpler tasks and cutting tools that don't justify their cost.\n\n**Fix:** Ask your team to list every AI tool and seat they pay for. Then ask one question about each: does it return more value than it costs?\n\n## Blocker 3: AI stuck in one person's tool\n\nThe Salesforce survey, which Slack's research team reported on, found that 68% of executives see AI insights go unshared, and 66% say colleagues unknowingly solve the same problem with AI. It also found that employees spend an average of 3.6 hours a week switching between AI and other apps. Among enterprise executives, 73% reported weekly stalls, compared with 37% at small and mid-sized businesses. Of the survey's respondents, 72% said their ideal setup is AI that works across the team with shared context.\n\n**Fix:** Share good prompts and results in a common place, such as a team channel or document. When one person finds a useful approach, the whole team benefits.\n\n## What this means for you\n\n- **In everyday life**: Notice which of your routine tasks repeat every week. Those are the best places to test AI first.\n- **For your business or work**: Start with one team and one measurable workflow. Track time saved and spending from the beginning, so you can judge results instead of guessing.\n- **If you're just getting started**: Write down one task that eats an hour a week. Try an AI tool on it, then compare the result with your old method.\n- **If you already use it**: Review your team's AI spending and share your best prompts in one shared place.\n\n## Wrap-up\n\nThe main lesson is that AI works best when you start small, see what it costs, and share what you learn. You don't need perfect data or a huge project to begin. Today, pick one repetitive task on your team, note how long it takes, and test one AI approach on it. Then share the result with a colleague.",
+  "original_title": "What is AI transformation in 2027? How to build a strategy for your business"
+}

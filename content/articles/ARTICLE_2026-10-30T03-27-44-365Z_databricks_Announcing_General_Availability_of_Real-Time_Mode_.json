@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "written_at": "2026-11-01T03:08:14.772Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0036403,
+    "original_draft": "2026-10-30T03-27-44-365Z_databricks_Announcing_General_Availability_of_Real-Time_Mode_.json",
+    "source_id": "databricks",
+    "source_name": "Databricks Blog (hivatalos)",
+    "source_link": "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
+    "source_links": [
+      "https://www.databricks.com/blog/announcing-general-availability-real-time-mode-spark-declarative-pipelines-databricks",
+      "https://www.databricks.com/blog/how-teach-databricks-free-edition"
+    ],
+    "source_snippet_len": 223,
+    "merged_from": 2,
+    "merged_theme": "Databricks platform updates",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-01T03:08:31.353Z",
+    "slug": "databricks-free-edition-for-teaching-and-the-new-real-time-mode-explai",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 613
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article meets all requirements: it explains technical terms in plain language (platform, latency, Spark), uses a friendly and encouraging tone, covers the Free Edition and Real-Time Mode clearly, includes a solid What this means for you section with specific bullet points, and ends with an actionable wrap-up. No prohibited content, no clichés, and no factual red flags.",
+      "_aiCost": 0.0016353,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-01T03:09:47.011Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article covers two separate announcements (Free Edition and Real-Time Mode) making it a roundup; Real-Time Mode is an enterprise developer feature, not actionable for everyday people, and Free Edition lacks a specific named feature with a concrete user action described",
+    "image_v": 2,
+    "image_at": "2026-11-01T03:12:08.446Z",
+    "seo": {
+      "meta_description": "Databricks Free Edition lets students and teachers run full data or AI courses for free. Real Time Mode for pipelines is now generally available.",
+      "keywords": [
+        "Databricks Free Edition",
+        "learn data science free",
+        "AI learning platform",
+        "Databricks student",
+        "free data pipeline tools",
+        "real time data pipelines",
+        "Databricks education"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add the subtitle as H2 heading to improve keyword prominence for 'Real Time Mode'",
+        "Include more specific use cases like 'machine learning course' or 'data engineering training' to capture longer-tail searches",
+        "Add schema markup for 'EducationalCourse' or 'SoftwareApplication' to help search engines understand the content type"
+      ],
+      "optimised_at": "2026-11-01T03:14:00.698Z"
+    },
+    "social": true,
+    "social_at": "2026-11-01T03:25:26.282Z",
+    "fact_verified_at": "2026-11-01T14:38:33.086Z"
+  },
+  "article_markdown": "---\ntitle: \"Databricks Free Edition for Teaching, and the New Real-Time Mode Explained\"\nsubtitle: \"Databricks says its free Edition lets anyone run a full data or AI course, and its real-time pipeline mode is now generally available.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"databricks\", \"data-skills\", \"education\", \"ai-learning\", \"data-pipelines\"]\n---\n\n# Databricks Free Edition for Teaching, and the New Real-Time Mode Explained\n\n> **In short:** Databricks says its Free Edition lets you run a full data or AI course on the platform companies use in production, for free. Its Real-Time Mode for data pipelines is now generally available. For teachers and students, the free option is the part to try.\n\nHave you ever wanted to learn data or AI skills but felt stuck because the tools seemed reserved for big companies? Databricks, a company that sells a data and AI platform (a online workspace where you store, clean, and analyze large amounts of information), has announced updates that touch both learners and professionals.\n\n## What the Free Edition is for\n\nAccording to Databricks, its Free Edition is built for teaching. The company says you can run a full data or AI course on the same platform enterprises use in production, and you can do it at no cost.\n\nThink of it like practicing on the same kind of kitchen a professional chef uses, instead of a toy stove. You learn the real workflow, not a simplified copy.\n\nIf you're a teacher, a self-taught learner, or a student, this matters because the barrier to hands-on practice is lower. You don't have to ask your employer or school to buy software first.\n\n## What Real-Time Mode adds\n\nDatabricks introduced Real-Time Mode (RTM) last year, and the company has now announced it is generally available. \"Generally available\" means the feature is ready for everyone to use, not just a limited group of testers.\n\nRTM is designed for low-latency work. Latency is the delay between when information arrives and when it's processed. Low latency means the answer comes back almost immediately. Databricks describes RTM as a way to build these fast, operational use cases inside Spark Declarative Pipelines. Spark is the engine that processes large data sets, and a declarative pipeline lets you describe the result you want while the system handles the step-by-step work.\n\nThis is mostly a business tool, but understanding the idea helps anyone. Ask yourself: when a store checks stock or a bank flags a card charge, the response needs to happen quickly. That is the kind of job RTM is meant for.\n\n## What this means for you\n\n- **In everyday life**: If you're curious about data, the Free Edition gives you a no-cost place to practice without installing anything heavy on your own computer.\n- **For your business or work**: If your team handles fast-moving information, Databricks says RTM can support low-latency processing. Check the official documentation to see whether it fits your setup.\n- **If you're just getting started**: Begin with the free course path Databricks describes. Pick one small goal, such as sorting a spreadsheet of sample data, and build from there.\n- **If you already use it**: Try turning a course exercise into a small, repeatable pipeline. Once it runs reliably, you can compare how it behaves with and without a delay in the data.\n\n## Wrap-up\n\nDatabricks says its Free Edition gives anyone a path to hands-on data and AI learning on a professional platform, and its Real-Time Mode is now generally available for fast, operational work. You don't need a budget to start. Today, open the official Databricks site, look for the Free Edition information, and read what the course options include before you sign up.",
+  "original_title": "Announcing General Availability of Real-Time Mode for Spark Declarative Pipelines on Databricks"
+}

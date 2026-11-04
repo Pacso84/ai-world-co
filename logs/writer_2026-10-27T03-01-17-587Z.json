@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-27T02:59:43.801Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.013795,
+  "by_article": [
+    {
+      "draft": "2026-10-27T02-51-00-950Z_openai-blog_How_Fanatics_and_OpenAI_streamline_the_fan_experie.json",
+      "writer_output": "WRITER_2026-10-27T02-51-00-950Z_openai-blog_How_Fanatics_and_OpenAI_streamline_the_fan_experie.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0032949,
+      "duration_ms": 12734,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-27T02-51-00-950Z_openai-blog_ChatGPT_s_expanding_world_of_work.json",
+      "writer_output": "WRITER_2026-10-27T02-51-00-950Z_openai-blog_ChatGPT_s_expanding_world_of_work.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0032195,
+      "duration_ms": 12168,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-27T02-51-00-950Z_google-ai-blog_Our_newest_AI_Quest__Mapping_the_human_brain.json",
+      "writer_output": "WRITER_2026-10-27T02-51-00-950Z_google-ai-blog_Our_newest_AI_Quest__Mapping_the_human_brain.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0034209,
+      "duration_ms": 13186,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-21T02-28-08-988Z_snowflake_How_to_Build_a_Modern_Fraud_Detection_Platform_wit.json",
+      "writer_output": "WRITER_2026-10-21T02-28-08-988Z_snowflake_How_to_Build_a_Modern_Fraud_Detection_Platform_wit.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0031169,
+      "duration_ms": 10053,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-10-27T03:01:17.587Z",
+  "duration_seconds": 93.786
+}

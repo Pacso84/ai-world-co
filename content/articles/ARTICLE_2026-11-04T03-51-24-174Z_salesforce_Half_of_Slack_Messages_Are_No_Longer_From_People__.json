@@ -1,0 +1,73 @@
+{
+  "_meta": {
+    "written_at": "2026-11-04T03:53:22.285Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0042866,
+    "original_draft": "2026-11-04T03-51-24-174Z_salesforce_Half_of_Slack_Messages_Are_No_Longer_From_People__.json",
+    "source_id": "salesforce",
+    "source_name": "Salesforce AI Blog (hivatalos)",
+    "source_link": "https://www.salesforce.com/news/stories/slack-stats/",
+    "source_links": [
+      "https://www.salesforce.com/news/stories/slack-stats/"
+    ],
+    "source_snippet_len": 330,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 3830,
+    "source_text_key": "acf14a17a1816b5a",
+    "source_overlap_words": 11,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-04T03:54:24.861Z",
+    "slug": "half-of-slack-messages-now-come-from-apps-and-ai-agents-slack-says",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 836
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent article that hits all marks: clear hook, friendly explanatory tone, terms defined in plain language (AI agent, MCP, tool call), all Slack claims properly attributed, four-item What this means for you section with actionable advice, and a specific next-step wrap-up. No prohibited content, no rankings, no clichés. This is ready to publish.",
+      "_aiCost": 0.0018573,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-04T03:56:36.783Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a news recap about Slack's statistics and trends, not introducing any new specific feature or tool for users to act upon",
+    "image_v": 2,
+    "image_at": "2026-11-04T03:59:36.072Z",
+    "seo": {
+      "meta_description": "Slack says half its messages now come from apps and AI agents, with 1B daily messages and 1.9M weekly agent users. See what this shift means for workplace chat.",
+      "keywords": [
+        "Slack AI agents",
+        "Slack app messages statistics",
+        "how AI agents work in Slack",
+        "Slack messaging stats 2024",
+        "AI in workplace chat",
+        "Slack third party agents"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific use cases or examples of AI agents in Slack to improve search relevance for long-tail queries",
+        "Consider adding the publication date to help with time-sensitive searches",
+        "Include more specific details about what types of tasks AI agents perform in Slack"
+      ],
+      "optimised_at": "2026-11-04T04:01:03.474Z"
+    },
+    "fact_verified_at": "2026-11-04T04:05:15.223Z",
+    "social": true,
+    "social_at": "2026-11-04T04:15:09.742Z"
+  },
+  "article_markdown": "---\ntitle: \"Half of Slack Messages Now Come From Apps and AI Agents, Slack Says\"\nsubtitle: \"Slack's latest figures show how AI helpers are joining everyday team chats, and what that could mean for your work.\"\ncategory: \"ai-news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"slack\", \"ai-agents\", \"workplace-ai\", \"team-collaboration\", \"mcp\"]\n---\n\n# Half of Slack Messages Now Come From Apps and AI Agents, Slack Says\n\n> **In short:** Slack says half of its messages now come from apps and AI agents, which are programs that complete tasks for you. The company also reports 1 billion messages a day and 1.9 million weekly users of third-party agents, so chat is becoming a workspace for software too.\n\nPicture a typical morning in your team's chat. A bug alert pops up, someone asks for last month's sales numbers, and a status update appears before you've finished your coffee. Some of those messages might now come from a program rather than a person. That's the shift Slack is describing in its latest official numbers.\n\n## How Slack got here\n\nAccording to Slack, the platform started more than a decade ago when an engineering team needed one place to coordinate code, log alerts and talk to each other. Today, the company says, AI agents are moving out of test projects and into real business work, and they're showing up in the same channels where people already collaborate.\n\nAn **AI agent** is a program that can take actions for you, such as looking up information or updating a record, instead of only answering a question. Slack describes these agents as sharing the space with people, not replacing the conversation.\n\n## What the numbers say\n\nSlack shares several figures about its own platform. Here are the ones most useful to a working person:\n\n- **Half of all messages** come from apps and agents, according to Slack.\n- **127 million automated actions** happen every week. Slack calls each one an **MCP tool call**.\n- **1.9 million users** interact with third-party agents in Slack each week.\n- **Over 100,000 customers** have joined Slack so far in 2026.\n- Slack says customers see a **312% return on investment**, a measure of how much value they get compared to what they spend.\n\nKeep in mind that these are Slack's own claims about its platform. You can read them as a snapshot of how the company sees its growth, not as a universal benchmark for every workplace.\n\n## What MCP means in plain terms\n\n**MCP** (short for Model Context Protocol) is an open standard, a shared set of rules that lets AI tools connect safely to other apps. Think of it like a universal charger: once an app supports the standard, different AI tools can plug into it without a custom cable for each one.\n\nSlack says MCP lets agents pull context from apps such as GitHub, Salesforce and Jira, then act on it in real time. A **tool call** is a single action an agent takes in an app, such as creating a task or fetching a file.\n\n## Real examples from the announcement\n\nSlack highlights a few customers:\n\n- **Anthropic**: Slack says 65% of all code changes at Anthropic ship through Slack.\n- **Vercel**: According to Slack, Vercel runs its company in Slack and uses an inbound sales agent that lets one rep handle work the company estimates would otherwise take a team of 10.\n- **Rochester Electronics**: The company uses Slackbot, Slack's AI product, along with custom workflows that handle routine administrative tasks and surface Salesforce notifications.\n- **Salesforce**: Slack reports that 83% of Salesforce employees are weekly active users of Slackbot.\n\n## What this means for you\n\n- **In everyday life**: If you're in a community group, school club or volunteer team that uses Slack, expect more automated reminders and summaries. Read them as helpful signals, and check anything important with a person.\n- **For your business or work**: Ask your team which apps and agents already post in shared channels. Clear rules about what an agent can change will save you trouble later.\n- **If you're just getting started**: Spend a week noticing which messages come from people and which come from apps. That quick audit shows where automation already helps and where a human still needs to decide.\n- **If you already use it**: Look for Slack Connect channels, which Slack describes as a direct line to customers and partners. Pair them with an agent that drafts updates, then have a teammate review the draft before it goes out.\n\n## Wrap-up\n\nSlack's numbers suggest that chat is turning into a place where people and software work side by side. The company's own figures show plenty of growth, but the practical lesson is simple: know which tools post in your channels and what they're allowed to do. Your next step today is easy. Open a team channel you use often and count how many messages came from an app or agent. That small check will tell you more about your team's workflow than any headline.",
+  "original_title": "Half of Slack Messages Are No Longer From People. Here’s Slack by the Numbers."
+}

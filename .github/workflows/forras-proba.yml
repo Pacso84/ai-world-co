@@ -1,0 +1,45 @@
+# FORRÁS-LETÖLTŐ PRÓBA (2026-11-01) — CSAK KÉZI INDÍTÁS, a napi gépsort NEM futtatja, költsége $0.
+# Miért: a híríró és a tény-ellenőrző mostantól a core/forras-letoltes.js-szel tölti le a hivatalos
+# forrásoldalt. Helyben (HU) minden próbált forrás letölthető volt, de a CI az USA-ból fut, és a
+# tiltás földrajz- és IP-függő lehet (a workspaceupdates.googleblog.com a CI-ben 13-ból 4-szer gyorsan
+# elbukott; az openai.com robot-szűrője is IP-alapú). Ez a próba ugyanonnan tölt le, ahonnan az éles gépsor.
+# Nincs titkos kulcs, nincs AI-hívás, nincs commit; a modul csak beépített Node-modulokat használ → nincs npm ci.
+# Indítás: gh workflow run forras-proba.yml   (vagy más linkekkel: -f urls="https://… https://…")
+name: Forrás-letöltő próba
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: 'Forráslinkek szóközzel elválasztva'
+        required: false
+        default: 'https://openai.com/index/credit-saison https://openai.com/index/helping-websites-express-ai-training-preferences http://workspaceupdates.googleblog.com/2026/10/edit-entire-presentations-with-gemini-in-Google-Slides.html http://workspaceupdates.googleblog.com/2026/07/use-gemini-in-google-forms-to-quickly-create-a-new-quiz.html https://blog.dropbox.com/topics/company/bring-trusted-dropbox-context-directly-into-microsoft-copilot https://blog.google/innovation-and-ai/products/gemini-app/update-resume-with-gemini/'
+permissions:
+  contents: read
+jobs:
+  proba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Forrásoldalak letöltése (státusz, via, hossz, ok, hiba)
+        env:
+          # A bemenet környezeti változón át megy (nem közvetlenül a parancsba írva) → nem lehet parancsot
+          # csempészni bele; idézőjelben EGY argumentum, a modul maga bontja szóközök mentén.
+          URLS: ${{ inputs.urls }}
+        run: node core/forras-letoltes.js --proba "$URLS"
+      - name: Blogger-tartalék külön (a hírcsatornából, akkor is, ha a HTML most épp letölthető)
+        run: |
+          node --input-type=module -e '
+            import { bloggerHirfolyamUrl, hirfolyamTetelek, linkKulcs, BONGESZO_FEJLEC } from "./core/forras-letoltes.js";
+            for (const cikk of ["http://workspaceupdates.googleblog.com/2026/10/edit-entire-presentations-with-gemini-in-Google-Slides.html", "http://workspaceupdates.googleblog.com/2026/07/use-gemini-in-google-forms-to-quickly-create-a-new-quiz.html"]) {
+              const u = bloggerHirfolyamUrl(cikk);
+              try {
+                const r = await fetch(u, { headers: BONGESZO_FEJLEC, signal: AbortSignal.timeout(20000) });
+                const tetelek = hirfolyamTetelek(await r.text());
+                const talalt = tetelek.find(t => t.linkek.some(l => linkKulcs(l) === linkKulcs(cikk)));
+                console.log(r.status, tetelek.length + " tétel", talalt ? "MEGVAN (" + talalt.html.length + " kar. HTML)" : "NINCS BENNE", cikk);
+              } catch (e) { console.log("HIBA", e.name, e.message, cikk); }
+            }'

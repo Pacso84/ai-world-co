@@ -1,0 +1,50 @@
+{
+  "slug": "build-a-simple-weekly-meal-plan-with-grok-based-on-what-s-in-your-frid",
+  "keszult": "2026-11-04T15:58:36.082Z",
+  "promptok": {
+    "6e2e464fdf8d": [
+      {
+        "eredeti": "2 chicken breasts",
+        "hely": "your meat"
+      },
+      {
+        "eredeti": "half a head of broccoli",
+        "hely": "your vegetable"
+      },
+      {
+        "eredeti": "2 adults",
+        "hely": "number of people"
+      }
+    ],
+    "956cd314b99e": [
+      {
+        "eredeti": "Tuesday's curry",
+        "hely": "a meal you want changed"
+      },
+      {
+        "eredeti": "under 20 minutes",
+        "hely": "your time limit"
+      },
+      {
+        "eredeti": "mushrooms",
+        "hely": "food to avoid"
+      }
+    ],
+    "2bb8d54ccb37": [
+      {
+        "eredeti": "2 adults",
+        "hely": "number of people"
+      },
+      {
+        "eredeti": "under 25 items",
+        "hely": "your item limit"
+      }
+    ],
+    "52f2ac06199f": [
+      {
+        "eredeti": "7-day",
+        "hely": "number of days"
+      }
+    ]
+  }
+}

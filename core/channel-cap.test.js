@@ -1,0 +1,238 @@
+// ===================================================================
+// CSATORNA NAPI PLAFON — tesztek
+// ===================================================================
+//
+// ELŐZMÉNY (2026-08-24). Az Instagram NAPI 6 posztot kapott (`--limit 2` ×
+// napi 3 CI-futás), miközben 11 nap alatt 0 látogatót hozott — a Facebook
+// ugyanennyi idő alatt 435-öt. A magas ütem gépi mintázatot rajzol, és
+// cserébe nem hozott olvasót.
+//
+// A user döntése: napi 6 → napi 1, a csatorna megmarad.
+//
+// ⚠️ A `--limit` FUTÁSONKÉNT számol, ezért napi plafonnak alkalmatlan:
+// `--limit 1` × 3 futás = napi 3, nem napi 1. Ezért kell ez a modul.
+// ===================================================================
+
+import assert from 'assert/strict';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { allowedNow, countSentToday, countTodayWithQueued, capFor, figyelendoCsatornak } from './channel-cap.js';
+
+let pass = 0;
+const t = (n, f) => { f(); pass++; console.log('  ✅ ' + n); };
+console.log('🧪 csatorna napi plafon\n');
+
+// ── a maradék kiszámítása ───────────────────────────────────────────
+
+t('plafon nélkül a futás-limit érvényes — más csatornát nem fojtunk meg', () => {
+  // FONTOS: a Threads és a később bekötendő X NEM kap plafont. Ha a hiányzó
+  // beállítás 0-t adna, egy elgépelés némán elnémítaná az összes csatornát.
+  assert.equal(allowedNow({ sentToday: 0, dailyCap: null, runLimit: 2 }), 2);
+  assert.equal(allowedNow({ sentToday: 99, dailyCap: undefined, runLimit: 2 }), 2);
+});
+
+t('a plafon a szűkebb: napi 1-ből a futás-limit 2 is csak 1-et enged', () => {
+  assert.equal(allowedNow({ sentToday: 0, dailyCap: 1, runLimit: 2 }), 1);
+});
+
+t('ha ma már kiment a napi adag, ebben a körben 0 megy', () => {
+  assert.equal(allowedNow({ sentToday: 1, dailyCap: 1, runLimit: 2 }), 0);
+});
+
+t('a maradék pontosan a különbség', () => {
+  assert.equal(allowedNow({ sentToday: 1, dailyCap: 4, runLimit: 9 }), 3);
+  assert.equal(allowedNow({ sentToday: 3, dailyCap: 4, runLimit: 1 }), 1, 'a futás-limit is korlátoz');
+});
+
+t('túllépés esetén sem megy negatívba', () => {
+  assert.equal(allowedNow({ sentToday: 7, dailyCap: 1, runLimit: 2 }), 0);
+});
+
+// ── AZ IRÁNY ────────────────────────────────────────────────────────
+//
+// „Minden mérce IRÁNYA számít" (2026-08-14, prompt-szivárgás). Ha nem tudjuk,
+// hány poszt ment ma ki, két rossz irány közül kell választani:
+//   fel-nyitás  → átléphetjük a plafont, épp azt, amiért a modul készült
+//   be-zárás    → kimarad egy nap Instagram, ami 11 nap alatt 0 látogatót hozott
+// A veszteség nem szimmetrikus, ezért ZÁRUNK.
+
+t('🔒 ismeretlen napi darabszám + plafon → 0 (inkább kimarad, mint túllépjen)', () => {
+  for (const x of [null, undefined, NaN, 'kettő', -1]) {
+    assert.equal(allowedNow({ sentToday: x, dailyCap: 1, runLimit: 2 }), 0,
+      'sentToday=' + JSON.stringify(x));
+  }
+});
+
+t('🔓 ismeretlen darabszám plafon NÉLKÜL viszont nem fojt', () => {
+  // Plafon nélküli csatornánál a darabszámot le sem kérdezzük — ne fogja meg.
+  assert.equal(allowedNow({ sentToday: null, dailyCap: null, runLimit: 2 }), 2);
+});
+
+t('értelmetlen futás-limitre 0, nem szemét', () => {
+  assert.equal(allowedNow({ sentToday: 0, dailyCap: 5, runLimit: 0 }), 0);
+  assert.equal(allowedNow({ sentToday: 0, dailyCap: 5, runLimit: -3 }), 0);
+});
+
+// ── a mai darabszám a BUFFER válaszából ─────────────────────────────
+//
+// A számot NEM a saját jelölésünkből vesszük. Ugyanez a lecke 2026-08-06-ról:
+// a napi riport „Facebook-poszt: N" sora a saját jelölésünkből jött és
+// torzított — azóta a Make naplójából megy. A láncot a VÉGÉRŐL mérd.
+
+const MOST = Date.parse('2026-08-24T19:00:00Z');
+
+t('csak a MAI (UTC) kiküldött posztokat számolja', () => {
+  const posts = [
+    { status: 'sent', sentAt: '2026-08-24T00:30:00Z' },
+    { status: 'sent', sentAt: '2026-08-24T16:10:00Z' },
+    { status: 'sent', sentAt: '2026-08-23T23:59:00Z' },   // tegnap
+    { status: 'sent', sentAt: '2026-08-25T00:01:00Z' }    // holnap
+  ];
+  assert.equal(countSentToday(posts, MOST), 2);
+});
+
+t('a nem kiküldött poszt nem számít bele', () => {
+  const posts = [
+    { status: 'sent', sentAt: '2026-08-24T08:00:00Z' },
+    { status: 'draft', sentAt: '2026-08-24T09:00:00Z' },
+    { status: 'error', sentAt: '2026-08-24T10:00:00Z' },
+    { status: 'sent', sentAt: null }
+  ];
+  assert.equal(countSentToday(posts, MOST), 1);
+});
+
+t('üres/hibás bemenetre null — NEM nulla', () => {
+  // A különbség létfontosságú: a 0 azt jelenti „ma még nem ment ki semmi"
+  // (mehet a poszt), a null azt, hogy „nem tudom" (ne menjen). Ha a lekérdezés
+  // elhasal és 0-t adnánk vissza, a plafon némán kikapcsolna.
+  assert.equal(countSentToday(null, MOST), null);
+  assert.equal(countSentToday(undefined, MOST), null);
+  assert.equal(countSentToday('hopp', MOST), null);
+  assert.equal(countSentToday([], MOST), 0, 'az ÜRES lista viszont valódi nulla');
+});
+
+// ── a beállítás olvasása ────────────────────────────────────────────
+//
+// „A config `enabled` mezője nem kapcsol ki semmit" (2026-08-19): egy mező
+// PUSZTA LÉTE nem bizonyíték, hogy bárki olvassa. Ezért van rá teszt.
+
+t('a plafont a beállításból veszi, csatornanév szerint', () => {
+  const cfg = { limits: { social_daily_caps: { instagram: 1 } } };
+  assert.equal(capFor(cfg, 'instagram'), 1);
+  assert.equal(capFor(cfg, 'threads'), null, 'akinek nincs bejegyzése, annak nincs plafonja');
+});
+
+t('hiányzó beállításra nincs plafon, nem borulás', () => {
+  assert.equal(capFor({}, 'instagram'), null);
+  assert.equal(capFor(null, 'instagram'), null);
+  assert.equal(capFor({ limits: {} }, 'instagram'), null);
+});
+
+t('a 0 VALÓDI plafon — a csatorna teljes elnémítása', () => {
+  // Ez a leállítás módja, ha a user később mégis a kivezetést választja:
+  // nem kell kódot írni, elég a beállításban 0-t adni.
+  const cfg = { limits: { social_daily_caps: { instagram: 0 } } };
+  assert.equal(capFor(cfg, 'instagram'), 0);
+  assert.equal(allowedNow({ sentToday: 0, dailyCap: 0, runLimit: 2 }), 0);
+});
+
+t('értelmetlen plafon-érték = nincs plafon, nem néma nulla', () => {
+  for (const rossz of ['egy', -2, NaN, {}]) {
+    const cfg = { limits: { social_daily_caps: { instagram: rossz } } };
+    assert.equal(capFor(cfg, 'instagram'), null, JSON.stringify(rossz));
+  }
+});
+
+// ── és a valódi beállítás? ──────────────────────────────────────────
+
+// ⚠️ EZ A TESZT SZINKRON, ÉS EZ SZÁNDÉKOS. Először `async`-ként írtam meg, és
+// a futtató kiírta a „mind a 16 rendben"-t, MIELŐTT a bukott állítás felszínre
+// jött — a hiba a záró ✅ sor UTÁN jelent meg. Ugyanez a csapda 2026-08-23-án
+// már megfogott 7 tesztet egy másik fájlban. Szinkron olvasás = a bukás ott
+// van, ahol keresed.
+t('🔕 a LEÁLLÍTOTT (0) csatorna lecsatlakozása nem riaszt — a többié igen (10-05: IG-fiók törlése)', () => {
+  const cfg = { limits: { social_daily_caps: { instagram: 0 } } };
+  const nyers = [
+    { service: 'threads', isDisconnected: true },
+    { service: 'instagram', isDisconnected: true },
+    { service: 'Instagram', isLocked: true }
+  ];
+  const marad = figyelendoCsatornak(nyers, cfg, { threads: 'threads', instagram: 'instagram' });
+  assert.deepEqual(marad.map(c => c.service), ['threads'], 'a Threads lecsatlakozását NEM szabad elhallgatni');
+  // Plafon nélkül (vagy 1-es plafonnal) minden marad — az őrszem nem vakulhat meg.
+  assert.equal(figyelendoCsatornak(nyers, { limits: { social_daily_caps: { instagram: 1 } } }, { instagram: 'instagram', threads: 'threads' }).length, 3);
+  assert.equal(figyelendoCsatornak(null, cfg, {}), null, 'a null (nem tudjuk) null marad, nem üres lista');
+});
+
+t('🔕 a KIVEZETETT (térképben nem szereplő) csatorna leválása sem riaszt (10-07: Instagram ki, TikTok be)', () => {
+  // A Bufferben még ott lóghat a törölt Instagram — de a kód már nem ismeri,
+  // nem is posztol rá. Amire posztolunk (Threads, TikTok), az MARAD.
+  const terkep = { threads: 'threads', tiktok: 'tiktok' };
+  const nyers = [
+    { service: 'instagram', isDisconnected: true },
+    { service: 'threads', isDisconnected: true },
+    { service: 'tiktok', isLocked: true }
+  ];
+  const marad = figyelendoCsatornak(nyers, { limits: { social_daily_caps: { tiktok: 2 } } }, terkep);
+  assert.deepEqual(marad.map(c => c.service), ['threads', 'tiktok'],
+    'a TikTok/Threads leválását NEM szabad elhallgatni, az Instagramét igen');
+});
+
+t('🔗 a honlap nem linkel a törölt Instagram-fiókra (lábléc + JSON-LD)', () => {
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+  const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  assert.ok(/const IG_URL = '';/.test(b), 'az IG_URL nem üres — 3000 oldal mutatna a törölt profilra');
+  assert.ok(b.includes('${IG_URL ? `<a href="${IG_URL}"'), 'a lábléc-ikon nem feltételes');
+  assert.ok(b.includes('sameAs: [FB_URL, IG_URL, TH_URL, TT_URL].filter(Boolean)'), 'a JSON-LD üres sameAs-t kapna / a TikTok hiányzik');
+});
+
+t('🎵 a honlap linkel a TikTok-fiókra (lábléc + JSON-LD, 2026-10-07)', () => {
+  // User: „ki kéne rakni az oldalunkra". A fiók SZEMÉLYES, a felhasználónév
+  // egyelőre az automatikus (user…) — a szebb név foglalt volt; átírásnál
+  // EZT az egy konstanst kell frissíteni.
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+  const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  const m = b.match(/const TT_URL = '([^']*)';/);
+  assert.ok(m, 'nincs TT_URL konstans');
+  assert.match(m[1], /^https:\/\/www\.tiktok\.com\/@[a-z0-9._]+$/, 'a TikTok-cím alakja hibás: ' + m[1]);
+  assert.ok(b.includes('${TT_URL ? `<a href="${TT_URL}"'), 'nincs (feltételes) TikTok-ikon a láblécben');
+  assert.ok(/\n\s*tt: '[^']{100,}'/.test(b), 'nincs TikTok-ikon (ICON.tt)');
+});
+
+t('📌 az ÉLES config.json: TikTok napi 6 (3 videó + 3 fotó), Instagram-bejegyzés nincs', () => {
+  // 2026-10-05: Instagram leállítva (14 nap alatt 4 belépő), 10-07: kivezetve.
+  // 2026-10-07 (user: „csináljunk egy tiktokot"): a napi 2 Reel megy oda is.
+  // 2026-10-11 (user: „ha belefér a keretbe mehet több video is"): + napi 1 csak-TikTok.
+  // 2026-10-15 (user: „minden közösségi médiában ugyanazok jelenjenek meg”): 3 → 6 = 3 videó + max 3 fotó-poszt.
+  // A plafon VÉD: egy elszabadult futás sem küldhet napi 6-nál többet.
+  const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+  const eles = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
+  assert.equal(capFor(eles, 'tiktok'), 6, 'a TikTok napi plafonja nem 6');
+  assert.equal(allowedNow({ sentToday: 6, dailyCap: capFor(eles, 'tiktok'), runLimit: 3 }), 0,
+    'a napi 6 után mégis kimenne a hetedik');
+  assert.equal(capFor(eles, 'instagram'), null, 'az Instagram-bejegyzés visszakerült a configba');
+});
+
+// ── 10-15: a riport „⚠️ TIKTOK: ma csak 2/3"-at írt, pedig 3 ment ki — a harmadik 2 perccel a
+// számolás UTÁN küldődött el (a Buffer késleltetve küld). A RIPORT-szám ezért a mai, még
+// küldés alatt álló posztot is beszámolja. (A plafon-döntés marad a szigorú countSentToday.)
+t('🔴 10-15: a riport-szám a ma feladott, még küldés alatt álló posztot is beszámolja', () => {
+  const ma = d => new Date(MOST - d * 3600e3).toISOString();
+  const posts = [
+    { status: 'sent', sentAt: ma(10), createdAt: ma(10) },
+    { status: 'sent', sentAt: ma(9), createdAt: ma(9) },
+    { status: 'sending', sentAt: null, createdAt: ma(0.03) },     // most adtuk fel, még nem ment ki
+    { status: 'error', sentAt: null, createdAt: ma(1) },          // bukott — nem számít
+    { status: 'draft', sentAt: null, createdAt: ma(1) },
+    { status: 'sent', sentAt: '2026-08-23T20:00:00Z', createdAt: '2026-08-23T20:00:00Z' }   // tegnapi
+  ];
+  assert.equal(countTodayWithQueued(posts, MOST), 3);
+  assert.equal(countTodayWithQueued(null, MOST), null, 'a „nem tudom" nem lehet nulla');
+  assert.equal(countTodayWithQueued([], MOST), 0);
+  const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'agents', 'social', 'buffer-poster.js'), 'utf-8');
+  assert.match(src, /db: await maiTiktokDb\(ORG, ttCsat\.id\)/, '🔴 a riport megint csak az elküldötteket számolja');
+  assert.match(src, /return countTodayWithQueued\(r\.nodes\);/);
+});
+
+console.log('\n✅ channel-cap.test: mind a ' + pass + ' eset rendben');

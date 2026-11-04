@@ -1,0 +1,1041 @@
+name: AI World Co. — auto pipeline
+
+# Felhős cron: 8 óránként lefuttatja a teljes pipeline-t (hírkeresés →
+# cikk/útmutató írás → ellenőrzés → párosítás → build) és élesre deployol.
+# A gépednek NEM kell bekapcsolva lennie — a GitHub szerverén fut, ingyen.
+on:
+  schedule:
+    - cron: '0 */8 * * *'   # 00:00, 08:00, 16:00 UTC (naponta 3x)
+  workflow_dispatch: {}       # kézi indítás a GitHub felületről is
+
+  # 🐕 ŐRKUTYA (2026-08-27): a Cloudflare Worker cron-ja indítja, HA a GitHub
+  # saját ütemezője kihagyott egy futást. 08-27-én a 00:00 UTC-s futás EL SEM
+  # INDULT — a GitHub az ütemezett futásokra „legjobb szándék" garanciát ad.
+  # A döntés a core/pipeline-watchdog.js-ben él (tesztelve). A küszöböt NE
+  # írd ide számmal: ez a komment 2026-09-07-ig „9,5 óra"-t mondott, miközben
+  # a valódi érték 09-06 óta 14 — egy szám, ami két helyen van, elcsúszik.
+  #
+  # ⚠️ A DÖNTÉST A CLOUDFLARE WORKER FUTTATJA, és a Worker-telepítés NINCS a
+  # CI-ban: a `core/pipeline-watchdog.js` átírása ÖNMAGÁBAN nem élesít semmit,
+  # `npx wrangler deploy` kell a telegram-worker/ mappából. Ennek elmaradása
+  # 7 napig napi egy fölösleges pótfutást okozott. Azóta a napi jelentés
+  # figyeli (core/watchdog-drift.js).
+  repository_dispatch:
+    types: [pipeline-catchup]
+
+permissions:
+  contents: write             # a generált tartalom visszacommitolásához
+  actions: read               # őrkutya-sodródás: a saját futáslistánk olvasása
+
+concurrency:
+  group: aiworld-auto
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    # Biztonsági plafon: beragadás esetén ne égessünk órákat
+    # (2026-07-01: két 6 órás beragadás ~720 ingyen-percet vitt el).
+    #
+    # 60 → 120 PERC (2026-07-31). A 07-31 01:47-es futás 65 percnél BELEFUTOTT
+    # a 60-as plafonba, és a job MEGSZAKADT a Deploy közben. A mérés:
+    #     Pipeline 29,5p + Fordítás 29,5p + felújító 2,9p + a többi ~3p
+    # A lépések SAJÁT korlátainak összege 111 perc (45+30+10+10+10+6) — vagyis
+    # a 60-as job-plafon SOHA nem fért volna hozzájuk. Eddig csak azért nem
+    # derült ki, mert a lépések ritkán merítették ki a keretüket.
+    #
+    # MIÉRT SÚLYOS EZ: egy MEGSZAKÍTOTT (cancelled) jobnál a GitHub az
+    # `if: always()` lépéseket is KIHAGYJA — nem csak a hibásakat. Így a
+    # "Generált tartalom megőrzése (visszacommit)" nem futott le, és a futás
+    # EGÉSZ MUNKÁJA elveszett: a megírt cikkek, a felújítások ÉS a költség-napló
+    # is. Az `if: always()` védelem tehát a job-időtúllépés ellen NEM véd.
+    #
+    # A 120 perc nem pazarlás: a repó 2026-07-26 óta PUBLIKUS → az Actions
+    # INGYENES ÉS KORLÁTLAN. A régi 60-as érték a privát repó 2000 perces
+    # havi kerete miatt volt szűk; az az ok megszűnt, a kockázat maradt.
+    #
+    # ⚠️ 120 → 145 PERC (2026-08-30, hibavadászat). A FENTI „111 perc" SZÁM
+    # ELAVULT VOLT: a Pipeline 45→55-re nőtt 08-03-án, a Fordítás 30→35-re
+    # 07-31-én — UGYANAZON A NAPON, amikor a 120-as plafont épp a „111 perc
+    # biztonságos" érvvel vezették be. Senki nem számolt utána. A valódi
+    # összeg 131 PERC (55+15+10+10+35+6), vagyis a lépések együtt TÖBBET
+    # kérhettek, mint a job-plafon — pont azt a katasztrófát kockáztatva,
+    # amit a 60→120 emelés meg akart előzni (lásd fentebb: megszakított
+    # jobnál az `if: always()` lépések is kimaradnak).
+    #
+    # 🔑 A KOMMENT NEM BIZONYÍTÉK — ezért mostantól TESZT őrzi:
+    # `core/ci-timeouts.test.js` kiolvassa a YAML-ből a job-plafont és a lépések
+    # korlátait, és elbukik, ha az összeg + 5 perc tartalék nem fér bele.
+    # (Ugyanaz a lecke, mint a `_redirects` 08-15-i esete: növekvő szám mellé
+    # mindig őrszem.)
+    timeout-minutes: 145
+    steps:
+      - uses: actions/checkout@v4
+
+      # 🔒 PRIVÁT FORRÁS-TÁR (2026-11-03, JOGTISZTA FORRÁSOK; user 11-02: „igen holnap megcsináljuk!”)
+      # A kiadói szöveg (letöltött forrás, hírfolyam teljes szövege, rövid kivonat) NEM lehet a nyilvános
+      # repóban — a Pacso84/ai-world-co-forrasok PRIVÁT repóban van (EU szöveg- és adatbányászati kivétel:
+      # gépi elemzéshez tárolható, közzétenni nem). Ide, a `_forrasok/` mappába jön (.gitignore), a
+      # core/forras-cache.js innen olvas/ide ír, a futás végén visszatoljuk. Kulcs: FORRAS_TAR_SSH_KEY
+      # (deploy key, CSAK erre a privát repóra, írás). A privát repóban nem fut CI → $0, 0 perc.
+      # 🚦 continue-on-error: a tár hiánya SOHA nem állít meg semmit — az író ilyenkor letölti a
+      # forrásoldalt, a bíró a megkapott szöveggel dolgozik (gyengébb ítélet, nem hiba).
+      - name: Forrás-tár letöltése (privát repó)
+        id: forrastar
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          repository: Pacso84/ai-world-co-forrasok
+          ssh-key: ${{ secrets.FORRAS_TAR_SSH_KEY }}
+          path: _forrasok
+          fetch-depth: 1
+      - name: Forrás-tár ellenőrzése
+        if: steps.forrastar.outcome != 'success'
+        run: echo "⚠️ FORRÁS-TÁR NEM JÖTT LE (privát repó / FORRAS_TAR_SSH_KEY) — a futás megy tovább, de a régi kivonatok és forrásszövegek hiányoznak"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Függőségek
+        run: npm install
+
+      # 🔊 EDGE TTS v2 TOKEN (2026-10-24): 10-24-én mind a 3 futásban „Unexpected server response: 200"
+      # → 0 Reel/TikTok-videó. A Microsoft új tokent kér; ezt a RÖGZÍTETT edge-tts commit számolja
+      # (core/edge-tts.js kéri tőle; a hangot továbbra is a msedge-tts adja, szóidőzítéssel).
+      # setup-python kell: az Ubuntu 24 rendszer-pipje tiltja a telepítést (PEP 668).
+      # Igazolva: .github/workflows/tts-proba.yml (USA-beli futtató, 10-24).
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Edge TTS token (edge-tts, rögzített commit)
+        run: pip install "git+https://github.com/rany2/edge-tts@bd44c1d1aaebdc1db7f47456ee12431b42ec7cac"
+
+      # 🧠 BEÁGYAZÁS-GYORSÍTÓTÁR — VISSZATÖLTÉS (2026-09-06)
+      #
+      # MIÉRT: a vektorok 2026-09-06 óta külön, GITIGNORE-OLT fájlokban élnek
+      # (`memory/memory-embeddings.json`, `guides/topic-embeddings.json`) —
+      # szándékosan, mert a 13,9 MB ↔ 0,3 MB hullámzás megsemmisítette a git
+      # delta-tömörítést (165,9 KB/commit a stabil 14,3 KB helyett, ~335 MB/év
+      # a NYILVÁNOS repó történetében). Az ára viszont az, hogy a CI friss
+      # checkoutja MINDIG hideg gyorsítótárral indul.
+      #
+      # MÉRVE (2026-09-06): a szemantikus memória-előhívás 480 emléket (iro 265
+      # + guide 215) ágyaz be, SOROSAN, ~1 s/hívás → ~8 PERC futásonként. Új
+      # emlék naponta csak ~8 születik, tehát meleg gyorsítótárral ebből ~3-10
+      # hívás marad: 98%-os találati arány. A téma-ismétlés-őr oldalán további
+      # 150-400 hívás/futás, aminek a nagy része a 690 MEGLÉVŐ útmutató-cím —
+      # azok hónapokig változatlanok. Napi 3 futás → ~1400-2600 megspórolt
+      # API-hívás naponta.
+      #
+      # 🔑 A KULCS SZÁNDÉKOSAN FUTÁSONKÉNT EGYEDI. A GitHub gyorsítótárát
+      # UGYANAZZAL A KULCCSAL NEM LEHET FELÜLÍRNI: állandó kulcsnál a legelső
+      # mentés BEFAGYNA, és hetekig egy elavult vektorkészletet töltenénk
+      # vissza. Ezért `run_id`-s kulcs + `restore-keys` ELŐTAG — az utóbbi
+      # mindig a LEGUTÓBB MENTETT egyezőt hozza vissza.
+      #
+      # 🧪 MÉRGEZÉS-VÉDELEM: NEM a kulcs adja, hanem a KÓD, és a visszatöltés
+      # nem kerüli meg. A `core/memory-embeddings.js` fejlécbe írja a
+      # szolgáltatót + a dimenziót, és bejegyzésenként is ellenőrzi
+      # (szolgáltató, dimenzió, vektorhossz, szöveg-ujjlenyomat); a
+      # `core/topic-dedup.js` a jelöltet MINDIG frissen ágyazza be, és csak
+      # azonos hosszúságú gyorsítótár-vektort fogad el. Egy visszatöltött fájl
+      # PONTOSAN ugyanazon a betöltőn megy át, mint a lemezen talált — más út
+      # nincs. Őrzi: `core/ci-embed-cache.test.js`.
+      #
+      # ⚠️ Ha valaha OLYAN beágyazó-szolgáltató kerül a láncba, aminek a
+      # dimenziója EGYEZIK egy meglévőével (ma: Google 768, Mistral 1024), a
+      # `topic-embeddings.json` dimenzió-őre vakká válik. Akkor a `v1` kulcs-
+      # szegmenst `v2`-re KELL emelni. A `core/ci-embed-cache.test.js` ezt
+      # nem a memóriánkra bízza: elbukik, ha a router beágyazó-készlete
+      # megváltozik.
+      - name: Beágyazás-gyorsítótár visszatöltése
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            memory/memory-embeddings.json
+            guides/topic-embeddings.json
+          key: embed-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            embed-v1-
+
+      # 🧪 TESZTEK — INGYENES, HÁLÓZAT NÉLKÜLI KAPUK (2026-09-06).
+      #
+      # MIÉRT KELLETT: 2026-08-31-én a tény-ellenőrző agent egy ÉLŐ cikkben
+      # átírta a valódi „ChatRTX" terméknevet a nem létező „NVIDIA Chat"-re.
+      # A `core/tool-kinds.test.js` EZT PONTOSAN ELKAPTA („BESOROLATLAN CÉG:
+      # NVIDIA Chat") — a védelem jól volt megtervezve. Csakhogy ez a
+      # munkafolyamat NEM FUTTATOTT TESZTEKET, `npm test` pedig csak akkor fut,
+      # ha egy ember leül a géphez. A teszt ÖT NAPIG pirosan állt, és a kitalált
+      # név öt napig kint volt élesben, HÁROM NYELVEN. Ugyanígy a
+      # `core/budget.test.js` is piros volt szeptember 1-je óta (naptári határon
+      # romlott el) — szintén észrevétlenül.
+      #
+      # ⚠️ MIÉRT ITT, A PIPELINE ELŐTT: ez az utolsó pont, ahol még semmi nem
+      # került pénzbe. Egy elromlott kapu így azelőtt kiderül, hogy az első
+      # fizetős hívás elmegy. A tesztek ingyenesek és hálózat nélküliek
+      # (szerződés: `core/run-tests.js` fejléce), futásidejük ~1-2 perc.
+      #
+      # 🚦 `|| true` — A BUKÁS SOSEM ÁLLÍTJA MEG A PIPELINE-T (user-döntés).
+      # Egy elromlott teszt miatt leállítani a cég működését sokkal drágább,
+      # mint a hiba maga: a tartalomnak akkor is mennie kell. A LÁTHATÓSÁGOT
+      # ezért nem a kilépőkód adja, hanem a `--guard`: az eredmény a
+      # `memory/test-guard.json`-ba kerül, onnan a NAPI TELEGRAM-RIPORTBA
+      # („⚠️ TESZT PIROS: …"). A projekt szabálya szerint az őrszem csak akkor
+      # őr, ha odaszól, AHOL A USER NÉZ — a CI-napló nem az a hely.
+      #
+      # A `--guard` szándékosan kapcsoló: a helyi `npm test` így nem módosítja
+      # a `memory/`-t, tehát nem készít elő git-ütközést (traffic-log-lecke).
+      - name: Tesztek (ingyenes kapuk — a bukás a napi riportba megy)
+        # 5 perc: a mért futásidő ~1-2 perc, a maradék a lassú futtatóra.
+        # ⚠️ A `core/ci-timeouts.test.js` őrzi, hogy a lépés-korlátok ÖSSZEGE
+        # (most 140) beleférjen a 145 perces job-plafonba 5 perc tartalékkal.
+        timeout-minutes: 5
+        run: node core/run-tests.js --guard || true
+
+      # TRENDKUTATÓ (2026-10-14, user ötlete): mi felkapott ma? Naponta EGYSZER gyűjt (a 3 futásból
+      # az első dolgozik, a többi a 20 órás kapun kihagy). 2026-10-20: EGY olcsó MI-hívás (trend-ellenőr,
+      # GPT-5.6 Luna, ~$0,001/nap) kiszűri a nem MI-témákat („dow today”); hibánál a heurisztikus lista marad. A CEO ELŐTT
+      # fut, hogy az Író és az Útmutató-agent már a friss listát lássa. A hibája NEM állíthatja
+      # meg a kiadást (|| true); a forrás-kiesést a napi riport jelzi. core/trend-kutato.js
+      - name: Trendkutató (napi 1×, egy olcsó MI-szűréssel)
+        timeout-minutes: 3
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: node core/trend-kutato.js || true
+        continue-on-error: true
+
+      - name: Pipeline (hírkeresés + cikk/útmutató írás + ellenőrzés)
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # A forrás-kutató Telegramon jelzi az új, jóváhagyható forrásokat:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        # LÉPÉS-SZINTŰ IDŐKORLÁT (2026-07-23): a 07-22/07-23 éjjeli futásokban ez
+        # a lépés 57 PERCET vitt el a 60-ból → a job-időkorlát megölte a futást,
+        # és a BUILD + DEPLOY ki sem futott (a friss cikkek nem kerültek ki az
+        # oldalra). A munka SORALAPÚ: ami itt kimarad, a következő futás
+        # folytatja — a kiadás viszont nem tűrhet halasztást.
+        # 2026-07-28: 34 → 45 perc. A 07-28 01:27-es futás PONTOSAN a 34 percnél
+        # bukott el (egy útmutató-írás beleszaladt a 8 perces beragadás-védőidőbe,
+        # és elvitte a keretet). A 34 perc még a PRIVÁT repó metered-perc korszakából
+        # maradt; a repó 07-26 óta PUBLIKUS → az Actions ingyenes és korlátlan, tehát
+        # a szűk keret már csak kárt okoz. A 60 perces job-plafon továbbra is véd.
+        #
+        # 2026-08-03: 45 → 55 perc, ÉS a pipeline saját PUHA kerete 42 perc
+        # (--max-minutes lentebb). ÖV ÉS NADRÁGTARTÓ:
+        #   • a puha keret a NORMÁL működés — 42 percnél a CEO maga hagyja ki a
+        #     díszítő fázisokat (idle-fill, designer, seo, layout), és rendben
+        #     befejezi. Amit kihagy, azt a következő futás elvégzi.
+        #   • az 55 perc a VÉGSŐ háló, ha valami a puha keret ELLENÉRE elhúzódik
+        #     (pl. egyetlen agent beragad a 8 perces védőidejéig).
+        # Kiváltó eset: a 08-03 01:47-es futás pontosan 45:13-nál esett ki — a két
+        # új forrás (Pixlr, PicsArt) 19 jelöltet adott a szokásos 0-5 helyett.
+        # A tartalom nem veszett el (a kiadási lánc if:always()), de a futás
+        # "failure" lett, és egy MENET KÖZBEN elvágott lépés kockázatos.
+        timeout-minutes: 55
+        # --skip-translate (2026-07-23): a ceo-pipeline BEÉPÍTETT fordítást is
+        # csinál (5c lépés, limit 40), DE a munkafolyamatnak van rá KÜLÖN lépése
+        # (lentebb: "Fordítás", limit 80, if:always, 12 perc kerettel). Mérés a
+        # 07-23 reggeli futáson: a 34 perc = 13,8p ÍRÁS + 20,3p redundáns beépített
+        # FORDÍTÁS. A kihagyással a lépés ~14 percre esik (bőven a sapka alatt),
+        # és futásonként ~20 fizetős CI-percet spórol. A fordítás semmit nem veszít:
+        # a dedikált lépés a build ELŐTT fut, ugyanabban a futásban publikál.
+        # (Helyi `node agents/ceo/agent.js` VÁLTOZATLAN — kézi teszthez teljes flow.)
+        run: node agents/ceo/agent.js --skip-translate --max-minutes 42
+
+      # Heti extrák (2026-07-08): vasárnap összefoglaló, szerdán összehasonlító.
+      # Vázlatot írnak (WRITER_) — a KÖVETKEZŐ ceo-futás Ellenőrzője viszi át
+      # a kapun. Belső naptár-őrrel maguk döntik el, mikor van dolguk.
+      - name: Heti összefoglaló + összehasonlító (vázlat)
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          # ⚠️ TELEGRAM MINDEN FIZETŐS LÉPÉSBE (2026-08-30, hibavadászat).
+          # A config.json szerint MIND A 23 agent paid-only, tehát BÁRMELYIK
+          # lépés elsütheti az `core/ai-router.js` vészháló-riasztását („a cég
+          # ingyenes vészhálóra esett"). Token nélkül viszont a `sendMessage()`
+          # némán `{ok:false, skipped:true}`-t ad: a riasztás nem hibázik, csak
+          # SOHA nem jut el a userhez — pont az a néma hiba, ami ellen szól.
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: |
+          node agents/digest/agent.js || true
+          # A „compare" agent KIVÉVE (2026-09-26, user-szabály: „nem állítunk olyat,
+          # hogy egyik cég jobb, mint a másik"). „Melyiket válaszd" cikkeket írt
+          # („If you …, pick …"); csak azért hallgatott, mert elfogyott a témája.
+
+      # ÍGÉRET-FEDEZET FELÚJÍTÓ (2026-07-27, user-döntés: fokozatosan).
+      # 76 régi cikkünk ígér a címében utasítást, de hírként íródott, ezért
+      # vékony maradt (a user egy ilyet olvasott: "nem túl részletes"). Az iro 4b
+      # szabálya + az ellenőrző kapuja a JÖVŐT rendezi; ez a MÚLTAT, futásonként
+      # 2 cikkel (~4 hét alatt mind, ~$0.01/cikk). A régi verzió mindig kint
+      # marad, amíg az új nem megy át ugyanazon az ellenőrzésen — nincs lyuk az
+      # oldalon. A FORDÍTÁS lépés ELŐTT fut, hogy a felújított szöveg még ebben
+      # a futásban kimenjen mind az 5 nyelven.
+      - name: Régi "hogyan"-cikkek felújítása (2/futás)
+        # if: always() — a 2026-07-28-i futáson a Pipeline lépés időtúllépéssel
+        # elbukott, és ez a lépés emiatt KIMARADT. A felújítás nem függ a
+        # Pipeline sikerétől (a MÁR KINT LÉVŐ cikkeket javítja), ezért fusson
+        # akkor is, ha az írás-ág megbotlott.
+        if: always()
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          # Vészháló-riasztás — lásd a „Heti összefoglaló" lépés indoklását.
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        # 10 → 15 perc (2026-07-31): a 18:51-es futásban a lépés PONT a 10
+        # percnél halt el — a || true a lépés-timeout ellen NEM véd (a GitHub
+        # a timeoutot a shell-től függetlenül üti). 2 cikk × max 8 perces
+        # beragadás-védő hívás elméletben 16 perc is lehet; a 15 a reális
+        # csúcsot fedi, a maradékot a következő futás úgyis folytatja.
+        timeout-minutes: 15
+        run: node agents/iro/upgrade-howtos.js --limit 2 || true
+
+      # BORÍTÓKÉP-FELÚJÍTÁS (2026-07-30, user: "az útmutató képek is a
+      # leírásból származzanak").
+      #
+      # A 2026-07-30 előtti képek úgy készültek, hogy az "art director" CSAK a
+      # címet és az alcímet látta — a cikk szövegét soha. Ebből félrevezető
+      # borítók lettek. Mért példa ugyanarra az útmutatóra:
+      #   RÉGI: "áttetsző ROBOT-KOPONYA elektródákkal, világító CPU-agy"
+      #   ÚJ:   "laptop az OpenAI Playground felülettel, chat-buborékok"
+      # (a cikk arról szól, hogyan jelentkezz be és kérj API-kulcsot).
+      #
+      # ÚTMUTATÓK ELŐRE: azok evergreenek, azokat pineljük, és a user
+      # kifejezetten őket kérte — 245 db ~28 nap alatt. A hír borítója amúgy is
+      # elavul. A kép-generálás INGYENES (Cloudflare Flux), a jelenet-leírás
+      # ~$0,0005/db → az egész felújítás ~$0,28.
+      # ÜTEM 3 → 8 (2026-08-01). Mérve: 581 borítóképből 48 kész, 533 hátra;
+      # 3/futás × 3 futás/nap = 9/nap → 60 NAP. Mivel addig a Google Discover
+      # a cikkek 92%-át kizárja, az ütem maga volt a szűk keresztmetszet.
+      # MIÉRT BIZTONSÁGOS: a kép INGYENES (Cloudflare Flux, 10 000 neuron/nap;
+      # egy 1280×720-as kép nagyságrendileg ~70 neuron → napi ~140 fér bele,
+      # most ~12-nél tartunk). 8/futás = 24/nap + az új cikkek ~6 → ~30/nap,
+      # tehát a szabad keret negyede. Idő: ~7 mp/kép → +35 mp futásonként.
+      # Költség: a jelenet-leírás ~$0,0007/db → a TELJES hátralék ~$0,37.
+      # FIGYELENDŐ: ha Flux-kvótahiba jönne, ELŐSZÖR ezt vidd vissza 3-ra —
+      # az új cikkek borítója fontosabb, mint a régiek felújítása.
+      - name: Borítóképek felújítása (8/futás, útmutatók előre)
+        if: always()
+        timeout-minutes: 10
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          HF_API_KEY: ${{ secrets.HF_API_KEY }}
+          # Vészháló-riasztás — lásd a „Heti összefoglaló" lépés indoklását.
+          # (A kép ingyenes, DE a jelenet-leírás fizetős hívás.)
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: node agents/designer/agent.js --refresh 8 || true
+
+      # TÉNY-ELLENŐRZŐ (2026-07-30): a MÁR KINT LÉVŐ útmutatók frissesség-őre.
+      #
+      # MIÉRT KELLETT: a hitelesség-kapu (core/truth-gate.js) CSAK publikálás
+      # ELŐTT ellenőriz. A 240 kint lévő útmutatót azóta senki nem nézte újra —
+      # ha egy cég kivesz vagy átnevez egy funkciót, a mi útmutatónk NÉMÁN
+      # hazuggá válik, és ezt ma semmi nem venné észre. Az agent 2026-06-22 óta
+      # készen állt, csak sosem kötötték be.
+      #
+      # BIZTONSÁG (a bekötés ELŐTT átépítve): SOHA nem töröl publikált oldalt.
+      # Helyben javít (az URL nem mozdul); ha a javítás nem elég ép, a RÉGI
+      # marad; "tárgytalan" ítéletnél csak MEGJELÖL és szól — egy oldal levétele
+      # emberi döntés (404 + elveszett rangsor-erő + 301 kellene hozzá).
+      #
+      # ÜTEM: 2/futás = 6/nap → a 240 útmutató ~40 naponta körbeér. ~$0,005
+      # útmutatónként, azaz ~$0,9/hó egy valódi hitelességi védőhálóért.
+      # 30 napnál fiatalabbhoz nem nyúl (azt a kapu épp most engedte át).
+      - name: Tény-ellenőrző (kint lévő útmutatók frissessége)
+        if: always()
+        timeout-minutes: 10
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        # 2026-11-01 (4. rész, user 10-31: „igen!”): 4 → 6 — a régi, olvasott hírek is a sorba kerültek (napi ~+$0,03)
+        run: node agents/fact-check/agent.js --limit 6 || true
+
+      # Orbit heti videó: szkript + hang (vasárnap; a videót a compose rakja össze)
+      - name: Orbit videó — szkript + hang (vasárnap)
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: node agents/video/agent.js || true
+
+      # ── KÖZBENSŐ MENTÉS (2026-07-31) ─────────────────────────────────
+      # MIÉRT: a 07-31 01:47-es futás a 60 perces job-plafonba futott, és a
+      # GitHub MEGSZAKÍTOTTA. Megszakított jobnál az `if: always()` lépések is
+      # KIMARADNAK — így a záró visszacommit sem futott le, és a futás EGÉSZ
+      # munkája elveszett: a megírt cikkek, a felújítások és a költség-napló is.
+      #
+      # A job-plafont felemeltük (60 → 120), de az `always()` gyengesége attól
+      # még ott van: bármilyen megszakadás (plafon, futtató-hiba, kézi leállítás)
+      # ugyanígy mindent eldobna. Ezért itt, a leghosszabb lépés (Fordítás,
+      # 30 perc) ELŐTT lementjük, ami addig elkészült.
+      #
+      # Így a legrosszabb eset is csak a fordítás-munkát veszti el (az amúgy is
+      # utolér magát a következő futásban) — a MEGÍRT TARTALMAT soha.
+      # A záró visszacommit változatlanul megmarad; ez csak egy korábbi mentőpont.
+      - name: Közbenső mentés (a hosszú fordítás ELŐTT)
+        if: always()
+        run: |
+          git config user.name "AI World Bot"
+          git config user.email "bot@aiworld.local"
+          git add -A
+          git commit -m "auto: közbenső mentés $(date -u +%FT%TZ)" || { echo "nincs mentenivaló"; exit 0; }
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase -X theirs || { git rebase --abort 2>/dev/null || true; }
+            sleep 5
+          done
+          echo "⚠️ közbenső mentés nem ment fel — a záró commit még megpróbálja"
+
+      - name: Fordítás (többnyelvűség — backfill, mindig fut)
+        if: always()
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          # ⚠️ TELEGRAM IS KELL IDE (2026-08-30, hibavadászat). A fordító
+          # paid-only, tehát ITT is elsülhet a vészháló-riasztás („a fizetős
+          # lánc kiesett") — de token nélkül a `sendMessage()` némán
+          # `{ok:false, skipped:true}`-t adott. Ez a leghosszabb fizetős lépés
+          # (35 perc), tehát a legvalószínűbb hely, ahol a lánc elfogy.
+          # (A riasztás a `core/ai-router.js` javítása óta már nem VÉSZ EL
+          # token nélkül sem — a dedup-kulcs csak sikeres küldés után íródik —,
+          # de így AZONNAL megy ki, nem csak egy későbbi lépésből.)
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        # 30 → 35 PERC (2026-07-31). A 04:07-es futásban a fordító RENDESEN
+        # dolgozott (154 fordítás), tisztán ki is lépett a saját 27 perces
+        # keretén, kiírta az összegzést — és a lépés-korlát UGYANABBAN A
+        # MÁSODPERCBEN ütött. A tiszta kilépés versenyzett a külső korláttal.
+        #
+        # Miért csúszott túl: a 27 perc a fordítási MUNKA kerete, de utána még
+        # be kell fejeződnie a folyamatban lévő hívásnak (max 8 perces
+        # beragadás-védőidő), plusz az indulás. 27 + ráhagyás > 30.
+        #
+        # A 35 perc így a VALÓDI vészfék marad, a 27 perces belső keret pedig
+        # a rendes szabályozó — ez utóbbi az, ami menti a munkát és jelent.
+        timeout-minutes: 35
+        # 2026-07-26: a repó PUBLIKUS lett → GitHub Actions INGYEN+KORLÁTLAN, ezért
+        # a korábbi szűk plafonokat (limit 80 / 9 perc / 12 perc timeout) FELOLDOTTUK.
+        # Azok a privát repó havi 2000 ingyen perce miatt spóroltak, és rohamnál
+        # (új forrás + kvóta-reset = sok cikk egyszerre) a maradékot a KÖVETKEZŐ
+        # futásra halasztották (=látható fordítás-késés). Most egy roham is EGY
+        # futásban utoléri magát. Ugyanannyi AI-token (=ugyanannyi költség), csak
+        # gyorsabb; a --max-minutes 27 továbbra is tiszta kilépést garantál a 30-as
+        # timeout ELŐTT, a $50-os havi AI-cap pedig a valódi költség-védőháló.
+        #
+        # --concurrency 5 (2026-07-27): a 27 perces keret ÖNMAGÁBAN nem volt elég.
+        # Mérés: a SOROS fordító ~91 mp/darab → 27 perc = ~18 fordítás, a valós
+        # futás pont 20-at ért el. Egy futás viszont 9-13 cikket ad ki = 36-52
+        # fordítás → a maradék a KÖVETKEZŐ futásra (8 óra!) csúszott, és addig a
+        # build angol fallbackot tett ki a hu/es/de/fr oldalakra ("a fordítások
+        # késnek"). 4 sávon mérve 1,76 fordítás/perc (2,7x) → 5 sáv ~59 fordítás
+        # / 27 perc, azaz a csúcs is elfér EGY futásban. A hívások száma és így a
+        # KÖLTSÉG változatlan — csak nem várnak egymásra.
+        run: node agents/translator/agent.js --limit 250 --max-minutes 27 --concurrency 5
+
+      # ── KIADÁSI LÁNC (2026-07-23) ────────────────────────────────────
+      # MIÉRT if: always() INNENTŐL: korábban ezek a lépések alapértelmezetten
+      # csak sikeres előzmény után futottak — így egyetlen elakadt/kifutott
+      # tartalmi lépés MEGAKADÁLYOZTA a kiadást, és a kész cikkek a repóban
+      # ragadtak (2026-07-23: 6 hír + 3 útmutató nem került ki az oldalra).
+      # A build a MEGLÉVŐ tartalomból dolgozik, tehát nyugodtan kiadható az is,
+      # ami félbehagyott futásból maradt.
+
+      # MAGYAR HELYESÍRÁS (2026-08-20). A user egy ÉLŐ oldalon vette észre a
+      # „többiünknek" alakot; ugyanabban a cikkben még két hiba volt.
+      # KÉT LÉPCSŐ: a hunspell INGYEN szűkíti a ~2300 szavas cikket néhány
+      # jelöltre, a bíró pedig csak azt a néhány szót nézi meg — ezért olcsó.
+      #
+      # ⚠️ EZ A HELY SZÁMÍT (2026-08-21): a FORDÍTÁS UTÁN, de a BUILD ELŐTT.
+      # Előtte a két lépés a deploy UTÁN futott, így a kijavított magyar szöveg
+      # csak a KÖVETKEZŐ futással, ~8 óra késéssel jutott ki az oldalra — és a
+      # napi jelentés is az előző futás tárállapotát mutatta.
+      # Sorrend: előbb ítélet (új szavak), aztán javítás (a friss ítéletekkel is).
+      #
+      # A --limit=5 felső korlát, nem cél: 5 köteg × 40 szó ≈ $0,02 egy futásra.
+      # Napi új anyagra ennek töredéke kell; a korlát egy elszabadult futás ellen
+      # véd, és a felgyűlt hátralék így pár futás alatt ledolgozódik.
+      - name: Magyar helyesírás — ítélet az új szóalakokra
+        if: always()
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          # Vészháló-riasztás — lásd a „Heti összefoglaló" lépés indoklását.
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: node core/hu-review.js --limit=5 || true
+
+      - name: Magyar helyesírás — a megítélt hibák javítása ($0)
+        if: always()
+        run: node core/hu-review.js --fix || true
+
+      # Minőség-ÖNJAVÍTÓ (2026-07-13, "ne csak szóljon, javítsa is"): a
+      # determinisztikus csempe-hibákat KIJAVÍTJA a build előtt (témalista +
+      # cikkek _meta); a javítás-napló a napi Telegram-jelentésbe kerül.
+      - name: Minőség-önjavító (csempék)
+        if: always()
+        run: node core/quality-guard.js --fix || true
+
+      # HÁZMESTER (2026-07-30): halott adat takarítása, MINDIG a build ELŐTT,
+      # hogy a törölt képek fel se menjenek a Cloudflare-re.
+      #
+      # MIÉRT KELLETT: a user kérésére átvilágítottam a központot. A legnagyobb
+      # tétel a memory/store.json volt — 2,2 MB, ebből 93% halott "embedding"
+      # vektor egy KIVEZETETT szolgáltatástól. Ez a fájl MINDEN futásnál újra
+      # bekerült a git-történetbe (133 példány), napi 3 futással évi ~2,2 GB.
+      # Mellette 594 régi napló, 97 árva borítókép, 5 árva fordítás.
+      #
+      # Csak azt törli, amiről BIZONYÍTHATÓ, hogy nincs rá hivatkozás; ha bármi
+      # bizonytalan, hozzá sem nyúl. Beépített őrszem szól, ha valami újra hízni
+      # kezd — hogy ne fél év múlva, a lassú klónozásból derüljön ki.
+      # FORGALOM-NAPLÓ A TÖRLÉS ELŐTT (2026-10-15, user: „csak akkor törlünk útmutatót, ha 60
+      # napig nem olvassa senki!"). A Házmester a 60 napja olvasatlan útmutatót törli
+      # (core/guide-prune.js), a napló viszont eddig csak a futás VÉGÉN frissült — az előző nap
+      # olvasói így még nem látszottak (10-15: egy útmutató spanyol változatának 1 olvasója a
+      # törlés előtti napon). Itt is frissítjük; a futás végi lépés marad (a riport is abból dolgozik).
+      - name: Forgalom-napló frissítése a törlés előtt
+        if: always()
+        timeout-minutes: 1
+        env:
+          CF_ANALYTICS_TOKEN: ${{ secrets.CF_ANALYTICS_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node core/traffic-log.js || true
+
+      # 🔗 ÚTMUTATÓ-ÖSSZEVONÁS — AUTOMATA (2026-10-19, user: „de ne csak a híreket vonja
+      # össze hanem az útmutatókat is!" → „Magától, utána szóljon"). Hetente egyszer (a
+      # script maga dönti el, esedékes-e), legfeljebb 5 valódi ismétlés → 301 a megmaradóra
+      # (content/slug-history.json), a különböző eszközök változatai MARADNAK. A BUILD ELŐTT
+      # fut, hogy a törölt útmutató ne épüljön meg; a záró visszacommit menti. $0, nincs AI.
+      - name: Útmutató-összevonás (heti, automata)
+        if: always()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: node core/utmutato-osszevonas.js --auto || true
+
+      - name: Házmester (halott adat takarítása)
+        if: always()
+        run: node core/housekeeping.js || true
+
+      # 🔧 „HA ELAKADSZ” DOBOZ (2026-10-27, user: „csináld!” az előnézet után). Hivatalos súgócikkekből,
+      # kód-ellenőrzéssel (core/elakadas.js) gyárt útmutatónként dobozt + hu/es fordítást → content/elakadas/.
+      # A FORDÍTÁS, az ÚTMUTATÓ-ÖSSZEVONÁS és a HÁZMESTER UTÁN (10-27, záró átnézés: ezek törlik az útmutatókat — törölt
+      # útmutatóra ne fizessünk dobozt), de a BUILD ELŐTT, hogy a doboz még ebben a futásban kikerüljön. Saját keret: napi
+      # $0,10, és ha a nap már $0,60 felett jár, kimarad (core/elakadas-gen.js) — a napi $1-os plafont nem veszélyezteti.
+      # Futásonként legfeljebb 10 útmutató (újak elöl, utána a legolvasottabbak). Kill-switch: ELAKADAS_BE.
+      # IDŐKERET: a lépésnek NINCS timeout-minutes-a (a job lépés-költségvetése tele van, core/ci-timeouts.test.js
+      # ≥ 5 perc tartalékot kér) — ezért a generátor belső --max-minutes 6 határidővel nem indít új útmutatót.
+      - name: Ha elakadsz — doboz-gyártás (súgóból, ellenőrizve)
+        if: always()
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: |
+          node core/elakadas-gen.js --limit 10 --max-minutes 6 || true
+          # 🧩 RÉGI PROMPTOK KITÖLTHETŐVÉ TÉTELE (2026-10-29, core/kitoltheto-regi-gen.js): ugyanebben a lépésben (a job
+          # lépés-költségvetése tele; core/ci-timeouts.test.js). Saját napi plafon $0,05, belső időkeret 4 perc, max 12 útmutató.
+          node core/kitoltheto-regi-gen.js --limit 12 --max-minutes 4 || true
+
+      # 🎬 REEL — 1. LÉPÉS: a napi álló videó legyártása.
+      #
+      # ⚠️ A BUILD ELŐTT KELL FUTNIA. A videó a FORRÁS-oldalra készül
+      # (website/assets/video/shorts/), és a build másolja ki a public/-ba;
+      # ha utána futna, a fájl nem kerülne ki az oldalra.
+      #
+      # NAPI EGY, akkor is, hogy a CI naponta háromszor fut: a jelölés a cikk
+      # `_meta.reel_at` mezője (core/reel-queue.js). Jelölés nélkül ugyanaz a
+      # Reel naponta háromszor menne ki — EZ volt az egyetlen ok, amiért a
+      # Reel 2026-08-24 óta készen állt, de nem volt bekötve.
+      #
+      # Ingyenes: a szöveg a cikk „Step N —" fejléceiből jön (nem AI), a hang
+      # msedge-tts, a kép sharp, az összerakás ffmpeg. Hiba nem dönti el a
+      # futást — ilyenkor egyszerűen nem lesz aznap Reel.
+      # ⚠️ FFMPEG TELEPÍTÉSE (2026-08-26). Az ubuntu-latest futtatón NINCS
+      # ffmpeg. A kódban évek óta ott állt a feltevés, hogy "a runneren adott"
+      # — soha senki nem ellenőrizte, mert az Orbit-videó ki van kapcsolva.
+      # Az első automata Reel emiatt bukott: "spawnSync ffmpeg ENOENT".
+      # HELYBEN MŰKÖDÖTT, mert a fejlesztő gépén ott van. A helyi próba tehát
+      # SEMMIT nem bizonyított a CI-ról.
+      - name: ffmpeg telepítése (a Reelhez kell)
+        if: always()
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && ffmpeg -version | head -1
+
+      # ⚠️ BETŰTÍPUS TELEPÍTÉSE (2026-09-17) — UGYANAZ A CSAPDA, MINT AZ
+      # FFMPEG-NÉL, EGY SZINTTEL CSENDESEBBEN. A Reel-táblák „Arial Black"-et
+      # kértek. Az a fejlesztői Windowson megvan, ezen a futtatón NINCS — és
+      # a betűmotor nem hibázik ilyenkor, hanem NÉMÁN egy vékonyabb alapbetűre
+      # esik vissza. Az ffmpeg hiánya legalább elhasalt; ez három hétig, 24
+      # kiküldött Reelen át úgy ment, hogy a gyártás „sikeres" volt.
+      #
+      # A betű mostantól a repóval utazik (shared/fonts/, SIL OFL licenc a
+      # mappában), és innen kerül a rendszer betűkönyvtárába. A `fc-cache`
+      # nélkül a librsvg (sharp) nem látja meg.
+      #
+      # 🔑 EZ A LÉPÉS NEM BIZONYÍTÉK. A gyártás ezen kívül MEGMÉRI, hogy
+      # tényleg ezt a betűt kapta-e (core/video-font.js), és a lelet a napi
+      # jelentésbe megy — nem a CI-naplóba, ahová senki nem néz.
+      - name: Betűtípus telepítése (a Reel-táblákhoz)
+        if: always()
+        run: |
+          command -v fc-cache >/dev/null || sudo apt-get install -y -qq fontconfig
+          mkdir -p "$HOME/.local/share/fonts"
+          cp shared/fonts/schibsted-grotesk-900.ttf "$HOME/.local/share/fonts/"
+          fc-cache -f >/dev/null
+          # ⚠️ AZ `fc-match` ÖNMAGÁBAN NEM KAPU: mindig 0-val lép ki, és a
+          # NÉMA VISSZAESÉST is sikernek mutatja (kiírja, mit adna helyette).
+          # Ezért megnézzük, hogy tényleg a mi fájlunkat adja-e vissza.
+          # Itt CSAK HANGOSAN SZÓLUNK, nem döntjük el a futást: a Reel
+          # díszítő elem, egy betű miatt nem állítjuk meg az egész napi
+          # gépezetet. A valódi kapu a gyártás pixel-mérése, ami a napi
+          # Telegram-jelentésbe jut (core/video-font.js).
+          if fc-match -f '%{file}\n' "Schibsted Grotesk" | grep -qi schibsted; then
+            echo "✅ betű telepítve: $(fc-match -f '%{file}\n' 'Schibsted Grotesk')"
+          else
+            echo "🔴 A BETŰ NEM TELEPÜLT — a fontconfig ezt adja helyette:"
+            fc-match "Schibsted Grotesk"
+          fi
+
+      - name: Reel — napi videó gyártása (a build ELŐTT)
+        if: always()
+        run: node core/reel-post.js --prepare || true
+
+      # id + outcome: a deploy CSAK sikeres build után mehet — a build.js
+      # ELŐSZÖR ÜRÍTI a website/public mappát, tehát egy bukott build után a
+      # deploy LETÖRÖLNÉ az élő oldalt. Ez a feltétel a védőháló.
+      - name: Weboldal build
+        id: build
+        if: always()
+        run: node website/build.js
+
+      # i18n-őrszem: angol maradványok a nem-EN oldalakon → hangos figyelmeztetés
+      # a naplóban (a deployt nem állítja meg)
+      - name: i18n-őrszem (angol maradvány-vadász)
+        if: always()
+        run: node website/check-i18n.js || true
+
+      # SEO-ŐRSZEM (2026-07-27): a Search Console három NÉMA hibát jelzett —
+      # .html-es (átirányító) canonical/hreflang/og:url/sitemap, cím-átdolgozás
+      # miatt elköltözött oldalak (404 + elveszett rangsor-erő), és sitemap-URL
+      # kiszolgáló fájl nélkül. Mindhárom hónapokig rejtve maradt, mert a honlap
+      # közben tökéletesen működött. A build UTÁN, a deploy ELŐTT fut, hogy a
+      # visszaesés a NAPLÓBAN és a napi riportban derüljön ki, ne fél év múlva
+      # a Google-tól. A kiadást NEM állítja meg (|| true).
+      - name: SEO-őrszem (kanonikus URL + slug-védelem)
+        if: always() && steps.build.outcome == 'success'
+        run: node core/seo-guard.js || true
+
+      # BELSŐ HIVATKOZÁS-ŐR (2026-09-08): mutat-e a saját oldalunk sehova?
+      # A user Search Console-képén „Nem található (404): 15" állt. A 2822
+      # épített oldal MINDEN belső linkjét végigmérve három halott cél jött ki;
+      # a legrégebbi HAT HETE élt egy heti összefoglaló „Read the full story"
+      # gombjában. Semmi nem szólt róla: a halott link nem dob hibát, és a
+      # tesztek is zöldek maradnak tőle — csak az olvasó akad el rajta, és a
+      # kereső jegyez fel 404-et a saját oldalunkról.
+      # Az ÁTIRÁNYÍTOTT címet nem tekinti halottnak (különben mind a 49 régi
+      # slug riasztana, és a zajban a valódi lelet elveszne).
+      - name: Belső hivatkozás-őr (halott linkek)
+        if: always() && steps.build.outcome == 'success'
+        run: node core/internal-link-guard.js || true
+
+      # 🧩 KIMENET-ŐR (2026-09-12): a kiépített lapok ellenőrzése a FRISS buildön.
+      # A két cikk-sablon (hír ↔ útmutató) négyszer csúszott szét némán. Az ezt
+      # néző ellenőrzések eddig csak TESZTKÉNT léteztek — de a „Tesztek" lépés
+      # a build ELŐTT fut, amikor a website/public még nincs (gitignore-os), így
+      # sosem láttak friss kimenetet, és üresen „zöldet" adtak. Itt a build UTÁN
+      # futnak; a lelet a napi riportba megy, a kiadást nem állítja meg.
+      - name: Kimenet-őr (sablon-paritás + kimeneti visszaesés)
+        if: always() && steps.build.outcome == 'success'
+        run: node core/output-guard.js || true
+
+      # BORÍTÓKÉP-ŐRSZEM (2026-08-14): van-e képe a friss cikkeknek. A user
+      # vette észre a főoldalon, hogy a CÍMLAPSZTORI borítója üres — a designer
+      # 3 db HTTP 400-at kapott, és azt csak a CI naplójába írta.
+      # A SZIMPTÓMÁT nézi (nincs kép), nem az okot: így bármilyen jövőbeli ok
+      # (API-változás, kvóta, hálózat) ugyanúgy kiderül. A lelet a napi
+      # riportba megy, nem ide a naplóba.
+      - name: Borítókép-őrszem
+        if: always()
+        run: node core/image-guard.js || true
+
+      # ✂️ Csonka-őrszem (2026-08-25): elvágott cikk/fordítás keresése.
+      # A feltáráskor 53 ilyen szöveg volt kint, mind mondat közepén elvágva.
+      # Ingyenes, hálózat nélküli — csak a lemezt olvassa.
+      - name: Csonka-őrszem
+        if: always()
+        run: node core/truncation-guard.js || true
+
+      # Címes megosztás-képek a friss cikkekhez (FB-posztokhoz; 2026-07-08)
+      # FIGYELEM: a build ÜRÍTI a public/-ot, ezért ennek a build UTÁN kell futnia.
+      - name: Megosztás-képek (címes borítók)
+        if: always() && steps.build.outcome == 'success'
+        run: node core/share-images.js || true
+
+      # Orbit heti videó összerakása (mp4 nincs commitolva).
+      # ⚠️ A korábbi komment azt állította, hogy "ffmpeg a runneren adott" —
+      # NEM AZ. Ez a feltevés bukatta el az első automata Reelt 2026-08-26-án.
+      # Az ffmpeg-et fentebb TELEPÍTJÜK; ez a lépés arra támaszkodik.
+      - name: Orbit videó — összerakás (mp4)
+        if: always()
+        run: node core/video-compose.js || true
+
+      - name: Deploy — Cloudflare Pages
+        if: always() && steps.build.outcome == 'success'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        timeout-minutes: 6
+        run: npx --yes wrangler pages deploy website/public --project-name=aiworldco --branch=main --commit-dirty=true
+
+      # IndexNow: a friss cikkeket AZONNAL bejelentjük a keresőknek (Bing =
+      # a ChatGPT-kereső indexe). Hiba esetén nem dönti el a futást (|| true).
+      # ÉLŐ-ŐRSZEM (2026-07-31, a user kérdése után: "ezt hogy nem vettük
+      # észre?"). A Google-audit 3 hibát talált, és mind azért maradt rejtve
+      # hetekig, mert minden őrszemünk a SAJÁT fájljainkat nézi — kintről, a
+      # Google szemével SENKI nem kérte le az oldalt. Ez a lépés a deploy után
+      # valódi HTTP-kérésekkel ellenőrzi az ÉLŐ oldalt: www/http átirányítás,
+      # valódi 404, kivezetett nyelvek, canonical/H1/Discover-jelzés a
+      # legfrissebb cikken, sitemap épsége. Bizonyítottan tüzel: első futásán
+      # elkapta a www-duplikációt. Lelet → napi Telegram-riport (🌐).
+      - name: Élő-őrszem (kintről befelé nézés)
+        if: always() && steps.build.outcome == 'success'
+        run: node core/live-guard.js || true
+
+      - name: IndexNow — friss URL-ek bejelentése
+        if: always()
+        run: node core/indexnow.js || true
+
+      # 🎬 REEL — 2. LÉPÉS: kiküldés a Facebookra.
+      #
+      # ⚠️ A DEPLOY UTÁN KELL FUTNIA. A Facebook a SAJÁT szerveréről tölti le
+      # a videót (URL-mód, ezért kerül 2 műveletbe 3 helyett) — a fájlnak
+      # tehát KINT kell lennie a posztolás pillanatában. Élesben megtanulva
+      # 2026-08-23: háromszor küldtünk ki egy még nem létező címet, és a
+      # Facebook mindháromszor 422-t adott.
+      #
+      # A modul küldés előtt MAGA IS leellenőrzi a címet (HTTP + content-type
+      # + méret), tehát ha a deploy elhasalt, nem megy ki hibás poszt.
+      # A siker AKKOR IS csak „átvettem" — a valódi kimenetel a Make
+      # naplójában (forgatókönyv 7066389) látszik.
+      - name: Reel — kiküldés (a deploy UTÁN)
+        if: always()
+        env:
+          MAKE_REEL_WEBHOOK_URL: ${{ secrets.MAKE_REEL_WEBHOOK_URL }}
+        run: node core/reel-post.js --send || true
+
+      # 📺 HETI MI-HÍRADÓ — automata kiküldés (2026-10-19, user: „mehet ki automatikusan!").
+      # A videót a .github/workflows/heti-hirado.yml gyártja vasárnap; ez a lépés a deploy
+      # UTÁN küldi ki (FB Reel → Make, TikTok + Threads → Buffer), csak ha a videó már él,
+      # friss (≤4 nap) és van még csatorna, ahová nem ment ki. A jelölést a záró
+      # visszacommit menti (content/hirado/<dátum>.json) — kétszer sosem megy ki.
+      - name: Heti MI-híradó — kiküldés (a deploy UTÁN)
+        if: always()
+        env:
+          MAKE_REEL_WEBHOOK_URL: ${{ secrets.MAKE_REEL_WEBHOOK_URL }}
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+        run: node core/hirado-kuldes.js --auto || true
+
+      # ✉️ HETI HÍRLEVÉL (2026-10-30, core/hirlevel.js — Kit). A vasárnapi heti összefoglalóból; a deploy UTÁN,
+      # hogy a levél linkjei már éljenek. KI van kapcsolva, amíg config.newsletter.enabled != true vagy nincs
+      # KIT_API_KEY — akkor csendben kihagyja. Egy heti cikket csak egyszer küld (content/hirlevel-naplo.json,
+      # a záró visszacommit menti).
+      - name: Heti hírlevél — kiküldés (a deploy UTÁN)
+        if: always()
+        env:
+          KIT_API_KEY: ${{ secrets.KIT_API_KEY }}
+        run: node core/hirlevel.js --send || true
+
+      # Social: poszt-szöveg az új cikkekhez + kiküldés (Make webhook → FB oldal).
+      # Max 2 poszt/futás (kulturált tempó); hiba nem dönti el a futást.
+      - name: Social — poszt-gyártás + kiküldés
+        if: always()
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          # 2026-07-25: a social átállt fizetős MiniMaxra (M2.5) — kell az OpenRouter
+          # kulcs, különben minden fizetős hívása elhasal és a vészhálóra (ingyenes)
+          # esik. Eddig ingyenes GLM-en futott, ezért nem volt itt.
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+          # PINTEREST (2026-07-25, forgalom-szerzés): a pinterest-poster erre a
+          # webhookra POST-ol (Make → Create a Pin). Amíg a secret nincs beállítva,
+          # a poszter kecsesen kihagyja magát (dormant) — nem hibázik.
+          PINTEREST_MAKE_WEBHOOK_URL: ${{ secrets.PINTEREST_MAKE_WEBHOOK_URL }}
+          # ÚJ CSATORNÁK (2026-08-09). Amíg ezek a titkok üresek, a poszterek
+          # alszanak — a lépés akkor is hibátlanul lefut.
+          THREADS_MAKE_WEBHOOK_URL: ${{ secrets.THREADS_MAKE_WEBHOOK_URL }}
+          X_MAKE_WEBHOOK_URL: ${{ secrets.X_MAKE_WEBHOOK_URL }}
+          # BUFFER (2026-08-14) — X / Threads / TikTok (10-07, az Instagram helyén). Amíg üres, a
+          # buffer-poster alszik: nem hibázik, nem jelöl meg semmit.
+          BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          # 2026-07-27: a poszter ELŐ-ELLENŐRZI a Make-forgatókönyvet ezzel a
+          # tokennel. Kellett, mert a webhook 200-at ad akkor is, ha a
+          # forgatókönyvben nincs Pinterest-modul — így 38 pin "kiküldve"
+          # jelölést kapott, de sosem jelent meg. Token nélkül az ellenőrzés
+          # kimarad (a poszter ilyenkor a régi módon küld).
+          MAKE_API_TOKEN: ${{ secrets.MAKE_API_TOKEN }}
+          # Vészháló-riasztás — lásd a „Heti összefoglaló" lépés indoklását.
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: |
+          node agents/social/agent.js --limit 6 || true
+          # 2 → 3 POSZT/FUTÁS (2026-08-09, user-döntés: "mivel nincs Pinterest,
+          # azt forgasd bele, hogy minél előbb kimenjen"). Napi 9 poszt.
+          # A KERET A PINTERESTTŐL SZABADULT FEL: 9 × 3 művelet × 31 nap =
+          # 837/hó, az ingyenes Make-csomag 1000-es keretén belül. (A Pinterest
+          # egyedül 930-at vitt volna havonta, 0 látogatóért.)
+          # ⚠️ Emelés előtt SZÁMOLD ÚJRA a keretet — a Facebook 3 műveletet
+          # fogyaszt posztonként (webhook + képletöltés + feltöltés).
+          node agents/social/poster.js --limit 3 || true
+          # ⛔ PINTEREST LEÁLLÍTVA (2026-08-09, USER-DÖNTÉS). NE kapcsold vissza
+          # kérdés nélkül.
+          #
+          # KÉT MÉRÉS EGYÜTT hozta a döntést:
+          #   1) HOZAM: 30+ nap alatt 189 pin ment ki, és a Cloudflare szerint
+          #      PONTOSAN 0 látogató érkezett Pinterestről. Az álló pin-kép
+          #      (2026-08-07) sem változtatott: 3 nap, ~44 álló pin → 0.
+          #   2) ÁR: a Make művelet-keretének 62%-át vitte (aug 1-9: 254 a 407-ből),
+          #      napi 15 pin × 2 művelet. A teljes fogyás napi 45 → havi 1402
+          #      vetítés, az ingyenes csomag 1000/hó — a keret aug 23. körül
+          #      elfogyott volna, és MAGÁVAL RÁNTOTTA VOLNA A FACEBOOKOT is,
+          #      ami a forgalmunk ~90%-át adja.
+          #
+          # Nem pénzbe került tehát, hanem KISZORÍTÁSBA: pont azt a keretet
+          # foglalta, ami az új csatornáknak kell. A felszabaduló ~930 művelet/hó
+          # a Threads + X forgatókönyveké.
+          #
+          # A poszter KÓDJA MEGMARAD, csak nem hívjuk. Visszakapcsolás = ez az
+          # egy sor. A Make-forgatókönyvet is érdemes kikapcsolni a felületen
+          # (eu1.make.com), de amíg nem POST-olunk a webhookjára, nem fut.
+          # node agents/social/pinterest-poster.js --limit 5 || true
+
+          # ÚJ CSATORNÁK (2026-08-09) — a Pinteresttől felszabadult ~930
+          # művelet/hó helyén. Mindkettő ALSZIK, amíg a webhook-titok nincs
+          # beállítva: nem hibáznak, nem fogyasztanak, nem jelölnek meg semmit.
+          #
+          # A KIVÁLASZTÁS OKA: a Pinterest 189 pinből 0 látogatót hozott, mert
+          # ott egy 0 követős fiókot senki nem lát. A Facebook viszont 3 (!)
+          # követővel is napi ~26 látogatót hoz — mert a Meta ajánlómotorja
+          # IDEGENEKNEK is kiteszi a posztjainkat. A Threads ugyanazt a motort
+          # használja. Az X gyengébb (a külső linket visszafogja), de olcsó.
+          #
+          # ── BUFFER-POSZTER (2026-08-14) ────────────────────────────────
+          # A régi multi-poster (közvetlen X/Threads API) ELVETVE: az X saját
+          # API-ja fizetős ($0,200 egy linkes poszt = $56/hó, a teljes keretünk
+          # kétszerese). Helyette Buffer, aminek SAJÁT ingyenes kerete van
+          # (250 kérés/nap) — vagyis NEM eszik a Make 1000-es keretéből, tehát
+          # a Facebookot nem szorítja ki. Ez a lényegi különbség a Pinteresthez
+          # képest, ami 189 pinért a Make-keret 62%-át vitte el.
+          #
+          # A csatornákat a Buffertől kérdezi le, nem hardcode-olt lista —
+          # most Threads (link-posztok + a napi videók) + TikTok (videók + legfeljebb napi 3 hír-fotó, napi plafon 6), az X bekötése után magától bővül.
+          #
+          # LIMIT 2 (nem 3), SZÁNDÉKOSAN: a fiókok VADONATÚJAK, 0 követővel.
+          # Napi 3 futás × 2 poszt = 6/nap csatornánként. Egy friss fiók napi
+          # 9 posztja spamnek látszik, és a platform vissza is foghatja.
+          # Emelés csak MÉRÉS után — és a mérésünk szerint a poszt-szám és a
+          # látogató közti korreláció amúgy is csak 0,30.
+          #
+          # ALSZIK, amíg a BUFFER_ACCESS_TOKEN nincs beállítva: nem hibázik,
+          # nem fogyaszt, nem jelöl meg semmit.
+          node agents/social/buffer-poster.js --limit 2 || true
+
+      # Napi önjelentés a Főnöktől Telegramra (naponta 1x, a 07-20 UTC sávban)
+      # FORRÁS-BIZONYÍTVÁNY (2026-07-22): osztályozza a hírforrásokat (frissesség +
+      # termés + hitelesség-kapu blokkok). A halott/valótlant közlő forrást MAGÁTÓL
+      # kikapcsolja (enabled:false), a többiről csak javaslatot tesz a napi riportban.
+      # A riport ELŐTT fut, hogy a friss osztályzat kerüljön bele.
+      - name: Forrás-bizonyítvány (osztályozás + halott források kikapcsolása)
+        if: always()
+        run: node core/source-report-card.js || true
+
+      # if: always() (2026-07-21 audit) — ha egy korábbi lépés elhasal, a riport
+      # ENÉLKÜL sosem menne ki: a hiba NÉMA maradna (mint a 9 napos FB-leállásnál).
+      - name: Napi önjelentés (Telegram)
+        if: always()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+          # Make-őrszem (2026-07-15): a FB-posztoló forgatókönyv állapotát figyeli
+          MAKE_API_TOKEN: ${{ secrets.MAKE_API_TOKEN }}
+          # ÚJ CSATORNÁK ŐRZÉSE (2026-08-09): ha meg van adva a forgatókönyv
+          # azonosítója, a riport ezt is figyeli (él-e, van-e benne kimeneti
+          # modul, buktak-e posztok). Üresen a csatorna egyszerűen kimarad —
+          # így nem küld vészjelzést olyasmiről, ami még nem is létezik.
+          THREADS_MAKE_SCENARIO_ID: ${{ secrets.THREADS_MAKE_SCENARIO_ID }}
+          X_MAKE_SCENARIO_ID: ${{ secrets.X_MAKE_SCENARIO_ID }}
+          # EGYENLEG-ŐR (2026-08-01): a riport lekérdezi a VALÓDI OpenRouter-
+          # egyenleget. A havi keret csak egy szabály, amit mi tartunk be; a
+          # feltöltött pénz viszont fizikai korlát — ha az fogy el, a cég
+          # NÉMÁN elhallgat, jóval a keret elérése előtt. Read-only hívás, $0.
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          # ÜGYFÉLSZOLGÁLAT + KÉZBESÍTETLEN ÜZENETEK (2026-09-07, HIÁNYZOTT).
+          # A 08-29-i „📮 KÉZBESÍTETLEN kapcsolat-üzenet" riasztás azért
+          # készült, hogy egy elveszett látogatói üzenet ne maradhasson
+          # láthatatlan — a látogató {ok:true}-t kapott, azt hitte, válaszolunk.
+          # A kulcs viszont CSAK a heti riport lépésére került rá, így a napi
+          # jelentés egész blokkja (💬 számok + 📮 riasztás + a „nem tudtam
+          # ellenőrizni" sor) a megírása óta NÉMA volt. A titok megvolt.
+          FEEDBACK_EXPORT_KEY: ${{ secrets.FEEDBACK_EXPORT_KEY }}
+          # ŐRKUTYA-SODRÓDÁS (2026-09-07): a riport megnézi a SAJÁT
+          # futáslistánkat. Ha egy pótfutás a türelem-küszöbnél kisebb résnél
+          # sült el, akkor az élő Worker RÉGI kódot futtat — a Worker-telepítés
+          # ugyanis nincs a CI-ban, így egy javítás észrevétlenül maradhat
+          # papíron (09-06 … 09-07: 7 nap, napi egy fölösleges pótfutás).
+          # A beépített futtató-token elég hozzá: csak `actions: read` kell.
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node core/daily-report.js || true
+
+      # Heti kereső-riport (vasárnap): GSC+Bing számok + hírlevél-lámpa
+      - name: Heti kereső-riport (Telegram)
+        # if: always() (2026-08-30, hibavadászat) — EDDIG HIÁNYZOTT, pedig a
+        # közvetlenül fölötte lévő napi riport kifejezetten megkapta, ezzel az
+        # indoklással: „ha egy korábbi lépés elhasal, a riport ENÉLKÜL sosem
+        # menne ki: a hiba NÉMA maradna". Ugyanaz a szabály, ugyanaz az ok —
+        # csak erre a lépésre nem lett alkalmazva. Egy bukott Fordítás vagy
+        # Deploy (egyiken sincs `|| true`) eddig kihagyta ezt a riportot.
+        if: always()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+          GSC_SA_JSON: ${{ secrets.GSC_SA_JSON }}
+          BING_WM_API_KEY: ${{ secrets.BING_WM_API_KEY }}
+          FEEDBACK_EXPORT_KEY: ${{ secrets.FEEDBACK_EXPORT_KEY }}
+          # Cloudflare Web Analytics a heti riportban (összes látogató, 2026-07-11)
+          CF_ANALYTICS_TOKEN: ${{ secrets.CF_ANALYTICS_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node core/search-report.js || true
+
+      # FORGALOM-NAPLÓ (2026-08-05): cikkenkénti napi látogatottság.
+      # A Cloudflare a ~7 napnál régebbi napokat TÍZESRE KEREKÍTI, tehát amit
+      # nem mentünk el naponta, az véglegesen elveszik. E nélkül nem dönthető
+      # el, hogy a napok közti háromszoros szórás a TARTALOMBÓL jön-e vagy a
+      # napból. Read-only Cloudflare-hívás, $0, nincs benne AI.
+      - name: Forgalom-napló (cikkenkénti)
+        # if: always() (2026-08-30, hibavadászat) — ITT A LEGSÚLYOSABB a
+        # hiánya: a fenti komment maga mondja ki, hogy amit nem mentünk el
+        # naponta, az VÉGLEGESEN elveszik (a Cloudflare ~7 nap után tízesre
+        # kerekít). A `core/traffic-log.js` csak 3 napot pótol vissza, tehát
+        # egy 3 napnál hosszabb kiesés visszahozhatatlan lyukat üt a naplóban.
+        # És pont ebből az adatból dolgozik a napi riport 👥 látogatószám-sora.
+        if: always()
+        env:
+          CF_ANALYTICS_TOKEN: ${{ secrets.CF_ANALYTICS_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node core/traffic-log.js || true
+
+      # 🚨 FACEBOOK-LINKKORLÁT-ŐR (2026-10-19). A forgalom ~82%-a a Facebookról jön, és a
+      # Meta havi 2 linkes korlátja napok alatt elviheti. Rögzíti a Facebookról jött
+      # látogatókat + a kiment posztokat (memory/fb-link-guard.json), és Telegramon szól,
+      # ha két napja a megszokott szint fele alatt vagyunk. Read-only Cloudflare, $0, nincs AI.
+      - name: Facebook-linkkorlát-őr
+        # Külön timeout-minutes NINCS (mint a fenti forgalom-naplónál): a lépés-plafonok
+        # összege már szoros (core/ci-timeouts.test.js); az őr minden hívása 20 mp-es
+        # AbortSignal-lal fut, tehát magától sem akadhat be.
+        if: always()
+        env:
+          CF_ANALYTICS_TOKEN: ${{ secrets.CF_ANALYTICS_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: node core/fb-link-guard.js || true
+
+      # if: always() (2026-07-21 audit) — a költség-napló (core/budget-state.json)
+      # CSAK itt őrződik meg. Enélkül egy bukott lépés az egész futás elköltött
+      # pénzét ELDOBTA a nyilvántartásból → a havi plafon egyre kevesebbet mért.
+      - name: Generált tartalom megőrzése (visszacommit)
+        if: always()
+        run: |
+          git config user.name "AI World Bot"
+          git config user.email "bot@aiworld.local"
+          git add -A
+          git commit -m "auto: pipeline run $(date -u +%FT%TZ)" || echo "nincs változás"
+          # VERSENY-VÉDELEM: ha közben egy másik futás pusholt, rebase + újrapróba,
+          # hogy a generált tartalom NE vesszen el csendben. (-X theirs: ütközésnél
+          # a MI friss generált fájlunk nyer.)
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase -X theirs || { git rebase --abort 2>/dev/null || true; }
+            sleep 5
+          done
+          git push || echo "⚠️ push 3 próba után sem sikerült — e futás tartalma elveszhet!"
+
+      # 🔒 A PRIVÁT FORRÁS-TÁR VISSZATOLÁSA (2026-11-03) — csak ha a tár lejött. A fájlnevek kulcsok
+      # (sha256-előtag), ütközés gyakorlatilag nincs; a futások a concurrency-csoport miatt egymás után jönnek.
+      - name: Forrás-tár mentése (vissza a privát repóba)
+        if: always() && steps.forrastar.outcome == 'success'
+        continue-on-error: true
+        run: |
+          cd _forrasok
+          git config user.name "AI World Bot"
+          git config user.email "bot@aiworld.local"
+          git add -A
+          git commit -q -m "forrás-tár $(date -u +%FT%TZ)" || { echo "🔒 forrás-tár: nincs új szöveg"; exit 0; }
+          for i in 1 2 3; do
+            timeout 120 git push -q && { echo "🔒 forrás-tár mentve: $(git show --shortstat --format= HEAD | tail -1)"; exit 0; }
+            timeout 120 git pull -q --rebase -X theirs || { git rebase --abort 2>/dev/null || true; }
+            sleep 5
+          done
+          echo "⚠️ forrás-tár: a push 3 próba után sem sikerült — e futás forrásszövegei a következő futásban hiányoznak"
+
+      # 🧠 BEÁGYAZÁS-GYORSÍTÓTÁR — MENTÉS (2026-09-06)
+      #
+      # ⚠️ MIÉRT KÜLÖN `actions/cache/save` ÉS NEM A KOMBINÁLT `actions/cache`:
+      # az utóbbi a mentést a job VÉGÉN, `post-if: success()` feltétellel
+      # futtatja — vagyis egy BUKOTT futás után NEM MENTENE. Márpedig épp a
+      # bukott futás az, amelyik már kifizette a 480 beágyazást; eldobni a
+      # gyümölcsét pont a legrosszabb pillanatban lenne. Az `if: always()`
+      # ugyanaz a védelem, ami a fenti visszacommitot is őrzi (2026-07-21).
+      #
+      # A gyorsítótár a futásonként EGYEDI kulcs alá kerül (a GitHub egy
+      # meglévő kulcsot nem enged felülírni), a visszatöltés pedig az
+      # `embed-v1-` ELŐTAGRA illeszkedik, és mindig a legutóbbit hozza.
+      # Az egyszer visszatöltött, majd nem hivatkozott régi bejegyzéseket a
+      # GitHub 7 nap után magától kiselejtezi — nincs mit takarítani.
+      #
+      # 🚦 `continue-on-error` — EGY GYORSÍTÓTÁR-HIBA SOSEM BUKTATHATJA EL A
+      # FUTÁST: ha a két fájl egyike sincs meg (pl. a beágyazás egész nap
+      # halott volt), a mentő lépés útvonal-hibát ad. Az veszteség nélküli
+      # eset — a következő futás egyszerűen hidegen indul.
+      #
+      # ⏱️ Nincs `timeout-minutes`: a lépés-időkorlátok összege így változatlan
+      # marad (136 perc a 145-ös job-plafon alatt), amit a
+      # `core/ci-timeouts.test.js` őriz. A mért teher kicsi: a két fájl
+      # együtt ~14-20 MB, tömörítve ~4-6 MB → néhány másodperc oda-vissza.
+      - name: Beágyazás-gyorsítótár mentése
+        if: always()
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            memory/memory-embeddings.json
+            guides/topic-embeddings.json
+          key: embed-v1-${{ github.run_id }}-${{ github.run_attempt }}

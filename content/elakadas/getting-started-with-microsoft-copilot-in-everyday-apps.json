@@ -1,0 +1,54 @@
+{
+  "slug": "getting-started-with-microsoft-copilot-in-everyday-apps",
+  "probalva": "2026-10-29T03:50:09.618Z",
+  "doboz": {
+    "keszult": "2026-10-29T03:50:09.618Z",
+    "enHash": "7303c46c9671585fe6035cc109980c152635f8e8",
+    "forrasok": {
+      "https://support.microsoft.com/en-us/microsoft-365-copilot/generate-qr-codes-with-microsoft-365-copilot-chat": "Generate QR codes with Microsoft Copilot Chat",
+      "https://support.microsoft.com/en-us/microsoft-365-copilot/access-microsoft-365-copilot-on-windows": "Access Microsoft Copilot on Windows"
+    },
+    "en": [
+      {
+        "symptom": "How do I get a QR code for a link with Copilot?",
+        "why": "With Microsoft Copilot, you can quickly generate QR codes for any URL. Copilot generates the QR code based on the URL you provide.",
+        "fix": "Open Copilot Chat, enter a prompt describing the QR code you want, and send it. Select the Copy or Download icon on the top right of the generated QR code image.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/generate-qr-codes-with-microsoft-365-copilot-chat"
+      },
+      {
+        "symptom": "The Copilot key opens a small window instead of the full app.",
+        "why": "The Windows shortcut key can either launch the full application or just a smaller 'quick view.' How the shortcut keys behave can be configured.",
+        "fix": "In Account Settings, under Copilot Keyboard Shortcuts, choose how the shortcut keys behave. Once configured, the Copilot key opens the app in the way you selected.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/access-microsoft-365-copilot-on-windows"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Hogyan kaphatok QR-kódot egy hivatkozáshoz a Copilottal?",
+        "why": "A Microsoft Copilottal gyorsan generálhatsz QR-kódokat bármilyen URL-hez. A Copilot az általad megadott URL alapján generálja a QR-kódot.",
+        "fix": "Nyisd meg a Copilot Chatet, írj be egy, a kívánt QR-kódot leíró promptot, majd küldd el. Válaszd a generált QR-kód képének jobb felső sarkában található Copy vagy Download ikont.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/generate-qr-codes-with-microsoft-365-copilot-chat"
+      },
+      {
+        "symptom": "A Copilot billentyűje a teljes alkalmazás helyett egy kis ablakot nyit meg.",
+        "why": "A Windows parancsikonbillentyűje elindíthatja a teljes alkalmazást, vagy csak egy kisebb „gyorsnézetet” nyithat meg. Beállíthatod, hogyan működjenek a parancsikonbillentyűk.",
+        "fix": "Az Account Settingsben, a Copilot Keyboard Shortcuts alatt válaszd ki, hogyan működjenek a parancsikonbillentyűk. A beállítás után a Copilot billentyűje az általad kiválasztott módon nyitja meg az alkalmazást.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/access-microsoft-365-copilot-on-windows"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "¿Cómo obtengo un código QR para un enlace con Copilot?",
+        "why": "Con Microsoft Copilot, puedes generar rápidamente códigos QR para cualquier URL. Copilot genera el código QR basándose en la URL que proporciones.",
+        "fix": "Abre Copilot Chat, introduce un mensaje que describa el código QR que quieres y envíalo. Selecciona el icono Copy o Download en la esquina superior derecha de la imagen del código QR generado.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/generate-qr-codes-with-microsoft-365-copilot-chat"
+      },
+      {
+        "symptom": "La tecla Copilot abre una ventana pequeña en lugar de la aplicación completa.",
+        "why": "La tecla de acceso directo de Windows puede iniciar la aplicación completa o solo una «vista rápida» más pequeña. Puedes configurar cómo funcionan las teclas de acceso directo.",
+        "fix": "En Account Settings, en Copilot Keyboard Shortcuts, elige cómo deben funcionar las teclas de acceso directo. Una vez configurado, la tecla Copilot abre la aplicación de la forma que hayas seleccionado.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/access-microsoft-365-copilot-on-windows"
+      }
+    ]
+  }
+}

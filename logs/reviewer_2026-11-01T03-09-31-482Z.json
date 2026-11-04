@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-11-01T03:08:14.960Z",
+  "total": 4,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.0086209,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-30T03-27-44-365Z_databricks_Announcing_General_Availability_of_Real-Time_Mode_.json",
+      "article": "ARTICLE_2026-10-30T03-27-44-365Z_databricks_Announcing_General_Availability_of_Real-Time_Mode_.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0016353
+    },
+    {
+      "writer": "WRITER_2026-10-30T03-27-44-365Z_mistral-ai_Voxtral_3.json",
+      "article": "ARTICLE_2026-10-30T03-27-44-365Z_mistral-ai_Voxtral_3.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0015252
+    },
+    {
+      "writer": "WRITER_2026-10-31T03-11-23-766Z_openai-blog_Making_it_easier_for_websites_to_express_AI_traini.json",
+      "article": "ARTICLE_2026-10-31T03-11-23-766Z_openai-blog_Making_it_easier_for_websites_to_express_AI_traini.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00158706
+    },
+    {
+      "writer": "WRITER_2026-10-31T03-11-23-767Z_cohere-blog_Cohere_Advances_C_4_Billion_AI_Commitment_in_Canad.json",
+      "article": "ARTICLE_2026-10-31T03-11-23-767Z_cohere-blog_Cohere_Advances_C_4_Billion_AI_Commitment_in_Canad.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0016308
+    }
+  ],
+  "finished_at": "2026-11-01T03:09:31.482Z",
+  "duration_seconds": 76.522
+}

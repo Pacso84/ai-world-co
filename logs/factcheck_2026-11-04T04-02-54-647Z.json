@@ -1,0 +1,62 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.01218444,
+  "at": "2026-11-04T04:02:54.647Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-the-sleep-apnea-feature-on-galaxy-ring-and-galaxy.json",
+      "cim": "How to Use the Sleep Apnea Feature on Galaxy Ring and Galaxy Watch",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-draft-a-polite-email-asking-for-a-deadline-extension.json",
+      "cim": "How to draft a polite email asking for a deadline extension",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-04T03-51-29-898Z_samsung-newsroom_Upgraded_Sleep_Apnea_Feature_Now_Available_on_Gala.json",
+      "cim": "Upgraded Sleep Apnea Feature Now Available on Galaxy Ring Following Regulatory Approvals From US FDA and Korea MFDS",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Az összes konkrét tényállítás egyezik a forrásszöveggel."
+    },
+    {
+      "file": "ARTICLE_2026-11-04T03-51-29-898Z_d-id-news_What_Enterprise_Teams_Should_Know_About_AI_Video_P.json",
+      "cim": "What Enterprise Teams Should Know About AI Video Platforms",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrást: helyesen állítja, hogy a D-ID az AWS-en tárolja az adatokat Oregonban, a törlési időszakokat 'kereskedelmi ésszerű erőfeszítésekként' kezeli, nem használ biometrikus adatokat a mesterséges intelligencia képzésére, és pontosan írja le az ellenőrzési folyamatot (a je"
+    },
+    {
+      "file": "ARTICLE_2026-11-04T03-51-24-174Z_salesforce_Half_of_Slack_Messages_Are_No_Longer_From_People__.json",
+      "cim": "Half of Slack Messages Are No Longer From People. Here’s Slack by the Numbers.",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a forrás alátámasztja, amit kivenne: „Slack says MCP lets agents pull context from apps such as GitHub, Salesforce and Jira, the”",
+      "modell_hu": "Az MCP leírás megfordítja az áramlás irányát — a forrás szerint az ügynökök a Slackből KIVESZIK a kontextust a platformok felé, a cikk pedig azt állítja, hogy az alkalmazásokból VESZIK ki és aztán cselekszenek"
+    },
+    {
+      "file": "ARTICLE_2026-08-03T01-49-35-027Z_picsart_How_to_make_money_creating_AI_content.json",
+      "cim": "How to make money creating AI content",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk egy általános útmutató, amely egyáltalán nem kapcsolódik a Picsart forráshoz — más platformokat, bevételi módszereket és ütemtervet tárgyal"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "started_at": "2026-11-04T03:51:30.221Z",
+  "drafts_total": 6,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 1,
+  "merged_total": 1,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 3,
+    "html": 3,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.0173087,
+  "by_article": [
+    {
+      "draft": "2026-11-04T03-51-02-908Z_openai-blog_Heimstaden_is_changing_residential_real_estate_man.json",
+      "writer_output": "WRITER_2026-11-04T03-51-02-908Z_openai-blog_Heimstaden_is_changing_residential_real_estate_man.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "OpenAI enterprise case studies",
+      "source_via": [
+        "html",
+        "html",
+        "html"
+      ],
+      "source_chars": 9014,
+      "source_overlap_words": 9,
+      "cost_usd": 0.0043443,
+      "duration_ms": 18268,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-04T03-51-29-898Z_samsung-newsroom_Upgraded_Sleep_Apnea_Feature_Now_Available_on_Gala.json",
+      "writer_output": "WRITER_2026-11-04T03-51-29-898Z_samsung-newsroom_Upgraded_Sleep_Apnea_Feature_Now_Available_on_Gala.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 3423,
+      "source_overlap_words": 12,
+      "cost_usd": 0.0035851,
+      "duration_ms": 13233,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-04T03-51-29-898Z_d-id-news_What_Enterprise_Teams_Should_Know_About_AI_Video_P.json",
+      "writer_output": "WRITER_2026-11-04T03-51-29-898Z_d-id-news_What_Enterprise_Teams_Should_Know_About_AI_Video_P.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 9,
+      "cost_usd": 0.0037421,
+      "duration_ms": 15304,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-04T03-51-24-174Z_salesforce_Half_of_Slack_Messages_Are_No_Longer_From_People__.json",
+      "writer_output": "WRITER_2026-11-04T03-51-24-174Z_salesforce_Half_of_Slack_Messages_Are_No_Longer_From_People__.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 3830,
+      "source_overlap_words": 11,
+      "cost_usd": 0.0042866,
+      "duration_ms": 18873,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-11-04T03:53:22.286Z",
+  "duration_seconds": 112.065
+}

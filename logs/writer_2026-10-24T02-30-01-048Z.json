@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-24T02:27:37.779Z",
+  "drafts_total": 6,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 2,
+  "merged_total": 2,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.01632937,
+  "by_article": [
+    {
+      "draft": "2026-10-22T02-27-20-161Z_google-workspace_Video_tile_pairing_is_now_available_on_Google_Meet.json",
+      "writer_output": "WRITER_2026-10-22T02-27-20-161Z_google-workspace_Video_tile_pairing_is_now_available_on_Google_Meet.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Google Workspace mobile features: Docs Live voice docs and Meet video tile pairing",
+      "cost_usd": 0.0043954,
+      "duration_ms": 29747,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-24T02-27-21-099Z_google-workspace_Google_Workspace_Weekly_Recap_-_October_23__2026.json",
+      "writer_output": "WRITER_2026-10-24T02-27-21-099Z_google-workspace_Google_Workspace_Weekly_Recap_-_October_23__2026.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Google Workspace meeting recaps in Chat",
+      "cost_usd": 0.0034824,
+      "duration_ms": 21466,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-24T02-27-21-100Z_google-workspace_Take_actions_on_your_notebooks_from_Gemini_Noteboo.json",
+      "writer_output": "WRITER_2026-10-24T02-27-21-100Z_google-workspace_Take_actions_on_your_notebooks_from_Gemini_Noteboo.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0034374,
+      "duration_ms": 22450,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-24T02-27-37-476Z_kimi-blog_Kimi_K3_1_Pro_Tech_Blog__Advancing_Open_Intelligen.json",
+      "writer_output": "WRITER_2026-10-24T02-27-37-476Z_kimi-blog_Kimi_K3_1_Pro_Tech_Blog__Advancing_Open_Intelligen.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0034128,
+      "duration_ms": 22256,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-10-24T02:30:01.048Z",
+  "duration_seconds": 143.269
+}

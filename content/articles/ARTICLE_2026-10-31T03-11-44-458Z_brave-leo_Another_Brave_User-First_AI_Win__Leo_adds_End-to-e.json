@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "written_at": "2026-11-02T03:19:02.765Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0038644,
+    "original_draft": "2026-10-31T03-11-44-458Z_brave-leo_Another_Brave_User-First_AI_Win__Leo_adds_End-to-e.json",
+    "source_id": "brave-leo",
+    "source_name": "Brave / Leo (hivatalos blog, csak MI)",
+    "source_link": "https://brave.com/blog/browser-ai-e2ee/",
+    "source_links": [
+      "https://brave.com/blog/browser-ai-e2ee/",
+      "https://spreadprivacy.com/duck-ai-private-chat-sharing/"
+    ],
+    "source_snippet_len": 375,
+    "source_text_via": [
+      "hirfolyam",
+      "hirfolyam"
+    ],
+    "source_text_len": 9007,
+    "source_text_key": "ab097dda9c9cbd6e",
+    "source_overlap_words": 8,
+    "merged_from": 2,
+    "merged_theme": "AI privacy and security features",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-02T03:20:38.369Z",
+    "slug": "how-private-ai-chats-work-what-brave-and-duckduckgo-are-building",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 810
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that covers two privacy announcements accessibly, with clear plain-language definitions of technical terms (encryption, TEE, proxy, IP address), appropriate audience segmentation in the What This Means For You section, and a practical wrap-up next step. No prohibited content, no rankings or comparisons, factual claims attributed to the companies, US English throughout, and kind non-judgmental tone.",
+      "_aiCost": 0.0015942,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-02T03:22:53.661Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article covers TWO separate products (Brave Leo and DuckDuckGo Duck.ai) as a privacy comparison explainer rather than a single specific feature guide, with no concrete action for readers to take.",
+    "image_v": 2,
+    "image_at": "2026-11-02T03:26:23.279Z",
+    "seo": {
+      "meta_description": "See how Brave Leo and DuckDuckGo Duck.ai encrypt your AI chats so even the companies can't read them. What private AI chats actually mean for you.",
+      "keywords": [
+        "private AI chats",
+        "Brave Leo privacy",
+        "DuckDuckGo Duck.ai",
+        "encrypted AI conversations",
+        "AI chat privacy",
+        "how private AI chats work",
+        "AI chatbot data security"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a comparison table or structured list of privacy features between Brave Leo and DuckDuckGo Duck.ai for better featured snippet eligibility",
+        "Include the exact terms people search like 'is my AI chat private' or 'encrypted AI chatbot' in a FAQ section",
+        "Add structured data markup (HowTo or Article schema) to help search engines understand the content type"
+      ],
+      "optimised_at": "2026-11-02T03:29:37.480Z"
+    },
+    "fact_verified_at": "2026-11-02T03:34:10.490Z",
+    "social": true,
+    "social_at": "2026-11-02T03:44:19.266Z"
+  },
+  "article_markdown": "---\ntitle: \"How Private AI Chats Work: What Brave and DuckDuckGo Are Building\"\nsubtitle: \"Two recent announcements show how AI chat companies are trying to keep your questions and shared conversations out of reach.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"ai-privacy\", \"ai-security\", \"encryption\", \"brave-leo\", \"duck-ai\", \"getting-started\"]\n---\n\n# How Private AI Chats Work: What Brave and DuckDuckGo Are Building\n\n> **In short:** Brave says its Leo assistant now encrypts your prompts on your device, and DuckDuckGo says its Duck.ai shared-chat links are encrypted so that not even DuckDuckGo can read them. Both aim to keep your AI conversations private from the companies running the service.\n\nThink about what you type into an AI chatbot at 11 p.m.: a medical question, a letter from a debt collector, a draft of a difficult message to your boss. Those conversations can say more about you than a search query ever could. So it's worth knowing what happens to them after you hit send.\n\n## Why your chats are a privacy question\n\nWhen you use most AI services, your conversation travels to a company's servers, where it is processed and usually stored. Anyone with access to those servers, including the company itself, may be able to read it. Brave's announcement points out that conversations can also be used to train future models, handed over in legal cases, or exposed through security bugs. These are risks the company describes in general terms, not promises about any specific service.\n\nTwo terms help here:\n\n- **Encryption** scrambles your text so only someone holding the right key can read it. Think of it as a locked box.\n- **End-to-end encryption** means the box is locked on your device and only opened at the intended destination.\n\n## What Brave's Leo is doing\n\nBrave describes Leo, the AI assistant built into its browser, as offering privacy you can verify. According to Brave, each prompt is encrypted on your device before it leaves, and only a special protected area on a server can unlock it. That protected area is called a **Trusted Execution Environment (TEE)**, which you can picture as a sealed room inside a computer that even its operator cannot peek into.\n\nBrave also says a **proxy** (a middleman service) called its AI Gateway hides your IP address, which is the number that identifies your internet connection, from the AI provider. The model Leo uses runs inside that protected room. Brave says the setup is designed so that neither Brave nor the AI provider can see your prompts or the answers. Brave says these features are available now in its Release, Beta and Nightly versions of the browser.\n\n## What DuckDuckGo's shared chats do\n\nDuckDuckGo's Duck.ai now lets you create a link to a chat. Anyone who opens the link can read it, continue it or save their own copy, and they don't need an account. Several things are built in, according to DuckDuckGo:\n\n- The chat is encrypted on your device before it's uploaded.\n- The key that unlocks it sits in the part of the link after the `#`, which browsers normally don't send to servers.\n- Shared pages are blocked from search engines, and links are long and random so they can't be guessed.\n- Links expire after 48 hours by default. You can choose 1, 2, 7 or 30 days, or delete a link early.\n\nDuckDuckGo also points out a limit: once someone reads your shared chat, no technology can stop them from saving it or passing it on.\n\n## What this means for you\n\n- **In everyday life**: Before you paste medical results or personal details into any AI chat, check whether the service explains how it encrypts and stores data. A clear explanation is a good sign.\n- **For your work**: If you share AI conversations with coworkers, remember that the person you send a link to can copy what you wrote. Don't paste confidential company information into any tool unless your employer has approved it.\n- **If you're just getting started**: Look for a privacy or data page in the app's settings. You don't need to understand the cryptography to ask, \"Who can read my chats, and how long are they kept?\"\n- **If you already use it**: If you share Duck.ai chats, check your shared-links list under Duck.ai Settings and then Shared Chats. Delete any link you no longer need, so it doesn't stay live until it expires.\n\n## Wrap-up\n\nBoth announcements show AI companies trying to keep conversations private by design, not just by promise. Brave describes encryption and hardware protection for Leo, and DuckDuckGo describes encrypted, expiring share links for Duck.ai. Neither removes every risk, and both companies say so. Your best next step today is simple: open the privacy or data section of the AI tool you use most and find out how long it keeps your chats.",
+  "original_title": "Another Brave User-First AI Win: Leo adds End-to-end Encryption, Oblivious HTTP, and Verifiable Confidential Computing"
+}

@@ -1,0 +1,62 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.012213345,
+  "at": "2026-11-03T21:22:43.879Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-09-24T02-06-54-286Z_openai-blog_Grab_and_OpenAI_bring_practical_AI_skills_to_South.json",
+      "cim": "Grab and OpenAI bring practical AI skills to Southeast Asia",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk egy általános útmutató az AI ingyenes tanulásáról. Nem állítja, hogy a Grab/OpenAI délkelet-ázsiai programjáról (1. forrás) vagy az OpenAI Academy évfordulós bejegyzéséről (2. forrás) szól. Csak általános, pontos állításokat tesz az AI-eszközök ingyenes használatáról és a vállalatok által köz"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-check-if-a-suspicious-message-is-a-scam-by-pasting-it.json",
+      "cim": "How to check if a suspicious message is a scam by pasting it into an AI",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-06-07T20-03-07-840Z_theverge-ai_AI__content_creators__are_getting_harder_to_spot.json",
+      "cim": "AI ‘content creators’ are getting harder to spot",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a forrás alátámasztja, amit kivenne: „If you want to understand what makes these creators convincing, try making one.”",
+      "modell_hu": "A cikk olyan eszközökre és szabályozási követelményekre hivatkozik, amelyek nem szerepelnek a forrásban"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-clean-up-a-flooded-email-inbox-using-ai-in-one-aftern.json",
+      "cim": "How to clean up a flooded email inbox using AI in one afternoon",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-24T02-27-21-099Z_google-workspace_Google_Workspace_Weekly_Recap_-_October_23__2026.json",
+      "cim": "Google Workspace Weekly Recap - October 23, 2026",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben szereplő összes tényállítás alátámasztott a forrásszövegben, beleértve a négy összefoglaló elemet, a megjelenés feltételeit és a jegyzetmegosztási beállításokat."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-clean-up-a-messy-old-word-document-with-copilot-in-te.json",
+      "cim": "How to clean up a messy old Word document with Copilot in ten minutes",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}

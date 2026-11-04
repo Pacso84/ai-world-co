@@ -1,0 +1,60 @@
+{
+  "started_at": "2026-10-31T03:11:44.877Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "total_cost_usd": 0.0186423,
+  "by_article": [
+    {
+      "draft": "2026-10-31T03-11-23-767Z_google-workspace_Edit_entire_presentations_with_Gemini_in_Google_Sl.json",
+      "writer_output": "WRITER_2026-10-31T03-11-23-767Z_google-workspace_Edit_entire_presentations_with_Gemini_in_Google_Sl.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0032479,
+      "duration_ms": 11276,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-31T03-11-23-766Z_openai-blog_Credit_Saison_achieves_954__ROI_in_a_ChatGPT_Enter.json",
+      "writer_output": "WRITER_2026-10-31T03-11-23-766Z_openai-blog_Credit_Saison_achieves_954__ROI_in_a_ChatGPT_Enter.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.003345,
+      "duration_ms": 12794,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-30T03-26-53-524Z_google-gemini_New_Gemini_tools_for_small_business_owners.json",
+      "writer_output": "WRITER_2026-10-30T03-26-53-524Z_google-gemini_New_Gemini_tools_for_small_business_owners.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0030851,
+      "duration_ms": 10553,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-30T03-26-19-950Z_google-gemini_How_to_use_Gemini_to_update_your_resume.json",
+      "writer_output": "WRITER_2026-10-30T03-26-19-950Z_google-gemini_How_to_use_Gemini_to_update_your_resume.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "cost_usd": 0.0032856,
+      "duration_ms": 12701,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-10-31T03:13:43.190Z",
+  "duration_seconds": 118.313
+}

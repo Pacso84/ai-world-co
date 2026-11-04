@@ -1,0 +1,189 @@
+// ===================================================================
+// AI WORLD — Telegram Worker (Cloudflare)
+// ===================================================================
+// A Telegram webhookját fogadja. Ellenőrzi, hogy a TULAJDONOS írt-e
+// (chat-ID), azonnal nyugtáz, majd a GitHub Actions-t indítja
+// (repository_dispatch) — a tényleges munkát (tartalom + deploy + válasz)
+// a felhőben a főnök (instruct.js) végzi.
+//
+// SECRET-ek (wrangler secret put):
+//   BOT_TOKEN       — a @BotFather token
+//   OWNER_CHAT_ID   — a te chat-ID-d (csak te parancsolhatsz)
+//   GH_TOKEN        — szűk jogú GitHub PAT (repo dispatch)
+//   WEBHOOK_SECRET  — a Telegram webhook titok (kérés-hitelesítés)
+// VARS (wrangler.toml):
+//   GH_REPO         — pl. "Pacso84/ai-world-co"
+//
+// ===================================================================
+// 📮 HÁTRALÉVŐ MUNKA A RIPORT-OLDALON (2026-08-30) — NEM ITT KELL MEGÍRNI
+// ===================================================================
+// A `/feedback-export` `__cs` objektuma mostantól a kapcsolat-űrlap
+// KÉZBESÍTETLEN üzeneteit is viszi (a Telegram-értesítés elbukott):
+//
+//     __cs = { chat, mail, esc, unsent, unsentLast }        // vagy
+//     __cs = { chat, mail, esc, unsentError: true }         // ha a KV-listázás bukott
+//
+// A `core/daily-report.js` (~652. sor) ma csak a 💬 sort írja ki, azt is
+// CSAK akkor, ha `chat+mail+esc > 0`. A hiányzó sorok — a 💬 feltételén
+// KÍVÜL, mert egy kézbesítetlen üzenetről akkor is szólni kell, ha aznap
+// nem volt más ügyfélszolgálati forgalom:
+//
+//   if (cs.unsent > 0) lines.push(`📮 KÉZBESÍTETLEN kapcsolat-üzenet: ${cs.unsent} db `
+//     + `(utolsó: ${cs.unsentLast}) — a Telegram-értesítés NEM ment ki. `
+//     + `Az üzenetek a KV-ben: cs:unsent:*`);
+//   if (cs.unsentError) lines.push('📮 A kézbesítetlen üzeneteket NEM tudtam ellenőrizni (KV-listázás hibája).');
+//
+// ⚠️ A második sor nem díszítés: enélkül a sikertelen ellenőrzés pontosan
+// úgy néz ki, mint a „0 kézbesítetlen" — és a néma őr nem őr.
+// ===================================================================
+import { tg } from './tg.js';
+import { handleChat, handleContact, csExport } from './cs-routes.js';
+import { handleEmail } from './cs-email.js';
+import { pipelineWatchdog } from './watchdog.js';
+// 📚 Ingyenes PDF-letöltés számláló (2026-10-07) — a jelet a honlap middleware-je küldi.
+import { handleDlHit, dlExport } from './pdf-dl.js';
+import { handleSrcHit, srcExport } from './forras-szamlalo.js';   // 🧵 10-22
+import { handleFbpHit, fbpExport } from './bevalt-szamlalo.js';   // 👍 „Bevált?” 10-23
+// 🛒 Amazon partnerlink kattintás-számláló (2026-10-09) — a jelet a honlap app.js-e küldi.
+import { handleAffHit, affExport } from './aff-hit.js';
+import { handleSubscribe } from './hirlevel-feliratkozas.js';   // 📬 2026-10-30 (Kit)
+
+// ===================================================================
+// OLVASÓI 👍/👎 VISSZAJELZÉS (2026-07-07) — a weboldal cikkeiről érkezik.
+// POST /feedback  {slug, lang, vote:'up'|'down'}  → KV számláló
+// GET  /feedback-export  (X-Export-Key fejléccel) → összesítés a heti riportnak
+// ===================================================================
+const FEEDBACK_CORS = {
+  'Access-Control-Allow-Origin': 'https://aiworldhq.com',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type'
+};
+
+async function handleFeedback(request, env) {
+  if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: FEEDBACK_CORS });
+  if (request.method !== 'POST') return new Response('method', { status: 405, headers: FEEDBACK_CORS });
+  let body;
+  try { body = await request.json(); } catch { return new Response('bad json', { status: 400, headers: FEEDBACK_CORS }); }
+  const slug = String(body.slug || '').replace(/[^a-z0-9-]/g, '').slice(0, 80);
+  const lang = ['en', 'hu', 'es'].includes(body.lang) ? body.lang : 'en';
+  const vote = body.vote === 'up' ? 'up' : body.vote === 'down' ? 'down' : null;
+  if (!slug || !vote) return new Response('bad input', { status: 400, headers: FEEDBACK_CORS });
+  const key = `fb:${slug}`;
+  let rec = { up: 0, down: 0, byLang: {} };
+  try { rec = JSON.parse(await env.FEEDBACK.get(key)) || rec; } catch { /* első szavazat */ }
+  rec[vote] = (rec[vote] || 0) + 1;
+  rec.byLang[lang] = rec.byLang[lang] || { up: 0, down: 0 };
+  rec.byLang[lang][vote]++;
+  await env.FEEDBACK.put(key, JSON.stringify(rec));
+  return new Response('ok', { status: 200, headers: FEEDBACK_CORS });
+}
+
+
+async function handleFeedbackExport(request, env) {
+  // Csak a heti riport olvashatja (titkos fejléc-kulccsal)
+  if (!env.FEEDBACK_EXPORT_KEY || request.headers.get('X-Export-Key') !== env.FEEDBACK_EXPORT_KEY) {
+    return new Response('forbidden', { status: 403 });
+  }
+  const out = {};
+  const list = await env.FEEDBACK.list({ prefix: 'fb:' });
+  for (const k of list.keys) {
+    try { out[k.name.slice(3)] = JSON.parse(await env.FEEDBACK.get(k.name)); } catch { /* skip */ }
+  }
+  // Ügyfélszolgálat napi számlálói + kézbesítetlen üzenetek a riportoknak
+  // (2026-07-20, bővítve 2026-08-30 — lásd a fájl fejlécének 📮 szakaszát)
+  try { out.__cs = await csExport(env); } catch { /* skip */ }
+  // A PDF-letöltések (14 nap) a napi riport 📚 sorához; hibánál {error:true}, nem üres.
+  out.__dl = await dlExport(env);
+  out.__src = await srcExport(env);   // 🧵 jelölt közösségi linkek (10-22)
+  out.__fbp = await fbpExport(env);   // 👍 „Bevált?” a promptok alatt (10-23)
+  // Az Amazon-kattintások (14 nap) a napi riport 🛒 sorához; ugyanígy {error:true} hibánál.
+  out.__aff = await affExport(env);
+  try { out.__nl_signups = parseInt(await env.FEEDBACK.get('nl:signups') || '0', 10); } catch { /* skip */ }   // 📬 10-30
+  return new Response(JSON.stringify(out), { status: 200, headers: { 'Content-Type': 'application/json' } });
+}
+
+export default {
+  async fetch(request, env) {
+    // Olvasói visszajelzés útvonalak (a Telegram-webhook előtt ágazik el)
+    const path = new URL(request.url).pathname;
+    if (path === '/feedback') return handleFeedback(request, env);
+    if (path === '/feedback-export') return handleFeedbackExport(request, env);
+    if (path === '/chat') return handleChat(request, env);
+    if (path === '/contact') return handleContact(request, env);
+    if (path === '/dl-hit') return handleDlHit(request, env);
+    if (path === '/src-hit') return handleSrcHit(request, env);
+    if (path === '/fbp-hit') return handleFbpHit(request, env);
+    if (path === '/aff-hit') return handleAffHit(request, env);
+    if (path === '/subscribe') return handleSubscribe(request, env);
+
+    // Egészség-ellenőrzés / böngészős megnyitás
+    if (request.method !== 'POST') {
+      return new Response('AI World Telegram worker — OK', { status: 200 });
+    }
+
+    // A kérés tényleg a Telegramtól jön? (secret_token fejléc)
+    if (env.WEBHOOK_SECRET) {
+      const got = request.headers.get('X-Telegram-Bot-Api-Secret-Token');
+      if (got !== env.WEBHOOK_SECRET) return new Response('forbidden', { status: 403 });
+    }
+
+    let update;
+    try { update = await request.json(); } catch { return new Response('ok'); }
+
+    const msg = update.message || update.edited_message;
+    const text = (msg && msg.text || '').trim();
+    const chatId = msg && msg.chat && msg.chat.id;
+    if (!text || !chatId) return new Response('ok');
+
+    // CSAK a tulajdonos parancsolhat
+    if (String(chatId) !== String(env.OWNER_CHAT_ID)) {
+      await tg(env, chatId, '⛔ Ez egy privát asszisztens — nincs jogosultságod a használatához.');
+      return new Response('ok');
+    }
+
+    // Azonnali nyugta (jó UX), a munka a háttérben indul
+    await tg(env, chatId, '👍 Megvan! Dolgozom rajta — pár perc és írok az eredménnyel.');
+
+    // A nehéz munka a GitHub Actions-ben (repository_dispatch)
+    const r = await fetch(`https://api.github.com/repos/${env.GH_REPO}/dispatches`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.GH_TOKEN}`,
+        'Accept': 'application/vnd.github+json',
+        'User-Agent': 'aiworld-telegram-worker',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        event_type: 'telegram-command',
+        client_payload: { text, chat_id: chatId }
+      })
+    });
+
+    if (!r.ok) {
+      const detail = await r.text().catch(() => '');
+      console.log('GitHub dispatch hiba', r.status, detail);
+      await tg(env, chatId, `⚠️ Nem sikerült elindítani a munkát (GitHub ${r.status}). Próbáld kicsit később.`);
+    }
+
+    return new Response('ok');
+  },
+
+  // ⏰ CLOUDFLARE CRON (2026-08-27) — FÜGGETLEN ÓRA a GitHub ütemezője mellé.
+  //
+  // A 2026-08-27-i 00:00 UTC-s futás EL SEM INDULT. Nálunk nem volt hiba: a
+  // munkafolyamat aktív, a YAML érvényes, a cron változatlan — a GitHub az
+  // ütemezett futásokra kifejezetten „legjobb szándék" garanciát ad.
+  //
+  // Az ő ütemezőjüket nem tudjuk megjavítani, de tehetünk mellé egy másikat.
+  // A Cloudflare cron KÜLÖN rendszer: hogy mindkettő ugyanabban az órában
+  // hibázzon, sokkal valószínűtlenebb, mint hogy az egyik.
+  //
+  // A `waitUntil` kötelező: enélkül a futtatókörnyezet a kezelő visszatérése
+  // után megszakítaná a még függő hálózati hívásokat, és az őrjárat némán
+  // félbemaradna — pontosan az a fajta csendes hiba, ami ezt kiváltotta.
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(pipelineWatchdog(env));
+  },
+
+  async email(message, env) { return handleEmail(message, env); }
+};

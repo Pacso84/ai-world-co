@@ -1,0 +1,93 @@
+{
+  "started_at": "2026-11-02T03:17:27.052Z",
+  "drafts_total": 10,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 4,
+  "merged_total": 4,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 6,
+    "html": 4,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.0192089,
+  "by_article": [
+    {
+      "draft": "2026-10-31T03-11-44-458Z_picsart_How_to_make_AI_short_films__from_idea_to_final_cut.json",
+      "writer_output": "WRITER_2026-10-31T03-11-44-458Z_picsart_How_to_make_AI_short_films__from_idea_to_final_cut.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "PicsArt AI video creation tools",
+      "source_via": [
+        "hirfolyam",
+        "hirfolyam"
+      ],
+      "source_chars": 9007,
+      "source_overlap_words": 14,
+      "cost_usd": 0.0047986,
+      "duration_ms": 22636,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-31T03-11-44-458Z_zapier-blog_What_is_AI_transformation_in_2027__How_to_build_a_.json",
+      "writer_output": "WRITER_2026-10-31T03-11-44-458Z_zapier-blog_What_is_AI_transformation_in_2027__How_to_build_a_.json",
+      "success": true,
+      "merged_from": 4,
+      "merged_theme": "Enterprise AI strategy and adoption challenges",
+      "source_via": [
+        "html",
+        "hirfolyam",
+        "html",
+        "hirfolyam"
+      ],
+      "source_chars": 9018,
+      "source_overlap_words": 14,
+      "cost_usd": 0.0041035,
+      "duration_ms": 16171,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-31T03-11-44-458Z_brave-leo_Another_Brave_User-First_AI_Win__Leo_adds_End-to-e.json",
+      "writer_output": "WRITER_2026-10-31T03-11-44-458Z_brave-leo_Another_Brave_User-First_AI_Win__Leo_adds_End-to-e.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "AI privacy and security features",
+      "source_via": [
+        "hirfolyam",
+        "hirfolyam"
+      ],
+      "source_chars": 9007,
+      "source_overlap_words": 8,
+      "cost_usd": 0.0038644,
+      "duration_ms": 13562,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-10-30T03-26-53-525Z_amazon-alexa_Amazon_introduces_2_new_AI_products_from_Bee__Bee_.json",
+      "writer_output": "WRITER_2026-10-30T03-26-53-525Z_amazon-alexa_Amazon_introduces_2_new_AI_products_from_Bee__Bee_.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Amazon Alexa and Bee AI devices",
+      "source_via": [
+        "html",
+        "html"
+      ],
+      "source_chars": 9007,
+      "source_overlap_words": 9,
+      "cost_usd": 0.0040271,
+      "duration_ms": 16227,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-11-02T03:19:20.235Z",
+  "duration_seconds": 113.183
+}

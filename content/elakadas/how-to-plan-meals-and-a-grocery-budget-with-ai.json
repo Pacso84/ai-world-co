@@ -1,0 +1,53 @@
+{
+  "slug": "how-to-plan-meals-and-a-grocery-budget-with-ai",
+  "probalva": "2026-10-30T03:49:59.675Z",
+  "doboz": {
+    "keszult": "2026-10-30T03:49:59.675Z",
+    "enHash": "a5294de81d657f4cdeb12e8764cb9f498765d7a3",
+    "forrasok": {
+      "https://support.google.com/gemini/answer/15305236": "Create & manage your calendar events with Gemini Apps - Computer"
+    },
+    "en": [
+      {
+        "symptom": "I want to undo the calendar events Gemini created.",
+        "why": "To undo an action, you can select Undo in the confirmation notification. Some things can't be undone, like an email sent to event guests when an event is modified.",
+        "fix": "In Gemini: select Undo in the confirmation notification, or open and edit the event linked below the response. If the event was created with Gemini Live on in the background, Gemini can't undo it.",
+        "source": "https://support.google.com/gemini/answer/15305236"
+      },
+      {
+        "symptom": "Some meal event details are wrong after Gemini adds them.",
+        "why": "Gemini Apps can hallucinate responses or provide outdated information. To check the information, you can review the sources listed after the response.",
+        "fix": "In Gemini: check the event details against the sources listed after the response before you rely on them. Edit any wrong detail directly in your calendar app, since Gemini can't edit some details, like the location or description, for calendar apps other than Google Calendar.",
+        "source": "https://support.google.com/gemini/answer/15305236"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Vissza szeretném vonni a Gemini által létrehozott naptáreseményeket.",
+        "why": "Egy művelet visszavonásához válaszd a Visszavonás lehetőséget a megerősítési értesítésben. Bizonyos dolgokat nem lehet visszavonni, például a résztvevőknek küldött e-mailt, amikor módosítasz egy eseményt.",
+        "fix": "A Geminiben: válaszd a Visszavonás lehetőséget a megerősítési értesítésben, vagy nyisd meg és szerkeszd a válasz alatt hivatkozott eseményt. Ha az eseményt úgy hoztad létre, hogy a Gemini Live a háttérben be volt kapcsolva, a Gemini nem tudja visszavonni.",
+        "source": "https://support.google.com/gemini/answer/15305236"
+      },
+      {
+        "symptom": "Néhány étkezési esemény részletei helytelenek, miután a Gemini hozzáadta őket.",
+        "why": "A Gemini Apps válaszai tartalmazhatnak kitalált információkat, illetve elavult információkat adhatnak meg. Az információk ellenőrzéséhez áttekintheted a válasz után felsorolt forrásokat.",
+        "fix": "A Geminiben: ellenőrizd az esemény részleteit a válasz után felsorolt források alapján, mielőtt megbíznál bennük. A hibás részleteket közvetlenül a naptáralkalmazásodban szerkeszd, mivel a Gemini egyes részleteket, például a helyet vagy a leírást, a Google Calendartól eltérő naptáralkalmazásokban nem tudja szerkeszteni.",
+        "source": "https://support.google.com/gemini/answer/15305236"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "Quiero deshacer los eventos del calendario que creó Gemini.",
+        "why": "Para deshacer una acción, puedes seleccionar Undo en la notificación de confirmación. Algunas cosas no se pueden deshacer, como un correo electrónico enviado a los invitados al evento cuando se modifica un evento.",
+        "fix": "En Gemini: selecciona Undo en la notificación de confirmación, o abre y edita el evento vinculado debajo de la respuesta. Si el evento se creó con Gemini Live activado en segundo plano, Gemini no puede deshacerlo.",
+        "source": "https://support.google.com/gemini/answer/15305236"
+      },
+      {
+        "symptom": "Algunos detalles de un evento de comida son incorrectos después de que Gemini los añade.",
+        "why": "Gemini Apps puede alucinar respuestas o proporcionar información desactualizada. Para comprobar la información, puedes revisar las fuentes que aparecen después de la respuesta.",
+        "fix": "En Gemini: comprueba los detalles del evento con las fuentes que aparecen después de la respuesta antes de confiar en ellos. Edita directamente en tu aplicación de calendario cualquier detalle incorrecto, ya que Gemini no puede editar algunos detalles, como la ubicación o la descripción, en aplicaciones de calendario distintas de Google Calendar.",
+        "source": "https://support.google.com/gemini/answer/15305236"
+      }
+    ]
+  }
+}

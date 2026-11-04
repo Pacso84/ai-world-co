@@ -1,0 +1,80 @@
+{
+  "_meta": {
+    "written_at": "2026-11-03T04:38:13.012Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0037033,
+    "original_draft": "2026-11-03T04-31-07-299Z_openai-blog_LifeVal.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/lifeval",
+    "source_links": [
+      "https://openai.com/index/lifeval"
+    ],
+    "source_snippet_len": 162,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 4662,
+    "source_text_key": "5e75343ca0a23ee8",
+    "source_overlap_words": 10,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "rejected_at": "2026-11-03T04:36:22.135Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 695
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article meets all quality gate criteria: friendly and explanatory brand voice, accessible language for everyday readers, correct US English, no prohibited content, proper structure with hook and actionable 'What this means for you' section, and appropriate attribution of OpenAI's self-reported scores.",
+      "_aiCost": 0.00116214,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Good explanatory article with accessible language and proper structure, but it has a duplicate bullet point in the What this means for you section that needs fixing, and the date needs verification before publishing.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-11-03T04-31-07-299Z_openai-blog_LifeVal.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-11-03T04:38:37.103Z",
+    "slug": "openai-s-lifeval-test-measures-how-well-ai-handles-everyday-tasks",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-03T04:38:44.521Z",
+    "guide_worthy": false,
+    "pairing_reason": "LifeVal is an internal evaluation framework, not a user-facing product—users cannot access or use it today",
+    "image_v": 2,
+    "image_at": "2026-11-03T04:40:47.117Z",
+    "seo": {
+      "meta_description": "OpenAI's new LifeVal test checks whether AI can handle real tasks like childcare, budgeting and grocery orders—not just explain how to do them.",
+      "keywords": [
+        "OpenAI LifeVal test",
+        "AI real world tasks",
+        "how well does AI handle everyday tasks",
+        "AI practical applications 2024",
+        "OpenAI evaluation benchmark",
+        "AI childcare budgeting groceries",
+        "ChatGPT task completion"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add the specific test name 'LifeVal' to the subtitle for better keyword placement near the headline",
+        "Include a section with specific examples of real-world AI tasks beyond the three mentioned to capture additional long-tail searches",
+        "Add an FAQ section targeting questions like 'Can AI actually complete tasks?' to capture featured snippet opportunities"
+      ],
+      "optimised_at": "2026-11-03T04:43:31.859Z"
+    },
+    "fact_verified_at": "2026-11-03T04:45:53.405Z",
+    "social": true,
+    "social_at": "2026-11-03T04:56:26.215Z"
+  },
+  "article_markdown": "---\ntitle: \"OpenAI's LifeVal Test Measures How Well AI Handles Everyday Tasks\"\nsubtitle: \"A new evaluation checks whether AI can handle real chores like childcare, budgeting and grocery orders.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"chatgpt\", \"ai-agents\", \"everyday-tasks\", \"openai\"]\n---\n\n# OpenAI's LifeVal Test Measures How Well AI Handles Everyday Tasks\n\n> **In short:** OpenAI has published LifeVal, a test that measures how well AI handles everyday jobs such as finding childcare, building a budget and ordering groceries. The company says it wants ChatGPT to finish practical tasks, not just answer questions about them.\n\nPicture a Sunday evening with a school enrollment form, a grocery list and a budget that never quite adds up. Many AI tools can explain how to tackle those jobs. Fewer can get them done. OpenAI's new test is designed to measure that gap.\n\n## What LifeVal is\n\nLifeVal is an evaluation, which means a fixed set of test tasks used to score how an AI performs. Most AI tests check knowledge, like math problems or trivia. OpenAI says LifeVal focuses on what people actually need help with at home, at work and in their community.\n\nThe company describes ChatGPT as something that should become a personal assistant. That means it should take actions, such as filling in forms or comparing options, rather than only writing a reply. LifeVal is how OpenAI says it tracks progress toward that goal.\n\n## How the tasks were chosen\n\nOpenAI says it started with two large studies that track how people spend their time: the American Time Use Survey and the Multinational Time Use Study. Together, they show which daily tasks people do most, across different groups of people and seasons.\n\nOpenAI then ran its own survey of 3,995 people, which it describes as demographically representative, to find where everyday people most want help. The tasks it kept cover caregiving, health, education, household administration, personal finances, shopping and government services.\n\nOpenAI also shares sample results from its own tests. For example, it reports a 93.1% score on a task about comparing kindergartens near a new home, and 100% on a task about finding a home that fits a budget and commute. These are the company's own numbers, so treat them as its claims rather than independent results.\n\n## Browser use, computer use and connectors\n\nThe announcement also highlights three abilities that help AI do more than chat:\n\n- **Browser use**: the AI works through a web browser, such as opening a site and filling in a form.\n- **Computer use**: the AI works with what is on a computer screen.\n- **Connectors**: links to other apps or accounts, so the AI can work with information you already keep there.\n\nOpenAI says its models have improved at these over the past year, and that these abilities widen the range of tasks ChatGPT can help with. The announcement does not say when each feature reaches every user, so check OpenAI's official pages for current availability and plan details.\n\n## What this means for you\n\n- **In everyday life**: Use AI for the steps of a task, like listing questions for a school visit or sketching a weekly meal plan. You make the final decisions.\n- **For your business or work**: Sort routine admin into \"AI can draft this\" and \"I must check this.\" A quick review habit keeps mistakes from slipping through.\n- **If you're just getting started**: Pick one small errand, such as a grocery list for the week. Ask ChatGPT for a plan, then compare it with what you would have written yourself.\n- **If you already use it**: Give ChatGPT a multi-step task with a clear finish line, and ask it to pause for your approval before anything is submitted or bought.\n\n## Wrap-up\n\nLifeVal is OpenAI's attempt to measure AI on the tasks that fill a normal week, from childcare to budgets to government paperwork. The company's scores are its own, and the features it describes are still rolling out, so it is worth checking what your account can do today. Pick one small everyday task this week, ask ChatGPT to break it into steps, and see how much time you save.",
+  "original_title": "LifeVal"
+}

@@ -1,0 +1,72 @@
+{
+  "slug": "how-to-use-google-gemini-on-your-android-phone-for-daily-tasks",
+  "probalva": "2026-10-30T20:19:56.618Z",
+  "doboz": {
+    "keszult": "2026-10-30T20:19:56.618Z",
+    "enHash": "e580e283a9f041f67d8b5daa9063628cf7710de1",
+    "forrasok": {
+      "https://support.google.com/gemini/answer/16940971": "Ask Gemini to handle your multi-step tasks in select Android apps",
+      "https://support.google.com/gemini/answer/15274899": "Talk naturally with Gemini Live - Android phone & tablet"
+    },
+    "en": [
+      {
+        "symptom": "Did Gemini stop working on my task when I closed the chat?",
+        "why": "Gemini works on the task in the background, even if you close the chat. You can still check on it from the chat or from the live update notification.",
+        "fix": "To view progress, tap View progress in the chat or in the live update notification. To stop the task, tap Stop task in the chat text box or in the live update notification.",
+        "source": "https://support.google.com/gemini/answer/16940971"
+      },
+      {
+        "symptom": "Gemini asks me for more details before it will start my app task.",
+        "why": "Gemini may ask for more details before it creates an action plan for your request. Gemini can make mistakes, so the plan may need your review.",
+        "fix": "If needed, review and confirm Gemini's action plan for your task. To make changes to the plan, submit a prompt that explains what you want updated.",
+        "source": "https://support.google.com/gemini/answer/16940971"
+      },
+      {
+        "symptom": "My camera stopped showing in Live after I switched to another app.",
+        "why": "When your camera is on in a Live chat, the camera automatically turns off if you leave the Gemini mobile app. The camera doesn't automatically turn back on when you return to the app.",
+        "fix": "In your Live chat, tap Camera to turn your camera back on. To stop sharing your camera, tap Camera again.",
+        "source": "https://support.google.com/gemini/answer/15274899"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Leállt a Gemini a feladatommal, amikor bezártam a csevegést?",
+        "why": "A Gemini a háttérben dolgozik a feladaton akkor is, ha bezárod a csevegést. A csevegésből vagy az élő frissítési értesítésből továbbra is ellenőrizheted az állapotát.",
+        "fix": "A haladás megtekintéséhez koppints a csevegésben vagy az élő frissítési értesítésben a View progress lehetőségre. A feladat leállításához koppints a csevegés szövegmezőjében vagy az élő frissítési értesítésben a Stop task lehetőségre.",
+        "source": "https://support.google.com/gemini/answer/16940971"
+      },
+      {
+        "symptom": "A Gemini további részleteket kér tőlem, mielőtt elkezdené az alkalmazásfeladatomat.",
+        "why": "A Gemini további részleteket kérhet, mielőtt cselekvési tervet készít a kérésedhez. A Gemini hibázhat, ezért előfordulhat, hogy át kell nézned a tervet.",
+        "fix": "Ha szükséges, nézd át és erősítsd meg a Gemini cselekvési tervét a feladatodhoz. Ha módosítani szeretnéd a tervet, küldj egy olyan promptot, amelyben elmagyarázod, mit szeretnél frissíteni.",
+        "source": "https://support.google.com/gemini/answer/16940971"
+      },
+      {
+        "symptom": "A kamerám eltűnt a Live nézetből, miután átváltottam egy másik alkalmazásra.",
+        "why": "Amikor a kamerád be van kapcsolva egy Live-csevegésben, automatikusan kikapcsol, ha elhagyod a Gemini mobilalkalmazást. Amikor visszatérsz az alkalmazásba, a kamera nem kapcsol be automatikusan.",
+        "fix": "A Live-csevegésben koppints a Camera lehetőségre a kamera újbóli bekapcsolásához. A kamera megosztásának leállításához koppints ismét a Camera lehetőségre.",
+        "source": "https://support.google.com/gemini/answer/15274899"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "¿Gemini dejó de trabajar en mi tarea cuando cerré el chat?",
+        "why": "Gemini trabaja en la tarea en segundo plano, aunque cierres el chat. Aún puedes comprobar su progreso desde el chat o desde la notificación de actualización en directo.",
+        "fix": "Para ver el progreso, toca View progress en el chat o en la notificación de actualización en directo. Para detener la tarea, toca Stop task en el cuadro de texto del chat o en la notificación de actualización en directo.",
+        "source": "https://support.google.com/gemini/answer/16940971"
+      },
+      {
+        "symptom": "Gemini me pide más detalles antes de iniciar la tarea de mi aplicación.",
+        "why": "Es posible que Gemini te pida más detalles antes de crear un plan de acción para tu solicitud. Gemini puede cometer errores, por lo que es posible que tengas que revisar el plan.",
+        "fix": "Si es necesario, revisa y confirma el plan de acción de Gemini para tu tarea. Para hacer cambios en el plan, envía una instrucción que explique qué quieres actualizar.",
+        "source": "https://support.google.com/gemini/answer/16940971"
+      },
+      {
+        "symptom": "Mi cámara dejó de mostrarse en Live después de cambiar a otra aplicación.",
+        "why": "Cuando tu cámara está activada en un chat de Live, se apaga automáticamente si sales de la aplicación móvil de Gemini. La cámara no vuelve a activarse automáticamente cuando regresas a la aplicación.",
+        "fix": "En tu chat de Live, toca Camera para volver a activar la cámara. Para dejar de compartirla, toca Camera de nuevo.",
+        "source": "https://support.google.com/gemini/answer/15274899"
+      }
+    ]
+  }
+}

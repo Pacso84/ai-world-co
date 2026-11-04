@@ -1,0 +1,62 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.010290455,
+  "at": "2026-11-04T15:56:05.911Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 2,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-04T15-53-08-489Z_google-workspace_Educators_can_now_add_Guided_Learning_to_assignmen.json",
+      "cim": "Educators can now add Guided Learning to assignments in Google Classroom to help students get extra support",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "All claims in the article match the official source - rollout date (November 3, 2026), global availability in all Gemini-supported languages, focused view for students, AI-generated summaries for teachers, Chromebook/Class Tools support, LearnLM research basis, availability for Education Fundamental"
+    },
+    {
+      "file": "ARTICLE_2026-07-27T01-53-54-767Z_deeparteffects_Deep_Art_Creator__Bridging_Imagination_And_Image.json",
+      "cim": "Deep Art Creator: Bridging Imagination And Image",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk nem erről a forrásról készült; teljesen más eszközöket és funkciókat ír le"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-compare-aussie-phone-plans-and-pick-the-right-one-wit.json",
+      "cim": "How to Compare Phone Plans and Pick the Right One Without the Jargon",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-09-23T02-19-31-347Z_openai-blog_Introducing_GPT-6_Sol_and_Luna.json",
+      "cim": "Introducing GPT-6 Sol and Luna",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk teljes alapfeltevése hamis — az a GPT‑6 Sol és Luna bejelentés, amit a cikk hamisnak nevez, maga a hivatalos forrás."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-compare-two-job-offers-side-by-side-using-ai-without-.json",
+      "cim": "How to compare two job offers side by side using AI without giving up personal info",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az összes említett AI asszisztens (ChatGPT, Gemini, Claude, Copilot, Le Chat, DeepSeek) jelenleg elérhető. Az útmutató általános adatvédelmi tanácsai és AI-funkciói pontosak, nem termékspecifikusak."
+    },
+    {
+      "file": "ARTICLE_2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
+      "cim": "Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    }
+  ]
+}

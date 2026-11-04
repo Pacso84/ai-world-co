@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-10-23T02:31:45.443Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00665452,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-10-22T02-26-44-201Z_openai-blog_ChatGPT_Ads_expands_to_26_new_countries_as_over_10.json",
+      "article": "ARTICLE_2026-10-22T02-26-44-201Z_openai-blog_ChatGPT_Ads_expands_to_26_new_countries_as_over_10.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00094689
+    },
+    {
+      "writer": "WRITER_2026-10-23T02-28-45-946Z_aws-ml_Amazon_Polly_delivers_a_major_upgrade_to_its_Gener.json",
+      "article": "ARTICLE_2026-10-23T02-28-45-946Z_aws-ml_Amazon_Polly_delivers_a_major_upgrade_to_its_Gener.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0016836
+    },
+    {
+      "writer": "WRITER_2026-10-23T02-28-45-946Z_google-workspace_Real-time_speech_translation_in_Google_Meet_expand.json",
+      "rejected": "REJECTED_2026-10-23T02-28-45-946Z_google-workspace_Real-time_speech_translation_in_Google_Meet_expand.json",
+      "decision": "FAIL",
+      "score": 8,
+      "cost_usd": 0.00128247
+    },
+    {
+      "writer": "WRITER_2026-10-23T02-29-41-501Z_snowflake_Agentic_Analytics__Building_a_Data_Foundation_for_.json",
+      "article": "ARTICLE_2026-10-23T02-29-41-501Z_snowflake_Agentic_Analytics__Building_a_Data_Foundation_for_.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00106428
+    }
+  ],
+  "finished_at": "2026-10-23T02:33:36.925Z",
+  "duration_seconds": 111.482
+}
