@@ -1,0 +1,63 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.0190206,
+  "at": "2026-11-04T21:38:18.622Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 0,
+    "kihagyva": 2,
+    "ertelmezhetetlen": 1
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-07-24T17-20-24-128Z_qwen-news_Qwen3_6-35B-A3B__Agentic_Coding_Power__Now_Open_to.json",
+      "cim": "Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All - Qwen",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-create-custom-images-for-invitations-social-posts-and.json",
+      "cim": "How to create custom images for invitations, social posts and vision boards with Copilot",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-12T17-08-31-032Z_picsart_Picsart_Flow_now_adds_AI_captioning_in_30_animated.json",
+      "cim": "Picsart Flow now adds AI captioning in 30 animated styles",
+      "tipus": "hir",
+      "eredmeny": "ertelmezhetetlen",
+      "ok_hu": "a modell válasza nem volt értelmezhető (1/2. alkalom, 8502 karakter)"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-decode-a-confusing-medical-bill-or-insurance-statemen.json",
+      "cim": "How to decode a confusing medical bill or insurance statement with AI",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-08-27T16-08-30-207Z_xai-news_Grok___Useful_AI_Chatbot_with_Voice___Image_Genera.json",
+      "cim": "Grok — Useful AI Chatbot with Voice & Image Generation - X.ai",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-draft-a-calm-fair-complaint-to-a-company-about-a-bill.json",
+      "cim": "How to draft a calm, fair complaint to a company about a billing error",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}
