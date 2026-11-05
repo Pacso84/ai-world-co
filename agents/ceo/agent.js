@@ -590,6 +590,13 @@ async function main() {
   if (!args.skipGuides && generateReport().cost_remaining_usd > 0.01 && haveTime(3, '3i. FÓKUSZ-TÉMÁK')) {
     await runAgent('agents/guide/agent.js', ['--focus']);
   }
+  // CÉG-LEFEDETTSÉG (2026-11-05): a hiányzó (0 útmutatós) cégekhez téma — ingyen, LLM nélkül.
+  // Eddig CSAK az idle-fillben futott, ami „Szabad útmutató-slot: 0” miatt 10-30 óta minden
+  // futásban kimaradt → a 10-30-án felvett Kimi/Duck.ai/Leo/Lumo/Z.ai/MiniMax soha nem kapott
+  // témát. Holnapra tölti a sort, ezért a mai keret nem számít. Teszt: core/ceg-lefedettseg.test.js
+  if (!args.skipGuides && haveTime(1, '3i2. CÉG-LEFEDETTSÉG')) {
+    await runAgent('agents/guide/agent.js', ['--cover']);
+  }
 
   if (!args.skipGuides && !gate.guidesBlocked && haveTime(8, '3j. IDLE-FILL')) {
     const now = generateReport();                       // FRISS útmutató-keret
@@ -602,8 +609,7 @@ async function main() {
       console.log('   ⏭️  Nincs szabad útmutató-keret vagy költségkeret — kihagyva.');
       session.stages.idle_fill = { slots, skipped: true };
     } else {
-      // 1) CÉG-LEFEDETTSÉG: a hiányzó cégekhez téma (ingyen, LLM nélkül).
-      await runAgent('agents/guide/agent.js', ['--cover']);
+      // 1) CÉG-LEFEDETTSÉG: már fent (3i2) fut minden futásban, a slotoktól függetlenül.
       // 2) KIEGYENLÍTÉS: a lemaradó cégeket felhozzuk a küszöbig (önkorlátozó:
       //    ha egy cég eléri a célt a backlogban, már nem ad többet hozzá).
       await runAgent('agents/guide/agent.js', ['--balance', String(slots + 4)]);

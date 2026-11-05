@@ -152,7 +152,9 @@ function pickTopics(store, args) {
   if (trendTema) out.push(trendTema);
   const todo = rendezett.filter(t => t.level !== 'intermediate');   // egy futás legfeljebb 1 középszintűt ír
   const fresh = todo.filter(isFresh);
-  const balance = todo.filter(t => !isFresh(t) && isBalanceTopic(t));
+  // a 0 útmutatós cégek („coverage”) a kiegyenlítők ELÉ (stabil rendezés; 2026-11-05)
+  const balance = todo.filter(t => !isFresh(t) && isBalanceTopic(t))
+    .sort((a, b) => (b.priority === 'coverage') - (a.priority === 'coverage'));
   const general = todo.filter(t => !isFresh(t) && !isBalanceTopic(t));
   for (const t of fresh) { if (out.length >= args.limit) break; out.push(t); }   // 1) friss elöl
   let bi = 0, gi = 0;                                                            // 2-3) balance:general = 2:1
