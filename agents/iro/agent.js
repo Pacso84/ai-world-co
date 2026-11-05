@@ -887,7 +887,8 @@ async function main() {
   // A --limit CIKKET jelent, nem draftot (2026-08-18). A CEO amúgy is így érti:
   // agents/ceo/agent.js articles_remaining = 8 − a ma megírt hírek száma.
   // Ha draftot vágnánk, az összevonás CSÖKKENTENÉ a napi cikkszámot.
-  const maxCikk = args.limit || elo.length;
+  // ⚠️ `--limit 0` = SEMMI (régen „limit VAGY az összes vázlat” volt → 0-nál korlát NÉLKÜL írt).
+  const maxCikk = Number.isFinite(args.limit) ? Math.max(0, args.limit) : elo.length;
 
   // ÖSSZEVONÁS: melyik hírek szólnak ugyanarról? A döntés a core/cluster-runner.js-ben
   // él (ott tesztelhető); az író csak a lemezolvasást és az AI-hívót adja hozzá.

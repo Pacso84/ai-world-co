@@ -29,6 +29,7 @@ import { dirname, join } from 'path';
 import { spawn } from 'child_process';
 import { addTask, setTaskStatus, notify } from '../../core/ops.js';
 import { meteredBlocked, budgetStatus } from '../../core/budget.js';
+import { hirIroKeret } from '../../core/hir-keret.js';
 
 // ===================================================================
 // SETUP
@@ -492,9 +493,26 @@ async function main() {
   // 4b. Író (a HÍR-sáv szabad helyeit kapja limitként)
   if (!args.skipWrite && !gate.newsBlocked) {
     console.log('\n━━━ 2. LÉPÉS: ÍRÓ AGENT ━━━');
-    const remaining = preReport.articles_remaining;   // napi hír-limit − ma publikált hír
-    const result = await runAgent('agents/iro/agent.js', ['--limit', String(remaining)]);
-    session.stages.writer = { exit_code: result.code, limit_used: remaining };
+    // Keret = napi hír-limit − ma publikált − a korábbról váró hír-vázlat − az ebben a futásban
+    // átdolgozandó régi elutasított hír (core/hir-keret.js; 11-05: 5/4 lett belőle).
+    // A számolás a főnök-asztal UTÁN, közvetlenül az Író előtt — az asztal visszaküldhet munkát.
+    const most = generateReport();
+    const vazlat = countDrafts();
+    const keretAdat = {
+      max: LIMITS.daily_articles_max,
+      maPublikalt: most.news_published_today,
+      varoVazlat: Math.max(0, vazlat.writer - vazlat.writerGuides),
+      atdolgozhato: countReworkable()
+    };
+    const remaining = hirIroKeret(keretAdat);
+    console.log(`   Hír-keret: ${keretAdat.max} − ${keretAdat.maPublikalt} ma publikált − ${keretAdat.varoVazlat} váró vázlat − ${keretAdat.atdolgozhato} átdolgozandó régi = ${remaining} új hír`);
+    if (remaining > 0) {
+      const result = await runAgent('agents/iro/agent.js', ['--limit', String(remaining)]);
+      session.stages.writer = { exit_code: result.code, limit_used: remaining };
+    } else {
+      console.log('⏭️  Író kihagyva (a hír-keretet a korábbról váró/átdolgozandó hírek kitöltik)');
+      session.stages.writer = { skipped: 'keret-foglalt', limit_used: 0 };
+    }
   } else {
     console.log(gate.newsBlocked ? '⏭️  Író kihagyva (hír-keret betelt)' : '⏭️  Író kihagyva (--skip-write)');
   }
