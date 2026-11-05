@@ -339,6 +339,7 @@
     "bárokat",
     "bérbeadott",
     "bétatesztjei",
+    "bétaverziót",
     "bírságokat",
     "bíróságok",
     "bíróságokon",
@@ -1129,6 +1130,7 @@
     "hivataloskodni",
     "hiányosságok",
     "hiányosságokat",
+    "hiányosságoknak",
     "hiányosságokról",
     "hobbiidre",
     "hobbiistáknak",
@@ -1712,6 +1714,7 @@
     "marketinganyagokhoz",
     "marketingen",
     "marketinget",
+    "marketingtanácsadóval",
     "matekházifeladatokban",
     "matekolás",
     "mateképletek",
@@ -2544,6 +2547,7 @@
     "szektorok",
     "szellemszöveget",
     "szemcsésséget",
+    "szemléltetőanyagokat",
     "szemmagasságban",
     "szemmagasságú",
     "személyazonosságodat",
@@ -2886,6 +2890,7 @@
     "upscaling",
     "usps",
     "utasítast",
+    "utasításcsomagok",
     "utasítássorral",
     "utánanéznivaló",
     "utánkövető",
@@ -6291,11 +6296,21 @@
       "correct": "apnoére",
       "at": "2026-11-04",
       "mondattal": true
+    },
+    "bétaverziójában": {
+      "correct": "a 3-as bétaverzióban",
+      "at": "2026-11-05",
+      "mondattal": true
+    },
+    "bétaverziójára": {
+      "correct": "a 3-as bétaverzióra",
+      "at": "2026-11-05",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-11-04",
-    "files": 822,
-    "candidates": 0
+    "at": "2026-11-05",
+    "files": 829,
+    "candidates": 7
   }
 }
