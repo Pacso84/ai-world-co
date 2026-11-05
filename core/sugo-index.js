@@ -16,6 +16,9 @@ export const ENGEDELY = [
   'https://help.openai.com/',
   'https://support.claude.com/', 'https://support.anthropic.com/',
   'https://support.google.com/gemini/', 'https://support.google.com/notebooklm/', 'https://support.google.com/photos/',
+  // 11-05: a Google 2026-07-16-án a NotebookLM-et Gemini Notebookra nevezte át (blog.google: „NotebookLM is now
+  // Gemini Notebook”); a jóváhagyott support.google.com/notebooklm/ cím azóta IDE irányít — ugyanaz a hivatalos súgó.
+  'https://support.google.com/gemininotebook/',
   'https://support.microsoft.com/',
   'https://support.apple.com/',
   'https://help.mistral.ai/',
@@ -63,7 +66,7 @@ export function szolgaltatok(tool, company) {
   if (t === 'chatgpt' || (c === 'openai' && !t)) return ['openai'];
   if (t === 'claude') return ['claude'];
   if (t === 'gemini') return ['gemini'];
-  if (t === 'notebooklm') return ['notebooklm'];
+  if (t === 'notebooklm' || t === 'gemini notebook') return ['notebooklm'];   // 2026-07-16 óta Gemini Notebook
   if (t === 'google photos') return ['photos'];
   if (c === 'microsoft' && /copilot/.test(t)) return ['microsoft'];
   if (t === 'le chat' || c === 'mistral') return ['mistral'];
@@ -117,12 +120,15 @@ export function linkCikkek(html, alap, minta) {
 }
 
 // Szolgáltatónkénti forrás — élőben ellenőrizve 10-24 (darabszám akkor).
-const FORRASOK = {
+export const FORRASOK = {
   claude: [{ sitemap: 'https://support.claude.com/sitemap.xml', minta: /\/en\/articles\// }],                    // 364
   mistral: [{ sitemap: 'https://help.mistral.ai/sitemap.xml', minta: /\/en\/articles\// }],                        // 43
   openai: [{ lap: 'https://help.openai.com/en/collections/3742473-chatgpt', alap: 'https://help.openai.com', minta: /^\/en\/articles\/\d+/ }], // 197
   gemini: [{ lap: 'https://support.google.com/gemini/?hl=en', alap: 'https://support.google.com', minta: /^\/gemini\/answer\/\d+$/ }],          // 102
   photos: [{ lap: 'https://support.google.com/photos/?hl=en', alap: 'https://support.google.com', minta: /^\/photos\/answer\/\d+$/ }],          // 77
+  // 11-05: EDDIG HIÁNYZOTT — a szolgaltatok() 'notebooklm'-et adott, de itt nem volt sora → üres lista, és a riport
+  // naponta „kimaradt: index ×3”-at írt (mindhárom NotebookLM-útmutató). A súgó 07-16 óta a gemininotebook/ alatt van.
+  notebooklm: [{ lap: 'https://support.google.com/gemininotebook/?hl=en', alap: 'https://support.google.com', minta: /^\/gemininotebook\/answer\/\d+$/ }],
   microsoft: [
     { sitemap: 'https://support.microsoft.com/_sitemaps/microsoft-copilot_en-us_1.xml', minta: /\/en-us\// },        // 10
     { sitemap: 'https://support.microsoft.com/_sitemaps/microsoft-365-copilot_en-us_1.xml', minta: /\/en-us\// }     // 220

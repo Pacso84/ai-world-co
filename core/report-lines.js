@@ -206,7 +206,7 @@ export function elakadasLine(allapot, maNap) {
 
 // 11-05: a „kimaradt: index ×3” belső kód volt (core/elakadas-gen.js okai) → közérthető mondat.
 const KIMARADT_OK = {
-  index: 'nem jött le a gyártó súgóoldal-listája',
+  index: 'nem kaptunk cikklistát a gyártó súgójából',
   'idő': 'elfogyott a futásidő',
   keret: 'elfogyott a napi keret',
   hiba: 'hiba történt'

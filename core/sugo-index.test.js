@@ -98,4 +98,23 @@ for (const u of ['https://support.google.com/gemini/../accounts/x', 'https://sup
   assert.deepEqual(await indexLetolt('claude', ures), []);
 }
 
+// 11-05: MINDEN szolgáltatónak, amit a szolgaltatok() visszaadhat, LEGYEN letöltési forrása. A 'notebooklm' be volt
+// kötve, forrása nem volt → üres lista, a „Ha elakadsz” doboz minden NotebookLM-útmutatónál némán kimaradt
+// (a riport naponta „kimaradt: index ×3”-at írt, ami letöltési hibának látszott).
+{
+  const { FORRASOK } = await import('./sugo-index.js');
+  const eszkozok = [['', ''], ['ChatGPT', 'OpenAI'], ['Claude', 'Anthropic'], ['Gemini', 'Google'], ['NotebookLM', 'Google'],
+    ['Gemini Notebook', 'Google'], ['Google Photos', 'Google'], ['Copilot', 'Microsoft'], ['Le Chat', 'Mistral']];
+  for (const [t, c] of eszkozok) for (const s of szolgaltatok(t, c)) {
+    assert.ok(Array.isArray(FORRASOK[s]) && FORRASOK[s].length, `🔴 a(z) „${s}” súgónak nincs letöltési forrása (${t || 'üres'})`);
+    for (const f of FORRASOK[s]) assert.ok(engedelyezett(f.sitemap || f.lap), `🔴 a(z) „${s}” forrása nincs az engedélylistán: ${f.sitemap || f.lap}`);
+  }
+  // a Gemini Notebook (volt NotebookLM, 2026-07-16) súgója — a régi cím ide irányít
+  assert.deepEqual(szolgaltatok('Gemini Notebook', 'Google'), ['notebooklm']);
+  assert.ok(engedelyezett('https://support.google.com/gemininotebook/answer/16206563'));
+  const lap = '<a href="/gemininotebook/answer/16206563?hl=en&amp;ref_topic=1">Create a notebook in Gemini Notebook</a>';
+  assert.deepEqual(linkCikkek(lap, 'https://support.google.com', FORRASOK.notebooklm[0].minta),
+    [{ url: 'https://support.google.com/gemininotebook/answer/16206563', cim: 'Create a notebook in Gemini Notebook' }]);
+}
+
 console.log('✅ sugo-index: rendben');

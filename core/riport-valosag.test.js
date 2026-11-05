@@ -157,11 +157,11 @@ t('👔 a főnöki döntés érthető (eddig: „Újraindítva (rewrite-explaine
 });
 
 t('🔧 a „kimaradt: index ×3” belső kód helyett mondat', () => {
-  assert.equal(kimaradtSzoveg('index ×3'), '3 útmutató (nem jött le a gyártó súgóoldal-listája)');
+  assert.equal(kimaradtSzoveg('index ×3'), '3 útmutató (nem kaptunk cikklistát a gyártó súgójából)');
   assert.equal(kimaradtSzoveg('keret'), 'elfogyott a napi keret');
   assert.equal(kimaradtSzoveg('ismeretlen ×2'), 'ismeretlen ×2');
   assert.match(elakadasLine({ nap: '2026-11-05', uj: 1, forditva: 2, koltseg: 0.002772, kimaradt: 'index ×3' }, '2026-11-05'),
-    /^🔧 „Ha elakadsz” dobozok: 1 új, 2 fordítás \(\$0\.003\) · kimaradt: 3 útmutató \(nem jött le/);
+    /^🔧 „Ha elakadsz” dobozok: 1 új, 2 fordítás \(\$0\.003\) · kimaradt: 3 útmutató \(nem kaptunk cikklistát/);
 });
 
 t('🕵️ a tény-ellenőrző minden tétele megmondja a fajtáját (eddig nem derült ki, melyik gyanú)', () => {
