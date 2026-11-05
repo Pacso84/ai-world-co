@@ -1,0 +1,63 @@
+{
+  "ok": 2,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.01114476,
+  "at": "2026-11-05T21:41:50.139Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 2,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 2,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-05T04-09-15-315Z_perplexity-news_Get_Maine_Lobster_triples_ad_revenue_with_Perplexi.json",
+      "cim": "Get Maine Lobster triples ad revenue with Perplexity - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-08-25T00-37-56-603Z_picsart_How_to_replace_an_object_in_a_video_with_AI.json",
+      "cim": "How to replace an object in a video with AI",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk egy általános Magyarázó az AI videó objektumcseréről, amely nem hivatkozik vagy nem igazodik a konkrét Picsart Flow forráshoz, amiből írták. A forrás a Picsart 8 lépéses munkafolyamatát írja le névvel ellátott modellekkel, de a cikk soha nem említi a Picsartot és más eszközöknek tulajdonítja "
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-draft-a-gracious-resignation-letter-with-claude-in-10.json",
+      "cim": "How to draft a gracious resignation letter with Claude in 10 minutes",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-08-03T01-49-28-320Z_pixlr_Best_AI_Summer_Prompts_for_Photos_Travel_Beach_and.json",
+      "cim": "Best AI Summer Prompts for Photos Travel Beach and Vacation Content",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk a Microsoft Designer képgenerátoráról szól, de a forrás csak a Pixlr AI képgenerátoráról említi — a Microsoft eszköze sehol sem szerepel a forrásban"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-draft-a-polite-follow-up-email-after-a-job-interview.json",
+      "cim": "How to Draft a Polite Follow-up Email After a Job Interview",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-07T14-54-17-512Z_zapier-blog_How_to_use_Gemini__A_detailed_beginner_s_guide.json",
+      "cim": "How to use Gemini: A detailed beginner's guide",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „A browser** (on a computer or phone) **or the Gemini app on Android.** Both work the same ”",
+      "modell_hu": "A cikk úgy mutatja be a mobilalkalmazást, mintha csak Androidon lenne elérhető, holott iOS-en is elérhető, és a Beállítások ikon helye nem megerősített a forrásban."
+    }
+  ]
+}
