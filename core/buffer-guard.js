@@ -140,7 +140,24 @@ export function bufferSor(guard) {
  * addigra a napi 3 kint kell legyen) a hiány ⚠️-vel szól, így a zárósor sem lesz ✅.
  * Ma nem futott poszter / régi bejegyzés → üres (azt a frissesség-őr jelzi).
  */
-export function tiktokSor(guard, now = Date.now()) {
+// 11-05 (user: „a valóságot tükrözze!”): a hiány-sor eddig „nézd meg a REEL- és BUFFER-sorokat” végű volt — ilyen
+// sorok a riportban NINCSENEK (csendesek, ha nincs hibájuk). Most a Reel-gyártó által feljegyzett OKOT mondja
+// (`ok`, pl. „a(z) „How to…” útmutatóból nem lett videó: csak 0 lépés”); ha nincs feljegyzett ok, azt is kimondja.
+// „ma eddig”: a riport délután megy ki, az esti futás még hozhat videót.
+
+/** A TikTok-hiány oka a Reel-őrszem mai feljegyzéséből (memory/reel-guard.json), vagy ''. */
+export function tiktokHianyOk(reelGuard, maNap) {
+  if (!reelGuard || String(reelGuard.at || '').slice(0, 10) !== maNap) return '';
+  const lista = Array.isArray(reelGuard.prepare?.nemVideozhato) ? reelGuard.prepare.nemVideozhato : [];
+  const reszek = lista.filter(x => x && x.ok).slice(0, 2).map(x => {
+    const cim = String(x.cim || x.slug || '?').replace(/[*_`[\]]/g, '');
+    return `„${cim.length > 45 ? cim.slice(0, 44) + '…' : cim}”: ${x.ok}`;
+  });
+  return reszek.length ? 'nem készülhetett videó ebből az útmutatóból: ' + reszek.join(' · ') : '';
+}
+const TIKTOK_OK_ISMERETLEN = 'az okát a videó-gyártás nem jegyezte fel (ha fent nincs REEL- vagy BUFFER-hibasor, nem volt több videózható friss útmutató)';
+export function tiktokSor(guard, now = Date.now(), { ok = '' } = {}) {
+  const okSzoveg = String(ok || '').trim() || TIKTOK_OK_ISMERETLEN;
   const tt = guard && guard.tiktokMa;
   const ma = new Date(now).toISOString().slice(0, 10);
   if (!tt || tt.nap !== ma || !Number.isFinite(tt.plafon) || tt.plafon <= 0) return '';
@@ -158,14 +175,14 @@ export function tiktokSor(guard, now = Date.now()) {
 ⚠️ TIKTOK: a Buffer csak ${tt.db} posztot mutat, a saját jelöléseink szerint ${jelolt} ment ki — elutasított poszt lehet.` : '';
     if (tt.video >= videoCel) return `🎵 TikTok ma: ${tt.video} videó + ${tt.foto} fotó` + eltérés;
     if (new Date(now).getUTCHours() >= 12) {
-      return `⚠️ TIKTOK: ma csak ${tt.video} videó ment ki (cél: ${videoCel}) + ${tt.foto} fotó — nézd meg a REEL- és BUFFER-sorokat.` + eltérés;
+      return `⚠️ TIKTOK: ma eddig csak ${tt.video} videó ment ki (cél: ${videoCel}) + ${tt.foto} fotó — ${okSzoveg}.` + eltérés;
     }
     return `🎵 TikTok ma eddig: ${tt.video} videó + ${tt.foto} fotó` + eltérés;
   }
   const cel = Math.min(tt.plafon, 3);
   if (tt.db >= cel) return `🎵 TikTok ma: ${tt.db}/${tt.plafon} poszt kint (videó + fotó)`;
   if (new Date(now).getUTCHours() >= 12) {
-    return `⚠️ TIKTOK: ma csak ${tt.db}/${tt.plafon} poszt ment ki (cél: ${cel} videó) — nézd meg a REEL- és BUFFER-sorokat.`;
+    return `⚠️ TIKTOK: ma eddig csak ${tt.db}/${tt.plafon} poszt ment ki (cél: ${cel} videó) — ${okSzoveg}.`;
   }
   return `🎵 TikTok ma eddig: ${tt.db}/${tt.plafon} poszt`;
 }

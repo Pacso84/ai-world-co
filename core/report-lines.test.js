@@ -372,7 +372,7 @@ t('🔴 a 10-12-i ÉLŐ jelentés: Reel-hiba mellett a zárósor NEM mondhat ✅
 t('10-28 élő riport: a zárósor megnevezi a 3 hibát', () => {
   const z = zaroSor([
     '🎬 REEL-ŐRSZEM: a videó-gyártás elbukott — Stream closed before the synthesis completed',
-    '⚠️ TIKTOK: ma csak 2 videó ment ki (cél: 3) + 2 fotó — nézd meg a REEL- és BUFFER-sorokat.',
+    '⚠️ TIKTOK: ma eddig csak 2 videó ment ki (cél: 3) + 2 fotó — nem készülhetett videó ebből az útmutatóból: „How to X”: csak 0 lépés (legalább 3 kell).',
     '⚠️ AI-LASSULÁS (2026-10-28) — 95 hívásból: 1 AI-hívás lógott bele a türelem-plafonba',
     '📘 Facebook-poszt: 5 kiküldve, mind megjelent'
   ]);
@@ -396,12 +396,12 @@ const { elakadasLine } = await import('./report-lines.js');
 
 t('🔧 mai állapot → a brief szerinti sor, 3 tizedes költséggel', () => {
   assert.equal(elakadasLine({ nap: '2026-10-27', uj: 2, forditva: 4, koltseg: 0.012 }, '2026-10-27'),
-    '🔧 Ha elakadsz: 2 új doboz, 4 fordítás ($0.012)');
+    '🔧 „Ha elakadsz” dobozok: 2 új, 4 fordítás ($0.012)');
 });
 
 t('🔧 a kimaradás oka a sor végére kerül', () => {
   const sor = elakadasLine({ nap: '2026-10-27', uj: 1, forditva: 2, koltseg: 0.5, kimaradt: 'keret' }, '2026-10-27');
-  assert.equal(sor, '🔧 Ha elakadsz: 1 új doboz, 2 fordítás ($0.500) · kimaradt: keret');
+  assert.equal(sor, '🔧 „Ha elakadsz” dobozok: 1 új, 2 fordítás ($0.500) · kimaradt: elfogyott a napi keret');
   assert.ok(!elakadasLine({ nap: '2026-10-27', uj: 0, forditva: 0, koltseg: 0, kimaradt: '' }, '2026-10-27').includes('kimaradt'));
 });
 
@@ -414,7 +414,7 @@ t('🔧 tegnapi vagy hiányzó állapot → null (nem állítjuk, hogy ma futott
 
 t('🔧 hibás számmezők nem borítanak, és NaN-t nem írnak ki', () => {
   const sor = elakadasLine({ nap: '2026-10-27', uj: 'x', forditva: null, koltseg: 'y' }, '2026-10-27');
-  assert.equal(sor, '🔧 Ha elakadsz: 0 új doboz, 0 fordítás ($0.000)');
+  assert.equal(sor, '🔧 „Ha elakadsz” dobozok: 0 új, 0 fordítás ($0.000)');
   assert.ok(!/NaN|undefined/.test(sor));
 });
 
@@ -462,9 +462,9 @@ console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');
   const regi = { ok: 3, fixed: 1, removed: 0, cost: 0.5, at: ora(30), claim: null };   // 24 órán kívül
   const sor = tenyellenorzoLine([reggel, delben, regi], NOW);
   const [fej, ...reszlet] = sor.split('\n');
-  assert.equal(fej, '🕵️ Tény-ellenőrző: 8 cikk · ✅ 3 rendben · 🔧 1 javítva · 🙋 1 gyanú · ⛔ 1 javítás visszautasítva · ⏭️ 1 forrás olvashatatlan · ⚠️ 1 értelmezhetetlen válasz · $0,05');
+  assert.equal(fej, '🕵️ Tény-ellenőrző: 8 cikk · ✅ 3 rendben · 🔧 1 javítva · 🙋 1 gyanú (nem javítottuk) · ⛔ 1 javítás-javaslatot nem engedtünk át · ⏭️ 1 forrás olvashatatlan · ⚠️ 1 értelmezhetetlen válasz · $0,05');
   assert.equal(reszlet.length, 3);
-  assert.match(reszlet[0], /^  • „Gemini in Slides can now edit a whole presentatio…” — a forrás szerint csak angolul indul$/, 'a javított elöl, a cím max 50 karakter, Markdown-jel nélkül');
+  assert.match(reszlet[0], /^  • 🔧 javítva „Gemini in Slides can now edit a whole presentatio…” — a forrás szerint csak angolul indul$/, 'a javított elöl, a cím max 50 karakter, Markdown-jel nélkül');
   assert.match(reszlet[1], /„Ideogramhír” — a forrás alátámasztja/, 'a visszautasítás a 2.; az aláhúzás kiesik (Telegram Markdown)');
   assert.match(reszlet[2], /„Copilot útmutató” — ma van ingyenes csomag/);
   // sok részlet → max TENY_RESZLET_MAX + „…és még”

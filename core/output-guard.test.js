@@ -153,7 +153,8 @@ t('🔌 napi riport: olvassa a leletet, és a frissesség-térképben is ott van
   assert.ok(/'output-guard\.json': 'kimenet'/.test(dr),
     '🔴 nincs a frissesség-térképben — a „nem futott le" azonos lenne a „minden rendben"-nel');
   assert.ok(/readFileSync\(join\(ROOT, 'memory', 'output-guard\.json'\)/.test(dr), '🔴 a riport nem olvassa');
-  assert.ok(/og\.problems/.test(dr) && /og\.megjavult/.test(dr), '🔴 a riport nem írja ki a leletet');
+  // 11-05: a lelet-sort a report-lines.js kimenetOrSor(og)-ja írja (közérthető elemnevekkel)
+  assert.ok((/og\.problems/.test(dr) || /kimenetOrSor\(og\)/.test(dr)) && /og\.megjavult/.test(dr), '🔴 a riport nem írja ki a leletet');
 });
 
 VEGE = true;

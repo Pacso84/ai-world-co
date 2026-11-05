@@ -57,6 +57,13 @@ export const FOLYAMATBAN = {};
 // Az útmutató MŰFAJI jelölése: lépéssor, folyamat-térkép, GYIK, borító.
 export const UTMUTATO_ELOTAG = [/^g-/, /^guide-/, /^guide$/, /^cat-guide$/];
 
+// SZÁNDÉKOSAN CSAK ÚTMUTATÓBAN (nem g- előtagú) — indokkal, mint a CSAK_HIR.
+export const CSAK_UTMUTATO = {
+  // 11-05: napok óta a napi riport „🧩 KIMENET-ŐR … pack-foot” sorában állt (érthetetlenül, teendő nélkül).
+  'pack-foot': 'Az ingyenes PDF-csomag ajánló sora az útmutató végén (website/build.js packLine) — a csomagok '
+    + 'útmutatókból állnak, a hírhez nincs témába illő csomag.'
+};
+
 export const TAG_SZANDEKOS = {
   nav: 'A folyamat-térkép (g-map) lépés-navigációja — a hírnek nincs lépéssora.',
   details: 'A GYIK nyitható elemei — a hírben nincs GYIK.',
@@ -128,7 +135,7 @@ export function paritasElemzes(lapok, {
     csakUtm: osztaly.csakUtm,
     tagElteres,
     ismeretlenHir: osztaly.csakHir.filter(k => !(k in szandekosHir) && !(k in folyamatban)),
-    ismeretlenUtm: osztaly.csakUtm.filter(k => !UTMUTATO_ELOTAG.some(rx => rx.test(k))),
+    ismeretlenUtm: osztaly.csakUtm.filter(k => !UTMUTATO_ELOTAG.some(rx => rx.test(k)) && !(k in CSAK_UTMUTATO)),
     ismeretlenTag: tagElteres.filter(k => !(k in tagSzandekos)),
     // a FOLYAMATBAN-sor, ami már NEM eltérés → törölhető
     megjavult: Object.keys(folyamatban).filter(k => !osztaly.csakHir.includes(k))

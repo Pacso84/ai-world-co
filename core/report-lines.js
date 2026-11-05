@@ -198,10 +198,88 @@ export function elakadasLine(allapot, maNap) {
   const forditva = Math.max(0, Math.round(szam(allapot.forditva)));
   const koltseg = Math.max(0, szam(allapot.koltseg));
 
-  let sor = `🔧 Ha elakadsz: ${uj} új doboz, ${forditva} fordítás ($${koltseg.toFixed(3)})`;
-  const kimaradt = String(allapot.kimaradt ?? '').replace(/\s+/g, ' ').trim().slice(0, 80);
+  let sor = `🔧 „Ha elakadsz” dobozok: ${uj} új, ${forditva} fordítás ($${koltseg.toFixed(3)})`;
+  const kimaradt = kimaradtSzoveg(allapot.kimaradt);
   if (kimaradt) sor += ` · kimaradt: ${kimaradt}`;
   return sor;
+}
+
+// 11-05: a „kimaradt: index ×3” belső kód volt (core/elakadas-gen.js okai) → közérthető mondat.
+const KIMARADT_OK = {
+  index: 'nem jött le a gyártó súgóoldal-listája',
+  'idő': 'elfogyott a futásidő',
+  keret: 'elfogyott a napi keret',
+  hiba: 'hiba történt'
+};
+/** „index ×3, idő ×1” → „3 útmutató (nem jött le a gyártó súgóoldal-listája), 1 útmutató (elfogyott a futásidő)”. */
+export function kimaradtSzoveg(nyers) {
+  const s = String(nyers ?? '').replace(/\s+/g, ' ').trim();
+  if (!s) return '';
+  return s.split(/\s*,\s*/).map(resz => {
+    const m = resz.match(/^(\S+?)(?:\s*×\s*(\d+))?$/u);
+    if (!m || !KIMARADT_OK[m[1]]) return resz;
+    return m[2] ? `${m[2]} útmutató (${KIMARADT_OK[m[1]]})` : KIMARADT_OK[m[1]];
+  }).join(', ').slice(0, 120);
+}
+
+/** Szóhatáron rövidít, „…”-lel (a riport címlistájához; eddig szó közepén vágott: „…és mi mar”). */
+export function rovidCim(s, max = 70) {
+  const t = String(s ?? '').replace(/\s+/g, ' ').trim();
+  if (t.length <= max) return t;
+  const vag = t.slice(0, max - 1);
+  const sz = vag.lastIndexOf(' ');
+  return (sz > max * 0.6 ? vag.slice(0, sz) : vag).replace(/[\s,;:–—-]+$/u, '') + '…';
+}
+
+/**
+ * 👔 A főnöki napló (memory/ceo-desk-log.json, agents/ceo/desk.js) mai bejegyzései közérthetően.
+ * 11-05: eddig a nyers bejegyzés ment ki: „Újraindítva (rewrite-explainer, 1. főnöki kör): "Heimstaden…”.
+ */
+export function fonokiDontesSor(bejegyzesek) {
+  const td = (Array.isArray(bejegyzesek) ? bejegyzesek : []).filter(x => typeof x === 'string' && x.trim());
+  if (!td.length) return '';
+  const cim = s => `„${rovidCim(String(s).replace(/[*_`[\]]/g, ''), 45)}”`;
+  const egy = (b) => {
+    let m;
+    if ((m = b.match(/^Újraindítva \(([^,]+), \d+\. főnöki kör\): "(.*)"$/u))) {
+      const mit = m[1] === 'fix-only' ? 'kijavíttatta' : 'újraíratta közérthetőbben';
+      return `${mit}: ${cim(m[2])}`;
+    }
+    if ((m = b.match(/^Menthetetlen .*lezárva: "(.*)"$/u))) return `elvetette (többszöri javítás után sem ment át): ${cim(m[1])}`;
+    if ((m = b.match(/^Elvetve \(okafogyott\): "(.*)"$/u))) return `elvetette (már nem aktuális): ${cim(m[1])}`;
+    if ((m = b.match(/^Duplikátum lezárva: "(.*)"$/u))) return `lezárta (már megírtuk): ${cim(m[1])}`;
+    if ((m = b.match(/^Rövidhírként mentve[^:]*: "(.*)"/u))) return `rövidhírként mentette: ${cim(m[1])}`;
+    return rovidCim(b, 70);
+  };
+  const reszek = td.slice(0, 2).map(egy);
+  return `👔 Főnöki döntés ma: ${td.length} — ${reszek.join(' · ')}${td.length > 2 ? ` · …és még ${td.length - 2}` : ''}`;
+}
+
+/**
+ * 🧩 A kimenet-őr (core/output-guard.js → memory/output-guard.json) sora közérthetően. '' = nincs lelet.
+ * 11-05: eddig a nyers osztálynevek mentek ki („midread, midread__arrow, … pack-foot”) — érthetetlenül, így a
+ * mögöttük álló valódi hiba (az útmutatókból eltűnt „Ezt olvasd utána” doboz) napokig senkinek nem tűnt fel.
+ */
+const ELEM_NEV = {
+  midread: 'az „Ezt olvasd utána” doboz',
+  'pack-foot': 'a PDF-csomag ajánló sor',
+  'ad-slot': 'a hirdetés helye'
+};
+export function kimenetOrSor(og) {
+  const p = Array.isArray(og?.problems) ? og.problems : [];
+  if (!p.length) return '';
+  const nevek = (elemek) => [...new Set((elemek || []).map(k => {
+    const alap = String(k).split('__')[0];
+    return ELEM_NEV[alap] || `„${alap}”`;
+  }))].join(', ');
+  const egy = (x) => {
+    if (x.code === 'PARITAS_CSAK_HIR' && x.elemek?.length) return `az útmutató-oldalakról hiányzik, ami a híreken megvan: ${nevek(x.elemek)}`;
+    if (x.code === 'PARITAS_CSAK_UTMUTATO' && x.elemek?.length) return `csak az útmutató-oldalakon van (a híreken nincs): ${nevek(x.elemek)}`;
+    if (x.code === 'PARITAS_TAG' && x.elemek?.length) return `a hír- és az útmutató-oldal HTML-je eltér: <${x.elemek.join('>, <')}>`;
+    return String(x.uzenet || x.code || '?');
+  };
+  const fedes = `${og.hir ?? '?'} hír + ${og.utmutato ?? '?'} útmutató átnézve`;
+  return `🧩 KIMENET-ŐR (a kész oldalak ellenőrzése): ${p.length} lelet — ${p.slice(0, 3).map(egy).join(' · ')} — ${fedes}`;
 }
 
 /**
@@ -216,7 +294,7 @@ export function kitolthetoRegiLine(allapot, maNap) {
   const szam = x => (Number.isFinite(Number(x)) && x !== null && x !== '' ? Number(x) : 0);
   const uj = Math.max(0, Math.round(szam(allapot.uj))), mezo = Math.max(0, Math.round(szam(allapot.mezo)));
   let sor = `🧩 Régi promptok kitölthetővé: ${uj} útmutató, ${mezo} mező ($${Math.max(0, szam(allapot.koltseg)).toFixed(3)})`;
-  const kimaradt = String(allapot.kimaradt ?? '').replace(/s+/g, ' ').trim().slice(0, 80);
+  const kimaradt = String(allapot.kimaradt ?? '').replace(/\s+/g, ' ').trim().slice(0, 80);   // 11-05: `/s+/` volt (backslash nélkül)
   if (kimaradt) sor += ` · kimaradt: ${kimaradt}`;
   return sor;
 }
@@ -272,8 +350,10 @@ export function tenyellenorzoLine(naplok, now = Date.now(), oraAblak = 24) {
   const tag = [`${osszes} cikk`];
   if (d.ok) tag.push(`✅ ${d.ok} rendben`);
   if (d.javitva) tag.push(`🔧 ${d.javitva} javítva`);
-  if (d.gyanu) tag.push(`🙋 ${d.gyanu} gyanú`);
-  if (d.visszautasitva) tag.push(`⛔ ${d.visszautasitva} javítás visszautasítva`);
+  // 11-05: a „⛔ javítás visszautasítva” félreérthető volt (nem a cikk hibás, hanem a gép JAVASOLT rossz javítást,
+  // és a rendszer NEM engedte élő szövegre). A gyanúhoz senki nem nyúl → ezt is kimondjuk.
+  if (d.gyanu) tag.push(`🙋 ${d.gyanu} gyanú (nem javítottuk)`);
+  if (d.visszautasitva) tag.push(`⛔ ${d.visszautasitva} javítás-javaslatot nem engedtünk át`);
   if (d.kihagyva) tag.push(`⏭️ ${d.kihagyva} forrás olvashatatlan`);
   if (d.ertelmezhetetlen) tag.push(`⚠️ ${d.ertelmezhetetlen} értelmezhetetlen válasz`);
   tag.push(...zavar);
@@ -288,7 +368,9 @@ export function tenyellenorzoLine(naplok, now = Date.now(), oraAblak = 24) {
     .map(it => {
       const cim = tiszta(it.cim || it.file || '?');
       const ok = tiszta(it.ok_hu).slice(0, 140);
-      return `  • „${cim.length > 50 ? cim.slice(0, 49) + '…' : cim}”${ok ? ` — ${ok}` : ''}`;
+      // 11-05: minden tétel elé a fajtája — eddig nem derült ki, melyik pont gyanú, melyik kivédett javítás
+      const jel = { javitva: '🔧 javítva', visszautasitva: '⛔ nem engedtük', gyanu: '🙋 gyanú' }[it.eredmeny];
+      return `  • ${jel} „${cim.length > 50 ? cim.slice(0, 49) + '…' : cim}”${ok ? ` — ${ok}` : ''}`;
     });
   if (reszletek.length > TENY_RESZLET_MAX) sorok.push(`  • …és még ${reszletek.length - TENY_RESZLET_MAX} (logs/factcheck_*.json)`);
   return [`🕵️ Tény-ellenőrző: ${tag.join(' · ')}`, ...sorok].join('\n');

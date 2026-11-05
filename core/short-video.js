@@ -613,7 +613,9 @@ export function cardsFromGuide(md, { maxSteps = LEPES_MAX, horog = null, ujNyito
 
   // ⚠️ CSAK a „Step N — …" alakú fejlécek lépések. A „Before you start" és a
   // „Common mistakes" ugyanúgy `##`, de nem tartozik a menetbe.
-  const lepesek = [...md.matchAll(/^##\s*Step\s*\d+\s*[—–-]\s*(.+)$/gim)].map(m => m[1].trim());
+  // 11-05: a „## Step 1: …” (kettőspontos) alak is lépés. Az író ritkán így írja (365 útmutatóból 2), de ilyenkor
+  // eddig 0 lépést látott itt → az útmutatóból NEM lett Reel/TikTok-videó (11-05: 1 videó a napi 3-ból).
+  const lepesek = [...md.matchAll(/^##\s*Step\s*\d+\s*[—–:-]\s*(.+)$/gim)].map(m => m[1].trim());
   if (lepesek.length < MIN_LEPES) {
     return { cards: null, reason: `csak ${lepesek.length} lépés (legalább ${MIN_LEPES} kell)` };
   }

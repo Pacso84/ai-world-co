@@ -430,6 +430,7 @@ async function cikkekBetolt(ROOT, join) {
     ki.push({ file: f, slug: m.slug || '', type: utmutatoE(f, j) ? 'guide' : 'news',
       published_at: m.published_at || '', reel_at: m.reel_at || '', tool: m.tool || '',
       tiktok_video_at: m.tiktok_video_at || '', fb_reel_at: m.fb_reel_at || '',
+      title: j.original_title || '',
       md: j.article_markdown || '' });
   }
   return ki;
@@ -475,6 +476,20 @@ const require$ = createRequire(import.meta.url);
  * A hibát TOVÁBBADJA: a nem nulla kilépőkód a CI-nak szól, az őrszem-fájl
  * a napi riportnak. A kettő nem helyettesíti egymást.
  */
+/**
+ * A friss (24 órán belüli), még videó nélküli útmutatók, amelyekből a gyártó NEM tud videót készíteni — okkal.
+ * Tiszta függvény: az `okFn(md)` a cardsFromGuide okát adja (üres = videózható).
+ * @returns {{slug: string, cim: string, ok: string}[]}
+ */
+export function nemVideozhatoFrissek(cikkek, now = Date.now(), okFn = () => '') {
+  const napja = v => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}/.test(v);
+  return (Array.isArray(cikkek) ? cikkek : [])
+    .filter(c => c && c.type === 'guide' && !napja(c.reel_at) && !napja(c.fb_reel_at)
+      && Number.isFinite(Date.parse(c.published_at)) && now - Date.parse(c.published_at) <= 864e5)
+    .map(c => ({ slug: String(c.slug || ''), cim: String(c.title || c.slug || ''), ok: String(okFn(c.md) || '') }))
+    .filter(x => x.ok);
+}
+
 export async function futtatFazis({ ROOT, join, fazis, fn }) {
   try {
     const ki = await fn();
@@ -482,6 +497,10 @@ export async function futtatFazis({ ROOT, join, fazis, fn }) {
     // betűtípus-mérés a gyártásból). Csak ismert kulcsot veszünk át, hogy
     // egy jövőbeli visszatérési érték ne szemetelje tele az állapotot.
     const mellek = ki && typeof ki === 'object' && ki.betu ? { betu: ki.betu } : {};
+    // 11-05: a nem videózható friss útmutatók oka (a napi riport TikTok-sora mondja el)
+    if (ki && typeof ki === 'object' && Array.isArray(ki.nemVideozhato) && ki.nemVideozhato.length) {
+      mellek.nemVideozhato = ki.nemVideozhato.slice(0, 3);
+    }
     reelAllapot(ROOT, join, { fazis, ok: true, ...mellek });
     return ki;
   } catch (e) {
@@ -702,9 +721,14 @@ async function prepareReel(ROOT, join) {
       // némán soha nem szólalna meg.
       utolsoBetu = r0.betu;
     }
-    if (utolsoBetu) return { betu: utolsoBetu };
+    // 🎵 MIÉRT KEVESEBB A VIDEÓ? (2026-11-05) A napi riport TikTok-sora eddig csak annyit mondott: „ma csak 1 videó
+    // ment ki — nézd meg a REEL- és BUFFER-sorokat” (ilyen sorok a riportban nincsenek). A valódi ok az volt, hogy a
+    // mai 2. útmutatóból 0 lépést olvasott ki a gyártó. Most a friss (24 órás), még videó nélküli, de NEM videózható
+    // útmutatók okát átadjuk az őrszem-fájlnak (memory/reel-guard.json → prepare.nemVideozhato) → a riport ezt mondja.
+    const nemVideozhato = nemVideozhatoFrissek(cikkek, Date.now(), md => cardsFromGuide(md).reason);
+    for (const x of nemVideozhato) console.log('🚫 Reel: nem készülhet videó — ' + x.slug + ': ' + x.ok);
     if (!maiak.length) console.log('💤 Reel: nincs alkalmas friss útmutató — kihagyom.');
-    return;
+    return { ...(utolsoBetu ? { betu: utolsoBetu } : {}), nemVideozhato };
   }
 
   // 🆕 2026-10-25: az első kártya a cikk FB-szövegének fájdalom-kérdése, ha van és kifér

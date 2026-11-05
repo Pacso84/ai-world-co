@@ -511,7 +511,8 @@ export function poszterSvg({ cim, lepesek, stilus, splitFn, logoBelso = '', kell
 
 /** A cikk lépéscímei a markdownból — ugyanaz a forrás, amiből a Reel dolgozik. */
 export function lepesekMdbol(md) {
-  return [...String(md || '').matchAll(/^##\s*Step\s*\d+\s*[—–-]\s*(.+)$/gim)]
+  // 11-05: a „## Step 1: …” (kettőspontos) alakot is (a 11-05-i Grok-útmutatóból emiatt nem lett videó)
+  return [...String(md || '').matchAll(/^##\s*Step\s*\d+\s*[—–:-]\s*(.+)$/gim)]
     .map(m => m[1].trim());
 }
 

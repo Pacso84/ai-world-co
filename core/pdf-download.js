@@ -49,7 +49,18 @@ export function dlKulcs(fajl, now = Date.now()) {
 }
 
 const nap = (now, vissza) => new Date(now - vissza * 864e5).toISOString().slice(0, 10);
-const rovid = f => String(f).replace(/^aiworldhq-/, '').replace(/\.pdf$/, '');
+// 11-05: a riportban eddig „create-en 1” állt — a csomag rövid magyar neve + nyelve érthetőbb.
+// (Kis térkép, nem a core/packs-text.js: ezt a modult a Worker is importálja, ne hízzon.)
+const CSOMAG_NEV = {
+  work: 'Munka', home: 'Otthon', safe: 'Biztonság', learn: 'Kezdő', explain: 'Magyarázó',
+  create: 'Fotók', automate: 'Automatizálás', money: 'Pénz', all: 'Teljes gyűjtemény'
+};
+const NYELV_NEV = { en: 'angol', es: 'spanyol' };
+const rovid = f => {
+  const s = String(f).replace(/^aiworldhq-/, '').replace(/\.pdf$/, '');
+  const m = s.match(/^([a-z]+)-(en|es)$/);
+  return m ? `${CSOMAG_NEV[m[1]] || m[1]} (${NYELV_NEV[m[2]]})` : s;
+};
 
 /**
  * A napi riport sora. Bemenet: a Worker `__dl` exportja

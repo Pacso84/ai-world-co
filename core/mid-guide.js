@@ -96,7 +96,10 @@ export function insertMidGuide(blocksHtml, stepCount, boxHtml, box2Html = '') {
   const no = midStepNo(stepCount);
   if (!no) return blocksHtml;
 
-  const hatar = (n) => blocksHtml.indexOf(`<div class="g-step" id="step-${n}">`);
+  // ⚠️ AZ OSZTÁLY-LISTA VÁLTOZHAT (2026-11-05): élőben „g-step g-slide" — a pontos `class="g-step"` keresés
+  // ezért SOHA nem talált, és az útmutatókból némán eltűnt a közép-doboz (a kimenet-őr napok óta jelezte
+  // „midread … csak a hírben van” formában). A hirdetés-beszúró (core/ads.js) 10-17-én ugyanígy járt.
+  const hatar = (n) => blocksHtml.search(new RegExp(`<div class="g-step(?: [^"]*)?" id="step-${n}">`));
   const at = hatar(no);
   // Nem találjuk → nem tippelünk. Ez akkor fordulhat elő, ha a lépés-blokk
   // felépítése megváltozik; olyankor inkább ne legyen doboz, mint rossz helyen.

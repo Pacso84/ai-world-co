@@ -64,8 +64,9 @@ t('a riport a TEGNAPI letöltéseket írja, fájlonként, a 7 napos összeggel',
   const dl = { '2026-10-08': { 'aiworldhq-all-en.pdf': 2, 'aiworldhq-safe-es.pdf': 1 }, '2026-10-05': { 'aiworldhq-work-en.pdf': 4 } };
   const sor = pdfLetoltesSor(dl, MOST);
   assert.match(sor, /tegnap: 3/);
-  assert.match(sor, /all-en 2/);
-  assert.match(sor, /safe-es 1/);
+  // 11-05: „all-en 2” helyett a csomag magyar neve + nyelve
+  assert.match(sor, /Teljes gyűjtemény \(angol\) 2/);
+  assert.match(sor, /Biztonság \(spanyol\) 1/);
   assert.match(sor, /7 nap: 7/);
 });
 

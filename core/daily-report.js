@@ -27,7 +27,7 @@ import { summarizeRuns, describeFailures } from './make-health.js';
 // A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
 // összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
 import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
-import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, repeatLine, visitorLine, orFutott, zaroSor } from './report-lines.js';
+import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
@@ -37,7 +37,7 @@ import { szemantikusSor } from './semantic-guard.js';
 import { latenciaSor } from './ai-latency-guard.js';
 import { futasokLekerdez, sodrodasVizsgalat, sodrodasSor } from './watchdog-drift.js';
 import { linkSor } from './internal-link-guard.js';
-import { bufferSor, tiktokSor } from './buffer-guard.js';
+import { bufferSor, tiktokSor, tiktokHianyOk } from './buffer-guard.js';
 import { riportSor as fbRiportSor } from './fb-link-guard.js';
 import { tesztSor } from './test-guard.js';
 import { pdfLetoltesSor } from './pdf-download.js';
@@ -375,7 +375,10 @@ async function main() {
     `📊 *Napi jelentés — ${today()}*`,
     ``,
     `📰 Új tartalom ma: ${r.news} hír + ${r.guides} útmutató`,
-    ...r.titles.map(t => `   • ${t.slice(0, 60)}`),
+    // 11-05: szóhatáron vágva („…és mi mar” helyett „…és mi…”), és ha több cikk van, mint amennyit
+    // felsorolunk, azt is kimondjuk (eddig 7 cikkből 3 cím látszott, megjegyzés nélkül).
+    ...r.titles.map(t => `   • ${rovidCim(t, 70)}`),
+    ...(r.news + r.guides > r.titles.length ? [`   • …és még ${r.news + r.guides - r.titles.length}`] : []),
     // 👥 A LEGFONTOSABB SZÁM (2026-08-28, user: „amit küld, az nem releváns").
     // Az adat hónapok óta megvolt a forgalom-naplóban, de sosem került a
     // jelentésbe — miközben hét sor egy nem létező fejlesztőnek szólt.
@@ -720,7 +723,13 @@ async function main() {
     const bufg = JSON.parse(readFileSync(join(ROOT, 'memory', 'buffer-guard.json'), 'utf-8'));
     const sor = bufferSor(bufg);
     if (sor) lines.push(sor);
-    const tt = tiktokSor(bufg);   // 10-13: hány TikTok-videó ment ki ma a 3-ból
+    // 11-05: a hiány OKA a Reel-gyártó feljegyzéséből (memory/reel-guard.json → prepare.nemVideozhato)
+    let ok = '';
+    try {
+      const rg = JSON.parse(readFileSync(join(ROOT, 'memory', 'reel-guard.json'), 'utf-8'));
+      ok = tiktokHianyOk(rg, today());
+    } catch { /* nincs feljegyzés → a sor kimondja, hogy az ok ismeretlen */ }
+    const tt = tiktokSor(bufg, Date.now(), { ok });   // 10-13: hány TikTok-videó ment ki ma a 3-ból
     if (tt) lines.push(tt);
   } catch { /* még nem futott — nem baj */ }
 
@@ -947,9 +956,8 @@ async function main() {
   // leletként (KEVES_LAP) jön ki, a lefedettséggel együtt.
   try {
     const og = JSON.parse(readFileSync(join(ROOT, 'memory', 'output-guard.json'), 'utf-8'));
-    const p = og.problems || [];
-    const fedes = `${og.hir ?? '?'} hír + ${og.utmutato ?? '?'} útmutató átnézve`;
-    if (p.length) lines.push(`🧩 KIMENET-ŐR: ${p.length} lelet — ${p.slice(0, 3).map(x => x.uzenet).join(' · ')} — ${fedes}`);
+    const kor = kimenetOrSor(og);   // 11-05: közérthető elemnevek a nyers osztálynevek helyett
+    if (kor) lines.push(kor);
     if ((og.megjavult || []).length) lines.push(`🧩 Kimenet-őr: megjavult, a FOLYAMATBAN listából törölhető: ${og.megjavult.join(', ')}`);
   } catch { /* még nem futott — nem baj */ }
 
@@ -983,7 +991,10 @@ async function main() {
   try {
     const { reportLineFromFile } = await import('./source-report-card.js');
     const srcLine = reportLineFromFile();
-    if (srcLine) lines.push(srcLine);
+    // ⚠️ SORONKÉNT (2026-11-05): a reportLine több részt '\n'-nel egy szövegbe fűz. A zajszűrő (report-noise.js)
+    // egy tömb-elemet egy sornak lát — így a „🔎 Nem termel (18)” lista az „⚠️ ELAVULT” sor ⚠️-je miatt
+    // vészjelzésnek számított, és a „csak ha új forrás kerül rá” szabály ellenére MINDEN NAP kiment.
+    if (srcLine) lines.push(...srcLine.split('\n').filter(Boolean));
   } catch { /* a riport ettől még kimegy */ }
 
   // OLVASÁSI MÉLYSÉG (2026-08-15) — hány oldalt néz meg egy belépő?
@@ -1076,7 +1087,8 @@ async function main() {
   try {
     const dlog = JSON.parse(readFileSync(join(ROOT, 'memory', 'ceo-desk-log.json'), 'utf-8'));
     const td = dlog[today()] || [];
-    if (td.length) lines.push(`👔 Főnöki döntés ma: ${td.length} (pl. ${td[0].slice(0, 70)}…)`);
+    const fsor = fonokiDontesSor(td);   // 11-05: „Újraindítva (rewrite-explainer, 1. főnöki kör)” → közérthető
+    if (fsor) lines.push(fsor);
   } catch { /* még nincs asztal-napló */ }
   try {
     const store = JSON.parse(readFileSync(join(ROOT, 'memory', 'store.json'), 'utf-8'));

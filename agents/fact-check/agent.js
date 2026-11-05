@@ -471,7 +471,8 @@ async function main() {
     //    szöveget NEM írhat át, csak jelez. Kézi bejelentéssel (--claim/--id/…) javíthat.
     if (!why && hir) {
       const alatamasztott = forrasAlatamasztja(guide.data.article_markdown, decision.fixed_markdown, forras);
-      if (alatamasztott.length) why = `a forrás alátámasztja, amit kivenne: „${alatamasztott[0].slice(0, 90)}”`;
+      // 11-05: „a forrás alátámasztja, amit kivenne” → a riportban félreérthető volt, ki mit vesz ki
+      if (alatamasztott.length) why = `a javítás törölne egy mondatot, amit a forrás igazol: „${alatamasztott[0].slice(0, 90)}”`;
     }
     if (!why && hir) {
       const ujAllitas = forrasbanNemSzereplo(guide.data.article_markdown, decision.fixed_markdown, forras);

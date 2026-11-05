@@ -45,6 +45,12 @@ export const STALE_FEED_DAYS = 120;
 export const MIN_SAMPLE = 8;
 export const BAD_RATIO = 0.5;        // a kapu ennyi hányadát fogta meg ÉS nem jött rendbe
 export const ZERO_YIELD_DAYS = 30;   // ennyi nap 0 cikk = "nem termel" (csak javaslat)
+// 🕰️ AZ RSS-KORHATÁR ÉLESÍTÉSE (e2c341c2, 2026-10-29 18:31 UTC — core/hir-frissesseg.js). Azóta a 21 napnál
+// régebbi feed-bejegyzésből nem lesz hír. Az ELAVULT-ítélet ezért csak az EZUTÁN írt cikket számolja: a 10-21-i
+// Sony-cikk (a hiba, ami a korhatárt kiváltotta, user-döntéssel kint marad) 11-05-én is „⚠️ ELAVULT forrásból
+// írunk”-ot mondatott a riporttal — jelen időben, hibaként, egy már javított, lezárt esetről (user 11-05:
+// „még mindig azt írja… a valóságot tükrözze!”). Ha a korhatár után mégis jön ilyen cikk, az VALÓDI új hiba.
+export const RSS_KORHATAR_ELES = '2026-10-29T18:31:31Z';
 
 // ===================================================================
 // 🔑 A BLOKK NEM ÍTÉLET — MÉRVE 2026-09-08
@@ -147,10 +153,12 @@ export function judgeSource(m) {
 
   // ELAVULT, mégis írunk belőle: ez a legveszélyesebb csendes hiba — régi anyagot
   // adunk ki friss hírként. Nem kapcsoljuk ki magunktól, de HANGOSAN jelezzük.
-  if (m.feedAgeDays != null && m.feedAgeDays > STALE_FEED_DAYS && m.published30d > 0) {
+  // Csak a korhatár élesítése UTÁN írt cikk számít (RSS_KORHATAR_ELES); a mező hiányában a régi szám.
+  const ujElavult = Number.isFinite(m.published30dAfterAgeGuard) ? m.published30dAfterAgeGuard : m.published30d;
+  if (m.feedAgeDays != null && m.feedAgeDays > STALE_FEED_DAYS && ujElavult > 0) {
     return {
       verdict: 'stale', auto: false,
-      reason: `⚠️ a feed ${Math.round(m.feedAgeDays)} napja néma, mégis ${m.published30d} "friss" cikket írtunk belőle — régi anyag újdonságként!`
+      reason: `⚠️ a feed ${Math.round(m.feedAgeDays)} napja néma, mégis ${ujElavult} "friss" cikket írtunk belőle — régi anyag újdonságként!`
     };
   }
 
@@ -235,7 +243,7 @@ export function collectArticleStats({
 
   const per = {};
   const get = (id) => (per[id] = per[id] || {
-    published30d: 0, truthBlocks: 0, totalAttempts: 0, truthUnfixed: 0, lastArticle: '',
+    published30d: 0, published30dAfterAgeGuard: 0, truthBlocks: 0, totalAttempts: 0, truthUnfixed: 0, lastArticle: '',
     _blocked: new Set(), _reached: new Set(), _blockAt: new Map()
   });
 
@@ -280,6 +288,8 @@ export function collectArticleStats({
       const a = get(id);
       if (at > a.lastArticle) a.lastArticle = at;
       if (at >= sinceYield) a.published30d++;
+      // Az ELAVULT-ítélethez csak a korhatár élesítése UTÁN írt cikk számít (lásd RSS_KORHATAR_ELES).
+      if (at >= sinceYield && String(d._meta?.published_at || '') >= RSS_KORHATAR_ELES) a.published30dAfterAgeGuard++;
       if (at >= sinceTruth) a._reached.add(baseName(f));
     }
   }
@@ -345,6 +355,7 @@ export async function runReportCard({ dryRun = false, fetchFn = fetch, stats } =
     const m = {
       feedAgeDays: age,
       published30d: a.published30d,
+      ...(Number.isFinite(a.published30dAfterAgeGuard) ? { published30dAfterAgeGuard: a.published30dAfterAgeGuard } : {}),
       truthBlocks: a.truthBlocks,
       truthUnfixed: a.truthUnfixed,
       totalAttempts: a.totalAttempts,
@@ -417,12 +428,13 @@ export function reportLine({ autoDisabled, proposals }) {
       stuck.map(p => p.name.replace(/\s*\(hivatalos\)$/, '') + ' — ' + p.reason).join(' · '));
   }
   if (stale.length) {
+    // 11-05: a regex eddig `/s*(hivatalos)$/` volt (backslash nélkül) → a „(hivatalos)” sosem vált le.
     parts.push('⚠️ ELAVULT forrásból írunk (' + stale.length + '): ' +
-      stale.map(p => p.name.replace(/s*(hivatalos)$/, '') + ' — ' + p.reason.replace('⚠️ ', '')).join(' · '));
+      stale.map(p => p.name.replace(/\s*\(hivatalos\)$/, '') + ' — ' + p.reason.replace('⚠️ ', '')).join(' · '));
   }
   if (idle.length) {
     parts.push('🔎 Nem termel (' + idle.length + '): ' +
-      idle.map(p => p.name.replace(/s*(hivatalos)$/, '')).join(', ') +
+      idle.map(p => p.name.replace(/\s*\(hivatalos\)$/, '')).join(', ') +
       ' — érdemes megnézni, kell-e még');
   }
   return parts.join('\n');
