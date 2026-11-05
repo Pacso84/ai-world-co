@@ -51,6 +51,7 @@ import { elakadasBetolt, elakadasHtml } from '../core/elakadas-html.js';   // �
 import { lepesKepKulcs, elsoMondat, elsoMondatKulcs, ismetlesTores } from '../core/lepes-kep.js';   // 🖼️ 2026-10-23/24
 import { olvasoiKedvencek } from '../core/olvasoi-kedvenc.js';   // 🔥 2026-10-23
 import { vazlatHtml } from '../core/guide-sketch.js';
+import { torzsH1 } from '../core/torzs-h1.js';   // 🔠 2026-11-05 egy H1 / oldal (Bing)
 import { kovetkezoUtmutato } from '../core/next-guide.js';
 import { dobozBe, hirlevelDoboz } from '../core/hirlevel-doboz.js';   // 📬 2026-10-30: csak bekapcsolt küldés mellett
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek, hirdetesKozbe, hirdetesRacsba } from '../core/ads.js';
@@ -913,7 +914,7 @@ function localizeArticle(a, lang) {
     title: meta.title || a.title,
     subtitle: meta.subtitle || a.subtitle,
     seoDescription: meta.subtitle || a.seoDescription,
-    bodyHtml: wrapTables(wrapInShort(wrapImpactSection(stripLeadH1(marked.parse(body))))),
+    bodyHtml: wrapTables(wrapInShort(wrapImpactSection(torzsH1(marked.parse(body), meta.title || a.title)))),
     bodyMd: body
   };
 }
@@ -1061,9 +1062,7 @@ function wrapInShort(html) {
 // A Google nem büntet több H1-ért, de az AZONOS szövegű dupla cím zavaros
 // jelzés + a lapon vizuálisan is ismétlődött. A sablon H1-e marad (az a
 // stílusozott), a TÖRZS elejéről vesszük le.
-function stripLeadH1(html) {
-  return html.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>\s*/, '');
-}
+// 2026-11-05: a törzs BÁRMELY H1-ét kezeli (nem csak a legelsőt) → core/torzs-h1.js (torzsH1)
 
 // „MIT JELENT EZ SZÁMODRA?” MINDHÁROM NYELVEN (2026-11-02). Eddig a hír-ág
 // CSAK az angol címet ismerte (a /hu/ és /es/ hírekben a rész sima szöveg
@@ -1184,7 +1183,7 @@ function loadArticles() {
         tags: meta.tags || [],
         seoDescription: data._meta?.seo?.description || meta.subtitle || '',
         seoKeywords: (data._meta?.seo?.keywords || meta.tags || []).join(', '),
-        bodyHtml: wrapTables(wrapInShort(wrapImpactSection(stripLeadH1(marked.parse(body))))),
+        bodyHtml: wrapTables(wrapInShort(wrapImpactSection(torzsH1(marked.parse(body), meta.title || data.original_title)))),
         bodyMd: body,
         // AZ ANGOL TÖRZS MEGŐRZÉSE (2026-10-23): a lokalizáló felülírja a bodyMd-t, a lépés-ikon
         // viszont az angol lépésből jön (core/lepes-kep.js) — így minden nyelven ugyanaz a kép
