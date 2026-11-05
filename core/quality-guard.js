@@ -32,7 +32,7 @@ const PUBLIC_DIR = join(ROOT, 'website', 'public');
 // ezek NEM cégnév-duplázások / nem rövidítendők.
 export const FULLFORM_OK = new Set([
   'GitHub Copilot', 'Meta AI', 'Apple Intelligence', 'Alibaba Cloud',
-  'Mistral AI', 'Le Chat', 'Hugging Face', 'Project Genie', 'NotebookLM',
+  'Mistral AI', 'Le Chat', 'Hugging Face', 'Project Genie', 'Gemini Notebook',   // 11-05: volt NotebookLM (Google, 2026-07-16)
   'Google Photos',
   // 🔑 2026-09-06. Ez a név 08-30, 09-01 és 09-06 napi jelentésében is
   // „cégnév-duplázás"-ként szerepelt — HAMISAN. A „Microsoft 365 Copilot" a
@@ -86,6 +86,8 @@ const NAME_ALIAS = {
   'deepseek chat': 'DeepSeek', 'deepseek llm': 'DeepSeek',
   'amazon alexa': 'Alexa+', 'amazon alexa+': 'Alexa+', 'alexa': 'Alexa+',
   'google gemini': 'Gemini', 'openai chatgpt': 'ChatGPT',
+  // 11-05: a Google 2026-07-16-án átnevezte (blog.google: „NotebookLM is now Gemini Notebook”)
+  'notebooklm': 'Gemini Notebook', 'google notebooklm': 'Gemini Notebook',
   'alibaba cloud ai': 'Alibaba Cloud'
 };
 const GENERIC_REST_RX = /^(ai|llm|chat|app|api|bot|cloud|cloud ai|assistant|studio|models?)$/i;

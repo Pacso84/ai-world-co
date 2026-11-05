@@ -48,7 +48,7 @@ function kulcsszavak(szoveg, kizart = []) {
     .filter(w => w.length >= 4);
 }
 
-const ISMERT_HOSSZABB = ['GitHub Copilot', 'Microsoft 365 Copilot', 'Copilot Studio', 'Google Photos', 'Gemini Live', 'Meta AI glasses'];
+const ISMERT_HOSSZABB = ['GitHub Copilot', 'Microsoft 365 Copilot', 'Copilot Studio', 'Google Photos', 'Gemini Live', 'Gemini Notebook', 'Meta AI glasses'];
 
 /** A cím egy MÁSIK, hosszabb nevű termékről szól-e („GitHub Copilot" a „Copilot" témánál)? */
 function masikTermek(cim, tool, hosszabbNevek) {

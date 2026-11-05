@@ -180,7 +180,8 @@ export const TEVEDESEK = [
     szovegben: /ChatGPT|OpenAI/,
     nyelvek: { '*': {
       mind: [],
-      egyik: [/(?<![p{L}])Plus, (?:Pro, )?Team(?![p{L}])/u, /(?<![p{L}])Team, Business(?![p{L}])/u, /ChatGPT Team(?![p{L}])/u],
+      // 11-05: a `\p{L}` backslash nélkül állt (`[p{L}]` = a p, {, L, } karakterek) → a szóhatár nem működött
+      egyik: [/(?<![\p{L}])Plus, (?:Pro, )?Team(?![\p{L}])/u, /(?<![\p{L}])Team, Business(?![\p{L}])/u, /ChatGPT Team(?![\p{L}])/u],
       nem: [/Claude|Anthropic|renamed|rebrand|átnevez|renombr|formerly|korábban|anteriormente/iu]
     } }
   },
@@ -191,11 +192,12 @@ export const TEVEDESEK = [
     // CSAK FELTÉTEL-állítás („needs / running / kell / requiere …”): a „mi változott az iOS 18-ban” hírmondat helyes.
     // A mondatban egy pontos alverzió (18.1, 18.2…) is szerepel → nem hiba („iOS 18 (18.1 or later)”).
     nyelvek: { '*': {
-      mind: [/Apple Intelligence/, /(?<![p{L}p{N}_])(?:iOS|iPadOS) 18(?![.d])/u],
-      egyik: [/(?<![p{L}])(?:needs?|required?|requires|requirement|running|runs on|update to|updated to|or later|or newer)(?![p{L}])/iu,
-        /(?<![p{L}])(?:kell|szükség|szükséges|fut|futtat|frissítsd|frissíts|vagy újabb)(?![p{L}])/iu,
-        /(?<![p{L}])(?:necesitas?|necesita|requiere|requisito|con|ejecutando|actualiza|o posterior)(?![p{L}])/iu],
-      nem: [/(?:iOS|iPadOS) 18.d/u]
+      // 11-05: backslash nélkül állt (`[p{L}]`, `[.d]`, `18.d`) → a szóhatár nem működött, a „con” a „condición”-ban is talált
+      mind: [/Apple Intelligence/, /(?<![\p{L}\p{N}_])(?:iOS|iPadOS) 18(?![.\d])/u],
+      egyik: [/(?<![\p{L}])(?:needs?|required?|requires|requirement|running|runs on|update to|updated to|or later|or newer)(?![\p{L}])/iu,
+        /(?<![\p{L}])(?:kell|szükség|szükséges|fut|futtat|frissítsd|frissíts|vagy újabb)(?![\p{L}])/iu,
+        /(?<![\p{L}])(?:necesitas?|necesita|requiere|requisito|con|ejecutando|actualiza|o posterior)(?![\p{L}])/iu],
+      nem: [/(?:iOS|iPadOS) 18\.\d/u]
     } }
   },
   {
@@ -208,6 +210,25 @@ export const TEVEDESEK = [
       hu: { mind: [/nem Pro iPhone/i] },
       es: { mind: [/iPhone que no sea Pro/i] }
     }
+  },
+  // ── 2026-11-05: ÁTNEVEZETT TERMÉK (user: „igen” — a súgó-javítás közben derült ki) ──
+  // A 09-19-i hírt az író HELYESEN „Gemini Notebook” néven írta, a hitelesség-kapu bírója viszont blokkolta („The product
+  // name »Gemini Notebook« is fabricated… actual product is called NotebookLM”), és az átírás a RÉGI névvel ment ki.
+  // 11-05-én 6 cikkben (3 nyelven 231 helyen) javítva; a bíró hiteles-név listájában (website/tool-links.json) mostantól
+  // a „Gemini Notebook” áll.
+  {
+    id: 'notebooklm-regi-nev',
+    leiras: 'A „NotebookLM” név — a Google 2026-07-16-án Gemini Notebookra nevezte át (blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/; a régi cím a notebook.google.com-ra irányít). A „korábbi nevén NotebookLM” megjegyzés nem hiba.',
+    javitas: 'NotebookLM was renamed Gemini Notebook on 2026-07-16 (blog.google) — call it Gemini Notebook; you may add "(formerly NotebookLM)" once.',
+    nyelvek: { '*': {
+      // kisbetű-ÉRZÉKENY: a cikk-URL-ek („…-in-notebooklm”) és a címkék kisbetűsek, azok nem élő terméknév
+      mind: [alak(['NotebookLM'], false)],
+      nem: [
+        /(?<![\p{L}])(?:formerly|previously|korábbi nevén|korábban|antes|anteriormente)(?: (?:called|known as|named|llamado|conocido como))? NotebookLM/iu,
+        /NotebookLM(?:-et)? (?:is now|was renamed|has been renamed|became|ahora es|pasó a llamarse|fue renombrado|új neve)/iu,
+        /(?<![\p{L}])(?:renamed|átnevezte|átnevezték|renombró)(?![\p{L}])[^.]{0,30}NotebookLM/iu
+      ]
+    } }
   }
 ];
 

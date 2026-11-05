@@ -8,6 +8,7 @@
 
 import assert from 'assert/strict';
 import { readFileSync } from 'fs';
+import * as awaitFs from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { judgeSource, reportLine, RSS_KORHATAR_ELES, collectArticleStats } from './source-report-card.js';
@@ -173,6 +174,27 @@ t('🕵️ a tény-ellenőrző minden tétele megmondja a fajtáját (eddig nem 
   assert.match(s, /⛔ 1 javítás-javaslatot nem engedtünk át/);
   assert.match(s, /• ⛔ nem engedtük „Picsart”/);
   assert.match(s, /• 🙋 gyanú „Meet”/);
+});
+
+// ── 5. ELVESZETT BACKSLASH A REGEXEKBEN ───────────────────────────
+// 11-05: ugyanazon a napon HÁROM helyen: `/s*(hivatalos)$/` (forrás-sor), `/s+/g` (kitölthető-sor), és
+// `[p{L}]` / `18.d` (ismert-tevedesek.js: ChatGPT Team, Apple Intelligence iOS 18) — a minta „működött”, csak mást
+// jelentett. Az őr a komment nélküli kódsorokban keresi a jellegzetes alakokat.
+t('🔍 nincs backslash nélküli \\p{L} / \\p{N}, és nincs „/s+/” „/s*” kezdetű regex a kódban', () => {
+  const { readdirSync, statSync } = awaitFs;
+  const fajlok = [];
+  const jar = (d) => { for (const f of readdirSync(d)) { const p = join(d, f); if (statSync(p).isDirectory()) { if (!/node_modules|public|_forrasok/.test(f)) jar(p); } else if (/\.(m?js)$/.test(f) && !/\.test\.js$/.test(f)) fajlok.push(p); } };
+  jar(join(ROOT, 'core')); jar(join(ROOT, 'agents'));
+  const rossz = [];
+  for (const p of fajlok) {
+    readFileSync(p, 'utf-8').split(/\r?\n/).forEach((sor, i) => {   // Windows-sorvég: a \r mellett a `.*$` nem ér a végére
+      const kod = sor.replace(/\/\/.*$/, '');
+      if (/^\s*\*/.test(sor)) return;   // JSDoc-sor
+      if (/(?<!\\)p\{[LN]\}/.test(kod) && /[[(]/.test(kod)) rossz.push(`${p.slice(ROOT.length + 1)}:${i + 1}: ${sor.trim().slice(0, 90)}`);
+      if (/\(\/s[+*]/.test(kod)) rossz.push(`${p.slice(ROOT.length + 1)}:${i + 1}: ${sor.trim().slice(0, 90)}`);
+    });
+  }
+  assert.deepEqual(rossz, [], 'backslash nélküli regex:\n' + rossz.join('\n'));
 });
 
 console.log(`\n✅ ${pass} teszt rendben`);

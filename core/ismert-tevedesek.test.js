@@ -116,6 +116,22 @@ await t('🆕 11-04-i leletek: régi ChatGPT-/Qwen-cím, ChatGPT „Team”, App
   nincs("**Using an iPhone that doesn't support Apple Intelligence:** Apple Intelligence only works on iPhone 15 Pro and newer.", 'en');
 });
 
+await t('🏷️ 11-05: „NotebookLM” (2026-07-16 óta Gemini Notebook) — fogja; a „korábbi nevén” megjegyzést, az URL-t és az új nevet nem', () => {
+  // a 11-05 előtt élő mondatokból
+  van('notebooklm-regi-nev', '> **In short:** NotebookLM, Google\'s free AI notebook, can generate spoken audio summaries.', 'en');
+  van('notebooklm-regi-nev', "# NotebookLM's Audio Features: What It Can Do and Who It's For", 'en');
+  van('notebooklm-regi-nev', 'Töltsd be a három olvasmányodat egy friss NotebookLM-jegyzetfüzetbe.', 'hu');
+  van('notebooklm-regi-nev', 'Nyisd meg a NotebookLM-et a böngészőben.', 'hu');
+  van('notebooklm-regi-nev', 'Mete tus tres lecturas en un cuaderno nuevo de NotebookLM.', 'es');
+  nincs('> **In short:** Gemini Notebook (formerly NotebookLM), Google\'s free AI notebook, can generate audio summaries.', 'en');
+  nincs('A Gemini Notebook (korábbi nevén NotebookLM) a Google ingyenes AI-notebookja.', 'hu');
+  nincs('Gemini Notebook (antes NotebookLM) puede generar resúmenes en audio.', 'es');
+  nincs('Google renamed NotebookLM to Gemini Notebook in July 2026.', 'en');
+  nincs('NotebookLM is now Gemini Notebook.', 'en');
+  nincs('Read the [study guide](/article/how-to-use-notebooklm-to-study-three-sources) next.', 'en');
+  nincs('Open Gemini Notebook and create a notebook.', 'en');
+});
+
 await t('🚦 tevedesJelzes(): az ellenőrzőnek KNOWN_FALSE_CLAIM + angol javítási útmutatás; tiszta szövegre null', () => {
   const j = tevedesJelzes('# Title\n\nGo to chat.openai.com and sign in.', 'en');
   assert.match(j, /^KNOWN_FALSE_CLAIM: 1 /);
