@@ -23,6 +23,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { nyelviElteres, szortBejegyzes } from './szort-robot.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const LOG_PATH = join(__dirname, '..', 'memory', 'traffic-log.json');
@@ -235,6 +236,38 @@ export function robotLevonas(sorok, robotSorok) {
 
 // ---------- I/O ----------
 
+// 🤖 SZÉTSZÓRT ROBOT — csak JELZÉS (2026-11-05, core/szort-robot.js): naponta a nyelvi eltérés + becslés,
+// KÜLÖN fájlban (a forgalmi napló sorait nem érinti, semmit nem von le). Írja: a CI (main), olvassa: a riport.
+const SZORT_PATH = join(__dirname, '..', 'memory', 'szort-robot.json');
+export function loadSzort() {
+  if (!existsSync(SZORT_PATH)) return {};
+  try { return JSON.parse(readFileSync(SZORT_PATH, 'utf-8')).days || {}; }
+  catch { return {}; }
+}
+function saveSzort(days) {
+  writeFileSync(SZORT_PATH, JSON.stringify({
+    _meta: { note: 'Szétszórt-robot JELZÉS naponta (core/szort-robot.js). Írja: core/traffic-log.js a CI-ban. Semmiből nem von le.', updated: new Date().toISOString() },
+    days
+  }, null, 2), 'utf-8');
+}
+/** Egy nap (ország, hivatkozó, útvonal) bontása → szortBejegyzes. Hiba esetén dob (a hívó elnyeli). */
+export async function fetchSzort(day) {
+  const account = (process.env.CLOUDFLARE_ACCOUNT_ID || '').trim();
+  const since = day + 'T00:00:00Z';
+  const until = new Date(Date.parse(since) + 86400000 - 1000).toISOString();
+  const q = `query($account: String!, $since: Time!, $until: Time!) {
+    viewer { accounts(filter: {accountTag: $account}) {
+      s: rumPageloadEventsAdaptiveGroups(filter: {datetime_geq: $since, datetime_leq: $until}, limit: 5000, orderBy: [sum_visits_DESC]) {
+        sum { visits } avg { sampleInterval } dimensions { countryName refererHost requestPath }
+      }
+    } }
+  }`;
+  const nyers = (await gql(q, { account, since, until })).s || [];
+  const sorok = nyers.map(x => ({ country: x.dimensions?.countryName, referer: x.dimensions?.refererHost, path: x.dimensions?.requestPath, visits: x.sum?.visits || 0 }));
+  const b = szortBejegyzes(nyelviElteres(sorok));
+  return mintavetelezett(nyers) ? { ...b, becsult: true } : b;
+}
+
 export function loadLog() {
   if (!existsSync(LOG_PATH)) return {};
   try { return JSON.parse(readFileSync(LOG_PATH, 'utf-8')).days || {}; }
@@ -401,6 +434,7 @@ async function main() {
   const today = new Date().toISOString().slice(0, 10);
   let merged = days;
   let ok = 0, skipped = 0;
+  const szort = loadSzort();
 
   // Az utolsó RECENT_DAYS napot próbáljuk — a késve érkező adat így beér,
   // és egy kihagyott futás sem hagy lyukat a naplóban.
@@ -419,6 +453,12 @@ async function main() {
         + (becsult ? ' (becsült — a Cloudflare órásan is mintavételezett)' : ''));
       for (const v of robot) console.log(`  🤖 ${day}: robot kiszűrve — ${v.orszag} ${String(v.ora).slice(11, 16)} UTC ${v.eszkoz}: ${v.latogatas} látogatás, ${v.oldalak} különböző oldal`);
       ok++;
+      // 🤖 szétszórt-robot JELZÉS — külön lekérdezés, hibája a naplót nem érinti
+      try {
+        szort[day] = await fetchSzort(day);
+        const s = szort[day];
+        console.log(`  🤖 ${day}: nyelvi eltérés ${s.elteres}${s.jelzes ? ` → ⚠️ ~${s.becsles} gyanús szétszórt robot (NINCS levonva)` : ' (normál)'}${s.becsult ? ' (becsült)' : ''}`);
+      } catch (e) { console.log(`  🤖 ${day}: szétszórt-robot mérés kihagyva — ${String(e.message).slice(0, 60)}`); }
     } catch (e) {
       console.log('  ' + day + ': kihagyva — ' + String(e.message).slice(0, 70));
     }
@@ -426,6 +466,7 @@ async function main() {
 
   merged = pruneOld(merged, today);
   saveLog(merged);
+  try { saveSzort(pruneOld(szort, today)); } catch (e) { console.log('  🤖 szort-robot.json mentése sikertelen — ' + e.message.slice(0, 60)); }
   console.log('📈 forgalom-napló: ' + ok + ' nap rögzítve, ' + skipped
     + ' változatlan, ' + Object.keys(merged).length + ' nap a naplóban');
 }

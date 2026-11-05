@@ -117,7 +117,9 @@ function gatherContext() {
   let visitors = '(no visitor data available — say you cannot see it)';
   try {
     const days = JSON.parse(readFileSync(join(ROOT, 'memory', 'traffic-log.json'), 'utf-8')).days;
-    visitors = latogatoKontextus(days, TODAY) || visitors;
+    let szort = null;   // 🤖 11-05: szétszórt-robot jelzés — ugyanaz, mint a napi jelentésben
+    try { szort = JSON.parse(readFileSync(join(ROOT, 'memory', 'szort-robot.json'), 'utf-8')).days; } catch { /* nincs még */ }
+    visitors = latogatoKontextus(days, TODAY, szort) || visitors;
   } catch { /* nincs napló */ }
 
   // VÉSZHÁLÓ-BIZONYÍTÉK (2026-07-22): ha egy CSAK-FIZETŐS agent ingyenes kulccsal

@@ -367,8 +367,8 @@ async function main() {
   // a sor egyszerűen kimarad (a `lines` szűri az üres elemeket).
   let latogatoSor = '';
   try {
-    const { loadLog } = await import('./traffic-log.js');
-    latogatoSor = visitorLine(loadLog(), today());
+    const { loadLog, loadSzort } = await import('./traffic-log.js');
+    latogatoSor = visitorLine(loadLog(), today(), loadSzort());
   } catch { /* marad üres */ }
 
   const lines = [

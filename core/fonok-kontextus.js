@@ -29,8 +29,8 @@ export function urlKulcs(u) {
  * @param {string} today YYYY-MM-DD (UTC)
  * @returns {string} pl. "👥 Tegnap: 203 látogató (7 napos átlag: 260)", vagy üres
  */
-export function latogatoKontextus(days, today) {
-  return visitorLine(days, today) || '';
+export function latogatoKontextus(days, today, szort = null) {
+  return visitorLine(days, today, szort) || '';
 }
 
 /**

@@ -1,6 +1,7 @@
 // ===================================================================
 // RIPORT-SOROK  —  a napi jelentés két félrevezető sorának javítása
 // ===================================================================
+import { szortToldalek } from './szort-robot.js';
 //
 // User-jelzés (2026-08-06): "ne küldjön valótlan adatokat".
 //
@@ -437,7 +438,7 @@ export function napiBelepok(rows) {
  * @param {string} today YYYY-MM-DD (UTC)
  * @returns {string} a 👥 sor, vagy '' ha nincs elég adat
  */
-export function visitorLine(days, today) {
+export function visitorLine(days, today, szort = null) {
   if (!days || typeof days !== 'object') return '';
   const kulcsok = Object.keys(days).filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k)).sort();
   if (!kulcsok.length) return '';
@@ -455,7 +456,9 @@ export function visitorLine(days, today) {
     const ossz = utolso7.reduce((s, k) => s + napiBelepok(days[k]), 0);
     atlag = ` (${utolso7.length} napos átlag: ${Math.round(ossz / utolso7.length)})`;
   }
-  return `👥 ${cimke}: ${db} látogató${atlag}`;
+  // 🤖 11-05: szétszórt robot JELZÉSE (core/szort-robot.js) — csak kiírja, semmit nem von le
+  const toldalek = szortToldalek(szort && typeof szort === 'object' ? szort[utolso] : null, db);
+  return `👥 ${cimke}: ${db} látogató${atlag}${toldalek}`;
 }
 
 /**
