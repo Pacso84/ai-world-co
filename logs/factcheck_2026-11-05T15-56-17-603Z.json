@@ -1,0 +1,63 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.00960849,
+  "at": "2026-11-05T15:56:17.603Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-05T04-09-11-668Z_github-copilot-changelog_GitHub_Copilot_is_now_available_in_Xcode_s_coding_.json",
+      "cim": "GitHub Copilot is now available in Xcode’s coding assistant",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben szereplő összes tényállítás megegyezik a hivatalos forrásszöveggel."
+    },
+    {
+      "file": "ARTICLE_2026-11-05T04-09-15-315Z_perplexity-news_Get_Maine_Lobster_triples_ad_revenue_with_Perplexi.json",
+      "cim": "Get Maine Lobster triples ad revenue with Perplexity - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-07-22T10-14-03-156Z_deeparteffects_Privacy-First_AI_Imaging__A_Practical_Offline_Work.json",
+      "cim": "Privacy-First AI Imaging: A Practical Offline Workflow for Client-Safe Art (From Prompt to Delivery)",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk a Stable Diffusion helyi futtatásáról szól, de a forrás a Deep Art saját eszközeinek használatáról szól az offline, adatvédelem-központú AI képgenerálási munkafolyamathoz. Teljesen eltérő témák, amelyeknek nincs átfedésük."
+    },
+    {
+      "file": "ARTICLE_GUIDE_brainstorm-10-name-ideas-for-a-new-side-project-with-cohere.json",
+      "cim": "Brainstorm 10 name ideas for a new side project with Cohere",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-12T17-08-31-032Z_picsart_Picsart_Flow_now_adds_AI_captioning_in_30_animated.json",
+      "cim": "Picsart Flow now adds AI captioning in 30 animated styles",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a forrás alátámasztja, amit kivenne: „Try it today:** open Picsart Flow, find the Captions node on your canvas, and run it on th”",
+      "modell_hu": "A forrás egyértelműen mondja, hogy bármilyen képarányú bemenet megengedett, és kifejezetten említi a fekvő vagy négyzetes videókat is — a cikk hibásan állítja, hogy csak a rövid függőleges videók a legjobbak."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-build-a-reusable-personal-assistant-prompt-you-save-o.json",
+      "cim": "How to build a reusable personal-assistant prompt you save once and use weekly",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}

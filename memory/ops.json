@@ -483,22 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179280958936454",
-      "level": "success",
-      "text": "4 hír + 1 útmutató publikálva (költség: $0.0568).",
-      "agent": "ceo",
-      "at": "2026-10-24T02:39:49.364Z",
-      "loud": false
-    },
-    {
-      "id": "n179280962841561",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „The company has shared no pricing o",
-      "agent": "fact-check",
-      "at": "2026-10-24T02:40:28.415Z",
-      "loud": false
-    },
-    {
       "id": "n179280965656817",
       "level": "warn",
       "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „Google says the Connected App is on",
@@ -1281,28 +1265,25 @@
       "agent": "ceo",
       "at": "2026-11-05T04:20:53.140Z",
       "loud": false
+    },
+    {
+      "id": "n179389418951093",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Ellenőrizendő állítás: \"Privacy-First AI Imaging: A Practical Offline Work\" — A cikk a Stable Diffusion helyi futtatásár",
+      "agent": "fact-check",
+      "at": "2026-11-05T15:56:29.510Z",
+      "loud": false
+    },
+    {
+      "id": "n179389421233665",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „Try it today:** open Picsart Flow, f",
+      "agent": "fact-check",
+      "at": "2026-11-05T15:56:52.336Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179269792308911",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „If Gmail AI matters to you, the official Google Workspace updates blog is where those deta”): \"This Week in AI: The 5 Stories That Matter (Octobe\" — The article incorrectly states the source didn't include specific details when the source actually does contain pricing ($2,399), feature names (AI Inbox, Gmail Live,",
-      "ref": "ARTICLE_2026-10-18T02-16-12-366Z_aiworld-editorial_This_Week_in_AI.json",
-      "open": true,
-      "at": "2026-10-22T19:38:43.089Z"
-    },
-    {
-      "id": "m179272280197485",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Real-time speech translation in Google Meet expands to 63 languages with automatic language detection\" — mi a baj: Gemini 3.5 Live Translate is stated as fact but appears to be an invented product name - source title says Gemini only, not this specific version or feature name; Opening box says 'powered by Gemini 3.5 Live Translate' with certainty when no such specific produc",
-      "ref": "2026-10-23T02-28-45-946Z_google-workspace_Real-time_speech_translation_in_Google_Meet_expand.json",
-      "at": "2026-10-23T02:33:21.974Z"
-    },
     {
       "id": "m179272282922849",
       "from": "iro",
@@ -2696,6 +2677,26 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-05T04:27:34.719Z"
+    },
+    {
+      "id": "m179389418951052",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Ellenőrizendő állítás: \"Privacy-First AI Imaging: A Practical Offline Work\" — A cikk a Stable Diffusion helyi futtatásáról szól, de a forrás a Deep Art saját eszközeinek használatáról szól az offline, adatvédelem-központú AI képgenerálási munkafolyamathoz. Teljesen eltérő témák, amelyeknek nincs átfedésük.",
+      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_Privacy-First_AI_Imaging__A_Practical_Offline_Work.json",
+      "open": true,
+      "at": "2026-11-05T15:56:29.510Z"
+    },
+    {
+      "id": "m179389421233666",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „Try it today:** open Picsart Flow, find the Captions node on your canvas, and run it on th”): \"Picsart Flow now adds AI captioning in 30 animated\" — A forrás egyértelműen mondja, hogy bármilyen képarányú bemenet megengedett, és kifejezetten említi a fekvő vagy négyzetes videókat is — a cikk hibásan állítja, hogy cs",
+      "ref": "ARTICLE_2026-10-12T17-08-31-032Z_picsart_Picsart_Flow_now_adds_AI_captioning_in_30_animated.json",
+      "open": true,
+      "at": "2026-11-05T15:56:52.336Z"
     }
   ]
 }
