@@ -295,6 +295,9 @@ export function kitolthetoRegiLine(allapot, maNap) {
   const szam = x => (Number.isFinite(Number(x)) && x !== null && x !== '' ? Number(x) : 0);
   const uj = Math.max(0, Math.round(szam(allapot.uj))), mezo = Math.max(0, Math.round(szam(allapot.mezo)));
   let sor = `🧩 Régi promptok kitölthetővé: ${uj} útmutató, ${mezo} mező ($${Math.max(0, szam(allapot.koltseg)).toFixed(3)})`;
+  // 🇭🇺🇪🇸 11-05: nyelvenkénti bontás, ha a generátor már így írja
+  const ny = allapot.nyelvek && typeof allapot.nyelvek === 'object' ? allapot.nyelvek : null;
+  if (ny && (szam(ny.hu) || szam(ny.es))) sor += ` — en ${Math.round(szam(ny.en))} · hu ${Math.round(szam(ny.hu))} · es ${Math.round(szam(ny.es))}`;
   const kimaradt = String(allapot.kimaradt ?? '').replace(/\s+/g, ' ').trim().slice(0, 80);   // 11-05: `/s+/` volt (backslash nélkül)
   if (kimaradt) sor += ` · kimaradt: ${kimaradt}`;
   return sor;

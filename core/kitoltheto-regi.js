@@ -62,12 +62,31 @@ export function promptokKinyer(bodyMd) {
 
 const elofordulas = (szoveg, resz) => { let n = 0, i = -1; while ((i = szoveg.indexOf(resz, i + 1)) >= 0) n++; return n; };
 
+// 🇭🇺🇪🇸 2026-11-05: a magyar és a spanyol oldal is kap mezőt. A mező felirata az OLDAL nyelvén, tegezve
+// („NEM ANGOL OLDALON NINCS ANGOL MONDAT”; a magyar oldal tegez, a spanyol „tú”) — ami ennek nem felel meg, kiesik.
+export const NYELVEK = ['en', 'hu', 'es'];
+// (a JS \b nem ismeri az ékezetes betűt → Unicode-betűhatár)
+const IDEGEN_FELIRAT = {
+  hu: /(?<!\p{L})(your|my|the|of|and|Ön|Önnek|Önt|Öné|Önök|maga)(?!\p{L})/iu,
+  es: /(?<!\p{L})(your|my|the|of|and|usted|ustedes)(?!\p{L})/iu,
+};
+const BETU = /[\p{L}\p{N}]/u;
+/** Az eredeti rész egész szó(k)ból áll-e: előtte és utána nincs betű/szám, ha a szélén betű/szám áll (magyar rag!). */
+function egeszSzo(s, kezd, veg) {
+  if (BETU.test(s[kezd] || '') && BETU.test(s[kezd - 1] || '')) return false;
+  if (BETU.test(s[veg - 1] || '') && BETU.test(s[veg] || '')) return false;
+  return true;
+}
+/** A jelölések mezője a fájlban: angol = `promptok` (2026-10-29 óta így), hu/es = `promptok_hu` / `promptok_es`. */
+export const mezoKulcs = nyelv => (!nyelv || nyelv === 'en') ? 'promptok' : 'promptok_' + nyelv;
+
 /**
  * A KÓD-BIZTOSÍTÉK: a modell javaslataiból csak a biztonságos mezők maradnak, a promptbeli sorrendjükben.
  * @param {string} szoveg  az eredeti prompt
  * @param {{eredeti: string, hely: string}[]} mezok  a modell javaslata
+ * @param {{nyelv?: 'en'|'hu'|'es'}} [opt]  a prompt (és így a felirat) nyelve
  */
-export function mezokEllenoriz(szoveg, mezok) {
+export function mezokEllenoriz(szoveg, mezok, { nyelv = 'en' } = {}) {
   const s = String(szoveg || '');
   if (!s || marKitoltheto(s)) return [];
   const jo = [];
@@ -77,8 +96,11 @@ export function mezokEllenoriz(szoveg, mezok) {
     if (eredeti.trim().length < 2 || eredeti.length > 60 || /[\n[\]<>]/.test(eredeti)) continue;
     if (eredeti !== eredeti.trim()) continue;                       // szóköz a szélén → a csere szétesne
     if (!igaziHelykitolto(hely) || /[\n[\]<>"]/.test(hely) || hely.toLowerCase() === eredeti.toLowerCase()) continue;   // a hely nem lehet zárójeles/HTML
+    if (IDEGEN_FELIRAT[nyelv]?.test(hely)) continue;                // hu/es oldalon angol vagy magázó felirat
+    if (/\d/.test(hely)) continue;                                  // a felirat leírás, nem másik példa („100 szó” → „200 szó”); 11-05: az élő 964 angolban 0 ilyen
     if (elofordulas(s, eredeti) !== 1) continue;                    // pontosan EGYSZER
     const kezd = s.indexOf(eredeti), veg = kezd + eredeti.length;
+    if (!egeszSzo(s, kezd, veg)) continue;                          // szórész → a csere szétvágná a szót (rag!)
     if (jo.some(x => kezd < x.veg && x.kezd < veg)) continue;      // átfedés
     jo.push({ eredeti, hely, kezd, veg });
     if (jo.length >= MAX_MEZO) break;
@@ -110,12 +132,13 @@ export function mezosites(boxHtml, mezok, { escaped = true, be = REGI_KITOLTHETO
   return h;
 }
 
-/** A kész jelölések betöltése egy útmutatóhoz (content/kitoltheto/<slug>.json) → { kulcs: [mezok] } vagy null. */
-export function regiBetolt(root, slug) {
+/** A kész jelölések betöltése egy útmutató egy nyelvéhez (content/kitoltheto/<slug>.json) → { kulcs: [mezok] } vagy null. */
+export function regiBetolt(root, slug, nyelv = 'en') {
   try {
     const ut = join(root, 'content', 'kitoltheto', slug + '.json');
     if (!existsSync(ut)) return null;
     const j = JSON.parse(readFileSync(ut, 'utf-8'));
-    return j && typeof j.promptok === 'object' ? j.promptok : null;
+    const p = j?.[mezoKulcs(nyelv)];
+    return p && typeof p === 'object' ? p : null;
   } catch { return null; }
 }

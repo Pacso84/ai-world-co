@@ -2462,8 +2462,8 @@ function stripInlineMd(s) {
     .trim();
 }
 
-// 🧩 2026-10-29 (core/kitoltheto-regi.js): az ÉPPEN épülő útmutató régi promptjainak mezői ({kulcs: [mezok]}); csak az angol
-// oldalon (a fordított prompt szövege más → a kulcs nem egyezne), a buildGuidePage állítja be.
+// 🧩 2026-10-29 (core/kitoltheto-regi.js): az ÉPPEN épülő útmutató régi promptjainak mezői ({kulcs: [mezok]}), az oldal
+// NYELVÉN (11-05 óta hu/es is: a fordított prompt saját kulcsot és saját jelölést kap), a buildGuidePage állítja be.
 let REGI_MEZOK = null;
 const regiMezok = szoveg => (REGI_MEZOK && REGI_MEZOK[promptKulcs(szoveg)]) || [];
 
@@ -2509,7 +2509,7 @@ function guideSectionHtml(bodyMd) {
 }
 
 function buildGuidePage(a) {
-  REGI_MEZOK = LANG === 'en' ? regiBetolt(PROJECT_ROOT, a.slug) : null;   // 🧩 2026-10-29
+  REGI_MEZOK = regiBetolt(PROJECT_ROOT, a.slug, LANG);   // 🧩 2026-10-29; 🇭🇺🇪🇸 11-05: az oldal nyelvének jelölései
   const cat = CATEGORIES.guide;
   const aud = AUDIENCES[a.audience] || AUDIENCES.both;
   const { intro, sections } = parseGuideSections(a.bodyMd);

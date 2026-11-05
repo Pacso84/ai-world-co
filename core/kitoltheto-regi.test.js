@@ -5,7 +5,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promptKulcs, marKitoltheto, promptokKinyer, mezokEllenoriz, mezosites, MAX_MEZO } from './kitoltheto-regi.js';
 import { kitoltottSzoveg } from './kitoltheto-prompt.js';
-import { jelolendoPromptok, valaszErtelmez, feldolgoz, keretOk, NAPI_PLAFON, sorrend } from './kitoltheto-regi-gen.js';
+import { jelolendoPromptok, valaszErtelmez, feldolgoz, keretOk, NAPI_PLAFON, sorrend, nyelviTorzsek } from './kitoltheto-regi-gen.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BUILD = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8').replace(/\r\n/g, '\n');
@@ -93,8 +93,8 @@ t('🧭 a kinyerő a build két 💬-szabályát tükrözi: a regexek betűre eg
   assert.ok(BUILD.includes(sor), 'az egysoros 💬-regex eltér a build.js-ben lévőtől');
 });
 
-t('🔌 build.js: csak az angol oldalon, a prompt KULCSA szerint, mindkét dobozfajtánál; app.js: üres mező = eredeti szó', () => {
-  assert.match(BUILD, /REGI_MEZOK = LANG === 'en' \? regiBetolt\(PROJECT_ROOT, a\.slug\) : null/);
+t('🔌 build.js: az oldal nyelvének jelölései, a prompt KULCSA szerint, mindkét dobozfajtánál; app.js: üres mező = eredeti szó', () => {
+  assert.match(BUILD, /REGI_MEZOK = regiBetolt\(PROJECT_ROOT, a\.slug, LANG\)/);
   assert.match(BUILD, /mezosites\(kitolthetoHtml\(escapeHtml\(body\)[^\n]*regiMezok\(body\), \{ escaped: true \}\)/);
   assert.match(BUILD, /mezosites\(kitolthetoHtml\(txt\), regiMezok\(txt\), \{ escaped: false \}\)/);
   assert.match(BUILD, /boxHtml\.includes\('class="g-fill'\)/, 'a „Tipp” sor nem jelenik meg a régi mezőknél');
@@ -128,6 +128,77 @@ await tA('💰 feldolgozás: költség könyvelve; a modell ROSSZ javaslata kies
   assert.equal((await feldolgoz({ slug: 's', cim: 'T', bodyMd: md, fajl: null, ctx: ctx({ text: 'szemét', costUsd: 0.001 }) })).atmeneti, true, 'használhatatlan válasz → holnap újra');
   assert.equal((await feldolgoz({ slug: 's', cim: 'T', bodyMd: md, fajl: null, ctx: { ...ctx(null), keret: () => false } })).ok, 'keret');
   assert.equal((await feldolgoz({ slug: 's', cim: 'T', bodyMd: 'nincs prompt', fajl: null, ctx: ctx(null) })).kihagyva, true);
+});
+
+t('🔤 egész szó: a mező nem vághat szót ketté (magyar rag: „Lisszabon|ba” → a csere „Rómaba” lenne)', () => {
+  const hu = 'Tervezz egy 3 napos utat Lisszabonba egy négyfős családnak.';
+  assert.deepEqual(mezokEllenoriz(hu, [{ eredeti: 'Lisszabon', hely: 'az úti célod' }], { nyelv: 'hu' }), [], 'a ragot levágná');
+  assert.deepEqual(mezokEllenoriz(hu, [{ eredeti: 'Lisszabonba', hely: 'az úti célod' }], { nyelv: 'hu' }).map(m => m.eredeti), ['Lisszabonba']);
+  assert.deepEqual(mezokEllenoriz(PROMPT, [{ eredeti: 'Lisb', hely: 'your city' }]), [], 'angolban is: szórész nem mező');
+  assert.deepEqual(mezokEllenoriz('Plan a 3-day trip', [{ eredeti: '3-day', hely: 'how long' }]).length, 1, 'nem betűvel határolt rész rendben');
+});
+
+t('🌐 hu/es: a mezőfelirat az oldal nyelvén — angol felirat és magázás nem mehet ki', () => {
+  const hu = 'Tervezz egy 3 napos utat Lisszabonba egy négyfős családnak.';
+  assert.deepEqual(mezokEllenoriz(hu, [{ eredeti: 'Lisszabonba', hely: 'your city' }], { nyelv: 'hu' }), [], 'angol felirat magyar oldalon');
+  assert.deepEqual(mezokEllenoriz(hu, [{ eredeti: 'Lisszabonba', hely: 'az Ön úti célja' }], { nyelv: 'hu' }), [], 'magázás');
+  const es = 'Planifica un viaje de 3 días a Lisboa para una familia de cuatro.';
+  assert.deepEqual(mezokEllenoriz(es, [{ eredeti: 'Lisboa', hely: 'your city' }], { nyelv: 'es' }), []);
+  assert.deepEqual(mezokEllenoriz(es, [{ eredeti: 'Lisboa', hely: 'su ciudad de usted' }], { nyelv: 'es' }), [], 'usted');
+  assert.deepEqual(mezokEllenoriz(es, [{ eredeti: 'Lisboa', hely: 'tu ciudad' }], { nyelv: 'es' }).length, 1);
+  assert.equal(mezokEllenoriz(PROMPT, [{ eredeti: 'Lisbon', hely: 'your city' }]).length, 1, 'angolban a „your” természetesen jó');
+  // 11-05 próbafuttatás lelete: „100 szó” → „200 szó” — a felirat másik példa lett, nem leírás
+  assert.deepEqual(mezokEllenoriz('Foglald össze 100 szóban.', [{ eredeti: '100 szóban', hely: '200 szóban' }], { nyelv: 'hu' }), []);
+  assert.deepEqual(mezokEllenoriz(PROMPT, [{ eredeti: '3-day', hely: '5-day' }]), [], 'angolban is');
+});
+
+await tA('🇭🇺🇪🇸 nyelvenkénti tárolás: a hu/es mezők külön kulcsba kerülnek, a meglévő angol jelölés megmarad; a prompt az oldal nyelvét kéri', async () => {
+  const regi = { slug: 's', keszult: 'x', promptok: { aaa: [{ eredeti: 'Lisbon', hely: 'your city' }] } };
+  const md = '💬 "Tervezz egy 3 napos utat Lisszabonba egy négyfős családnak"\n';
+  let kapott = '';
+  const ctx = { keret: () => true, koltseg: () => {}, ask: async (u, o) => { kapott = o.systemPrompt; return { text: JSON.stringify([{ i: 0, mezok: [{ eredeti: 'Lisszabonba', hely: 'az úti célod' }] }]), costUsd: 0.001 }; } };
+  const e = await feldolgoz({ slug: 's', cim: 'T', bodyMd: md, fajl: regi, ctx, nyelv: 'hu' });
+  assert.deepEqual(e.fajl.promptok, regi.promptok, 'az angol jelölés elveszett');
+  assert.equal(Object.values(e.fajl.promptok_hu)[0][0].eredeti, 'Lisszabonba');
+  assert.match(kapott, /Hungarian/); assert.doesNotMatch(kapott, /lowercase, in English/);
+  assert.equal(jelolendoPromptok(md, e.fajl, 'hu').length, 0, 'kész magyar prompt nem kerül újra sorra');
+  assert.equal(jelolendoPromptok(md, e.fajl, 'es').length, 1, 'a spanyol saját kulcsot néz');
+  const { regiBetolt } = await import('./kitoltheto-regi.js');
+  assert.equal(regiBetolt(ROOT, '__nincs_ilyen__', 'hu'), null);
+});
+
+t('📚🇭🇺🇪🇸 a VALÓDI hu/es fordítások promptjain is: a visszaírt szöveg betűre az eredeti, a nyelvi törzsek mindhárom nyelvet adják', () => {
+  const dir = join(ROOT, 'content', 'articles'), tdir = join(ROOT, 'content', 'translations');
+  const db = { hu: 0, es: 0 }, mezoDb = { hu: 0, es: 0 };
+  let harom = 0;
+  for (const f of readdirSync(dir).filter(x => x.includes('GUIDE'))) {
+    let tr = {}; try { tr = JSON.parse(readFileSync(join(tdir, f), 'utf-8')); } catch { continue; }
+    const torzsek = nyelviTorzsek(JSON.parse(readFileSync(join(dir, f), 'utf-8')), tr);
+    if (torzsek.map(x => x.nyelv).join() === 'en,hu,es') harom++;
+    for (const { nyelv, bodyMd } of torzsek.filter(x => x.nyelv !== 'en')) {
+      for (const p of promptokKinyer(bodyMd)) {
+        db[nyelv]++;
+        // ész-nélküli „modell”: minden 4–12 betűs szórészletet is megjelöl — a biztosítéknak kell kiszűrnie a szórészt
+        const javaslat = [...p.szoveg.matchAll(/\p{Lu}\p{Ll}{3,11}/gu)].map(m => ({ eredeti: m[0], hely: nyelv === 'hu' ? 'a te dolgod' : 'tu cosa' }));
+        const jo = mezokEllenoriz(p.szoveg, javaslat, { nyelv });
+        mezoDb[nyelv] += jo.length;
+        for (const m of jo) { const i = p.szoveg.indexOf(m.eredeti); assert.ok(!/\p{L}/u.test(p.szoveg[i - 1] || '') && !/\p{L}/u.test(p.szoveg[i + m.eredeti.length] || ''), 'szórész maradt: ' + m.eredeti); }
+        const vissza = mezosites(p.szoveg, jo, { escaped: false }).replace(/<input[^>]*data-o="([^"]*)"[^>]*>/g, '$1');
+        assert.equal(vissza, p.szoveg, f + ' [' + nyelv + ']');
+      }
+    }
+  }
+  assert.ok(db.hu > 300 && db.es > 300, 'kevés hu/es prompt: ' + JSON.stringify(db));
+  assert.ok(mezoDb.hu > 0 && mezoDb.es > 0);
+  assert.ok(harom > 200, 'kevés útmutatónak van mindhárom nyelvű törzse: ' + harom);
+  assert.deepEqual(nyelviTorzsek({ article_markdown: 'x' }, { hu: '', es: 'y' }).map(x => x.nyelv), ['en', 'es'], 'üres fordítás kimarad');
+});
+
+await tA('📨 riport-sor: a nyelvenkénti bontás csak akkor látszik, ha volt hu/es munka', async () => {
+  const { kitolthetoRegiLine } = await import('./report-lines.js');
+  assert.match(kitolthetoRegiLine({ nap: '2026-11-06', uj: 12, mezo: 30, koltseg: 0.004, nyelvek: { en: 2, hu: 5, es: 5 } }, '2026-11-06'), /12 útmutató, 30 mező \(\$0\.004\) — en 2 · hu 5 · es 5$/);
+  assert.doesNotMatch(kitolthetoRegiLine({ nap: '2026-11-06', uj: 2, mezo: 4, koltseg: 0, nyelvek: { en: 2, hu: 0, es: 0 } }, '2026-11-06'), /hu /);
+  assert.doesNotMatch(kitolthetoRegiLine({ nap: '2026-11-06', uj: 2, mezo: 4, koltseg: 0 }, '2026-11-06'), / — en/, 'régi állapotfájl');
 });
 
 t('🚦 keret és sorrend', () => {
