@@ -66,7 +66,8 @@ console.log('🧪 őrszem-nyilvántartás — író · riport-olvasás · frisse
 
 /** Őrszem-kimenet, bár a neve nem `-guard.json` — ugyanazok a szabályok vonatkoznak rá. */
 const EGYEB_ORSZEM = {
-  'housekeeping.json': 'a Házmester beépített hízás-őre (watchGrowth) ide írja a figyelmeztetést, a napi riport ebből szól'
+  'housekeeping.json': 'a Házmester beépített hízás-őre (watchGrowth) ide írja a figyelmeztetést, a napi riport ebből szól',
+  'ceg-lefedettseg.json': 'a guide --cover MINDEN futásban írja (CEO 3i2); témátlan cég / elakadt coverage-téma → 🏢 riport-sor (2026-11-05)'
 };
 
 /**

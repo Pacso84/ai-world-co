@@ -13,6 +13,12 @@ const norm = s => String(s || '')
   .replace(/[^\p{L}\p{N}]+/gu, ' ')
   .trim();
 
+/** Egy cikkrész (útmutató-bevezető, lépés, doboz) HTML-je: itt a címet a hívó már levette
+ *  (parseGuideSections), tehát MINDEN megmaradt H1 tévedés → H2 (szöveg nem vész el). */
+export function nincsH1(html) {
+  return String(html || '').replace(/<h1(\s[^>]*)?>([\s\S]*?)<\/h1>/gi, (m, attr, belso) => `<h2${attr || ''}>${belso}</h2>`);
+}
+
 export function torzsH1(html, cim) {
   let out = String(html || '').replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>\s*/, '');
   const c = norm(cim);

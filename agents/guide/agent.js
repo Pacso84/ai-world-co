@@ -43,6 +43,7 @@ import { tartalomKapcsolok, maiKozepDb, szintSorrend } from '../../core/content-
 import { fokuszConfigbol, maiFokuszDb, fokuszElsoHely, fokuszHiany, fokuszOtletPrompt, fokuszCimOk } from '../../core/guide-focus.js';
 import { aktivTrendek, trendFelvetelKell, trendProbaJegyez, maiTrendTema, trendPrompt } from '../../core/trend-kutato.js';
 import { megszuntTema } from '../../core/megszunt-eszkozok.js';
+import { cegLefedettseg } from '../../core/ceg-lefedettseg.js';   // 🏢 2026-11-05 őrszem
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -614,6 +615,13 @@ async function runCoverMode() {
   } else {
     console.log('   ✓ Minden követett céghez van már útmutató(-téma). Nincs teendő.');
   }
+  // 🏢 ŐRSZEM (2026-11-05): MINDEN futásban ír, a napi riport ebből szól (core/ceg-lefedettseg.js)
+  try {
+    const j = cegLefedettseg(store, COMPANY_CATALOG);
+    mkdirSync(join(ROOT, 'memory'), { recursive: true });
+    writeFileSync(join(ROOT, 'memory', 'ceg-lefedettseg.json'), JSON.stringify(j, null, 2), 'utf-8');
+    for (const p of j.problems) console.log(`   ⚠️ [${p.code}] ${p.uzenet}`);
+  } catch (e) { console.log('   ⚠️ cég-lefedettség őrszem nem írt: ' + e.message); }
 }
 
 async function loadLessons() {

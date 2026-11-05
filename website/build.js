@@ -51,7 +51,7 @@ import { elakadasBetolt, elakadasHtml } from '../core/elakadas-html.js';   // �
 import { lepesKepKulcs, elsoMondat, elsoMondatKulcs, ismetlesTores } from '../core/lepes-kep.js';   // 🖼️ 2026-10-23/24
 import { olvasoiKedvencek } from '../core/olvasoi-kedvenc.js';   // 🔥 2026-10-23
 import { vazlatHtml } from '../core/guide-sketch.js';
-import { torzsH1 } from '../core/torzs-h1.js';   // 🔠 2026-11-05 egy H1 / oldal (Bing)
+import { torzsH1, nincsH1 } from '../core/torzs-h1.js';   // 🔠 2026-11-05 egy H1 / oldal (Bing)
 import { kovetkezoUtmutato } from '../core/next-guide.js';
 import { dobozBe, hirlevelDoboz } from '../core/hirlevel-doboz.js';   // 📬 2026-10-30: csak bekapcsolt küldés mellett
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek, hirdetesKozbe, hirdetesRacsba } from '../core/ads.js';
@@ -2505,7 +2505,7 @@ function guideSectionHtml(bodyMd) {
       const box = isPrompt ? mezosites(kitolthetoHtml(txt), regiMezok(txt), { escaped: false }) : txt;
       return '\n\n<div class="g-prompt"><span class="g-prompt__lbl">💬 ' + lbl + '</span>' + kitoltesTipp(box) + '<span class="g-prompt__box">' + box + send + '</span>' + masolGomb(isPrompt) + '</div>\n\n';
     });
-  return wrapTables(marked.parse(pre));
+  return wrapTables(nincsH1(marked.parse(pre)));   // 🔠 2026-11-05: útmutatóban sincs 2. H1
 }
 
 function buildGuidePage(a) {

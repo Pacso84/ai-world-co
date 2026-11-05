@@ -43,6 +43,7 @@ import { tesztSor } from './test-guard.js';
 import { pdfLetoltesSor } from './pdf-download.js';
 import { bevaltSor, EXPORT_HIBA } from './bevalt-jelzes.js';   // 👍 „Bevált?” 10-23
 import { partnerKattintasSor } from './affiliate.js';
+import { cegLefedettsegSor } from './ceg-lefedettseg.js';   // 🏢 2026-11-05
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -894,6 +895,9 @@ async function main() {
       // kimarad, és a lemezen az ELŐZŐ futás üres `problems`-e marad — ezt csak
       // az `at` bélyeg különbözteti meg a „minden rendben"-től.
       'output-guard.json': 'kimenet',
+      // A cég-lefedettség (2026-11-05) a guide --cover-ből MINDEN futásban ír. 10-30–11-05 között a
+      // lépés egy sosem futó ágban ült, és semmi nem jelezte — ezt a rést zárja az `at` bélyeg.
+      'ceg-lefedettseg.json': 'cég-lefedettség',
       // A belső hivatkozás-őr (2026-09-08) MINDEN sikeres build után ír, üres
       // `problems`-szel is (core/internal-link-guard.js parancssori ága), ugyanabban
       // a lépés-láncban, mint a SEO- és a kimenet-őr. Ha a lépés kimarad, a lemezen
@@ -948,6 +952,12 @@ async function main() {
     if (p.length) lines.push(`🧩 KIMENET-ŐR: ${p.length} lelet — ${p.slice(0, 3).map(x => x.uzenet).join(' · ')} — ${fedes}`);
     if ((og.megjavult || []).length) lines.push(`🧩 Kimenet-őr: megjavult, a FOLYAMATBAN listából törölhető: ${og.megjavult.join(', ')}`);
   } catch { /* még nem futott — nem baj */ }
+
+  // 🏢 CÉG-LEFEDETTSÉG (2026-11-05): témátlan cég vagy elakadt „Getting started” téma. Csendes, ha rendben.
+  try {
+    const sor = cegLefedettsegSor(JSON.parse(readFileSync(join(ROOT, 'memory', 'ceg-lefedettseg.json'), 'utf-8')));
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott — a frissesség-őr jelzi, ha tartósan */ }
 
   // HÁZMESTER (2026-07-30): mit takarított el, és hízik-e valami vissza.
   // CSENDES a hétköznapokon: napi pár régi napló törlése nem hír. Csak akkor

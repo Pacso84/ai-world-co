@@ -74,6 +74,30 @@ export function kimenetEllenorzes(lapok) {
 }
 
 // ------------------------------------------------------------------
+// EGY H1 MINDEN LAPON (2026-11-05, Bing: „Az oldalon több <h1> van”, magas; user: „többet ne
+// ismétlődjön meg, főleg a főcím hibái!”). A build MINDEN kiépített HTML-lapját nézi (en/hu/es,
+// cikk + gyűjtő + menü), nem csak a cikkeket. Kivétel: átirányító lap (meta refresh) és a
+// Google tulajdon-igazoló fájl (google*.html). A lelet a lista ELEJÉRE kerül → a Telegram-riport
+// első 3 lelete között mindig ott van.
+// ------------------------------------------------------------------
+export function h1Kivetel(f, h) {
+  const nev = String(f).replace(/\\/g, '/').split('/').pop();
+  return /^google[0-9a-f]+\.html$/i.test(nev) || (/http-equiv=["']?refresh/i.test(h) && String(h).length < 3000);
+}
+/** @param {{f:string, h:string}[]} lapok @returns {object|null} H1_NEM_EGY lelet vagy null */
+export function h1Ellenorzes(lapok) {
+  const rossz = [];
+  for (const { f, h } of lapok) {
+    if (h1Kivetel(f, h)) continue;
+    const n = (String(h).match(/<h1[\s>]/gi) || []).length;
+    if (n !== 1) rossz.push(`${f} (${n} H1)`);
+  }
+  return rossz.length
+    ? { code: 'H1_NEM_EGY', uzenet: `🔠 ${rossz.length} lapon nem pontosan 1 főcím (H1) van — Bing-hiba! pl. ${rossz.slice(0, 3).join(', ')}`, pelda: rossz.slice(0, 10), db: rossz.length }
+    : null;
+}
+
+// ------------------------------------------------------------------
 // CLI — csak közvetlen futtatáskor (a CI-lépés hívja). Importkor nem fut.
 // ------------------------------------------------------------------
 /** Közvetlenül futtatták-e a modult? Külön függvény, hogy tesztelhető legyen:
@@ -98,10 +122,29 @@ if (kozvetlenFuttatas(process.argv[1])) {
     }
     eredmeny = kimenetEllenorzes(lapok);
   }
+  // 🔠 egy H1 MINDEN kiépített lapon (nem csak a cikkeken)
+  const PUBLIC = join(ROOT, 'website', 'public');
+  if (existsSync(PUBLIC)) {
+    const { statSync } = await import('fs');
+    const minden = [];
+    const jar = d => {
+      for (const n of readdirSync(d)) {
+        const x = join(d, n);
+        let st; try { st = statSync(x); } catch { continue; }
+        if (st.isDirectory()) { if (n !== 'assets') jar(x); continue; }
+        if (!n.endsWith('.html')) continue;
+        try { minden.push({ f: x.slice(PUBLIC.length + 1).replace(/\\/g, '/'), h: readFileSync(x, 'utf-8') }); } catch { /* romlott fájl */ }
+      }
+    };
+    jar(PUBLIC);
+    const h1 = h1Ellenorzes(minden);
+    eredmeny.lapokOsszesen = minden.length;
+    if (h1) eredmeny.problems.unshift(h1);
+  }
 
   console.log('🧩 KIMENET-ŐR (a friss buildön)');
   console.log('─'.repeat(60));
-  console.log(`   ${eredmeny.hir} hír és ${eredmeny.utmutato} útmutató átnézve`);
+  console.log(`   ${eredmeny.hir} hír és ${eredmeny.utmutato} útmutató átnézve` + (eredmeny.lapokOsszesen ? ` · 🔠 H1: ${eredmeny.lapokOsszesen} lap` : ''));
   if (!eredmeny.problems.length) console.log('   ✅ A két cikk-sablon egyezik, nincs kimeneti visszaesés.');
   else for (const p of eredmeny.problems) console.log(`   ⚠️  [${p.code}] ${p.uzenet}`);
   if (eredmeny.megjavult.length) console.log(`   🔔 megjavult, a FOLYAMATBAN listából törölhető: ${eredmeny.megjavult.join(', ')}`);

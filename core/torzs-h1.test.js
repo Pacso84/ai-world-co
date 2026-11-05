@@ -5,7 +5,8 @@ import { readFileSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { marked } from 'marked';
-import { torzsH1 } from './torzs-h1.js';
+import { torzsH1, nincsH1 } from './torzs-h1.js';
+import { h1Ellenorzes } from './output-guard.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 let hiba = 0;
@@ -46,6 +47,34 @@ t('a build mindkét helyen (angol + lokalizált) a torzsH1-et használja, a cím
   const src = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
   assert.equal((src.match(/torzsH1\(marked\.parse\(body\),/g) || []).length, 2, 'a build nem mindkét helyen hívja');
   assert.doesNotMatch(src, /stripLeadH1\(marked/, 'maradt régi stripLeadH1-hívás');
+});
+
+t('útmutató-rész: minden megmaradt H1 → H2 (a címet a parseGuideSections már levette)', () => {
+  assert.equal(nincsH1('<p>a</p><h1 id="x">Második cím</h1><h1>Harmadik</h1>'), '<p>a</p><h2 id="x">Második cím</h2><h2>Harmadik</h2>');
+  assert.equal(nincsH1('<h2>marad</h2>'), '<h2>marad</h2>');
+});
+
+t('a build az útmutató-részeket (guideSectionHtml) is a nincsH1-en át rendereli', () => {
+  const src = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+  const m = src.match(/function guideSectionHtml\([\s\S]*?\r?\n}\r?\n/);
+  assert.ok(m, 'guideSectionHtml nem található');
+  assert.match(m[0], /nincsH1\(marked\.parse\(pre\)\)/);
+  // minden blokk-szintű markdown-renderelés H1-szűrőn megy át (inline nem tud H1-et adni)
+  const csupasz = [...src.matchAll(/marked\.parse\(/g)].filter(x => !/(torzsH1|nincsH1)\($/.test(src.slice(x.index - 8, x.index)));
+  assert.equal(csupasz.length, 0, 'van H1-szűrő nélküli marked.parse a buildben');
+});
+
+t('kimenet-őr: 1 H1 = rendben; 0 vagy 2 = lelet; átirányító és google*.html kivétel', () => {
+  const lap = n => '<html><body>' + '<h1 class="a">x</h1>'.repeat(n) + '</body></html>';
+  assert.equal(h1Ellenorzes([{ f: 'article/a.html', h: lap(1) }, { f: 'hu/index.html', h: lap(1) }]), null);
+  const l = h1Ellenorzes([{ f: 'article/a.html', h: lap(2) }, { f: 'es/tools.html', h: lap(0) }, { f: 'ok.html', h: lap(1) }]);
+  assert.equal(l.code, 'H1_NEM_EGY'); assert.equal(l.db, 2);
+  assert.equal(h1Ellenorzes([{ f: 'google9b2b.html', h: 'google-site-verification' }, { f: 'regi.html', h: '<meta http-equiv="refresh" content="0;url=/x">' }]), null);
+});
+
+t('kimenet-őr: a H1-lelet a lista ELEJÉRE kerül (a riport csak az első 3-at írja ki)', () => {
+  const src = readFileSync(join(ROOT, 'core', 'output-guard.js'), 'utf-8');
+  assert.match(src, /problems\.unshift\(h1\)/);
 });
 
 t('VALÓDI cikkek: a megjelenített törzsben sehol nincs H1 (en/hu/es)', () => {
