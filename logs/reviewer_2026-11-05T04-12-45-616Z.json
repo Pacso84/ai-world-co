@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-11-05T04:10:40.733Z",
+  "total": 4,
+  "passed": 2,
+  "failed": 2,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00959808,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-11-05T04-09-11-668Z_github-copilot-changelog_GitHub_Copilot_is_now_available_in_Xcode_s_coding_.json",
+      "article": "ARTICLE_2026-11-05T04-09-11-668Z_github-copilot-changelog_GitHub_Copilot_is_now_available_in_Xcode_s_coding_.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0018954
+    },
+    {
+      "writer": "WRITER_2026-11-05T04-09-11-668Z_openai-blog_Introducing_Images_2_6.json",
+      "rejected": "REJECTED_2026-11-05T04-09-11-668Z_openai-blog_Introducing_Images_2_6.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.00171882
+    },
+    {
+      "writer": "WRITER_2026-11-05T04-09-11-669Z_aws-ml_Four_layers_of_context_engineering_for_production_.json",
+      "rejected": "REJECTED_2026-11-05T04-09-11-669Z_aws-ml_Four_layers_of_context_engineering_for_production_.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.0018297
+    },
+    {
+      "writer": "WRITER_2026-11-05T04-09-15-315Z_perplexity-news_Get_Maine_Lobster_triples_ad_revenue_with_Perplexi.json",
+      "article": "ARTICLE_2026-11-05T04-09-15-315Z_perplexity-news_Get_Maine_Lobster_triples_ad_revenue_with_Perplexi.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0014997
+    }
+  ],
+  "finished_at": "2026-11-05T04:12:45.616Z",
+  "duration_seconds": 124.883
+}

@@ -1,126 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179350272031787",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-01T03:12:00.317Z",
-      "updated": "2026-11-01T03:13:49.469Z"
-    },
-    {
-      "id": "t179350282947171",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-01T03:13:49.471Z",
-      "updated": "2026-11-01T03:14:46.391Z"
-    },
-    {
-      "id": "t179350288639253",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-01T03:14:46.392Z",
-      "updated": "2026-11-01T03:15:03.381Z"
-    },
-    {
-      "id": "t179350290338390",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-01T03:15:03.383Z",
-      "updated": "2026-11-01T03:15:26.597Z"
-    },
-    {
-      "id": "t179358941553469",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-02T03:16:55.534Z",
-      "updated": "2026-11-02T03:16:55.689Z"
-    },
-    {
-      "id": "t179358941569139",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-02T03:16:55.691Z",
-      "updated": "2026-11-02T03:17:26.734Z"
-    },
-    {
-      "id": "t179358944673670",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-02T03:17:26.736Z",
-      "updated": "2026-11-02T03:17:26.897Z"
-    },
-    {
-      "id": "t179358944690781",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-02T03:17:26.907Z",
-      "updated": "2026-11-02T03:19:20.254Z"
-    },
-    {
-      "id": "t179358956025597",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-02T03:19:20.255Z",
-      "updated": "2026-11-02T03:22:35.217Z"
-    },
-    {
-      "id": "t179358975521953",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-02T03:22:35.220Z",
-      "updated": "2026-11-02T03:23:31.190Z"
-    },
-    {
-      "id": "t179358981123195",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-02T03:23:31.231Z",
-      "updated": "2026-11-02T03:24:22.782Z"
-    },
-    {
-      "id": "t179358986278327",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-02T03:24:22.783Z",
-      "updated": "2026-11-02T03:25:24.043Z"
-    },
-    {
-      "id": "t179358992407592",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-02T03:25:24.075Z",
-      "updated": "2026-11-02T03:25:24.229Z"
-    },
-    {
-      "id": "t179358992426431",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-02T03:25:24.264Z",
-      "updated": "2026-11-02T03:29:13.258Z"
-    },
-    {
-      "id": "t179359015325983",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-02T03:29:13.259Z",
-      "updated": "2026-11-02T03:31:08.582Z"
-    },
-    {
       "id": "t17935902685847",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +359,129 @@
       "agent": "publisher",
       "created": "2026-11-04T15:55:44.423Z",
       "updated": "2026-11-04T15:56:05.148Z"
+    },
+    {
+      "id": "t179385169337615",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-05T04:08:13.376Z",
+      "updated": "2026-11-05T04:08:32.488Z"
+    },
+    {
+      "id": "t17938517124894",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-05T04:08:32.489Z",
+      "updated": "2026-11-05T04:09:15.328Z"
+    },
+    {
+      "id": "t179385175532934",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-05T04:09:15.329Z",
+      "updated": "2026-11-05T04:09:15.450Z"
+    },
+    {
+      "id": "t179385175545170",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-05T04:09:15.451Z",
+      "updated": "2026-11-05T04:10:40.561Z"
+    },
+    {
+      "id": "t17938518405621",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-05T04:10:40.562Z",
+      "updated": "2026-11-05T04:12:45.626Z"
+    },
+    {
+      "id": "t179385196563068",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-05T04:12:45.630Z",
+      "updated": "2026-11-05T04:13:55.212Z"
+    },
+    {
+      "id": "t179385203521418",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-05T04:13:55.214Z",
+      "updated": "2026-11-05T04:15:27.045Z"
+    },
+    {
+      "id": "t179385212704724",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-05T04:15:27.047Z",
+      "updated": "2026-11-05T04:16:32.245Z"
+    },
+    {
+      "id": "t179385219227565",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-05T04:16:32.275Z",
+      "updated": "2026-11-05T04:17:16.186Z"
+    },
+    {
+      "id": "t179385223618726",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-05T04:17:16.187Z",
+      "updated": "2026-11-05T04:18:18.327Z"
+    },
+    {
+      "id": "t179385229835448",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-05T04:18:18.354Z",
+      "updated": "2026-11-05T04:18:18.490Z"
+    },
+    {
+      "id": "t179385229851748",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-05T04:18:18.517Z",
+      "updated": "2026-11-05T04:19:38.814Z"
+    },
+    {
+      "id": "t17938523788150",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-05T04:19:38.815Z",
+      "updated": "2026-11-05T04:20:30.562Z"
+    },
+    {
+      "id": "t179385243056375",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-05T04:20:30.563Z",
+      "updated": "2026-11-05T04:20:35.898Z"
+    },
+    {
+      "id": "t179385243589959",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-05T04:20:35.899Z",
+      "updated": "2026-11-05T04:20:53.113Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179278434768825",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Kling 4.0 is now in Pic",
-      "agent": "fact-check",
-      "at": "2026-10-23T19:39:07.688Z",
-      "loud": false
-    },
-    {
-      "id": "n179280954768665",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-10-24T02:39:07.686Z",
-      "loud": false
-    },
-    {
-      "id": "n179280957583564",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Line-up looks coherent and on-brand: a nice anchor in #2 for everyday readers, plus trust-and-safety pieces (fact-checking, privacy) bracketing a run of practical writing how-tos that people can use r",
-      "agent": "publisher",
-      "at": "2026-10-24T02:39:35.835Z",
-      "loud": false
-    },
     {
       "id": "n179280958936454",
       "level": "success",
@@ -1281,120 +1257,33 @@
       "agent": "fact-check",
       "at": "2026-11-04T19:08:06.454Z",
       "loud": false
+    },
+    {
+      "id": "n179385243055357",
+      "level": "info",
+      "text": "SEO: 7 cikk optimalizálva (átlag 4684.0/10).",
+      "agent": "seo",
+      "at": "2026-11-05T04:20:30.553Z",
+      "loud": false
+    },
+    {
+      "id": "n179385244279779",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is solid and practical—mixes how-tos, safety guidance, and real everyday use cases across work and personal life. Ready to go.\n\n**One note:** Articles 4 and 10 mention \"DeepSeek\" and \"Qwen ",
+      "agent": "publisher",
+      "at": "2026-11-05T04:20:42.797Z",
+      "loud": false
+    },
+    {
+      "id": "n179385245314098",
+      "level": "success",
+      "text": "5 hír + 2 útmutató publikálva (költség: $0.0516).",
+      "agent": "ceo",
+      "at": "2026-11-05T04:20:53.140Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179246550721784",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-20T03:05:07.217Z"
-    },
-    {
-      "id": "m179252548125244",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Draft a simple cover letter for a job application \" — Free DeepSeek account claim (pricing may have changed); Specific UI element descriptions (paper airplane icon, 'Message DeepSeek...' placeholder)",
-      "ref": "ARTICLE_GUIDE_draft-a-simple-cover-letter-for-a-job-application-with-deeps.json",
-      "at": "2026-10-20T19:44:41.252Z"
-    },
-    {
-      "id": "m17925502766510",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-21T02:37:56.651Z"
-    },
-    {
-      "id": "m179255095012053",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-21T02:49:10.120Z"
-    },
-    {
-      "id": "m179258885995739",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"Meet Picsart Commerce: AI for ecommerce merchants\" — The article claims Picsart announced '12 Halloween prompts, split into six photo prompts and six video prompts' — the source does not mention any Halloween prompts or a specific number of prompts; The article claims the extension feature can turn 'one vertical product photo' into 'a w",
-      "ref": "ARTICLE_2026-10-21T02-28-33-124Z_picsart_Meet_Picsart_Commerce__AI_for_ecommerce_merchants.json",
-      "at": "2026-10-21T13:20:59.957Z"
-    },
-    {
-      "id": "m179258887254840",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (túl nagy átírás (801 szó a 649-ből)): \" The manager effect: Why leadership matters in the\" — Article claims source does not list specific habits when source contains three detailed habits with concrete numbers",
-      "ref": "ARTICLE_2026-10-21T02-28-33-124Z_dropbox-blog__The_manager_effect__Why_leadership_matters_in_the.json",
-      "open": true,
-      "at": "2026-10-21T13:21:12.548Z"
-    },
-    {
-      "id": "m179263652042794",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Gain more creative control over Slide Decks and Video O\" hír a meglévő útmutatóra mutat: how-to-start-a-new-google-docs-document-with-gemini-s-built-",
-      "ref": "how-to-start-a-new-google-docs-document-with-gemini-s-built-",
-      "at": "2026-10-22T02:35:20.427Z"
-    },
-    {
-      "id": "m179263652901119",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"An easier way to customize how Gemini works for you\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-10-22T02:35:29.011Z"
-    },
-    {
-      "id": "m179263685033797",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-22T02:40:50.337Z"
-    },
-    {
-      "id": "m179263692229573",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"How to Use Perplexity AI for Free to Get Answers Y\" — The guide states 'A free account is optional. You may be able to ask questions without signing in.' Perplexity AI now requires users to create an account to use the service, making this claim outdated.",
-      "ref": "ARTICLE_GUIDE_how-to-use-perplexity-ai-for-free-to-get-answers-you-can-che.json",
-      "open": true,
-      "at": "2026-10-22T02:42:02.295Z"
-    },
-    {
-      "id": "m179263693656086",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (megváltozott a fejezetek száma): \"Gain more creative control over Slide Decks and Vi\" — The source describes a future rollout that is still gradual, not a currently available feature",
-      "ref": "ARTICLE_2026-10-22T02-27-20-161Z_google-workspace_Gain_more_creative_control_over_Slide_Decks_and_Vi.json",
-      "open": true,
-      "at": "2026-10-22T02:42:16.560Z"
-    },
-    {
-      "id": "m179263840194047",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-22T03:06:41.940Z"
-    },
     {
       "id": "m179269788971415",
       "from": "fact-check",
@@ -2565,8 +2454,9 @@
       "kind": "need",
       "text": "Hiányos / kell még adat: \"Heimstaden is changing residential real estate management with AI\" — egészítsd ki: Future dates: article states stories published autumn 2026, but current date is November 2024 — this makes claims about past events appear fictitious; Terminology not explained for non-experts: 'transactional diligence' appears without definition, 'enclosure' not explained for hardware desi",
       "ref": "2026-11-04T03-51-02-908Z_openai-blog_Heimstaden_is_changing_residential_real_estate_man.json",
-      "open": true,
-      "at": "2026-11-04T03:56:10.732Z"
+      "open": false,
+      "at": "2026-11-04T03:56:10.732Z",
+      "resolved_at": "2026-11-05T04:14:13.586Z"
     },
     {
       "id": "m179376461513841",
@@ -2699,6 +2589,114 @@
       "ref": "ARTICLE_2026-10-14T02-37-17-831Z_google-workspace_Switch_from_live_stream_viewer_to_contributor_in_G.json",
       "open": true,
       "at": "2026-11-04T19:08:06.454Z"
+    },
+    {
+      "id": "m17938517124764",
+      "from": "ceo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Főnöki újraindítás: \"Heimstaden is changing residential real estate management wi\" — rewrite-explainer",
+      "ref": "2026-11-04T03-51-02-908Z_openai-blog_Heimstaden_is_changing_residential_real_estate_man.json",
+      "at": "2026-11-05T04:08:32.476Z"
+    },
+    {
+      "id": "m179385191889797",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Introducing Images 2.6\" — mi a baj: Model names 'GPT-Image-2.6 Flare' and 'GPT-Image-2.6 Sunburst' cannot be independently verified—never invent product names; confirm against OpenAI's official docs or remove; Announcement date 'November 4, 2026' is in the future and cannot be correct—verify the actual announcement date or remove; Specific metrics like '4 billion images per ",
+      "ref": "2026-11-05T04-09-11-668Z_openai-blog_Introducing_Images_2_6.json",
+      "at": "2026-11-05T04:11:58.897Z"
+    },
+    {
+      "id": "m17938519402244",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Four layers of context engineering for production AI agents: How Deep Insight applies them in working code\" — mi a baj: Claude Sonnet 4.5 - this specific model version cannot be verified; check official Anthropic naming or replace with a verifiable model; 200K-token window claim for the model needs verification; 95% and 97% token reduction figures lack clear sourcing context",
+      "ref": "2026-11-05T04-09-11-669Z_aws-ml_Four_layers_of_context_engineering_for_production_.json",
+      "at": "2026-11-05T04:12:20.224Z"
+    },
+    {
+      "id": "m179385201221981",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Heimstaden is changing residential real estate management with AI\" — javítva: CEO instruction (REWRITE as an explainer — \"what happened and what it means for you\"; the news is a few days old, so context beats speed): Rebuild the article around the Heimstaden case: verify its AI workflow and outcomes against primary sources, remove the GPT-6-dependent third story and every unsupported",
+      "ref": "2026-11-04T03-51-02-908Z_openai-blog_Heimstaden_is_changing_residential_real_estate_man.json",
+      "at": "2026-11-05T04:13:32.219Z"
+    },
+    {
+      "id": "m17938520237266",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Introducing Images 2.6\" — javítva: Model names 'GPT-Image-2.6 Flare' and 'GPT-Image-2.6 Sunburst' cannot be independently verified—never invent product names; confirm against OpenAI's official docs or remove; Announcement date 'November 4, 2026' is in the future and cannot be correct—verify the actual announcement date or remove; újraküldöm.",
+      "ref": "2026-11-05T04-09-11-668Z_openai-blog_Introducing_Images_2_6.json",
+      "at": "2026-11-05T04:13:43.726Z"
+    },
+    {
+      "id": "m179385203520092",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Four layers of context engineering for production AI agents: How Deep Insight applies them in working code\" — javítva: Claude Sonnet 4.5 - this specific model version cannot be verified; check official Anthropic naming or replace with a verifiable model; 200K-token window claim for the model needs verification; újraküldöm.",
+      "ref": "2026-11-05T04-09-11-669Z_aws-ml_Four_layers_of_context_engineering_for_production_.json",
+      "at": "2026-11-05T04:13:55.200Z"
+    },
+    {
+      "id": "m179385205358535",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Heimstaden is changing residential real estate management with AI\" (?/10)",
+      "ref": "2026-11-04T03-51-02-908Z_openai-blog_Heimstaden_is_changing_residential_real_estate_man.json",
+      "at": "2026-11-05T04:14:13.585Z"
+    },
+    {
+      "id": "m179385210601291",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Introducing Images 2.6\" (?/10)",
+      "ref": "2026-11-05T04-09-11-668Z_openai-blog_Introducing_Images_2_6.json",
+      "at": "2026-11-05T04:15:06.012Z"
+    },
+    {
+      "id": "m179385212703461",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Four layers of context engineering for production AI agents: How Deep Insight applies them in working code\" (?/10)",
+      "ref": "2026-11-05T04-09-11-669Z_aws-ml_Four_layers_of_context_engineering_for_production_.json",
+      "at": "2026-11-05T04:15:27.034Z"
+    },
+    {
+      "id": "m179385215955221",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"GitHub Copilot is now available in Xcode’s coding assis\" hír a meglévő útmutatóra mutat: getting-started-github-copilot",
+      "ref": "getting-started-github-copilot",
+      "at": "2026-11-05T04:15:59.552Z"
+    },
+    {
+      "id": "m17938521723079",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Introducing Images 2.6\" hír a meglévő útmutatóra mutat: chatgpt-images",
+      "ref": "chatgpt-images",
+      "at": "2026-11-05T04:16:12.307Z"
+    },
+    {
+      "id": "m179385243586241",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 24 → 6/4/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-05T04:20:35.862Z"
     }
   ]
 }

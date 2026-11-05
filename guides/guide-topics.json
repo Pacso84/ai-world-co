@@ -522,7 +522,11 @@
       "icon": "🖼️",
       "angle": "Describe the image you want, refine it, and what is and isn’t allowed.",
       "status": "done",
-      "written_at": "2026-06-24T20:00:45.341Z"
+      "written_at": "2026-06-24T20:00:45.341Z",
+      "source_news": {
+        "file": "ARTICLE_2026-11-05T04-09-11-668Z_openai-blog_Introducing_Images_2_6.json",
+        "title": "Introducing Images 2.6"
+      }
     },
     {
       "id": "chatgpt-files-data",
@@ -839,7 +843,11 @@
       "priority": "coverage",
       "proposed_at": "2026-06-25T20:00:38.252Z",
       "proposed_by": "company-coverage",
-      "written_at": "2026-06-25T20:01:17.844Z"
+      "written_at": "2026-06-25T20:01:17.844Z",
+      "source_news": {
+        "file": "ARTICLE_2026-11-05T04-09-11-668Z_github-copilot-changelog_GitHub_Copilot_is_now_available_in_Xcode_s_coding_.json",
+        "title": "GitHub Copilot is now available in Xcode’s coding assistant"
+      }
     },
     {
       "id": "getting-started-cohere",
@@ -7532,10 +7540,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "OpenAI just added a College Planner, flashcards, and quizzes to ChatGPT for Teens — here's how a student turns the features on and uses them to study one topic end-to-end.",
-      "status": "todo",
+      "status": "done",
       "icon": "🎓",
       "proposed_at": "2026-10-09T03:56:51.763Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-11-05T04:16:58.898Z"
     },
     {
       "id": "build-a-personal-reading-list-with-ai-based-on-books-you-alr",
@@ -7817,11 +7826,12 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Describe the situation and your reason — Grok drafts a kind, clear reply that says no without burning the bridge or leaving you feeling guilty.",
-      "status": "todo",
+      "status": "done",
       "icon": "✉️",
       "priority": "balance",
       "proposed_at": "2026-10-14T02:47:52.118Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-11-05T04:17:16.175Z"
     },
     {
       "id": "how-to-write-a-gemini-prompt-that-turns-a-casual-selfie-into",

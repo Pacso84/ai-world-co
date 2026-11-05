@@ -1,0 +1,62 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.00773777,
+  "at": "2026-11-05T04:20:56.116Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-write-a-polite-no-to-an-invitation-or-request-using-g.json",
+      "cim": "How to write a polite 'no' to an invitation or request using Grok",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_chatgpt-for-teens-how-to-use-the-new-college-planner-and-fla.json",
+      "cim": "ChatGPT for Teens: How to Use the New College Planner and Flashcards",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató jól kezeli a bizonytalanságot (a funkciók elérhetősége változhat, ellenőrizd a hivatalos oldalakat, a funkció esetleg még nem érte el a fiókodat)"
+    },
+    {
+      "file": "ARTICLE_2026-11-05T04-09-11-669Z_aws-ml_Four_layers_of_context_engineering_for_production_.json",
+      "cim": "Four layers of context engineering for production AI agents: How Deep Insight applies them in working code",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Minden konkrét tényállítás megfelel a forrásszövegnek"
+    },
+    {
+      "file": "ARTICLE_2026-11-05T04-09-11-668Z_openai-blog_Introducing_Images_2_6.json",
+      "cim": "Introducing Images 2.6",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "All claims in the article match or are consistent with the source text. The article accurately describes Images 2.6 as being available in ChatGPT and Codex across all subscription tiers, the 50% faster generation, GIF creation capability, steadier edits, the two API models (Flare for speed, Sunburst"
+    },
+    {
+      "file": "ARTICLE_2026-11-04T03-51-02-908Z_openai-blog_Heimstaden_is_changing_residential_real_estate_man.json",
+      "cim": "Heimstaden is changing residential real estate management with AI",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "All factual claims in the article are supported by at least one source - Heimstaden details (June 2025 decision, ChatGPT, Codex, 99%+ cost reduction, €130K savings estimate, 20,112 assets, 50% adoption) match Source 1; Ropes & Gray details (transactional diligence AI tool, partnership with OpenAI, q"
+    },
+    {
+      "file": "ARTICLE_2026-11-05T04-09-15-315Z_perplexity-news_Get_Maine_Lobster_triples_ad_revenue_with_Perplexi.json",
+      "cim": "Get Maine Lobster triples ad revenue with Perplexity - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "written_at": "2026-11-05T04:13:55.199Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0039757,
+    "original_draft": "2026-11-05T04-09-11-669Z_aws-ml_Four_layers_of_context_engineering_for_production_.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/four-layers-of-context-engineering-for-production-ai-agents-how-deep-insight-applies-them-in-working-code/",
+    "source_links": [
+      "https://aws.amazon.com/blogs/machine-learning/four-layers-of-context-engineering-for-production-ai-agents-how-deep-insight-applies-them-in-working-code/"
+    ],
+    "source_snippet_len": 350,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "f621b1c056d10804",
+    "source_overlap_words": 10,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "rejected_at": "2026-11-05T04:12:20.209Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 772
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that explains technical terms in plain language, attributes AWS claims correctly, and provides a useful 'What this means for you' section with actionable takeaways for different reader levels. No prohibited content, no clichés, and all statistics are properly attributed to AWS's reference implementation.",
+      "_aiCost": 0.00111048,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Article has good structure, friendly tone, and clear explanations, but relies on unverifiable product details (Claude Sonnet 4.5) that could mislead readers. The specific model version and its 200K context window need confirmation against official Anthropic sources before publication.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-11-05T04-09-11-669Z_aws-ml_Four_layers_of_context_engineering_for_production_.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-11-05T04:15:27.033Z",
+    "slug": "context-engineering-for-ai-agents-the-four-layers-explained",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-05T04:16:20.875Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article explains a methodology (context engineering) and an open source project example, not a specific named consumer feature; no concrete action for everyday users to take",
+    "image_v": 2,
+    "image_at": "2026-11-05T04:19:06.050Z",
+    "seo": {
+      "meta_description": "Learn how AWS's open source Deep Insight project uses four context engineering layers to help AI agents handle long tasks without running out of working memory.",
+      "keywords": [
+        "context engineering AI agents",
+        "AWS Deep Insight",
+        "AI agent working memory",
+        "four layers context engineering",
+        "AI agents long tasks"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the specific use case mentioned (turning sales data into a report) to the meta description for more specificity",
+        "Include 'open source' in the meta to capture developers searching for implementable tools",
+        "Consider adding 'token limit' or 'context window' as related keywords since these are common pain points"
+      ],
+      "optimised_at": "2026-11-05T04:20:10.892Z"
+    },
+    "fact_verified_at": "2026-11-05T04:21:14.466Z"
+  },
+  "article_markdown": "---\ntitle: \"Context Engineering for AI Agents: The Four Layers Explained\"\nsubtitle: \"AWS shows how one open source project applies four practices that keep AI agents from running out of working memory.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"context-engineering\", \"multi-agent-systems\", \"amazon-bedrock\"]\n---\n\n# Context Engineering for AI Agents: The Four Layers Explained\n\n> **In short:** AWS says AI agents doing long jobs, like turning sales data into a report, can run out of working memory. Its open source Deep Insight project addresses this with four layers of context engineering, the practice of managing what an AI can see at once.\n\nHave you ever asked an AI to handle a big job in one go, only to watch it lose track halfway through? That frustration is the problem AWS's latest post tackles. If you're curious how teams build AI systems that finish long tasks reliably, this breakdown explains the ideas in plain language.\n\n## Why agents run out of room\n\nA **token** is a small chunk of text, roughly a word or part of one. The **context window** is how many tokens a model can hold at once. Think of it as the model's desk: everything it needs to work on has to fit on that desk.\n\nEven a large desk fills up. AWS walks through a request like \"analyze sales data and create a DOCX report.\" That job moves through data loading, category analysis, five charts, statistical checks, and writing the report. Together those stages add up to more than 150K tokens across about 15 minutes.\n\nWhen the desk overflows, the work breaks. Old notes clutter the space, errors can force the whole process to restart, and AWS notes that an AI's recall of earlier details can get less reliable as context grows. Many AI services also charge by the token, so a crowded context can cost more.\n\n## The four layers\n\nAWS groups the practices into four layers. Each one covers a gap the layer before it leaves open.\n\n### Layer 1: Isolate each agent's context\n\nGive every specialist agent its own workspace, and pass only short summaries between them. Deep Insight uses a coordinator, a planner, a reviewer, a supervisor, and tool agents such as a coder and a validator. AWS says even the coder, the heaviest user, stays under 25K tokens. The agents share only a small set of notes, such as the previous agent's final message.\n\n### Layer 2: Control context through prompts\n\nA **prompt** is the instruction you give the model. Well-written prompts can limit what enters the context and set clear rules for behavior. AWS is clear that prompts alone aren't enough, which is why the next layers exist.\n\n### Layer 3: Move heavy material into files\n\nKeep large material, such as scripts and reference details, in files outside the conversation, and load only what's needed. In Deep Insight, AWS reports that a single write-and-execute tool cut the tokens each script added to context by about 95 percent. Loading **skills** (bundles of instructions the agent pulls in only when it needs them) shrank the system prompt by about 97 percent. These figures come from AWS's own reference implementation, so your results will depend on your setup.\n\n### Layer 4: Verify with independent checks\n\nIndependent checking agents and safeguards catch errors before they spread and help prevent context overflow. AWS describes this as the final line of defense.\n\n## What this means for you\n\n- **For your business or team**: If you're weighing AI agents for reports or data work, ask whether each step really needs the full history. These four layers give your team a shared vocabulary for that conversation.\n- **For technical leads**: Look at how Deep Insight separates agents and limits what passes between them. Its open source code shows one concrete way to do it.\n- **If you're just getting started**: You don't need to write code to use the core idea. Split a big job into smaller steps, and check each result before moving on.\n- **If you already use it**: Notice how much repeated material your agent resends at every step. AWS suggests keeping heavy content in files instead of the conversation, which can cut that repetition a lot.\n\n## Wrap-up\n\nAWS's post shows that a working AI agent depends on managing its context, not just on having a big window. Isolate the work, control the instructions, store heavy material in files, and verify the results. AWS says a third post on running these agents in a private network is coming soon. For now, pick one long task you repeat each week and split it into smaller steps today.",
+  "original_title": "Four layers of context engineering for production AI agents: How Deep Insight applies them in working code"
+}

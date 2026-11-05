@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "written_at": "2026-11-05T04:10:40.541Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0041543,
+    "original_draft": "2026-11-05T04-09-11-668Z_github-copilot-changelog_GitHub_Copilot_is_now_available_in_Xcode_s_coding_.json",
+    "source_id": "github-copilot-changelog",
+    "source_name": "GitHub Changelog – Copilot (hivatalos)",
+    "source_link": "https://github.blog/changelog/2026-11-04-github-copilot-is-now-available-in-xcodes-coding-assistant",
+    "source_links": [
+      "https://github.blog/changelog/2026-11-04-github-copilot-is-now-available-in-xcodes-coding-assistant"
+    ],
+    "source_snippet_len": 304,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 1008,
+    "source_text_key": "e2b1417e4c018168",
+    "source_overlap_words": 9,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-05T04:11:12.448Z",
+    "slug": "what-github-copilot-in-xcode-s-coding-assistant-is-and-who-it-s-for",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 635
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hooks, thorough term definitions, and a useful 'What this means for you' section that addresses multiple audience types. Technical terms are explained accessibly. No prohibited content, no clichés, and factual claims are properly attributed to GitHub's announcement. Minor note: setup steps are brief but that's acceptable for an explainer rather than a step-by-step guide.",
+      "_aiCost": 0.0018954,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-05T04:15:59.534Z",
+    "guide_worthy": true,
+    "related_guide_topic": "getting-started-github-copilot",
+    "image_v": 2,
+    "image_at": "2026-11-05T04:18:50.233Z",
+    "seo": {
+      "meta_description": "GitHub Copilot now integrates with Xcode's built-in AI assistant in public beta. Here's what Mac app developers should know about this preview.",
+      "keywords": [
+        "GitHub Copilot Xcode",
+        "Xcode AI assistant",
+        "GitHub Copilot Mac developers",
+        "Xcode 27.3 beta",
+        "Apple app development AI",
+        "Copilot Xcode preview",
+        "Mac app development tools",
+        "Xcode coding assistant"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add more specific details about what Copilot actually does inside Xcode to improve search relevance",
+        "Include concrete examples of how developers can use Copilot in Xcode for better user engagement",
+        "Mention the exact public preview availability more prominently in the opening"
+      ],
+      "optimised_at": "2026-11-05T04:19:57.242Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"What GitHub Copilot in Xcode's Coding Assistant Is and Who It's For\"\nsubtitle: \"GitHub's AI helper can now work inside Apple's Xcode coding assistant in public preview. Here's what that means, and who will find it useful.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 3\ntags: [\"github-copilot\", \"xcode\", \"coding-assistant\", \"developer-tools\"]\n---\n\n# What GitHub Copilot in Xcode's Coding Assistant Is and Who It's For\n\n> **In short:** GitHub says its Copilot AI can now work inside Xcode's built-in coding assistant, in public preview with the Xcode 27.3 beta. The change is aimed at people who build apps on a Mac. Everyone else can use it to see how AI tools are reaching the software people use.\n\nIf you've ever wondered how a phone app gets built, you've heard of Xcode. It's Apple's app-building tool. Now GitHub says its AI helper, Copilot, can work directly inside Xcode's own AI assistant. Here's what that means, and who it's for.\n\n## First, the basic terms\n\n- **Xcode** is Apple's tool for building apps for iPhone, iPad, and Mac.\n- **A coding assistant** is an AI helper built into a programming tool. It can suggest code or help you work through a problem, a bit like a knowledgeable colleague sitting beside you.\n- **GitHub Copilot** is GitHub's AI coding helper.\n- **Public preview** means an early version is open to many people so they can try it and send feedback. Features can still change before the final release.\n- **Beta** is a test version of software, released before the final one.\n\n## What's new\n\nAccording to GitHub's announcement, you can now work with Copilot directly in Xcode's built-in coding assistant. This is a second way to use Copilot in Xcode. The separate GitHub Copilot for Xcode extension is still available, so you can choose the setup that suits your work.\n\nGitHub also says all Copilot plans are supported. For plan details, check GitHub's official pricing page.\n\n## What you need before you start\n\n- **A Mac running macOS Tahoe 26.6 or later.** macOS is the operating system that runs on your Mac, and Tahoe is the version name Apple uses.\n- **Xcode 27.3 beta.** You can download it from Apple's Developer Downloads page.\n- **A GitHub Copilot plan.** Any plan works, according to the announcement.\n\n## Setting it up\n\nGitHub says you set this up in Xcode's settings. Open Xcode Settings, then choose Intelligence, where you can configure GitHub Copilot for the coding assistant. GitHub points to its setup guide on coding intelligence and to the Xcode 27.3 beta release notes for more detail. Those pages hold the current steps, so follow them if your screens look different from what you expect.\n\n## What this means for you\n\n- **If you build apps:** You now have a choice. Use the new built-in integration, the existing extension, or both, depending on what fits your project.\n- **If you're learning to code:** Beta software can behave unpredictably. Try it on a practice project, not the only copy of your work.\n- **If you don't write code:** You don't need to do anything. Still, it's a useful example of AI moving into the everyday tools people already use.\n- **If you already use the separate Copilot extension:** Keep it installed and try the new integration on a side project. Compare how each one fits your habits, and keep whichever one suits you.\n\n## Wrap-up\n\nGitHub Copilot now works inside Xcode's coding assistant, in public preview with the Xcode 27.3 beta, on a Mac running macOS Tahoe 26.6 or later. The older extension remains available. If you build apps, your next step is to read the official setup guide and release notes before installing the beta. If you spot something that doesn't work well, GitHub and Apple both accept feedback through their channels.",
+  "original_title": "GitHub Copilot is now available in Xcode’s coding assistant"
+}

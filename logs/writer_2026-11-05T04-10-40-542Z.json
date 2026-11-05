@@ -1,0 +1,93 @@
+{
+  "started_at": "2026-11-05T04:09:15.553Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 2,
+    "html": 1,
+    "rss": 0,
+    "kivonat": 1
+  },
+  "source_fail": [
+    {
+      "draft": "2026-11-05T04-09-15-315Z_perplexity-news_Get_Maine_Lobster_triples_ad_revenue_with_Perplexi.json",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFB3elZyc0pqR2xvakJiVjBTWEhTRzBtMHg3QmFQODdURmdxa25kQzZnOUZab0h3dndBcy00c3MzYVAxckxfdGdaYmZPR3JFaWl6RHBJbWRRVlhUOFJkT2FhcUpGRzJzM3Jz?oc=5",
+      "hiba": "túl rövid szöveg (11 karakter)"
+    }
+  ],
+  "total_cost_usd": 0.01793187,
+  "by_article": [
+    {
+      "draft": "2026-11-05T04-09-15-315Z_perplexity-news_Get_Maine_Lobster_triples_ad_revenue_with_Perplexi.json",
+      "writer_output": "WRITER_2026-11-05T04-09-15-315Z_perplexity-news_Get_Maine_Lobster_triples_ad_revenue_with_Perplexi.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "kivonat"
+      ],
+      "source_chars": 63,
+      "source_overlap_words": 4,
+      "cost_usd": 0.0040759,
+      "duration_ms": 19429,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-05T04-09-11-669Z_aws-ml_Four_layers_of_context_engineering_for_production_.json",
+      "writer_output": "WRITER_2026-11-05T04-09-11-669Z_aws-ml_Four_layers_of_context_engineering_for_production_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 10,
+      "cost_usd": 0.0047919,
+      "duration_ms": 23183,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-05T04-09-11-668Z_openai-blog_Introducing_Images_2_6.json",
+      "writer_output": "WRITER_2026-11-05T04-09-11-668Z_openai-blog_Introducing_Images_2_6.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 13,
+      "cost_usd": 0.0037647,
+      "duration_ms": 13525,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-05T04-09-11-668Z_github-copilot-changelog_GitHub_Copilot_is_now_available_in_Xcode_s_coding_.json",
+      "writer_output": "WRITER_2026-11-05T04-09-11-668Z_github-copilot-changelog_GitHub_Copilot_is_now_available_in_Xcode_s_coding_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 1008,
+      "source_overlap_words": 9,
+      "cost_usd": 0.0041543,
+      "duration_ms": 18206,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-11-05T04:10:40.542Z",
+  "duration_seconds": 84.989
+}
