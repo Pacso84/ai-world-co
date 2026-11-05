@@ -1,0 +1,89 @@
+{
+  "slug": "unlock-document-insights-with-google-notebooklm",
+  "probalva": "2026-11-05T21:44:11.107Z",
+  "doboz": {
+    "keszult": "2026-11-05T21:44:11.107Z",
+    "enHash": "b91822822b7afb43545577564cfe655802eeec47",
+    "forrasok": {
+      "https://support.google.com/gemininotebook/answer/16215270": "Add or discover new sources for your notebook - Computer - Gemini Notebook Help"
+    },
+    "en": [
+      {
+        "symptom": "I can't add any more sources to my notebook.",
+        "why": "You can include up to 50 sources (for Free users). Inactive sources will count towards source limits.",
+        "fix": "If needed, you can use the links provided to request access to files or remove them from your source list. Inactive sources count toward the limit even though they are not referenced throughout your notebook.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "My edits in Google Drive don't show up in my notebook.",
+        "why": "Sources imported from Google Drive are auto-updated and will sync every few minutes. Changes to your original document will automatically update when you open your Notebook.",
+        "fix": "If needed, you can manually update a source by opening the source in Notebook and clicking \"Click to sync with Google Drive.\" Gemini Notebook can't delete or edit your original files in Drive.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "A source in my notebook stopped working and I can't view it anymore.",
+        "why": "If you lose access to a file in Google Drive or if the file is deleted, the source will be inaccessible. Inactive sources will count towards source limits but will not be referenced throughout your notebook.",
+        "fix": "If needed, you can use the links provided to request access to files or remove them from your source list. This applies to both owned and shared notebooks.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "My answers pull from the wrong document in my notebook.",
+        "why": "When you use Gemini Notebook, the model uses the sources you upload to answer your questions or complete your requests. When multiple sources are selected, mentioning source names in your query helps Gemini Notebook narrow its search.",
+        "fix": "To chat with a specific set of sources in your Notebook, select them individually in the \"Source\" panel. Name the source in your question, as in the example below.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Nem tudok több forrást hozzáadni a jegyzetfüzetemhez.",
+        "why": "Legfeljebb 50 forrást foglalhatsz bele (az ingyenes felhasználók esetében). Az inaktív források beleszámítanak a forráskorlátba.",
+        "fix": "Ha szükséges, a megadott linkek segítségével hozzáférést kérhetsz a fájlokhoz, vagy eltávolíthatod őket a forráslistádról. Az inaktív források akkor is beleszámítanak a korlátba, ha a jegyzetfüzetedben nem hivatkozol rájuk.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "A Google Drive-ban végzett szerkesztéseim nem jelennek meg a jegyzetfüzetemben.",
+        "why": "A Google Drive-ból importált források automatikusan frissülnek, és néhány percenként szinkronizálódnak. Az eredeti dokumentumon végzett módosítások automatikusan frissülnek, amikor megnyitod a Notebookot.",
+        "fix": "Ha szükséges, manuálisan frissíthetsz egy forrást: nyisd meg a forrást a Notebookban, majd kattints a „Click to sync with Google Drive” lehetőségre. A Gemini Notebook nem tudja törölni vagy szerkeszteni az eredeti fájljaidat a Drive-ban.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "A jegyzetfüzetemben egy forrás működése leállt, és már nem tudom megtekinteni.",
+        "why": "Ha elveszíted a hozzáférést egy Google Drive-ban található fájlhoz, vagy ha a fájlt törlik, a forrás elérhetetlenné válik. Az inaktív források beleszámítanak a forráskorlátba, de a jegyzetfüzetedben nem hivatkozol rájuk.",
+        "fix": "Ha szükséges, a megadott linkek segítségével hozzáférést kérhetsz a fájlokhoz, vagy eltávolíthatod őket a forráslistádról. Ez a saját és a megosztott jegyzetfüzetekre egyaránt vonatkozik.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "A válaszaim a jegyzetfüzetemben található rossz dokumentumból származó információkra támaszkodnak.",
+        "why": "A Gemini Notebook használatakor a modell az általad feltöltött forrásokat használja a kérdéseid megválaszolásához vagy a kéréseid teljesítéséhez. Ha több forrás van kiválasztva, a forrásnevek megemlítése a lekérdezésedben segít a Gemini Notebooknak leszűkíteni a keresést.",
+        "fix": "Ha a Notebookban egy meghatározott forráskészlettel szeretnél csevegni, válaszd ki őket egyenként a „Source” panelen. Nevezd meg a forrást a kérdésedben, az alábbi példához hasonlóan.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "No puedo añadir más fuentes a mi cuaderno.",
+        "why": "Puedes incluir hasta 50 fuentes (para usuarios del plan Free). Las fuentes inactivas contarán para los límites de fuentes.",
+        "fix": "Si es necesario, puedes usar los enlaces proporcionados para solicitar acceso a los archivos o eliminarlos de tu lista de fuentes. Las fuentes inactivas cuentan para el límite aunque no se mencionen en todo tu cuaderno.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "Mis ediciones en Google Drive no aparecen en mi cuaderno.",
+        "why": "Las fuentes importadas desde Google Drive se actualizan automáticamente y se sincronizan cada pocos minutos. Los cambios en tu documento original se actualizarán automáticamente cuando abras tu Notebook.",
+        "fix": "Si es necesario, puedes actualizar manualmente una fuente abriéndola en Notebook y haciendo clic en «Click to sync with Google Drive». Gemini Notebook no puede eliminar ni editar tus archivos originales en Drive.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "Una fuente de mi cuaderno dejó de funcionar y ya no puedo verla.",
+        "why": "Si pierdes el acceso a un archivo de Google Drive o si se elimina el archivo, no se podrá acceder a la fuente. Las fuentes inactivas contarán para los límites de fuentes, pero no se mencionarán en todo tu cuaderno.",
+        "fix": "Si es necesario, puedes usar los enlaces proporcionados para solicitar acceso a los archivos o eliminarlos de tu lista de fuentes. Esto se aplica tanto a los cuadernos de tu propiedad como a los compartidos.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "Mis respuestas se basan en el documento equivocado de mi cuaderno.",
+        "why": "Cuando usas Gemini Notebook, el modelo utiliza las fuentes que subes para responder a tus preguntas o completar tus solicitudes. Cuando se seleccionan varias fuentes, mencionar los nombres de las fuentes en tu consulta ayuda a Gemini Notebook a limitar su búsqueda.",
+        "fix": "Para chatear con un conjunto específico de fuentes en tu Notebook, selecciónalas individualmente en el panel «Source». Menciona el nombre de la fuente en tu pregunta, como en el ejemplo siguiente.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      }
+    ]
+  }
+}

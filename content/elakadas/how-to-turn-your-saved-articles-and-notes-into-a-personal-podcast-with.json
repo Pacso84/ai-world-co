@@ -1,0 +1,89 @@
+{
+  "slug": "how-to-turn-your-saved-articles-and-notes-into-a-personal-podcast-with",
+  "probalva": "2026-11-05T21:44:11.107Z",
+  "doboz": {
+    "keszult": "2026-11-05T21:44:11.107Z",
+    "enHash": "b4c2da18f492f036e585e37382f7810e2f3e2d00",
+    "forrasok": {
+      "https://support.google.com/gemininotebook/answer/16212820": "Generate Audio Overview in Gemini Notebook - Gemini Notebook Help"
+    },
+    "en": [
+      {
+        "symptom": "The Audio Overview hasn't appeared yet after I clicked generate.",
+        "why": "The audio is generated in the background. Gemini Notebook may take a couple of minutes to generate the Audio Overview.",
+        "fix": "Wait a couple of minutes for the audio to finish. You can generate other artifacts or navigate to other screens while it generates.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      },
+      {
+        "symptom": "My audio came out in a language I didn't want.",
+        "why": "Gemini Notebook uses the preferred language from your Google Account settings as your default output language. You can generate Audio Overviews in 80+ languages.",
+        "fix": "Choose a language in the generation panel before you generate the Audio Overview. Select the language you want from the options there.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      },
+      {
+        "symptom": "My recipient can't open the shared Audio Overview link.",
+        "why": "Public notebook sharing is only enabled for consumer accounts. It's currently disabled for Workspace Enterprise or Education accounts.",
+        "fix": "Confirm that the notebook is shared with the recipient or is made public (open to \"Anyone with a link\") and viewers have access to the \"full notebook.\" Then copy the link to the Audio Overview, share it with the recipient, and select Save to apply changes.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      },
+      {
+        "symptom": "I can't download my Audio Overview file.",
+        "why": "If the notebook has a Play Books ebook as a source, you may not be able to download artifacts generated from it, depending on the publisher's content restrictions.",
+        "fix": "To download the Audio Overview, select Download. Then share the downloaded audio.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A generálás gombra koppintás után még nem jelent meg az Audio Overview.",
+        "why": "A hang a háttérben készül. A Gemini Notebooknak néhány percbe telhet az Audio Overview létrehozása.",
+        "fix": "Várj néhány percet, amíg a hang elkészül. A létrehozás közben más artefaktumokat is generálhatsz, vagy más képernyőkre navigálhatsz.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      },
+      {
+        "symptom": "A hangom olyan nyelven készült el, amelyet nem szerettem volna.",
+        "why": "A Gemini Notebook a Google-fiókod beállításaiban megadott preferált nyelvet használja alapértelmezett kimeneti nyelvként. Az Audio Overview több mint 80 nyelven generálható.",
+        "fix": "Az Audio Overview generálása előtt válassz nyelvet a generálási panelen. A megjelenő lehetőségek közül válaszd ki a kívánt nyelvet.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      },
+      {
+        "symptom": "A címzett nem tudja megnyitni a megosztott Audio Overview-linket.",
+        "why": "A nyilvános jegyzetfüzetmegosztás csak fogyasztói fiókokhoz engedélyezett. A Workspace Enterprise- vagy Education-fiókok esetében jelenleg le van tiltva.",
+        "fix": "Ellenőrizd, hogy a jegyzetfüzet meg van-e osztva a címzettel, vagy nyilvánossá van-e téve („Bárki, aki rendelkezik a linkkel”), és hogy a megtekintők hozzáférnek-e a „teljes jegyzetfüzethez”. Ezután másold ki az Audio Overview linkjét, oszd meg a címzettel, majd válaszd a Save lehetőséget a módosítások alkalmazásához.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      },
+      {
+        "symptom": "Nem tudom letölteni az Audio Overview fájlt.",
+        "why": "Ha a jegyzetfüzet forrásként egy Play Books e-könyvet tartalmaz, előfordulhat, hogy nem tudod letölteni a belőle generált artefaktumokat, a kiadó tartalmi korlátozásaitól függően.",
+        "fix": "Az Audio Overview letöltéséhez válaszd a Download lehetőséget. Ezután oszd meg a letöltött hangfájlt.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "La descripción general de audio aún no aparece después de que hice clic en generar.",
+        "why": "El audio se genera en segundo plano. Gemini Notebook puede tardar un par de minutos en generar la descripción general de audio.",
+        "fix": "Espera un par de minutos a que el audio termine. Puedes generar otros artefactos o navegar a otras pantallas mientras se genera.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      },
+      {
+        "symptom": "El audio se generó en un idioma que no quería.",
+        "why": "Gemini Notebook usa el idioma preferido de la configuración de tu cuenta de Google como idioma de salida predeterminado. Puedes generar descripciones generales de audio en más de 80 idiomas.",
+        "fix": "Elige un idioma en el panel de generación antes de generar la descripción general de audio. Selecciona el idioma que quieras entre las opciones disponibles.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      },
+      {
+        "symptom": "Mi destinatario no puede abrir el enlace compartido de la descripción general de audio.",
+        "why": "El uso compartido público de notebooks solo está habilitado para cuentas de consumidores. Actualmente está deshabilitado para las cuentas de Workspace Enterprise o Education.",
+        "fix": "Confirma que el notebook se comparta con el destinatario o que sea público (abierto a \"Cualquiera con el enlace\") y que los usuarios tengan acceso al \"notebook completo\". Después, copia el enlace a la descripción general de audio, compártelo con el destinatario y selecciona Save para aplicar los cambios.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      },
+      {
+        "symptom": "No puedo descargar mi archivo de descripción general de audio.",
+        "why": "Si el notebook tiene un libro electrónico de Play Books como fuente, es posible que no puedas descargar los artefactos generados a partir de él, según las restricciones de contenido del editor.",
+        "fix": "Para descargar la descripción general de audio, selecciona Download. Después, comparte el audio descargado.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      }
+    ]
+  }
+}

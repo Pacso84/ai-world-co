@@ -1,0 +1,90 @@
+{
+  "slug": "how-to-study-three-sources-for-one-exam-in-notebooklm",
+  "probalva": "2026-11-05T21:44:11.107Z",
+  "doboz": {
+    "keszult": "2026-11-05T21:44:11.107Z",
+    "enHash": "99e51d39d4c81e8b07b79778a2cf1b3dcda85622",
+    "forrasok": {
+      "https://support.google.com/gemininotebook/answer/16215270": "Add or discover new sources for your notebook - Computer - Gemini Notebook Help",
+      "https://support.google.com/gemininotebook/answer/16212820": "Generate Audio Overview in Gemini Notebook - Gemini Notebook Help"
+    },
+    "en": [
+      {
+        "symptom": "My YouTube link won't import as a source.",
+        "why": "Only public YouTube videos with captions, either user-uploaded or auto-generated, are supported. Only the text transcript of the video is imported as a source.",
+        "fix": "Use a public YouTube video that has captions, either user-uploaded or auto-generated. Then add its URL as a source.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "A web link I added didn't bring in the article text.",
+        "why": "Only the text content of the given HTML webpage is scraped for use as a source. Paywalled webpages aren't supported.",
+        "fix": "Images, embedded videos, or nested webpages are not imported. You can copy and paste text to create a new source and add or edit the title upon creation.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "One of my Drive sources stopped being used in my notebook.",
+        "why": "If you lose access to a file in Google Drive or if the file is deleted, the source will be inaccessible, and you will no longer be able to view or interact with the source in your notebook.",
+        "fix": "If needed, you can use the links provided to request access to files or remove them from your source list. Inactive sources will count towards source limits but will not be referenced throughout your notebook.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "My audio overview came out in the wrong language.",
+        "why": "Gemini Notebook uses the preferred language from your Google Account settings as your default output language.",
+        "fix": "Within the generation panel, choose a language for the Audio Overview. You can generate Audio Overviews in 80+ languages.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A YouTube-linkemet nem lehet forrásként importálni.",
+        "why": "Csak a felirattal rendelkező nyilvános YouTube-videók támogatottak, függetlenül attól, hogy a feliratot a felhasználó töltötte-e fel, vagy automatikusan generálták. Forrásként csak a videó szöveges átirata kerül importálásra.",
+        "fix": "Használj felirattal rendelkező nyilvános YouTube-videót, függetlenül attól, hogy a feliratot a felhasználó töltötte-e fel, vagy automatikusan generálták. Ezután add hozzá az URL-jét forrásként.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "Az általam hozzáadott webes hivatkozás nem hozta be a cikk szövegét.",
+        "why": "Forrásként csak a megadott HTML-weboldal szöveges tartalma kerül kinyerésre. A fizetőfal mögötti weboldalak nem támogatottak.",
+        "fix": "A képek, a beágyazott videók és a beágyazott weboldalak nem kerülnek importálásra. Szöveget másolhatsz és illeszthetsz be új forrás létrehozásához, és létrehozáskor hozzáadhatod vagy szerkesztheted a címet.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "Az egyik Drive-forrásomat már nem használja a jegyzetfüzetem.",
+        "why": "Ha elveszíted a hozzáférést egy Google Drive-fájlhoz, vagy a fájlt törlik, a forrás elérhetetlenné válik, és többé nem fogod tudni megtekinteni vagy használni a forrást a jegyzetfüzetedben.",
+        "fix": "Ha szükséges, a megadott hivatkozásokkal hozzáférést kérhetsz a fájlokhoz, vagy eltávolíthatod őket a forráslistádról. Az inaktív források beleszámítanak a forráskorlátokba, de a rendszer nem fog rájuk hivatkozni a jegyzetfüzetedben.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "A hangos összefoglalóm nem a megfelelő nyelven készült el.",
+        "why": "A Gemini Notebook a Google-fiókod beállításaiban megadott preferált nyelvet használja alapértelmezett kimeneti nyelvként.",
+        "fix": "A generálási panelen válassz nyelvet az Audio Overview számára. Az Audio Overview több mint 80 nyelven generálható.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "Mi enlace de YouTube no se importa como fuente.",
+        "why": "Solo se admiten videos públicos de YouTube con subtítulos, ya sean añadidos por el usuario o generados automáticamente. Solo se importa como fuente la transcripción de texto del video.",
+        "fix": "Usa un video público de YouTube que tenga subtítulos, ya sean añadidos por el usuario o generados automáticamente. Después, añade su URL como fuente.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "Un enlace web que añadí no incorporó el texto del artículo.",
+        "why": "Solo se extrae el contenido de texto de la página web HTML indicada para usarlo como fuente. Las páginas web con contenido de pago no son compatibles.",
+        "fix": "No se importan imágenes, videos incrustados ni páginas web anidadas. Puedes copiar y pegar texto para crear una fuente nueva y añadir o editar el título al crearla.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "Una de mis fuentes de Drive dejó de usarse en mi cuaderno.",
+        "why": "Si pierdes el acceso a un archivo de Google Drive o si se elimina el archivo, la fuente dejará de estar disponible y ya no podrás verla ni interactuar con ella en tu cuaderno.",
+        "fix": "Si es necesario, puedes usar los enlaces proporcionados para solicitar acceso a los archivos o quitarlos de tu lista de fuentes. Las fuentes inactivas contarán para los límites de fuentes, pero no se mencionarán en todo tu cuaderno.",
+        "source": "https://support.google.com/gemininotebook/answer/16215270"
+      },
+      {
+        "symptom": "Mi resumen de audio salió en el idioma equivocado.",
+        "why": "Gemini Notebook usa el idioma preferido de la configuración de tu cuenta de Google como idioma de salida predeterminado.",
+        "fix": "En el panel de generación, elige un idioma para el Audio Overview. Puedes generar Audio Overviews en más de 80 idiomas.",
+        "source": "https://support.google.com/gemininotebook/answer/16212820"
+      }
+    ]
+  }
+}
