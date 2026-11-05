@@ -48,6 +48,9 @@ t('📺 Alexa+ nem „fizetős szolgáltatás”: az USA-ban a Prime része', ()
 
 t('🚩 a 3 tévesen „elavultnak” jelölt útmutatóról lekerült a jelölés; a 3 jogos jelölt le lett véve 301-gyel', () => {
   for (const id of ['amazon-alexa-plus', 'chatgpt-gpts', 'build-a-basic-ai-chatbot-for-your-website-using-openai-s']) {
+    // a nézetlen-útmutató törlő (60 nap 0 olvasó) szabályosan levehette — ami nincs, azon nincs mit jelölni
+    // (11-05: a build-a-basic-ai-chatbot… így ment le)
+    if (!readdirSync(join(ROOT, 'content', 'articles')).some(x => x.includes(id))) continue;
     const m = cikk(id).a._meta;
     assert.equal(m.fact_check_flag, undefined, id + ': a téves jelölés maradt');
     assert.match(String(m.fact_human_ok), /^2026-10-29$/); assert.ok(m.fact_human_note);
