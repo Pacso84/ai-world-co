@@ -42,8 +42,26 @@ export const FULLFORM_OK = new Set([
   // a kitalált „365 Copilot" nevet. A figyelmeztetés tehát pontosan azt a hibát
   // ajánlotta vissza, amit egyszer már megszüntettünk — egy tanács, amit nem
   // lehet helyesen követni, rosszabb a semminél.
-  'Microsoft 365 Copilot'
+  'Microsoft 365 Copilot',
+  // 🔑 2026-11-06: a cégnév-levágás a 10-30-i céglista két hivatalos nevét
+  // csonkolta a témafájlban („MiniMax Code" → „Code", „Brave Leo" → „Leo") —
+  // mindkettő a website/tool-links.json-ban álló teljes terméknév. Lent a
+  // HIVATALOS_NEVEK általános gát is, hogy egy új tool-links tétel se járjon így.
+  'MiniMax Code', 'Brave Leo'
 ]);
+
+// A tool-links.json KULCSAI = hivatalos nevek (a bíró is ebből dolgozik). Ami
+// szó szerint ott áll, azt a kanonizálás NEM rövidítheti — a rövidebb alak
+// (pl. „Code") nem létező termék lenne. Hiányzó/hibás fájlnál üres → a régi viselkedés.
+const HIVATALOS_NEVEK = (() => {
+  try {
+    const tl = JSON.parse(readFileSync(join(ROOT, 'website', 'tool-links.json'), 'utf-8'));
+    return new Set(Object.keys(tl.tools || {}));
+  } catch { return new Set(); }
+})();
+export function hivatalosTeljesNev(tool) {
+  return FULLFORM_OK.has(tool) || HIVATALOS_NEVEK.has(tool);
+}
 // Generikus (nem-termék) szavak a chipben → találat
 const GENERIC_RX = /\(|,| in |powered|capacit|resolution|assistant|chatbot|workspace|feature| api\b|projects?$| chat$|models?$| llm\b| ai$/i;
 
@@ -63,7 +81,7 @@ export function chipKifogas(tool, company) {
   const t = String(tool || '').trim();
   if (!t) return null;
   // A hivatalos, teljes alakú nevek nem rövidítendők — lásd a FULLFORM_OK-ot.
-  if (FULLFORM_OK.has(t)) return null;
+  if (hivatalosTeljesNev(t)) return null;
   if (GENERIC_RX.test(t)) return 'generikus';
   const c = String(company || '').trim();
   // ⚠️ SZÓHATÁRON, nem puszta előtagként: a „Meta" nem előtagja a „Metaphor"-nak.
@@ -98,7 +116,7 @@ export function canonicalChip(tool, company) {
   if (pair) return pair;
   const alias = NAME_ALIAS[tool.toLowerCase()];
   if (alias) return alias;
-  if (FULLFORM_OK.has(tool)) return tool;
+  if (hivatalosTeljesNev(tool)) return tool;
   for (const full of FULLFORM_OK)
     if (tool.toLowerCase().startsWith(full.toLowerCase() + ' ')) return full;
   if (company && tool.toLowerCase().startsWith(company.toLowerCase() + ' ')) {
