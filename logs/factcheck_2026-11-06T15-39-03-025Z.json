@@ -1,0 +1,63 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.00793893,
+  "at": "2026-11-06T15:39:03.025Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-06T15-30-26-278Z_amazon-alexa_Text__shop__done__Alexa_for_Shopping_is_now_just_a.json",
+      "cim": "Text, shop, done: Alexa for Shopping is now just a text away",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk minden tényszerű állítása alátámasztott a forrásszövegben"
+    },
+    {
+      "file": "ARTICLE_2026-08-27T16-08-30-207Z_xai-news_Grok___Useful_AI_Chatbot_with_Voice___Image_Genera.json",
+      "cim": "Grok — Useful AI Chatbot with Voice & Image Generation - X.ai",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-draft-a-polite-meeting-agenda-from-a-messy-bullet-lis.json",
+      "cim": "How to draft a polite meeting agenda from a messy bullet list",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Ez egy általános munkafolyamat-útmutató, amely nem tesz konkrét állításokat termékekről, funkciókról vagy árakról — egyszerűen AI-asszisztenseket használ általános eszközként egy produktivitási feladathoz."
+    },
+    {
+      "file": "ARTICLE_2026-07-25T01-45-20-126Z_d-id-news_Tech_Crunch__D-ID_acquires_Berlin-based_video_star.json",
+      "cim": "Tech Crunch: D-ID acquires Berlin-based video startup simpleshow",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk a HeyGenről szól, de a forrás a D-ID általi simpleshow felvásárlásáról. Teljesen különböző termékekről van szó, nincs átfedés."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-draft-a-short-kind-message-to-a-teacher-or-landlord-a.json",
+      "cim": "How to draft a short, kind message to a teacher or landlord about a problem",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-12T17-08-23-913Z_sap_SAP_Advances_Finance_Operations_with_Embedded_Paym.json",
+      "cim": "SAP Advances Finance Operations with Embedded Payments, New Consolidation Capabilities, and Expanded AI",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "túl nagy átírás (132 szó a 703-ből)",
+      "modell_hu": "A forrás konkrét AI-asszisztens területeket és időpontokat ad meg, amelyeket a cikk tévesen homályosként ír le"
+    }
+  ]
+}

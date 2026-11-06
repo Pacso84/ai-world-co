@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-11-06T15:35:30.163Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00336248,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-11-06T15-30-26-278Z_amazon-alexa_Text__shop__done__Alexa_for_Shopping_is_now_just_a.json",
+      "article": "ARTICLE_2026-11-06T15-30-26-278Z_amazon-alexa_Text__shop__done__Alexa_for_Shopping_is_now_just_a.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00109221
+    },
+    {
+      "writer": "WRITER_2026-11-06T15-30-26-279Z_picsart_Gemini_Omni_1_2_Flash_now_in_Picsart__a_creator_s_.json",
+      "rejected": "REJECTED_2026-11-06T15-30-26-279Z_picsart_Gemini_Omni_1_2_Flash_now_in_Picsart__a_creator_s_.json",
+      "decision": "FAIL",
+      "score": 5,
+      "cost_usd": 0.00145677
+    }
+  ],
+  "finished_at": "2026-11-06T15:36:00.680Z",
+  "duration_seconds": 30.517
+}
