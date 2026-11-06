@@ -1,110 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179376493287928",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-04T04:02:12.879Z",
-      "updated": "2026-11-04T04:02:23.528Z"
-    },
-    {
-      "id": "t179376494352945",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-04T04:02:23.529Z",
-      "updated": "2026-11-04T04:02:53.595Z"
-    },
-    {
-      "id": "t179380754627975",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-04T15:52:26.279Z",
-      "updated": "2026-11-04T15:52:26.403Z"
-    },
-    {
-      "id": "t179380754640416",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-04T15:52:26.404Z",
-      "updated": "2026-11-04T15:53:08.504Z"
-    },
-    {
-      "id": "t17938075885245",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-04T15:53:08.525Z",
-      "updated": "2026-11-04T15:53:08.667Z"
-    },
-    {
-      "id": "t179380758866917",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-04T15:53:08.669Z",
-      "updated": "2026-11-04T15:53:46.330Z"
-    },
-    {
-      "id": "t179380762633138",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-04T15:53:46.331Z",
-      "updated": "2026-11-04T15:54:08.210Z"
-    },
-    {
-      "id": "t179380764821273",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-04T15:54:08.212Z",
-      "updated": "2026-11-04T15:54:24.397Z"
-    },
-    {
-      "id": "t179380766439879",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-04T15:54:24.398Z",
-      "updated": "2026-11-04T15:54:36.514Z"
-    },
-    {
-      "id": "t179380767651688",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-04T15:54:36.516Z",
-      "updated": "2026-11-04T15:54:43.095Z"
-    },
-    {
-      "id": "t179380768314963",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-04T15:54:43.149Z",
-      "updated": "2026-11-04T15:54:43.280Z"
-    },
-    {
-      "id": "t179380768328135",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-04T15:54:43.281Z",
-      "updated": "2026-11-04T15:55:21.506Z"
-    },
-    {
-      "id": "t179380772150778",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-04T15:55:21.507Z",
-      "updated": "2026-11-04T15:55:37.269Z"
-    },
-    {
       "id": "t179380773727014",
       "title": "Run designer",
       "status": "done",
@@ -479,49 +375,113 @@
       "agent": "publisher",
       "created": "2026-11-06T15:38:30.690Z",
       "updated": "2026-11-06T15:39:01.726Z"
+    },
+    {
+      "id": "t179399941824059",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-06T21:10:18.240Z",
+      "updated": "2026-11-06T21:10:18.449Z"
+    },
+    {
+      "id": "t179399941845126",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-06T21:10:18.451Z",
+      "updated": "2026-11-06T21:11:01.690Z"
+    },
+    {
+      "id": "t179399946169297",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-06T21:11:01.692Z",
+      "updated": "2026-11-06T21:11:01.896Z"
+    },
+    {
+      "id": "t179399946194396",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-06T21:11:01.943Z",
+      "updated": "2026-11-06T21:11:24.807Z"
+    },
+    {
+      "id": "t179399948480953",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-06T21:11:24.809Z",
+      "updated": "2026-11-06T21:11:39.345Z"
+    },
+    {
+      "id": "t179399949934888",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-06T21:11:39.348Z",
+      "updated": "2026-11-06T21:11:52.783Z"
+    },
+    {
+      "id": "t179399951278561",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-06T21:11:52.785Z",
+      "updated": "2026-11-06T21:12:12.421Z"
+    },
+    {
+      "id": "t179399953250087",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-06T21:12:12.500Z",
+      "updated": "2026-11-06T21:12:12.706Z"
+    },
+    {
+      "id": "t179399953270810",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-06T21:12:12.708Z",
+      "updated": "2026-11-06T21:12:12.913Z"
+    },
+    {
+      "id": "t179399953291552",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-06T21:12:12.915Z",
+      "updated": "2026-11-06T21:12:38.094Z"
+    },
+    {
+      "id": "t179399955809658",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-06T21:12:38.096Z",
+      "updated": "2026-11-06T21:12:53.315Z"
+    },
+    {
+      "id": "t179399957331877",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-06T21:12:53.318Z",
+      "updated": "2026-11-06T21:12:58.411Z"
+    },
+    {
+      "id": "t179399957841227",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-06T21:12:58.412Z",
+      "updated": "2026-11-06T21:13:22.716Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179295355924611",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-10-25T18:39:19.246Z",
-      "loud": false
-    },
-    {
-      "id": "n179298113957461",
-      "level": "warn",
-      "text": "📨 ellenorzo → iro: Hiányos / kell még adat: \"This Week in AI: The 5 Stories That Matter (October 25, 2026)\" — egészítsd ki: NO_LEDE: Hiányz",
-      "agent": "ellenorzo",
-      "at": "2026-10-26T02:18:59.574Z",
-      "loud": false
-    },
-    {
-      "id": "n179298230487290",
-      "level": "info",
-      "text": "SEO: 7 cikk optimalizálva (átlag 7.6/10).",
-      "agent": "seo",
-      "at": "2026-10-26T02:38:24.872Z",
-      "loud": false
-    },
-    {
-      "id": "n179298234088982",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready — you've got a good mix of practical how-tos, privacy guidance, and everyday use cases that should resonate with busy readers. One thing to watch: several articles fo",
-      "agent": "publisher",
-      "at": "2026-10-26T02:39:00.889Z",
-      "loud": false
-    },
-    {
-      "id": "n179298235687537",
-      "level": "success",
-      "text": "5 hír + 2 útmutató publikálva (költség: $0.0469).",
-      "agent": "ceo",
-      "at": "2026-10-26T02:39:16.875Z",
-      "loud": false
-    },
     {
       "id": "n179302570096974",
       "level": "warn",
@@ -1281,74 +1241,49 @@
       "agent": "fact-check",
       "at": "2026-11-06T15:40:12.973Z",
       "loud": false
+    },
+    {
+      "id": "n179399957330652",
+      "level": "info",
+      "text": "SEO: 2 cikk optimalizálva (átlag 8.5/10).",
+      "agent": "seo",
+      "at": "2026-11-06T21:12:53.306Z",
+      "loud": false
+    },
+    {
+      "id": "n179399958585092",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and ready—it flows nicely from learning what AI can (and can't) do, to using it safely, to practical writing tasks anyone can try. One note: verify all product names are the short",
+      "agent": "publisher",
+      "at": "2026-11-06T21:13:05.850Z",
+      "loud": false
+    },
+    {
+      "id": "n179399960275580",
+      "level": "success",
+      "text": "2 hír + 0 útmutató publikálva (költség: $0.0073).",
+      "agent": "ceo",
+      "at": "2026-11-06T21:13:22.755Z",
+      "loud": false
+    },
+    {
+      "id": "n17939996395511",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Ellenőrizendő állítás: \"What Is Stable Diffusion? A Simple Guide to the AI\" — A forrás a helyi offline futtatást és az a",
+      "agent": "fact-check",
+      "at": "2026-11-06T21:13:59.551Z",
+      "loud": false
+    },
+    {
+      "id": "n179399966935321",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „You feed it either ",
+      "agent": "fact-check",
+      "at": "2026-11-06T21:14:29.353Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179284450706439",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Try GPT-6's Intelligent UI: 5 everyday ways to use the new visuals\" (?/10)",
-      "ref": "GUIDE_try-gpt-6-s-intelligent-ui-5-everyday-ways-to-use-the-new-vi.json",
-      "at": "2026-10-24T12:21:47.064Z"
-    },
-    {
-      "id": "m179284452010915",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Google Workspace Weekly Recap - October 23, 2026\" hír a meglévő útmutatóra mutat: gemini-getting-started",
-      "ref": "gemini-getting-started",
-      "at": "2026-10-24T12:22:00.109Z"
-    },
-    {
-      "id": "m179284458172881",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-24T12:23:01.728Z"
-    },
-    {
-      "id": "m179284467516830",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „Google's rollout notes list Android devices under \"Rapid Release,\" which is the label for ”): \"Video tile pairing is now available on Google Meet\" — The article incorrectly states Android is only under Rapid Release when the source specifies both Rapid Release and Scheduled Release domains; also omits the iOS roll",
-      "ref": "ARTICLE_2026-10-22T02-27-20-161Z_google-workspace_Video_tile_pairing_is_now_available_on_Google_Meet.json",
-      "open": true,
-      "at": "2026-10-24T12:24:35.168Z"
-    },
-    {
-      "id": "m179284471342925",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Set up an Alexa+ routine that runs different steps\" — The guide's core technical claims about Alexa+ routines appear accurate, but one statement needs softening to account for potential UI variations across app versions.",
-      "ref": "ARTICLE_GUIDE_set-up-an-alexa-routine-that-runs-different-steps-on-weekday.json",
-      "open": true,
-      "at": "2026-10-24T12:25:13.429Z"
-    },
-    {
-      "id": "m179284494337069",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-24T12:29:03.370Z"
-    },
-    {
-      "id": "m179289455933049",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Use one Zapier MCP server across all your AI tools\" hír a meglévő útmutatóra mutat: how-to-add-an-ai-step-to-your-zapier-workflow",
-      "ref": "how-to-add-an-ai-step-to-your-zapier-workflow",
-      "at": "2026-10-25T02:15:59.330Z"
-    },
     {
       "id": "m179289494293619",
       "from": "designer",
@@ -2697,6 +2632,71 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-06T15:50:57.960Z"
+    },
+    {
+      "id": "m17939994847965",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"More Performance From Every Byte: How Full-Stack Codesign Solves AI’s Memory Challenge\" (?/10)",
+      "ref": "2026-11-06T04-06-30-395Z_nvidia-blog_More_Performance_From_Every_Byte__How_Full-Stack_C.json",
+      "at": "2026-11-06T21:11:24.796Z"
+    },
+    {
+      "id": "m179399949933273",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Gemini Omni 1.2 Flash now in Picsart: a creator’s guide\" — javítva: Model name 'Gemini Omni 1.2 Flash' cannot be independently verified — Google AI documentation shows no product with this exact name; this appears to be an invented/hallucinated model name; Attribution to 'Google's announcement' lacks a verifiable source URL in the article, making claims about the model unverifiable; ",
+      "ref": "2026-11-06T15-30-26-279Z_picsart_Gemini_Omni_1_2_Flash_now_in_Picsart__a_creator_s_.json",
+      "at": "2026-11-06T21:11:39.332Z"
+    },
+    {
+      "id": "m17939995127719",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Gemini Omni 1.2 Flash now in Picsart: a creator’s guide\" (?/10)",
+      "ref": "2026-11-06T15-30-26-279Z_picsart_Gemini_Omni_1_2_Flash_now_in_Picsart__a_creator_s_.json",
+      "at": "2026-11-06T21:11:52.771Z"
+    },
+    {
+      "id": "m179399953240811",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Gemini Omni 1.2 Flash now in Picsart: a creator’s guide\" hír a meglévő útmutatóra mutat: how-to-use-picsart-ai-playground-on-your-desktop",
+      "ref": "how-to-use-picsart-ai-playground-on-your-desktop",
+      "at": "2026-11-06T21:12:12.408Z"
+    },
+    {
+      "id": "m179399957839839",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 24 → 6/4/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-06T21:12:58.398Z"
+    },
+    {
+      "id": "m179399963955161",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Ellenőrizendő állítás: \"What Is Stable Diffusion? A Simple Guide to the AI\" — A forrás a helyi offline futtatást és az adatok sosem hagyják el a számítógépet kijelentést hangsúlyozza, de a cikk módszere (Hugging Face Spaces) ezzel ellentmond, mivel mindent távoli szervereken keresztül irányít át",
+      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+      "open": true,
+      "at": "2026-11-06T21:13:59.551Z"
+    },
+    {
+      "id": "m179399966935347",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „You feed it either a written description, a single photo, or up to five photos of the same”): \"AI 3D modeling is now live in Picsart Flow, from t\" — A cikk nem említi, hogy a node akár öt nézetet is elfogad ugyanazon objektumról a képből 3D-be konvertáláshoz.",
+      "ref": "ARTICLE_2026-10-12T17-08-31-032Z_picsart_AI_3D_modeling_is_now_live_in_Picsart_Flow__from_t.json",
+      "open": true,
+      "at": "2026-11-06T21:14:29.353Z"
     }
   ]
 }

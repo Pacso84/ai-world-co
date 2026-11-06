@@ -1,0 +1,62 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.01172872,
+  "at": "2026-11-06T21:13:23.974Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-06T15-30-26-279Z_picsart_Gemini_Omni_1_2_Flash_now_in_Picsart__a_creator_s_.json",
+      "cim": "Gemini Omni 1.2 Flash now in Picsart: a creator’s guide",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrást: 360p-s vázlat mód, 4K-s végső render, 15 másodperces kliphossz, 720p visszajelzéshez, 1080p közösségi médiához, hivatkozás-követés és szövegkezelés - mindegyik megfelel a hivatalos forrásszövegnek."
+    },
+    {
+      "file": "ARTICLE_2026-11-06T04-06-30-395Z_nvidia-blog_More_Performance_From_Every_Byte__How_Full-Stack_C.json",
+      "cim": "More Performance From Every Byte: How Full-Stack Codesign Solves AI’s Memory Challenge",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Minden konkrét tényállítás egyezik a forrásokkal: NVFP4, NVL72, HBM3e/HBM4, Blackwell Ultra到Vera Rubin fejlesztések (3% HBM kapacitás, 30x átfutás), 3 millió tokenes agentic trajektóriák, és a Nemotron modellek nevei (Lightning és Ultra) mind helyesek."
+    },
+    {
+      "file": "ARTICLE_2026-07-22T10-14-03-156Z_deeparteffects_What_Is_Stable_Diffusion__A_Simple_Guide_to_the_AI.json",
+      "cim": "What Is Stable Diffusion? A Simple Guide to the AI Behind Modern Image Generation",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A forrás a helyi offline futtatást és az adatok sosem hagyják el a számítógépet kijelentést hangsúlyozza, de a cikk módszere (Hugging Face Spaces) ezzel ellentmond, mivel mindent távoli szervereken keresztül irányít át"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-draft-a-simple-monthly-budget-when-your-income-is-irr.json",
+      "cim": "How to draft a simple monthly budget when your income is irregular",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-12T17-08-31-032Z_picsart_AI_3D_modeling_is_now_live_in_Picsart_Flow__from_t.json",
+      "cim": "AI 3D modeling is now live in Picsart Flow, from text or a photo",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás a forrásban nem szereplő állítást hozna be: „You feed it either a written description, a single photo, or up to five photos of the same”",
+      "modell_hu": "A cikk nem említi, hogy a node akár öt nézetet is elfogad ugyanazon objektumról a képből 3D-be konvertáláshoz."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-draft-a-wedding-speech-when-you-have-no-idea-where-to.json",
+      "cim": "How to Draft a Wedding Speech When You Have No Idea Where to Start",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}
