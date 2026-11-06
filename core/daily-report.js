@@ -27,7 +27,7 @@ import { summarizeRuns, describeFailures } from './make-health.js';
 // A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
 // összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
 import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
-import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor } from './report-lines.js';
+import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
@@ -512,6 +512,17 @@ async function main() {
       .map(f => { try { return JSON.parse(readFileSync(join(ldir, f), 'utf-8')); } catch { return null; } })
       .filter(Boolean) : [];
     lines.push(tenyellenorzoLine(naplok, Date.now()));
+  } catch { /* a riport ettől még kimegy */ }
+  // 🛟 TÉVES „KITALÁLT NÉV” KIFOGÁS felülbírálva (2026-11-06): az ellenőrző logs/reviewer_*.json naplóiból.
+  try {
+    const ldir = join(ROOT, 'logs');
+    const tegnap = new Date(Date.now() - 86400e3).toISOString().slice(0, 10);
+    const naplok = existsSync(ldir) ? readdirSync(ldir)
+      .filter(f => /^reviewer_\d{4}-\d{2}-\d{2}T.*\.json$/.test(f) && f.slice(9, 19) >= tegnap)
+      .map(f => { try { return JSON.parse(readFileSync(join(ldir, f), 'utf-8')); } catch { return null; } })
+      .filter(Boolean) : [];
+    const sor = nevVedesLine(naplok, Date.now());
+    if (sor) lines.push(sor);
   } catch { /* a riport ettől még kimegy */ }
   // HITELESSÉG-KAPU összegzés (2026-07-16): mit fogott a publikálás előtti
   // hallucináció-szűrő — blokk = rejected-be ment, hold = bíró-hiba, várakozik.

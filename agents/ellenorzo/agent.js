@@ -35,7 +35,8 @@ import { blockingIssues, advisoryIssues, lessonFor } from '../../core/auto-check
 import { guideClaimIssues } from '../../core/guide-claims.js';
 import { arJelzes } from '../../core/ar-tilalom.js';
 import { tevedesJelzes } from '../../core/ismert-tevedesek.js';
-import { biraloForrasInfo } from '../../core/biralo-forrasinfo.js';
+import { biraloForrasInfo, tevesNevKifogas, nevJavitoMegjegyzes } from '../../core/biralo-forrasinfo.js';
+import { cikkForrasSzovege, cikkKivonat } from '../../core/forras-cache.js';
 import { publikalasMeta, foglaltSlugok } from '../../core/publish-meta.js';
 import { findBritish } from '../../core/us-spelling.js';
 import { skillsBlock } from '../../core/skills.js';
@@ -873,7 +874,43 @@ async function main() {
     // (a Gemini Omni 1.2 Flash hírt „kitalált név” miatt utasította el) — core/biralo-forrasinfo.js
     const sourceInfo = biraloForrasInfo(writerData);
 
-    const aiReviewResult = await aiReview(markdown, sourceInfo, brandContext, writerData._meta?.brief_attempt === true);
+    let aiReviewResult = await aiReview(markdown, sourceInfo, brandContext, writerData._meta?.brief_attempt === true);
+
+    // 🛟 TÉVES „KITALÁLT NÉV” KIFOGÁS — KÓD-BIZTOSÍTÉK (2026-11-06, user: „a hibák ne forduljanak többet elő”).
+    // A bíró MÉGIS kitaláltnak mondhatja a hivatalos forrásban álló / hiteles listás nevet (Gemini Omni 1.2 Flash,
+    // Gemini Notebook, Claude Opus 5.5…). Ilyenkor: egyszer újrabírálat javító megjegyzéssel, és a téves kifogás
+    // SEHOVA nem jut tovább (elutasítás oka, átdolgozó „Fix:”-e, memória-lecke). Szabályok: core/biralo-forrasinfo.js.
+    if (aiReviewResult) {
+      const nevForras = {
+        originalTitle: writerData.original_title || '',
+        sourceUrl: String(writerData._meta?.source_link || '').trim(),
+        sourceText: String(cikkForrasSzovege(writerData._meta) || cikkKivonat(writerData._meta) || '')
+      };
+      const elso = tevesNevKifogas(aiReviewResult, nevForras);
+      if (elso.nevek.length) {
+        console.log(`   🛟 Téves „kitalált név” kifogás (a név a hivatalos forrásban / hiteles listán van): ${elso.nevek.join(', ')} → újrabírálat`);
+        const ujra = await aiReview(markdown, sourceInfo + nevJavitoMegjegyzes(elso.nevek), brandContext, writerData._meta?.brief_attempt === true);
+        // az első bírálat költsége (a lenti közös sor csak a VÉGSŐ bírálatét adja hozzá)
+        if (ujra) stats.total_cost_usd += aiReviewResult._aiCost || 0;
+        let vegso = ujra || aiReviewResult;
+        const masodik = tevesNevKifogas(vegso, nevForras);
+        const kivett = [...elso.teves, ...(ujra ? masodik.teves : [])];
+        vegso.issues = ujra ? masodik.maradt : elso.maradt;
+        if (masodik.verdictTeves || (!ujra && elso.verdictTeves)) {
+          vegso.verdict = vegso.issues.length ? 'Remaining issues: ' + vegso.issues.join('; ') : 'Only a wrong "invented name" objection — overruled by code (the name is in the official source).';
+        }
+        // Ha a FAIL-nak a téves név-kifogáson kívül NINCS más oka, nem buktatjuk: a hitelesség-kapu (teljes
+        // forrásszöveggel) úgyis átnézi publikálás előtt. Az érthetőségi kaput ez NEM érinti.
+        if (vegso.decision !== 'PASS' && !vegso.issues.length) {
+          vegso.decision = 'PASS';
+          vegso.overall_score = Math.max(Number(vegso.overall_score) || 0, MIN_PASSING_SCORE);
+          vegso.nev_felulbiralva_pass = true;
+        }
+        vegso.nev_felulbiralva = { nevek: elso.nevek, kivett_kifogasok: kivett };
+        aiReviewResult = vegso;
+        (stats.nev_felulbiralva = stats.nev_felulbiralva || []).push({ file: writerFilename, cim: writerData.original_title || '', nevek: elso.nevek, ujrabiralat: !!ujra, dontes: vegso.decision });
+      }
+    }
 
     if (!aiReviewResult) {
       console.log(`   ⚠️  AI review failed — megőrizzük újra próbáláshoz\n`);

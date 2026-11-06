@@ -516,3 +516,23 @@ export function zaroSor(sorok) {
   const nevek = [...new Set(hibak.map(hibaNev).filter(Boolean))];
   return `⚠️ Nem minden ment magától: ${hibak.length} hibajelzés — ${nevek.join(' · ')}. Fent a részletek.`;
 }
+
+// 🛟 TÉVES „KITALÁLT NÉV” KIFOGÁS FELÜLBÍRÁLVA (2026-11-06, user: „a hibák ne forduljanak többet elő”).
+// Az ellenőrző (agents/ellenorzo) a logs/reviewer_*.json `nev_felulbiralva` tömbjébe írja, ha a bíró egy
+// hivatalos forrásban álló / hiteles listás nevet kitaláltnak mondott, és a kód kivette a kifogást
+// (core/biralo-forrasinfo.js). Csak akkor szól, ha volt ilyen — ilyenkor érdemes a nevet felvenni a
+// website/tool-links.json-ba (hivatalos URL-lel), hogy a bíró már elsőre tudja.
+export function nevVedesLine(naplok, now = Date.now(), oraAblak = 24) {
+  const tol = now - oraAblak * 3600e3;
+  const esetek = [];
+  for (const n of Array.isArray(naplok) ? naplok : []) {
+    const t = Date.parse(n?.started_at || '');
+    if (!Number.isFinite(t) || t < tol || t > now + 3600e3) continue;
+    for (const e of Array.isArray(n.nev_felulbiralva) ? n.nev_felulbiralva : []) if (e && Array.isArray(e.nevek)) esetek.push(e);
+  }
+  if (!esetek.length) return '';
+  const nevek = [...new Set(esetek.flatMap(e => e.nevek))];
+  const at = esetek.filter(e => e.dontes === 'PASS').length;
+  const sorok = esetek.slice(0, 3).map(e => `   · ${e.nevek.join(', ')} — „${rovidCim(e.cim, 60)}” → ${e.dontes === 'PASS' ? '✅ a bírálaton átment' : '❌ más okból nem ment át'}`);
+  return [`🛟 Ellenőrző: ${esetek.length}× téves „kitalált név” kifogást a kód felülbírált (${at} a bírálaton átment) — a név a hivatalos forrásban áll: ${nevek.join(', ')}. Ha új termék: vedd fel a website/tool-links.json-ba.`, ...sorok].join('\n');
+}

@@ -180,20 +180,20 @@ export async function aiTruthVerdict(markdown, meta = {}, askFn) {
 // ⚠️ Minden idézett névnek egyeznie kell: „'Gemini' has no 'Rewrite'
 // button" a Gemini-t idézi (címben van), de a 'Rewrite'-ot nem → marad.
 // ---------------------------------------------------------------
-const LETEZES_RX = /invented|fabricat|does not exist|doesn't exist|no (?:such|known|verified|recogni[sz]ed|confirmed|published)|not (?:a )?(?:real|recogni[sz]ed|known|verified)|training|not aware|made[- ]up|no evidence|does not match any/i;
-const ARAS_RX = /\$|€|£|\d\s*%|percent|price|pricing|cost|https?:\/\//i;
+export const LETEZES_RX = /invented|fabricat|does not exist|doesn't exist|no (?:such|known|verified|recogni[sz]ed|confirmed|published)|not (?:a )?(?:real|recogni[sz]ed|known|verified)|training|not aware|made[- ]up|no evidence|does not match any/i;
+export const ARAS_RX = /\$|€|£|\d\s*%|percent|price|pricing|cost|https?:\/\//i;
 // ⚠️ FELÜLETRŐL SZÓLÓ KIFOGÁST SOHA NEM ENGEDÜNK EL. A kalibráláskor a
 // szűrő elengedett volna egy jogos blokkot: az útmutató egy nem létező
 // „Summarize" menüpontot írt le a Safariban, és mivel a „Summarize" szó a
 // témacímben is szerepelt, a név-egyezés „visszaigazolta". A kitalált
 // gomb/menü a kapu legfontosabb fogása — ezt a forrás címe nem igazolja.
-const FELULET_RX = /\b(?:button|menu|option|icon|tab|panel|toggle|dropdown|settings?|screen|UI|click|tap|step \d|sidebar|toolbar|label(?:ed|led)?)\b/i;
+export const FELULET_RX = /\b(?:button|menu|option|icon|tab|panel|toggle|dropdown|settings?|screen|UI|click|tap|step \d|sidebar|toolbar|label(?:ed|led)?)\b/i;
 
 /** kisbetű, csak betű/szám, szóközzel elválasztva — „Opus 5.5" ≡ „opus-5-5" */
-const norm = s => ' ' + String(s || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim() + ' ';
+export const norm = s => ' ' + String(s || '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim() + ' ';
 
 /** A kifogásban idézett nevek. Az aposztróf a szó közepén („Anthropic's") nem idézőjel. */
-function idezettNevek(szoveg) {
+export function idezettNevek(szoveg) {
   const ki = [];
   for (const m of String(szoveg).matchAll(/(?<![\p{L}\p{N}])['‘"“]([^'’"”\n]{2,60})['’"”](?![\p{L}\p{N}])/gu)) ki.push(m[1].trim());
   return ki.filter(x => /[\p{L}\p{N}]/u.test(x));
