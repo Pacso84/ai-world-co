@@ -110,10 +110,12 @@ function promptDoboz(p, sz, nyelvTipp) {
 }
 
 // A borítókép (16:9, 1280×720) ugyanoda visz, mint a cím mellette → a felolvasónak nem ismételjük (aria-hidden,
-// tabindex -1, üres alt); lusta betöltés, megadott méret (nincs ugrálás betöltéskor). 10-18, user: „nézzük meg képekkel”.
+// tabindex -1); lusta betöltés, megadott méret (nincs ugrálás betöltéskor). 10-18, user: „nézzük meg képekkel”.
+// 11-06: az alt a cikk CÍME (eddig üres): a Bing az üres alt-ot „<img> ALT nélkül” hibának jelezte (/trending);
+// a link aria-hidden, így a felolvasó ezt sem olvassa fel → nincs ismétlés.
 const KEP_MERET = 'width="1280" height="720" loading="lazy" decoding="async"';
 function kepLink(e) {
-  return `<a class="tr-img" href="article/${esc(e.slug)}" tabindex="-1" aria-hidden="true"><img src="${esc(e.kep)}" alt="" ${KEP_MERET}></a>`;
+  return `<a class="tr-img" href="article/${esc(e.slug)}" tabindex="-1" aria-hidden="true"><img src="${esc(e.kep)}" alt="${esc(e.title || e.slug)}" ${KEP_MERET}></a>`;
 }
 
 function naploSor(e, sz, datum, hetnap, nyelvTipp, horgony) {

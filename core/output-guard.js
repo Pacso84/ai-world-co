@@ -98,6 +98,26 @@ export function h1Ellenorzes(lapok) {
 }
 
 // ------------------------------------------------------------------
+// 🖼️ IMG ALT (2026-11-06): a Bing „<img> ALT nélkül” jelzése a /trending lapon jött (a képek alt=""
+// mellett mentek ki). Minden kiépített lapon minden <img>-nek NEM ÜRES alt kell. A <script> tartalma
+// nem számít (abban sablon-szöveg lehet, nem kép). Ugyanaz a kivétel, mint a H1-nél.
+// ------------------------------------------------------------------
+/** @param {{f:string, h:string}[]} lapok @returns {object|null} IMG_ALT_HIANY lelet vagy null */
+export function altEllenorzes(lapok) {
+  const rossz = [];
+  for (const { f, h } of lapok) {
+    if (h1Kivetel(f, h)) continue;
+    const tiszta = String(h).replace(/<script\b[\s\S]*?<\/script>/gi, '');
+    const n = (tiszta.match(/<img\b[^>]*>/gi) || [])
+      .filter(m => !/\balt\s*=\s*(?:"[^"]*[^"\s][^"]*"|'[^']*[^'\s][^']*'|[^\s"'>]+)/i.test(m)).length;
+    if (n) rossz.push(`${f} (${n} kép)`);
+  }
+  return rossz.length
+    ? { code: 'IMG_ALT_HIANY', uzenet: `🖼️ ${rossz.length} lapon van ALT nélküli (vagy üres ALT-ú) kép — Bing-jelzés! pl. ${rossz.slice(0, 3).join(', ')}`, pelda: rossz.slice(0, 10), db: rossz.length }
+    : null;
+}
+
+// ------------------------------------------------------------------
 // CLI — csak közvetlen futtatáskor (a CI-lépés hívja). Importkor nem fut.
 // ------------------------------------------------------------------
 /** Közvetlenül futtatták-e a modult? Külön függvény, hogy tesztelhető legyen:
@@ -140,6 +160,8 @@ if (kozvetlenFuttatas(process.argv[1])) {
     const h1 = h1Ellenorzes(minden);
     eredmeny.lapokOsszesen = minden.length;
     if (h1) eredmeny.problems.unshift(h1);
+    const alt = altEllenorzes(minden);
+    if (alt) eredmeny.problems.unshift(alt);
   }
 
   console.log('🧩 KIMENET-ŐR (a friss buildön)');

@@ -100,8 +100,10 @@ t('🎨 dizájn (10-18): fent a HÉT 7 NAPJA (nem keresőmező — user: „a ke
 t('🖼️ képek (10-18, user: „nézzük meg képekkel”): borítókép a napló-sorban; kép nélkül nincs üres keret', () => {
   const r = trendRadar([cikk(1, { kep: '/assets/images/g1.jpg' }), cikk(2)], { now: MOST });
   const h = trendRadarHtml(r, { sz: SZ });
-  assert.match(h, /<a class="tr-img" href="article\/g1" tabindex="-1" aria-hidden="true"><img src="\/assets\/images\/g1\.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async"><\/a>/,
+  assert.match(h, /<a class="tr-img" href="article\/g1" tabindex="-1" aria-hidden="true"><img src="\/assets\/images\/g1\.jpg" alt="[^"]+" width="1280" height="720" loading="lazy" decoding="async"><\/a>/,
     'a kép link (a cím mellett ugyanoda visz → a felolvasónak nem ismételjük), lusta betöltéssel, méretezve');
+  // 11-06: a Bing az üres alt-ot „<img> ALT nélkül” hibának jelezte → az alt a cikk címe, és SOHA nem üres
+  assert.doesNotMatch(h, /alt=""/, '🔴 üres alt a /trending oldalon (Bing: <img> ALT nélkül)');
   assert.equal((h.match(/class="tr-img"/g) || []).length, 1, 'a kép nélküli tételnél nincs üres keret');
   assert.equal(r.het[0].kep, '/assets/images/g1.jpg');
 });
