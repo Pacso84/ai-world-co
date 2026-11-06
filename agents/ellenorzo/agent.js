@@ -35,6 +35,7 @@ import { blockingIssues, advisoryIssues, lessonFor } from '../../core/auto-check
 import { guideClaimIssues } from '../../core/guide-claims.js';
 import { arJelzes } from '../../core/ar-tilalom.js';
 import { tevedesJelzes } from '../../core/ismert-tevedesek.js';
+import { biraloForrasInfo } from '../../core/biralo-forrasinfo.js';
 import { publikalasMeta, foglaltSlugok } from '../../core/publish-meta.js';
 import { findBritish } from '../../core/us-spelling.js';
 import { skillsBlock } from '../../core/skills.js';
@@ -868,11 +869,9 @@ async function main() {
     }
 
     // 4b. AI review (Gemini Pro ingyenes 50/nap)
-    const sourceInfo = `
-Source: ${writerData._meta.source_name} (${writerData._meta.source_id})
-URL: ${writerData._meta.source_link}
-Original title: ${writerData.original_title}
-`;
+    // 2026-11-06: hiteles névlista + mai dátum + „a forrás címében szereplő név VALÓDI”
+    // (a Gemini Omni 1.2 Flash hírt „kitalált név” miatt utasította el) — core/biralo-forrasinfo.js
+    const sourceInfo = biraloForrasInfo(writerData);
 
     const aiReviewResult = await aiReview(markdown, sourceInfo, brandContext, writerData._meta?.brief_attempt === true);
 

@@ -108,6 +108,7 @@ const IMAGE_NAMES = [
   // eszközök
   'Image Playground',   // Apple Intelligence képgenerátora — nem chat (2026-08-17)
   'Project Genie',      // Google DeepMind világ-/videómodell — nem chat
+  'Gemini Omni',        // Google videómodell (a Gemini appban a Veót váltja; gemini.google/overview/video-generation) — 2026-11-06
   'Stable Diffusion',   // Hugging Face-en futtatva, de képmodell
   'Upscayl'             // AI-képfelnagyító
 ];
