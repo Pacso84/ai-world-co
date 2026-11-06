@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "written_at": "2026-11-06T04:09:08.305Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.004298,
+    "original_draft": "2026-11-06T04-06-30-395Z_nvidia-blog_More_Performance_From_Every_Byte__How_Full-Stack_C.json",
+    "source_id": "nvidia-blog",
+    "source_name": "NVIDIA Blog (hivatalos)",
+    "source_link": "https://blogs.nvidia.com/blog/memory-full-stack-codesign/",
+    "source_links": [
+      "https://blogs.nvidia.com/blog/memory-full-stack-codesign/",
+      "https://blogs.nvidia.com/blog/nvidia-life-chris-alexiuk/"
+    ],
+    "source_snippet_len": 721,
+    "source_text_via": [
+      "hirfolyam",
+      "hirfolyam"
+    ],
+    "source_text_len": 9006,
+    "source_text_key": "8abc88fa156b7717",
+    "source_overlap_words": 9,
+    "merged_from": 2,
+    "merged_theme": "NVIDIA AI infrastructure and open models",
+    "trend": null,
+    "status": "rejected",
+    "rejected_at": "2026-11-06T04:09:34.105Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 929
+    },
+    "ai_review": {
+      "overall_score": 5,
+      "clarity_score": null,
+      "decision": "FAIL",
+      "issues": [
+        "Unverified product name 'NVIDIA Nemotron 3.5 Super VL' — source blog post does not list this model; company lessons forbid inventing AI model names",
+        "Claim 'Several model builders... have released NVFP4 versions' is not corroborated by source; should be attributed to NVIDIA or removed",
+        "Missing source URL — metadata shows 'nvidia-blog' as source but no URL to verify model claims",
+        "Article structure is solid but factual gatekeeping fails because critical technical claims cannot be independently substantiated"
+      ],
+      "verdict": "The article has excellent structure, clear explanations, and proper brand voice, but it introduces unverified product names and unconfirmed claims about other model builders without backing from the stated source. Per company lessons on never inventing model names, these claims must either be verified against the official NVIDIA blog or removed before publication.",
+      "_aiCost": 0.0015309,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The article has excellent structure, clear explanations, and proper brand voice, but it introduces unverified product names and unconfirmed claims about other model builders without backing from the stated source. Per company lessons on never inventing model names, these claims must either be verified against the official NVIDIA blog or removed before publication.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-11-06T04-06-30-395Z_nvidia-blog_More_Performance_From_Every_Byte__How_Full-Stack_C.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"Why AI Keeps Running Short on Memory, and How NVIDIA Says It Stretches Every Byte\"\nsubtitle: \"A plain-English look at the memory squeeze behind AI tools, and the open Nemotron models NVIDIA is promoting.\"\ncategory: \"ai-news\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"nvidia\", \"ai-memory\", \"open-models\", \"nemotron\", \"ai-infrastructure\"]\n---\n\n# Why AI Keeps Running Short on Memory, and How NVIDIA Says It Stretches Every Byte\n\n> **In short:** NVIDIA says bigger models, longer conversations and multi-step AI agents are straining the fast memory inside GPUs. Its answer is to design chips, networking, storage and software together, and it also promotes its open Nemotron models.\n\nHave you ever noticed an AI chat slowing down once a conversation gets very long? Part of the reason sits in memory, the short-term workspace inside the chips that run AI. Here is what NVIDIA's recent announcement says about that problem, and why it may matter to you.\n\n## The memory squeeze, in plain terms\n\nA **GPU** (graphics processing unit) is the chip that does most of the heavy math behind AI. It works with **HBM** (high-bandwidth memory), a very fast memory placed right beside it. That fast space is limited, and NVIDIA says memory supply is tightening and prices are rising, a trend it expects to continue for a while.\n\nTwo things fill that space:\n\n- **Model weights**: the numbers that hold what an AI learned during training.\n- **KV cache** (key-value cache, the AI's running notes): the context it keeps so it does not have to reprocess the same information for every reply.\n\nNVIDIA points to three trends adding pressure. Models are getting larger. Conversations are getting longer. And **agents** (AI systems that use tools and take several steps toward a goal) carry context across many calls. The company notes some agent workflows process up to 3 million **tokens** (small chunks of text the AI reads and writes). **RAG** (retrieval-augmented generation, which adds relevant documents to a question before the AI answers) adds even more to process.\n\n## Why more memory is not the whole answer\n\nPicture a kitchen. The counter is close and quick to reach, but small. The pantry is farther away and slower to reach, but much bigger. A cook who only adds counter space still waits for ingredients to move from storage to the stove.\n\nNVIDIA describes the same limit in AI. When many users share a system, memory can stop feeding data to the chip as fast as the chip can use it. Engineers call this the **memory wall**. Past that point, extra fast memory adds cost and power use without speeding up responses.\n\nSo NVIDIA's approach is to manage memory across every layer, not just add more of it.\n\n## What NVIDIA says it is doing\n\nNVIDIA calls its strategy **full-stack codesign**, meaning it designs GPUs, CPUs, networking, storage and software together. The company also says it was first to bring HBM3e and HBM4 into an accelerated computing stack.\n\nIts main ideas include:\n\n- **Keep fast memory for what is active.** Data needed right now stays close to the chip, and the rest moves to cheaper tiers and returns before it is needed.\n- **Store numbers in fewer bits.** NVIDIA describes **NVFP4**, a 4-bit format that takes less space than the 8-bit FP8 format on its Hopper platform. Several model builders, including NVIDIA Nemotron 3.5 Super VL, have released NVFP4 versions.\n- **Spread big models across many chips.** In an NVL72 system, model weights can be distributed across up to 72 GPUs, so each one holds a smaller share.\n\nNVIDIA also reports results. It says HBM capacity per GPU rose only about 3% from Blackwell Ultra to the Vera Rubin platform, while agentic throughput per dollar rose by up to 30 times on the SemiAnalysis AgentX benchmark. These are the company's own claims about its systems, not guarantees for any particular setup.\n\n## Why open models matter too\n\nNVIDIA promotes its **Nemotron** family of open models, which it describes as built for long-running, specialized AI agents. \"Open\" means developers can see and build on more than the finished program. Chris Alexiuk, a senior product research engineer at NVIDIA who teaches developers on YouTube, argues that openness should include access to the model's weights, the data behind it and the training methods.\n\n## What this means for you\n\n- **In everyday life**: AI tools may get faster and handle longer chats over time, but the memory work happens behind the scenes. You do not need to manage it.\n- **For your business or work**: If your team uses AI agents, memory and context length can affect speed and cost. Ask your vendors how they handle long tasks, and check the official pricing page for current costs.\n- **If you're just getting started**: Keep your chats focused. When you switch topics, start a fresh conversation so the AI is not carrying context you no longer need.\n- **If you already use it**: If you run open models on your own computer, check the model's official page for whether an NVFP4 version is offered. NVIDIA says this format is designed to use less memory.\n\n## Wrap-up\n\nThe main takeaway is simple: AI runs on a limited supply of fast memory, and NVIDIA says the answer is smarter use of every layer, not just more hardware. Open models add another piece by letting developers inspect and build on the tools themselves. Your next step: visit NVIDIA's official blog, find the full memory article, and read the section on memory tiers so the terms feel familiar the next time you see them.",
+  "original_title": "More Performance From Every Byte: How Full-Stack Codesign Solves AI’s Memory Challenge"
+}

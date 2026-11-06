@@ -1,0 +1,88 @@
+{
+  "started_at": "2026-11-06T04:06:36.605Z",
+  "drafts_total": 10,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 4,
+  "merged_total": 2,
+  "skipped_repeat": 2,
+  "repeats": [
+    {
+      "cim": "Gemini in Google Workspace: Three New Features and What They Do",
+      "mar": "Gemini Is Spreading Across Google Workspace — What That Means for You",
+      "pont": 0.9317149436556306,
+      "by": "embedding",
+      "theme": "Google Workspace Gemini AI integrations"
+    },
+    {
+      "cim": "What OpenAI's Latest Business and Developer Announcements Mean for Everyday Users",
+      "mar": "What OpenAI's Latest Business Updates Mean for Everyday Workers",
+      "pont": 0.9474583421753788,
+      "by": "embedding",
+      "theme": "OpenAI enterprise and developer tools"
+    }
+  ],
+  "source_via": {
+    "hirfolyam": 6,
+    "html": 4,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.01983049,
+  "by_article": [
+    {
+      "draft": "2026-11-06T04-06-30-396Z_google-workspace_Get_actionable_insights_with_Gemini_in_Google_Form.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "Gemini Is Spreading Across Google Workspace — What That Means for You",
+      "score": 0.9317149436556306,
+      "cost_usd": 0.0046388
+    },
+    {
+      "draft": "2026-11-04T15-53-08-488Z_openai-blog_OpenAI_to_acquire_Pierre_Computer_Company__Inc_.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "What OpenAI's Latest Business Updates Mean for Everyday Workers",
+      "score": 0.9474583421753788,
+      "cost_usd": 0.0038714
+    },
+    {
+      "draft": "2026-11-05T04-09-11-668Z_aws-ml_Smart_Approvals_in_Amazon_Quick__Human_oversight_w.json",
+      "writer_output": "WRITER_2026-11-05T04-09-11-668Z_aws-ml_Smart_Approvals_in_Amazon_Quick__Human_oversight_w.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "AWS Amazon Quick AI features",
+      "source_via": [
+        "hirfolyam",
+        "hirfolyam"
+      ],
+      "source_chars": 9007,
+      "source_overlap_words": 9,
+      "cost_usd": 0.0041572,
+      "duration_ms": 16693,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-06T04-06-30-395Z_nvidia-blog_More_Performance_From_Every_Byte__How_Full-Stack_C.json",
+      "writer_output": "WRITER_2026-11-06T04-06-30-395Z_nvidia-blog_More_Performance_From_Every_Byte__How_Full-Stack_C.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "NVIDIA AI infrastructure and open models",
+      "source_via": [
+        "hirfolyam",
+        "hirfolyam"
+      ],
+      "source_chars": 9006,
+      "source_overlap_words": 9,
+      "cost_usd": 0.0053414,
+      "duration_ms": 26991,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-11-06T04:08:09.477Z",
+  "duration_seconds": 92.872
+}

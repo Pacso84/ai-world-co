@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "build-a-personal-reading-list-with-ai-based-on-books-you-alr",
+    "company": "",
+    "tool": "",
+    "icon": "📚",
+    "level": "intermediate",
+    "source_news": null,
+    "trend": null,
+    "written_at": "2026-11-06T04:10:21.900Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0054353,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-11-06T04:11:01.094Z",
+    "slug": "build-a-personal-reading-list-with-ai-based-on-books-you-already-loved",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1391
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide with clear step-by-step instructions, helpful 'you'll know it worked when' checkpoints, and strong safety warnings about AI accuracy. The audience fit is perfect for everyday people, the tone is encouraging and non-judgmental, and all structure requirements are met including the 'What this means for you' section and wrap-up next step.",
+      "_aiCost": 0.0019176,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-06T04:11:46.895Z",
+    "seo": {
+      "meta_description": "Use AI to build a personal reading list from books you already loved. Get mood-sorted book recommendations with a reusable prompt anyone can try.",
+      "keywords": [
+        "use AI for book recommendations",
+        "AI reading list generator",
+        "personalized book suggestions AI",
+        "mood sorted reading list",
+        "how to find books like your favorites",
+        "AI book recommendation prompt",
+        "get reading recommendations from AI chat"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add an FAQ section at the end addressing common concerns like 'Does this work with any AI assistant?' to capture featured snippet opportunities",
+        "Include a brief example of the actual reusable prompt text within the article to reinforce the keyword phrase 'book recommendation prompt'",
+        "Add an internal link to a related article about verifying AI-generated content to support the 'always check' guidance mentioned"
+      ],
+      "optimised_at": "2026-11-06T04:12:47.403Z"
+    },
+    "fact_verified_at": "2026-11-06T04:13:31.361Z"
+  },
+  "article_markdown": "---\ntitle: \"Build a personal reading list with AI based on books you already loved\"\nsubtitle: \"Turn three favorites into a mood-sorted list of next reads you can start tonight, using a reusable prompt and a quick check.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"\"\ntool: \"\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"reading\", \"prompts\", \"personal-productivity\"]\n---\n\n# Build a personal reading list with AI based on books you already loved\n\n> **In short:** Give an AI chat assistant three books or shows you loved, and it can suggest new titles sorted by mood. Always check each title yourself, because assistants can misremember authors or invent books. You don't need a paid plan for this workflow.\n\nBy the end of this guide, you'll have a reusable prompt that turns three favorites into a mood-sorted reading list, plus a simple way to check it. It's for anyone who already uses an AI chat assistant and wants better suggestions than a generic bestseller page.\n\n## Before you start\n\n- An account with any AI chat assistant you already use. The steps are generic, so they work with most chat tools that have a text box.\n- Three books or shows you genuinely loved, with the titles spelled correctly.\n- A notes app or plain document where you can save your template and your final list.\n- About 25 to 30 minutes. Basic chat is free on many assistants, and this workflow doesn't require an upgrade.\n\n## Step 1 — Write down your three favorites and what you loved about each\n\nOpen your notes app and create a new note. Write your three favorites, one per line. After each title, add one sentence about what hooked you: the pacing, the characters, the setting, the humor, or the ending. Don't skip this part. An assistant can match on feelings and features much better than on titles alone. Nothing is sent anywhere yet, so this is just you thinking clearly. If you can't find a notes app, use any text file or a paper notebook and type the list into the chat later.\n\n💬 Example: \"[Favorite title] — I loved the fast pace and the funny narrator.\"\n\nYou'll know it worked when each favorite has a short note explaining what you loved, not just a title.\n\n## Step 2 — Save a reusable template\n\nNow turn your note into a template you can reuse for any future list. Copy the structure below into the same notes file, and keep the square-bracket parts as blanks you fill in each time. Think of this like a recipe card: the ingredients change, but the method stays the same. Look for a \"new chat\" button, often a plus or pencil icon, so you can start a fresh conversation. Some assistants also offer a saved-instructions setting, but if you don't see one, the note works just as well.\n\n💬 Example: \"I loved [favorite 1], [favorite 2], and [favorite 3]. Here is what I liked about each: [what you loved]. Suggest 12 books I haven't read yet, grouped into three moods: cozy, intense and thoughtful.\"\n\nYou'll know it worked when your notes file contains a prompt with clear blanks you can fill in whenever you want a new list.\n\n## Step 3 — Send the prompt and ask for reasons\n\nFill in the blanks with your own details, then paste the whole prompt into a new chat. Press the send arrow beside the text box, or press Enter on a computer. The reply usually appears within a few seconds, often as a list under the three mood headings. If the list feels generic, like a bestseller page, add more detail about what you loved and send it again. Then ask for a short reason for each title, which helps you judge whether it fits.\n\n💬 Example: \"For each title, add one sentence explaining which of my three favorites it resembles and why.\"\n\nYou'll know it worked when you see a list grouped under three mood headings, and each title has a sentence explaining the connection to your favorites.\n\n## Step 4 — Check every title before you trust it\n\nPick three titles from the list and look each one up in a library catalog or a bookstore website. Compare the author and the first publication year with what the assistant told you. This step matters because AI assistants can mix up authors, blend two books into one, or produce a title that sounds real but doesn't exist. You can't count on the chat to verify itself, so you check. If a title doesn't turn up, don't assume you misspelled it. Ask the assistant for the author and year, then search for that instead. It also can't see what your local library has in stock or what's currently available, so confirm that yourself.\n\n💬 Example: \"For each title you suggested, give the author and the year it was first published, and mark any you are not sure about.\"\n\nYou'll know it worked when you have confirmed at least three titles, and any you couldn't find are removed from your list.\n\n## Step 5 — Refine the list in the same chat\n\nStay in the same conversation and ask a follow-up that builds on the answers already there. This is where the chat becomes more useful, because it remembers what you said earlier in that thread. Tell it which titles you've already read, and ask it to replace them or narrow a mood group. If it ignores a detail, point it out directly. Keep in mind that very long chats can start to lose early details, so if the replies drift, paste your favorites and template again in a fresh chat.\n\n💬 Example: \"I've already read [book you read]. Remove it, then give me five more cozy picks that are shorter than about 300 pages, if you know the page counts.\"\n\nYou'll know it worked when the assistant updates the list, drops the book you named, and refers back to your original favorites.\n\n## Step 6 — Save the list where you'll use it\n\nCopy the finished list into your notes file, keeping the three mood headings and one title per line. Then move it into the reading or library app you already use, or into a wishlist, so the titles are waiting when you're ready to read. If you don't use a reading app, a plain document works fine. Check that your saved version matches the titles you verified in Step 4, not the original unverified list.\n\n💬 Example: \"Cozy: [book title] by [author name].\"\n\nYou'll know it worked when you can open one saved note tonight and pick your next book from a verified, mood-sorted list.\n\n## Common mistakes\n\n- **Trusting every title.** The assistant can sound confident and still be wrong. Fix it by checking at least three titles against a library catalog or bookstore before you add them to your list.\n- **Giving only titles as favorites.** A bare title gives the assistant very little to work with. Fix it by adding one sentence about what you loved, such as the pacing or the setting.\n- **Starting over every time.** A new chat forgets your earlier answers. Fix it by keeping your template in a note and using follow-up messages in the same chat.\n\n## What this means for you\n\n- **In everyday life:** Use this flow to pick your next read or next binge-watch in about 15 minutes, instead of scrolling through endless lists.\n- **For your business or work:** A teacher or book-club organizer can use the same template to build a shared list for a group, then check each title against the library before handing it out.\n- **If you want to go further:** Build a second template for shows you watch, and ask the assistant to explain why each suggestion fits your favorite episodes. Comparing the two lists can reveal patterns in what you enjoy.\n\nOne honest limit: the assistant can't read the books for you, check your library's current holdings, or reliably know the newest releases. Treat its suggestions as a starting point, and verify everything before you buy or borrow.\n\n## Try it now\n\nIn the next two minutes, open a note and write three favorites, with one sentence about what you loved in each. That's the only ingredient you need for your first mood-sorted list.",
+  "original_title": "Build a personal reading list with AI based on books you already loved"
+}

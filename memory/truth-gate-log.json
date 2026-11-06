@@ -1,14 +1,4 @@
 {
-  "2026-09-28": [
-    {
-      "at": "2026-09-28T02:33:45.839Z",
-      "file": "WRITER_2026-09-23T02-19-31-347Z_openai-blog_Introducing_GPT-6_Sol_and_Luna.json",
-      "action": "hold",
-      "reasons": [
-        "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
-      ]
-    }
-  ],
   "2026-09-30": [
     {
       "at": "2026-09-30T03:03:01.327Z",
@@ -200,6 +190,17 @@
       "reasons": [
         "AI-bíró nem elérhető (érthetetlen AI-válasz: credible mező hiányzik) — visszatartva a következő futásig"
       ]
+    }
+  ],
+  "2026-11-06": [
+    {
+      "at": "2026-11-06T04:08:55.626Z",
+      "file": "WRITER_2026-11-06T04-06-30-395Z_nvidia-blog_More_Performance_From_Every_Byte__How_Full-Stack_C.json",
+      "action": "block",
+      "reasons": [
+        "The article describes Nemotron sub-models \"Nemotron 3.5 Lightning\" and \"Nemotron Ultra\" as distinct products suited for different jobs, but the source only references \"NVIDIA Nemotron 3.5 Super VL\" and describes the Nemotron family in general terms — \"Nemotron 3.5 Lightning\" and \"Nemotron Ultra\" appear to be fabricated specific product names attributed to NVIDIA."
+      ],
+      "confidence": 7
     }
   ]
 }

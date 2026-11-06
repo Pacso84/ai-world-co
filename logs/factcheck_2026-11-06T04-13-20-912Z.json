@@ -1,0 +1,62 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.00715226,
+  "at": "2026-11-06T04:13:20.912Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 2,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-perplexity-to-find-real-job-openings-and-check-ea.json",
+      "cim": "How to Use Perplexity to Find Real Job Openings and Check Each Source",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_build-a-personal-reading-list-with-ai-based-on-books-you-alr.json",
+      "cim": "Build a personal reading list with AI based on books you already loved",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-05T04-09-11-668Z_aws-ml_Smart_Approvals_in_Amazon_Quick__Human_oversight_w.json",
+      "cim": "Smart Approvals in Amazon Quick: Human oversight where it matters",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A forrás azt mondja, hogy az Enterprise előfizetés a bemutatót követő felhasználónak szükséges, nem pedig általános követelmény — a cikk túlzottan általánosít"
+    },
+    {
+      "file": "ARTICLE_2026-08-27T16-08-30-207Z_xai-news_Grok___Useful_AI_Chatbot_with_Voice___Image_Genera.json",
+      "cim": "Grok — Useful AI Chatbot with Voice & Image Generation - X.ai",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-compare-two-rental-listings-side-by-side-with-weighte.json",
+      "cim": "How to compare two rental listings side by side with weighted pros and cons",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-07-07T02-01-14-877Z_aws-ml_Teaching_models_to_forget__Selective_unlearning_wi.json",
+      "cim": "Teaching models to forget: Selective unlearning with Amazon Nova",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk egy teljesen más témát mutat be (személyes AI adatvédelmi tippek), mint a forrás (az Amazon Nova technikai 'unlearning'/CCMS funkciója)"
+    }
+  ]
+}

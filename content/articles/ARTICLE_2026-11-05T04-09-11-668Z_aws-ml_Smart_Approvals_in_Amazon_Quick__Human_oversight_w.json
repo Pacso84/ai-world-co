@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "written_at": "2026-11-06T04:07:41.403Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0041572,
+    "original_draft": "2026-11-05T04-09-11-668Z_aws-ml_Smart_Approvals_in_Amazon_Quick__Human_oversight_w.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/smart-approvals-in-amazon-quick-human-oversight-where-it-matters/",
+    "source_links": [
+      "https://aws.amazon.com/blogs/machine-learning/smart-approvals-in-amazon-quick-human-oversight-where-it-matters/",
+      "https://aws.amazon.com/blogs/machine-learning/bring-structured-and-unstructured-data-together-with-amazon-quick/"
+    ],
+    "source_snippet_len": 623,
+    "source_text_via": [
+      "hirfolyam",
+      "hirfolyam"
+    ],
+    "source_text_len": 9007,
+    "source_text_key": "e0d445d1def7b8da",
+    "source_overlap_words": 9,
+    "merged_from": 2,
+    "merged_theme": "AWS Amazon Quick AI features",
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-06T04:08:30.596Z",
+    "slug": "amazon-quick-s-new-ai-approvals-and-data-features-explained",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 783
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hooks, plain-language definitions of technical terms (AI agent, connector, structured/unstructured data, knowledge base), and a useful 'What this means for you' section with actionable advice. Claims are properly attributed to Amazon throughout, avoiding prohibited content. Passes all quality gates.",
+      "_aiCost": 0.00143478,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-06T04:09:41.101Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an enterprise feature explainer about Amazon Quick aimed at business administrators, not a consumer-facing tool with concrete daily use",
+    "image_v": 2,
+    "image_at": "2026-11-06T04:11:29.879Z",
+    "seo": {
+      "meta_description": "Amazon Quick's Smart Approvals auto-approve routine tasks but flag risky ones like external sharing. Also answers questions across spreadsheets and docs.",
+      "keywords": [
+        "Amazon Quick Smart Approvals",
+        "Amazon Quick AI features",
+        "Amazon Quick data Q&A",
+        "Amazon AI work assistant",
+        "Amazon Quick approvals"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more context about what Quick is (Amazon's AI work assistant) in the first paragraph to improve relevance for 'Amazon AI assistant' searches",
+        "Consider adding when these features launched or are launching to improve freshness signals",
+        "The subtitle mentions 'existing access' - adding a brief line explaining what this means for security could boost 'Amazon Quick security' related traffic"
+      ],
+      "optimised_at": "2026-11-06T04:12:33.242Z"
+    },
+    "fact_verified_at": "2026-11-06T04:13:37.835Z"
+  },
+  "article_markdown": "---\ntitle: \"Amazon Quick's New AI Approvals and Data Features, Explained\"\nsubtitle: \"Amazon says its work assistant can skip routine confirmations while still pausing for risky actions, and can answer from spreadsheets and documents together.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 3\ntags: [\"amazon-quick\", \"ai-agents\", \"workplace-ai\", \"data\", \"approvals\"]\n---\n\n# Amazon Quick's New AI Approvals and Data Features, Explained\n\n> **In short:** Amazon says Smart Approvals in Amazon Quick lets the assistant approve routine actions on its own, while sending risky ones, like sending content outside your company, to a person. Quick can also answer one question using both spreadsheets and documents, within each user's existing access.\n\nImagine asking an AI helper to write a quarterly summary and email it to two colleagues. You want it done, but you don't want a dozen \"are you sure?\" popups along the way. You also don't want it sending something to your boss's boss without anyone checking. Amazon's new features are aimed at that balance.\n\n## Who decides what the AI can do\n\nAn AI agent (a program that can take actions for you, not just write text) needs permission for each thing it does. Amazon says those permissions are only part of the picture, because a permitted action can still deserve a human's judgment.\n\nSmart Approvals adds a second check. Amazon says it reviews eligible actions against what you asked for. If the action matches your request and nothing else requires a person, it is approved automatically. If not, it goes back to you. Amazon also says Smart Approvals does not grant new permissions or remove the approvals your organization already requires.\n\nHere is how the pieces fit:\n\n- **Administrators** set the boundaries. They can decide who may use Smart Approvals, and they can require a person to approve specific actions when a connector (a link between Quick and another app or data source) is created.\n- **The classifier** is a separate AI model that does the judgment call. Think of it as a second reviewer who asks, \"Does this match what the person asked for, and does it look risky?\"\n- **You** can turn Smart Approvals off for yourself. Amazon says that choice then applies across your conversations and scheduled tasks.\n\nAmazon gives examples of actions that may still need a person even when they match your request: sending content outside the organization or to senior leaders, changing access, deleting records, or starting payments. Each automatic approval covers only that exact action, one time.\n\nAmazon also acknowledges the reviewer can make mistakes. That is why it recommends requiring human approval for anything that moves sensitive data.\n\n## Combining spreadsheets and documents\n\nWork information lives in two kinds of places. **Structured data** sits in databases and spreadsheets, where numbers are organized into rows and columns. **Unstructured data** sits in documents, PDFs, and reports.\n\nAmazon says Quick can connect both. Documents stored in Amazon S3 (Amazon Simple Storage Service, a cloud file storage system) can be indexed into a knowledge base, which is a searchable library the AI can look things up in. Spreadsheet-style data can be loaded as datasets with plain-language descriptions, so the AI can turn your question into a database query. A chat agent can then draw on both and return one answer with citations, meaning links back to the sources it used.\n\nAmazon says answers respect the permissions of the person asking, so you won't see files you couldn't open yourself. Creating datasets requires an Enterprise subscription, and Amazon publishes current plan details on its official pricing page.\n\n## What this means for you\n\n- **For your business or work**: If your team keeps sales numbers in a spreadsheet and strategy memos in PDFs, a single question can now cover both. Ask for the figures and the reasoning in the same breath.\n- **For your approval rules**: Talk with whoever administers your Quick account before relying on automatic approvals. Ask which actions still require a person.\n- **If you're just getting started**: Ask for something low-risk first, like a summary of a document you already have. Read the citations to see where the answer came from.\n- **If you already use it**: Ask your administrator whether sensitive connectors require human approval. Then build a recurring report that pulls from a dataset and a document library, and check the first few runs closely.\n\n## Wrap-up\n\nAmazon's message is that good AI help at work should reduce busywork without removing human judgment. Smart Approvals tries to save your attention for the decisions that matter, while the approval rules stay in place. Your next step: open your Quick settings, or ask your administrator, to find out which actions in your organization still need a person's approval.",
+  "original_title": "Smart Approvals in Amazon Quick: Human oversight where it matters"
+}
