@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-11-05T21:51:49.925Z",
+    "updated": "2026-11-06T04:25:30.934Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -12,20 +12,20 @@
     },
     "truth_log": {
       "days": 14,
-      "from": "2026-09-28",
-      "to": "2026-11-04",
-      "blocks": 13
+      "from": "2026-09-30",
+      "to": "2026-11-06",
+      "blocks": 14
     }
   },
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 1,
-      "published30d": 21,
+      "feedAgeDays": 0,
+      "published30d": 20,
       "published30dAfterAgeGuard": 5,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 10,
+      "totalAttempts": 9,
       "alreadyDisabled": false,
       "lastArticle": "2026-11-05",
       "verdict": "ok",
@@ -72,7 +72,7 @@
     },
     "google-photos": {
       "name": "Google Fotók termékhírek (hivatalos, blog.google)",
-      "feedAgeDays": 7,
+      "feedAgeDays": 8,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -84,7 +84,7 @@
     },
     "google-labs": {
       "name": "Google Labs (hivatalos, blog.google) — Gemini Notebook (volt NotebookLM), Project Genie",
-      "feedAgeDays": 30,
+      "feedAgeDays": 31,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -96,7 +96,7 @@
     },
     "amazon-alexa": {
       "name": "Amazon hírek – Alexa (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -134,7 +134,7 @@
     },
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
-      "feedAgeDays": 15,
+      "feedAgeDays": 16,
       "published30d": 1,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 1,
@@ -162,7 +162,7 @@
       "feedAgeDays": 0,
       "published30d": 6,
       "published30dAfterAgeGuard": 0,
-      "truthBlocks": 0,
+      "truthBlocks": 1,
       "truthUnfixed": 0,
       "totalAttempts": 3,
       "alreadyDisabled": false,
@@ -177,7 +177,7 @@
       "published30dAfterAgeGuard": 4,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 11,
+      "totalAttempts": 9,
       "alreadyDisabled": false,
       "lastArticle": "2026-11-04",
       "verdict": "ok",
@@ -197,7 +197,7 @@
     },
     "microsoft-research": {
       "name": "Microsoft Research (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 1,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -210,7 +210,7 @@
     },
     "github-ai": {
       "name": "GitHub AI & ML (hivatalos)",
-      "feedAgeDays": 16,
+      "feedAgeDays": 17,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -223,7 +223,7 @@
     },
     "github-copilot-changelog": {
       "name": "GitHub Changelog – Copilot (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 3,
       "published30dAfterAgeGuard": 3,
       "truthBlocks": 0,
@@ -237,19 +237,19 @@
     "aws-ml": {
       "name": "AWS Machine Learning (hivatalos)",
       "feedAgeDays": 0,
-      "published30d": 5,
-      "published30dAfterAgeGuard": 1,
+      "published30d": 6,
+      "published30dAfterAgeGuard": 2,
       "truthBlocks": 0,
       "truthUnfixed": 0,
-      "totalAttempts": 2,
+      "totalAttempts": 3,
       "alreadyDisabled": false,
-      "lastArticle": "2026-11-05",
+      "lastArticle": "2026-11-06",
       "verdict": "ok",
       "reason": ""
     },
     "mistral-ai": {
       "name": "Mistral AI (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -336,7 +336,7 @@
     "cohere-blog": {
       "name": "Cohere (hivatalos)",
       "feedAgeDays": null,
-      "published30d": 3,
+      "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -518,7 +518,7 @@
     },
     "salesforce": {
       "name": "Salesforce AI Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 4,
       "published30dAfterAgeGuard": 2,
       "truthBlocks": 0,
@@ -531,7 +531,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 4,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -570,7 +570,7 @@
     },
     "together": {
       "name": "Together AI Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 1,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -583,7 +583,7 @@
     },
     "pinecone": {
       "name": "Pinecone Blog (hivatalos)",
-      "feedAgeDays": 9,
+      "feedAgeDays": 0,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -596,7 +596,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -609,7 +609,7 @@
     },
     "ntt-research": {
       "name": "NTT Research (hivatalos)",
-      "feedAgeDays": 15,
+      "feedAgeDays": 16,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -725,7 +725,7 @@
     },
     "zai-release-notes": {
       "name": "Z.ai / Zhipu GLM (hivatalos változásnapló)",
-      "feedAgeDays": 71,
+      "feedAgeDays": 72,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -762,7 +762,7 @@
     },
     "elevenlabs": {
       "name": "ElevenLabs Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -800,15 +800,15 @@
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
       "feedAgeDays": 39,
-      "published30d": 1,
+      "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
       "totalAttempts": 0,
       "alreadyDisabled": false,
       "lastArticle": "2026-10-06",
-      "verdict": "ok",
-      "reason": ""
+      "verdict": "no-yield",
+      "reason": "él, de 30 napja egy cikket sem adott — érdemes megnézni"
     },
     "d-id-news": {
       "name": "D-ID (hivatalos)",
@@ -850,7 +850,7 @@
     },
     "microsoft-365": {
       "name": "Microsoft 365 Insider (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -902,7 +902,7 @@
     },
     "dropbox-blog": {
       "name": "Dropbox Blog (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 3,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
