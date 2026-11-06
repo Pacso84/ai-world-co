@@ -153,7 +153,9 @@ export function tiktokHianyOk(reelGuard, maNap) {
     const cim = String(x.cim || x.slug || '?').replace(/[*_`[\]]/g, '');
     return `„${cim.length > 45 ? cim.slice(0, 44) + '…' : cim}”: ${x.ok}`;
   });
-  return reszek.length ? 'nem készülhetett videó ebből az útmutatóból: ' + reszek.join(' · ') : '';
+  if (reszek.length) return 'nem készülhetett videó ebből az útmutatóból: ' + reszek.join(' · ');
+  // 11-06: ha minden friss útmutatóból készült már videó, a Reel-gyártó ezt jegyzi fel (prepare.tiktokExtraOk)
+  return String(reelGuard.prepare?.tiktokExtraOk || '').trim();
 }
 const TIKTOK_OK_ISMERETLEN = 'az okát a videó-gyártás nem jegyezte fel (ha fent nincs REEL- vagy BUFFER-hibasor, nem volt több videózható friss útmutató)';
 export function tiktokSor(guard, now = Date.now(), { ok = '' } = {}) {

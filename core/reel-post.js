@@ -481,6 +481,11 @@ const require$ = createRequire(import.meta.url);
  * Tiszta függvény: az `okFn(md)` a cardsFromGuide okát adja (üres = videózható).
  * @returns {{slug: string, cim: string, ok: string}[]}
  */
+/** 11-06: a TikTok-hiány oka, ha a friss ablak minden videózható útmutatójából készült már videó. */
+export function tiktokNincsMibolOk(napok) {
+  return `nincs miből több videót gyártani: az elmúlt ${napok} nap minden videózható útmutatójából készült már videó`;
+}
+
 export function nemVideozhatoFrissek(cikkek, now = Date.now(), okFn = () => '') {
   const napja = v => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}/.test(v);
   return (Array.isArray(cikkek) ? cikkek : [])
@@ -500,6 +505,10 @@ export async function futtatFazis({ ROOT, join, fazis, fn }) {
     // 11-05: a nem videózható friss útmutatók oka (a napi riport TikTok-sora mondja el)
     if (ki && typeof ki === 'object' && Array.isArray(ki.nemVideozhato) && ki.nemVideozhato.length) {
       mellek.nemVideozhato = ki.nemVideozhato.slice(0, 3);
+    }
+    // 11-06: „nincs miből több videó” — a TikTok-extra gyártó oka (a riport TikTok-sora mondja el)
+    if (ki && typeof ki === 'object' && typeof ki.tiktokExtraOk === 'string' && ki.tiktokExtraOk) {
+      mellek.tiktokExtraOk = ki.tiktokExtraOk.slice(0, 200);
     }
     reelAllapot(ROOT, join, { fazis, ok: true, ...mellek });
     return ki;
@@ -534,9 +543,12 @@ async function prepare(ROOT, join) {
   let ki = null, reelHiba = null;
   try { ki = await prepareReel(ROOT, join); } catch (e) { reelHiba = e; }
   // A TikTok-extra hibája SOHA nem ronthatja el a Facebook-Reelt — az már kész.
-  try { await prepareTiktokExtra(ROOT, join); }
+  let extra = null;
+  try { extra = await prepareTiktokExtra(ROOT, join); }
   catch (e) { console.log('⚠️  TikTok-extra videó kimaradt: ' + String(e?.message || e).slice(0, 160)); }
   if (reelHiba) throw reelHiba;
+  // 11-06: a „nincs miből” ok a riportba megy (futtatFazis → memory/reel-guard.json → prepare.tiktokExtraOk)
+  if (extra?.tiktokExtraOk) return { ...(ki && typeof ki === 'object' ? ki : {}), tiktokExtraOk: extra.tiktokExtraOk };
   return ki;
 }
 
@@ -583,7 +595,18 @@ async function prepareTiktokExtra(ROOT, join) {
     alkalmas: c => !!cardsFromGuide(c.md).cards,
     kizar: fogalt
   });
-  if (!v) return;
+  if (!v) {
+    // 11-06: a riport TikTok-sora eddig „az okát nem jegyezte fel”-t mondta, pedig 11-02…11-06 szinte minden nap
+    // az volt az ok, hogy NINCS MIBŐL: a 7 napos ablak minden videózható útmutatójából készült már videó (napi 2
+    // friss útmutató → a 3. videóhoz nincs 3. cikk). Ezt a napi keretet figyelmen kívül hagyva nézzük meg.
+    const barmi = tiktokExtra(cikkek, Date.now(), {
+      napiMax: 99, maxKorNap: REEL_FRISS_NAP, alkalmas: c => !!cardsFromGuide(c.md).cards, kizar: fogalt
+    });
+    if (barmi) return null;
+    const ok = tiktokNincsMibolOk(REEL_FRISS_NAP);
+    console.log('💤 TikTok-extra: ' + ok);
+    return { tiktokExtraOk: ok };
+  }
   console.log('🎵 TikTok-extra videó készül: ' + v.slug);
   const r = await gyart(v);
   if (!r) return;

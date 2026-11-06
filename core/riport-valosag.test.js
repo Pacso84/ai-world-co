@@ -18,7 +18,7 @@ import { cardsFromGuide } from './short-video.js';
 import { lepesekMdbol } from './social-poster.js';
 import { insertMidGuide } from './mid-guide.js';
 import { paritasElemzes } from './template-parity.js';
-import { nemVideozhatoFrissek } from './reel-post.js';
+import { nemVideozhatoFrissek, tiktokNincsMibolOk } from './reel-post.js';
 import { szurZajt } from './report-noise.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -89,6 +89,25 @@ t('🎵 a TikTok-hiány sora az OKOT mondja, és nem hivatkozik nem létező „
   assert.match(tiktokSor(g, D), /az okát a videó-gyártás nem jegyezte fel/);
   // tegnapi feljegyzés nem ok ma
   assert.equal(tiktokHianyOk({ at: '2026-11-04T16:00:00Z', prepare: { nemVideozhato: [{ ok: 'x', slug: 'y' }] } }, '2026-11-05'), '');
+});
+
+t('🎵 11-06: „nincs miből” — ha minden friss útmutatóból volt már videó, a TikTok-sor EZT mondja', () => {
+  const D = Date.parse('2026-11-06T16:00:00Z');
+  const g = { tiktokMa: { nap: '2026-11-06', db: 4, plafon: 6, video: 2, foto: 2 } };
+  const okSz = tiktokNincsMibolOk(7);
+  const ok = tiktokHianyOk({ at: '2026-11-06T15:40:00Z', prepare: { ok: true, tiktokExtraOk: okSz } }, '2026-11-06');
+  assert.equal(ok, okSz);
+  const sor = tiktokSor(g, D, { ok });
+  assert.match(sor, /nincs miből több videót gyártani: az elmúlt 7 nap/);
+  assert.doesNotMatch(sor, /nem jegyezte fel/);
+  // a konkrét útmutató-ok (0 lépés) előnyt élvez
+  const mindketto = tiktokHianyOk({ at: '2026-11-06T15:40:00Z', prepare: { tiktokExtraOk: okSz, nemVideozhato: [{ slug: 's', ok: 'csak 0 lépés' }] } }, '2026-11-06');
+  assert.match(mindketto, /csak 0 lépés/);
+  // a bekötés: a gyártó visszaadja, a fázis-író elmenti, a prepare továbbadja
+  const rp = readFileSync(join(ROOT, 'core', 'reel-post.js'), 'utf-8');
+  assert.match(rp, /mellek\.tiktokExtraOk = ki\.tiktokExtraOk/, '🔴 az ok nem kerül az őrszem-fájlba');
+  assert.match(rp, /extra = await prepareTiktokExtra\(ROOT, join\)/, '🔴 a prepare eldobja az extra-gyártó okát');
+  assert.match(rp, /return \{ tiktokExtraOk: ok \}/, '🔴 a TikTok-extra gyártó nem adja vissza az okot');
 });
 
 t('🎵 a Reel-gyártó a friss, videó nélküli, nem videózható útmutatót okkal adja vissza', () => {
