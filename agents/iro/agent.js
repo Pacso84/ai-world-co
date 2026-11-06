@@ -42,6 +42,7 @@ import { tartalomKapcsolok } from '../../core/content-switches.js';
 import { cikkForrasai, cikkForrasMeta, cikkKivonatSzoveg, leghosszabbKozosSzosor, LETOLTES_KERET_MS, ATFEDES_FIGYELMEZTET, OSSZEVONT_FORRAS_MAX } from '../../core/iro-forras.js';   // 🔎 2026-11-01 forrásszöveg
 import { forrasCacheIr, cikkForrasSzovege, cikkKivonat, cikkKivonatIr, vazlatKivonat } from '../../core/forras-cache.js';   // 🔎 a szöveg git-en KÍVÜL
 import { tisztaUrl } from '../../core/forras-letoltes.js';
+import { atdolgozoMeta } from '../../core/biralo-forrasinfo.js';   // 🛟 2026-11-06 téves név-kifogás az átdolgozás elől
 
 // ===================================================================
 // SETUP
@@ -772,8 +773,20 @@ async function runReworkMode(brandContext) {
     const data = JSON.parse(readFileSync(join(REJECTED_DIR, filename), 'utf-8'));
     const attempt = (data._meta?.rework_attempts || 0) + 1;
 
+    // 🛟 TÉVES „KITALÁLT NÉV” KIFOGÁS AZ ELMENTETT BÍRÁLATBAN (2026-11-06): az átdolgozó SOHA ne kapja meg
+    // (különben kiveszi a valódi nevet — Gemini Omni 1.2 Flash, 11-06). Ha csak ez volt az ok → változatlan újrabírálat.
+    const nevSzuro = atdolgozoMeta(data._meta, {
+      originalTitle: data.original_title || '',
+      sourceText: String(cikkForrasSzovege(data._meta) || cikkKivonat(data._meta) || '')
+    });
+    if (nevSzuro.kivett.length) {
+      data._meta = nevSzuro.meta;
+      console.log(`🛟 Téves „kitalált név” kifogás kivéve az átdolgozás elől (${nevSzuro.nevek.join(', ') || 'név'}): ${filename.slice(0, 50)}...`);
+    }
+
     // ESET A: az Ellenőrző glitch-elt (nem a cikk a hibás) → változatlanul újra
-    if (isReviewerSideFailure(data._meta)) {
+    // (ide tartozik az is, ha a bírálat EGYETLEN oka egy téves „kitalált név” kifogás volt)
+    if (isReviewerSideFailure(data._meta) || (nevSzuro.csakTevesNev && !blockingIssues(data._meta?.auto_check?.issues).length)) {
       console.log(`↩️  Újra-sorba (ellenőrző-hiba, nem a cikké) [${attempt}/${MAX_REWORK_ATTEMPTS}]: ${filename.slice(0, 50)}...`);
       const writerName = saveBackToReview(filename, data, {
         text: data.article_markdown,

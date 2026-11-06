@@ -38,6 +38,35 @@ t('az ÁLTALÁNOS tanulságokat megtartja', () => {
   ]) assert.ok(!nevTagadoLecke(s), 'kiszűrte: ' + s.slice(0, 60));
 });
 
+// 2026-11-06 (user: „örülnék, ha nem lenne több ilyen tévedés!”): a „NEM ELLENŐRIZHETŐ” változat eddig átjutott —
+// ezek a VALÓDI store.json-beli leckék mind az író promptjába mentek, és mind valódi nevet tagadnak.
+t('🔑 a „nem ellenőrizhető / nincs a listán” változatot is kiszűri (valódi leckék a tárból)', () => {
+  for (const s of [
+    '"Gemini Omni" is not in the verified-real names list and does not appear to be a real Google product — the article repeatedly treats it as a named, existing video model',
+    'Hitelesség-kapu blokk: "Gemini Omni" is not in the verified-real names list and does not appear to be a real Google product',
+    'Invented product names: RTX Spark, AI Inbox, Gmail Live, Vids, Study Mode — verify these are real Google/NVIDIA products before publishing',
+    'Claude Sonnet 4.5 - this specific model version cannot be verified; check official Anthropic naming or replace with a verifiable model',
+    "Model names 'GPT-Image-2.6 Flare' and 'GPT-Image-2.6 Sunburst' cannot be independently verified—never invent product names",
+    "Picsart Flow is presented as a real AI PDF editing tool, but this specific product name does not appear on the verified-real list",
+    "Hitelesség-kapu blokk: Kiro is described as 'an AI coding assistant' that runs on GPT-5.6, but Kiro is not a verified-real product on the supplied list",
+    "Hitelesség-kapu blokk: GPT-Realtime is not a verified model name — OpenAI's real-time voice API product is 'Realtime API'",
+    "FAKE FACT: 'GPT-6, its newest model' — OpenAI has never released a GPT-6. Latest models are GPT-4, GPT-4o, o1, o3.",
+    'Claims Claude Sonnet 5 exists, but it does not',
+    'Publishing with an unverified model name risks misleading readers about which product actually exists in Picsart AI Playground'
+  ]) assert.ok(nevTagadoLecke(s), 'átengedte: ' + s.slice(0, 70));
+});
+
+t('ellenpróba: általános elv és FORRÁSHOZ mért ítélet marad', () => {
+  for (const s of [
+    'Főnöki döntés tanulsága: Never invent or guess an AI model name; verify product details against an official source before publication, and remove any section that cannot be independently substantiated.',
+    'Verify feature behavior before describing it and keep the official tool name consistent.',
+    "The article states 'more than 1 million Genie Agents were created in 2026 alone' as from GitHub, but the SOURCE block excerpt only contains GitHub's three-skills announcement.",
+    'The 60-second tour is presented as fact but not confirmed in the source',
+    "Claim of '1,000 older adults across 10 cities' has no source — invented specific detail",
+    'Step 4 says the button is in the top right but the screenshot shows the sidebar'
+  ]) assert.ok(!nevTagadoLecke(s), 'kiszűrte: ' + s.slice(0, 70));
+});
+
 t('üres bemenet nem dől el', () => {
   assert.equal(nevTagadoLecke(''), false);
   assert.equal(nevTagadoLecke(null), false);

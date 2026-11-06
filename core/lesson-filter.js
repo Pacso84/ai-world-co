@@ -40,10 +40,53 @@ const MINTAK = [
   /\bfuture date\b/i
 ];
 
-/** Eseti „ez a név/termék kitalált" ítélet-e (→ ne mentsük, ne adjuk promptba)? */
+// ===================================================================
+// „NEM ELLENŐRIZHETŐ" VÁLTOZAT (2026-11-06, user: „örülnék, ha nem lenne több ilyen tévedés!")
+// ===================================================================
+// A fenti minták csak a „kitalált / nem létezik" szavakat ismerték. A bíró
+// ugyanezt az elavult tudásból fakadó ítéletet gyakran így mondja: „cannot be
+// verified", „unverified model name", „is not in the verified-real list",
+// „as of available information there is no…", „OpenAI has never released…".
+// Ezek ÁTJUTOTTAK: 11-06-án 825 leckéből ~30 ilyen ment az író promptjába, köztük
+// „"Gemini Omni" … does not appear to be a real Google product" (valódi — 11-06-án
+// pont egy Gemini Omni-hírt utasított el emiatt a bíró), „Invented product names:
+// RTX Spark, Vids, Study Mode" (mind valódi), „Picsart Flow … not on the verified
+// list" (valódi), „Kiro … not a verified-real product" (valódi).
+//
+// KIVÉTEL — ezek MARADNAK:
+//   • ÁLTALÁNOS elv („Never invent…", „Always verify…") — nem eseti ítélet;
+//   • FORRÁSHOZ mért ítélet („the source does not list…", „SOURCE block only…") —
+//     az nem elavult tudás, hanem a cikk és a forrás összevetése.
+// A verziószám pontja („Sonnet 4.5", „GPT-Image-2.6") nem mondatvég.
+const T2 = '(?:product|model|name|brand|feature|tool|app|service|version|release|program|initiative|integration|acquisition|announcement)s?';
+const M2 = '(?:[^.;!?]|\\.(?=\\d))';
+const NEM_ELLENORIZHETO = [
+  new RegExp(`\\b${T2}\\b${M2}{0,80}\\b(?:cannot|could not|can't|couldn't) be (?:independently )?(?:verified|confirmed)\\b`, 'i'),
+  new RegExp(`\\b(?:unverified|unverifiable|unconfirmed) (?:AI |product |model |brand |tool )?${T2}\\b`, 'i'),
+  new RegExp(`\\b${T2}\\b${M2}{0,40}\\bis unconfirmed\\b`, 'i'),
+  /\bverified[- ]real\b|\bverified (?:product |names? |model )?list\b/i,
+  /\bas of (?:available|my|public|current) (?:information|knowledge|data)\b|\bas of current knowledge\b/i,
+  /\b(?:does not|doesn't) match (?:any )?known\b/i,
+  new RegExp(`\\b(?:is|are) not (?:a |an )?(?:known|verified|recogni[sz]ed)\\b${M2}{0,50}\\b${T2}\\b`, 'i'),
+  /\b(?:has|have) never (?:been )?(?:released|announced)\b/i,
+  /\bno (?:such )?(?:verified|publicly announced|recogni[sz]ed)\b/i,
+  /\bmy training\b|\btraining data\b/i,
+  new RegExp(`\\binvented ${T2}\\b`, 'i'),
+  /\bverify (?:these|this|that|they) (?:are|is) real\b/i,
+  /\bI cannot verify\b/i,
+  new RegExp(`\\bclaims? ${M2}{0,50}\\bexists?,? but (?:it |they )?(?:does|do) not\\b`, 'i'),
+  /\bnot (?:a )?real (?:\w+ )?(?:product|model|name)\b|\bappear to be a real\b/i
+];
+const ALTALANOS_ELV = /^(?:Főnöki döntés tanulsága:\s*)?(?:Never|Always|Verify|When)\b/;
+const FORRASHOZ_MERT = /\bsource(?: block| excerpt| blog| post| text| material| article)?\b(?: does not| doesn't| only| never)|not supported by the source|\bin the source\b|\bfrom the source\b|\bSOURCE block\b/i;
+
+/** Eseti „ez a név/termék kitalált / nem ellenőrizhető" ítélet-e (→ ne mentsük, ne adjuk promptba)? */
 export function nevTagadoLecke(text) {
   const s = String(text || '');
-  return MINTAK.some(rx => rx.test(s));
+  if (MINTAK.some(rx => rx.test(s))) return true;
+  const t = s.replace(/^Hitelesség-kapu blokk:\s*/, '');
+  if (ALTALANOS_ELV.test(t) || FORRASHOZ_MERT.test(t)) return false;
+  return NEM_ELLENORIZHETO.some(rx => rx.test(t));
 }
 
 export default { nevTagadoLecke };

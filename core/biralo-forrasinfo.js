@@ -78,6 +78,40 @@ export function tevesNevKifogas(review, { originalTitle = '', sourceUrl = '', so
   return { teves, maradt, nevek: [...nevek], verdictTeves };
 }
 
+/**
+ * ÁTDOLGOZÓ ELŐTTI SZŰRÉS (2026-11-06, user: „örülnék, ha nem lenne több ilyen tévedés!").
+ * A fenti biztosíték csak az ÚJ bírálatot szűri. A már ELMENTETT elutasításban (REJECTED_…_meta.ai_review,
+ * _meta.reason) a téves kifogás bennmaradt — 11-06-án a 15:37-kor (a javítás előtt) elutasított Gemini Omni-hírt
+ * az átdolgozó 21 órakor ebből javította: szót fogadott, és a VALÓDI modellnevet kivette a cikkből.
+ * Ez a függvény az átdolgozó (agents/iro, agents/guide) elé teszi ugyanazt a szűrést.
+ *
+ * @param {object} meta  az elutasított cikk _meta-ja
+ * @param {{ originalTitle?: string, sourceText?: string, known?: string[] }} forras
+ * @returns {{ meta: object, kivett: string[], nevek: string[], csakTevesNev: boolean }}
+ *   meta = a szűrt _meta (a téves kifogások nélkül); csakTevesNev = az AI-bírálatnak a téves
+ *   név-kifogáson kívül nem maradt oka (→ átírás helyett változatlan újrabírálat, 0 költség).
+ */
+export function atdolgozoMeta(meta, { originalTitle = '', sourceText = '', known } = {}) {
+  const review = meta?.ai_review;
+  const ures = { meta, kivett: [], nevek: [], csakTevesNev: false };
+  if (!review || typeof review !== 'object') return ures;
+  const forras = { originalTitle, sourceUrl: String(meta?.source_link || '').trim(), sourceText, known };
+  const r = tevesNevKifogas(review, forras);
+  // A _meta.reason rendszerint a verdict másolata — ugyanúgy mérjük.
+  const reason = String(meta?.reason || '');
+  const reasonTeves = !!reason && ((r.verdictTeves && reason === String(review.verdict || '')) || tevesNevKifogas({ issues: [reason] }, forras).teves.length > 0);
+  if (!r.teves.length && !r.verdictTeves && !reasonTeves) return ures;
+
+  const ujReview = { ...review, issues: r.maradt };
+  if (r.verdictTeves) delete ujReview.verdict;
+  const ujMeta = { ...meta, ai_review: ujReview };
+  if (reasonTeves) delete ujMeta.reason;
+  const kivett = [...r.teves, ...(r.verdictTeves ? [review.verdict] : []), ...(reasonTeves && reason !== review.verdict ? [reason] : [])];
+  const nevek = r.nevek.length ? r.nevek : idezettNevek(reason);
+  ujMeta.nev_kifogas_kivetve = { at: new Date().toISOString(), nevek, kifogasok: kivett };
+  return { meta: ujMeta, kivett, nevek, csakTevesNev: !r.maradt.length && !ujReview.verdict && !ujMeta.reason };
+}
+
 /** Az újrabírálathoz fűzött javító megjegyzés (angolul — a bíró promptja angol). */
 export function nevJavitoMegjegyzes(nevek) {
   return `

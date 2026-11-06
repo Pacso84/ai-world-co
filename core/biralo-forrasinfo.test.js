@@ -16,7 +16,7 @@ import assert from 'assert/strict';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { biraloForrasInfo, tevesNevKifogas, nevJavitoMegjegyzes } from './biralo-forrasinfo.js';
+import { biraloForrasInfo, tevesNevKifogas, nevJavitoMegjegyzes, atdolgozoMeta } from './biralo-forrasinfo.js';
 import { knownRealNames } from './truth-gate.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -182,6 +182,72 @@ t('a napi riport beolvassa a reviewer-naplókat és kiírja a sort', () => {
 // A fájlnév-szeletelés pontossága: reviewer_2026-11-06T… → a 9–19. karakter a dátum.
 t('a riport fájlnév-szeletelése a dátumot adja', () => {
   assert.equal('reviewer_2026-11-06T15-37-30-957Z.json'.slice(9, 19), '2026-11-06');
+});
+
+// ---------------------------------------------------------------
+// ÁTDOLGOZÓ ELŐTTI SZŰRÉS (2026-11-06): a MÁR ELMENTETT téves kifogás se jusson az átdolgozóhoz.
+// A valódi eset: REJECTED_2026-11-06T15-30-26-279Z_picsart_Gemini_Omni… (15:37, a javítás előtt) → az átdolgozó
+// 21:11-kor kivette a cikkből a „Gemini Omni” nevet. Az alábbi _meta betűre az akkor elmentett.
+// ---------------------------------------------------------------
+const VERDICT_1106 = "The guide is well-structured and the writing is clear and accessible, but it fails factual accuracy because the model name 'Gemini Omni 1.2 Flash' cannot be verified against any known Google AI product listing. This violates the core trust principle — readers must be able to verify claims about products they are being told to use. The Writer must either confirm the exact official product name from an authoritative source before publication or remove references to this specific model.";
+const meta1106 = {
+  source_link: 'https://picsart.com/blog/gemini-omni-1-2-flash-launch/',
+  ai_review: {
+    overall_score: 6, decision: 'FAIL',
+    issues: [
+      "Model name 'Gemini Omni 1.2 Flash' cannot be independently verified — Google AI documentation shows no product with this exact name; this appears to be an invented/hallucinated model name",
+      "Attribution to 'Google's announcement' lacks a verifiable source URL in the article, making claims about the model unverifiable",
+      'Publishing with an unverified model name risks misleading readers about which product actually exists in Picsart AI Playground'
+    ],
+    verdict: VERDICT_1106
+  },
+  reason: VERDICT_1106,
+  rework_attempts: 1
+};
+
+t('🔑 átdolgozó: a 11-06-i elmentett téves név-kifogás + verdict + reason KIESIK, a valódi kifogás marad', () => {
+  const r = atdolgozoMeta(meta1106, { originalTitle: picsart.original_title });
+  assert.deepEqual(r.nevek, ['Gemini Omni 1.2 Flash']);
+  assert.equal(r.meta.ai_review.issues.length, 1);
+  assert.match(r.meta.ai_review.issues[0], /Attribution to 'Google's announcement'/);
+  assert.equal(r.meta.ai_review.verdict, undefined);
+  assert.equal(r.meta.reason, undefined);
+  assert.equal(r.csakTevesNev, false, 'maradt valódi kifogás → átírás kell');
+  assert.ok(!JSON.stringify(r.meta.ai_review).includes('Gemini Omni'), 'a név-kifogás valahol bennmaradt');
+  assert.ok(r.meta.nev_kifogas_kivetve?.kifogasok?.length >= 2, 'nyom a _meta-ban');
+  // az eredeti _meta NEM változik (a hívó dönt)
+  assert.equal(meta1106.ai_review.issues.length, 3);
+});
+
+t('átdolgozó: ha CSAK téves név-kifogás volt → csakTevesNev (változatlan újrabírálat, 0 költség)', () => {
+  const m = { ...meta1106, ai_review: { ...meta1106.ai_review, issues: [meta1106.ai_review.issues[0], meta1106.ai_review.issues[2]] } };
+  const r = atdolgozoMeta(m, { originalTitle: picsart.original_title });
+  assert.equal(r.csakTevesNev, true);
+  assert.deepEqual(r.meta.ai_review.issues, []);
+});
+
+t('ellenpróba: a forrásban NEM szereplő név kifogása marad (valódi kitalálás)', () => {
+  const m = { source_link: 'https://picsart.com/blog/gemini-omni-1-2-flash-launch/', ai_review: { decision: 'FAIL', issues: ["Model name 'Gemini Omni Ultra 9' cannot be verified — appears invented"], verdict: 'Fails: invented model name.' }, reason: 'Fails: invented model name.' };
+  const r = atdolgozoMeta(m, { originalTitle: picsart.original_title });
+  assert.equal(r.kivett.length, 0);
+  assert.equal(r.meta, m, 'érintetlenül kell visszaadni');
+});
+
+t('ellenpróba: árról / felületről szóló kifogás marad, bírálat nélküli _meta nem dől el', () => {
+  const m = { source_link: 'https://picsart.com/blog/gemini-omni-1-2-flash-launch/', ai_review: { decision: 'FAIL', issues: ["The 'Gemini Omni 1.2 Flash' button in the toolbar cannot be verified"] } };
+  assert.equal(atdolgozoMeta(m, { originalTitle: picsart.original_title }).kivett.length, 0);
+  assert.equal(atdolgozoMeta({}, {}).kivett.length, 0);
+  assert.equal(atdolgozoMeta(undefined, {}).kivett.length, 0);
+});
+
+t('mindkét átdolgozó (iro + guide) a feedback ELŐTT szűr, és a csak-téves esetben nem ír át', () => {
+  for (const f of ['agents/iro/agent.js', 'agents/guide/agent.js']) {
+    const src = readFileSync(join(ROOT, f), 'utf-8');
+    assert.match(src, /import \{ atdolgozoMeta \} from '\.\.\/\.\.\/core\/biralo-forrasinfo\.js'/, f);
+    const i = src.indexOf('atdolgozoMeta(data._meta');
+    const j = src.indexOf('isReviewerSideFailure(data._meta) || (nevSzuro.csakTevesNev');
+    assert.ok(i > 0 && j > i, f + ': a szűrés nem az ESET A előtt van');
+  }
 });
 
 console.log(`\n✅ ${pass} eset zöld`);

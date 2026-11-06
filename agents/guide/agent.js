@@ -37,6 +37,7 @@ import { skillsBlock } from '../../core/skills.js';
 import { message } from '../../core/ops.js';
 import { HOWTO_RANGE } from '../../core/article-length.js';
 import { blockingIssues } from '../../core/auto-check-codes.js';
+import { atdolgozoMeta } from '../../core/biralo-forrasinfo.js';   // 🛟 2026-11-06 téves név-kifogás az átdolgozás elől
 import { valasztHireket, hirBlokk, hirekBetolt, trendBlokk } from '../../core/guide-sources.js';
 import { utmutatoE } from '../../core/guide-kind.js';
 import { tartalomKapcsolok, maiKozepDb, szintSorrend } from '../../core/content-switches.js';
@@ -984,8 +985,17 @@ async function runGuideReworkMode(brandContext) {
     const data = JSON.parse(readFileSync(join(REJECTED_DIR, filename), 'utf-8'));
     const attempt = (data._meta?.rework_attempts || 0) + 1;
 
+    // 🛟 TÉVES „KITALÁLT NÉV” KIFOGÁS AZ ELMENTETT BÍRÁLATBAN (2026-11-06): az átdolgozó SOHA ne kapja meg
+    // (különben kiveszi a valódi nevet). Útmutatónál nincs külső forrás-URL → csak a hiteles névlista igazol.
+    const nevSzuro = atdolgozoMeta(data._meta, { originalTitle: data.original_title || '' });
+    if (nevSzuro.kivett.length) {
+      data._meta = nevSzuro.meta;
+      console.log(`🛟 Téves „kitalált név” kifogás kivéve az átdolgozás elől (${nevSzuro.nevek.join(', ') || 'név'}): ${filename.slice(0, 50)}...`);
+    }
+
     // ESET A: Ellenőrző-glitch (nem a guide hibája) → változatlanul újra, számláló marad
-    if (isReviewerSideFailure(data._meta)) {
+    // (ide tartozik az is, ha a bírálat EGYETLEN oka egy téves „kitalált név” kifogás volt)
+    if (isReviewerSideFailure(data._meta) || (nevSzuro.csakTevesNev && !blockingIssues(data._meta?.auto_check?.issues).length)) {
       console.log(`↩️  Újra-sorba (ellenőrző-hiba, nem a guide-é): ${filename.slice(0, 50)}...`);
       const w = saveGuideBackToReview(filename, data, {
         text: data.article_markdown, provider: data._meta?.writer_provider, model: data._meta?.writer_model, costUsd: 0, requeued: true
