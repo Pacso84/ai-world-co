@@ -25,8 +25,10 @@ import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import {
   titleLooksUntranslated, bodyLooksUntranslated,
-  FAIL, shouldRetryTranslation, retryTokenFrame, RETRY_WAIT_MS, looksLikePromptLeak
+  FAIL, shouldRetryTranslation, retryTokenFrame, RETRY_WAIT_MS, looksLikePromptLeak,
+  idegenIrasBeszivargas
 } from '../../core/translation-guard.js';
+import { looksTruncated, translationTooShort } from '../../core/truncation-guard.js';
 import { applyFixes } from '../../core/hu-proofread.js';
 import { loadStore as loadHuStore } from '../../core/hu-review.js';
 import { orderForTranslation, pruneFails } from '../../core/translation-queue.js';
@@ -162,6 +164,19 @@ async function translateMarkdown(markdown, langName, { maxTokens = BASE_TOKENS }
   // CSONKULÁS-VÉDELEM: ha a fordítás gyanúsan rövidebb az angolnál (kifutott
   // a token-keretből), NE mentsük el félbevágva — inkább következő körben újra.
   if (body.length < parts.body.length * 0.35) return { reason: FAIL.TRUNCATED, cost: r.costUsd || 0 };
+  // CSONKA-KAPU MENTÉS ELŐTT (2026-11-07). A 0,35-ös küszöb a 38–61%-os fordításokat
+  // ÁTENGEDTE (élőben: 11 ilyen, pl. getting-started-cohere es 9 fejezetből 3), a mondat
+  // közepén végződőket (10, pl. gemini-images es) pedig semmi nem nézte — a
+  // core/truncation-guard.js csak UTÓLAG mért. Most ugyanaz a mérce dönt a mentés előtt;
+  // 1658 élő páron 21 találat, mind valódi csonka. Ha az ANGOL maga is így végződik,
+  // a fordítás nem hibás (azt az angol cikk javítása gyógyítja).
+  if (translationTooShort(parts.body, body) || (looksTruncated(body) && !looksTruncated(parts.body))) {
+    return { reason: FAIL.TRUNCATED, cost: r.costUsd || 0 };
+  }
+  // IDEGEN ÍRÁS (2026-11-07): kínai/japán írásjel egy spanyol/magyar mondat közepén.
+  if (idegenIrasBeszivargas(`${enTitle}\n${enSub}\n${parts.body}`, `${title}\n${sub}\n${body}`).length) {
+    return { reason: FAIL.FOREIGN_SCRIPT, cost: r.costUsd || 0 };
+  }
   // NEM-FORDÍTÁS VÉDELEM (2026-07-25): a modell néha visszaadja az ANGOLT (nem
   // fordít) → angol csúszna a fordítás-slotba (10 ilyen es/fr cikk volt). Az angol
   // funkciószó-sűrűség jól elválik: JÓ fordítás ≤0.016, ANGOLUL-MARADT ~0.16.
@@ -230,7 +245,10 @@ async function forditasJavitas(hatarido = Infinity) {
       const ki = valaszJavito(r?.text, darabok.length);
       if (!ki) { console.log(`   ⚠️ fordítás-javító (${ny}): hibás válasz — ${f.slice(0, 48)} (jövő körben újra)`); continue; }
       ki.forEach((s, i) => { if (s.trim() === darabok[i].szoveg.trim()) { naplo.kihagy[ujjlenyomat(darabok[i].szoveg)] = 1; kihagyva++; } });
-      const uj = csere(data[ny], darabok, ki.map((s, i) => (s.trim() === darabok[i].szoveg.trim() ? null : s)));
+      // IDEGEN ÍRÁS a javító darabjaiban is (2026-11-07): ugyanaz a gát, mint a teljes fordításnál —
+      // a beszivárgott írásjeles darabot nem tesszük be (a régi marad, jövő körben újra kérjük).
+      const uj = csere(data[ny], darabok, ki.map((s, i) => (s.trim() === darabok[i].szoveg.trim()
+        || idegenIrasBeszivargas(darabok[i].szoveg, s).length ? null : s)));
       if (uj !== data[ny] && looksValid(uj)) { data[ny] = uj; valtozott = true; darabDb += darabok.length; }
     }
     if (valtozott) saveCache(f, data);

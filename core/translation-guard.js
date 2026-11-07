@@ -128,8 +128,32 @@ export const FAIL = {
   TRUNCATED: 'csonkult fordítás (kifutott a keretből)',
   ENGLISH_BODY: 'a törzs angolul maradt',
   ENGLISH_TITLE: 'a cím angolul maradt',
-  PROMPT_LEAK: 'a válasz a promptot vagy a modell gondolkodását tartalmazza'
+  PROMPT_LEAK: 'a válasz a promptot vagy a modell gondolkodását tartalmazza',
+  FOREIGN_SCRIPT: 'kínai/japán/koreai írásjel szivárgott a fordításba'
 };
+
+// ===================================================================
+// IDEGEN ÍRÁS-BESZIVÁRGÁS (2026-11-07, user: „az 53 régi csonka szöveg újraírása — csináljuk!”)
+// ===================================================================
+// A csonka-javítás közben derült ki: 1658 élő fordításból 42-ben kínai/japán
+// írásjel ült egy spanyol/magyar mondat KÖZEPÉN — az angol eredetiben egyikben
+// sem volt ilyen. Élő példák: „es un帮手 perfectamente capaz”, „használd a saját
+// 判断od”, „Akkor cしんáltad jól”. A modell (többnyelvű) egy-egy szót a „saját”
+// nyelvén gondolt el, és úgy hagyta. Egyik meglévő kapu sem kérdezte, milyen
+// ÍRÁSRENDSZERBŐL áll a szöveg.
+// A mérce: a fordításban olyan CJK-írásjel, ami az eredetiben NINCS. Ha az angol
+// cikk maga tartalmaz japánt (pl. nyelvtanulós prompt), azok az írásjelek
+// megengedettek. Kalibrálva az összes élő páron: 42 találat, mind valódi.
+const CJK_RE = /[぀-ヿ㐀-鿿가-힯豈-﫿]/g;
+
+/**
+ * A fordításba beszivárgott, az eredetiben nem szereplő CJK-írásjelek.
+ * @returns {string[]} egyedi írásjelek; üres tömb = rendben
+ */
+export function idegenIrasBeszivargas(eredeti, forditas) {
+  const forras = new Set(String(eredeti || '').match(CJK_RE) || []);
+  return [...new Set((String(forditas || '').match(CJK_RE) || []).filter(c => !forras.has(c)))];
+}
 
 // ===================================================================
 // PROMPT-SZIVÁRGÁS (2026-08-14)

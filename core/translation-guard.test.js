@@ -18,8 +18,10 @@ import {
   retryTokenFrame,
   RETRY_TOKEN_CAP,
   RETRY_WAIT_MS,
-  looksLikePromptLeak
+  looksLikePromptLeak,
+  idegenIrasBeszivargas
 } from './translation-guard.js';
+import { readFileSync } from 'fs';
 
 // ── 1) ANGOLUL MARADT — ezeket MEG KELL fognia (élő esetek) ──────────
 const UNTRANSLATED = [
@@ -255,6 +257,29 @@ assert.equal(UNTRANSLATED_BODY_THRESHOLD, 0.06);
   assert.equal(looksLikePromptLeak(null), false);
   assert.ok(FAIL.PROMPT_LEAK, 'van hozzá indok a naplóhoz');
   assert.equal(shouldRetryTranslation(FAIL.PROMPT_LEAK), true, 'ezt érdemes újrapróbálni — modell-hiba');
+}
+
+// ── IDEGEN ÍRÁS-BESZIVÁRGÁS (2026-11-07) — élő esetek a 42-ből ──────────
+{
+  const en = "Qwen (Alibaba's AI assistant) is a perfectly capable helper for this job.";
+  assert.deepEqual(idegenIrasBeszivargas(en, "Qwen (el asistente de IA de Alibaba) es un帮手 perfectamente capaz."), ["帮", "手"]);
+  assert.ok(idegenIrasBeszivargas("use your own judgment", "használd a saját判断od").length, "magyar élő eset");
+  assert.ok(idegenIrasBeszivargas("You did it right when", "Akkor cしんáltad jól, ha").length, "japán kana is");
+  // NEM szabad megfognia: tiszta fordítás, ékezetek, és az eredetiben IS szereplő japán
+  assert.deepEqual(idegenIrasBeszivargas("Use the menu.", "Használd a menüt — ő, ű, ñ, ¿qué?"), []);
+  assert.deepEqual(idegenIrasBeszivargas("Ask: translate to Japanese: こんにちは", "Pídele: tradúcelo al japonés: こんにちは"), []);
+  assert.deepEqual(idegenIrasBeszivargas("", ""), []);
+  assert.ok(FAIL.FOREIGN_SCRIPT, "van hozzá indok a naplóhoz");
+  assert.equal(shouldRetryTranslation(FAIL.FOREIGN_SCRIPT), true, "modell-hiba → újrapróba");
+}
+
+// ── A FORDÍTÓ MINDKÉT ÚTJÁN ott a gát (2026-11-07; tanulság: egy gát minden úton kell) ──
+{
+  const src = readFileSync(new URL("../agents/translator/agent.js", import.meta.url), "utf-8");
+  assert.ok(src.includes("translationTooShort(parts.body, body)"), "a teljes fordítás mentése előtt csonka-mérce");
+  assert.ok(src.includes("looksTruncated(body) && !looksTruncated(parts.body)"), "mondat közepén végződő fordítás nem menthető");
+  assert.ok(src.includes("FAIL.FOREIGN_SCRIPT"), "teljes fordítás: idegen írás → bukás");
+  assert.ok(src.includes("idegenIrasBeszivargas(darabok[i].szoveg, s)"), "fordítás-javító darabjai: idegen írás → kimarad");
 }
 
 console.log('✅ translation-guard.test: minden átment');

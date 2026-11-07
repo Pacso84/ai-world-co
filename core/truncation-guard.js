@@ -36,6 +36,8 @@
 // Ez a rész elsőre kimaradt, és 102 hamis riasztást okozott — a cikkeink
 // nagy része `*Written and edited by…*` aláírással zárul.
 // (A visszapipa karaktert kódból építjük — sablonliterálban lezárná magát.)
+import { idegenIrasBeszivargas } from './translation-guard.js';
+
 const ZARO = '["\'”’)\\]*_' + String.fromCharCode(96) + ']*';
 
 const LEZART = [
@@ -44,7 +46,11 @@ const LEZART = [
   /\|\s*$/,                                    // táblázat-sor
   /^```/,                                      // kódblokk-határ
   /https?:\/\/\S+\s*$/,                        // forrás-URL-lel zárul
-  /[:;]\s*$/                                   // kettőspont: felsorolást vezet be
+  /[:;]\s*$/,                                  // kettőspont: felsorolást vezet be
+  // Az egész sor egy idézet (prompt-példa), pl. *"A friendly koala …, soft digital illustration style"
+  // (2026-11-07: az ai-image-basics en+es így zárul, a tartalom teljes — ez volt a kalibrációkori
+  // egyetlen ismert hamis jelzés). Csak IDÉZŐJELLEL KEZDŐDŐ sorra: a „Type "hello"” nem ilyen.
+  /^[*_]*["“„][^"“”„]{3,}["”][*_]*$/
 ];
 
 /** Ennél rövidebb szövegen nem mondunk ítéletet (rövidhír, töredék). */
@@ -138,6 +144,9 @@ export function scanCorpus({ articles = [], translations = new Map() } = {}) {
       parNezve++;
       if (translationTooShort(md, t[l])) problems.push({ code: 'TRANSLATION_TRUNCATED', file: a.file, lang: l });
       else if (looksTruncated(t[l])) problems.push({ code: 'TRANSLATION_CUT_OFF', file: a.file, lang: l });
+      // 2026-11-07: kínai/japán írásjel a fordításban, ami az angolban nincs (42 élő eset volt).
+      const idegen = idegenIrasBeszivargas(md, t[l]);
+      if (idegen.length) problems.push({ code: 'TRANSLATION_FOREIGN_SCRIPT', file: a.file, lang: l, chars: idegen.slice(0, 6).join('') });
     }
   }
   return { problems, cikkNezve, parNezve };

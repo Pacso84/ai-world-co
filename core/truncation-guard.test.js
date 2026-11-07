@@ -27,6 +27,25 @@ t('mondat közepén elvágva', () => {
   assert.ok(looksTruncated(TOLTELEK + '\n\nall without'));
 });
 
+// ── IDÉZETTEL ZÁRULÓ SOR (2026-11-07) — az ai-image-basics en+es valódi vége ──
+t('egész soros prompt-idézet NEM csonka (élő ai-image-basics)', () => {
+  assert.equal(looksTruncated(TOLTELEK + '\n\n*"A friendly koala wearing a green scarf, holding a warm mug of tea, soft digital illustration style"'), false);
+  assert.equal(looksTruncated(TOLTELEK + '\n\n"Un koala amigable con una bufanda verde, estilo de ilustración digital suave"*'), false);
+});
+t('de az idézőjelen BELÜL elvágott, vagy nem idézettel kezdődő sor továbbra is csonka', () => {
+  assert.ok(looksTruncated(TOLTELEK + '\n\n*"A friendly koala wearing a green scarf, holding'));
+  assert.ok(looksTruncated(TOLTELEK + '\n\nType "hello" and then press'));
+});
+
+t('a napi őrszem jelzi a beszivárgott kínai írásjelet, az eredetiben is szereplőt nem', () => {
+  const en = TOLTELEK + '\n\nQwen is a perfectly capable helper for this job.';
+  const r = scanCorpus({
+    articles: [{ file: 'A.json', md: en }],
+    translations: new Map([['A.json', { es: TOLTELEK + '\n\nQwen es un帮手 perfectamente capaz.', hu: TOLTELEK + '\n\nA Qwen remek segítő.' }]])
+  });
+  assert.deepEqual(r.problems.map(p => [p.code, p.lang]), [['TRANSLATION_FOREIGN_SCRIPT', 'es']]);
+});
+
 t('SZÓ közepén elvágva (az éles magyar eset)', () => {
   assert.ok(looksTruncated(TOLTELEK + '\n\nKattints rá, vagy használd a Ctrl + I (vagy Cmd + I Mac‑'));
 });
@@ -195,9 +214,9 @@ t('az élő cikk-tár átnézve, a csonkák száma nem nő', () => {
     if (looksTruncated(md)) csonka++;
   }
   console.log(`     📏 ${n} angol cikk átnézve · ${csonka} csonka`);
-  // 2026-08-25-i feltárás: 11 jelölés (10 valódi + 1 határeset). A szám
-  // NEM NŐHET: ha nő, a mai futás új csonka cikket engedett ki.
-  assert.ok(csonka <= 11, `${csonka} csonka cikk — ez TÖBB, mint a feltáráskori 11`);
+  // 2026-08-25: 11 jelölés → 2026-11-07: a 3 valódi csonka útmutató vége pótolva, a határeset
+  // (idézettel záruló sor) már nem jelölés → 0. Ha nő, egy futás új csonka cikket engedett ki.
+  assert.equal(csonka, 0, `${csonka} csonka angol cikk — 11-07 óta 0 volt`);
 });
 
 t('a fordítás-tár átnézve, a csonkák száma nem nő', () => {
@@ -218,8 +237,18 @@ t('a fordítás-tár átnézve, a csonkák száma nem nő', () => {
       if (translationTooShort(enMd, tr[l])) rovid++;
     }
   }
-  console.log(`     📏 ${par} fordítás-pár átnézve · ${rovid} gyanúsan rövid`);
-  assert.ok(rovid <= 12, `${rovid} csonka fordítás — ez TÖBB, mint a feltáráskori 12`);
+  // 2026-11-07: a teljes őrszem-mérce (rövid + mondat közepén végződő + idegen írásjel) is 0 —
+  // a 21 csonka és a 42 kínai/japán írásjeles fordítás újrafordítva, a fordító mentés előtt szűr.
+  const osszes = scanCorpus({
+    articles: readdirSync(A).filter(x => x.endsWith('.json') && existsSync(join(T, x)))
+      .map(f => { try { return { file: f, md: JSON.parse(readFileSync(join(A, f), 'utf-8')).article_markdown || '' }; } catch { return null; } })
+      .filter(Boolean),
+    translations: new Map(readdirSync(T).filter(x => x.endsWith('.json'))
+      .map(f => { try { return [f, JSON.parse(readFileSync(join(T, f), 'utf-8'))]; } catch { return [f, {}]; } }))
+  }).problems.filter(p => p.lang !== 'en');
+  console.log(`     📏 ${par} fordítás-pár átnézve · ${rovid} gyanúsan rövid · ${osszes.length} őrszem-jelzés`);
+  assert.equal(rovid, 0, `${rovid} csonka fordítás — 11-07 óta 0 volt`);
+  assert.deepEqual(osszes.map(p => `${p.code} ${p.lang} ${p.file.slice(0, 50)}`), [], 'fordítás-hiba az őrszem szerint (11-07 óta 0)');
   assert.ok(par > 1000, 'a mérés lefutott (nem 0 páron)');
 });
 

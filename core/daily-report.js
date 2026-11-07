@@ -950,8 +950,14 @@ async function main() {
     if (!p.length) {
       lines.push(`✂️ Csonka-őrszem: nincs elvágott szöveg (${fedes})`);
     } else {
-      const en = p.filter(x => x.code === 'ARTICLE_TRUNCATED').length;
-      lines.push(`✂️ CSONKA-ŐRSZEM: ${p.length} elvágott szöveg (${en} angol cikk, ${p.length - en} fordítás) — ${fedes}`);
+      // 2026-11-07: a kínai/japán írásjel-beszivárgás külön sor — az nem elvágott szöveg.
+      const idegen = p.filter(x => x.code === 'TRANSLATION_FOREIGN_SCRIPT');
+      const vagott = p.filter(x => x.code !== 'TRANSLATION_FOREIGN_SCRIPT');
+      const en = vagott.filter(x => x.code === 'ARTICLE_TRUNCATED').length;
+      lines.push(vagott.length
+        ? `✂️ CSONKA-ŐRSZEM: ${vagott.length} elvágott szöveg (${en} angol cikk, ${vagott.length - en} fordítás) — ${fedes}`
+        : `✂️ Csonka-őrszem: nincs elvágott szöveg (${fedes})`);
+      if (idegen.length) lines.push(`🈲 IDEGEN ÍRÁSJEL a fordításban: ${idegen.length} (pl. ${idegen[0].lang} · ${idegen[0].file.slice(0, 40)} „${idegen[0].chars || ''}”)`);
     }
   } catch { /* még nem futott — nem baj */ }
 
