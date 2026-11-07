@@ -483,14 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179313246786864",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-10-27T20:21:07.868Z",
-      "loud": false
-    },
-    {
       "id": "n179313252600898",
       "level": "warn",
       "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
@@ -1281,18 +1273,17 @@
       "agent": "fact-check",
       "at": "2026-11-07T14:34:42.117Z",
       "loud": false
+    },
+    {
+      "id": "n179408069767919",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „In short:** NVIDIA ",
+      "agent": "fact-check",
+      "at": "2026-11-07T19:44:57.679Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17929811495746",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Before the ambulance arrives: How AI is helping the NHS rethink patient care\" — javítva: The article says the NHS published or issued the announcement and repeatedly calls it an “NHS announcement.” The supplied source identifies Microsoft AI/Microsoft Source—not the NHS—as the publisher of the post about the NHS.; Reviewer verdict: Hitelesség-kapu blokkolta: The article says the NHS ",
-      "ref": "2026-10-22T02-26-55-947Z_microsoft-ai_Before_the_ambulance_arrives__How_AI_is_helping_th.json",
-      "at": "2026-10-26T02:19:09.574Z"
-    },
     {
       "id": "m17929811640188",
       "from": "iro",
@@ -2695,6 +2686,16 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-07T14:41:59.366Z"
+    },
+    {
+      "id": "m179408069767996",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „In short:** NVIDIA shared two updates this week: continued investment in French startups b”): \"NVIDIA Announces New Investments in France’s Start\" — A forrás kifejezetten RTX Spark laptopokat említ, nem asztali gépet",
+      "ref": "ARTICLE_2026-10-14T02-37-17-830Z_nvidia-blog_NVIDIA_Announces_New_Investments_in_France_s_Start.json",
+      "open": true,
+      "at": "2026-11-07T19:44:57.679Z"
     }
   ]
 }

@@ -1,0 +1,63 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.01037592,
+  "at": "2026-11-07T19:44:24.946Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-06T21-11-01-671Z_perplexity-news_Teammates_are_agents_for_complex__ongoing_work_-_P.json",
+      "cim": "Teammates are agents for complex, ongoing work - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-10-15T02-17-50-372Z_openai-blog_The_EU_s_next_chapter_in_AI_is_agentic.json",
+      "cim": "The EU’s next chapter in AI is agentic",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrásokat: az EU-s elemzést és a Block esettanulmányt. Az \"agentic\" AI terjedése, a növekedés, és a Block biztonsági csapatának gyorsabb munkája mind megfelel a hivatalos forrásoknak."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-fact-check-a-viral-claim-or-breaking-news-story-with-.json",
+      "cim": "How to fact-check a viral claim or breaking news story with Perplexity",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-14T02-37-17-830Z_nvidia-blog_NVIDIA_Announces_New_Investments_in_France_s_Start.json",
+      "cim": "NVIDIA Announces New Investments in France’s Startups",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „In short:** NVIDIA shared two updates this week: continued investment in French startups b”",
+      "modell_hu": "A forrás kifejezetten RTX Spark laptopokat említ, nem asztali gépet"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-fact-check-a-viral-news-story-with-gemini-before-you-.json",
+      "cim": "How to fact-check a viral news story with Gemini before you share it",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató pontos, általános Gemini-használatot ír le konkrét új vagy eltávolított funkciók említése nélkül."
+    },
+    {
+      "file": "ARTICLE_2026-10-09T03-34-55-837Z_openai-blog_Disrupting_AI-enabled__false_front__operations.json",
+      "cim": "Disrupting AI-enabled “false front” operations",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk helyesen írja le a két műveletet (hamis újságírói hálózat és think tank mint álca) és a geopolitikai fókuszt, anélkül, hogy ellentmondana a forrásnak."
+    }
+  ]
+}
