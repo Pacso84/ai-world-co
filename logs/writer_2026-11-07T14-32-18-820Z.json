@@ -1,0 +1,39 @@
+{
+  "started_at": "2026-11-07T14:31:57.918Z",
+  "drafts_total": 1,
+  "articles_written": 1,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 1,
+    "html": 0,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.00453506,
+  "by_article": [
+    {
+      "draft": "2026-11-06T21-11-01-671Z_aws-ml_Taxonomy_of_agentic_primitives_in_Amazon_Quick.json",
+      "writer_output": "WRITER_2026-11-06T21-11-01-671Z_aws-ml_Taxonomy_of_agentic_primitives_in_Amazon_Quick.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 10,
+      "cost_usd": 0.0037337,
+      "duration_ms": 15087,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-11-07T14:32:18.820Z",
+  "duration_seconds": 20.902
+}

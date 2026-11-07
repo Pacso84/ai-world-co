@@ -1,0 +1,73 @@
+{
+  "_meta": {
+    "written_at": "2026-11-07T14:32:18.819Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0037337,
+    "original_draft": "2026-11-06T21-11-01-671Z_aws-ml_Taxonomy_of_agentic_primitives_in_Amazon_Quick.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/taxonomy-of-agentic-primitives-in-amazon-quick/",
+    "source_links": [
+      "https://aws.amazon.com/blogs/machine-learning/taxonomy-of-agentic-primitives-in-amazon-quick/"
+    ],
+    "source_snippet_len": 342,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "2484a06ea3090ea8",
+    "source_overlap_words": 10,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-07T14:32:39.417Z",
+    "slug": "triggers-agents-and-skills-how-amazon-quick-breaks-down-ai-tasks",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "OPENING_REPETITIVE: A legutóbbi 20 cikkből 5 kezdődik ugyanígy (\"have you ever…\"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel."
+      ],
+      "wordCount": 753
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with clear structure, correct US English, friendly tone, and all claims properly attributed to Amazon. The vocabulary explanations are accessible, the three-part framework is well-organized, and the What this means for you section gives practical takeaways for different reader levels.",
+      "_aiCost": 0.00116151,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-07T14:32:46.051Z",
+    "guide_worthy": false,
+    "pairing_reason": "Explains internal Amazon agent concepts (triggers/agents/skills taxonomy) but does not introduce a named consumer feature users can access or use — no concrete action to take",
+    "image_v": 2,
+    "image_at": "2026-11-07T14:33:00.058Z",
+    "seo": {
+      "meta_description": "Learn how Amazon Quick breaks down AI tasks into triggers, agents, and skills—four building blocks that let AI take real actions like scheduling meetings.",
+      "keywords": [
+        "Amazon Quick AI",
+        "AI agents explained",
+        "how AI agents work",
+        "Amazon AI automation",
+        "AI task automation",
+        "triggers agents skills AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'what are AI agent building blocks' to capture informational search intent",
+        "Include the exact phrase 'Amazon Quick' in the first 100 words to strengthen topical relevance",
+        "Consider adding a brief practical example of a trigger-agent-skill workflow to improve engagement metrics"
+      ],
+      "optimised_at": "2026-11-07T14:33:05.176Z"
+    },
+    "fact_verified_at": "2026-11-07T14:33:41.389Z"
+  },
+  "article_markdown": "---\ntitle: \"Triggers, Agents, and Skills: How Amazon Quick Breaks Down AI Tasks\"\nsubtitle: \"Amazon explains the four building blocks behind its AI agents and why they matter when you ask one to keep working for you.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"ai-agents\", \"amazon-quick\", \"productivity\", \"getting-started\"]\n---\n\n# Triggers, Agents, and Skills: How Amazon Quick Breaks Down AI Tasks\n\n> **In short:** Amazon says its Amazon Quick agents have moved from answering questions to taking actions, such as scheduling meetings or building reports. To keep that work understandable, the company describes it with a shared set of building blocks: a trigger that starts a task, an agent that does it, and capabilities that get it done.\n\nHave you ever asked an AI tool to check something every morning and wondered whether you had just created a new assistant or simply added a task to an old one? That small question is harder than it sounds, and Amazon's latest post explains how its team sorts it out.\n\n## Why the vocabulary matters\n\nAmazon says that as its agents grew from chatbots into doers, the team kept rebuilding the same ideas under different names. To stop that, they settled on four plain questions: **When** does work start, **What** is the work, **Who** does it, and **How** do they do it? Most of this stays hidden from everyday users. Still, a clear vocabulary helps anyone who builds on top of the system.\n\n## The three main pieces\n\n**Triggers** are what start the work. Amazon describes four kinds:\n\n- **Human-initiated**: you open a conversation and ask for something.\n- **Agent-delegated**: one agent hands a smaller job to another agent.\n- **Scheduled**: the task runs at set times, like every Monday at 9 a.m.\n- **Event-driven**: something outside the system kicks it off, such as a new email or a Slack mention.\n\n**An agent** is the \"who.\" Amazon defines it as a persistent, learning actor. Think of it as a worker with a memory. It has standing instructions (its role and rules), a set of capabilities (the tools it can use), and learned context (what it picked up from past work, such as formats you prefer). That last part is why Amazon says the tenth run of a task can go more smoothly than the first, even without anyone changing the instructions.\n\n**Capabilities** are the \"how.\" Amazon lists three types:\n\n- **Tools** are single actions, like sending an email or reading a file.\n- **Skills** are bundles of guidance, templates, and examples that describe an approach. The agent loads a skill only when it's relevant, so it doesn't carry every detail all the time.\n- **Workflows** are fixed sequences of steps, such as a budget check, then a manager's sign-off, then a finance review. The order is set, but the agent still makes judgment calls inside each step.\n\n## A simple example\n\nAmazon uses a common request: \"Monitor my Slack channel and send me a daily digest.\" According to the company, this is usually not a brand-new agent. It is a trigger, a scheduled instruction, added to an agent you already have. Seeing it that way makes the setup feel less like a mystery and more like adding one new habit to a routine.\n\n## What this means for you\n\n- **In everyday life**: When you ask an AI tool for something recurring, ask yourself whether you're setting a schedule, reacting to an event, or simply giving a one-time instruction. That mental check makes requests clearer.\n- **For your business or work**: Amazon says skills and workflows are meant to hold on to expertise and give a visible record of each step. Those ideas can help you decide which recurring jobs deserve a fixed process.\n- **If you're just getting started**: Begin by writing down one repeated task you do each week. Note what starts it, what needs doing, and what steps you always follow.\n- **If you already use it**: Try separating your instructions from your tools. Keep your standing guidance (your role, your preferred format) in one place, and treat each recurring request as a trigger you can adjust later.\n\n## Wrap-up\n\nAmazon describes a simple framework: triggers start the work, agents carry it out, and capabilities do the actual steps. The company says this is the first post in a series, so more detail will follow. For now, pick one routine task from your week and sort it into those three parts. You'll be surprised how much clearer your next AI request becomes.",
+  "original_title": "Taxonomy of agentic primitives in Amazon Quick"
+}

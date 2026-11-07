@@ -1,0 +1,64 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.014536065,
+  "at": "2026-11-07T14:33:35.496Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 2,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-06T21-11-01-671Z_aws-ml_Taxonomy_of_agentic_primitives_in_Amazon_Quick.json",
+      "cim": "Taxonomy of agentic primitives in Amazon Quick",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrást - a négy kérdést (Mikor, Mit, Ki, Hogyan), a három építőelemet (triggerek, ügynöök, képességek), az összes trigger-típust, az ügynök-összetevőket, a képesség-típusokat, a Slack-példát, és azt, hogy ez az első poszt egy sorozatban."
+    },
+    {
+      "file": "ARTICLE_2026-11-06T21-11-01-671Z_perplexity-news_Teammates_are_agents_for_complex__ongoing_work_-_P.json",
+      "cim": "Teammates are agents for complex, ongoing work - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-08-21T00-39-46-760Z_picsart_30_Gemini_Omni_prompts_to_copy_and_paste_for_AI_vi.json",
+      "cim": "30 Gemini Omni prompts to copy and paste for AI video",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „Newer video models from OpenAI, Google, Runway, and Kuaishou can do something older tools ”",
+      "modell_hu": "A forrás kifejezetten a Picsarthez szóló Gemini Omni útmutató, nem általános videó AI eszközöknek szóló tanács. A cikk hibásan általánosít, és olyan részletet (hangkapcsoló) ad hozzá, ami nincs a forrásban."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-add-an-ai-step-to-your-zapier-workflow.json",
+      "cim": "How to add an AI step to your Zapier workflow",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-08-25T00-38-05-214Z_picsart_24_AI_Polaroid_prompts_that_actually_look_like_fil.json",
+      "cim": "24 AI Polaroid prompts that actually look like film",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "megváltozott a fejezetek száma",
+      "modell_hu": "A cikk általános tanácsokat ad az AI képgenerátorokról, de a forrás kifejezetten a Picsart Nano Banana 2 modelljét ajánlja a valós fényképek szerkesztéséhez, és más prompt-képletet ír le, mint amit a cikk használ"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-edit-your-phone-photos-with-simple-text-instructions-.json",
+      "cim": "How to edit your phone photos with simple text instructions in Meta AI",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató pontosan írja le a Meta AI fotószerkesztési funkcióját, amely a WhatsApp-ban, Instagramon, Facebookon, Messengerben és a meta.ai-n érhető el."
+    }
+  ]
+}
