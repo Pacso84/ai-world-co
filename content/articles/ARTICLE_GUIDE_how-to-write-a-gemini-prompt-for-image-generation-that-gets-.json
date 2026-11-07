@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-write-a-gemini-prompt-for-image-generation-that-gets-",
+    "company": "Google",
+    "tool": "Gemini",
+    "icon": "🎨",
+    "level": "beginner",
+    "source_news": null,
+    "trend": {
+      "kifejezes": "gemini prompt for image generation",
+      "forras": [
+        "google-javaslat"
+      ],
+      "datum": "2026-11-07"
+    },
+    "written_at": "2026-11-07T03:44:40.503Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0051098,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-11-07T03:45:39.234Z",
+    "slug": "how-to-write-a-gemini-image-prompt-that-gets-close-to-what-you-picture",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1495
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with clear structure, friendly tone, actionable steps, and helpful Youll know it worked when cues throughout. Each step names the screen element, describes what happens, and gives a concrete example. Appropriate caution about regional/plan availability, no invented facts or clichés, and the What this means for you section ties it to real life.",
+      "_aiCost": 0.00185598,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-07T03:47:19.723Z",
+    "seo": {
+      "meta_description": "Learn how to write better Gemini image prompts with 5 simple elements: subject, setting, style, lighting and framing. Get results closer to what you pictured on the first try.",
+      "keywords": [
+        "Gemini image prompt",
+        "how to write Gemini prompts",
+        "Gemini AI image generation",
+        "AI image prompt tips",
+        "Google Gemini image creation",
+        "prompt writing guide",
+        "image prompt structure"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add an FAQ section at the end to capture featured snippet opportunities for voice search and 'people also ask' boxes",
+        "Include a concrete before/after prompt example in the article to demonstrate the five-element method in action",
+        "Add a short checklist or summary graphic that readers can screenshot or save for quick reference when prompting"
+      ],
+      "optimised_at": "2026-11-07T03:48:33.681Z"
+    },
+    "fact_verified_at": "2026-11-07T03:49:27.784Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Write a Gemini Image Prompt That Gets Close to What You Pictured\"\nsubtitle: \"Use five simple ingredients (subject, setting, style, lighting and framing) to get images closer to your mental picture on the first try.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Google\"\ntool: \"Gemini\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"gemini\", \"image-generation\", \"prompts\"]\n---\n\n# How to Write a Gemini Image Prompt That Gets Close to What You Pictured\n\n> **In short:** Gemini can create images from a written description. Describing five things, the subject, setting, style, lighting and framing, usually gets you much closer to your picture on the first try. Image creation may depend on your account, location or plan.\n\nYou have a picture in your head, but Gemini can only work with the words you type. By the end of this guide, you'll know how to describe any image in five clear parts, so the result looks much more like what you had in mind. This is for anyone who has ever typed \"a cat in a hat\" and been surprised by the result.\n\n## Before you start\n- A Google account, and access to the Gemini chat in a web browser or the Gemini app on your phone.\n- Image creation may not be available in every region or on every plan. If you can't find an image option, it may not be switched on for your account yet.\n- About 15 to 20 minutes. Most of that time is trying, looking and adjusting.\n\n## Step 1 — Open Gemini and start a fresh chat\nOpen Gemini in your browser or app. Start a new chat, usually by tapping a pencil or \"new chat\" icon, so your image request isn't mixed up with older messages. You'll see an empty text box at the bottom of the screen, often with placeholder words like \"Ask Gemini\" or \"Enter a prompt here.\" Those words may be different on your device. If you see a button or option for creating images, you can use it, but you can also simply type a request that starts with \"Create an image of…\" and see what happens. After you send it, Gemini usually replies with one or more pictures, sometimes taking a few seconds.\n\n💬 Example: \"Create an image of a friendly cup of coffee on a wooden table.\"\n\nYou'll know it worked when Gemini replies with a picture, or with a message explaining why it can't make one yet.\n\n## Step 2 — Name the subject\nThe subject is the main thing in the picture: a who, or a what. Be specific. \"A dog\" leaves Gemini guessing about breed, size and what it's doing. \"A small brown dog with floppy ears, sitting and looking up\" gives it real direction. Good subjects usually include one clear action or pose. Keep it to one or two main subjects at first, because crowded scenes are harder to get right. Write your subject as a full phrase near the start of your prompt, so Gemini sees it first. If the subject is a real, named person, skip it: Gemini may not create images of real people, and it's safer to describe a made-up character instead.\n\n💬 Example: \"Create an image of a [animal or person] doing [one action] with [one object].\"\n\nYou'll know it worked when your subject is clearly the first thing you notice in the result.\n\n## Step 3 — Describe the setting\nThe setting answers where and when. Think of it like a stage: the subject is the actor, and the setting is the backdrop. Name a place and, if it matters, a time of day or season. \"In a kitchen\" is vague; \"in a small sunny kitchen with white tiles\" paints a clearer scene. Add one or two background details, such as \"with plants on the windowsill,\" so the scene feels finished. Don't overload it with dozens of objects, since Gemini may add or drop small things anyway.\n\n💬 Example: \"...in a [place] during [time of day].\"\n\nYou'll know it worked when the background matches the place you named, even if the details differ a little.\n\n## Step 4 — Choose a style\nThe style tells Gemini how the picture should look: a photograph, a watercolor painting, a cartoon, an oil painting or a 3D-style render. This single word can change the whole mood, so it's one of the most useful ingredients. If you want realism, say \"photo-like.\" If you want something playful, say \"cartoon style with bold outlines.\" You can also name a mood, like \"calm\" or \"cheerful.\" Avoid naming a living artist to copy their exact look; describing the style in your own words is simpler and works just as well.\n\n💬 Example: \"...in a soft watercolor style with pale, gentle colors.\"\n\nYou'll know it worked when the result looks like the kind of picture you described, whether that's a painting, a photo or a drawing.\n\n## Step 5 — Add the lighting\nLighting is the difference between a flat picture and one with atmosphere. Name where the light comes from and how it feels: \"warm morning sunlight from the left,\" \"soft overcast light,\" \"candlelight,\" or \"a neon glow at night.\" Lighting also helps set the mood, so it's worth a few words. If you don't mention lighting at all, Gemini will choose something for you, which is fine for quick tests but less predictable when you want a specific look. One clear light source is easier to get right than several.\n\n💬 Example: \"...lit by [light source] coming from [direction].\"\n\nYou'll know it worked when the shadows and brightness in the picture roughly match the light you described.\n\n## Step 6 — Choose the framing\nFraming is how the camera sees the scene. Is it a close-up of a face, a wide shot of a landscape, or a view from above? Words like \"close-up,\" \"medium shot,\" \"wide shot,\" \"eye level\" and \"bird's-eye view\" are easy to type and make a big difference. If you're not sure, \"a medium shot at eye level\" is a safe starting point for most subjects. Framing also decides how much of the subject is visible, so say whether you want the whole thing or just part of it.\n\n💬 Example: \"Framed as a [shot type] from [angle].\"\n\nYou'll know it worked when the subject's size and position on the screen match the framing you asked for.\n\n## Step 7 — Combine the five parts, send, and refine\nNow put everything into one flowing prompt, in this order: subject, setting, style, lighting, framing. Send it, then look at the result carefully. Change one ingredient at a time, such as \"make the lighting warmer,\" so you can see what actually changed. Gemini can usually make a new version when you ask it to adjust, and you can keep going until the picture is close to your idea. It won't read your mind, so small details like exact colors or the number of objects may still differ, and that's normal.\n\n💬 Example: \"Create an image of a small brown dog with floppy ears, sitting on a porch in a quiet village at sunset, in a soft watercolor style, lit by warm evening light from the left, framed as a medium shot at eye level.\"\n\nYou'll know it worked when the picture matches most of your five parts, and any remaining differences are things you can fix with one small change.\n\n## Common mistakes\n- **Writing a single vague word.** \"A beautiful landscape\" leaves almost everything open. The fix is to add at least a place, a style and a light source, even in short phrases.\n- **Piling on too many ideas at once.** Ten objects, three styles and two light sources confuse the result. The fix is to pick one main subject and one clear style, then add details gradually.\n- **Expecting a perfect copy on the first try.** Gemini works from words, not from your memory of the picture. The fix is to treat the first result as a draft and adjust one part at a time.\n\n## What this means for you\n- **In everyday life:** Make a birthday card design, a picture for a family slideshow, or a cozy illustration for a bedtime story your child can help describe.\n- **For your business or work:** Sketch a rough visual for a flyer, presentation or social post before you hire someone to make the final version, and check that any image you use is appropriate for your purpose.\n- **If you're just getting started:** Begin with subject and style only. Once that works, add setting, lighting and framing one at a time.\n\n## Try it now\nThink of one simple picture you've been imagining, such as a bowl of soup by a rainy window. Write one sentence that names the subject, setting, style, lighting and framing, then send it to Gemini. Compare the result with your picture, and change just one word to see how it shifts.",
+  "original_title": "How to Write a Gemini Prompt for Image Generation That Gets Close to What You Pictured"
+}

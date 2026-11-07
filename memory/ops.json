@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179380773727014",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-04T15:55:37.270Z",
-      "updated": "2026-11-04T15:55:44.421Z"
-    },
-    {
-      "id": "t179380774442389",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-04T15:55:44.423Z",
-      "updated": "2026-11-04T15:56:05.148Z"
-    },
-    {
-      "id": "t179385169337615",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-05T04:08:13.376Z",
-      "updated": "2026-11-05T04:08:32.488Z"
-    },
-    {
-      "id": "t17938517124894",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-05T04:08:32.489Z",
-      "updated": "2026-11-05T04:09:15.328Z"
-    },
-    {
-      "id": "t179385175532934",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-05T04:09:15.329Z",
-      "updated": "2026-11-05T04:09:15.450Z"
-    },
-    {
-      "id": "t179385175545170",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-05T04:09:15.451Z",
-      "updated": "2026-11-05T04:10:40.561Z"
-    },
-    {
-      "id": "t17938518405621",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-05T04:10:40.562Z",
-      "updated": "2026-11-05T04:12:45.626Z"
-    },
-    {
-      "id": "t179385196563068",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-05T04:12:45.630Z",
-      "updated": "2026-11-05T04:13:55.212Z"
-    },
-    {
-      "id": "t179385203521418",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-05T04:13:55.214Z",
-      "updated": "2026-11-05T04:15:27.045Z"
-    },
-    {
-      "id": "t179385212704724",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-05T04:15:27.047Z",
-      "updated": "2026-11-05T04:16:32.245Z"
-    },
-    {
-      "id": "t179385219227565",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-05T04:16:32.275Z",
-      "updated": "2026-11-05T04:17:16.186Z"
-    },
-    {
-      "id": "t179385223618726",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-05T04:17:16.187Z",
-      "updated": "2026-11-05T04:18:18.327Z"
-    },
-    {
-      "id": "t179385229835448",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-05T04:18:18.354Z",
-      "updated": "2026-11-05T04:18:18.490Z"
-    },
-    {
-      "id": "t179385229851748",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-05T04:18:18.517Z",
-      "updated": "2026-11-05T04:19:38.814Z"
-    },
-    {
       "id": "t17938523788150",
       "title": "Run seo",
       "status": "done",
@@ -479,49 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-06T21:12:58.412Z",
       "updated": "2026-11-06T21:13:22.716Z"
+    },
+    {
+      "id": "t179402283283023",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-07T03:40:32.830Z",
+      "updated": "2026-11-07T03:40:32.947Z"
+    },
+    {
+      "id": "t179402283294819",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-07T03:40:32.948Z",
+      "updated": "2026-11-07T03:41:12.593Z"
+    },
+    {
+      "id": "t179402287259474",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-07T03:41:12.594Z",
+      "updated": "2026-11-07T03:41:12.725Z"
+    },
+    {
+      "id": "t179402287275510",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-07T03:41:12.755Z",
+      "updated": "2026-11-07T03:42:25.978Z"
+    },
+    {
+      "id": "t179402294597933",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-07T03:42:25.979Z",
+      "updated": "2026-11-07T03:43:16.472Z"
+    },
+    {
+      "id": "t179402299647560",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-07T03:43:16.475Z",
+      "updated": "2026-11-07T03:43:40.839Z"
+    },
+    {
+      "id": "t179402302086666",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-07T03:43:40.866Z",
+      "updated": "2026-11-07T03:44:40.518Z"
+    },
+    {
+      "id": "t179402308052038",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-07T03:44:40.520Z",
+      "updated": "2026-11-07T03:45:39.247Z"
+    },
+    {
+      "id": "t17940231392764",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-07T03:45:39.276Z",
+      "updated": "2026-11-07T03:45:39.417Z"
+    },
+    {
+      "id": "t179402313941844",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-07T03:45:39.418Z",
+      "updated": "2026-11-07T03:45:39.563Z"
+    },
+    {
+      "id": "t179402313958922",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-07T03:45:39.589Z",
+      "updated": "2026-11-07T03:47:19.745Z"
+    },
+    {
+      "id": "t179402323974637",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-07T03:47:19.746Z",
+      "updated": "2026-11-07T03:48:33.696Z"
+    },
+    {
+      "id": "t179402331369723",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-07T03:48:33.697Z",
+      "updated": "2026-11-07T03:48:54.533Z"
+    },
+    {
+      "id": "t179402333453471",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-07T03:48:54.534Z",
+      "updated": "2026-11-07T03:49:17.098Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179302570096974",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"How to make spooky Halloween invitations guests ca\" ",
-      "agent": "fact-check",
-      "at": "2026-10-26T14:41:40.969Z",
-      "loud": false
-    },
-    {
-      "id": "n179302576204575",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-10-26T14:42:42.045Z",
-      "loud": false
-    },
-    {
-      "id": "n179304782450990",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-10-26T20:50:24.509Z",
-      "loud": false
-    },
-    {
-      "id": "n179304785231858",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-10-26T20:50:52.318Z",
-      "loud": false
-    },
-    {
-      "id": "n179307125643929",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 7.3/10).",
-      "agent": "seo",
-      "at": "2026-10-27T03:20:56.439Z",
-      "loud": false
-    },
     {
       "id": "n179307153426518",
       "level": "success",
@@ -1281,38 +1241,49 @@
       "agent": "fact-check",
       "at": "2026-11-06T21:14:29.353Z",
       "loud": false
+    },
+    {
+      "id": "n179402331368739",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 7.4/10).",
+      "agent": "seo",
+      "at": "2026-11-07T03:48:33.687Z",
+      "loud": false
+    },
+    {
+      "id": "n179402334709254",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). **Publish Summary — AI World HQ**\n\nThe line-up is solid and covers practical angles: utility (fact-checking), safety (privacy), and balanced guidance alongside a nice variety of writing templates. One",
+      "agent": "publisher",
+      "at": "2026-11-07T03:49:07.092Z",
+      "loud": false
+    },
+    {
+      "id": "n179402335712953",
+      "level": "success",
+      "text": "3 hír + 2 útmutató publikálva (költség: $0.0414).",
+      "agent": "ceo",
+      "at": "2026-11-07T03:49:17.129Z",
+      "loud": false
+    },
+    {
+      "id": "n179402342241570",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Zapier also says th",
+      "agent": "fact-check",
+      "at": "2026-11-07T03:50:22.415Z",
+      "loud": false
+    },
+    {
+      "id": "n179402348826118",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „In short:** Amazon'",
+      "agent": "fact-check",
+      "at": "2026-11-07T03:51:28.261Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179289538040511",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-25T02:29:40.405Z"
-    },
-    {
-      "id": "m17929327780679",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"Use one Zapier MCP server across all your AI tools\" — The article oversimplifies a conditional feature. The source explicitly states skills are only shared in agentic mode, not in managed mode, but the article presents skills sharing as unconditional.",
-      "ref": "ARTICLE_2026-10-22T02-27-34-945Z_zapier-blog_Use_one_Zapier_MCP_server_across_all_your_AI_tools.json",
-      "open": true,
-      "at": "2026-10-25T12:52:58.067Z"
-    },
-    {
-      "id": "m179293281423464",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Build a Simple Household Budget Calculator with Gi\" — The 'free tier exists' claim may be outdated; the description of what paid tiers offer is also imprecise. Softened to direct readers to check official pricing rather than stating tiers as fact.",
-      "ref": "ARTICLE_GUIDE_build-a-simple-household-budget-calculator-with-github-copil.json",
-      "open": true,
-      "at": "2026-10-25T12:53:34.234Z"
-    },
     {
       "id": "m179295351412952",
       "from": "fact-check",
@@ -2697,6 +2668,35 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-06T21:22:02.128Z"
+    },
+    {
+      "id": "m179402333452578",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 24 → 6/4/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-07T03:48:54.525Z"
+    },
+    {
+      "id": "m179402342241520",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Zapier also says the assistant is not allowed to suggest a blanket rule that allows everyt”): \"How much should an AI decide without asking you fi\" — A cikk túlságosan általánosít egy konkrét korlátozást",
+      "ref": "ARTICLE_2026-11-06T21-11-01-672Z_zapier-blog_How_much_should_an_AI_decide_without_asking_you_fi.json",
+      "open": true,
+      "at": "2026-11-07T03:50:22.415Z"
+    },
+    {
+      "id": "m179402348826130",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „In short:** Amazon's September 2026 update added more AI model choices on Bedrock, faster ”): \"ICYMI: What landed for AI builders in September 20\" — A forrás emberi jóváhagyási munkafolyamatokat ír le, nem AI önértékelést",
+      "ref": "ARTICLE_2026-10-10T03-15-36-180Z_aws-ml_ICYMI__What_landed_for_AI_builders_in_September_20.json",
+      "open": true,
+      "at": "2026-11-07T03:51:28.261Z"
     }
   ]
 }

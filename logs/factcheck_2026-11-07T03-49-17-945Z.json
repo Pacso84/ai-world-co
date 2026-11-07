@@ -1,0 +1,64 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.0129033,
+  "at": "2026-11-07T03:49:17.945Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 2,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-write-a-gemini-prompt-for-image-generation-that-gets-.json",
+      "cim": "How to Write a Gemini Prompt for Image Generation That Gets Close to What You Pictured",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-summarize-a-long-email-thread-in-apple-mail.json",
+      "cim": "How to summarize a long email thread in Apple Mail",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató valódi Apple Intelligence funkciókat ír le (összefoglalók a Mailben, Writing Tools) a verziók közötti különbségekre vonatkozó megfelelő fenntartásokkal."
+    },
+    {
+      "file": "ARTICLE_2026-11-06T21-11-01-672Z_zapier-blog_How_much_should_an_AI_decide_without_asking_you_fi.json",
+      "cim": "How much should an AI decide without asking you first?",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „Zapier also says the assistant is not allowed to suggest a blanket rule that allows everyt”",
+      "modell_hu": "A cikk túlságosan általánosít egy konkrét korlátozást"
+    },
+    {
+      "file": "ARTICLE_2026-11-06T21-11-01-671Z_perplexity-news_Teammates_are_agents_for_complex__ongoing_work_-_P.json",
+      "cim": "Teammates are agents for complex, ongoing work - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-11-06T21-11-01-669Z_openai-blog_Partnering_with_Hacktron_to_find_vulnerabilities_i.json",
+      "cim": "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi mindkét forrásdokumentumot. Az állítások a Hacktron harmadik féllel való interakciókra összpontosító munkájáról, az október közepén végzett futtatás számairól (1724 sebezhetőség, 948 LPE exploit), a kritikus sebezhetőségekkel való kezdésről és a 10 napos megfigyelési időszakr"
+    },
+    {
+      "file": "ARTICLE_2026-10-10T03-15-36-180Z_aws-ml_ICYMI__What_landed_for_AI_builders_in_September_20.json",
+      "cim": "ICYMI: What landed for AI builders in September 2026",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás a forrásban nem szereplő állítást hozna be: „In short:** Amazon's September 2026 update added more AI model choices on Bedrock, faster ”",
+      "modell_hu": "A forrás emberi jóváhagyási munkafolyamatokat ír le, nem AI önértékelést"
+    }
+  ]
+}

@@ -7996,11 +7996,12 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Turn a 40-message email chain into a two-sentence summary at the top of the thread, so you know in seconds whether you actually need to read the whole thing.",
-      "status": "todo",
+      "status": "done",
       "icon": "📧",
       "priority": "balance",
       "proposed_at": "2026-10-18T02:10:43.440Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-11-07T03:44:14.749Z"
     },
     {
       "id": "how-to-ask-chatgpt-to-explain-any-ai-news-headline-in-plain-",
@@ -8512,6 +8513,28 @@
       "priority": "coverage",
       "proposed_at": "2026-11-06T04:11:23.628Z",
       "proposed_by": "company-coverage"
+    },
+    {
+      "id": "how-to-write-a-gemini-prompt-for-image-generation-that-gets-",
+      "company": "Google",
+      "tool": "Gemini",
+      "title": "How to Write a Gemini Prompt for Image Generation That Gets Close to What You Pictured",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Use a five-part formula (subject, setting, style, lighting, framing) so Gemini has enough detail to create the image you have in mind on the first try.",
+      "status": "done",
+      "icon": "🎨",
+      "proposed_at": "2026-11-07T03:43:49.961Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "gemini prompt for image generation",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-11-07"
+      },
+      "written_at": "2026-11-07T03:44:40.504Z"
     }
   ],
   "trend_proba": [
@@ -8590,6 +8613,10 @@
     {
       "kifejezes": "how to use perplexity for job search",
       "at": "2026-11-06T04:09:41.390Z"
+    },
+    {
+      "kifejezes": "gemini prompt for image generation",
+      "at": "2026-11-07T03:43:40.990Z"
     }
   ]
 }

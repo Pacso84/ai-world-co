@@ -1,0 +1,94 @@
+{
+  "started_at": "2026-11-07T03:41:12.878Z",
+  "drafts_total": 7,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 2,
+  "merged_total": 1,
+  "skipped_repeat": 1,
+  "repeats": [
+    {
+      "cim": "What GitHub Copilot's New Agent Features Mean for Everyday Teams",
+      "mar": "Parallel AI Agents: What GitHub Copilot's New Mode Means for You",
+      "pont": 0.9259331462174387,
+      "by": "embedding",
+      "theme": "GitHub Copilot agent features and integrations"
+    }
+  ],
+  "source_via": {
+    "hirfolyam": 3,
+    "html": 3,
+    "rss": 0,
+    "kivonat": 1
+  },
+  "source_fail": [
+    {
+      "draft": "2026-11-06T21-11-01-671Z_perplexity-news_Teammates_are_agents_for_complex__ongoing_work_-_P.json",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPUHZqeXpxWHBHYmpybWtMWDF6ZTNGMVJTS0JOcFRIdlNlLXp5SUtVTWpEMkNZaWttaXk3WS1heElzUUZyT2JvV3phc253THZzbUhqOFVlajl4SkIyUVA1QjJ3WHVna3VzQlNRR2VPa3h6QWhMbGs0dXFQQXZqejlmMkx4LTBQQzhRTjROTHlERQ?oc=5",
+      "hiba": "túl rövid szöveg (11 karakter)"
+    }
+  ],
+  "total_cost_usd": 0.016742135,
+  "by_article": [
+    {
+      "draft": "2026-11-07T03-41-12-578Z_github-copilot-changelog__GitHub_in_Slack_and_Teams_is_generally_available_.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "Parallel AI Agents: What GitHub Copilot's New Mode Means for You",
+      "score": 0.9259331462174387,
+      "cost_usd": 0.0039237
+    },
+    {
+      "draft": "2026-11-06T21-11-01-669Z_openai-blog_Partnering_with_Hacktron_to_find_vulnerabilities_i.json",
+      "writer_output": "WRITER_2026-11-06T21-11-01-669Z_openai-blog_Partnering_with_Hacktron_to_find_vulnerabilities_i.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "OpenAI security research and vulnerability findings",
+      "source_via": [
+        "html",
+        "html"
+      ],
+      "source_chars": 7378,
+      "source_overlap_words": 8,
+      "cost_usd": 0.0042092,
+      "duration_ms": 18292,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-06T21-11-01-671Z_perplexity-news_Teammates_are_agents_for_complex__ongoing_work_-_P.json",
+      "writer_output": "WRITER_2026-11-06T21-11-01-671Z_perplexity-news_Teammates_are_agents_for_complex__ongoing_work_-_P.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "kivonat"
+      ],
+      "source_chars": 57,
+      "source_overlap_words": 5,
+      "cost_usd": 0.0035263,
+      "duration_ms": 14282,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-06T21-11-01-672Z_zapier-blog_How_much_should_an_AI_decide_without_asking_you_fi.json",
+      "writer_output": "WRITER_2026-11-06T21-11-01-672Z_zapier-blog_How_much_should_an_AI_decide_without_asking_you_fi.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 5999,
+      "source_overlap_words": 13,
+      "cost_usd": 0.0036111,
+      "duration_ms": 12928,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-11-07T03:42:25.956Z",
+  "duration_seconds": 73.078
+}
