@@ -30,6 +30,7 @@ import { spawn } from 'child_process';
 import { addTask, setTaskStatus, notify } from '../../core/ops.js';
 import { meteredBlocked, budgetStatus } from '../../core/budget.js';
 import { hirIroKeret } from '../../core/hir-keret.js';
+import { extraTemaMa, extraUtmutato } from '../../core/lefedettseg-extra.js';
 
 // ===================================================================
 // SETUP
@@ -131,6 +132,12 @@ function countGuideEscalatable() {
 }
 // Hány MEGÍRANDÓ (todo) útmutató-téma van? (a párosító ide tesz új témákat a hírekből)
 const GUIDE_TOPICS_PATH = join(PROJECT_ROOT, 'guides', 'guide-topics.json');
+// CÉG-LEFEDETTSÉG +1 HELY (2026-11-07): a ma kiosztható coverage-téma, vagy null
+function maiExtraTema() {
+  try { return extraTemaMa(JSON.parse(readFileSync(GUIDE_TOPICS_PATH, 'utf-8')).topics, TODAY); }
+  catch { return null; }
+}
+
 function countTodoGuideTopics() {
   try { return JSON.parse(readFileSync(GUIDE_TOPICS_PATH, 'utf-8')).topics.filter(t => t.status !== 'done').length; }
   catch { return 0; }
@@ -214,14 +221,14 @@ function runAgent(agentPath, args = []) {
 // A két sáv KÜLÖN napi keretet kap (lásd config.limits), hogy a hír-keret
 // betelése ne akadályozza az útmutató-írást.
 function countTodayByType() {
-  const out = { news: 0, guides: 0 };
+  const out = { news: 0, guides: 0, guidesExtra: 0 };
   if (!existsSync(ARTICLES_DIR)) return out;
   for (const f of readdirSync(ARTICLES_DIR)) {
     if (!f.endsWith('.json')) continue;
     try {
       const data = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
       if ((data._meta?.published_at || '').slice(0, 10) !== TODAY) continue;
-      if (data._meta?.type === 'guide') out.guides++; else out.news++;
+      if (data._meta?.type === 'guide') { out.guides++; if (extraUtmutato(data._meta)) out.guidesExtra++; } else out.news++;
     } catch { /* ignore */ }
   }
   return out;
@@ -259,15 +266,20 @@ function calculateTodayCost() {
 }
 
 function countDrafts() {
-  if (!existsSync(DRAFTS_DIR)) return { scraper: 0, writer: 0, writerGuides: 0 };
+  if (!existsSync(DRAFTS_DIR)) return { scraper: 0, writer: 0, writerGuides: 0, writerGuidesExtra: 0 };
   const files = readdirSync(DRAFTS_DIR);
+  // a cég-lefedettség +1 helyén írt vázlatok NEM foglalják a rendes keretet (core/lefedettseg-extra.js)
+  const writerGuidesExtra = files.filter(f => f.startsWith('WRITER_GUIDE_')).filter(f => {
+    try { return extraUtmutato(JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8'))._meta); } catch { return false; }
+  }).length;
   return {
     scraper: files.filter(f => f.endsWith('.json') && !f.startsWith('WRITER_')).length,
     writer: files.filter(f => f.startsWith('WRITER_')).length,
     // A még ELLENŐRZÉSRE VÁRÓ útmutató-vázlatok is a napi keretbe számítanak!
     // (2026-07-07 hiba: a párosító+idle-fill nem látta egymás félkész munkáit
     // → 11 útmutató született a napi 6-os keret ellenére)
-    writerGuides: files.filter(f => f.startsWith('WRITER_GUIDE_')).length
+    writerGuides: files.filter(f => f.startsWith('WRITER_GUIDE_')).length,
+    writerGuidesExtra
   };
 }
 
@@ -303,7 +315,9 @@ function generateReport() {
     articles_remaining: Math.max(0, LIMITS.daily_articles_max - byType.news),
     // ÚTMUTATÓ-sáv szabad helyei (az idle-fill ezt használja) — a MÁR MEGÍRT,
     // de még ellenőrzésre váró vázlatok IS foglalják a helyet:
-    guides_remaining: Math.max(0, GUIDES_MAX - byType.guides - drafts.writerGuides)
+    // A cég-lefedettség +1 helyén írtak (2026-11-07) NEM számítanak bele — külön lépés (3i3) kezeli.
+    guides_remaining: Math.max(0, GUIDES_MAX - (byType.guides - byType.guidesExtra) - (drafts.writerGuides - drafts.writerGuidesExtra)),
+    guides_extra_today: byType.guidesExtra
   };
 }
 
@@ -314,7 +328,7 @@ function printReport(report) {
   console.log(`║  Dátum:                ${report.date}                            ║`);
   console.log('║                                                            ║');
   console.log(`║  ✅ Hír publikálva ma: ${String(report.news_published_today).padEnd(3)} / ${LIMITS.daily_articles_max} cikk                       ║`);
-  console.log(`║  📘 Útmutató ma:       ${String(report.guides_published_today).padEnd(3)} / ${GUIDES_MAX} útmutató                   ║`);
+  console.log(`║  📘 Útmutató ma:       ${String(report.guides_published_today).padEnd(3)} / ${GUIDES_MAX} útmutató${report.guides_extra_today ? ` (+${report.guides_extra_today} cég-lefedettség)` : ''}                   ║`);
   console.log(`║  ❌ Elutasítva ma:     ${String(report.rejected_today).padEnd(3)} cikk                                ║`);
   console.log(`║  💰 Költség ma:        $${(report.day_cost_all_usd ?? report.total_cost_today_usd).toFixed(4)} / $${DAY_CAP.toFixed(2)} (egész cég)  ║`);
   console.log('║                                                            ║');
@@ -342,7 +356,8 @@ function checkLimits(report) {
     hardCapBlocked, hardCapReason,
     costBlocked: (report.day_cost_all_usd ?? report.total_cost_today_usd) >= DAY_CAP,
     newsBlocked: report.articles_remaining <= 0,     // hír-sáv betelt
-    guidesBlocked: report.guides_remaining <= 0      // útmutató-sáv betelt
+    guidesBlocked: report.guides_remaining <= 0,     // útmutató-sáv betelt
+    lefedettsegExtra: !!maiExtraTema()               // cég-lefedettség +1 hely még esedékes ma (3i3)
   };
 }
 
@@ -429,7 +444,7 @@ async function main() {
     saveCeoLog(session);
     return;
   }
-  if (gate.newsBlocked && gate.guidesBlocked) {
+  if (gate.newsBlocked && gate.guidesBlocked && !gate.lefedettsegExtra) {
     console.log('🚫 Hír- ÉS útmutató-keret is betelt mára — nincs több teendő.');
     console.log('\n💡 Holnap újra próbálkozhatunk.');
     session.blocked = true;
@@ -614,6 +629,27 @@ async function main() {
   // témát. Holnapra tölti a sort, ezért a mai keret nem számít. Teszt: core/ceg-lefedettseg.test.js
   if (!args.skipGuides && haveTime(1, '3i2. CÉG-LEFEDETTSÉG')) {
     await runAgent('agents/guide/agent.js', ['--cover']);
+  }
+  // 3i3. CÉG-LEFEDETTSÉG +1 HELY (2026-11-07, user: „Napi +1 hely”): naponta EGY extra útmutató
+  // a 0 útmutatós cégek coverage-témájából, a rendes 2-es kereten FELÜL (az _meta.extra_slot miatt
+  // nem számít bele). Nincs több coverage-téma → magától kimarad. core/lefedettseg-extra.js
+  if (!args.skipGuides && generateReport().cost_remaining_usd > 0.01 && haveTime(6, '3i3. CÉG-LEFEDETTSÉG +1')) {
+    const extraTema = maiExtraTema();
+    if (extraTema) {
+      console.log(`
+━━━ 3i3. LÉPÉS: CÉG-LEFEDETTSÉG +1 ÚTMUTATÓ — „${extraTema.title}” ━━━`);
+      try {
+        const store = JSON.parse(readFileSync(GUIDE_TOPICS_PATH, 'utf-8'));
+        const t = store.topics.find(x => x.id === extraTema.id);
+        t.extra_slot = TODAY;                           // a kiosztás a mai napé (sikertelen írásnál holnap a következő)
+        writeFileSync(GUIDE_TOPICS_PATH, JSON.stringify(store, null, 2), 'utf-8');
+        const gw = await runAgent('agents/guide/agent.js', ['--id', extraTema.id]);
+        const gr = await runAgent('agents/ellenorzo/agent.js');
+        session.stages.lefedettseg_extra = { id: extraTema.id, write_exit: gw.code, review_exit: gr.code };
+      } catch (e) {
+        console.log('   ⚠️ Cég-lefedettség +1 kimaradt: ' + String(e?.message || e).slice(0, 100));
+      }
+    }
   }
 
   if (!args.skipGuides && !gate.guidesBlocked && haveTime(8, '3j. IDLE-FILL')) {

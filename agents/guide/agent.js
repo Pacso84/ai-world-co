@@ -813,6 +813,7 @@ function saveGuide(topic, response) {
       level: topic.level || 'beginner',
       source_news: topic.source_news || null,   // hír→útmutató kereszthivatkozáshoz
       trend: topic.trend || null,                 // trendkutató-jelölés (a méréshez, 2026-10-14)
+      extra_slot: topic.extra_slot || null,       // cég-lefedettség +1 hely: a rendes keretbe nem számít (core/lefedettseg-extra.js)
       written_at: new Date().toISOString(),
       writer_provider: response.provider,
       writer_model: response.model,
