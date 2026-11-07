@@ -1,4 +1,6 @@
-# 🔎 Fájl-átvilágító — terv (2026-11-06)
+# 🔎 Fájl-átvilágító — terv (2026-11-06) — ⛔ ELVETVE 2026-11-07
+
+> **User 11-07: „ha nem tudunk megbízható és használható dolgot adni, amiben biztosak vagyunk, akkor ez nem ér semmit!” → „Inkább hagyjuk el.”** A tény-alapú változatot (minden eredmény csak biztos tényt mond ki) is elutasította. NE javasold újra (fájl-ellenőrző / „fotó-röntgen” jellegű eszközt sem). A felismerő mag kódja a fae6354c commitban visszakereshető (core/fajl-atvilagito.js + teszt), a repóból 11-07-én kivéve.
 
 ## Cél és miért
 
