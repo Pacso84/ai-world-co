@@ -106,7 +106,8 @@ export const TEVEDESEK = [
   },
   {
     id: 'gpt-store-megszunt',
-    leiras: 'A GPT Store „bezárt / megszűnt” — működik (chatgpt.com/gpts; 10-29).',
+    leiras: 'A GPT Store „bezárt / megszűnt” — működik (chatgpt.com/gpts; 10-29). LEJÁR 2026-12-11: az OpenAI ekkor kivezeti az egyedi GPT-ket (help.openai.com/en/articles/20001519), onnantól a „megszűnt” IGAZ.',
+    lejar: '2026-12-11',
     nyelvek: mindharom([alak(['GPT Store', 'GPT-áruház', 'GPT-áruházat', 'GPT-áruházban', 'Tienda de GPT', 'Tienda de GPTs'])])
   },
   {
@@ -229,6 +230,87 @@ export const TEVEDESEK = [
         /(?<![\p{L}])(?:renamed|átnevezte|átnevezték|renombró)(?![\p{L}])[^.]{0,30}NotebookLM/iu
       ]
     } }
+  },
+  // ── 2026-11-08: KITALÁLT FELÜLET (user: „szeretném hogy a javitott hibák többet ne forduljanak elö!”) ──
+  // A 0b903e26 + 3995fd66 kézi átnézésben 17 útmutatóból javított, hivatalos súgóval CÁFOLT képernyő-részletek. Az
+  // író nem látja az appot, ezért „emlékezetből” üdvözlést, fület, gombfeliratot talál ki — és ugyanezt fogja újra
+  // tenni. A pozitív teszt-esetek a javítás ELŐTTI élő mondatok (git: 0b903e26~1, 3995fd66~1).
+  {
+    id: 'google-fotok-kitalalt-felulet',
+    leiras: 'Google Fotók: „Library → Utilities” menüút, öt alsó ikon „…Utilities és Library”, „Unknown 1” arccsoport-cím, „From your groups” albumgomb — a Google Fotók súgójában egyik sincs (support.google.com/photos/answer/6128838, 6128849, 6131416; 11-08-án javítva).',
+    javitas: 'Google Photos: do not write a "Library → Utilities" path, a "five icons … Utilities, Library" tab bar, "Unknown 1" face-group titles or a "From your groups" button — use only the steps in the official Google Photos help (support.google.com/photos).',
+    szovegben: /Google (?:Photos|Fotók|Fotos)/,
+    nyelvek: {
+      '*': { mind: [], egyik: [alak(['Unknown 1', 'Unknown 2', 'From your groups'], false), /Library[^.\n]{0,40}Utilities|Utilities[^.\n]{0,40}Library/u] },
+      hu: { mind: [], egyik: [alak(['Ismeretlen 1', 'Ismeretlen 2', 'Ismeretlen 1-re', 'A csoportjaidból'], false), /Könyvtár[^.\n]{0,40}Segédeszközök|Segédeszközök[^.\n]{0,40}Könyvtár/u] },
+      es: { mind: [], egyik: [alak(['Desconocido 1', 'Desconocido 2', 'De tus grupos'], false), /Biblioteca[^.\n]{0,40}Utilidades|Utilidades[^.\n]{0,40}Biblioteca/u] }
+    }
+  },
+  {
+    id: 'meta-ai-kitalalt-ikon',
+    leiras: 'Meta AI a WhatsAppban: „zöld kör csillogó ikonnal”, „csillogó gomb”, „robotszerű avatár” — a WhatsApp súgója a Meta AI gombot és a keresést írja le, ilyen ikont nem (faq.whatsapp.com/666767195111959; 11-08-án javítva).',
+    javitas: 'Meta AI in WhatsApp: never describe a "green circle with a sparkle", a "sparkle button" or a "robot-like avatar" — say "tap the Meta AI button in Chats, or search for Meta AI" (faq.whatsapp.com).',
+    // a Gemini ikonja VALÓBAN csillag-szerű (sparkle) — a Geminit is említő mondat nem ez a hiba
+    szovegben: /Meta AI/,
+    nyelvek: {
+      en: { mind: [], egyik: [/green[^.\n]{0,40}(?:sparkle|star)|sparkle[^.\n]{0,20}green/iu, /(?<![\p{L}])sparkle(?: or [^.\n]{0,25})? (?:button|icon)(?![\p{L}])/iu, /robot-like avatar/iu], nem: [alak(['Gemini'], false)] },
+      hu: { mind: [], egyik: [/zöld[^.\n]{0,40}csillog|csillog[^.\n]{0,20}zöld/iu, /(?<![\p{L}])csillogó(?: vagy [^.\n]{0,25})? (?:gomb|ikon)/iu, /robotra emlékeztető/iu], nem: [alak(['Gemini'], false)] },
+      es: { mind: [], egyik: [/verde[^.\n]{0,40}destellos|destellos[^.\n]{0,20}verde/iu, /(?<![\p{L}])(?:botón|icono) (?:verde )?de destellos/iu, /parecido a un robot/iu], nem: [alak(['Gemini'], false)] }
+    }
+  },
+  {
+    id: 'kitalalt-chatbot-udvozles',
+    leiras: 'Kitalált chatbot-képernyőszöveg: „How can I help (you) today?” (Claude, ChatGPT, Qwen), „Welcome to ChatGPT.”, „Meet Gemini.”, „What’s the first tweet about?” (Grok), „Generating response...” (Grok), „Ask Copilot anything…”, „Ask me anything about this document.” — egyik sem szerepel a gyártó súgójában (help.openai.com, support.google.com/gemini, support.microsoft.com; 11-08-án 9 útmutatóban javítva).',
+    javitas: 'Never quote an AI app\'s greeting, placeholder, welcome title or status line ("How can I help you today?", "Welcome to ChatGPT.", "Meet Gemini.", "Ask Copilot anything…", "Generating response...") — you cannot see the screen. Describe it instead: "the chat opens with an empty message box at the bottom".',
+    nyelvek: {
+      '*': { mind: [], egyik: [
+        // a TELEFONOS / hangos ügyfélszolgálat „how can I help you today?” mondata nem képernyőszöveg (07-31-i hír)
+        /^(?![^\n]*(?:voice|phone|call cent))[^\n]*How can I help (?:you )?today/iu, /Welcome to ChatGPT/u, /["“„]Meet Gemini[.!]?["”]/u,
+        /What[’']s the first tweet about/iu, /Generating (?:response|answer)(?:\.\.\.|…)/iu, /Ask Copilot anything/iu,
+        /Ask me anything about this document/iu
+      ] },
+      hu: { mind: [], egyik: [/^(?![^\n]*(?:telefon|hangos))[^\n]*(?:Miben|Hogyan) segíthetek ma/iu, /Miről szóljon az első tweet/iu, /Válasz generálása(?:\.\.\.|…)/iu] },
+      es: { mind: [], egyik: [/^(?![^\n]*(?:teléfono|llamada|voz))[^\n]*Cómo puedo ayudarte hoy/iu, /Generando respuesta(?:\.\.\.|…)/iu] }
+    }
+  },
+  {
+    id: 'alexa-rutin-kitalalt-felulet',
+    leiras: 'Alexa-rutin: „Your Routines” képernyő, „Add trigger” gomb, „Enter phrase” mező, a spanyolban a francia „déclenchee” szó, és az „Alexa” szó BEÍRÁSA a rutin-mondatba — az Amazon súgója szerint „When this happens” → Voice, a mondatot az „Alexa” nélkül kell beírni (amazon.com/gp/help/customer/display.html?nodeId=G2PYLKJN3XVZ55EQ; 11-08-án javítva).',
+    javitas: 'Alexa routines: there is no "Your Routines" screen, "Add trigger" button or "Enter phrase" field — follow amazon.com/alexa-routines ("When this happens" → Voice). When typing the phrase, leave out the word "Alexa" (type "good morning", then say "Alexa, good morning").',
+    szovegben: /Alexa/,
+    nyelvek: {
+      '*': { mind: [], egyik: [alak(['Your Routines', 'Add trigger', 'Enter phrase'], false), /déclench/iu] },
+      // Az ige NE a kimondott parancs része legyen (`Di "Alexa, escribe un correo…"` — 11-08 korpusz-eset), és az „Alexa,”
+      // idézőjel vagy „such as / például / como” után álljon (a „Type a phrase you'll say to Alexa, for example:” nem hiba).
+      en: { mind: [/(?<!Alexa, )(?<![\p{L}])(?:type|enter|typing)(?![\p{L}])[^.\n]{0,50}(?:["“`']|(?:such as|like|e\.g\.) )Alexa,/iu], nem: [/(?<![\p{L}])(?:without|leave out|don['’]t type|do not type|wake word)(?![\p{L}])/iu] },
+      hu: { mind: [], egyik: [alak(['Kifejezés megadása'], false), /(?<!Alexa, )(?<![\p{L}])(?:írd be|gépeld be|beírod|beírni)(?![\p{L}])[^.\n]{0,50}(?:["„“`']|(?:például|mint) )Alexa,/iu], nem: [/(?<![\p{L}])(?:nélkül|hagyd ki|ne írd|ébresztőszó)(?![\p{L}])/iu] },
+      es: { mind: [/(?<!Alexa, )(?<![\p{L}])(?:escribe|introduce|teclea|escribir)(?![\p{L}])[^.\n]{0,50}(?:["“«`']|(?:como|por ejemplo) )Alexa,/iu], nem: [/(?<![\p{L}])(?:sin|omite|no escribas|palabra de activación)(?![\p{L}])/iu] }
+    }
+  },
+  {
+    id: 'parancsok-kitalalt-felulet',
+    leiras: 'Apple Parancsok (Shortcuts): „Untitled Shortcut” cím, „Type a name or choose an action” kereső, „Tap to add action” vonal, a kártyák közötti „kis kör” áthúzása, az „Add to Siri” felvétel, az „Apple Intelligence check” lépés és az Óra-ébresztő, amely „magától megnyitja a parancsot” — az Apple Parancsok-útmutatója szerint az új parancs „New Shortcut”, Siri a parancs NEVÉRE indít, időzítés automatizálással (support.apple.com/guide/shortcuts; 11-08-án javítva).',
+    javitas: 'Apple Shortcuts: a new shortcut is called "New Shortcut" (rename via Rename); Siri runs a shortcut when you say its name (no "Add to Siri" recording); actions run top to bottom (no dragging circles between cards); a scheduled run is a personal automation (Time of Day / Alarm), not the Clock app. Do not invent an "Apple Intelligence check" step — the real action is "Use Model" (support.apple.com/guide/shortcuts).',
+    nyelvek: {
+      '*': { mind: [], egyik: [alak(['Untitled Shortcut', 'Type a name or choose an action', 'Tap to add action', 'Névtelen parancs', 'Atajo sin título'], false),
+        /Apple Intelligence check(?![-\p{L}])/u] },
+      en: { mind: [], egyik: [/drag the small circle/iu, /(?<![\p{L}])tap(?:ped)? (?:the )?Add to Siri/iu,
+        /alarm[^.\n]{0,40}(?:rings|goes off)[^.\n]{0,40}(?:opens|runs|launches) the shortcut/iu], nem: [/Automation/u] },
+      hu: { mind: [], egyik: [/(?<![\p{L}])húzd[^.\n]{0,60}kis kört/iu, /ébresztő megszólal[^.\n]{0,40}(?:megnyitja|elindítja|futtatja) a parancsot/iu], nem: [/automatizál/iu] },
+      es: { mind: [], egyik: [/arrastra el círculo pequeño/iu, /(?<![\p{L}])toca(?:do)? (?:el botón )?\**Add to Siri/iu,
+        /suene la alarma[^.\n]{0,40}(?:abra|abre|ejecute|ejecuta|lance|lanza) el atajo/iu], nem: [/Automatizaci/iu] }
+    }
+  },
+  {
+    id: 'vscode-elonezeti-sav',
+    leiras: 'VS Code „alsó előnézeti sávja”, amely a weboldal címét mutatja — a VS Code-ban nincs ilyen sáv; a HTML-t a böngészőben kell megnyitni (code.visualstudio.com/docs; 11-08-án javítva).',
+    javitas: 'VS Code has no built-in "preview bar" for HTML — to see the page, open the .html file in a web browser (code.visualstudio.com/docs).',
+    szovegben: /VS Code|Visual Studio Code/,
+    nyelvek: {
+      en: { mind: [/(?<![\p{L}])preview bar(?![\p{L}])/iu] },
+      hu: { mind: [/előnézeti sáv/iu] },
+      es: { mind: [/barra (?:inferior )?de vista previa/iu] }
+    }
   }
 ];
 
@@ -275,10 +357,15 @@ function illeszkedik(szabaly, mondat, kornyezet = mondat) {
  *                                    elhagyva: MINDEN nyelv mintája (pl. ismeretlen nyelvű lecke)
  * @returns {{id: string, mondat: string}[]}
  */
-export function tevedesekASzovegben(szoveg, nyelv) {
+// LEJÁRAT (2026-11-08): egy cáfolat csak addig igaz, amíg a termék él. A `lejar` napjától (YYYY-MM-DD, UTC) a szabály
+// nem fut — a GPT Store 2026-12-11-én tényleg megszűnik, onnan a „bezárt” mondat helyes. `ma` a teszthez adható meg.
+export const maiNap = () => new Date().toISOString().slice(0, 10);
+export const ervenyes = (t, ma = maiNap()) => !t.lejar || ma < t.lejar;
+
+export function tevedesekASzovegben(szoveg, nyelv, ma = maiNap()) {
   const nyelvek = NYELVEK.includes(nyelv) ? [nyelv] : NYELVEK;
   const teljes = String(szoveg || '');
-  const szabalyok = TEVEDESEK.filter(t => !t.szovegben || t.szovegben.test(teljes));
+  const szabalyok = TEVEDESEK.filter(t => ervenyes(t, ma) && (!t.szovegben || t.szovegben.test(teljes)));
   const ki = [];
   const mm = mondatokra(teljes);
   mm.forEach((mondat, i) => {
@@ -303,7 +390,9 @@ const TILTO_LECKE = /^\s*(?:Avoid stating|Do not claim this exists)(?![\p{L}])/i
 // „ChatRTX-et átnevezték NVIDIA Chatre” típusú (08-31-i, HAMIS) tiltó leckét tartja távol a promptoktól. Hogy róla ne
 // szülessen új útmutató, azt a core/megszunt-eszkozok.js intézi (2026-11-04).
 export const ELO_TERMEKEK = ['Le Chat', 'GPT Store', 'OpenAI Playground', 'Alexa+', 'ChatRTX'];
-const ELO_TERMEK = alak(ELO_TERMEKEK, false);
+// a GPT Store 2026-12-11-én megszűnik (help.openai.com/en/articles/20001519) → onnan a „ne állítsd, hogy van” lecke helyes
+const ELO_TERMEK_LEJAR = { 'GPT Store': '2026-12-11' };
+const eloTermek = (ma = maiNap()) => alak(ELO_TERMEKEK.filter(n => !ELO_TERMEK_LEJAR[n] || ma < ELO_TERMEK_LEJAR[n]), false);
 
 /**
  * Ismert (hivatalos forrással cáfolt) tévedést hordoz-e a lecke szövege? (→ ne mentsük, ne adjuk promptba)
@@ -316,13 +405,13 @@ const ELO_TERMEK = alak(ELO_TERMEKEK, false);
 const FIGYELMEZTETES = /(?<![\p{L}])(?:never|do not|don['’]t|nem szabad|ne)\s+(?:write|writing|call|calling|use|using|say|saying|name|naming|refer to|írd|írj|hívd|nevezd|használd)(?![\p{L}])/iu;
 const NEV_SZABALY = new Set(TEVEDESEK.filter(t => t.nyelvek['*']).map(t => t.id));
 
-export function tevesLecke(szoveg) {
+export function tevesLecke(szoveg, ma = maiNap()) {
   const s = String(szoveg || '');
   if (!s.trim()) return false;
   // CSAK a kitalált-NÉV szabályoknál ('*': Mistral Chat, NVIDIA Chat, Apple Intelligence+, iOS 19) — a „Le Chat was
   // discontinued — do not use it” lecke maga a tévedés, az nem mentesülhet.
-  const talalat = tevedesekASzovegben(s).filter(x => !(NEV_SZABALY.has(x.id) && FIGYELMEZTETES.test(x.mondat)));
-  return talalat.length > 0 || (TILTO_LECKE.test(s) && ELO_TERMEK.test(s));
+  const talalat = tevedesekASzovegben(s, undefined, ma).filter(x => !(NEV_SZABALY.has(x.id) && FIGYELMEZTETES.test(x.mondat)));
+  return talalat.length > 0 || (TILTO_LECKE.test(s) && eloTermek(ma).test(s));
 }
 
 /**
@@ -358,4 +447,4 @@ export function tevedesJelzes(markdown, nyelv = 'en') {
     + 'Fix: ' + utmutatas.join(' | ');
 }
 
-export default { TEVEDESEK, NYELVEK, ELO_TERMEKEK, mondatokra, tevedesekASzovegben, tevesLecke, ujTevedesek, tevedesJelzes };
+export default { TEVEDESEK, NYELVEK, ELO_TERMEKEK, mondatokra, tevedesekASzovegben, tevesLecke, ujTevedesek, tevedesJelzes, ervenyes, maiNap };

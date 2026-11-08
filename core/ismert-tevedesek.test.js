@@ -12,7 +12,7 @@ import { readFileSync, readdirSync, mkdirSync, rmSync, writeFileSync, existsSync
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { TEVEDESEK, NYELVEK, mondatokra, tevedesekASzovegben, tevesLecke, ujTevedesek, tevedesJelzes } from './ismert-tevedesek.js';
+import { TEVEDESEK, NYELVEK, mondatokra, tevedesekASzovegben, tevesLecke, ujTevedesek, tevedesJelzes, ervenyes } from './ismert-tevedesek.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 let pass = 0, bukott = 0;
@@ -29,8 +29,9 @@ console.log('🧪 Ismert tévedések\n');
 
 // ── (a) EGYSÉGTESZTEK ───────────────────────────────────────────────
 const lefedett = new Set();
-const van = (id, s, ny) => {
-  const ids = tevedesekASzovegben(s, ny).map(x => x.id);
+// `ma`: a lejárattal (TEVEDESEK[].lejar) bíró szabály tesztje rögzített napon fut, különben a lejárat napján elbukna
+const van = (id, s, ny, ma) => {
+  const ids = tevedesekASzovegben(s, ny, ma).map(x => x.id);
   assert.ok(ids.includes(id), `${id} [${ny}] nem fogta: ${s}`);
   lefedett.add(id);
 };
@@ -165,9 +166,9 @@ await t('🪦 „megszűnt”: Le Chat / GPT Store / OpenAI Playground — fogja
   nincs('Le Chat was renamed Vibe; the app was not discontinued.', 'en');
   nincs('Open Le Chat and start a new conversation.', 'en');
   nincs('Abre Le Chat y empieza una conversación.', 'es');
-  van('gpt-store-megszunt', 'OpenAI shut down the GPT Store in 2025.', 'en');
-  van('gpt-store-megszunt', 'A GPT Store bezárt.', 'hu');
-  van('gpt-store-megszunt', 'La GPT Store cerró en 2025.', 'es');
+  van('gpt-store-megszunt', 'OpenAI shut down the GPT Store in 2025.', 'en', '2026-11-08');
+  van('gpt-store-megszunt', 'A GPT Store bezárt.', 'hu', '2026-11-08');
+  van('gpt-store-megszunt', 'La GPT Store cerró en 2025.', 'es', '2026-11-08');
   nincs('Browse the GPT Store to find a custom GPT.', 'en');
   nincs('A GPT Store-ban keress egy egyedi GPT-t.', 'hu');
   van('openai-playground-megszunt', 'OpenAI retired the Playground, so use the API directly.', 'en');
@@ -192,8 +193,120 @@ await t('🍎 Apple Intelligence „csak angolul (US)” — fogja (a lépés-mo
   nincs('Az Apple Intelligence magyarul is elérhető.', 'hu');
 });
 
+// ── 2026-11-08: KITALÁLT FELÜLET — a pozitív esetek a javítás ELŐTTI élő mondatok (0b903e26~1, 3995fd66~1) ──
+const GF = 'Open Google Photos on your phone. ';
+await t('🖼️ Google Fotók kitalált fül / menüút / arccsoport — fogja; a súgó szerinti lépést nem', () => {
+  van('google-fotok-kitalalt-felulet', GF + 'At the bottom of the screen you’ll see five icons: Photos, Search, Albums, Utilities, and Library.', 'en');
+  van('google-fotok-kitalalt-felulet', GF + 'Tap **Library** → **Utilities** → **Album** → name it `Family Summer 2025`.', 'en');
+  van('google-fotok-kitalalt-felulet', GF + 'Under **People**, you’ll see headings like **Unknown 1**, **Unknown 2**, and so on.', 'en');
+  van('google-fotok-kitalalt-felulet', GF + 'Tap **Add photos** → choose **From your groups** → select the people you want.', 'en');
+  van('google-fotok-kitalalt-felulet', 'Nyisd meg a Google Fotók appot. Koppints a **Könyvtár** → **Segédeszközök** → **Album** gombra.', 'hu');
+  van('google-fotok-kitalalt-felulet', 'Nyisd meg a Google Fotók appot. A **Személyek** alatt „**Ismeretlen 1**” és hasonló címek jelennek meg.', 'hu');
+  van('google-fotok-kitalalt-felulet', 'Abre Google Fotos. Toca **Biblioteca** → **Utilidades** → **Álbum**.', 'es');
+  van('google-fotok-kitalalt-felulet', 'Abre Google Fotos. Verás encabezados como **Desconocido 1**, **Desconocido 2**, etc.', 'es');
+  nincs(GF + 'Tap **Search**, then tap a face under People & pets and tap **Add a name**.', 'en');
+  nincs(GF + 'At the bottom, tap **Collections**, then **Albums**.', 'en');
+  // Google Fotók nélküli szövegben a „Library … Utilities” más app (pl. Windows) — nem ez a hiba
+  nincs('In the Files app, open Library and then Utilities.', 'en');
+});
+
+await t('🟢 Meta AI „zöld csillogó kör / robot-avatár” — fogja; a súgó szerinti gombot és a Gemini-csillagot nem', () => {
+  const MA = 'Open WhatsApp and find Meta AI. ';
+  van('meta-ai-kitalalt-ikon', MA + 'Look for a circular button, usually green with a small sparkle or star icon, often at the bottom-right.', 'en');
+  van('meta-ai-kitalalt-ikon', MA + '**What you see:** A green circle with a sparkle icon, or the "Search" bar.', 'en');
+  van('meta-ai-kitalalt-ikon', MA + 'If you don\'t see it, look for a sparkle or four-pointed star icon or check the app\'s top menu.', 'en');
+  van('meta-ai-kitalalt-ikon', MA + 'You see "Meta AI" in your results, often with a distinctive robot-like avatar.', 'en');
+  van('meta-ai-kitalalt-ikon', 'Nyisd meg a Meta AI-t. **Amit látsz:** Egy zöld kör egy csillogó ikonnal, vagy a "Keresés" sáv.', 'hu');
+  van('meta-ai-kitalalt-ikon', 'Nyisd meg a Meta AI-t. Ha nem látod, keress egy csillogó vagy négyágú csillag ikont.', 'hu');
+  van('meta-ai-kitalalt-ikon', 'Abre Meta AI. **Lo que verás:** Un círculo verde con un icono de destellos o la barra de **Buscar**.', 'es');
+  nincs(MA + 'In Chats, tap the Meta AI button, or search for Meta AI.', 'en');
+  nincs('Meta AI and Gemini both work: in Gemini, tap the sparkle icon to start.', 'en');
+});
+
+await t('👋 kitalált chatbot-üdvözlés / helyőrző / állapotsor — fogja; a telefonos ügyfélszolgálatot és a leírást nem', () => {
+  van('kitalalt-chatbot-udvozles', 'You\'ll know it worked when the screen shows "How can I help today?" with a message box at the bottom.', 'en');
+  van('kitalalt-chatbot-udvozles', 'Tapping it opens a screen that says "Welcome to ChatGPT."', 'en');
+  van('kitalalt-chatbot-udvozles', 'The app opens to a welcome screen that says "Meet Gemini."', 'en');
+  van('kitalalt-chatbot-udvozles', 'You\'ll know it worked when Grok replies with a question like “What’s the first tweet about?”', 'en');
+  van('kitalalt-chatbot-udvozles', 'Grok displays a message like "Generating response..." or "Thinking...".', 'en');
+  van('kitalalt-chatbot-udvozles', 'In the Copilot panel, you’ll see a text box that says “Ask Copilot anything…”.', 'en');
+  van('kitalalt-chatbot-udvozles', 'You’ll see a chat box that says “Ask me anything about this document.”', 'en');
+  van('kitalalt-chatbot-udvozles', 'Perplexity shows a spinning icon or a "Generating answer..." message.', 'en');
+  van('kitalalt-chatbot-udvozles', 'a Qwen Chat akár egy üzenettel is üdvözölhet, például „Szia, miben segíthetek ma?”', 'hu');
+  van('kitalalt-chatbot-udvozles', 'Megjelenik egy üres csevegődoboz valami olyasmi helyőrzővel, mint „Hogyan segíthetek ma?”.', 'hu');
+  van('kitalalt-chatbot-udvozles', 'Akkor sikerült, ha Grok „Válasz generálása...” üzenetet mutat.', 'hu');
+  van('kitalalt-chatbot-udvozles', 'Qwen Chat podría saludarte con un mensaje tipo "Hola, ¿cómo puedo ayudarte hoy?".', 'es');
+  van('kitalalt-chatbot-udvozles', 'Grok muestra un mensaje como "Generando respuesta...".', 'es');
+  // valódi korpusz-eset (2026-07-31-i hír): a telefonos ügyfélszolgálat hangja nem képernyőszöveg
+  nincs('- Phone support at banks, telcos and airlines — the calm "how can I help you today?" voice is increasingly AI', 'en');
+  nincs('You\'ll know it worked when the chat opens with an empty message box at the bottom.', 'en');
+  nincs('Gemini\'s answer appears below your message.', 'en');
+  nincs('Akkor sikerült, ha megnyílik egy csevegőablak, általában a cég asszisztensének rövid köszöntésével.', 'hu');
+  nincs('Meet Gemini 3, our most capable model, announced today.', 'en');
+});
+
+await t('⏰ Alexa-rutin kitalált felülete + az „Alexa” szó beírása — fogja; a kimondott parancsot és a helyes beírást nem', () => {
+  const AL = 'Open the Alexa app and tap Routines. ';
+  van('alexa-rutin-kitalalt-felulet', AL + 'You\'ll know it worked when a screen appears titled "Your Routines".', 'en');
+  van('alexa-rutin-kitalalt-felulet', AL + 'Press the **Add trigger** button.', 'en');
+  van('alexa-rutin-kitalalt-felulet', AL + 'A field labeled "Enter phrase" opens; type the exact words you want to say.', 'en');
+  van('alexa-rutin-kitalalt-felulet', AL + '💬 Example: Type `Alexa, good morning` then tap **Add**.', 'en');
+  van('alexa-rutin-kitalalt-felulet', AL + 'Type the exact words you want to say, such as **Alexa, good morning**.', 'en');
+  van('alexa-rutin-kitalalt-felulet', 'Nyisd meg az Alexa appot. 💬 Példa: Írd be, hogy `Alexa, jó reggelt`, majd koppints a **Hozzáadás** gombra.', 'hu');
+  van('alexa-rutin-kitalalt-felulet', 'Nyisd meg az Alexa appot. Megnyílik egy „Kifejezés megadása" feliratú mező.', 'hu');
+  van('alexa-rutin-kitalalt-felulet', 'Abre la app de Alexa. Pulsa el botón **Añadir déclenchee**.', 'es');
+  van('alexa-rutin-kitalalt-felulet', 'Abre la app de Alexa. 💬 Ejemplo: Escribe "Alexa, pon la lista para cenar" y confírmala.', 'es');
+  // valódi korpusz-esetek: a kimondott parancsban álló ige nem beírás; a „say to Alexa,” nem a beírt mondat
+  nincs('Abre la app de Alexa. Di "Alexa, escribe un correo a mi equipo resumiendo la reunión" o "Alexa, redacta un correo corto."', 'es');
+  nincs(AL + 'Type the short phrase you\'ll say to Alexa, for example:', 'en');
+  nincs(AL + '💬 **Example:** Type "play dinner playlist" and confirm it. Later you\'ll say "Alexa, play dinner playlist".', 'en');
+  nincs(AL + 'Type the phrase without the word "Alexa", such as "good morning".', 'en');
+  nincs(AL + 'Say "Alexa, good morning" to test it.', 'en');
+});
+
+await t('📲 Parancsok kitalált felülete (Untitled Shortcut, Add to Siri, kis kör, ébresztő) — fogja; az Apple-útmutató szerinti lépést nem', () => {
+  van('parancsok-kitalalt-felulet', 'A blank shortcut editor appears with “Untitled Shortcut” at the top.', 'en');
+  van('parancsok-kitalalt-felulet', 'Below it you’ll see a search bar that says “Type a name or choose an action.”', 'en');
+  van('parancsok-kitalalt-felulet', 'You’ll know it worked when the canvas shows a thin horizontal line labeled “Tap to add action”.', 'en');
+  van('parancsok-kitalalt-felulet', 'Select it, then drag the small circle on the right side of the **Ask for Input** card onto the next card.', 'en');
+  van('parancsok-kitalalt-felulet', 'Go back to the shortcut list, tap the **…** on “Daily Water Check”, then tap **Add to Siri**.', 'en');
+  van('parancsok-kitalalt-felulet', '## Step 6 — Add the Apple Intelligence check', 'en');
+  van('parancsok-kitalalt-felulet', 'You\'ll know it worked when the alarm rings and Siri automatically opens the shortcut.', 'en');
+  van('parancsok-kitalalt-felulet', 'Megjelenik egy üres parancsszerkesztő, felül a „Névtelen parancs" felirattal.', 'hu');
+  van('parancsok-kitalalt-felulet', 'Válaszd ki, majd húzd a **Bevitel kérése** kártya jobb oldalán lévő kis kört a következő kártyára.', 'hu');
+  van('parancsok-kitalalt-felulet', 'Tudni fogod, hogy sikerült, amikor az ébresztő megszólal, és Siri automatikusan megnyitja a parancsot.', 'hu');
+  van('parancsok-kitalalt-felulet', 'Vuelve a la lista de atajos, toca los **…** en "Daily Water Check" y luego toca **Add to Siri**.', 'es');
+  van('parancsok-kitalalt-felulet', 'Sabrás que funcionó cuando suene la alarma y Siri abra el atajo automáticamente.', 'es');
+  nincs('Tap **New Shortcut** at the top, tap **Rename**, type **Water Check**, and confirm.', 'en');
+  nincs('Build a simple daily habit check-in with Siri and Apple Intelligence', 'en');
+  nincs('Add a personal automation: when your alarm is stopped, the automation runs the shortcut. (Automation tab)', 'en');
+  nincs('From now on you can start it by voice: activate Siri and then say the name of the shortcut.', 'en');
+});
+
+await t('🧩 VS Code „alsó előnézeti sáv” — fogja; a böngészős megnyitást nem', () => {
+  van('vscode-elonezeti-sav', 'You\'ll know it worked when VS Code colors the tags and the bottom preview bar reads "Sign-up".', 'en');
+  van('vscode-elonezeti-sav', 'Akkor kész, ha a VS Code színezi a címkéket, és az alsó előnézeti sávon a „Sign-up" felirat olvasható.', 'hu');
+  van('vscode-elonezeti-sav', 'Sabrás que ha funcionado cuando VS Code coloree las etiquetas y la barra inferior de vista previa muestre "Inscripción".', 'es');
+  nincs('In VS Code, save the file, then open it in your web browser to see the page.', 'en');
+  nincs('The preview bar in Canva shows your design.', 'en');
+});
+
+await t('📅 LEJÁRAT: a „GPT Store bezárt” 2026-12-11-ig téves, onnan igaz (OpenAI kivezeti az egyedi GPT-ket)', () => {
+  const s = 'OpenAI shut down the GPT Store.';
+  assert.deepEqual(tevedesekASzovegben(s, 'en', '2026-12-10').map(x => x.id), ['gpt-store-megszunt']);
+  assert.deepEqual(tevedesekASzovegben(s, 'en', '2026-12-11'), []);
+  assert.deepEqual(tevedesekASzovegben('A GPT Store bezárt.', 'hu', '2027-01-05'), []);
+  const lecke = 'Do not claim this exists (may be removed): the GPT Store.';
+  assert.equal(tevesLecke(lecke, '2026-12-10'), true, 'dec. 11. előtt a GPT Store-t tagadó lecke téves');
+  assert.equal(tevesLecke(lecke, '2026-12-11'), false, 'dec. 11-től a GPT Store-t tagadó lecke helyes');
+  // a többi élő termék tiltó leckéje továbbra is téves
+  assert.equal(tevesLecke('Do not claim this exists (may be removed): OpenAI Playground.', '2027-01-05'), true);
+  for (const x of TEVEDESEK) if (x.lejar) assert.match(x.lejar, /^\d{4}-\d{2}-\d{2}$/, x.id + ': hibás lejárat');
+});
+
 await t('🧾 minden tévedésnek van legalább egy pozitív példája ebben a tesztben', () => {
-  const hiany = TEVEDESEK.map(x => x.id).filter(id => !lefedett.has(id));
+  // a lejárt szabályt (ervenyes = false) a pozitív példája sem fogja → az nem hiány
+  const hiany = TEVEDESEK.filter(x => ervenyes(x)).map(x => x.id).filter(id => !lefedett.has(id));
   assert.deepEqual(hiany, [], 'pozitív példa nélküli tévedés: ' + hiany.join(', '));
 });
 
@@ -232,7 +345,7 @@ await t('🧠 tevesLecke: a cáfolt állítást hordozó és a megerősítetten 
     "Avoid stating (may be removed/false): The guide treats 'Alexa+' as a free feature, but Alexa+ is actually Amazon's paid subscription service (roughly $19.99/month).",
     'Mistral discontinued Le Chat in 2025, so do not recommend it.',
     'Do not claim this exists (may be removed): the GPT Store, which OpenAI shut down.'
-  ]) assert.equal(tevesLecke(s), true, 'átengedte: ' + s.slice(0, 70));
+  ]) assert.equal(tevesLecke(s, '2026-11-08'), true, 'átengedte: ' + s.slice(0, 70));
   for (const s of [
     // az ember által megerősített „nem létezik” leckék (2026-10-29) MARADNAK
     "Do not claim this exists (may be removed): Apple Calendar does not have an AI summarization feature with a 'Summarize' button.",

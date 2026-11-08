@@ -20,6 +20,16 @@ export const MEGSZUNT_ESZKOZOK = [
     minta: /\bchat\s*-?\s*rtx\b/i,
     datum: '2026-01-21',
     forras: 'https://github.com/NVIDIA/ChatRTX'
+  },
+  {
+    // 2026-11-08 (user: „igen ved le”): „Custom GPTs are scheduled to retire on Dec 11, 2026.” — az OpenAI pluginokra
+    // költözteti őket. Kivezetés ALATT álló eszközről sem írunk új útmutatót: egy hónap múlva halott lenne. Az élő
+    // útmutató (how-to-set-up-a-custom-gpt-in-chatgpt-for-tasks-you-repeat-weekly) 301-gyel levéve.
+    // A minta CSAK az egyedi GPT-re szól: a GPT-5, „ChatGPT”, „GPT-4o” stb. nem illeszkedik.
+    nev: 'Custom GPTs (ChatGPT)',
+    minta: /\bcustom\s+GPTs?\b|\bGPT\s+(?:Store|builder)\b|\b(?:Explore|My)\s+GPTs\b|\b(?:build|create|make|set\s+up)\s+(?:your\s+own\s+|a\s+(?:simple\s+|custom\s+)?)?GPTs?\b(?![-\d])/i,
+    datum: '2026-12-11',
+    forras: 'https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq'
   }
 ];
 

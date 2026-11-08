@@ -43,7 +43,7 @@ import { utmutatoE } from '../../core/guide-kind.js';
 import { tartalomKapcsolok, maiKozepDb, szintSorrend } from '../../core/content-switches.js';
 import { fokuszConfigbol, maiFokuszDb, fokuszElsoHely, fokuszHiany, fokuszOtletPrompt, fokuszCimOk } from '../../core/guide-focus.js';
 import { aktivTrendek, trendFelvetelKell, trendProbaJegyez, maiTrendTema, trendPrompt } from '../../core/trend-kutato.js';
-import { megszuntTema } from '../../core/megszunt-eszkozok.js';
+import { megszuntTema, MEGSZUNT_ESZKOZOK } from '../../core/megszunt-eszkozok.js';
 import { cegLefedettseg } from '../../core/ceg-lefedettseg.js';   // 🏢 2026-11-05 őrszem
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -678,6 +678,11 @@ every step without getting lost or misled; the Reviewer rejects guides that fail
   READER types or says. Do not describe an icon's COLOR or exact SHAPE unless the
   official source given to you says so — name its job instead ("the attachment
   button next to the message box"). Do not invent tab bars or menu paths.
+- RETIRED TOOLS (2026-11-08): never send the reader to a discontinued or retiring
+  tool — ${MEGSZUNT_ESZKOZOK.map(e => `${e.nev} (end of life: ${e.datum})`).join(', ')}. To save a
+  prompt for later, suggest the assistant's Projects or custom instructions instead
+  of custom GPTs. Alexa routines: the reader types the phrase WITHOUT the word
+  "Alexa" (type "good morning", then say "Alexa, good morning").
 - "Before you start" lists EVERYTHING needed (account, app/website, device,
   free-or-paid plan, rough total time) so nobody hits a surprise blocker later.
 
