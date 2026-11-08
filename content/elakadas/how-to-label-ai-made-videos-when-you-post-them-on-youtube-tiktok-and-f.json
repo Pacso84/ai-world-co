@@ -1,0 +1,53 @@
+{
+  "slug": "how-to-label-ai-made-videos-when-you-post-them-on-youtube-tiktok-and-f",
+  "probalva": "2026-11-08T20:06:53.663Z",
+  "doboz": {
+    "keszult": "2026-11-08T20:06:53.663Z",
+    "enHash": "25cd2973146221f7dd2fe8f1b2d3cb838ff51e93",
+    "forrasok": {
+      "https://support.google.com/gemini/answer/16722517": "Verify AI-generated images, videos, and audio - Computer"
+    },
+    "en": [
+      {
+        "symptom": "Can I check whether my video was made with AI before I decide on a label?",
+        "why": "Gemini can currently only recognize content created by Google AI tools. Other companies have started to adopt SynthID watermarks, but Gemini can only detect Google's.",
+        "fix": "In Gemini: you need a personal account or qualified Workspace account, and you must be signed in to Gemini Apps before you verify content. On your computer, go to gemini.google.com, click Add files, and click Upload Files to add a file from your device. Then ask a verification question such as \"Was this video created or edited by Google AI?\"",
+        "source": "https://support.google.com/gemini/answer/16722517"
+      },
+      {
+        "symptom": "Does Gemini still detect AI if I resized or compressed the video?",
+        "why": "The digital watermark will usually still exist even if the image, video, or audio is re-scaled, re-colored, compressed or altered in other ways. However, there's still a chance that after many alterations the watermark won't be detected.",
+        "fix": "In Gemini: a SynthID watermark will usually still exist after the video is re-scaled or compressed. After many alterations, the watermark may not be detected.",
+        "source": "https://support.google.com/gemini/answer/16722517"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Ellenőrizhetem, hogy a videóm mesterséges intelligenciával készült-e, mielőtt címkét választok?",
+        "why": "A Gemini jelenleg csak a Google AI-eszközeivel létrehozott tartalmakat tudja felismerni. Más vállalatok is elkezdték alkalmazni a SynthID-vízjeleket, de a Gemini csak a Google vízjeleit tudja észlelni.",
+        "fix": "A Geminiben: személyes fiókra vagy jogosult Workspace-fiókra van szükséged, és a tartalom ellenőrzése előtt be kell jelentkezned a Gemini Appsba. A számítógépeden nyisd meg a gemini.google.com oldalt, kattints az Add files lehetőségre, majd kattints az Upload Files lehetőségre, hogy fájlt adj hozzá az eszközödről. Ezután tegyél fel egy ellenőrző kérdést, például: „Ezt a videót a Google AI hozta létre vagy szerkesztette?”",
+        "source": "https://support.google.com/gemini/answer/16722517"
+      },
+      {
+        "symptom": "A Gemini akkor is észleli a mesterséges intelligenciát, ha átméreteztem vagy tömörítettem a videót?",
+        "why": "A digitális vízjel általában akkor is megmarad, ha a képet, videót vagy hangot átméretezik, újraszínezik, tömörítik vagy más módon módosítják. Azonban sok módosítás után továbbra is fennáll annak az esélye, hogy a vízjelet nem lehet észlelni.",
+        "fix": "A Geminiben: a SynthID-vízjel általában akkor is megmarad, ha a videót átméretezik vagy tömörítik. Sok módosítás után előfordulhat, hogy a vízjelet nem lehet észlelni.",
+        "source": "https://support.google.com/gemini/answer/16722517"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "¿Puedo comprobar si mi video se creó con IA antes de decidir qué etiqueta ponerle?",
+        "why": "Actualmente, Gemini solo puede reconocer contenido creado con herramientas de IA de Google. Otras empresas han comenzado a adoptar marcas de agua SynthID, pero Gemini solo puede detectar las de Google.",
+        "fix": "En Gemini: necesitas una cuenta personal o una cuenta de Workspace apta, y debes haber iniciado sesión en Gemini Apps antes de verificar el contenido. En tu computadora, ve a gemini.google.com, haz clic en Add files y haz clic en Upload Files para añadir un archivo desde tu dispositivo. Luego, haz una pregunta de verificación como «¿Este video fue creado o editado por la IA de Google?»",
+        "source": "https://support.google.com/gemini/answer/16722517"
+      },
+      {
+        "symptom": "¿Gemini sigue detectando la IA si cambié el tamaño o comprimí el video?",
+        "why": "La marca de agua digital normalmente seguirá existiendo aunque la imagen, el video o el audio se redimensione, se cambie de color, se comprima o se modifique de otras maneras. Sin embargo, después de muchas modificaciones, todavía existe la posibilidad de que no se detecte la marca de agua.",
+        "fix": "En Gemini: normalmente, una marca de agua SynthID seguirá existiendo después de redimensionar o comprimir el video. Después de muchas modificaciones, es posible que no se detecte la marca de agua.",
+        "source": "https://support.google.com/gemini/answer/16722517"
+      }
+    ]
+  }
+}

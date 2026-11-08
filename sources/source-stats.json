@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-11-08T14:47:20.886Z",
+    "updated": "2026-11-08T20:13:52.060Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -20,7 +20,7 @@
   "sources": {
     "openai-blog": {
       "name": "OpenAI Blog (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 16,
       "published30dAfterAgeGuard": 6,
       "truthBlocks": 0,
@@ -596,7 +596,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -609,7 +609,7 @@
     },
     "ntt-research": {
       "name": "NTT Research (hivatalos)",
-      "feedAgeDays": 18,
+      "feedAgeDays": 0,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -737,7 +737,7 @@
     },
     "duckduckgo-duck-ai": {
       "name": "DuckDuckGo / Duck.ai (hivatalos blog, csak Duck.ai)",
-      "feedAgeDays": 13,
+      "feedAgeDays": 14,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -786,7 +786,7 @@
     },
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
-      "feedAgeDays": 49,
+      "feedAgeDays": 50,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -799,7 +799,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 41,
+      "feedAgeDays": 42,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -812,7 +812,7 @@
     },
     "d-id-news": {
       "name": "D-ID (hivatalos)",
-      "feedAgeDays": 9,
+      "feedAgeDays": 10,
       "published30d": 2,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -825,7 +825,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 130,
+      "feedAgeDays": 131,
       "published30d": 1,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -863,7 +863,7 @@
     },
     "pixlr": {
       "name": "Pixlr Blog (hivatalos)",
-      "feedAgeDays": 6,
+      "feedAgeDays": 7,
       "published30d": 1,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -889,7 +889,7 @@
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 7,
       "published30dAfterAgeGuard": 2,
       "truthBlocks": 0,
@@ -915,7 +915,7 @@
     },
     "samsung-newsroom": {
       "name": "Samsung Newsroom (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 2,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
