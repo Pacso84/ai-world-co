@@ -1,6 +1,6 @@
 {
   "slug": "build-a-simple-personal-budget-spreadsheet-using-any-ai-assistant",
-  "keszult": "2026-10-31T03:25:32.967Z",
+  "keszult": "2026-11-08T03:28:00.324Z",
   "promptok": {
     "313baaee7e94": [
       {
@@ -14,6 +14,30 @@
       {
         "eredeti": "20 rows",
         "hely": "your row limit"
+      }
+    ]
+  },
+  "promptok_hu": {
+    "7a588083fd6a": [
+      {
+        "eredeti": "egyedülálló embernek",
+        "hely": "a saját helyzeted"
+      },
+      {
+        "eredeti": "2 példasort",
+        "hely": "a kívánt példasorok"
+      }
+    ]
+  },
+  "promptok_es": {
+    "d5615394a46c": [
+      {
+        "eredeti": "persona sola",
+        "hely": "tu situación familiar"
+      },
+      {
+        "eredeti": "sueldo fijo",
+        "hely": "tu tipo de ingreso"
       }
     ]
   }
