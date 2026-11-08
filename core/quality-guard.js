@@ -257,6 +257,17 @@ export function qualityFindings() {
 const TOPICS_PATH = join(ROOT, 'guides', 'guide-topics.json');
 const FIXLOG_PATH = join(ROOT, 'memory', 'quality-fix-log.json');
 
+/**
+ * Ha a `fmTool` a hivatalos teljes `metaTool` szóhatáros csonkja
+ * („MiniMax Code" → „Code", „Brave Leo" → „Leo"), a teljes nevet adja vissza,
+ * különben null-t. Tiszta függvény (teszt: hivatalos-chip-nev.test.js).
+ */
+export function teljesNevCsonkbol(fmTool, metaTool) {
+  const fm = strip(fmTool), meta = strip(metaTool);
+  if (!fm || !meta || fm === meta || !hivatalosTeljesNev(meta)) return null;
+  return meta.toLowerCase().endsWith(' ' + fm.toLowerCase()) ? meta : null;
+}
+
 function fixedChip(tool, company) {
   const c = canonicalChip(tool, company);
   // ha kanonizálva is generikus maradt → nincs chip (üres)
@@ -320,8 +331,17 @@ export async function applyQualityFixes() {
         if (utmutatoE(f, d) && d._meta?.tool) {
           const md = d.article_markdown || '';
           const fmCompany = strip((md.match(/^company:\s*(.*)$/m) || [])[1]);
-          const fmTool = strip((md.match(/^tool:\s*(.*)$/m) || [])[1]);
+          let fmTool = strip((md.match(/^tool:\s*(.*)$/m) || [])[1]);
           const wantCompany = fmCompany || strip(d._meta.company);
+          // 🔑 11-08: az író a frontmatterbe „Code"-ot írt a terv „MiniMax Code"-ja
+          // helyett, és ez az ág a HELYES _meta-t igazította a csonkához (élő hiba).
+          // Hivatalos teljes név csonkjánál a teljes név győz, a frontmatter is javul.
+          const teljes = teljesNevCsonkbol(fmTool, d._meta.tool);
+          if (teljes) {
+            d.article_markdown = md.replace(/^tool:\s*.*$/m, `tool: "${teljes}"`);
+            fixes.push(`cikk ${f.slice(14, 55)}: frontmatter tool "${fmTool}" → "${teljes}" (hivatalos teljes név)`);
+            fmTool = teljes; dirty = true;
+          }
           const wantTool = fixedChip(fmTool || d._meta.tool, wantCompany);
           if (wantTool !== strip(d._meta.tool)) {
             fixes.push(`cikk ${f.slice(14, 55)}: tool "${d._meta.tool}" → "${wantTool || '(nincs chip)'}"`);
@@ -355,7 +375,10 @@ export async function applyQualityFixes() {
     // rájuk — pedig pont ezek ismétlődtek. A kulccsal egy emlék marad, a
     // szövege frissül, és a `repeats` végre a valóságot mutatja.
     if (chipFixes.length) {
-      remember('shared', `Csempe-szabály emlékeztető: a tool mindig a legrövidebb hivatalos terméknév (ma ${chipFixes.length} javítás kellett, pl. ${chipFixes[0].slice(0, 60)}).`,
+      // ⚠️ 11-08: a régi szöveg példája („pl. cikk …: tool "MiniMax Code" →…") a
+      // 60. karakternél elvágva épp a HELYES nevet mutatta hibásnak, és az író ebből
+      // tanulta meg, hogy „Code"-ot írjon. Változó példa NEM kerül a leckébe.
+      remember('shared', `Csempe-szabály emlékeztető: a tool a legrövidebb hivatalos terméknév, DE a website/tool-links.json-ban álló teljes nevet (pl. "MiniMax Code", "Brave Leo", "Microsoft 365 Copilot") SOHA ne rövidítsd (ma ${chipFixes.length} javítás kellett).`,
         { kulcs: 'csempe-szabaly', rutin: true });
     }
     if (spellFixes.length) {
