@@ -1,0 +1,87 @@
+{
+  "started_at": "2026-11-08T03:14:21.383Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 4,
+    "html": 0,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.016182400000000003,
+  "by_article": [
+    {
+      "draft": "2026-11-06T04-06-36-144Z_picsart_GPT_Image_2_6_in_Picsart__OpenAI_s_current_most_ad.json",
+      "writer_output": "WRITER_2026-11-06T04-06-36-144Z_picsart_GPT_Image_2_6_in_Picsart__OpenAI_s_current_most_ad.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 9,
+      "cost_usd": 0.0036324,
+      "duration_ms": 12261,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-06T04-06-36-144Z_dropbox-blog__From_storage_to_action__put_AI_to_work_in_Dropbox.json",
+      "writer_output": "WRITER_2026-11-06T04-06-36-144Z_dropbox-blog__From_storage_to_action__put_AI_to_work_in_Dropbox.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 10,
+      "cost_usd": 0.003723,
+      "duration_ms": 13693,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-06T04-06-30-397Z_snowflake_Snowflake_CoCo_for_Excel_and_Google_Sheets__Govern.json",
+      "writer_output": "WRITER_2026-11-06T04-06-30-397Z_snowflake_Snowflake_CoCo_for_Excel_and_Google_Sheets__Govern.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 8,
+      "cost_usd": 0.0039499,
+      "duration_ms": 15616,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-06T04-06-30-396Z_microsoft-research_Formally_verifying_agent-written_full-stack_web_ap.json",
+      "writer_output": "WRITER_2026-11-06T04-06-30-396Z_microsoft-research_Formally_verifying_agent-written_full-stack_web_ap.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 16,
+      "cost_usd": 0.0039753,
+      "duration_ms": 15418,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-11-08T03:15:28.318Z",
+  "duration_seconds": 66.935
+}

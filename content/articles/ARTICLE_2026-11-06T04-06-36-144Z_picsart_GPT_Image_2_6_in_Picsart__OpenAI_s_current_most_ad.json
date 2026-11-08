@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "written_at": "2026-11-08T03:14:41.101Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0036324,
+    "original_draft": "2026-11-06T04-06-36-144Z_picsart_GPT_Image_2_6_in_Picsart__OpenAI_s_current_most_ad.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/gpt-image-2-6-picsart-integration/",
+    "source_links": [
+      "https://picsart.com/blog/gpt-image-2-6-picsart-integration/"
+    ],
+    "source_snippet_len": 382,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "302b3627ae44dc84",
+    "source_overlap_words": 9,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-08T03:16:40.231Z",
+    "slug": "gpt-image-2-6-in-picsart-flare-or-sunburst-and-how-to-choose",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "OPENING_REPETITIVE: A legutóbbi 20 cikkből 6 kezdődik ugyanígy (\"have you ever…\"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel."
+      ],
+      "wordCount": 770
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hook, good term definitions (complexity setting, markup-guided edit, SVG, GIF), appropriate Flare vs Sunburst distinction without ranking, and a useful 'What this means for you' section with audience-specific guidance. Claims are properly attributed to Picsart throughout.",
+      "_aiCost": 0.00118566,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-08T03:17:02.972Z",
+    "guide_worthy": true,
+    "related_guide_topic": "create-your-own-custom-gpt-in-chatgpt-no-coding",
+    "image_v": 2,
+    "image_at": "2026-11-08T03:20:21.100Z",
+    "seo": {
+      "meta_description": "Picsart now offers OpenAI's GPT Image 2.6 in two versions—Flare for quick idea rounds, Sunburst for detailed work. Learn which fits your project.",
+      "keywords": [
+        "GPT Image 2.6 Picsart",
+        "Picsart AI image tools",
+        "GPT Image 2.6 Flare vs Sunburst",
+        "how to use GPT Image 2.6",
+        "Picsart image generation AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more context about what you can create with these tools (posters, product photos, reaction images mentioned in article)",
+        "Include specific use cases for Flare vs Sunburst to improve search relevance for long-tail queries",
+        "Consider adding a section on how to access or activate these tools in Picsart for better 'how-to' search visibility"
+      ],
+      "optimised_at": "2026-11-08T03:21:38.783Z"
+    },
+    "fact_verified_at": "2026-11-08T03:23:17.947Z"
+  },
+  "article_markdown": "---\ntitle: \"GPT Image 2.6 in Picsart: Flare or Sunburst, and How to Choose\"\nsubtitle: \"A plain-language look at OpenAI's newest image model in Picsart's AI tools, and which version fits your project.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"image-generation\", \"picsart\", \"gpt-image\", \"creative-tools\", \"getting-started\"]\n---\n\n# GPT Image 2.6 in Picsart: Flare or Sunburst, and How to Choose\n\n> **In short:** Picsart now offers OpenAI's GPT Image 2.6 across its AI tools, in two versions. Flare is built for quick rounds of ideas, and Sunburst is built for detailed work. Picsart says both are ready to use from day one.\n\nHave you ever needed a poster, a product photo, or a silly reaction image for a group chat, and spent an hour going back and forth on the details? A newer image model aims to make those rounds faster and keep your picture looking the same from one edit to the next.\n\n## What GPT Image 2.6 is\n\nGPT Image 2.6 is OpenAI's newest image family for creating and editing pictures. You can start with written text or with an existing image, and it returns a new image. Picsart describes it as the most advanced image model OpenAI has released so far, which is the company's own claim, and it arrived on November 4, 2026.\n\nAccording to Picsart's announcement, the biggest change is speed. The model generates images 50% faster than the previous generation, and it also gives you more control while you edit. Picsart says characters, products, and brand details stay consistent as you revise, so a mascot keeps its look from the first draft to the last.\n\n## Flare and Sunburst: two versions, one family\n\nThe model comes in two forms. Both share the same features, but each is tuned for a different job.\n\n- **Flare** is for fast iteration. On the low quality setting, Picsart says it can make an image in as little as six seconds, which helps when you are trying many ideas in a row. Picsart also says Flare improves layout for posters, product images, and other professional visuals.\n- **Sunburst** is for detailed work. At medium or high quality, Picsart says it produces more detailed images and holds consistency better across several edits. That matters when a character's face or a product's exact shape has to stay the same through many revisions.\n\nBoth versions support text and image input, a complexity setting, markup-guided edits, SVG output, and animated GIF output. Here is what those terms mean:\n\n- **Complexity setting**: how much the model plans a scene before drawing. Low suits quick edits, while medium or high suits busy scenes.\n- **Markup-guided edit**: you mark the exact spot you want changed, so the rest of the picture stays put.\n- **SVG**: a file format for graphics that stays sharp at any size, handy for websites, apps, and print.\n- **Animated GIF**: a short looping animation, like a reaction clip.\n\n## Picking the right one\n\nA simple rule works well here. Pick **Flare** when you are still exploring and want many options quickly. Pick **Sunburst** when the picture is nearly final and needs fine detail.\n\nPicsart highlights a few uses for animated GIFs: animating a brand mascot for a campaign, making reactions for social media, and turning a simple sketch into a moving character. The company also says you can turn a product photo into an eye-catching loop.\n\n## What this means for you\n\n- **In everyday life**: Use Flare to try out party invitations, birthday cards, or a fun meme idea. Then switch to Sunburst for the version you plan to keep.\n- **For your business or work**: Flare can help you test poster or product image layouts quickly. Sunburst is better suited to a final visual you want to stay consistent across several edits.\n- **If you're just getting started**: Open one of Picsart's AI image tools, such as the AI Image Generator or the AI Playground, and describe one simple picture. Try one revision, then note how much the picture changed.\n- **If you already use it**: Pick one character or product image and make three or four markup-guided edits in a row, changing a single area each time. Compare how much of the rest stays the same.\n\n## Wrap-up\n\nGPT Image 2.6 gives you two ways to work in Picsart. Flare keeps the pace up when you are brainstorming, and Sunburst gives you more detail and consistency when the picture needs to be right. Check Picsart's AI tools for current availability and pricing details. Then pick one image you have been meaning to make and try it with Flare today.",
+  "original_title": "GPT Image 2.6 in Picsart: OpenAI’s current most advanced model"
+}
