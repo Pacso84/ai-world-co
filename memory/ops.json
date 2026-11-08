@@ -483,22 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179315763417919",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Google has announced Ge",
-      "agent": "fact-check",
-      "at": "2026-10-28T03:20:34.179Z",
-      "loud": false
-    },
-    {
-      "id": "n179319853895971",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Ideogram has announced ",
-      "agent": "fact-check",
-      "at": "2026-10-28T14:42:18.959Z",
-      "loud": false
-    },
-    {
       "id": "n179319861575275",
       "level": "warn",
       "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
@@ -1281,28 +1265,25 @@
       "agent": "fact-check",
       "at": "2026-11-08T14:39:55.611Z",
       "loud": false
+    },
+    {
+      "id": "n179416826312793",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (túl nagy átírás (2158 szó a 1550-ből)): \"27 AI video editing prompts for f",
+      "agent": "fact-check",
+      "at": "2026-11-08T20:04:23.127Z",
+      "loud": false
+    },
+    {
+      "id": "n179416828358656",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „The announcement do",
+      "agent": "fact-check",
+      "at": "2026-11-08T20:04:43.586Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179302576204589",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Drafting Professional Presentations from Scratch U\" — The guide's core workflow (Copilot button, outline generation, Add to presentation, speaker notes, content refinement) aligns with known Microsoft 365 Copilot functionality, but the specific phrasing around speaker not",
-      "ref": "ARTICLE_GUIDE_drafting-professional-presentations-from-scratch-using-micro.json",
-      "open": true,
-      "at": "2026-10-26T14:42:42.045Z"
-    },
-    {
-      "id": "m179302599379096",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-26T14:46:33.790Z"
-    },
     {
       "id": "m179304782450988",
       "from": "fact-check",
@@ -2697,6 +2678,26 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-08T14:46:05.452Z"
+    },
+    {
+      "id": "m179416826312775",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (túl nagy átírás (2158 szó a 1550-ből)): \"27 AI video editing prompts for footage you alread\" — A forrás a Picsart-specifikus videószerkesztési promptekről szól, pontos ötlépcsős szerkezettel és konkrét modellajánlásokkal. A cikk általános AI videószerkesztési tanácsokként mutatja be, egyszerűsített recepttel, ami ellentmond a forrás módszertanának.",
+      "ref": "ARTICLE_2026-08-25T00-37-56-602Z_picsart_27_AI_video_editing_prompts_for_footage_you_alread.json",
+      "open": true,
+      "at": "2026-11-08T20:04:23.127Z"
+    },
+    {
+      "id": "m179416828358619",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „The announcement does not describe any new product, setting, or change you will see in an ”): \"OpenAI and Poland’s NASK partner to advance AI saf\" — A forrás konkrét eredményeket ad meg - a partnerség már konkrét biztonsági eredményeket hozott létre.",
+      "ref": "ARTICLE_2026-10-24T02-27-21-099Z_openai-blog_OpenAI_and_Poland_s_NASK_partner_to_advance_AI_saf.json",
+      "open": true,
+      "at": "2026-11-08T20:04:43.586Z"
     }
   ]
 }

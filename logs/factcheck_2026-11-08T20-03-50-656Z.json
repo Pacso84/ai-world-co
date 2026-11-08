@@ -1,0 +1,63 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.013484844000000003,
+  "at": "2026-11-08T20:03:50.656Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 2,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-08-25T00-37-56-602Z_picsart_27_AI_video_editing_prompts_for_footage_you_alread.json",
+      "cim": "27 AI video editing prompts for footage you already have",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "túl nagy átírás (2158 szó a 1550-ből)",
+      "modell_hu": "A forrás a Picsart-specifikus videószerkesztési promptekről szól, pontos ötlépcsős szerkezettel és konkrét modellajánlásokkal. A cikk általános AI videószerkesztési tanácsokként mutatja be, egyszerűsített recepttel, ami ellentmond a forrás módszertanának."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-get-honest-feedback-on-your-resume-using-any-ai-assis.json",
+      "cim": "How to Get Honest Feedback on Your Resume Using Any AI Assistant",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-24T02-27-21-099Z_openai-blog_OpenAI_and_Poland_s_NASK_partner_to_advance_AI_saf.json",
+      "cim": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás a forrásban nem szereplő állítást hozna be: „The announcement does not describe any new product, setting, or change you will see in an ”",
+      "modell_hu": "A forrás konkrét eredményeket ad meg - a partnerség már konkrét biztonsági eredményeket hozott létre."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-get-personalized-gift-ideas-for-someone-who-is-hard-t.json",
+      "cim": "How to get personalized gift ideas for someone who is hard to shop for",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-22T02-26-44-201Z_openai-blog_ChatGPT_Ads_expands_to_26_new_countries_as_over_10.json",
+      "cim": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes konkrét állítása (100 000+ hirdető, 26 új ország, vállalkozások érhetik el a összehasonlító/vásárló felhasználókat) egyezik a forrással. A cikk helyesen jegyzi meg a forrás hiányosságait (országok listája, hirdetési formátumok, árak)."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-get-quick-summaries-from-long-documents-with-claude.json",
+      "cim": "How to Get Quick Summaries from Long Documents with Claude",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}
