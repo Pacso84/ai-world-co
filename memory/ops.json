@@ -483,14 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n17931575893482",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0498).",
-      "agent": "ceo",
-      "at": "2026-10-28T03:19:49.348Z",
-      "loud": false
-    },
-    {
       "id": "n179315763417919",
       "level": "warn",
       "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Google has announced Ge",
@@ -1281,18 +1273,17 @@
       "agent": "fact-check",
       "at": "2026-11-08T03:22:53.881Z",
       "loud": false
+    },
+    {
+      "id": "n179414879561152",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „In short:** An art ",
+      "agent": "fact-check",
+      "at": "2026-11-08T14:39:55.611Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179298322420811",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-26T02:53:44.208Z"
-    },
     {
       "id": "m17930257009697",
       "from": "fact-check",
@@ -2697,6 +2688,16 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-08T03:33:50.693Z"
+    },
+    {
+      "id": "m179414879561131",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „In short:** An art style prompt is a short text instruction that tells an AI image tool to”): \"Art Style Effects Prompts — Turn Any Photo Into a \" — A forrás egy Pixlr-specifikus oktatóanyag konkrét művészeti stílusokkal; a cikk egy általános útmutatót készített más példákkal, ami ellentmond a forr",
+      "ref": "ARTICLE_2026-08-07T08-45-30-227Z_pixlr_Art_Style_Effects_Prompts___Turn_Any_Photo_Into_a_.json",
+      "open": true,
+      "at": "2026-11-08T14:39:55.611Z"
     }
   ]
 }

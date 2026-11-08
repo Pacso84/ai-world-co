@@ -1,0 +1,62 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.014336199,
+  "at": "2026-11-08T14:39:26.022Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-06T04-06-30-396Z_microsoft-research_Formally_verifying_agent-written_full-stack_web_ap.json",
+      "cim": "Formally verifying agent-written full-stack web apps with PDD Kit",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrást. Helyesen írja le a PDD Kit-et mint eszközt, amely a köznyelvi szándékot formális specifikációkká alakítja, Verus-t használva matematikai bizonyításokra és tesztekre, ahol a bizonyítás nem lehetséges. A Megbízható Számítási Alap koncepciója helyesen van leírva. A Ru"
+    },
+    {
+      "file": "ARTICLE_2026-08-07T08-45-30-227Z_pixlr_Art_Style_Effects_Prompts___Turn_Any_Photo_Into_a_.json",
+      "cim": "Art Style Effects Prompts — Turn Any Photo Into a Styled Visual Statement",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „In short:** An art style prompt is a short text instruction that tells an AI image tool to”",
+      "modell_hu": "A forrás egy Pixlr-specifikus oktatóanyag konkrét művészeti stílusokkal; a cikk egy általános útmutatót készített más példákkal, ami ellentmond a forrás fókuszának."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-find-lost-files-in-onedrive-and-clean-up-a-messy-down.json",
+      "cim": "How to find lost files in OneDrive and clean up a messy Downloads folder with Copilot",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató valószínűsíthető OneDrive Copilot funkciókat ír le megfelelő figyelmeztetésekkel a fizetős tervekről és a fokozatos bevezetésről. Nincs olyan konkrét állítás, amely egyértelműen hamisnak lenna tekinthető."
+    },
+    {
+      "file": "ARTICLE_2026-07-30T01-21-35-633Z_openai-blog_How_enabling_two_settings_tripled_our_scores_on_th.json",
+      "cim": "How enabling two settings tripled our scores on the ARC-AGI-3 benchmark",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan képviseli a forrás fő megállapításait: a gondolkodási mód (megtartott érvelés) javítja a pontszámokat az ARC-AGI benchmarkokon, és van egy második beállítás (tömörítés/kontextuskezelés), amely együtt működik. Az általánosítás más AI-asszisztensekre ésszerű extrapoláció a konkrét Open"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-get-faster-help-from-ai-powered-customer-service.json",
+      "cim": "How to Get Faster Help From AI-Powered Customer Service",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Ez egy általános útmutató az AI-vezérelt ügyfélszolgálati chatbotokról, amely nem tartalmaz specifikus termékkel kapcsolatos állítást, amely elavult lehet. Az összes leírt funkció (chat ablakok, javasolt válaszok, esetszámok, gépelési jelzők) sok ügyfélszolgálati rendszerben gyakori és továbbra is p"
+    },
+    {
+      "file": "ARTICLE_2026-10-16T02-10-37-240Z_picsart_Grok_Imagine_1_5_Lite_explained__quick_clips_with_.json",
+      "cim": "Grok Imagine 1.5 Lite explained: quick clips with sound",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben szereplő összes tényszerű állítást a források alátámasztják"
+    }
+  ]
+}
