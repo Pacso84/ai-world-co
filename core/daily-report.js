@@ -513,6 +513,12 @@ async function main() {
       .filter(Boolean) : [];
     lines.push(tenyellenorzoLine(naplok, Date.now()));
   } catch { /* a riport ettől még kimegy */ }
+  // 📕 PDF-CSOMAGOK FRISSESSÉGE (2026-11-08, user: „amiket törlünk, az már nincs fenn!!!”): a PDF-ek a
+  // fejlesztő gépén készülnek; ha egy benne lévő útmutató azóta lekerült vagy javult, itt szól.
+  try {
+    const { pdfFrissessegSor, tartalomBeolvas, eloUtmutatok } = await import('./pdf-frissesseg.js');
+    lines.push(pdfFrissessegSor(tartalomBeolvas(), eloUtmutatok()));
+  } catch { /* a riport ettől még kimegy */ }
   // 🛟 TÉVES „KITALÁLT NÉV” KIFOGÁS felülbírálva (2026-11-06): az ellenőrző logs/reviewer_*.json naplóiból.
   try {
     const ldir = join(ROOT, 'logs');

@@ -470,8 +470,10 @@ if (process.argv[1] && process.argv[1].endsWith('ebook-build.js')) {
 
   const cikkek = utmutatokBetolt();
   console.log(`📚 ${cikkek.length} örökzöld útmutató betöltve\n`);
+  const pdfbe = new Set();   // 📕 11-08: a PDF-ekbe került útmutatók (core/pdf-frissesseg.js)
   for (const { tema, nyelv } of melyek) {
     const r = gyart(cikkek, { tema, nyelv, pdf });
+    if (r.ok) for (const s of r.szakaszok || []) for (const c of s.cikkek || []) if (c.slug) pdfbe.add(c.slug);
     const nev = tema ? `${tema}-${nyelv}` : 'starter-pack';
     if (!r.ok) { console.log(`⛔ ${nev}: NINCS CSOMAG — ${r.indok}`); continue; }
     // A MÉRT számok: cikkszám, szószám, becsült oldalszám (600 szó/oldal).
@@ -485,6 +487,13 @@ if (process.argv[1] && process.argv[1].endsWith('ebook-build.js')) {
     console.log(`      HTML: ${r.html}`);
     if (r.pdfHiba) console.log(`      ⚠️ ${r.pdfHiba}`);
     else if (r.pdf) console.log(`      PDF: ${r.pdf} — ${r.pdfMb.toFixed(1)} MB, ${r.pdfEp ? '✅ ép' : '❌ NEM PDF'}`);
+  }
+  // 📕 A kiadott csomagok tartalomlistája — ebből szól a napi riport, ha a PDF elavult.
+  // Csak a teljes, PDF-es gyártásnál (a részleges vagy HTML-próba nem írja felül).
+  if (argv.includes('--mind') && pdf && pdfbe.size) {
+    const { tartalomIr } = await import('./pdf-frissesseg.js');
+    console.log(`\n📕 tartalomlista: ${tartalomIr([...pdfbe])} útmutató → website/assets/free/tartalom.json`);
+    console.log('   ⚠️ a dist/ebook/*-en|es.pdf fájlokat másold a website/assets/free/aiworldhq-<id>-<nyelv>.pdf helyre!');
   }
 }
 
