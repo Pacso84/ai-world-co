@@ -18,7 +18,7 @@
 import assert from 'assert/strict';
 import {
   confidentUiClaims, expiringMoneyClaims, employerOnlyAccess,
-  hasUsableSource, guideClaimIssues, clauses,
+  hasUsableSource, guideClaimIssues, clauses, quotedScreenText,
   UI_CLAIM_MIN, ACCESS_SIGNAL_MIN
 } from './guide-claims.js';
 import { isBlocking, lessonFor } from './auto-check-codes.js';
@@ -235,6 +235,48 @@ t('a pénz-lecke nem tartalmaz konkrét összeget (állandóság)', () => {
   const l = lessonFor('PRICE_CLAIM_UNSOURCED: "$10", "free trials"');
   assert.ok(!/\$\s?\d/.test(l), 'a leckében nincs összeg');
   assert.ok(/pricing page/i.test(l), 'megmondja, mit tegyen');
+});
+
+// ===================================================================
+// 6. IDÉZETT KÉPERNYŐ-SZÖVEG (SCREEN_TEXT_QUOTED, 2026-11-08)
+// ===================================================================
+
+t('🖥️ a 11-08-án kijavított VALÓDI kitalált üdvözléseket megfogja', () => {
+  // Szó szerint az élő útmutatókból (a javítás ELŐTTI mondatok).
+  const esetek = [
+    '**You\'ll know it worked when** you see a blank chat conversation area ready for your input, often with a greeting from Claude like "Hello! How can I help you today?"',
+    'You\'ll know it worked when you see Grok reply with a friendly greeting and a question like “What’s the first tweet about?”',
+    '**You\'ll know it worked when** the chat window is empty, and Qwen Chat might even greet you with a message like "Hello, how can I help you today?" or "What\'s on your mind?"',
+    'If your screen looks different: the assistant might greet you with "How can I help you today?" — that text area below it is the chat box.',
+    'You should land on a welcome screen that says "Meet Gemini." with a button below it.',
+    'Click into the box that says “Ask Copilot anything…” and type your request.',
+  ];
+  for (const s of esetek) {
+    const iss = guideClaimIssues(md(s), { source_link: '' });
+    assert.ok(iss.some(i => i.startsWith('SCREEN_TEXT_QUOTED')), 'nem fogta: ' + s.slice(0, 70));
+  }
+});
+
+t('🖥️ az OLVASÓ saját szövegét és a valódi weboldal-adatot békén hagyja (mérve 11-08)', () => {
+  const jogos = [
+    'Say clearly: *"Alexa, what\'s on my calendar today?"* and wait for the answer.',
+    'When Siri says "Wo ist die nächste Bushaltestelle?", repeat it slowly.',
+    'If the AI says "5.1%" but the official page says "5.2%", trust the page.',
+    'Start with a greeting such as **"Dear Customer Service team"** and keep it polite.',
+    'Make the greeting even more casual, like "Hey there! How\'s it going?"',
+    'Type "Summarize this email in three bullet points" and press Enter.',
+  ];
+  for (const s of jogos) {
+    assert.deepEqual(quotedScreenText(md(s)), [], 'téves riasztás: ' + s.slice(0, 70));
+  }
+});
+
+t('🖥️ forráslinkes cikkre nem szól, és TANÁCSADÓ marad (nem indít fizetős újraírást)', () => {
+  const s = 'Claude greets you with "Hello! How can I help you today?"';
+  assert.equal(guideClaimIssues(md(s), { source_link: 'https://support.claude.com/x' }).length, 0);
+  assert.ok(!isBlocking('SCREEN_TEXT_QUOTED: x'), 'SCREEN_TEXT_QUOTED NEM blokkolhat');
+  const l = lessonFor('SCREEN_TEXT_QUOTED: "Hello"');
+  assert.ok(l.length > 60 && !/Hello/.test(l), 'állandó, felirat nélküli lecke');
 });
 
 console.log('\n✅ guide-claims.test: mind a ' + pass + ' eset rendben');

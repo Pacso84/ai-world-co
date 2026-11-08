@@ -113,6 +113,11 @@ const LESSON_TEXT = Object.freeze({
     'The guide stated specific on-screen labels as hard fact, but it was written with no source, '
     + 'so nothing could check them. Open the official page and read the interface, or write it the honest way: '
     + '"if you do not see X, look for …". Never name a button you have not seen.',
+  SCREEN_TEXT_QUOTED:
+    'The guide put the app\'s own words in quotation marks — a greeting, the placeholder in the message box, '
+    + 'a welcome-screen title or a predicted reply — without a source. Readers then look for a sentence that is '
+    + 'not on their screen. Describe the screen instead ("an empty chat with a message box at the bottom") and '
+    + 'quote only what the reader types or says. Do not describe an icon\'s color or shape unless the source says so.',
   PRICE_CLAIM_UNSOURCED:
     'A guide named a price for a tool. Guides are evergreen but prices are not: trials end, plans are '
     + 'retired, amounts move — and nobody comes back to correct the sentence. Do not print the number at all. '

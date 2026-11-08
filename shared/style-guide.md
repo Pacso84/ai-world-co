@@ -106,6 +106,26 @@ nem példák, hanem tények, és a link-vadász úgyis ellenőrzi őket.
 
 Kapu: NINCS — és ez szándékos, lásd `core/guide-claims.js` végén a mérést.
 
+### 🖥️ KÉPERNYŐ-SZÖVEG: az alkalmazás szavait SOHA ne idézd forrás nélkül (2026-11-08)
+
+**A szabály:** a szöveg nem teheti idézőjelbe azt, amit az ALKALMAZÁS ír ki — üdvözlés,
+a beviteli mező helyőrző szövege, nyitóképernyő-cím, állapotsor, a várható MI-válasz —,
+hacsak a kapott hivatalos forrás szó szerint nem így írja. Ikon SZÍNÉT és pontos ALAKJÁT,
+alsó fül-sort, menü-útvonalat se írj le forrás nélkül. Idézőjelbe csak az kerülhet, amit
+az OLVASÓ ír be vagy mond ki.
+
+> ❌ "You'll know it worked when Claude greets you with "Hello! How can I help you today?""
+> ✅ "You'll know it worked when you see an empty chat with a message box at the bottom."
+> ❌ "Look for a green circle with a sparkle icon."
+> ✅ "Look for the Meta AI icon on the Chats tab." (+ amit a hivatalos súgó ír róla)
+
+**Miért:** 2026-11-07–08-i kézi átnézés: élő útmutatókban kitalált üdvözlések (Claude,
+ChatGPT, Grok, Qwen), nem létező gomb („zöld kör csillogással" a WhatsAppban) és egy
+évekkel ezelőtti fül-sor (Google Fotók „Utilities / Library") állt. Az olvasó azt keresi,
+ami nincs ott, és elakad. Az ellenőrző az ilyen mondatot jelezze hibaként.
+
+Gépi jelzés: `SCREEN_TEXT_QUOTED` (tanácsadó, `core/guide-claims.js`).
+
 ---
 
 ## 1c. EMBERI HANG — amitől nem gépnek hangzik (2026-07-30)

@@ -669,6 +669,15 @@ every step without getting lost or misled; the Reviewer rejects guides that fail
   like …"); never over-promise what the tool will do — say what USUALLY happens
   and what to do when it doesn't; say plainly if a feature may need a paid plan;
   include one honest sentence about what the tool CANNOT do for this task.
+- NO QUOTED SCREEN TEXT (2026-11-08 — readers were told to expect greetings and
+  buttons that do not exist): you cannot see the app, so NEVER put the app's own
+  words in quotation marks — no greeting ("How can I help you today?"), no
+  placeholder text in the message box, no welcome-screen title, no status line,
+  no predicted AI reply. Describe it instead: "an empty chat with a message box at
+  the bottom", "Gemini's answer appears below your message". Quote ONLY what the
+  READER types or says. Do not describe an icon's COLOR or exact SHAPE unless the
+  official source given to you says so — name its job instead ("the attachment
+  button next to the message box"). Do not invent tab bars or menu paths.
 - "Before you start" lists EVERYTHING needed (account, app/website, device,
   free-or-paid plan, rough total time) so nobody hits a surprise blocker later.
 
@@ -677,8 +686,8 @@ WORKED EXAMPLE — study this contrast, then write EVERY step like the ✅ versi
 ❌ TOO VAGUE (rejected): "Open the settings and turn on voice mode, then start talking."
 ✅ CLEAR (do exactly this level of detail):
 "## Step 2 — Turn on voice mode
-Tap the **microphone icon** 🎤 at the bottom-right of the chat box. A round
-'Listening…' circle appears and the keyboard slides down out of the way. If you
+Tap the **microphone icon** 🎤 next to the message box. The screen changes to
+show it is listening and the keyboard slides down out of the way. If you
 can't see a microphone, look for a **headphones or sound-wave icon** instead —
 some apps tuck it inside the top-right **⋯ menu**. Speak one short sentence, then
 pause for a second.

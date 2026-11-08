@@ -241,6 +241,52 @@ export function expiringMoneyClaims(markdown) {
 }
 
 // ===================================================================
+// 2b. IDÉZETT KÉPERNYŐ-SZÖVEG (SCREEN_TEXT_QUOTED) — 2026-11-08
+// ===================================================================
+// A 11-07–08-i kézi átnézés: az élő útmutatókban kitalált ÜDVÖZLÉSEK álltak
+// idézőjelben („Claude greets you with "Hello! How can I help you today?"",
+// „the screen shows "How can I help today?"", „Grok reply with a friendly
+// greeting and a question like "What's the first tweet about?""). A fenti
+// UI_CLAIMS_UNSOURCED ezeket NEM fogta: nem gombfeliratok, és hedge-elve
+// („like", „might") álltak — pedig a hedge itt nem segít, az olvasó egy
+// konkrét mondatot keres, ami nincs ott.
+//
+// A MÉRCE SZŰK, mert MÉRTEM (11-08, 838 élő cikk): a tág „X says "…"" alak
+// 30 cikken szólt, és a fele JOGOS volt — az olvasó saját mondata („Siri says
+// "Wo ist…"" = a fordítás eredménye), egy weboldal valódi száma („page says
+// "5.2%""), levél-megszólítás („greeting such as "Dear Customer Service"").
+// Ezért CSAK a három biztos alak:
+//   1) az ALKALMAZÁS köszön: „greets you", „greeting from Claude",
+//      „reply/respond with a (friendly) greeting"
+//   2) nyitó-/üdvözlő képernyő vagy üzenet „that says/reads/shows"
+//   3) képernyő/mező/sáv/ablak „that says/reads/shows/displays", vagy egy
+//      MEGNEVEZETT alkalmazás „shows/displays" + idézet
+// A „says"/„asks" MI-alanyra szándékosan KIMARAD (az a példa-válasz, gyakran
+// az olvasó saját adata). TANÁCSADÓ: nem utasít el, leckét ír.
+const SCR_Q = String.raw`["“]([^"”\n]{3,80})["”]`;
+const SCR_APP = String.raw`(?:ChatGPT|Claude|Gemini|Grok|Qwen(?: Chat)?|Copilot|Meta AI|Perplexity|DeepSeek|Le Chat|Mistral|Kimi|Lumo|Duck\.ai|Leo|the app|the assistant|the chatbot)`;
+const SCREEN_TEXT_RX = [
+  new RegExp(String.raw`\b(?:greets? you|greeting from \S+|(?:reply|replies|respond|responds|answer|answers) with a (?:friendly |short |quick )?greeting)\b[^.\n]{0,60}?${SCR_Q}`, 'gi'),
+  new RegExp(String.raw`\bwelcome (?:screen|message|page|text)\b[^.\n]{0,30}?(?:says|reads|shows|displays)\s+(?:something like\s+)?${SCR_Q}`, 'gi'),
+  new RegExp(String.raw`\b(?:screen|box|field|bar|banner|window|placeholder)\s+(?:that\s+)?(?:says|reads|shows|displays)\s+(?:something like\s+)?${SCR_Q}`, 'gi'),
+  new RegExp(String.raw`\b${SCR_APP}\s+(?:shows|displays)\s+(?:a message like\s+|something like\s+)?${SCR_Q}`, 'g'),
+];
+
+/** Az alkalmazás saját, idézőjelbe tett képernyő-szövegei (üdvözlés, helyőrző, nyitókép). */
+export function quotedScreenText(markdown) {
+  const body = articleBody(markdown);
+  const texts = [];
+  for (const rx of SCREEN_TEXT_RX) {
+    rx.lastIndex = 0;
+    for (const m of body.matchAll(rx)) {
+      const t = m[1].trim();
+      if (!texts.includes(t)) texts.push(t);
+    }
+  }
+  return texts;
+}
+
+// ===================================================================
 // 3. NEM ÖNKISZOLGÁLÓ HOZZÁFÉRÉS (ACCESS_NOT_SELF_SERVE)
 // ===================================================================
 // Az 1. bukás MÁSIK fele — és ezt a felület-kapu SOHA nem fogta volna meg.
@@ -321,6 +367,13 @@ export function guideClaimIssues(markdown, meta = {}) {
       + `Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve ("if you don't see…").`);
   }
 
+  const screen = quotedScreenText(markdown);
+  if (screen.length) {
+    issues.push(`SCREEN_TEXT_QUOTED: az alkalmazás saját képernyő-szövegét idézi forrás nélkül `
+      + `(${screen.slice(0, 3).map(s => `"${s}"`).join(', ')}${screen.length > 3 ? ', …' : ''}). `
+      + `Írd le idézet nélkül („an empty chat with a message box"), idézőjelbe csak az olvasó szövege kerül.`);
+  }
+
   const money = expiringMoneyClaims(markdown);
   if (money.claims.length && !money.pointsAtPricing) {
     issues.push(`PRICE_CLAIM_UNSOURCED: lejáró pénz-állítás forrás és árlap-hivatkozás nélkül `
@@ -395,6 +448,6 @@ export function guideClaimIssues(markdown, meta = {}) {
 
 export default {
   UI_CLAIM_MIN, ACCESS_SIGNAL_MIN,
-  articleBody, clauses, confidentUiClaims, expiringMoneyClaims,
+  articleBody, clauses, confidentUiClaims, quotedScreenText, expiringMoneyClaims,
   employerOnlyAccess, hasUsableSource, guideClaimIssues
 };
