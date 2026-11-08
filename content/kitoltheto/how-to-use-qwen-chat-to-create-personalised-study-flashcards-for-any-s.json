@@ -1,6 +1,6 @@
 {
   "slug": "how-to-use-qwen-chat-to-create-personalised-study-flashcards-for-any-s",
-  "keszult": "2026-10-31T19:44:46.353Z",
+  "keszult": "2026-11-08T14:41:28.966Z",
   "promptok": {
     "f29bea5f55c7": [
       {
@@ -26,5 +26,48 @@
         "hely": "number to quiz"
       }
     ]
+  },
+  "promptok_hu": {
+    "ca21b9fe3f70": [
+      {
+        "eredeti": "9. osztályos",
+        "hely": "az évfolyamod"
+      },
+      {
+        "eredeti": "sejtszerkezet",
+        "hely": "a témád"
+      },
+      {
+        "eredeti": "12 kártyát",
+        "hely": "a kártyáid száma"
+      }
+    ],
+    "64b93c31af2a": [
+      {
+        "eredeti": "6 kártyát",
+        "hely": "a további kártyáid száma"
+      },
+      {
+        "eredeti": "5 kártyából",
+        "hely": "a tesztelt kártyáid száma"
+      }
+    ]
+  },
+  "promptok_es": {
+    "68e20060ad1d": [
+      {
+        "eredeti": "biología",
+        "hely": "tu asignatura"
+      },
+      {
+        "eredeti": "estructura celular",
+        "hely": "tu tema de examen"
+      },
+      {
+        "eredeti": "12",
+        "hely": "cuántas tarjetas quieres"
+      }
+    ],
+    "117a8399bdf8": []
   }
 }
