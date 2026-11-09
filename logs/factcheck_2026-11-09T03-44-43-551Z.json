@@ -1,0 +1,62 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.010088728,
+  "at": "2026-11-09T03:44:43.551Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_getting-started-duck-ai.json",
+      "cim": "Getting started with Duck.ai: a beginner's guide",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató általános funkcionalitást ír le (nincs szükség fiókra, adatvédelmi fókusz, egyszerű csevegési felület), amely összhangban van a DuckDuckGo ismert megközelítésével. Nem talált specifikus gyanús állítást."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-set-reminders-with-alexa-on-your-echo-for-bills-birth.json",
+      "cim": "How to Set Reminders with Alexa on Your Echo for Bills, Birthdays and Errands",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_getting-started-z-ai.json",
+      "cim": "Getting started with Z.ai: a beginner's guide",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-08T03-22-47-134Z_aiworld-editorial_This_Week_in_AI.json",
+      "cim": "This Week in AI: The 5 Stories That Matter (November 8, 2026)",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „Zapier Explores How Much AI Should Decide Without Asking You First”",
+      "modell_hu": "Az ötödik történet hibásan azonosítja a Zapier-t mint céget; a forrás az Amazon Quick AI jóváhagyási funkcióit írja le"
+    },
+    {
+      "file": "ARTICLE_2026-11-06T04-06-23-058Z_openai-blog_Australian_universities_are_creating_AI-native_gra.json",
+      "cim": "Australian universities are creating AI-native graduates",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "All factual claims in the article are supported by the source text."
+    },
+    {
+      "file": "ARTICLE_2026-11-04T03-51-02-908Z_google-workspace_Display_Custom_Policy_in_the_Green_Room_before_Goo.json",
+      "cim": "Display Custom Policy in the Green Room before Google Meet Calls",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben szereplő összes tényállítás alátámasztja a forrás."
+    }
+  ]
+}

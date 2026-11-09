@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "written_at": "2026-11-09T03:36:04.401Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0037516,
+    "original_draft": "2026-11-06T04-06-23-058Z_openai-blog_Australian_universities_are_creating_AI-native_gra.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/australian-universities-ai-native-graduates",
+    "source_links": [
+      "https://openai.com/index/australian-universities-ai-native-graduates"
+    ],
+    "source_snippet_len": 147,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "6dd14bef33b6e20d",
+    "source_overlap_words": 11,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "status": "published",
+    "published_at": "2026-11-09T03:36:57.071Z",
+    "slug": "australian-universities-are-training-students-to-work-with-ai",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "BRITISH_SPELLING_NAME: nagybetűs brit alak — Honours. Ha közszó, írd amerikaiul; ha VALÓDI tulajdonnév (szervezet/termék neve), hagyd."
+      ],
+      "wordCount": 751
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid news article that meets all quality gates: clear structure with hook, explanatory terms (frontier tools, AI agents), survey data properly attributed to OpenAI's own research, friendly non-judgmental tone, and actionable What this means for you section with practical next steps. No prohibited content, no clichés, US English throughout.",
+      "_aiCost": 0.00132678,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-09T03:37:29.566Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a university partnership announcement/case study, not a specific named tool introduction — the tool rollouts are planned for 2027 and users cannot go use anything concrete today.",
+    "image_v": 2,
+    "image_at": "2026-11-09T03:40:13.732Z",
+    "seo": {
+      "meta_description": "See how Australian universities are training students with AI tools from OpenAI — and what it means for future graduates' job skills in the workforce.",
+      "keywords": [
+        "AI in universities",
+        "university AI training",
+        "OpenAI university partnership",
+        "student AI skills",
+        "Australian universities AI tools",
+        "how universities use AI",
+        "AI for students"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the specific survey finding (e.g., 'over 1,000 students surveyed') to give concrete data for search engines to display",
+        "Include which specific AI tools (ChatGPT, etc.) if mentioned — this is a high-value long-tail keyword people search for",
+        "Add a section on specific AI skills students are learning to capture 'AI skills for career' search intent"
+      ],
+      "optimised_at": "2026-11-09T03:42:51.548Z"
+    },
+    "fact_verified_at": "2026-11-09T03:46:25.875Z"
+  },
+  "article_markdown": "---\ntitle: \"Australian Universities Are Training Students to Work with AI\"\nsubtitle: \"How several universities are giving students and staff AI tools, and what that could mean for your own learning and career\"\ncategory: \"news\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"ai-in-education\", \"students\", \"universities\", \"openai\", \"career-skills\"]\n---\n\n# Australian Universities Are Training Students to Work with AI\n\n> **In short:** Several Australian universities, including UNSW Sydney, the University of Sydney, La Trobe University and Adelaide University, are partnering with OpenAI to give students and staff access to advanced AI tools. OpenAI also commissioned a survey of more than 1,000 Australian students, which found that most already use AI every week.\n\nIf you are a student, you have probably already asked an AI chatbot to explain a hard concept or tidy up an essay. Universities are now deciding how that habit should fit into real coursework, and that decision will shape the skills graduates bring to their first jobs.\n\n## What the universities are doing\n\nAccording to OpenAI's announcement, these universities are working with the company to give their students and staff access to frontier AI tools. A \"frontier\" tool is one of the newest, most capable systems available. The partnerships go beyond simply handing out logins. Universities are also building teaching frameworks that explain where AI fits in learning and assessment, and when students should rely on their own judgment instead.\n\nSome of the examples OpenAI describes include clinical simulations, robot-assisted teacher training, and student projects designed to lead into industry work.\n\nHere is how the approach looks at a few schools, based on the details in the announcement:\n\n- **UNSW Sydney** plans to bring ChatGPT Edu (a version of ChatGPT set up for educational institutions) to more than 80,000 students and staff, in stages. It also plans to add AI and a coding tool called Codex to courses, with hackathons (short events where people build something quickly) and industry projects.\n- **The University of Sydney** is starting with a trial. Access for all students is scheduled for Semester 1, 2027.\n- **La Trobe University** says all 3,500 of its staff already have ChatGPT Edu access, and universal access for its 45,000 students and staff is planned for early 2027. It is also launching a Bachelor of AI Engineering (Honours), with its first cohort in 2027.\n\n## What students told the researchers\n\nOpenAI says its commissioned survey asked students what they expect from their universities. Here are a few of the findings the company reports:\n\n- 81% use AI several times a week, and 33% use it several times a day.\n- 28% have already built their own AI agent or assistant, which is a tool that can carry out several steps for you, to help with studies, work or personal life.\n- 79% want more chances to use advanced AI on real projects.\n- 61% believe AI skills will be essential to their chosen career.\n- 76% are interested in starting a company or working for themselves.\n\nKeep in mind that these figures come from OpenAI's own research, so they describe what that survey found, not a neutral study of every student.\n\n## What this means for you\n\n- **In everyday life**: If you are a student, think about how you already use AI and whether you could use it more deliberately, such as asking it to quiz you on a chapter rather than to write the answer.\n- **For your business or work**: If you are an employer or a team leader, the announcement suggests that new graduates may arrive with more hands-on AI experience. Asking candidates about real projects they have built can be a useful conversation.\n- **If you're just getting started**: Ask your school whether it offers an AI tool or training. Many schools are rolling these out now, and the teaching guidance matters as much as the software.\n- **If you already use it**: If your school gives you access, try using it for a project that needs careful checking, and note where the AI helped and where your own judgment made the difference.\n\n## Wrap-up\n\nThe main lesson from this announcement is that access to AI is only part of the picture. Universities are also teaching students when to trust AI, when to double-check it, and when to think for themselves. You can build the same habit today: pick one task this week, use an AI tool to help with it, and then decide for yourself what you would keep and what you would change.",
+  "original_title": "Australian universities are creating AI-native graduates"
+}

@@ -1,0 +1,55 @@
+{
+  "started_at": "2026-11-09T03:35:45.928Z",
+  "drafts_total": 2,
+  "articles_written": 2,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 1,
+    "html": 1,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.0077875,
+  "by_article": [
+    {
+      "draft": "2026-11-06T04-06-23-058Z_openai-blog_Australian_universities_are_creating_AI-native_gra.json",
+      "writer_output": "WRITER_2026-11-06T04-06-23-058Z_openai-blog_Australian_universities_are_creating_AI-native_gra.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 11,
+      "cost_usd": 0.0037516,
+      "duration_ms": 13295,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-04T03-51-02-908Z_google-workspace_Display_Custom_Policy_in_the_Green_Room_before_Goo.json",
+      "writer_output": "WRITER_2026-11-04T03-51-02-908Z_google-workspace_Display_Custom_Policy_in_the_Green_Room_before_Goo.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 1463,
+      "source_overlap_words": 6,
+      "cost_usd": 0.0035445,
+      "duration_ms": 13077,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-11-09T03:36:18.201Z",
+  "duration_seconds": 32.273
+}
