@@ -291,6 +291,46 @@ await t('🧩 VS Code „alsó előnézeti sáv” — fogja; a böngészős meg
   nincs('The preview bar in Canva shows your design.', 'en');
 });
 
+await t('🎙️ ChatGPT: a mikrofon NEM a hang mód (az a Voice ikon) — a javítás előtti mondatokat fogja, a javítottat nem', () => {
+  const G = 'In the ChatGPT app, do this. ';
+  van('chatgpt-hangmod-mikrofon', G + '## Step 3 — Tap the microphone icon to start voice mode', 'en');
+  van('chatgpt-hangmod-mikrofon', G + 'Next time you want hands-free, open any chat and tap the mic again — it remembers your chosen voice.', 'en');
+  van('chatgpt-hangmod-mikrofon', G + 'Open the ChatGPT app, tap the microphone once, and ask:', 'en');
+  van('chatgpt-hangmod-mikrofon', G + 'If you don\'t see a microphone, open the side menu (look for a button like ☰ or your profile picture) and look for a setting called **"Voice mode"** or **"Voice chat"**.', 'en');
+  van('chatgpt-hangmod-mikrofon', 'ChatGPT. ## 3. lépés – Koppints a mikrofon ikonra a hang mód indításához', 'hu');
+  van('chatgpt-hangmod-mikrofon', 'ChatGPT. Nyisd meg a ChatGPT appot, koppints egyszer a mikrofonra, és kérdezd meg:', 'hu');
+  van('chatgpt-hangmod-mikrofon', 'ChatGPT. ## Paso 3 — Toca el icono del micrófono para activar el modo de voz', 'es');
+  van('chatgpt-hangmod-mikrofon', 'ChatGPT. La próxima vez, abre cualquier chat y vuelve a tocar el micro — recuerda la voz que elegiste.', 'es');
+  nincs(G + 'In the message bar, tap the **Voice** icon. Don\'t mix it up with the microphone: in ChatGPT the microphone is **Dictation**.', 'en');
+  nincs(G + 'Open the ChatGPT app, tap the Voice icon once, and ask:', 'en');
+  nincs(G + 'Need a moment of quiet? Tap the **microphone** control on the Voice screen to mute yourself.', 'en');
+  nincs('Gemini Live: tap the microphone icon once and start talking.', 'en'); // nem ChatGPT-szöveg
+  nincs('ChatGPT. Nyisd meg a ChatGPT appot, koppints egyszer a Voice ikonra, és kérdezd meg:', 'hu');
+});
+
+await t('📎 Claude: gemkapocs helyett „+” gomb — csak a Claude-útmutatóban, más eszköz mellett és videóklipnél nem', () => {
+  const C = '---\ntool: "Claude"\n---\n';
+  van('claude-gemkapocs-ikon', C + 'Click the **paperclip icon** 📎 next to the message box.', 'en');
+  van('claude-gemkapocs-ikon', C + 'You\'ll know it worked when you see an empty message box with a **Send** arrow and a small **+** or paperclip-shaped attach icon nearby.', 'en');
+  van('claude-gemkapocs-ikon', C + 'Kattints az üzenetmező melletti **gemkapocs ikonra** 📎.', 'hu');
+  van('claude-gemkapocs-ikon', C + 'Az üzenetmező közelében keress egy gemkapocsikont vagy egy pluszjelet.', 'hu');
+  van('claude-gemkapocs-ikon', C + 'Haz clic en el **icono de clip** junto a la caja de mensaje.', 'es');
+  nincs(C + 'Click the **+** button in the lower-left corner of the chat box and choose **Add files or photos**.', 'en');
+  nincs(C + 'In ChatGPT, click the paperclip to attach a file.', 'en'); // más eszköz gemkapcsa
+  nincs('---\ntool: "ChatGPT"\n---\nLook for a paperclip icon near the message box, like in Claude.', 'en'); // nem Claude-útmutató
+  nincs(C + 'Sube tu clip de vídeo y pide a Claude un resumen.', 'es'); // videóklip
+});
+
+await t('⭐ Gmail: a Gemini nem „csillag ikon” (a csillag a megcsillagozás) — a „Gemini starts…” mondat nem ez', () => {
+  const M = 'Open Gmail. ';
+  van('gmail-gemini-csillag-ikon', M + 'Open the latest email thread in Gmail, click the Gemini star icon, and hit **Summarize this email**.', 'en');
+  van('gmail-gemini-csillag-ikon', M + '**WHAT YOU SEE:** After opening the email, look for a small star‑shaped icon (often with a subtle glow) near the subject line.', 'en');
+  van('gmail-gemini-csillag-ikon', 'Gmail. Nyisd meg a legutóbbi email-szálat a Gmailben, kattints a Gemini csillag ikonra.', 'hu');
+  van('gmail-gemini-csillag-ikon', 'Gmail. Abre el último hilo de correo en Gmail y pulsa el icono de la estrella de Gemini.', 'es');
+  nincs(M + 'Within a few seconds, Gemini starts typing a response.', 'en');
+  nincs(M + 'Click **Ask Gemini** at the top right of Gmail.', 'en');
+});
+
 await t('📅 LEJÁRAT: a „GPT Store bezárt” 2026-12-11-ig téves, onnan igaz (OpenAI kivezeti az egyedi GPT-ket)', () => {
   const s = 'OpenAI shut down the GPT Store.';
   assert.deepEqual(tevedesekASzovegben(s, 'en', '2026-12-10').map(x => x.id), ['gpt-store-megszunt']);

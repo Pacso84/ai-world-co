@@ -37,6 +37,10 @@ const ALEXA_PLUS = /Alexa\+/;
 // fogja meg, nem a nagybetű. 2026-11-02 (kód-átnézés): kisbetű-érzéketlen („prime-tagoknak”, „Amazon prime”).
 const PRIME = alak(['Prime'], true);
 
+// Más MI-eszköz / levelező neve — a szomszéd mondatban álló név esetén a gemkapocs NEM a Claude-é (2026-11-09).
+const MAS_ESZKOZ = alak(['ChatGPT', 'Gemini', 'Copilot', 'Perplexity', 'Le Chat', 'Mistral', 'DeepSeek', 'Grok', 'Meta AI',
+  'Gmail', 'Outlook', 'WhatsApp', 'Hugging Face', 'Cohere', 'Qwen'], false);
+
 // „megszűnt / bezárt / kivezették” — EXPLICIT alakok nyelvenként.
 const MEGSZUNT = {
   en: alak(['discontinued', 'shut down', 'shuts down', 'no longer exists', 'no longer exist', 'no longer available',
@@ -310,6 +314,58 @@ export const TEVEDESEK = [
       en: { mind: [/(?<![\p{L}])preview bar(?![\p{L}])/iu] },
       hu: { mind: [/előnézeti sáv/iu] },
       es: { mind: [/barra (?:inferior )?de vista previa/iu] }
+    }
+  },
+  // ── KITALÁLT IKON-LEÍRÁSOK (2026-11-09, a 4. rész kézi átnézéséből) ──────────────────────────────────────────
+  // A pozitív teszt-esetek a javítás ELŐTTI élő mondatok (git: b51eb6bc~1).
+  {
+    id: 'chatgpt-hangmod-mikrofon',
+    leiras: 'ChatGPT: „a mikrofon ikon indítja a hang módot”, „koppints ismét a mikrofonra”, „oldalsó menü → Voice mode beállítás” — az OpenAI súgója szerint a beszélgetést a Voice ikon indítja az üzenetsávban, a mikrofon a DIKTÁLÁS (help.openai.com/en/articles/8400625-voice-mode-faq; 11-09-én 2 útmutatóban javítva).',
+    javitas: 'ChatGPT voice: tell readers to tap the Voice icon in the message bar (help.openai.com voice mode FAQ). The microphone is Dictation — it turns one recording into text and does not talk back. There is no "Voice mode" setting in the side menu; voice options live under Settings → Voice.',
+    szovegben: /ChatGPT/,
+    nyelvek: {
+      en: { mind: [], egyik: [
+        /(?<![\p{L}])(?:microphone|mic)(?: icon| button)?[^.\n]{0,40}(?:to start|to open|to turn on|starts|opens|launches) (?:the )?voice (?:mode|chat|conversation)/iu,
+        /(?<![\p{L}])(?:tap|press|click)(?:ping)? (?:the )?mic(?:rophone)?(?: icon| button)? (?:once|again)(?![\p{L}])/iu,
+        /side menu[^.\n]{0,120}Voice (?:mode|chat)/iu
+      ], nem: [/Dictation/iu] },
+      hu: { mind: [], egyik: [
+        /mikrofon(?: ikonra| ikont| gombra)?[^.\n]{0,40}hang ?mód[^.\n]{0,20}(?:indít|bekapcsol)/iu,
+        /koppints (?:egyszer|ismét|újra) a mikrofon(?:ra| ikonra)|koppints a mikrofon(?:ra| ikonra) (?:egyszer|ismét|újra)/iu,
+        /oldalsó menü[^.\n]{0,120}Voice (?:mode|chat)/iu
+      ], nem: [/diktál/iu] },
+      es: { mind: [], egyik: [
+        /micrófono[^.\n]{0,40}(?:activar|iniciar|abrir|empezar) el modo (?:de )?voz/iu,
+        /vuelve a tocar el micr(?:o|ófono)(?![\p{L}])|toca el micr(?:o|ófono) una vez/iu,
+        /menú lateral[^.\n]{0,120}Voice (?:mode|chat)/iu
+      ], nem: [/dictado/iu] }
+    }
+  },
+  {
+    id: 'claude-gemkapocs-ikon',
+    leiras: 'Claude: „gemkapocs ikon” a csatoláshoz — a Claude súgója szerint a csevegőmező bal alsó sarkában lévő „+” gomb → „Add files or photos”, vagy áthúzás / képbeillesztés (support.claude.com/en/articles/8241126; 11-09-én 7 útmutatóban javítva).',
+    javitas: 'Claude: to attach a file, click the "+" button in the lower-left corner of the chat box and choose "Add files or photos" (or drag the file into the chat). Do not describe a paperclip icon (support.claude.com/en/articles/8241126).',
+    // csak a Claude-ról szóló útmutató (frontmatter `tool:`) — egy „bármelyik MI-asszisztens” útmutatóban a gemkapocs más eszközé lehet
+    szovegben: /^tool: ["']?Claude/m,
+    nyelvek: {
+      en: { mind: [], egyik: [alak(['paperclip', 'paper clip', 'paper-clip']), /📎/u], nem: [MAS_ESZKOZ] },
+      hu: { mind: [], egyik: [alak(['gemkapocs', 'gemkapcsot', 'gemkapoccsal', 'gemkapocsra', 'gemkapcsok', 'gemkapocsikon', 'gemkapocsikont',
+        'gemkapocsikonra']), /📎/u], nem: [MAS_ESZKOZ] },
+      // a spanyol „clip” videóklip is lehet → csak az ikon/gomb alakok
+      es: { mind: [], egyik: [alak(['icono de clip', 'icono del clip', 'botón del clip', 'botón de clip', 'forma de clip', 'clip de papel', 'el clip',
+        'un clip']), /📎/u], nem: [MAS_ESZKOZ, /(?<![\p{L}])(?:vídeo|video|audio)(?![\p{L}])/iu] }
+    }
+  },
+  {
+    id: 'gmail-gemini-csillag-ikon',
+    leiras: 'Gmail: „Gemini csillag ikon” / „csillag alakú ikon a tárgysor mellett” — a Gmailben a csillag az üzenet megcsillagozása; a Google súgója szerint a Gemini a jobb felső „Ask Gemini” gombbal nyílik, a szál tetején „Summarize this email” (support.google.com/mail/answer/14355636; 11-09-én javítva).',
+    javitas: 'Gemini in Gmail: click "Ask Gemini" at the top right of Gmail (or "Summarize this email" at the top of a thread) — never call it a "star icon": in Gmail the star marks a message as starred (support.google.com/mail/answer/14355636).',
+    szovegben: /Gmail/,
+    nyelvek: {
+      // „Gemini starts typing” nem ez — a szóhatár kell; a Docs-os mondat más felület
+      en: { mind: [], egyik: [/Gemini star(?![\p{L}])/iu, /star[‑-]shaped (?:icon|button)/iu], nem: [/(?<![\p{L}])Docs(?![\p{L}])/u] },
+      hu: { mind: [], egyik: [/Gemini csillag(?: ikon| gomb)/iu, /csillag alakú (?:ikon|gomb)/iu], nem: [/(?<![\p{L}])Docs/u] },
+      es: { mind: [], egyik: [/estrella de Gemini/iu, /(?:icono|botón) (?:pequeño )?con forma de estrella/iu], nem: [/(?<![\p{L}])Docs(?![\p{L}])/u] }
     }
   }
 ];
