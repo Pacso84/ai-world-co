@@ -381,6 +381,39 @@ export const TEVEDESEK = [
       hu: { mind: [], egyik: [/Gemini csillag(?: ikon| gomb)/iu, /csillag alakú (?:ikon|gomb)/iu], nem: [/(?<![\p{L}])Docs/u] },
       es: { mind: [], egyik: [/estrella de Gemini/iu, /(?:icono|botón) (?:pequeño )?con forma de estrella/iu], nem: [/(?<![\p{L}])Docs(?![\p{L}])/u] }
     }
+  },
+  {
+    id: 'whatsapp-meta-ai-kek-buborek',
+    leiras: 'Meta AI a WhatsAppban: „kék kör ikon (csevegőbuborék csillogással)” — a WhatsApp súgója szerint a Meta AI ikonja a Csevegések fülön egy többszínű gyűrű (néhol rózsaszín-lila vagy kék-lila kör), csillogó buborék nincs (faq.whatsapp.com/666767195111959; 11-09-én javítva).',
+    javitas: 'Meta AI in WhatsApp: the icon on the Chats tab is a multicolored ring (on some phones pink-and-purple or blue-and-purple); you can also tap the search field at the top of Chats and tap Ask (faq.whatsapp.com/666767195111959). Never describe a blue chat bubble with a sparkle.',
+    szovegben: /Meta AI/,
+    nyelvek: {
+      en: { mind: [], egyik: [/blue (?:icon|circle|bubble)[^.\n]{0,60}sparkle/iu], nem: [alak(['Gemini'], false)] },
+      hu: { mind: [], egyik: [/kék (?:kör|ikon|buborék)[^.\n]{0,60}csillag/iu], nem: [alak(['Gemini'], false)] },
+      es: { mind: [], egyik: [/(?:icono|círculo|bocadillo) (?:circular )?azul[^.\n]{0,60}destello/iu], nem: [alak(['Gemini'], false)] }
+    }
+  },
+  {
+    id: 'alexa-rutin-hangvalasztas',
+    leiras: 'Alexa-rutin: „a rutinban válaszd ki Alexa hangját (Matthew, Emma)” — az Amazon rutin-súgójában (esemény + művelet + mentés) rutinonkénti hangválasztás nincs; az „Alexa’s Voice” eszközbeállítás, nem rutin-lépés (amazon.com/gp/help/customer/display.html?nodeId=G2PYLKJN3XVZ55EQ; 11-09-én javítva).',
+    javitas: 'Alexa routines: a routine is an event (Add an event) plus actions (Add an action), then Save (Amazon help G2PYLKJN3XVZ55EQ). There is no per-routine voice picker — never tell readers to choose "Alexa\'s Voice", "Matthew" or "Emma" inside a routine.',
+    szovegben: /Alexa/,
+    nyelvek: {
+      en: { mind: [], egyik: [/Alexa['’]s Voice[^.\n]{0,120}(?:Matthew|Emma|routine)/iu, /routine[^.\n]{0,120}Alexa['’]s Voice/iu] },
+      hu: { mind: [], egyik: [/(?:Alexa[- ]hang\p{L}*|Alexa['’]s Voice)[^.\n]{0,120}(?:Matthew|Emma|rutin)/iu, /rutin[^.\n]{0,120}(?:Alexa[- ]hang\p{L}*|Alexa['’]s Voice)/iu] },
+      es: { mind: [], egyik: [/(?:voz (?:\p{L}+ )?de Alexa|Alexa['’]s Voice)[^.\n]{0,120}(?:Matthew|Emma|rutina)/iu, /rutina[^.\n]{0,120}(?:voz (?:\p{L}+ )?de Alexa|Alexa['’]s Voice)/iu] }
+    }
+  },
+  {
+    id: 'alexa-megbeszeles-rogzites',
+    leiras: 'Alexa+: „végighallgatja a megbeszélést az Echón, rögzíti, ami elhangzott, és kiszedi a teendőket” — az Amazon szerint az Alexa+ azt jegyzi meg, amit KÉRSZ tőle (Remember This), és a VELE folytatott beszélgetést tudja összefoglalni; megbeszélés-jegyzőkönyvet nem vezet (amazon.com/gp/help/customer/display.html?nodeId=TyCw3gp8fy2WzKtWxi, aboutamazon.com/news/devices/new-alexa-top-features; 11-09-én javítva).',
+    javitas: 'Alexa+ does not listen to or record a whole meeting — it only hears what is said to it after the wake word. Describe what Amazon documents instead: "Alexa, remember that…" (Remember This), "Alexa, add … to my to-do list", reminders, and asking Alexa+ to recap your conversation with it and send it to the Alexa app or email.',
+    szovegben: /Alexa/,
+    nyelvek: {
+      en: { mind: [], egyik: [/(?:listen|listens|listening) (?:in )?to (?:your|the) (?:whole |entire )?meeting/iu, /capture what was said/iu], nem: [/(?:does not|doesn['’]t|cannot|can['’]t|won['’]t) (?:listen|record)/iu] },
+      hu: { mind: [], egyik: [/(?:végighallgatja|meghallgatja|hallgatja|figyeli) a (?:teljes |egész )?(?:megbeszélés|meeting)/iu, /rögzíti, (?:amit|ami) (?:elhangzott|elhangzik)/iu], nem: [/nem (?:hallgatja|rögzíti|figyeli)/iu] },
+      es: { mind: [], egyik: [/escucha(?:r)? (?:tu|la|toda tu|toda la) reunión/iu, /captura(?:r)? lo que se dij/iu], nem: [/no (?:escucha|graba)/iu] }
+    }
   }
 ];
 

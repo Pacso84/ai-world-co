@@ -342,6 +342,37 @@ await t('⭐ Gmail: a Gemini nem „csillag ikon” (a csillag a megcsillagozás
   nincs(M + 'Click **Ask Gemini** at the top right of Gmail.', 'en');
 });
 
+await t('💬 WhatsApp Meta AI: nincs „kék buborék csillogással” — a Gemini-mondat és a javított szöveg nem ez', () => {
+  // pozitív példa = a 11-09-i javítás előtti élő mondat (plan-your-next-holiday…, en/hu/es)
+  van('whatsapp-meta-ai-kek-buborek', '**In WhatsApp**, open the app and look at the very top of the Chats tab for a circular blue icon (a chat bubble with a sparkle) labeled "Meta AI" — tap it once.', 'en');
+  van('whatsapp-meta-ai-kek-buborek', '**A WhatsAppban** nyisd meg az appot, és a Csevegések fül tetején keresd a kék kör ikont (egy csevegőbuborék csillagocskával), „Meta AI” felirattal — koppints rá egyszer.', 'hu');
+  van('whatsapp-meta-ai-kek-buborek', '**En WhatsApp**, abre la app y mira en la parte superior de la pestaña Chats un icono circular azul (un bocadillo de chat con un destello) etiquetado como «Meta AI» — tócalo una vez.', 'es');
+  nincs('**In WhatsApp**, tap the **Meta AI icon** on the Chats tab — a multicolored ring (on some phones it looks pink-and-purple or blue-and-purple).', 'en');
+  nincs('**A WhatsAppban** a Csevegések fülön koppints a **Meta AI ikonra** — ez egy többszínű gyűrű (egyes telefonokon rózsaszín-lila vagy kék-lila).', 'hu');
+  nincs('Meta AI or Gemini: look for the blue icon with a sparkle.', 'en'); // Gemini-t is említ → nem ez a hiba
+});
+
+await t('🔊 Alexa-rutin: nincs rutinonkénti hangválasztás (Matthew/Emma) — a javított esti mese-rutin nem ez', () => {
+  // pozitív példa = a 11-09-i javítás előtti élő mondat (create-a-soothing-bedtime-story-routine…)
+  van('alexa-rutin-hangvalasztas', 'While still on the routine setup screen, scroll down and look for an option called **Alexa\'s Voice** (or sometimes "Speaking Style" or just "Voice").', 'en');
+  van('alexa-rutin-hangvalasztas', 'Alexa: Tap `Alexa\'s Voice` and choose `Matthew`.', 'en');
+  van('alexa-rutin-hangvalasztas', 'Alexa: válassz egy nyugodt Alexa hangot a rutinhoz, majd mentsd el.', 'hu');
+  van('alexa-rutin-hangvalasztas', 'Alexa: elige una voz tranquila de Alexa para la rutina y luego guárdala.', 'es');
+  nincs('Alexa: tap **Add an action** again and look for the **custom action**, then tap **Save**.', 'en');
+  nincs('Alexa: koppints az **Add an action** gombra, és keresd az **egyéni műveletet**.', 'hu');
+});
+
+await t('🎙️ Alexa+: nem hallgatja végig a megbeszélést — a tagadó, javított mondat nem ez', () => {
+  // pozitív példa = a 11-09-i javítás előtti élő mondat (use-alexa-as-a-hands-free-meeting-note-taker…)
+  van('alexa-megbeszeles-rogzites', '**In short:** Alexa+ can listen to your meeting on an Echo device, capture what was said, and turn the action items you call out into a personal to-do list.', 'en');
+  van('alexa-megbeszeles-rogzites', 'Röviden: az Alexa+ az Echón végighallgatja a megbeszélést, és rögzíti, ami elhangzott.', 'hu');
+  van('alexa-megbeszeles-rogzites', 'En resumen: Alexa+ puede escuchar tu reunión en un Echo y capturar lo que se dijo.', 'es');
+  nincs('**In short:** Alexa+ does not listen to or record your whole meeting — it only hears what you say to it after "Alexa".', 'en');
+  nincs('**Röviden:** az Alexa+ nem hallgatja végig és nem rögzíti a teljes megbeszélést — csak azt hallja, amit az „Alexa” szó után neki mondasz.', 'hu');
+  nincs('**En resumen:** Alexa+ no escucha ni graba toda tu reunión: solo oye lo que le dices después de «Alexa».', 'es');
+  nincs('Zoom can record your meeting and capture what was said.', 'en'); // nem Alexa-szöveg
+});
+
 await t('📅 LEJÁRAT: a „GPT Store bezárt” 2026-12-11-ig téves, onnan igaz (OpenAI kivezeti az egyedi GPT-ket)', () => {
   const s = 'OpenAI shut down the GPT Store.';
   assert.deepEqual(tevedesekASzovegben(s, 'en', '2026-12-10').map(x => x.id), ['gpt-store-megszunt']);
