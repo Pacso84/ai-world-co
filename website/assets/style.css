@@ -1627,3 +1627,13 @@ body {
 .nl__form button:disabled { opacity: .6; cursor: wait; }
 .nl__hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .nl__msg { margin-top: 12px; font-size: 15px; font-weight: 600; color: var(--ink); }
+/* 📬 vékony hírlevél-sáv a FŐOLDAL tetején (2026-11-09, core/hirlevel-doboz.js hirlevelSav) — NEM felugró */
+.nls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 18px 0 26px; padding: 14px 16px;
+  background: color-mix(in srgb, var(--accent) 6%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); border-radius: 12px; }
+.nls__t { flex: 1 1 250px; margin: 0; font-size: 15px; line-height: 1.45; color: var(--ink); }
+.nls .nl__form { flex: 1 1 300px; flex-wrap: nowrap; justify-content: flex-end; gap: 8px; }
+.nls .nl__form input[type="email"] { flex: 1 1 auto; min-width: 0; max-width: none; padding: 9px 12px; font-size: 14.5px; }
+.nls .nl__form button { padding: 9px 16px; font-size: 14.5px; white-space: nowrap; }
+.nls .nl__msg { flex-basis: 100%; margin: 0; }
+@media (max-width: 520px) { .nls { padding: 12px 14px; } .nls .nl__form { flex-basis: 100%; } }

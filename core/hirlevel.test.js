@@ -88,10 +88,20 @@ await t('📬 doboz: CSAK enabled ÉS signup mellett, CSAK angol oldalon; kulcs 
   if (dobozBe(cfg)) assert.equal(cfg.newsletter.enabled, true, 'doboz csak bekapcsolt küldés mellett (07-27 tanulság)');
 });
 
+await t('📬 sáv: csak angolul, honeypot, a Worker-végpontra küld, kulcs nincs benne', async () => {
+  const { hirlevelSav, VEGPONT } = await import('./hirlevel-doboz.js');
+  assert.equal(hirlevelSav(true, 'hu'), ''); assert.equal(hirlevelSav(true, 'es'), ''); assert.equal(hirlevelSav(false, 'en'), '');
+  const s = hirlevelSav(true, 'en');
+  assert.match(s, /class="nl__hp"/); assert.ok(s.includes(VEGPONT));
+  assert.doesNotMatch(s, /api\.kit\.com|X-Kit-Api-Key/);
+});
+
 await t('🔌 bekötés: cikk + útmutató alja + főoldal; /privacy feltételes kártya; CI vasárnapi lépés; Worker /subscribe', () => {
   const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
   assert.equal((b.match(/\$\{hirlevelDoboz\(HIRLEVEL_DOBOZ, LANG\)\}/g) || []).length, 2, 'a hír és az útmutató alján');
-  assert.match(b, /grid \+ hirlevelDoboz\(HIRLEVEL_DOBOZ, LANG\)/, 'főoldal');
+  // 📬 11-09 (user: „elég csak a főoldalra!”): a főoldalon a sáv a TETEJÉN, a hero után; a cikkekben NINCS sáv
+  assert.match(b, /fooldalHero \+ hirlevelSav\(HIRLEVEL_DOBOZ, LANG\) \+ featuredHtml/, 'főoldal: sáv a tetején');
+  assert.equal((b.match(/hirlevelSav\(/g) || []).length, 1, 'a sáv CSAK a főoldalon (a cikkekbe a user nem kérte)');
   assert.match(b, /HIRLEVEL_DOBOZ = dobozBe\(rawConfig\)/);
   assert.match(b, /HIRLEVEL_DOBOZ \? kartya\('📬', 'privNlH', 'privNlP'\)/);
   assert.match(b, /kartya\('🚫', 'privNoH', HIRLEVEL_DOBOZ \? 'privNoPNl' : 'privNoP'\)/, 'bekapcsolt hírlevélnél a „nincs hírlevél” állítás hamis lenne');

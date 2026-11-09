@@ -73,7 +73,7 @@ t('🛡️ a cím és a cikkcímek escape-elve kerülnek a HTML-be', () => {
 
 t('🔌 a build.js a főoldalt és a szótárt az új fejléccel építi, a régi kártyarács-szótár eltűnt', () => {
   assert.match(BUILD, /import \{ fooldalHeroHtml, szotarOldalHtml[^}]*\} from '\.\.\/core\/lap-hero\.js'/);
-  assert.match(BUILD, /bodyContent: fooldalHero \+ featuredHtml/);
+  assert.match(BUILD, /bodyContent: fooldalHero \+ (?:hirlevelSav\(HIRLEVEL_DOBOZ, LANG\) \+ )?featuredHtml/); // 11-09: a hírlevél-sáv a hero után jöhet
   assert.match(BUILD, /const body = szotarOldalHtml\(/);
   const fv = BUILD.slice(BUILD.indexOf('function buildGlossaryPage'), BUILD.indexOf('function buildGlossaryPage') + 1200);
   assert.doesNotMatch(fv, /gloss__card/, 'a szótár még a régi kártyarácsot építi');

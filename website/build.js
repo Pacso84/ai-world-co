@@ -53,7 +53,7 @@ import { olvasoiKedvencek } from '../core/olvasoi-kedvenc.js';   // 🔥 2026-10
 import { vazlatHtml } from '../core/guide-sketch.js';
 import { torzsH1, nincsH1 } from '../core/torzs-h1.js';   // 🔠 2026-11-05 egy H1 / oldal (Bing)
 import { kovetkezoUtmutato } from '../core/next-guide.js';
-import { dobozBe, hirlevelDoboz } from '../core/hirlevel-doboz.js';   // 📬 2026-10-30: csak bekapcsolt küldés mellett
+import { dobozBe, hirlevelDoboz, hirlevelSav } from '../core/hirlevel-doboz.js';   // 📬 2026-10-30: csak bekapcsolt küldés mellett
 import { hirdetesBeallitas, fejKod, hirdetesBlokk, adsTxt, hirdetesHirbe, hirdetesLepesek, hirdetesKozbe, hirdetesRacsba } from '../core/ads.js';
 import { promptTar, promptTarHtml } from '../core/prompt-library.js';
 import { eszkozSavHtml, biztonsagosHtml, promptEpitoHtml, ESZKOZ_UTAK } from '../core/ingyenes-eszkozok.js';   // 🧰 2026-10-21
@@ -1819,7 +1819,9 @@ function buildIndex(articles) {
     // hanem magát az oldalt, ami nyelvtől független entitás. (Ugyanígy az
     // Organization a Rólunk oldalon.) NE „javítsd meg" ${LP}-vel.
     jsonld: { '@context': 'https://schema.org', '@type': 'WebSite', name: SITE.name, url: SITE.url, description: tr('siteDesc') || SITE.description },
-    bodyContent: fooldalHero + featuredHtml + weeklyHtml + guidesCta + grid + hirlevelDoboz(HIRLEVEL_DOBOZ, LANG)
+    // 📬 2026-11-09 (user: „elég csak a főoldalra!”): a hírlevél-sáv a főoldal TETEJÉN, közvetlenül a fejléc-blokk
+    // alatt — NEM a cikkekben (ott csak az alsó doboz marad). Az alsó főoldali doboz emiatt kikerült (egy lapon egy űrlap).
+    bodyContent: fooldalHero + hirlevelSav(HIRLEVEL_DOBOZ, LANG) + featuredHtml + weeklyHtml + guidesCta + grid
       + `<p class="start__wizcta"><a href="archive">🗂️ ${escapeHtml(tr('archNav'))} →</a></p>`,
     noIntro: true,   // 📄 2026-10-28: a középre igazított intro helyett a papírlapos fejléc
     pagePath: ''
