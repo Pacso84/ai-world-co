@@ -31,6 +31,7 @@ import { addTask, setTaskStatus, notify } from '../../core/ops.js';
 import { meteredBlocked, budgetStatus } from '../../core/budget.js';
 import { hirIroKeret } from '../../core/hir-keret.js';
 import { extraTemaMa, extraUtmutato } from '../../core/lefedettseg-extra.js';
+import { termekExtraMaradek, termekExtraHir, TERMEK_EXTRA_NAPI } from '../../core/hir-elsobbseg.js';   // 📰 11-09: +2 hely termékhírnek
 
 // ===================================================================
 // SETUP
@@ -221,14 +222,15 @@ function runAgent(agentPath, args = []) {
 // A két sáv KÜLÖN napi keretet kap (lásd config.limits), hogy a hír-keret
 // betelése ne akadályozza az útmutató-írást.
 function countTodayByType() {
-  const out = { news: 0, guides: 0, guidesExtra: 0 };
+  const out = { news: 0, newsExtra: 0, guides: 0, guidesExtra: 0 };
   if (!existsSync(ARTICLES_DIR)) return out;
   for (const f of readdirSync(ARTICLES_DIR)) {
     if (!f.endsWith('.json')) continue;
     try {
       const data = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
       if ((data._meta?.published_at || '').slice(0, 10) !== TODAY) continue;
-      if (data._meta?.type === 'guide') { out.guides++; if (extraUtmutato(data._meta)) out.guidesExtra++; } else out.news++;
+      if (data._meta?.type === 'guide') { out.guides++; if (extraUtmutato(data._meta)) out.guidesExtra++; }
+      else { out.news++; if (termekExtraHir(data._meta)) out.newsExtra++; }   // 📰 extra termékhír-hely (core/hir-elsobbseg.js)
     } catch { /* ignore */ }
   }
   return out;
@@ -272,7 +274,12 @@ function countDrafts() {
   const writerGuidesExtra = files.filter(f => f.startsWith('WRITER_GUIDE_')).filter(f => {
     try { return extraUtmutato(JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8'))._meta); } catch { return false; }
   }).length;
+  // 📰 az extra termékhír-helyen írt, még ellenőrzésre váró HÍR-vázlatok sem foglalják a rendes keretet
+  const writerNewsExtra = files.filter(f => f.startsWith('WRITER_') && !f.startsWith('WRITER_GUIDE_') && f.endsWith('.json')).filter(f => {
+    try { return termekExtraHir(JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8'))._meta); } catch { return false; }
+  }).length;
   return {
+    writerNewsExtra,
     scraper: files.filter(f => f.endsWith('.json') && !f.startsWith('WRITER_')).length,
     writer: files.filter(f => f.startsWith('WRITER_')).length,
     // A még ELLENŐRZÉSRE VÁRÓ útmutató-vázlatok is a napi keretbe számítanak!
@@ -312,7 +319,10 @@ function generateReport() {
     daily_limit_cost_usd: DAY_CAP,
     cost_remaining_usd: Math.max(0, DAY_CAP - trueTodayCost(todayCost)),
     // HÍR-sáv szabad helyei (a hírírás ezt kapja limitként):
-    articles_remaining: Math.max(0, LIMITS.daily_articles_max - byType.news),
+    // 📰 11-09: az extra termékhír-helyen publikáltak NEM számítanak a rendes keretbe (core/hir-elsobbseg.js)
+    articles_remaining: Math.max(0, LIMITS.daily_articles_max - (byType.news - byType.newsExtra)),
+    news_extra_today: byType.newsExtra,
+    termek_extra_remaining: termekExtraMaradek(byType.newsExtra + drafts.writerNewsExtra),
     // ÚTMUTATÓ-sáv szabad helyei (az idle-fill ezt használja) — a MÁR MEGÍRT,
     // de még ellenőrzésre váró vázlatok IS foglalják a helyet:
     // A cég-lefedettség +1 helyén írtak (2026-11-07) NEM számítanak bele — külön lépés (3i3) kezeli.
@@ -327,7 +337,7 @@ function printReport(report) {
   console.log('╠══════════════════════════════════════════════════════════╣');
   console.log(`║  Dátum:                ${report.date}                            ║`);
   console.log('║                                                            ║');
-  console.log(`║  ✅ Hír publikálva ma: ${String(report.news_published_today).padEnd(3)} / ${LIMITS.daily_articles_max} cikk                       ║`);
+  console.log(`║  ✅ Hír publikálva ma: ${String(report.news_published_today).padEnd(3)} / ${LIMITS.daily_articles_max} cikk${report.news_extra_today ? ` (+${report.news_extra_today} termékhír, max ${TERMEK_EXTRA_NAPI})` : ''}                       ║`);
   console.log(`║  📘 Útmutató ma:       ${String(report.guides_published_today).padEnd(3)} / ${GUIDES_MAX} útmutató${report.guides_extra_today ? ` (+${report.guides_extra_today} cég-lefedettség)` : ''}                   ║`);
   console.log(`║  ❌ Elutasítva ma:     ${String(report.rejected_today).padEnd(3)} cikk                                ║`);
   console.log(`║  💰 Költség ma:        $${(report.day_cost_all_usd ?? report.total_cost_today_usd).toFixed(4)} / $${DAY_CAP.toFixed(2)} (egész cég)  ║`);
@@ -355,7 +365,8 @@ function checkLimits(report) {
   return {
     hardCapBlocked, hardCapReason,
     costBlocked: (report.day_cost_all_usd ?? report.total_cost_today_usd) >= DAY_CAP,
-    newsBlocked: report.articles_remaining <= 0,     // hír-sáv betelt
+    // hír-sáv betelt — ÉS az extra termékhír-hely is elfogyott (11-09; addig a scraper + író fut, csak termékhírre)
+    newsBlocked: report.articles_remaining <= 0 && !(report.termek_extra_remaining > 0),
     guidesBlocked: report.guides_remaining <= 0,     // útmutató-sáv betelt
     lefedettsegExtra: !!maiExtraTema()               // cég-lefedettség +1 hely még esedékes ma (3i3)
   };
@@ -515,15 +526,16 @@ async function main() {
     const vazlat = countDrafts();
     const keretAdat = {
       max: LIMITS.daily_articles_max,
-      maPublikalt: most.news_published_today,
-      varoVazlat: Math.max(0, vazlat.writer - vazlat.writerGuides),
+      maPublikalt: most.news_published_today - most.news_extra_today,
+      varoVazlat: Math.max(0, vazlat.writer - vazlat.writerGuides - vazlat.writerNewsExtra),
       atdolgozhato: countReworkable()
     };
     const remaining = hirIroKeret(keretAdat);
-    console.log(`   Hír-keret: ${keretAdat.max} − ${keretAdat.maPublikalt} ma publikált − ${keretAdat.varoVazlat} váró vázlat − ${keretAdat.atdolgozhato} átdolgozandó régi = ${remaining} új hír`);
-    if (remaining > 0) {
-      const result = await runAgent('agents/iro/agent.js', ['--limit', String(remaining)]);
-      session.stages.writer = { exit_code: result.code, limit_used: remaining };
+    const termekExtra = most.termek_extra_remaining || 0;   // 📰 11-09: extra hely CSAK termékhírnek (core/hir-elsobbseg.js)
+    console.log(`   Hír-keret: ${keretAdat.max} − ${keretAdat.maPublikalt} ma publikált − ${keretAdat.varoVazlat} váró vázlat − ${keretAdat.atdolgozhato} átdolgozandó régi = ${remaining} új hír (+ max ${termekExtra} extra termékhír)`);
+    if (remaining > 0 || termekExtra > 0) {
+      const result = await runAgent('agents/iro/agent.js', ['--limit', String(remaining), '--termek-extra', String(termekExtra)]);
+      session.stages.writer = { exit_code: result.code, limit_used: remaining, termek_extra: termekExtra };
     } else {
       console.log('⏭️  Író kihagyva (a hír-keretet a korábbról váró/átdolgozandó hírek kitöltik)');
       session.stages.writer = { skipped: 'keret-foglalt', limit_used: 0 };

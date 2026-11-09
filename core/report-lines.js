@@ -2,6 +2,7 @@
 // RIPORT-SOROK  —  a napi jelentés két félrevezető sorának javítása
 // ===================================================================
 import { szortToldalek } from './szort-robot.js';
+import { utmutatoE } from './guide-kind.js';
 //
 // User-jelzés (2026-08-06): "ne küldjön valótlan adatokat".
 //
@@ -131,6 +132,25 @@ export function describeTranslationGaps(gaps) {
  * összege akkor is szép számot mutatna, amikor az ítélet ma már nem von össze
  * semmit — ez a hiba egyszer már megtörtént az „ISMÉTLŐDŐ hiba" sorral.
  */
+/**
+ * 📰 TERMÉKHÍR-SOR (2026-11-09, core/hir-elsobbseg.js): az elmúlt `days` nap híreiből hány szólt LLM-cég új
+ * funkciójáról/modelljéről, és hány jelent meg az extra (+2) helyen. Mérés 2 hétig: hozzák-e az olvasókat.
+ */
+export function termekHirLine(articles, days = 1) {
+  const lista = Array.isArray(articles) ? articles : [];
+  const hatar = Date.now() - days * 86400000;
+  let hir = 0, termek = 0, extra = 0;
+  for (const a of lista) {
+    const m = a?._meta || {};
+    const at = Date.parse(m.published_at || '');
+    if (!Number.isFinite(at) || at < hatar || utmutatoE(a?.__file || '', a)) continue;
+    hir++;
+    if (m.termek_hir) termek++;
+    if (m.termek_extra) extra++;
+  }
+  return `📰 Termékhír (új funkció/modell): ${termek} / ${hir} hír${extra ? ` — ebből ${extra} az extra helyen` : ''}`;
+}
+
 export function mergeLine(articles, days = 1) {
   const lista = Array.isArray(articles) ? articles : [];
   const hatar = Date.now() - days * 86400000;

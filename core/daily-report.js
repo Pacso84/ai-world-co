@@ -27,7 +27,7 @@ import { summarizeRuns, describeFailures } from './make-health.js';
 // A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
 // összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
 import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
-import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor } from './report-lines.js';
+import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, termekHirLine,huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
@@ -445,6 +445,7 @@ async function main() {
   // a néma hiba pont az lenne, hogy az ítélet sosem csoportosít, és a hiányzó
   // sorból ez nem derülne ki. Az őrszem csak akkor őr, ha odaszól, ahol nézed.
   lines.push(mergeLine(r.maiCikkek, 1));
+  lines.push(termekHirLine(r.maiCikkek, 1));   // 📰 11-09: hír-elsőbbség mérése (core/hir-elsobbseg.js)
   // 🔁 ISMÉTLÉS-ŐR (2026-08-25): hány készülő cikket fogott meg, mert már
   // írtunk róla. AKKOR IS kimegy, ha nulla — sőt, KÜLÖN üzenet jár arra, ha
   // az őr EL SEM INDULT. Előzmény: a témaismétlés-őr beágyazása hónapokig

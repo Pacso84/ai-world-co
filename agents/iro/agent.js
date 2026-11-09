@@ -29,6 +29,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { aktivTrendek, trendElore, trendTalalat } from '../../core/trend-kutato.js';
+import { elsobbsegiSorrend, valogat, tervRendez, forrasOlvasottsag, termekHirE } from '../../core/hir-elsobbseg.js';   // 📰 11-09: az olvasók döntenek
 import { normalizeArticleMarkdown } from '../../core/markdown-normalize.js';
 import { recallSemantic } from '../../core/memory-manager.js';
 import { skillsBlock } from '../../core/skills.js';
@@ -106,11 +107,15 @@ function loadSkills() {
 
 function parseArgs() {
   const args = process.argv.slice(2);
-  const parsed = { limit: null, file: null };
+  const parsed = { limit: null, file: null, termekExtra: 0 };
   parsed.rework = args.includes('--rework');
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--limit' && args[i + 1]) {
       parsed.limit = parseInt(args[i + 1], 10);
+      i++;
+    } else if (args[i] === '--termek-extra' && args[i + 1]) {
+      // 📰 11-09: ennyi EXTRA hely CSAK termékhírnek (a CEO számolja, core/hir-elsobbseg.js)
+      parsed.termekExtra = Math.max(0, parseInt(args[i + 1], 10) || 0);
       i++;
     } else if (args[i] === '--file' && args[i + 1]) {
       parsed.file = args[i + 1];
@@ -154,6 +159,37 @@ const DRAFT_MAX_AGE_DAYS = 7;   // a hír romlandó: ennél régebbi, meg nem í
 // „látott" lista között van egy rés — félbeszakadt futás után a draftok ott
 // vannak, de egy link sem számít látottnak, és a következő futás újra lementi
 // őket. A publikált cikkekből épített kulcshalmaz ettől független.
+// 📰 HÍR-ELSŐBBSÉG ADATAI (2026-11-09, core/hir-elsobbseg.js): forrásonkénti olvasottság az elmúlt 30 napból
+// (memory/traffic-log.json, a CI írja) + a ma már publikált / ellenőrzésre váró hírek forrásai (forrás-plafon).
+// Hiba esetén üres adat → semleges sorrend; az írót SOHA nem állítja meg.
+function hirElsobbsegAdat() {
+  const ma = new Date().toISOString().slice(0, 10);
+  const hirek = [], maForrasDb = {};
+  const szamol = id => { if (id) maForrasDb[id] = (maForrasDb[id] || 0) + 1; };
+  try {
+    const dir = join(PROJECT_ROOT, 'content', 'articles');
+    for (const f of readdirSync(dir)) {
+      if (!f.endsWith('.json')) continue;
+      try {
+        const m = JSON.parse(readFileSync(join(dir, f), 'utf-8'))._meta || {};
+        if (m.type === 'guide' || m.status !== 'published') continue;
+        if (m.slug && m.source_id) hirek.push({ slug: m.slug, forras: m.source_id });
+        if ((m.published_at || '').slice(0, 10) === ma) szamol(m.source_id);
+      } catch { /* skip */ }
+    }
+    for (const f of readdirSync(DRAFTS_DIR)) {
+      if (!f.startsWith('WRITER_') || f.startsWith('WRITER_GUIDE_') || !f.endsWith('.json')) continue;
+      try { szamol(JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8'))._meta?.source_id); } catch { /* skip */ }
+    }
+  } catch { /* nincs mappa */ }
+  let olv = null;
+  try {
+    const log = JSON.parse(readFileSync(join(PROJECT_ROOT, 'memory', 'traffic-log.json'), 'utf-8'));
+    olv = forrasOlvasottsag(log.days || {}, hirek);
+  } catch { /* nincs napló → semleges */ }
+  return { olv, maForrasDb };
+}
+
 function loadPublishedSourceKeys() {
   const dir = join(PROJECT_ROOT, 'content', 'articles');
   if (!existsSync(dir)) return publishedSourceKeys([]);
@@ -557,6 +593,9 @@ function saveWrittenArticle(originalDraftFilename, drafts, articleResponse, them
       merged_from: lista.length,
       merged_theme: theme || null,
       trend: trendJeloles(lista),
+      // 📰 11-09 (core/hir-elsobbseg.js): termékhír-e, és extra helyen született-e (a rendes 4-es keretbe nem számít)
+      termek_hir: lista.some(d => termekHirE(d._meta?.source_id, d.title)),
+      ...(fo.__termekExtra ? { termek_extra: true } : {}),
       status: 'awaiting-review' // → Ellenőrző agent veszi fel
     },
     article_markdown: normalizeArticleMarkdown(articleResponse.text),
@@ -897,6 +936,22 @@ async function main() {
     elo.push(f);
   }
 
+  // 📰 HÍR-ELSŐBBSÉG (2026-11-09, user: „amiket nem olvasnak, azokat háttérbe szorítani!”): termékhír előre,
+  // utána a forrás 30 napos olvasottsága szerint — a keveset olvasott forrás hátra kerül (core/hir-elsobbseg.js).
+  const draftInfo = (() => {
+    const cache = new Map();
+    return f => {
+      if (!cache.has(f)) {
+        try { const d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8')); cache.set(f, { forras: d._meta?.source_id, cim: d.title }); }
+        catch { cache.set(f, {}); }
+      }
+      return cache.get(f);
+    };
+  })();
+  const elsobbseg = hirElsobbsegAdat();
+  const rendezett = elsobbsegiSorrend(elo, draftInfo, elsobbseg.olv);
+  elo.splice(0, elo.length, ...rendezett);
+
   // A --limit CIKKET jelent, nem draftot (2026-08-18). A CEO amúgy is így érti:
   // agents/ceo/agent.js articles_remaining = 8 − a ma megírt hírek száma.
   // Ha draftot vágnánk, az összevonás CSÖKKENTENÉ a napi cikkszámot.
@@ -920,9 +975,16 @@ async function main() {
       groups.map(g => `"${g.theme}" (${g.ids.length})`).join(', '));
   }
 
-  const terv = planWriteOrder(elo, groups).slice(0, maxCikk);
+  // 📰 Válogatás: maxCikk rendes hely + args.termekExtra hely CSAK termékhírnek; egy forrásból naponta 1 (termékhírből 2).
+  const terv = valogat(tervRendez(planWriteOrder(elo, groups), elo), { n: maxCikk, extra: args.termekExtra || 0, info: draftInfo, maForrasDb: elsobbseg.maForrasDb });
   stats.drafts_total = terv.reduce((s, e) => s + e.ids.length, 0);
-  console.log(`📋 ${drafts.length} draft · ${elo.length} zár után · ${terv.length} cikk készül\n`);
+  stats.termek_hir = terv.filter(e => e.termek).length;
+  stats.termek_extra = terv.filter(e => e.extra).length;
+  console.log(`📋 ${drafts.length} draft · ${elo.length} zár után · ${terv.length} cikk készül (📰 termékhír: ${stats.termek_hir}, ebből extra helyen: ${stats.termek_extra})\n`);
+  for (const e of terv) {
+    const x = draftInfo(e.ids[0]);
+    console.log(`   ${e.extra ? '➕' : e.termek ? '📰' : '▫️'} [${x.forras || '?'}] ${String(x.cim || e.ids[0]).slice(0, 80)}`);
+  }
 
   // 🔎 A futás letöltési időkerete (core/iro-forras.js): lassú vagy lógó forrásoldal se húzza el az írót —
   // ha elfogy, a többi hír a hírfolyam szövegéből / a kivonatból készül.
@@ -939,6 +1001,7 @@ async function main() {
       } catch { /* közben eltűnt */ }
     }
     if (!lista.length) continue;
+    if (egyseg.extra) lista[0].__termekExtra = true;   // 📰 extra termékhír-hely → _meta.termek_extra
 
     console.log(lista.length > 1
       ? `🔗 ${lista.length} hír egy cikkbe: "${egyseg.theme}"`
