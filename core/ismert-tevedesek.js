@@ -357,6 +357,20 @@ export const TEVEDESEK = [
     }
   },
   {
+    id: 'apple-intelligence-elesit',
+    leiras: '„Az Apple Intelligence élesíti / kitisztítja a homályos fotót” — az Apple Intelligence a Fotókban keres, és a Clean Up eszközzel tárgyat távolít el, élesítő funkciója nincs; az Auto-javítás és az élesség-csúszka nem Apple Intelligence (support.apple.com/guide/iphone/xy0grrlxue5w; 11-09-én a „Clear Up Blurry iPhone Photos with Apple Intelligence” útmutató 301-gyel levéve).',
+    javitas: 'Apple Intelligence does not sharpen or unblur photos. In Photos it offers natural-language search and Clean Up (removes distracting objects) — see support.apple.com/guide/iphone/xy0grrlxue5w. Do not present Auto-Enhance or the Sharpness slider as Apple Intelligence.',
+    szovegben: /Apple Intelligence/,
+    nyelvek: {
+      en: { mind: [alak(['Apple Intelligence'], false), /(?<![\p{L}])(?:sharpen\w*|deblur\w*|unblur\w*|clear(?:s|ing)? up (?:a |your |those )?(?:blurry|fuzzy)|fix(?:es|ing)? (?:the )?blur\w*)(?![\p{L}])/iu],
+        nem: [/(?<![\p{L}])(?:not|doesn['’]t|does not|can['’]t|cannot|won['’]t|isn['’]t|no)(?![\p{L}])/iu] },
+      hu: { mind: [alak(['Apple Intelligence'], false), /(?<![\p{L}])(?:élesít\p{L}*|homályos fotó\p{L}*[^.\n]{0,30}(?:javít|kitisztít|tisztít)\p{L}*)/iu],
+        nem: [/(?<![\p{L}])(?:nem|ne|nincs)(?![\p{L}])/iu] },
+      es: { mind: [alak(['Apple Intelligence'], false), /(?<![\p{L}])(?:enfoca\p{L}*|nitidez|desenfoque|desenfocad\p{L}*|borros\p{L}*)/iu],
+        nem: [/(?<![\p{L}])(?:no|nunca|sin)(?![\p{L}])/iu] }
+    }
+  },
+  {
     id: 'gmail-gemini-csillag-ikon',
     leiras: 'Gmail: „Gemini csillag ikon” / „csillag alakú ikon a tárgysor mellett” — a Gmailben a csillag az üzenet megcsillagozása; a Google súgója szerint a Gemini a jobb felső „Ask Gemini” gombbal nyílik, a szál tetején „Summarize this email” (support.google.com/mail/answer/14355636; 11-09-én javítva).',
     javitas: 'Gemini in Gmail: click "Ask Gemini" at the top right of Gmail (or "Summarize this email" at the top of a thread) — never call it a "star icon": in Gmail the star marks a message as starred (support.google.com/mail/answer/14355636).',

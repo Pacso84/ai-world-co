@@ -321,6 +321,17 @@ await t('📎 Claude: gemkapocs helyett „+” gomb — csak a Claude-útmutat�
   nincs(C + 'Sube tu clip de vídeo y pide a Claude un resumen.', 'es'); // videóklip
 });
 
+await t('📸 Apple Intelligence nem élesít homályos fotót — az állító mondatot fogja, a tagadót nem', () => {
+  van('apple-intelligence-elesit', 'Discover how your iPhone\'s smart features, powered by Apple Intelligence, can quickly sharpen fuzzy images.', 'en');
+  van('apple-intelligence-elesit', '# Clear Up Blurry iPhone Photos with Apple Intelligence', 'en');
+  van('apple-intelligence-elesit', 'Az Apple Intelligence másodpercek alatt élesíti a homályos fotóidat.', 'hu');
+  van('apple-intelligence-elesit', 'Apple Intelligence enfoca tus fotos borrosas en segundos.', 'es');
+  nincs('One honest note before you start: Apple Intelligence does not sharpen a blurry photo.', 'en');
+  nincs('Egy őszinte megjegyzés az elején: az Apple Intelligence nem élesíti a homályos fotót.', 'hu');
+  nincs('Una aclaración sincera antes de empezar: Apple Intelligence no enfoca una foto borrosa.', 'es');
+  nincs('Use the Sharpness slider in Photos to sharpen the image.', 'en'); // nincs Apple Intelligence a mondatban
+});
+
 await t('⭐ Gmail: a Gemini nem „csillag ikon” (a csillag a megcsillagozás) — a „Gemini starts…” mondat nem ez', () => {
   const M = 'Open Gmail. ';
   van('gmail-gemini-csillag-ikon', M + 'Open the latest email thread in Gmail, click the Gemini star icon, and hit **Summarize this email**.', 'en');
