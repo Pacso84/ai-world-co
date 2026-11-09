@@ -55,7 +55,12 @@ export function pdfFrissesseg(tartalom, elo) {
 }
 
 /** A napi riport sora. Hiányzó listánál is szól (különben a hiány némán „rendben” lenne). */
-export function pdfFrissessegSor(tartalom, elo) {
+// 🗓️ HETI ÁTNÉZÉS (user 11-09: „egész nap csak újragyártod a pdf-eket!” → „szólsz hetente, hogy át
+// kell nézni, és te majd megcsinálod!”): a riport CSAK VASÁRNAP (UTC) kéri az átnézést; a hét többi
+// napján a változást csak tájékoztatásul írja ki, parancs nélkül — így nem gyártjuk újra minden javítás után.
+export const ATNEZES_NAP = 0; // vasárnap (Date#getUTCDay)
+
+export function pdfFrissessegSor(tartalom, elo, ma = new Date()) {
   if (!tartalom || !Array.isArray(tartalom.utmutatok))
     return `📕 PDF-csomagok: ⚠️ nincs tartalomlista (website/assets/free/tartalom.json) — gyártsd újra: ${UJRAGYARTAS}`;
   const { torolt, javult, gyartva } = pdfFrissesseg(tartalom, elo);
@@ -64,8 +69,8 @@ export function pdfFrissessegSor(tartalom, elo) {
   const reszek = [];
   if (torolt.length) reszek.push(`${torolt.length} már NINCS FENN az oldalon`);
   if (javult.length) reszek.push(`${javult.length} javult azóta`);
-  const baj = torolt.length > 0 || javult.length >= JAVULT_KUSZOB;
-  return `${fej}: ${baj ? '⚠️' : 'ℹ️'} ${reszek.join(', ')}${baj ? ` → újragyártás: ${UJRAGYARTAS}` : ''}`;
+  if (ma.getUTCDay() !== ATNEZES_NAP) return `${fej}: ℹ️ ${reszek.join(', ')} — vasárnap szólok, addig nem kell vele foglalkozni`;
+  return `${fej}: ⚠️ HETI ÁTNÉZÉS ESEDÉKES — ${reszek.join(', ')} → szólj Claude-nak: „nézd át a PDF-eket” (${UJRAGYARTAS})`;
 }
 
 /** A mostani útmutatók slug → _meta térképe (a content/articles-ből). */

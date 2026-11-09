@@ -24,15 +24,22 @@ t('ugyanazon a napon történt javítás nem „későbbi” (a gyártás már t
   assert.deepEqual(pdfFrissesseg({ gyartva: '2026-11-07T23:00:00Z', utmutatok: ['javult'] }, elo).javult, []);
 });
 
-t('a riportsor: törölt útmutatónál MÁR 1-től ⚠️ és megmondja a parancsot', () => {
-  const s = pdfFrissessegSor(tartalom, elo);
-  assert.match(s, /⚠️/); assert.match(s, /1 már NINCS FENN/); assert.match(s, /ebook-build\.js --mind --pdf/);
+const VASARNAP = new Date('2026-11-15T05:00:00Z'), HETFO = new Date('2026-11-16T05:00:00Z');
+
+t('🗓️ VASÁRNAP: változásnál ⚠️ heti átnézés + parancs (törölt és javult útmutatónál is)', () => {
+  assert.equal(VASARNAP.getUTCDay(), 0);
+  const s = pdfFrissessegSor(tartalom, elo, VASARNAP);
+  assert.match(s, /⚠️ HETI ÁTNÉZÉS ESEDÉKES/); assert.match(s, /1 már NINCS FENN/); assert.match(s, /ebook-build\.js --mind --pdf/);
+  assert.match(pdfFrissessegSor({ gyartva: '2026-10-19', utmutatok: ['javult'] }, elo, VASARNAP), /⚠️/);
 });
 
-t('🔑 ELLENIRÁNY: naprakész csomagnál ✅, kevés javulásnál csak ℹ️ (nem riaszt fölöslegesen)', () => {
-  assert.match(pdfFrissessegSor({ gyartva: '2026-10-19', utmutatok: ['regi-valtozatlan'] }, elo), /✅ naprakészek/);
-  const s = pdfFrissessegSor({ gyartva: '2026-10-19', utmutatok: ['regi-valtozatlan', 'javult'] }, elo);
-  assert.match(s, /ℹ️/); assert.doesNotMatch(s, /⚠️/);
+t('🔑 ELLENIRÁNY (user 11-09: „egész nap csak újragyártod!”): hétköznap SOHA nincs ⚠️ és parancs, csak ℹ️', () => {
+  assert.match(pdfFrissessegSor({ gyartva: '2026-10-19', utmutatok: ['regi-valtozatlan'] }, elo, HETFO), /✅ naprakészek/);
+  for (const ma of [HETFO, new Date('2026-11-21T20:00:00Z')]) {
+    const s = pdfFrissessegSor(tartalom, elo, ma);
+    assert.match(s, /ℹ️/); assert.match(s, /vasárnap szólok/);
+    assert.doesNotMatch(s, /⚠️/); assert.doesNotMatch(s, /ebook-build/);
+  }
   assert.ok(JAVULT_KUSZOB > 1);
 });
 
