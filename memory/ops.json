@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179399957331877",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-06T21:12:53.318Z",
-      "updated": "2026-11-06T21:12:58.411Z"
-    },
-    {
-      "id": "t179399957841227",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-06T21:12:58.412Z",
-      "updated": "2026-11-06T21:13:22.716Z"
-    },
-    {
-      "id": "t179402283283023",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-07T03:40:32.830Z",
-      "updated": "2026-11-07T03:40:32.947Z"
-    },
-    {
-      "id": "t179402283294819",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-07T03:40:32.948Z",
-      "updated": "2026-11-07T03:41:12.593Z"
-    },
-    {
-      "id": "t179402287259474",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-07T03:41:12.594Z",
-      "updated": "2026-11-07T03:41:12.725Z"
-    },
-    {
-      "id": "t179402287275510",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-07T03:41:12.755Z",
-      "updated": "2026-11-07T03:42:25.978Z"
-    },
-    {
-      "id": "t179402294597933",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-07T03:42:25.979Z",
-      "updated": "2026-11-07T03:43:16.472Z"
-    },
-    {
-      "id": "t179402299647560",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-07T03:43:16.475Z",
-      "updated": "2026-11-07T03:43:40.839Z"
-    },
-    {
-      "id": "t179402302086666",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-07T03:43:40.866Z",
-      "updated": "2026-11-07T03:44:40.518Z"
-    },
-    {
-      "id": "t179402308052038",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-07T03:44:40.520Z",
-      "updated": "2026-11-07T03:45:39.247Z"
-    },
-    {
-      "id": "t17940231392764",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-07T03:45:39.276Z",
-      "updated": "2026-11-07T03:45:39.417Z"
-    },
-    {
-      "id": "t179402313941844",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-07T03:45:39.418Z",
-      "updated": "2026-11-07T03:45:39.563Z"
-    },
-    {
       "id": "t179402313958922",
       "title": "Run designer",
       "status": "done",
@@ -479,49 +383,105 @@
       "agent": "publisher",
       "created": "2026-11-09T03:44:20.664Z",
       "updated": "2026-11-09T03:44:42.267Z"
+    },
+    {
+      "id": "t17942471341343",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-09T17:58:54.134Z",
+      "updated": "2026-11-09T17:58:54.323Z"
+    },
+    {
+      "id": "t179424713432520",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-09T17:58:54.325Z",
+      "updated": "2026-11-09T17:59:31.290Z"
+    },
+    {
+      "id": "t179424717129214",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-09T17:59:31.292Z",
+      "updated": "2026-11-09T17:59:46.340Z"
+    },
+    {
+      "id": "t179424718639137",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-09T17:59:46.391Z",
+      "updated": "2026-11-09T18:00:09.642Z"
+    },
+    {
+      "id": "t179424720964330",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-09T18:00:09.644Z",
+      "updated": "2026-11-09T18:00:23.732Z"
+    },
+    {
+      "id": "t179424722373510",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-09T18:00:23.735Z",
+      "updated": "2026-11-09T18:00:29.414Z"
+    },
+    {
+      "id": "t179424722950295",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-09T18:00:29.502Z",
+      "updated": "2026-11-09T18:00:29.699Z"
+    },
+    {
+      "id": "t179424722970176",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-09T18:00:29.701Z",
+      "updated": "2026-11-09T18:00:29.889Z"
+    },
+    {
+      "id": "t179424722993581",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-09T18:00:29.935Z",
+      "updated": "2026-11-09T18:00:38.605Z"
+    },
+    {
+      "id": "t17942472386076",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-09T18:00:38.607Z",
+      "updated": "2026-11-09T18:00:46.648Z"
+    },
+    {
+      "id": "t179424724665090",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-09T18:00:46.650Z",
+      "updated": "2026-11-09T18:01:01.079Z"
+    },
+    {
+      "id": "t179424726108287",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-09T18:01:01.082Z",
+      "updated": "2026-11-09T18:01:24.089Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179324555308569",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0502).",
-      "agent": "ceo",
-      "at": "2026-10-29T03:45:53.085Z",
-      "loud": false
-    },
-    {
-      "id": "n179324567474089",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"Voice Agents are here. Context turns them into rea\" ",
-      "agent": "fact-check",
-      "at": "2026-10-29T03:47:54.740Z",
-      "loud": false
-    },
-    {
-      "id": "n179328520318033",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"Thin, Light and Built for Everything: NVIDIA RTX S\" ",
-      "agent": "fact-check",
-      "at": "2026-10-29T14:46:43.180Z",
-      "loud": false
-    },
-    {
-      "id": "n179330674386970",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-10-29T20:45:43.869Z",
-      "loud": false
-    },
-    {
-      "id": "n179330676633810",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (nincs meg az útmutató-szerkezet): \"Getting started with GitHub Copilot: a",
-      "agent": "fact-check",
-      "at": "2026-10-29T20:46:06.338Z",
-      "loud": false
-    },
     {
       "id": "n179330680876737",
       "level": "warn",
@@ -1281,37 +1241,49 @@
       "agent": "fact-check",
       "at": "2026-11-09T03:46:14.068Z",
       "loud": false
+    },
+    {
+      "id": "n179424724662271",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-11-09T18:00:46.622Z",
+      "loud": false
+    },
+    {
+      "id": "n179424726737476",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Your AI World HQ lineup is solid and ready—practical, varied, and touches exactly what everyday people need: useful tasks, safety smarts, and real tool examples. One note: it's fairly tool-heavy with ",
+      "agent": "publisher",
+      "at": "2026-11-09T18:01:07.374Z",
+      "loud": false
+    },
+    {
+      "id": "n179424728413344",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0083).",
+      "agent": "ceo",
+      "at": "2026-11-09T18:01:24.133Z",
+      "loud": false
+    },
+    {
+      "id": "n179424730427029",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Ellenőrizendő állítás: \"Manage AI applications on Mac with Jamf’s AI Gover\" — A megadott forrás egyáltalán nem kapcsolód",
+      "agent": "fact-check",
+      "at": "2026-11-09T18:01:44.270Z",
+      "loud": false
+    },
+    {
+      "id": "n179424731241662",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Lock In Lower AI Costs with Reserved Capaci\" — A ChatGPT-nak ",
+      "agent": "fact-check",
+      "at": "2026-11-09T18:01:52.416Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179307034482948",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Our newest AI Quest: Mapping the human brain\" (?/10)",
-      "ref": "2026-10-27T02-51-00-950Z_google-ai-blog_Our_newest_AI_Quest__Mapping_the_human_brain.json",
-      "at": "2026-10-27T03:05:44.829Z"
-    },
-    {
-      "id": "m179307152973826",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-27T03:25:29.738Z"
-    },
-    {
-      "id": "m179307157458181",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Move Midjourney images into a Canva design without\" — One specific UI element (Upscale button) described in the guide no longer exists in current Midjourney interface",
-      "ref": "ARTICLE_GUIDE_move-midjourney-images-into-a-canva-design-without-losing-qu.json",
-      "open": true,
-      "at": "2026-10-27T03:26:14.581Z"
-    },
     {
       "id": "m17930715959072",
       "from": "fact-check",
@@ -2697,6 +2669,35 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-09T03:56:52.993Z"
+    },
+    {
+      "id": "m179424726103083",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 29 → 6/5/3 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-09T18:01:01.030Z"
+    },
+    {
+      "id": "m179424730427091",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Ellenőrizendő állítás: \"Manage AI applications on Mac with Jamf’s AI Gover\" — A megadott forrás egyáltalán nem kapcsolódik a cikkhez - teljesen különböző termékekről és témákról van szó (ChatGPT hangmód vs. Jamf/Amazon Bedrock Mac AI irányítás)",
+      "ref": "2026-07-08T17-18-32-414Z_aws-ml_Manage_AI_applications_on_Mac_with_Jamf_s_AI_Gover.json",
+      "open": true,
+      "at": "2026-11-09T18:01:44.270Z"
+    },
+    {
+      "id": "m179424731241649",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Lock In Lower AI Costs with Reserved Capaci\" — A ChatGPT-nak nincs 'Instant' nevű modellje. Az ingyenes verzió a GPT-4o mini-t használja, ami egy könnyebb modell, de az 'Instant' nem érvényes modellnév a ChatGPT felületén. (állítás: ChatGPT's faster option is called 'Instant'). Nem nyúltam hozzá; ha valódi, forrással erősítsd meg.",
+      "ref": "ARTICLE_GUIDE_how-to-lock-in-lower-ai-costs-with-reserved-capacity.json",
+      "open": true,
+      "at": "2026-11-09T18:01:52.416Z"
     }
   ]
 }

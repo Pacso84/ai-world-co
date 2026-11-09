@@ -1,0 +1,62 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.007184784999999999,
+  "at": "2026-11-09T18:01:25.243Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 2,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-09T17-59-31-277Z_zapier-blog_88__of_enterprises_now_use_or_test_AI_agents__but_.json",
+      "cim": "88% of enterprises now use or test AI agents, but most still need a human in the loop",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben szereplő összes ténykéldat pontosan megfelel a forrásszövegnek"
+    },
+    {
+      "file": "ARTICLE_2026-07-08T17-18-32-414Z_aws-ml_Manage_AI_applications_on_Mac_with_Jamf_s_AI_Gover.json",
+      "cim": "Manage AI applications on Mac with Jamf’s AI Governance and Amazon Bedrock",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A megadott forrás egyáltalán nem kapcsolódik a cikkhez - teljesen különböző termékekről és témákról van szó (ChatGPT hangmód vs. Jamf/Amazon Bedrock Mac AI irányítás)"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-lock-in-lower-ai-costs-with-reserved-capacity.json",
+      "cim": "How to Lock In Lower AI Costs with Reserved Capacity",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "A ChatGPT-nak nincs 'Instant' nevű modellje. Az ingyenes verzió a GPT-4o mini-t használja, ami egy könnyebb modell, de az 'Instant' nem érvényes modellnév a ChatGPT felületén."
+    },
+    {
+      "file": "ARTICLE_2026-10-22T02-27-20-162Z_google-workspace_An_easier_way_to_customize_how_Gemini_works_for_yo.json",
+      "cim": "An easier way to customize how Gemini works for you",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényszerű állítása megegyezik a hivatalos forrással."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-make-a-clear-pros-and-cons-list-when-you-re-stuck-on-.json",
+      "cim": "How to make a clear pros-and-cons list when you're stuck on a big decision",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-15T02-18-20-785Z_xai-news_Model_Card__Grok_4_7_-_xAI.json",
+      "cim": "Model Card: Grok 4.7 - xAI",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    }
+  ]
+}

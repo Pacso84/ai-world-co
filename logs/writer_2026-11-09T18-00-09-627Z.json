@@ -1,0 +1,39 @@
+{
+  "started_at": "2026-11-09T17:59:46.613Z",
+  "drafts_total": 1,
+  "articles_written": 1,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 0,
+    "html": 1,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.00476419,
+  "by_article": [
+    {
+      "draft": "2026-11-09T17-59-31-277Z_zapier-blog_88__of_enterprises_now_use_or_test_AI_agents__but_.json",
+      "writer_output": "WRITER_2026-11-09T17-59-31-277Z_zapier-blog_88__of_enterprises_now_use_or_test_AI_agents__but_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 17,
+      "cost_usd": 0.0040333,
+      "duration_ms": 16241,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "finished_at": "2026-11-09T18:00:09.627Z",
+  "duration_seconds": 23.014
+}
