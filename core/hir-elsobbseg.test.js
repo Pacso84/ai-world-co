@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  termekHirE, forrasOlvasottsag, forrasPont, elsobbsegiSorrend, valogat, tervRendez,
+  termekHirE, termekSzint, forrasOlvasottsag, forrasPont, elsobbsegiSorrend, valogat, tervRendez,
   termekExtraMaradek, termekExtraHir, TERMEK_FORRASOK, HIR_ELSOBBSEG_BE, TERMEK_EXTRA_NAPI
 } from './hir-elsobbseg.js';
 
@@ -96,9 +96,55 @@ const INFO = {
 };
 const info = id => INFO[id];
 
-t('↕️ sorrend: termékhír előre, utána olvasottság szerint (a keveset olvasott hátra); egyenlőnél a régi sorrend', () => {
+t('↕️ sorrend: LLM-termékhír → más cég újdonsága (11-10) → olvasottság szerint; egyenlőnél a régi sorrend', () => {
   const o = forrasOlvasottsag(LOG, HIREK);
-  assert.deepEqual(elsobbsegiSorrend(['p', 'j', 'c', 'g', 'o'], info, o), ['g', 'o', 'j', 'c', 'p']);
+  // p = „New AI video tools in Picsart” → 11-10 óta 1. szint (más cég újdonsága), a nem-újdonságok elé kerül
+  assert.deepEqual(elsobbsegiSorrend(['p', 'j', 'c', 'g', 'o'], info, o), ['g', 'o', 'p', 'j', 'c']);
+  // HA NINCS ÚJDONSÁG: a régi szabály (olvasottság) dönt — a user: „ha nincs naponta elég, a régi szabályok”
+  assert.deepEqual(elsobbsegiSorrend(['p2', 'j', 'c'], info, o), ['j', 'c', 'p2']);
+});
+
+t('🏭 MINDEN CÉG ÚJDONSÁGA (11-10, user: „a honlapon fent lévő összes céget nézzük”): szint 2 / 1 / 0 valódi címeken', () => {
+  // 2 = LLM-cég termékhíre (változatlan termekHirE)
+  for (const [f, c] of [
+    ['openai-blog', 'Introducing Images 2.6'],
+    ['github-copilot-changelog', 'Claude Fable 5.2 in GitHub Copilot']
+  ]) assert.equal(termekSzint(f, c), 2, `${f}: ${c}`);
+  // 1 = más cég új funkciója / modellje / fejlesztése — a 11-10-i valódi vázlatcímek és publikált címek
+  for (const [f, c] of [
+    ['google-workspace', 'Pause and schedule automated workflows with the new “Wait until” step in Workspace Studio'],
+    ['aws-ml', 'Professional work deserves professional tools. Meet AWS Quick.'],
+    ['microsoft-365', 'Improved detection for improper or missing headings in Word'],
+    ['google-ai-blog', 'We’re bringing Adobe’s creative and productivity tools closer to your everyday Google apps.'],
+    ['samsung-newsroom', "Samsung's Updated Sleep Apnea Feature Now Works on Galaxy Ring and Watch"],
+    ['sap', 'SAP Adds New AI to Ariba, Fieldglass, and Concur'],
+    ['picsart', 'Kling 4.0 in Picsart: What the New 30-Second AI Video Tool Can Do'],
+    ['aws-ml', "Amazon Polly's Generative Voices Get More Expressive, and Hindi and Finnish Are Now Generally Available"],
+    ['nvidia-blog', 'NVIDIA Expands Open AI Models and Local Hardware for Europe']
+  ]) assert.equal(termekSzint(f, c), 1, `${f}: ${c}`);
+  // 0 = esettanulmány, üzlet, oktatás, tanács, statisztika — és nem cég forrása
+  for (const [f, c] of [
+    ['openai-blog', 'ChatGPT Enterprise now available in AWS Marketplace'],          // vállalati üzlet
+    ['openai-blog', 'Kuken Industries searches 70 years of drawings in minutes'],    // esettanulmány
+    ['snowflake', "Snowflake's Audit Team Cut Fieldwork Time in Half With AI"],
+    ['d-id-news', 'When Should Businesses Use AI Video? 5 Use Cases That Make Sense'],
+    ['picsart', 'AI relight: how to change the lighting in a video'],               // tanács, nem újdonság
+    ['aws-ml', 'How skills and agents work in AWS Quick'],
+    ['dropbox-blog', 'Why 36.6% of Your AI Time at Work Goes to Gathering Context'],  // 🔴 a % nem verzió
+    ['salesforce', 'Salesforce Plans to Acquire Cresta to Expand Its AI Phone Support'],
+    ['salesforce', 'Half of Slack Messages Now Come From Apps and AI Agents, Slack Says'],
+    ['google-workspace', 'Google Meet can show recording policies'],                // a „Meet” itt terméknév, nem bemutató
+    ['aiworld-editorial', 'This Week in AI: The 5 Stories That Matter (New Releases)'], // saját szerkesztőség
+    ['techcrunch-ai', 'OpenAI launches new model'],                                 // sajtó, nem a cég forrása
+    ['picsart', ''], [null, 'Introducing X 2.0'], ['picsart', null]
+  ]) assert.equal(termekSzint(f, c), 0, `${f}: ${c}`);
+});
+
+t('🚦 más cég újdonságából forrásonként napi 1 (a Picsart ne vigye el a napot), LLM-termékhírből 2', () => {
+  const PI = { a: { forras: 'picsart', cim: 'New AI video tools in Picsart' }, b: { forras: 'picsart', cim: 'Kling 4.0 in Picsart: new video tool' },
+    c: { forras: 'sap', cim: 'SAP Adds New AI to Concur' } };
+  const ki = valogat(['a', 'b', 'c'].map(id => ({ ids: [id], theme: null })), { n: 4, extra: 2, info: id => PI[id] });
+  assert.deepEqual(ki.map(e => [e.ids[0], e.termek]), [['a', true], ['c', true]], 'Picsartból 2 újdonság ment ki egy nap');
 });
 
 t('🚦 forrás-plafon: naponta 1 / forrás (termékhírből 2), a ma már publikáltakkal együtt', () => {
@@ -112,9 +158,12 @@ t('🚦 forrás-plafon: naponta 1 / forrás (termékhírből 2), a ma már publi
 t('➕ extra hely CSAK termékhírnek, a rendes keret után; n=0 mellett is', () => {
   const terv = ['j', 'p', 'g', 'o'].map(id => ({ ids: [id], theme: null }));
   const ki = valogat(terv, { n: 1, extra: 2, info });
-  assert.deepEqual(ki.map(e => [e.ids[0], e.extra]), [['j', false], ['g', true], ['o', true]]);
+  // 11-10: a „New AI video tools in Picsart” (p) is újdonság → extra helyre mehet (a terv sorrendjében)
+  assert.deepEqual(ki.map(e => [e.ids[0], e.extra]), [['j', false], ['p', true], ['g', true]]);
   const csak = valogat(terv, { n: 0, extra: 1, info });
-  assert.deepEqual(csak.map(e => e.ids[0]), ['g']);
+  assert.deepEqual(csak.map(e => e.ids[0]), ['p']);
+  // a nem-újdonság extra helyre SOHA
+  assert.equal(valogat([{ ids: ['j'], theme: null }, { ids: ['c'], theme: null }], { n: 0, extra: 2, info }).length, 0);
   assert.equal(valogat(terv, { n: 0, extra: 0, info }).length, 0, '--limit 0 = semmi');
 });
 
@@ -133,7 +182,7 @@ t('🔌 bekötés: Író (sorrend + válogatás + jelölés) és CEO (extra nem 
   const iro = readFileSync(join(ROOT, 'agents', 'iro', 'agent.js'), 'utf-8');
   assert.match(iro, /elsobbsegiSorrend\(elo, draftInfo, elsobbseg\.olv\)/);
   assert.match(iro, /valogat\(tervRendez\(planWriteOrder\(elo, groups\), elo\)/);
-  assert.match(iro, /termek_hir: lista\.some/);
+  assert.match(iro, /termek_hir: lista\.some\(d => termekSzint\(/, '🔴 a jelölés nem a bővített (minden cég) szabályt használja');
   assert.match(iro, /termek_extra: true/);
   assert.match(iro, /'--termek-extra'/);
   const ceo = readFileSync(join(ROOT, 'agents', 'ceo', 'agent.js'), 'utf-8');

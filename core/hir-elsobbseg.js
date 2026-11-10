@@ -16,6 +16,8 @@
 //      Perplexity, DeepSeek, Qwen, Kimi, MiniMax, Z.ai, Duck.ai, Leo, Lumo, Alexa+, Apple Intelligence)
 //      hivatalos forrásából, ÚJ funkcióról/modellről szóló cím (termekHirE). Esettanulmány, partnerség,
 //      kormány-megállapodás, hirdetés-üzlet, felmérés NEM az.
+//      ➕ 11-10 (user: „a honlapon fent lévő összes céget nézzük”): utána BÁRMELY cég új funkciója / modellje /
+//      fejlesztése (termekSzint 1) — lásd lent. Ha nincs elég újdonság, a többi hely a régi szabály szerint telik.
 //   2. UTÁNA FORRÁSONKÉNTI OLVASOTTSÁG (az elmúlt 30 nap átlaga, forrasOlvasottsag) — a keveset olvasott
 //      forrás HÁTRA kerül (nem tűnik el: ha marad hely, megjelenik). Kevés adat (<3 hír) → semleges.
 //   3. FORRÁS-PLAFON: egy forrásból naponta legfeljebb 1 hír (termékhírből 2) — ne vigye el egy blog a napot.
@@ -64,6 +66,49 @@ export function termekHirE(forrasId, cim) {
   return UJ_JEL.test(c) || MODELL_VERZIO.test(c);
 }
 
+// ===================================================================
+// MINDEN CÉG ÚJDONSÁGA (2026-11-10, user: „de a honlapon fent lévő összes céget nézzük, ne csak 1-2!
+// Ha van új funkció vagy modell, esetleg fejlesztés, azt is nézzük! Ha nincs naponta elég, akkor a régi
+// szabályok érvényesek!”)
+// ===================================================================
+// MÉRVE 11-10: a várakozó 15–18 vázlatból mindkét futásban CSAK 1 volt LLM-termékhír → a +2 extra hely
+// üresen maradt, a rendes helyekre esettanulmányok mentek. A forráslistánk (sources/rss-feeds.json)
+// minden bekapcsolt tétele egy cég hivatalos blogja — mostantól mind számít.
+//
+// HÁROM SZINT (a sorrendben ez az ELSŐ kulcs, utána a forrás olvasottsága, ahogy eddig):
+//   2 = LLM-cég termékhíre (termekHirE — változatlan; a mért olvasottság itt a legmagasabb)
+//   1 = BÁRMELY MÁS cég hivatalos forrásából: új funkció, modell VAGY fejlesztés (frissítés, gyorsabb,
+//       bővül, elérhető lett…) — és nem üzleti/esettanulmány/politika (ugyanaz a NEM_TERMEK, mint fent)
+//   0 = minden más → a RÉGI szabályok szerint, a maradék helyekre
+// A „how to” egy cégblogon tanács, nem újdonság — ezért a 2. szinten igen (a régi viselkedés), az 1.-en nem.
+// FORRÁS-PLAFON: 2. szint → napi 2/forrás; 1. szint → napi 1/forrás (a régi), hogy egy termékeny blog
+// (Picsart: 10-10…11-08 a hírek 18%-a) ne vigye el a napot — a user 11-09-én ezt külön kérte.
+// ===================================================================
+
+/** Nem cég saját forrása: közösségi oldal, sajtó, a saját szerkesztőségünk. Ezekből nincs „céges újdonság”. */
+const NEM_CEG_FORRAS = /^(aiworld-editorial|reddit-|hackernews|techcrunch|theverge|arstechnica|wired|venturebeat|the-conversation|itnews|zdnet)/;
+
+/** Új funkció / modell / fejlesztés jele egy cég címében (a „how to” és a puszta „now” itt nem elég). */
+const CEG_UJ_JEL = /\b(introduc\w*|launch\w*|new|newest|update[sd]?|announc\w*|upgrade[sd]?|adds?|added|bring\w*|gets|arriv\w*|release[sd]?|preview|beta|rolls? out|rolling out|improv\w*|enhanc\w*|faster|expand\w*|redesign\w*|integrat\w*|now (?:available|in|on|supports?|lets?|can|works?|has|with|offers?|includes?|generally available))\b/i;
+
+/**
+ * Termékhír-szint: 2 = LLM-cég termékhíre · 1 = más cég új funkciója/modellje/fejlesztése · 0 = egyéb.
+ * Kikapcsolt elsőbbségnél (HIR_ELSOBBSEG_BE) a hívók eleve nem nézik.
+ */
+export function termekSzint(forrasId, cim) {
+  if (termekHirE(forrasId, cim)) return 2;
+  const c = String(cim || '').trim();
+  const f = String(forrasId || '');
+  if (!c || !f || NEM_CEG_FORRAS.test(f)) return 0;
+  if (NEM_TERMEK.test(c)) return 0;
+  // A százalék nem modellverzió (mérve: „Why 36.6% of Your AI Time…” a Dropboxtól átment volna).
+  const szazalekNelkul = c.replace(/\d+(?:[.,]\d+)?\s?%/g, ' ');
+  return CEG_UJ_JEL.test(c) || TERMEK_BEMUTATO.test(c) || MODELL_VERZIO.test(szazalekNelkul) ? 1 : 0;
+}
+
+/** „Meet AWS Quick.” — termékbemutató a cím elején vagy mondat elején (nagybetűs név; a „Google Meet” NEM ez). */
+const TERMEK_BEMUTATO = /(?:^|[.:!?]\s+)(?:Meet|Introducing)\s+[A-Z]/;
+
 /**
  * Forrásonkénti olvasottság: az utolsó `napok` nap angol cikkoldal-látogatásai / a forrás publikált híreinek száma.
  * @param napokLog  traffic-log.json `days` ({ 'YYYY-MM-DD': [{path, visits}] })
@@ -102,7 +147,7 @@ export function elsobbsegiSorrend(ids, info, olv) {
   if (!HIR_ELSOBBSEG_BE) return [...ids];
   const k = ids.map((id, i) => {
     const x = info(id) || {};
-    return { id, i, termek: termekHirE(x.forras, x.cim), pont: forrasPont(olv, x.forras) };
+    return { id, i, termek: termekSzint(x.forras, x.cim), pont: forrasPont(olv, x.forras) };   // 11-10: 2/1/0 szint
   });
   k.sort((a, b) => (b.termek - a.termek) || (b.pont - a.pont) || (a.i - b.i));
   return k.map(x => x.id);
@@ -130,9 +175,12 @@ export function valogat(terv, { n = 0, extra = 0, info, maForrasDb = {} } = {}) 
   const hasznalt = { ...maForrasDb };
   const egyseg = lista.map(e => {
     const xs = e.ids.map(id => info(id) || {});
-    return { e, forrasok: [...new Set(xs.map(x => x.forras).filter(Boolean))], termek: xs.some(x => termekHirE(x.forras, x.cim)) };
+    // 11-10: a szint a csoport legjobb tagjáé; termékhír (extra helyre is mehet) = 1. vagy 2. szint.
+    const szint = Math.max(0, ...xs.map(x => termekSzint(x.forras, x.cim)));
+    return { e, forrasok: [...new Set(xs.map(x => x.forras).filter(Boolean))], termek: szint > 0, szint };
   });
-  const fer = u => u.forrasok.every(f => (hasznalt[f] || 0) < (u.termek ? TERMEK_FORRAS_NAPI_MAX : FORRAS_NAPI_MAX));
+  // Forrás-plafon: LLM-termékhírből 2/forrás/nap, minden másból (más cég újdonsága is) 1 — lásd termekSzint.
+  const fer = u => u.forrasok.every(f => (hasznalt[f] || 0) < (u.szint === 2 ? TERMEK_FORRAS_NAPI_MAX : FORRAS_NAPI_MAX));
   const foglal = u => u.forrasok.forEach(f => { hasznalt[f] = (hasznalt[f] || 0) + 1; });
   const ki = [], vett = new Set();
   let rendes = 0, plusz = 0;

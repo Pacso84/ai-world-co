@@ -29,7 +29,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { aktivTrendek, trendElore, trendTalalat } from '../../core/trend-kutato.js';
-import { elsobbsegiSorrend, valogat, tervRendez, forrasOlvasottsag, termekHirE } from '../../core/hir-elsobbseg.js';   // 📰 11-09: az olvasók döntenek
+import { elsobbsegiSorrend, valogat, tervRendez, forrasOlvasottsag, termekSzint } from '../../core/hir-elsobbseg.js';   // 📰 11-09: az olvasók döntenek
 import { normalizeArticleMarkdown } from '../../core/markdown-normalize.js';
 import { recallSemantic } from '../../core/memory-manager.js';
 import { skillsBlock } from '../../core/skills.js';
@@ -594,7 +594,8 @@ function saveWrittenArticle(originalDraftFilename, drafts, articleResponse, them
       merged_theme: theme || null,
       trend: trendJeloles(lista),
       // 📰 11-09 (core/hir-elsobbseg.js): termékhír-e, és extra helyen született-e (a rendes 4-es keretbe nem számít)
-      termek_hir: lista.some(d => termekHirE(d._meta?.source_id, d.title)),
+      // 11-10: bármely cég új funkciója/modellje/fejlesztése (termekSzint 1 = más cég, 2 = LLM-cég)
+      termek_hir: lista.some(d => termekSzint(d._meta?.source_id, d.title) > 0),
       ...(fo.__termekExtra ? { termek_extra: true } : {}),
       status: 'awaiting-review' // → Ellenőrző agent veszi fel
     },
