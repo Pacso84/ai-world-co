@@ -30,6 +30,7 @@ import { readFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { utmutatoE } from './guide-kind.js';
+import { confidentUiClaims } from './guide-claims.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -154,4 +155,55 @@ export function forrasTemaJelzes(writerData, forrasSzoveg) {
   return e.elteres ? 'SOURCE_TOPIC_MISMATCH: A cikk másról szól, mint a forrása — ' + e.ok + '.' : null;
 }
 
-export default { forrasTemaElteres, forrasTemaJelzes, cikkCime, eszkozNevek };
+// ===================================================================
+// 2. GOMB-/MENÜNÉV A FORRÁSBAN (2026-11-10, „a korlátokat javítsuk ki!”)
+//
+// A téma-őr a hat levett cikkből a megítélhető négy közül hármat fogott meg; a negyedik (Amazon Nova
+// PII-kitakarás → „How to hide personal details in photos”) nem nevezett meg idegen eszközt, csak
+// EMLÉKEZETBŐL írt lépéseket: „tap the **three dots**”, „open **Markup**” — a forrásban egyik sincs.
+// A Midjourney-típusú eset (a cég saját frissítéséből kitalált lépések) ugyanez a hiba.
+//
+// SZABÁLY: a hírben MAGABIZTOSAN (nem hedge-elve) megnevezett képernyő-feliratok közül (core/guide-claims.js
+// confidentUiClaims — ugyanaz a felismerő, ami a forrás nélküli útmutatókat figyeli) legalább
+// MIN_HIANYZO_FELIRAT NINCS a teljes forrásszövegben → UI_NOT_IN_SOURCE (elutasít).
+// MÉRVE 11-10, valódi letöltött forrásokon, minden forráslinkkel: a 4 megítélhető levett cikkből 3
+// (2/2, 3/4, 5/6 hiányzó felirat), a 17 magyarázóból 0, a 48 friss hírből 0. A téma-őrrel EGYÜTT: 4/4.
+// ===================================================================
+
+/** Ennyi, a forrásban nem szereplő magabiztos felirattól szólunk (a levett cikkekben 2–5 volt, a jókban 0). */
+export const MIN_HIANYZO_FELIRAT = 2;
+
+/**
+ * A hír magabiztos képernyő-feliratai közül azok, amik a forrásban nincsenek.
+ * Forrásszöveg nélkül / kivonatból üres lista (nem ítélünk).
+ * @returns {{hianyzo: string[], osszes: number}}
+ */
+export function forrasbanNemLevoFeliratok(markdown, forrasSzoveg, { feliratok = confidentUiClaims } = {}) {
+  const fsz = String(forrasSzoveg || '');
+  if (fsz.trim().length < MIN_FORRAS_SZOVEG) return { hianyzo: [], osszes: 0 };
+  const kis = fsz.toLowerCase();
+  const labels = feliratok(markdown).labels || [];
+  return { hianyzo: labels.filter(l => !kis.includes(String(l).toLowerCase())), osszes: labels.length };
+}
+
+/**
+ * Az Ellenőrző (és a felújító) MINDEN forrás-alapú jelzése egy hírre — üres tömb, ha rendben / nem ítélhető.
+ * Ugyanazok a kivételek, mint a forrasTemaJelzes-nél (útmutató, saját összefoglaló, részben kivonatos forrás).
+ * @returns {string[]} "KÓD: szöveg" alakú jelzések
+ */
+export function forrasHirJelzesek(writerData, forrasSzoveg) {
+  const out = [];
+  const tema = forrasTemaJelzes(writerData, forrasSzoveg);
+  if (tema) out.push(tema);
+  const m = writerData?._meta || {};
+  if (utmutatoE('', writerData || {}) || m.source_id === 'aiworld-editorial') return out;
+  if (Array.isArray(m.source_text_via) && !m.source_text_via.every(v => TELJES_VIA.has(v))) return out;
+  const f = forrasbanNemLevoFeliratok(writerData?.article_markdown, forrasSzoveg);
+  if (f.hianyzo.length >= MIN_HIANYZO_FELIRAT) {
+    out.push(`UI_NOT_IN_SOURCE: ${f.hianyzo.length} gomb-/menünevet állít tényként, ami a hivatalos forrásban nem szerepel `
+      + `(${f.hianyzo.slice(0, 4).map(s => `"${s}"`).join(', ')}${f.hianyzo.length > 4 ? ', …' : ''}) — a lépések emlékezetből íródtak.`);
+  }
+  return out;
+}
+
+export default { forrasTemaElteres, forrasTemaJelzes, forrasHirJelzesek, forrasbanNemLevoFeliratok, cikkCime, eszkozNevek };

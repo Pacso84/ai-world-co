@@ -47,9 +47,21 @@ import { eltuntIsmertNevek } from './name-guard.js';
  * @param {string} [p.fedezIndok] mit írjunk ki, ha nem fedezi (pl. „412 szó / 2 lépés")
  * @returns {null|{kod:string, indok:string}} null = mehet tovább a fizetős kapura
  */
-export function felujitasKifogas({ regiMd, ujMd, fedez, fedezIndok = '' } = {}) {
+export function felujitasKifogas({ regiMd, ujMd, fedez, fedezIndok = '', hir = false, forras = null, forrasJelzesek = [] } = {}) {
   const uj = String(ujMd == null ? '' : ujMd);
   const regi = String(regiMd == null ? '' : regiMd);
+
+  // 0) HÍRBŐL CSAK FORRÁSSAL (2026-11-10, user: „többször ne forduljanak elő ezek a hibák!”). Ez a szkript
+  // írta át 07-27 és 08-10 között a levett „hír-útmutatók” felét (szkennelt iratok, ChatGPT-hang, Midjourney):
+  // a prompt csak a régi cikket kapta, a forrást nem → a lépések EMLÉKEZETBŐL születtek. Hírt mostantól csak
+  // akkor írunk át lépésenkénti útmutatóvá, ha a teljes forrásszöveg megvan, és az új szöveg a forráshoz mérve
+  // is megáll (core/forras-tema.js: eszköz + gombnevek).
+  if (hir && !String(forras || '').trim()) {
+    return { kod: 'NINCS_FORRAS', indok: 'hírből forrásszöveg nélkül nem írunk lépéseket (a forrás nem olvasható)' };
+  }
+  if (hir && Array.isArray(forrasJelzesek) && forrasJelzesek.length) {
+    return { kod: 'FORRAS_ELTER', indok: '🧭 ' + String(forrasJelzesek[0]).slice(0, 150) };
+  }
 
   // ⚠️ ÜRES VÁLASZ NEM SIKER. Ha nincs mit megnézni, az NEM „rendben" —
   // enélkül a modell néma bukása csendben lecserélné a cikket a semmire.

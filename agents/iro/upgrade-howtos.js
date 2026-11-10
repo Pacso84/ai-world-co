@@ -76,6 +76,9 @@ import { frissitendok, nincsValtozas } from '../../core/guide-freshness.js';
 import { hirekBetolt, hirBlokk } from '../../core/guide-sources.js';
 import { utmutatoE } from '../../core/guide-kind.js';
 import { linkEllenorzendok, halottLinkTorles, megerositettHalottak } from '../../core/guide-links.js';
+// ── HÍRBŐL CSAK FORRÁSSAL (2026-11-10) — core/upgrade-gate.js „0)” pont ──
+import { hirForrasa } from '../../core/tenyellenorzo-forras.js';
+import { forrasHirJelzesek } from '../../core/forras-tema.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -120,7 +123,7 @@ function loadBrandContext() {
 
 const SYSTEM = `You are the Writer Agent for AI World HQ, a site that teaches everyday people how to use AI in daily life. (Primary audience: the United States — but written so ANYONE, anywhere can read it; never address readers by nationality and never say "here in <country>".) You write in warm, plain US English and explain every technical term at first use.`;
 
-function upgradePrompt(md, brandContext) {
+function upgradePrompt(md, brandContext, forras = null) {
   return `This article of ours PROMISES instructions in its title, but only describes the topic in general terms. Readers told us it is not detailed enough. Rewrite it so it DELIVERS what the title promises.
 
 MANDATORY for this rewrite:
@@ -139,7 +142,10 @@ KEEP: the same topic, the same YAML frontmatter fields (update title/subtitle/re
 BRAND CONTEXT (must follow):
 ${brandContext}
 
-THE ARTICLE TO REWRITE:
+${forras ? `OFFICIAL SOURCE TEXT (this article is NEWS — every step, button, menu and screen you describe MUST appear in this source; if the source does not show a step, describe the feature in general terms and point to the official help page instead of inventing one):
+${forras}
+
+` : ''}THE ARTICLE TO REWRITE:
 ${md}
 
 Output the full rewritten article as markdown only — starting with the YAML frontmatter (---). No commentary.`;
@@ -292,7 +298,15 @@ async function main() {
     console.log(`🔧 ${title.slice(0, 58)}… (${wasWords} szó, ${stepCount(c.md)} lépés)`);
     if (DRY) continue;
 
-    const r = await ask(upgradePrompt(c.md, brandContext), { agentName: AGENT_NAME, systemPrompt: SYSTEM, maxTokens: 10000 });
+    // HÍRBŐL CSAK FORRÁSSAL (2026-11-10): a hír teljes forrásszövege (tár → letöltés; kivonat NEM elég).
+    // Nélküle nem hívunk modellt — a kapu „NINCS_FORRAS”-sal bukik, a próbálkozás számlálódik.
+    const hir = !utmutatoE(c.file, c.data);
+    let forras = null;
+    if (hir) {
+      try { forras = (await hirForrasa(c.data._meta || {})).forras; } catch { forras = null; }
+    }
+    const r = hir && !forras ? null
+      : await ask(upgradePrompt(c.md, brandContext, forras), { agentName: AGENT_NAME, systemPrompt: SYSTEM, maxTokens: 10000 });
     let text = (r && r.text || '').trim();   // let: a frontmatter-javítás átírja
     cost += (r && r.costUsd) || 0;
 
@@ -318,7 +332,10 @@ async function main() {
       regiMd: c.md,
       ujMd: text,
       fedez: coversPromise(text),
-      fedezIndok: `${text.split(/\s+/).length} szó / ${stepCount(text)} lépés`
+      fedezIndok: `${text.split(/\s+/).length} szó / ${stepCount(text)} lépés`,
+      hir,
+      forras,
+      forrasJelzesek: hir && forras ? forrasHirJelzesek({ ...c.data, article_markdown: text }, forras) : []
     });
     let why = kifogas ? kifogas.indok : null;
 

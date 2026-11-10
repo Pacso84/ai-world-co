@@ -5,7 +5,8 @@
 // nem kerülhet, lásd core/kiadoi-szoveg-or.test.js), a valódi esetek tényeivel.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { forrasTemaElteres, forrasTemaJelzes, cikkCime, MIN_FORRAS_SZOVEG, MIN_TORZS_EMLITES } from './forras-tema.js';
+import { forrasTemaElteres, forrasTemaJelzes, forrasHirJelzesek, forrasbanNemLevoFeliratok, cikkCime, MIN_FORRAS_SZOVEG, MIN_TORZS_EMLITES, MIN_HIANYZO_FELIRAT } from './forras-tema.js';
+import { felujitasKifogas } from './upgrade-gate.js';
 import { isBlocking, lessonFor, leckeNevHu } from './auto-check-codes.js';
 
 let pass = 0;
@@ -102,15 +103,82 @@ t('a cím a frontmatterből jön, ennek híján az első H1-ből', () => {
 
 t('🔌 BEKÖTVE: az Ellenőrző a gépi kapu után hívja, a kód ELUTASÍT, van leckéje és magyar neve', () => {
   const e = readFileSync(new URL('../agents/ellenorzo/agent.js', import.meta.url), 'utf-8');
-  assert.match(e, /import \{ forrasTemaJelzes \} from '\.\.\/\.\.\/core\/forras-tema\.js'/);
-  assert.ok(e.includes('if (temaJelzes) { autoCheckResult.issues.push(temaJelzes); autoCheckResult.passed = false; }'));
+  assert.match(e, /import \{ forrasHirJelzesek \} from '\.\.\/\.\.\/core\/forras-tema\.js'/);
+  assert.ok(e.includes('if (forrasJelzesek.length) { autoCheckResult.issues.push(...forrasJelzesek); autoCheckResult.passed = false; }'));
   // a jelzés a blokkolók kigyűjtése ELŐTT kerül a listába — különben nem utasítana el
-  assert.ok(e.indexOf('forrasTemaJelzes({') < e.indexOf('const criticalAutoFailures = blockingIssues(autoCheckResult.issues)'));
+  assert.ok(e.indexOf('forrasHirJelzesek({') < e.indexOf('const criticalAutoFailures = blockingIssues(autoCheckResult.issues)'));
   // TELJES forrásszöveget kap (nem a rövid kivonatot)
-  assert.ok(e.includes("forrasTemaJelzes({ ...writerData, article_markdown: markdown }, cikkForrasSzovege(writerData._meta) || '')"));
+  assert.ok(e.includes("forrasHirJelzesek({ ...writerData, article_markdown: markdown }, cikkForrasSzovege(writerData._meta) || '')"));
+  assert.ok(isBlocking('UI_NOT_IN_SOURCE: x'));
+  assert.notEqual(lessonFor('UI_NOT_IN_SOURCE: x'), 'UI_NOT_IN_SOURCE');
+  assert.ok(leckeNevHu('UI_NOT_IN_SOURCE'));
   assert.ok(isBlocking('SOURCE_TOPIC_MISMATCH: x'));
   assert.notEqual(lessonFor('SOURCE_TOPIC_MISMATCH: x'), 'SOURCE_TOPIC_MISMATCH');
   assert.ok(leckeNevHu('SOURCE_TOPIC_MISMATCH'));
+});
+
+// ---------- 2. GOMB-/MENÜNÉV A FORRÁSBAN (UI_NOT_IN_SOURCE) ----------
+// A VALÓDI ESET (07-06): Amazon Nova PII-kitakarás → „How to hide personal details” útmutató, emlékezetből írt
+// lépésekkel. A téma-őr nem fogta (nem nevez meg idegen eszközt), a feliratok viszont nincsenek a forrásban.
+const NOVA_FORRAS = teljes('Amazon Nova can find personal data such as names and card numbers in images and blur it '
+  + 'automatically inside an AWS pipeline built with Amazon Bedrock and AWS Lambda.');
+const PII_CIKK = cikk('How to Hide Personal Details in Photos Before Sharing Them',
+  'Open the photo and tap the **three dots** in the corner. Choose **Markup** and draw over your card number.');
+
+t('🖱️ A VALÓDI ESET: a forrásban nem szereplő gombnevek → UI_NOT_IN_SOURCE', () => {
+  const f = forrasbanNemLevoFeliratok(PII_CIKK, NOVA_FORRAS);
+  assert.ok(f.hianyzo.length >= MIN_HIANYZO_FELIRAT, JSON.stringify(f));
+  const j = forrasHirJelzesek({ article_markdown: PII_CIKK, original_title: 'Automatically redact PII in images with Amazon Nova', _meta: {} }, NOVA_FORRAS);
+  assert.equal(j.length, 1);
+  assert.match(j[0], /^UI_NOT_IN_SOURCE: /);
+});
+
+t('🖱️ ha a gombnevek a forrásban vannak, rendben (a forrás lépéseit szabad leírni)', () => {
+  const forras = teljes('To try it, open the app, tap Markup, then tap the Redact tool and drag over the text.');
+  const md = cikk('Hide Text in Screenshots with the New Redact Tool', 'Tap **Markup**, then tap **Redact** and drag over the text.');
+  assert.deepEqual(forrasbanNemLevoFeliratok(md, forras).hianyzo, []);
+  assert.deepEqual(forrasHirJelzesek({ article_markdown: md, original_title: 'Redact tool', _meta: {} }, forras), []);
+});
+
+t(`🖱️ ${MIN_HIANYZO_FELIRAT - 1} hiányzó felirat még nem riasztás; kivonatból és útmutatóra nem ítél`, () => {
+  const forras = teljes('Open the app and tap Markup to draw on a photo.');
+  const egy = cikk('Draw on Photos with Markup', 'Tap **Markup**, then tap **Highlighter**.');
+  assert.deepEqual(forrasHirJelzesek({ article_markdown: egy, original_title: 'Markup', _meta: {} }, forras), []);
+  assert.deepEqual(forrasbanNemLevoFeliratok(PII_CIKK, 'rövid kivonat').hianyzo, []);
+  assert.deepEqual(forrasHirJelzesek({ article_markdown: PII_CIKK, original_title: 'x', _meta: { type: 'guide' } }, NOVA_FORRAS), []);
+  assert.deepEqual(forrasHirJelzesek({ article_markdown: PII_CIKK, original_title: 'x', _meta: { source_text_via: ['html', 'kivonat'] } }, NOVA_FORRAS), []);
+});
+
+t('🧭 a Jamf-eset a közös belépőn át is kijön (idegen eszköz)', () => {
+  const j = forrasHirJelzesek({ article_markdown: HANG_CIKK, original_title: JAMF_CIM, _meta: {} }, JAMF_FORRAS);
+  assert.ok(j.some(x => x.startsWith('SOURCE_TOPIC_MISMATCH:')));
+});
+
+// ---------- 3. A FELÚJÍTÓ: hírből csak forrással (a gyökérok) ----------
+const JO_UJ = '---\ntitle: "How to x"\n---\n\n## What this means for you\n\nszöveg';
+t('🔧 felújító: hírből forrásszöveg NÉLKÜL nem ír lépéseket (NINCS_FORRAS)', () => {
+  assert.equal(felujitasKifogas({ regiMd: 'a', ujMd: '', fedez: true, hir: true, forras: null }).kod, 'NINCS_FORRAS');
+  assert.equal(felujitasKifogas({ regiMd: 'a', ujMd: JO_UJ, fedez: true, hir: true, forras: '  ' }).kod, 'NINCS_FORRAS');
+});
+
+t('🔧 felújító: a forráshoz mérve eltérő új szöveg nem cserélhet (FORRAS_ELTER)', () => {
+  const k = felujitasKifogas({ regiMd: 'a', ujMd: JO_UJ, fedez: true, hir: true, forras: 'x', forrasJelzesek: ['UI_NOT_IN_SOURCE: 3 gomb'] });
+  assert.equal(k.kod, 'FORRAS_ELTER');
+  assert.match(k.indok, /UI_NOT_IN_SOURCE/);
+});
+
+t('🔧 felújító: útmutatóra (hir=false) a forrás-feltétel nem vonatkozik', () => {
+  assert.equal(felujitasKifogas({ regiMd: 'a', ujMd: '', fedez: true }).kod, 'URES', 'útmutatónál a régi sorrend marad');
+});
+
+t('🔌 felújító BEKÖTVE: forrást kér, a promptba adja, és a csere előtt a forráshoz méri', () => {
+  const u = readFileSync(new URL('../agents/iro/upgrade-howtos.js', import.meta.url), 'utf-8');
+  assert.ok(u.includes("import { hirForrasa } from '../../core/tenyellenorzo-forras.js';"));
+  assert.ok(u.includes('const hir = !utmutatoE(c.file, c.data);'));
+  assert.ok(u.includes('const r = hir && !forras ? null'), 'forrás nélkül NEM hív modellt');
+  assert.ok(u.includes('upgradePrompt(c.md, brandContext, forras)'));
+  assert.ok(u.includes('OFFICIAL SOURCE TEXT (this article is NEWS'));
+  assert.ok(u.includes('forrasJelzesek: hir && forras ? forrasHirJelzesek({ ...c.data, article_markdown: text }, forras) : []'));
 });
 
 console.log(`\n✅ forras-tema.test: mind a ${pass} eset rendben`);

@@ -57,7 +57,10 @@ export const BLOCKING_CODES = Object.freeze([
   // olyan eszközről szól, amit a hivatalos forrása meg sem említ (core/forras-tema.js). Hat ilyen régi cikket
   // kellett levenni (Jamf-hír → ChatGPT-hangmód útmutató…). Valódi forrásokon mérve: 18 magyarázó + 39 friss
   // hír közül egyforrásúnál 0 találat → az újraírás ára elhanyagolható, a forrás nélküli cikk hitelesség-hiba.
-  'SOURCE_TOPIC_MISMATCH'
+  'SOURCE_TOPIC_MISMATCH',
+  // UI_NOT_IN_SOURCE (2026-11-10, ugyanaz a kérés): a hír 2+ magabiztos gomb-/menünevet állít, ami a teljes
+  // forrásszövegben nincs (core/forras-tema.js) → a lépések emlékezetből íródtak. Mérve: 65 jó hírből 0.
+  'UI_NOT_IN_SOURCE'
 ]);
 
 /** A "KÓD: emberi szöveg" alakú jelzésből a puszta kód. */
@@ -143,6 +146,10 @@ const LESSON_TEXT = Object.freeze({
     + 'A news article must be about what the source announced — the same product, the same company, the same event. '
     + 'You may explain what it means for everyday readers, but never swap in a different tool or write a generic '
     + 'how-to that the source does not support.',
+  UI_NOT_IN_SOURCE:
+    'The news article named buttons, menus or screens that its official source never mentions — the steps were written '
+    + 'from memory. In a news article, describe only what the source shows. If the source gives no click-by-click steps, '
+    + 'do not invent them: say where the feature lives in general terms and send the reader to the official help page.',
   ACCESS_NOT_SELF_SERVE:
     'The guide needed company, IT or enterprise access that our reader does not have. We write for everyday people: '
     + 'if a tool has to be switched on by an employer, say so in the opening lines — or pick a tool the reader can '
@@ -210,6 +217,7 @@ const HU_NEV = Object.freeze({
   PRICE_IN_ARTICLE: 'ár a cikkben',
   KNOWN_FALSE_CLAIM: 'ismert, cáfolt állítás',
   SOURCE_TOPIC_MISMATCH: 'a cikk másról szól, mint a forrása',
+  UI_NOT_IN_SOURCE: 'a forrásban nem szereplő gomb- és menünevek',
   ACCESS_NOT_SELF_SERVE: 'céges hozzáférést igénylő eszköz',
   TOO_SHORT: 'túl rövid cikk',
   TOO_LONG: 'túl hosszú cikk',
