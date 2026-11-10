@@ -43,8 +43,14 @@
  * átállást követő logika több hibalehetőséget hozna, mint amennyit ér.
  * Ha a téli 6:00 zavaró, a KEZDES_ORA-t 6-ra kell emelni — de akkor a
  * VEGE_ORA is 22 kell legyen, hogy az ablak 17 óra maradjon.
+ *
+ * 🔑 5 → 6 (2026-11-10, TÉLI IDŐ). Pontosan a fenti eset történt: a GitHub
+ * éjszakai futása 05:06 UTC-re csúszott, a jelentés 05:33 UTC = 06:33 magyar
+ * idő szerint ment ki — hajnalban, a nap elején, és a user nem is találta
+ * („ma nem kaptam jelentést!"). A user döntése „7:00–23:00" MAGYAR idő →
+ * télen (UTC+1) ez 06–22 UTC. ⚠️ MÁRCIUS VÉGÉN (nyári idő) VISSZA 5 / 21-re.
  */
-export const KEZDES_ORA = 5;
+export const KEZDES_ORA = 6;
 
 /**
  * Ennél később sem. A 20-as óra még átmegy, tehát a legkésőbbi pillanat
@@ -63,7 +69,7 @@ export const KEZDES_ORA = 5;
  * őrkutya-türelemhez kell. A `core/report-window.test.js` „🔒 az ablak
  * TÁGABB" esete őrzi ezt a viszonyt — ha bármelyiket állítod, az bukik el.
  */
-export const VEGE_ORA = 21;
+export const VEGE_ORA = 22;   // 2026-11-10: téli idő, a KEZDES_ORA-val együtt (lásd ott)
 
 /** A hét napjai a naplóhoz (0 = vasárnap, ahogy a `getUTCDay()` adja). */
 const NAPOK = ['vasárnap', 'hétfő', 'kedd', 'szerda', 'csütörtök', 'péntek', 'szombat'];

@@ -27,13 +27,15 @@ t('A VALÓDI ESET: a 2026-08-27-i négy futás közül a 16:07-es MEHETETT VOLNA
   // Ez épp a lényeg: aznap az 05:37-es volt az első futás, ami vihette volna a
   // jelentést (utólag kiderült, hogy az nem kimaradt slot volt, hanem 5,6 órát
   // késett). A 04:20-as marad kizárva — hajnalban tényleg ne ébresszen.
-  assert.deepEqual(mehet, [5, 16, 18], 'a hajnal utáni futásoknak át kell menniük');
+  // 2026-11-10 (téli idő, ablak 06–22 UTC): az 05:37-es most hajnalnak számít
+  // (06:37 magyar idő) — pont ilyen futás küldte ki 11-10-én 06:33-kor a jelentést.
+  assert.deepEqual(mehet, [16, 18], 'a délutáni futásoknak át kell menniük');
 });
 
 t('a hajnali futás NEM ébreszt', () => {
   // 2026-09-06: a határ 07 → 05 UTC. Hajnal = 00-04 UTC (02:00-06:59 magyar
   // nyári idő). Az 5 és a 6 MOST MÁR átmegy — ez a user döntése („7:00-tól").
-  for (const h of [0, 1, 2, 3, 4]) {
+  for (let h = 0; h < KEZDES_ORA; h++) {   // télen 0–5, nyáron 0–4
     const r = shouldSendReport({ hour: h, lastSent: TEGNAP, today: MA });
     assert.equal(r.send, false, h + 'h átment');
     assert.ok(r.reason.includes('hajnal'), r.reason);
@@ -41,7 +43,7 @@ t('a hajnali futás NEM ébreszt', () => {
 });
 
 t('a késő esti futás sem', () => {
-  for (const h of [22, 23]) {
+  for (let h = VEGE_ORA + 1; h <= 23; h++) {   // télen 23, nyáron 22–23
     assert.equal(shouldSendReport({ hour: h, lastSent: TEGNAP, today: MA }).send, false, h + 'h átment');
   }
 });
@@ -71,8 +73,8 @@ t('🔢 a határok ÉRTÉKE is rögzítve — nem csak a reláció', () => {
   // viszont megköveteli, hogy az ablak nagyobb legyen az őrkutya legnagyobb
   // résénél — 14 órás türelemhez ez 17 órás ablakot kíván.
   // A kettő EGYÜTT mozog: az egyiket a másik nélkül átállítani hibát okoz.
-  assert.equal(KEZDES_ORA, 5, '05 UTC = 07:00 magyar nyári idő — ne ébresszen korábban');
-  assert.equal(VEGE_ORA, 21, '21 UTC = 23:59-ig magyar nyári idő (a 21-es óra MÉG átmegy)');
+  assert.equal(KEZDES_ORA, 6, '06 UTC = 07:00 magyar TÉLI idő — ne ébresszen korábban (nyáron 5)');
+  assert.equal(VEGE_ORA, 22, '22 UTC = 23:59-ig magyar TÉLI idő (a 22-es óra MÉG átmegy; nyáron 21)');
 
   // A cron három slotja: 00, 08, 16 UTC. A jelentés a 08-as és a 16-os
   // slotból is mehessen, mert bármelyik kimaradhat.
