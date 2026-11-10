@@ -75,6 +75,10 @@ export const TAG_SZANDEKOS = {
   figcaption: 'A telefon-vázlat felirata („Vázlat — a te képernyőd kicsit másképp nézhet ki”), a <figure> párja.',
   rect: 'A telefon-vázlat SVG-alakzata (keret, sávok, gomb) — core/guide-sketch.js, csak útmutató-lépésben.',
   circle: 'A telefon-vázlat SVG-ben a koppintás-gyűrű — core/guide-sketch.js, csak útmutató-lépésben.',
+  // 11-10: a hat forrástól független „hír-útmutató” levétele után a hírek 1,7%-ában maradt <h3> (a 2%-os küszöb
+  // alatt), az útmutatók 100%-ában van → az eltérés ekkor vált láthatóvá, nem ekkor keletkezett.
+  h3: 'Az útmutató-sablon saját alcímei a lépéseken belül és a dobozokban (lépés-cím, „Ha másképp néz ki”) — '
+    + 'a hír törzse ## (h2) szakaszokból áll, h3-at csak néhány régi, lépésekre bontott hír használ.',
   text: 'A telefon-vázlat SVG-felirata (alkalmazás neve, gomb neve) — core/guide-sketch.js, csak útmutató-lépésben.'
 };
 

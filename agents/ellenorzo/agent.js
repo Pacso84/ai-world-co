@@ -37,6 +37,7 @@ import { arJelzes } from '../../core/ar-tilalom.js';
 import { tevedesJelzes } from '../../core/ismert-tevedesek.js';
 import { biraloForrasInfo, tevesNevKifogas, nevJavitoMegjegyzes } from '../../core/biralo-forrasinfo.js';
 import { cikkForrasSzovege, cikkKivonat } from '../../core/forras-cache.js';
+import { forrasTemaJelzes } from '../../core/forras-tema.js';   // 11-10: a hír nem szólhat a forrásban nem szereplő eszközről
 import { publikalasMeta, foglaltSlugok } from '../../core/publish-meta.js';
 import { findBritish } from '../../core/us-spelling.js';
 import { skillsBlock } from '../../core/skills.js';
@@ -840,6 +841,14 @@ async function main() {
 
     // 4a. Auto check (ingyenes)
     const autoCheckResult = runAutoCheck(markdown, writerData._meta?.type, writerData._meta || {});
+    // 🧭 FORRÁS ↔ TÉMA ŐR (2026-11-10, user: „többször ne forduljanak elő ezek a hibák!”): hat régi HÍR a
+    // forrásától független útmutató volt (Jamf-hír → ChatGPT-hangmód). Ha a cikk olyan eszközről szól, amit a
+    // TELJES forrásszöveg sehol nem említ → SOURCE_TOPIC_MISMATCH (elutasít; az átdolgozó a leckét kapja).
+    // Forrásszöveg nélkül / kivonatból NEM ítél. Szabályok és mérés: core/forras-tema.js.
+    try {
+      const temaJelzes = forrasTemaJelzes({ ...writerData, article_markdown: markdown }, cikkForrasSzovege(writerData._meta) || '');
+      if (temaJelzes) { autoCheckResult.issues.push(temaJelzes); autoCheckResult.passed = false; }
+    } catch { /* őr-hiba nem állítja meg az ellenőrzést */ }
     console.log(`   📐 Auto check: ${autoCheckResult.passed ? '✅ OK' : `❌ ${autoCheckResult.issues.length} probléma`}`);
     if (!autoCheckResult.passed) {
       autoCheckResult.issues.slice(0, 3).forEach(i => console.log(`      • ${i}`));

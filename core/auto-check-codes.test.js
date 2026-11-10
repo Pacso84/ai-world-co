@@ -31,10 +31,11 @@ t('a "KÓD: szöveg" alakból kiszedi a kódot', () => {
   assert.equal(issueCode(null), '');
 });
 
-t('🚧 a HAT blokkoló kód utasít el — más semmi', () => {
+t('🚧 a HÉT blokkoló kód utasít el — más semmi', () => {
+  // 2026-11-10: +SOURCE_TOPIC_MISMATCH (user: „többször ne forduljanak elő” — a hír a forrásban nem szereplő eszközről szól, core/forras-tema.js)
   // 2026-11-01: +PRICE_IN_ARTICLE (user: „árakat nem közlünk!” — user-tilalom, ~1%-on tüzel, core/ar-tilalom.js)
   // 2026-11-04: +KNOWN_FALSE_CLAIM (user: „ne forduljanak elő még egyszer” — hivatalos forrással cáfolt állítás, core/ismert-tevedesek.js)
-  for (const kod of ['NO_FRONTMATTER', 'NO_H1', 'MISSING_SECTION', 'GUIDE_TOO_SHORT', 'PRICE_IN_ARTICLE', 'KNOWN_FALSE_CLAIM']) {
+  for (const kod of ['NO_FRONTMATTER', 'NO_H1', 'MISSING_SECTION', 'GUIDE_TOO_SHORT', 'PRICE_IN_ARTICLE', 'KNOWN_FALSE_CLAIM', 'SOURCE_TOPIC_MISMATCH']) {
     assert.ok(isBlocking(kod + ': valami'), kod + ' blokkol');
   }
   // A 2026-08-16-i ÚJ jelzések SZÁNDÉKOSAN tanácsadók: a user döntése szerint
@@ -42,7 +43,7 @@ t('🚧 a HAT blokkoló kód utasít el — más semmi', () => {
   for (const kod of ['HOWTO_TOO_LONG', 'OPENING_REPETITIVE', 'HOWTO_TOO_THIN', 'CLICHE']) {
     assert.ok(!isBlocking(kod + ': valami'), kod + ' NEM blokkolhat');
   }
-  assert.equal(BLOCKING_CODES.length, 6, 'a lista nem nőhet észrevétlenül');
+  assert.equal(BLOCKING_CODES.length, 7, 'a lista nem nőhet észrevétlenül');
 });
 
 t('💸 a tanácsadó jelzés NEM tehet fizetőssé egy ingyenes visszasorolást', () => {

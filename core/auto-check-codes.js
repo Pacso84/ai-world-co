@@ -52,7 +52,12 @@ export const BLOCKING_CODES = Object.freeze([
   // KNOWN_FALSE_CLAIM (2026-11-04, user: „jó lenne, ha nem fordulnának elő ezek a hibák még egyszer!”): hivatalos
   // forrással CÁFOLT állítás (core/ismert-tevedesek.js — régi cím, átnevezett csomag, hamis Apple-feltétel, kitalált
   // név…). A korpuszon a 11-04-i javítás után 0 találat → csak az ÚJ hibánál tüzel; az átdolgozás a „Fix:” részt kapja.
-  'KNOWN_FALSE_CLAIM'
+  'KNOWN_FALSE_CLAIM',
+  // SOURCE_TOPIC_MISMATCH (2026-11-10, user: „szeretném, hogy többször ne forduljanak elő ezek a hibák!”): a HÍR
+  // olyan eszközről szól, amit a hivatalos forrása meg sem említ (core/forras-tema.js). Hat ilyen régi cikket
+  // kellett levenni (Jamf-hír → ChatGPT-hangmód útmutató…). Valódi forrásokon mérve: 18 magyarázó + 39 friss
+  // hír közül egyforrásúnál 0 találat → az újraírás ára elhanyagolható, a forrás nélküli cikk hitelesség-hiba.
+  'SOURCE_TOPIC_MISMATCH'
 ]);
 
 /** A "KÓD: emberi szöveg" alakú jelzésből a puszta kód. */
@@ -133,6 +138,11 @@ const LESSON_TEXT = Object.freeze({
     'The article repeated an outdated or false product fact that official sources have already corrected '
     + '(old web address, renamed plan, wrong device or OS requirement, invented product name). Your training knowledge '
     + 'is older than these products: take names, addresses, plans and requirements ONLY from the source text you were given.',
+  SOURCE_TOPIC_MISMATCH:
+    'The article drifted away from its official source: it taught or centered on a tool the source never mentions. '
+    + 'A news article must be about what the source announced — the same product, the same company, the same event. '
+    + 'You may explain what it means for everyday readers, but never swap in a different tool or write a generic '
+    + 'how-to that the source does not support.',
   ACCESS_NOT_SELF_SERVE:
     'The guide needed company, IT or enterprise access that our reader does not have. We write for everyday people: '
     + 'if a tool has to be switched on by an employer, say so in the opening lines — or pick a tool the reader can '
@@ -199,6 +209,7 @@ const HU_NEV = Object.freeze({
   PRICE_CLAIM_UNSOURCED: 'ár az útmutatóban',
   PRICE_IN_ARTICLE: 'ár a cikkben',
   KNOWN_FALSE_CLAIM: 'ismert, cáfolt állítás',
+  SOURCE_TOPIC_MISMATCH: 'a cikk másról szól, mint a forrása',
   ACCESS_NOT_SELF_SERVE: 'céges hozzáférést igénylő eszköz',
   TOO_SHORT: 'túl rövid cikk',
   TOO_LONG: 'túl hosszú cikk',
