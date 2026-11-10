@@ -1097,9 +1097,9 @@ async function main() {
           lines.push(`✉️ AUTO-VÁLASZ NEM MENT KI: ${cs.replyfail} db — a feladó nem kapott visszajelzést.`
             + (cs.replyfailWhy ? ` Ok: ${String(cs.replyfailWhy).slice(0, 120)}` : ''));
         }
-      } else lines.push(EXPORT_HIBA);   // 10-23: rossz státusz ≠ „senki nem szavazott”
+      } else { console.log('📮 feedback-export: HTTP ' + cr.status + ' (a riportban a számláló-sorok kimaradnak)'); lines.push(EXPORT_HIBA); }   // 10-23: rossz státusz ≠ „senki nem szavazott”; 11-10: az OK a CI-naplóba
     } else lines.push(EXPORT_HIBA);     // hiányzó kulcs
-  } catch { lines.push(EXPORT_HIBA); /* a riport ettől még kimegy */ }
+  } catch (e) { console.log('📮 feedback-export hiba: ' + (e?.name || '') + ' ' + (e?.message || e)); lines.push(EXPORT_HIBA); /* a riport ettől még kimegy */ }
 
   // Hierarchia-műszerfal (2026-07-13): visszaadások + főnöki döntések + tanulságok
   try {
