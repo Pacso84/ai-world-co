@@ -1,0 +1,62 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.011739300000000001,
+  "at": "2026-11-10T05:20:08.763Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_getting-started-lumo.json",
+      "cim": "Getting started with Lumo: a beginner's guide",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-ask-alexa-on-your-echo-to-convert-cups-to-grams-while.json",
+      "cim": "How to Ask Alexa on Your Echo to Convert Cups to Grams While You Bake",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_getting-started-brave-leo.json",
+      "cim": "Getting started with Brave Leo: a beginner's guide",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-10T05-08-34-094Z_snowflake_How_Snowflake_s_Internal_Audit_Team_Cut_Fieldwork_.json",
+      "cim": "How Snowflake’s Internal Audit Team Cut Fieldwork By 50% with AI ",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes ténybeli állítása megtalálható és alátámasztott a forrásszövegben."
+    },
+    {
+      "file": "ARTICLE_2026-11-10T05-08-29-261Z_google-workspace_Scale_customized_AI_across_your_team_with_skills_i.json",
+      "cim": "Scale customized AI across your team with skills in Google Workspace and Workspace Studio ",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben szereplő összes ténybeli állítás megegyezik a hivatalos forrással."
+    },
+    {
+      "file": "ARTICLE_2026-11-10T05-08-29-261Z_github-copilot-changelog_Claude_Fable_5_2_in_GitHub_Copilot.json",
+      "cim": "Claude Fable 5.2 in GitHub Copilot",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás a forrásban nem szereplő állítást hozna be: „Eligible enterprise customers can use zero data retention, meaning nothing is stored after”",
+      "modell_hu": "A cikkben az AWS jogosult ügyfelei számára a nulla adatmegőrzés határideje június 30., 2027, nem 'a naptári év végéig'."
+    }
+  ]
+}

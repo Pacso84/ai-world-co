@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "written_at": "2026-11-10T05:11:33.020Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0036223,
+    "original_draft": "2026-11-09T17-59-31-276Z_ibm_Building_policy_enforcement_into_the_AI_stack_with.json",
+    "source_id": "ibm",
+    "source_name": "IBM Research (hivatalos)",
+    "source_link": "https://research.ibm.com/blog/building-policy-enforcement-into-the-ai-stack-with-praxis?utm_medium=rss&utm_source=rss",
+    "source_links": [
+      "https://research.ibm.com/blog/building-policy-enforcement-into-the-ai-stack-with-praxis?utm_medium=rss&utm_source=rss"
+    ],
+    "source_snippet_len": 134,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 5025,
+    "source_text_key": "5af27818c750eb09",
+    "source_overlap_words": 8,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "published_at": "2026-11-10T05:11:47.859Z",
+    "slug": "how-ibm-is-building-rules-into-ai-agents-before-they-touch-your-data",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 759
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Strong article with clear explanations of technical concepts (proxy, policy targets, audit records, hash chaining), well-structured for business readers with the required sections, and all claims properly attributed to IBM. The three-tier 'What this means for you' section provides practical guidance for different audiences. No prohibited content, no invented facts, and no clichés detected.",
+      "_aiCost": 0.00115038,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-10T05:12:52.666Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article describes IBM's open-source research infrastructure (Praxis Policy Engine) at research stage with nothing for everyday users to install or use today.",
+    "image_v": 2,
+    "image_at": "2026-11-10T05:15:50.733Z",
+    "seo": {
+      "meta_description": "IBM Research created a policy engine to control what AI agents can access. Here's what the open-source tool does and why it matters for data privacy.",
+      "keywords": [
+        "IBM AI agent control",
+        "Praxis Policy Engine",
+        "AI data access control",
+        "open source AI policy",
+        "AI agent permissions",
+        "IBM AI security research",
+        "AI agent privacy"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific use cases or examples of how the policy engine works in practice",
+        "Include the abbreviation PPE since it's mentioned in the subtitle",
+        "Add comparison or context about similar tools in the industry"
+      ],
+      "optimised_at": "2026-11-10T05:17:33.197Z"
+    }
+  },
+  "article_markdown": "---\ntitle: \"How IBM Is Building Rules Into AI Agents Before They Touch Your Data\"\nsubtitle: \"IBM Research describes an open-source tool for controlling what AI systems can access, and why that matters as AI agents grow more capable.\"\ncategory: \"ai-news\"\naudience: \"business\"\nread_time_minutes: 3\ntags: [\"ai-security\", \"ai-agents\", \"governance\", \"open-source\", \"ibm-research\"]\n---\n\n# How IBM Is Building Rules Into AI Agents Before They Touch Your Data\n\n> **In short:** IBM Research says it has contributed a policy engine called the Praxis Policy Engine (PPE) to Praxis, an open-source proxy server, to control what AI tools and agents can access. The work is at the research and infrastructure stage, so there is nothing new for everyday users to switch on yet.\n\nImagine an AI assistant that can read your work email, check a shared calendar, and place an order for supplies. That kind of helper is useful, but it also raises a simple question: who decides what it is allowed to do? IBM's latest research post focuses on that question.\n\n## What the announcement covers\n\nAccording to IBM, its research team uses AI across its own operations and wants the benefits without giving up safety, security, or cost control. To support that, IBM says it works on shared tools that teams can test and improve together.\n\nThe main piece is Praxis, an open-source proxy server. A proxy is a middleman that sits between a user's request and the service that answers it, so it can inspect and manage traffic. IBM worked with Red Hat to contribute the Praxis Policy Engine, which Praxis uses as a filter for both ordinary web traffic and AI traffic. IBM also says Praxis has been accepted into the Cloud Native Computing Foundation (CNCF) Sandbox, an early-stage project program under that open-source foundation.\n\n## How the policies work\n\nIBM describes PPE as treating several things as \"policy targets,\" meaning things that rules can be written for:\n\n- **Tools**: actions an AI can take, such as searching a database\n- **Prompts**: the instructions people type to an AI\n- **Model calls**: requests sent to the AI model itself\n- **Other agents**: one AI system asking another for help\n\nTeams can write hard access rules (\"this agent may never see payroll files\"), softer behavior guidelines, and rules for specific fields, all in one policy file. IBM says this can run at a gateway, beside an individual agent, or inside a development framework. Each placement covers the actions that pass through it.\n\nIBM also says PPE can write an audit record for each decision it makes. An audit record is a log entry that shows what was allowed or blocked, and when. Optional signatures and \"hash chaining,\" a method that links each log entry to the one before it, are meant to help someone spot if records were changed later.\n\n## Why it matters\n\nThe post explains that AI gateways are becoming their own layer in AI systems. Think of a gateway as a security desk at a building entrance: it checks who is coming in, what they are asking for, and keeps a record. IBM says gateways also handle access control, metering of how much AI text each user or team consumes, and parts of how agents carry out multi-step tasks.\n\nIBM says it is working on related standards, including an agent identity standard with CoSAI, and is studying how controls on a computer and controls on a network could work together. Those are research goals, not finished products.\n\n## What this means for you\n\n- **If you run a business or manage a team**: Expect more talk about \"who is allowed to do what\" as AI agents get access to company systems. Ask your IT or security team how any AI tool you use logs its actions and limits access.\n- **If you work in an office**: The practical lesson is that AI helpers should have only the access they need. If a tool asks for broad permissions, pause and ask why.\n- **If you're just getting started**: You don't need to install anything. Start by learning what an AI assistant can see in your accounts, and turn off access you don't use.\n\n## Wrap-up\n\nIBM's announcement is about building the referee before the players get too powerful: rules, identity checks, and records that run alongside AI agents. For now, it's an open-source research effort that developers and security teams may follow. A useful next step today is simple: open the AI tools you already use and check which accounts and files they are allowed to reach.",
+  "original_title": "Building policy enforcement into the AI stack with Praxis"
+}

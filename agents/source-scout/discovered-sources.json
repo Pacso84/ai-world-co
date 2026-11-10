@@ -1,44 +1,32 @@
 {
   "_meta": {
-    "generated_at": "2026-11-06T15:34:40.082Z",
+    "generated_at": "2026-11-10T05:10:20.512Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 0,
     "uj_most": 0,
-    "ures_futasok": 1,
-    "rejected_count": 5,
+    "ures_futasok": 2,
+    "rejected_count": 3,
     "rejected_examples": [
       {
-        "name": "MyFitnessPal Blog",
-        "host": "blog.myfitnesspal.com",
-        "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
-        "score": 100
+        "name": "DeepSeek",
+        "host": "deepseek.com",
+        "reason": "ezt a hírfolyamot már követjük",
+        "score": 0
       },
       {
-        "name": "Noom Blog",
-        "host": "noom.com",
-        "reason": "a friss cikkeinek csak 0%-a szól AI-ról (kell: 60%)",
-        "score": 100
+        "name": "Cohere",
+        "host": "cohere.com",
+        "reason": "ezt a hírfolyamot már követjük",
+        "score": 0
       },
       {
-        "name": "Grammarly Blog",
-        "host": "blog.grammarly.com",
-        "reason": "a friss cikkeinek csak 30%-a szól AI-ról (kell: 60%)",
-        "score": 100
-      },
-      {
-        "name": "Otter.ai Blog",
-        "host": "otter.ai",
+        "name": "xAI Grok",
+        "host": "x.ai",
         "reason": "pont 94 < 100",
         "score": 94
-      },
-      {
-        "name": "Meta AI Blog",
-        "host": "ai.meta.com",
-        "reason": "pont 82 < 100",
-        "score": 82
       }
     ]
   },

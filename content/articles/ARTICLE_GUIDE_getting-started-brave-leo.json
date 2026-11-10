@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "getting-started-brave-leo",
+    "company": "Brave",
+    "tool": "Brave Leo",
+    "icon": "🦁",
+    "level": "beginner",
+    "source_news": null,
+    "trend": null,
+    "extra_slot": null,
+    "written_at": "2026-11-10T05:14:13.087Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.005763,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-11-10T05:14:34.302Z",
+    "slug": "getting-started-with-brave-leo-a-beginner-s-guide-to-summaries-and-que",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 65 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 1559
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent beginner guide with clear steps, helpful fallbacks in If-it-looks-different boxes, appropriate attribution for uncertain details, and a warm tone that builds reader confidence. The privacy cautions and verification reminders are responsible without being alarmist.",
+      "_aiCost": 0.001596,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-10T05:16:31.399Z",
+    "seo": {
+      "meta_description": "Learn how to use Brave Leo AI assistant in the Brave browser. Get page summaries, ask questions about any web content, and understand privacy basics.",
+      "keywords": [
+        "Brave Leo",
+        "how to use Brave Leo",
+        "Brave browser AI assistant",
+        "Brave Leo summarize page",
+        "Brave Leo questions",
+        "Brave Leo privacy",
+        "beginner guide Brave Leo"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding more long-tail keywords like 'Brave Leo tutorial' or 'how to summarize with Brave Leo'",
+        "Add internal links to other Brave browser tutorials if available",
+        "Ensure the article includes step-by-step instructions with clear headings for better SEO"
+      ],
+      "optimised_at": "2026-11-10T05:18:19.548Z"
+    },
+    "fact_verified_at": "2026-11-10T05:20:37.896Z"
+  },
+  "article_markdown": "---\ntitle: \"Getting started with Brave Leo: a beginner's guide to summaries and questions\"\nsubtitle: \"Learn where Brave Leo lives in the Brave browser, how to summarize a page or ask a question, and the privacy basics to know first.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Brave\"\ntool: \"Brave Leo\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"brave-leo\", \"brave\"]\n---\n\n# Getting started with Brave Leo: a beginner's guide to summaries and questions\n\n> **In short:** Brave Leo is an AI assistant built into the Brave browser. You can use it to summarize the web page you're reading or ask it questions about that page. Brave says a basic version is available without a paid plan, but some features may require one, so check Brave's official site for current details. It can make mistakes, so check important facts yourself.\n\nBrave Leo can feel mysterious the first time you see it, but it works a lot like a helpful reader sitting next to you. By the end of this guide, you'll know how to find it, get a short summary of an article, ask a question about a page, and understand the basic privacy choices. No technical background is needed.\n\n## Before you start\n\n- **The Brave browser** installed on a computer or phone. Brave is available for desktop, Android and iOS, and the exact layout changes a little between them.\n- **A stable internet connection.** Leo needs to be online to answer.\n- **About 15 minutes.** You don't need an account for basic use, according to Brave, but Leo's settings may ask you to sign in or switch features on.\n\n## Step 1 — Open Brave and load a page you care about\n\nOpen the Brave browser and go to a page with plenty of readable text, such as a news story, a long blog post or a how-to article. Leo works best when there's real text to read. The page should look normal, with the address bar at the top. On a phone, the page may fill the whole screen, which is fine.\n\nIf Brave shows a welcome or setup screen, you can skip anything you don't understand for now. You only need the page itself to be loaded.\n\n*If it looks different:* Some pages are mostly pictures, videos or menus, and Leo has less to work with. Choose an article with paragraphs.\n\nYou'll know it worked when you can scroll through the full text of the article in your browser.\n\n## Step 2 — Find Brave Leo\n\nLook for a button labeled **Leo**. On a computer, it's often in a sidebar or the toolbar near the top of the window. On a phone, it may be in the browser's main menu, which is usually behind a three-dot or three-line button. Tap or click it, and a panel opens, usually on one side of the screen or at the bottom of the phone.\n\nWhen the panel opens, you should see an empty chat area with a message box at the bottom. This is where you type.\n\n*If it looks different:* Brave's menus change over time, so don't worry if the exact spot is different on your device. Open the browser's main menu and search the settings for \"Leo.\" If you find that Leo is turned off, switch it on, then go back to step 2.\n\nYou'll know it worked when an empty chat with a message box at the bottom appears next to your article.\n\n## Step 3 — Ask Leo to summarize the page\n\nWith your article still open, open Leo if it isn't already. Look for a summary option. Leo sometimes offers a ready-made action, such as a summarize button, inside the chat. If you see one, tap or click it. If not, click in the message box and type your request.\n\nLeo reads the page you have open and writes a shorter version in the chat. It usually appears below your request. A summary is a short retelling of the main points, so expect a few bullet points or a paragraph, not every detail.\n\n💬 Example: \"Summarize this page in five bullet points for someone who has never read about [topic].\"\n\nLeo doesn't always get every nuance right. Before you share a summary or make a decision based on it, check the key names, dates and numbers against the original article.\n\nYou'll know it worked when a summary appears in the chat and mentions the main ideas from the article you have open.\n\n## Step 4 — Ask a question about the page\n\nNow try something more specific. Click in the message box at the bottom of Leo's panel and type a question about the article. Then press Enter or tap the send arrow. A short question works better than a vague one, because Leo has a clear target.\n\nLeo's answer appears below yours. If the answer is too general, ask a follow-up question that adds detail, such as the name of the person or the section you're curious about.\n\n💬 Example: \"What does this article say about the main cause of [the problem]?\"\n\n*If it looks different:* If the message box is hidden, look for a small text field near the bottom of the panel, or try scrolling the panel. If Leo says it can't read the page, the site may block it or the text may not have loaded yet. Refresh the page and try again.\n\nYou'll know it worked when Leo's reply directly answers your question and points to something in the article.\n\n## Step 5 — Ask a general question\n\nLeo can also answer questions that aren't about the page you're reading. This is useful when you come across a word or idea you don't understand. Type your question in the same message box and send it.\n\nKeep in mind that a general answer comes from Leo's training, not from a source you can check right there. For anything important, such as health, money or legal matters, confirm it with a trusted, official source or a professional.\n\n💬 Example: \"Explain [a word or idea] in plain language, with one everyday example.\"\n\n*If it looks different:* If the answer is too long, type \"Please keep it to three sentences\" at the end of your question. Leo usually adjusts when you ask it to.\n\nYou'll know it worked when you receive a plain-language answer that you can understand on the first read.\n\n## Step 6 — Check the privacy basics\n\nBefore you use Leo for personal matters, look at its privacy options. Open Leo's settings, which you can usually find through a gear or settings option in the Leo panel or in Brave's main settings. Look for sections about privacy, history or clearing chats.\n\nBrave has said publicly that Leo doesn't require an account for basic use and that it doesn't use your conversations to train its models. Read Brave's current privacy explanation in its official site, since policies can change. Also find the option that lets you clear your chat history, so you can delete old conversations when you want.\n\nWhatever the settings say, a good habit is to keep passwords, bank account numbers, full addresses and private health details out of the chat.\n\n*If it looks different:* Options may be named differently or sit in a different menu. Search the settings for \"privacy\" or \"history\" if you can't find them right away.\n\nYou'll know it worked when you've located where Leo's chat history and privacy settings live.\n\n## Common mistakes\n\n- **Expecting Leo to read everything.** Leo works with the page your browser has loaded. Pages behind a login or paywall may not be readable. **Fix:** copy the part of the text you're allowed to use, paste it into the message box, and ask your question there.\n- **Trusting every answer without checking.** AI assistants can sound confident and still be wrong. **Fix:** skim the original article for names, dates and numbers before you repeat anything.\n- **Sharing private information in the chat.** It's easy to type things you wouldn't say out loud in public. **Fix:** leave out passwords, account numbers and sensitive personal details, and clear your chat history if you're on a shared device.\n\n## What this means for you\n\n- **In everyday life:** Summarize a long news story before breakfast, or ask Leo to explain the key steps in a recipe or a how-to article you're reading.\n- **For your business or work:** Summarize a report you're allowed to read, then ask follow-up questions to find the parts that matter for your task. Always verify figures against the source before sharing.\n- **If you're just getting started:** Pick one article you already understand well. Ask Leo to summarize it, then compare the summary to what you know. This is the quickest way to learn what Leo does well and where it needs checking.\n\nOne honest limit: Leo can't guarantee that its answers are accurate, and it can't confirm facts on its own just because it sounds sure. It works best as a reading assistant, not as the final source of truth.\n\n## Try it now\n\nOpen a news story or article you read this week, open Brave Leo, and type: \"Summarize this page in three sentences.\" Then read the summary next to the article and see how close it is. That single comparison will teach you more than any tutorial.",
+  "original_title": "Getting started with Brave Leo: a beginner's guide"
+}
