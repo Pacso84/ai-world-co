@@ -1,0 +1,65 @@
+{
+  "ok": 2,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.015735564,
+  "at": "2026-11-10T21:38:22.049Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 2,
+    "javitva": 0,
+    "visszautasitva": 3,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-10T21-35-05-523Z_google-gemini_Gemini_4_Carbon_is_now_available.json",
+      "cim": "Gemini 4 Carbon is now available",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "nincs title mező",
+      "modell_hu": "A forrás kifejezetten states 'fejlesztők, vállalkozások, tudósok és fogyasztók most kipróbálhatják' a modellt, de a cikk kihagyja a tudósokat és fogyasztókat mint jogosult csoportokat"
+    },
+    {
+      "file": "ARTICLE_2026-10-15T02-18-20-785Z_xai-news_Model_Card__Grok_4_7_-_xAI.json",
+      "cim": "Model Card: Grok 4.7 - xAI",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-organize-a-messy-email-inbox-into-simple-folders-in-o.json",
+      "cim": "How to organize a messy email inbox into simple folders in one sitting",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató általános e-mail-szervezési tanácsokat tartalmaz, amelyek bármely nagy e-mail kliensre érvényesek. Nincsenek konkrét termékfunkciók, árak vagy időszerű állítások, amelyek elavultak lehetnének."
+    },
+    {
+      "file": "ARTICLE_2026-09-10T01-59-31-972Z_picsart_How_to_make_longer_AI_videos_with_consistent_chara.json",
+      "cim": "How to make longer AI videos with consistent characters",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "túl nagy átírás (1761 szó a 1403-ből)",
+      "modell_hu": "A forrás egy Picsart-útmutató, amely kifejezetten a Picsart Flow-t ajánlja Nano Banana Pro képgeneráláshoz, Seedance 2.0 videókhoz és Recraft V4 Pro logótípushoz. A cikk nem említi a Picsart-ot és teljesen más eszközöket ajánl."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-patiently-walk-an-older-parent-through-a-new-app-on-t.json",
+      "cim": "How to patiently walk an older parent through a new app on their phone",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Ez egy általános tanítási módszertani útmutató, amely nem tartalmaz konkrét termékállításokat, árakat vagy idöérzékeny információkat."
+    },
+    {
+      "file": "ARTICLE_2026-08-27T16-08-08-409Z_nvidia-blog_GeForce_NOW_Gives_Gamers_More_Ways_to_Play_at_Game.json",
+      "cim": "GeForce NOW Gives Gamers More Ways to Play at Gamescom 2026",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "nincs title mező",
+      "modell_hu": "két kisebb ténykülönbség a cikk állításai és a forrásszöveg között"
+    }
+  ]
+}

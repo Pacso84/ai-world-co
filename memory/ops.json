@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179410797793624",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-08T03:19:37.936Z",
-      "updated": "2026-11-08T03:21:12.787Z"
-    },
-    {
-      "id": "t179410807278916",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-08T03:21:12.789Z",
-      "updated": "2026-11-08T03:22:01.180Z"
-    },
-    {
-      "id": "t179410812118286",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-08T03:22:01.182Z",
-      "updated": "2026-11-08T03:22:18.393Z"
-    },
-    {
-      "id": "t179410813839452",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-08T03:22:18.394Z",
-      "updated": "2026-11-08T03:22:37.012Z"
-    },
-    {
-      "id": "t179419531329570",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-09T03:35:13.295Z",
-      "updated": "2026-11-09T03:35:13.485Z"
-    },
-    {
-      "id": "t179419531348757",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-09T03:35:13.487Z",
-      "updated": "2026-11-09T03:35:45.479Z"
-    },
-    {
-      "id": "t179419534548068",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-09T03:35:45.480Z",
-      "updated": "2026-11-09T03:35:45.691Z"
-    },
-    {
-      "id": "t179419534574069",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-09T03:35:45.740Z",
-      "updated": "2026-11-09T03:36:18.222Z"
-    },
-    {
-      "id": "t179419537822366",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-09T03:36:18.223Z",
-      "updated": "2026-11-09T03:37:17.611Z"
-    },
-    {
-      "id": "t179419543761429",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-09T03:37:17.614Z",
-      "updated": "2026-11-09T03:37:33.873Z"
-    },
-    {
-      "id": "t17941954539143",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-09T03:37:33.914Z",
-      "updated": "2026-11-09T03:38:19.340Z"
-    },
-    {
-      "id": "t179419549934167",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-09T03:38:19.341Z",
-      "updated": "2026-11-09T03:39:02.933Z"
-    },
-    {
-      "id": "t179419554297339",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-09T03:39:02.973Z",
-      "updated": "2026-11-09T03:39:03.186Z"
-    },
-    {
-      "id": "t179419554318863",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-09T03:39:03.188Z",
-      "updated": "2026-11-09T03:39:03.392Z"
-    },
-    {
       "id": "t17941955434362",
       "title": "Run guide",
       "status": "done",
@@ -479,57 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-10T16:00:32.907Z",
       "updated": "2026-11-10T16:00:55.140Z"
+    },
+    {
+      "id": "t179434646183248",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-10T21:34:21.832Z",
+      "updated": "2026-11-10T21:34:21.988Z"
+    },
+    {
+      "id": "t179434646199081",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-10T21:34:21.990Z",
+      "updated": "2026-11-10T21:35:17.147Z"
+    },
+    {
+      "id": "t179434651714959",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-10T21:35:17.149Z",
+      "updated": "2026-11-10T21:35:17.309Z"
+    },
+    {
+      "id": "t17943465173497",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-10T21:35:17.349Z",
+      "updated": "2026-11-10T21:36:14.366Z"
+    },
+    {
+      "id": "t17943465743675",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-10T21:36:14.367Z",
+      "updated": "2026-11-10T21:36:39.487Z"
+    },
+    {
+      "id": "t179434659948943",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-10T21:36:39.489Z",
+      "updated": "2026-11-10T21:36:53.209Z"
+    },
+    {
+      "id": "t17943466132119",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-10T21:36:53.211Z",
+      "updated": "2026-11-10T21:37:13.684Z"
+    },
+    {
+      "id": "t179434663368687",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-10T21:37:13.686Z",
+      "updated": "2026-11-10T21:37:22.056Z"
+    },
+    {
+      "id": "t179434664212581",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-10T21:37:22.125Z",
+      "updated": "2026-11-10T21:37:22.302Z"
+    },
+    {
+      "id": "t179434664230432",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-10T21:37:22.304Z",
+      "updated": "2026-11-10T21:37:22.476Z"
+    },
+    {
+      "id": "t179434664251135",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-10T21:37:22.511Z",
+      "updated": "2026-11-10T21:37:39.574Z"
+    },
+    {
+      "id": "t179434665957649",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-10T21:37:39.576Z",
+      "updated": "2026-11-10T21:37:49.525Z"
+    },
+    {
+      "id": "t17943466695268",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-10T21:37:49.526Z",
+      "updated": "2026-11-10T21:37:59.100Z"
+    },
+    {
+      "id": "t179434667910298",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-10T21:37:59.102Z",
+      "updated": "2026-11-10T21:38:21.051Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179339145434548",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-10-30T20:17:34.345Z",
-      "loud": false
-    },
-    {
-      "id": "n179339150144818",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-10-30T20:18:21.448Z",
-      "loud": false
-    },
-    {
-      "id": "n179341689757159",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 7.2/10).",
-      "agent": "seo",
-      "at": "2026-10-31T03:21:37.571Z",
-      "loud": false
-    },
-    {
-      "id": "n17934169135200",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A line-up egységes és kész: a cikkek kiválóan fedik le a mindennapi AI-felhasználást – praktikus tippek, tiltólista, karrierlehetőségek, írási sablonok. Jó, hogy több különböző eszközt is bemutattok (",
-      "agent": "publisher",
-      "at": "2026-10-31T03:21:53.520Z",
-      "loud": false
-    },
-    {
-      "id": "n179341692981821",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0415).",
-      "agent": "ceo",
-      "at": "2026-10-31T03:22:09.818Z",
-      "loud": false
-    },
-    {
-      "id": "n179347554015322",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-10-31T19:39:00.153Z",
-      "loud": false
-    },
     {
       "id": "n179350288638137",
       "level": "info",
@@ -1281,76 +1233,57 @@
       "agent": "fact-check",
       "at": "2026-11-10T16:01:47.868Z",
       "loud": false
+    },
+    {
+      "id": "n17943466695001",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-11-10T21:37:49.500Z",
+      "loud": false
+    },
+    {
+      "id": "n179434668704750",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). **Publish Summary**\n\nThe lineup looks strong — practical, friendly, and covers real everyday needs: writing help, privacy awareness, and task-specific AI use. One note: since the audience is everyday ",
+      "agent": "publisher",
+      "at": "2026-11-10T21:38:07.047Z",
+      "loud": false
+    },
+    {
+      "id": "n179434670108536",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0156).",
+      "agent": "ceo",
+      "at": "2026-11-10T21:38:21.085Z",
+      "loud": false
+    },
+    {
+      "id": "n179434671920396",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (nincs title mező): \"Gemini 4 Carbon is now available\" — A forrás kifejezet",
+      "agent": "fact-check",
+      "at": "2026-11-10T21:38:39.203Z",
+      "loud": false
+    },
+    {
+      "id": "n179434675657425",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (túl nagy átírás (1761 szó a 1403-ből)): \"How to make longer AI videos with",
+      "agent": "fact-check",
+      "at": "2026-11-10T21:39:16.574Z",
+      "loud": false
+    },
+    {
+      "id": "n179434678779249",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (nincs title mező): \"GeForce NOW Gives Gamers More Ways to Play at Game\" — ",
+      "agent": "fact-check",
+      "at": "2026-11-10T21:39:47.792Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179315669127624",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Ideogram Vector explained: SVGs from a prompt or a phot\" hír a meglévő útmutatóra mutat: how-to-use-ideogram-character-for-consistent-ai-mascot-visua",
-      "ref": "how-to-use-ideogram-character-for-consistent-ai-mascot-visua",
-      "at": "2026-10-28T03:04:51.276Z"
-    },
-    {
-      "id": "m179315756886644",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-28T03:19:28.866Z"
-    },
-    {
-      "id": "m179315763417990",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Google has announced Gemini Omni, which it calls its latest model.”): \"Gemini Omni: What it is and how to use it\" — The source provides explicit access instructions and pricing, contradicting the article's claim that these are unknown",
-      "ref": "ARTICLE_2026-10-28T02-59-50-364Z_zapier-blog_Gemini_Omni__What_it_is_and_how_to_use_it.json",
-      "open": true,
-      "at": "2026-10-28T03:20:34.179Z"
-    },
-    {
-      "id": "m179315841502312",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-28T03:33:35.023Z"
-    },
-    {
-      "id": "m179319853895936",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „In short:** Ideogram has announced two tools for making SVG files, which are images built ”): \"Ideogram Vector explained: SVGs from a prompt or a\" — The article misattributes the source - it was published by Picsart, not Ideogram",
-      "ref": "ARTICLE_2026-10-28T02-59-50-363Z_picsart_Ideogram_Vector_explained__SVGs_from_a_prompt_or_a.json",
-      "open": true,
-      "at": "2026-10-28T14:42:18.959Z"
-    },
-    {
-      "id": "m179319861575269",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Generate AI‑powered email replies using Hugging Fa\" — The `curl` command syntax `-X POST` and the `return_full_text` parameter are documented as legacy by Hugging Face; the guide should soften these to 'if available' or 'current format' rather than presenting them as the ",
-      "ref": "ARTICLE_GUIDE_generate-ai-powered-email-replies-using-hugging-face-inferen.json",
-      "open": true,
-      "at": "2026-10-28T14:43:35.752Z"
-    },
-    {
-      "id": "m179319866173816",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Generate AI‑powered tweet threads on X with Grok\" — The claim that Grok is 'free to use' cannot be verified against current xAI pricing — softened to conditional. No feature removals detected; workflow and character-limit claim (280 for free X accounts) remain accurate.",
-      "ref": "ARTICLE_GUIDE_generate-ai-powered-tweet-threads-on-x-with-grok.json",
-      "open": true,
-      "at": "2026-10-28T14:44:21.738Z"
-    },
     {
       "id": "m179324476669586",
       "from": "pairing",
@@ -2695,6 +2628,72 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-10T16:10:30.693Z"
+    },
+    {
+      "id": "m179434659946825",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Gemini 4 Carbon is now available\" — mi a baj: Az AI-bíró kitalált állítást talált (részletek nélkül)",
+      "ref": "2026-11-10T21-35-05-523Z_google-gemini_Gemini_4_Carbon_is_now_available.json",
+      "at": "2026-11-10T21:36:39.468Z"
+    },
+    {
+      "id": "m179434661319778",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Gemini 4 Carbon is now available\" — javítva: Az AI-bíró kitalált állítást talált (részletek nélkül); Reviewer verdict: Hitelesség-kapu blokkolta: Az AI-bíró kitalált állítást talált (részletek nélkül); újraküldöm.",
+      "ref": "2026-11-10T21-35-05-523Z_google-gemini_Gemini_4_Carbon_is_now_available.json",
+      "at": "2026-11-10T21:36:53.197Z"
+    },
+    {
+      "id": "m179434663367042",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Gemini 4 Carbon is now available\" (?/10)",
+      "ref": "2026-11-10T21-35-05-523Z_google-gemini_Gemini_4_Carbon_is_now_available.json",
+      "at": "2026-11-10T21:37:13.670Z"
+    },
+    {
+      "id": "m17943466790560",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-10T21:37:59.056Z"
+    },
+    {
+      "id": "m179434671920396",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (nincs title mező): \"Gemini 4 Carbon is now available\" — A forrás kifejezetten states 'fejlesztők, vállalkozások, tudósok és fogyasztók most kipróbálhatják' a modellt, de a cikk kihagyja a tudósokat és fogyasztókat mint jogosult csoportokat",
+      "ref": "ARTICLE_2026-11-10T21-35-05-523Z_google-gemini_Gemini_4_Carbon_is_now_available.json",
+      "open": true,
+      "at": "2026-11-10T21:38:39.203Z"
+    },
+    {
+      "id": "m179434675657431",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (túl nagy átírás (1761 szó a 1403-ből)): \"How to make longer AI videos with consistent chara\" — A forrás egy Picsart-útmutató, amely kifejezetten a Picsart Flow-t ajánlja Nano Banana Pro képgeneráláshoz, Seedance 2.0 videókhoz és Recraft V4 Pro logótípushoz. A cikk nem említi a Picsart-ot és teljesen más eszközöket ajánl.",
+      "ref": "ARTICLE_2026-09-10T01-59-31-972Z_picsart_How_to_make_longer_AI_videos_with_consistent_chara.json",
+      "open": true,
+      "at": "2026-11-10T21:39:16.574Z"
+    },
+    {
+      "id": "m179434678779222",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (nincs title mező): \"GeForce NOW Gives Gamers More Ways to Play at Game\" — két kisebb ténykülönbség a cikk állításai és a forrásszöveg között",
+      "ref": "ARTICLE_2026-08-27T16-08-08-409Z_nvidia-blog_GeForce_NOW_Gives_Gamers_More_Ways_to_Play_at_Game.json",
+      "open": true,
+      "at": "2026-11-10T21:39:47.792Z"
     }
   ]
 }
