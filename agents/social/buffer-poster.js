@@ -41,7 +41,7 @@ import 'dotenv/config';
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { selectSocialBatch } from '../../core/social-queue.js';
+import { selectSocialBatch, aznapiKeret } from '../../core/social-queue.js';
 import { composePost, followCta, CHANNELS } from '../../core/social-text.js';
 // A SOR KÖZÖS DÖNTÉSE (2026-09-12) — ugyanaz, mint a Facebook-poszterben.
 // Eddig karakterre lemásolva élt itt; most egy példány: core/social-published.js.
@@ -472,11 +472,15 @@ async function main() {
     // `--limit 2` így napi 6 posztot jelentett csatornánként. Indoklás és a
     // mért számok: core/channel-cap.js.
     const plafon = token() ? capFor(CONFIG, ch.key) : null;
-    let keret = LIMIT;
+    // AMI AZNAP KÉSZÜLT, MIND MENJEN KI (2026-11-10, user): a link-posztos csatornán (Threads) a
+    // `--limit` csak alsó határ — ha több mai/tegnapi cikk vár, annyi megy (legfeljebb 8/futás).
+    // A videós sor (TikTok) a napi videókból áll, ott marad a `--limit`.
+    const futasKeret = cfg.videoOnly ? LIMIT : aznapiKeret({ items: q, alap: LIMIT, now });
+    let keret = futasKeret;
     let maiDb = null;          // a fotó-keret is ebből számol (2026-10-15)
     if (plafon !== null) {
       maiDb = ORG ? await sentTodayFor(ORG, ch.id) : null;
-      keret = allowedNow({ sentToday: maiDb, dailyCap: plafon, runLimit: LIMIT });
+      keret = allowedNow({ sentToday: maiDb, dailyCap: plafon, runLimit: futasKeret });
       console.log(`\n📊 ${cfg.label}: napi plafon ${plafon} · ma eddig `
         + `${maiDb === null ? '? (nem sikerült lekérdezni)' : maiDb} → most ${keret} mehet`);
       if (keret <= 0) {
@@ -495,7 +499,8 @@ async function main() {
 
     // 2026-09-27 (user): „a lemaradásokat töröljük, csak a frissek menjenek" — a Threadsre is.
     // A videós csatorna sora eleve csak a MAI Reeleket tartalmazza, a korábbi elöl.
-    const linkBatch = cfg.videoOnly ? q.slice(0, keret) : selectSocialBatch(q, keret, { csakFriss: true });
+    // 11-10: a mai + tegnapi cikkek ELŐL, a legrégebbitől (a hajnali cikk ne éhezzen ki — core/social-queue.js).
+    const linkBatch = cfg.videoOnly ? q.slice(0, keret) : selectSocialBatch(q, keret, { csakFriss: true, now });
     // A Threads: a link-posztok UTÁN a mai videók (vq) — a --limit a link-posztokra számol, a videókat
     // a saját napi készletük (és a posted_threads_video jelölő) korlátozza.
     const batch = [...linkBatch, ...vq];

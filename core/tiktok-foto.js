@@ -17,15 +17,23 @@
 // disclosure"), ezért a jelölést a caption viszi (CHANNELS.tiktok.aiLabel).
 // ===================================================================
 
-/** Napi legfeljebb ennyi fotó-poszt megy a TikTokra (user, 10-15). */
-export const FOTO_NAPI_MAX = 3;
+import { aznapElol } from './social-queue.js';
 
 /**
- * Futásonként legfeljebb ennyi fotó (2026-10-15, végső review I3): a napi 3 fotó
- * egy futásban, közvetlenül a videók után spamnek látszana — így a ~3 napi futásra
- * oszlik szét.
+ * Napi legfeljebb ennyi fotó-poszt megy a TikTokra.
+ * 10-15 (user): 3. → 2026-11-10 (user: „amit megírunk aznap, az jöjjön le a közösségi
+ * hálózatokon, de mind, ami aznap készült!"): 9 — a napi ~7–10 cikkből ami nem videóként
+ * megy, az fotóként. A csatorna napi plafonja (config social_daily_caps.tiktok) ezért 12
+ * = a napi 3 videó + 9 fotó.
  */
-export const FOTO_FUTASONKENT_MAX = 1;
+export const FOTO_NAPI_MAX = 9;
+
+/**
+ * Futásonként legfeljebb ennyi fotó (2026-10-15, végső review I3: egy tömbben spamnek
+ * látszana). 11-10: 1 → 4, mert a CI sokszor csak kétszer fut egy nap, és 1/futás mellett
+ * a nap cikkeinek fele kimaradt (mérve: 11-10-én 8 cikkből 2 ment TikTokra).
+ */
+export const FOTO_FUTASONKENT_MAX = 4;
 
 const maiNap = now => new Date(now).toISOString().slice(0, 10);
 
@@ -74,13 +82,19 @@ export function fotoKeret({ plafon, maiDb, videoKikuldve = 0 }) {
  */
 export function tiktokFotoSor(items, { now = Date.now(), keret, napiMax = FOTO_NAPI_MAX, futasMax = FOTO_FUTASONKENT_MAX, kizar } = {}) {
   if (!Array.isArray(items)) return { sor: [], hely: 0 };
-  // 2026-10-15 (review I1): a fotó CSAK HÍRBŐL — az útmutató videóként megy (az a jobb formátum),
-  // így a két forma nem ütközhet. `kizar`: a futásban már VIDEÓKÉNT kiment elemek útvonalai
-  // (a sor a videók előtt készült, a jelölésük nála elavult).
-  const sor = items
-    .filter(x => x?.isFresh && !x.isGuide && x.post?.posted_at && !x.post.posted_tiktok && !x.post.posted_tiktok_photo
-      && !(kizar && kizar.has(x.path)))
-    .sort((a, b) => String(b.pubAt || '').localeCompare(String(a.pubAt || '')));
+  // 2026-10-15 (review I1) a fotó még CSAK HÍRBŐL ment („az útmutató videóként megy”). Csakhogy a Reel
+  // a LEGRÉGEBBI videó nélküli útmutatót viszi (core/reel-queue.js), így a mai útmutató napokig nem
+  // jutott a TikTokra. 2026-11-10 (user: „mind, ami aznap készült”): az útmutató is mehet fotóként,
+  // ha a Facebookra FOTÓKÉNT ment ki (`posted_at`) — pontosan, ahogy a Facebook is kapja: ma a kép,
+  // később (ha sorra kerül) a Reel. `kizar`: a futásban már VIDEÓKÉNT kiment elemek útvonalai
+  // (a sor a videók előtt készült, a jelölésük nála elavult) — ugyanaz a cikk egy futásban nem
+  // megy videóként ÉS fotóként.
+  // SORREND (11-10): a mai + tegnapi elöl a legrégebbitől, aztán a többi friss a legújabbtól
+  // (core/social-queue.js aznapElol) — a hajnali cikk ne csússzon örökké a frissebbek mögé.
+  const jeloltek = items
+    .filter(x => x?.isFresh && x.post?.posted_at && !x.post.posted_tiktok && !x.post.posted_tiktok_photo
+      && !(kizar && kizar.has(x.path)));
+  const sor = aznapElol(jeloltek, now);
   const maradekNap = Math.max(0, napiMax - maiMarkaDb(items, 'posted_tiktok_photo', now));
   const k = typeof keret === 'number' && !Number.isNaN(keret) && keret >= 0 ? keret : 0;   // 🔒 ismeretlen → 0
   return { sor, hely: Math.min(maradekNap, k, futasMax) };

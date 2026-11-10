@@ -200,17 +200,18 @@ t('🎵 a honlap linkel a TikTok-fiókra (lábléc + JSON-LD, 2026-10-07)', () =
   assert.ok(/\n\s*tt: '[^']{100,}'/.test(b), 'nincs TikTok-ikon (ICON.tt)');
 });
 
-t('📌 az ÉLES config.json: TikTok napi 6 (3 videó + 3 fotó), Instagram-bejegyzés nincs', () => {
+t('📌 az ÉLES config.json: TikTok napi 12 (3 videó + 9 fotó), Instagram-bejegyzés nincs', () => {
   // 2026-10-05: Instagram leállítva (14 nap alatt 4 belépő), 10-07: kivezetve.
   // 2026-10-07 (user: „csináljunk egy tiktokot"): a napi 2 Reel megy oda is.
   // 2026-10-11 (user: „ha belefér a keretbe mehet több video is"): + napi 1 csak-TikTok.
   // 2026-10-15 (user: „minden közösségi médiában ugyanazok jelenjenek meg”): 3 → 6 = 3 videó + max 3 fotó-poszt.
-  // A plafon VÉD: egy elszabadult futás sem küldhet napi 6-nál többet.
+  // 2026-11-10 (user: „amit megírunk aznap, az jöjjön le … de mind, ami aznap készült!”): 6 → 12 = 3 videó + max 9 fotó.
+  // A plafon VÉD: egy elszabadult futás sem küldhet napi 12-nél többet.
   const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
   const eles = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
-  assert.equal(capFor(eles, 'tiktok'), 6, 'a TikTok napi plafonja nem 6');
-  assert.equal(allowedNow({ sentToday: 6, dailyCap: capFor(eles, 'tiktok'), runLimit: 3 }), 0,
-    'a napi 6 után mégis kimenne a hetedik');
+  assert.equal(capFor(eles, 'tiktok'), 12, 'a TikTok napi plafonja nem 12');
+  assert.equal(allowedNow({ sentToday: 12, dailyCap: capFor(eles, 'tiktok'), runLimit: 3 }), 0,
+    'a napi 12 után mégis kimenne a tizenharmadik');
   assert.equal(capFor(eles, 'instagram'), null, 'az Instagram-bejegyzés visszakerült a configba');
 });
 

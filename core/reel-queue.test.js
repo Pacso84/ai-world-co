@@ -267,7 +267,7 @@ t('🔑 CSAK FRISS: a maxKorNap-nál régebbi útmutatóból nincs Reel (user 09
   const src = readFileSync(new URL('./reel-post.js', import.meta.url), 'utf-8');
   assert.match(src, /maxKorNap: REEL_FRISS_NAP/, 'a Reel-küldő nem kér csak frisset');
   const buf = readFileSync(new URL('../agents/social/buffer-poster.js', import.meta.url), 'utf-8');
-  assert.match(buf, /selectSocialBatch\(q, keret, \{ csakFriss: true \}\)/, 'a Threads még a hátralékot üríti');
+  assert.match(buf, /selectSocialBatch\(q, keret, \{ csakFriss: true, now \}\)/, 'a Threads még a hátralékot üríti (vagy nem kapja az aznap-elsőbbséget)');
 });
 
 t('🔑 NAPI 2 REEL: a második is mehet, a harmadik nem; kapcsoló nélkül marad napi 1 (09-27)', () => {

@@ -33,7 +33,7 @@ export const DRAIN_SLOT_FROM = 3;
  * @param {number} limit  hány poszt mehet ki ebben a körben
  * @returns {Array} a kiválasztott elemek, kiküldési sorrendben
  */
-export function selectSocialBatch(items, limit, { csakFriss = false } = {}) {
+export function selectSocialBatch(items, limit, { csakFriss = false, now = null } = {}) {
   if (!Array.isArray(items) || limit <= 0) return [];
 
   const ujElol = (a, b) => String(b.pubAt || '').localeCompare(String(a.pubAt || ''));
@@ -46,7 +46,8 @@ export function selectSocialBatch(items, limit, { csakFriss = false } = {}) {
   // napinál maradjunk"). A Facebookon a régi útmutatók helyét a REEL veszi át
   // (az hoz idegeneket, és olcsóbb a Make-kereten); a Threads (Buffer, ingyenes)
   // továbbra is üríti a hátralékot — ezért kapcsoló, nem törlés.
-  if (csakFriss) return fresh.slice(0, limit);
+  // + AZNAP ELŐL (2026-11-10, `now` megadásával): a mai és tegnapi cikkek a legrégebbitől — lásd lent.
+  if (csakFriss) return (Number.isFinite(now) ? aznapElol(fresh, now) : fresh).slice(0, limit);
 
   // HÁTRALÉK: 7 napnál régebbi ÚTMUTATÓ. (Régi HÍR ide nem juthat — azt a
   // hívó már lezárta.) A garantált helyre a LEGRÉGEBBI megy, hogy a sor
@@ -82,4 +83,69 @@ export function selectSocialBatch(items, limit, { csakFriss = false } = {}) {
   });
 }
 
-export default { selectSocialBatch, DRAIN_SLOT_FROM };
+// ===================================================================
+// AMI AZNAP KÉSZÜLT, AZ AZNAP KI IS MENJEN — MINDEN CSATORNÁRA (2026-11-10)
+// ===================================================================
+// USER: „azt szeretném, hogy amit megírunk aznap, az jöjjön le a közösségi
+// hálózatokon, de mind, ami aznap készült!"
+//
+// MÉRVE (11-02 → 11-10, content/social + cikk _meta): a Facebook szinte mind
+// aznap kint volt, DE a Threadsre napi 3–4 cikk nem jutott el (11-09: 7-ből 4,
+// 11-10: 8-ból 4), a TikTokra pedig 11-09-én 7-ből 3, 11-10-én 8-ból 2.
+// A három ok:
+//   1) FIX FUTÁSONKÉNTI DARAB: a CI `--limit 3` (FB) és `--limit 2` (Buffer) —
+//      a CI viszont sokszor csak KÉTSZER fut egy nap (a cron késik/kimarad),
+//      így a Threadsre napi 4 fért, miközben 7–10 cikk készült.
+//   2) LEGÚJABB ELŐL: a szűk helyen a hajnali cikk (11-09 Google Meet, 03:36Z)
+//      mindig hátrébb csúszott a frissebbek mögé — és SOHA nem ment ki.
+//   3) TIKTOK: futásonként 1, naponta 3 fotó (core/tiktok-foto.js).
+//
+// A JAVÍTÁS:
+//   • `aznapiKeret()`: a futás darabszáma legalább annyi, ahány mai/tegnapi
+//     cikk még vár (felülről AZNAP_FUTAS_MAX), a `--limit` csak az alsó határ.
+//     A Facebookon a Make-őr (core/make-budget.js postsPerRun) ezután is fékez.
+//   • `aznapElol()`: a mai + tegnapi (UTC) cikkek kerülnek előre, a LEGRÉGEBBI
+//     elöl — így a hajnali cikk nem tud kiéhezni; utánuk a többi friss a
+//     szokásos sorrendben (legújabb elöl).
+// A „tegnapi" azért kell, mert az este 19 UTC után megírt cikket aznap már
+// nincs futás, ami kivigye — annak a másnap reggeli az első dolga.
+// ===================================================================
+
+/** Egy futásban legfeljebb ennyi poszt csatornánként (ne egy tömbben menjen ki a nap). */
+export const AZNAP_FUTAS_MAX = 8;
+
+const utcNap = ms => new Date(ms).toISOString().slice(0, 10);
+
+/** Ma vagy tegnap (UTC) jelent-e meg az elem (`pubAt` ISO időbélyeg)? */
+export function aznapiE(x, now) {
+  const p = String(x?.pubAt || '').slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(p) || !Number.isFinite(now)) return false;
+  return p === utcNap(now) || p === utcNap(now - 864e5);
+}
+
+/**
+ * Sorrend: előbb a mai + tegnapi elemek a LEGRÉGEBBITŐL, utána a többi a LEGÚJABBTÓL.
+ * Nem módosítja a bemenetet.
+ */
+export function aznapElol(items, now) {
+  if (!Array.isArray(items)) return [];
+  const regiElol = (a, b) => String(a.pubAt || '').localeCompare(String(b.pubAt || ''));
+  const ujElol = (a, b) => String(b.pubAt || '').localeCompare(String(a.pubAt || ''));
+  const aznap = items.filter(x => aznapiE(x, now)).sort(regiElol);
+  const tobbi = items.filter(x => !aznapiE(x, now)).sort(ujElol);
+  return [...aznap, ...tobbi];
+}
+
+/**
+ * Hány poszt menjen ki ebben a futásban: legalább `alap` (a `--limit`), de ha
+ * ennél több mai/tegnapi friss elem vár, akkor annyi — legfeljebb `max`.
+ * Rossz bemenetre az `alap` (a régi viselkedés).
+ */
+export function aznapiKeret({ items, alap, now, max = AZNAP_FUTAS_MAX } = {}) {
+  const a = Number.isFinite(alap) && alap > 0 ? Math.floor(alap) : 0;
+  if (!Array.isArray(items) || !Number.isFinite(now)) return a;
+  const var_ = items.filter(x => x?.isFresh && aznapiE(x, now)).length;
+  return Math.max(a, Math.min(Number.isFinite(max) ? max : AZNAP_FUTAS_MAX, var_));
+}
+
+export default { selectSocialBatch, DRAIN_SLOT_FROM, AZNAP_FUTAS_MAX, aznapiE, aznapElol, aznapiKeret };

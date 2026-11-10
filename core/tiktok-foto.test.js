@@ -51,24 +51,24 @@ t('kizárja, aminek már van TikTok-videója vagy -fotója', () => {
   assert.deepEqual(slugok(r), ['szabad']);
 });
 
-t('a legfrissebb elöl', () => {
+t('SORREND (11-10): a mai + tegnapi a legrégebbitől elöl, utána a régebbi friss', () => {
   const r = tiktokFotoSor([
     it('a', '2026-10-13T01:00:00Z'), it('c', '2026-10-15T01:00:00Z'), it('b', '2026-10-14T01:00:00Z')
   ], { now: MOST, keret: 6 });
-  assert.deepEqual(slugok(r), ['c', 'b', 'a']);
+  assert.deepEqual(slugok(r), ['b', 'c', 'a'], '🔴 a hajnali/tegnapi cikk megint a frissebbek mögé csúszik');
 });
 
-t('napi max 3, a MAI jelölésekből számolva (tegnapi nem számít)', () => {
-  assert.equal(FOTO_NAPI_MAX, 3);
+t('napi max 9 (11-10, user: „mind, ami aznap készült”), a MAI jelölésekből számolva (tegnapi nem számít)', () => {
+  assert.equal(FOTO_NAPI_MAX, 9);
   const mind = [
     it('x1', '2026-10-15T01:00:00Z', { posted_tiktok_photo: '2026-10-15T01:30:00Z' }),
     it('x2', '2026-10-14T01:00:00Z', { posted_tiktok_photo: '2026-10-14T23:59:00Z' }),   // tegnap
     it('n1', '2026-10-15T02:00:00Z'), it('n2', '2026-10-15T03:00:00Z'), it('n3', '2026-10-15T04:00:00Z')
   ];
   assert.equal(maiMarkaDb(mind, 'posted_tiktok_photo', MOST), 1);
-  const r = tiktokFotoSor(mind, { now: MOST, keret: 6 });
-  assert.equal(r.hely, 1, 'futásonként legfeljebb 1 (review I3)');
-  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: 6, futasMax: 5 }).hely, 2, '3 - 1 mai = 2 hely, ha a futásonkénti max nem szűkít');
+  const r = tiktokFotoSor(mind, { now: MOST, keret: 12 });
+  assert.equal(r.hely, 4, 'futásonként legfeljebb 4');
+  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: 12, futasMax: 20 }).hely, 8, '9 - 1 mai = 8 hely, ha a futásonkénti max nem szűkít');
   assert.equal(r.sor.length, 3, 'a jelöltek listája teljes (a kép-ellenőrzés a hívónál szűr)');
 });
 
@@ -79,8 +79,8 @@ t('a csatorna maradék kerete is korlátoz; 0 / ismeretlen keret → 0 hely', ()
   for (const rossz of [null, undefined, NaN, -1]) {
     assert.equal(tiktokFotoSor(mind, { now: MOST, keret: rossz }).hely, 0, '🔒 keret=' + rossz);
   }
-  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: Infinity, futasMax: 5 }).hely, 3, 'plafon nélkül a napi 3 marad');
-  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: Infinity }).hely, 1, 'alapból futásonként 1');
+  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: Infinity, futasMax: 20 }).hely, 9, 'plafon nélkül a napi 9 marad');
+  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: Infinity }).hely, 4, 'alapból futásonként 4');
 });
 
 t('hibás bemenetre üres, nem borul', () => {
@@ -130,9 +130,13 @@ t('🔌 poszter: a „CSAK videó" kommentek nem hazudnak többé', () => {
 
 // ── 10-15 javítás: I1 — a fotó CSAK hírből; ugyanaz a cikk nem megy videóként ÉS fotóként ──
 
-t('🔴 I1/a: a friss, FB-n kint lévő ÚTMUTATÓ soha nem fotó-jelölt (az videóként megy)', () => {
-  const r = tiktokFotoSor([{ ...it('utmutato', '2026-10-15T05:00:00Z'), isGuide: true }], { now: MOST, keret: 6 });
-  assert.deepEqual(slugok(r), []);
+t('🔴 I1/a (11-10 óta): a Facebookra FOTÓKÉNT kiment útmutató is fotó-jelölt; a csak Reelként kiment nem', () => {
+  // A Reel a LEGRÉGEBBI videó nélküli útmutatót viszi → a mai útmutató napokig nem jutott TikTokra.
+  const r = tiktokFotoSor([
+    { ...it('fb-foto-utmutato', '2026-10-15T05:00:00Z'), isGuide: true },
+    { ...it('csak-reel-utmutato', '2026-10-15T04:00:00Z', { posted_at: undefined }), isGuide: true }
+  ], { now: MOST, keret: 6 });
+  assert.deepEqual(slugok(r), ['fb-foto-utmutato']);
 });
 
 t('🔴 I1/b: a futásban videóként már kiment cikk (kizar) soha nem fotó-jelölt', () => {
@@ -140,13 +144,13 @@ t('🔴 I1/b: a futásban videóként már kiment cikk (kizar) soha nem fotó-je
   assert.deepEqual(slugok(r), []);
 });
 
-t('I1/c: a friss, FB-n kint lévő HÍR viszont jelölt (a szűrő nem dob ki mindent)', () => {
+t('I1/c: a hír és az FB-fotós útmutató jelölt, a futásban videózott nem (a szűrő nem dob ki mindent)', () => {
   const r = tiktokFotoSor([
     it('hir', '2026-10-15T01:00:00Z'),
     { ...it('utmutato', '2026-10-15T05:00:00Z'), isGuide: true },
     it('videozott', '2026-10-15T02:00:00Z')
   ], { now: MOST, keret: 6, kizar: new Set(['videozott.json']) });
-  assert.deepEqual(slugok(r), ['hir']);
+  assert.deepEqual(slugok(r), ['hir', 'utmutato']);
 });
 
 // ── I2: a jelölés mindig a FRISS fájlba megy ──
@@ -181,10 +185,14 @@ t('🔌 poszter: minden jelölés a friss-fájlos jelolMezo-n megy, és a fotó 
   assert.match(src, /video: maiMarkaDb\(/, '🔴 a riport nem kapja külön a videó-számot');
 });
 
-t('I3: futásonként legfeljebb 1 fotó (alapérték), a napi 3 így több futásra oszlik', () => {
-  assert.equal(FOTO_FUTASONKENT_MAX, 1);
-  const mind = [it('a', '2026-10-15T01:00:00Z'), it('b', '2026-10-15T02:00:00Z'), it('c', '2026-10-15T03:00:00Z')];
-  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: 6 }).hely, 1);
+t('I3: futásonként legfeljebb 4 fotó (11-10: 1 → 4), a nap így 2–3 futásra oszlik', () => {
+  assert.equal(FOTO_FUTASONKENT_MAX, 4);
+  const mind = ['01', '02', '03', '04', '05', '06'].map(h => it('c' + h, `2026-10-15T${h}:00:00Z`));
+  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: 12 }).hely, 4);
+  assert.equal(tiktokFotoSor(mind, { now: MOST, keret: 2 }).hely, 2, 'a csatorna maradék kerete szűkít');
+  const cfg = JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8'));
+  assert.equal(cfg.limits.social_daily_caps.tiktok, 12, '🔴 a TikTok napi plafonja nem 3 videó + 9 fotó');
+  assert.equal(cfg.limits.social_daily_caps.tiktok, 3 + FOTO_NAPI_MAX, 'a plafon és a fotó-max szétcsúszott');
   assert.equal(tiktokFotoSor(mind, { now: MOST, keret: 0 }).hely, 0, 'a keret továbbra is zár');
 });
 

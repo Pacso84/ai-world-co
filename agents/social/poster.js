@@ -23,7 +23,7 @@ import 'dotenv/config';
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { selectSocialBatch } from '../../core/social-queue.js';
+import { selectSocialBatch, aznapiKeret } from '../../core/social-queue.js';
 import { followCta, stripUrl, AI_JELOLES } from '../../core/social-text.js';
 import { postsPerRun, usedThisMonth, MONTHLY_CAP } from '../../core/make-budget.js';
 // A SOR KÖZÖS DÖNTÉSE (2026-09-12): melyik poszt melyik élő cikkhez tartozik,
@@ -137,11 +137,16 @@ async function main() {
   // a Facebook-poszt ÉS a Facebook Reel (core/make-budget.js → SHARED_SCENARIOS).
   const MA = new Date().toISOString().slice(0, 10);
   const elhasznalt = DRY ? null : await usedThisMonth({ token: process.env.MAKE_API_TOKEN, day: MA });
-  const limit = postsPerRun({ used: elhasznalt, day: MA, defaultLimit: LIMIT });
-  if (limit !== LIMIT) {
+  // AMI AZNAP KÉSZÜLT, MIND MENJEN KI (2026-11-10, user): a `--limit` csak alsó határ — ha több mai/
+  // tegnapi cikk vár, annyi megy (legfeljebb 8/futás). A Make-őr (postsPerRun) ezután is fékezhet.
+  const NOW = Date.now();
+  const kert = aznapiKeret({ items: queue, alap: LIMIT, now: NOW });
+  if (kert !== LIMIT) console.log(`   📅 ${kert} mai/tegnapi cikk vár → ${LIMIT} helyett ${kert} a kérés`);
+  const limit = postsPerRun({ used: elhasznalt, day: MA, defaultLimit: kert });
+  if (limit !== kert) {
     console.log(elhasznalt === null
-      ? `   ⚙️  Make-keret: ismeretlen — maradok a teljes tempón (${LIMIT})`
-      : `   🚦 Make-keret (FB-poszt + Reel): ${elhasznalt}/${MONTHLY_CAP} elhasználva ebben a hónapban → ${LIMIT} helyett ${limit} poszt megy ki`);
+      ? `   ⚙️  Make-keret: ismeretlen — maradok a teljes tempón (${kert})`
+      : `   🚦 Make-keret (FB-poszt + Reel): ${elhasznalt}/${MONTHLY_CAP} elhasználva ebben a hónapban → ${kert} helyett ${limit} poszt megy ki`);
   }
   if (limit === 0) {
     console.log('   ⛔ A havi Make-keret elfogyott — NEM küldök, mert a poszt némán elveszne.');
@@ -149,7 +154,8 @@ async function main() {
   }
   // 2026-09-27 (user): a Facebookra CSAK a friss megy — a régi útmutatók helyét a
   // Reel vette át (idegeneknek is ajánlja, és 2 művelet a 3 helyett).
-  const batch = selectSocialBatch(queue, limit, { csakFriss: true });
+  // 11-10: a mai + tegnapi cikkek ELŐL, a legrégebbitől (a hajnali cikk ne éhezzen ki — core/social-queue.js).
+  const batch = selectSocialBatch(queue, limit, { csakFriss: true, now: NOW });
   const evergreenWaiting = queue.filter(x => !x.isFresh && x.isGuide).length;
   const nEver = batch.filter(x => !x.isFresh).length;
   console.log(`   📋 Sorban: ${queue.length} (ebből örökzöld útmutató: ${evergreenWaiting}) | most kiküldendő: ${batch.length} (${batch.length - nEver} friss + ${nEver} örökzöld)${DRY ? ' (PRÓBA — nem küldöm)' : ''}\n`);
