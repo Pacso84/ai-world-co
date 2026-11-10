@@ -20,7 +20,7 @@
     {
       "id": "m1781992865694902",
       "scope": "iro",
-      "text": "MISSING_SECTION",
+      "text": "A required section was missing (\"What this means for you\" / wrap-up). The reader must always leave with a next step.",
       "tags": [
         "rejection",
         "lesson"
@@ -120,7 +120,7 @@
     {
       "id": "m1782244969125654",
       "scope": "iro",
-      "text": "NO_H1",
+      "text": "The article had no H1 title line.",
       "tags": [
         "rejection",
         "lesson",
@@ -150,7 +150,7 @@
     {
       "id": "m1782905418090948",
       "scope": "iro",
-      "text": "CLICHE",
+      "text": "A banned cliche appeared (\"game changer\", \"in today's fast-paced world\", …). Say the specific thing that actually happened instead.",
       "tags": [
         "rejection",
         "lesson",
@@ -424,23 +424,6 @@
       "tier": "cold"
     },
     {
-      "id": "m1783108778396282",
-      "scope": "guide",
-      "text": "MISSING_SECTION",
-      "tags": [
-        "rejection",
-        "lesson",
-        "guide"
-      ],
-      "created": "2026-07-03T19:59:38.396Z",
-      "lastAccessed": "2026-08-12T01:18:04.058Z",
-      "accessCount": 14,
-      "salience": 0.05,
-      "tier": "cold",
-      "repeats": 2,
-      "lastRepeat": "2026-08-12T01:18:04.058Z"
-    },
-    {
       "id": "m1783108779415681",
       "scope": "guide",
       "text": "Step 2 UI label vague",
@@ -527,38 +510,6 @@
       "created": "2026-07-03T20:04:42.167Z",
       "lastAccessed": "2026-07-03T20:04:42.167Z",
       "accessCount": 0,
-      "salience": 0.05,
-      "tier": "cold"
-    },
-    {
-      "id": "m1783109235490207",
-      "scope": "guide",
-      "text": "GUIDE_TOO_SHORT",
-      "tags": [
-        "rejection",
-        "lesson",
-        "guide"
-      ],
-      "created": "2026-07-03T20:07:15.490Z",
-      "lastAccessed": "2026-08-12T01:18:04.060Z",
-      "accessCount": 135,
-      "salience": 0.05,
-      "tier": "cold",
-      "repeats": 2,
-      "lastRepeat": "2026-08-12T01:18:04.060Z"
-    },
-    {
-      "id": "m1783109235528985",
-      "scope": "guide",
-      "text": "TOO_SHORT",
-      "tags": [
-        "rejection",
-        "lesson",
-        "guide"
-      ],
-      "created": "2026-07-03T20:07:15.528Z",
-      "lastAccessed": "2026-07-03T20:07:22.501Z",
-      "accessCount": 1,
       "salience": 0.05,
       "tier": "cold"
     },
@@ -1074,23 +1025,6 @@
       "tier": "cold"
     },
     {
-      "id": "m1784165675223633",
-      "scope": "guide",
-      "text": "NO_H1",
-      "tags": [
-        "rejection",
-        "lesson",
-        "guide"
-      ],
-      "created": "2026-07-16T01:34:35.223Z",
-      "lastAccessed": "2026-07-21T01:35:42.262Z",
-      "accessCount": 11,
-      "salience": 0.05,
-      "tier": "cold",
-      "repeats": 8,
-      "lastRepeat": "2026-07-21T01:35:42.262Z"
-    },
-    {
       "id": "m1784195750380197",
       "scope": "shared",
       "text": "Főnöki döntés tanulsága: Always reconcile the article title/subtitle/metadata with the actual body before publication — mismatched frontmatter is a common cause of rework loops.",
@@ -1130,7 +1064,7 @@
     {
       "id": "m1784221547596448",
       "scope": "iro",
-      "text": "TOO_SHORT",
+      "text": "The article was too short to be useful. Add a concrete example or a worked-through case, not filler.",
       "tags": [
         "rejection",
         "lesson",
@@ -1578,23 +1512,6 @@
       "tier": "cold"
     },
     {
-      "id": "m1784338119621664",
-      "scope": "guide",
-      "text": "NO_FRONTMATTER",
-      "tags": [
-        "rejection",
-        "lesson",
-        "guide"
-      ],
-      "created": "2026-07-18T01:28:39.621Z",
-      "lastAccessed": "2026-07-19T01:36:03.283Z",
-      "accessCount": 1,
-      "salience": 0.05,
-      "tier": "cold",
-      "repeats": 1,
-      "lastRepeat": "2026-07-19T01:36:03.283Z"
-    },
-    {
       "id": "m1784366103765962",
       "scope": "shared",
       "text": "Főnöki döntés: \"OpenAI GPT-5.6 Sol, Terra, and Luna are now genera\" 2 főnöki kör után sem ment át — az ilyen témához korábban kell jobb forrást választani.",
@@ -1699,7 +1616,7 @@
     {
       "id": "m1784402674015891",
       "scope": "iro",
-      "text": "MISSING_FIELD",
+      "text": "A required frontmatter field was missing. Start the article with the complete YAML frontmatter block and fill in every field the template lists.",
       "tags": [
         "rejection",
         "lesson",
@@ -2581,23 +2498,6 @@
       "accessCount": 0,
       "salience": 0.05,
       "tier": "cold"
-    },
-    {
-      "id": "m1784715930414675",
-      "scope": "iro",
-      "text": "NO_FRONTMATTER",
-      "tags": [
-        "rejection",
-        "lesson",
-        "article"
-      ],
-      "created": "2026-07-22T10:25:30.414Z",
-      "lastAccessed": "2026-07-24T17:34:37.941Z",
-      "accessCount": 11,
-      "salience": 0.05,
-      "tier": "cold",
-      "repeats": 11,
-      "lastRepeat": "2026-07-24T17:34:37.941Z"
     },
     {
       "id": "m178471595458918",
@@ -5041,7 +4941,7 @@
     {
       "id": "m1785722609723181",
       "scope": "iro",
-      "text": "LEDE_TOO_LONG",
+      "text": "The \"In short\" box right under the title was too long. Keep it to one or two sentences, 45 words at most, that answer the title directly. Move every extra detail, caveat and list into the body below the box.",
       "tags": [
         "rejection",
         "lesson",
@@ -5092,21 +4992,6 @@
       "tags": [],
       "created": "2026-08-03T02:03:36.776Z",
       "lastAccessed": "2026-08-03T02:03:36.776Z",
-      "accessCount": 0,
-      "salience": 0.05,
-      "tier": "cold"
-    },
-    {
-      "id": "m178572273282469",
-      "scope": "iro",
-      "text": "HOWTO_NO_STEPS",
-      "tags": [
-        "rejection",
-        "lesson",
-        "article"
-      ],
-      "created": "2026-08-03T02:05:32.824Z",
-      "lastAccessed": "2026-08-03T02:05:32.824Z",
       "accessCount": 0,
       "salience": 0.05,
       "tier": "cold"
@@ -5256,21 +5141,6 @@
       "tags": [],
       "created": "2026-08-03T05:51:35.686Z",
       "lastAccessed": "2026-08-03T05:51:35.686Z",
-      "accessCount": 0,
-      "salience": 0.05,
-      "tier": "cold"
-    },
-    {
-      "id": "m1785807037157169",
-      "scope": "guide",
-      "text": "BRITISH_SPELLING_NAME",
-      "tags": [
-        "rejection",
-        "lesson",
-        "guide"
-      ],
-      "created": "2026-08-04T01:30:37.157Z",
-      "lastAccessed": "2026-08-04T01:30:37.157Z",
       "accessCount": 0,
       "salience": 0.05,
       "tier": "cold"
@@ -6049,7 +5919,7 @@
     {
       "id": "m1786841341480278",
       "scope": "guide",
-      "text": "LEDE_TOO_LONG",
+      "text": "The \"In short\" box right under the title was too long. Keep it to one or two sentences, 45 words at most, that answer the title directly. Move every extra detail, caveat and list into the body below the box.",
       "tags": [
         "rejection",
         "lesson",
@@ -6219,7 +6089,7 @@
     {
       "id": "m1786868171150661",
       "scope": "iro",
-      "text": "NO_LEDE",
+      "text": "The \"In short\" box was missing. Directly under the H1 title, before any other paragraph, write a blockquote line starting with \"> **In short:**\" — one or two sentences (45 words at most) that answer the title.",
       "tags": [
         "rejection",
         "lesson",
@@ -6364,7 +6234,7 @@
         "lesson",
         "guide"
       ],
-      "created": "2026-08-17T00:46:19.866Z",
+      "created": "2026-08-04T01:30:37.157Z",
       "lastAccessed": "2026-09-18T02:19:11.435Z",
       "accessCount": 2,
       "salience": 0.05,
@@ -6465,11 +6335,13 @@
         "lesson",
         "guide"
       ],
-      "created": "2026-08-18T00:56:35.442Z",
+      "created": "2026-07-03T19:59:38.396Z",
       "lastAccessed": "2026-08-18T00:56:35.442Z",
-      "accessCount": 0,
+      "accessCount": 14,
       "salience": 0.05,
-      "tier": "cold"
+      "tier": "cold",
+      "repeats": 2,
+      "lastRepeat": "2026-08-12T01:18:04.058Z"
     },
     {
       "id": "m178701459544496",
@@ -6480,11 +6352,13 @@
         "lesson",
         "guide"
       ],
-      "created": "2026-08-18T00:56:35.444Z",
+      "created": "2026-07-16T01:34:35.223Z",
       "lastAccessed": "2026-08-18T00:56:35.444Z",
-      "accessCount": 0,
+      "accessCount": 11,
       "salience": 0.05,
-      "tier": "cold"
+      "tier": "cold",
+      "repeats": 8,
+      "lastRepeat": "2026-07-21T01:35:42.262Z"
     },
     {
       "id": "m1787014595446330",
@@ -6495,11 +6369,12 @@
         "lesson",
         "guide"
       ],
-      "created": "2026-08-18T00:56:35.446Z",
+      "created": "2026-07-03T20:07:15.528Z",
       "lastAccessed": "2026-08-18T00:56:35.446Z",
-      "accessCount": 0,
+      "accessCount": 1,
       "salience": 0.05,
-      "tier": "cold"
+      "tier": "cold",
+      "repeats": 0
     },
     {
       "id": "m1787014595448671",
@@ -6510,11 +6385,13 @@
         "lesson",
         "guide"
       ],
-      "created": "2026-08-18T00:56:35.448Z",
+      "created": "2026-07-03T20:07:15.490Z",
       "lastAccessed": "2026-08-18T00:56:35.448Z",
-      "accessCount": 0,
+      "accessCount": 135,
       "salience": 0.05,
-      "tier": "cold"
+      "tier": "cold",
+      "repeats": 2,
+      "lastRepeat": "2026-08-12T01:18:04.060Z"
     },
     {
       "id": "m1787014658236595",
@@ -7355,11 +7232,13 @@
         "lesson",
         "guide"
       ],
-      "created": "2026-08-26T01:03:38.399Z",
+      "created": "2026-07-18T01:28:39.621Z",
       "lastAccessed": "2026-08-26T01:03:38.399Z",
-      "accessCount": 0,
+      "accessCount": 1,
       "salience": 0.05,
-      "tier": "cold"
+      "tier": "cold",
+      "repeats": 1,
+      "lastRepeat": "2026-07-19T01:36:03.283Z"
     },
     {
       "id": "m1787706240127706",
@@ -7617,11 +7496,13 @@
         "lesson",
         "article"
       ],
-      "created": "2026-08-28T08:08:21.321Z",
+      "created": "2026-07-22T10:25:30.414Z",
       "lastAccessed": "2026-08-28T08:08:21.321Z",
-      "accessCount": 0,
+      "accessCount": 11,
       "salience": 0.05,
-      "tier": "cold"
+      "tier": "cold",
+      "repeats": 11,
+      "lastRepeat": "2026-07-24T17:34:37.941Z"
     },
     {
       "id": "m1787905249196545",
@@ -10534,7 +10415,7 @@
         "lesson",
         "article"
       ],
-      "created": "2026-10-02T03:19:46.246Z",
+      "created": "2026-08-03T02:05:32.824Z",
       "lastAccessed": "2026-10-17T02:08:46.075Z",
       "accessCount": 5,
       "salience": 0.05,

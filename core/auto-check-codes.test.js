@@ -12,8 +12,9 @@
 // ===================================================================
 
 import assert from 'assert/strict';
+import { readFileSync } from 'node:fs';
 import {
-  BLOCKING_CODES, issueCode, isBlocking, blockingIssues, advisoryIssues, lessonFor
+  BLOCKING_CODES, issueCode, isBlocking, blockingIssues, advisoryIssues, lessonFor, leckeNevHu
 } from './auto-check-codes.js';
 import { HOWTO_RANGE } from './article-length.js';
 
@@ -94,6 +95,20 @@ t('🔗 a hossz-lecke a core/article-length.js-ből veszi a célt', () => {
 
 t('ismeretlen kódra a régi viselkedés marad (semmi nem vész el)', () => {
   assert.equal(lessonFor('VALAMI_UJ_KOD: részletek'), 'VALAMI_UJ_KOD');
+});
+
+t('🔒 az Ellenőrző MINDEN jelzéskódjához van lecke-szöveg és magyar név (2026-11-10)', () => {
+  // A LEDE_TOO_LONG 07-29 óta élt lecke nélkül: az író a puszta kódot kapta, a hiba 20× ismétlődött.
+  // A kódokat a VALÓDI forrásból olvassuk — új jelzés lecke nélkül itt bukik el.
+  const src = readFileSync(new URL('../agents/ellenorzo/agent.js', import.meta.url), 'utf-8');
+  const kodok = [...new Set([...src.matchAll(/issues\.push\(\s*[`'"]([A-Z][A-Z0-9_]{3,}):/g)].map(m => m[1]))];
+  assert.ok(kodok.length >= 15, 'a kód-kereső elromlott: csak ' + kodok.length + ' kódot talált');
+  assert.ok(kodok.includes('LEDE_TOO_LONG') && kodok.includes('NO_LEDE'));
+  for (const kod of kodok) {
+    assert.notEqual(lessonFor(kod + ': x'), kod, kod + ' lecke nélkül maradt — az író a puszta kódot kapná');
+    assert.ok(leckeNevHu(kod), kod + ': nincs magyar neve a Telegram-riporthoz');
+    assert.equal(leckeNevHu(lessonFor(kod + ': x')), leckeNevHu(kod), kod + ': a lecke-szövegből is megvan a magyar név');
+  }
 });
 
 t('minden blokkoló kódhoz van lecke-szöveg', () => {

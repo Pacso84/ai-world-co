@@ -3,6 +3,7 @@
 // ===================================================================
 import { szortToldalek } from './szort-robot.js';
 import { utmutatoE } from './guide-kind.js';
+import { leckeNevHu } from './auto-check-codes.js';
 //
 // User-jelzés (2026-08-06): "ne küldjön valótlan adatokat".
 //
@@ -60,6 +61,24 @@ const dayDiff = (fromIso, toIso) => {
  * @param {number} types     hány TÍPUS ismétlődött ma
  * @param {string} today     'YYYY-MM-DD'
  */
+/**
+ * SŰRŰ-e a ma ismétlődött hibák legrosszabbika (heti ütem ≥ küszöb)?
+ *
+ * 2026-11-10 (user: „mindig írja, hogy makacs hiba!”): a ♻️ sor MINDEN nap
+ * kiment, ha bármelyik régi lecke aznap újra előjött — a napok többségén
+ * olyan ritka esetért (20× 86 nap alatt), amit a minőségkapu magától kezel,
+ * és amivel a usernek nincs teendője. A zajszűrés elve (08-28: „csak ha
+ * VÁLTOZIK / teendő van”) szerint a Telegramba csak a SŰRŰ eset megy; a ritka
+ * a CI-naplóban marad. A daily-report.js ezzel a függvénnyel dönt.
+ */
+export function ismetlesSuru(repeated, today) {
+  if (!repeated || !repeated.length) return false;
+  return repeated.some(l => {
+    const days = dayDiff(l.created, today);
+    return days ? ((l.repeats || 0) / days) * 7 >= REPEAT_URGENT_PER_WEEK : false;
+  });
+}
+
 export function describeRepeat(repeated, types, today) {
   if (!repeated || !repeated.length) return null;
   const worst = [...repeated].sort((a, b) => (b.repeats || 0) - (a.repeats || 0))[0];
@@ -68,8 +87,13 @@ export function describeRepeat(repeated, types, today) {
   const span = days ? ` ${days} nap alatt` : '';
   const perWeek = days ? (n / days) * 7 : 0;
 
+  // 2026-11-10 (user: „mindig írja, hogy makacs hiba!”): a sor a puszta kódot
+  // vagy egy angol mondat első 60 betűjét írta ki („[guide] LEDE_TOO_LONG…”),
+  // amiből a user semmit nem értett. Most a hiba MAGYAR neve megy ki.
+  const SZEREP = { guide: 'útmutató-író', iro: 'hírszerkesztő', translator: 'fordító', shared: 'közös' };
+  const nev = leckeNevHu(worst.text) || String(worst.text || '').slice(0, 60) + '…';
   const head = `♻️ Ismétlődő hiba: ${types} típus ma`
-    + ` (legmakacsabb: [${worst.scope || '?'}] ${String(worst.text || '').slice(0, 60)}…`
+    + ` (leggyakoribb: ${nev} [${SZEREP[worst.scope] || worst.scope || '?'}]`
     + ` — ${n}×${span})`;
 
   // Sürgetni csak akkor, ha tényleg sűrű. Enélkül minden nap riasztana

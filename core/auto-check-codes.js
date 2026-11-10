@@ -152,6 +152,24 @@ const LESSON_TEXT = Object.freeze({
   MISSING_SECTION:
     'A required section was missing ("What this means for you" / wrap-up). '
     + 'The reader must always leave with a next step.',
+  // ---------------------------------------------------------------
+  // 2026-11-10 — NÉGY KÓD LECKE NÉLKÜL MARADT (user: „mindig írja, hogy makacs hiba!”).
+  // A LEDE_TOO_LONG / NO_LEDE 07-29 óta él, de ide soha nem került szövege →
+  // az író a puszta kódot kapta „leckének” (semmit nem tanít), és a hiba
+  // 20× / 16× ismétlődött. Az őr: auto-check-codes.test.js „MINDEN jelzéskódjához”.
+  // ---------------------------------------------------------------
+  LEDE_TOO_LONG:
+    'The "In short" box right under the title was too long. Keep it to one or two sentences, 45 words at most, '
+    + 'that answer the title directly. Move every extra detail, caveat and list into the body below the box.',
+  NO_LEDE:
+    'The "In short" box was missing. Directly under the H1 title, before any other paragraph, write a blockquote '
+    + 'line starting with "> **In short:**" — one or two sentences (45 words at most) that answer the title.',
+  LOCAL_URL:
+    'A local or private address (localhost, 127.0.0.1 …) was written as a live link. '
+    + 'Put example addresses in backticks as plain code, never as a clickable link.',
+  MISSING_FIELD:
+    'A required frontmatter field was missing. Start the article with the complete YAML frontmatter block '
+    + 'and fill in every field the template lists.',
   NO_H1: 'The article had no H1 title line.',
   NO_FRONTMATTER: 'The article did not start with YAML frontmatter.'
 });
@@ -164,6 +182,46 @@ export function lessonFor(issue) {
   const code = issueCode(issue);
   return LESSON_TEXT[code] || code;
 }
+
+/**
+ * A jelzéskódok MAGYAR neve — a napi Telegram-riporthoz (a user nem olvas
+ * angolul, és a kód neki semmit nem mond).
+ */
+const HU_NEV = Object.freeze({
+  LEDE_TOO_LONG: 'túl hosszú a „Röviden” doboz',
+  NO_LEDE: 'hiányzik a „Röviden” doboz',
+  HOWTO_TOO_LONG: 'túl hosszú útmutató',
+  HOWTO_TOO_THIN: 'túl vékony útmutató',
+  HOWTO_NO_STEPS: 'az útmutató nincs lépésekre bontva',
+  OPENING_REPETITIVE: 'egyforma cikk-kezdések',
+  UI_CLAIMS_UNSOURCED: 'forrás nélkül leírt gomb- és menünevek',
+  SCREEN_TEXT_QUOTED: 'forrás nélkül idézett képernyő-szöveg',
+  PRICE_CLAIM_UNSOURCED: 'ár az útmutatóban',
+  PRICE_IN_ARTICLE: 'ár a cikkben',
+  KNOWN_FALSE_CLAIM: 'ismert, cáfolt állítás',
+  ACCESS_NOT_SELF_SERVE: 'céges hozzáférést igénylő eszköz',
+  TOO_SHORT: 'túl rövid cikk',
+  TOO_LONG: 'túl hosszú cikk',
+  CLICHE: 'közhely a szövegben',
+  BRITISH_SPELLING_NAME: 'brit helyesírás',
+  GUIDE_TOO_SHORT: 'túl rövid útmutató',
+  MISSING_SECTION: 'hiányzó kötelező szakasz',
+  MISSING_FIELD: 'hiányzó fejléc-mező',
+  LOCAL_URL: 'helyi cím élő linkként',
+  NO_H1: 'hiányzó főcím',
+  NO_FRONTMATTER: 'hiányzó fejléc'
+});
+
+/** Egy lecke (szövege VAGY puszta kódja) magyar neve — vagy null, ha nem auto-kapu lecke. */
+export function leckeNevHu(text) {
+  const s = String(text == null ? '' : text).trim();
+  if (HU_NEV[s]) return HU_NEV[s];
+  for (const [kod, szoveg] of Object.entries(LESSON_TEXT)) if (szoveg === s) return HU_NEV[kod] || null;
+  return null;
+}
+
+/** Minden kód, amihez van lecke-szöveg (a tár-költöztetéshez és a teszthez). */
+export const LECKES_KODOK = Object.freeze(Object.keys(LESSON_TEXT));
 
 export default {
   BLOCKING_CODES, issueCode, isBlocking, blockingIssues, advisoryIssues, lessonFor

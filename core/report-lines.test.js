@@ -10,7 +10,7 @@
 
 import assert from 'assert/strict';
 import {
-  describePosts, describeRepeat, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine, zaroSor, hibaSorok
+  describePosts, describeRepeat, ismetlesSuru, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine, zaroSor, hibaSorok
 } from './report-lines.js';
 import { readFileSync } from 'fs';
 
@@ -88,6 +88,24 @@ t('a küszöb a HETI ütem, nem a nyers darabszám', () => {
   const suru = describeRepeat([lesson(30, 21)], 1, '2026-08-06');    // 3 hét alatt 30 = heti 10
   assert.ok(!/kemény szabály/.test(ritka), 'a nagy szám önmagában nem sürgős');
   assert.match(suru, /kemény szabály/);
+});
+
+t('🔇 2026-11-10: a RITKA ismétlés nem megy a Telegramba, a SŰRŰ igen', () => {
+  // A valódi eset: LEDE_TOO_LONG, 20× 86 nap alatt (heti 1,6) — a user minden nap látta.
+  assert.equal(ismetlesSuru([lesson(20, 86)], '2026-08-06'), false, 'heti 1,6 nem riasztás');
+  assert.equal(ismetlesSuru([lesson(12, 7)], '2026-08-06'), true, 'heti 12 igen');
+  assert.equal(ismetlesSuru([lesson(20, 86), lesson(12, 7)], '2026-08-06'), true, 'ha BÁRMELYIK sűrű, szólunk');
+  assert.equal(ismetlesSuru([], '2026-08-06'), false);
+  const dr = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
+  assert.ok(dr.includes('if (repLine && ismetlesSuru(rep, today())) lines.push(repLine);'), 'a napi jelentés a sűrűség szerint dönt');
+});
+
+t('🇭🇺 2026-11-10: a sor a hiba MAGYAR nevét írja, nem a kódot', () => {
+  const l = { ...lesson(12, 7), text: 'LEDE_TOO_LONG' };
+  const s = describeRepeat([l], 1, '2026-08-06');
+  assert.match(s, /túl hosszú a „Röviden” doboz/);
+  assert.ok(!/LEDE_TOO_LONG/.test(s), 'a puszta kód a usernek semmit nem mond');
+  assert.match(s, /útmutató-író/);
 });
 
 t('nincs ismétlés → nincs sor', () => {

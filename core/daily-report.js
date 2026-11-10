@@ -27,7 +27,7 @@ import { summarizeRuns, describeFailures } from './make-health.js';
 // A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
 // összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
 import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
-import { describePosts, describeRepeat, describeTranslationGaps, mergeLine, termekHirLine,huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor } from './report-lines.js';
+import { describePosts, describeRepeat, ismetlesSuru, describeTranslationGaps, mergeLine, termekHirLine,huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
@@ -1129,7 +1129,10 @@ async function main() {
     // kimegy, a sürgetés pedig heti ütemhez kötött.
     const rep = (store.items || []).filter(it => (it.lastRepeat || '').startsWith(today()));
     const repLine = describeRepeat(rep, rep.length, today());
-    if (repLine) lines.push(repLine);
+    // 2026-11-10 (user: „mindig írja, hogy makacs hiba!”): a Telegramba CSAK a sűrű
+    // (heti 3+) ismétlés megy — azzal van teendő. A ritka a CI-naplóban marad.
+    if (repLine && ismetlesSuru(rep, today())) lines.push(repLine);
+    else if (repLine) console.log('🔇 ritka ismétlés, nem megy a riportba: ' + repLine);
   } catch { /* könyv nélkül is megy */ }
   // ── ZAJSZŰRÉS (2026-08-28, user-döntés: „csak ha VÁLTOZIK") ────────
   // A user panasza: „kapok napi jelentést, de amit küld, az nem releváns."
