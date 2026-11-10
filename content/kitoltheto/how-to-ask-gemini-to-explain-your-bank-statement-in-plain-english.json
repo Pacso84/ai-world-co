@@ -1,6 +1,6 @@
 {
   "slug": "how-to-ask-gemini-to-explain-your-bank-statement-in-plain-english",
-  "keszult": "2026-10-31T14:05:38.260Z",
+  "keszult": "2026-11-10T21:41:41.053Z",
   "promptok": {
     "f97835397df8": [
       {
@@ -29,6 +29,68 @@
       {
         "eredeti": "$12",
         "hely": "your fee amount"
+      }
+    ]
+  },
+  "promptok_hu": {
+    "1eba05ea7b3f": [
+      {
+        "eredeti": "3 oldal",
+        "hely": "a kivonatod oldalszáma"
+      }
+    ],
+    "40c199e392a1": [
+      {
+        "eredeti": "novemberben",
+        "hely": "az elemzett hónap"
+      },
+      {
+        "eredeti": "200 szó",
+        "hely": "a válasz hossza"
+      }
+    ],
+    "818cb32824cd": [],
+    "19e13763645b": [
+      {
+        "eredeti": "közlekedés",
+        "hely": "egy másik kategória"
+      }
+    ],
+    "d322300f17a0": [
+      {
+        "eredeti": "12 dolláros havi díjat",
+        "hely": "a kérdéses díjad"
+      }
+    ]
+  },
+  "promptok_es": {
+    "8ce003004840": [
+      {
+        "eredeti": "3 páginas",
+        "hely": "cuántas páginas tiene"
+      }
+    ],
+    "747645403c27": [
+      {
+        "eredeti": "noviembre",
+        "hely": "el mes del estado"
+      },
+      {
+        "eredeti": "3 cosas",
+        "hely": "cuántas cosas"
+      }
+    ],
+    "f70027e3feb4": [],
+    "348d41e8236a": [
+      {
+        "eredeti": "comida",
+        "hely": "una categoría tuya"
+      }
+    ],
+    "62fd549796dc": [
+      {
+        "eredeti": "$12",
+        "hely": "el monto de la comisión"
       }
     ]
   }
