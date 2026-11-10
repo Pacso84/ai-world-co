@@ -1,0 +1,73 @@
+{
+  "_meta": {
+    "written_at": "2026-11-10T15:59:05.253Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0033919,
+    "original_draft": "2026-11-10T15-57-40-963Z_google-ai-blog_Google_Cloud_launches_Gemini_for_healthcare_.json",
+    "source_id": "google-ai-blog",
+    "source_name": "Google AI (hivatalos, blog.google)",
+    "source_link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-for-healthcare/",
+    "source_links": [
+      "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-for-healthcare/"
+    ],
+    "source_snippet_len": 139,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 1593,
+    "source_text_key": "79a44f04d27bee0f",
+    "source_overlap_words": 7,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": true,
+    "termek_extra": true,
+    "status": "published",
+    "published_at": "2026-11-10T15:59:38.470Z",
+    "slug": "google-cloud-launches-gemini-for-healthcare-to-cut-paperwork",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 640
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured article with clear explanations of technical terms (EHR, prior authorization, data connectors), proper attribution of claims to Google Cloud, and a useful What this means for you section covering four audience types. Fresh writing with no clichés and a practical wrap-up question for readers.",
+      "_aiCost": 0.00160314,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-10T15:59:43.521Z",
+    "guide_worthy": false,
+    "pairing_reason": "Product is in preview and aimed at healthcare organizations, not individual consumers - no concrete action for ordinary people",
+    "image_v": 2,
+    "image_at": "2026-11-10T16:00:09.254Z",
+    "seo": {
+      "meta_description": "Google Cloud's Gemini for Healthcare links medical records and admin systems to automate paperwork like prior authorization. In preview with HCA Healthcare.",
+      "keywords": [
+        "Gemini for Healthcare",
+        "Google Cloud healthcare AI",
+        "AI medical records automation",
+        "healthcare admin software",
+        "prior authorization AI",
+        "HCA Healthcare AI partnership"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add more specific use case details from the full article to strengthen the meta description",
+        "Include related terms like 'electronic health records integration' or 'clinical workflow AI' if covered in the article",
+        "Consider adding publication date to the metadata for freshness signals"
+      ],
+      "optimised_at": "2026-11-10T16:00:21.220Z"
+    },
+    "fact_verified_at": "2026-11-10T16:01:05.137Z"
+  },
+  "article_markdown": "---\ntitle: \"Google Cloud Launches Gemini for Healthcare to Cut Paperwork\"\nsubtitle: \"Google Cloud's new healthcare version of Gemini links scattered records and admin systems so staff can spend more time with patients.\"\ncategory: \"ai-news\"\naudience: \"business\"\nread_time_minutes: 3\ntags: [\"gemini\", \"healthcare\", \"google-cloud\", \"workflow-automation\", \"enterprise-ai\"]\n---\n\n# Google Cloud Launches Gemini for Healthcare to Cut Paperwork\n\n> **In short:** Google Cloud has launched Gemini for healthcare, an AI platform that connects a hospital's clinical, billing and administrative systems so it can carry out multi-step tasks such as summarizing medical records and reviewing prior authorization requests. It is in preview, with HCA Healthcare, Highmark Health and Northwell Health as launch partners.\n\nThink about the last time you waited weeks for an insurance approval, or how many forms a doctor's office handles in a single day. Behind many of those delays is a tangle of software systems that don't talk to each other. Google Cloud says its new product is designed to untangle that.\n\n## What the announcement says\n\nGoogle Cloud describes Gemini for healthcare as an AI solution built to bring together information that currently sits in separate places. Gemini is Google's family of AI models, the software that reads your request and generates a response.\n\nAccording to Google Cloud, clinicians lose close to 28 hours a week to paperwork and administrative tasks. The company argues that this workload contributes to burnout and strains budgets. Its goal is to free up that time for patient care.\n\nHere is how the platform is meant to work, in plain terms:\n\n- **Data connectors** are bridges between software. They let Gemini read information from systems a hospital already uses, such as electronic health records (EHRs, the digital charts that hold a patient's history), and billing platforms.\n- **Specialized skills** are prepared sets of instructions for specific jobs, so the AI knows how a particular task should be done.\n- **Reference data** includes clinical guidelines and Medicare datasets (government data on Medicare, the US health insurance program for older adults and some people with disabilities).\n\nGoogle Cloud says Gemini can combine this material to carry out complex, multi-step workflows. Two examples it gives are medical records synthesis (pulling a patient's scattered notes into one summary) and prior authorization review (checking whether a requested treatment meets an insurer's approval rules). Prior authorization means the insurer must approve a treatment before it goes ahead.\n\nGoogle Cloud stresses that these tasks run within defined guardrails (limits set by the organization) and with human oversight. A person stays in the loop.\n\n## What this means for you\n\n- **For healthcare administrators and operations leaders**: The announcement points to a clear question worth asking any vendor. Where does the AI get its data, who sets its limits, and where does a staff member review the output?\n- **For staff in offices and clinics**: Google Cloud describes the tool as a way to reduce back-office work. Any change in daily routines would depend on how each organization adopts it, so ask your management what is planned.\n- **For patients and families**: Nothing changes for you directly yet. The product is in preview, and it is aimed at healthcare organizations, not individuals.\n- **For vendors and technology teams**: Note the emphasis on connecting with existing third-party systems. Integration is often where projects succeed or stall.\n\n## Wrap-up\n\nGoogle Cloud's launch of Gemini for healthcare is about organizing information that already exists, not replacing clinicians. The company says the platform connects records, billing and guidelines, then handles multi-step tasks under human supervision. It is currently in preview, with three named launch partners. If you work in or around healthcare, read the official Google Cloud announcement and its linked blog post to see the details for yourself. Then ask your team one question today: which of our routine forms or approvals takes the longest?",
+  "original_title": "Google Cloud launches Gemini for healthcare."
+}

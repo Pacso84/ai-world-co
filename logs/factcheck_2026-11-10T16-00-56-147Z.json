@@ -1,0 +1,64 @@
+{
+  "ok": 3,
+  "fixed": 1,
+  "removed": 0,
+  "cost": 0.011151184999999997,
+  "at": "2026-11-10T16:00:56.147Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 1,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-10T15-57-40-963Z_google-ai-blog_Google_Cloud_launches_Gemini_for_healthcare_.json",
+      "cim": "Google Cloud launches Gemini for healthcare.",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrás összes fő állítását: helyesen említi, hogy a termék előzetes verzióban van, megnevezi a három induló partnert (HCA Healthcare, Highmark Health, Northwell Health), említi a ~28 órás adminisztratív időt, leírja az adatconnectorokat és a referenciaadatokat (klinikai irá"
+    },
+    {
+      "file": "ARTICLE_2026-11-09T17-59-31-276Z_ibm_Building_policy_enforcement_into_the_AI_stack_with.json",
+      "cim": "Building policy enforcement into the AI stack with Praxis",
+      "tipus": "hir",
+      "eredmeny": "javitva",
+      "ok_hu": "A forrás kifejezetten felsorolja az 'erőforrásokat' (resources) mint egyik szabályzat céltárgyat, amelyet a PPE kezel. Ez egy konkrét ténybeli elem, amelyet bele kell foglalni.",
+      "modell_hu": "The article omits 'resources' from the list of PPE policy targets. Source says: 'tools, prompts, resources, model calls, and other agents'. Article lists only: tools, prompts, model calls, other agents."
+    },
+    {
+      "file": "ARTICLE_2026-08-19T08-23-54-514Z_picsart_How_to_make_a_cartoon_of_yourself_with_AI_in_Picsa.json",
+      "cim": "How to make a cartoon of yourself with AI in Picsart Flow",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „Pick the video to get both the moving character and a watermark-free version of the cartoo”",
+      "modell_hu": "A forrás nem említ semmilyen fizetős csomagot, előfizetési követelményt vagy vízjelet. Csak annyit mond: 'Először általában be kell jelentkezned.'"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-make-a-moving-day-checklist-that-covers-everything-yo.json",
+      "cim": "How to make a moving day checklist that covers everything you will forget",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-15T02-18-20-785Z_xai-news_Model_Card__Grok_4_7_-_xAI.json",
+      "cim": "Model Card: Grok 4.7 - xAI",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-organize-a-chaotic-shared-family-calendar-in-one-afte.json",
+      "cim": "How to organize a chaotic shared family calendar in one afternoon",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}

@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179410763564869",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-08T03:13:55.648Z",
-      "updated": "2026-11-08T03:13:55.795Z"
-    },
-    {
-      "id": "t179410763579749",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-08T03:13:55.797Z",
-      "updated": "2026-11-08T03:14:21.038Z"
-    },
-    {
-      "id": "t179410766104082",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-08T03:14:21.040Z",
-      "updated": "2026-11-08T03:14:21.196Z"
-    },
-    {
-      "id": "t179410766123544",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-08T03:14:21.235Z",
-      "updated": "2026-11-08T03:15:28.336Z"
-    },
-    {
-      "id": "t17941077283375",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-08T03:15:28.337Z",
-      "updated": "2026-11-08T03:16:40.247Z"
-    },
-    {
-      "id": "t179410780024919",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-08T03:16:40.249Z",
-      "updated": "2026-11-08T03:17:03.017Z"
-    },
-    {
-      "id": "t179410782305280",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-08T03:17:03.052Z",
-      "updated": "2026-11-08T03:17:51.153Z"
-    },
-    {
-      "id": "t179410787115582",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-08T03:17:51.155Z",
-      "updated": "2026-11-08T03:18:55.581Z"
-    },
-    {
-      "id": "t179410793561635",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-08T03:18:55.616Z",
-      "updated": "2026-11-08T03:18:55.771Z"
-    },
-    {
-      "id": "t179410793577244",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-08T03:18:55.772Z",
-      "updated": "2026-11-08T03:18:55.929Z"
-    },
-    {
-      "id": "t179410793596711",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-08T03:18:55.967Z",
-      "updated": "2026-11-08T03:19:21.145Z"
-    },
-    {
-      "id": "t179410796114657",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-08T03:19:21.147Z",
-      "updated": "2026-11-08T03:19:37.903Z"
-    },
-    {
       "id": "t179410797793624",
       "title": "Run designer",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-11-10T05:19:46.939Z",
       "updated": "2026-11-10T05:20:07.767Z"
+    },
+    {
+      "id": "t179432622077543",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-10T15:57:00.775Z",
+      "updated": "2026-11-10T15:57:00.929Z"
+    },
+    {
+      "id": "t179432622093078",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-10T15:57:00.930Z",
+      "updated": "2026-11-10T15:57:47.719Z"
+    },
+    {
+      "id": "t179432626772143",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-10T15:57:47.721Z",
+      "updated": "2026-11-10T15:57:47.874Z"
+    },
+    {
+      "id": "t179432626791317",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-10T15:57:47.913Z",
+      "updated": "2026-11-10T15:59:05.272Z"
+    },
+    {
+      "id": "t179432634527396",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-10T15:59:05.274Z",
+      "updated": "2026-11-10T15:59:38.484Z"
+    },
+    {
+      "id": "t179432637848726",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-10T15:59:38.487Z",
+      "updated": "2026-11-10T15:59:43.534Z"
+    },
+    {
+      "id": "t179432638360289",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-10T15:59:43.602Z",
+      "updated": "2026-11-10T15:59:43.762Z"
+    },
+    {
+      "id": "t179432638376365",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-10T15:59:43.763Z",
+      "updated": "2026-11-10T15:59:43.921Z"
+    },
+    {
+      "id": "t179432638395674",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-10T15:59:43.956Z",
+      "updated": "2026-11-10T16:00:09.289Z"
+    },
+    {
+      "id": "t179432640929138",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-10T16:00:09.291Z",
+      "updated": "2026-11-10T16:00:21.272Z"
+    },
+    {
+      "id": "t179432642127459",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-10T16:00:21.274Z",
+      "updated": "2026-11-10T16:00:32.905Z"
+    },
+    {
+      "id": "t17943264329078",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-10T16:00:32.907Z",
+      "updated": "2026-11-10T16:00:55.140Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179333192690095",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-10-30T03:45:26.900Z",
-      "loud": false
-    },
-    {
-      "id": "n179333206739188",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „Fusion is generally available, and ",
-      "agent": "fact-check",
-      "at": "2026-10-30T03:47:47.391Z",
-      "loud": false
-    },
-    {
-      "id": "n179337156082331",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-10-30T14:46:00.823Z",
-      "loud": false
-    },
-    {
-      "id": "n179339142622290",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „The post shares what those students",
-      "agent": "fact-check",
-      "at": "2026-10-30T20:17:06.222Z",
-      "loud": false
-    },
     {
       "id": "n179339145434548",
       "level": "warn",
@@ -1281,37 +1249,41 @@
       "agent": "fact-check",
       "at": "2026-11-10T05:21:38.674Z",
       "loud": false
+    },
+    {
+      "id": "n179432642125245",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
+      "agent": "seo",
+      "at": "2026-11-10T16:00:21.252Z",
+      "loud": false
+    },
+    {
+      "id": "n179432644155727",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid—practical, varied, and directly useful for everyday readers. One note: article 10 mentions \"Qwen Chat,\" and I want to confirm that name matches our tool-links.json before publis",
+      "agent": "publisher",
+      "at": "2026-11-10T16:00:41.557Z",
+      "loud": false
+    },
+    {
+      "id": "n179432645517481",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0132).",
+      "agent": "ceo",
+      "at": "2026-11-10T16:00:55.174Z",
+      "loud": false
+    },
+    {
+      "id": "n179432650786897",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Pick the video to g",
+      "agent": "fact-check",
+      "at": "2026-11-10T16:01:47.868Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179313257530787",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Generate a quick FAQ page for a small business web\" — UI text descriptions are unverifiable and should use conditional language; example phone number should be generic.",
-      "ref": "ARTICLE_GUIDE_generate-a-quick-faq-page-for-a-small-business-website-using.json",
-      "open": true,
-      "at": "2026-10-27T20:22:55.307Z"
-    },
-    {
-      "id": "m179315653750516",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"What advanced AI models are included in my subscription? - Perplexity\" — mi a baj: Article never answers its own title question — no specific models or plan tiers named; Substantive content is just 'check Perplexity's official pages' repeated four times; 'How to check' section lacks any actual steps or verification path",
-      "ref": "2026-10-28T02-59-31-452Z_perplexity-news_What_advanced_AI_models_are_included_in_my_subscri.json",
-      "at": "2026-10-28T03:02:17.505Z"
-    },
-    {
-      "id": "m17931566358873",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"What advanced AI models are included in my subscription? - Perplexity\" — javítva: Article never answers its own title question — no specific models or plan tiers named; Substantive content is just 'check Perplexity's official pages' repeated four times; újraküldöm.",
-      "ref": "2026-10-28T02-59-31-452Z_perplexity-news_What_advanced_AI_models_are_included_in_my_subscri.json",
-      "at": "2026-10-28T03:03:55.887Z"
-    },
     {
       "id": "m179315665183682",
       "from": "ellenorzo",
@@ -2695,6 +2667,34 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-10T05:31:42.080Z"
+    },
+    {
+      "id": "m179432643286351",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-10T16:00:32.863Z"
+    },
+    {
+      "id": "m17943264860080",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt javítottam egy publikált cikkben: \"Building policy enforcement into the AI stack with\" — A forrás kifejezetten felsorolja az 'erőforrásokat' (resources) mint egyik szabályzat céltárgyat, amelyet a PPE kezel. Ez egy konkrét ténybeli elem, amelyet bele kell foglalni.",
+      "ref": "ARTICLE_2026-11-09T17-59-31-276Z_ibm_Building_policy_enforcement_into_the_AI_stack_with.json",
+      "at": "2026-11-10T16:01:26.008Z"
+    },
+    {
+      "id": "m179432650786866",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Pick the video to get both the moving character and a watermark-free version of the cartoo”): \"How to make a cartoon of yourself with AI in Picsa\" — A forrás nem említ semmilyen fizetős csomagot, előfizetési követelményt vagy vízjelet. Csak annyit mond: 'Először általában be kell jelentkezned.'",
+      "ref": "ARTICLE_2026-08-19T08-23-54-514Z_picsart_How_to_make_a_cartoon_of_yourself_with_AI_in_Picsa.json",
+      "open": true,
+      "at": "2026-11-10T16:01:47.868Z"
     }
   ]
 }
