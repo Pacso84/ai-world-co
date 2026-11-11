@@ -1,0 +1,61 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.00999312,
+  "at": "2026-11-11T15:43:28.634Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 1,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-10T21-35-05-521Z_openai-blog_Introducing_Businesses_in_ChatGPT.json",
+      "cim": "Introducing Businesses in ChatGPT",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk minden tényszerű állítása megegyezik a forrásszöveggel: a Business Hub, Business Agents, a Shopify-integráció, az aggregált statisztikák (említések, kattintások, discovery topics), az AWS Marketplace elérhetőség, és a ChatGPT Enterprise funkciói mind a forrásokban szereplő információkon alapu"
+    },
+    {
+      "file": "ARTICLE_2026-11-10T05-08-34-093Z_aws-ml_Professional_work_deserves_professional_tools__Mee.json",
+      "cim": "Professional work deserves professional tools. Meet AWS Quick.",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "a cikk helyesen tükrözi az összes kulcsállítást a forrásból, beleértve a termékleírást, funkciókat, biztonsági részleteket, felsorolt vállalatokat és elérhetőségi információkat"
+    },
+    {
+      "file": "ARTICLE_2026-08-21T16-20-03-771Z_google-deepmind_From_Atari_to_EVE_Online__Building_on_15_Years_of_.json",
+      "cim": "From Atari to EVE Online: Building on 15 Years of AI Research in Games",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "all factual claims align with source text"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-pick-the-right-free-ai-app-when-you-re-just-getting-s.json",
+      "cim": "How to pick the right free AI app when you're just getting started",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-08-21T08-26-53-488Z_picsart_How_to_make_travel_videos_with_AI_from_one_selfie.json",
+      "cim": "How to make travel videos with AI from one selfie",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A forrás a Picsart Travel Vlog Maker sablonjáról szól, de a cikk egy általános áttekintés különböző eszközökről, anélkül, hogy említené a forrás eszközét"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-plan-a-20-minute-home-workout-with-gemini-that-needs-.json",
+      "cim": "How to plan a 20-minute home workout with Gemini that needs no equipment",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}

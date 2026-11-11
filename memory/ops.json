@@ -483,14 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179350299145311",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-11-01T03:16:31.453Z",
-      "loud": false
-    },
-    {
       "id": "n179354390226497",
       "level": "warn",
       "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „The announcement does not include p",
@@ -1281,19 +1273,17 @@
       "agent": "ceo",
       "at": "2026-11-11T03:52:53.737Z",
       "loud": false
+    },
+    {
+      "id": "n179441186347286",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Ellenőrizendő állítás: \"How to make travel videos with AI from one selfie\" — A forrás a Picsart Travel Vlog Maker sablon",
+      "agent": "fact-check",
+      "at": "2026-11-11T15:44:23.472Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17933067663381",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (nincs meg az útmutató-szerkezet): \"Getting started with GitHub Copilot: a beginner's \" — GitHub Copilot now has a free tier for individual developers — the guide's claim that it 'requires a paid subscription' is no longer accurate.",
-      "ref": "ARTICLE_GUIDE_getting-started-github-copilot.json",
-      "open": true,
-      "at": "2026-10-29T20:46:06.338Z"
-    },
     {
       "id": "m179330680876747",
       "from": "fact-check",
@@ -2691,6 +2681,16 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-11T04:03:30.225Z"
+    },
+    {
+      "id": "m179441186347288",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Ellenőrizendő állítás: \"How to make travel videos with AI from one selfie\" — A forrás a Picsart Travel Vlog Maker sablonjáról szól, de a cikk egy általános áttekintés különböző eszközökről, anélkül, hogy említené a forrás eszközét",
+      "ref": "2026-08-21T08-26-53-488Z_picsart_How_to_make_travel_videos_with_AI_from_one_selfie.json",
+      "open": true,
+      "at": "2026-11-11T15:44:23.472Z"
     }
   ]
 }
