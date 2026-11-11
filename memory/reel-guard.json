@@ -1,22 +1,21 @@
 {
-  "at": "2026-11-11T16:54:16.253Z",
+  "at": "2026-11-11T22:30:09.001Z",
   "send": {
     "fazis": "send",
     "ok": true
   },
   "prepare": {
     "fazis": "prepare",
-    "ok": false,
-    "hiba": "spawnSync ffmpeg ENOENT",
+    "ok": true,
     "betu": {
       "ok": true,
       "reason": "",
       "nev": "Schibsted Grotesk"
-    }
+    },
+    "tiktokExtraOk": "nincs miből több videót gyártani: az elmúlt 7 nap minden videózható útmutatójából készült már videó"
   },
   "send_extra": {
     "fazis": "send_extra",
-    "ok": false,
-    "hiba": "A videó nem tölthető le (HTTP 404) — a Facebook ettől bukna el."
+    "ok": true
   }
 }
