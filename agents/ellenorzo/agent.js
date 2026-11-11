@@ -38,6 +38,8 @@ import { tevedesJelzes } from '../../core/ismert-tevedesek.js';
 import { biraloForrasInfo, tevesNevKifogas, nevJavitoMegjegyzes } from '../../core/biralo-forrasinfo.js';
 import { cikkForrasSzovege, cikkKivonat } from '../../core/forras-cache.js';
 import { forrasHirJelzesek } from '../../core/forras-tema.js';   // 11-10: a hír a forrásáról szóljon (eszköz + gombnevek)
+import { sugoUtmutatoJelzes, sugoForrasok } from '../../core/sugo-parositas.js';   // 📘 11-11: súgó-alapú útmutató a súgón mérve
+import { cikkSzoveg } from '../../core/elakadas-gen.js';
 import { publikalasMeta, foglaltSlugok } from '../../core/publish-meta.js';
 import { findBritish } from '../../core/us-spelling.js';
 import { skillsBlock } from '../../core/skills.js';
@@ -849,6 +851,18 @@ async function main() {
     try {
       const forrasJelzesek = forrasHirJelzesek({ ...writerData, article_markdown: markdown }, cikkForrasSzovege(writerData._meta) || '');
       if (forrasJelzesek.length) { autoCheckResult.issues.push(...forrasJelzesek); autoCheckResult.passed = false; }
+    } catch { /* őr-hiba nem állítja meg az ellenőrzést */ }
+    // 📘 SÚGÓ-ALAPÚ ÚTMUTATÓ (2026-11-11, hír-elsőbbség 3. rész): a gomb-/menüneveket a HIVATALOS súgócikken
+    // mérjük (core/sugo-parositas.js) — 2+ hiányzó → GUIDE_UI_NOT_IN_HELP (elutasít). Súgó nélkül nem ítél.
+    try {
+      const sugoLista = sugoForrasok(writerData._meta);   // CSAK a sugo_alapu útmutatóra (a régi kézi forráslistára nem)
+      if (sugoLista.length) {
+        const szovegek = [];
+        for (const s of sugoLista) { const sz = await cikkSzoveg(s.url); if (sz?.szoveg) szovegek.push(sz.szoveg); }
+        const j = sugoUtmutatoJelzes(markdown, szovegek.join('\n\n'));
+        console.log(`   📘 súgó-mérés: ${szovegek.length ? (j ? '❌ ' + j.slice(0, 120) : '✅ a gombnevek a súgóban vannak') : '⏭️ a súgó nem tölthető le — nem ítél'}`);
+        if (j) { autoCheckResult.issues.push(j); autoCheckResult.passed = false; }
+      }
     } catch { /* őr-hiba nem állítja meg az ellenőrzést */ }
     console.log(`   📐 Auto check: ${autoCheckResult.passed ? '✅ OK' : `❌ ${autoCheckResult.issues.length} probléma`}`);
     if (!autoCheckResult.passed) {

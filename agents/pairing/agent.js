@@ -32,6 +32,13 @@ import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { message } from '../../core/ops.js';
 import { canonicalChip } from '../../core/quality-guard.js';
+// 📘 HÍR-ELSŐBBSÉG 3. RÉSZ (2026-11-11): elutasított LLM-termékhír → második esély a HIVATALOS súgóból.
+import {
+  masodikEselyKell, napiMaradek, sugoSzolgaltatok, valasztoPrompt, valasztoValasz, ellenorzoPrompt, ellenorzoValasz,
+  meglevoTema, FUTAS_MAX as SUGO_FUTAS_MAX, MIN_SUGO_SZOVEG
+} from '../../core/sugo-parositas.js';
+import { indexLetolt } from '../../core/sugo-index.js';
+import { cikkSzoveg } from '../../core/elakadas-gen.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -75,25 +82,8 @@ function uniqueId(base, topics) {
   return id;
 }
 
-// Van-e MÁR útmutató(-téma) erre a funkcióra? (ne duplikáljunk — linkeljünk a meglévőre)
-const STOP = new Set(['how', 'to', 'the', 'a', 'an', 'for', 'with', 'your', 'and', 'of', 'in', 'on', 'use', 'using', 'get', 'getting', 'started', 'guide']);
-function words(t) { return new Set((t || '').toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length > 2 && !STOP.has(w))); }
-function findExistingTopic(parsed, topics) {
-  const co = (parsed.company || '').toLowerCase(), tool = (parsed.tool || '').toLowerCase();
-  const pw = words(parsed.title);
-  let best = null, bestScore = 0;
-  for (const t of topics) {
-    const tco = (t.company || '').toLowerCase(), ttool = (t.tool || '').toLowerCase();
-    const tw = words(t.title);
-    let overlap = 0; for (const w of pw) if (tw.has(w)) overlap++;
-    let score = overlap;
-    if (tool && ttool && tool === ttool) score += 2;   // azonos eszköz erősít
-    if (co && tco && co === tco) score += 1;            // azonos cég erősít
-    if (score > bestScore) { bestScore = score; best = t; }
-  }
-  // Csak akkor tekintjük duplikátumnak, ha elég erős az egyezés
-  return bestScore >= 2 ? best : null;
-}
+// (11-11: a „van-e már ilyen téma” egyezés a core/sugo-parositas.js meglevoTema-jába költözött — a régi
+// változat 2 közös általános szóra idegen eszközű témához is kötött.)
 
 const SYSTEM_PROMPT = `You decide whether a published AI NEWS article should get a paired step-by-step GUIDE for everyday people. Be STRICT — most news does NOT deserve a guide.
 
@@ -140,6 +130,40 @@ Decide if it deserves a paired how-to guide. Output ONLY the JSON.`;
   return { response, parsed };
 }
 
+/**
+ * MÁSODIK ESÉLY A SÚGÓBÓL (core/sugo-parositas.js): a súgó cikklistájából az AI kiválaszt EGY cikket, letöltjük,
+ * és az AI eldönti, hogy abból írható-e hétköznapi útmutató. Kitalálni tilos — ha nincs illő súgócikk, nincs téma.
+ * @returns {{ok:boolean, reason:string, cost:number, url?:string, sugoCim?:string, title?:string, tool?:string,
+ *   company?:string, angle?:string, level?:string, audience?:string}}
+ */
+async function sugoMasodikEsely(n, indexek) {
+  const m = n.data._meta || {};
+  const hir = {
+    cim: n.data.original_title || '',
+    kivonat: m.seo?.meta_description || String(n.data.article_markdown || '').replace(/[#*>`_[\]]/g, ' ').slice(0, 700)
+  };
+  const index = [];
+  for (const s of sugoSzolgaltatok(m.source_id)) index.push(...(indexek[s] ||= await indexLetolt(s)));
+  if (!index.length) return { ok: false, reason: 'a súgó cikklistája nem érhető el', cost: 0 };
+
+  const p1 = valasztoPrompt(hir, index);
+  const r1 = await ask(p1.felhasznalo, { agentName: AGENT_NAME, systemPrompt: p1.rendszer, maxTokens: 200, jsonMode: true });
+  let cost = r1?.costUsd || 0;
+  const cikk = valasztoValasz(r1?.text, index);
+  if (!cikk) return { ok: false, reason: 'nincs illő súgócikk', cost };
+
+  const sz = await cikkSzoveg(cikk.url);
+  if (!sz || String(sz.szoveg || '').length < MIN_SUGO_SZOVEG) return { ok: false, reason: 'a súgócikk nem tölthető le: ' + cikk.url, cost };
+  const sugoCim = sz.cim || cikk.cim;
+  const p2 = ellenorzoPrompt(hir, { url: cikk.url, cim: sugoCim, szoveg: sz.szoveg });
+  const r2 = await ask(p2.felhasznalo, { agentName: AGENT_NAME, systemPrompt: p2.rendszer, maxTokens: 400, jsonMode: true });
+  cost += r2?.costUsd || 0;
+  const v = ellenorzoValasz(r2?.text);
+  if (!v.ok) return { ok: false, reason: `${v.reason} (${cikk.url})`, cost };
+  if (v.tool) v.tool = canonicalChip(v.tool, v.company);
+  return { ...v, url: cikk.url, sugoCim, cost };
+}
+
 function markNews(news, patch) {
   const data = news.data;
   data._meta = { ...data._meta, pairing_checked: true, pairing_checked_at: new Date().toISOString(), ...patch };
@@ -176,13 +200,32 @@ async function main() {
   // KÖZELI-TÉMA-ŐR referencia: a témalista + a KÉSZ guide-ok címei (2026-07-18)
   const { isNearDuplicateTitle, allExistingGuideTitles, logDedup, dedupBejegyzes } = await import('../../core/topic-dedup.js');
   const existingTitles = allExistingGuideTitles();
-  let worthy = 0, linked = 0, skip = 0, cost = 0, nearDup = 0;
+  let worthy = 0, linked = 0, skip = 0, cost = 0, nearDup = 0, sugoProba = 0, sugoTema = 0;
+  const sugoIndexek = {};   // szolgáltatónként egyszer töltjük le a súgó cikklistáját
 
   for (const n of news) {
     const title = (n.data.original_title || n.file).slice(0, 55);
-    const { response, parsed } = await classify(n);
+    let { response, parsed } = await classify(n);
     cost += response?.costUsd || 0;
     if (!parsed) { console.log(`⚠️  ${title}… — osztályozás nem értelmezhető, kihagyom`); continue; }
+
+    // 📘 MÁSODIK ESÉLY A HIVATALOS SÚGÓBÓL (2026-11-11) — csak elutasított LLM-termékhírnek, napi keretben.
+    let sugo = null;
+    if (masodikEselyKell({ sourceId: n.data._meta?.source_id, cim: n.data.original_title, parsed })
+        && sugoProba < SUGO_FUTAS_MAX && napiMaradek(topics.topics) > 0) {
+      sugoProba++;
+      const s = await sugoMasodikEsely(n, sugoIndexek);
+      cost += s.cost || 0;
+      if (s.ok) {
+        console.log(`📘 SÚGÓBÓL ÚTMUTATHATÓ: ${title}…\n     → ${s.sugoCim} (${s.url})`);
+        sugo = s;
+        parsed = { ...parsed, guide_worthy: true, title: s.title, tool: s.tool || parsed.tool, company: s.company || parsed.company,
+          angle: s.angle, level: s.level, audience: s.audience };
+      } else {
+        console.log(`   📘 súgó-próba: ${title}… → nincs útmutató (${String(s.reason).slice(0, 140)})`);
+        parsed = { ...parsed, reason: `${parsed.reason || ''} · súgó: ${s.reason}`.slice(0, 300) };
+      }
+    }
 
     if (!parsed.guide_worthy) {
       console.log(`⛔ NEM útmutatható: ${title}…\n     → ${parsed.reason}`);
@@ -192,7 +235,9 @@ async function main() {
     }
 
     // Útmutatható → de van-e MÁR ilyen útmutató? (ne duplikáljunk)
-    const existing = findExistingTopic(parsed, topics.topics);
+    // 11-11: idegen eszközű témához SOHA (core/sugo-parositas.js meglevoTema — a régi findExistingTopic
+    // 2 közös általános szóra a MiniMax-képhírt a Gemini-képes útmutatóhoz kötötte).
+    const existing = meglevoTema(parsed, topics.topics);
     if (existing) {
       console.log(`📎 ÚTMUTATHATÓ, de MÁR VAN guide: ${title}…\n     → kereszthivatkozás a meglévőre: "${existing.title.slice(0, 50)}" [${existing.id}]`);
       if (!args.dry) {
@@ -236,8 +281,12 @@ async function main() {
         angle: parsed.angle || '',
         status: 'todo',
         icon: '🆕',
-        source_news: { file: n.file, title: n.data.original_title || '' }
+        source_news: { file: n.file, title: n.data.original_title || '' },
+        created_at: new Date().toISOString(),
+        // 📘 súgó-alapú téma: az útmutató-író CSAK ebből a hivatalos súgócikkből írhat (core/sugo-parositas.js)
+        ...(sugo ? { sugo_alapu: true, official_sources: [{ url: sugo.url, title: sugo.sugoCim || '' }] } : {})
       });
+      if (sugo) sugoTema++;
       markNews(n, { guide_worthy: true, related_guide_topic: id });
       message('pairing', 'guide', 'need', `Új funkció-hír → kéne hozzá útmutató: "${parsed.title}"`, { ref: id });
     }
@@ -247,7 +296,7 @@ async function main() {
   if (!args.dry) saveTopics(topics);
 
   console.log('─'.repeat(60));
-  console.log(`📊 PÁROSÍTÁS: ${worthy} új téma, ${linked} meglévőre kötve, ${nearDup} közeli-ismétlés kiszűrve, ${skip} nem útmutatható | költség $${cost.toFixed(4)}`);
+  console.log(`📊 PÁROSÍTÁS: ${worthy} új téma (ebből súgóból: ${sugoTema}), ${linked} meglévőre kötve, ${nearDup} közeli-ismétlés kiszűrve, ${skip} nem útmutatható | 📘 súgó-próba: ${sugoProba} | költség $${cost.toFixed(4)}`);
   if (worthy > 0 && !args.dry) console.log(`✨ ${worthy} új téma a guide-topics.json-ban — az Útmutató-agent megírja: node agents/guide/agent.js --limit ${worthy}`);
 
   if (!args.dry) {

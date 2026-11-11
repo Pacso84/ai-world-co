@@ -45,6 +45,8 @@ import { fokuszConfigbol, maiFokuszDb, fokuszElsoHely, fokuszHiany, fokuszOtletP
 import { aktivTrendek, trendFelvetelKell, trendProbaJegyez, maiTrendTema, trendPrompt } from '../../core/trend-kutato.js';
 import { megszuntTema, MEGSZUNT_ESZKOZOK } from '../../core/megszunt-eszkozok.js';
 import { cegLefedettseg } from '../../core/ceg-lefedettseg.js';   // 🏢 2026-11-05 őrszem
+import { sugoBlokk, sugoForrasok } from '../../core/sugo-parositas.js';   // 📘 2026-11-11 hír → útmutató CSAK a hivatalos súgóból
+import { cikkSzoveg } from '../../core/elakadas-gen.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -826,7 +828,10 @@ function saveGuide(topic, response) {
       icon: topic.icon || '',
       level: topic.level || 'beginner',
       source_news: topic.source_news || null,   // hír→útmutató kereszthivatkozáshoz
-      trend: topic.trend || null,                 // trendkutató-jelölés (a méréshez, 2026-10-14)
+      // 📘 súgó-alapú útmutató (2026-11-11): az Ellenőrző ezen a súgócikken méri a gombneveket
+      official_sources: topic.official_sources || null,
+      sugo_alapu: topic.sugo_alapu === true || undefined,
+      trend: topic.trend || null,                // trendkutató-jelölés (a méréshez, 2026-10-14)
       extra_slot: topic.extra_slot || null,       // cég-lefedettség +1 hely: a rendes keretbe nem számít (core/lefedettseg-extra.js)
       written_at: new Date().toISOString(),
       writer_provider: response.provider,
@@ -842,12 +847,13 @@ function saveGuide(topic, response) {
   return filename;
 }
 
-async function writeGuide(topic, brandContext) {
+async function writeGuide(topic, brandContext, sugok = []) {
   const lessons = await loadLessons();
   const skills = skillsBlock('guide');
   const valasztott = valasztHireket(topic, sajatHirek());
   if (valasztott.length) console.log(`   📰 tényanyag: ${valasztott.length} saját hír (${valasztott.map(h => h.title.slice(0, 40)).join(' · ')})`);
-  const userPrompt = buildUserPrompt(topic, brandContext, lessons, skills, hirBlokk(valasztott));
+  // 📘 súgó-alapú téma (core/sugo-parositas.js): a hivatalos súgócikk az EGYETLEN forrás a lépésekhez
+  const userPrompt = buildUserPrompt(topic, brandContext, lessons, skills, hirBlokk(valasztott) + sugoBlokk(sugok));
 
   let response = await ask(userPrompt, { agentName: AGENT_NAME, systemPrompt: GUIDE_SYSTEM_PROMPT, maxTokens: 10000 });
   if (response && !hasGuideStructure(response.text)) {
@@ -929,6 +935,14 @@ async function reworkGuide(rejectedData, brandContext) {
   const original = rejectedData.article_markdown || '';
   const lessons = await loadLessons();   // szemantikus memória (scope:'guide')
   const skills = skillsBlock('guide');
+  // 📘 súgó-alapú útmutató (2026-11-11): az átdolgozás is CSAK a hivatalos súgóból javíthat — súgó nélkül nem.
+  const sugok = [];
+  const forrasok = sugoForrasok(rejectedData._meta);   // CSAK a sugo_alapu vázlatra
+  for (const s of forrasok) {
+    const sz = await cikkSzoveg(s.url);
+    if (sz?.szoveg) sugok.push({ url: s.url, cim: sz.cim || s.title || '', szoveg: sz.szoveg });
+  }
+  if (forrasok.length && !sugok.length) { console.log('   ⏭️  A súgó nem tölthető le — az átdolgozás vár.'); return null; }
 
   const userPrompt = `One of your earlier step-by-step GUIDES was sent BACK by the Reviewer. Fix it — keep what works, repair the SPECIFIC problems, and return the full corrected guide in the SAME step-by-step format.
 
@@ -945,7 +959,7 @@ THE GUIDE TO FIX (rewrite it fully, corrected):
 ${original}
 
 BRAND CONTEXT (must follow):
-${brandContext}${lessons}${skills}
+${brandContext}${lessons}${skills}${sugoBlokk(sugok)}
 
 Now output ONLY the corrected guide markdown — no commentary.`;
 
@@ -1261,7 +1275,19 @@ async function main() {
 
   for (const topic of topics) {
     console.log(`📝 Útmutató: "${topic.title.slice(0, 60)}..."${topic.company ? ` [${topic.company}]` : ''}`);
-    const response = await writeGuide(topic, brandContext);
+    // 📘 SÚGÓ-ALAPÚ TÉMA (2026-11-11): a súgócikk szövegét MOST töltjük le (a gitbe nem kerül — kiadói szöveg).
+    // Ha nem jön le, ebben a futásban NEM írjuk meg: emlékezetből írni pont az, amit ez a téma kizár.
+    let sugok = [];
+    const sugoLista = sugoForrasok(topic);   // CSAK a sugo_alapu témára (a régi kézi official_sources-ra nem)
+    if (sugoLista.length) {
+      for (const s of sugoLista) {
+        const sz = await cikkSzoveg(s.url);
+        if (sz?.szoveg) sugok.push({ url: s.url, cim: sz.cim || s.title || '', szoveg: sz.szoveg });
+      }
+      if (!sugok.length) { console.log('   ⏭️  A súgó nem tölthető le — ebben a futásban nem írom meg (a téma vár).\n'); continue; }
+      console.log(`   📘 hivatalos súgó: ${sugok.map(s => s.cim).join(' · ')}`);
+    }
+    const response = await writeGuide(topic, brandContext, sugok);
     if (!response) { console.log('   ❌ Sikertelen (router null)\n'); stats.failed++; continue; }
 
     const filename = saveGuide(topic, response);

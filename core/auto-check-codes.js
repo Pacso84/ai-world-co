@@ -60,7 +60,10 @@ export const BLOCKING_CODES = Object.freeze([
   'SOURCE_TOPIC_MISMATCH',
   // UI_NOT_IN_SOURCE (2026-11-10, ugyanaz a kérés): a hír 2+ magabiztos gomb-/menünevet állít, ami a teljes
   // forrásszövegben nincs (core/forras-tema.js) → a lépések emlékezetből íródtak. Mérve: 65 jó hírből 0.
-  'UI_NOT_IN_SOURCE'
+  'UI_NOT_IN_SOURCE',
+  // GUIDE_UI_NOT_IN_HELP (2026-11-11, hír-elsőbbség 3. rész, user: „CSAK hivatalos súgóból”): a HIVATALOS
+  // SÚGÓCIKKBŐL írt útmutató 2+ magabiztos gomb-/menünevet állít, ami a súgóban nincs (core/sugo-parositas.js).
+  'GUIDE_UI_NOT_IN_HELP'
 ]);
 
 /** A "KÓD: emberi szöveg" alakú jelzésből a puszta kód. */
@@ -146,6 +149,10 @@ const LESSON_TEXT = Object.freeze({
     + 'A news article must be about what the source announced — the same product, the same company, the same event. '
     + 'You may explain what it means for everyday readers, but never swap in a different tool or write a generic '
     + 'how-to that the source does not support.',
+  GUIDE_UI_NOT_IN_HELP:
+    'The guide was based on an official help article, but it named buttons, menus or screens that the help article '
+    + 'never mentions. In a help-based guide, take every step, button and menu name from the help article only. '
+    + 'If the help article does not say where something is, describe it in general terms and link to the help article.',
   UI_NOT_IN_SOURCE:
     'The news article named buttons, menus or screens that its official source never mentions — the steps were written '
     + 'from memory. In a news article, describe only what the source shows. If the source gives no click-by-click steps, '
@@ -218,6 +225,7 @@ const HU_NEV = Object.freeze({
   KNOWN_FALSE_CLAIM: 'ismert, cáfolt állítás',
   SOURCE_TOPIC_MISMATCH: 'a cikk másról szól, mint a forrása',
   UI_NOT_IN_SOURCE: 'a forrásban nem szereplő gomb- és menünevek',
+  GUIDE_UI_NOT_IN_HELP: 'a súgócikkben nem szereplő gomb- és menünevek',
   ACCESS_NOT_SELF_SERVE: 'céges hozzáférést igénylő eszköz',
   TOO_SHORT: 'túl rövid cikk',
   TOO_LONG: 'túl hosszú cikk',

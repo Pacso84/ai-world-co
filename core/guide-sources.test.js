@@ -78,7 +78,8 @@ t('„mi újság most" blokk: csak friss (≤14 nap) hírek, legújabb elöl, a 
 
 t('az útmutató-író TÉNYLEG megkapja (bekötés)', () => {
   const src = readFileSync(join(ROOT, 'agents', 'guide', 'agent.js'), 'utf-8');
-  assert.match(src, /buildUserPrompt\(topic, brandContext, lessons, skills, hirBlokk\(valasztott\)\)/);
+  // 11-11: a hírblokk mellé a súgó-alapú témánál a hivatalos súgócikk is bekerül (core/sugo-parositas.js sugoBlokk)
+  assert.match(src, /buildUserPrompt\(topic, brandContext, lessons, skills, hirBlokk\(valasztott\)(?: \+ sugoBlokk\(sugok\))?\)/);
   assert.match(src, /\$\{topic\.angle \|\| ''\}\$\{hirek\}/);
 });
 
