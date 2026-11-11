@@ -1,6 +1,6 @@
 {
   "slug": "use-qwen-to-draft-a-polite-refund-request-when-a-product-arrives-damag",
-  "keszult": "2026-11-02T03:37:43.491Z",
+  "keszult": "2026-11-11T03:56:46.548Z",
   "promptok": {
     "c73892614a89": [
       {
@@ -22,6 +22,59 @@
       {
         "eredeti": "#44218",
         "hely": "your order number"
+      }
+    ]
+  },
+  "promptok_hu": {
+    "616d81e05cd1": [
+      {
+        "eredeti": "Május 3-án",
+        "hely": "a rendelés napja"
+      },
+      {
+        "eredeti": "kerámia asztali lámpát",
+        "hely": "a termék neve"
+      },
+      {
+        "eredeti": "44218",
+        "hely": "a rendelésszámod"
+      }
+    ],
+    "fce6dffad59c": [
+      {
+        "eredeti": "150 szó alatt",
+        "hely": "a maximális terjedelem"
+      }
+    ],
+    "3978b3420b19": [],
+    "6874af630564": [
+      {
+        "eredeti": "44218-as rendelés",
+        "hely": "a rendelésszámod"
+      }
+    ]
+  },
+  "promptok_es": {
+    "18a33a048a9d": [
+      {
+        "eredeti": "lámpara",
+        "hely": "tu producto"
+      },
+      {
+        "eredeti": "cerámica",
+        "hely": "material del producto"
+      },
+      {
+        "eredeti": "44218",
+        "hely": "número de tu pedido"
+      }
+    ],
+    "42cbc78d3d5e": [],
+    "a4be60042e37": [],
+    "09c9bf60cd9b": [
+      {
+        "eredeti": "44218",
+        "hely": "número de tu pedido"
       }
     ]
   }
