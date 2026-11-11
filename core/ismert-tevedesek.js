@@ -414,6 +414,28 @@ export const TEVEDESEK = [
       hu: { mind: [], egyik: [/(?:végighallgatja|meghallgatja|hallgatja|figyeli) a (?:teljes |egész )?(?:megbeszélés|meeting)/iu, /rögzíti, (?:amit|ami) (?:elhangzott|elhangzik)/iu], nem: [/nem (?:hallgatja|rögzíti|figyeli)/iu] },
       es: { mind: [], egyik: [/escucha(?:r)? (?:tu|la|toda tu|toda la) reunión/iu, /captura(?:r)? lo que se dij/iu], nem: [/no (?:escucha|graba)/iu] }
     }
+  },
+  {
+    id: 'copilot-outlook-negymezos-ikon',
+    leiras: 'Copilot az Outlookban: „Copilot gomb egy kis színes, négymezős ikonnal, jobb felül; mobilon a profilikon alatti Apps/Tools menüben” — a Microsoft súgója szerint a Copilot gomb az Outlook-ablak felső részén van (a csevegés munkahelyi/iskolai fiókkal), a levélszál tetején a „Summary by Copilot” doboz, telefonon az eszköztár Copilot ikonja; négymezős ikon nincs, az a Microsoft-/Windows-logó (support.microsoft.com/en-us/copilot-outlook, support.microsoft.com/office/a79873f2-396b-46dc-b852-7fe5947ab640; 11-11-én javítva).',
+    javitas: 'Copilot in Outlook: select the Copilot button in the upper part of the Outlook window (the chat needs a work or school account); to summarize a thread, select the Summary by Copilot box at the top of it (it may say Summarize); on iOS and Android, open the thread and tap the Copilot icon in the toolbar (support.microsoft.com/en-us/copilot-outlook). Never describe a four-pane or four-square Copilot icon.',
+    szovegben: /Copilot/,
+    nyelvek: {
+      en: { mind: [], egyik: [/Copilot[^.\n]{0,80}four[- ](?:pane|square|panel|tile)[^.\n]{0,30}icon/iu, /four[- ](?:pane|square|panel|tile)[^.\n]{0,30}icon[^.\n]{0,60}Copilot/iu], nem: [/Windows (?:logo|icon|key|button)/iu] },
+      hu: { mind: [], egyik: [/Copilot[^.\n]{0,80}(?:négymezős|négyablakos|négynégyzetes|négy(?:\s|-)(?:mezős|ablakos|négyzetes|paneles))[^.\n]{0,20}ikon/iu], nem: [/Windows[- ](?:logó|ikon|billentyű|gomb)/iu] },
+      es: { mind: [], egyik: [/Copilot[^.\n]{0,80}icono[^.\n]{0,30}de cuatro (?:paneles|cuadrados|cuadros|ventanas)/iu], nem: [/(?:logotipo|icono|tecla|botón) de Windows/iu] }
+    }
+  },
+  {
+    id: 'qwen-chat-konzol-widget',
+    leiras: 'Qwen: „az Alibaba Cloud konzolban keresd a Qwen Chat szolgáltatást, hozz létre bot-projektet, és tedd ki widgetként a webshopodra” — a Qwen Chat a fogyasztói csevegő (chat.qwen.ai); saját Qwen-alapú asszisztenst az Alibaba Cloud Model Studióban lehet építeni (agent application → Publish), „Qwen Chat” konzol-szolgáltatás és kész webshop-widget nincs (help.aliyun.com/en/model-studio/single-agent-application; 11-11-én az útmutató 301-gyel levéve).',
+    javitas: 'Qwen Chat is the consumer chat app at chat.qwen.ai. A custom Qwen-based assistant is built in Alibaba Cloud Model Studio (agent applications, then Publish) — there is no "Qwen Chat" service in the Alibaba Cloud console and no ready-made Qwen Chat widget for online shops, so never write setup steps for one.',
+    szovegben: /Qwen/,
+    nyelvek: {
+      en: { mind: [], egyik: [/console[^.\n]{0,80}["“]?Qwen Chat/iu, /Qwen Chat[^.\n]{0,40}(?:widget|service page)/iu, /widget[^.\n]{0,40}Qwen Chat/iu], nem: [/\b(?:no|not|never|isn['’]t|cannot|can['’]t)\b/iu] },
+      hu: { mind: [], egyik: [/konzol[^.\n]{0,80}[„"“]?Qwen Chat/iu, /Qwen Chat[^.\n]{0,40}(?:widget|szolgáltatási oldal|szolgáltatásoldal)/iu], nem: [/\b(?:nem|nincs|sosem)\b/iu] },
+      es: { mind: [], egyik: [/consola[^.\n]{0,80}[«"“]?Qwen Chat/iu, /(?:página del servicio|widget de)[^.\n]{0,20}Qwen Chat/iu], nem: [/\b(?:no|nunca)\b/iu] }
+    }
   }
 ];
 

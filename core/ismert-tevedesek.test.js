@@ -373,6 +373,28 @@ await t('🎙️ Alexa+: nem hallgatja végig a megbeszélést — a tagadó, ja
   nincs('Zoom can record your meeting and capture what was said.', 'en'); // nem Alexa-szöveg
 });
 
+await t('🧭 11-11: Copilot „négymezős ikon” + „Qwen Chat” konzol-widget — fogja mindhárom nyelven; a helyes mondatot, a Windows-logót és a tagadást nem', () => {
+  // pozitív példa = a 11-11-i javítás / levétel előtti élő mondat (how-to-triage-and-clean-up-an-overwhelming-inbox-with-copilot; set-up-qwen-chat-for-automated-e-commerce-faqs)
+  van('copilot-outlook-negymezos-ikon', 'Look for a button labeled **Copilot** with a small four-pane colorful icon, usually near the top-right of the screen.', 'en');
+  van('copilot-outlook-negymezos-ikon', 'Keress egy **Copilot** feliratú gombot, mellette egy kis színes, négymezős ikonnal — általában a képernyő jobb felső sarkában.', 'hu');
+  van('copilot-outlook-negymezos-ikon', 'Busca un botón con la etiqueta **Copilot** con un pequeño icono colorido de cuatro paneles, normalmente cerca de la esquina superior derecha de la pantalla.', 'es');
+  nincs('Select the **Copilot** button in the upper part of the Outlook window.', 'en');
+  nincs('Válaszd az Outlook-ablak felső részén a **Copilot** gombot.', 'hu');
+  nincs('Selecciona el botón **Copilot** en la parte superior de la ventana de Outlook.', 'es');
+  nincs('Press the Windows key (the four-pane Windows logo icon) and type Copilot.', 'en');
+  van('qwen-chat-konzol-widget', 'Look for a prominent search bar or a menu, often labeled "Products & Services" or "Console," and type "Qwen Chat" into it.', 'en');
+  van('qwen-chat-konzol-widget', 'Once you\'re on the Qwen Chat service page, you\'ll see an overview or a list of any existing AI projects you might have.', 'en');
+  van('qwen-chat-konzol-widget', 'Now it’s time to add the Qwen Chat widget to your shop.', 'en');
+  van('qwen-chat-konzol-widget', 'Miután a Qwen Chat szolgáltatási oldalon vagy, látni fogsz egy áttekintést vagy a már meglévő AI projektek listáját.', 'hu');
+  van('qwen-chat-konzol-widget', 'Most jött el az ideje, hogy hozzáadd a Qwen Chat widgetet a boltodhoz.', 'hu');
+  van('qwen-chat-konzol-widget', 'Busca una barra de búsqueda prominente o un menú, a menudo etiquetado como "Productos y Servicios" o "Consola", y escribe "Qwen Chat" en ella.', 'es');
+  van('qwen-chat-konzol-widget', 'Ahora es el momento de añadir el widget de Qwen Chat a tu tienda.', 'es');
+  nincs('Open **chat.qwen.ai** in your browser to start using Qwen Chat.', 'en');
+  nincs('There is no ready-made Qwen Chat widget for online shops.', 'en');
+  nincs('Webshopra kész Qwen Chat widget nincs.', 'hu');
+  nincs('No existe un widget de Qwen Chat listo para tiendas en línea.', 'es');
+});
+
 await t('📅 LEJÁRAT: a „GPT Store bezárt” 2026-12-11-ig téves, onnan igaz (OpenAI kivezeti az egyedi GPT-ket)', () => {
   const s = 'OpenAI shut down the GPT Store.';
   assert.deepEqual(tevedesekASzovegben(s, 'en', '2026-12-10').map(x => x.id), ['gpt-store-megszunt']);
