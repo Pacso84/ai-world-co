@@ -436,6 +436,30 @@ export const TEVEDESEK = [
       hu: { mind: [], egyik: [/konzol[^.\n]{0,80}[„"“]?Qwen Chat/iu, /Qwen Chat[^.\n]{0,40}(?:widget|szolgáltatási oldal|szolgáltatásoldal)/iu], nem: [/\b(?:nem|nincs|sosem)\b/iu] },
       es: { mind: [], egyik: [/consola[^.\n]{0,80}[«"“]?Qwen Chat/iu, /(?:página del servicio|widget de)[^.\n]{0,20}Qwen Chat/iu], nem: [/\b(?:no|nunca)\b/iu] }
     }
+  },
+  {
+    id: 'alexa-household-az-appban',
+    leiras: 'Alexa: „az Alexa appban (Devices → fogaskerék) keresd a Your Household / Amazon Household részt, ott kösd össze a felnőtt profilokat, így írhat mindenki ugyanarra a listára” — az Amazon súgója szerint az Amazon Family (régi nevén Household) NEM az Alexa appban kezelhető, a felnőttek alapból csak az Amazon-bevásárlólistát osztják meg, egyéni lista közössé tételéről a súgó nem ír (amazon.com/gp/help/customer/display.html?nodeId=GX3EC6SJYEPVNJKS; 11-11-én javítva).',
+    javitas: 'Amazon Household / Amazon Family is not managed in the Alexa app (Amazon help GX3EC6SJYEPVNJKS). Adults in an Amazon Family share the Amazon Shopping List; Amazon does not say custom lists are shared. For a family list, create a custom list (Alexa app: More → Lists & Notes → Create List) and let everyone add to it by speaking to your Echo ("Add [item] to [list name]").',
+    szovegben: /Alexa/,
+    nyelvek: {
+      en: { mind: [], egyik: [/(?:section|settings?|menu|tab|page) (?:called|named|labeled) (?:Your|Amazon) Household/iu, /Amazon Household[^.\n]{0,40}in the Alexa app/iu, /Alexa app[^.\n]{0,40}Household settings/iu], nem: [/(?:aren['’]t|are not|isn['’]t|is not|not) (?:managed )?(?:in|within|inside) the Alexa app/iu] },
+      hu: { mind: [], egyik: [/(?:Your|Amazon) Household[^.\n]{0,40}(?:részt|szakaszt|beállítás)/iu, /Amazon Household[^.\n]{0,40}Alexa (?:appban|alkalmazásban)/iu, /Alexa (?:app|alkalmazás)\p{L}*[^.\n]{0,40}háztartási beállítás/iu], nem: [/nem (?:az )?Alexa (?:appban|alkalmazásban)/iu] },
+      es: { mind: [], egyik: [/secci[oó]n llamada (?:Tu|Amazon) Household/iu, /Amazon Household[^.\n]{0,40}en la app de Alexa/iu, /app de Alexa[^.\n]{0,40}ajustes del Household/iu], nem: [/no se (?:gestiona|administra)n? (?:en|desde) la app de Alexa/iu] }
+    }
+  },
+  {
+    id: 'apple-intelligence-mondatbefejezes',
+    leiras: 'Apple Intelligence: „prediktív írás — az iPhone gépelés közben befejezi a mondataidat, a billentyűzet felett három világosszürke buborékban teljes mondatokat ajánl” — ilyen Apple Intelligence-funkció nincs: az Üzenetekben a Smart Reply a KAPOTT üzenetre javasol választ a billentyűzet felett (az Apple szerint csak angolul), a szójavaslat a billentyűzet sima prediktív szövege (support.apple.com/guide/iphone/send-and-reply-to-messages-iph82fb73ba3/ios, support.apple.com/121115; 11-11-én javítva).',
+    javitas: 'Apple Intelligence does not finish your sentences as you type a new message. In Messages, Smart Reply suggests replies above the keyboard when you answer a message you received: tap one, edit it, then send (Apple iPhone User Guide, "Send and reply to messages"). Apple lists Smart Reply in Messages as English only. Never describe "predictive writing" bubbles that complete your sentence.',
+    szovegben: /Apple Intelligence/,
+    nyelvek: {
+      // a puszta „predictive writing” név NEM minta: az útmutató `original_title`-je (a régi URL-átirányítás
+      // alapja, ezért nem írjuk át) ezt viseli — a tévedés lényegét (buborékok, mondatbefejezés) fogjuk
+      en: { mind: [], egyik: [/(?:three|3) (?:light[- ]gr[ae]y )?bubbles/iu, /Apple Intelligence[^.\n]{0,40}finish\w* (?:your|the) sentences?/iu], nem: [/(?:doesn['’]t|does not|won['’]t|can['’]t|cannot)\s+finish/iu] },
+      hu: { mind: [], egyik: [/Apple Intelligence prediktív szövegbevitel/iu, /három (?:világos)?szürke buborék/iu, /Apple Intelligence[^.\n]{0,40}befejezz?e a mondat/iu], nem: [/nem fejez(?:i)? be/iu] },
+      es: { mind: [], egyik: [/escritura predictiva de Apple Intelligence/iu, /tres burbujas (?:gris|grises)/iu, /Apple Intelligence[^.\n]{0,40}termin\w* (?:tus|las|la|tu) (?:frases?|oraci[oó]n(?:es)?)/iu], nem: [/no termina/iu] }
+    }
   }
 ];
 

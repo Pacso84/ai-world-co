@@ -395,6 +395,34 @@ await t('🧭 11-11: Copilot „négymezős ikon” + „Qwen Chat” konzol-wid
   nincs('No existe un widget de Qwen Chat listo para tiendas en línea.', 'es');
 });
 
+await t('🧭 11-11 (6b): Alexa „Household az appban” + Apple „mondatbefejező prediktív írás” — fogja mindhárom nyelven; az újraírt, helyes mondatokat nem', () => {
+  // pozitív példa = a 11-11-i újraírás előtti élő mondat (set-up-a-shared-alexa-household-whiteboard…; draft-quick-text-messages-with-apple-intelligence…)
+  van('alexa-household-az-appban', 'On your phone, open the **Alexa app**. Scroll down until you see a section called **Your Household** or **Amazon Household**.', 'en');
+  van('alexa-household-az-appban', 'If you are using an older Alexa app, you may also find Household settings by going to **More → Settings → Household Profiles** inside the Alexa app itself.', 'en');
+  van('alexa-household-az-appban', 'You need **two or more adult profiles linked to the same Amazon Household** in the Alexa app — that\'s how everyone in the family gets permission to write to the same board.', 'en');
+  van('alexa-household-az-appban', '## Step 1 — Open the Alexa app and find Household settings', 'en');
+  van('alexa-household-az-appban', 'Nyisd meg az **Alexa appot** a telefonodon. Görgess addig, amíg meg nem látod a **Your Household** vagy **Amazon Household** részt.', 'hu');
+  van('alexa-household-az-appban', 'Két vagy több felnőtt profilt kell összekapcsolnod ugyanazzal az **Amazon Household** (háztartás) fiókkal az Alexa alkalmazásban.', 'hu');
+  van('alexa-household-az-appban', 'Abre la **app de Alexa** en tu teléfono. Desplázate hacia abajo hasta que veas una sección llamada **Tu Household** o **Amazon Household**.', 'es');
+  van('alexa-household-az-appban', '## Paso 1 — Abre la app de Alexa y busca los ajustes del Household', 'es');
+  nincs('Amazon\'s help names the Amazon Shopping List as the list adults in an Amazon Family share — it doesn\'t say custom lists are shared.', 'en');
+  nincs('Open the **Alexa app**, tap **More**, then tap **Lists & Notes**.', 'en');
+  nincs('Amazon Household is not managed in the Alexa app.', 'en');
+  nincs('Az Amazon Family nem az Alexa appban kezelhető.', 'hu');
+  // a buborékos mondat a bekezdésben „Apple Intelligence” nélkül állt — a szabály szovegben-szűrőjét a régi cikk adta:
+  // en a régi H1 (önmagában már nem minta), hu a frontmatter `tool:` sora (önmagában szintén nem az)
+  van('apple-intelligence-mondatbefejezes', '# Draft quick text messages with Apple Intelligence’s predictive writing\n\nAfter a second or two, you’ll see **predictive suggestions appear above the keyboard** in a row of three light-gray bubbles.', 'en');
+  van('apple-intelligence-mondatbefejezes', 'These bubbles are Apple Intelligence’s way of finishing your sentence based on what it thinks you’re likely to say next.', 'en');
+  van('apple-intelligence-mondatbefejezes', '# Üzenetek villámgyors megírása az Apple Intelligence prediktív szövegbevitelével', 'hu');
+  van('apple-intelligence-mondatbefejezes', 'tool: "Apple Intelligence"\n\nEgy-két másodperc múlva **a billentyűzet felett három világosszürke buborékban** prediktív javaslatok jelennek meg.', 'hu');
+  van('apple-intelligence-mondatbefejezes', 'Ezek a buborékok az Apple Intelligence módjai arra, hogy befejezze a mondatodat aszerint, amit szerinte valószínűleg írni szeretnél.', 'hu');
+  van('apple-intelligence-mondatbefejezes', '# Redacta mensajes rápidos con la escritura predictiva de Apple Intelligence', 'es');
+  nincs('**In short:** Apple Intelligence doesn\'t finish a brand-new message for you as you type the first word.', 'en');
+  nincs('With Apple Intelligence, suggested replies appear above the keyboard.', 'en');
+  nincs('**Röviden:** Az Apple Intelligence nem fejez be helyetted egy teljesen új üzenetet, amikor beírod az első szót.', 'hu');
+  nincs('**En resumen:** Apple Intelligence no termina por ti un mensaje nuevo mientras escribes la primera palabra.', 'es');
+});
+
 await t('📅 LEJÁRAT: a „GPT Store bezárt” 2026-12-11-ig téves, onnan igaz (OpenAI kivezeti az egyedi GPT-ket)', () => {
   const s = 'OpenAI shut down the GPT Store.';
   assert.deepEqual(tevedesekASzovegben(s, 'en', '2026-12-10').map(x => x.id), ['gpt-store-megszunt']);
