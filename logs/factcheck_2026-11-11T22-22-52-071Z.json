@@ -1,0 +1,64 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.014807633999999998,
+  "at": "2026-11-11T22:22:52.071Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 3,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-08-12T16-45-38-862Z_google-deepmind_Putting_sign_language_AI_into_users__hands.json",
+      "cim": "Putting sign language AI into users’ hands",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás a forrásban nem szereplő állítást hozna be: „Then look for the new sign language features appearing in your video call apps — they are ”",
+      "modell_hu": "a cikk túlbecsüli a jelenlegi elérhetőséget, és helytelenül sugallja, hogy teljesen helyi eszközön fut"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-plan-a-backyard-veggie-patch-that-suits-your-climate-.json",
+      "cim": "How to Plan a Backyard Veggie Patch That Suits Your Climate with AI",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-07-30T17-14-04-999Z_google-workspace_Use_Gemini_in_Google_Forms_to_quickly_create_a_new.json",
+      "cim": "Use Gemini in Google Forms to quickly create a new quiz",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás a forrásban nem szereplő állítást hozna be: „A **Google Workspace** account through your school or employer, or a **Google AI, Pro, or ”",
+      "modell_hu": "A cikk három kulcsfontosságú pontban mond ellent a hivatalos forrásnak: bevezetési időpont, fiók elérhetőség és fájlhivatkozási képesség tekintetében."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-plan-a-family-road-trip-with-kid-friendly-stops-and-b.json",
+      "cim": "How to plan a family road trip with kid-friendly stops and breaks",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató általános AI asszisztens használati mintákat ír le, amelyek pontosak maradnak - chatek elnevezése, strukturált promptok, iteráció és export funkciók konzisztenssek a jelenlegi platformokon."
+    },
+    {
+      "file": "ARTICLE_2026-10-15T02-17-50-372Z_nvidia-blog_European_Cities_Deploy_NVIDIA-Powered_AI_Agents_to.json",
+      "cim": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „According to Salesforce's announcement, Tottenham Hotspur plans to launch \"Ask Spurs\" on S”",
+      "modell_hu": "A forrás már működő Ask Spurs-t mutat be, nem jövőbeni tervként"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-plan-a-full-week-of-family-dinners-and-one-smart-shop.json",
+      "cim": "How to plan a full week of family dinners and one smart shopping list",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}

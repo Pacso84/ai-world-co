@@ -483,30 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179354390226497",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „The announcement does not include p",
-      "agent": "fact-check",
-      "at": "2026-11-01T14:38:22.264Z",
-      "loud": false
-    },
-    {
-      "id": "n179354393309352",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak j",
-      "agent": "fact-check",
-      "at": "2026-11-01T14:38:53.093Z",
-      "loud": false
-    },
-    {
-      "id": "n179356313122194",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „Three of them, according to the anno",
-      "agent": "fact-check",
-      "at": "2026-11-01T19:58:51.221Z",
-      "loud": false
-    },
-    {
       "id": "n179356316234946",
       "level": "warn",
       "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „It does not describ",
@@ -1281,37 +1257,33 @@
       "agent": "fact-check",
       "at": "2026-11-11T15:44:23.472Z",
       "loud": false
+    },
+    {
+      "id": "n179443578663780",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „Then look for the n",
+      "agent": "fact-check",
+      "at": "2026-11-11T22:23:06.637Z",
+      "loud": false
+    },
+    {
+      "id": "n17944358373277",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „A **Google Workspac",
+      "agent": "fact-check",
+      "at": "2026-11-11T22:23:57.327Z",
+      "loud": false
+    },
+    {
+      "id": "n179443585666284",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „According to Salesf",
+      "agent": "fact-check",
+      "at": "2026-11-11T22:24:16.662Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17933314532080",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Create, preview, and edit files directly in the Gemini \" hír a meglévő útmutatóra mutat: create-a-personalised-weekly-meal-plan-based-on-your-diet-wi",
-      "ref": "create-a-personalised-weekly-meal-plan-based-on-your-diet-wi",
-      "at": "2026-10-30T03:37:33.208Z"
-    },
-    {
-      "id": "m179333182695090",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-30T03:43:46.950Z"
-    },
-    {
-      "id": "m179333192690016",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Summarize a long work report into 5 key points wit\" — ChatRTX still exists and the core functionality (summarizing PDFs with a local RAG app) is plausible, but specific UI element names (tab names, button labels) cannot be verified against current NVIDIA documentation — t",
-      "ref": "ARTICLE_GUIDE_summarize-a-long-work-report-into-5-key-points-with-chatrtx.json",
-      "open": true,
-      "at": "2026-10-30T03:45:26.900Z"
-    },
     {
       "id": "m179333206739164",
       "from": "fact-check",
@@ -2690,6 +2662,36 @@
       "text": "2 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-11T16:54:33.355Z"
+    },
+    {
+      "id": "m179443578663761",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „Then look for the new sign language features appearing in your video call apps — they are ”): \"Putting sign language AI into users’ hands\" — a cikk túlbecsüli a jelenlegi elérhetőséget, és helytelenül sugallja, hogy teljesen helyi eszközön fut",
+      "ref": "ARTICLE_2026-08-12T16-45-38-862Z_google-deepmind_Putting_sign_language_AI_into_users__hands.json",
+      "open": true,
+      "at": "2026-11-11T22:23:06.637Z"
+    },
+    {
+      "id": "m179443583732772",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „A **Google Workspace** account through your school or employer, or a **Google AI, Pro, or ”): \"Use Gemini in Google Forms to quickly create a new\" — A cikk három kulcsfontosságú pontban mond ellent a hivatalos forrásnak: bevezetési időpont, fiók elérhetőség és fájlhivatkozási képesség tekintetében.",
+      "ref": "ARTICLE_2026-07-30T17-14-04-999Z_google-workspace_Use_Gemini_in_Google_Forms_to_quickly_create_a_new.json",
+      "open": true,
+      "at": "2026-11-11T22:23:57.327Z"
+    },
+    {
+      "id": "m179443585666215",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „According to Salesforce's announcement, Tottenham Hotspur plans to launch \"Ask Spurs\" on S”): \"European Cities Deploy NVIDIA-Powered AI Agents to\" — A forrás már működő Ask Spurs-t mutat be, nem jövőbeni tervként",
+      "ref": "ARTICLE_2026-10-15T02-17-50-372Z_nvidia-blog_European_Cities_Deploy_NVIDIA-Powered_AI_Agents_to.json",
+      "open": true,
+      "at": "2026-11-11T22:24:16.662Z"
     }
   ]
 }
