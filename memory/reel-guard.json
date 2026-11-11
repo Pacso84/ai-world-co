@@ -1,12 +1,13 @@
 {
-  "at": "2026-11-11T04:02:56.750Z",
+  "at": "2026-11-11T16:54:16.253Z",
   "send": {
     "fazis": "send",
     "ok": true
   },
   "prepare": {
     "fazis": "prepare",
-    "ok": true,
+    "ok": false,
+    "hiba": "spawnSync ffmpeg ENOENT",
     "betu": {
       "ok": true,
       "reason": "",
@@ -15,6 +16,7 @@
   },
   "send_extra": {
     "fazis": "send_extra",
-    "ok": true
+    "ok": false,
+    "hiba": "A videó nem tölthető le (HTTP 404) — a Facebook ettől bukna el."
   }
 }
