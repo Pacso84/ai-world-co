@@ -351,6 +351,45 @@ t('🎵 TikTok-extra: a LEGRÉGEBBI friss, videó nélküli útmutató; naponta 
   assert.equal(tiktokExtra([], MOST), null);
 });
 
+// 2026-11-11 (élesben mérve): 11-10 óta az útmutató is mehet TikTok-FOTÓként (`posted_tiktok_photo`,
+// content/social — a cikk-betöltő `tiktok_foto_at`-ként adja tovább). A TikTok-extra a LEGRÉGEBBI videó
+// nélküli útmutatót vitte → az mindig már fotóként kint volt → a TikTok-sor kiszűrte (videoCsatornaMai)
+// → 11-10-én és 11-11-én 0/3 videó. A fotóval kint lévő útmutatóra gyártott „csak-TikTok” videó céltalan.
+t('🔴 11-11: a TikTok-extra NEM választ fotóként már TikTokon lévő útmutatót', () => {
+  const nap = d => new Date(MOST - d * 864e5).toISOString();
+  const cikkek = [
+    g('duck-ai', nap(2), { tiktok_foto_at: nap(1) }),     // legrégebbi, de fotóként már kint
+    g('meeting-notes', nap(0.5))                          // a mai útmutató: még sehol
+  ];
+  assert.equal(tiktokExtra(cikkek, MOST, { maxKorNap: 7 }).slug, 'meeting-notes',
+    '🔴 a videó egy TikTokon már kint lévő cikkhez készül → a TikTokra nem megy ki');
+  assert.equal(tiktokExtra([cikkek[0]], MOST, { maxKorNap: 7 }), null, 'ha csak fotózott jelölt van: nincs extra');
+});
+
+t('🔴 11-11: a Reel is az előbb TikTokon még nem járt útmutatót veszi (tartalékként a fotózott is mehet)', () => {
+  const nap = d => new Date(MOST - d * 864e5).toISOString();
+  const cikkek = [
+    g('fotozott', nap(3), { tiktok_foto_at: nap(2) }),
+    g('tiszta', nap(1))
+  ];
+  assert.equal(kovetkezoReel(cikkek, MOST).slug, 'tiszta', '🔴 a Reel nem jutna ki TikTokra');
+  assert.equal(kovetkezoReel([cikkek[0]], MOST).slug, 'fotozott', 'a Facebook-Reel SOHA nem maradhat el');
+});
+
+t('🔴 11-11: ha egy MAI Reel cikke fotóként már TikTokon van, +1 pótló extra jár', () => {
+  const ma = h => new Date(MOST - h * 3600e3).toISOString();
+  const cikkek = [
+    g('reel-fotozott', '2026-08-20', { reel_at: ma(2), tiktok_foto_at: '2026-08-24T20:00:00Z' }),
+    g('reel-tiszta', '2026-08-21', { reel_at: ma(1) })
+  ];
+  assert.equal(tiktokPotlas(cikkek, MOST), 1, '🔴 a napi TikTok-videószám visszaesik');
+});
+
+t('🔌 11-11: a reel-post cikk-betöltője átadja a TikTok-fotó jelölést (content/social)', () => {
+  const src = readFileSync(new URL('./reel-post.js', import.meta.url), 'utf-8');
+  assert.match(src, /tiktok_foto_at: tiktokFotoAt\(m\.slug\)/, '🔴 a sor-döntés nem látja, mi ment ki fotóként');
+});
+
 t('🎵 TikTok-poszter: a mai Reelek UTÁN a mai extra is megy — egyszer, a saját szövegével', () => {
   const ma = h => new Date(MOST - h * 3600e3).toISOString();
   const cikkek = [

@@ -189,4 +189,17 @@ assert.equal(composePost({ text: 'a', url: '', channel: 'x' }), null,
   assert.doesNotMatch(src, /1-2 friendly sentences/, 'a régi, hosszú szöveget kérő szabály maradt');
 }
 
+// --- A POSZTSZÖVEG-GYÁRTÓ FUTÁSONKÉNTI KORLÁTJA (2026-11-11, élesben) ------------------------------------
+// A CI `--limit 6`-tal hívta, közben egy futásban 8 cikk jelent meg (6 hír a termékhír-extrával + 2 útmutató)
+// → a 2 útmutató szövege csak a KÖVETKEZŐ futásban készült el, így a reggeli Reel szöveg nélkül maradt, és
+// nem ment ki TikTokra („a mai Reel cikkéhez nincs poszt-szöveg”). Egy futás legrosszabb esete: 4 hír + 2
+// termékhír-extra + 2 útmutató + 1 trend + 1 lefedettségi extra + heti összefoglaló = 11 → a korlát legalább 12.
+{
+  const { readFileSync } = await import('fs');
+  const yml = readFileSync(new globalThis.URL('../.github/workflows/auto.yml', import.meta.url), 'utf-8');
+  const m = yml.match(/node agents\/social\/agent\.js --limit (\d+)/);
+  assert.ok(m, 'a CI nem hívja a posztszöveg-gyártót');
+  assert.ok(Number(m[1]) >= 12, `🔴 a posztszöveg-gyártó futásonként csak ${m[1]} cikket visz — egy futás akár 11-et publikál`);
+}
+
 console.log('✅ social-text: minden teszt átment');

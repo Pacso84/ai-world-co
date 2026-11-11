@@ -96,7 +96,9 @@ export function kovetkezoReel(cikkek, now = Date.now(), opts = {}) {
   // Reelnek — a TikTokra ugyanaz kétszer nem megy, így 10-13-án és 10-14-én is
   // csak 2/3 videó ment ki. Ha van még sehol nem videózott jelölt, abból választunk;
   // ha nincs, a TikTokon már járt is mehet (a Facebook-Reel SOHA nem marad el).
-  const tiktokonNemJart = jeloltek.filter(c => !napja(c.tiktok_video_at));
+  // 2026-11-11: a TikTok-FOTÓként kint lévő (`tiktok_foto_at`, content/social) sem „nem járt” — annak a
+  // Reelje a TikTokra már nem megy ki (videoCsatornaMai), tehát a még sehol nem járt útmutató jön előbb.
+  const tiktokonNemJart = jeloltek.filter(c => !napja(c.tiktok_video_at) && !napja(c.tiktok_foto_at));
   const sor = tiktokonNemJart.length ? tiktokonNemJart : jeloltek;
 
   // FÓKUSZ (2026-10-09, user: „először legyen eladásunk" — core/guide-focus.js):
@@ -262,6 +264,9 @@ export function tiktokExtra(cikkek, now = Date.now(), opts = {}) {
     c && c.type === 'guide' && c.slug
     && c.slug !== opts.kizar
     && !napja(c.reel_at) && !napja(c.tiktok_video_at)   // még sehol nem volt videója
+    // 2026-11-11 (élesben: 11-10 és 11-11 0/3 TikTok-videó): a fotóként már TikTokon lévő útmutatóra a
+    // csak-TikTok videó céltalan — a TikTok-sor kiszűri (videoCsatornaMai). Ilyenkor inkább nincs extra.
+    && !napja(c.tiktok_foto_at)
     && napja(c.published_at)
     && Date.parse(c.published_at) >= korHatar
     && alkalmas(c)
@@ -284,6 +289,7 @@ export function tiktokPotlas(cikkek, now = Date.now(), fuggoSlug = '') {
   const ma = new Date(now).toISOString().slice(0, 10);
   const maiak = new Set(maiReelCikkek(cikkek, now).map(c => c.slug));
   if (fuggoSlug) maiak.add(fuggoSlug);
+  // 2026-11-11: a fotóként már TikTokon lévő mai Reel sem hoz új TikTok-videót → az is pótlást kap.
   return cikkek.filter(c => c && maiak.has(c.slug)
-    && napja(c.tiktok_video_at) && napja(c.tiktok_video_at) < ma).length;
+    && ((napja(c.tiktok_video_at) && napja(c.tiktok_video_at) < ma) || napja(c.tiktok_foto_at))).length;
 }

@@ -416,6 +416,15 @@ async function cikkekBetolt(ROOT, join) {
   const { readFileSync, readdirSync, existsSync } = await import('fs');
   const DIR = join(ROOT, 'content', 'articles');
   if (!existsSync(DIR)) return [];
+  // 2026-11-11: a TikTok-FOTÓ jelölése a cikk közösségi fájljában él (content/social/<slug>.json
+  // `posted_tiktok_photo`) — enélkül a sor-döntés fotóként már TikTokon lévő útmutatóra gyártott
+  // csak-TikTok videót (11-10, 11-11: 0/3 videó). Hiányzó/olvashatatlan fájl → '' (nincs kint).
+  const tiktokFotoAt = slug => {
+    try {
+      const v = JSON.parse(readFileSync(join(ROOT, 'content', 'social', slug + '.json'), 'utf-8')).posted_tiktok_photo;
+      return typeof v === 'string' ? v : '';
+    } catch { return ''; }
+  };
   const ki = [];
   for (const f of readdirSync(DIR)) {
     if (!f.startsWith('ARTICLE_') || !f.endsWith('.json')) continue;
@@ -430,6 +439,7 @@ async function cikkekBetolt(ROOT, join) {
     ki.push({ file: f, slug: m.slug || '', type: utmutatoE(f, j) ? 'guide' : 'news',
       published_at: m.published_at || '', reel_at: m.reel_at || '', tool: m.tool || '',
       tiktok_video_at: m.tiktok_video_at || '', fb_reel_at: m.fb_reel_at || '',
+      tiktok_foto_at: tiktokFotoAt(m.slug),
       title: j.original_title || '',
       md: j.article_markdown || '' });
   }

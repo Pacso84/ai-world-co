@@ -586,7 +586,19 @@ jobs:
       # SEMMIT nem bizonyított a CI-ról.
       - name: ffmpeg telepítése (a Reelhez kell)
         if: always()
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && ffmpeg -version | head -1
+        # ⏱️ IDŐKORLÁT + 1 ÚJRAPRÓBA (2026-11-11): a 15:41-es futásban a security.ubuntu.com névfeloldása
+        # elakadt, és az apt 63 PERCIG lógott (15:47 → 16:50) — a Reel kimaradt, ÉS egy óra CI-perc elment
+        # (havi keret ~2000). `timeout-minutes` nem tehető ide (a lépés-költségvetés tele, core/ci-timeouts.test.js),
+        # ezért a parancsokat a shell `timeout`-ja fogja: legrosszabb esetben ~9 perc, nem egy óra.
+        run: |
+          APT_OPT="-o Acquire::Retries=2 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20"
+          for proba in 1 2; do
+            if sudo timeout 120 apt-get $APT_OPT update -qq && sudo timeout 150 apt-get $APT_OPT install -y -qq ffmpeg; then
+              ffmpeg -version | head -1; exit 0
+            fi
+            echo "⚠️ ffmpeg-telepítés: a(z) $proba. próba nem sikerült"; [ "$proba" = 1 ] && sleep 30
+          done
+          echo "❌ ffmpeg nem települt (2 próba) — ma ebben a futásban nincs Reel-gyártás"; exit 1
 
       # ⚠️ BETŰTÍPUS TELEPÍTÉSE (2026-09-17) — UGYANAZ A CSAPDA, MINT AZ
       # FFMPEG-NÉL, EGY SZINTTEL CSENDESEBBEN. A Reel-táblák „Arial Black"-et
@@ -806,7 +818,9 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         run: |
-          node agents/social/agent.js --limit 6 || true
+          # 6 → 12 (2026-11-11): egy futás 8 cikket publikált (termékhír-extra), a 6-os korlát miatt a 2 útmutató
+          # szöveg nélkül maradt → a reggeli Reel nem ment TikTokra. Csak a szöveg nélküli cikkeket viszi (~$0,0008/db).
+          node agents/social/agent.js --limit 12 || true
           # 2 → 3 POSZT/FUTÁS (2026-08-09, user-döntés: "mivel nincs Pinterest,
           # azt forgasd bele, hogy minél előbb kimenjen"). Napi 9 poszt.
           # A KERET A PINTERESTTŐL SZABADULT FEL: 9 × 3 művelet × 31 nap =
