@@ -31,7 +31,7 @@ import { addTask, setTaskStatus, notify } from '../../core/ops.js';
 import { meteredBlocked, budgetStatus } from '../../core/budget.js';
 import { hirIroKeret } from '../../core/hir-keret.js';
 import { extraTemaMa, extraUtmutato } from '../../core/lefedettseg-extra.js';
-import { termekExtraMaradek, termekExtraHir, TERMEK_EXTRA_NAPI } from '../../core/hir-elsobbseg.js';   // 📰 11-09: +2 hely termékhírnek
+import { termekExtraMaradek, termekExtraHir, TERMEK_EXTRA_NAPI, nyitottExtraHely, EXTRA_NYITAS_UTC } from '../../core/hir-elsobbseg.js';   // 📰 11-09: +2 hely termékhírnek
 
 // ===================================================================
 // SETUP
@@ -532,7 +532,7 @@ async function main() {
     };
     const remaining = hirIroKeret(keretAdat);
     const termekExtra = most.termek_extra_remaining || 0;   // 📰 11-09: extra hely CSAK termékhírnek (core/hir-elsobbseg.js)
-    console.log(`   Hír-keret: ${keretAdat.max} − ${keretAdat.maPublikalt} ma publikált − ${keretAdat.varoVazlat} váró vázlat − ${keretAdat.atdolgozhato} átdolgozandó régi = ${remaining} új hír (+ max ${termekExtra} extra termékhír)`);
+    console.log(`   Hír-keret: ${keretAdat.max} − ${keretAdat.maPublikalt} ma publikált − ${keretAdat.varoVazlat} váró vázlat − ${keretAdat.atdolgozhato} átdolgozandó régi = ${remaining} új hír (+ max ${termekExtra} extra termékhír; nyitva ${nyitottExtraHely()}/${TERMEK_EXTRA_NAPI} — ${EXTRA_NYITAS_UTC.join('/')} UTC-től)`);
     if (remaining > 0 || termekExtra > 0) {
       const result = await runAgent('agents/iro/agent.js', ['--limit', String(remaining), '--termek-extra', String(termekExtra)]);
       session.stages.writer = { exit_code: result.code, limit_used: remaining, termek_extra: termekExtra };

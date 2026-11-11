@@ -173,8 +173,9 @@ t('🔗 összevont csoport a legjobb tagja helyére kerül (eddig mindig előre)
 });
 
 t('🧮 extra-maradék és jelölés', () => {
-  assert.equal(termekExtraMaradek(0), 2); assert.equal(termekExtraMaradek(1), 1);
-  assert.equal(termekExtraMaradek(5), 0); assert.equal(termekExtraMaradek(NaN), 2);
+  const este = Date.parse('2026-11-11T21:30:00Z');
+  assert.equal(termekExtraMaradek(0, este), 2); assert.equal(termekExtraMaradek(1, este), 1);
+  assert.equal(termekExtraMaradek(5, este), 0); assert.equal(termekExtraMaradek(NaN, este), 2);
   assert.equal(termekExtraHir({ termek_extra: true }), true); assert.equal(termekExtraHir({}), false);
 });
 
@@ -204,6 +205,23 @@ t('📨 Telegram-sor: termékhír / hír, extra külön; útmutató nem számít
   assert.equal(sor, '📰 Termékhír (új funkció/modell): 2 / 3 hír — ebből 1 az extra helyen');
   assert.equal(termekHirLine([]), '📰 Termékhír (új funkció/modell): 0 / 0 hír');
   assert.match(readFileSync(join(ROOT, 'core', 'daily-report.js'), 'utf-8'), /termekHirLine\(r\.maiCikkek, 1\)/);
+});
+
+// ⏱️ 2. RÉSZ — GYORSASÁG (2026-11-11). Mérve 11-05…11-11: a hajnali futás (~03:40 UTC) elvitte a nap MIND a 6
+// helyét, így az amerikai cégek délutáni/esti bejelentése (OpenAI, Google, ElevenLabs… 11-10) az esti futásban
+// (~21:30) már nem fért be → másnap reggel jelent meg (+6 óra, a nem-termékhíreknél +47). Az extra helyek
+// ezért FOKOZATOSAN nyílnak: 10 UTC előtt 0, 10–17 között 1, 17 után 2 — a napi összeg változatlan.
+t('⏱️ 11-11: az extra termékhír-helyek a nap folyamán nyílnak (hajnal 0 · délután 1 · este 2)', () => {
+  const ora = h => Date.parse(`2026-11-11T${String(h).padStart(2, '0')}:30:00Z`);
+  assert.equal(termekExtraMaradek(0, ora(3)), 0, '🔴 a hajnali futás elviszi az esti újdonság helyét');
+  assert.equal(termekExtraMaradek(0, ora(9)), 0);
+  assert.equal(termekExtraMaradek(0, ora(10)), 1);
+  assert.equal(termekExtraMaradek(0, ora(15)), 1);
+  assert.equal(termekExtraMaradek(1, ora(15)), 0, 'a délután már kiadott hely levonódik');
+  assert.equal(termekExtraMaradek(0, ora(17)), 2);
+  assert.equal(termekExtraMaradek(1, ora(21)), 1, 'este a maradék hely kiadható');
+  assert.equal(termekExtraMaradek(2, ora(21)), 0, 'a napi 2 nem nő');
+  assert.equal(termekExtraMaradek(0, NaN), 0, '🔒 hibás idő → nem adunk ki extra helyet');
 });
 
 if (hiba) { console.log(`\n❌ hir-elsobbseg.test: ${hiba} hiba`); process.exit(1); }

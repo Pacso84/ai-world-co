@@ -199,11 +199,26 @@ export function valogat(terv, { n = 0, extra = 0, info, maForrasDb = {} } = {}) 
   return ki;
 }
 
-/** Ma még hány extra termékhír-hely van (a ma már extra helyen publikált / váró hírek levonva). */
-export function termekExtraMaradek(maExtraDb) {
+// ⏱️ GYORSASÁG — 2. RÉSZ (2026-11-11, user: „rábízom a döntést, válaszd a legjobbat!”)
+// MÉRVE (git-előzmény, 11-05…11-11, 32 hír): a hajnali futás (~03:40 UTC) a nap MIND a 6 helyét elvitte, így az
+// amerikai cégek délutáni/esti bejelentése az esti futásban (~21:30 UTC) már nem fért be, és másnap reggel jelent
+// meg (11-10: OpenAI, Google, ElevenLabs, MiniMax → +6 óra). Az extra termékhír-helyek ezért a nap folyamán
+// FOKOZATOSAN nyílnak; a napi összeg (TERMEK_EXTRA_NAPI) változatlan. Ha egy késő futás elmarad, a hely aznap
+// kimarad (a vázlat a másnapi rendes helyekre kerül) — inkább ez, mint hogy a hajnal elvigye az esti újdonságot.
+export const EXTRA_NYITAS_UTC = [10, 17];   // ettől az UTC-órától nyílik az 1., ill. a 2. extra hely
+
+/** Ennyi extra hely nyitott MOST (UTC-óra szerint). Hibás idő → 0 (🔒 inkább kimarad, mint túllépjük). */
+export function nyitottExtraHely(now = Date.now()) {
+  if (!Number.isFinite(now)) return 0;
+  const ora = new Date(now).getUTCHours();
+  return Math.min(TERMEK_EXTRA_NAPI, EXTRA_NYITAS_UTC.filter(h => ora >= h).length);
+}
+
+/** Ma még hány extra termékhír-hely van MOST (a nyitott helyekből a ma már extra helyen publikált / váró hírek levonva). */
+export function termekExtraMaradek(maExtraDb, now = Date.now()) {
   if (!HIR_ELSOBBSEG_BE) return 0;
   const m = Number.isFinite(maExtraDb) && maExtraDb > 0 ? Math.floor(maExtraDb) : 0;
-  return Math.max(0, TERMEK_EXTRA_NAPI - m);
+  return Math.max(0, nyitottExtraHely(now) - m);
 }
 
 /** Extra termékhír-helyen született-e (a _meta alapján)? */
