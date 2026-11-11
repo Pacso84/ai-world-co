@@ -1,0 +1,63 @@
+{
+  "ok": 4,
+  "fixed": 2,
+  "removed": 0,
+  "cost": 0.012198924,
+  "at": "2026-11-11T03:52:54.952Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 2,
+    "visszautasitva": 0,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_turn-meeting-notes-into-a-clear-summary-and-action-list-with.json",
+      "cim": "Turn meeting notes into a clear summary and action list with DeepSeek",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_make-study-flashcards-from-your-class-notes-with-deepseek.json",
+      "cim": "Make study flashcards from your class notes with DeepSeek",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-10T21-35-17-131Z_picsart_Seedream_5_5_is_now_in_Picsart__realistic_images_t.json",
+      "cim": "Seedream 5.5 is now in Picsart: realistic images that hold up edit after edit",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "a megjelent cikk nem tartalmaz hamis állítást"
+    },
+    {
+      "file": "ARTICLE_2026-11-10T21-35-17-131Z_minimax-blog_MiniMax_H3-Image__Bringing_4K_Image_Generation_int.json",
+      "cim": "MiniMax H3-Image: Bringing 4K Image Generation into the 10-Second Era - MiniMax Research",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényszerű állítása megfelel a forrásnak - a modell képességei (szöveg-kép generálás, legfeljebb 16 képes hivatkozás-alapú generálás, képszerkesztés), 4K felbontás (4096 × 4096), sebességi állítások (10 másodperc alatt, akár 5× gyorsabb), nyitott súlyok elérhetősége és a hozzáférési pla"
+    },
+    {
+      "file": "ARTICLE_2026-11-10T21-35-17-131Z_elevenlabs_Introducing_Scribe_v3_and_v3_Live__our_most_accura.json",
+      "cim": "Introducing Scribe v3 and v3 Live, our most accurate speech to text models ",
+      "tipus": "hir",
+      "eredmeny": "javitva",
+      "ok_hu": "A forrás pontosan megadja a 39%-os javulást az élő idejű diarizációra, amit a cikk kihagy",
+      "modell_hu": "Article says Scribe v3 makes 17% fewer diarization errors on recordings with three or more speakers (which is correct for batch), but the source also states Scribe v3 Live has 39% fewer diarization errors than the next-best realtime model. The article states diarization is \"now part of the real-time"
+    },
+    {
+      "file": "ARTICLE_2026-11-10T21-35-05-522Z_google-ai-blog_Gemini_Intelligence__New_features__on_more_devices.json",
+      "cim": "Gemini Intelligence: New features, on more devices",
+      "tipus": "hir",
+      "eredmeny": "javitva",
+      "ok_hu": "A hivatalos forrás mindenhol 'motorola signature 27' kisbetűvel írja — a terméknevet pontosan így kell hagyni",
+      "modell_hu": "Article capitalizes 'Motorola' but source consistently writes 'motorola signature 27' in lowercase"
+    }
+  ]
+}

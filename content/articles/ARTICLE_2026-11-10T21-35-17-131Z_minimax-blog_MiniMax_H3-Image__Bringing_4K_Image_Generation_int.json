@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "written_at": "2026-11-11T03:43:46.200Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0041776,
+    "original_draft": "2026-11-10T21-35-17-131Z_minimax-blog_MiniMax_H3-Image__Bringing_4K_Image_Generation_int.json",
+    "source_id": "minimax-blog",
+    "source_name": "MiniMax (hivatalos, blog-listaoldal)",
+    "source_link": "https://www.minimax.io/blog/minimax-h3-image",
+    "source_links": [
+      "https://www.minimax.io/blog/minimax-h3-image"
+    ],
+    "source_snippet_len": 176,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 3486,
+    "source_text_key": "aa606b833b2b622f",
+    "source_overlap_words": 6,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-11T03:46:44.507Z",
+    "slug": "minimax-h3-image-what-the-new-4k-image-model-does-and-who-it-s-for",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 726
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with clear explanations of technical terms (prompt, weights, API, open weights), proper attribution of MiniMax's claims, good structure with hook and four audience-specific takeaways, and a helpful next-step wrap-up. No prohibited content, no invented facts, US English throughout.",
+      "_aiCost": 0.00117726,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-11T03:48:13.306Z",
+    "guide_worthy": true,
+    "related_guide_topic": "gemini-images",
+    "image_v": 2,
+    "image_at": "2026-11-11T03:50:44.504Z",
+    "seo": {
+      "meta_description": "MiniMax H3 Image is an open-weight AI model that creates 4K images from text in about 10 seconds. It supports 16 reference pictures and image editing.",
+      "keywords": [
+        "MiniMax H3 Image",
+        "AI image generator 4K",
+        "text to image AI model",
+        "open weight AI model",
+        "fast AI image generation",
+        "AI image editing tool",
+        "MiniMax image model"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding the release date and whether it's free to use in the meta description for more timeliness and completeness",
+        "The title could include 'review' or 'hands-on' to capture comparison-seeking users"
+      ],
+      "optimised_at": "2026-11-11T03:52:07.325Z"
+    },
+    "fact_verified_at": "2026-11-11T03:53:22.531Z"
+  },
+  "article_markdown": "---\ntitle: \"MiniMax H3-Image: What the New 4K Image Model Does and Who It's For\"\nsubtitle: \"MiniMax says its open-weight image model can make 4K pictures in about 10 seconds. Here is what that means for your projects.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"image-generation\", \"minimax\", \"open-weight-models\", \"ai-tools\"]\n---\n\n# MiniMax H3-Image: What the New 4K Image Model Does and Who It's For\n\n> **In short:** MiniMax has released H3-Image, which the company says can make a 4K picture in under 10 seconds. It creates images from text, works with up to 16 reference pictures, and can edit existing ones. Its model weights are open for anyone to download.\n\nAnyone who has tried to get a specific picture out of an AI tool knows the frustrating part: the image is close, but the details are off. MiniMax, an AI company, says its new H3-Image model is aimed at both speed and detail, so you can get a sharper result without waiting long.\n\n## What the announcement says\n\nH3-Image is built on MiniMax's earlier H3 model. The company describes three main jobs for it:\n\n- **Text-to-image generation**: you describe a picture in words, and the model draws it. Your description is called a prompt (the instruction you type to the AI).\n- **Reference-based generation**: you supply example pictures, and the model uses them as a guide for style or content. MiniMax says it can handle up to 16 reference images.\n- **Image editing**: you start with an existing picture and ask the model to change it.\n\nMiniMax also makes several claims about its own model. It says H3-Image can produce a full 4K image, which is 4096 × 4096 pixels, in under 10 seconds. The company adds that this speed can be up to five times faster than what it calls mainstream alternatives. It also says the pictures have natural-looking textures and that the model follows prompts closely. These are the company's own statements, so treat them as its claims until you test the model yourself.\n\n## What \"open weights\" means\n\nThe announcement says the model's weights are open. Weights are the numbers that store what a model learned during training, and you can think of them as its finished recipe. Open weights mean developers and researchers can download them, adjust them, and build their own tools. For most everyday users, this matters less than the fact that other people can build apps on top of it.\n\n## Where you can access it today\n\nAccording to the announcement, H3-Image is available through:\n\n- The **MiniMax API Platform**. An API (a way for one program to talk to another) lets developers connect the model to their own apps.\n- **MiniMax Code**, one of the company's product areas.\n- **Hailuo AI**, another MiniMax service.\n- **Hugging Face**, a website where developers share AI models. The model weights are posted there.\n\nThe company also says it offers a Standard mode and a faster Highspeed mode. Pricing details appear on the official pages, so check MiniMax's site for current costs rather than relying on any summary, including this one.\n\n## What this means for you\n\n- **In everyday life**: If you like making cards, posters, or classroom visuals, a 4K image gives you enough detail to print at a larger size. Start with a clear, specific prompt and adjust from there.\n- **For your business or work**: If you run a small business, the model could help you draft product visuals or flyers. Read the license that comes with the open weights before using images commercially.\n- **If you're just getting started**: Pick one picture you would like to see, then write one sentence describing it. Include the subject, the setting, and the lighting. Then try it through one of the access points above.\n- **If you already use it**: Gather three to five reference photos that share a style, then use them together in a reference-based request. Compare the result with a text-only prompt to see how much the references change the outcome.\n\n## Wrap-up\n\nH3-Image is a new image model from MiniMax, and the company says it is fast, detailed, and good at following instructions. Those are claims worth testing on your own pictures. Your next step is simple: write one clear prompt for an image you actually want, and see how the result matches what you pictured.",
+  "original_title": "MiniMax H3-Image: Bringing 4K Image Generation into the 10-Second Era - MiniMax Research"
+}

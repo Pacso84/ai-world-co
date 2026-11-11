@@ -1,0 +1,78 @@
+{
+  "_meta": {
+    "written_at": "2026-11-11T03:44:42.176Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0041487,
+    "original_draft": "2026-11-10T21-35-17-131Z_picsart_Seedream_5_5_is_now_in_Picsart__realistic_images_t.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/seedream-5-5-integration/",
+    "source_links": [
+      "https://picsart.com/blog/seedream-5-5-integration/",
+      "https://picsart.com/blog/how-to-relight-videos-with-ai/"
+    ],
+    "source_snippet_len": 816,
+    "source_text_via": [
+      "hirfolyam",
+      "hirfolyam"
+    ],
+    "source_text_len": 9006,
+    "source_text_key": "b5db5270f6c99a95",
+    "source_overlap_words": 16,
+    "merged_from": 2,
+    "merged_theme": "PicsArt Seedream 5.5 and AI video features",
+    "trend": null,
+    "termek_hir": true,
+    "termek_extra": true,
+    "status": "published",
+    "published_at": "2026-11-11T03:47:12.679Z",
+    "slug": "seedream-5-5-and-ai-video-relighting-in-picsart-what-they-do-and-who-t",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "OPENING_REPETITIVE: A legutóbbi 20 cikkből 4 kezdődik ugyanígy (\"if you have…\"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel."
+      ],
+      "wordCount": 987
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear definitions of technical terms, appropriate audience tone, and a useful 'What this means for you' section with practical guidance for different reader levels.",
+      "_aiCost": 0.00130767,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-11T03:48:28.774Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article covers two distinct features (Seedream 5.5 image model and AI Video Relighting) rather than one specific named tool for a consumer to act on",
+    "image_v": 2,
+    "image_at": "2026-11-11T03:50:50.741Z",
+    "seo": {
+      "meta_description": "ByteDance's Seedream 5.5 image model in Picsart keeps images steady across edits, adds transparent backgrounds, and renders small text clearly. Learn about AI video relighting.",
+      "keywords": [
+        "Seedream 5.5",
+        "Picsart AI tools",
+        "ByteDance image model",
+        "AI video relighting",
+        "transparent background AI",
+        "image editing AI 2024",
+        "Picsart new features"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a brief intro paragraph (2-3 sentences) that naturally incorporates keywords like 'Picsart image editing' early in the article body",
+        "Include 1-2 comparison points or use cases to give readers a clearer idea of who benefits from Seedream vs other AI image generators",
+        "Add internal links to related Picsart or ByteDance articles if available on the site to build topical authority"
+      ],
+      "optimised_at": "2026-11-11T03:52:14.030Z"
+    },
+    "fact_verified_at": "2026-11-11T03:53:13.641Z"
+  },
+  "article_markdown": "---\ntitle: \"Seedream 5.5 and AI Video Relighting in Picsart: What They Do and Who They're For\"\nsubtitle: \"A plain-language look at ByteDance's new image model in Picsart and the lighting presets for changing the mood of a video\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"picsart\", \"image-generation\", \"video-editing\", \"relighting\", \"creative-tools\"]\n---\n\n# Seedream 5.5 and AI Video Relighting in Picsart: What They Do and Who They're For\n\n> **In short:** ByteDance Seed's Seedream 5.5 image model is now available in Picsart. According to ByteDance, it keeps images steady across many edits, can return transparent backgrounds, and renders small text more clearly. Picsart's relight templates use AI to change the light in a video after it was filmed.\n\nIf you have ever tried to tweak a photo, only to watch the colors shift and the details blur a little more with every round, you already know the problem these tools are trying to solve. Picsart's announcements cover two related ideas: a better image model for making and editing pictures, and AI that changes the lighting in a video without a reshoot.\n\n## What Seedream 5.5 is\n\nA **model** is the AI system that does the work behind the scenes. Seedream 5.5 is an image model from ByteDance Seed, the team that also built earlier Seedream versions. It can start from a written prompt (the instruction you type, such as \"a snowy owl with spread wings\") or work directly on a photo you upload.\n\nByteDance says it built the model for visual work that has to be usable on a deadline, not just impressive once. In Picsart, you can use it with up to 10 source images, either as images to edit or as guides for the subject, style, and composition.\n\n## Why repeated edits matter\n\nMost image tools lose quality when you keep editing the same picture. Each new result is built from the last one, so small errors add up. Colors drift and faces change.\n\nByteDance says Seedream 5.5 is designed to protect the parts of an image you did not ask it to change. In its own demo, it ran one portrait through 100 edits in a row. Even after many rounds, the model could still swap something as small as a ring or a pair of glasses while keeping the lighting and shadows consistent.\n\nFor everyday creators, this means you can build an idea step by step. Add a jacket, then a background, then a small object, without starting over when the details begin to slip.\n\n## Transparent backgrounds without the cutout step\n\nA **transparent background** means the subject is cut out, and the space around it is see-through. You can then place it on any design, like a sticker on a poster.\n\nNormally, removing a background by hand is tedious, especially around hair, fur, or lace. Picsart says Seedream 5.5 can return a PNG file (a common image format that supports see-through areas) with the background already removed when you set the background mode to transparent. ByteDance's example, a snowy owl, shows fine feather tips and gaps coming through cleanly.\n\nUseful uses include:\n\n- Stickers and graphics for a layout\n- Product cutouts for a banner or mockup\n- Character images you can reuse across a series of scenes\n\n## Relighting a video with AI\n\n**Relighting** means changing how light falls on a scene. Traditionally, that meant reshooting with different lights or waiting for a specific time of day. AI relight (a tool that redraws the light in footage after it is recorded) does this in software.\n\nPicsart's Relight Feature template, part of Picsart Flow, shows the idea with a set of sample scenes. The same woman at a festival can appear in golden afternoon light, at twilight, or at night, while the subject stays the same and only the light changes.\n\nPicsart groups the adjustments into three dials:\n\n- **Light source**: effects such as spotlight, backlight, warm light, blue light, police lights, or rainbow light\n- **Time of day**: settings from early morning to midnight\n- **Weather**: rain, fog, snow, sunny, thunder, and more\n\nEach preset shows a preview when you hover over it, so you can test a look before you run it. Picsart says relight works on video clips, while still images get their lighting from the prompt before they are animated.\n\n## Settings to know in Picsart\n\nAccording to Picsart's announcement, Seedream 5.5 offers:\n\n- Resolution options of 1K, 1.5K, or 2K\n- Aspect ratios from square to wide and tall formats, including 16:9 and 9:16\n- A negative prompt (a list of things you want the model to leave out)\n- A background setting of auto, transparent, or opaque\n\nPicsart also notes that Seedream 5.0 Pro remains available for high-end single images. Check the current plan details on Picsart's official pricing page.\n\n## What this means for you\n\n- **In everyday life**: Use a transparent-background image to make a personal greeting card or a school project poster without fussing over a cutout.\n- **For your business or work**: If you create social posts or product images, a consistent image across several edits can save time on revisions.\n- **If you're just getting started**: Pick one photo, write a simple prompt, and try one edit. Then try a second edit and see whether the first change is still intact.\n- **If you already use it**: Try a multi-step project. Make a character image, edit it several times, then switch the background to transparent and place it into a layout to test how well the details hold up.\n\n## Wrap-up\n\nSeedream 5.5 focuses on steady edits, clean cutouts, and more realistic images, while Picsart's relight tools focus on changing the light in video. Both aim to make creative changes less risky. Your next step: open Picsart, pick one image you already like, and make a small edit. Notice what stays the same, and what you would still like to fix.",
+  "original_title": "Seedream 5.5 is now in Picsart: realistic images that hold up edit after edit"
+}

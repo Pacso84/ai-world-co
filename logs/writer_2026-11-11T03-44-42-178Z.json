@@ -1,0 +1,125 @@
+{
+  "started_at": "2026-11-11T03:42:29.856Z",
+  "drafts_total": 10,
+  "articles_written": 6,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 7,
+  "merged_total": 3,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 5,
+    "html": 5,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.028760154999999996,
+  "by_article": [
+    {
+      "draft": "2026-11-10T21-35-05-522Z_google-ai-blog_Gemini_Intelligence__New_features__on_more_devices.json",
+      "writer_output": "WRITER_2026-11-10T21-35-05-522Z_google-ai-blog_Gemini_Intelligence__New_features__on_more_devices.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "Google Gemini/AI expansion across devices and Workspace",
+      "source_via": [
+        "html",
+        "hirfolyam",
+        "hirfolyam"
+      ],
+      "source_chars": 8038,
+      "source_overlap_words": 10,
+      "cost_usd": 0.0040313,
+      "duration_ms": 16043,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-10T21-35-05-521Z_openai-blog_Introducing_Businesses_in_ChatGPT.json",
+      "writer_output": "WRITER_2026-11-10T21-35-05-521Z_openai-blog_Introducing_Businesses_in_ChatGPT.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "OpenAI ChatGPT Enterprise and business features",
+      "source_via": [
+        "html",
+        "html"
+      ],
+      "source_chars": 7594,
+      "source_overlap_words": 16,
+      "cost_usd": 0.0042111,
+      "duration_ms": 16672,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-10T21-35-17-131Z_minimax-blog_MiniMax_H3-Image__Bringing_4K_Image_Generation_int.json",
+      "writer_output": "WRITER_2026-11-10T21-35-17-131Z_minimax-blog_MiniMax_H3-Image__Bringing_4K_Image_Generation_int.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 3486,
+      "source_overlap_words": 6,
+      "cost_usd": 0.0041776,
+      "duration_ms": 17810,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-10T21-35-17-131Z_elevenlabs_Introducing_Scribe_v3_and_v3_Live__our_most_accura.json",
+      "writer_output": "WRITER_2026-11-10T21-35-17-131Z_elevenlabs_Introducing_Scribe_v3_and_v3_Live__our_most_accura.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 11,
+      "cost_usd": 0.004946,
+      "duration_ms": 24099,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-10T05-08-34-093Z_aws-ml_Professional_work_deserves_professional_tools__Mee.json",
+      "writer_output": "WRITER_2026-11-10T05-08-34-093Z_aws-ml_Professional_work_deserves_professional_tools__Mee.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 4180,
+      "source_overlap_words": 12,
+      "cost_usd": 0.0036942,
+      "duration_ms": 13445,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-10T21-35-17-131Z_picsart_Seedream_5_5_is_now_in_Picsart__realistic_images_t.json",
+      "writer_output": "WRITER_2026-11-10T21-35-17-131Z_picsart_Seedream_5_5_is_now_in_Picsart__realistic_images_t.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "PicsArt Seedream 5.5 and AI video features",
+      "source_via": [
+        "hirfolyam",
+        "hirfolyam"
+      ],
+      "source_chars": 9006,
+      "source_overlap_words": 16,
+      "cost_usd": 0.0041487,
+      "duration_ms": 15679,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 6,
+  "termek_extra": 2,
+  "finished_at": "2026-11-11T03:44:42.178Z",
+  "duration_seconds": 132.322
+}

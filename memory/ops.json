@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t17941955434362",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-09T03:39:03.436Z",
-      "updated": "2026-11-09T03:39:26.928Z"
-    },
-    {
-      "id": "t179419556692955",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-09T03:39:26.929Z",
-      "updated": "2026-11-09T03:39:43.006Z"
-    },
-    {
-      "id": "t17941955830448",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-09T03:39:43.044Z",
-      "updated": "2026-11-09T03:42:07.370Z"
-    },
-    {
-      "id": "t179419572737257",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-09T03:42:07.372Z",
-      "updated": "2026-11-09T03:44:14.081Z"
-    },
-    {
-      "id": "t179419585408336",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-09T03:44:14.083Z",
-      "updated": "2026-11-09T03:44:20.663Z"
-    },
-    {
-      "id": "t17941958606642",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-09T03:44:20.664Z",
-      "updated": "2026-11-09T03:44:42.267Z"
-    },
-    {
-      "id": "t17942471341343",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-09T17:58:54.134Z",
-      "updated": "2026-11-09T17:58:54.323Z"
-    },
-    {
-      "id": "t179424713432520",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-09T17:58:54.325Z",
-      "updated": "2026-11-09T17:59:31.290Z"
-    },
-    {
-      "id": "t179424717129214",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-09T17:59:31.292Z",
-      "updated": "2026-11-09T17:59:46.340Z"
-    },
-    {
-      "id": "t179424718639137",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-09T17:59:46.391Z",
-      "updated": "2026-11-09T18:00:09.642Z"
-    },
-    {
-      "id": "t179424720964330",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-09T18:00:09.644Z",
-      "updated": "2026-11-09T18:00:23.732Z"
-    },
-    {
-      "id": "t179424722373510",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-09T18:00:23.735Z",
-      "updated": "2026-11-09T18:00:29.414Z"
-    },
-    {
-      "id": "t179424722950295",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-09T18:00:29.502Z",
-      "updated": "2026-11-09T18:00:29.699Z"
-    },
-    {
-      "id": "t179424722970176",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-09T18:00:29.701Z",
-      "updated": "2026-11-09T18:00:29.889Z"
-    },
-    {
       "id": "t179424722993581",
       "title": "Run designer",
       "status": "done",
@@ -479,33 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-10T21:37:59.102Z",
       "updated": "2026-11-10T21:38:21.051Z"
+    },
+    {
+      "id": "t179436850713461",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-11T03:41:47.134Z",
+      "updated": "2026-11-11T03:41:47.346Z"
+    },
+    {
+      "id": "t179436850734828",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-11T03:41:47.348Z",
+      "updated": "2026-11-11T03:42:29.412Z"
+    },
+    {
+      "id": "t179436854941493",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-11T03:42:29.414Z",
+      "updated": "2026-11-11T03:42:29.612Z"
+    },
+    {
+      "id": "t179436854966011",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-11T03:42:29.660Z",
+      "updated": "2026-11-11T03:44:42.199Z"
+    },
+    {
+      "id": "t179436868220126",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-11T03:44:42.201Z",
+      "updated": "2026-11-11T03:47:12.696Z"
+    },
+    {
+      "id": "t179436883269962",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-11T03:47:12.699Z",
+      "updated": "2026-11-11T03:48:28.788Z"
+    },
+    {
+      "id": "t179436890882947",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-11T03:48:28.829Z",
+      "updated": "2026-11-11T03:49:16.719Z"
+    },
+    {
+      "id": "t179436895672124",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-11T03:49:16.721Z",
+      "updated": "2026-11-11T03:50:06.225Z"
+    },
+    {
+      "id": "t179436900626573",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-11T03:50:06.265Z",
+      "updated": "2026-11-11T03:50:06.480Z"
+    },
+    {
+      "id": "t179436900648423",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-11T03:50:06.484Z",
+      "updated": "2026-11-11T03:50:06.696Z"
+    },
+    {
+      "id": "t179436900677120",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-11T03:50:06.771Z",
+      "updated": "2026-11-11T03:51:38.739Z"
+    },
+    {
+      "id": "t179436909874197",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-11T03:51:38.741Z",
+      "updated": "2026-11-11T03:52:26.028Z"
+    },
+    {
+      "id": "t179436914603095",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-11T03:52:26.030Z",
+      "updated": "2026-11-11T03:52:32.023Z"
+    },
+    {
+      "id": "t17943691520251",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-11T03:52:32.025Z",
+      "updated": "2026-11-11T03:52:53.697Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179350288638137",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 7.7/10).",
-      "agent": "seo",
-      "at": "2026-11-01T03:14:46.381Z",
-      "loud": false
-    },
-    {
-      "id": "n179350291088820",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready to publish — you have a good mix of practical how-tos and helpful guides. One thing to note: articles 7–10 are all writing-focused, so if this balance feels too heavy",
-      "agent": "publisher",
-      "at": "2026-11-01T03:15:10.888Z",
-      "loud": false
-    },
-    {
-      "id": "n179350292663689",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0419).",
-      "agent": "ceo",
-      "at": "2026-11-01T03:15:26.636Z",
-      "loud": false
-    },
     {
       "id": "n179350299145311",
       "level": "warn",
@@ -1281,47 +1257,33 @@
       "agent": "fact-check",
       "at": "2026-11-10T21:39:47.792Z",
       "loud": false
+    },
+    {
+      "id": "n179436914601748",
+      "level": "info",
+      "text": "SEO: 8 cikk optimalizálva (átlag 8.3/10).",
+      "agent": "seo",
+      "at": "2026-11-11T03:52:26.017Z",
+      "loud": false
+    },
+    {
+      "id": "n179436915675635",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid—practical how-tos balanced with helpful explainers, covering tools people actually use. One quick note: I'd just double-check that the tool names (like \"Cohere's text generation",
+      "agent": "publisher",
+      "at": "2026-11-11T03:52:36.756Z",
+      "loud": false
+    },
+    {
+      "id": "n179436917373793",
+      "level": "success",
+      "text": "6 hír + 2 útmutató publikálva (költség: $0.0622).",
+      "agent": "ceo",
+      "at": "2026-11-11T03:52:53.737Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179324551225346",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-29T03:45:12.253Z"
-    },
-    {
-      "id": "m179324567474033",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"Voice Agents are here. Context turns them into rea\" — The source explicitly describes all three everyday moments but the article incorrectly claims they weren't available in the excerpt.",
-      "ref": "ARTICLE_2026-10-29T03-26-46-638Z_databricks_Voice_Agents_are_here__Context_turns_them_into_rea.json",
-      "open": true,
-      "at": "2026-10-29T03:47:54.740Z"
-    },
-    {
-      "id": "m17932463182683",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-29T03:58:38.268Z"
-    },
-    {
-      "id": "m179328520318069",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (nincs frontmatter): \"Thin, Light and Built for Everything: NVIDIA RTX S\" — The source explicitly details new models, agent tools and games that the article incorrectly says were not confirmed",
-      "ref": "ARTICLE_2026-10-29T03-26-39-436Z_nvidia-blog_Thin__Light_and_Built_for_Everything__NVIDIA_RTX_S.json",
-      "open": true,
-      "at": "2026-10-29T14:46:43.180Z"
-    },
     {
       "id": "m17933067438694",
       "from": "fact-check",
@@ -2694,6 +2656,42 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-10T21:46:52.866Z"
+    },
+    {
+      "id": "m179436889334964",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"MiniMax H3-Image: Bringing 4K Image Generation into the\" hír a meglévő útmutatóra mutat: gemini-images",
+      "ref": "gemini-images",
+      "at": "2026-11-11T03:48:13.349Z"
+    },
+    {
+      "id": "m17943691520113",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-11T03:52:32.011Z"
+    },
+    {
+      "id": "m179436921718150",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt javítottam egy publikált cikkben: \"Introducing Scribe v3 and v3 Live, our most accura\" — A forrás pontosan megadja a 39%-os javulást az élő idejű diarizációra, amit a cikk kihagy",
+      "ref": "ARTICLE_2026-11-10T21-35-17-131Z_elevenlabs_Introducing_Scribe_v3_and_v3_Live__our_most_accura.json",
+      "at": "2026-11-11T03:53:37.181Z"
+    },
+    {
+      "id": "m179436923149179",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt javítottam egy publikált cikkben: \"Gemini Intelligence: New features, on more devices\" — A hivatalos forrás mindenhol 'motorola signature 27' kisbetűvel írja — a terméknevet pontosan így kell hagyni",
+      "ref": "ARTICLE_2026-11-10T21-35-05-522Z_google-ai-blog_Gemini_Intelligence__New_features__on_more_devices.json",
+      "at": "2026-11-11T03:53:51.491Z"
     }
   ]
 }

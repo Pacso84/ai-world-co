@@ -1,0 +1,83 @@
+{
+  "_meta": {
+    "written_at": "2026-11-11T03:43:08.080Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0040313,
+    "original_draft": "2026-11-10T21-35-05-522Z_google-ai-blog_Gemini_Intelligence__New_features__on_more_devices.json",
+    "source_id": "google-ai-blog",
+    "source_name": "Google AI (hivatalos, blog.google)",
+    "source_link": "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/",
+    "source_links": [
+      "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/",
+      "http://workspaceupdates.googleblog.com/2026/11/expanding-gemini-in-gmail-to-more-Google-Workspace-users.html",
+      "http://workspaceupdates.googleblog.com/2026/11/schedule-meetings-in-single-click-from-conversations-in-Google-Chat.html"
+    ],
+    "source_snippet_len": 3000,
+    "source_text_via": [
+      "html",
+      "hirfolyam",
+      "hirfolyam"
+    ],
+    "source_text_len": 8038,
+    "source_text_key": "eaba2ed375fd96ff",
+    "source_overlap_words": 10,
+    "merged_from": 3,
+    "merged_theme": "Google Gemini/AI expansion across devices and Workspace",
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-11T03:46:11.382Z",
+    "slug": "what-gemini-intelligence-adds-to-new-phones-gmail-and-google-chat",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 811
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "Rambler is not on the verified names list and its status as a real Google product name is unconfirmed — the writer should verify this is the actual name Google uses for the voice-to-text feature"
+      ],
+      "verdict": "The article meets brand voice, audience fit, and structure requirements with clear explanations and a solid 'What this means for you' section. One product name (Rambler) cannot be independently verified against the source, so the writer should confirm Google uses this exact name before publication.",
+      "_aiCost": 0.0020034,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-11T03:47:44.612Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a roundup covering multiple Gemini features across Android phones, Gmail, and Google Chat — not one specific named feature for everyday use.",
+    "image_v": 2,
+    "image_at": "2026-11-11T03:50:31.689Z",
+    "seo": {
+      "meta_description": "Gemini Intelligence now runs on more Android phones including Motorola Signature 27 and Pixel 10. Gmail AI summaries and one-click meeting scheduling in Google Chat are expanding for Workspace users.",
+      "keywords": [
+        "Gemini Intelligence",
+        "Google Gemini Android",
+        "Gmail AI summaries",
+        "Google Chat meeting scheduler",
+        "Motorola Signature 27",
+        "Pixel 10 AI features",
+        "Google Workspace AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "The article excerpt is cut off mid-sentence - verify complete details before publishing",
+        "Consider adding more specific details about which Workspace plans get these features",
+        "Add release date information for when these features are rolling out"
+      ],
+      "optimised_at": "2026-11-11T03:51:54.554Z"
+    },
+    "fact_verified_at": "2026-11-11T03:53:51.487Z",
+    "fact_checked_at": "2026-11-11T03:53:51.490Z",
+    "fact_check_reason": "The official source writes 'motorola signature 27' in all lowercase throughout — the product name should match exactly",
+    "fact_check_removed": "Article capitalizes 'Motorola' but source consistently writes 'motorola signature 27' in lowercase",
+    "fact_check_count": 1
+  },
+  "article_markdown": "---\ntitle: \"What Gemini Intelligence Adds to New Phones, Gmail, and Google Chat\"\nsubtitle: \"Google's latest Gemini updates reach more Android phones, and help with email and meeting scheduling are rolling out to Workspace users.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"gemini\", \"android\", \"gmail\", \"google-chat\", \"google-workspace\", \"productivity\"]\n---\n\n# What Gemini Intelligence Adds to New Phones, Gmail, and Google Chat\n\n> **In short:** Google says Gemini Intelligence, its AI layer for Android phones, now runs on more devices, including Motorola's new motorola signature 27 and the Pixel 10 line. Gmail summaries and drafting and a one-click meeting scheduler in Google Chat are also expanding, so routine messages and calendar tasks take fewer taps.\n\nBetween emails, group chats, and a phone full of apps, a lot of your day goes to small admin tasks. Google's latest announcements aim at exactly those tasks, across your phone and your work or school accounts.\n\n## What is Gemini Intelligence?\n\nGemini is Google's AI assistant. Think of Gemini Intelligence as the version built into Android phones, so the assistant can work with things on the device itself, such as your apps and settings. Google says it began rolling out this summer on the Pixel 11, several Samsung Galaxy foldables, and the S26 series. The newest update adds Motorola's first device with it and brings the latest features to some Pixel 10 models.\n\n## New phone features to try\n\nGoogle highlights a few features that come with this update:\n\n- **Rambler** turns spoken thoughts into clean, organized text in real time. It is now on the Pixel 10 models and motorola signature 27. Picture dictating a rough to-do list while walking and getting tidy notes when you stop.\n- **Task automation** lets you ask Gemini to handle errands such as ordering food, hailing a ride, or booking a reservation through your apps. Google says this is expanding to the UK, India, and Japan.\n- **Create My Widget** lets you describe a home screen widget in your own words, with no coding. Google gives examples like a trip dashboard, a monthly spending tracker, or a race-day countdown. It can draw information from Gmail, Calendar, and Search. Google says this is rolling out over the next few weeks.\n- **Device Assistance** lets you ask your phone for help with cleanup and settings. You can ask it to free up space, check which apps can see your location, or silence distractions while still letting important calls through.\n\n## Gmail and Chat for work and school accounts\n\nOn the Workspace side, Google is expanding two Gemini tools in Gmail to all Workspace users aged 18 and older. Workspace is Google's suite of business and school tools. Here is what it covers:\n\n- **AI Overview summaries** (a short, AI-written recap) appear at the top of long email threads and pull out the key points and replies.\n- **Help me write** drafts a complete email or improves text you already wrote, based on a short prompt (the instruction you type to the AI).\n\nAdmins, the people who manage an organization's accounts, can turn these Gmail features off. For end users, Google says they are on by default and can be switched off individually.\n\nIn Google Chat, Gemini can now spot when someone in a conversation with up to five people suggests meeting. When that happens, the request is underlined, and hovering over it shows up to three suggested times from Google Calendar, the people to invite, and a meeting title you can edit. Click Schedule, and a confirmation appears in the chat. At launch, Google says this works on the web and in English.\n\n## What this means for you\n\n- **In everyday life**: If you use an Android phone, the new widget and voice-to-text tools can cut down on small daily chores. Start by dictating one short list.\n- **For your business or work**: If your organization uses Workspace, long email threads and meeting scheduling in Chat may save time. Check with your admin, since they control the Gmail features.\n- **If you're just getting started**: Read a long email thread you already have and see whether the summary matches what you know. Then compare it with the original.\n- **If you already use it**: Try asking Gemini to draft a reply, then change the tone and length in your own words so it sounds like you.\n\nGoogle's announcements do not give exact dates for every feature in every region, so check your device's update status and your Workspace admin settings. For the latest details on Gmail and Chat, look at Google's official Help Center.\n\n## Wrap-up\n\nGemini Intelligence is spreading to more phones, and its Gmail and Chat tools are reaching more users. Pick one task that eats your time this week, such as a long email thread or a meeting you keep rescheduling, and try the matching feature today.",
+  "original_title": "Gemini Intelligence: New features, on more devices"
+}
