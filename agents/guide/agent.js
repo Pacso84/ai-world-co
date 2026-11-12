@@ -1018,10 +1018,12 @@ async function runGuideReworkMode(brandContext) {
     // (különben kiveszi a valódi nevet). 11-12 (TÉNYKÖZPONT 0d): az útmutató forrása a forrás-hír + a hivatalos súgó
     // (utmutatoNevForras); a súgószöveg letöltése legjobb erőfeszítés (csak sugo_alapu; hiba → kimarad).
     const sugoSzovegek = [];
-    for (const sg of sugoForrasok(data._meta)) {
-      try { const sz = await cikkSzoveg(sg.url); if (sz?.szoveg) sugoSzovegek.push(sz.szoveg); } catch { /* a súgó nélkül is megy */ }
+    if (data._meta?.ai_review) {   // mentett bírálat nélkül nincs mit szűrni → nem töltünk le semmit
+      for (const sg of sugoForrasok(data._meta)) {
+        try { const sz = await cikkSzoveg(sg.url); if (sz?.szoveg) sugoSzovegek.push(sz.szoveg); } catch { /* a súgó nélkül is megy */ }
+      }
     }
-    const nevSzuro = atdolgozoMeta(data._meta, utmutatoNevForras(data._meta, { sugoSzovegek }));
+    const nevSzuro = atdolgozoMeta(data._meta, { ...utmutatoNevForras(data._meta, { sugoSzovegek }), utmutato: true });
     if (nevSzuro.kivett.length) {
       data._meta = nevSzuro.meta;
       console.log(`🛟 Téves „kitalált név” kifogás kivéve az átdolgozás elől (${nevSzuro.nevek.join(', ') || 'név'}): ${filename.slice(0, 50)}...`);

@@ -275,7 +275,7 @@ t('útmutató: a forrás-hír és a súgó adja a forrás-URL-t, címet, szöveg
 
 t('🔑 útmutató: a „Gemini 4 Carbon” kitalált-név kifogás TÉVES (11-12-i eset)', () => {
   const f = { ...utmutatoNevForras(guideMeta, { hirBetolt, sugoSzovegek: ['Gemini 4 Carbon: Our strongest model…'] }), known: [] };
-  const r = tevesNevKifogas(carbonBiralat, f);
+  const r = tevesNevKifogas(carbonBiralat, f, { utmutato: true });
   assert.equal(r.verdictTeves, true);
   assert.ok(r.nevek.includes('Gemini 4 Carbon'));
 });
@@ -291,7 +291,7 @@ t('🔑 útmutató: a „Workspace Studio” kifogás TÉVES (a forrás-hír cí
 
 t('ELLENPRÓBA: a forrásban NEM szereplő név („Gemini 5 Ultra”) kifogása marad', () => {
   const f = { ...utmutatoNevForras(guideMeta, { hirBetolt, sugoSzovegek: ['Gemini 4 Carbon: Our strongest model…'] }), known: [] };
-  const r = tevesNevKifogas({ issues: [], verdict: "refers to 'Gemini 5 Ultra' which does not appear in the verified-real names list" }, f);
+  const r = tevesNevKifogas({ issues: [], verdict: "refers to 'Gemini 5 Ultra' which does not appear in the verified-real names list" }, f, { utmutato: true });
   assert.equal(r.verdictTeves, false);
   assert.equal(r.nevek.length, 0);
 });
@@ -301,7 +301,7 @@ t('hirBetolt null / dob → nem dob; a súgó URL-je a forrás, a súgószövegb
     const f = utmutatoNevForras(guideMeta, { hirBetolt: hb, sugoSzovegek: ['Gemini 4 Carbon: Our strongest model…'] });
     assert.equal(f.sourceUrl, 'https://support.google.com/gemini/answer/18648722');
     assert.match(f.originalTitle, /About Gemini models/);
-    const r = tevesNevKifogas(carbonBiralat, { ...f, known: [] });
+    const r = tevesNevKifogas(carbonBiralat, { ...f, known: [] }, { utmutato: true });
     assert.equal(r.verdictTeves, true);
   }
 });
@@ -326,7 +326,7 @@ t('🔑 átdolgozó: új sourceUrl + sourceText → a mentett „Gemini 4 Carbon
   };
   const nelkul = atdolgozoMeta(rejected, { originalTitle: 'x', known: [] });
   assert.equal(nelkul.kivett.length, 0, 'forrás-URL nélkül nem igazol');
-  const r = atdolgozoMeta(rejected, { originalTitle: 'x', sourceUrl: 'https://support.google.com/gemini/answer/18648722', sourceText: 'Gemini 4 Carbon: Our strongest model', known: [] });
+  const r = atdolgozoMeta(rejected, { originalTitle: 'x', sourceUrl: 'https://support.google.com/gemini/answer/18648722', sourceText: 'Gemini 4 Carbon: Our strongest model', known: [], utmutato: true });
   assert.ok(r.kivett.length > 0);
   assert.ok(r.nevek.includes('Gemini 4 Carbon'));
 });
@@ -339,53 +339,135 @@ t('az ellenőrző és az útmutató-író is az új forrás-összeállítást ha
 });
 
 // ---------------------------------------------------------------
-// IDÉZŐJEL NÉLKÜLI NÉV (11-12, fix 1): a VALÓDI Workspace Studio-bírálat (memory/quality-fix-log.json) szó szerint:
+// IDÉZŐJEL NÉLKÜLI NÉV — CSAK ÚTMUTATÓNÁL, CSAK KIFEJEZETT NÉV-KIFOGÁSNÁL (11-12; bírálat C1–C2, I3, I4).
+// A VALÓDI Workspace Studio-bírálat (memory/quality-fix-log.json) szó szerint:
 // ---------------------------------------------------------------
 const VALODI_WS = 'Product name Workspace Studio cannot be independently verified as a real Google product - this is the core factual gate issue';
-const wsForras = { originalTitle: 'Pause and schedule automated workflows with the new Workspace Studio', sourceUrl: 'https://workspace.google.com/blog/x/', sourceText: '', known: ['Google'] };
+const wsForras = { originalTitle: 'Pause and schedule automated workflows with the new Workspace Studio', sourceUrl: 'https://workspace.google.com/blog/x/', sourceText: '', known: [] };
+const UT = { utmutato: true };
 
 t('🔑 idézőjel nélküli: a valódi „Product name Workspace Studio cannot be…” bírálat TÉVES (a név a forrás címében áll)', () => {
-  const r = tevesNevKifogas({ issues: [], verdict: VALODI_WS }, wsForras);
+  const r = tevesNevKifogas({ issues: [], verdict: VALODI_WS }, wsForras, UT);
   assert.equal(r.verdictTeves, true);
-  assert.deepEqual([...r.nevek].sort(), ['Google', 'Workspace Studio']);
-  const r2 = tevesNevKifogas({ issues: [VALODI_WS], verdict: '' }, wsForras);
-  assert.equal(r2.teves.length, 1);
+  assert.deepEqual(r.nevek, ['Workspace Studio']);
+  assert.equal(tevesNevKifogas({ issues: [VALODI_WS], verdict: '' }, wsForras, UT).teves.length, 1);
 });
 
 t('idézőjel nélküli: a forrásszövegben álló név is igazol (cím nélkül)', () => {
-  const r = tevesNevKifogas({ issues: [], verdict: VALODI_WS }, { originalTitle: 'Big news', sourceUrl: 'https://workspace.google.com/blog/x/', sourceText: 'Meet Workspace Studio, a new Google tool.', known: [] });
+  const r = tevesNevKifogas({ issues: [], verdict: VALODI_WS }, { originalTitle: 'Big news', sourceUrl: 'https://workspace.google.com/blog/x/', sourceText: 'Meet Workspace Studio, a new Google tool.', known: [] }, UT);
   assert.equal(r.verdictTeves, true);
+});
+
+t('idézőjel nélküli: a „X is not a real product” alak is név-kifogás (B)', () => {
+  const r = tevesNevKifogas({ issues: ['Workspace Studio is not a real Google product'], verdict: '' }, wsForras, UT);
+  assert.equal(r.teves.length, 1);
+  assert.deepEqual(r.nevek, ['Workspace Studio']);
 });
 
 t('ELLENPRÓBA idézőjel nélkül: „Gemini 5 Ultra” egy Gemini 4 Carbon forrással szemben NEM téves', () => {
   const f = { ...utmutatoNevForras(guideMeta, { hirBetolt, sugoSzovegek: ['Gemini 4 Carbon: Our strongest model…'] }), known: ['Google'] };
-  const r = tevesNevKifogas({ issues: [], verdict: 'Product name Gemini 5 Ultra cannot be independently verified as a real Google product' }, f);
+  const r = tevesNevKifogas({ issues: [], verdict: 'Product name Gemini 5 Ultra cannot be independently verified' }, f, UT);
   assert.equal(r.verdictTeves, false);
   assert.equal(r.nevek.length, 0);
 });
 
-t('ELLENPRÓBA idézőjel nélkül: igazolt ÉS nem igazolt név egy mondatban → NEM téves', () => {
-  const r = tevesNevKifogas({ issues: [], verdict: 'Product name Workspace Studio and Gemini 5 Ultra cannot be independently verified as real Google products' }, wsForras);
-  assert.equal(r.verdictTeves, false);
-  assert.equal(r.nevek.length, 0);
+t('ELLENPRÓBA idézőjel nélkül: igazolt ÉS nem igazolt név egy mondatban → NEM téves (A és B alak)', () => {
+  for (const v of [
+    'Product name Workspace Studio and Gemini 5 Ultra cannot be independently verified as real Google products',
+    'Product name Workspace Studio, Gemini 5 Ultra cannot be independently verified',
+    'Gemini 5 Ultra is not a real product, Product name Workspace Studio cannot be independently verified'
+  ]) {
+    const r = tevesNevKifogas({ issues: [], verdict: v }, wsForras, UT);
+    assert.equal(r.verdictTeves, false, v);
+    assert.equal(r.nevek.length, 0, v);
+  }
+});
+
+t('ELLENPRÓBA: kisbetűs szó folytatja a nevet („Workspace studio pro”) → nem ítélünk', () => {
+  for (const v of ['Product name Workspace studio pro cannot be independently verified', 'Workspace studio pro is not a real product', 'Workspace studio pro is fabricated']) {
+    assert.equal(tevesNevKifogas({ issues: [v], verdict: '' }, wsForras, UT).teves.length, 0, v);
+  }
+});
+
+t('ELLENPRÓBA: kötőjeles név egy token („Gemini Ultra-Max” ≠ „Gemini Ultra”)', () => {
+  const f = { originalTitle: 'Gemini Ultra and Max modes', sourceUrl: 'https://blog.google/x/', sourceText: 'Gemini Ultra is here. Max is a mode.', known: [] };
+  assert.equal(tevesNevKifogas({ issues: ['Gemini Ultra-Max is not a real model'], verdict: '' }, f, UT).teves.length, 0);
+  assert.equal(tevesNevKifogas({ issues: ['Product name Gemini Ultra-Max cannot be independently verified'], verdict: '' }, f, UT).teves.length, 0);
+  // és ha a kötőjeles név SZÓ SZERINT a forrásban áll, igazolt
+  const g = { ...f, sourceText: 'Meet Gemini Ultra-Max today.' };
+  assert.equal(tevesNevKifogas({ issues: ['Gemini Ultra-Max is not a real model'], verdict: '' }, g, UT).teves.length, 1);
 });
 
 t('idézőjel nélküli: árról / felületről szóló kifogás marad; név nélküli „unverified” sem esik ki', () => {
-  assert.equal(tevesNevKifogas({ issues: ['Workspace Studio pricing cannot be independently verified'], verdict: '' }, wsForras).teves.length, 0);
-  assert.equal(tevesNevKifogas({ issues: ['The Workspace Studio button cannot be independently verified'], verdict: '' }, wsForras).teves.length, 0);
-  assert.equal(tevesNevKifogas({ issues: ['Product name cannot be independently verified'], verdict: '' }, wsForras).teves.length, 0);
+  assert.equal(tevesNevKifogas({ issues: ['Product name Workspace Studio pricing cannot be independently verified'], verdict: '' }, wsForras, UT).teves.length, 0);
+  assert.equal(tevesNevKifogas({ issues: ['Product name Workspace Studio button cannot be independently verified'], verdict: '' }, wsForras, UT).teves.length, 0);
+  assert.equal(tevesNevKifogas({ issues: ['Product name cannot be independently verified'], verdict: '' }, wsForras, UT).teves.length, 0);
 });
 
 t('idézőjel nélküli tartalék csak forrás-URL mellett igazol (URL nélkül a saját cím nem)', () => {
-  const r = tevesNevKifogas({ issues: [], verdict: VALODI_WS }, { ...wsForras, sourceUrl: '' });
-  assert.equal(r.verdictTeves, false);
+  assert.equal(tevesNevKifogas({ issues: [], verdict: VALODI_WS }, { ...wsForras, sourceUrl: '' }, UT).verdictTeves, false);
 });
 
-t('idézőjel nélküli: az átdolgozó a mentett valódi Workspace Studio-bírálatot is kiveszi', () => {
+// I4: a valódi KITALÁLÁS-kifogások (tartalmi állítás kitalálva) akkor sem esnek ki, ha a forrásban szerepel a szó.
+const TARTALMI = [
+  ['The article invents an auto-summary mode in Gemini that does not exist', 'Gemini is great.'],
+  ['The guide describes a smart sheets feature that cannot be verified in Google Workspace', 'Google Workspace news.'],
+  ['The steps for exporting to Google Docs are invented', 'Export to Google Docs.'],
+  ['Gemini 4 Carbon offline mode is fabricated', 'Gemini 4 Carbon is now available.'],
+  ['Workspace studio pro is fabricated', 'Workspace Studio is new.'],
+  ['Gemini Ultra-Max is not a real model', 'Gemini Ultra is here. Max is a mode.'],
+  ['Offline mode for Gemini 4 Carbon does not appear in the official announcement', 'Gemini 4 Carbon is now available.'],
+  ['Claims about Gemini Live translation are not verified by the source', 'Gemini Live translation is announced.'],
+  ['This guide says Gemini 4 Carbon runs offline, which is fabricated', 'Gemini 4 Carbon is now available.'],
+  ["The claim that 'Gemini 4 Carbon' supports offline mode does not appear in the official source", 'Gemini 4 Carbon is now available.']
+];
+t('ELLENPRÓBA (I4): tartalmi kitalálás-kifogások útmutatónál is megmaradnak, issue-ként ÉS verdictként', () => {
+  for (const [mondat, szoveg] of TARTALMI) {
+    const f = { originalTitle: 'Gemini 4 Carbon is now available', sourceUrl: 'https://blog.google/products/gemini/gemini-4-carbon/', sourceText: szoveg, known: ['Google'] };
+    const r = tevesNevKifogas({ issues: [mondat], verdict: mondat }, f, UT);
+    assert.equal(r.teves.length, 0, 'issue kiesett: ' + mondat);
+    assert.equal(r.verdictTeves, false, 'verdict kiesett: ' + mondat);
+  }
+});
+
+t('I3: a névlista-megfogalmazás szűk — „does not appear in the official source” nem név-kifogás', () => {
+  const f = { originalTitle: 'Gemini 4 Carbon is now available', sourceUrl: 'https://blog.google/products/gemini/gemini-4-carbon/', sourceText: '', known: [] };
+  assert.equal(tevesNevKifogas({ issues: [], verdict: "The claim that 'Gemini 4 Carbon' supports offline mode does not appear in the official source" }, f, UT).verdictTeves, false);
+  // a névlista-megfogalmazás útmutatónál téves…
+  assert.equal(tevesNevKifogas({ issues: [], verdict: "refers to 'Gemini 4 Carbon' which does not appear in the known names list" }, f, UT).verdictTeves, true);
+});
+
+// C2: HÍRNÉL (opció nélkül) a viselkedés változatlan — sem a névlista-megfogalmazás, sem az idézőjel nélküli név nem fog.
+t('🔒 C2: hírnél (opció nélkül) a Gemini 4 Carbon névlista-verdict és az idézőjel nélküli Workspace Studio verdict a RÉGI eredményt adja', () => {
+  const carbon = { originalTitle: 'Gemini 4 Carbon is now available', sourceUrl: 'https://blog.google/products/gemini/gemini-4-carbon/', sourceText: '', known: [] };
+  const a = tevesNevKifogas(carbonBiralat, carbon);
+  assert.deepEqual(a, { teves: [], maradt: [], nevek: [], verdictTeves: false });
+  const b = tevesNevKifogas({ issues: [VALODI_WS], verdict: VALODI_WS }, wsForras);
+  assert.deepEqual(b, { teves: [], maradt: [VALODI_WS], nevek: [], verdictTeves: false });
+  // atdolgozoMeta opció nélkül (iro / hír) ugyanígy érintetlen
+  const rejected = { source_link: 'https://workspace.google.com/blog/x/', ai_review: { decision: 'FAIL', issues: [], verdict: VALODI_WS }, reason: VALODI_WS };
+  assert.equal(atdolgozoMeta(rejected, { ...wsForras }).kivett.length, 0);
+  assert.ok(atdolgozoMeta(rejected, { ...wsForras, utmutato: true }).kivett.length > 0);
+});
+
+t('idézőjel nélküli: az átdolgozó a mentett valódi Workspace Studio-bírálatot is kiveszi (útmutató)', () => {
   const rejected = { source_link: '', ai_review: { decision: 'FAIL', issues: [], verdict: VALODI_WS }, reason: VALODI_WS };
-  const r = atdolgozoMeta(rejected, { ...wsForras });
+  const r = atdolgozoMeta(rejected, { ...wsForras, utmutato: true });
   assert.ok(r.kivett.length > 0);
   assert.equal(r.csakTevesNev, true);
+});
+
+t('az ellenőrző az útmutató-opciót CSAK az útmutató-ágon adja át, az útmutató-átdolgozó mindig', () => {
+  const e = readFileSync(join(ROOT, 'agents', 'ellenorzo', 'agent.js'), 'utf-8');
+  assert.match(e, /const nevOpt = writerData\._meta\?\.type === 'guide' \? \{ utmutato: true \} : \{\};/);
+  assert.match(e, /tevesNevKifogas\(aiReviewResult, nevForras, nevOpt\)/);
+  assert.match(e, /tevesNevKifogas\(vegso, nevForras, nevOpt\)/);
+  assert.doesNotMatch(e, /tevesNevKifogas\([^)]*\{ utmutato: true \}/, 'az opció csak a nevOpt-on át mehet');
+  const g = readFileSync(join(ROOT, 'agents', 'guide', 'agent.js'), 'utf-8');
+  assert.match(g, /atdolgozoMeta\(data\._meta, \{ \.\.\.utmutatoNevForras\(data\._meta, \{ sugoSzovegek \}\), utmutato: true \}\)/);
+  assert.match(g, /if \(data\._meta\?\.ai_review\)/, 'a súgót csak mentett bírálat mellett töltjük le');
+  const i = readFileSync(join(ROOT, 'agents', 'iro', 'agent.js'), 'utf-8');
+  assert.doesNotMatch(i, /utmutato: true/, 'a hír-átdolgozó nem kaphat útmutató-opciót');
 });
 
 console.log(`\n✅ ${pass} eset zöld`);

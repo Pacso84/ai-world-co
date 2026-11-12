@@ -43,56 +43,105 @@ const ARTICLES_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'conten
 //       mint a hitelesség-kapuban (core/truth-gate.js forrasVisszaigazol).
 // Az idézet nélküli „unverified model name” kifogás csak akkor esik ki, ha
 // ugyanabban a bírálatban volt igazolt név-kifogás (annak a következménye).
-// 11-12: „does not appear in the verified-real names list” — a bíró így is „kitaláltnak” minősít (Gemini 4 Carbon).
-const NEM_ELLENORIZHETO_RX = /unverif|cannot be (?:independently )?verified|could not be (?:independently )?verified|hallucinat|fictional|fictitious|non-?existent|(?:does not|doesn't|do not|did not|not) appear\b[^.;]{0,40}\b(?:verified|known|official|approved)\b/i;
+const NEM_ELLENORIZHETO_RX = /unverif|cannot be (?:independently )?verified|could not be (?:independently )?verified|hallucinat|fictional|fictitious|non-?existent/i;
 const NEV_KOVETKEZMENY_RX = /\b(?:unverified|invented|fabricated|hallucinated|made[- ]up|fake) (?:model |product |tool |brand )?names?\b|\bnames?\b[^.;]{0,40}\b(?:cannot|could not|can't) be (?:independently )?verified/i;
 
-// IDÉZŐJEL NÉLKÜLI NÉV (11-12, fix 1): a valódi Workspace Studio-bírálat így szólt: „Product name Workspace Studio cannot be
-// independently verified as a real Google product…” — nincs idézőjel, az `idezettNevek` (truth-gate) nem lát benne nevet.
-// TARTALÉK, CSAK ha a mondatban nincs idézett név: a Nagybetűs / számjegyes szavak leghosszabb sorozatai a jelöltek
-// („Workspace Studio”, „Gemini 5 Ultra”); az elöl álló általános szavak (Product, Name, The, Tool, Feature, App, Model)
-// lekerülnek, az üres sorozat kimarad. Ugyanaz a szabály, mint az idézett nevekre: MINDEN jelöltnek igazoltnak kell
-// lennie (forrás-cím / URL / szöveg, vagy hiteles lista). A truth-gate viselkedése nem változik.
-const ALTALANOS_SZAVAK = new Set(['product', 'name', 'the', 'tool', 'feature', 'app', 'model']);
-const NAGYBETUS_SOROZAT_RX = /\p{Lu}[\p{L}\p{N}]*(?:[ \t]+(?:\p{Lu}[\p{L}\p{N}]*|\d+(?:\.\d+)*))*/gu;
+// ---------------------------------------------------------------
+// CSAK ÚTMUTATÓNÁL (11-12, TÉNYKÖZPONT 0d; bírálat C1–C2, I3): `tevesNevKifogas(…, { utmutato: true })`.
+// Opció nélkül (hír) a függvény PONTOSAN úgy viselkedik, mint 11-12 előtt (a3ba7829).
+// ---------------------------------------------------------------
+// (1) A hiteles-névlistás megfogalmazás: „… does not appear in the verified-real names list” (Gemini 4 Carbon).
+//     SZŰK: csak a névlista-szöveg; a „… does not appear in the official source” (tartalmi kifogás) NEM.
+const NEVLISTA_RX = /does not appear in the (?:verified[- ]real |known |verified )?names? list/i;
 
+// (2) IDÉZŐJEL NÉLKÜLI NÉV: a valódi Workspace Studio-bírálat így szólt: „Product name Workspace Studio cannot be
+//     independently verified as a real Google product…” — az `idezettNevek` (truth-gate) nem lát benne nevet.
+//     TARTALÉK, CSAK ha a mondatban nincs idézett név ÉS kifejezett név-kifogás alakja van:
+//       A) „(product|model|tool|brand|feature|app) name X …”  — X a „name” UTÁNI nagybetűs sorozat
+//       B) „X is not a real (<Szó> )?(product|model|tool|app|brand)” — X a „is not a real” ELŐTTI sorozat
+//     A tokenben a kötőjel és a pont a név része („Ultra-Max” egy token). Ha X-et kisbetűs szó folytatja a névben
+//     („Workspace studio pro”), nem ítélünk (nincs felülbírálat). Minden más mondat (tartalmi kifogás: „invents an
+//     auto-summary mode in Gemini”, „… is fabricated”) érintetlen marad.
+const ALTALANOS_SZAVAK = new Set(['product', 'name', 'the', 'tool', 'feature', 'app', 'model']);
+const NEV_TOKEN_SRC = String.raw`(?:\p{Lu}[\p{L}\p{N}]*(?:[.\-][\p{L}\p{N}]+)*|\d+(?:\.\d+)*)`;
+const NEV_FUTAS_SRC = String.raw`\p{Lu}[\p{L}\p{N}]*(?:[.\-][\p{L}\p{N}]+)*(?:[ \t]+${NEV_TOKEN_SRC})*`;
+const NEV_FUTAS_RX = new RegExp(NEV_FUTAS_SRC, 'gu');
+const NEV_FUTAS_STICKY_RX = new RegExp(NEV_FUTAS_SRC, 'uy');
+const NEV_KIFOGAS_A_RX = /\b(?:product|model|tool|brand|feature|app)[ \t]+name[ \t]+/gi;
+const NEV_KIFOGAS_B_RX = /[ \t]+(?:is not|isn't)[ \t]+a[ \t]+real[ \t]+(?:\p{L}+[ \t]+)?(?:product|model|tool|app|brand)\b/giu;
+// A név utáni szó csak állítmány lehet („… cannot be verified”); minden más szó a nevet folytatja → nem ítélünk.
+const NEV_UTAN_ALLITMANY_RX = /^(?:\s*$|[.;]|\s+(?:cannot|can't|could not|couldn't|is|are|was|were|does|do|did|has|have|appears?|seems?|may|might|must|should|isn't|aren't|doesn't|lacks)\b)/i;
+
+function nevetTisztit(futas) {
+  const szavak = futas.split(/\s+/);
+  while (szavak.length && ALTALANOS_SZAVAK.has(szavak[0].toLowerCase())) szavak.shift();
+  return szavak.join(' ');
+}
+
+/** Az idézőjel nélküli, kifejezett név-kifogás nevei; üres lista = nem ítélünk. */
 function idezetlenNevek(szoveg) {
+  const s = String(szoveg);
   const ki = [];
-  for (const m of String(szoveg).matchAll(NAGYBETUS_SOROZAT_RX)) {
-    const szavak = m[0].split(/\s+/);
-    while (szavak.length && ALTALANOS_SZAVAK.has(szavak[0].toLowerCase())) szavak.shift();
-    if (szavak.length) ki.push(szavak.join(' '));
+  for (const m of s.matchAll(NEV_KIFOGAS_A_RX)) {
+    const veg = m.index + m[0].length;
+    NEV_FUTAS_STICKY_RX.lastIndex = veg;
+    const f = NEV_FUTAS_STICKY_RX.exec(s);
+    if (!f || !NEV_UTAN_ALLITMANY_RX.test(s.slice(veg + f[0].length))) return [];
+    const nev = nevetTisztit(f[0]);
+    if (nev) ki.push(nev);
+  }
+  for (const m of s.matchAll(NEV_KIFOGAS_B_RX)) {
+    const elotte = s.slice(0, m.index);
+    const f = [...elotte.matchAll(NEV_FUTAS_RX)].find(x => x.index + x[0].length === elotte.length);
+    if (!f) return [];   // a név előtti szó kisbetűs → a név folytatódhat → nem ítélünk
+    const nev = nevetTisztit(f[0]);
+    if (nev) ki.push(nev);
   }
   return ki;
 }
 
-function letezesKifogas(szoveg) {
-  return (LETEZES_RX.test(szoveg) || NEM_ELLENORIZHETO_RX.test(szoveg)) && !ARAS_RX.test(szoveg) && !FELULET_RX.test(szoveg);
+function letezesKifogas(szoveg, utmutato = false) {
+  return (LETEZES_RX.test(szoveg) || NEM_ELLENORIZHETO_RX.test(szoveg) || (utmutato && NEVLISTA_RX.test(szoveg))) && !ARAS_RX.test(szoveg) && !FELULET_RX.test(szoveg);
 }
 
 /**
  * @param {{issues?: string[], verdict?: string}} review  az ellenőrző AI-bírálata
  * @param {{ originalTitle?: string, sourceUrl?: string, sourceText?: string, known?: string[] }} forras
+ * @param {{ utmutato?: boolean }} [opt]  útmutatónál true: névlista-megfogalmazás + idézőjel nélküli név (lásd fent). Hírnél SOHA.
  * @returns {{ teves: string[], maradt: string[], nevek: string[], verdictTeves: boolean }}
  */
-export function tevesNevKifogas(review, { originalTitle = '', sourceUrl = '', sourceText = '', known } = {}) {
+export function tevesNevKifogas(review, { originalTitle = '', sourceUrl = '', sourceText = '', known } = {}, { utmutato = false } = {}) {
   const lista = (known || knownRealNames()).map(n => norm(n));
   // Külső forrás-URL nélkül (útmutató) a CÍM nem igazol: az útmutató `original_title`-je a SAJÁT
   // (gép választotta) témánk, nem hivatalos bejelentés — ugyanígy, mint a truth-gate forrasVisszaigazol-jában.
   // Ilyenkor csak a hiteles lista (pontos egyezés) igazolhat.
   let forras = ' ';
+  let nyers = '';   // a forrás kisbetűs, szóköz-egyesített nyers szövege (csak az idézőjel nélküli, kötőjeles/pontos nevek szigorú ellenőrzéséhez)
   if (/^https?:\/\//i.test(sourceUrl || '')) {
     let urlResz = '';
     try { urlResz = new URL(sourceUrl).pathname; } catch { urlResz = ''; }
     forras = norm(`${originalTitle} ${urlResz} ${sourceText}`);
+    nyers = `${originalTitle} ${urlResz} ${sourceText}`.toLowerCase().replace(/\s+/g, ' ');
   }
   const igazolt = n => { const k = norm(n); return k.trim() !== '' && (forras.includes(k) || lista.includes(k)); };
+  // Idézőjel nélküli jelölt: a kötőjeles / pontos token („Ultra-Max”) csak SZÓ SZERINT igazolt (a norm a kötőjelet szóközzé tenné).
+  const igazoltIdezetlen = n => {
+    const k = norm(n);
+    if (k.trim() === '') return false;
+    if (lista.includes(k)) return true;
+    return /[.\-]/.test(n) ? nyers.includes(n.toLowerCase().replace(/\s+/g, ' ')) : forras.includes(k);
+  };
 
   const nevek = new Set();
   const egyIgazolt = szoveg => {
-    let idezett = idezettNevek(szoveg);
-    if (!idezett.length && letezesKifogas(szoveg)) idezett = idezetlenNevek(szoveg);   // tartalék: idézőjel nélküli név
-    if (!idezett.length || !letezesKifogas(szoveg) || !idezett.every(igazolt)) return false;
+    const idezett = idezettNevek(szoveg);
+    if (utmutato && !idezett.length && letezesKifogas(szoveg, true)) {
+      const jeloltek = idezetlenNevek(szoveg);
+      if (!jeloltek.length || !jeloltek.every(igazoltIdezetlen)) return false;
+      jeloltek.forEach(n => nevek.add(n));
+      return true;
+    }
+    if (!idezett.length || !letezesKifogas(szoveg, utmutato) || !idezett.every(igazolt)) return false;
     idezett.forEach(n => nevek.add(n));
     return true;
   };
@@ -163,19 +212,20 @@ export function utmutatoNevForras(meta, { hirBetolt = alapHirBetolt, sugoSzovege
  * @param {object} meta  az elutasított cikk _meta-ja
  * @param {{ originalTitle?: string, sourceText?: string, sourceUrl?: string, known?: string[] }} forras
  *   sourceUrl: ha meg van adva, felülírja a meta.source_link-et (útmutatónál: utmutatoNevForras)
+ *   utmutato: true CSAK az útmutató-átdolgozónál (lásd tevesNevKifogas); a hír-átdolgozó (iro) nem adja át
  * @returns {{ meta: object, kivett: string[], nevek: string[], csakTevesNev: boolean }}
  *   meta = a szűrt _meta (a téves kifogások nélkül); csakTevesNev = az AI-bírálatnak a téves
  *   név-kifogáson kívül nem maradt oka (→ átírás helyett változatlan újrabírálat, 0 költség).
  */
-export function atdolgozoMeta(meta, { originalTitle = '', sourceText = '', sourceUrl, known } = {}) {
+export function atdolgozoMeta(meta, { originalTitle = '', sourceText = '', sourceUrl, known, utmutato = false } = {}) {
   const review = meta?.ai_review;
   const ures = { meta, kivett: [], nevek: [], csakTevesNev: false };
   if (!review || typeof review !== 'object') return ures;
   const forras = { originalTitle, sourceUrl: String(sourceUrl || meta?.source_link || '').trim(), sourceText, known };
-  const r = tevesNevKifogas(review, forras);
+  const r = tevesNevKifogas(review, forras, { utmutato });
   // A _meta.reason rendszerint a verdict másolata — ugyanúgy mérjük.
   const reason = String(meta?.reason || '');
-  const reasonTeves = !!reason && ((r.verdictTeves && reason === String(review.verdict || '')) || tevesNevKifogas({ issues: [reason] }, forras).teves.length > 0);
+  const reasonTeves = !!reason && ((r.verdictTeves && reason === String(review.verdict || '')) || tevesNevKifogas({ issues: [reason] }, forras, { utmutato }).teves.length > 0);
   if (!r.teves.length && !r.verdictTeves && !reasonTeves) return ures;
 
   const ujReview = { ...review, issues: r.maradt };

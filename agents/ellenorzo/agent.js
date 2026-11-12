@@ -915,14 +915,16 @@ async function main() {
           sourceUrl: String(writerData._meta?.source_link || '').trim(),
           sourceText: String(cikkForrasSzovege(writerData._meta) || cikkKivonat(writerData._meta) || '')
         };
-      const elso = tevesNevKifogas(aiReviewResult, nevForras);
+      // C2: az útmutató-szabályok (névlista-megfogalmazás + idézőjel nélküli név) CSAK útmutatónál; hírnél opció nélkül, a régi viselkedés.
+      const nevOpt = writerData._meta?.type === 'guide' ? { utmutato: true } : {};
+      const elso = tevesNevKifogas(aiReviewResult, nevForras, nevOpt);
       if (elso.nevek.length) {
         console.log(`   🛟 Téves „kitalált név” kifogás (a név a hivatalos forrásban / hiteles listán van): ${elso.nevek.join(', ')} → újrabírálat`);
         const ujra = await aiReview(markdown, sourceInfo + nevJavitoMegjegyzes(elso.nevek), brandContext, writerData._meta?.brief_attempt === true);
         // az első bírálat költsége (a lenti közös sor csak a VÉGSŐ bírálatét adja hozzá)
         if (ujra) stats.total_cost_usd += aiReviewResult._aiCost || 0;
         let vegso = ujra || aiReviewResult;
-        const masodik = tevesNevKifogas(vegso, nevForras);
+        const masodik = tevesNevKifogas(vegso, nevForras, nevOpt);
         const kivett = [...elso.teves, ...(ujra ? masodik.teves : [])];
         vegso.issues = ujra ? masodik.maradt : elso.maradt;
         if (masodik.verdictTeves || (!ujra && elso.verdictTeves)) {
