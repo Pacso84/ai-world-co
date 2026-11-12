@@ -45,7 +45,7 @@ t('🚧 a KILENC blokkoló kód utasít el — más semmi', () => {
   for (const kod of ['HOWTO_TOO_LONG', 'OPENING_REPETITIVE', 'HOWTO_TOO_THIN', 'CLICHE']) {
     assert.ok(!isBlocking(kod + ': valami'), kod + ' NEM blokkolhat');
   }
-  assert.equal(BLOCKING_CODES.length, 9, 'a lista nem nőhet észrevétlenül');
+  assert.equal(BLOCKING_CODES.length, 10, 'a lista nem nőhet észrevétlenül');
 });
 
 t('💸 a tanácsadó jelzés NEM tehet fizetőssé egy ingyenes visszasorolást', () => {

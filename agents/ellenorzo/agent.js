@@ -32,7 +32,8 @@ import { message, resolveNeed } from '../../core/ops.js';
 import { lengthIssue, HOWTO_MIN, HOWTO_MAX, GATE_MAX } from '../../core/article-length.js';
 import { repetitionIssue, firstParagraph, WINDOW as OPENING_WINDOW } from '../../core/opening-variety.js';
 import { blockingIssues, advisoryIssues, lessonFor } from '../../core/auto-check-codes.js';
-import { guideClaimIssues } from '../../core/guide-claims.js';
+import { guideClaimIssues, sugoNelkuliFeluletJelzes } from '../../core/guide-claims.js';
+import { forrasSzint } from '../../core/forras-szint.js';   // 🧯 11-12 (0c): melyik eszköznek van hivatalos súgója
 import { arJelzes } from '../../core/ar-tilalom.js';
 import { tevedesJelzes } from '../../core/ismert-tevedesek.js';
 import { biraloForrasInfo, tevesNevKifogas, nevJavitoMegjegyzes, utmutatoNevForras } from '../../core/biralo-forrasinfo.js';
@@ -862,6 +863,20 @@ async function main() {
         for (const s of sugoLista) { const sz = await cikkSzoveg(s.url); if (sz?.szoveg) szovegek.push(sz.szoveg); }
         const j = sugoUtmutatoJelzes(markdown, szovegek.join('\n\n'));
         console.log(`   📘 súgó-mérés: ${szovegek.length ? (j ? '❌ ' + j.slice(0, 120) : '✅ a gombnevek a súgóban vannak') : '⏭️ a súgó nem tölthető le — nem ítél'}`);
+        if (j) { autoCheckResult.issues.push(j); autoCheckResult.passed = false; }
+      }
+    } catch { /* őr-hiba nem állítja meg az ellenőrzést */ }
+    // 🧯 SÚGÓ NÉLKÜL NINCS GOMBNÉV (2026-11-12, TÉNYKÖZPONT 0c): ha az útmutató eszközéhez nincs (vagy csak részleges)
+    // hivatalos súgó, vagy cégfüggetlen, akkor 2+ magabiztos gomb-/menünév → GUIDE_UI_NO_HELP (elutasít). A teljes
+    // súgós eszközt és a letöltött súgószöveggel mérhetőt NEM ítéli (azt a fenti súgó-mérés teszi). Csak útmutatóra.
+    try {
+      if (writerData._meta?.type === 'guide') {
+        // eszköz és cég: a cikk fejlécéből, mint az útmutató-kapuknál; ha ott nincs, a _meta-ból
+        const fmKulcs = k => { const x = (markdown.match(/^---\n([\s\S]*?)\n---/) || [])[1]?.match(new RegExp('^' + k + ':\\s*(.*)$', 'm')); return x ? x[1].trim().replace(/^["']|["']$/g, '') : ''; };
+        const tool = fmKulcs('tool') || writerData._meta?.tool || '';
+        const company = fmKulcs('company') || writerData._meta?.company || '';
+        const j = sugoNelkuliFeluletJelzes(markdown, { szint: forrasSzint(tool, company).szint, vanSugoSzoveg: szovegek.length > 0 });
+        console.log(`   🧯 súgó nélküli felület-mérés: ${j ? '❌ ' + j.slice(0, 120) : '✅ nincs konkrét gombnév'}`);
         if (j) { autoCheckResult.issues.push(j); autoCheckResult.passed = false; }
       }
     } catch { /* őr-hiba nem állítja meg az ellenőrzést */ }

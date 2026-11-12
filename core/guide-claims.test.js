@@ -19,9 +19,13 @@ import assert from 'assert/strict';
 import {
   confidentUiClaims, expiringMoneyClaims, employerOnlyAccess,
   hasUsableSource, guideClaimIssues, clauses, quotedScreenText,
-  UI_CLAIM_MIN, ACCESS_SIGNAL_MIN
+  UI_CLAIM_MIN, ACCESS_SIGNAL_MIN,
+  sugoNelkuliFeluletJelzes, SUGO_NELKULI_FELULET_BE
 } from './guide-claims.js';
-import { isBlocking, lessonFor } from './auto-check-codes.js';
+import { readFileSync, readdirSync } from 'fs';
+import { forrasSzint } from './forras-szint.js';
+import { MIN_HIANYZO_FELIRAT } from './forras-tema.js';
+import { isBlocking, lessonFor, leckeNevHu } from './auto-check-codes.js';
 
 let pass = 0;
 const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
@@ -279,4 +283,75 @@ t('🖥️ forráslinkes cikkre nem szól, és TANÁCSADÓ marad (nem indít fiz
   assert.ok(l.length > 60 && !/Hello/.test(l), 'állandó, felirat nélküli lecke');
 });
 
-console.log('\n✅ guide-claims.test: mind a ' + pass + ' eset rendben');
+// ===================================================================
+// GUIDE_UI_NO_HELP — súgó nélküli útmutató nem állíthat gombnevet (TÉNYKÖZPONT 0c, 11-12)
+// ===================================================================
+const ketGomb = 'Click **Schedule send** to pick a time. Then tap **Compose** to start a new message.';
+const egyGomb = 'Click **Schedule send** to pick a time. Then open a new message from your inbox.';
+const hedge = 'If you do not see **Compose**, look for a button that starts a new message. If you do not see **Schedule send**, check the arrow next to Send.';
+
+t('🧯 GUIDE_UI_NO_HELP: cégfüggetlen, súgó nélkül, 2 magabiztos gombnév → jelzés', () => {
+  const j = sugoNelkuliFeluletJelzes(md(ketGomb), { szint: 'cegfuggetlen', vanSugoSzoveg: false });
+  assert.ok(j && j.startsWith('GUIDE_UI_NO_HELP'), String(j));
+  assert.ok(/schedule send/i.test(j) && /compose/i.test(j));
+  assert.ok(isBlocking(j), 'blokkoló');
+});
+t('🧯 GUIDE_UI_NO_HELP: a küszöb a MIN_HIANYZO_FELIRAT — 1 gombnév még nem elég', () => {
+  assert.equal(MIN_HIANYZO_FELIRAT, 2);
+  assert.equal(sugoNelkuliFeluletJelzes(md(egyGomb), { szint: 'cegfuggetlen', vanSugoSzoveg: false }), null);
+});
+t('🧯 GUIDE_UI_NO_HELP: a hedge-elt említés nem állítás', () => {
+  assert.equal(sugoNelkuliFeluletJelzes(md(hedge), { szint: 'cegfuggetlen', vanSugoSzoveg: false }), null);
+});
+t('🧯 GUIDE_UI_NO_HELP: részleges és nincs szintnél is ítél', () => {
+  for (const szint of ['reszleges', 'nincs'])
+    assert.ok(sugoNelkuliFeluletJelzes(md(ketGomb), { szint, vanSugoSzoveg: false })?.startsWith('GUIDE_UI_NO_HELP'), szint);
+});
+t('🧯 GUIDE_UI_NO_HELP: teljes súgós eszköz nem bukik itt (0. fázis), súgószövegnél a GUIDE_UI_NOT_IN_HELP mér', () => {
+  assert.equal(sugoNelkuliFeluletJelzes(md(ketGomb), { szint: 'teljes', vanSugoSzoveg: false }), null);
+  for (const szint of ['teljes', 'reszleges', 'nincs', 'cegfuggetlen'])
+    assert.equal(sugoNelkuliFeluletJelzes(md(ketGomb), { szint, vanSugoSzoveg: true }), null, szint);
+});
+t('🧯 GUIDE_UI_NO_HELP: ismeretlen szint nem ítél; a jelzésben legfeljebb 4 felirat', () => {
+  assert.equal(sugoNelkuliFeluletJelzes(md(ketGomb), { szint: 'valami', vanSugoSzoveg: false }), null);
+  assert.equal(sugoNelkuliFeluletJelzes(md(ketGomb), undefined), null);
+  const sok = 'Click **Alpha Pane**. Tap **Beta Panel**. Press **Gamma Tab**. Select **Delta Menu**. Choose **Epsilon Box**.';
+  const j = sugoNelkuliFeluletJelzes(md(sok), { szint: 'nincs', vanSugoSzoveg: false });
+  assert.ok(j && (j.match(/"/g) || []).length === 8, String(j));
+});
+t('🧯 GUIDE_UI_NO_HELP: kill-switch be van kapcsolva; blokkoló; van lecke és magyar név', () => {
+  assert.equal(SUGO_NELKULI_FELULET_BE, true);
+  assert.equal(isBlocking('GUIDE_UI_NO_HELP: x'), true);
+  const l = lessonFor('GUIDE_UI_NO_HELP: x');
+  assert.ok(l.length > 60 && l !== 'GUIDE_UI_NO_HELP' && !/\d/.test(l), 'angol lecke, szám nélkül');
+  assert.equal(leckeNevHu(l), 'súgó nélkül leírt gomb- és menünevek');
+});
+
+// ── VALÓDI ADAT: a publikált cégfüggetlen útmutatók közül legfeljebb 20 kapna jelzést (11-12-i mérés: 14 / 108) ──
+function keret(mdTxt, kulcs) {
+  const m = String(mdTxt).match(/^---\n([\s\S]*?)\n---/);
+  const s = m && m[1].match(new RegExp('^' + kulcs + ':\\s*(.*)$', 'm'));
+  return s ? s[1].trim().replace(/^["']|["']$/g, '') : '';
+}
+t('🔑 VALÓDI ADAT: a túlfékezés elleni védelem — cégfüggetlen útmutatóból legfeljebb 20 kap jelzést', () => {
+  const dir = new URL('../content/articles/', import.meta.url);
+  const db = { cegfuggetlen: 0, nincs: 0, reszleges: 0, teljes: 0 }, ossz = { cegfuggetlen: 0, nincs: 0, reszleges: 0, teljes: 0 };
+  for (const f of readdirSync(dir)) {
+    if (!/^ARTICLE_GUIDE_.*\.json$/.test(f)) continue;
+    let j; try { j = JSON.parse(readFileSync(new URL(f, dir), 'utf-8')); } catch { continue; }
+    const mdTxt = j.article_markdown || '';
+    const tool = keret(mdTxt, 'tool') || (j._meta && j._meta.tool) || '';
+    const company = keret(mdTxt, 'company') || (j._meta && j._meta.company) || '';
+    const szint = forrasSzint(tool, company).szint;
+    ossz[szint]++;
+    if (sugoNelkuliFeluletJelzes(mdTxt, { szint, vanSugoSzoveg: false })) db[szint]++;
+  }
+  console.log('     📊 jelzést kapna (jelzés / összes): cégfüggetlen ' + db.cegfuggetlen + '/' + ossz.cegfuggetlen
+    + ' · nincs ' + db.nincs + '/' + ossz.nincs + ' · részleges ' + db.reszleges + '/' + ossz.reszleges
+    + ' · teljes (súgószöveg nélkül itt nem ítél) ' + db.teljes + '/' + ossz.teljes);
+  assert.ok(ossz.cegfuggetlen > 50, 'túl kevés cégfüggetlen útmutatót olvasott: ' + ossz.cegfuggetlen);
+  assert.equal(db.teljes, 0, 'teljes súgós útmutató súgószöveg nélkül nem ítélhető');
+  assert.ok(db.cegfuggetlen <= 20, '🔴 túlfékezés: ' + db.cegfuggetlen + ' cégfüggetlen útmutató kapna jelzést (max 20)');
+});
+
+console.log('\n✅ guide-claims.test: mind a' + pass + ' eset rendben');

@@ -63,7 +63,10 @@ export const BLOCKING_CODES = Object.freeze([
   'UI_NOT_IN_SOURCE',
   // GUIDE_UI_NOT_IN_HELP (2026-11-11, hír-elsőbbség 3. rész, user: „CSAK hivatalos súgóból”): a HIVATALOS
   // SÚGÓCIKKBŐL írt útmutató 2+ magabiztos gomb-/menünevet állít, ami a súgóban nincs (core/sugo-parositas.js).
-  'GUIDE_UI_NOT_IN_HELP'
+  'GUIDE_UI_NOT_IN_HELP',
+  // GUIDE_UI_NO_HELP (2026-11-12, TÉNYKÖZPONT 0c): olyan útmutató, aminek az eszközéhez nincs (vagy csak részleges)
+  // hivatalos súgó, vagy cégfüggetlen, mégis 2+ magabiztos gomb-/menünevet állít (core/guide-claims.js).
+  'GUIDE_UI_NO_HELP'
 ]);
 
 /** A "KÓD: emberi szöveg" alakú jelzésből a puszta kód. */
@@ -153,6 +156,11 @@ const LESSON_TEXT = Object.freeze({
     'The guide was based on an official help article, but it named buttons, menus or screens that the help article '
     + 'never mentions. In a help-based guide, take every step, button and menu name from the help article only. '
     + 'If the help article does not say where something is, describe it in general terms and link to the help article.',
+  GUIDE_UI_NO_HELP:
+    'The guide named specific buttons, menus or screens, but there is no official help article for this tool '
+    + '(or it is a general guide that is not tied to one app), so those labels could not be checked and may be wrong. '
+    + 'Without an official help article, describe the action in plain words and do not name on-screen labels. '
+    + 'Tell the reader that the help center of the app itself has the exact steps.',
   UI_NOT_IN_SOURCE:
     'The news article named buttons, menus or screens that its official source never mentions — the steps were written '
     + 'from memory. In a news article, describe only what the source shows. If the source gives no click-by-click steps, '
@@ -226,6 +234,7 @@ const HU_NEV = Object.freeze({
   SOURCE_TOPIC_MISMATCH: 'a cikk másról szól, mint a forrása',
   UI_NOT_IN_SOURCE: 'a forrásban nem szereplő gomb- és menünevek',
   GUIDE_UI_NOT_IN_HELP: 'a súgócikkben nem szereplő gomb- és menünevek',
+  GUIDE_UI_NO_HELP: 'súgó nélkül leírt gomb- és menünevek',
   ACCESS_NOT_SELF_SERVE: 'céges hozzáférést igénylő eszköz',
   TOO_SHORT: 'túl rövid cikk',
   TOO_LONG: 'túl hosszú cikk',

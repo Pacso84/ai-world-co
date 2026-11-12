@@ -26,6 +26,9 @@
 //    `MIÉRT NINCS KERESZT-ELLENTMONDÁS ÉS FELÜLET-EGYEZÉS KAPU` szakaszban.
 // ===================================================================
 
+// A küszöböt a forrás-téma őr adja (EGY helyen él). Körkörös import, de csak függvényen BELÜL használjuk → biztonságos.
+import { MIN_HIANYZO_FELIRAT } from './forras-tema.js';
+
 /** Ennyi MAGABIZTOS, termék-specifikus felirat-állítástól szólunk. Kalibráció lentebb. */
 export const UI_CLAIM_MIN = 3;
 /** Ennyi FÜGGETLEN céges-hozzáférés jeltől szólunk. Kalibráció lentebb. */
@@ -391,6 +394,40 @@ export function guideClaimIssues(markdown, meta = {}) {
 }
 
 // ===================================================================
+// GUIDE_UI_NO_HELP — SÚGÓ NÉLKÜL NEM LEHET GOMBNEVET ÁLLÍTANI (TÉNYKÖZPONT 0c, 2026-11-12)
+// ===================================================================
+// MIÉRT: a 11-11-i mérés szerint 345/377 útmutató forrás nélkül, emlékezetből készült, és a kitalált gomb-/menünevek
+// ebből jönnek. Ha az eszköznek nincs (vagy csak részleges) hivatalos súgója, vagy az útmutató cégfüggetlen,
+// akkor nincs mihez mérni a feliratokat — ilyenkor a cikk NE nevezzen meg konkrét gombot, csak írja le a műveletet.
+//
+// MIKOR ÍTÉL: csak ha az eszköz forrásszintje részleges / nincs / cégfüggetlen, és NINCS letöltött súgószöveg.
+//   • teljes súgós eszköz: 0. fázisban még nem bukik (a súgó-mérés, GUIDE_UI_NOT_IN_HELP, ott méri a feliratokat);
+//   • ha van letöltött súgószöveg: azt a GUIDE_UI_NOT_IN_HELP méri, ide nem kell.
+// Őszintén hedge-elt említés nem számít (a confidentUiClaims ezt már kezeli).
+// Küszöb: 2 különböző magabiztos felirat (MIN_HIANYZO_FELIRAT) — egyetlen gombnév még elfér.
+// Mérve a publikált cégfüggetlen útmutatókon: lásd a core/guide-claims.test.js korpusz-tesztjét (max 20 kaphat jelzést).
+//
+// KILL-SWITCH: a SUGO_NELKULI_FELULET_BE = false teljesen kikapcsolja (a függvény null-t ad). A config.json `enabled`
+// mezője nem kapcsol ki semmit, ezért a kapcsoló a kódban él, teszttel.
+export const SUGO_NELKULI_FELULET_BE = true;
+
+const SUGO_NELKULI_SZINTEK = new Set(['reszleges', 'nincs', 'cegfuggetlen']);
+
+/**
+ * @param {string} markdown
+ * @param {{szint:string, vanSugoSzoveg:boolean}} kontextus  szint = core/forras-szint.js SZINT értéke
+ * @returns {string|null}  null, ha nem ítél; különben "GUIDE_UI_NO_HELP: …"
+ */
+export function sugoNelkuliFeluletJelzes(markdown, { szint, vanSugoSzoveg } = {}) {
+  if (!SUGO_NELKULI_FELULET_BE) return null;
+  if (vanSugoSzoveg || !SUGO_NELKULI_SZINTEK.has(szint)) return null;
+  const ui = confidentUiClaims(markdown);
+  if (ui.labels.length < MIN_HIANYZO_FELIRAT) return null;
+  return 'GUIDE_UI_NO_HELP: names on-screen labels without an official help article: '
+    + ui.labels.slice(0, 4).map(l => `"${l}"`).join(', ') + (ui.labels.length > 4 ? ', …' : '');
+}
+
+// ===================================================================
 // MIÉRT NINCS KERESZT-ELLENTMONDÁS ÉS FELÜLET-EGYEZÉS KAPU (2026-08-17)
 // ===================================================================
 // Mindkettőt megmértem a korpuszon, és mindkettő MEGBUKOTT. Rossz szabályt
@@ -449,5 +486,6 @@ export function guideClaimIssues(markdown, meta = {}) {
 export default {
   UI_CLAIM_MIN, ACCESS_SIGNAL_MIN,
   articleBody, clauses, confidentUiClaims, quotedScreenText, expiringMoneyClaims,
-  employerOnlyAccess, hasUsableSource, guideClaimIssues
+  employerOnlyAccess, hasUsableSource, guideClaimIssues,
+  sugoNelkuliFeluletJelzes, SUGO_NELKULI_FELULET_BE
 };
