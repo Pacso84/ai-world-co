@@ -44,7 +44,7 @@ export const ESZKOZ_SZINT = {
   'Microsoft Copilot': { szint: SZINT.TELJES, aliasok: ['microsoft copilot', 'copilot', 'microsoft 365 copilot'], cegek: ['microsoft'], sugo: ['https://support.microsoft.com/'] },
   'Le Chat':           { szint: SZINT.TELJES, aliasok: ['le chat', 'le chat (mistral)', 'mistral', 'mistral ai'], cegek: ['mistral'], sugo: ['https://help.mistral.ai/'] },
   'Apple Intelligence': { szint: SZINT.TELJES, aliasok: ['apple intelligence', 'image playground', 'siri'], cegek: ['apple'], sugo: ['https://support.apple.com/'] },
-  'Alexa+':            { szint: SZINT.TELJES, aliasok: ['alexa+', 'amazon alexa+', 'alexa'], cegek: ['amazon'], sugo: ['https://www.amazon.com/gp/help/'] },
+  'Alexa+':            { szint: SZINT.TELJES, aliasok: ['alexa+', 'amazon alexa+', 'alexa', 'amazon alexa'], cegek: ['amazon'], sugo: ['https://www.amazon.com/gp/help/'] },
 
   // ── TELJES: új jóváhagyás 11-12 ─────────────────────────────────────────────────────────────────
   'Grok':              { szint: SZINT.TELJES, aliasok: ['grok'], cegek: ['xai'], sugo: ['https://docs.x.ai/'] },

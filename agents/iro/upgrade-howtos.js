@@ -80,7 +80,7 @@ import { linkEllenorzendok, halottLinkTorles, megerositettHalottak } from '../..
 import { hirForrasa } from '../../core/tenyellenorzo-forras.js';
 import { forrasHirJelzesek } from '../../core/forras-tema.js';
 // ── FÉK (2026-11-12, TÉNYKÖZPONT 0b) — core/fek.js: súgó nélküli eszköz útmutatóját nem írjuk át emlékezetből ──
-import { fekezett } from '../../core/fek.js';
+import { fekezett, fekOsszegzo } from '../../core/fek.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -189,12 +189,15 @@ async function frissites(brandContext) {
   const hirek = hirekBetolt({ dir: ARTICLES_DIR, fs: { readdirSync, readFileSync }, join, utmutatoE });
   // 🧯 FÉK (2026-11-12): a fékezett útmutatót ELŐBB vesszük ki, és csak utána választunk — a frissitendok() a napi keretre
   // (FRISS_NAPI = 1) vág, így az utólagos szűrés után a fékezett útmutató minden futásban elvinné az egyetlen helyet.
+  const kihagyott = [];
   const frissithetok = utmutatok.filter(u => {
     const fk = fekezett({ tool: u.tool, company: u.company, title: u.title });
     if (!fk.fek) return true;
-    console.log(`   🧯 frissítés kihagyva (${fk.eszkoz || u.tool || u.company}: nincs jóváhagyott súgó): ${String(u.title).slice(0, 55)}`);
+    kihagyott.push(u);
     return false;
   });
+  // Egyetlen összesítő sor (nem útmutatónként), hogy a napló olvasható maradjon.
+  if (kihagyott.length) console.log(`   ${fekOsszegzo(kihagyott).replace('téma vár', 'útmutató frissítése vár')} — addig nem írjuk át`);
   const jeloltek = frissitendok(frissithetok, hirek);
   console.log(`\n🔄 FRISSÍTÉS (új hír az eszközről): ${jeloltek.length ? jeloltek.length + ' jelölt' : 'nincs teendő ma'}`);
   let cost = 0;
