@@ -55,13 +55,23 @@ function eszkozDarabok(lista) {
   return db;
 }
 
+/**
+ * Az eszközök felsorolása szövegként: „Meta AI 2, Qwen 1” — csökkenő darab, döntetlennél ábécé, max. 5 név, utána „…”.
+ * Közös a konzolsorban (fekOsszegzo) és a Telegram-riport soraiban (report-lines.js fekLine), hogy a kettő sosem tér el.
+ * Üres / hibás bemenetre üres szöveget ad.
+ */
+export function eszkozFelsorolas(eszkozok) {
+  const rendezett = Object.entries(eszkozok && typeof eszkozok === 'object' ? eszkozok : {})
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  const nevek = rendezett.slice(0, 5).map(([n, d]) => `${n} ${d}`).join(', ');
+  return nevek ? nevek + (rendezett.length > 5 ? '…' : '') : '';
+}
+
 /** Egy konzolsor: „🧯 Fék: 3 téma vár hivatalos súgóra (Meta AI 2, Qwen 1)” — csökkenő darab, döntetlennél ábécé, max. 5 név. */
 export function fekOsszegzo(lista) {
   const l = Array.isArray(lista) ? lista : [];
-  const rendezett = Object.entries(eszkozDarabok(l)).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
-  const nevek = rendezett.slice(0, 5).map(([n, d]) => `${n} ${d}`).join(', ');
-  const tobb = rendezett.length > 5 ? '…' : '';
-  return `🧯 Fék: ${l.length} téma vár hivatalos súgóra${nevek ? ` (${nevek}${tobb})` : ''}`;
+  const nevek = eszkozFelsorolas(eszkozDarabok(l));
+  return `🧯 Fék: ${l.length} téma vár hivatalos súgóra${nevek ? ` (${nevek})` : ''}`;
 }
 
 /**
@@ -86,4 +96,4 @@ export function fekAllapotIr(fekezettLista, { fajl = 'memory/fek-allapot.json', 
   }
 }
 
-export default { FEK_BE, fekezett, fekSzuro, fekAllapotIr, fekOsszegzo };
+export default { FEK_BE, fekezett, fekSzuro, fekAllapotIr, fekOsszegzo, eszkozFelsorolas };

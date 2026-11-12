@@ -4,6 +4,7 @@
 import { szortToldalek } from './szort-robot.js';
 import { utmutatoE } from './guide-kind.js';
 import { leckeNevHu } from './auto-check-codes.js';
+import { eszkozFelsorolas } from './fek.js';   // 🧯 közös felsorolás-sorrend a fék konzol- és riport-sorához
 //
 // User-jelzés (2026-08-06): "ne küldjön valótlan adatokat".
 //
@@ -579,4 +580,26 @@ export function nevVedesLine(naplok, now = Date.now(), oraAblak = 24) {
   const at = esetek.filter(e => e.dontes === 'PASS').length;
   const sorok = esetek.slice(0, 3).map(e => `   · ${e.nevek.join(', ')} — „${rovidCim(e.cim, 60)}” → ${e.dontes === 'PASS' ? '✅ a bírálaton átment' : '❌ más okból nem ment át'}`);
   return [`🛟 Ellenőrző: ${esetek.length}× téves „kitalált név” kifogást a kód felülbírált (${at} a bírálaton átment) — a név a hivatalos forrásban áll: ${nevek.join(', ')}. Ha új termék: vedd fel a website/tool-links.json-ba.`, ...sorok].join('\n');
+}
+
+/**
+ * 🧯 A FÉK sora a napi Telegram-riportban (TÉNYKÖZPONT 0. fázis, 2026-11-12): hány útmutató-téma vár hivatalos súgóra,
+ * mert az eszközének még nincs jóváhagyott, olvasható súgója (core/fek.js írja: memory/fek-allapot.json).
+ * `allapot` = { at, db, eszkozok: { eszköz: db } } · `maNap` = 'YYYY-MM-DD' (UTC, mint a többi riport-sor).
+ * CSENDES (null), ha nincs fájl / hibás a tartalma / db = 0 / az `at` nem a mai vagy tegnapi napé — a CI naponta 3-szor
+ * fut, és a riport az első futás előtt is mehet, ezért a tegnapi állapot még friss; ennél régebbit nem állítunk.
+ * SOSEM dob.
+ */
+export function fekLine(allapot, maNap) {
+  try {
+    const db = Number(allapot?.db);
+    if (!allapot || typeof allapot !== 'object' || !Number.isFinite(db) || db <= 0) return null;
+    const at = String(allapot.at || '').slice(0, 10);
+    const ma = Date.parse(String(maNap) + 'T00:00:00Z');
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(at) || !Number.isFinite(Date.parse(at + 'T00:00:00Z')) || !Number.isFinite(ma)) return null;
+    const tegnap = new Date(ma - 86400000).toISOString().slice(0, 10);
+    if (at !== String(maNap) && at !== tegnap) return null;
+    const nevek = eszkozFelsorolas(allapot.eszkozok);
+    return `🧯 Fék: ${db} útmutató-téma vár hivatalos súgóra${nevek ? ` (${nevek})` : ''} — ezekről addig nem írunk.`;
+  } catch { return null; }
 }

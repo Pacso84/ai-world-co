@@ -27,7 +27,7 @@ import { summarizeRuns, describeFailures } from './make-health.js';
 // A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
 // összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
 import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
-import { describePosts, describeRepeat, ismetlesSuru, describeTranslationGaps, mergeLine, termekHirLine,huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor } from './report-lines.js';
+import { describePosts, describeRepeat, ismetlesSuru, describeTranslationGaps, mergeLine, termekHirLine,huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor, fekLine } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
@@ -990,6 +990,13 @@ async function main() {
     const sor = cegLefedettsegSor(JSON.parse(readFileSync(join(ROOT, 'memory', 'ceg-lefedettseg.json'), 'utf-8')));
     if (sor) lines.push(sor);
   } catch { /* még nem futott — a frissesség-őr jelzi, ha tartósan */ }
+
+  // 🧯 FÉK (2026-11-12, TÉNYKÖZPONT 0. fázis): hány útmutató-téma vár hivatalos súgóra, mert az eszközének még nincs
+  // jóváhagyott súgója. Csendes, ha nincs fékezett téma vagy az állapot régi. A fájl hiánya/hibája sosem állítja meg a riportot.
+  try {
+    const sor = fekLine(JSON.parse(readFileSync(join(ROOT, 'memory', 'fek-allapot.json'), 'utf-8')), new Date().toISOString().slice(0, 10));
+    if (sor) lines.push(sor);
+  } catch { /* még nem futott — nem baj */ }
 
   // HÁZMESTER (2026-07-30): mit takarított el, és hízik-e valami vissza.
   // CSENDES a hétköznapokon: napi pár régi napló törlése nem hír. Csak akkor

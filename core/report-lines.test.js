@@ -10,7 +10,7 @@
 
 import assert from 'assert/strict';
 import {
-  describePosts, describeRepeat, ismetlesSuru, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine, zaroSor, hibaSorok
+  describePosts, describeRepeat, ismetlesSuru, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine, zaroSor, hibaSorok, fekLine
 } from './report-lines.js';
 import { readFileSync } from 'fs';
 
@@ -446,6 +446,44 @@ t('🔌 a napi jelentés beköti a sort, hibás/hiányzó fájlra sem dől el', 
   const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
   assert.match(src, /elakadasLine\(/);
   assert.match(src, /elakadas-state\.json/);
+});
+
+// ---------- 🧯 Fék-sor (TÉNYKÖZPONT 0. fázis, 2026-11-12) ----------
+
+t('🧯 fekLine: nincs fájl / nincs fékezett téma / régi állapot → csendes (null)', () => {
+  const MA = '2026-11-12';
+  assert.equal(fekLine(null, MA), null);
+  assert.equal(fekLine(undefined, MA), null);
+  assert.equal(fekLine('rossz', MA), null);
+  assert.equal(fekLine({ at: '2026-11-12T02:00:00.000Z', db: 0, eszkozok: {} }, MA), null, 'db 0 → csendes');
+  assert.equal(fekLine({ at: '2026-11-10T23:59:00.000Z', db: 3, eszkozok: { Qwen: 3 } }, MA), null, 'két napos → régi');
+  assert.equal(fekLine({ db: 3, eszkozok: { Qwen: 3 } }, MA), null, 'at nélkül nem hihető');
+  assert.equal(fekLine({ at: 'nem dátum', db: 3 }, MA), null);
+});
+
+t('🧯 fekLine: a pontos szöveg, csökkenő darab szerint; ma és tegnap friss', () => {
+  const szoveg = '🧯 Fék: 3 útmutató-téma vár hivatalos súgóra (Meta AI 2, Qwen 1) — ezekről addig nem írunk.';
+  const j = { at: '2026-11-12T02:10:00.000Z', db: 3, eszkozok: { Qwen: 1, 'Meta AI': 2 } };
+  assert.equal(fekLine(j, '2026-11-12'), szoveg);
+  assert.equal(fekLine(j, '2026-11-13'), szoveg, 'tegnapi állapot még friss (a riport az első futás előtt is mehet)');
+  assert.equal(fekLine(j, '2026-11-14'), null);
+});
+
+t('🧯 fekLine: döntetlennél ábécé, 5 név után „…”, üres/hiányzó eszkozok → zárójel nélkül', () => {
+  const j = { at: '2026-11-12T02:10:00.000Z', db: 7, eszkozok: { Suno: 1, Kling: 1, Picsart: 1, Qwen: 1, Midjourney: 1, 'Meta AI': 2 } };
+  assert.equal(fekLine(j, '2026-11-12'),
+    '🧯 Fék: 7 útmutató-téma vár hivatalos súgóra (Meta AI 2, Kling 1, Midjourney 1, Picsart 1, Qwen 1…) — ezekről addig nem írunk.');
+  assert.equal(fekLine({ at: j.at, db: 2, eszkozok: {} }, '2026-11-12'),
+    '🧯 Fék: 2 útmutató-téma vár hivatalos súgóra — ezekről addig nem írunk.');
+  assert.equal(fekLine({ at: j.at, db: 2 }, '2026-11-12'),
+    '🧯 Fék: 2 útmutató-téma vár hivatalos súgóra — ezekről addig nem írunk.');
+});
+
+t('🧯 a napi jelentés beköti a fék-sort, hibás/hiányzó fájlra sem dől el', () => {
+  const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
+  assert.match(src, /fekLine\(/);
+  assert.match(src, /fek-allapot\.json/);
+  assert.match(src, /fekLine\([\s\S]{0,200}\} catch \{/, 'try/catch védi');
 });
 
 console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');
