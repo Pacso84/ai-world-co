@@ -354,4 +354,4 @@ t('🔑 VALÓDI ADAT: a túlfékezés elleni védelem — cégfüggetlen útmuta
   assert.ok(db.cegfuggetlen <= 20, '🔴 túlfékezés: ' + db.cegfuggetlen + ' cégfüggetlen útmutató kapna jelzést (max 20)');
 });
 
-console.log('\n✅ guide-claims.test: mind a' + pass + ' eset rendben');
+console.log('\n✅ guide-claims.test: mind a ' + pass + ' eset rendben');

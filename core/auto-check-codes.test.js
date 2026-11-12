@@ -31,13 +31,14 @@ t('a "KÓD: szöveg" alakból kiszedi a kódot', () => {
   assert.equal(issueCode(null), '');
 });
 
-t('🚧 a KILENC blokkoló kód utasít el — más semmi', () => {
+t('🚧 a TÍZ blokkoló kód utasít el — más semmi', () => {
+  // 2026-11-12: +GUIDE_UI_NO_HELP (TÉNYKÖZPONT 0c: súgó nélküli útmutató nem nevez meg gombot/menüt — core/guide-claims.js)
   // 2026-11-11: +GUIDE_UI_NOT_IN_HELP (hír-elsőbbség 3. rész: a súgóból írt útmutató a súgóban nem szereplő gombneveket állít — core/sugo-parositas.js)
   // 2026-11-10: +UI_NOT_IN_SOURCE (a hír a forrásban nem szereplő gombneveket állít — core/forras-tema.js)
   // 2026-11-10: +SOURCE_TOPIC_MISMATCH (user: „többször ne forduljanak elő” — a hír a forrásban nem szereplő eszközről szól, core/forras-tema.js)
   // 2026-11-01: +PRICE_IN_ARTICLE (user: „árakat nem közlünk!” — user-tilalom, ~1%-on tüzel, core/ar-tilalom.js)
   // 2026-11-04: +KNOWN_FALSE_CLAIM (user: „ne forduljanak elő még egyszer” — hivatalos forrással cáfolt állítás, core/ismert-tevedesek.js)
-  for (const kod of ['NO_FRONTMATTER', 'NO_H1', 'MISSING_SECTION', 'GUIDE_TOO_SHORT', 'PRICE_IN_ARTICLE', 'KNOWN_FALSE_CLAIM', 'SOURCE_TOPIC_MISMATCH', 'UI_NOT_IN_SOURCE', 'GUIDE_UI_NOT_IN_HELP']) {
+  for (const kod of ['NO_FRONTMATTER', 'NO_H1', 'MISSING_SECTION', 'GUIDE_TOO_SHORT', 'PRICE_IN_ARTICLE', 'KNOWN_FALSE_CLAIM', 'SOURCE_TOPIC_MISMATCH', 'UI_NOT_IN_SOURCE', 'GUIDE_UI_NOT_IN_HELP', 'GUIDE_UI_NO_HELP']) {
     assert.ok(isBlocking(kod + ': valami'), kod + ' blokkol');
   }
   // A 2026-08-16-i ÚJ jelzések SZÁNDÉKOSAN tanácsadók: a user döntése szerint
