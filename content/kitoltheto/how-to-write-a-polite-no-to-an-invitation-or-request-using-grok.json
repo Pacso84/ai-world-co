@@ -1,6 +1,6 @@
 {
   "slug": "how-to-write-a-polite-no-to-an-invitation-or-request-using-grok",
-  "keszult": "2026-11-05T04:23:33.460Z",
+  "keszult": "2026-11-12T05:05:41.596Z",
   "promptok": {
     "c2c79bef3ee2": [],
     "88a321a1e09e": [
@@ -13,6 +13,35 @@
       {
         "eredeti": "very busy",
         "hely": "your phrase"
+      }
+    ]
+  },
+  "promptok_hu": {
+    "a83a16fe13de": [],
+    "a5eb90a71042": [
+      {
+        "eredeti": "jövő héten",
+        "hely": "a választott időpont"
+      },
+      {
+        "eredeti": "egy másik műszakban",
+        "hely": "a felajánlott műszak"
+      }
+    ],
+    "20e77b51b00a": []
+  },
+  "promptok_es": {
+    "5de75d03e7d3": [],
+    "693c1b0775ce": [
+      {
+        "eredeti": "la semana que viene",
+        "hely": "cuándo ofrecer ayuda"
+      }
+    ],
+    "69058b4fbd67": [
+      {
+        "eredeti": "muy ocupada",
+        "hely": "tu motivo real"
       }
     ]
   }
