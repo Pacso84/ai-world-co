@@ -44,6 +44,7 @@ import { tartalomKapcsolok, maiKozepDb, szintSorrend } from '../../core/content-
 import { fokuszConfigbol, maiFokuszDb, fokuszElsoHely, fokuszHiany, fokuszOtletPrompt, fokuszCimOk } from '../../core/guide-focus.js';
 import { aktivTrendek, trendFelvetelKell, trendProbaJegyez, maiTrendTema, trendPrompt } from '../../core/trend-kutato.js';
 import { megszuntTema, MEGSZUNT_ESZKOZOK } from '../../core/megszunt-eszkozok.js';
+import { fekezett as fekezettE, fekSzuro, fekAllapotIr, fekOsszegzo } from '../../core/fek.js';   // 🧯 2026-11-12 FÉK: súgó nélküli eszközről nincs új/átírt útmutató
 import { cegLefedettseg } from '../../core/ceg-lefedettseg.js';   // 🏢 2026-11-05 őrszem
 import { sugoBlokk, sugoForrasok } from '../../core/sugo-parositas.js';   // 📘 2026-11-11 hír → útmutató CSAK a hivatalos súgóból
 import { cikkSzoveg } from '../../core/elakadas-gen.js';
@@ -126,6 +127,21 @@ function pickTopics(store, args) {
   // 🪦 MEGSZŰNT ESZKÖZ (2026-11-04): a 2026-01-21-én megszüntetett ChatRTX-hez 10-30/31-én is írtunk
   // útmutatót — a témalistából semmilyen úton (kézi id/cím sem) nem kerülhet sorra. core/megszunt-eszkozok.js
   store = { ...store, topics: store.topics.filter(t => !megszuntTema(t)) };
+  // 🧯 FÉK (2026-11-12, TÉNYKÖZPONT 0b): amíg az eszköznek nincs jóváhagyott hivatalos súgója, róla nem írunk útmutatót —
+  // a kézi --id / --title kérésre sem. A témát NEM töröljük és a státuszát NEM írjuk át: csak ebben a futásban marad ki,
+  // és ha később jóváhagyunk egy súgót, magától újra sorra kerül. Az állapot a napi riportnak megy (memory/fek-allapot.json).
+  const fek = fekSzuro(store.topics);
+  const fekTodo = fek.fekezett.filter(t => t.status === 'todo');
+  fekAllapotIr(fekTodo);
+  console.log(fekOsszegzo(fekTodo));
+  if (args.id || args.title) {
+    for (const t of fek.fekezett) {
+      if ((args.id && t.id === args.id) || (args.title && t.title === args.title)) {
+        console.log(`🧯 kihagyva: „${String(t.title).slice(0, 60)}” — nincs jóváhagyott súgó (${fekezettE(t).eszkoz || t.tool || t.company})`);
+      }
+    }
+  }
+  store = { ...store, topics: fek.mehet };
   if (args.id) return store.topics.filter(t => t.id === args.id);
   if (args.title) return store.topics.filter(t => t.title === args.title);
   // KÖZÉPSZINT (2026-09-29, user): napi 1 középszintű a 2-ből → ha ma még nincs,
@@ -243,6 +259,9 @@ function addCompanyCoverage(store, max = 99) {
   for (const c of missing) {
     if (added >= max) break;
     const title = `Getting started with ${c.tool}: a beginner's guide`;
+    // 🧯 FÉK (2026-11-12): jóváhagyott súgó nélküli eszközhöz nem veszünk fel új lefedettségi témát
+    // (a katalógus `tool` mezője megjelenített név — „Amazon Alexa+”, „Le Chat (Mistral)” —, ezért itt a CÉG főterméke dönt)
+    if (fekezettE({ company: c.company, title }).fek) { console.log(`   🧯 kihagyva: ${title} — nincs jóváhagyott súgó`); continue; }
     const id = uniqueId(slugify(`getting-started-${c.tool}`), usedIds);
     store.topics.push({
       id, company: c.company, tool: c.tool, title,
@@ -333,6 +352,7 @@ Return ONLY the JSON array (${total} items), each with the correct "company" and
     const title = (it.title || '').toString().trim();
     if (!title || title.length < 12) continue;
     if (megszuntTema({ tool: it.tool, title, angle: it.angle })) continue;   // 🪦 megszűnt eszközről nem
+    if (fekezettE({ tool: it.tool, company: it.company, title }).fek) { console.log(`   🧯 kihagyva: ${title.slice(0, 70)} — nincs jóváhagyott súgó`); continue; }   // 🧯 FÉK (2026-11-12)
     if (seenTitles.has(normTitle(title))) continue;
     const near = await isNearDuplicateTitle(title, dedupRef);
     if (near.duplicate) {
@@ -373,6 +393,12 @@ async function runBalanceMode(limit, brandContext) {
   console.log('─'.repeat(60));
   const store = loadTopics();
   let deficits = companyDeficits(store);
+  // 🧯 FÉK (2026-11-12): a jóváhagyott súgó nélküli cég hiányát nem töltjük (a keret ne fogyjon el olyan ötletre, ami úgyis kiesne)
+  deficits = deficits.filter(d => {
+    if (!fekezettE({ company: d.company }).fek) return true;   // katalógus-név: a cég főterméke dönt (lásd addCompanyCoverage)
+    console.log(`   🧯 kihagyva: ${d.company} (${d.tool}) — nincs jóváhagyott súgó`);
+    return false;
+  });
   if (!deficits.length) { console.log('   ✓ Minden cég eléri a küszöböt — nincs teendő.'); return; }
 
   // Csak a legnagyobb hiányokat töltjük EBBEN a körben (limit téma összesen)
@@ -521,6 +547,7 @@ Return ONLY the JSON array (${count + 4} items).`;
     const title = (it.title || '').toString().trim();
     if (!title || title.length < 12) continue;
     if (megszuntTema({ tool: it.tool, title, angle: it.angle })) continue;   // 🪦 megszűnt eszközről nem
+    if (fekezettE({ tool: it.tool, company: it.company, title }).fek) { console.log(`   🧯 kihagyva: ${title.slice(0, 70)} — nincs jóváhagyott súgó`); continue; }   // 🧯 FÉK (2026-11-12)
     if (existingTitles.has(normTitle(title))) continue;     // már van ilyen (szó szerint)
     if (fokusz && !fokuszCimOk(title, fokusz)) continue;    // fókusz-módban csak a fókusz-eszközről
     // JELENTÉSBEN közeli-e valamely meglévő guide-hoz? (dedupRef + a batch eddigi címei)
@@ -910,6 +937,12 @@ function listRejectedGuidesForRework() {
           try { unlinkSync(join(REJECTED_DIR, f)); console.log(`🧟 zombi törölve (levett téma): ${f.slice(0, 60)}`); } catch { /* nem kritikus */ }
           return false;
         }
+        // 🧯 FÉK (2026-11-12): jóváhagyott súgó nélküli eszköz elutasított útmutatóját nem dolgozzuk át emlékezetből.
+        // A fájl a rejected/ mappában marad (nem törlünk), és ha később jóváhagyunk egy súgót, újra sorra kerül.
+        if (d._meta?.type === 'guide') {
+          const fk = fekezettE({ tool: d._meta?.tool, company: d._meta?.company });
+          if (fk.fek) { console.log(`🧯 átdolgozás kihagyva (${fk.eszkoz || d._meta?.tool || d._meta?.company}: nincs jóváhagyott súgó): ${f.slice(0, 60)}`); return false; }
+        }
         const attempts = d._meta?.rework_attempts || 0;
         // CSAK guide; a CEO végső döntése (ceo_decision) után már nem nyúlunk hozzá
         return d._meta?.type === 'guide' && !d._meta?.ceo_decision
@@ -1091,6 +1124,9 @@ function listUpgradeCandidates() {
         const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
         if (d._meta?.type !== 'guide') return false;
         if ((d._meta?.rules_version || 1) >= 2) return false;           // már friss
+        // 🧯 FÉK (2026-11-12): jóváhagyott súgó nélküli eszköz útmutatóját nem írjuk át emlékezetből (az eredeti élőben marad)
+        const fk = fekezettE({ tool: d._meta?.tool, company: d._meta?.company });
+        if (fk.fek) { console.log(`🧯 átírás kihagyva (${fk.eszkoz || d._meta?.tool || d._meta?.company}: nincs jóváhagyott súgó): ${f.slice(0, 60)}`); return false; }
         const writerName = f.replace(/^ARTICLE_/, 'WRITER_');
         if (existsSync(join(DRAFTS_DIR, writerName))) return false;     // már sorban áll
         const rejName = f.replace(/^ARTICLE_/, 'REJECTED_');

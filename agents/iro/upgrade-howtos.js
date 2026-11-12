@@ -79,6 +79,8 @@ import { linkEllenorzendok, halottLinkTorles, megerositettHalottak } from '../..
 // ── HÍRBŐL CSAK FORRÁSSAL (2026-11-10) — core/upgrade-gate.js „0)” pont ──
 import { hirForrasa } from '../../core/tenyellenorzo-forras.js';
 import { forrasHirJelzesek } from '../../core/forras-tema.js';
+// ── FÉK (2026-11-12, TÉNYKÖZPONT 0b) — core/fek.js: súgó nélküli eszköz útmutatóját nem írjuk át emlékezetből ──
+import { fekezett } from '../../core/fek.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -185,7 +187,12 @@ async function frissites(brandContext) {
     utmutatok.push({ file: f, title: fm(md, 'title'), tool: d._meta?.tool || fm(md, 'tool'), company: d._meta?.company || fm(md, 'company'), meta: d._meta || {}, data: d, md });
   }
   const hirek = hirekBetolt({ dir: ARTICLES_DIR, fs: { readdirSync, readFileSync }, join, utmutatoE });
-  const jeloltek = frissitendok(utmutatok, hirek);
+  const jeloltek = frissitendok(utmutatok, hirek).filter(({ utmutato: u }) => {
+    const fk = fekezett({ tool: u.tool, company: u.company, title: u.title });
+    if (!fk.fek) return true;
+    console.log(`   🧯 frissítés kihagyva (${fk.eszkoz || u.tool || u.company}: nincs jóváhagyott súgó): ${String(u.title).slice(0, 55)}`);
+    return false;
+  });
   console.log(`\n🔄 FRISSÍTÉS (új hír az eszközről): ${jeloltek.length ? jeloltek.length + ' jelölt' : 'nincs teendő ma'}`);
   let cost = 0;
   for (const { utmutato: u, hirek: v } of jeloltek) {
@@ -275,6 +282,12 @@ function candidates() {
     const md = j.article_markdown || '';
     if (!md || coversPromise(md)) continue;
     if ((j._meta?.howto_upgrade_attempts || 0) >= MAX_ATTEMPTS) continue;
+    // 🧯 FÉK (2026-11-12): útmutatót, amelynek eszközéhez nincs jóváhagyott súgó, nem írunk át emlékezetből.
+    // (A HÍR más: azt a teljes forrásszövegből írjuk át, lásd main() — arra a fék nem vonatkozik.)
+    if (utmutatoE(f, j)) {
+      const fk = fekezett({ tool: j._meta?.tool, company: j._meta?.company });
+      if (fk.fek) { console.log(`   🧯 felújítás kihagyva (${fk.eszkoz || j._meta?.tool || j._meta?.company}: nincs jóváhagyott súgó): ${f.slice(0, 60)}`); continue; }
+    }
     out.push({ file: f, data: j, md });
   }
   // A LEGVÉKONYABB elöl — a legfájóbb eseteket javítjuk először.
