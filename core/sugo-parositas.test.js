@@ -105,6 +105,7 @@ t('🔌 a párosító tényleg használja (második esély + új meglevoTema)', 
 // ── 2. RÉSZ: az útmutató-író CSAK a súgóból, az Ellenőrző a súgón méri a gombneveket ──────────────────
 const SP = await import('./sugo-parositas.js');
 const { sugoBlokk, sugoUtmutatoJelzes } = SP;
+const { engedelyezett } = await import('./sugo-index.js');
 const { readdirSync } = await import('fs');
 const { blockingIssues, lessonFor, LECKES_KODOK, issueCode } = await import('./auto-check-codes.js');
 
@@ -140,14 +141,20 @@ t('🔴 a régi, kézzel írt útmutatók official_sources-ára (sima URL, nem j
     [{ url: 'https://help.openai.com/en/articles/1-x', title: '' }], 'sima URL is mehet');
   assert.deepEqual(sugoForrasok({ sugo_alapu: true, official_sources: [{ url: 'https://support.zoom.com/hc/x', title: 'Z' }] }), [], 'nem jóváhagyott súgó nem');
   assert.deepEqual(sugoForrasok(null), []);
-  // VALÓDI ADAT: egyetlen élő útmutató sem esik a gát alá (mind kézzel írt, sugo_alapu nélkül)
+  // VALÓDI ADAT (2026-11-12 módosítva): eddig 0 élő útmutató esett a gát alá (mind kézzel írt, sugo_alapu nélkül).
+  // 11-12-én megjelent az első SZÁNDÉKOS súgó-alapú útmutató (ARTICLE_GUIDE_how-to-use-gemini-4-carbon, sugo_alapu: true,
+  // official_sources = support.google.com/gemini/…) → már nem a „0 darab” a helyes állítás, hanem az: ami a gát alá esik,
+  // az mind valódi súgó-alapú útmutató, és minden forrás-URL jóváhagyott súgóra mutat.
   const dir = new URL('../content/articles/', import.meta.url);
-  let erintett = 0;
   for (const f of readdirSync(dir)) {
     if (!f.endsWith('.json')) continue;
-    try { if (sugoForrasok(JSON.parse(readFileSync(new URL(f, dir), 'utf-8'))._meta).length) erintett++; } catch { /* kihagy */ }
+    let meta; try { meta = JSON.parse(readFileSync(new URL(f, dir), 'utf-8'))._meta; } catch { continue; }
+    const forrasok = sugoForrasok(meta);
+    if (!forrasok.length) continue;
+    assert.equal(meta.sugo_alapu, true, '🔴 ' + f + ': a gát alá esik, de nincs sugo_alapu jelölése');
+    assert.equal(meta.type, 'guide', '🔴 ' + f + ': a gát nem útmutatóra futna le');
+    for (const s of forrasok) assert.ok(engedelyezett(s.url), '🔴 ' + f + ': nem jóváhagyott súgó-URL: ' + s.url);
   }
-  assert.equal(erintett, 0, '🔴 élő útmutatóra is lefutna az új gát');
 });
 
 t('🔌 az író letölti a súgót és nem ír nélküle; az Ellenőrző a súgón mér', () => {
