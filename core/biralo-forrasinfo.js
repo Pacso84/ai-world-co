@@ -47,6 +47,25 @@ const ARTICLES_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'conten
 const NEM_ELLENORIZHETO_RX = /unverif|cannot be (?:independently )?verified|could not be (?:independently )?verified|hallucinat|fictional|fictitious|non-?existent|(?:does not|doesn't|do not|did not|not) appear\b[^.;]{0,40}\b(?:verified|known|official|approved)\b/i;
 const NEV_KOVETKEZMENY_RX = /\b(?:unverified|invented|fabricated|hallucinated|made[- ]up|fake) (?:model |product |tool |brand )?names?\b|\bnames?\b[^.;]{0,40}\b(?:cannot|could not|can't) be (?:independently )?verified/i;
 
+// IDÉZŐJEL NÉLKÜLI NÉV (11-12, fix 1): a valódi Workspace Studio-bírálat így szólt: „Product name Workspace Studio cannot be
+// independently verified as a real Google product…” — nincs idézőjel, az `idezettNevek` (truth-gate) nem lát benne nevet.
+// TARTALÉK, CSAK ha a mondatban nincs idézett név: a Nagybetűs / számjegyes szavak leghosszabb sorozatai a jelöltek
+// („Workspace Studio”, „Gemini 5 Ultra”); az elöl álló általános szavak (Product, Name, The, Tool, Feature, App, Model)
+// lekerülnek, az üres sorozat kimarad. Ugyanaz a szabály, mint az idézett nevekre: MINDEN jelöltnek igazoltnak kell
+// lennie (forrás-cím / URL / szöveg, vagy hiteles lista). A truth-gate viselkedése nem változik.
+const ALTALANOS_SZAVAK = new Set(['product', 'name', 'the', 'tool', 'feature', 'app', 'model']);
+const NAGYBETUS_SOROZAT_RX = /\p{Lu}[\p{L}\p{N}]*(?:[ \t]+(?:\p{Lu}[\p{L}\p{N}]*|\d+(?:\.\d+)*))*/gu;
+
+function idezetlenNevek(szoveg) {
+  const ki = [];
+  for (const m of String(szoveg).matchAll(NAGYBETUS_SOROZAT_RX)) {
+    const szavak = m[0].split(/\s+/);
+    while (szavak.length && ALTALANOS_SZAVAK.has(szavak[0].toLowerCase())) szavak.shift();
+    if (szavak.length) ki.push(szavak.join(' '));
+  }
+  return ki;
+}
+
 function letezesKifogas(szoveg) {
   return (LETEZES_RX.test(szoveg) || NEM_ELLENORIZHETO_RX.test(szoveg)) && !ARAS_RX.test(szoveg) && !FELULET_RX.test(szoveg);
 }
@@ -71,7 +90,8 @@ export function tevesNevKifogas(review, { originalTitle = '', sourceUrl = '', so
 
   const nevek = new Set();
   const egyIgazolt = szoveg => {
-    const idezett = idezettNevek(szoveg);
+    let idezett = idezettNevek(szoveg);
+    if (!idezett.length && letezesKifogas(szoveg)) idezett = idezetlenNevek(szoveg);   // tartalék: idézőjel nélküli név
     if (!idezett.length || !letezesKifogas(szoveg) || !idezett.every(igazolt)) return false;
     idezett.forEach(n => nevek.add(n));
     return true;

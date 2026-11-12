@@ -338,4 +338,54 @@ t('az ellenőrző és az útmutató-író is az új forrás-összeállítást ha
   }
 });
 
+// ---------------------------------------------------------------
+// IDÉZŐJEL NÉLKÜLI NÉV (11-12, fix 1): a VALÓDI Workspace Studio-bírálat (memory/quality-fix-log.json) szó szerint:
+// ---------------------------------------------------------------
+const VALODI_WS = 'Product name Workspace Studio cannot be independently verified as a real Google product - this is the core factual gate issue';
+const wsForras = { originalTitle: 'Pause and schedule automated workflows with the new Workspace Studio', sourceUrl: 'https://workspace.google.com/blog/x/', sourceText: '', known: ['Google'] };
+
+t('🔑 idézőjel nélküli: a valódi „Product name Workspace Studio cannot be…” bírálat TÉVES (a név a forrás címében áll)', () => {
+  const r = tevesNevKifogas({ issues: [], verdict: VALODI_WS }, wsForras);
+  assert.equal(r.verdictTeves, true);
+  assert.deepEqual([...r.nevek].sort(), ['Google', 'Workspace Studio']);
+  const r2 = tevesNevKifogas({ issues: [VALODI_WS], verdict: '' }, wsForras);
+  assert.equal(r2.teves.length, 1);
+});
+
+t('idézőjel nélküli: a forrásszövegben álló név is igazol (cím nélkül)', () => {
+  const r = tevesNevKifogas({ issues: [], verdict: VALODI_WS }, { originalTitle: 'Big news', sourceUrl: 'https://workspace.google.com/blog/x/', sourceText: 'Meet Workspace Studio, a new Google tool.', known: [] });
+  assert.equal(r.verdictTeves, true);
+});
+
+t('ELLENPRÓBA idézőjel nélkül: „Gemini 5 Ultra” egy Gemini 4 Carbon forrással szemben NEM téves', () => {
+  const f = { ...utmutatoNevForras(guideMeta, { hirBetolt, sugoSzovegek: ['Gemini 4 Carbon: Our strongest model…'] }), known: ['Google'] };
+  const r = tevesNevKifogas({ issues: [], verdict: 'Product name Gemini 5 Ultra cannot be independently verified as a real Google product' }, f);
+  assert.equal(r.verdictTeves, false);
+  assert.equal(r.nevek.length, 0);
+});
+
+t('ELLENPRÓBA idézőjel nélkül: igazolt ÉS nem igazolt név egy mondatban → NEM téves', () => {
+  const r = tevesNevKifogas({ issues: [], verdict: 'Product name Workspace Studio and Gemini 5 Ultra cannot be independently verified as real Google products' }, wsForras);
+  assert.equal(r.verdictTeves, false);
+  assert.equal(r.nevek.length, 0);
+});
+
+t('idézőjel nélküli: árról / felületről szóló kifogás marad; név nélküli „unverified” sem esik ki', () => {
+  assert.equal(tevesNevKifogas({ issues: ['Workspace Studio pricing cannot be independently verified'], verdict: '' }, wsForras).teves.length, 0);
+  assert.equal(tevesNevKifogas({ issues: ['The Workspace Studio button cannot be independently verified'], verdict: '' }, wsForras).teves.length, 0);
+  assert.equal(tevesNevKifogas({ issues: ['Product name cannot be independently verified'], verdict: '' }, wsForras).teves.length, 0);
+});
+
+t('idézőjel nélküli tartalék csak forrás-URL mellett igazol (URL nélkül a saját cím nem)', () => {
+  const r = tevesNevKifogas({ issues: [], verdict: VALODI_WS }, { ...wsForras, sourceUrl: '' });
+  assert.equal(r.verdictTeves, false);
+});
+
+t('idézőjel nélküli: az átdolgozó a mentett valódi Workspace Studio-bírálatot is kiveszi', () => {
+  const rejected = { source_link: '', ai_review: { decision: 'FAIL', issues: [], verdict: VALODI_WS }, reason: VALODI_WS };
+  const r = atdolgozoMeta(rejected, { ...wsForras });
+  assert.ok(r.kivett.length > 0);
+  assert.equal(r.csakTevesNev, true);
+});
+
 console.log(`\n✅ ${pass} eset zöld`);
