@@ -109,7 +109,8 @@ Spaces” stb.; aliasok kellenek.)
   (`core/trend-kutato.js`), `agents/pairing/agent.js` (hír→útmutató), `core/lefedettseg-extra.js`;
 - írás/átírás: `writeGuide`, `reworkGuide`, `upgradeGuide` (`--upgrade`), `agents/iro/upgrade-howtos.js`
   (hírből útmutató), a tényellenőrző átíró ága (`agents/fact-check`).
-- Fékezett téma: `status: 'fek'` (nem törlődik, a súgó jóváhagyása után magától felszabadul), riport-sor:
+- Fékezett téma: menet közben kiszűrve (státusza NEM változik, nem törlődik — a súgó jóváhagyása után magától
+  felszabadul; 11-12 a megvalósítási tervben pontosítva), riport-sor:
   „🧯 Fék: N téma vár hivatalos súgóra (Meta AI 2, Qwen 1…)”.
 
 **0c. Felület-állítás elutasít, ha nincs mihez mérni.** UI_CLAIMS_UNSOURCED → elutasító kód útmutatónál, ha az
