@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-use-gemini-4-carbon",
+    "company": "Google",
+    "tool": "Gemini",
+    "icon": "🆕",
+    "level": "beginner",
+    "source_news": {
+      "file": "ARTICLE_2026-11-10T21-35-05-523Z_google-gemini_Gemini_4_Carbon_is_now_available.json",
+      "title": "Gemini 4 Carbon is now available"
+    },
+    "official_sources": [
+      {
+        "url": "https://support.google.com/gemini/answer/18648722",
+        "title": "About Gemini models - Computer"
+      }
+    ],
+    "sugo_alapu": true,
+    "trend": null,
+    "extra_slot": null,
+    "written_at": "2026-11-12T04:55:40.915Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0054345,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "rejected",
+    "rejected_at": "2026-11-12T04:56:44.284Z",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "ACCESS_NOT_SELF_SERVE: 2 jel arra, hogy az olvasónak céges/IT-hozzáférés kell (\"your work account\", \"ask your administrator\") — a hétköznapi olvasónk el sem tud indulni."
+      ],
+      "wordCount": 1572
+    },
+    "ai_review": {
+      "overall_score": 3,
+      "clarity_score": 9,
+      "decision": "FAIL",
+      "issues": [
+        "Model name 'Gemini 4 Carbon' not in verified-real names list - cannot verify this product exists",
+        "Invented model name violates company lesson: never guess AI model names without verification",
+        "Other model names mentioned (Gemini 4 Argon, Flash-Lite) also not verified against official source"
+      ],
+      "verdict": "The article is well-structured, clearly written, and follows all style guidelines, but it refers to 'Gemini 4 Carbon' which does not appear in the verified-real names list. Per company lessons, we cannot publish invented or unverified model names. This must be rewritten with a confirmed model name before publication.",
+      "_aiCost": 0.0016023,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The article is well-structured, clearly written, and follows all style guidelines, but it refers to 'Gemini 4 Carbon' which does not appear in the verified-real names list. Per company lessons, we cannot publish invented or unverified model names. This must be rewritten with a confirmed model name before publication.",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"How to Use Gemini 4 Carbon, Google's Strongest Model, in Gemini Apps\"\nsubtitle: \"Learn to pick Gemini 4 Carbon yourself, choose how deeply it thinks, and check which model answered your question.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Google\"\ntool: \"Gemini\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"gemini\", \"model-selection\"]\n---\n\n# How to Use Gemini 4 Carbon, Google's Strongest Model, in Gemini Apps\n\n> **In short:** You can choose Gemini 4 Carbon yourself and set how deeply it reasons, but only on an eligible paid Google AI plan. Google calls Carbon its strongest model for hard, multi-step problems, and the model list can change, so check the official help center.\n\nHave you ever asked an AI tool a hard question and felt the answer was too shallow? This guide shows you how to pick a specific Gemini model yourself, choose how much thinking it does, and confirm which model wrote your answer. By the end, you will know how to open Gemini 4 Carbon on a computer, and you will know what your plan allows.\n\n## Before you start\n- **A personal Google Account.** The steps below describe access through a personal account. If you use a work or school account, the models you can pick depend on your organization's license, so ask your administrator.\n- **A Google AI plan, if you want to choose Gemini 4 Carbon yourself.** Google says some models are only available with paid Google AI plans. Without one, Gemini picks the model for you.\n- **A computer with a web browser.** The steps here follow Google's computer instructions. Phone and tablet screens can look different.\n- **About 10 minutes.**\n\n## Step 1 — Sign in and open Gemini on your computer\nOpen your web browser and go to gemini.google.com. Sign in with the personal Google Account you want to use. You should see Gemini's home screen, with a chat area in the middle and a message box near the bottom. If you are asked to choose an account, pick the one connected to your Google AI plan.\n\nWhat happens next: nothing is sent yet. You are simply opening the chat screen where you will change the model. If the page looks different, for example because you are on a phone, look for a browser version of Gemini or check Google's official help center, which has the current layouts. You'll know it worked when you can see a chat area and a message box at the bottom of the screen.\n\n## Step 2 — Start a new chat and find the model name\nStart a new chat, so your model choice applies cleanly from the first message. Look at the bottom of the chat box, right where you would type. You will see a short label showing the model that is currently selected. Google's guide describes it this way: the model shown there is the one that will answer your next message.\n\n💬 Example: Don't type anything yet. Just find the label and note which model is selected now.\n\nIf you don't see a label, look for a small button or dropdown near the message box, since the layout changes over time. If nothing matches, the official help center has up-to-date screenshots. You'll know it worked when you can point to the selected model's name at the bottom of the chat box.\n\n## Step 3 — Choose Gemini 4 Carbon from the list\nClick the model label at the bottom of the chat box. A list of models opens. Google's help article names Gemini Flash-Lite, Gemini Flash, Gemini Pro, Gemini 4 Argon, and Gemini 4 Carbon, and it says Gemini 4 Carbon is Google's strongest model, designed to reason deeply through hard, long-horizon problems. Click Gemini 4 Carbon.\n\nSome models have a small lock icon next to them. Google says those need an eligible plan upgrade, so if you see one on Carbon, your current plan does not include it. Your next message will go to the model you chose, and the chat box should show Gemini 4 Carbon as the selected model.\n\n💬 Example: \"I am studying for a [exam name] on [subject]. Make a 10-day study plan that fits about [number] hours per week.\"\n\nCarbon can work through a long problem with you, but it can still make mistakes, so double-check anything important. If Carbon is locked, choose a model that is not locked, or look at Google's official help center for plan details. You'll know it worked when your answer appears and the chat box still shows Gemini 4 Carbon.\n\n## Step 4 — Set the thinking level\nBelow the model list, you may see thinking levels: Low, Medium, and High. Google describes Low as fast, concise answers for simple questions, Medium as a balance of speed and depth for everyday tasks, and High as careful reasoning through complex, multi-step prompts. Pick the level that fits your question. If you don't choose one, Google says it defaults to Low.\n\nHigher levels usually take longer and use more of your plan's usage, so choose Medium or High for problems that need real thought. Google also says that if you keep using the same conversation, it keeps the model and thinking level you chose, even if you come back later.\n\n💬 Example: \"Compare two ways to pay off a [debt type] with [number] months, and explain each step in plain words.\"\n\nIf you can't find the thinking levels, look for a small menu near the model name, or check the official help center. You'll know it worked when the level you chose is shown with the model before you send your question.\n\n## Step 5 — Check which model answered\nOnce you get a response, you may want to confirm which model wrote it. Look for a More option at the bottom of the response. Click it, then choose Show thinking steps from the menu. A panel shows the steps the model took. Scroll to the bottom of those steps, and you will find which model was used.\n\nThis matters because Gemini can choose a different model automatically if auto model selection is on. Google says Flash-Lite handles most quick prompts, and prompts that need more reasoning may use Flash. Checking the bottom of the thinking steps is the fastest way to confirm the model.\n\n💬 Example: After you get an answer, ask: \"Which model and thinking level did you use for that answer?\" (It may not be able to answer reliably, so use the thinking steps as your main check.)\n\nIf you don't see More or Show thinking steps, the menu may be labeled differently or hidden under a different icon. Check the official help center. You'll know it worked when you can see the model name listed at the end of the thinking steps.\n\n## Step 6 — Turn auto model selection on or off\nAuto model selection lets Gemini choose the model and thinking level for each prompt. Google says that setting routes prompts to the most efficient option and saves your usage. If you want every answer to come from the model you picked, turn it off. Look for Settings near the bottom left of the screen, then open Usage limits. At the bottom of that page, you will find a switch for auto model selection.\n\nWhat happens next: if auto model selection is off, Google says every response uses Flash-Lite, unless you have manually chosen another model in the chat. Turn it back on whenever you want Gemini to decide for you. Also note that if you reach your plan's usage limit, Google says your chat continues with Flash-Lite.\n\n💬 Example: To check your setting, you don't need to type anything. Open Settings, then Usage limits, and read the switch's status.\n\nIf you can't find Settings or Usage limits, the layout may have changed, so look for a settings icon or check the official help center. You'll know it worked when the auto model selection switch shows the setting you want.\n\n## Common mistakes\n- **Assuming Carbon is always on.** Gemini may pick a faster model automatically, so check the bottom of the thinking steps. The fix is Step 5.\n- **Choosing High thinking for every question.** Simple questions don't need deep reasoning and use more of your usage. The fix is to choose Low for quick questions and Medium or High for harder problems.\n- **Expecting a locked model to open for free.** Google says higher-tier models marked with a lock need an eligible plan. The fix is to check your plan in the official help center, or pick an available model.\n\n## What this means for you\n- **In everyday life:** If you're planning a trip, budget, or study schedule, choose a deeper model and thinking level for the complicated parts, and a faster one for quick questions.\n- **For your business or work:** If your work account is managed by an employer, your available models depend on your organization's license, so ask your administrator before you plan around a model.\n- **If you're just getting started:** Keep auto model selection on, and try one hard question with Gemini 4 Carbon once you're comfortable finding the model label.\n\n## Try it now\nOpen gemini.google.com on your computer, find the model label at the bottom of the chat box, and note which model is selected. You'll know you're ready when you can say which model your next question will use.",
+  "original_title": "How to use Gemini 4 Carbon"
+}

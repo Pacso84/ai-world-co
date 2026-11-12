@@ -1,150 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179424722993581",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-09T18:00:29.935Z",
-      "updated": "2026-11-09T18:00:38.605Z"
-    },
-    {
-      "id": "t17942472386076",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-09T18:00:38.607Z",
-      "updated": "2026-11-09T18:00:46.648Z"
-    },
-    {
-      "id": "t179424724665090",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-09T18:00:46.650Z",
-      "updated": "2026-11-09T18:01:01.079Z"
-    },
-    {
-      "id": "t179424726108287",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-09T18:01:01.082Z",
-      "updated": "2026-11-09T18:01:24.089Z"
-    },
-    {
-      "id": "t179428727067159",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-10T05:07:50.671Z",
-      "updated": "2026-11-10T05:07:50.834Z"
-    },
-    {
-      "id": "t179428727083520",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-10T05:07:50.835Z",
-      "updated": "2026-11-10T05:08:34.108Z"
-    },
-    {
-      "id": "t17942873141106",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-10T05:08:34.110Z",
-      "updated": "2026-11-10T05:10:20.535Z"
-    },
-    {
-      "id": "t179428742057721",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-10T05:10:20.577Z",
-      "updated": "2026-11-10T05:11:33.039Z"
-    },
-    {
-      "id": "t179428749304194",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-10T05:11:33.041Z",
-      "updated": "2026-11-10T05:12:45.122Z"
-    },
-    {
-      "id": "t179428756512548",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-10T05:12:45.125Z",
-      "updated": "2026-11-10T05:13:12.787Z"
-    },
-    {
-      "id": "t179428759282266",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-10T05:13:12.822Z",
-      "updated": "2026-11-10T05:14:13.101Z"
-    },
-    {
-      "id": "t179428765310294",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-10T05:14:13.102Z",
-      "updated": "2026-11-10T05:14:57.162Z"
-    },
-    {
-      "id": "t179428769719640",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-10T05:14:57.196Z",
-      "updated": "2026-11-10T05:14:57.362Z"
-    },
-    {
-      "id": "t179428769736494",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-10T05:14:57.364Z",
-      "updated": "2026-11-10T05:14:57.532Z"
-    },
-    {
-      "id": "t179428769757258",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-10T05:14:57.572Z",
-      "updated": "2026-11-10T05:15:16.707Z"
-    },
-    {
-      "id": "t179428771671077",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-10T05:15:16.710Z",
-      "updated": "2026-11-10T05:15:38.784Z"
-    },
-    {
-      "id": "t179428773881813",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-10T05:15:38.818Z",
-      "updated": "2026-11-10T05:17:26.278Z"
-    },
-    {
-      "id": "t179428784627929",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-10T05:17:26.279Z",
-      "updated": "2026-11-10T05:18:34.180Z"
-    },
-    {
       "id": "t179428791418242",
       "title": "Run designer",
       "status": "done",
@@ -479,57 +335,153 @@
       "agent": "publisher",
       "created": "2026-11-11T03:52:32.025Z",
       "updated": "2026-11-11T03:52:53.697Z"
+    },
+    {
+      "id": "t179445899319519",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-12T04:49:53.195Z",
+      "updated": "2026-11-12T04:49:53.346Z"
+    },
+    {
+      "id": "t179445899334737",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-12T04:49:53.347Z",
+      "updated": "2026-11-12T04:51:01.219Z"
+    },
+    {
+      "id": "t179445906122094",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-12T04:51:01.220Z",
+      "updated": "2026-11-12T04:51:01.363Z"
+    },
+    {
+      "id": "t179445906139527",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-12T04:51:01.395Z",
+      "updated": "2026-11-12T04:52:19.569Z"
+    },
+    {
+      "id": "t179445913957060",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-12T04:52:19.570Z",
+      "updated": "2026-11-12T04:54:02.627Z"
+    },
+    {
+      "id": "t179445924262936",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-12T04:54:02.629Z",
+      "updated": "2026-11-12T04:54:43.102Z"
+    },
+    {
+      "id": "t179445928312956",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-12T04:54:43.129Z",
+      "updated": "2026-11-12T04:55:40.979Z"
+    },
+    {
+      "id": "t179445934098013",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-12T04:55:40.980Z",
+      "updated": "2026-11-12T04:56:44.305Z"
+    },
+    {
+      "id": "t179445940433362",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-12T04:56:44.333Z",
+      "updated": "2026-11-12T04:56:44.465Z"
+    },
+    {
+      "id": "t179445940446893",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-12T04:56:44.468Z",
+      "updated": "2026-11-12T04:56:44.593Z"
+    },
+    {
+      "id": "t179445940464473",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-12T04:56:44.644Z",
+      "updated": "2026-11-12T04:57:00.915Z"
+    },
+    {
+      "id": "t179445942091891",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-12T04:57:00.918Z",
+      "updated": "2026-11-12T04:58:49.692Z"
+    },
+    {
+      "id": "t179445952969530",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-12T04:58:49.695Z",
+      "updated": "2026-11-12T04:59:43.546Z"
+    },
+    {
+      "id": "t179445958354730",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-12T04:59:43.547Z",
+      "updated": "2026-11-12T05:00:45.102Z"
+    },
+    {
+      "id": "t179445964510421",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-12T05:00:45.104Z",
+      "updated": "2026-11-12T05:01:33.447Z"
+    },
+    {
+      "id": "t179445969344893",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-12T05:01:33.448Z",
+      "updated": "2026-11-12T05:02:07.959Z"
+    },
+    {
+      "id": "t179445972796168",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-12T05:02:07.961Z",
+      "updated": "2026-11-12T05:02:14.244Z"
+    },
+    {
+      "id": "t179445973424562",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-12T05:02:14.245Z",
+      "updated": "2026-11-12T05:02:28.588Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179356316234946",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „It does not describ",
-      "agent": "fact-check",
-      "at": "2026-11-01T19:59:22.349Z",
-      "loud": false
-    },
-    {
-      "id": "n179356317232610",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „It also does not say which plans or ",
-      "agent": "fact-check",
-      "at": "2026-11-01T19:59:32.326Z",
-      "loud": false
-    },
-    {
-      "id": "n179359026857387",
-      "level": "info",
-      "text": "SEO: 7 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-11-02T03:31:08.573Z",
-      "loud": false
-    },
-    {
-      "id": "n179359027922572",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). A lineup egységes és kész: praktikus how-to útmutatók (DeepSeek, ChatGPT, Cohere, Qwen, Le Chat) és néhány általános tájékoztató cikk (tényellenőrzés, mindennapi használat, adatvédelem). Szép mix.\n\nEg",
-      "agent": "publisher",
-      "at": "2026-11-02T03:31:19.225Z",
-      "loud": false
-    },
-    {
-      "id": "n179359029210337",
-      "level": "success",
-      "text": "5 hír + 2 útmutató publikálva (költség: $0.0490).",
-      "agent": "ceo",
-      "at": "2026-11-02T03:31:32.103Z",
-      "loud": false
-    },
-    {
-      "id": "n179359040752958",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „This Week in AI: The 5 Stories That ",
-      "agent": "fact-check",
-      "at": "2026-11-02T03:33:27.529Z",
-      "loud": false
-    },
     {
       "id": "n179364086888881",
       "level": "warn",
@@ -1281,77 +1233,57 @@
       "agent": "fact-check",
       "at": "2026-11-11T22:24:16.662Z",
       "loud": false
+    },
+    {
+      "id": "n179445925135250",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to pause and schedule automated workflows in Google Workspace Studio\"",
+      "agent": "pairing",
+      "at": "2026-11-12T04:54:11.352Z",
+      "loud": false
+    },
+    {
+      "id": "n179445927128694",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to use Gemini 4 Carbon\"",
+      "agent": "pairing",
+      "at": "2026-11-12T04:54:31.286Z",
+      "loud": false
+    },
+    {
+      "id": "n179445972794666",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 7.4/10).",
+      "agent": "seo",
+      "at": "2026-11-12T05:02:07.946Z",
+      "loud": false
+    },
+    {
+      "id": "n17944597377796",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — you have a nice mix of practical how-tos, privacy guidance, and task-specific writing templates that everyday people will actually use. One quick check: verify all the",
+      "agent": "publisher",
+      "at": "2026-11-12T05:02:17.779Z",
+      "loud": false
+    },
+    {
+      "id": "n179445974861972",
+      "level": "success",
+      "text": "4 hír + 1 útmutató publikálva (költség: $0.0674).",
+      "agent": "ceo",
+      "at": "2026-11-12T05:02:28.619Z",
+      "loud": false
+    },
+    {
+      "id": "n179445981129279",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Try one of the four",
+      "agent": "fact-check",
+      "at": "2026-11-12T05:03:31.292Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179333206739164",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „Fusion is generally available, and GitHub's announcement does not list the individual mode”): \"Build shared workflows for your team with Copilot \" — The sources explicitly state which plans include the features.",
-      "ref": "ARTICLE_2026-10-30T03-27-19-371Z_github-copilot-changelog_Build_shared_workflows_for_your_team_with_Copilot_.json",
-      "open": true,
-      "at": "2026-10-30T03:47:47.391Z"
-    },
-    {
-      "id": "m179333268690171",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-30T03:58:06.901Z"
-    },
-    {
-      "id": "m179337156082342",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Getting started with Grok (xAI) for everyday quest\" — Multiple UI and access claims are likely outdated — Grok access has expanded beyond Premium-only, and the mode names/interface elements described may have changed since publication.",
-      "ref": "ARTICLE_GUIDE_grok-getting-started.json",
-      "open": true,
-      "at": "2026-10-30T14:46:00.823Z"
-    },
-    {
-      "id": "m179339142622248",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „The post shares what those students said they rely on.”): \"Dive into new topics with immersive explorations i\" — The article incorrectly says the college student post doesn't list specific features, but source 2 names 11 distinct features. Also, the article says Google is 'rolling out' the feature, but source 1 st",
-      "ref": "ARTICLE_2026-10-30T03-26-19-950Z_google-gemini_Dive_into_new_topics_with_immersive_explorations_i.json",
-      "open": true,
-      "at": "2026-10-30T20:17:06.222Z"
-    },
-    {
-      "id": "m179339145434549",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"Getting started with xAI’s Grok to draft professio\" — The guide describes Grok's interface as having 'Standard' and 'Fun' modes with a toggle switch, which was an early feature but has been replaced with the current Grok 4.x interface and multi-agent system. The file type",
-      "ref": "ARTICLE_GUIDE_getting-started-with-xai-s-grok-to-draft-professional-emails.json",
-      "open": true,
-      "at": "2026-10-30T20:17:34.345Z"
-    },
-    {
-      "id": "m17933915014485",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"How to use Grok on X for real-time answers\" — Cannot verify the exact feature name 'Fun Mode' or the specific subscription requirement claim with certainty; UI descriptions may be outdated. Softened to conditional language to remain accurate without inventing facts.",
-      "ref": "ARTICLE_GUIDE_grok-on-x.json",
-      "open": true,
-      "at": "2026-10-30T20:18:21.448Z"
-    },
-    {
-      "id": "m179341648707429",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"How to use Gemini to update your resume\" hír a meglévő útmutatóra mutat: turn-a-messy-product-review-into-a-polished-testimonial-with",
-      "ref": "turn-a-messy-product-review-into-a-polished-testimonial-with",
-      "at": "2026-10-31T03:14:47.074Z"
-    },
     {
       "id": "m179341650771878",
       "from": "pairing",
@@ -2692,6 +2624,72 @@
       "ref": "ARTICLE_2026-10-15T02-17-50-372Z_nvidia-blog_European_Cities_Deploy_NVIDIA-Powered_AI_Agents_to.json",
       "open": true,
       "at": "2026-11-11T22:24:16.662Z"
+    },
+    {
+      "id": "m179445925135259",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to pause and schedule automated workflows in Google Workspace Studio\"",
+      "ref": "how-to-pause-and-schedule-automated-workflows-in-google-work",
+      "open": true,
+      "at": "2026-11-12T04:54:11.352Z"
+    },
+    {
+      "id": "m179445927128691",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to use Gemini 4 Carbon\"",
+      "ref": "how-to-use-gemini-4-carbon",
+      "open": true,
+      "at": "2026-11-12T04:54:31.286Z"
+    },
+    {
+      "id": "m179445938417352",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to pause and schedule automated workflows in Google Workspace Studio\" — mi a baj: ACCESS_NOT_SELF_SERVE: 2 jel arra, hogy az olvasónak céges/IT-hozzáférés kell (\"your work account\", \"ask your admin\") — a hétköznapi olvasónk el sem tud indulni.; Product name Workspace Studio cannot be independently verified as a real Google product - this is the core factual gate issue; T",
+      "ref": "GUIDE_how-to-pause-and-schedule-automated-workflows-in-google-work.json",
+      "at": "2026-11-12T04:56:24.173Z"
+    },
+    {
+      "id": "m17944594042945",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to use Gemini 4 Carbon\" — mi a baj: ACCESS_NOT_SELF_SERVE: 2 jel arra, hogy az olvasónak céges/IT-hozzáférés kell (\"your work account\", \"ask your administrator\") — a hétköznapi olvasónk el sem tud indulni.; Model name 'Gemini 4 Carbon' not in verified-real names list - cannot verify this product exists; Invented model name violates company lesson: never guess AI model na",
+      "ref": "GUIDE_how-to-use-gemini-4-carbon.json",
+      "at": "2026-11-12T04:56:44.294Z"
+    },
+    {
+      "id": "m179445964508090",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Plan a weekend trip itinerary with DeepSeek\" — mi a baj: The repeated claim that DeepSeek cannot look up live information or check current opening hours and prices is inaccurate: DeepSeek's web and mobile apps include a web-search mode that can retrieve current web information. The warning should apply only when that mode is not enabled.",
+      "ref": "GUIDE_plan-a-weekend-trip-itinerary-with-deepseek.json",
+      "at": "2026-11-12T05:00:45.080Z"
+    },
+    {
+      "id": "m179445973423379",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-12T05:02:14.233Z"
+    },
+    {
+      "id": "m179445981129285",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Try one of the four features on your next call or voice memo — the new languages should al”): \"Samsung Expands Language Support Across AI Experie\" — A forrás egyértelműen states that az új Galaxy AI nyelvek 'a következő hetekben' jelennek meg, nem pedig már élőben vannak",
+      "ref": "ARTICLE_2026-10-15T02-18-20-785Z_samsung-newsroom_Samsung_Expands_Language_Support_Across_AI_Experie.json",
+      "open": true,
+      "at": "2026-11-12T05:03:31.292Z"
     }
   ]
 }

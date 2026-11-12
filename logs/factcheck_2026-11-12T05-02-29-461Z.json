@@ -1,0 +1,62 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.010884795000000001,
+  "at": "2026-11-12T05:02:29.461Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-save-your-preferences-so-every-new-ai-chat-starts-clo.json",
+      "cim": "How to Save Your Preferences So Every New AI Chat Starts Closer to What You Want",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató nem tesz konkrét hamis állítások semmilyen termékről; helyesen jelzi, hogy a funkciók alkalmazásonként és csomagonként eltérőek lehetnek."
+    },
+    {
+      "file": "ARTICLE_2026-11-12T04-50-52-649Z_databricks_Genie_with_Genie_Ontology_Delivers_1_6__the_Accura.json",
+      "cim": "Genie with Genie Ontology Delivers 1.6× the Accuracy with Less than Half the Tokens",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "minden ténymegállapítás megfelel a forrásoknak"
+    },
+    {
+      "file": "ARTICLE_2026-11-11T03-42-29-397Z_cohere-blog_Leading_Open-Weight_Models_Now_Available_in_Model_.json",
+      "cim": "Leading Open-Weight Models Now Available in Model Vault",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben szereplő összes ténykéldés forrás által támogatott"
+    },
+    {
+      "file": "ARTICLE_2026-11-10T15-57-40-963Z_google-gemini_We_re_bringing_Adobe_s_creative_and_productivity_t.json",
+      "cim": "We’re bringing Adobe’s creative and productivity tools closer to your everyday Google apps.",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi az összes hivatalos forrásból származó állítást - dátumok, partnerség részletek, funkcióleírások (PDF-integráció, Gemini-konnektorok, AI Mode a Keresésben, CX Enterprise Coworker agent, DeepMind együttműködés) mind helyesek."
+    },
+    {
+      "file": "ARTICLE_2026-11-10T05-08-29-260Z_google-workspace_Pause_and_schedule_automated_workflows_with_the_ne.json",
+      "cim": "Pause and schedule automated workflows with the new “Wait until” step in Workspace Studio",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Minden állítás megfelel a forrásanyagnak - a 14 napos szünetkorlát, a 2026. november 9-i bevezetési dátum, három szünetmód, a Tevékenység lap monitorozása, az Egyetlen címkéhez tartozó Elfogadás/Szerkesztés gombok, valamint az admin/alapértelmezett beállítások mind pontosan meg vannak adva."
+    },
+    {
+      "file": "ARTICLE_2026-10-15T02-18-20-785Z_samsung-newsroom_Samsung_Expands_Language_Support_Across_AI_Experie.json",
+      "cim": "Samsung Expands Language Support Across AI Experiences on Galaxy",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „Try one of the four features on your next call or voice memo — the new languages should al”",
+      "modell_hu": "A forrás egyértelműen states that az új Galaxy AI nyelvek 'a következő hetekben' jelennek meg, nem pedig már élőben vannak"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "started_at": "2026-11-12T04:51:01.536Z",
+  "drafts_total": 8,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 6,
+  "merged_total": 3,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 2,
+    "html": 6,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.018603839999999996,
+  "by_article": [
+    {
+      "draft": "2026-11-10T15-57-40-963Z_google-gemini_We_re_bringing_Adobe_s_creative_and_productivity_t.json",
+      "writer_output": "WRITER_2026-11-10T15-57-40-963Z_google-gemini_We_re_bringing_Adobe_s_creative_and_productivity_t.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Google-Adobe creative tools integration",
+      "source_via": [
+        "html",
+        "html"
+      ],
+      "source_chars": 3895,
+      "source_overlap_words": 10,
+      "cost_usd": 0.003665,
+      "duration_ms": 13014,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-10T05-08-29-260Z_google-workspace_Pause_and_schedule_automated_workflows_with_the_ne.json",
+      "writer_output": "WRITER_2026-11-10T05-08-29-260Z_google-workspace_Pause_and_schedule_automated_workflows_with_the_ne.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Google Workspace automation and security",
+      "source_via": [
+        "hirfolyam",
+        "hirfolyam"
+      ],
+      "source_chars": 4981,
+      "source_overlap_words": 17,
+      "cost_usd": 0.0042305,
+      "duration_ms": 16653,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-12T04-50-52-649Z_databricks_Genie_with_Genie_Ontology_Delivers_1_6__the_Accura.json",
+      "writer_output": "WRITER_2026-11-12T04-50-52-649Z_databricks_Genie_with_Genie_Ontology_Delivers_1_6__the_Accura.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "Databricks Genie AI platform",
+      "source_via": [
+        "html",
+        "html",
+        "html"
+      ],
+      "source_chars": 9014,
+      "source_overlap_words": 11,
+      "cost_usd": 0.004159,
+      "duration_ms": 16224,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-11T03-42-29-397Z_cohere-blog_Leading_Open-Weight_Models_Now_Available_in_Model_.json",
+      "writer_output": "WRITER_2026-11-11T03-42-29-397Z_cohere-blog_Leading_Open-Weight_Models_Now_Available_in_Model_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 5999,
+      "source_overlap_words": 11,
+      "cost_usd": 0.0039892,
+      "duration_ms": 14256,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 4,
+  "termek_extra": 0,
+  "finished_at": "2026-11-12T04:52:19.550Z",
+  "duration_seconds": 78.014
+}

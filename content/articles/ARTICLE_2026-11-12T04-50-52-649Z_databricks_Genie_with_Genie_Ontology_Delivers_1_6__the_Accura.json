@@ -1,0 +1,79 @@
+{
+  "_meta": {
+    "written_at": "2026-11-12T04:52:03.684Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.004159,
+    "original_draft": "2026-11-12T04-50-52-649Z_databricks_Genie_with_Genie_Ontology_Delivers_1_6__the_Accura.json",
+    "source_id": "databricks",
+    "source_name": "Databricks Blog (hivatalos)",
+    "source_link": "https://www.databricks.com/blog/genie-genie-ontology-delivers-16-accuracy-less-half-tokens",
+    "source_links": [
+      "https://www.databricks.com/blog/genie-genie-ontology-delivers-16-accuracy-less-half-tokens",
+      "https://www.databricks.com/blog/announcing-ga-genie-ontology",
+      "https://www.databricks.com/blog/genie-one-ai-cowork-home-everyone"
+    ],
+    "source_snippet_len": 300,
+    "source_text_via": [
+      "html",
+      "html",
+      "html"
+    ],
+    "source_text_len": 9014,
+    "source_text_key": "f4c1e175b45ee689",
+    "source_overlap_words": 11,
+    "merged_from": 3,
+    "merged_theme": "Databricks Genie AI platform",
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-12T04:54:02.612Z",
+    "slug": "databricks-genie-what-the-new-context-and-ai-cowork-updates-mean-for-y",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "OPENING_REPETITIVE: A legutóbbi 20 cikkből 5 kezdődik ugyanígy (\"if you have…\"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel."
+      ],
+      "wordCount": 850
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured news article with good technical explanations for a business audience; the attribution of benchmark numbers to Databricks is properly qualified, and the What this means for you section offers specific, actionable guidance for four reader personas.",
+      "_aiCost": 0.00118776,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-12T04:54:43.088Z",
+    "guide_worthy": false,
+    "pairing_reason": "Databricks Genie is enterprise software requiring company-wide deployment; no ordinary person can simply go use it today",
+    "image_v": 2,
+    "image_at": "2026-11-12T05:01:26.032Z",
+    "seo": {
+      "meta_description": "Databricks Genie Ontology uses business rules to train AI agents, achieving 91% accuracy in tests. Learn how Genie One brings these agents into your daily tools.",
+      "keywords": [
+        "Databricks Genie",
+        "Genie Ontology",
+        "Databricks AI agents",
+        "AI data automation",
+        "business intelligence tools",
+        "data team workflows",
+        "AI agents for business"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more details about what Genie Ontology actually does for users in the article body",
+        "Include specific examples of everyday work tools where Genie One integrates",
+        "Add comparison or context about how this differs from other data AI tools"
+      ],
+      "optimised_at": "2026-11-12T05:01:59.456Z"
+    },
+    "fact_verified_at": "2026-11-12T05:02:42.158Z"
+  },
+  "article_markdown": "---\ntitle: \"Databricks Genie: What the New Context and AI Cowork Updates Mean for You\"\nsubtitle: \"Databricks says its Genie agents now learn business knowledge from everyday work, and Genie One brings them into the tools where people already work.\"\ncategory: \"news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"databricks\", \"enterprise-ai\", \"ai-agents\", \"data-analysis\", \"ai-news\"]\n---\n\n# Databricks Genie: What the New Context and AI Cowork Updates Mean for You\n\n> **In short:** Databricks has made Genie Ontology generally available, a layer that helps AI agents learn how a business defines its numbers. In its own benchmark, the company reports that Genie passed 91% of test runs while using less than half the tokens. Genie One, a separate update, brings these agents into everyday work tools.\n\nIf you have ever asked a data team, \"What exactly counts as a sale this quarter?\", you already know the problem Databricks is trying to solve. The answer lives in someone's notebook, an old dashboard, or a saved query, not in the database tables themselves. AI agents, which are programs that can answer questions and carry out tasks on their own, face the same puzzle.\n\n## What Databricks announced\n\nDatabricks is a company that provides a data platform, the software businesses use to store and analyze their information. Its Genie product lets people ask questions in plain language and get answers drawn from company data.\n\nAccording to Databricks, the new work centers on **Genie Ontology**, which it describes as an agentic ontology. An ontology here means a shared map of what things mean inside a business, such as how \"revenue\" or \"active customer\" is defined. The company says agents can build this map from the work teams already do, while people review and govern it. Genie Ontology is now generally available, which means customers can use it in production.\n\nDatabricks also says it ran a new benchmark, a standardized test, built with the firm Turing. The test used business questions inside a live Databricks workspace, the shared environment where a team's data and tools live. The company says the test looked beyond tables and included notebooks, dashboards, and saved SQL queries (short database commands), because real answers often depend on those too.\n\nIts reported results: Genie passed 91% of runs, compared with 45% and 58% for two other frontier agents, which are the most advanced AI agents available. Databricks also says Genie used less than half the tokens. A **token** is a small chunk of text, roughly a word or part of one, that an AI reads and writes. Fewer tokens generally means less work for the system. The company additionally reports that Genie finished three to four times faster.\n\nThese are Databricks's own numbers from its own test. They are useful signals, but they are not independent verification.\n\n## Genie One: the cowork idea\n\nDatabricks also introduced **Genie One**, which it calls the enterprise home for AI cowork. \"Cowork\" here means AI that helps you finish work rather than only answering questions.\n\nThe company describes several pieces:\n\n- **Genie Search**: a search tool that looks through company documents, tickets, and wikis, and can also reach live information.\n- **Connections to outside tools**: Databricks says Genie Search supports more than 100 **MCP connectors**. MCP (Model Context Protocol) is a standard way to give an AI access to apps such as Jira, so it can check a ticket's status or create one.\n- **Admin controls**: a tool called Unity Gateway, which Databricks says gives administrators traces (records of what the agent did), policies for connections, and budget controls.\n\nDatabricks also says Genie can now take more autonomous action, meaning it can carry out steps across teams and tools with less back-and-forth.\n\n## What this means for you\n\n- **If you work on a team that uses data every day**: Think about the \"hidden knowledge\" in your team. Definitions, exceptions, and calculation rules often live in notebooks and dashboards. Writing them down in one shared, reviewed place is useful whether or not you use an AI tool.\n- **If you manage technology or data at your company**: Databricks frames context as shared infrastructure that IT and data leaders should own. Ask who approves definitions and who can see what an agent did.\n- **If you're just getting started**: You don't need to understand the whole platform. Start by listing the three questions your team answers most often, and note where each answer is actually found.\n- **If you already use Databricks Genie**: Look at which documents and queries your team relies on most, and check whether they're current. Genie Ontology is designed to learn from them, so outdated sources can lead to outdated answers.\n\n## Wrap-up\n\nDatabricks is betting that AI agents become more useful when they understand how a business thinks about its own data. Its reported test results and its new Genie One features point in that direction, though the numbers come from the company itself. The next step is simple: pick one recurring business question, find where its answer is defined today, and check whether that definition is written down anywhere your team can see it.",
+  "original_title": "Genie with Genie Ontology Delivers 1.6× the Accuracy with Less than Half the Tokens"
+}

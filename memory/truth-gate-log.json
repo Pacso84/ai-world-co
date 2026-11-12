@@ -1,15 +1,4 @@
 {
-  "2026-10-01": [
-    {
-      "at": "2026-10-01T03:06:55.494Z",
-      "file": "WRITER_2026-10-01T03-00-56-728Z_databricks_How_to_scale_agentic_applications_without_creating.json",
-      "action": "block",
-      "reasons": [
-        "The source is from Databricks (databricks.com/blog), but the article attributes the guide to Datadog, a completely different company ('Datadog, a company that helps businesses monitor their software, recently published a guide titled...'). Datadog did not publish this guide; Databricks did."
-      ],
-      "confidence": 9
-    }
-  ],
   "2026-10-03": [
     {
       "at": "2026-10-03T02:56:19.597Z",
@@ -206,6 +195,17 @@
         "Az AI-bíró kitalált állítást talált (részletek nélkül)"
       ],
       "confidence": null
+    }
+  ],
+  "2026-11-12": [
+    {
+      "at": "2026-11-12T05:00:45.081Z",
+      "file": "WRITER_GUIDE_plan-a-weekend-trip-itinerary-with-deepseek.json",
+      "action": "block",
+      "reasons": [
+        "The repeated claim that DeepSeek cannot look up live information or check current opening hours and prices is inaccurate: DeepSeek's web and mobile apps include a web-search mode that can retrieve current web information. The warning should apply only when that mode is not enabled."
+      ],
+      "confidence": 9
     }
   ]
 }
