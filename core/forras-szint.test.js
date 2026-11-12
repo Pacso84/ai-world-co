@@ -25,7 +25,7 @@ t('már jóváhagyott súgók: teljes', () => {
 t('új jóváhagyott súgók: teljes', () => {
   for (const [tool, ceg] of [['Grok', 'xAI'], ['Perplexity', 'Perplexity'], ['Perplexity', 'Perplexity AI'], ['GitHub Copilot', 'GitHub'],
     ['Hugging Face', 'Hugging Face'], ['Hugging Face Spaces', 'Hugging Face'], ['Cohere', 'Cohere'], ['Duck.ai', 'DuckDuckGo'],
-    ['Lumo', 'Proton'], ['Z.ai', 'Z.ai'], ['ElevenLabs', 'ElevenLabs']])
+    ['Lumo', 'Proton'], ['Z.ai', 'Z.ai'], ['ElevenLabs', 'ElevenLabs'], ['Scribe v3', 'ElevenLabs'], ['Scribe', 'ElevenLabs']])
     assert.equal(sz(tool, ceg), 'teljes', tool);
 });
 

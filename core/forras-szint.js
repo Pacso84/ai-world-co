@@ -55,7 +55,7 @@ export const ESZKOZ_SZINT = {
   'Duck.ai':           { szint: SZINT.TELJES, aliasok: ['duck.ai'], cegek: ['duckduckgo'], sugo: ['https://duckduckgo.com/duckduckgo-help-pages/'] },
   'Lumo':              { szint: SZINT.TELJES, aliasok: ['lumo'], cegek: ['proton'], sugo: ['https://proton.me/support/lumo'] },
   'Z.ai':              { szint: SZINT.TELJES, aliasok: ['z.ai'], cegek: ['z'], sugo: ['https://docs.z.ai/'] },
-  'ElevenLabs':        { szint: SZINT.TELJES, aliasok: ['elevenlabs'], cegek: ['elevenlabs'], sugo: ['https://elevenlabs.io/docs/'] },
+  'ElevenLabs':        { szint: SZINT.TELJES, aliasok: ['elevenlabs', 'scribe', 'scribe v3'] /* Scribe = az ElevenLabs beszéd-szöveg modellje, az elevenlabs.io/docs leírja */, cegek: ['elevenlabs'], sugo: ['https://elevenlabs.io/docs/'] },
 
   // ── RÉSZLEGES: csak a funkció léte igazolható — útmutató felület-név nélkül ────────────────────────
   'DeepSeek':          { szint: SZINT.RESZLEGES, aliasok: ['deepseek', 'deepseek chat'], cegek: ['deepseek'], sugo: ['https://api-docs.deepseek.com/'] },
