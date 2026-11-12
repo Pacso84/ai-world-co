@@ -55,22 +55,36 @@ const NEV_KOVETKEZMENY_RX = /\b(?:unverified|invented|fabricated|hallucinated|ma
 const NEVLISTA_RX = /does not appear in the (?:verified[- ]real |known |verified )?names? list/i;
 
 // (2) IDÉZŐJEL NÉLKÜLI NÉV: a valódi Workspace Studio-bírálat így szólt: „Product name Workspace Studio cannot be
-//     independently verified as a real Google product…” — az `idezettNevek` (truth-gate) nem lát benne nevet.
-//     TARTALÉK, CSAK ha a mondatban nincs idézett név ÉS kifejezett név-kifogás alakja van:
-//       A) „(product|model|tool|brand|feature|app) name X …”  — X a „name” UTÁNI nagybetűs sorozat
-//       B) „X is not a real (<Szó> )?(product|model|tool|app|brand)” — X a „is not a real” ELŐTTI sorozat
-//     A tokenben a kötőjel és a pont a név része („Ultra-Max” egy token). Ha X-et kisbetűs szó folytatja a névben
-//     („Workspace studio pro”), nem ítélünk (nincs felülbírálat). Minden más mondat (tartalmi kifogás: „invents an
-//     auto-summary mode in Gemini”, „… is fabricated”) érintetlen marad.
+//     independently verified as a real Google product - this is the core factual gate issue” — az `idezettNevek`
+//     (truth-gate) nem lát benne nevet. TARTALÉK, CSAK ha a szövegben nincs idézett név, és CSAK TELJES, TISZTA
+//     név-kifogás mondatrészekből (3. forduló): a szöveget mondatrészekre vágjuk (. ; ! ? és „ - ” / „ — ”), és
+//       A) „(Product|Model|Tool|Brand|Feature|App) name X <létezés-kifejezés>[ as a real (<Szó> )?(product|…)]”
+//          — a létezés-kifejezés: cannot / could not be (independently) verified · is not verified · is invented ·
+//          is fabricated · does not exist · is not a real (<Szó> )?(product|model|tool|app|brand);
+//       B) „[The ]X is not a real (<Szó> )?(product|model|tool|app|brand|feature)”
+//     a TELJES mondatrész kell legyen (a mondatrész végéig; bármi más → nincs ítélet: „… is invented for Android only”,
+//     „Offline mode for X is not a real tool”, „X is not a real offline product”). X = nagybetűs / számjegyes szavak
+//     sorozata (a kötőjel / pont a tokenben marad: „Ultra-Max”). A szöveg csak akkor felülbírálható, ha MINDEN
+//     kifogás-szót tartalmazó mondatrésze ilyen A/B alakú és az X igazolt (egy másik kifogás — „The guide also invents
+//     an Auto Flows mode” — a szöveget egészében megtartja). Az idézőjel nélküli felülbírálat NEM indítja be a
+//     „következmény-kifogás” (NEV_KOVETKEZMENY_RX) elejtését — azt csak idézett név engedi.
 const ALTALANOS_SZAVAK = new Set(['product', 'name', 'the', 'tool', 'feature', 'app', 'model']);
 const NEV_TOKEN_SRC = String.raw`(?:\p{Lu}[\p{L}\p{N}]*(?:[.\-][\p{L}\p{N}]+)*|\d+(?:\.\d+)*)`;
 const NEV_FUTAS_SRC = String.raw`\p{Lu}[\p{L}\p{N}]*(?:[.\-][\p{L}\p{N}]+)*(?:[ \t]+${NEV_TOKEN_SRC})*`;
-const NEV_FUTAS_RX = new RegExp(NEV_FUTAS_SRC, 'gu');
-const NEV_FUTAS_STICKY_RX = new RegExp(NEV_FUTAS_SRC, 'uy');
-const NEV_KIFOGAS_A_RX = /\b(?:product|model|tool|brand|feature|app)[ \t]+name[ \t]+/gi;
-const NEV_KIFOGAS_B_RX = /[ \t]+(?:is not|isn't)[ \t]+a[ \t]+real[ \t]+(?:\p{L}+[ \t]+)?(?:product|model|tool|app|brand)\b/giu;
-// A név utáni szó csak állítmány lehet („… cannot be verified”); minden más szó a nevet folytatja → nem ítélünk.
-const NEV_UTAN_ALLITMANY_RX = /^(?:\s*$|[.;]|\s+(?:cannot|can't|could not|couldn't|is|are|was|were|does|do|did|has|have|appears?|seems?|may|might|must|should|isn't|aren't|doesn't|lacks)\b)/i;
+const NAGYBETUS_SZO_SRC = String.raw`\p{Lu}[\p{L}\p{N}]*`;
+const VALODI_TIPUS_SRC = String.raw`(?:product|model|tool|app|brand)`;
+const NEV_KIFOGAS_A_RX = new RegExp(
+  String.raw`^(?:[Pp]roduct|[Mm]odel|[Tt]ool|[Bb]rand|[Ff]eature|[Aa]pp) name (${NEV_FUTAS_SRC}) ` +
+  String.raw`(?:cannot be (?:independently )?verified|could not be (?:independently )?verified|is not verified|is invented|is fabricated|does not exist|is not a real(?: ${NAGYBETUS_SZO_SRC})? ${VALODI_TIPUS_SRC})` +
+  String.raw`(?: as a real(?: ${NAGYBETUS_SZO_SRC})? ${VALODI_TIPUS_SRC})?$`, 'u');
+const NEV_KIFOGAS_B_RX = new RegExp(
+  String.raw`^(?:The )?(${NEV_FUTAS_SRC}) is not a real(?: ${NAGYBETUS_SZO_SRC})? (?:product|model|tool|app|brand|feature)$`, 'u');
+// Kifogás-szó: a ruling szavai + a két létezés-regex (inkluzív → kevesebb felülbírálat, ez a biztonságos irány).
+const KIFOGAS_SZO_RX = new RegExp(`${LETEZES_RX.source}|${NEM_ELLENORIZHETO_RX.source}|invent|fabricat|not exist|not verified|not a real|made up|hallucinat`, 'i');
+
+function mondatreszek(szoveg) {
+  return String(szoveg).split(/\s+[-–—]\s+|(?<=[.;!?])\s+/).map(k => k.trim().replace(/[.;!?]+$/, '')).filter(Boolean);
+}
 
 function nevetTisztit(futas) {
   const szavak = futas.split(/\s+/);
@@ -78,24 +92,14 @@ function nevetTisztit(futas) {
   return szavak.join(' ');
 }
 
-/** Az idézőjel nélküli, kifejezett név-kifogás nevei; üres lista = nem ítélünk. */
+/** Az idézőjel nélküli, TELJES név-kifogás mondatrészek nevei; üres lista = nem ítélünk (a szöveg marad). */
 function idezetlenNevek(szoveg) {
-  const s = String(szoveg);
   const ki = [];
-  for (const m of s.matchAll(NEV_KIFOGAS_A_RX)) {
-    const veg = m.index + m[0].length;
-    NEV_FUTAS_STICKY_RX.lastIndex = veg;
-    const f = NEV_FUTAS_STICKY_RX.exec(s);
-    if (!f || !NEV_UTAN_ALLITMANY_RX.test(s.slice(veg + f[0].length))) return [];
-    const nev = nevetTisztit(f[0]);
-    if (nev) ki.push(nev);
-  }
-  for (const m of s.matchAll(NEV_KIFOGAS_B_RX)) {
-    const elotte = s.slice(0, m.index);
-    const f = [...elotte.matchAll(NEV_FUTAS_RX)].find(x => x.index + x[0].length === elotte.length);
-    if (!f) return [];   // a név előtti szó kisbetűs → a név folytatódhat → nem ítélünk
-    const nev = nevetTisztit(f[0]);
-    if (nev) ki.push(nev);
+  for (const k of mondatreszek(szoveg)) {
+    const m = NEV_KIFOGAS_A_RX.exec(k) || NEV_KIFOGAS_B_RX.exec(k);
+    const nev = m ? nevetTisztit(m[1]) : '';
+    if (nev) { ki.push(nev); continue; }
+    if (KIFOGAS_SZO_RX.test(k)) return [];   // más jellegű (vagy nem tiszta) kifogás is van → az egész szöveg marad
   }
   return ki;
 }
@@ -137,19 +141,20 @@ export function tevesNevKifogas(review, { originalTitle = '', sourceUrl = '', so
     const idezett = idezettNevek(szoveg);
     if (utmutato && !idezett.length && letezesKifogas(szoveg, true)) {
       const jeloltek = idezetlenNevek(szoveg);
-      if (!jeloltek.length || !jeloltek.every(igazoltIdezetlen)) return false;
+      if (!jeloltek.length || !jeloltek.every(igazoltIdezetlen)) return 0;
       jeloltek.forEach(n => nevek.add(n));
-      return true;
+      return 2;
     }
-    if (!idezett.length || !letezesKifogas(szoveg, utmutato) || !idezett.every(igazolt)) return false;
+    if (!idezett.length || !letezesKifogas(szoveg, utmutato) || !idezett.every(igazolt)) return 0;
     idezett.forEach(n => nevek.add(n));
-    return true;
+    return 1;
   };
 
   const issues = Array.isArray(review?.issues) ? review.issues : [];
   const elso = issues.map(i => egyIgazolt(String(i)));
-  const verdictTeves = egyIgazolt(String(review?.verdict || ''));
-  const voltIgazolt = elso.some(Boolean) || verdictTeves;
+  const verdictEredmeny = egyIgazolt(String(review?.verdict || ''));
+  const verdictTeves = verdictEredmeny !== 0;
+  const voltIgazolt = elso.includes(1) || verdictEredmeny === 1;   // csak IDÉZETT név indítja a következmény-szabályt
 
   const teves = [], maradt = [];
   issues.forEach((i, k) => {

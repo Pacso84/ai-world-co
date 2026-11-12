@@ -470,4 +470,60 @@ t('az ellenőrző az útmutató-opciót CSAK az útmutató-ágon adja át, az ú
   assert.doesNotMatch(i, /utmutato: true/, 'a hír-átdolgozó nem kaphat útmutató-opciót');
 });
 
+// ---------------------------------------------------------------
+// 3. FORDULÓ: csak TELJES, TISZTA név-kifogás mondatrész bírálható felül (idézőjel nélkül, útmutatónál).
+// A forrásban „Workspace Studio”, „Gemini Live”, „Gemini” szerepel — ezek a kifogások a valódi KITALÁLÁSRÓL szólnak.
+// ---------------------------------------------------------------
+const f3 = { originalTitle: 'Workspace Studio and Gemini Live in the Gemini app', sourceUrl: 'https://workspace.google.com/blog/x/', sourceText: 'Workspace Studio, Gemini Live and Gemini are new.', known: [] };
+const R3_MEGMARAD = [
+  'Tool name Workspace Studio is real but its offline mode is invented',
+  'Feature name Gemini Live is not verified to work offline',
+  'Feature name Gemini Live is invented for Android only',
+  'Product name Workspace Studio is not verified in the source for the Enterprise tier',
+  'Offline mode for Workspace Studio is not a real tool',
+  'Auto Flows in Workspace Studio is not a real tool',
+  'Workspace Studio is not a real offline product'
+];
+t('ELLENPRÓBA (3. forduló): a maradék tartalmi kifogások issue-ként ÉS verdictként megmaradnak', () => {
+  for (const mondat of R3_MEGMARAD) {
+    const r = tevesNevKifogas({ issues: [mondat], verdict: mondat }, f3, UT);
+    assert.equal(r.teves.length, 0, 'issue kiesett: ' + mondat);
+    assert.equal(r.verdictTeves, false, 'verdict kiesett: ' + mondat);
+  }
+});
+
+t('3. forduló: a verdict EGÉSZÉBEN nem bírálható felül, ha egy másik mondatrésze valódi kifogás', () => {
+  const v = 'Product name Workspace Studio cannot be independently verified. The guide also invents an Auto Flows mode for teams.';
+  const r = tevesNevKifogas({ issues: [v], verdict: v }, f3, UT);
+  assert.equal(r.verdictTeves, false);
+  assert.equal(r.teves.length, 0);
+  // ugyanez ; és ! határolóval is
+  for (const v2 of ['Product name Workspace Studio cannot be independently verified; the guide invents an Auto Flows mode', 'Product name Workspace Studio cannot be independently verified! It is fabricated for Android']) {
+    assert.equal(tevesNevKifogas({ issues: [], verdict: v2 }, f3, UT).verdictTeves, false, v2);
+  }
+});
+
+t('3. forduló: a valódi verdict (kifogás-szó nélküli „ - this is the core factual gate issue” mondatrésszel) MARAD felülbírálva', () => {
+  const r = tevesNevKifogas({ issues: [], verdict: VALODI_WS }, f3, UT);
+  assert.equal(r.verdictTeves, true);
+  assert.deepEqual(r.nevek, ['Workspace Studio']);
+  // a tiszta A/B alakok mindegyik létezés-kifejezéssel
+  for (const m of ['Product name Workspace Studio is not verified', 'Tool name Workspace Studio is invented', 'Feature name Gemini Live is fabricated', 'App name Gemini Live does not exist', 'Model name Gemini Live could not be verified', 'Brand name Gemini Live is not a real product', 'The Workspace Studio is not a real Google product', 'Product name Workspace Studio cannot be independently verified as a real product']) {
+    assert.equal(tevesNevKifogas({ issues: [m], verdict: '' }, f3, UT).teves.length, 1, m);
+  }
+});
+
+t('3. forduló: idézőjel nélküli felülbírálás NEM indítja be a következmény-kifogás elejtését', () => {
+  const r = tevesNevKifogas({
+    issues: ['Product names are invented in step 2', 'fabricated product names for Gemini features'],
+    verdict: VALODI_WS
+  }, f3, UT);
+  assert.equal(r.verdictTeves, true);
+  assert.equal(r.teves.length, 0, 'a másik kifogások nem esnek ki következményként');
+  assert.equal(r.maradt.length, 2);
+  // idézett név esetén a következmény-szabály VÁLTOZATLANUL él
+  const q = tevesNevKifogas({ issues: ["Model name 'Gemini Live' is invented", 'Publishing with an unverified model name misleads readers'], verdict: '' }, f3, UT);
+  assert.equal(q.teves.length, 2);
+});
+
 console.log(`\n✅ ${pass} eset zöld`);
