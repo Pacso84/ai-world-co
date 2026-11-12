@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-11-12T16:28:13.562Z",
+  "drafts_total": 1,
+  "articles_written": 1,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 1,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 1,
+    "html": 0,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.00547561,
+  "by_article": [
+    {
+      "draft": "2026-11-10T21-35-17-130Z_salesforce_New_Data_Shows_Sales_Agents_Are_Rescuing_the_Sales.json",
+      "writer_output": "WRITER_2026-11-10T21-35-17-130Z_salesforce_New_Data_Shows_Sales_Agents_Are_Rescuing_the_Sales.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 5265,
+      "source_overlap_words": 12,
+      "cost_usd": 0.0035929,
+      "duration_ms": 12402,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 1,
+  "termek_extra": 1,
+  "finished_at": "2026-11-12T16:28:35.187Z",
+  "duration_seconds": 21.625
+}

@@ -1,0 +1,62 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.01000022,
+  "at": "2026-11-12T16:33:22.547Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_plan-a-weekend-trip-itinerary-with-deepseek.json",
+      "cim": "Plan a weekend trip itinerary with DeepSeek",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-gemini-4-carbon.json",
+      "cim": "How to use Gemini 4 Carbon",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "A \"Gemini 4 Carbon\" termék neve nem létezik, és a leírt modellek kiválasztására, gondolkodási szintek beállítására és a gondolkodási lépések megtekintésére szolgáló felület nem felel meg a valós Gemini működésnek"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-pause-and-schedule-automated-workflows-in-google-work.json",
+      "cim": "How to pause and schedule automated workflows in Google Workspace Studio",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-10T21-35-17-130Z_salesforce_New_Data_Shows_Sales_Agents_Are_Rescuing_the_Sales.json",
+      "cim": "New Data Shows Sales Agents Are Rescuing the Sales Cycle",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Minden állítás pontosan megfelel a forrásszövegnek"
+    },
+    {
+      "file": "ARTICLE_2026-09-24T02-07-47-678Z_dropbox-blog__AI_is_the_new_starting_point_for_work__but_finish.json",
+      "cim": " AI is the new starting point for work, but finishing it still requires a manual \"last mile\" ",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás a forrásban nem szereplő állítást hozna be: „In short:** People who use AI at work keep reporting the same pattern: AI helps get work s”",
+      "modell_hu": "A cikk konkrét százalékokat (70-80%, utolsó 20%) állít, amelyek ellentmondnak a tényleges tanulmány számainak"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
+      "cim": "How to ask Alexa+ to read recipe steps out loud while you cook with messy hands",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}

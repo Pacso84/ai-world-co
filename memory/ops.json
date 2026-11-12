@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179428791418242",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-10T05:18:34.182Z",
-      "updated": "2026-11-10T05:19:46.937Z"
-    },
-    {
-      "id": "t179428798693925",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-10T05:19:46.939Z",
-      "updated": "2026-11-10T05:20:07.767Z"
-    },
-    {
-      "id": "t179432622077543",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-10T15:57:00.775Z",
-      "updated": "2026-11-10T15:57:00.929Z"
-    },
-    {
-      "id": "t179432622093078",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-10T15:57:00.930Z",
-      "updated": "2026-11-10T15:57:47.719Z"
-    },
-    {
-      "id": "t179432626772143",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-10T15:57:47.721Z",
-      "updated": "2026-11-10T15:57:47.874Z"
-    },
-    {
-      "id": "t179432626791317",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-10T15:57:47.913Z",
-      "updated": "2026-11-10T15:59:05.272Z"
-    },
-    {
-      "id": "t179432634527396",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-10T15:59:05.274Z",
-      "updated": "2026-11-10T15:59:38.484Z"
-    },
-    {
-      "id": "t179432637848726",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-10T15:59:38.487Z",
-      "updated": "2026-11-10T15:59:43.534Z"
-    },
-    {
-      "id": "t179432638360289",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-10T15:59:43.602Z",
-      "updated": "2026-11-10T15:59:43.762Z"
-    },
-    {
-      "id": "t179432638376365",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-10T15:59:43.763Z",
-      "updated": "2026-11-10T15:59:43.921Z"
-    },
-    {
-      "id": "t179432638395674",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-10T15:59:43.956Z",
-      "updated": "2026-11-10T16:00:09.289Z"
-    },
-    {
-      "id": "t179432640929138",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-10T16:00:09.291Z",
-      "updated": "2026-11-10T16:00:21.272Z"
-    },
-    {
-      "id": "t179432642127459",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-10T16:00:21.274Z",
-      "updated": "2026-11-10T16:00:32.905Z"
-    },
-    {
-      "id": "t17943264329078",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-10T16:00:32.907Z",
-      "updated": "2026-11-10T16:00:55.140Z"
-    },
-    {
       "id": "t179434646183248",
       "title": "Run ceo",
       "status": "done",
@@ -479,65 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-12T05:02:14.245Z",
       "updated": "2026-11-12T05:02:28.588Z"
+    },
+    {
+      "id": "t179450084653169",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-12T16:27:26.531Z",
+      "updated": "2026-11-12T16:27:26.648Z"
+    },
+    {
+      "id": "t179450084664950",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-12T16:27:26.649Z",
+      "updated": "2026-11-12T16:28:13.271Z"
+    },
+    {
+      "id": "t179450089327277",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-12T16:28:13.272Z",
+      "updated": "2026-11-12T16:28:13.407Z"
+    },
+    {
+      "id": "t17945008934390",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-12T16:28:13.439Z",
+      "updated": "2026-11-12T16:28:35.204Z"
+    },
+    {
+      "id": "t179450091520579",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-12T16:28:35.205Z",
+      "updated": "2026-11-12T16:28:53.034Z"
+    },
+    {
+      "id": "t179450093303689",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-12T16:28:53.036Z",
+      "updated": "2026-11-12T16:29:55.209Z"
+    },
+    {
+      "id": "t179450099521016",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-12T16:29:55.210Z",
+      "updated": "2026-11-12T16:31:39.145Z"
+    },
+    {
+      "id": "t179450109914764",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-12T16:31:39.147Z",
+      "updated": "2026-11-12T16:31:44.238Z"
+    },
+    {
+      "id": "t179450110429079",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-12T16:31:44.290Z",
+      "updated": "2026-11-12T16:31:44.414Z"
+    },
+    {
+      "id": "t179450110441743",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-12T16:31:44.417Z",
+      "updated": "2026-11-12T16:31:44.542Z"
+    },
+    {
+      "id": "t179450110459038",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-12T16:31:44.590Z",
+      "updated": "2026-11-12T16:32:25.924Z"
+    },
+    {
+      "id": "t179450114592696",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-12T16:32:25.926Z",
+      "updated": "2026-11-12T16:33:01.715Z"
+    },
+    {
+      "id": "t179450118171648",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-12T16:33:01.716Z",
+      "updated": "2026-11-12T16:33:06.757Z"
+    },
+    {
+      "id": "t179450118675853",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-12T16:33:06.758Z",
+      "updated": "2026-11-12T16:33:21.811Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179364086888881",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „The announcement doesn't give a ship",
-      "agent": "fact-check",
-      "at": "2026-11-02T17:34:28.888Z",
-      "loud": false
-    },
-    {
-      "id": "n179364094366551",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „In short:** Google Meet saves record",
-      "agent": "fact-check",
-      "at": "2026-11-02T17:35:43.665Z",
-      "loud": false
-    },
-    {
-      "id": "n179368048599028",
-      "level": "info",
-      "text": "🧭 Forráskutató: 1 ÚJ megbízható forrás-javaslat (küszöb 100).\n• [100] ElevenLabs Blog (hivatalos)\nJóváhagyod valamelyiket?",
-      "agent": "source-scout",
-      "at": "2026-11-03T04:34:45.990Z",
-      "loud": false
-    },
-    {
-      "id": "n179368107181017",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 7.7/10).",
-      "agent": "seo",
-      "at": "2026-11-03T04:44:31.810Z",
-      "loud": false
-    },
-    {
-      "id": "n179368109701625",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — practical how-tos balanced with the privacy guide and the \"what AI is great at\" overview give readers both confidence and caution. One small thing: article #7 (Write a",
-      "agent": "publisher",
-      "at": "2026-11-03T04:44:57.016Z",
-      "loud": false
-    },
-    {
-      "id": "n179368111393956",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0410).",
-      "agent": "ceo",
-      "at": "2026-11-03T04:45:13.939Z",
-      "loud": false
-    },
-    {
-      "id": "n179372027678224",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Ellenőrizendő állítás: \"Run Stable Diffusion Locally – The Easy Way with D\" — A cikk és a forrás különböző szoftvereket ",
-      "agent": "fact-check",
-      "at": "2026-11-03T15:37:56.782Z",
-      "loud": false
-    },
     {
       "id": "n179372030232442",
       "level": "warn",
@@ -1281,113 +1225,65 @@
       "agent": "fact-check",
       "at": "2026-11-12T05:03:31.292Z",
       "loud": false
+    },
+    {
+      "id": "n179450095823359",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to pause and schedule automated workflows in Google Workspace Studio\" — az Ellenőrző tényt/forrást k",
+      "agent": "guide",
+      "at": "2026-11-12T16:29:18.233Z",
+      "loud": false
+    },
+    {
+      "id": "n179450097861079",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to use Gemini 4 Carbon\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Other model names ",
+      "agent": "guide",
+      "at": "2026-11-12T16:29:38.610Z",
+      "loud": false
+    },
+    {
+      "id": "n179450118170611",
+      "level": "info",
+      "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-11-12T16:33:01.706Z",
+      "loud": false
+    },
+    {
+      "id": "n179450119176673",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and practical — it covers real everyday needs from fact-checking and privacy to writing emails, resumes, and LinkedIn bios, with a good mix of AI tools. Ready to go. One gentle no",
+      "agent": "publisher",
+      "at": "2026-11-12T16:33:11.766Z",
+      "loud": false
+    },
+    {
+      "id": "n179450120183822",
+      "level": "success",
+      "text": "1 hír + 3 útmutató publikálva (költség: $0.0200).",
+      "agent": "ceo",
+      "at": "2026-11-12T16:33:21.838Z",
+      "loud": false
+    },
+    {
+      "id": "n179450121835297",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to use Gemini 4 Carbon\" — A \"Gemini 4 Carbon\" termék neve nem lé",
+      "agent": "fact-check",
+      "at": "2026-11-12T16:33:38.352Z",
+      "loud": false
+    },
+    {
+      "id": "n179450125948432",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „In short:** People ",
+      "agent": "fact-check",
+      "at": "2026-11-12T16:34:19.484Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179341690750857",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-10-31T03:21:47.508Z"
-    },
-    {
-      "id": "m179341750347186",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-10-31T03:31:43.471Z"
-    },
-    {
-      "id": "m179345531265681",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"New Gemini tools for small business owners\" — Article says 'announcement does not yet list what each tool does' and 'is light on specifics', but source provides specific details about tools: connect to apps (Google Business Profile, Google Ads, Google Workspace, Adobe, Canva, Dropbox, Shopify, Wix, Zoho, Xero), upload brand kits/fonts/c",
-      "ref": "ARTICLE_2026-10-30T03-26-53-524Z_google-gemini_New_Gemini_tools_for_small_business_owners.json",
-      "at": "2026-10-31T14:01:52.656Z"
-    },
-    {
-      "id": "m179345533853522",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt lágyítottam egy publikált útmutatóban: \"How to use Gemini to update your resume\" — Article says 'We do not have those four steps in the material we are working from, so we will not invent them here' — but source HAS the four steps numbered 1-4",
-      "ref": "ARTICLE_2026-10-30T03-26-19-950Z_google-gemini_How_to_use_Gemini_to_update_your_resume.json",
-      "at": "2026-10-31T14:02:18.535Z"
-    },
-    {
-      "id": "m17934755401532",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"How GitHub Copilot Can Write Unit Tests for Your C\" — GitHub Copilot now has a free tier with limited monthly suggestions — the specific 30-day trial claim is no longer accurate and pricing details should not be stated in evergreen guides.",
-      "ref": "ARTICLE_GUIDE_how-github-copilot-can-write-unit-tests-for-your-code.json",
-      "open": true,
-      "at": "2026-10-31T19:39:00.153Z"
-    },
-    {
-      "id": "m179350290332916",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-01T03:15:03.329Z"
-    },
-    {
-      "id": "m179350299145324",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"How to Use Gemini to Make Your LinkedIn Photo Look\" — No factual claims are demonstrably false, but two UI-dependent descriptions need softening to remain accurate across updates.",
-      "ref": "ARTICLE_GUIDE_how-to-use-gemini-to-make-your-linkedin-photo-look-professio.json",
-      "open": true,
-      "at": "2026-11-01T03:16:31.453Z"
-    },
-    {
-      "id": "m179350359740868",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-01T03:26:37.408Z"
-    },
-    {
-      "id": "m179354390226427",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (a forrás alátámasztja, amit kivenne: „The announcement does not include pricing or a release schedule in the text we have, so ch”): \"Voxtral 3\" — The article incorrectly states that pricing is not in the source, when it actually contains specific pricing for both the transcription and TTS models.",
-      "ref": "ARTICLE_2026-10-30T03-27-44-365Z_mistral-ai_Voxtral_3.json",
-      "open": true,
-      "at": "2026-11-01T14:38:22.264Z"
-    },
-    {
-      "id": "m179354393309371",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem volt elég ép (forrás nélküli (emlékezetből) javítás — élő szöveget nem írhat át, csak jelez): \"How to ask Gemini to explain your monthly bank sta\" — The guide claims the free version of Gemini can upload and analyze bank statement PDFs, but Google has changed Gemini's free tier capabilities over time — file uploads may now require a paid tier.",
-      "ref": "ARTICLE_GUIDE_how-to-ask-gemini-to-explain-your-monthly-bank-statement-in-.json",
-      "open": true,
-      "at": "2026-11-01T14:38:53.093Z"
-    },
-    {
-      "id": "m17935631312216",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „Three of them, according to the announcement, are sound judgment, human agency (keeping pe”): \"Making it easier for websites to express AI traini\" — A cikk hibásan 'sound judgment'-nak nevezi az egyik alapértéket, holott a forrás szerint 'harm minimization' a helyes elnevezés",
-      "ref": "ARTICLE_2026-10-31T03-11-23-766Z_openai-blog_Making_it_easier_for_websites_to_express_AI_traini.json",
-      "open": true,
-      "at": "2026-11-01T19:58:51.221Z"
-    },
     {
       "id": "m179356316234920",
       "from": "fact-check",
@@ -2690,6 +2586,111 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-12T05:10:48.719Z"
+    },
+    {
+      "id": "m179450095823241",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to pause and schedule automated workflows in Google Workspace Studio\" — javítva: ACCESS_NOT_SELF_SERVE: 2 jel arra, hogy az olvasónak céges/IT-hozzáférés kell (\"your work account\", \"ask your admin\") — a hétköznapi olvasónk el sem tud indulni.; Product name Workspace Studio cannot be independently verified as a real Google product - this is the core factual gate issue; újraküldöm.",
+      "ref": "GUIDE_how-to-pause-and-schedule-automated-workflows-in-google-work.json",
+      "at": "2026-11-12T16:29:18.232Z"
+    },
+    {
+      "id": "m179450095823389",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to pause and schedule automated workflows in Google Workspace Studio\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Product name Workspace Studio cannot be independently verified as a real Google product - this is the core factual gate issue",
+      "ref": "GUIDE_how-to-pause-and-schedule-automated-workflows-in-google-work.json",
+      "open": false,
+      "at": "2026-11-12T16:29:18.233Z",
+      "resolved_at": "2026-11-12T16:30:22.699Z"
+    },
+    {
+      "id": "m179450097860919",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to use Gemini 4 Carbon\" — javítva: ACCESS_NOT_SELF_SERVE: 2 jel arra, hogy az olvasónak céges/IT-hozzáférés kell (\"your work account\", \"ask your administrator\") — a hétköznapi olvasónk el sem tud indulni.; Model name 'Gemini 4 Carbon' not in verified-real names list - cannot verify this product exists; újraküldöm.",
+      "ref": "GUIDE_how-to-use-gemini-4-carbon.json",
+      "at": "2026-11-12T16:29:38.609Z"
+    },
+    {
+      "id": "m179450097861055",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to use Gemini 4 Carbon\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Other model names mentioned (Gemini 4 Argon, Flash-Lite) also not verified against official source",
+      "ref": "GUIDE_how-to-use-gemini-4-carbon.json",
+      "open": false,
+      "at": "2026-11-12T16:29:38.610Z",
+      "resolved_at": "2026-11-12T16:31:17.878Z"
+    },
+    {
+      "id": "m179450099519760",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Plan a weekend trip itinerary with DeepSeek\" — javítva: The repeated claim that DeepSeek cannot look up live information or check current opening hours and prices is inaccurate: DeepSeek's web and mobile apps include a web-search mode that can retrieve current web information. The warning should apply only when that mode is not enabled.; Reviewer verdict: Hitelesség-kapu blokkolta: T",
+      "ref": "GUIDE_plan-a-weekend-trip-itinerary-with-deepseek.json",
+      "at": "2026-11-12T16:29:55.197Z"
+    },
+    {
+      "id": "m179450102269839",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to pause and schedule automated workflows in Google Workspace Studio\" (?/10)",
+      "ref": "GUIDE_how-to-pause-and-schedule-automated-workflows-in-google-work.json",
+      "at": "2026-11-12T16:30:22.698Z"
+    },
+    {
+      "id": "m179450107787751",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to use Gemini 4 Carbon\" (?/10)",
+      "ref": "GUIDE_how-to-use-gemini-4-carbon.json",
+      "at": "2026-11-12T16:31:17.877Z"
+    },
+    {
+      "id": "m179450109913432",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Plan a weekend trip itinerary with DeepSeek\" (?/10)",
+      "ref": "GUIDE_plan-a-weekend-trip-itinerary-with-deepseek.json",
+      "at": "2026-11-12T16:31:39.134Z"
+    },
+    {
+      "id": "m179450118674734",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-12T16:33:06.747Z"
+    },
+    {
+      "id": "m17945012183528",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to use Gemini 4 Carbon\" — A \"Gemini 4 Carbon\" termék neve nem létezik, és a leírt modellek kiválasztására, gondolkodási szintek beállítására és a gondolkodási lépések megtekintésére szolgáló felület nem felel meg a valós Gemini működésnek (állítás: The guide title mentions \"Gemini 4 Carbon\" as if it is a current Google AI product — this exact",
+      "ref": "ARTICLE_GUIDE_how-to-use-gemini-4-carbon.json",
+      "open": true,
+      "at": "2026-11-12T16:33:38.352Z"
+    },
+    {
+      "id": "m179450125948458",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „In short:** People who use AI at work keep reporting the same pattern: AI helps get work s”): \" AI is the new starting point for work, but finish\" — A cikk konkrét százalékokat (70-80%, utolsó 20%) állít, amelyek ellentmondnak a tényleges tanulmány számainak",
+      "ref": "ARTICLE_2026-09-24T02-07-47-678Z_dropbox-blog__AI_is_the_new_starting_point_for_work__but_finish.json",
+      "open": true,
+      "at": "2026-11-12T16:34:19.484Z"
     }
   ]
 }
