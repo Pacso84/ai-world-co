@@ -119,5 +119,17 @@ t('🔑 VALÓDI ADAT: egyetlen élő útmutató sem ad ismeretlen szintet; a „
   assert.ok(nincs >= 30 && nincs <= 60, '🔴 a „nincs” szintű útmutatók száma ' + nincs + ' (várt 30–60): ' + JSON.stringify(nincsCegek));
 });
 
+t('megjelenített eszköznevek (cég-katalógus): „Amazon Alexa+” és „Le Chat (Mistral)” ugyanaz, mint az Alexa+ / Le Chat — nem „nincs”', () => {
+  assert.equal(sz('Amazon Alexa+', 'Amazon'), 'teljes');
+  assert.equal(sz('Le Chat (Mistral)', 'Mistral'), 'teljes');
+  assert.equal(sz('Amazon Alexa+', 'Amazon'), sz('Alexa+', 'Amazon'));
+  assert.equal(sz('Le Chat (Mistral)', 'Mistral'), sz('Le Chat', 'Mistral'));
+  assert.equal(forrasSzint('Amazon Alexa+', 'Amazon').eszkoz, 'Alexa+');
+  assert.equal(forrasSzint('Le Chat (Mistral)', 'Mistral').eszkoz, 'Le Chat');
+  // csak az EXPLICIT alak: előtag-illesztés nincs
+  assert.equal(sz('Amazon Alexa+ Pro Max', 'Amazon'), 'nincs');
+  assert.equal(sz('Le Chat (Mistral) Enterprise', 'Mistral'), 'nincs');
+});
+
 if (hiba) { console.log(`\n❌ forras-szint.test: ${hiba} hiba`); process.exit(1); }
 console.log(`\n✅ forras-szint.test: mind a ${pass} eset rendben`);

@@ -547,7 +547,8 @@ Return ONLY the JSON array (${count + 4} items).`;
     const title = (it.title || '').toString().trim();
     if (!title || title.length < 12) continue;
     if (megszuntTema({ tool: it.tool, title, angle: it.angle })) continue;   // 🪦 megszűnt eszközről nem
-    if (fekezettE({ tool: it.tool, company: it.company, title }).fek) { console.log(`   🧯 kihagyva: ${title.slice(0, 70)} — nincs jóváhagyott súgó`); continue; }   // 🧯 FÉK (2026-11-12)
+    // 🧯 FÉK (2026-11-12): arra az eszközre nézzük, ami a témába VALÓBAN bekerül (fókusz-módban a fókusz-eszköz, nem az AI-é)
+    if (fekezettE({ tool: fokusz ? fokusz.tool : it.tool, company: fokusz ? fokusz.company : it.company, title }).fek) { console.log(`   🧯 kihagyva: ${title.slice(0, 70)} — nincs jóváhagyott súgó`); continue; }
     if (existingTitles.has(normTitle(title))) continue;     // már van ilyen (szó szerint)
     if (fokusz && !fokuszCimOk(title, fokusz)) continue;    // fókusz-módban csak a fókusz-eszközről
     // JELENTÉSBEN közeli-e valamely meglévő guide-hoz? (dedupRef + a batch eddigi címei)
@@ -937,16 +938,17 @@ function listRejectedGuidesForRework() {
           try { unlinkSync(join(REJECTED_DIR, f)); console.log(`🧟 zombi törölve (levett téma): ${f.slice(0, 60)}`); } catch { /* nem kritikus */ }
           return false;
         }
-        // 🧯 FÉK (2026-11-12): jóváhagyott súgó nélküli eszköz elutasított útmutatóját nem dolgozzuk át emlékezetből.
-        // A fájl a rejected/ mappában marad (nem törlünk), és ha később jóváhagyunk egy súgót, újra sorra kerül.
-        if (d._meta?.type === 'guide') {
-          const fk = fekezettE({ tool: d._meta?.tool, company: d._meta?.company });
-          if (fk.fek) { console.log(`🧯 átdolgozás kihagyva (${fk.eszkoz || d._meta?.tool || d._meta?.company}: nincs jóváhagyott súgó): ${f.slice(0, 60)}`); return false; }
-        }
         const attempts = d._meta?.rework_attempts || 0;
         // CSAK guide; a CEO végső döntése (ceo_decision) után már nem nyúlunk hozzá
-        return d._meta?.type === 'guide' && !d._meta?.ceo_decision
+        const atdolgozhato = d._meta?.type === 'guide' && !d._meta?.ceo_decision
           && d._meta?.can_retry !== false && attempts < GUIDE_MAX_REWORK;
+        if (!atdolgozhato) return false;
+        // 🧯 FÉK (2026-11-12): jóváhagyott súgó nélküli eszköz elutasított útmutatóját nem dolgozzuk át emlékezetből.
+        // A fájl a rejected/ mappában marad (nem törlünk), és ha később jóváhagyunk egy súgót, újra sorra kerül.
+        // (Az átdolgozási feltételek UTÁN: olyanról ne szóljon a napló, amit amúgy sem dolgoznánk át.)
+        const fk = fekezettE({ tool: d._meta?.tool, company: d._meta?.company });
+        if (fk.fek) { console.log(`🧯 átdolgozás kihagyva (${fk.eszkoz || d._meta?.tool || d._meta?.company}: nincs jóváhagyott súgó): ${f.slice(0, 60)}`); return false; }
+        return true;
       } catch { return false; }
     })
     .sort();

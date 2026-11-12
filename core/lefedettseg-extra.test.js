@@ -77,5 +77,13 @@ t('📏 a rendes napi keret VÁLTOZATLANUL 2 (config.json)', () => {
   assert.equal(cfg.limits.daily_guides_max, 2);
 });
 
+t('🧯 fék: a jóváhagyott súgó nélküli eszköz coverage-témája nem kap extra helyet — a következő jön', () => {
+  const meta = cov('meta-ai', { tool: 'Meta AI', company: 'Meta' });
+  const kimi = cov('kimi', { tool: 'Kimi', company: 'Moonshot AI' });
+  assert.equal(extraTemaMa([meta, kimi], MA)?.id, 'kimi');
+  assert.equal(extraTemaMa([meta], MA), null, 'csak fékezett todo van → nincs extra');
+  assert.equal(extraTemaMa([cov('x', { tool: 'ChatGPT', company: 'OpenAI' })], MA)?.id, 'x', 'teljes súgójú eszköz továbbra is mehet');
+});
+
 if (hiba) { console.log(`\n❌ ${hiba} hiba`); process.exit(1); }
 console.log('\n✅ lefedettseg-extra: minden rendben');

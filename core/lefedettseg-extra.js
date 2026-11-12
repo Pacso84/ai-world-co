@@ -16,6 +16,7 @@
 // ===================================================================
 
 import { megszuntTema } from './megszunt-eszkozok.js';
+import { fekezett } from './fek.js';   // 🧯 2026-11-12 FÉK
 
 export const LEFEDETTSEG_EXTRA_BE = true;
 
@@ -23,7 +24,7 @@ export const LEFEDETTSEG_EXTRA_BE = true;
 export function extraTemaMa(topics, maNap) {
   if (!LEFEDETTSEG_EXTRA_BE || !Array.isArray(topics)) return null;
   if (topics.some(t => t && t.extra_slot === maNap)) return null;
-  return topics.find(t => t && t.priority === 'coverage' && t.status === 'todo' && !megszuntTema(t)) || null;
+  return topics.find(t => t && t.priority === 'coverage' && t.status === 'todo' && !megszuntTema(t) && !fekezett(t).fek) || null;   // 🧯 fékezett (súgó nélküli) eszköz nem kap extra helyet
 }
 
 /** Extra helyen született útmutató-e (a _meta alapján)? */

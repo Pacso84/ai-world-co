@@ -187,12 +187,15 @@ async function frissites(brandContext) {
     utmutatok.push({ file: f, title: fm(md, 'title'), tool: d._meta?.tool || fm(md, 'tool'), company: d._meta?.company || fm(md, 'company'), meta: d._meta || {}, data: d, md });
   }
   const hirek = hirekBetolt({ dir: ARTICLES_DIR, fs: { readdirSync, readFileSync }, join, utmutatoE });
-  const jeloltek = frissitendok(utmutatok, hirek).filter(({ utmutato: u }) => {
+  // 🧯 FÉK (2026-11-12): a fékezett útmutatót ELŐBB vesszük ki, és csak utána választunk — a frissitendok() a napi keretre
+  // (FRISS_NAPI = 1) vág, így az utólagos szűrés után a fékezett útmutató minden futásban elvinné az egyetlen helyet.
+  const frissithetok = utmutatok.filter(u => {
     const fk = fekezett({ tool: u.tool, company: u.company, title: u.title });
     if (!fk.fek) return true;
     console.log(`   🧯 frissítés kihagyva (${fk.eszkoz || u.tool || u.company}: nincs jóváhagyott súgó): ${String(u.title).slice(0, 55)}`);
     return false;
   });
+  const jeloltek = frissitendok(frissithetok, hirek);
   console.log(`\n🔄 FRISSÍTÉS (új hír az eszközről): ${jeloltek.length ? jeloltek.length + ' jelölt' : 'nincs teendő ma'}`);
   let cost = 0;
   for (const { utmutato: u, hirek: v } of jeloltek) {
@@ -285,8 +288,11 @@ function candidates() {
     // 🧯 FÉK (2026-11-12): útmutatót, amelynek eszközéhez nincs jóváhagyott súgó, nem írunk át emlékezetből.
     // (A HÍR más: azt a teljes forrásszövegből írjuk át, lásd main() — arra a fék nem vonatkozik.)
     if (utmutatoE(f, j)) {
-      const fk = fekezett({ tool: j._meta?.tool, company: j._meta?.company });
-      if (fk.fek) { console.log(`   🧯 felújítás kihagyva (${fk.eszkoz || j._meta?.tool || j._meta?.company}: nincs jóváhagyott súgó): ${f.slice(0, 60)}`); continue; }
+      // eszköz/cég: előbb a _meta, ennek hiányában a frontmatter (mint a frissites()-ben; pl. _meta.tool '' de a frontmatterben "Suno.ai")
+      const fm = k => ((md.split('\n').find(l => l.startsWith(k + ':')) || '').slice(k.length + 1).trim().replace(/^["']|["']$/g, ''));
+      const tool = j._meta?.tool || fm('tool'), company = j._meta?.company || fm('company');
+      const fk = fekezett({ tool, company });
+      if (fk.fek) { console.log(`   🧯 felújítás kihagyva (${fk.eszkoz || tool || company}: nincs jóváhagyott súgó): ${f.slice(0, 60)}`); continue; }
     }
     out.push({ file: f, data: j, md });
   }

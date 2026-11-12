@@ -42,9 +42,9 @@ export const ESZKOZ_SZINT = {
   'Gemini Notebook':   { szint: SZINT.TELJES, aliasok: ['gemini notebook', 'notebooklm'], cegek: [], sugo: ['https://support.google.com/gemininotebook/', 'https://support.google.com/notebooklm/'] },
   'Google Photos':     { szint: SZINT.TELJES, aliasok: ['google photos'], cegek: [], sugo: ['https://support.google.com/photos/'] },
   'Microsoft Copilot': { szint: SZINT.TELJES, aliasok: ['microsoft copilot', 'copilot', 'microsoft 365 copilot'], cegek: ['microsoft'], sugo: ['https://support.microsoft.com/'] },
-  'Le Chat':           { szint: SZINT.TELJES, aliasok: ['le chat', 'mistral', 'mistral ai'], cegek: ['mistral'], sugo: ['https://help.mistral.ai/'] },
+  'Le Chat':           { szint: SZINT.TELJES, aliasok: ['le chat', 'le chat (mistral)', 'mistral', 'mistral ai'], cegek: ['mistral'], sugo: ['https://help.mistral.ai/'] },
   'Apple Intelligence': { szint: SZINT.TELJES, aliasok: ['apple intelligence', 'image playground', 'siri'], cegek: ['apple'], sugo: ['https://support.apple.com/'] },
-  'Alexa+':            { szint: SZINT.TELJES, aliasok: ['alexa+', 'alexa'], cegek: ['amazon'], sugo: ['https://www.amazon.com/gp/help/'] },
+  'Alexa+':            { szint: SZINT.TELJES, aliasok: ['alexa+', 'amazon alexa+', 'alexa'], cegek: ['amazon'], sugo: ['https://www.amazon.com/gp/help/'] },
 
   // ── TELJES: új jóváhagyás 11-12 ─────────────────────────────────────────────────────────────────
   'Grok':              { szint: SZINT.TELJES, aliasok: ['grok'], cegek: ['xai'], sugo: ['https://docs.x.ai/'] },

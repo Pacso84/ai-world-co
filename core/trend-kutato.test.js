@@ -312,4 +312,11 @@ t('🔌 napi riport és CI: a riport a trendsorokat kiírja; a CI-lépés a Pipe
   assert.ok(yml.indexOf('node core/trend-kutato.js') < yml.indexOf('node agents/ceo/agent.js'), '🔴 a trend a CEO UTÁN gyűjtene — aznap már késő');
 });
 
+t('🧯 fék: a jóváhagyott súgó nélküli eszköz todo trend-témája nem „vár” — nem akadályozza a következő felvételét', () => {
+  const fekezett = { id: 'm', priority: 'trend', status: 'todo', tool: 'Meta AI', company: 'Meta' };
+  assert.equal(trendFelvetelKell({ topics: [fekezett] }, TR, MOST)?.kifejezes, 'gemini trending photo prompt');
+  assert.equal(trendFelvetelKell({ topics: [{ ...fekezett, tool: 'ChatGPT', company: 'OpenAI' }] }, TR, MOST), null, 'a nem fékezett todo trend-téma továbbra is vár');
+  assert.equal(trendFelvetelKell({ topics: [{ priority: 'trend', status: 'todo' }] }, TR, MOST), null, 'eszköz nélküli (cégfüggetlen) todo trend-téma is vár');
+});
+
 console.log('\n✅ trend-kutato.test: mind a ' + pass + ' eset rendben');

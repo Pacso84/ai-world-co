@@ -57,6 +57,37 @@ t('a cég-katalógus (agents/guide COMPANY_CATALOG) cégei csak cégnévvel: egy
     'Alibaba', 'Hugging Face', 'GitHub', 'Cohere', 'Moonshot AI', 'MiniMax', 'Z.ai', 'DuckDuckGo', 'Brave', 'Proton'];
   assert.deepEqual(cegek.filter(c => fekezett({ company: c }).fek), ['Meta', 'Alibaba']);});
 
+t('a cég-katalógus MINDEN (eszköz, cég) párja ugyanazt a fék-ítéletet kapja eszközzel és csak cégnévvel', () => {
+  // A katalógus az agents/guide/agent.js-ben él (importálni TILOS: feltétel nélküli main()) → a forrásszövegből olvassuk ki.
+  const src = readFileSync(new URL('../agents/guide/agent.js', import.meta.url), 'utf-8');
+  const blokk = src.slice(src.indexOf('const COMPANY_CATALOG = ['), src.indexOf('function normCompany'));
+  const parok = [...blokk.matchAll(/\{\s*company:\s*'([^']+)',\s*tool:\s*'([^']+)'/g)].map(m => ({ company: m[1], tool: m[2] }));
+  assert.equal(parok.length, 21, 'a katalógus 21 cége: ' + parok.map(p => p.company).join(', '));
+  for (const p of parok) {
+    assert.equal(fekezett(p).fek, fekezett({ company: p.company }).fek, p.company + ' / ' + p.tool + ': eszközzel más az ítélet, mint cégnévvel');
+  }
+  assert.deepEqual(parok.filter(p => fekezett(p).fek).map(p => p.company), ['Meta', 'Alibaba']);
+});
+
+t('🔴 upgrade-howtos.js frissites(): a fék SZŰRŐ a frissitendok() ELŐTT fut (különben a fékezett útmutató elvinné a napi 1 helyet)', () => {
+  const src = readFileSync(new URL('../agents/iro/upgrade-howtos.js', import.meta.url), 'utf-8');
+  const fv = src.slice(src.indexOf('async function frissites('), src.indexOf('async function linkEllenorzes('));
+  assert.ok(fv.length > 100, 'a frissites() függvény nem található');
+  const fek = fv.indexOf('fekezett({');
+  const hivas = fv.indexOf('frissitendok(frissithetok');
+  assert.ok(!/frissitendok\(utmutatok/.test(fv), 'a frissitendok() a szűretlen listát is megkapná');
+  assert.ok(fek > 0 && hivas > 0, 'hiányzik a fék vagy a frissitendok() hívás');
+  assert.ok(fek < hivas, 'a fék a frissitendok() UTÁN szűr');
+  assert.match(fv, /frissitendok\(frissithetok, hirek\)/, 'a frissitendok() nem a fékkel szűrt listát kapja');
+});
+
+t('upgrade-howtos.js candidates(): az eszköz/cég a _meta-ból, ennek hiányában a frontmatterből jön (mint a frissites()-ben)', () => {
+  const src = readFileSync(new URL('../agents/iro/upgrade-howtos.js', import.meta.url), 'utf-8');
+  const c = src.slice(src.indexOf('function candidates()'), src.indexOf('async function main()'));
+  assert.match(c, /j\._meta\?\.tool \|\| fm\('tool'\)/);
+  assert.match(c, /j\._meta\?\.company \|\| fm\('company'\)/);
+});
+
 t('kill-switch próba: be:false mellett semmi sem fékezett, a szint így is látszik', () => {
   const r = fekezett({ tool: 'Meta AI', company: 'Meta' }, { be: false });
   assert.equal(r.fek, false);

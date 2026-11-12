@@ -21,6 +21,7 @@ import { ask } from '../../core/ai-router.js';
 import { sendMessage, loadChatHistory, appendChatHistory } from '../../core/telegram.js';
 import { budgetStatus } from '../../core/budget.js';
 import { latogatoKontextus, fuggoJavaslatok } from '../../core/fonok-kontextus.js';
+import { fekezett } from '../../core/fek.js';   // 🧯 2026-11-12 FÉK: súgó nélküli eszközről nem írunk útmutatót
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -291,6 +292,11 @@ async function doWriteGuide(p) {
     requested_at: new Date().toISOString(), proposed_by: 'telegram-owner'
   });
   writeFileSync(TOPICS_PATH, JSON.stringify(store, null, 2), 'utf-8');
+
+  // 🧯 FÉK (2026-11-12): a témát elmentettük (ha később jóváhagyunk egy súgót, magától sorra kerül), de most nem írjuk meg —
+  // az író-ügynök úgyis kihagyná, ezért nem futtatjuk az ellenőrzőt/designert/buildet sem, és nem mondjuk, hogy megírtuk.
+  const fk = fekezett({ tool: p.tool || '', company: p.company || '', title });
+  if (fk.fek) return `🧯 Nem írtam meg: a(z) ${fk.eszkoz || p.tool || p.company} eszközhöz még nincs jóváhagyott hivatalos súgó — amíg nincs, róla nem írunk útmutatót, hogy ne vezessük félre az olvasót.`;
 
   await node('agents/guide/agent.js', ['--id', uid]);
   await node('agents/ellenorzo/agent.js');

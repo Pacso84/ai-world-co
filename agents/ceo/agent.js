@@ -31,6 +31,7 @@ import { addTask, setTaskStatus, notify } from '../../core/ops.js';
 import { meteredBlocked, budgetStatus } from '../../core/budget.js';
 import { hirIroKeret } from '../../core/hir-keret.js';
 import { extraTemaMa, extraUtmutato } from '../../core/lefedettseg-extra.js';
+import { fekezett } from '../../core/fek.js';   // 🧯 2026-11-12 FÉK: a fékezett téma nem számít várakozónak
 import { termekExtraMaradek, termekExtraHir, TERMEK_EXTRA_NAPI, nyitottExtraHely, EXTRA_NYITAS_UTC } from '../../core/hir-elsobbseg.js';   // 📰 11-09: +2 hely termékhírnek
 
 // ===================================================================
@@ -140,7 +141,7 @@ function maiExtraTema() {
 }
 
 function countTodoGuideTopics() {
-  try { return JSON.parse(readFileSync(GUIDE_TOPICS_PATH, 'utf-8')).topics.filter(t => t.status !== 'done').length; }
+  try { return JSON.parse(readFileSync(GUIDE_TOPICS_PATH, 'utf-8')).topics.filter(t => t.status !== 'done' && !fekezett(t).fek).length; }   // 🧯 a fékezett téma nem „vár”
   catch { return 0; }
 }
 
