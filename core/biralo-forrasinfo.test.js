@@ -16,7 +16,7 @@ import assert from 'assert/strict';
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { biraloForrasInfo, tevesNevKifogas, nevJavitoMegjegyzes, atdolgozoMeta } from './biralo-forrasinfo.js';
+import { biraloForrasInfo, tevesNevKifogas, nevJavitoMegjegyzes, atdolgozoMeta, utmutatoNevForras } from './biralo-forrasinfo.js';
 import { knownRealNames } from './truth-gate.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -243,10 +243,98 @@ t('ellenpróba: árról / felületről szóló kifogás marad, bírálat nélkü
 t('mindkét átdolgozó (iro + guide) a feedback ELŐTT szűr, és a csak-téves esetben nem ír át', () => {
   for (const f of ['agents/iro/agent.js', 'agents/guide/agent.js']) {
     const src = readFileSync(join(ROOT, f), 'utf-8');
-    assert.match(src, /import \{ atdolgozoMeta \} from '\.\.\/\.\.\/core\/biralo-forrasinfo\.js'/, f);
+    assert.match(src, /import \{ atdolgozoMeta[^}]*\} from '\.\.\/\.\.\/core\/biralo-forrasinfo\.js'/, f);
     const i = src.indexOf('atdolgozoMeta(data._meta');
     const j = src.indexOf('isReviewerSideFailure(data._meta) || (nevSzuro.csakTevesNev');
     assert.ok(i > 0 && j > i, f + ': a szűrés nem az ESET A előtt van');
+  }
+});
+
+// ---------------------------------------------------------------
+// ÚTMUTATÓ: a forrás-hír és a súgó IGAZOLJA a nevet (2026-11-12, TÉNYKÖZPONT 0d).
+// Valódi esetek: „Gemini 4 Carbon” (Gemini Models súgó + blog.google hír) és „Workspace Studio”
+// (forrás-hír címe) — az útmutatónál a source_link üres volt → az ellenőrző „kitaláltnak” mondta.
+// ---------------------------------------------------------------
+const guideMeta = {
+  type: 'guide', source_link: '',
+  source_news: { file: 'X.json', title: 'Gemini 4 Carbon is now available' },
+  official_sources: [{ url: 'https://support.google.com/gemini/answer/18648722', title: 'About Gemini models - Computer' }],
+  sugo_alapu: true
+};
+const hirCarbon = { original_title: 'Gemini 4 Carbon is now available', _meta: { source_link: 'https://blog.google/products/gemini/gemini-4-carbon/' } };
+const hirBetolt = f => (f === 'X.json' ? hirCarbon : null);
+const carbonBiralat = { issues: [], verdict: "refers to 'Gemini 4 Carbon' which does not appear in the verified-real names list" };
+
+t('útmutató: a forrás-hír és a súgó adja a forrás-URL-t, címet, szöveget', () => {
+  const f = utmutatoNevForras(guideMeta, { hirBetolt, sugoSzovegek: ['Gemini 4 Carbon: Our strongest model…'] });
+  assert.equal(f.sourceUrl, 'https://blog.google/products/gemini/gemini-4-carbon/');
+  assert.match(f.originalTitle, /Gemini 4 Carbon is now available/);
+  assert.match(f.originalTitle, /About Gemini models - Computer/);
+  assert.match(f.sourceText, /Our strongest model/);
+});
+
+t('🔑 útmutató: a „Gemini 4 Carbon” kitalált-név kifogás TÉVES (11-12-i eset)', () => {
+  const f = { ...utmutatoNevForras(guideMeta, { hirBetolt, sugoSzovegek: ['Gemini 4 Carbon: Our strongest model…'] }), known: [] };
+  const r = tevesNevKifogas(carbonBiralat, f);
+  assert.equal(r.verdictTeves, true);
+  assert.ok(r.nevek.includes('Gemini 4 Carbon'));
+});
+
+t('🔑 útmutató: a „Workspace Studio” kifogás TÉVES (a forrás-hír címében áll)', () => {
+  const hir = { original_title: 'Pause and schedule automated workflows with the new Workspace Studio', _meta: { source_link: 'https://workspace.google.com/blog/x/' } };
+  const m = { ...guideMeta, source_news: { file: 'W.json', title: hir.original_title } };
+  const f = { ...utmutatoNevForras(m, { hirBetolt: () => hir, sugoSzovegek: [] }), known: [] };
+  const r = tevesNevKifogas({ issues: [], verdict: "the core product name 'Workspace Studio' cannot be independently verified" }, f);
+  assert.equal(r.verdictTeves, true);
+  assert.ok(r.nevek.includes('Workspace Studio'));
+});
+
+t('ELLENPRÓBA: a forrásban NEM szereplő név („Gemini 5 Ultra”) kifogása marad', () => {
+  const f = { ...utmutatoNevForras(guideMeta, { hirBetolt, sugoSzovegek: ['Gemini 4 Carbon: Our strongest model…'] }), known: [] };
+  const r = tevesNevKifogas({ issues: [], verdict: "refers to 'Gemini 5 Ultra' which does not appear in the verified-real names list" }, f);
+  assert.equal(r.verdictTeves, false);
+  assert.equal(r.nevek.length, 0);
+});
+
+t('hirBetolt null / dob → nem dob; a súgó URL-je a forrás, a súgószövegben álló név igazolódik', () => {
+  for (const hb of [() => null, () => { throw new Error('nincs fájl'); }]) {
+    const f = utmutatoNevForras(guideMeta, { hirBetolt: hb, sugoSzovegek: ['Gemini 4 Carbon: Our strongest model…'] });
+    assert.equal(f.sourceUrl, 'https://support.google.com/gemini/answer/18648722');
+    assert.match(f.originalTitle, /About Gemini models/);
+    const r = tevesNevKifogas(carbonBiralat, { ...f, known: [] });
+    assert.equal(r.verdictTeves, true);
+  }
+});
+
+t('útmutató: forrás-hír és súgó nélkül üres forrás (nem dob, nem igazol)', () => {
+  const f = utmutatoNevForras({ type: 'guide' }, { hirBetolt: () => null });
+  assert.deepEqual(f, { originalTitle: '', sourceUrl: '', sourceText: '' });
+  assert.deepEqual(utmutatoNevForras(undefined), { originalTitle: '', sourceUrl: '', sourceText: '' });
+});
+
+t('alapértelmezett hirBetolt: hiányzó fájl / útvonal-trükk → null-kezelés, nem dob', () => {
+  const m = { source_news: { file: '../../package.json', title: 'x' }, official_sources: [] };
+  assert.doesNotThrow(() => utmutatoNevForras(m));
+  assert.doesNotThrow(() => utmutatoNevForras({ source_news: 'NINCS_ILYEN.json' }));
+});
+
+t('🔑 átdolgozó: új sourceUrl + sourceText → a mentett „Gemini 4 Carbon” kifogás kiesik', () => {
+  const rejected = {
+    source_link: '',
+    ai_review: { decision: 'FAIL', issues: [], verdict: "refers to 'Gemini 4 Carbon' which does not appear in the verified-real names list" },
+    reason: "refers to 'Gemini 4 Carbon' which does not appear in the verified-real names list"
+  };
+  const nelkul = atdolgozoMeta(rejected, { originalTitle: 'x', known: [] });
+  assert.equal(nelkul.kivett.length, 0, 'forrás-URL nélkül nem igazol');
+  const r = atdolgozoMeta(rejected, { originalTitle: 'x', sourceUrl: 'https://support.google.com/gemini/answer/18648722', sourceText: 'Gemini 4 Carbon: Our strongest model', known: [] });
+  assert.ok(r.kivett.length > 0);
+  assert.ok(r.nevek.includes('Gemini 4 Carbon'));
+});
+
+t('az ellenőrző és az útmutató-író is az új forrás-összeállítást használja', () => {
+  for (const f of ['agents/ellenorzo/agent.js', 'agents/guide/agent.js']) {
+    const src = readFileSync(join(ROOT, f), 'utf-8');
+    assert.match(src, /utmutatoNevForras/, f);
   }
 });
 

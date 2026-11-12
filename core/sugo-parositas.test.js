@@ -163,7 +163,7 @@ t('🔌 az író letölti a súgót és nem ír nélküle; az Ellenőrző a súg
   assert.match(g, /official_sources: topic\.official_sources/, 'a vázlat nem viszi tovább a súgócikket');
   assert.match(g, /sugo_alapu: topic\.sugo_alapu === true/, 'a vázlat nem viszi tovább a súgó-jelölést');
   assert.match(g, /súgó nem tölthető le/, 'súgó nélkül is írna (emlékezetből)');
-  assert.equal((g.match(/sugoForrasok\(/g) || []).length, 2, 'az író ÉS az átdolgozó is a jelölésre szűrt listát használja');
+  assert.equal((g.match(/sugoForrasok\(/g) || []).length, 3, 'az író, az átdolgozó ÉS (11-12, 0d) az átdolgozó név-szűrője is a jelölésre szűrt listát használja');
   const e = readFileSync(new URL('../agents/ellenorzo/agent.js', import.meta.url), 'utf-8');
   assert.match(e, /sugoUtmutatoJelzes\(/, 'az Ellenőrző nem méri a súgón');
   assert.match(e, /sugoForrasok\(writerData\._meta\)/, 'az Ellenőrző a régi, kézzel írt útmutatókra is lefutna');

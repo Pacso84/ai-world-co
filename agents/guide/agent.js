@@ -37,7 +37,7 @@ import { skillsBlock } from '../../core/skills.js';
 import { message } from '../../core/ops.js';
 import { HOWTO_RANGE } from '../../core/article-length.js';
 import { blockingIssues } from '../../core/auto-check-codes.js';
-import { atdolgozoMeta } from '../../core/biralo-forrasinfo.js';   // 🛟 2026-11-06 téves név-kifogás az átdolgozás elől
+import { atdolgozoMeta, utmutatoNevForras } from '../../core/biralo-forrasinfo.js';   // 🛟 2026-11-06 téves név-kifogás az átdolgozás elől
 import { valasztHireket, hirBlokk, hirekBetolt, trendBlokk } from '../../core/guide-sources.js';
 import { utmutatoE } from '../../core/guide-kind.js';
 import { tartalomKapcsolok, maiKozepDb, szintSorrend } from '../../core/content-switches.js';
@@ -1015,8 +1015,13 @@ async function runGuideReworkMode(brandContext) {
     const attempt = (data._meta?.rework_attempts || 0) + 1;
 
     // 🛟 TÉVES „KITALÁLT NÉV” KIFOGÁS AZ ELMENTETT BÍRÁLATBAN (2026-11-06): az átdolgozó SOHA ne kapja meg
-    // (különben kiveszi a valódi nevet). Útmutatónál nincs külső forrás-URL → csak a hiteles névlista igazol.
-    const nevSzuro = atdolgozoMeta(data._meta, { originalTitle: data.original_title || '' });
+    // (különben kiveszi a valódi nevet). 11-12 (TÉNYKÖZPONT 0d): az útmutató forrása a forrás-hír + a hivatalos súgó
+    // (utmutatoNevForras); a súgószöveg letöltése legjobb erőfeszítés (csak sugo_alapu; hiba → kimarad).
+    const sugoSzovegek = [];
+    for (const sg of sugoForrasok(data._meta)) {
+      try { const sz = await cikkSzoveg(sg.url); if (sz?.szoveg) sugoSzovegek.push(sz.szoveg); } catch { /* a súgó nélkül is megy */ }
+    }
+    const nevSzuro = atdolgozoMeta(data._meta, utmutatoNevForras(data._meta, { sugoSzovegek }));
     if (nevSzuro.kivett.length) {
       data._meta = nevSzuro.meta;
       console.log(`🛟 Téves „kitalált név” kifogás kivéve az átdolgozás elől (${nevSzuro.nevek.join(', ') || 'név'}): ${filename.slice(0, 50)}...`);

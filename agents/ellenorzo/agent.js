@@ -35,7 +35,7 @@ import { blockingIssues, advisoryIssues, lessonFor } from '../../core/auto-check
 import { guideClaimIssues } from '../../core/guide-claims.js';
 import { arJelzes } from '../../core/ar-tilalom.js';
 import { tevedesJelzes } from '../../core/ismert-tevedesek.js';
-import { biraloForrasInfo, tevesNevKifogas, nevJavitoMegjegyzes } from '../../core/biralo-forrasinfo.js';
+import { biraloForrasInfo, tevesNevKifogas, nevJavitoMegjegyzes, utmutatoNevForras } from '../../core/biralo-forrasinfo.js';
 import { cikkForrasSzovege, cikkKivonat } from '../../core/forras-cache.js';
 import { forrasHirJelzesek } from '../../core/forras-tema.js';   // 11-10: a hír a forrásáról szóljon (eszköz + gombnevek)
 import { sugoUtmutatoJelzes, sugoForrasok } from '../../core/sugo-parositas.js';   // 📘 11-11: súgó-alapú útmutató a súgón mérve
@@ -854,10 +854,11 @@ async function main() {
     } catch { /* őr-hiba nem állítja meg az ellenőrzést */ }
     // 📘 SÚGÓ-ALAPÚ ÚTMUTATÓ (2026-11-11, hír-elsőbbség 3. rész): a gomb-/menüneveket a HIVATALOS súgócikken
     // mérjük (core/sugo-parositas.js) — 2+ hiányzó → GUIDE_UI_NOT_IN_HELP (elutasít). Súgó nélkül nem ítél.
+    // A letöltött súgószövegek EGY helyen: a súgó-mérés és (11-12, TÉNYKÖZPONT 0d) a „kitalált név” gát is ezt használja.
+    let szovegek = [];
     try {
       const sugoLista = sugoForrasok(writerData._meta);   // CSAK a sugo_alapu útmutatóra (a régi kézi forráslistára nem)
       if (sugoLista.length) {
-        const szovegek = [];
         for (const s of sugoLista) { const sz = await cikkSzoveg(s.url); if (sz?.szoveg) szovegek.push(sz.szoveg); }
         const j = sugoUtmutatoJelzes(markdown, szovegek.join('\n\n'));
         console.log(`   📘 súgó-mérés: ${szovegek.length ? (j ? '❌ ' + j.slice(0, 120) : '✅ a gombnevek a súgóban vannak') : '⏭️ a súgó nem tölthető le — nem ítél'}`);
@@ -905,11 +906,15 @@ async function main() {
     // Gemini Notebook, Claude Opus 5.5…). Ilyenkor: egyszer újrabírálat javító megjegyzéssel, és a téves kifogás
     // SEHOVA nem jut tovább (elutasítás oka, átdolgozó „Fix:”-e, memória-lecke). Szabályok: core/biralo-forrasinfo.js.
     if (aiReviewResult) {
-      const nevForras = {
-        originalTitle: writerData.original_title || '',
-        sourceUrl: String(writerData._meta?.source_link || '').trim(),
-        sourceText: String(cikkForrasSzovege(writerData._meta) || cikkKivonat(writerData._meta) || '')
-      };
+      // 11-12 (0d): útmutatónál a source_link üres → a forrás-hír és a letöltött súgó igazolja a nevet.
+      // Hírnél a régi összeállítás, változatlanul.
+      const nevForras = writerData._meta?.type === 'guide'
+        ? utmutatoNevForras(writerData._meta, { sugoSzovegek: szovegek })
+        : {
+          originalTitle: writerData.original_title || '',
+          sourceUrl: String(writerData._meta?.source_link || '').trim(),
+          sourceText: String(cikkForrasSzovege(writerData._meta) || cikkKivonat(writerData._meta) || '')
+        };
       const elso = tevesNevKifogas(aiReviewResult, nevForras);
       if (elso.nevek.length) {
         console.log(`   🛟 Téves „kitalált név” kifogás (a név a hivatalos forrásban / hiteles listán van): ${elso.nevek.join(', ')} → újrabírálat`);
