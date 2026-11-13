@@ -543,6 +543,28 @@ export function orFutott({ writerNaplok = 0, dedupMai = 0 } = {}) {
 // Aki csak a végét olvassa (mobilon ez látszik), az azt hiszi, minden kiment.
 // Mostantól a zárósor számolja a hibajelző sorokat. A KRÓNIKUS leletek
 // (🧩 kimenet-őr, ♻️ ismétlődő hiba) nem kimaradás, ezért nem számítanak.
+// 🔴 FELTÖLTÉS + ÉLŐ-ŐRSZEM (2026-11-13). A 15:46-os futás deployja Cloudflare-503-mal bukott; a riportban ebből
+// csak „🌐 ÉLŐ-ŐRSZEM: 1 lelet — FRESH_ARTICLE_DOWN” látszott, és NEM számított hibajelzésnek → a zárósor csak
+// a TikTokot és a tesztet említette. Most: a bukott deploy saját 🔴 sort kap, az élő-őrszem kódjai magyarul.
+/** A deploy-lépés kimenetele (steps.deploy.outcome) → 🔴 sor, ha bukott; különben üres. */
+export function deployLine(outcome) {
+  if (outcome !== 'failure') return '';
+  return '🔴 FELTÖLTÉS BUKOTT: a Cloudflare 3 próbára sem fogadta el az új oldalverziót — a most kiadott cikkek a következő futásig 404-et adnak (a Facebook-posztjuk addig a sorban vár).';
+}
+
+/** Az élő-őrszem kódjai olvasható magyarul (ismeretlen kód → maga a kód). */
+export const ELO_KOD_HU = {
+  FRESH_ARTICLE_DOWN: 'a ma kiadott cikk nem érhető el az oldalon (404)',
+};
+/** memory/live-guard.json → riport-sor. A „cikk nem él” lelet 🔴 (hibajelzés), a többi 🌐 marad. */
+export function eloOrszemLine(lg) {
+  const p = Array.isArray(lg?.problems) ? lg.problems : [];
+  if (!p.length) return '';
+  const sulyos = p.some(x => x?.code === 'FRESH_ARTICLE_DOWN');
+  const szoveg = p.slice(0, 2).map(x => ELO_KOD_HU[x?.code] || x?.code).join(', ') + (p.length > 2 ? '…' : '');
+  return `${sulyos ? '🔴' : '🌐'} ÉLŐ-ŐRSZEM: ${p.length} lelet — ${szoveg}`;
+}
+
 const HIBA_JEL = /^\s*(⚠️|❌|🔴|🚨|⛔)|elbukott|ELBUKOTT|nem sikerült|leállt/;
 
 /** Hány sor jelez valódi hibát? */

@@ -10,7 +10,7 @@
 
 import assert from 'assert/strict';
 import {
-  describePosts, describeRepeat, ismetlesSuru, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine, zaroSor, hibaSorok, fekLine
+  describePosts, describeRepeat, ismetlesSuru, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine, zaroSor, hibaSorok, fekLine, deployLine, eloOrszemLine
 } from './report-lines.js';
 import { readFileSync } from 'fs';
 
@@ -553,4 +553,27 @@ console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');
   assert.match(src, /f\.slice\(10, 20\) >= tegnap/, 'a fájlnév dátum-része: factcheck_ = 10 karakter');
   assert.equal('factcheck_2026-11-01T14-39-03-165Z.json'.slice(10, 20), '2026-11-01');
   console.log('  ✅ tenyellenorzoLine');
+}
+
+// 🔴 FELTÖLTÉS + ÉLŐ-ŐRSZEM (2026-11-13): a bukott deploy eddig csak „FRESH_ARTICLE_DOWN” kódként látszott,
+// és nem számított hibajelzésnek → a zárósor nem említette.
+{
+  assert.equal(deployLine('success'), '');
+  assert.equal(deployLine(''), '');
+  assert.equal(deployLine(undefined), '');
+  assert.equal(deployLine('skipped'), '', 'kihagyott deploy (bukott build) — azt a build-sor jelzi');
+  const d = deployLine('failure');
+  assert.match(d, /^🔴 FELTÖLTÉS BUKOTT/);
+  assert.equal(eloOrszemLine({ problems: [] }), '');
+  assert.equal(eloOrszemLine(null), '');
+  const fr = eloOrszemLine({ problems: [{ code: 'FRESH_ARTICLE_DOWN', msg: 'x' }] });
+  assert.match(fr, /^🔴 ÉLŐ-ŐRSZEM: 1 lelet — a ma kiadott cikk nem érhető el/);
+  assert.ok(!/FRESH_ARTICLE_DOWN/.test(fr), 'a kód helyett magyar szöveg');
+  assert.match(eloOrszemLine({ problems: [{ code: 'WWW_REDIRECT' }] }), /^🌐 ÉLŐ-ŐRSZEM: 1 lelet — WWW_REDIRECT$/);
+  const zaro = zaroSor(['📰 Új tartalom', d, fr]);
+  assert.match(zaro, /2 hibajelzés — FELTÖLTÉS BUKOTT · ÉLŐ-ŐRSZEM/, '🔴 a zárósor nem említi a bukott feltöltést: ' + zaro);
+  const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
+  assert.match(src, /deployLine\(process\.env\.DEPLOY_OUTCOME\)/, 'a riport nem kapja meg a deploy kimenetelét');
+  assert.match(src, /eloOrszemLine\(lg\)/);
+  console.log('  ✅ deployLine + eloOrszemLine');
 }

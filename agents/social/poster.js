@@ -31,6 +31,7 @@ import { postsPerRun, usedThisMonth, MONTHLY_CAP } from '../../core/make-budget.
 // lemásolva élt a két fájlban — semmi nem tartotta szinkronban. Most egy
 // példány van: core/social-published.js (teszt + bekötés-őr mellette).
 import { isArticleFile, buildPublishedMap, queueStatus } from '../../core/social-published.js';
+import { cikkKint } from '../../core/cikk-kint.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -160,8 +161,16 @@ async function main() {
   const nEver = batch.filter(x => !x.isFresh).length;
   console.log(`   📋 Sorban: ${queue.length} (ebből örökzöld útmutató: ${evergreenWaiting}) | most kiküldendő: ${batch.length} (${batch.length - nEver} friss + ${nEver} örökzöld)${DRY ? ' (PRÓBA — nem küldöm)' : ''}\n`);
 
-  let sent = 0, failed = 0;
+  let sent = 0, failed = 0, varakozik = 0;
+  if (process.env.DEPLOY_OUTCOME === 'failure') console.log('   🔴 A feltöltés (deploy) ebben a futásban BUKOTT — csak a már élő cikkek posztja megy ki.');
   for (const { path, post } of batch) {
+    // 🔴 POSZT CSAK ÉLŐ CIKKRE (2026-11-13, core/cikk-kint.js): bukott deploy után a poszt 404-re vitt.
+    // A sorban marad (nincs posted_fb jelölés), a következő futás viszi ki.
+    if (!DRY && !(await cikkKint(post.url))) {
+      varakozik++;
+      console.log(`📘 ${String(post.title).slice(0, 55)}...\n   ⏭️  a cikk még nincs kint (${post.url}) — marad a sorban`);
+      continue;
+    }
     // A FB-szövegben benne van az URL — kiszedjük, mert a linket KÜLÖN mezőben
     // küldjük (abból lesz a szép előnézeti kártya; duplán csúnya lenne).
     // A szabály EGY példányban él: core/social-text.js → stripUrl() (2026-09-12;
@@ -219,7 +228,7 @@ async function main() {
   }
 
   console.log('─'.repeat(60));
-  console.log(`📊 SOCIAL POSTER: ${sent} kiküldve, ${failed} sikertelen, sorban maradt: ${queue.length - batch.length}`);
+  console.log(`📊 SOCIAL POSTER: ${sent} kiküldve, ${failed} sikertelen, ${varakozik} vár az élesedésre, sorban maradt: ${queue.length - batch.length + varakozik}`);
 }
 
 main().then(() => process.exit(0)).catch(e => { console.error('💥 POSTER HIBA:', e); process.exit(1); });

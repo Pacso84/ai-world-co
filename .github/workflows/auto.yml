@@ -68,7 +68,8 @@ jobs:
     # korlátait, és elbukik, ha az összeg + 5 perc tartalék nem fér bele.
     # (Ugyanaz a lecke, mint a `_redirects` 08-15-i esete: növekvő szám mellé
     # mindig őrszem.)
-    timeout-minutes: 145
+    # 2026-11-13: 145 → 150 — a deploy 3 próbát kapott (6 → 10 perc, Cloudflare-503 után); összeg 144 + 5 tartalék.
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
 
@@ -718,13 +719,23 @@ jobs:
         if: always()
         run: node core/video-compose.js || true
 
+      # 🔁 ÚJRAPRÓBA (2026-11-13): a 15:46-os futásban a Cloudflare API a feltöltés UTOLSÓ lépésénél 503-at adott
+      # („upstream connect error … connection termination”) → az új verzió nem élesedett, a délután kiadott cikkek
+      # 404-et adtak, a FB-poszt pedig közben kiment rájuk. Átmeneti szerverhiba → 3 próba, 60 mp szünettel.
+      # Az `id: deploy` kimenetelét a FB-posztoló és a Telegram-riport is megkapja (DEPLOY_OUTCOME).
       - name: Deploy — Cloudflare Pages
+        id: deploy
         if: always() && steps.build.outcome == 'success'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        timeout-minutes: 6
-        run: npx --yes wrangler pages deploy website/public --project-name=aiworldco --branch=main --commit-dirty=true
+        timeout-minutes: 10
+        run: |
+          for i in 1 2 3; do
+            npx --yes wrangler pages deploy website/public --project-name=aiworldco --branch=main --commit-dirty=true && exit 0
+            [ "$i" -lt 3 ] && { echo "⚠️ deploy $i. próba sikertelen — újra 60 mp múlva"; sleep 60; }
+          done
+          echo "🔴 deploy: mind a 3 próba sikertelen"; exit 1
 
       # IndexNow: a friss cikkeket AZONNAL bejelentjük a keresőknek (Bing =
       # a ChatGPT-kereső indexe). Hiba esetén nem dönti el a futást (|| true).
@@ -797,6 +808,7 @@ jobs:
           # esik. Eddig ingyenes GLM-en futott, ezért nem volt itt.
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+          DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
           # PINTEREST (2026-07-25, forgalom-szerzés): a pinterest-poster erre a
           # webhookra POST-ol (Make → Create a Pin). Amíg a secret nincs beállítva,
           # a poszter kecsesen kihagyja magát (dormant) — nem hibázik.
@@ -926,6 +938,8 @@ jobs:
           # papíron (09-06 … 09-07: 7 nap, napi egy fölösleges pótfutás).
           # A beépített futtató-token elég hozzá: csak `actions: read` kell.
           GITHUB_TOKEN: ${{ github.token }}
+          # 🔴 FELTÖLTÉS-SOR (2026-11-13): a bukott deploy eddig csak egy rejtélyes „FRESH_ARTICLE_DOWN” kódként látszott.
+          DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
         run: node core/daily-report.js || true
 
       # Heti kereső-riport (vasárnap): GSC+Bing számok + hírlevél-lámpa

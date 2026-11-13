@@ -27,7 +27,7 @@ import { summarizeRuns, describeFailures } from './make-health.js';
 // A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
 // összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
 import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
-import { describePosts, describeRepeat, ismetlesSuru, describeTranslationGaps, mergeLine, termekHirLine,huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor, fekLine } from './report-lines.js';
+import { describePosts, describeRepeat, ismetlesSuru, describeTranslationGaps, mergeLine, termekHirLine,huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor, fekLine, deployLine, eloOrszemLine } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
@@ -639,10 +639,11 @@ async function main() {
   // meg a kiszolgálói-beállítás szintű hibákat, amiket a fájl-alapú őrök nem.
   try {
     const lg = JSON.parse(readFileSync(join(ROOT, 'memory', 'live-guard.json'), 'utf-8'));
-    if (lg.problems?.length) {
-      lines.push(`🌐 ÉLŐ-ŐRSZEM: ${lg.problems.length} lelet — ${lg.problems.slice(0, 2).map(p => p.code).join(', ')}${lg.problems.length > 2 ? '…' : ''}`);
-    }
+    const elo = eloOrszemLine(lg);   // 11-13: magyar szöveg, a „cikk nem él” 🔴 hibajelzés (core/report-lines.js)
+    if (elo) lines.push(elo);
   } catch { /* még nem futott — nem baj */ }
+  // 🔴 FELTÖLTÉS (11-13): a workflow adja át a deploy-lépés kimenetelét (DEPLOY_OUTCOME).
+  { const d = deployLine(process.env.DEPLOY_OUTCOME); if (d) lines.push(d); }
 
   // I18N-ŐRSZEM (2026-08-10). Ez az őrszem 2026-07-06 óta fut, és 08-09-én
   // PONTOSAN azt látta, amit kellett: a magyar heti összefoglaló 161 angol
@@ -1049,8 +1050,13 @@ async function main() {
   try {
     const exportKey = (process.env.FEEDBACK_EXPORT_KEY || '').trim();
     if (exportKey) {
-      const cr = await fetch('https://api.aiworldhq.com/feedback-export',
-        { headers: { 'X-Export-Key': exportKey }, signal: AbortSignal.timeout(15000) });
+      // 🔁 11-13: a Worker hidegindításkor lassú (mérve 7,3 mp, utána 1,1 mp) → 11-11/12/13 délután 15 mp-es
+      // időtúllépés, a 📚/🧵/👍/🛒 sorok kimaradtak. Időtúllépésnél / 5xx-nél még EGY próba, hosszabb korláttal.
+      const exportKer = ms => fetch('https://api.aiworldhq.com/feedback-export',
+        { headers: { 'X-Export-Key': exportKey }, signal: AbortSignal.timeout(ms) });
+      let cr;
+      try { cr = await exportKer(20000); } catch (e) { console.log('📮 feedback-export 1. próba: ' + (e?.name || e) + ' — újra'); }
+      if (!cr || cr.status >= 500) cr = await exportKer(30000);
       if (cr.ok) {
         const exp = await cr.json();
         const cs = exp.__cs || {};
