@@ -68,6 +68,10 @@ export function helyreallitasKod(h) {
 // helyre a Google nem kér hirdetést. Csak a címke és a vonal vár a megérkezésre (style.css).
 // 10-30: 8 → 20 mp, és CSAK akkor rejt, ha a Google még SEMMIT nem jelzett (nincs data-ad-status). Lassú mobilneten
 // a 8 mp után érkező hirdetés rejtett dobozba került → elveszett megjelenés. Az „unfilled” továbbra is AZONNAL rejt.
+// ── 🤖 ROBOTNAK NINCS HIRDETÉSKÉRÉS (2026-11-13, user: „rádbízom”) ──
+// AdSense 11-06–12: a kérések ~39%-a robotországokból (CN, BR, SG, HK, VN, DE, AR) jött, ~0% kitöltéssel →
+// a lefedettség 19,9%. Az automatizált böngésző (`navigator.webdriver === true`, pl. fej nélküli Chrome) nem
+// kér hirdetést, a doboza azonnal rejtve. Hirdetést NEM kérni mindig szabályos; ember böngészőjében ez hamis.
 /** Ennyi ideig vár a látogató képernyőjén a hirdetésre, mielőtt az üres dobozt elrejti. */
 export const URES_VARAS_MS = 20000;
 
@@ -78,7 +82,7 @@ export function hirdetesBlokk(h, lang) {
   return `<aside class="ad-slot" aria-label="${cimke}">
       <p class="ad-slot__label">${cimke}</p>
       <ins class="adsbygoogle" style="display:block" data-ad-client="${h.kliens}" data-ad-slot="${h.slot}" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      <script>(function(a){if(navigator.webdriver){if(a)a.classList.add('ad-slot--ures');return;}(window.adsbygoogle=window.adsbygoogle||[]).push({});})(document.currentScript&&document.currentScript.parentNode);</script>
       <script>(function(a){if(!a||!window.MutationObserver)return;var i=a.querySelector('ins.adsbygoogle');if(!i)return;`
     + `function nez(){var s=i.getAttribute('data-ad-status');if(s==='filled'){a.classList.add('ad-slot--tele');a.classList.remove('ad-slot--ures');}else if(s==='unfilled'){a.classList.add('ad-slot--ures');}}`
     + `new MutationObserver(nez).observe(i,{attributes:true,attributeFilter:['data-ad-status']});nez();`

@@ -56,11 +56,32 @@ t('2. szakasz (azonosító + egység): EGY blokk, jelölve, a saját nyelvén', 
   assert.equal(hirdetesBlokk(h, 'xx').includes(CIMKE.en), true, 'ismeretlen nyelv → angol címke');
 });
 
+t('🤖 11-13: automatizált böngésző (navigator.webdriver) NEM kér hirdetést, a doboza rejtve; ember igen', () => {
+  const h = hirdetesBeallitas({ ads: { enabled: true, client: KLIENS, slot: '9876543210' } });
+  const kod = (hirdetesBlokk(h, 'en').match(/<script>(\(function\(a\)\{if\(navigator\.webdriver\)[\s\S]*?)<\/script>/) || [])[1];
+  assert.ok(kod, 'nincs robot-ellenőrzés a hirdetéskérés előtt');
+  const futtat = webdriver => {
+    const osztaly = new Set(), win = {};
+    const aside = { classList: { add: c => osztaly.add(c) } };
+    new Function('window', 'document', 'navigator', kod)(win, { currentScript: { parentNode: aside } }, { webdriver });
+    return { keres: (win.adsbygoogle || []).length, osztaly };
+  };
+  const robot = futtat(true);
+  assert.equal(robot.keres, 0, '🔴 a robot is kér hirdetést');
+  assert.ok(robot.osztaly.has('ad-slot--ures'), '🔴 robotnál üres doboz marad');
+  for (const wd of [false, undefined]) {
+    const ember = futtat(wd);
+    assert.equal(ember.keres, 1, '🔴 az ember nem kap hirdetéskérést (webdriver=' + wd + ')');
+    assert.ok(!ember.osztaly.has('ad-slot--ures'), '🔴 embernél előre elrejtett doboz — oda a Google nem kér');
+  }
+  assert.equal((hirdetesBlokk(h, 'en').match(/\.push\(\{\}\)/g) || []).length, 1, 'pontosan EGY kérés-hely');
+});
+
 t('🫥 10-14: ÜRES DOBOZ NEM MARAD — töltve látszik; „unfilled” vagy 20 mp TELJES csend után eltűnik', () => {
   // 10-14 élőben: a személyazonosság-igazolásig a Google 280 px-t foglalt, de hirdetést
   // nem küldött → minden cikk alján üres „ADVERTISEMENT” sáv. A doboz-kód futtatva:
   const h = hirdetesBeallitas({ ads: { enabled: true, client: KLIENS, slot: '9876543210' } });
-  const kod = (hirdetesBlokk(h, 'en').match(/<script>(\(function\(a\)[\s\S]*?)<\/script>/) || [])[1];
+  const kod = (hirdetesBlokk(h, 'en').match(/<script>(\(function\(a\)\{if\(!a\|\|!window\.MutationObserver\)[\s\S]*?)<\/script>/) || [])[1];
   assert.ok(kod, 'nincs láthatóság-kezelő a dobozban');
   const futtat = () => {
     const osztaly = new Set(), attr = {};
