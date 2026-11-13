@@ -1,0 +1,87 @@
+{
+  "started_at": "2026-11-13T15:48:26.585Z",
+  "date": "2026-11-13",
+  "mode": "full-pipeline",
+  "stages": {
+    "desk": {
+      "exit_code": 0
+    },
+    "scraper": {
+      "exit_code": 0
+    },
+    "source_scout": {
+      "exit_code": 0
+    },
+    "writer": {
+      "exit_code": 0,
+      "limit_used": 0,
+      "termek_extra": 1
+    },
+    "reviewer": {
+      "exit_code": 0
+    },
+    "rework": {
+      "article": null,
+      "guide_rounds": 0,
+      "escalated": 0
+    },
+    "pairing": {
+      "exit_code": 0,
+      "new_topics": 16
+    },
+    "designer": {
+      "exit_code": 0
+    },
+    "seo": {
+      "exit_code": 0
+    },
+    "web_designer": {
+      "exit_code": 0
+    },
+    "publisher": {
+      "exit_code": 0
+    }
+  },
+  "pre_report": {
+    "date": "2026-11-13",
+    "articles_published_today": 6,
+    "news_published_today": 4,
+    "guides_published_today": 2,
+    "drafts_awaiting_writer": 28,
+    "drafts_awaiting_review": 0,
+    "rejected_today": 0,
+    "total_cost_today_usd": 0.053907003999999994,
+    "day_cost_all_usd": 0.1248,
+    "daily_limit_articles": 4,
+    "daily_limit_guides": 2,
+    "daily_limit_cost_usd": 1,
+    "cost_remaining_usd": 0.8752,
+    "articles_remaining": 0,
+    "news_extra_today": 0,
+    "termek_extra_remaining": 1,
+    "guides_remaining": 0,
+    "guides_extra_today": 0
+  },
+  "post_report": {
+    "date": "2026-11-13",
+    "articles_published_today": 7,
+    "news_published_today": 5,
+    "guides_published_today": 2,
+    "drafts_awaiting_writer": 30,
+    "drafts_awaiting_review": 0,
+    "rejected_today": 0,
+    "total_cost_today_usd": 0.064159763,
+    "day_cost_all_usd": 0.1458,
+    "daily_limit_articles": 4,
+    "daily_limit_guides": 2,
+    "daily_limit_cost_usd": 1,
+    "cost_remaining_usd": 0.8542,
+    "articles_remaining": 0,
+    "news_extra_today": 1,
+    "termek_extra_remaining": 0,
+    "guides_remaining": 0,
+    "guides_extra_today": 0
+  },
+  "finished_at": "2026-11-13T15:54:52.244Z",
+  "duration_seconds": 385.659
+}

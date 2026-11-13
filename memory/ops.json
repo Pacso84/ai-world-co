@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179436850713461",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-11T03:41:47.134Z",
-      "updated": "2026-11-11T03:41:47.346Z"
-    },
-    {
-      "id": "t179436850734828",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-11T03:41:47.348Z",
-      "updated": "2026-11-11T03:42:29.412Z"
-    },
-    {
-      "id": "t179436854941493",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-11T03:42:29.414Z",
-      "updated": "2026-11-11T03:42:29.612Z"
-    },
-    {
-      "id": "t179436854966011",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-11T03:42:29.660Z",
-      "updated": "2026-11-11T03:44:42.199Z"
-    },
-    {
-      "id": "t179436868220126",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-11T03:44:42.201Z",
-      "updated": "2026-11-11T03:47:12.696Z"
-    },
-    {
-      "id": "t179436883269962",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-11T03:47:12.699Z",
-      "updated": "2026-11-11T03:48:28.788Z"
-    },
-    {
-      "id": "t179436890882947",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-11T03:48:28.829Z",
-      "updated": "2026-11-11T03:49:16.719Z"
-    },
-    {
-      "id": "t179436895672124",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-11T03:49:16.721Z",
-      "updated": "2026-11-11T03:50:06.225Z"
-    },
-    {
-      "id": "t179436900626573",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-11T03:50:06.265Z",
-      "updated": "2026-11-11T03:50:06.480Z"
-    },
-    {
-      "id": "t179436900648423",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-11T03:50:06.484Z",
-      "updated": "2026-11-11T03:50:06.696Z"
-    },
-    {
-      "id": "t179436900677120",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-11T03:50:06.771Z",
-      "updated": "2026-11-11T03:51:38.739Z"
-    },
-    {
-      "id": "t179436909874197",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-11T03:51:38.741Z",
-      "updated": "2026-11-11T03:52:26.028Z"
-    },
-    {
       "id": "t179436914603095",
       "title": "Run designer",
       "status": "done",
@@ -479,57 +383,105 @@
       "agent": "publisher",
       "created": "2026-11-13T04:12:27.746Z",
       "updated": "2026-11-13T04:12:47.307Z"
+    },
+    {
+      "id": "t179458490664033",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-13T15:48:26.640Z",
+      "updated": "2026-11-13T15:48:26.857Z"
+    },
+    {
+      "id": "t179458490685962",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-13T15:48:26.859Z",
+      "updated": "2026-11-13T15:49:02.626Z"
+    },
+    {
+      "id": "t17945849426285",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-13T15:49:02.628Z",
+      "updated": "2026-11-13T15:52:13.635Z"
+    },
+    {
+      "id": "t179458513368734",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-13T15:52:13.687Z",
+      "updated": "2026-11-13T15:52:50.638Z"
+    },
+    {
+      "id": "t17945851706402",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-13T15:52:50.640Z",
+      "updated": "2026-11-13T15:53:15.309Z"
+    },
+    {
+      "id": "t179458519531213",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-13T15:53:15.312Z",
+      "updated": "2026-11-13T15:53:23.225Z"
+    },
+    {
+      "id": "t179458520331695",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-13T15:53:23.316Z",
+      "updated": "2026-11-13T15:53:23.525Z"
+    },
+    {
+      "id": "t179458520352761",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-13T15:53:23.527Z",
+      "updated": "2026-11-13T15:53:23.752Z"
+    },
+    {
+      "id": "t179458520379782",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-13T15:53:23.797Z",
+      "updated": "2026-11-13T15:54:05.988Z"
+    },
+    {
+      "id": "t179458524599098",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-13T15:54:05.990Z",
+      "updated": "2026-11-13T15:54:17.245Z"
+    },
+    {
+      "id": "t179458525724751",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-13T15:54:17.247Z",
+      "updated": "2026-11-13T15:54:27.003Z"
+    },
+    {
+      "id": "t179458526700576",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-13T15:54:27.005Z",
+      "updated": "2026-11-13T15:54:52.201Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179376461513861",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Use the Sleep Apnea Feature on Galaxy Ring and Galaxy Watch\"",
-      "agent": "pairing",
-      "at": "2026-11-04T03:56:55.138Z",
-      "loud": false
-    },
-    {
-      "id": "n17937649328682",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 7.4/10).",
-      "agent": "seo",
-      "at": "2026-11-04T04:02:12.868Z",
-      "loud": false
-    },
-    {
-      "id": "n179376496042125",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). **Publish summary:** The line-up is solid and ready — it flows well from foundational guidance (privacy, real-world uses) into practical tutorials across work, job searching, and personal life, which ",
-      "agent": "publisher",
-      "at": "2026-11-04T04:02:40.421Z",
-      "loud": false
-    },
-    {
-      "id": "n179376497362870",
-      "level": "success",
-      "text": "3 hír + 2 útmutató publikálva (költség: $0.0554).",
-      "agent": "ceo",
-      "at": "2026-11-04T04:02:53.628Z",
-      "loud": false
-    },
-    {
-      "id": "n179376511522618",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „Slack says MCP lets agents pull cont",
-      "agent": "fact-check",
-      "at": "2026-11-04T04:05:15.226Z",
-      "loud": false
-    },
-    {
-      "id": "n17937651269397",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Ellenőrizendő állítás: \"How to make money creating AI content\" — A cikk egy általános útmutató, amely egyáltalán nem kap",
-      "agent": "fact-check",
-      "at": "2026-11-04T04:05:26.939Z",
-      "loud": false
-    },
     {
       "id": "n179380773725997",
       "level": "info",
@@ -1281,47 +1233,57 @@
       "agent": "fact-check",
       "at": "2026-11-13T04:13:37.742Z",
       "loud": false
+    },
+    {
+      "id": "n179458520320310",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Check a Word Document for Missing Headings on Windows\"",
+      "agent": "pairing",
+      "at": "2026-11-13T15:53:23.203Z",
+      "loud": false
+    },
+    {
+      "id": "n179458525721655",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
+      "agent": "seo",
+      "at": "2026-11-13T15:54:17.216Z",
+      "loud": false
+    },
+    {
+      "id": "n179458527439473",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid — mix of practical how-tos, privacy guidance, and real-world writing tasks that everyday people can actually use. A few quick checks before publish: confirm all the tool names ",
+      "agent": "publisher",
+      "at": "2026-11-13T15:54:34.394Z",
+      "loud": false
+    },
+    {
+      "id": "n179458529224551",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0103).",
+      "agent": "ceo",
+      "at": "2026-11-13T15:54:52.245Z",
+      "loud": false
+    },
+    {
+      "id": "n179458531946980",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Behind that face si",
+      "agent": "fact-check",
+      "at": "2026-11-13T15:55:19.469Z",
+      "loud": false
+    },
+    {
+      "id": "n179458535280154",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „A small account wit",
+      "agent": "fact-check",
+      "at": "2026-11-13T15:55:52.801Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179359111140480",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-02T03:45:11.404Z"
-    },
-    {
-      "id": "m179364086888852",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „The announcement doesn't give a shipping date for the Bee devices, so check Amazon's site ”): \"Amazon introduces 2 new AI products from Bee: Bee \" — article claims no shipping date given, but source says Bee Frontier is available now and Bee Eclipse coming soon with specific prices",
-      "ref": "ARTICLE_2026-10-30T03-26-53-525Z_amazon-alexa_Amazon_introduces_2_new_AI_products_from_Bee__Bee_.json",
-      "open": true,
-      "at": "2026-11-02T17:34:28.888Z"
-    },
-    {
-      "id": "m179364094366591",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „In short:** Google Meet saves recordings, transcripts, and Gemini-written notes into the m”): \"Google Meet now organizes your meeting notes, tran\" — A cikk a régi mappastruktúrát ('Meet Recordings') és azt írja le, hogy a résztvevők csak e-mail linket kapnak, de a forrás szerint a fájlok most egy 'Google Meet' mapp",
-      "ref": "ARTICLE_2026-07-23T01-48-34-084Z_google-workspace_Google_Meet_now_organizes_your_meeting_notes__tran.json",
-      "open": true,
-      "at": "2026-11-02T17:35:43.665Z"
-    },
-    {
-      "id": "m179364134440390",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-02T17:42:24.403Z"
-    },
     {
       "id": "m179368058215315",
       "from": "ellenorzo",
@@ -2689,6 +2651,45 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-13T04:22:18.312Z"
+    },
+    {
+      "id": "m179458520320347",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to Check a Word Document for Missing Headings on Windows\"",
+      "ref": "how-to-check-a-word-document-for-missing-headings-on-windows",
+      "open": true,
+      "at": "2026-11-13T15:53:23.203Z"
+    },
+    {
+      "id": "m179458526694563",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-13T15:54:26.945Z"
+    },
+    {
+      "id": "m179458531946940",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Behind that face sit three pieces of technology working together:”): \"What Are AI Digital Humans? How Conversational AI \" — A cikk egy olyan konkrét időkeretet ad meg, amelyet a forrás nem támaszt alá, és egyszerűsíti a technológiai folyamatot az első lépés (beszédfelismerés) kihagyásával.",
+      "ref": "ARTICLE_2026-08-27T16-08-30-207Z_d-id-news_What_Are_AI_Digital_Humans__How_Conversational_AI_.json",
+      "open": true,
+      "at": "2026-11-13T15:55:19.469Z"
+    },
+    {
+      "id": "m179458535280065",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „A small account with high engagement often earns more than a big account with bored viewer”): \"How to get more views on TikTok on a small account\" — A forrás azt tárgyalja, hogy a TikTok nézetei hogyan keresnek pénzt fizetett kampánybriefeken keresztül minimális követőszám nélkül, amit a cikk egyál",
+      "ref": "ARTICLE_2026-09-15T12-59-05-469Z_picsart_How_to_get_more_views_on_TikTok_on_a_small_account.json",
+      "open": true,
+      "at": "2026-11-13T15:55:52.801Z"
     }
   ]
 }

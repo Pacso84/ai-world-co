@@ -1,0 +1,64 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.012459715000000001,
+  "at": "2026-11-13T15:54:53.507Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 2,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-10T15-57-47-706Z_microsoft-365_Improved_detection_for_improper_or_missing_heading.json",
+      "cim": "Improved detection for improper or missing headings in Word",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényszerű állítása egyezik a forrásszöveggel: verziószám, három bekezdésszabály és leírásuk, navigációs lépések és visszajelzési mechanizmus."
+    },
+    {
+      "file": "ARTICLE_2026-11-13T04-01-37-853Z_perplexity-news_Perplexity_Decider_v1_3__Training__eval__and_use_c.json",
+      "cim": "Perplexity Decider v1.3: Training, eval, and use cases - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-08-27T16-08-30-207Z_d-id-news_What_Are_AI_Digital_Humans__How_Conversational_AI_.json",
+      "cim": "What Are AI Digital Humans? How Conversational AI Avatars Transform Customer and Employee Experiences ",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „Behind that face sit three pieces of technology working together:”",
+      "modell_hu": "A cikk egy olyan konkrét időkeretet ad meg, amelyet a forrás nem támaszt alá, és egyszerűsíti a technológiai folyamatot az első lépés (beszédfelismerés) kihagyásával."
+    },
+    {
+      "file": "ARTICLE_GUIDE_build-a-reusable-alexa-morning-routine-that-runs-the-same-wa.json",
+      "cim": "Build a reusable Alexa+ morning routine that runs the same way every weekday",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-09-15T12-59-05-469Z_picsart_How_to_get_more_views_on_TikTok_on_a_small_account.json",
+      "cim": "How to get more views on TikTok on a small account",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „A small account with high engagement often earns more than a big account with bored viewer”",
+      "modell_hu": "A forrás azt tárgyalja, hogy a TikTok nézetei hogyan keresnek pénzt fizetett kampánybriefeken keresztül minimális követőszám nélkül, amit a cikk egyáltalán nem említ."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-plan-a-kids-birthday-party-step-by-step-without-losin.json",
+      "cim": "How to Plan a Kids' Birthday Party Step by Step Without Losing Your Mind",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Ez általános szülői tanács, amelyben nincsenek konkrét termékek, eszközök vagy cégek megemlítve, amelyek elavultak lehetnének."
+    }
+  ]
+}

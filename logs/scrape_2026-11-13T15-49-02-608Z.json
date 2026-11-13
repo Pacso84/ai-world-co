@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-11-13T15:48:27.067Z",
+  "feeds_total": 51,
+  "feeds_ok": 50,
+  "feeds_failed": 1,
+  "items_seen_before": 461,
+  "items_keyword_filtered": 5,
+  "candidates_for_ai": 5,
+  "ai_calls": 1,
+  "items_relevant": 3,
+  "items_saved": 3,
+  "ai_cost_usd": 0.001160965,
+  "failed_feeds": [
+    {
+      "id": "midjourney-updates",
+      "error": "Hostname/IP does not match certificate's altnames: Host: updates.midjourney.com. is not in the cert's altnames: DNS:fallback.tls.fastly.net"
+    }
+  ],
+  "finished_at": "2026-11-13T15:49:02.608Z",
+  "duration_seconds": 35.541
+}

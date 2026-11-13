@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-11-13T15:52:13.880Z",
+  "drafts_total": 1,
+  "articles_written": 1,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 1,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 1,
+    "html": 0,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.0065699999999999995,
+  "by_article": [
+    {
+      "draft": "2026-11-10T15-57-47-706Z_microsoft-365_Improved_detection_for_improper_or_missing_heading.json",
+      "writer_output": "WRITER_2026-11-10T15-57-47-706Z_microsoft-365_Improved_detection_for_improper_or_missing_heading.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 3733,
+      "source_overlap_words": 10,
+      "cost_usd": 0.0045096,
+      "duration_ms": 24201,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 1,
+  "termek_extra": 1,
+  "finished_at": "2026-11-13T15:52:50.616Z",
+  "duration_seconds": 36.736
+}

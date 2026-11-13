@@ -1,32 +1,20 @@
 {
   "_meta": {
-    "generated_at": "2026-11-10T05:10:20.512Z",
+    "generated_at": "2026-11-13T15:52:13.593Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 0,
     "uj_most": 0,
-    "ures_futasok": 2,
-    "rejected_count": 3,
+    "ures_futasok": 3,
+    "rejected_count": 1,
     "rejected_examples": [
       {
-        "name": "DeepSeek",
-        "host": "deepseek.com",
+        "name": "ChatGPT Feature Updates",
+        "host": "openai.com",
         "reason": "ezt a hírfolyamot már követjük",
         "score": 0
-      },
-      {
-        "name": "Cohere",
-        "host": "cohere.com",
-        "reason": "ezt a hírfolyamot már követjük",
-        "score": 0
-      },
-      {
-        "name": "xAI Grok",
-        "host": "x.ai",
-        "reason": "pont 94 < 100",
-        "score": 94
       }
     ]
   },
