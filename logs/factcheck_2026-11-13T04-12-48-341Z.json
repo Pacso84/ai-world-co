@@ -1,0 +1,63 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.009323655,
+  "at": "2026-11-13T04:12:48.341Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_planning-a-weekend-trip-with-kimi-one-question-at-a-time.json",
+      "cim": "Planning a Weekend Trip with Kimi, One Question at a Time",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-explain-a-spreadsheet-formula-in-plain-english-and-fi.json",
+      "cim": "How to Explain a Spreadsheet Formula in Plain English and Fix It When It Breaks",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató pontos általános tanácsokat ad az AI asszisztensek használatáról, helyes technikai részletekkel a gyakori táblázatkezelési hibákról és korlátozásokról."
+    },
+    {
+      "file": "ARTICLE_2026-11-13T04-01-37-853Z_samsung-newsroom_Samsung_Announces_December_Release_for_Intelligent.json",
+      "cim": "Samsung Announces December Release for Intelligent Eyewear, Bringing a Smarter Way To See the World",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben szereplő állítások mindegyike megegyezik a hivatalos forrásszöveggel."
+    },
+    {
+      "file": "ARTICLE_2026-11-13T04-01-37-853Z_salesforce_New_Data__Holiday_Shoppers_Will_Rely_on_Agents__Re.json",
+      "cim": "New Data: Holiday Shoppers Will Rely on Agents. Retailers Must Be Ready.",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben szereplő összes konkrét ténykélt állítást a forrásszöveg alátámasztja."
+    },
+    {
+      "file": "ARTICLE_2026-11-13T04-01-37-853Z_perplexity-news_Perplexity_Decider_v1_3__Training__eval__and_use_c.json",
+      "cim": "Perplexity Decider v1.3: Training, eval, and use cases - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-11-13T04-01-19-037Z_google-gemini_Introducing_Gemini_4_Hydrogen.json",
+      "cim": "Introducing Gemini 4 Hydrogen",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „Google says it now powers Search globally and is available in the Gemini app and Chrome's ”",
+      "modell_hu": "A Chrome forrás általános Gemini-funkciót ír le, nem kifejezetten a Gemini 4 Hydrogent"
+    }
+  ]
+}

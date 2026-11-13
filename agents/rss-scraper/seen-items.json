@@ -1,7 +1,5 @@
 {
   "openai-blog": [
-    "https://openai.com/index/endava-frontiers",
-    "https://openai.com/index/chatgpt-memory-dreaming",
     "https://openai.com/index/biodefense-in-the-intelligence-age",
     "https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind",
     "https://openai.com/index/wasmer",
@@ -299,7 +297,9 @@
     "https://openai.com/index/singapore-airlines-travel-work",
     "https://openai.com/index/cogent-security",
     "https://openai.com/business/customer-stories/holidays-extras-codex",
-    "https://openai.com/index/children-first-declaration"
+    "https://openai.com/index/children-first-declaration",
+    "https://openai.com/business/customer-stories/amplitude",
+    "https://openai.com/business/customer-stories/gondola"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -359,7 +359,8 @@
     "https://deepmind.google/blog/introducing-alphaproof-code/",
     "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
     "https://deepmind.google/blog/gemini-4-carbon-is-now-available/",
-    "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/"
+    "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/",
+    "https://deepmind.google/blog/introducing-gemini-4-hydrogen/"
   ],
   "google-ai-blog": [
     "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
@@ -421,7 +422,8 @@
     "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/",
     "https://blog.google/company-news/outreach-and-initiatives/arts-culture/esther-mahlangu/",
     "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
-    "https://blog.google/innovation-and-ai/models-and-research/google-labs/tabletop/"
+    "https://blog.google/innovation-and-ai/models-and-research/google-labs/tabletop/",
+    "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/"
   ],
   "meta-ai": [
     "https://about.fb.com/news/2026/06/creator-assistant-more-languages-for-ai-translations-on-facebook/",
@@ -1045,7 +1047,8 @@
     "https://www.microsoft.com/en-us/research/blog/from-synthetic-enterprise-data-evaluations-to-real-microsoft-copilot-ai-confidence/",
     "https://www.microsoft.com/en-us/research/podcast/learn-the-rules-the-hacker-mindset/",
     "https://www.microsoft.com/en-us/research/blog/formally-verifying-agent-written-full-stack-web-apps-with-pdd-kit/",
-    "https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/"
+    "https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/",
+    "https://www.microsoft.com/en-us/research/podcast/microsoft-research-focus-edition-98/"
   ],
   "github-ai": [
     "https://github.blog/security/making-secret-scanning-more-trustworthy-reducing-false-positives-at-scale/",
@@ -1097,16 +1100,10 @@
     "https://github.blog/ai-and-ml/githubs-model-for-secret-detection-finding-more-secrets-with-less-noise/",
     "https://github.blog/ai-and-ml/github-copilot/how-to-continue-a-github-copilot-app-session-in-vs-code/",
     "https://github.blog/ai-and-ml/github-copilot/how-3-java-champions-are-using-github-copilot-for-increased-productivity/",
-    "https://github.blog/ai-and-ml/github-copilot/beyond-code-generation-a-developers-guide-to-agentic-engineering/"
+    "https://github.blog/ai-and-ml/github-copilot/beyond-code-generation-a-developers-guide-to-agentic-engineering/",
+    "https://github.blog/ai-and-ml/github-copilot/build-once-run-on-any-agent-a-practical-guide-to-agent-skills/"
   ],
   "aws-ml": [
-    "https://aws.amazon.com/blogs/machine-learning/govern-ai-agent-tool-access-with-amazon-bedrock-agentcore-gateway/",
-    "https://aws.amazon.com/blogs/machine-learning/reduce-rag-costs-on-amazon-bedrock-with-query-aware-compression/",
-    "https://aws.amazon.com/blogs/machine-learning/agentic-data-operations-platform-adop-data-engineering-into-hours/",
-    "https://aws.amazon.com/blogs/machine-learning/accelerating-aircraft-ifec-diagnostics-with-agentic-ai-on-aws/",
-    "https://aws.amazon.com/blogs/machine-learning/agentic-resource-discovery-ard-an-open-specification-for-agent-discovery/",
-    "https://aws.amazon.com/blogs/machine-learning/building-a-restaurant-telephony-ai-host-with-amazon-connect/",
-    "https://aws.amazon.com/blogs/machine-learning/ai-powered-metadata-correction-and-harmonization/",
     "https://aws.amazon.com/blogs/machine-learning/introducing-new-ray-capabilities-on-sagemaker-hyperpod/",
     "https://aws.amazon.com/blogs/machine-learning/democratizing-institutional-knowledge-building-an-ai-powered-knowledge-management-system-with-aws/",
     "https://aws.amazon.com/blogs/machine-learning/agentic-observability-with-amazon-opensearch-service-mcp-apps/",
@@ -1399,7 +1396,14 @@
     "https://aws.amazon.com/blogs/machine-learning/migrate-to-amazon-bedrock-managed-knowledge-base-with-your-coding-agent/",
     "https://aws.amazon.com/blogs/machine-learning/fine-grained-access-control-for-amazon-bedrock-managed-knowledge-base-tools/",
     "https://aws.amazon.com/blogs/machine-learning/build-composable-interoperable-multi-agent-systems-with-a2a-on-aws/",
-    "https://aws.amazon.com/blogs/machine-learning/from-prototype-to-production-engineering-agents-with-agent-dlc/"
+    "https://aws.amazon.com/blogs/machine-learning/from-prototype-to-production-engineering-agents-with-agent-dlc/",
+    "https://aws.amazon.com/blogs/machine-learning/deploy-frontier-ai-models-on-aws-trainium-with-sglang-neuron/",
+    "https://aws.amazon.com/blogs/machine-learning/how-natera-designed-an-agentic-ai-system-for-lab-ops-with-amazon-bedrock-agentcore/",
+    "https://aws.amazon.com/blogs/machine-learning/four-amazon-bedrock-inference-choices-that-affect-cost/",
+    "https://aws.amazon.com/blogs/machine-learning/tokenomics-at-scale-track-and-cap-amazon-bedrock-spend-per-iam-principal-with-cur-2-0-and-aws-budgets/",
+    "https://aws.amazon.com/blogs/machine-learning/optimizing-cost-per-task-and-proving-agent-roi-on-amazon-bedrock/",
+    "https://aws.amazon.com/blogs/machine-learning/building-a-self-service-llm-gateway-with-amazon-bedrock-and-litellm/",
+    "https://aws.amazon.com/blogs/machine-learning/run-agents-securely-and-efficiently-with-the-next-generation-agentcore-runtime/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -1565,7 +1569,8 @@
     "https://machinelearning.apple.com/research/pixels-tokens-active-learning",
     "https://machinelearning.apple.com/research/gating-memorization-in-context",
     "https://machinelearning.apple.com/research/evaluating-evaluators-llm-judges",
-    "https://machinelearning.apple.com/research/weighted-state-souping"
+    "https://machinelearning.apple.com/research/weighted-state-souping",
+    "https://machinelearning.apple.com/research/theoretical-limits-alignment"
   ],
   "salesforce": [
     "https://www.salesforce.com/news/stories/salesforce-closing-ai-skills-gap/",
@@ -1681,7 +1686,8 @@
     "https://www.salesforce.com/news/press-releases/2026/11/10/missionforce-achieves-awardable-status/",
     "https://www.salesforce.com/news/stories/how-ai-agents-improve-crm-data-accuracy/",
     "https://www.salesforce.com/news/stories/agents-that-improve-ai-models/",
-    "https://www.salesforce.com/news/stories/visual-ai-assistants-ivg-lessons/"
+    "https://www.salesforce.com/news/stories/visual-ai-assistants-ivg-lessons/",
+    "https://www.salesforce.com/news/stories/ai-first-holiday/"
   ],
   "sap": [
     "https://news.sap.com/2026/07/advanced-success-plan-for-sap-cx-offers-utilities/",
@@ -1852,12 +1858,6 @@
     "https://news.sap.com/2026/11/hybrid-ai-buyer-customer-experience-research-data-journey-progress/"
   ],
   "databricks": [
-    "https://www.databricks.com/blog/how-english-office-students-leverages-databricks-enhance-higher-education-standards-and-drive",
-    "https://www.databricks.com/blog/test-bench-lakehouse-how-avl-modernizes-measurement-data-analytics-impulse",
-    "https://www.databricks.com/blog/how-we-keep-gpus-reliable-across-databricks-ai",
-    "https://www.databricks.com/blog/granular-usage-attribution-dbt-pipelines-query-tags",
-    "https://www.databricks.com/blog/forecasting-speed-modern-retail",
-    "https://www.databricks.com/blog/inside-infrastructure-strategies-propelling-ai-leaders",
     "https://www.databricks.com/blog/3-questions-answer-take-ai-experimentation-impact",
     "https://www.databricks.com/blog/scaling-security-alert-triage-specialized-agents-databricks",
     "https://www.databricks.com/blog/openai-and-databricks-dais-2026-making-enterprise-ai-real",
@@ -2151,7 +2151,13 @@
     "https://www.databricks.com/blog/genie-genie-ontology-delivers-16-accuracy-less-half-tokens",
     "https://www.databricks.com/blog/genie-one-ai-cowork-home-everyone",
     "https://www.databricks.com/blog/genie-slack-now-generally-available-governed-ai-cowork-right-where-work-happens",
-    "https://www.databricks.com/blog/how-block-powers-collaborative-ai-agents-buzz-and-unity-gateway"
+    "https://www.databricks.com/blog/how-block-powers-collaborative-ai-agents-buzz-and-unity-gateway",
+    "https://www.databricks.com/blog/how-constellation-building-governed-data-foundation-databricks",
+    "https://www.databricks.com/blog/eclipse-aerospace-simplifies-flight-data-ingestion-databricks",
+    "https://www.databricks.com/genie-migrate-for-lakehouse-generally-available",
+    "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill",
+    "https://www.databricks.com/blog/dispelling-ltap-myths",
+    "https://www.databricks.com/blog/how-h6ai-builds-ai-powered-financial-automation-lakebase-postgres"
   ],
   "snowflake": [
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-postgres-ml-online-feature-store",
@@ -2274,7 +2280,9 @@
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/expedition-ai-sales-leaders-recap",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-sales-transformation-expedition",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/hidden-cost-of-moving-data",
-    "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-cost-management-beyond-cost-per-token"
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-cost-management-beyond-cost-per-token",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/securing-agentic-enterprise",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/inkling-2-small-snowflake-cortex-training"
   ],
   "together": [
     "https://www.together.ai/blog/announcing-our-series-c",
@@ -2449,7 +2457,8 @@
     "https://ntt-research.com/secure-multiparty-computation/",
     "https://ntt-research.com/can-scientists-build-a-living-heart-that-grows-with-a-child/",
     "https://ntt-research.com/how-can-we-build-more-trustworthy-computing-three-ntt-research-papers-at-ieee-focs-2026-advance-randomness-quantum-software-protection-and-succinct-cryptography/",
-    "https://ntt-research.com/cardiovascular-bio-digital-twin/"
+    "https://ntt-research.com/cardiovascular-bio-digital-twin/",
+    "https://ntt-research.com/ntt-research-rapidly-creates-cardiovascular-bio-digital-twins-using-a-precomputed-virtual-population/"
   ],
   "deeparteffects": [
     "https://www.deeparteffects.com/blog/best-offline-ai-image-generators-2026/",
@@ -2521,7 +2530,8 @@
     "https://cohere.com/blog/rerank-5",
     "https://cohere.com/blog/cohere-canada-commitment",
     "https://cohere.com/blog/open-source-model-vault",
-    "https://cohere.com/blog/embed-rerank-5-openrouter"
+    "https://cohere.com/blog/embed-rerank-5-openrouter",
+    "https://cohere.com/blog/cohere-welcomes-jaya-baloo-as-first-ciso"
   ],
   "anthropic-blog": [
     "https://www.anthropic.com/news/anthropic-economic-index-connector",
@@ -2786,7 +2796,8 @@
     "https://news.google.com/rss/articles/CBMihwFBVV95cUxONUQ2VVZ6dXFRQW5PX1JsSjhzS1dHdU1MXzNLOUpXa2p5RWdfc09MNlRoWXEtQVdEQy1rQlA0UHA3VmR6UHdpdTBLS0dxRmlFWHNzajdaNWdaQy02dU9ZWDllU0RMWUVKVVFMRUp4UTVFeDlHY1pLMFp3SlhnZ2JhVENOLUVhNTQ?oc=5",
     "https://news.google.com/rss/articles/CBMirAFBVV95cUxOdUJWUHZSeDRpaHc3Zjk0SmRDU1Ztb01WTnd6UklTVWNaVzVEbmVfWjk1M01NcnZpNnoyakZPZkFjdDduVlBFZWlaVUFGMTR3XzNDN1hUMHNxMURhbmo3a3lBcFlXbFpKRmhZQTdMV2RGajA4OFFBRW54elpNZVkzcjd5OXg0bGFaSy1YZ2lSbnVnREdCSW52NFpScnVXTm01MWhZcmhBS05lTlBw?oc=5",
     "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9iNk83MlE0Mkc5OWgtWGM0SFhxeUMzT19YQWdsX0pRVnVFbks4WWZwVmhvbS1WS05QY1ZScUFYVlV5Wll0TzlTeC1aQkhpMWc?oc=5",
-    "https://news.google.com/rss/articles/CBMijwFBVV95cUxNc1htRl9jWDhJSmdLM3VmTkViUW5Ka3dfMFpVbFBPc1c4NmtHTFBockdNLVFIWGlOWnQzWFdtTVMtUFlib3NJN1pLUDZzanJrUTdUOTJPQjRuaTl5VjBsWGpiZWpWbl92SXZLTW1ZN3o5TmQ3b3JqMVZvdjhjYTVxNXhaZU5BYlZ5WXhUSkZfaw?oc=5"
+    "https://news.google.com/rss/articles/CBMijwFBVV95cUxNc1htRl9jWDhJSmdLM3VmTkViUW5Ka3dfMFpVbFBPc1c4NmtHTFBockdNLVFIWGlOWnQzWFdtTVMtUFlib3NJN1pLUDZzanJrUTdUOTJPQjRuaTl5VjBsWGpiZWpWbl92SXZLTW1ZN3o5TmQ3b3JqMVZvdjhjYTVxNXhaZU5BYlZ5WXhUSkZfaw?oc=5",
+    "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5NNXZISW9lcy1rMmhRLWJLQi0wdngteUF3RmtfQ2haNnpLRXhxNE5RdFJNS0h5empXdTkyTW92N0k5VHUzNDFENUJoRndWa2M0bGRkMHhpOHMtOVFabE9zLTREcw?oc=5"
   ],
   "deepseek-news": [
     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9zbUkzc1FDYmZIVjVRdW5wakpEOEgwSHFHZ05zNDhZLWwydGFjcEVtTVdEZW50RWw4MF9sVlYtMDhOb3RNdDdLM1VDOGgxTEZOWnRXZXhvTGVVQ25Rbk1uRg?oc=5",
@@ -3444,7 +3455,8 @@
     "https://zapier.com/blog/workato-pricing",
     "https://zapier.com/blog/n8n-pricing",
     "https://zapier.com/blog/tray-pricing",
-    "https://zapier.com/blog/uipath-pricing"
+    "https://zapier.com/blog/uipath-pricing",
+    "https://zapier.com/blog/lindy-pricing"
   ],
   "dropbox-blog": [
     "  https://blog.dropbox.com/topics/company/dropbox-announces-q1-2026-results ",
@@ -3564,7 +3576,8 @@
     "https://news.samsung.com/global/beyond-the-medal-samsung-helps-young-athletes-explore-what-comes-next-at-dakar-2026",
     "https://news.samsung.com/global/samsung-gallery-makes-it-easier-to-access-photos-and-videos-across-galaxy-devices",
     "https://news.samsung.com/global/samsung-and-ioc-back-young-innovators-at-africas-first-olympic-games",
-    "https://news.samsung.com/global/finding-the-perfect-tv-a-guide-to-samsung-tvs"
+    "https://news.samsung.com/global/finding-the-perfect-tv-a-guide-to-samsung-tvs",
+    "https://news.samsung.com/global/samsung-announces-december-release-for-intelligent-eyewear-bringing-a-smarter-way-to-see-the-world"
   ],
   "deepseek-sitemap": [
     "https://www.deepseek.com/en/news/deepseek-v4-1-flash/"
@@ -3604,7 +3617,11 @@
     "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/",
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark/",
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
-    "https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/"
+    "https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/",
+    "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/",
+    "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/",
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
+    "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome/"
   ],
   "google-photos": [
     "https://blog.google/products-and-platforms/products/photos/halloween-tricks-2026/",
@@ -3629,7 +3646,8 @@
     "https://blog.google/innovation-and-ai/models-and-research/google-labs/ai-startup-support-program-japan/",
     "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
     "https://blog.google/innovation-and-ai/models-and-research/google-labs/dreambeans/",
-    "https://blog.google/innovation-and-ai/models-and-research/google-labs/tabletop/"
+    "https://blog.google/innovation-and-ai/models-and-research/google-labs/tabletop/",
+    "https://blog.google/innovation-and-ai/models-and-research/google-labs/new-google-flow-tools/"
   ],
   "amazon-alexa": [
     "https://www.aboutamazon.com/news/devices/new-alexa-devices-2026?utm_source=rss",
@@ -3656,7 +3674,8 @@
     "https://blogs.microsoft.com/blog/2026/10/20/advancing-digital-sovereignty-with-greater-control-and-choice/",
     "https://blogs.microsoft.com/blog/2026/10/19/securing-the-agentic-insider/",
     "https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/",
-    "https://blogs.microsoft.com/blog/2026/11/12/scaling-ai-value-without-losing-control-lessons-from-frontier-firms/"
+    "https://blogs.microsoft.com/blog/2026/11/12/scaling-ai-value-without-losing-control-lessons-from-frontier-firms/",
+    "https://blogs.microsoft.com/blog/2026/11/12/from-ai-ambition-to-business-impact/"
   ],
   "github-copilot-changelog": [
     "https://github.blog/changelog/2026-10-28-github-enterprise-now-includes-access-to-github-copilot",
@@ -3733,7 +3752,9 @@
     "https://brave.com/blog/containers/",
     "https://brave.com/blog/claude-cowork-amazon-bedrock-brave-mcp/",
     "https://brave.com/blog/browser-ai-e2ee/",
-    "https://brave.com/blog/google-goto-anti-scraping/"
+    "https://brave.com/blog/google-goto-anti-scraping/",
+    "https://brave.com/blog/search-api-agentic-payments/",
+    "https://brave.com/privacy-updates/40-remove-tracking-metadata/"
   ],
   "proton-lumo": [
     "https://proton.me/blog/privacy-while-traveling",
@@ -3755,7 +3776,8 @@
     "https://proton.me/business/blog/data-security-risks-small-business",
     "https://proton.me/blog/how-proton-keeps-your-data-secure",
     "https://proton.me/blog/venmo-vs-cash-app-privacy",
-    "https://proton.me/business/blog/sim-swapping"
+    "https://proton.me/business/blog/sim-swapping",
+    "https://proton.me/blog/apple-new-features-privacy-concerns"
   ],
   "elevenlabs": [
     "https://elevenlabs.io/blog/what-is-call-transcription",
@@ -3787,6 +3809,7 @@
     "https://elevenlabs.io/blog/nyc-summit",
     "https://elevenlabs.io/blog/nvidia",
     "https://elevenlabs.io/blog/voice-cloning-for-content-creators",
-    "https://elevenlabs.io/blog/impact-nyc-summit"
+    "https://elevenlabs.io/blog/impact-nyc-summit",
+    "https://elevenlabs.io/blog/customer-service-skills"
   ]
 }

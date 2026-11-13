@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-11-13T04:04:23.329Z",
+  "total": 4,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.01070586,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-11-13T04-01-19-037Z_google-gemini_Introducing_Gemini_4_Hydrogen.json",
+      "article": "ARTICLE_2026-11-13T04-01-19-037Z_google-gemini_Introducing_Gemini_4_Hydrogen.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0012936
+    },
+    {
+      "writer": "WRITER_2026-11-13T04-01-37-853Z_perplexity-news_Perplexity_Decider_v1_3__Training__eval__and_use_c.json",
+      "article": "ARTICLE_2026-11-13T04-01-37-853Z_perplexity-news_Perplexity_Decider_v1_3__Training__eval__and_use_c.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00124971
+    },
+    {
+      "writer": "WRITER_2026-11-13T04-01-37-853Z_salesforce_New_Data__Holiday_Shoppers_Will_Rely_on_Agents__Re.json",
+      "article": "ARTICLE_2026-11-13T04-01-37-853Z_salesforce_New_Data__Holiday_Shoppers_Will_Rely_on_Agents__Re.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00137529
+    },
+    {
+      "writer": "WRITER_2026-11-13T04-01-37-853Z_samsung-newsroom_Samsung_Announces_December_Release_for_Intelligent.json",
+      "article": "ARTICLE_2026-11-13T04-01-37-853Z_samsung-newsroom_Samsung_Announces_December_Release_for_Intelligent.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00115395
+    }
+  ],
+  "finished_at": "2026-11-13T04:07:27.281Z",
+  "duration_seconds": 183.952
+}

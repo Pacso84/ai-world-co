@@ -1,0 +1,79 @@
+{
+  "_meta": {
+    "written_at": "2026-11-13T04:03:41.304Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0040376,
+    "original_draft": "2026-11-13T04-01-19-037Z_google-gemini_Introducing_Gemini_4_Hydrogen.json",
+    "source_id": "google-gemini",
+    "source_name": "Google Gemini termékhírek (hivatalos, blog.google)",
+    "source_link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
+    "source_links": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
+      "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/",
+      "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/",
+      "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome/"
+    ],
+    "source_snippet_len": 521,
+    "source_text_via": [
+      "html",
+      "html",
+      "html",
+      "html"
+    ],
+    "source_text_len": 6862,
+    "source_text_key": "1ccf412eac755059",
+    "source_overlap_words": 13,
+    "merged_from": 4,
+    "merged_theme": "Gemini 4 Hydrogen launch and features",
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-13T04:05:17.140Z",
+    "slug": "gemini-4-hydrogen-what-changes-in-search-chrome-and-everyday-coding",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 777
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent article that hits all quality markers: friendly teaching tone, accessible language for everyday people, clean US English, proper structure with hook and 'What this means for you' section, all claims properly attributed to Google, no clichés, and a helpful disclaimer for sensitive topics. Ready to publish.",
+      "_aiCost": 0.0012936,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-13T04:07:32.188Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-search-years-of-your-gmail-with-plain-english-questio",
+    "image_v": 2,
+    "image_at": "2026-11-13T04:10:30.496Z",
+    "seo": {
+      "meta_description": "Gemini 4 Hydrogen brings faster Search, Chrome summaries, and everyday AI assistance. Here's what's changing and what it means for you.",
+      "keywords": [
+        "Gemini 4 Hydrogen",
+        "Google AI updates",
+        "Gemini Chrome integration",
+        "how to use Gemini AI",
+        "Google Search AI features",
+        "Gemini app features",
+        "AI writing assistant Google"
+      ],
+      "seo_score": 6,
+      "suggestions": [
+        "Add specific use-case examples (e.g., explaining a product spec, summarizing a report) to help readers understand real-world applications",
+        "Include a 'How to access Gemini 4 Hydrogen' section with steps for different platforms (Search, Chrome, Gemini app)",
+        "Expand on the coding features mentioned in the title since that section appears cut off in the excerpt"
+      ],
+      "optimised_at": "2026-11-13T04:11:31.569Z"
+    },
+    "fact_verified_at": "2026-11-13T04:13:37.737Z"
+  },
+  "article_markdown": "---\ntitle: \"Gemini 4 Hydrogen: What Changes in Search, Chrome, and Everyday Coding\"\nsubtitle: \"Google's new model is built for quick, everyday tasks, and it is already reaching Search and Chrome for many people.\"\ncategory: \"ai-news\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"gemini\", \"google-search\", \"google-chrome\", \"ai-models\", \"getting-started\"]\n---\n\n# Gemini 4 Hydrogen: What Changes in Search, Chrome, and Everyday Coding\n\n> **In short:** Google announced Gemini 4 Hydrogen on November 12, 2026, a model built for fast, everyday tasks. Google says it now powers Search globally and is available in the Gemini app and Chrome's side panel, so quick questions and page summaries should feel faster and more detailed.\n\nYou probably have a dozen small questions a day: what a product's specs mean, whether a trip idea fits your budget, or what a 40-page report is really saying. Google's new model is aimed at exactly that kind of quick, everyday work.\n\n## What Gemini 4 Hydrogen is\n\nGoogle's Gemini family includes several models, and each one has a different job. Google describes Gemini 4 Carbon and Gemini 4 Argon as its frontier models, the ones built for deep, long reasoning on hard problems. Hydrogen is the lighter, faster option. Google says it is built for rapid execution, meaning it finishes everyday tasks quickly and efficiently.\n\nGoogle calls this kind of work \"agentic workflows.\" An agent is an AI that can take several steps to finish a job for you, rather than answering one question and stopping. Think of it as the difference between asking a friend for directions and having them actually drive you there.\n\n## Where you'll notice it\n\n**Google Search.** Google says Hydrogen is now rolling out globally in Search, and that it helps the system understand complex, multi-part questions. You can ask about travel, shopping, or a hobby in ordinary language, and the answers can include:\n\n- Structured responses and comparison tables\n- Helpful images and links to more relevant websites\n- Custom tools for specific tasks\n\nGoogle also says these answers work in all the languages its AI models currently support.\n\n💬 Try a question with several parts at once, like: \"I have a long weekend in Chicago, I like jazz and cheap food, and I don't want to drive. What should I plan?\"\n\n**Gemini in Chrome.** You can get answers without leaving the page you're on. Click the Gemini icon in your Chrome toolbar to open the side panel. From there, you can ask Gemini to summarize a dense report, compare product details, or explain a complicated topic in plain language, all while keeping your place on the page.\n\n💬 Open a long article, then ask: \"Summarize this in five bullet points, then explain the main argument like I'm new to the topic.\"\n\n**Developers and coding.** Google says Hydrogen handles repository coding (working with the files that make up a software project), debugging, and interactive web development. For developers, it can run on its own or alongside the frontier models, and Google describes a feature called Orchestrator that switches between models within a single task. You do not need to understand any of this to use Search or Chrome.\n\n## What this means for you\n\n- **In everyday life**: Use Search and Chrome for the questions that used to take five tabs. Ask one complete question instead of several short ones, and you will likely get a clearer answer.\n- **For your business or work**: If your team uses Gemini for business, Google says Hydrogen is available there too. Start with routine tasks like summarizing meeting notes or comparing vendor documents, and check the results before you share them.\n- **If you're just getting started**: Open Google Search and ask about something you already know well. You will quickly see how the answer is organized and what it leaves out.\n- **If you already use it**: Pair the Chrome side panel with your own notes. Paste a draft next to a source article and ask Gemini to point out claims the source does not support.\n\nGoogle's own description says Hydrogen is meant to be fast and efficient, not a replacement for careful reading. Verify anything important, especially health, money, or legal questions, with a qualified professional.\n\n## Wrap-up\n\nGemini 4 Hydrogen is Google's model for quick, practical work: multi-part searches, page summaries in Chrome, and everyday coding tasks. Google says it is available across Search, the Gemini app, and several developer tools, and paid subscribers can access it in more places. For plan details and pricing, check Google's official pricing page. Your next step is simple: open Google Search today and ask one question that has three parts. See how the answer changes.",
+  "original_title": "Introducing Gemini 4 Hydrogen"
+}

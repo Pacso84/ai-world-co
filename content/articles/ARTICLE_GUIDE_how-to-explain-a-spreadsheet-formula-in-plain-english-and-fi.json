@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-explain-a-spreadsheet-formula-in-plain-english-and-fi",
+    "company": "",
+    "tool": "",
+    "icon": "📊",
+    "level": "intermediate",
+    "source_news": null,
+    "official_sources": null,
+    "trend": null,
+    "extra_slot": null,
+    "written_at": "2026-11-13T04:08:17.920Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0058435,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-11-13T04:09:25.442Z",
+    "slug": "how-to-explain-a-spreadsheet-formula-in-plain-english-and-fix-it-when-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1597
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The guide is well-structured, friendly, and explains technical terms where they appear. It teaches everyday people a repeatable method for getting AI help with broken spreadsheet formulas. The step-by-step instructions are specific and actionable, with clear success indicators and helpful example prompts throughout. The article avoids prohibited content, uses correct US English, and maintains a respectful tone that builds reader confidence.",
+      "_aiCost": 0.00161469,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-13T04:11:06.344Z",
+    "seo": {
+      "meta_description": "Learn to use AI to translate spreadsheet formulas into plain English, find the error, and fix it—without jargon. Fast, simple steps.",
+      "keywords": [
+        "spreadsheet formula not working",
+        "how to fix Excel formula error",
+        "explain Excel formula in plain English",
+        "AI spreadsheet helper",
+        "Excel formula troubleshooting",
+        "spreadsheet formula guide",
+        "fix broken formula",
+        "understand spreadsheet formulas"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add an example with a real common error like #REF! or #VALUE! to improve ranking for those specific searches",
+        "Include the phrase 'Excel formula help' in the article body for better keyword coverage",
+        "Consider adding a brief comparison or list of AI tools that can help with formula explanation"
+      ],
+      "optimised_at": "2026-11-13T04:12:06.633Z"
+    },
+    "fact_verified_at": "2026-11-13T04:12:57.331Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Explain a Spreadsheet Formula in Plain English and Fix It When It Breaks\"\nsubtitle: \"Paste a formula, a few sample rows and the error message, then get a plain-language breakdown and a fix you test on a copy first.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"\"\ntool: \"\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"spreadsheets\", \"formulas\", \"prompts\", \"troubleshooting\", \"ai-assistant\"]\n---\n\n# How to Explain a Spreadsheet Formula in Plain English and Fix It When It Breaks\n\n> **In short:** Give an AI chat assistant your formula, a few sample rows and the error you see, then ask for a plain-English breakdown and one fix. Test every fix on a copy of your file. The assistant cannot see your spreadsheet unless you paste the details in.\n\nA spreadsheet formula is a short instruction, like `=A2*B2`, that tells the program what to calculate. When someone else wrote it, or when it worked yesterday and stopped today, it can look like a foreign language. In this guide you will learn a repeatable way to ask an AI assistant to translate the formula into plain words, find the likely cause of an error, and suggest a fix. You will also save your best instructions so you can reuse them. This works for Excel, Google Sheets and similar apps.\n\n## Before you start\n- An account with any AI chat assistant. You already know how to start a chat and send a message, so we will skip that part.\n- Your spreadsheet app, open to the file with the broken formula. Excel and Google Sheets both work for this guide.\n- About 20 to 30 minutes. Some assistants limit how much text you can paste in one chat. If yours cuts you off, a paid plan may allow longer messages, so check what yours offers.\n\n## Step 1 — Gather three ingredients and make a test copy\nClick the cell with the broken formula. Its text appears in the formula bar, the long box above the grid of cells. Copy that text. Next, pick three to five rows that show the inputs and the result you expected. Copy those values too, and write the expected answer next to each row. Finally, copy the exact error you see, such as #N/A or #VALUE!, or describe what the cell shows.\n\nBefore you share anything, replace real names, account numbers, addresses and other personal details with placeholders like \"Customer A\" or \"Account 1.\" Then make a copy of the whole file. Look for \"Make a copy\" or \"Save as\" under the File menu. If you can't find either, download the file as a new spreadsheet. Work on that copy from now on.\n\nYou'll know it worked when you have a copy of the file open, with the formula text and sample rows saved somewhere nearby.\n\n## Step 2 — Ask for a piece-by-piece breakdown\nOpen a new chat with your AI assistant. Paste your instructions in plain sentences. Asking for a piece-by-piece explanation works better than asking \"what does this do?\" because you get each part explained in order. Look at the reply. You should see a short explanation for each function, such as \"this part looks up a value\" or \"this part adds numbers together.\" If the assistant uses a word you don't know, such as \"argument\" (the input a function needs), ask it to explain that word in one sentence.\n\n💬 Example: \"Explain this spreadsheet formula to someone who has never written one: [paste your formula here]. Go piece by piece, and use this sample row to show what each part does: [paste one sample row here].\"\n\nYou'll know it worked when each part of the formula has its own plain-English sentence, and the example row's result matches what the formula should produce.\n\n## Step 3 — Ask for the likely cause of the error\nStay in the same chat so the assistant keeps the context from Step 2. Now ask for diagnosis, not a fix yet. Give it the error and the sample rows, including the rows that work and the ones that don't. Most formula errors come from a few common causes: a reference pointing at the wrong column, numbers stored as text, extra spaces, or a range that doesn't cover the rows you need. Ask the assistant to rank its guesses and tell you how to check each one yourself.\n\n💬 Example: \"This formula shows [error message you see] for some rows. Using the sample rows below, list the three most likely causes, ranked, and tell me how to check each one in my spreadsheet: [paste your sample rows here].\"\n\nIf the answer sounds certain but doesn't match your file, that's a warning sign. Reply with what you actually see in one cell, and ask it to recheck.\n\nYou'll know it worked when you have a short, ranked list of causes, each with a check you can perform yourself.\n\n## Step 4 — Ask for one corrected version and a plain explanation\nNow ask for the fix. Ask for only one corrected formula, and ask the assistant to explain what changed in plain words. Plain-language explanations are the part most people skip, and they matter. If you can't say why the new formula is different, you can't tell whether it is right. Also remind the assistant what the cell should show, so it doesn't optimize for something else.\n\n💬 Example: \"Please give me one corrected version of the formula, then explain in plain words what you changed and why. The cell should show [describe what the cell should show] for every row.\"\n\nIf the assistant gives you several versions or skips the explanation, reply: \"Give me only one version, and explain each change in one sentence.\"\n\nYou'll know it worked when you have a single new formula and a short list of changes you can understand.\n\n## Step 5 — Test the fix on your copy\nPaste the corrected formula into one cell in your copy file, on the row you used as a sample. Compare the result with the expected answer you wrote down in Step 1. If it matches, copy the formula down to a few more rows and check those too. Look for rows that are unusual, such as blank entries or very large numbers, because those often reveal problems that the sample rows didn't.\n\nIf the result is still wrong, don't just try again. Tell the assistant exactly what happened, in the same chat. This back-and-forth is called iteration, which simply means improving an answer by giving feedback on each round.\n\n💬 Example: \"Still wrong. For the row with [your sample input], the cell shows [what the cell shows] but should show [expected result]. Revise the formula and explain what this change fixes.\"\n\nYou'll know it worked when the formula gives the expected answer on every sample row you tested, and on a few other rows as well.\n\n## Step 6 — Save your instructions for next time\nOnce a prompt works, you shouldn't have to rebuild it from scratch. Copy your best prompt and a short template into a note on your phone or computer. Then look in your assistant's settings or sidebar for a place to save standing instructions, or a \"projects\" area for recurring work. Many assistants offer something like this, but the names and locations vary, and some options may need a paid plan. If you can't find one, paste the template at the start of each new chat.\n\n💬 Example: \"Whenever I paste a spreadsheet formula, first explain each part in plain English, then name the most likely cause of any error, then give one fix and explain what changed. Never ask for real names or account numbers.\"\n\nYou'll know it worked when you can open a new chat, paste the template, and get a plain-English breakdown without rewriting your instructions.\n\n## Common mistakes\n- **Sharing private data.** Real names, account numbers and addresses should never go into a chat. Fix it by swapping in placeholders before you paste anything.\n- **Trusting the fix without testing it.** A confident answer can still be wrong for your layout. Fix it by testing on your copy against rows where you already know the answer.\n- **Pasting only the formula.** Without sample rows, the assistant has to guess what your columns contain. Fix it by including three to five rows and the result you expected.\n\n## What this means for you\n- **In everyday life:** Use this method for a household budget sheet, a recipe scaler or a list of appointments. A formula you can explain to yourself is one you can trust.\n- **For your business or work:** Turn your best prompt into a shared template for your team's reports. Always test changes on a copy first, especially for anything that feeds into invoices or payroll.\n- **If you want to go further:** Try asking the assistant to explain a formula that uses several nested functions, then ask it to rewrite the formula in a simpler way. Compare the two results on your copy before you choose one.\n\n**What the assistant cannot do:** it cannot open your file, check your data on its own, or know your app's exact version. It can explain and suggest, but you have to confirm the result yourself.\n\n## Try it now\nCopy one broken formula from a spreadsheet you use, along with one sample row. Paste both into a new chat and send the first prompt from Step 2. Read the plain-English breakdown and see whether it matches what the formula is supposed to do.",
+  "original_title": "How to Explain a Spreadsheet Formula in Plain English and Fix It When It Breaks"
+}

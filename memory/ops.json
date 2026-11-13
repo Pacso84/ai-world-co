@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179434646183248",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-10T21:34:21.832Z",
-      "updated": "2026-11-10T21:34:21.988Z"
-    },
-    {
-      "id": "t179434646199081",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-10T21:34:21.990Z",
-      "updated": "2026-11-10T21:35:17.147Z"
-    },
-    {
-      "id": "t179434651714959",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-10T21:35:17.149Z",
-      "updated": "2026-11-10T21:35:17.309Z"
-    },
-    {
-      "id": "t17943465173497",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-10T21:35:17.349Z",
-      "updated": "2026-11-10T21:36:14.366Z"
-    },
-    {
-      "id": "t17943465743675",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-10T21:36:14.367Z",
-      "updated": "2026-11-10T21:36:39.487Z"
-    },
-    {
-      "id": "t179434659948943",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-10T21:36:39.489Z",
-      "updated": "2026-11-10T21:36:53.209Z"
-    },
-    {
-      "id": "t17943466132119",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-10T21:36:53.211Z",
-      "updated": "2026-11-10T21:37:13.684Z"
-    },
-    {
-      "id": "t179434663368687",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-10T21:37:13.686Z",
-      "updated": "2026-11-10T21:37:22.056Z"
-    },
-    {
-      "id": "t179434664212581",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-10T21:37:22.125Z",
-      "updated": "2026-11-10T21:37:22.302Z"
-    },
-    {
-      "id": "t179434664230432",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-10T21:37:22.304Z",
-      "updated": "2026-11-10T21:37:22.476Z"
-    },
-    {
-      "id": "t179434664251135",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-10T21:37:22.511Z",
-      "updated": "2026-11-10T21:37:39.574Z"
-    },
-    {
-      "id": "t179434665957649",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-10T21:37:39.576Z",
-      "updated": "2026-11-10T21:37:49.525Z"
-    },
-    {
-      "id": "t17943466695268",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-10T21:37:49.526Z",
-      "updated": "2026-11-10T21:37:59.100Z"
-    },
-    {
-      "id": "t179434667910298",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-10T21:37:59.102Z",
-      "updated": "2026-11-10T21:38:21.051Z"
-    },
-    {
       "id": "t179436850713461",
       "title": "Run ceo",
       "status": "done",
@@ -479,41 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-12T16:33:06.758Z",
       "updated": "2026-11-12T16:33:21.811Z"
+    },
+    {
+      "id": "t179454243589628",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-13T04:00:35.896Z",
+      "updated": "2026-11-13T04:00:36.070Z"
+    },
+    {
+      "id": "t179454243607178",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-13T04:00:36.071Z",
+      "updated": "2026-11-13T04:01:37.868Z"
+    },
+    {
+      "id": "t179454249786920",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-13T04:01:37.869Z",
+      "updated": "2026-11-13T04:01:38.030Z"
+    },
+    {
+      "id": "t179454249807123",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-13T04:01:38.071Z",
+      "updated": "2026-11-13T04:04:23.175Z"
+    },
+    {
+      "id": "t179454266317743",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-13T04:04:23.177Z",
+      "updated": "2026-11-13T04:07:27.291Z"
+    },
+    {
+      "id": "t179454284729349",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-13T04:07:27.293Z",
+      "updated": "2026-11-13T04:07:43.645Z"
+    },
+    {
+      "id": "t179454286368279",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-13T04:07:43.682Z",
+      "updated": "2026-11-13T04:08:40.073Z"
+    },
+    {
+      "id": "t179454292007574",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-13T04:08:40.075Z",
+      "updated": "2026-11-13T04:10:12.111Z"
+    },
+    {
+      "id": "t179454301214657",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-13T04:10:12.146Z",
+      "updated": "2026-11-13T04:10:12.310Z"
+    },
+    {
+      "id": "t179454301231248",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-13T04:10:12.312Z",
+      "updated": "2026-11-13T04:10:12.476Z"
+    },
+    {
+      "id": "t179454301254283",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-13T04:10:12.542Z",
+      "updated": "2026-11-13T04:11:12.540Z"
+    },
+    {
+      "id": "t17945430725413",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-13T04:11:12.541Z",
+      "updated": "2026-11-13T04:12:15.878Z"
+    },
+    {
+      "id": "t179454313593381",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-13T04:12:15.933Z",
+      "updated": "2026-11-13T04:12:27.744Z"
+    },
+    {
+      "id": "t17945431477465",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-13T04:12:27.746Z",
+      "updated": "2026-11-13T04:12:47.307Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179372030232442",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „YouTube's new AI turns long videos i",
-      "agent": "fact-check",
-      "at": "2026-11-03T15:38:22.324Z",
-      "loud": false
-    },
-    {
-      "id": "n17937203378098",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „A college teacher who had been build",
-      "agent": "fact-check",
-      "at": "2026-11-03T15:38:57.809Z",
-      "loud": false
-    },
-    {
-      "id": "n179374100855658",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „If you want to understand what makes",
-      "agent": "fact-check",
-      "at": "2026-11-03T21:23:28.556Z",
-      "loud": false
-    },
-    {
-      "id": "n17937645707324",
-      "level": "warn",
-      "text": "📨 ellenorzo → iro: Hiányos / kell még adat: \"Heimstaden is changing residential real estate management with AI\" — egészítsd ki: Future date",
-      "agent": "ellenorzo",
-      "at": "2026-11-04T03:56:10.732Z",
-      "loud": false
-    },
     {
       "id": "n179376461513861",
       "level": "warn",
@@ -1281,37 +1249,41 @@
       "agent": "fact-check",
       "at": "2026-11-12T16:34:19.484Z",
       "loud": false
+    },
+    {
+      "id": "n179454313586896",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 7.5/10).",
+      "agent": "seo",
+      "at": "2026-11-13T04:12:15.868Z",
+      "loud": false
+    },
+    {
+      "id": "n179454315327434",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — it's a practical, everyday AI toolkit covering everything from privacy and fact-checking to resumes, emails, and LinkedIn bios. The mix of general guides (what AI is great at,",
+      "agent": "publisher",
+      "at": "2026-11-13T04:12:33.274Z",
+      "loud": false
+    },
+    {
+      "id": "n179454316734365",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0539).",
+      "agent": "ceo",
+      "at": "2026-11-13T04:12:47.343Z",
+      "loud": false
+    },
+    {
+      "id": "n179454321774295",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Google says it now ",
+      "agent": "fact-check",
+      "at": "2026-11-13T04:13:37.742Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179356317232646",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „It also does not say which plans or accounts get access.”): \" Bring trusted Dropbox context directly into Micro\" — Megjelenik a megjelenési dátum (most), és a forrás az összes Dropbox-csomagot megnevezi",
-      "ref": "ARTICLE_2026-10-28T02-59-50-364Z_dropbox-blog__Bring_trusted_Dropbox_context_directly_into_Micro.json",
-      "open": true,
-      "at": "2026-11-01T19:59:32.326Z"
-    },
-    {
-      "id": "m179358979079662",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"How to make AI short films, from idea to final cut\" hír a meglévő útmutatóra mutat: how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio",
-      "ref": "how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio",
-      "at": "2026-11-02T03:23:10.796Z"
-    },
-    {
-      "id": "m179359027441368",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 23 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-02T03:31:14.413Z"
-    },
     {
       "id": "m179359040752914",
       "from": "fact-check",
@@ -2690,6 +2662,34 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-12T16:43:31.982Z"
+    },
+    {
+      "id": "m179454285224571",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Introducing Gemini 4 Hydrogen\" hír a meglévő útmutatóra mutat: how-to-search-years-of-your-gmail-with-plain-english-questio",
+      "ref": "how-to-search-years-of-your-gmail-with-plain-english-questio",
+      "at": "2026-11-13T04:07:32.245Z"
+    },
+    {
+      "id": "m179454314770197",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-13T04:12:27.701Z"
+    },
+    {
+      "id": "m17945432177424",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Google says it now powers Search globally and is available in the Gemini app and Chrome's ”): \"Introducing Gemini 4 Hydrogen\" — A Chrome forrás általános Gemini-funkciót ír le, nem kifejezetten a Gemini 4 Hydrogent",
+      "ref": "ARTICLE_2026-11-13T04-01-19-037Z_google-gemini_Introducing_Gemini_4_Hydrogen.json",
+      "open": true,
+      "at": "2026-11-13T04:13:37.742Z"
     }
   ]
 }

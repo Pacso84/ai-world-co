@@ -1,0 +1,98 @@
+{
+  "started_at": "2026-11-13T04:01:38.221Z",
+  "drafts_total": 7,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 3,
+  "merged_total": 1,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 2,
+    "html": 4,
+    "rss": 0,
+    "kivonat": 1
+  },
+  "source_fail": [
+    {
+      "draft": "2026-11-13T04-01-37-853Z_perplexity-news_Perplexity_Decider_v1_3__Training__eval__and_use_c.json",
+      "link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5NNXZISW9lcy1rMmhRLWJLQi0wdngteUF3RmtfQ2haNnpLRXhxNE5RdFJNS0h5empXdTkyTW92N0k5VHUzNDFENUJoRndWa2M0bGRkMHhpOHMtOVFabE9zLTREcw?oc=5",
+      "hiba": "túl rövid szöveg (11 karakter)"
+    }
+  ],
+  "total_cost_usd": 0.024432799999999998,
+  "by_article": [
+    {
+      "draft": "2026-11-13T04-01-19-037Z_google-gemini_Introducing_Gemini_4_Hydrogen.json",
+      "writer_output": "WRITER_2026-11-13T04-01-19-037Z_google-gemini_Introducing_Gemini_4_Hydrogen.json",
+      "success": true,
+      "merged_from": 4,
+      "merged_theme": "Gemini 4 Hydrogen launch and features",
+      "source_via": [
+        "html",
+        "html",
+        "html",
+        "html"
+      ],
+      "source_chars": 6862,
+      "source_overlap_words": 13,
+      "cost_usd": 0.0040376,
+      "duration_ms": 14685,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-13T04-01-37-853Z_perplexity-news_Perplexity_Decider_v1_3__Training__eval__and_use_c.json",
+      "writer_output": "WRITER_2026-11-13T04-01-37-853Z_perplexity-news_Perplexity_Decider_v1_3__Training__eval__and_use_c.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "kivonat"
+      ],
+      "source_chars": 65,
+      "source_overlap_words": 3,
+      "cost_usd": 0.0033946,
+      "duration_ms": 12084,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-13T04-01-37-853Z_samsung-newsroom_Samsung_Announces_December_Release_for_Intelligent.json",
+      "writer_output": "WRITER_2026-11-13T04-01-37-853Z_samsung-newsroom_Samsung_Announces_December_Release_for_Intelligent.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 14,
+      "cost_usd": 0.0037517,
+      "duration_ms": 13194,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-13T04-01-37-853Z_salesforce_New_Data__Holiday_Shoppers_Will_Rely_on_Agents__Re.json",
+      "writer_output": "WRITER_2026-11-13T04-01-37-853Z_salesforce_New_Data__Holiday_Shoppers_Will_Rely_on_Agents__Re.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 5366,
+      "source_overlap_words": 12,
+      "cost_usd": 0.0037935,
+      "duration_ms": 13769,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 4,
+  "termek_extra": 0,
+  "finished_at": "2026-11-13T04:04:23.156Z",
+  "duration_seconds": 164.935
+}

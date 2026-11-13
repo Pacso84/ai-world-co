@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "written_at": "2026-11-13T04:03:54.396Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0033946,
+    "original_draft": "2026-11-13T04-01-37-853Z_perplexity-news_Perplexity_Decider_v1_3__Training__eval__and_use_c.json",
+    "source_id": "perplexity-news",
+    "source_name": "Perplexity (hivatalos, Google News szűrve)",
+    "source_link": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5NNXZISW9lcy1rMmhRLWJLQi0wdngteUF3RmtfQ2haNnpLRXhxNE5RdFJNS0h5empXdTkyTW92N0k5VHUzNDFENUJoRndWa2M0bGRkMHhpOHMtOVFabE9zLTREcw?oc=5",
+    "source_links": [
+      "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5NNXZISW9lcy1rMmhRLWJLQi0wdngteUF3RmtfQ2haNnpLRXhxNE5RdFJNS0h5empXdTkyTW92N0k5VHUzNDFENUJoRndWa2M0bGRkMHhpOHMtOVFabE9zLTREcw?oc=5"
+    ],
+    "source_snippet_len": 65,
+    "source_text_via": [
+      "kivonat"
+    ],
+    "source_text_len": 65,
+    "source_text_key": "940197e99c8dc067",
+    "source_overlap_words": 3,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-13T04:06:07.939Z",
+    "slug": "what-perplexity-s-decider-v1-3-announcement-covers-and-how-to-read-it",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 586
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article is well-structured with clear explanations of technical terms in plain language, a helpful What this means for you section, and an actionable wrap-up. It honestly acknowledges its limited source material, making no unsupported claims about what changed. The tone is friendly, respectful, and encouraging for everyday readers. No prohibited content, no clichés, and US English throughout.",
+      "_aiCost": 0.00124971,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-13T04:07:35.989Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is an explainer about reading AI announcements, not an introduction of a usable feature - it admits 'our source gives no further details' and provides no concrete action for users",
+    "image_v": 2,
+    "image_at": "2026-11-13T04:10:35.896Z",
+    "seo": {
+      "meta_description": "A plain-language guide to understanding Perplexity's Decider v1.3 announcement covering training, evaluation, and use cases—and how to judge any AI update.",
+      "keywords": [
+        "Perplexity Decider v1.3",
+        "how to read AI announcements",
+        "evaluate AI updates",
+        "AI version numbers meaning",
+        "Perplexity AI news",
+        "understand AI release notes",
+        "AI announcement guide"
+      ],
+      "seo_score": 6,
+      "suggestions": [
+        "Add the announcement date to improve freshness signals and help readers assess relevance",
+        "Include specific examples of what training, evaluation, and use cases mean in practice for this release",
+        "Add a brief conclusion or next steps section so readers know what to do with this information"
+      ],
+      "optimised_at": "2026-11-13T04:11:37.767Z"
+    },
+    "fact_check_skip": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+    "fact_check_skip_count": 1,
+    "fact_check_skip_at": "2026-11-13T04:13:15.754Z"
+  },
+  "article_markdown": "---\ntitle: \"What Perplexity's Decider v1.3 Announcement Covers, and How to Read It\"\nsubtitle: \"A plain-language look at the three topics in the update (training, evaluation, and use cases) and how to judge any AI announcement for yourself.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"perplexity\", \"ai-news\", \"ai-basics\", \"getting-started\"]\n---\n\n# What Perplexity's Decider v1.3 Announcement Covers, and How to Read It\n\n> **In short:** Perplexity has published an announcement about Decider v1.3, and its title says it covers three things: training, evaluation, and use cases. Our source gives no further details, so we can't say more about what changed. Here's how to read announcements like this one.\n\nWhen a company announces a new AI version, the headline can sound impressive while the details stay hidden. You might see a name like \"v1.3\" and wonder whether it matters to you. Knowing what the announcement is about, and what it doesn't say, helps you decide whether to pay attention.\n\n## What the title tells us\n\nThe title lists three topics:\n\n- **Training**: how the AI model was taught. A model learns from large amounts of example data, a bit like a student who builds skills by practicing thousands of problems.\n- **Evaluation** (often shortened to \"eval\"): how the company tests the model to see how well it performs. Think of it as the exam the model sits after studying.\n- **Use cases**: the real-world jobs the model is meant to help with, such as answering questions, summarizing documents, or helping with research.\n\nThe title alone doesn't tell us what Perplexity found, what it tested, or which tasks improved. Any specific claim about those things would need to come from the company's own text, and our source material doesn't include it.\n\n## How to read an AI announcement\n\nYou don't need technical expertise to get more out of an announcement like this. Try these questions:\n\n- **What exactly did the company say?** Look for plain statements, not just adjectives like \"smarter\" or \"faster.\"\n- **Who is making the claim?** Phrases like \"according to the company\" mean the claim comes from the company itself. It's worth noting, but it's not an independent check.\n- **Is there a number?** A specific figure is useful only if the company says how it was measured.\n- **What does it mean for my daily tasks?** If the announcement doesn't mention anything you'd use, you can safely skip it.\n\n## What this means for you\n\n- **In everyday life**: If you use Perplexity or a similar AI chat tool for questions, you don't need to change anything yet. Keep using it the way you already do, and check important answers against other sources.\n- **For your work**: If your job depends on accurate research, read the official announcement yourself before relying on any claim about the tool's abilities.\n- **If you're just getting started**: Pick one small task you already do, like summarizing an article or planning a meal, and try it with an AI tool. Compare the result to what you'd have done yourself.\n\n## Wrap-up\n\nPerplexity's Decider v1.3 announcement focuses on training, evaluation, and use cases, but the details we have are limited to that title. The most useful habit is to read the company's own announcement, notice which claims are measured and which are just promises, and test any tool on a task that matters to you. Your next step today: open the official announcement, find one sentence that names a specific result, and ask yourself how you would check it.",
+  "original_title": "Perplexity Decider v1.3: Training, eval, and use cases - Perplexity"
+}
