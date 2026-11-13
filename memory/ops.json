@@ -483,22 +483,6 @@
   ],
   "notifications": [
     {
-      "id": "n179381928645455",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „In a separate announcement, Google s",
-      "agent": "fact-check",
-      "at": "2026-11-04T19:08:06.454Z",
-      "loud": false
-    },
-    {
-      "id": "n179385243055357",
-      "level": "info",
-      "text": "SEO: 7 cikk optimalizálva (átlag 4684.0/10).",
-      "agent": "seo",
-      "at": "2026-11-05T04:20:30.553Z",
-      "loud": false
-    },
-    {
       "id": "n179385244279779",
       "level": "success",
       "text": "Kiadás kész (10 cikk). The lineup is solid and practical—mixes how-tos, safety guidance, and real everyday use cases across work and personal life. Ready to go.\n\n**One note:** Articles 4 and 10 mention \"DeepSeek\" and \"Qwen ",
@@ -1281,29 +1265,25 @@
       "agent": "fact-check",
       "at": "2026-11-13T20:41:57.948Z",
       "loud": false
+    },
+    {
+      "id": "n179460632262915",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Give me a product n",
+      "agent": "fact-check",
+      "at": "2026-11-13T21:45:22.629Z",
+      "loud": false
+    },
+    {
+      "id": "n179460633788221",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Ellenőrizendő állítás: \"Apple is getting this wrong\" — A forrás nem tartalmaz információt a telefonok AI asszisztenseirő",
+      "agent": "fact-check",
+      "at": "2026-11-13T21:45:37.882Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179372027678220",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Ellenőrizendő állítás: \"Run Stable Diffusion Locally – The Easy Way with D\" — A cikk és a forrás különböző szoftvereket tárgyal; a forrás nem támasztja alá a WebUI Forge-ról szóló állításokat",
-      "ref": "2026-07-22T10-14-03-156Z_deeparteffects_Run_Stable_Diffusion_Locally___The_Easy_Way_with_D.json",
-      "open": true,
-      "at": "2026-11-03T15:37:56.782Z"
-    },
-    {
-      "id": "m179372030232456",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „YouTube's new AI turns long videos into up to 12 captioned Shorts”): \"How to make YouTube Shorts from your long videos\" — A cikk a mesterséges intelligencia vágóeszközt a YouTube-nak tulajdonítja, holott a forrás a Picsart eszközéről szól",
-      "ref": "ARTICLE_2026-10-02T14-18-34-311Z_picsart_How_to_make_YouTube_Shorts_from_your_long_videos.json",
-      "open": true,
-      "at": "2026-11-03T15:38:22.324Z"
-    },
     {
       "id": "m17937203378098",
       "from": "fact-check",
@@ -2692,6 +2672,26 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-13T20:50:18.943Z"
+    },
+    {
+      "id": "m179460632262926",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Give me a product name, a tagline under 6 words, and three flavor variants with one-line d”): \"How to design product packaging with AI in one wor\" — A cikk egy teljesen más munkafolyamatot ír le, mint a forrás - manuális eszközlánc vs. a Picsart Flow automatizált node-alapú vászonrendszere",
+      "ref": "ARTICLE_2026-09-17T02-18-51-762Z_picsart_How_to_design_product_packaging_with_AI_in_one_wor.json",
+      "open": true,
+      "at": "2026-11-13T21:45:22.629Z"
+    },
+    {
+      "id": "m179460633788234",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Ellenőrizendő állítás: \"Apple is getting this wrong\" — A forrás nem tartalmaz információt a telefonok AI asszisztenseiről, adatvédelmi beállításokról, Siri-ről, Gemini-ről - ez egy Apple és OpenAI közötti jogi vitáról szól",
+      "ref": "2026-08-04T10-26-43-543Z_openai-blog_Apple_is_getting_this_wrong.json",
+      "open": true,
+      "at": "2026-11-13T21:45:37.882Z"
     }
   ]
 }
