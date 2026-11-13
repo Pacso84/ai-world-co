@@ -946,7 +946,7 @@ function listRejectedGuidesForRework() {
         // 🧯 FÉK (2026-11-12): jóváhagyott súgó nélküli eszköz elutasított útmutatóját nem dolgozzuk át emlékezetből.
         // A fájl a rejected/ mappában marad (nem törlünk), és ha később jóváhagyunk egy súgót, újra sorra kerül.
         // (Az átdolgozási feltételek UTÁN: olyanról ne szóljon a napló, amit amúgy sem dolgoznánk át.)
-        const fk = fekezettE({ tool: d._meta?.tool, company: d._meta?.company });
+        const fk = fekezettE({ tool: d._meta?.tool, company: d._meta?.company, sugo_alapu: d._meta?.sugo_alapu, official_sources: d._meta?.official_sources });   // a súgóra épülő útmutató nem fékeződik
         if (fk.fek) { console.log(`🧯 átdolgozás kihagyva (${fk.eszkoz || d._meta?.tool || d._meta?.company}: nincs jóváhagyott súgó): ${f.slice(0, 60)}`); return false; }
         return true;
       } catch { return false; }
@@ -1127,7 +1127,7 @@ function listUpgradeCandidates() {
         if (d._meta?.type !== 'guide') return false;
         if ((d._meta?.rules_version || 1) >= 2) return false;           // már friss
         // 🧯 FÉK (2026-11-12): jóváhagyott súgó nélküli eszköz útmutatóját nem írjuk át emlékezetből (az eredeti élőben marad)
-        const fk = fekezettE({ tool: d._meta?.tool, company: d._meta?.company });
+        const fk = fekezettE({ tool: d._meta?.tool, company: d._meta?.company, sugo_alapu: d._meta?.sugo_alapu, official_sources: d._meta?.official_sources });   // a súgóra épülő útmutató nem fékeződik
         if (fk.fek) { console.log(`🧯 átírás kihagyva (${fk.eszkoz || d._meta?.tool || d._meta?.company}: nincs jóváhagyott súgó): ${f.slice(0, 60)}`); return false; }
         const writerName = f.replace(/^ARTICLE_/, 'WRITER_');
         if (existsSync(join(DRAFTS_DIR, writerName))) return false;     // már sorban áll

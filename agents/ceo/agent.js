@@ -126,7 +126,10 @@ function readRejected() {
 }
 // Hány guide írható még újra (4 kör alatt, nincs CEO-döntés)?
 function countGuideReworkable() {
-  return readRejected().filter(m => m.type === 'guide' && !m.ceo_decision && m.can_retry !== false && (m.rework_attempts || 0) < GUIDE_MAX_REWORK).length;
+  // 🧯 FÉK (2026-11-12): a fékezett (jóváhagyott súgó nélküli eszközű) útmutatót az Útmutató-agent nem dolgozza át
+  // (listRejectedGuidesForRework), ezért itt sem számolhatjuk — különben a ciklus üresben futna a kör végéig.
+  return readRejected().filter(m => m.type === 'guide' && !m.ceo_decision && m.can_retry !== false && (m.rework_attempts || 0) < GUIDE_MAX_REWORK
+    && !fekezett({ tool: m.tool, company: m.company, sugo_alapu: m.sugo_alapu, official_sources: m.official_sources }).fek).length;
 }
 // Hány guide vár a FŐNÖK végső döntésére (4 kört kimerítette)?
 function countGuideEscalatable() {

@@ -32,7 +32,7 @@ import { message, resolveNeed } from '../../core/ops.js';
 import { lengthIssue, HOWTO_MIN, HOWTO_MAX, GATE_MAX } from '../../core/article-length.js';
 import { repetitionIssue, firstParagraph, WINDOW as OPENING_WINDOW } from '../../core/opening-variety.js';
 import { blockingIssues, advisoryIssues, lessonFor } from '../../core/auto-check-codes.js';
-import { guideClaimIssues, sugoNelkuliFeluletJelzes } from '../../core/guide-claims.js';
+import { guideClaimIssues, sugoNelkuliFeluletJelzes, SUGO_NELKULI_FELULET_BE } from '../../core/guide-claims.js';
 import { forrasSzint } from '../../core/forras-szint.js';   // 🧯 11-12 (0c): melyik eszköznek van hivatalos súgója
 import { arJelzes } from '../../core/ar-tilalom.js';
 import { tevedesJelzes } from '../../core/ismert-tevedesek.js';
@@ -870,7 +870,13 @@ async function main() {
     // hivatalos súgó, vagy cégfüggetlen, akkor 2+ magabiztos gomb-/menünév → GUIDE_UI_NO_HELP (elutasít). A teljes
     // súgós eszközt és a letöltött súgószöveggel mérhetőt NEM ítéli (azt a fenti súgó-mérés teszi). Csak útmutatóra.
     try {
-      if (writerData._meta?.type === 'guide') {
+      if (writerData._meta?.type === 'guide' && !SUGO_NELKULI_FELULET_BE) {
+        console.log('   ⏸️ súgó nélküli felület-mérés: kikapcsolva');
+      } else if (writerData._meta?.type === 'guide' && sugoForrasok(writerData._meta).length > 0) {
+        // súgóra épülő útmutató, amelynek a súgó-letöltése nem sikerült: a GUIDE_UI_NOT_IN_HELP sem ítél ilyenkor,
+        // és a súgó nélküli mérce itt hamis riasztás lenne (az útmutatónak VAN jóváhagyott súgója)
+        console.log('   ⏭️ súgó nélküli felület-mérés: az útmutató jóváhagyott súgóra épül — nem ítél');
+      } else if (writerData._meta?.type === 'guide') {
         // eszköz és cég: a cikk fejlécéből, mint az útmutató-kapuknál; ha ott nincs, a _meta-ból
         const fmKulcs = k => { const x = (markdown.match(/^---\n([\s\S]*?)\n---/) || [])[1]?.match(new RegExp('^' + k + ':\\s*(.*)$', 'm')); return x ? x[1].trim().replace(/^["']|["']$/g, '') : ''; };
         const tool = fmKulcs('tool') || writerData._meta?.tool || '';

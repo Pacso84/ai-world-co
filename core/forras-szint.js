@@ -36,9 +36,9 @@ const NINCS_OK = 'nincs jóváhagyott hivatalos súgó';
 // A cegek sorrendje számít a „csak cég” keresésnél: az első találat a cég fő terméke.
 export const ESZKOZ_SZINT = {
   // ── TELJES: már jóváhagyott (core/sugo-index.js ENGEDELY) ─────────────────────────────────────────
-  'ChatGPT':           { szint: SZINT.TELJES, aliasok: ['chatgpt'], cegek: ['openai'], sugo: ['https://help.openai.com/'] },
-  'Claude':            { szint: SZINT.TELJES, aliasok: ['claude'], cegek: ['anthropic'], sugo: ['https://support.claude.com/', 'https://support.anthropic.com/'] },
-  'Gemini':            { szint: SZINT.TELJES, aliasok: ['gemini'], cegek: ['google'], sugo: ['https://support.google.com/gemini/'] },
+  'ChatGPT':           { szint: SZINT.TELJES, aliasok: ['chatgpt', 'codex', 'sora', 'chatgpt atlas' /* a Codex, a Sora és a ChatGPT Atlas az OpenAI jóváhagyott súgójában (help.openai.com) dokumentált */], cegek: ['openai'], sugo: ['https://help.openai.com/'] },
+  'Claude':            { szint: SZINT.TELJES, aliasok: ['claude', 'claude code' /* a Claude Code az Anthropic jóváhagyott súgójában (support.claude.com) dokumentált */], cegek: ['anthropic'], sugo: ['https://support.claude.com/', 'https://support.anthropic.com/'] },
+  'Gemini':            { szint: SZINT.TELJES, aliasok: ['gemini', 'gemini live' /* a Gemini Live a jóváhagyott Gemini-súgóban (support.google.com/gemini) dokumentált */], cegek: ['google'], sugo: ['https://support.google.com/gemini/'] },
   'Gemini Notebook':   { szint: SZINT.TELJES, aliasok: ['gemini notebook', 'notebooklm'], cegek: [], sugo: ['https://support.google.com/gemininotebook/', 'https://support.google.com/notebooklm/'] },
   'Google Photos':     { szint: SZINT.TELJES, aliasok: ['google photos'], cegek: [], sugo: ['https://support.google.com/photos/'] },
   'Microsoft Copilot': { szint: SZINT.TELJES, aliasok: ['microsoft copilot', 'copilot', 'microsoft 365 copilot'], cegek: ['microsoft'], sugo: ['https://support.microsoft.com/'] },
@@ -74,8 +74,8 @@ export const ESZKOZ_SZINT = {
   'Recraft':           { szint: SZINT.NINCS, aliasok: ['recraft'], cegek: ['recraft'], sugo: [] },
   'Ideogram':          { szint: SZINT.NINCS, aliasok: ['ideogram'], cegek: ['ideogram'], sugo: [] },
   'Zapier':            { szint: SZINT.NINCS, aliasok: ['zapier'], cegek: ['zapier'], sugo: [] },
-  'Galaxy Ring':       { szint: SZINT.NINCS, aliasok: ['galaxy ring'], cegek: ['samsung'], sugo: [] },
-  'Upscayl':           { szint: SZINT.NINCS, aliasok: ['upscayl'], cegek: ['nvidia'], sugo: [] },
+  'Galaxy Ring':       { szint: SZINT.NINCS, aliasok: ['galaxy ring'], cegek: [], sugo: [] },
+  'Upscayl':           { szint: SZINT.NINCS, aliasok: ['upscayl'], cegek: [], sugo: [] },
   'Project Genie':     { szint: SZINT.NINCS, aliasok: ['project genie'], cegek: [], sugo: [] }   // Google Labs — NEM Gemini-súgós
 };
 

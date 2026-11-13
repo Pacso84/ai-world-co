@@ -32,6 +32,23 @@ t('teljes súgójú eszköz NEM fékezett', () => {
   assert.equal(r.szint, 'teljes');
 });
 
+t('🔑 jóváhagyott súgócikkre épülő téma NEM fékezett, akkor sem, ha az eszköz „nincs” szintű', () => {
+  const sugoUrl = 'https://help.openai.com/en/articles/12345678-example';
+  const alap = { tool: 'Meta AI', company: 'Meta', official_sources: [sugoUrl] };
+  const be = fekezett({ ...alap, sugo_alapu: true });
+  assert.equal(be.fek, false);
+  assert.equal(be.szint, 'nincs', 'a szint tájékoztató marad');
+  assert.equal(be.eszkoz, 'Meta AI');
+  assert.equal(be.ok, 'a téma jóváhagyott súgócikkre épül');
+  assert.equal(fekezett({ ...alap, sugo_alapu: true, official_sources: [{ url: sugoUrl, title: 'Cikk' }] }).fek, false, '{url, title} alak is');
+  // ugyanez súgó-jelölés nélkül fékezett (a régi kézi official_sources-ra a kivétel NEM vonatkozik)
+  assert.equal(fekezett({ ...alap, sugo_alapu: false }).fek, true);
+  assert.equal(fekezett(alap).fek, true);
+  // nem engedélyezett URL nem számít súgónak
+  assert.equal(fekezett({ ...alap, sugo_alapu: true, official_sources: ['https://example.org/help'] }).fek, true);
+  assert.equal(fekezett({ ...alap, sugo_alapu: true, official_sources: [] }).fek, true);
+});
+
 t('részleges (DeepSeek) NEM fékezett — azt a 0c kapu (GUIDE_UI_NO_HELP) fogja', () => {
   const r = fekezett({ tool: 'DeepSeek' });
   assert.equal(r.fek, false);

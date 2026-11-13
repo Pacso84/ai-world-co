@@ -20,6 +20,7 @@ import { mkdirSync, writeFileSync } from 'fs';
 import { dirname, isAbsolute, join } from 'path';
 import { fileURLToPath } from 'url';
 import { forrasSzint, SZINT } from './forras-szint.js';
+import { sugoForrasok } from './sugo-parositas.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -34,6 +35,11 @@ export const FEK_BE = true;
  */
 export function fekezett(x, { be = FEK_BE } = {}) {
   const r = forrasSzint(x?.tool, x?.company);
+  // Ha maga a téma / útmutató jóváhagyott súgócikkre épül (`sugo_alapu` + engedélyezett URL, pl. a párosító
+  // második esélye), akkor az al-termék a súgóból dolgozik → NEM fékezzük, bármi is az eszköz szintje.
+  if (sugoForrasok(x).length > 0) {
+    return { fek: false, szint: r.szint, eszkoz: r.eszkoz, ok: 'a téma jóváhagyott súgócikkre épül' };
+  }
   return { fek: Boolean(be) && r.szint === SZINT.NINCS, szint: r.szint, eszkoz: r.eszkoz, ok: r.ok };
 }
 

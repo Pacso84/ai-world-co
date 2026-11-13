@@ -327,6 +327,22 @@ t('🧯 GUIDE_UI_NO_HELP: kill-switch be van kapcsolva; blokkoló; van lecke és
   assert.equal(leckeNevHu(l), 'súgó nélkül leírt gomb- és menünevek');
 });
 
+// ── Az Ellenőrző bekötése (forrás-szöveg próba — az agentet SOSEM importáljuk) ──
+t('🧯 az Ellenőrző: a súgóra épülő útmutatón NEM fut a GUIDE_UI_NO_HELP, kikapcsolt kapcsolónál nincs „✅” sor', () => {
+  const src = readFileSync(new URL('../agents/ellenorzo/agent.js', import.meta.url), 'utf-8');
+  assert.ok(src.includes("SUGO_NELKULI_FELULET_BE } from '../../core/guide-claims.js'"), 'a kapcsoló importálva');
+  const i = src.indexOf('sugoNelkuliFeluletJelzes(markdown');
+  assert.ok(i > 0, 'a hívás megvan');
+  const k = src.lastIndexOf("type === 'guide' && !SUGO_NELKULI_FELULET_BE", i);
+  assert.ok(k > 0 && i - k < 3000, 'a kapcsoló-ág a hívás előtt áll');
+  const blokk = src.slice(k, i);
+  assert.ok(blokk.includes('⏸️ súgó nélküli felület-mérés: kikapcsolva'), 'kikapcsolva-sor');
+  const sugoAg = blokk.indexOf('sugoForrasok(writerData._meta).length > 0');
+  assert.ok(sugoAg > 0, 'a súgó-jelölés a _meta-ból dől el');
+  assert.ok(blokk.indexOf('⏭️ súgó nélküli felület-mérés') > sugoAg, 'a súgóra épülő ág kihagyja az ítéletet (a hívás az else-ágban van)');
+  assert.ok(!/✅ nincs konkrét gombnév/.test(blokk.slice(0, blokk.indexOf('⏭️'))), 'kikapcsolva nincs ✅ sor');
+});
+
 // ── VALÓDI ADAT: a publikált cégfüggetlen útmutatók közül legfeljebb 20 kapna jelzést (11-12-i mérés: 14 / 108) ──
 function keret(mdTxt, kulcs) {
   const m = String(mdTxt).match(/^---\n([\s\S]*?)\n---/);

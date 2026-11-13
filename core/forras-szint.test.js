@@ -92,6 +92,30 @@ t('a táblázat szerkezete: minden tételnek érvényes szintje, aliasa, cége, 
   }
 });
 
+t('🔑 a jóváhagyott súgóban dokumentált al-termékek (Claude Code, Codex, Sora, ChatGPT Atlas, Gemini Live): teljes — a Project Genie marad nincs', () => {
+  for (const [tool, ceg, kanon] of [['Claude Code', 'Anthropic', 'Claude'], ['Codex', 'OpenAI', 'ChatGPT'], ['Sora', 'OpenAI', 'ChatGPT'],
+    ['ChatGPT Atlas', 'OpenAI', 'ChatGPT'], ['Gemini Live', 'Google', 'Gemini']]) {
+    assert.equal(sz(tool, ceg), 'teljes', tool);
+    assert.equal(forrasSzint(tool, ceg).eszkoz, kanon, tool);
+  }
+  assert.equal(sz('Project Genie', 'Google'), 'nincs');
+  // csak a teljes alak: előtag-illesztés nincs
+  assert.equal(sz('Claude Code Review Pro', 'Anthropic'), 'nincs');
+  assert.equal(sz('Sora Pro Max', 'OpenAI'), 'nincs');
+});
+
+t('Upscayl és Galaxy Ring: csak az eszköznév egyezik, a cég NEM (nem NVIDIA / Samsung terméket nevez meg tévesen)', () => {
+  assert.deepEqual(ESZKOZ_SZINT['Upscayl'].cegek, []);
+  assert.deepEqual(ESZKOZ_SZINT['Galaxy Ring'].cegek, []);
+  assert.equal(forrasSzint('Upscayl', 'NVIDIA').eszkoz, 'Upscayl');
+  assert.equal(forrasSzint('Galaxy Ring', 'Samsung').eszkoz, 'Galaxy Ring');
+  // csak cég: se Samsung, se NVIDIA nem ad már konkrét eszközt, de a szint továbbra is „nincs” (nincs jóváhagyott súgó)
+  assert.equal(forrasSzint('', 'Samsung').eszkoz, null);
+  assert.equal(forrasSzint('', 'NVIDIA').eszkoz, null);
+  assert.equal(sz('', 'Samsung'), 'nincs');
+  assert.equal(sz('', 'NVIDIA'), 'nincs');
+});
+
 // ── VALÓDI ADAT: a 11-12-i számlálás szerint a „nincs” szintű útmutatók száma 30–60 (mért ~43) ─────────
 function keret(md, kulcs) {
   const m = String(md).match(/^---\n([\s\S]*?)\n---/);
