@@ -1,0 +1,42 @@
+{
+  "started_at": "2026-11-13T20:38:47.751Z",
+  "drafts_total": 2,
+  "articles_written": 1,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 7,
+  "merged_total": 1,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 0,
+    "html": 2,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.0075444100000000005,
+  "by_article": [
+    {
+      "draft": "2026-11-13T20-38-47-279Z_openai-blog_Introducing_ChatGPT_Wallet.json",
+      "writer_output": "WRITER_2026-11-13T20-38-47-279Z_openai-blog_Introducing_ChatGPT_Wallet.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Financial wallet integration in AI assistants",
+      "source_via": [
+        "html",
+        "html"
+      ],
+      "source_chars": 8430,
+      "source_overlap_words": 8,
+      "cost_usd": 0.0044435,
+      "duration_ms": 18145,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 1,
+  "termek_extra": 1,
+  "finished_at": "2026-11-13T20:39:23.616Z",
+  "duration_seconds": 35.865
+}

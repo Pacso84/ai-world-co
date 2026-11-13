@@ -1,6 +1,5 @@
 {
   "openai-blog": [
-    "https://openai.com/index/biodefense-in-the-intelligence-age",
     "https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind",
     "https://openai.com/index/wasmer",
     "https://openai.com/index/using-codex-to-simulate-black-holes",
@@ -299,7 +298,8 @@
     "https://openai.com/business/customer-stories/holidays-extras-codex",
     "https://openai.com/index/children-first-declaration",
     "https://openai.com/business/customer-stories/amplitude",
-    "https://openai.com/business/customer-stories/gondola"
+    "https://openai.com/business/customer-stories/gondola",
+    "https://openai.com/index/introducing-chatgpt-wallet"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -990,7 +990,8 @@
     "http://workspaceupdates.googleblog.com/2026/11/schedule-meetings-in-single-click-from-conversations-in-Google-Chat.html",
     "http://workspaceupdates.googleblog.com/2026/11/expanding-gemini-in-gmail-to-more-Google-Workspace-users.html",
     "http://workspaceupdates.googleblog.com/2026/11/publish-sheets-canvas-as-standalone-link.html",
-    "http://workspaceupdates.googleblog.com/2026/11/organize-and-communicate-complex-information-with-numbered-and-nested-lists-in-Google-Chat.html"
+    "http://workspaceupdates.googleblog.com/2026/11/organize-and-communicate-complex-information-with-numbered-and-nested-lists-in-Google-Chat.html",
+    "http://workspaceupdates.googleblog.com/2026/11/weekly-recap-11-13-2026.html"
   ],
   "google-research": [
     "https://research.google/blog/towards-passive-heart-health-monitoring-via-smartphone-camera/",
@@ -1106,9 +1107,6 @@
     "https://github.blog/ai-and-ml/github-copilot/build-once-run-on-any-agent-a-practical-guide-to-agent-skills/"
   ],
   "aws-ml": [
-    "https://aws.amazon.com/blogs/machine-learning/introducing-new-ray-capabilities-on-sagemaker-hyperpod/",
-    "https://aws.amazon.com/blogs/machine-learning/democratizing-institutional-knowledge-building-an-ai-powered-knowledge-management-system-with-aws/",
-    "https://aws.amazon.com/blogs/machine-learning/agentic-observability-with-amazon-opensearch-service-mcp-apps/",
     "https://aws.amazon.com/blogs/machine-learning/governed-reports-with-amazon-quick-desktop-and-amazon-fsx-for-netapp-ontap/",
     "https://aws.amazon.com/blogs/machine-learning/nateras-intelligent-appointment-scheduling-with-amazon-bedrock-agentcore/",
     "https://aws.amazon.com/blogs/machine-learning/bring-your-own-model-with-amazon-sagemaker-ai-script-mode-in-sdk-v3/",
@@ -1405,7 +1403,10 @@
     "https://aws.amazon.com/blogs/machine-learning/tokenomics-at-scale-track-and-cap-amazon-bedrock-spend-per-iam-principal-with-cur-2-0-and-aws-budgets/",
     "https://aws.amazon.com/blogs/machine-learning/optimizing-cost-per-task-and-proving-agent-roi-on-amazon-bedrock/",
     "https://aws.amazon.com/blogs/machine-learning/building-a-self-service-llm-gateway-with-amazon-bedrock-and-litellm/",
-    "https://aws.amazon.com/blogs/machine-learning/run-agents-securely-and-efficiently-with-the-next-generation-agentcore-runtime/"
+    "https://aws.amazon.com/blogs/machine-learning/run-agents-securely-and-efficiently-with-the-next-generation-agentcore-runtime/",
+    "https://aws.amazon.com/blogs/machine-learning/cost-optimizing-assemblyai-speech-to-text-inference-on-aws-with-amazon-ec2-spot/",
+    "https://aws.amazon.com/blogs/machine-learning/cost-attribution-and-controls-for-ai-developer-and-productivity-tools-on-amazon-bedrock/",
+    "https://aws.amazon.com/blogs/machine-learning/build-a-model-improvement-flywheel-with-amazon-sagemaker-hyperpod-data-capture/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -1862,7 +1863,6 @@
     "https://news.sap.com/2026/11/successful-sap-transformation-business-processes/"
   ],
   "databricks": [
-    "https://www.databricks.com/blog/scaling-security-alert-triage-specialized-agents-databricks",
     "https://www.databricks.com/blog/openai-and-databricks-dais-2026-making-enterprise-ai-real",
     "https://www.databricks.com/blog/automatic-upgrades-best-practice-features-your-lakehouse-tables",
     "https://www.databricks.com/blog/reimagining-data-modeling-lakehouse-introducing-vibe-data-modeling",
@@ -2161,7 +2161,8 @@
     "https://www.databricks.com/blog/lakehousert-scale-real-time-analytics-not-your-bill",
     "https://www.databricks.com/blog/dispelling-ltap-myths",
     "https://www.databricks.com/blog/how-h6ai-builds-ai-powered-financial-automation-lakebase-postgres",
-    "https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data"
+    "https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data",
+    "https://www.databricks.com/blog/spark-vs-flink"
   ],
   "snowflake": [
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-postgres-ml-online-feature-store",
@@ -2287,7 +2288,8 @@
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-cost-management-beyond-cost-per-token",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/securing-agentic-enterprise",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/inkling-2-small-snowflake-cortex-training",
-    "https://www.snowflake.com/content/snowflake-site/global/en/blog/expedition-ai-customer-stories"
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/expedition-ai-customer-stories",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/gartner-magic-quadrant-data-lakehouse-platforms"
   ],
   "together": [
     "https://www.together.ai/blog/announcing-our-series-c",
@@ -3630,7 +3632,8 @@
     "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/",
     "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/",
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
-    "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome/"
+    "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome/",
+    "https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/"
   ],
   "google-photos": [
     "https://blog.google/products-and-platforms/products/photos/halloween-tricks-2026/",
@@ -3709,7 +3712,9 @@
     "https://github.blog/changelog/2026-11-09-claude-fable-5-2-in-github-copilot",
     "https://github.blog/changelog/2026-11-10-gemini-4-carbon-in-github-copilot",
     "https://github.blog/changelog/2026-11-10-c-language-server-now-auto-configures-msbuild-builds",
-    "https://github.blog/changelog/2026-11-10-github-app-support-for-enterprise-copilot-seat-management"
+    "https://github.blog/changelog/2026-11-10-github-app-support-for-enterprise-copilot-seat-management",
+    "https://github.blog/changelog/2026-11-13-github-enterprise-server-support-in-the-github-copilot-app",
+    "https://github.blog/changelog/2026-11-13-gemini-4-hydrogen-in-github-copilot"
   ],
   "apple-newsroom": [
     "https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/",
@@ -3823,6 +3828,8 @@
     "https://elevenlabs.io/blog/nvidia",
     "https://elevenlabs.io/blog/voice-cloning-for-content-creators",
     "https://elevenlabs.io/blog/impact-nyc-summit",
-    "https://elevenlabs.io/blog/customer-service-skills"
+    "https://elevenlabs.io/blog/customer-service-skills",
+    "https://elevenlabs.io/blog/impact-sofia-oxford-said",
+    "https://elevenlabs.io/blog/introducing-forward-deployed-creatives"
   ]
 }

@@ -1,0 +1,63 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.00706863,
+  "at": "2026-11-13T20:41:23.200Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 1,
+    "kihagyva": 2,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-13T20-38-47-279Z_openai-blog_Introducing_ChatGPT_Wallet.json",
+      "cim": "Introducing ChatGPT Wallet",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Minden tényállítás megfelel a forrásszövegeknek"
+    },
+    {
+      "file": "ARTICLE_2026-11-13T04-01-37-853Z_perplexity-news_Perplexity_Decider_v1_3__Training__eval__and_use_c.json",
+      "cim": "Perplexity Decider v1.3: Training, eval, and use cases - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-07-22T10-13-59-137Z_deeparteffects_Best_Offline_AI_Image_Generators_in_2026__The_Hone.json",
+      "cim": "Best Offline AI Image Generators in 2026: The Honest Comparison",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: HTTP 404)",
+      "status": 404
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-plan-a-multi-stop-road-trip-with-realistic-driving-ti.json",
+      "cim": "How to plan a multi-stop road trip with realistic driving times",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-16T02-10-37-240Z_d-id-news_Introducing_Presentation_Mode__Slides_That_Talk_Ba.json",
+      "cim": "Introducing Presentation Mode: Slides That Talk Back",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrást: A Presentation Mode interaktív, MI-vezetett prezentációvá alakítja a diavetítéseket, ahol a nézők kérdéseket tehetnek fel, válaszokat kapnak, és a prezentáció ott folytatódik, ahol abbamaradt. A cikk helyesen állítja, hogy nincs szükség szkriptre, támogatja a PDF/P"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-plan-a-stress-free-family-road-trip-with-copilot.json",
+      "cim": "How to plan a stress-free family road trip with Copilot",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "A Copilot konkrét felhasználói felületi elemei (pl. mikrofon ikon, Másolás gomb) megváltozhattak a publikálás óta; érdemes ellenőrizni a jelenlegi felületet"
+    }
+  ]
+}

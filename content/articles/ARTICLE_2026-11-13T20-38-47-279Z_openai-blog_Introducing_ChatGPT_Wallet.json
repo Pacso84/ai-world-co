@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "written_at": "2026-11-13T20:39:23.615Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0044435,
+    "original_draft": "2026-11-13T20-38-47-279Z_openai-blog_Introducing_ChatGPT_Wallet.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/introducing-chatgpt-wallet",
+    "source_links": [
+      "https://openai.com/index/introducing-chatgpt-wallet",
+      "https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/"
+    ],
+    "source_snippet_len": 273,
+    "source_text_via": [
+      "html",
+      "html"
+    ],
+    "source_text_len": 8430,
+    "source_text_key": "4ca5a15db3001f2e",
+    "source_overlap_words": 8,
+    "merged_from": 2,
+    "merged_theme": "Financial wallet integration in AI assistants",
+    "trend": null,
+    "termek_hir": true,
+    "termek_extra": true,
+    "status": "published",
+    "published_at": "2026-11-13T20:39:41.390Z",
+    "slug": "ai-assistants-now-connect-to-your-wallet-what-it-means-for-you",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 806
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured article that explains agent and payment token concepts accessibly, covers both tools neutrally without ranking them, includes a practical What this means for you section with reader-segmented advice, and ends with a concrete next-step action. No prohibited content, no invented facts, fresh writing, and kind tone throughout.",
+      "_aiCost": 0.00127554,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-13T20:40:01.662Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-make-purchases-with-chatgpt-wallet",
+    "image_v": 2,
+    "image_at": "2026-11-13T20:40:14.515Z",
+    "seo": {
+      "meta_description": "AI assistants now connect to your wallet. Learn how ChatGPT Wallet and Google Gemini handle purchases and budgets while keeping your money safe.",
+      "keywords": [
+        "AI assistant wallet integration",
+        "ChatGPT Wallet",
+        "Google Gemini spending tracker",
+        "AI personal finance tools",
+        "how to use AI for budgeting",
+        "AI assistants and payments"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add a clear feature comparison table between ChatGPT Wallet and Gemini spending access to capture comparison search queries",
+        "Include one specific real-world budgeting scenario readers could picture themselves using",
+        "Add an FAQ section addressing 'is it safe to connect AI to my bank account' to capture high-intent search traffic"
+      ],
+      "optimised_at": "2026-11-13T20:40:24.362Z"
+    },
+    "fact_verified_at": "2026-11-13T20:41:31.338Z"
+  },
+  "article_markdown": "---\ntitle: \"AI Assistants Now Connect to Your Wallet: What It Means for You\"\nsubtitle: \"Two new tools from OpenAI and Google show how AI can help with purchases and budgets, and what keeps your money under your control.\"\ncategory: \"ai-news\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"ai-assistants\", \"payments\", \"budgeting\", \"privacy\", \"getting-started\"]\n---\n\n# AI Assistants Now Connect to Your Wallet: What It Means for You\n\n> **In short:** OpenAI's ChatGPT Wallet lets an AI agent pay for purchases you approve, without seeing your card number. Google's Gemini can read your Google Wallet spending to answer budget questions, but it cannot move or invest money.\n\nYou have probably asked an AI chatbot for gift ideas or a shopping shortlist. Now two companies are connecting their assistants to payment and spending information, so the AI can do more than suggest. Here is what each one does, how it protects your money, and how to decide whether it fits your life.\n\n## Shopping with an AI agent: ChatGPT Wallet\n\nAn **agent** is an AI that can take actions for you, not just answer questions. OpenAI says ChatGPT Wallet is built so an agent can pay on your behalf, while your actual card details stay private.\n\nHere is the basic flow OpenAI describes:\n\n- **You add a card once.** After that, you don't re-enter payment details for each purchase.\n- **You review every purchase.** Before anything is bought, you check the items, the total, and the card that will be charged.\n- **You approve with a security check.** OpenAI mentions Face ID or a fingerprint scan.\n- **A token replaces your card number.** A **payment token** is a stand-in for your real card details. The business receives the token, not your card number.\n- **You keep your card's perks.** OpenAI says your card's rewards and protections for eligible disputes still apply, such as when an item arrives broken.\n\nOpenAI says it built the feature with American Express, Mastercard, and Visa. It is starting with a limited group: ChatGPT Pro subscribers in the US, accessed through a partner called dots. For current plan details, check OpenAI's official pricing page.\n\n💬 A simple way to try the idea: before you ever approve a purchase, ask the assistant to list the items, the total, and the card it plans to use. Read that summary carefully, then decide.\n\n## Checking your spending with Gemini\n\nGoogle's update works differently. Gemini is not buying anything. It reads your Google Wallet information so it can answer questions about your own money. Google says all Gemini app users in the US can connect Google Wallet, and the feature is rolling out on web and on both Android and iOS.\n\nYou can also link bank and credit card accounts through Plaid, a secure service that connects financial accounts to apps. Google gives three examples of questions to ask:\n\n- **Visualize spending:** Gemini can create charts of cash flow and budgets right in the chat.\n- **Find forgotten subscriptions:** It can spot recurring charges and flag price increases.\n- **Plan ahead:** It can look at last year's gift and travel spending and suggest a holiday budget.\n\nGoogle also says Gemini can only read your account information. It cannot move, manage, or invest your money.\n\n## Staying in control\n\nBoth companies say you choose whether to connect. Google says you can turn the Wallet connection on or off in the Connected Apps section of Personal Intelligence settings, and Memory Summary lets you review and edit what Gemini remembers about you. OpenAI says the purchase approval step is what keeps you in charge of each transaction.\n\n## What this means for you\n\n- **In everyday life:** Use AI to understand your own spending, such as finding subscriptions you forgot about. Keep approving purchases yourself, even when an assistant does the work.\n- **For your business or work:** These tools are aimed at consumers. If you run a shop, OpenAI says it released guidance so businesses can accept agent purchases, and that businesses keep their customer relationships and control over pricing and returns.\n- **If you're just getting started:** Connect nothing at first. Ask Gemini general budgeting questions, then decide later whether to link your accounts.\n- **If you already use it:** Ask Gemini a follow-up question about one of its charts, such as which category grew fastest, then ask it to suggest a monthly budget you can review.\n\n## Wrap-up\n\nChatGPT Wallet and Gemini's Google Wallet connection point to the same idea: AI assistants are moving closer to the money decisions you already make. The main lesson is to stay in the driver's seat. Read every summary, approve only what you intend to buy, and turn connections on only when you understand them. Today, open the settings for your AI assistant and check what, if anything, it can see about your accounts.",
+  "original_title": "Introducing ChatGPT Wallet"
+}
