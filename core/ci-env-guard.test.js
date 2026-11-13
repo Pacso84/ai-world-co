@@ -50,7 +50,10 @@ const KIVETELEK = {
   'node core/reel-post.js --prepare': {
     MAKE_REEL_WEBHOOK_URL:
       'a --prepare csak előkészít, nem küld; a webhook a --send lépésé. '
-      + 'A modul maga is így dönt (core/reel-post.js:138-142).'
+      + 'A modul maga is így dönt (core/reel-post.js:138-142).',
+    DEPLOY_OUTCOME:
+      'a --prepare a deploy ELŐTT fut (a deploy-kimenetel még nem létezik); csak a --send '
+      + 'nézi, hogy a videó kikerült-e (core/reel-post.js deployEngedi, 2026-11-13).'
   },
   'node core/quality-guard.js --fix': {
     NAME_GUARD_PATH:

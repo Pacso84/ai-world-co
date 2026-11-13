@@ -39,6 +39,7 @@
 import { followCta, trimToWords, AI_JELOLES } from './social-text.js';
 import { guideMeta, findArticleBySlug } from './frontmatter.js';
 import { utmutatoE } from './guide-kind.js';
+import { friss } from './cikk-kint.js';
 
 export const SITE = 'https://aiworldhq.com';
 
@@ -219,7 +220,9 @@ export async function sendReel({ video, caption, hook, fetchFn, dry = false, tim
   let fej, voltHiany = false;
   for (let proba = 1; proba <= Math.max(1, probak); proba++) {
     try {
-      fej = await f(video, { method: 'HEAD', signal: AbortSignal.timeout(timeoutMs) });
+      // 🔁 GYORSÍTÓTÁR-KERÜLŐ (2026-11-13): 16:06-kor a HEAD 200-at kapott egy RÉGI deploy él-cache-éből, a Facebook
+      // viszont egy másik szerverről 404-et → a Reel elbukott (Make status 2, 495 bájt). A friss paraméter az élő állapotot kérdezi.
+      fej = await f(friss(video), { method: 'HEAD', signal: AbortSignal.timeout(timeoutMs) });
     } catch (e) {
       return { ok: false, reason: `A videó címe nem érhető el: ${e.message}` };
     }
@@ -916,7 +919,17 @@ export function reelKiment(ki, normalHiba) {
  * is ebből lesz. Az extra hibája KÜLÖN rekordba kerül ('send_extra'), hogy a
  * sikeres normál küldést ne bélyegezze bukásnak, és fordítva.
  */
+/** A deploy-lépés kimenetele (workflow: DEPLOY_OUTCOME) szerint kint lehet-e a MOST gyártott videó? Üres = helyi futás. */
+export function deployEngedi(outcome) {
+  return !['failure', 'skipped', 'cancelled'].includes(String(outcome || ''));
+}
+
 export async function sendFazis(ROOT, join, dry) {
+  // 🔴 11-13: bukott deploy után a futásban gyártott videó NINCS kint — a küldés a következő futásra vár.
+  if (!deployEngedi(process.env.DEPLOY_OUTCOME)) {
+    console.log(`🔴 Reel: a feltöltés (deploy) ebben a futásban nem sikerült (${process.env.DEPLOY_OUTCOME}) — a videó nincs kint, nem küldöm.`);
+    return null;
+  }
   let ki = null, normalHiba = null;
   try { ki = await send(ROOT, join, dry); } catch (e) { normalHiba = e; }
   try {

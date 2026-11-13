@@ -771,6 +771,8 @@ jobs:
         if: always()
         env:
           MAKE_REEL_WEBHOOK_URL: ${{ secrets.MAKE_REEL_WEBHOOK_URL }}
+          # 11-13: bukott deploy után a most gyártott videó nincs kint → nem küld (core/reel-post.js deployEngedi)
+          DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
         run: node core/reel-post.js --send || true
 
       # 📺 HETI MI-HÍRADÓ — automata kiküldés (2026-10-19, user: „mehet ki automatikusan!").

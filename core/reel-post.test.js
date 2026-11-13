@@ -27,7 +27,7 @@ import { dirname, join } from 'path';
 import {
   reelVideoUrl, reelArticleUrl, reelCaption, sendReel,
   MOBIL_VAGAS, MIN_VIDEO_BAJT, SITE, igertLepesszam, LECSENGES_MS,
-  futtatFazis, send
+  futtatFazis, send, deployEngedi
 } from './reel-post.js';
 
 let pass = 0;
@@ -213,10 +213,20 @@ await at('🎯 a HEAD a VIDEÓRA megy, a POST a WEBHOOKRA — nem fordítva', as
   // Felcserélve a webhook-titkot POST-olnánk a videó címére.
   const { f, hivott } = mock();
   await sendReel({ video: VIDEO, caption: 'c', hook: HOOK, fetchFn: f });
-  assert.deepEqual(
-    hivott.map(x => [x.method, x.url]),
-    [['HEAD', VIDEO], ['POST', HOOK]]
-  );
+  assert.deepEqual(hivott.map(x => x.method), ['HEAD', 'POST']);
+  // 11-13: a HEAD gyorsítótár-kerülővel kérdez (régi él-cache 200-at adott egy már nem élő videóra)
+  assert.ok(hivott[0].url.startsWith(VIDEO + (VIDEO.includes('?') ? '&' : '?') + 'elo='), '🔴 a HEAD nem a videót / nem cache-kerülővel kérdezi: ' + hivott[0].url);
+  assert.equal(hivott[1].url, HOOK);
+  const post = JSON.parse(hivott[1].body);
+  assert.equal(JSON.stringify(post).includes('elo='), false, '🔴 a cache-kerülő paraméter a Facebooknak küldött címbe is bekerült');
+});
+
+await at('🔴 11-13: bukott / kihagyott deploy után nincs Reel-küldés; siker vagy helyi futás → mehet', async () => {
+  for (const o of ['failure', 'skipped', 'cancelled']) assert.equal(deployEngedi(o), false, o);
+  for (const o of ['success', '', undefined]) assert.equal(deployEngedi(o), true, String(o));
+  const y = readFileSync(new URL('../.github/workflows/auto.yml', import.meta.url), 'utf-8').replace(/\r\n/g, '\n');
+  const lepes = y.slice(y.indexOf('- name: Reel — kiküldés (a deploy UTÁN)'), y.indexOf('run: node core/reel-post.js --send'));
+  assert.match(lepes, /DEPLOY_OUTCOME: \$\{\{ steps\.deploy\.outcome \}\}/, '🔴 a Reel-lépés nem kapja meg a deploy kimenetelét');
 });
 
 await at('📮 JSON content-type nélkül a Make nem képezi le a mezőket', async () => {
