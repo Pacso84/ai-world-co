@@ -1,6 +1,5 @@
 {
   "openai-blog": [
-    "https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind",
     "https://openai.com/index/wasmer",
     "https://openai.com/index/using-codex-to-simulate-black-holes",
     "https://openai.com/index/openai-to-acquire-ona",
@@ -299,7 +298,8 @@
     "https://openai.com/index/children-first-declaration",
     "https://openai.com/business/customer-stories/amplitude",
     "https://openai.com/business/customer-stories/gondola",
-    "https://openai.com/index/introducing-chatgpt-wallet"
+    "https://openai.com/index/introducing-chatgpt-wallet",
+    "https://openai.com/business/customer-stories/shield"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -1107,10 +1107,6 @@
     "https://github.blog/ai-and-ml/github-copilot/build-once-run-on-any-agent-a-practical-guide-to-agent-skills/"
   ],
   "aws-ml": [
-    "https://aws.amazon.com/blogs/machine-learning/governed-reports-with-amazon-quick-desktop-and-amazon-fsx-for-netapp-ontap/",
-    "https://aws.amazon.com/blogs/machine-learning/nateras-intelligent-appointment-scheduling-with-amazon-bedrock-agentcore/",
-    "https://aws.amazon.com/blogs/machine-learning/bring-your-own-model-with-amazon-sagemaker-ai-script-mode-in-sdk-v3/",
-    "https://aws.amazon.com/blogs/machine-learning/connect-amazon-bedrock-agentcore-to-cross-account-knowledge-bases/",
     "https://aws.amazon.com/blogs/machine-learning/preparing-data-for-supervised-fine-tuning-part-2-advanced-data-strategies/",
     "https://aws.amazon.com/blogs/machine-learning/preparing-data-for-supervised-fine-tuning-part-1-formatting-and-quality/",
     "https://aws.amazon.com/blogs/machine-learning/evaluate-any-agent-framework-with-amazon-bedrock-agentcore-evaluations/",
@@ -1406,7 +1402,11 @@
     "https://aws.amazon.com/blogs/machine-learning/run-agents-securely-and-efficiently-with-the-next-generation-agentcore-runtime/",
     "https://aws.amazon.com/blogs/machine-learning/cost-optimizing-assemblyai-speech-to-text-inference-on-aws-with-amazon-ec2-spot/",
     "https://aws.amazon.com/blogs/machine-learning/cost-attribution-and-controls-for-ai-developer-and-productivity-tools-on-amazon-bedrock/",
-    "https://aws.amazon.com/blogs/machine-learning/build-a-model-improvement-flywheel-with-amazon-sagemaker-hyperpod-data-capture/"
+    "https://aws.amazon.com/blogs/machine-learning/build-a-model-improvement-flywheel-with-amazon-sagemaker-hyperpod-data-capture/",
+    "https://aws.amazon.com/blogs/machine-learning/production-mlops-at-gs-caltex-with-amazon-sagemaker-canvas-part-1/",
+    "https://aws.amazon.com/blogs/machine-learning/route-coding-agent-requests-to-the-right-model-on-amazon-bedrock-with-nvidia-nemo-switchyard/",
+    "https://aws.amazon.com/blogs/machine-learning/architecture-patterns-for-fast-session-startup-on-amazon-bedrock-agentcore-runtime/",
+    "https://aws.amazon.com/blogs/machine-learning/openfold3-on-amazon-sagemaker-jumpstart-predict-biomolecular-structures/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -2538,7 +2538,8 @@
     "https://cohere.com/blog/cohere-canada-commitment",
     "https://cohere.com/blog/open-source-model-vault",
     "https://cohere.com/blog/embed-rerank-5-openrouter",
-    "https://cohere.com/blog/cohere-welcomes-jaya-baloo-as-first-ciso"
+    "https://cohere.com/blog/cohere-welcomes-jaya-baloo-as-first-ciso",
+    "https://cohere.com/blog/cohere-expands-its-sovereign-ai-platform-with-aisle-and-cubic"
   ],
   "anthropic-blog": [
     "https://www.anthropic.com/news/anthropic-economic-index-connector",
@@ -2805,7 +2806,8 @@
     "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9iNk83MlE0Mkc5OWgtWGM0SFhxeUMzT19YQWdsX0pRVnVFbks4WWZwVmhvbS1WS05QY1ZScUFYVlV5Wll0TzlTeC1aQkhpMWc?oc=5",
     "https://news.google.com/rss/articles/CBMijwFBVV95cUxNc1htRl9jWDhJSmdLM3VmTkViUW5Ka3dfMFpVbFBPc1c4NmtHTFBockdNLVFIWGlOWnQzWFdtTVMtUFlib3NJN1pLUDZzanJrUTdUOTJPQjRuaTl5VjBsWGpiZWpWbl92SXZLTW1ZN3o5TmQ3b3JqMVZvdjhjYTVxNXhaZU5BYlZ5WXhUSkZfaw?oc=5",
     "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5NNXZISW9lcy1rMmhRLWJLQi0wdngteUF3RmtfQ2haNnpLRXhxNE5RdFJNS0h5empXdTkyTW92N0k5VHUzNDFENUJoRndWa2M0bGRkMHhpOHMtOVFabE9zLTREcw?oc=5",
-    "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPNk00Z2d5THpPbWZHSEFlYkJOREJSQnNYb1NRTU1HeWE4YlprclhQVmV5SWVVVFRCOVB6YlRlckx1TW1HYkszMHl1X2FXX05ydWV2YmpNQnc0OUQ0ZGRGVTZwNW1rLW43Vk9UWlBwTkh5cy1uY0tfeWRwVlVETkRQZHdwMGtmV2N0ZlNZ?oc=5"
+    "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPNk00Z2d5THpPbWZHSEFlYkJOREJSQnNYb1NRTU1HeWE4YlprclhQVmV5SWVVVFRCOVB6YlRlckx1TW1HYkszMHl1X2FXX05ydWV2YmpNQnc0OUQ0ZGRGVTZwNW1rLW43Vk9UWlBwTkh5cy1uY0tfeWRwVlVETkRQZHdwMGtmV2N0ZlNZ?oc=5",
+    "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5sQnhpUkNTdjlLRDJtc3p6NVFCbmhMaVdhTTh3SjhZSHlNb2lVb3dLeS1pWjBWYjVRamdtX3NuSHZKeWJQbDNMMnFXRmhOZw?oc=5"
   ],
   "deepseek-news": [
     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9zbUkzc1FDYmZIVjVRdW5wakpEOEgwSHFHZ05zNDhZLWwydGFjcEVtTVdEZW50RWw4MF9sVlYtMDhOb3RNdDdLM1VDOGgxTEZOWnRXZXhvTGVVQ25Rbk1uRg?oc=5",
@@ -3714,7 +3716,8 @@
     "https://github.blog/changelog/2026-11-10-c-language-server-now-auto-configures-msbuild-builds",
     "https://github.blog/changelog/2026-11-10-github-app-support-for-enterprise-copilot-seat-management",
     "https://github.blog/changelog/2026-11-13-github-enterprise-server-support-in-the-github-copilot-app",
-    "https://github.blog/changelog/2026-11-13-gemini-4-hydrogen-in-github-copilot"
+    "https://github.blog/changelog/2026-11-13-gemini-4-hydrogen-in-github-copilot",
+    "https://github.blog/changelog/2026-11-13-upcoming-deprecation-of-selected-github-copilot-models-in-december"
   ],
   "apple-newsroom": [
     "https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/",
@@ -3830,6 +3833,7 @@
     "https://elevenlabs.io/blog/impact-nyc-summit",
     "https://elevenlabs.io/blog/customer-service-skills",
     "https://elevenlabs.io/blog/impact-sofia-oxford-said",
-    "https://elevenlabs.io/blog/introducing-forward-deployed-creatives"
+    "https://elevenlabs.io/blog/introducing-forward-deployed-creatives",
+    "https://elevenlabs.io/blog/open-source-tts-vs-paid-apis"
   ]
 }

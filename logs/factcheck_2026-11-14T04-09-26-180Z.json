@@ -1,0 +1,62 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.010795520000000001,
+  "at": "2026-11-14T04:09:26.180Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-upload-a-selfie-to-chatgpt-and-ask-for-a-professional.json",
+      "cim": "How to Upload a Selfie to ChatGPT and Ask for a Professional Headshot Look",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "A ChatGPT képeket tud elemezni és a DALL-E-val új képeket generálni, de nem módosítja vagy alakítja át a feltöltött szelfit - az AI az Ön leírása alapján nulláról generál új képet, nem az eredeti fénykép módosításával."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-turn-elevenlabs-scribe-v3-transcripts-into-notes-and-.json",
+      "cim": "How to Turn ElevenLabs Scribe v3 Transcripts Into Notes and Tasks",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-12T04-51-01-201Z_zapier-blog_How_to_get_a_Google_Gemini_API_key_and_use_the_Gem.json",
+      "cim": "How to get a Google Gemini API key—and use the Gemini API",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan összefoglalja a forrást, nem mond ellent tényállításoknak"
+    },
+    {
+      "file": "ARTICLE_2026-11-13T15-49-02-605Z_pixlr_The_Prompt_That_Fixes_Almost_Everything.json",
+      "cim": "The Prompt That Fixes Almost Everything",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben szereplő összes tényállítás alátámasztja a forrásszöveg"
+    },
+    {
+      "file": "ARTICLE_2026-11-12T04-50-52-650Z_snowflake_AI_Cost_Management__Why_Cost_Per_Token_Is_the_Wron.json",
+      "cim": "AI Cost Management: Why Cost Per Token Is the Wrong Metric",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "túl nagy átírás (198 szó a 893-ből)",
+      "modell_hu": "A cikk a jövőbeli benchmark eredményeket úgy mutatja be, mintha azok jelenlegi belső tesztek lennének, de a forrás egyértelműen 2026 május-júniusra datálja ezeket"
+    },
+    {
+      "file": "ARTICLE_2026-11-09T17-59-31-277Z_d-id-news_When_Should_Businesses_Use_AI_Video__5_Use_Cases_T.json",
+      "cim": "When Should Businesses Use AI Video? 5 Use Cases That Make Sense",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben található összes ténybeli állítást a forrásszöveg alátámasztja"
+    }
+  ]
+}

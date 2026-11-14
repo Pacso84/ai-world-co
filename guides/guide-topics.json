@@ -8783,10 +8783,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Transcribe a recording with Scribe v3, then use the transcript to build a meeting recap, action list, and a follow-up email.",
-      "status": "todo",
+      "status": "done",
       "icon": "🎙️",
       "proposed_at": "2026-11-12T04:58:38.581Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-11-14T04:04:17.273Z"
     },
     {
       "id": "how-to-use-duck-ai-chats-with-your-own-files-for-research",
@@ -8917,6 +8918,28 @@
           "title": "Making purchases with ChatGPT Wallet"
         }
       ]
+    },
+    {
+      "id": "how-to-upload-a-selfie-to-chatgpt-and-ask-for-a-professional",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "How to Upload a Selfie to ChatGPT and Ask for a Professional Headshot Look",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Show a beginner how to attach a casual selfie in ChatGPT, describe the look they want in one clear prompt, and judge the result against the original photo before using it.",
+      "status": "done",
+      "icon": "🤳",
+      "proposed_at": "2026-11-14T04:03:43.514Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "chatgpt prompt for professional headshot",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-11-14"
+      },
+      "written_at": "2026-11-14T04:04:37.411Z"
     }
   ],
   "trend_proba": [
@@ -8999,6 +9022,10 @@
     {
       "kifejezes": "gemini prompt for image generation",
       "at": "2026-11-07T03:43:40.990Z"
+    },
+    {
+      "kifejezes": "chatgpt prompt for professional headshot",
+      "at": "2026-11-14T04:03:32.579Z"
     }
   ]
 }

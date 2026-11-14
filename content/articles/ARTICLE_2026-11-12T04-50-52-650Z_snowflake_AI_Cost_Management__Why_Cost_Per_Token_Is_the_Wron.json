@@ -1,0 +1,73 @@
+{
+  "_meta": {
+    "written_at": "2026-11-14T04:00:31.049Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0041716,
+    "original_draft": "2026-11-12T04-50-52-650Z_snowflake_AI_Cost_Management__Why_Cost_Per_Token_Is_the_Wron.json",
+    "source_id": "snowflake",
+    "source_name": "Snowflake Blog (hivatalos)",
+    "source_link": "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-cost-management-beyond-cost-per-token",
+    "source_links": [
+      "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-cost-management-beyond-cost-per-token"
+    ],
+    "source_snippet_len": 155,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "b3d1f10c5fc1dacf",
+    "source_overlap_words": 7,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "published_at": "2026-11-14T04:01:41.864Z",
+    "slug": "why-cost-per-token-misleads-ai-budgets-and-what-to-measure-instead",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 893
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hook, helpful plain-language definitions (token, inference, hallucination), proper attribution of all claims and statistics to sources, and an audience-segmented 'What this means for you' section with actionable next steps. No prohibited content, no rankings, no invented specifics. Minor note: 'the announcement gives a simple example' could read more naturally as 'Snowflake offers a simple example,' but this is a style preference, not a content flaw.",
+      "_aiCost": 0.00127995,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-14T04:03:16.040Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explanatory article about AI cost management philosophy, not an introduction of a specific named tool or feature for users to adopt",
+    "image_v": 2,
+    "image_at": "2026-11-14T04:06:55.806Z",
+    "seo": {
+      "meta_description": "Token pricing can be misleading because it hides real AI costs like retries, errors, and rework. Learn what to measure instead for accurate budgets.",
+      "keywords": [
+        "AI cost per token",
+        "hidden AI costs",
+        "AI budgeting",
+        "cost per token misleading",
+        "AI rework costs",
+        "measure AI expenses",
+        "AI spending tracking"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific examples of what 'correct, governed outcome' means in practice",
+        "Include concrete numbers or percentages showing how retries add to AI costs",
+        "Add a brief intro sentence explaining WHO faces this problem (e.g., IT managers, finance teams) for better search intent match"
+      ],
+      "optimised_at": "2026-11-14T04:08:11.311Z"
+    },
+    "fact_verified_at": "2026-11-14T04:10:34.339Z"
+  },
+  "article_markdown": "---\ntitle: \"Why Cost Per Token Misleads AI Budgets (and What to Measure Instead)\"\nsubtitle: \"Cheap AI calls can still cost a lot when they need retries, fixes, or repeat work. Here's how to track the real expense.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"ai-costs\", \"finops\", \"business-ai\", \"roi\", \"enterprise-ai\"]\n---\n\n# Why Cost Per Token Misleads AI Budgets (and What to Measure Instead)\n\n> **In short:** Snowflake argues that counting cost per token or per prompt hides the real expense of AI, which comes from retries, errors and rework. It recommends measuring cost per correct, governed outcome instead, a practical shift for anyone who approves or tracks AI spending.\n\nYou may have seen a spreadsheet that shows what each AI request costs and felt reassured. The numbers look tidy, but they can miss the costs that actually add up. If you approve AI tools at work, or simply want to know where your team's money goes, this idea is worth understanding.\n\n## The visible part and the hidden part\n\nA **token** is a small chunk of text, roughly a word or part of a word, that an AI model reads and writes. Providers usually charge by tokens, so it's easy to track \"cost per token,\" \"cost per prompt,\" or \"cost per model call.\"\n\nSnowflake's point is that these numbers are just the tip of the iceberg. Below the waterline sit the costs that pile up:\n\n- **Retries**: the AI gets it wrong, so someone runs the request again, sometimes several times.\n- **Hallucinations**: a **hallucination** is when an AI confidently makes something up. Catching that takes human time.\n- **Validation and rework**: people check the output, then fix or redo it.\n- **Ungoverned outputs**: results that break internal rules and must be reviewed or thrown away.\n\nThe announcement gives a simple example. A cheap model that needs three attempts can cost more than a slightly pricier model that gets it right the first time.\n\n## Why spending keeps rising even as prices fall\n\nSnowflake cites the Stanford AI Index Report, which says the cost of AI **inference** (the work of running a model to produce an answer) has dropped by over 99% since 2022. Yet the company also notes that as prices fell, use grew fast. It cites an OpenAI report saying average enterprise **reasoning-token** consumption (the tokens a model uses while it works through a problem) rose about 320 times year over year.\n\nIn other words, cheaper units can still lead to a bigger bill when usage explodes. Snowflake frames the real question as how to move fast with AI without runaway spending, weak returns, or governance risk.\n\n## The role of context\n\nSnowflake's central idea is that **context** (the business facts an AI needs, such as approved definitions, security rules and where data came from) changes the economics. It compares a visitor to a city, who wastes time finding their way, with a local, who already knows the shortcuts.\n\nIn its own internal tests, the company reports that the same underlying model class scored very differently depending on the context it had. The approach with full business context reached 86% accuracy, compared with 47% for an assistant without semantic context and 24% for a general coding agent. Snowflake says adding rich context barely raised the cost per prompt, while improving accuracy about 3.6 times. These are the company's own benchmark results, so treat them as its claims.\n\n## What to measure instead\n\nSnowflake suggests tracking cost per correct, governed outcome. Its examples include:\n\n- **Talk-to-data**: an answer based on approved metrics.\n- **Document extraction**: correct fields pulled out, measured against spending.\n- **Customer service**: an issue resolved correctly, without a repeat contact.\n- **Order operations**: an order processed accurately, with the right approvals and no rework.\n\nThe company also recommends setting your cost and value measures before you build an AI tool, not after.\n\n## What this means for you\n\n- **In everyday life**: Even at home, a \"cheap\" AI habit can be costly if you keep redoing the same request. Notice how often you rerun a prompt before deciding whether a tool really saves you time.\n- **For your business or work**: Ask your team what \"done correctly\" means for each AI task, then track how often results need fixing. Snowflake's framework describes four steps: visibility into spending, attribution to the team or workload responsible, control over spikes, and optimization over time.\n- **If you're just getting started**: Pick one small AI task, write down what a good result looks like, and count how many attempts it takes to get there.\n\nSnowflake also describes an **AI gateway**, a central control point that sits between the apps and agents using AI and the models themselves, which it says helps teams manage these four steps. You don't need that tool to begin, though. The core habit is the same: measure outcomes, not just usage.\n\n## Wrap-up\n\nThe cost of an AI request is only part of the story. Retries, errors, and rework often make up the rest, and they're easy to miss if you only watch token counts. Snowflake's suggestion is to measure the cost of each correct, reliable result. Your next step can be simple: this week, pick one AI task you use at work or at home and count how many tries it takes before the answer is usable.",
+  "original_title": "AI Cost Management: Why Cost Per Token Is the Wrong Metric"
+}

@@ -1,0 +1,89 @@
+{
+  "started_at": "2026-11-14T03:59:35.102Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 2,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 2,
+    "html": 2,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.01887641,
+  "by_article": [
+    {
+      "draft": "2026-11-13T15-49-02-605Z_pixlr_The_Prompt_That_Fixes_Almost_Everything.json",
+      "writer_output": "WRITER_2026-11-13T15-49-02-605Z_pixlr_The_Prompt_That_Fixes_Almost_Everything.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 10,
+      "cost_usd": 0.0045628,
+      "duration_ms": 19786,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-12T04-50-52-650Z_snowflake_AI_Cost_Management__Why_Cost_Per_Token_Is_the_Wron.json",
+      "writer_output": "WRITER_2026-11-12T04-50-52-650Z_snowflake_AI_Cost_Management__Why_Cost_Per_Token_Is_the_Wron.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 7,
+      "cost_usd": 0.0041716,
+      "duration_ms": 17677,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-12T04-51-01-201Z_zapier-blog_How_to_get_a_Google_Gemini_API_key_and_use_the_Gem.json",
+      "writer_output": "WRITER_2026-11-12T04-51-01-201Z_zapier-blog_How_to_get_a_Google_Gemini_API_key_and_use_the_Gem.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 9,
+      "cost_usd": 0.0039488,
+      "duration_ms": 15370,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-09T17-59-31-277Z_d-id-news_When_Should_Businesses_Use_AI_Video__5_Use_Cases_T.json",
+      "writer_output": "WRITER_2026-11-09T17-59-31-277Z_d-id-news_When_Should_Businesses_Use_AI_Video__5_Use_Cases_T.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 5999,
+      "source_overlap_words": 10,
+      "cost_usd": 0.0036566,
+      "duration_ms": 12100,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 0,
+  "termek_extra": 0,
+  "finished_at": "2026-11-14T04:01:00.574Z",
+  "duration_seconds": 85.472
+}

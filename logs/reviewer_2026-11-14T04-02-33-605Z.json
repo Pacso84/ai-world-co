@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-11-14T04:01:00.750Z",
+  "total": 4,
+  "passed": 3,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.007377530000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-11-09T17-59-31-277Z_d-id-news_When_Should_Businesses_Use_AI_Video__5_Use_Cases_T.json",
+      "article": "ARTICLE_2026-11-09T17-59-31-277Z_d-id-news_When_Should_Businesses_Use_AI_Video__5_Use_Cases_T.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00108759
+    },
+    {
+      "writer": "WRITER_2026-11-12T04-50-52-650Z_snowflake_AI_Cost_Management__Why_Cost_Per_Token_Is_the_Wron.json",
+      "article": "ARTICLE_2026-11-12T04-50-52-650Z_snowflake_AI_Cost_Management__Why_Cost_Per_Token_Is_the_Wron.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00127995
+    },
+    {
+      "writer": "WRITER_2026-11-12T04-51-01-201Z_zapier-blog_How_to_get_a_Google_Gemini_API_key_and_use_the_Gem.json",
+      "rejected": "REJECTED_2026-11-12T04-51-01-201Z_zapier-blog_How_to_get_a_Google_Gemini_API_key_and_use_the_Gem.json",
+      "decision": "FAIL",
+      "score": 4,
+      "cost_usd": 0.00163275
+    },
+    {
+      "writer": "WRITER_2026-11-13T15-49-02-605Z_pixlr_The_Prompt_That_Fixes_Almost_Everything.json",
+      "article": "ARTICLE_2026-11-13T15-49-02-605Z_pixlr_The_Prompt_That_Fixes_Almost_Everything.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00108717
+    }
+  ],
+  "finished_at": "2026-11-14T04:02:33.605Z",
+  "duration_seconds": 92.855
+}
