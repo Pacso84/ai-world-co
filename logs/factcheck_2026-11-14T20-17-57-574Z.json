@@ -1,0 +1,62 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.013430329999999999,
+  "at": "2026-11-14T20:17:57.574Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-10-21T02-27-43-196Z_openai-blog_Franchisee_reconciles_cash_in_94__less_time_with_C.json",
+      "cim": "Franchisee reconciles cash in 94% less time with ChatGPT Work",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk minden ténykéllítményt alátámaszt a forrásokból. A cikk pontosan közli a 95%-os újraárazási idő csökkenést, a 94%-os készpénz-egyeztetési idő csökkenést, a 100 000 dolláros potenciális pénzáramlást, az Orchestra Bio felvásárlását az élettudományi K+F-hez, és az alacsony erőforrású programozás"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-read-and-summarize-a-long-lease-or-insurance-policy-w.json",
+      "cim": "How to read and summarize a long lease or insurance policy with Gemini",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-16T02-10-20-235Z_anthropic-blog_Anthropic_update_on_independent_evaluators___Anthr.json",
+      "cim": "Anthropic update on independent evaluators \\ Anthropic",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrást: leírja, hogy a független értékelők olyan külső szervezetek, amelyek biztonsági tesztelést végeznek (ami megfelel a forrás leírásának), és helyesen magyarázza a 'beágyazás' fogalmát, mint korábbi és folyamatosabb bevonást."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-read-through-insurance-policies-and-bank-contracts-wi.json",
+      "cim": "How to Read Through Insurance Policies and Bank Contracts with Claude",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-09-14T14-33-06-358Z_picsart_GPT_Image_2_5_prompting_guide__12_prompts_for_prec.json",
+      "cim": "GPT Image 2.5 prompting guide: 12 prompts for precise edits",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás a forrásban nem szereplő állítást hozna be: „This guide walks you through a simple two-sentence prompt pattern that works in many AI im”",
+      "modell_hu": "A forrás kifejezetten a Picsart GPT Image 2.5-ről szól, és nem említi a ChatGPT-t, a Google Gemini-t vagy az Adobe Firefly-t"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-remove-a-photo-background-cleanly-with-meta-ai-on-you.json",
+      "cim": "How to remove a photo background cleanly with Meta AI on your phone",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}
