@@ -32,51 +32,51 @@ export const SZINT = Object.freeze({ TELJES: 'teljes', RESZLEGES: 'reszleges', N
 
 const NINCS_OK = 'nincs jóváhagyott hivatalos súgó';
 
-// kanonikus név → { szint, aliasok (kisbetűs eszköznevek), cegek (kisbetűs, .ai / " ai" nélküli cégnevek), sugo (URL-előtagok) }
+// kanonikus név → { szint, aliasok (kisbetűs eszköznevek), cegek (kisbetűs, .ai / " ai" nélküli cégnevek), kulcsok (core/sugo-index.js FORRASOK-kulcsai; [] = nincs cikklista), sugo (URL-előtagok) }
 // A cegek sorrendje számít a „csak cég” keresésnél: az első találat a cég fő terméke.
 export const ESZKOZ_SZINT = {
   // ── TELJES: már jóváhagyott (core/sugo-index.js ENGEDELY) ─────────────────────────────────────────
-  'ChatGPT':           { szint: SZINT.TELJES, aliasok: ['chatgpt', 'codex', 'sora', 'chatgpt atlas' /* a Codex, a Sora és a ChatGPT Atlas az OpenAI jóváhagyott súgójában (help.openai.com) dokumentált */], cegek: ['openai'], sugo: ['https://help.openai.com/'] },
-  'Claude':            { szint: SZINT.TELJES, aliasok: ['claude', 'claude code' /* a Claude Code az Anthropic jóváhagyott súgójában (support.claude.com) dokumentált */], cegek: ['anthropic'], sugo: ['https://support.claude.com/', 'https://support.anthropic.com/'] },
-  'Gemini':            { szint: SZINT.TELJES, aliasok: ['gemini', 'gemini live' /* a Gemini Live a jóváhagyott Gemini-súgóban (support.google.com/gemini) dokumentált */], cegek: ['google'], sugo: ['https://support.google.com/gemini/'] },
-  'Gemini Notebook':   { szint: SZINT.TELJES, aliasok: ['gemini notebook', 'notebooklm'], cegek: [], sugo: ['https://support.google.com/gemininotebook/', 'https://support.google.com/notebooklm/'] },
-  'Google Photos':     { szint: SZINT.TELJES, aliasok: ['google photos'], cegek: [], sugo: ['https://support.google.com/photos/'] },
-  'Microsoft Copilot': { szint: SZINT.TELJES, aliasok: ['microsoft copilot', 'copilot', 'microsoft 365 copilot'], cegek: ['microsoft'], sugo: ['https://support.microsoft.com/'] },
-  'Le Chat':           { szint: SZINT.TELJES, aliasok: ['le chat', 'le chat (mistral)', 'mistral', 'mistral ai'], cegek: ['mistral'], sugo: ['https://help.mistral.ai/'] },
-  'Apple Intelligence': { szint: SZINT.TELJES, aliasok: ['apple intelligence', 'image playground', 'siri'], cegek: ['apple'], sugo: ['https://support.apple.com/'] },
-  'Alexa+':            { szint: SZINT.TELJES, aliasok: ['alexa+', 'amazon alexa+', 'alexa', 'amazon alexa'], cegek: ['amazon'], sugo: ['https://www.amazon.com/gp/help/'] },
+  'ChatGPT':           { szint: SZINT.TELJES, aliasok: ['chatgpt', 'codex', 'sora', 'chatgpt atlas' /* a Codex, a Sora és a ChatGPT Atlas az OpenAI jóváhagyott súgójában (help.openai.com) dokumentált */], cegek: ['openai'], kulcsok: ['openai'], sugo: ['https://help.openai.com/'] },
+  'Claude':            { szint: SZINT.TELJES, aliasok: ['claude', 'claude code' /* a Claude Code az Anthropic jóváhagyott súgójában (support.claude.com) dokumentált */], cegek: ['anthropic'], kulcsok: ['claude'], sugo: ['https://support.claude.com/', 'https://support.anthropic.com/'] },
+  'Gemini':            { szint: SZINT.TELJES, aliasok: ['gemini', 'gemini live' /* a Gemini Live a jóváhagyott Gemini-súgóban (support.google.com/gemini) dokumentált */], cegek: ['google'], kulcsok: ['gemini'], sugo: ['https://support.google.com/gemini/'] },
+  'Gemini Notebook':   { szint: SZINT.TELJES, aliasok: ['gemini notebook', 'notebooklm'], cegek: [], kulcsok: ['notebooklm'], sugo: ['https://support.google.com/gemininotebook/', 'https://support.google.com/notebooklm/'] },
+  'Google Photos':     { szint: SZINT.TELJES, aliasok: ['google photos'], cegek: [], kulcsok: ['photos'], sugo: ['https://support.google.com/photos/'] },
+  'Microsoft Copilot': { szint: SZINT.TELJES, aliasok: ['microsoft copilot', 'copilot', 'microsoft 365 copilot'], cegek: ['microsoft'], kulcsok: ['microsoft'], sugo: ['https://support.microsoft.com/'] },
+  'Le Chat':           { szint: SZINT.TELJES, aliasok: ['le chat', 'le chat (mistral)', 'mistral', 'mistral ai'], cegek: ['mistral'], kulcsok: ['mistral'], sugo: ['https://help.mistral.ai/'] },
+  'Apple Intelligence': { szint: SZINT.TELJES, aliasok: ['apple intelligence', 'image playground', 'siri'], cegek: ['apple'], kulcsok: [], sugo: ['https://support.apple.com/'] },
+  'Alexa+':            { szint: SZINT.TELJES, aliasok: ['alexa+', 'amazon alexa+', 'alexa', 'amazon alexa'], cegek: ['amazon'], kulcsok: [], sugo: ['https://www.amazon.com/gp/help/'] },
 
   // ── TELJES: új jóváhagyás 11-12 ─────────────────────────────────────────────────────────────────
-  'Grok':              { szint: SZINT.TELJES, aliasok: ['grok'], cegek: ['xai'], sugo: ['https://docs.x.ai/'] },
-  'Perplexity':        { szint: SZINT.TELJES, aliasok: ['perplexity', 'perplexity ai'], cegek: ['perplexity'], sugo: ['https://www.perplexity.ai/help-center/'] },
-  'GitHub Copilot':    { szint: SZINT.TELJES, aliasok: ['github copilot'], cegek: ['github'], sugo: ['https://docs.github.com/en/copilot/'] },
-  'Hugging Face':      { szint: SZINT.TELJES, aliasok: ['hugging face', 'hugging face spaces'], cegek: ['hugging face'], sugo: ['https://huggingface.co/docs/'] },
-  'Cohere':            { szint: SZINT.TELJES, aliasok: ['cohere'], cegek: ['cohere'], sugo: ['https://docs.cohere.com/'] },
-  'Duck.ai':           { szint: SZINT.TELJES, aliasok: ['duck.ai'], cegek: ['duckduckgo'], sugo: ['https://duckduckgo.com/duckduckgo-help-pages/'] },
-  'Lumo':              { szint: SZINT.TELJES, aliasok: ['lumo'], cegek: ['proton'], sugo: ['https://proton.me/support/lumo'] },
-  'Z.ai':              { szint: SZINT.TELJES, aliasok: ['z.ai'], cegek: ['z'], sugo: ['https://docs.z.ai/'] },
-  'ElevenLabs':        { szint: SZINT.TELJES, aliasok: ['elevenlabs', 'scribe', 'scribe v3'] /* Scribe = az ElevenLabs beszéd-szöveg modellje, az elevenlabs.io/docs leírja */, cegek: ['elevenlabs'], sugo: ['https://elevenlabs.io/docs/'] },
+  'Grok':              { szint: SZINT.TELJES, aliasok: ['grok'], cegek: ['xai'], kulcsok: ['grok'], sugo: ['https://docs.x.ai/'] },
+  'Perplexity':        { szint: SZINT.TELJES, aliasok: ['perplexity', 'perplexity ai'], cegek: ['perplexity'], kulcsok: ['perplexity'], sugo: ['https://www.perplexity.ai/help-center/'] },
+  'GitHub Copilot':    { szint: SZINT.TELJES, aliasok: ['github copilot'], cegek: ['github'], kulcsok: ['githubcopilot'], sugo: ['https://docs.github.com/en/copilot/'] },
+  'Hugging Face':      { szint: SZINT.TELJES, aliasok: ['hugging face', 'hugging face spaces'], cegek: ['hugging face'], kulcsok: ['huggingface'], sugo: ['https://huggingface.co/docs/'] },
+  'Cohere':            { szint: SZINT.TELJES, aliasok: ['cohere'], cegek: ['cohere'], kulcsok: ['cohere'], sugo: ['https://docs.cohere.com/'] },
+  'Duck.ai':           { szint: SZINT.TELJES, aliasok: ['duck.ai'], cegek: ['duckduckgo'], kulcsok: ['duckai'], sugo: ['https://duckduckgo.com/duckduckgo-help-pages/'] },
+  'Lumo':              { szint: SZINT.TELJES, aliasok: ['lumo'], cegek: ['proton'], kulcsok: ['lumo'], sugo: ['https://proton.me/support/lumo'] },
+  'Z.ai':              { szint: SZINT.TELJES, aliasok: ['z.ai'], cegek: ['z'], kulcsok: ['zai'], sugo: ['https://docs.z.ai/'] },
+  'ElevenLabs':        { szint: SZINT.TELJES, aliasok: ['elevenlabs', 'scribe', 'scribe v3'] /* Scribe = az ElevenLabs beszéd-szöveg modellje, az elevenlabs.io/docs leírja */, cegek: ['elevenlabs'], kulcsok: ['elevenlabs'], sugo: ['https://elevenlabs.io/docs/'] },
 
   // ── RÉSZLEGES: csak a funkció léte igazolható — útmutató felület-név nélkül ────────────────────────
-  'DeepSeek':          { szint: SZINT.RESZLEGES, aliasok: ['deepseek', 'deepseek chat'], cegek: ['deepseek'], sugo: ['https://api-docs.deepseek.com/'] },
-  'Kimi':              { szint: SZINT.RESZLEGES, aliasok: ['kimi'], cegek: ['moonshot'], sugo: ['https://platform.kimi.ai/docs'] },
-  'MiniMax Code':      { szint: SZINT.RESZLEGES, aliasok: ['minimax code', 'minimax'], cegek: ['minimax'], sugo: ['https://platform.minimax.io/docs'] },
-  'Brave Leo':         { szint: SZINT.RESZLEGES, aliasok: ['brave leo'], cegek: ['brave'], sugo: ['https://brave.com/leo/'] },
+  'DeepSeek':          { szint: SZINT.RESZLEGES, aliasok: ['deepseek', 'deepseek chat'], cegek: ['deepseek'], kulcsok: ['deepseek'], sugo: ['https://api-docs.deepseek.com/'] },
+  'Kimi':              { szint: SZINT.RESZLEGES, aliasok: ['kimi'], cegek: ['moonshot'], kulcsok: ['kimi'], sugo: ['https://platform.kimi.ai/docs'] },
+  'MiniMax Code':      { szint: SZINT.RESZLEGES, aliasok: ['minimax code', 'minimax'], cegek: ['minimax'], kulcsok: ['minimax'], sugo: ['https://platform.minimax.io/docs'] },
+  'Brave Leo':         { szint: SZINT.RESZLEGES, aliasok: ['brave leo'], cegek: ['brave'], kulcsok: ['braveleo'], sugo: ['https://brave.com/leo/'] },
 
   // ── NINCS: ismert, de jóváhagyott súgó nélküli eszközök (a táblán kívüli név is „nincs”) ───────────
-  'Meta AI':           { szint: SZINT.NINCS, aliasok: ['meta ai'], cegek: ['meta'], sugo: [] },
-  'Qwen':              { szint: SZINT.NINCS, aliasok: ['qwen', 'qwen chat'], cegek: ['alibaba'], sugo: [] },
-  'Alibaba Cloud':     { szint: SZINT.NINCS, aliasok: ['alibaba cloud'], cegek: [], sugo: [] },
-  'Midjourney':        { szint: SZINT.NINCS, aliasok: ['midjourney'], cegek: ['midjourney'], sugo: [] },
-  'Picsart':           { szint: SZINT.NINCS, aliasok: ['picsart'], cegek: ['picsart'], sugo: [] },
-  'Suno':              { szint: SZINT.NINCS, aliasok: ['suno', 'suno.ai'], cegek: ['suno'], sugo: [] },
-  'Kling':             { szint: SZINT.NINCS, aliasok: ['kling'], cegek: ['kling'], sugo: [] },
-  'Recraft':           { szint: SZINT.NINCS, aliasok: ['recraft'], cegek: ['recraft'], sugo: [] },
-  'Ideogram':          { szint: SZINT.NINCS, aliasok: ['ideogram'], cegek: ['ideogram'], sugo: [] },
-  'Zapier':            { szint: SZINT.NINCS, aliasok: ['zapier'], cegek: ['zapier'], sugo: [] },
-  'Galaxy Ring':       { szint: SZINT.NINCS, aliasok: ['galaxy ring'], cegek: [], sugo: [] },
-  'Upscayl':           { szint: SZINT.NINCS, aliasok: ['upscayl'], cegek: [], sugo: [] },
-  'Project Genie':     { szint: SZINT.NINCS, aliasok: ['project genie'], cegek: [], sugo: [] }   // Google Labs — NEM Gemini-súgós
+  'Meta AI':           { szint: SZINT.NINCS, aliasok: ['meta ai'], cegek: ['meta'], kulcsok: [], sugo: [] },
+  'Qwen':              { szint: SZINT.NINCS, aliasok: ['qwen', 'qwen chat'], cegek: ['alibaba'], kulcsok: [], sugo: [] },
+  'Alibaba Cloud':     { szint: SZINT.NINCS, aliasok: ['alibaba cloud'], cegek: [], kulcsok: [], sugo: [] },
+  'Midjourney':        { szint: SZINT.NINCS, aliasok: ['midjourney'], cegek: ['midjourney'], kulcsok: [], sugo: [] },
+  'Picsart':           { szint: SZINT.NINCS, aliasok: ['picsart'], cegek: ['picsart'], kulcsok: [], sugo: [] },
+  'Suno':              { szint: SZINT.NINCS, aliasok: ['suno', 'suno.ai'], cegek: ['suno'], kulcsok: [], sugo: [] },
+  'Kling':             { szint: SZINT.NINCS, aliasok: ['kling'], cegek: ['kling'], kulcsok: [], sugo: [] },
+  'Recraft':           { szint: SZINT.NINCS, aliasok: ['recraft'], cegek: ['recraft'], kulcsok: [], sugo: [] },
+  'Ideogram':          { szint: SZINT.NINCS, aliasok: ['ideogram'], cegek: ['ideogram'], kulcsok: [], sugo: [] },
+  'Zapier':            { szint: SZINT.NINCS, aliasok: ['zapier'], cegek: ['zapier'], kulcsok: [], sugo: [] },
+  'Galaxy Ring':       { szint: SZINT.NINCS, aliasok: ['galaxy ring'], cegek: [], kulcsok: [], sugo: [] },
+  'Upscayl':           { szint: SZINT.NINCS, aliasok: ['upscayl'], cegek: [], kulcsok: [], sugo: [] },
+  'Project Genie':     { szint: SZINT.NINCS, aliasok: ['project genie'], cegek: [], kulcsok: [], sugo: [] }   // Google Labs — NEM Gemini-súgós
 };
 
 // Eszköznév: kisbetű, szóközök összevonva, a „+” megmarad. Üres és „-” = nincs megadva.
@@ -112,4 +112,16 @@ export function forrasSzint(tool, company) {
   return nev ? talalat(nev) : { szint: SZINT.NINCS, eszkoz: null, ok: NINCS_OK };
 }
 
-export default { SZINT, forrasSzint, ESZKOZ_SZINT };
+/**
+ * Egy útmutató `tool`/`company` párjára: mely súgó-kulcs(ok) (core/sugo-index.js FORRASOK) tartoznak az eszközéhez.
+ * A keresést a forrasSzint() végzi (nincs külön illesztés); csak TELJES vagy RÉSZLEGES szintnél van kulcs,
+ * „nincs” és cégfüggetlen esetben üres lista. Másolatot ad vissza, a táblát nem lehet véletlenül átírni.
+ * A sugo-index.js-t SZÁNDÉKOSAN nem importáljuk: nincs körkörös függés (a tábla-épséget a teszt őrzi).
+ */
+export function sugoKulcsok(tool, company) {
+  const r = forrasSzint(tool, company);
+  if (r.szint !== SZINT.TELJES && r.szint !== SZINT.RESZLEGES) return [];
+  return r.eszkoz ? [...ESZKOZ_SZINT[r.eszkoz].kulcsok] : [];
+}
+
+export default { SZINT, forrasSzint, sugoKulcsok, ESZKOZ_SZINT };

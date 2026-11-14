@@ -1,7 +1,8 @@
 // TESZT — eszköz → forrásszint leképezés (core/forras-szint.js). Ingyenes, hálózat nélküli.
 import assert from 'assert/strict';
 import { readFileSync, readdirSync } from 'fs';
-import { SZINT, forrasSzint, ESZKOZ_SZINT } from './forras-szint.js';
+import { SZINT, forrasSzint, ESZKOZ_SZINT, sugoKulcsok } from './forras-szint.js';
+import { FORRASOK } from './sugo-index.js';
 
 let pass = 0, hiba = 0;
 const t = (n, f) => { try { f(); pass++; console.log('  ✅ ' + n); } catch (e) { hiba++; console.log('  ❌ ' + n + '\n     ' + String(e.message).split('\n')[0]); } };
@@ -153,6 +154,29 @@ t('megjelenített eszköznevek (cég-katalógus): „Amazon Alexa+” és „Le 
   // csak az EXPLICIT alak: előtag-illesztés nincs
   assert.equal(sz('Amazon Alexa+ Pro Max', 'Amazon'), 'nincs');
   assert.equal(sz('Le Chat (Mistral) Enterprise', 'Mistral'), 'nincs');
+});
+
+t('🔑 sugoKulcsok: az eszköz kanonikus neve alapján adja a súgó-kulcsokat', () => {
+  assert.deepEqual(sugoKulcsok('ChatGPT', 'OpenAI'), ['openai']);
+  assert.deepEqual(sugoKulcsok('Perplexity AI', ''), ['perplexity']);
+  assert.deepEqual(sugoKulcsok('', 'xAI'), ['grok']);
+  assert.deepEqual(sugoKulcsok('DeepSeek Chat', 'DeepSeek'), ['deepseek']);
+  assert.deepEqual(sugoKulcsok('Meta AI', 'Meta'), []);
+  assert.deepEqual(sugoKulcsok('Word', 'Microsoft'), [], 'ismeretlen eszköz ismert cégnél: nincs (az 1f rész dönt a Wordről)');
+  assert.deepEqual(sugoKulcsok('', ''), []);
+  // másolatot ad: a hívó nem írhatja át a táblát
+  sugoKulcsok('ChatGPT', 'OpenAI').push('x');
+  assert.deepEqual(ESZKOZ_SZINT['ChatGPT'].kulcsok, ['openai']);
+});
+
+t('🔑 tábla-épség: minden kulcs létezik; a „nincs” szintnek nincs kulcsa; nincs árva FORRASOK-kulcs', () => {
+  const hasznalt = new Set();
+  for (const [nev, e] of Object.entries(ESZKOZ_SZINT)) {
+    assert.ok(Array.isArray(e.kulcsok), nev + ': kulcsok mező kell');
+    if (e.szint === SZINT.NINCS) assert.deepEqual(e.kulcsok, [], nev);
+    for (const k of e.kulcsok) { assert.ok(FORRASOK[k], nev + ': ismeretlen kulcs ' + k); hasznalt.add(k); }
+  }
+  for (const k of Object.keys(FORRASOK)) assert.ok(hasznalt.has(k), 'árva FORRASOK-kulcs: ' + k);
 });
 
 if (hiba) { console.log(`\n❌ forras-szint.test: ${hiba} hiba`); process.exit(1); }
