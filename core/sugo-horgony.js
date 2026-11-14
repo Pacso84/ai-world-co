@@ -29,6 +29,8 @@ export const HORGONY_BE = true;
 export const FUTAS_MAX_PROBA = 6;
 /** Sikertelen próba után ennyi nap múlva próbáljuk újra ugyanazt a témát. */
 export const UJRAPROBA_NAP = 14;
+/** Egy súgó-kulcs cikklistáját futásonként legfeljebb ennyiszer próbáljuk letölteni (ha üres vagy hibás volt). */
+export const LISTA_PROBA = 2;
 
 // A választó válasz-értelmezése változatlanul ugyanaz, mint a hírnél: csak a listából, csak engedélyezett URL.
 export { valasztoValasz, MIN_SUGO_SZOVEG };
@@ -142,7 +144,8 @@ export function ellenorzoValaszTema(szoveg, tema) {
  * @param opciok.ask           az AI-hívó: ask(prompt, { agentName, systemPrompt, maxTokens, jsonMode }) → { text, costUsd } | null
  * @param opciok.indexFn       a súgó cikklistáját hozza (kulcs → [{url, cim}]); tesztben hamis
  * @param opciok.sugoSzovegFn  a cikk szövegét hozza (url → { szoveg, cim } | null); tesztben hamis
- * @param opciok.indexCache    egy futáson belül kulcsonként EGYSZER töltjük le a listát
+ * @param opciok.indexCache    a sikeres (nem üres) cikklista itt marad egy futásra; üres/hibás letöltést kulcsonként legfeljebb LISTA_PROBA-szor próbálunk
+ * Az `atmeneti: true` kudarc (a letöltés vagy egy hiba miatt, nem a téma miatt) NEM indít 14 napos várakozást — a hívó ne jegyezze fel.
  * @returns {Promise<{ok:true, frissites:{sugo_alapu:true, official_sources:{url:string,title:string}[], title?:string}, reason:string, cost:number}
  *   | {ok:false, reason:string, cost:number}>}  Kivételt SOHA nem dob.
  */
@@ -154,12 +157,19 @@ export async function horgonyKeres(tema, { ask, indexFn = indexLetolt, sugoSzove
     if (!ad.horgonyKell) return { ok: false, reason: 'nem kell horgony', jegyzesOk: 'nem kell horgony', cost };
 
     // 2–3. a súgó cikklistája (kulcsonként egyszer, futáson belül)
+    // Csak a SIKERES (nem üres) letöltést tároljuk el: egy átmeneti hiba nem ragad rá a cég minden további témájára.
+    // Kulcsonként futásonként legfeljebb LISTA_PROBA letöltés-kísérlet (a számláló az indexCache-ben él), hogy egy futás ne ostromolja a szervert.
+    const probalkozas = (indexCache.__probalkozas ||= {});
     const index = [];
     for (const k of ad.kulcsok) {
-      if (!indexCache[k]) indexCache[k] = await indexFn(k);
-      index.push(...(Array.isArray(indexCache[k]) ? indexCache[k] : []));
+      if (!(Array.isArray(indexCache[k]) && indexCache[k].length) && (probalkozas[k] || 0) < LISTA_PROBA) {
+        probalkozas[k] = (probalkozas[k] || 0) + 1;
+        const l = await indexFn(k);
+        if (Array.isArray(l) && l.length) indexCache[k] = l;
+      }
+      if (Array.isArray(indexCache[k])) index.push(...indexCache[k]);
     }
-    if (!index.length) return { ok: false, reason: 'a súgó cikklistája nem jött le', jegyzesOk: 'a súgó cikklistája nem jött le', cost };
+    if (!index.length) return { ok: false, reason: 'a súgó cikklistája nem jött le', jegyzesOk: 'a súgó cikklistája nem jött le', atmeneti: true, cost };
 
     // 4–5. választó AI: sorszámot választ a szűkített listából
     const szukitett = indexSzukites(tema, index);
@@ -171,7 +181,7 @@ export async function horgonyKeres(tema, { ask, indexFn = indexLetolt, sugoSzove
 
     // 6. a cikk szövege (privát tárból)
     const sz = await sugoSzovegFn(cikk.url);
-    if (!sz || String(sz.szoveg || '').length < MIN_SUGO_SZOVEG) return { ok: false, reason: 'a súgócikk nem tölthető le', jegyzesOk: 'a súgócikk nem tölthető le', cost };
+    if (!sz || String(sz.szoveg || '').length < MIN_SUGO_SZOVEG) return { ok: false, reason: 'a súgócikk nem tölthető le', jegyzesOk: 'a súgócikk nem tölthető le', atmeneti: true, cost };
     const sugoCim = tiszta(sz.cim || cikk.cim).slice(0, 160);   // a cikkcím hossza korlátos (a téma-fájl nyilvános)
 
     // 7. ellenőrző AI: a cikkből tényleg írható-e útmutató ehhez a témához
@@ -185,7 +195,7 @@ export async function horgonyKeres(tema, { ask, indexFn = indexLetolt, sugoSzove
     if (v.title && tiszta(v.title) !== tiszta(tema?.title)) frissites.title = v.title;   // cím csak akkor, ha szűkült
     return { ok: true, frissites, reason: v.reason, cost };
   } catch (e) {
-    return { ok: false, reason: 'hiba: ' + String(e?.message || e).slice(0, 150), jegyzesOk: 'hiba', cost };   // a kivétel szövege nem kerül a jegyzésbe
+    return { ok: false, reason: 'hiba: ' + String(e?.message || e).slice(0, 150), jegyzesOk: 'hiba', atmeneti: true, cost };   // a kivétel szövege nem kerül a jegyzésbe
   }
 }
 

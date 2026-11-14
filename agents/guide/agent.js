@@ -48,7 +48,7 @@ import { fekezett as fekezettE, fekSzuro, fekAllapotIr, fekOsszegzo } from '../.
 import { cegLefedettseg } from '../../core/ceg-lefedettseg.js';   // 🏢 2026-11-05 őrszem
 import { sugoBlokk, sugoForrasok } from '../../core/sugo-parositas.js';   // 📘 2026-11-11 hír → útmutató CSAK a hivatalos súgóból
 import { sugoSzoveg } from '../../core/sugo-tar.js';
-import { horgonyKeres, horgonyVar, FUTAS_MAX_PROBA } from '../../core/sugo-horgony.js';   // ⚓ 2026-11-14 (TÉNYKÖZPONT 1d): útmutató csak a hivatalos súgó egy cikkéhez rögzített témáról
+import { horgonyKeres, horgonyVar, FUTAS_MAX_PROBA, HORGONY_BE } from '../../core/sugo-horgony.js';   // ⚓ 2026-11-14 (TÉNYKÖZPONT 1d): útmutató csak a hivatalos súgó egy cikkéhez rögzített témáról
 import { horgonyozottValasztas, horgonyAllapotIr } from '../../core/horgony-valasztas.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -147,15 +147,17 @@ function pickTopics(store, args) {
   // ⚓ HORGONY-VÁRAKOZÁS (2026-11-14, TÉNYKÖZPONT 1d): ha a téma legutóbbi súgó-horgony próbája nem sikerült, és még nem telt le
   // a várakozás (UJRAPROBA_NAP), ebben a futásban kimarad — a kézi --id / --title kérésre is. A témát NEM töröljük és a státuszát
   // NEM írjuk át; a várakozás után magától újra próbálkozik. (A horgony megkeresése a main() írási ciklusa előtt történik.)
+  // Kapcsoló (HORGONY_BE = false): a szűrő és a kihagyás-sor is kikapcsol — a mai működés.
   const horgonyMost = Date.now();
+  const horgonyVarE = x => HORGONY_BE && horgonyVar(x, horgonyMost);
   if (args.id || args.title) {
-    for (const t of store.topics.filter(x => horgonyVar(x, horgonyMost))) {
+    for (const t of store.topics.filter(horgonyVarE)) {
       if ((args.id && t.id === args.id) || (args.title && t.title === args.title)) {
         console.log(`⚓ kihagyva: „${String(t.title).slice(0, 60)}” — nincs hozzá hivatalos súgócikk, később újra próbáljuk`);
       }
     }
   }
-  store = { ...store, topics: store.topics.filter(t => !horgonyVar(t, horgonyMost)) };
+  store = { ...store, topics: store.topics.filter(t => !horgonyVarE(t)) };
   if (args.id) return store.topics.filter(t => t.id === args.id);
   if (args.title) return store.topics.filter(t => t.title === args.title);
   // KÖZÉPSZINT (2026-09-29, user): napi 1 középszintű a 2-ből → ha ma még nincs,
@@ -1336,9 +1338,10 @@ async function main() {
   };
   const valasztas = await horgonyozottValasztas(jeloltek, args.limit, { keres: horgonyKeresMost, most: Date.now(), naplo: console.log });
   const topics = valasztas.iras;
-  if (valasztas.jegyzesek.length) {
+  if (valasztas.jegyzesek.some(j => j.id != null && j.horgony)) {
     // a próbák eredménye a témafájlba: csak a `horgony` jegyzés; sikernél a súgó-alap is. Státuszt NEM írunk át, témát NEM törlünk.
     for (const j of valasztas.jegyzesek) {
+      if (j.id == null || !j.horgony) continue;   // id nélküli téma nem párosítható; az átmeneti kudarcnak nincs jegyzése (nincs 14 napos várakozás)
       const t = store.topics.find(x => x.id === j.id);
       if (!t) continue;
       t.horgony = j.horgony;
@@ -1347,15 +1350,22 @@ async function main() {
     saveTopics(store);   // még az írás ELŐTT: ha az írás megszakad, a horgony-próba eredménye nem vész el
   }
   if (valasztas.probak) horgonyAllapotIr(valasztas);   // csak ha volt próba: a „nem kapott horgonyt” lista így nem ürül ki egy próba nélküli futástól
-  if (valasztas.probak) console.log(`🧭 horgony-összegzés: ${valasztas.probak} próba, ${valasztas.jegyzesek.filter(j => j.horgony.ok).length} sikeres (költség $${horgonyKoltseg.toFixed(4)})`);
+  if (valasztas.probak) console.log(`🧭 horgony-összegzés: ${valasztas.probak} próba, ${valasztas.jegyzesek.filter(j => j.horgony?.ok).length} sikeres (költség $${horgonyKoltseg.toFixed(4)})`);
+
+  const stats = { started_at: new Date().toISOString(), written: 0, failed: 0, total_cost_usd: horgonyKoltseg, by_guide: [] };   // a horgony-keresés költsége is benne van
 
   if (!topics.length) {
     console.log('💤 Nincs feldolgozandó téma (vagy mind "done"). Adj hozzá a guides/guide-topics.json-ban, vagy --id-val kérj egyet.');
+    // ha a horgony-keresés pénzt költött, a naplóba akkor is bekerül (különben egy „minden jelölt elutasítva” futás költsége nem látszana)
+    if (horgonyKoltseg > 0) {
+      if (!existsSync(LOGS_DIR)) mkdirSync(LOGS_DIR, { recursive: true });
+      stats.finished_at = new Date().toISOString();
+      writeFileSync(join(LOGS_DIR, `guide_${stats.started_at.replace(/[:.]/g, '-')}.json`), JSON.stringify(stats, null, 2), 'utf-8');
+    }
     return;
   }
   console.log(`🎯 Feldolgozandó útmutató: ${topics.length}\n`);
 
-  const stats = { started_at: new Date().toISOString(), written: 0, failed: 0, total_cost_usd: horgonyKoltseg, by_guide: [] };   // a horgony-keresés költsége is benne van
 
   for (const topic of topics) {
     console.log(`📝 Útmutató: "${topic.title.slice(0, 60)}..."${topic.company ? ` [${topic.company}]` : ''}`);

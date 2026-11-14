@@ -2,7 +2,7 @@
 // A tesztszövegek kitaláltak (kiadói szöveg nem kerülhet a nyilvános repóba).
 import assert from 'assert/strict';
 import {
-  HORGONY_BE, FUTAS_MAX_PROBA, UJRAPROBA_NAP,
+  HORGONY_BE, FUTAS_MAX_PROBA, UJRAPROBA_NAP, LISTA_PROBA,
   indexSzukites, valasztoPromptTema, valasztoValasz, ellenorzoPromptTema, ellenorzoValaszTema,
   horgonyKeres, horgonyJegyzes, horgonyVar
 } from './sugo-horgony.js';
@@ -236,6 +236,38 @@ ta('(h) két téma ugyanarra a kulcsra → az indexFn egyszer hívódik', async 
   await horgonyKeres(konkretTema, { ask: okAsk(), indexFn: fn, sugoSzovegFn: szovegFn, indexCache: cache });
   await horgonyKeres({ ...konkretTema, id: 't2' }, { ask: okAsk(), indexFn: fn, sugoSzovegFn: szovegFn, indexCache: cache });
   assert.equal(n, 1);
+});
+
+ta('(h2) üres index NEM kerül a gyorsítótárba: a következő téma újra próbálja, a kulcsonkénti keret (LISTA_PROBA) után már nem', async () => {
+  assert.equal(LISTA_PROBA, 2);
+  let n = 0; const fn = async () => { n++; return []; };
+  const cache = {};
+  for (let i = 0; i < 4; i++) {
+    const r = await horgonyKeres({ ...konkretTema, id: 't' + i }, { ask: okAsk(), indexFn: fn, sugoSzovegFn: szovegFn, indexCache: cache });
+    assert.equal(r.ok, false); assert.equal(r.atmeneti, true, 'a letöltési hiba átmeneti');
+  }
+  assert.equal(n, LISTA_PROBA, 'legfeljebb 2 letöltési kísérlet kulcsonként, futásonként');
+  assert.equal(cache.perplexity, undefined, 'üres lista nincs eltárolva');
+});
+
+ta('(h3) az első letöltés üres, a második sikeres → a második téma már megtalálja és a lista el is tárolódik', async () => {
+  let n = 0; const fn = async () => { n++; return n === 1 ? [] : indexLista; };
+  const cache = {};
+  const r1 = await horgonyKeres(konkretTema, { ask: okAsk(), indexFn: fn, sugoSzovegFn: szovegFn, indexCache: cache });
+  const r2 = await horgonyKeres({ ...konkretTema, id: 't2' }, { ask: okAsk(), indexFn: fn, sugoSzovegFn: szovegFn, indexCache: cache });
+  const r3 = await horgonyKeres({ ...konkretTema, id: 't3' }, { ask: okAsk(), indexFn: fn, sugoSzovegFn: szovegFn, indexCache: cache });
+  assert.equal(r1.ok, false); assert.equal(r2.ok, true); assert.equal(r3.ok, true);
+  assert.equal(n, 2, 'a sikeres lista után nincs több letöltés');
+});
+
+ta('(h4) az átmeneti kudarcok jelölve: üres lista, nem tölthető súgócikk, hiba — a téma-kudarcok NEM', async () => {
+  const lista = await horgonyKeres(konkretTema, { ask: okAsk(), indexFn: async () => [], sugoSzovegFn: szovegFn });
+  const cikk = await horgonyKeres(konkretTema, { ask: okAsk(), indexFn, sugoSzovegFn: async () => null });
+  const hiba = await horgonyKeres(konkretTema, { ask: async () => { throw new Error('ai'); }, indexFn, sugoSzovegFn: szovegFn });
+  assert.equal(lista.atmeneti, true); assert.equal(cikk.atmeneti, true); assert.equal(hiba.atmeneti, true);
+  const nincsIllo = await horgonyKeres(konkretTema, { ask: hamisAsk([val({ pick: 0 })]), indexFn, sugoSzovegFn: szovegFn });
+  const nemIrhato = await horgonyKeres(konkretTema, { ask: hamisAsk([val({ pick: 1 }), val({ ok: false, reason: 'admin' })]), indexFn, sugoSzovegFn: szovegFn });
+  assert.equal(nincsIllo.atmeneti, undefined); assert.equal(nemIrhato.atmeneti, undefined);
 });
 
 ta('(i) pick 999 → nincs illő súgócikk (listán kívüli URL nem adható)', async () => {

@@ -13,6 +13,7 @@ const sorban = [];   // aszinkron esetek: egymás után futnak
 const ta = (n, f) => sorban.push([n, f]);
 console.log('🧪 súgó-horgony kiválasztás\n');
 
+const tmp = mkdtempSync(join(tmpdir(), 'horgony-teszt-'));
 const MOST = Date.parse('2026-11-14T10:00:00Z');
 // Perplexity / Claude: teljes szint, van súgó-kulcs → horgonyt kér. Az üres eszköz cégfüggetlen → nem kér.
 const kudarcT = { id: 'k1', title: 'How to use Perplexity Spaces', tool: 'Perplexity', company: 'Perplexity', status: 'todo' };
@@ -107,8 +108,39 @@ ta('a keres dob → az a jelölt kimarad (próbának számít), a ciklus megy to
   const r = await horgonyozottValasztas([kudarcT, sikerT], 2, { keres, most: MOST });
   assert.deepEqual(r.iras.map(x => x.id), ['s1']);
   assert.equal(r.probak, 2);
-  assert.equal(r.jegyzesek[0].horgony.ok, false);
+  assert.equal(r.jegyzesek[0].atmeneti, true);   // a dobás átmeneti: nincs `horgony` jegyzés
   assert.ok(!JSON.stringify(r.jegyzesek[0]).includes('titkos'), 'a kivétel szövege nem kerül a jegyzésbe');
+});
+
+ta('átmeneti kudarc: próbának számít, a téma kimarad, de NINCS horgony-jegyzés (nincs 14 napos várakozás); a rögzített ok megvan', async () => {
+  const ATMENETI = { ok: false, reason: 'szabad AI-szöveg', jegyzesOk: 'a súgó cikklistája nem jött le', atmeneti: true, cost: 0 };
+  const keres = hamisKeres({ k1: ATMENETI, s1: SIKER });
+  const r = await horgonyozottValasztas([kudarcT, sikerT], 2, { keres, most: MOST });
+  assert.deepEqual(r.iras.map(x => x.id), ['s1']);
+  assert.equal(r.probak, 2, 'a próba megszámolódik');
+  assert.equal(r.jegyzesek.length, 2);
+  assert.equal(r.jegyzesek[0].id, 'k1');
+  assert.equal(r.jegyzesek[0].horgony, undefined, 'nincs ok:false jegyzés');
+  assert.equal(r.jegyzesek[0].atmeneti, true);
+  assert.equal(r.jegyzesek[0].ok_ok, 'a súgó cikklistája nem jött le');
+  assert.ok(!JSON.stringify(r.jegyzesek[0]).includes('szabad AI-szöveg'));
+  // az állapotfájlba bekerül a rögzített magyar okkal
+  const fajl = join(tmp, 'atmeneti.json');
+  horgonyAllapotIr(r, { fajl, most: MOST });
+  const j = JSON.parse(readFileSync(fajl, 'utf-8'));
+  assert.equal(j.sikeres, 1);
+  assert.deepEqual(j.sikertelen, [{ cim: 'How to use Perplexity Spaces', eszkoz: 'Perplexity', ok: 'a súgó cikklistája nem jött le' }]);
+});
+
+ta('a keres dobása is átmeneti: nincs jegyzés', async () => {
+  const r = await horgonyozottValasztas([kudarcT], 1, { keres: hamisKeres({ k1: new Error('x') }), most: MOST });
+  assert.equal(r.jegyzesek[0].horgony, undefined); assert.equal(r.jegyzesek[0].atmeneti, true); assert.equal(r.jegyzesek[0].ok_ok, 'hiba');
+});
+
+ta('a téma-kudarc (nem átmeneti) továbbra is jegyzést kap a 14 napos várakozáshoz', async () => {
+  const r = await horgonyozottValasztas([kudarcT], 1, { keres: hamisKeres({ k1: { ...KUDARC, jegyzesOk: 'a cikkből nem írható útmutató' } }), most: MOST });
+  assert.equal(r.jegyzesek[0].horgony.ok, false); assert.equal(r.jegyzesek[0].horgony.ok_ok, 'a cikkből nem írható útmutató');
+  assert.equal(r.jegyzesek[0].atmeneti, undefined);
 });
 
 ta('alapértelmezett keret: FUTAS_MAX_PROBA próba után a további horgonyt kérő jelölt kimarad', async () => {
@@ -120,7 +152,6 @@ ta('alapértelmezett keret: FUTAS_MAX_PROBA próba után a további horgonyt ké
 });
 
 // ---- horgonyAllapotIr ----
-const tmp = mkdtempSync(join(tmpdir(), 'horgony-teszt-'));
 
 t('horgonyAllapotIr: összegzés a fájlba, súgószöveg és AI-indok nélkül', () => {
   const fajl = join(tmp, 'horgony-allapot.json');

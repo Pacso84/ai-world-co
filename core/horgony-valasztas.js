@@ -37,7 +37,8 @@ const rovid = (s, n) => String(s ?? '').replace(/\s+/g, ' ').trim().slice(0, n);
  * @param opciok.maxProba  futásonkénti próba-keret
  * @param opciok.be      kapcsoló (HORGONY_BE); false → horgony nélkül, a mai működés
  * @param opciok.naplo   konzol-író (alapból néma, így a teszt zajtalan)
- * @returns {Promise<{ iras: object[], jegyzesek: {id:any, horgony:object, frissites?:object, cim:string, eszkoz:string}[], probak: number }>}
+ * @returns {Promise<{ iras: object[], jegyzesek: {id:any, horgony?:object, atmeneti?:true, ok_ok?:string, frissites?:object, cim:string, eszkoz:string}[], probak: number }>}
+ *   (átmeneti kudarcnál nincs `horgony`: csak `atmeneti: true` + a rögzített `ok_ok` — a téma nem megy 14 napos várakozásba)
  */
 export async function horgonyozottValasztas(jeloltek, limit, { keres, most = Date.now(), maxProba = FUTAS_MAX_PROBA, be = HORGONY_BE, naplo = () => {} } = {}) {
   const lista = Array.isArray(jeloltek) ? jeloltek.filter(x => x && typeof x === 'object') : [];
@@ -58,10 +59,20 @@ export async function horgonyozottValasztas(jeloltek, limit, { keres, most = Dat
     try {
       eredmeny = await keres(t);
     } catch {
-      eredmeny = { ok: false, jegyzesOk: 'hiba' };   // a kivétel szövege nem kerül sehová
+      eredmeny = { ok: false, jegyzesOk: 'hiba', atmeneti: true };   // a kivétel szövege nem kerül sehová
     }
     const jegyzes = horgonyJegyzes(t, eredmeny, most);
     const j = { id: t.id, cim: rovid(t.title, 120), eszkoz: ad.nev || rovid(t.tool, 60), horgony: jegyzes };
+    if (!eredmeny?.ok && eredmeny?.atmeneti === true) {
+      // ÁTMENETI kudarc (a letöltés/hiba miatt, nem a téma miatt): próbának számít és ma kimarad, de NEM kap `horgony` jegyzést,
+      // így nem kerül a 14 napos várakozásba — a következő futás újra próbálja. Az állapotfájl a rögzített okot látja.
+      delete j.horgony;
+      j.atmeneti = true;
+      j.ok_ok = jegyzes.ok_ok;
+      jegyzesek.push(j);
+      naplo(`🧭 nincs horgony most: „${rovid(t.title, 60)}” — ${jegyzes.ok_ok || 'ismeretlen ok'} (átmeneti hiba, a következő futásban újra próbáljuk)`);
+      continue;
+    }
     if (eredmeny?.ok && eredmeny.frissites) {
       j.frissites = eredmeny.frissites;
       jegyzesek.push(j);
@@ -88,10 +99,10 @@ export function horgonyAllapotIr(osszegzes, { fajl = 'memory/horgony-allapot.jso
       at: new Date(most).toISOString(),
       probak: Number(o.probak) || 0,
       sikeres: jegyzesek.filter(x => x.horgony?.ok === true).length,
-      sikertelen: jegyzesek.filter(x => x.horgony?.ok === false).map(x => ({
+      sikertelen: jegyzesek.filter(x => x.horgony?.ok === false || x.atmeneti === true).map(x => ({
         cim: rovid(x.cim, 120),
         eszkoz: rovid(x.eszkoz, 60),
-        ok: rovid(x.horgony?.ok_ok, 80) || 'ismeretlen ok'   // CSAK a rögzített magyar ok — a `reason`-t nem olvassuk
+        ok: rovid(x.horgony?.ok_ok ?? x.ok_ok, 80) || 'ismeretlen ok'   // CSAK a rögzített magyar ok — a `reason`-t nem olvassuk
       }))
     };
     const ut = isAbsolute(fajl) ? fajl : join(ROOT, fajl);
