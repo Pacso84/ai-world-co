@@ -45,6 +45,7 @@ assert.equal(hivas, 0);
 for (const [k, lista] of Object.entries(FORRASOK)) for (const f of lista) {
   assert.ok(String(f.sitemap || f.lap || f.lista || f.egy).startsWith('https://'), k);
   assert.ok(f.minta instanceof RegExp, k);
+  if (f.egy) assert.ok(engedelyezett(f.egy), k + ': az egy-lapos forrás URL-je nincs az engedélylistán: ' + f.egy);   // 11-14
 }
 // mind a 13 új kulcs megvan (a letöltési cím egy index-lap, nem cikk → az engedélylistát a cikk-URL-ek tesztelik)
 for (const k of ['perplexity', 'grok', 'githubcopilot', 'huggingface', 'cohere', 'duckai', 'lumo', 'zai', 'elevenlabs', 'deepseek', 'kimi', 'minimax', 'braveleo'])
@@ -149,6 +150,50 @@ for (const u of ['https://support.google.com/gemini/../accounts/x', 'https://sup
   const lap = '<a href="/gemininotebook/answer/16206563?hl=en&amp;ref_topic=1">Create a notebook in Gemini Notebook</a>';
   assert.deepEqual(linkCikkek(lap, 'https://support.google.com', FORRASOK.notebooklm[0].minta),
     [{ url: 'https://support.google.com/gemininotebook/answer/16206563', cim: 'Create a notebook in Gemini Notebook' }]);
+}
+
+// 11-14 (tényközpont 1a, Task 4): indexLetolt végponttól végpontig egy `lista` forrásra (githubcopilot) — hamis letöltéssel.
+// A darabszám és az URL-ek pontosan: a nem-copilot sor és a duplikátum kiesik, a lekérdezés-rész levágva.
+{
+  const kert = [];
+  const fetchFn = async url => {
+    kert.push(url);
+    return { ok: true, text: async () => ['/en/copilot/get-started', '/en/actions/workflows', '/en/copilot/how-tos/chat',
+      '/en/copilot/get-started', '/en/copilot/concepts/agents?tool=vscode', 'nem-utvonal', ''].join('\n') };
+  };
+  const ki = await indexLetolt('githubcopilot', fetchFn);
+  assert.deepEqual(kert, [FORRASOK.githubcopilot[0].lista], 'egyetlen letöltés: a pagelist');
+  assert.deepEqual(ki.map(c => c.url), ['https://docs.github.com/en/copilot/get-started', 'https://docs.github.com/en/copilot/how-tos/chat',
+    'https://docs.github.com/en/copilot/concepts/agents']);
+  assert.equal(ki.length, 3);
+  assert.equal(ki[1].cim, 'Chat');
+}
+
+// 11-14 (Task 4): a Duck.ai index CSAK AI-témájú cikkeket ad (a böngésző/VPN/adatvédelem egyéb cikkei nem).
+// A fixtúra a DuckDuckGo-súgó sitemapjának valódi URL-alakjai (csak címek, szöveg nincs).
+{
+  const D = 'https://duckduckgo.com/duckduckgo-help-pages/';
+  const ai = ['ai-features/opting-out-of-ai', 'ai-features/about-noaiduckduckgocom', 'duckai', 'duckai/chat-models', 'duckai/usage-limits',
+    'privacy-pro/duckai', 'privacy-pro/duck-ai/does-duckai-support-file-uploads', 'choosing-the-best-model-for-my-duckai-chat', 'optional-ai',
+    'what-information-does-duckai-share-with-model-providers', 'how-does-duckduckgo-run-duckai-experiments-while-protecting-my-privacy',
+    'results/ai-assisted-answers'];
+  const nemAi = ['privacy-pro/vpn/how-to-set-up-vpn', 'privacy-pro/personal-information-removal/what-is-pir', 'email-protection/duck-addresses/x',
+    'sync-and-backup/enable-sync-and-backup', 'results/duckassistbot', 'results/syntax', 'web-browsing-privacy/', 'settings/save', 'threat-protection/scam-blocker'];
+  const xml = '<urlset>' + [...ai, ...nemAi].map(u => `<url><loc>${D}${u}</loc></url>`).join('') + '</urlset>';
+  const fetchFn = async () => ({ ok: true, text: async () => xml });
+  const ki = (await indexLetolt('duckai', fetchFn)).map(c => c.url);
+  assert.deepEqual(ki, ai.map(u => D + u), 'a Duck.ai-index pontosan az AI-témájú cikkek');
+}
+
+// 11-14 (Task 4): a Lumo index a proton.me/support sitemapból csak a Lumo-cikkeket (angol útvonal, nincs más Proton-termék, nincs nyelvi változat).
+{
+  const P = 'https://proton.me/';
+  const lumo = ['support/lumo', 'support/lumo-getting-started', 'support/lumo-memory', 'support/custom-lumos', 'support/apertus-lumo', 'support/connect-slack-lumo'];
+  const mas = ['support/mail/addresses-identities', 'support/drive/albums', 'support/account/manage-account/data-recovery', 'support/vpn-setup-linux',
+    'de/support/lumo', 'ja/support/lumo-memory', 'support/account/lumo-nem-cikk/valami', 'lumo/pricing', 'blog/lumo-security-model'];
+  const xml = '<urlset>' + [...lumo, ...mas].map(u => `<url><loc>${P}${u}</loc><lastmod>2026-10-09T01:58:19.000Z</lastmod></url>`).join('') + '</urlset>';
+  const fetchFn = async () => ({ ok: true, text: async () => xml });
+  assert.deepEqual((await indexLetolt('lumo', fetchFn)).map(c => c.url), lumo.map(u => P + u), 'a Lumo-index pontosan a Lumo-cikkek');
 }
 
 console.log('✅ sugo-index: rendben');

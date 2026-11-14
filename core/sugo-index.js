@@ -9,7 +9,8 @@
 //
 // ENGEDÉLYLISTA: csak a user által 10-23-án jóváhagyott súgók. Új előtag CSAK user-jóváhagyással
 // (11-12: 13 új súgó jóváhagyva, spec 4.1).
-// Élőben 10-24: a Perplexity (403) és az Amazon (gépi lekérésre üres oldal) NEM tölthető le → nincs
+// 11-14: a CI-próba (futás 43634082156) szerint mind a 20 új forrás-kulcs letölthető, a Perplexity is (korábban 403).
+// Élőben 10-24: az Amazon (gépi lekérésre üres oldal) NEM tölthető le → nincs
 // doboz; az Apple cikklistája még nincs kiépítve (2b). A cikkek SZÖVEGÉT nem tároljuk, csak URL + cím.
 // ===================================================================
 
@@ -149,6 +150,14 @@ export function listaCikkek(szoveg, alap, minta, kizar) {
   return ki;
 }
 
+// Duck.ai: csak AI-témájú súgócikkek (11-14 mérés a sitemapból): az AI-funkciók és a „duckai” / „duck-ai” mappák,
+// plusz néhány gyökérben álló, AI-ról szóló cikk és az AI-alapú válaszok cikke.
+const DUCKAI_MINTA = new RegExp('/duckduckgo-help-pages/(?:' + [
+  'ai-features/', 'duckai(?:/|$)', 'privacy-pro/duck-ai/', 'privacy-pro/duckai$',
+  'choosing-the-best-model-for-my-duckai-chat$', 'optional-ai$', 'what-information-does-duckai-share-with-model-providers$',
+  'how-does-duckduckgo-run-duckai-experiments-while-protecting-my-privacy$', 'results/ai-assisted-answers$'
+].join('|') + ')');
+
 // Szolgáltatónkénti forrás — élőben ellenőrizve 10-24 (darabszám akkor).
 export const FORRASOK = {
   claude: [{ sitemap: 'https://support.claude.com/sitemap.xml', minta: /\/en\/articles\// }],                    // 364
@@ -169,8 +178,13 @@ export const FORRASOK = {
   githubcopilot: [{ lista: 'https://docs.github.com/api/pagelist/en/free-pro-team@latest', alap: 'https://docs.github.com', minta: /^\/en\/copilot\// }], // 571
   huggingface: [{ lap: 'https://huggingface.co/docs', alap: 'https://huggingface.co', minta: /^\/docs\/[a-z0-9-]+$/ }],         // 31 gyűjtőlap
   cohere: [{ sitemap: 'https://docs.cohere.com/sitemap.xml', minta: /docs\.cohere\.com\/docs\//, kizar: /\/reference\// }],
-  duckai: [{ sitemap: 'https://duckduckgo.com/duckduckgo-help-pages/sitemap.xml', minta: /\/duckduckgo-help-pages\/(ai-features|duck-ai)\// }], // 17
-  lumo: [{ lap: 'https://proton.me/support/lumo', alap: 'https://proton.me', minta: /^\/support\/[a-z0-9-]*lumo[a-z0-9-]*$/ }],
+  // 11-14 mérés: a régi minta (ai-features|duck-ai) csak 2 cikket talált, mert a Duck.ai-cikkek több helyen laknak:
+  // duckai/…, privacy-pro/duck-ai/… és néhány gyökér-cikk. Az új minta csak az AI-témájúakat engedi át (11-14 mért: 32 cikk);
+  // a VPN/adatvédelem/e-mail cikkek, a duckassistbot és az AI-képek szűrése kimarad.
+  duckai: [{ sitemap: 'https://duckduckgo.com/duckduckgo-help-pages/sitemap.xml', minta: DUCKAI_MINTA }],
+  // 11-14 mérés: a proton.me/support/lumo lap csak a saját nyelvi változatait linkeli (cikklistát nem) → a proton.me/support
+  // sitemapjából szűrünk: csak a gyökér-szintű, „lumo”-t tartalmazó angol cikkek (11-14 mért: 18 cikk; nyelvi változat és más termék nem).
+  lumo: [{ sitemap: 'https://proton.me/support/sitemap.xml', minta: /^https:\/\/proton\.me\/support\/[a-z0-9-]*lumo[a-z0-9-]*$/ }],
   zai: [{ sitemap: 'https://docs.z.ai/sitemap.xml', minta: /docs\.z\.ai\//, kizar: /\/api-reference\// }],
   elevenlabs: [{ sitemap: 'https://elevenlabs.io/docs/sitemap-en.xml', minta: /elevenlabs\.io\/docs\//, kizar: /\/docs\/(api-reference|developers|cookbooks?|sdks?)\// }],
   deepseek: [{ sitemap: 'https://api-docs.deepseek.com/sitemap.xml', minta: /api-docs\.deepseek\.com\//, kizar: /\/api\// }],

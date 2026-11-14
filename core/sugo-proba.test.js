@@ -16,6 +16,7 @@ assert.equal(r.ok, false); assert.match(r.miert, /szöveg/);
 
 r = await probaKulcs('perplexity', { fetchFn: async () => { throw new Error('403'); }, cikkSzovegFn: hosszu });
 assert.equal(r.ok, false); assert.equal(r.cikkek, 0); assert.match(r.miert, /0 cikk/);
+assert.equal(r.olvashato, 0, '0 cikknél is megvan az olvashato mező (azonos JSON-alak)');
 
 r = await probaKulcs('nincs-ilyen', { fetchFn: index, cikkSzovegFn: hosszu });
 assert.equal(r.ok, false);

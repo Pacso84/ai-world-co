@@ -5,7 +5,7 @@
 // éles gépsor fut: letöltjük a cikklistát, és két mintacikket (az elejéről és a közepéről).
 // A próba nem „bukik”, hanem JELENT: a kilépési kód mindig 0, az eredmény a kimenetben van.
 //
-// Indítás helyben:  node core/sugo-proba.js --proba [kulcs …]   (kulcs nélkül: mind a 20)
+// Indítás helyben:  node core/sugo-proba.js --proba [kulcs …]   (kulcs nélkül: mind)
 // Indítás a CI-ben: gh workflow run sugo-proba.yml   (lásd .github/workflows/sugo-proba.yml)
 import { FORRASOK, indexLetolt } from './sugo-index.js';
 import { cikkSzoveg } from './elakadas-gen.js';
@@ -21,7 +21,7 @@ function mintaIndexek(db, n) {
 }
 
 export async function probaKulcs(kulcs, { fetchFn = fetch, cikkSzovegFn = cikkSzoveg, n = 2 } = {}) {
-  const eredmeny = { kulcs, cikkek: 0, minta: [], ok: false, miert: '' };
+  const eredmeny = { kulcs, cikkek: 0, minta: [], ok: false, miert: '', olvashato: 0 };
   let lista = [];
   try { lista = await indexLetolt(kulcs, fetchFn); } catch { lista = []; }
   eredmeny.cikkek = Array.isArray(lista) ? lista.length : 0;

@@ -1,5 +1,5 @@
 # SÚGÓ-PRÓBA (2026-11-14) — CSAK KÉZI INDÍTÁS, a napi gépsor NEM futtatja, költsége $0.
-# Miért: minden jóváhagyott hivatalos súgóra (core/sugo-index.js FORRASOK, 20 db) megnézzük, hogy az
+# Miért: minden jóváhagyott hivatalos súgóra (core/sugo-index.js FORRASOK) megnézzük, hogy az
 # USA-ban futó CI-ről letölthető-e a cikklista és két mintacikk. Helyben (HU) sok súgó olvasható,
 # a CI-ből mégis tiltott lehet (földrajz-/IP-alapú robotszűrés) — ez a próba ugyanonnan tölt le, ahonnan az éles gépsor.
 # Eredmény: kulcsonként egy sor (✅ / ❌) a naplóban, a végén egy PROBA_JSON sor.
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       kulcsok:
-        description: 'Súgó-kulcsok szóközzel elválasztva (üresen: mind a 20)'
+        description: 'Súgó-kulcsok szóközzel elválasztva (üresen: mind)'
         required: false
         default: ''
 permissions:
@@ -28,7 +28,7 @@ jobs:
       - name: Súgók letöltése (cikklista + két mintacikk kulcsonként)
         env:
           # A bemenet környezeti változón át megy (nem közvetlenül a parancsba írva) → nem lehet parancsot
-          # csempészni bele. Üresen nincs kulcs-argumentum → mind a 20 súgó.
+          # csempészni bele. Üresen nincs kulcs-argumentum → minden súgó.
           KULCSOK: ${{ inputs.kulcsok }}
         run: |
           if [ -n "$KULCSOK" ]; then
