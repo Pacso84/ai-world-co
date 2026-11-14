@@ -4,17 +4,51 @@
 // help.openai.com.evil.example), (2) rossz súgó jut egy eszközhöz, (3) egy letöltési hiba
 // megállítja a futást.
 import assert from 'node:assert/strict';
-import { engedelyezett, szolgaltatok, sitemapCikkek, linkCikkek, slugCim, indexLetolt, ENGEDELY } from './sugo-index.js';
+import { engedelyezett, szolgaltatok, sitemapCikkek, linkCikkek, listaCikkek, slugCim, indexLetolt, ENGEDELY, FORRASOK } from './sugo-index.js';
 
 // 1) engedélylista — csak a user által jóváhagyott 7 szolgáltató (10-23), pontos előtaggal
 for (const u of ['https://help.openai.com/en/articles/8555545-uploading-files', 'https://support.claude.com/en/articles/1-x',
   'https://support.google.com/gemini/answer/13594961', 'https://support.google.com/photos/answer/1',
-  'https://support.microsoft.com/en-us/microsoft-copilot/x', 'https://help.mistral.ai/en/articles/1-x'])
+  'https://support.microsoft.com/en-us/microsoft-copilot/x', 'https://help.mistral.ai/en/articles/1-x',
+  'https://www.perplexity.ai/help-center/en/x'])   // 11-12: a Perplexity jóváhagyva (spec 4.1)
   assert.ok(engedelyezett(u), 'el kellett volna fogadni: ' + u);
 for (const u of ['https://help.openai.com.evil.example/en/articles/1', 'http://help.openai.com/en/articles/1',
-  'https://support.google.com/youtube/answer/1', 'https://www.perplexity.ai/help-center/en/x', 'https://example.com/help.openai.com/', '', null])
+  'https://support.google.com/youtube/answer/1', 'https://example.com/help.openai.com/', '', null])
   assert.ok(!engedelyezett(u), 'nem lett volna szabad elfogadni: ' + u);
 assert.ok(ENGEDELY.every(p => p.startsWith('https://') && p.endsWith('/')));
+
+// új előtagok (spec 4.1, user 11-12)
+for (const u of ['https://www.perplexity.ai/help-center/en/articles/1-x', 'https://docs.x.ai/grok/x', 'https://docs.x.ai/x-subscription/x',
+  'https://docs.github.com/en/copilot/get-started', 'https://huggingface.co/docs/hub', 'https://docs.cohere.com/docs/x',
+  'https://duckduckgo.com/duckduckgo-help-pages/ai-features/x', 'https://proton.me/support/lumo-x', 'https://docs.z.ai/guides/x',
+  'https://elevenlabs.io/docs/overview/x', 'https://api-docs.deepseek.com/news/x', 'https://platform.kimi.ai/docs/x',
+  'https://platform.minimax.io/docs/x', 'https://brave.com/leo/'])
+  assert.ok(engedelyezett(u), 'új jóváhagyott előtag: ' + u);
+for (const u of ['https://docs.x.ai/developers/x', 'https://docs.x.ai/console/x', 'https://docs.github.com/en/actions/x', 'https://brave.com/search/'])
+  assert.ok(!engedelyezett(u), 'jóváhagyáson kívüli rész: ' + u);
+
+// lista-forrás (GitHub pagelist: soronként egy útvonal)
+assert.deepEqual(listaCikkek('/en/copilot/get-started\n/en/actions/x\n/en/copilot/how-tos/chat\n', 'https://docs.github.com', /^\/en\/copilot\//).map(c => c.url),
+  ['https://docs.github.com/en/copilot/get-started', 'https://docs.github.com/en/copilot/how-tos/chat']);
+// kizáró minta minden forrásfajtánál
+assert.equal(sitemapCikkek('<loc>https://docs.z.ai/api-reference/a</loc><loc>https://docs.z.ai/guides/b</loc>', /docs\.z\.ai\//, /\/api-reference\//).length, 1);
+assert.equal(linkCikkek('<a href="/docs/_mintlify/x">Assets x</a><a href="/docs/guide/chat">Chat guide</a>', 'https://platform.kimi.ai', /^\/docs\//, /\/_mintlify\//).length, 1);
+assert.equal(listaCikkek('/en/copilot/a\n/en/copilot/api/b\n', 'https://docs.github.com', /^\/en\/copilot\//, /\/api\//).length, 1);
+// 200-as HTML-hibalap sitemap helyett → 0 cikk, nincs kivétel
+const hibalap = async () => ({ ok: true, text: async () => '<html><title>Just a moment...</title></html>' });
+assert.deepEqual(await indexLetolt('perplexity', hibalap), []);
+// egy-lapos forrás: letöltés nélkül az egy cikk
+let hivas = 0;
+assert.deepEqual(await indexLetolt('braveleo', async () => { hivas++; throw new Error('nem kéne'); }), [{ url: 'https://brave.com/leo/', cim: 'Brave Leo' }]);
+assert.equal(hivas, 0);
+// minden FORRASOK-elem forrás-URL-je https, és minden elem mintája RegExp
+for (const [k, lista] of Object.entries(FORRASOK)) for (const f of lista) {
+  assert.ok(String(f.sitemap || f.lap || f.lista || f.egy).startsWith('https://'), k);
+  assert.ok(f.minta instanceof RegExp, k);
+}
+// mind a 13 új kulcs megvan (a letöltési cím egy index-lap, nem cikk → az engedélylistát a cikk-URL-ek tesztelik)
+for (const k of ['perplexity', 'grok', 'githubcopilot', 'huggingface', 'cohere', 'duckai', 'lumo', 'zai', 'elevenlabs', 'deepseek', 'kimi', 'minimax', 'braveleo'])
+  assert.ok(Array.isArray(FORRASOK[k]) && FORRASOK[k].length, 'hiányzó új forrás: ' + k);
 
 // 2) eszköz → súgó
 assert.deepEqual(szolgaltatok('ChatGPT', 'OpenAI'), ['openai']);

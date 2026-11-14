@@ -7,7 +7,8 @@
 // Terv: docs/superpowers/specs/2026-10-23-utmutato-segitseg-csomag-design.md (D) ·
 //       docs/superpowers/plans/2026-10-24-ha-elakadsz-2a-meres.md
 //
-// ENGEDÉLYLISTA: csak a user által 10-23-án jóváhagyott súgók. Új előtag CSAK user-jóváhagyással.
+// ENGEDÉLYLISTA: csak a user által 10-23-án jóváhagyott súgók. Új előtag CSAK user-jóváhagyással
+// (11-12: 13 új súgó jóváhagyva, spec 4.1).
 // Élőben 10-24: a Perplexity (403) és az Amazon (gépi lekérésre üres oldal) NEM tölthető le → nincs
 // doboz; az Apple cikklistája még nincs kiépítve (2b). A cikkek SZÖVEGÉT nem tároljuk, csak URL + cím.
 // ===================================================================
@@ -22,7 +23,22 @@ export const ENGEDELY = [
   'https://support.microsoft.com/',
   'https://support.apple.com/',
   'https://help.mistral.ai/',
-  'https://www.amazon.com/gp/help/'
+  'https://www.amazon.com/gp/help/',
+  // 11-12 (spec 4.1, user-jóváhagyás): 13 új hivatalos súgó
+  'https://www.perplexity.ai/help-center/',
+  'https://docs.x.ai/grok/', 'https://docs.x.ai/x-subscription/',
+  'https://docs.github.com/en/copilot/',
+  'https://huggingface.co/docs/',
+  'https://docs.cohere.com/',
+  'https://duckduckgo.com/duckduckgo-help-pages/',
+  // a proton.me/support/ tágabb a jóváhagyott …/support/lumo-nál — ezért a Lumo-index mintája szűkít a Lumóra
+  'https://proton.me/support/',
+  'https://docs.z.ai/',
+  'https://elevenlabs.io/docs/',
+  'https://api-docs.deepseek.com/',
+  'https://platform.kimi.ai/docs/',
+  'https://platform.minimax.io/docs/',
+  'https://brave.com/leo/'
 ];
 
 /** Jóváhagyott forrás-e (pontos előtag, https)? */
@@ -82,12 +98,12 @@ export function slugCim(url) {
   return s ? s[0].toUpperCase() + s.slice(1) : '';
 }
 
-/** Sitemap-XML → a mintára illő, engedélyezett, egyedi cikkek. */
-export function sitemapCikkek(xml, minta) {
+/** Sitemap-XML → a mintára illő (és a kizáró mintára NEM illő), engedélyezett, egyedi cikkek. */
+export function sitemapCikkek(xml, minta, kizar) {
   const ki = [], latott = new Set();
   for (const m of String(xml || '').matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)) {
     const url = m[1].split('?')[0];
-    if (!minta.test(url) || !engedelyezett(url) || latott.has(url)) continue;
+    if (!minta.test(url) || (kizar && kizar.test(url)) || !engedelyezett(url) || latott.has(url)) continue;
     latott.add(url);
     ki.push({ url, cim: slugCim(url) });
   }
@@ -95,14 +111,14 @@ export function sitemapCikkek(xml, minta) {
 }
 
 /** HTML-linkek → a mintára illő (relatív útvonalra), egyedi cikkek; a cím a link szövege. */
-export function linkCikkek(html, alap, minta) {
+export function linkCikkek(html, alap, minta, kizar) {
   const ki = [], latott = new Set();
   for (const m of String(html || '').matchAll(/<a\b[^>]*\bhref="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi)) {
     let href = m[1].replace(/&amp;/g, '&');
     if (href.startsWith(alap)) href = href.slice(alap.length);
     if (!href.startsWith('/')) continue;                    // külső vagy javascript-link
     const ut = href.split('?')[0].split('#')[0];
-    if (!minta.test(ut)) continue;
+    if (!minta.test(ut) || (kizar && kizar.test(ut))) continue;
     const url = alap + ut;
     if (!engedelyezett(url)) continue;
     const cim = horgonyCim(m[2]);
@@ -119,6 +135,20 @@ export function linkCikkek(html, alap, minta) {
   return ki.filter(x => !GENERIKUS.test(x.cim));   // valódi cím nélkül nem jelölt
 }
 
+/** Útvonal-lista (soronként egy „/”-rel kezdődő útvonal, pl. a GitHub pagelist) → engedélyezett, egyedi cikkek. */
+export function listaCikkek(szoveg, alap, minta, kizar) {
+  const ki = [], latott = new Set();
+  for (const sor of String(szoveg || '').split(/\r?\n/)) {
+    const ut = sor.trim().split('?')[0].split('#')[0];
+    if (!ut.startsWith('/') || !minta.test(ut) || (kizar && kizar.test(ut))) continue;
+    const url = alap + ut;
+    if (!engedelyezett(url) || latott.has(url)) continue;
+    latott.add(url);
+    ki.push({ url, cim: slugCim(url) });
+  }
+  return ki;
+}
+
 // Szolgáltatónkénti forrás — élőben ellenőrizve 10-24 (darabszám akkor).
 export const FORRASOK = {
   claude: [{ sitemap: 'https://support.claude.com/sitemap.xml', minta: /\/en\/articles\// }],                    // 364
@@ -132,7 +162,21 @@ export const FORRASOK = {
   microsoft: [
     { sitemap: 'https://support.microsoft.com/_sitemaps/microsoft-copilot_en-us_1.xml', minta: /\/en-us\// },        // 10
     { sitemap: 'https://support.microsoft.com/_sitemaps/microsoft-365-copilot_en-us_1.xml', minta: /\/en-us\// }     // 220
-  ]
+  ],
+  // 11-12 (spec 4.1) — a darabszám a 11-14-i helyi mérés; a CI-próba igazolja
+  perplexity: [{ sitemap: 'https://www.perplexity.ai/help-center/sitemap.xml', minta: /\/help-center\/en\/articles\// }],      // 232
+  grok: [{ sitemap: 'https://docs.x.ai/sitemap.xml', minta: /docs\.x\.ai\/(grok|x-subscription)\// }],                         // 42
+  githubcopilot: [{ lista: 'https://docs.github.com/api/pagelist/en/free-pro-team@latest', alap: 'https://docs.github.com', minta: /^\/en\/copilot\// }], // 571
+  huggingface: [{ lap: 'https://huggingface.co/docs', alap: 'https://huggingface.co', minta: /^\/docs\/[a-z0-9-]+$/ }],         // 31 gyűjtőlap
+  cohere: [{ sitemap: 'https://docs.cohere.com/sitemap.xml', minta: /docs\.cohere\.com\/docs\//, kizar: /\/reference\// }],
+  duckai: [{ sitemap: 'https://duckduckgo.com/duckduckgo-help-pages/sitemap.xml', minta: /\/duckduckgo-help-pages\/(ai-features|duck-ai)\// }], // 17
+  lumo: [{ lap: 'https://proton.me/support/lumo', alap: 'https://proton.me', minta: /^\/support\/[a-z0-9-]*lumo[a-z0-9-]*$/ }],
+  zai: [{ sitemap: 'https://docs.z.ai/sitemap.xml', minta: /docs\.z\.ai\//, kizar: /\/api-reference\// }],
+  elevenlabs: [{ sitemap: 'https://elevenlabs.io/docs/sitemap-en.xml', minta: /elevenlabs\.io\/docs\//, kizar: /\/docs\/(api-reference|developers|cookbooks?|sdks?)\// }],
+  deepseek: [{ sitemap: 'https://api-docs.deepseek.com/sitemap.xml', minta: /api-docs\.deepseek\.com\//, kizar: /\/api\// }],
+  kimi: [{ lap: 'https://platform.kimi.ai/docs', alap: 'https://platform.kimi.ai', minta: /^\/docs\/[a-z0-9\/-]+$/, kizar: /\/(_mintlify|mintlify-assets|api)\// }],
+  minimax: [{ lap: 'https://platform.minimax.io/docs', alap: 'https://platform.minimax.io', minta: /^\/docs\/[a-z0-9\/-]+$/, kizar: /\/api-reference\// }], // helyben 0 — a CI-próba dönt
+  braveleo: [{ egy: 'https://brave.com/leo/', cim: 'Brave Leo', minta: /./ }]    // egyetlen lap, letöltés nélkül
 };
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36';
 
@@ -140,14 +184,17 @@ const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 export async function indexLetolt(szolg, fetchFn = fetch) {
   const ki = [];
   for (const f of FORRASOK[szolg] || []) {
+    if (f.egy) { ki.push({ url: f.egy, cim: f.cim }); continue; }   // egy-lapos forrás: nincs mit letölteni
     try {
-      const r = await fetchFn(f.sitemap || f.lap, { headers: { 'User-Agent': UA, 'Accept-Language': 'en-US,en;q=0.9' }, signal: AbortSignal.timeout(30000) });
+      const r = await fetchFn(f.sitemap || f.lap || f.lista, { headers: { 'User-Agent': UA, 'Accept-Language': 'en-US,en;q=0.9' }, signal: AbortSignal.timeout(30000) });
       if (!r.ok) continue;
       const t = await r.text();
-      ki.push(...(f.sitemap ? sitemapCikkek(t, f.minta) : linkCikkek(t, f.alap, f.minta)));
+      ki.push(...(f.sitemap ? sitemapCikkek(t, f.minta, f.kizar)
+        : f.lista ? listaCikkek(t, f.alap, f.minta, f.kizar)
+        : linkCikkek(t, f.alap, f.minta, f.kizar)));
     } catch { /* a következő forrás még mehet */ }
   }
   return ki;
 }
 
-export default { ENGEDELY, engedelyezett, szolgaltatok, slugCim, sitemapCikkek, linkCikkek, indexLetolt };
+export default { ENGEDELY, engedelyezett, szolgaltatok, slugCim, sitemapCikkek, linkCikkek, listaCikkek, indexLetolt };
