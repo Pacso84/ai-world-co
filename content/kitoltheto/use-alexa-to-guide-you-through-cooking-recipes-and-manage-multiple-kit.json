@@ -1,6 +1,6 @@
 {
   "slug": "use-alexa-to-guide-you-through-cooking-recipes-and-manage-multiple-kit",
-  "keszult": "2026-11-03T15:40:50.168Z",
+  "keszult": "2026-11-14T20:21:14.475Z",
   "promptok": {
     "da1c15e8ea17": [
       {
@@ -37,6 +37,84 @@
       {
         "eredeti": "5 minutes",
         "hely": "your time amount"
+      }
+    ]
+  },
+  "promptok_hu": {
+    "3a8878acb32a": [
+      {
+        "eredeti": "sütőtökkrémleveshez",
+        "hely": "a kedvenc ételed"
+      }
+    ],
+    "fc52b42885bd": [],
+    "4cdef84e5b02": [
+      {
+        "eredeti": "10 percre",
+        "hely": "az első időzítőd ideje"
+      },
+      {
+        "eredeti": "rizsnek",
+        "hely": "az első ételed"
+      },
+      {
+        "eredeti": "csirkének",
+        "hely": "a második ételed"
+      }
+    ],
+    "10d4721eaf7d": [
+      {
+        "eredeti": "csirke",
+        "hely": "a második ételed"
+      },
+      {
+        "eredeti": "rizs",
+        "hely": "az első ételed"
+      }
+    ],
+    "caedcabff731": [
+      {
+        "eredeti": "5 percre",
+        "hely": "a szundid hossza"
+      }
+    ]
+  },
+  "promptok_es": {
+    "2768c19cfb31": [
+      {
+        "eredeti": "sopa de calabaza",
+        "hely": "tu plato favorito"
+      }
+    ],
+    "36122edd2a0e": [],
+    "a38b48d37db3": [
+      {
+        "eredeti": "10 minutos",
+        "hely": "minutos del primer temporizador"
+      },
+      {
+        "eredeti": "arroz",
+        "hely": "primer ingrediente"
+      },
+      {
+        "eredeti": "25 minutos",
+        "hely": "minutos del segundo temporizador"
+      }
+    ],
+    "63a3af9f483c": [
+      {
+        "eredeti": "pollo",
+        "hely": "ingrediente que cocinas"
+      },
+      {
+        "eredeti": "arroz",
+        "hely": "otro ingrediente que cocinas"
+      }
+    ],
+    "62c82b3ea4a9": [
+      {
+        "eredeti": "5 minutos",
+        "hely": "minutos a posponer"
       }
     ]
   }
