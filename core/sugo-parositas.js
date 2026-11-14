@@ -87,7 +87,7 @@ Which ONE article explains how to use the new feature? Output ONLY the JSON.`
   };
 }
 
-function jsonKibont(szoveg) {
+export function jsonKibont(szoveg) {
   const t = String(szoveg || '').replace(/^```(?:json)?/i, '').replace(/```\s*$/, '').trim();
   const s = t.indexOf('{'), e = t.lastIndexOf('}');
   if (s < 0 || e < s) return null;
@@ -151,8 +151,8 @@ export function ellenorzoValasz(szoveg) {
 // → gemini-images, „GPT Image 2.6 in Picsart” → custom GPT. Ok: 2 közös általános szó („image”, „create”)
 // elég volt. Most: ha a hírnek van eszköze, a meglévő témának UGYANAZ az eszköze kell legyen; eszköz
 // nélkül azonos cég + legalább 2 közös címszó kell.
-const STOP = new Set(['how', 'to', 'the', 'a', 'an', 'for', 'with', 'your', 'and', 'of', 'in', 'on', 'use', 'using', 'get', 'getting', 'started', 'guide']);
-const szavak = t => new Set(String(t || '').toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length > 2 && !STOP.has(w)));
+export const STOP = new Set(['how', 'to', 'the', 'a', 'an', 'for', 'with', 'your', 'and', 'of', 'in', 'on', 'use', 'using', 'get', 'getting', 'started', 'guide']);
+export const szavak = t => new Set(String(t || '').toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length > 2 && !STOP.has(w)));
 
 export function meglevoTema(parsed, topics) {
   const tool = String(parsed?.tool || '').toLowerCase().trim(), co = String(parsed?.company || '').toLowerCase().trim();
