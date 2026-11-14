@@ -38,7 +38,7 @@ import {
   meglevoTema, FUTAS_MAX as SUGO_FUTAS_MAX, MIN_SUGO_SZOVEG
 } from '../../core/sugo-parositas.js';
 import { indexLetolt } from '../../core/sugo-index.js';
-import { cikkSzoveg } from '../../core/elakadas-gen.js';
+import { sugoSzoveg } from '../../core/sugo-tar.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -152,7 +152,7 @@ async function sugoMasodikEsely(n, indexek) {
   const cikk = valasztoValasz(r1?.text, index);
   if (!cikk) return { ok: false, reason: 'nincs illő súgócikk', cost };
 
-  const sz = await cikkSzoveg(cikk.url);
+  const sz = await sugoSzoveg(cikk.url);
   if (!sz || String(sz.szoveg || '').length < MIN_SUGO_SZOVEG) return { ok: false, reason: 'a súgócikk nem tölthető le: ' + cikk.url, cost };
   const sugoCim = sz.cim || cikk.cim;
   const p2 = ellenorzoPrompt(hir, { url: cikk.url, cim: sugoCim, szoveg: sz.szoveg });

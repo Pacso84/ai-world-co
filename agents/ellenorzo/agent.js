@@ -40,7 +40,7 @@ import { biraloForrasInfo, tevesNevKifogas, nevJavitoMegjegyzes, utmutatoNevForr
 import { cikkForrasSzovege, cikkKivonat } from '../../core/forras-cache.js';
 import { forrasHirJelzesek } from '../../core/forras-tema.js';   // 11-10: a hír a forrásáról szóljon (eszköz + gombnevek)
 import { sugoUtmutatoJelzes, sugoForrasok } from '../../core/sugo-parositas.js';   // 📘 11-11: súgó-alapú útmutató a súgón mérve
-import { cikkSzoveg } from '../../core/elakadas-gen.js';
+import { sugoSzoveg } from '../../core/sugo-tar.js';
 import { publikalasMeta, foglaltSlugok } from '../../core/publish-meta.js';
 import { findBritish } from '../../core/us-spelling.js';
 import { skillsBlock } from '../../core/skills.js';
@@ -860,7 +860,7 @@ async function main() {
     try {
       const sugoLista = sugoForrasok(writerData._meta);   // CSAK a sugo_alapu útmutatóra (a régi kézi forráslistára nem)
       if (sugoLista.length) {
-        for (const s of sugoLista) { const sz = await cikkSzoveg(s.url); if (sz?.szoveg) szovegek.push(sz.szoveg); }
+        for (const s of sugoLista) { const sz = await sugoSzoveg(s.url); if (sz?.szoveg) szovegek.push(sz.szoveg); }
         const j = sugoUtmutatoJelzes(markdown, szovegek.join('\n\n'));
         console.log(`   📘 súgó-mérés: ${szovegek.length ? (j ? '❌ ' + j.slice(0, 120) : '✅ a gombnevek a súgóban vannak') : '⏭️ a súgó nem tölthető le — nem ítél'}`);
         if (j) { autoCheckResult.issues.push(j); autoCheckResult.passed = false; }

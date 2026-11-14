@@ -47,7 +47,7 @@ import { megszuntTema, MEGSZUNT_ESZKOZOK } from '../../core/megszunt-eszkozok.js
 import { fekezett as fekezettE, fekSzuro, fekAllapotIr, fekOsszegzo } from '../../core/fek.js';   // 🧯 2026-11-12 FÉK: súgó nélküli eszközről nincs új/átírt útmutató
 import { cegLefedettseg } from '../../core/ceg-lefedettseg.js';   // 🏢 2026-11-05 őrszem
 import { sugoBlokk, sugoForrasok } from '../../core/sugo-parositas.js';   // 📘 2026-11-11 hír → útmutató CSAK a hivatalos súgóból
-import { cikkSzoveg } from '../../core/elakadas-gen.js';
+import { sugoSzoveg } from '../../core/sugo-tar.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -974,7 +974,7 @@ async function reworkGuide(rejectedData, brandContext) {
   const sugok = [];
   const forrasok = sugoForrasok(rejectedData._meta);   // CSAK a sugo_alapu vázlatra
   for (const s of forrasok) {
-    const sz = await cikkSzoveg(s.url);
+    const sz = await sugoSzoveg(s.url);
     if (sz?.szoveg) sugok.push({ url: s.url, cim: sz.cim || s.title || '', szoveg: sz.szoveg });
   }
   if (forrasok.length && !sugok.length) { console.log('   ⏭️  A súgó nem tölthető le — az átdolgozás vár.'); return null; }
@@ -1055,7 +1055,7 @@ async function runGuideReworkMode(brandContext) {
     const sugoSzovegek = [];
     if (data._meta?.ai_review) {   // mentett bírálat nélkül nincs mit szűrni → nem töltünk le semmit
       for (const sg of sugoForrasok(data._meta)) {
-        try { const sz = await cikkSzoveg(sg.url); if (sz?.szoveg) sugoSzovegek.push(sz.szoveg); } catch { /* a súgó nélkül is megy */ }
+        try { const sz = await sugoSzoveg(sg.url); if (sz?.szoveg) sugoSzovegek.push(sz.szoveg); } catch { /* a súgó nélkül is megy */ }
       }
     }
     const nevSzuro = atdolgozoMeta(data._meta, { ...utmutatoNevForras(data._meta, { sugoSzovegek }), utmutato: true });
@@ -1326,7 +1326,7 @@ async function main() {
     const sugoLista = sugoForrasok(topic);   // CSAK a sugo_alapu témára (a régi kézi official_sources-ra nem)
     if (sugoLista.length) {
       for (const s of sugoLista) {
-        const sz = await cikkSzoveg(s.url);
+        const sz = await sugoSzoveg(s.url);
         if (sz?.szoveg) sugok.push({ url: s.url, cim: sz.cim || s.title || '', szoveg: sz.szoveg });
       }
       if (!sugok.length) { console.log('   ⏭️  A súgó nem tölthető le — ebben a futásban nem írom meg (a téma vár).\n'); continue; }

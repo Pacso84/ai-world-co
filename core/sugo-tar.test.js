@@ -147,6 +147,45 @@ await t('SUGO_TAR_DIR környezeti változó adja az alap mappát, és nem szivá
   }
 });
 
+// ── a tár SOHA nem állíthat meg futást: null opció / váratlan hiba sem dobhat ─────────────────────
+await t('kemény: null opció / második argumentum sosem dob (sugoTarIr, sugoTarOlvas, sugoSzoveg)', async () => {
+  const UN = 'https://support.claude.com/en/articles/8-null';
+  assert.equal(sugoTarIr(UN, null), false);                       // nincs szöveg → false, kivétel nélkül
+  assert.equal(sugoTarIr(UN, undefined, null), false);            // nincs szöveg, null harmadik argumentum
+  assert.equal(sugoTarOlvas(UN, null), null);                     // nincs mit olvasni → null, kivétel nélkül
+  assert.equal(sugoTarOlvas('nem url', null), null);
+  // sugoSzoveg null opcióval: nem https cím → hálózat nélkül null (a tesztben élő letöltés TILOS)
+  assert.equal(await sugoSzoveg('nem url', null), null);
+});
+
+await t('kemény: élő letöltés null-t ad és nincs tár → null, kivétel nélkül', async () => {
+  const ures = mkdtempSync(join(tmpdir(), 'sugo-tar-ures-'));
+  try {
+    const U9 = 'https://support.claude.com/en/articles/9-nincs';
+    assert.equal(await sugoSzoveg(U9, { fetchFn: async () => ({ ok: false, text: async () => '' }), dir: ures, most }), null);
+    assert.equal(await sugoSzoveg(U9, { fetchFn: halott, dir: ures, most }), null);
+  } finally { rmSync(ures, { recursive: true, force: true }); }
+});
+
+await t('kemény: váratlan hiba a belsejében (fetchFn nem függvény, rossz idő) → a sugoSzoveg akkor sem dob', async () => {
+  const UD = 'https://support.claude.com/en/articles/10-dob';
+  const hiba = e => ({ dobott: e.message });
+  const r = await sugoSzoveg(UD, { fetchFn: 'nem függvény', dir, most }).catch(hiba);
+  assert.ok(r === null || (typeof r.szoveg === 'string'), 'dobott: ' + JSON.stringify(r));
+  const r2 = await sugoSzoveg(UD, { fetchFn: elo, dir, most: Symbol('x') }).catch(hiba);
+  assert.ok(r2 === null || (typeof r2.szoveg === 'string'), 'dobott: ' + JSON.stringify(r2));
+  // ha a tárban régi szöveg van, a hibás hívás a régi szöveget adja vissza (jobb a semminél)
+  const UR = 'https://support.claude.com/en/articles/11-regi';
+  await sugoSzoveg(UR, { fetchFn: elo, dir, most });
+  const r3 = await sugoSzoveg(UR, { fetchFn: 'nem függvény', dir, most: most + 30 * NAP });
+  assert.ok(r3 && r3.szoveg.includes('Saját tesztmondat.'));
+  assert.equal(r3.honnan, 'regi-tar');
+  // a tár-ágban robbanó hívás (a „most” nem szám → a kor-számítás TypeError-t dob) → a régi tárolt szöveg jön
+  const r4 = await sugoSzoveg(UR, { fetchFn: elo, dir, most: Symbol('x') }).catch(hiba);
+  assert.ok(r4 && r4.szoveg && r4.szoveg.includes('Saját tesztmondat.'), 'dobott vagy üres: ' + JSON.stringify(r4));
+  assert.equal(r4.honnan, 'regi-tar');
+});
+
 rmSync(dir, { recursive: true, force: true });
 if (regiKornyezet !== undefined) process.env.SUGO_TAR_DIR = regiKornyezet;
 console.log(`\n${bukott === 0 ? '✅' : '❌'} sugo-tar.test: ${pass} rendben, ${bukott} bukott`);

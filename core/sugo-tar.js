@@ -68,8 +68,11 @@ function utak(url, dir) {
  * a `valtozott` mezőbe a mostani idő kerül (azonos újraletöltés a régi `valtozott`-at megtartja).
  * @returns {boolean} sikerült-e (hiba esetén false, kivétel soha)
  */
-export function sugoTarIr(url, { cim, szoveg } = {}, { dir, most = Date.now() } = {}) {
+export function sugoTarIr(url, adat, opciok) {
   try {
+    // a destrukturálás a try-on BELÜL: null / hibás argumentum sem dobhat (a tár hibája nem állíthat meg futást)
+    const { cim, szoveg } = adat || {};
+    const { dir, most = Date.now() } = opciok || {};
     if (!engedelyezett(url) || !String(szoveg || '').trim()) return false;
     const u = utak(url, dir);
     if (!u) return false;
@@ -91,8 +94,9 @@ export function sugoTarIr(url, { cim, szoveg } = {}, { dir, most = Date.now() } 
  * A tárolt súgócikk. Nincs / sérült meta / hiányzó vagy a lenyomatnak nem megfelelő szöveg → null.
  * @returns {{szoveg: string, cim: string, letoltve: string, hash: string} | null}
  */
-export function sugoTarOlvas(url, { dir } = {}) {
+export function sugoTarOlvas(url, opciok) {
   try {
+    const { dir } = opciok || {};
     const u = utak(url, dir);
     if (!u) return null;
     const meta = JSON.parse(readFileSync(u.json, 'utf-8'));
@@ -107,18 +111,26 @@ export function sugoTarOlvas(url, { dir } = {}) {
  * Nem jóváhagyott URL (vagy kikapcsolt tár): csak élő letöltés, tárolás nélkül.
  * @returns {Promise<{szoveg: string, cim: string, honnan: 'tar'|'elo'|'regi-tar'} | null>}
  */
-export async function sugoSzoveg(url, { fetchFn = fetch, dir, most = Date.now(), frissNap = SUGO_FRISS_NAP } = {}) {
-  if (!SUGO_TAR_BE || !engedelyezett(url)) {
+export async function sugoSzoveg(url, opciok) {
+  // SOHA nem dob: bármilyen váratlan hiba esetén a legjobb elérhető tartalék jön (olvasható régi tár, különben null),
+  // a hívó pedig a meglévő módon „nincs súgó”-ként kezeli. A destrukturálás is a try-on belül van (null opció sem dob).
+  let tarolt = null;
+  try {
+    const { fetchFn = fetch, dir, most = Date.now(), frissNap = SUGO_FRISS_NAP } = opciok || {};
+    if (!SUGO_TAR_BE || !engedelyezett(url)) {
+      const r = await cikkSzoveg(url, fetchFn);
+      return r ? { szoveg: r.szoveg, cim: r.cim, honnan: 'elo' } : null;
+    }
+    tarolt = sugoTarOlvas(url, { dir });
+    const kor = tarolt ? most - Date.parse(tarolt.letoltve) : NaN;
+    if (tarolt && kor <= frissNap * NAP_MS) return { szoveg: tarolt.szoveg, cim: tarolt.cim, honnan: 'tar' };
     const r = await cikkSzoveg(url, fetchFn);
-    return r ? { szoveg: r.szoveg, cim: r.cim, honnan: 'elo' } : null;
+    if (r && String(r.szoveg || '').trim()) {
+      sugoTarIr(url, r, { dir, most });
+      return { szoveg: r.szoveg, cim: r.cim, honnan: 'elo' };
+    }
+    return tarolt ? { szoveg: tarolt.szoveg, cim: tarolt.cim, honnan: 'regi-tar' } : null;
+  } catch {
+    return tarolt ? { szoveg: tarolt.szoveg, cim: tarolt.cim, honnan: 'regi-tar' } : null;
   }
-  const tarolt = sugoTarOlvas(url, { dir });
-  const kor = tarolt ? most - Date.parse(tarolt.letoltve) : NaN;
-  if (tarolt && kor <= frissNap * NAP_MS) return { szoveg: tarolt.szoveg, cim: tarolt.cim, honnan: 'tar' };
-  const r = await cikkSzoveg(url, fetchFn);
-  if (r && String(r.szoveg || '').trim()) {
-    sugoTarIr(url, r, { dir, most });
-    return { szoveg: r.szoveg, cim: r.cim, honnan: 'elo' };
-  }
-  return tarolt ? { szoveg: tarolt.szoveg, cim: tarolt.cim, honnan: 'regi-tar' } : null;
 }

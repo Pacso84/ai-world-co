@@ -427,6 +427,9 @@ async function main() {
   const limit = li > 0 && Number(process.argv[li + 1]) > 0 ? Math.floor(Number(process.argv[li + 1])) : FUTASONKENT_MAX;
 
   const [{ ask }, { spentToday }, { loadLog }] = await Promise.all([import('./ai-router.js'), import('./budget.js'), import('./traffic-log.js')]);
+  // a súgócikk a privát tárból jön (core/sugo-tar.js, tényközpont 1b); dinamikus import: a sugo-tar.js ezt a fájlt
+  // statikusan importálja a cikkSzoveg miatt — a statikus import itt körkörös lenne
+  const { sugoSzoveg } = await import('./sugo-tar.js');
 
   const now = Date.now();
   const hatarido = now + maxPerc(process.argv) * 60000;      // belső időkeret (a CI-lépésnek nincs timeout-minutes-a)
@@ -478,7 +481,7 @@ async function main() {
     limit, keret, hatarido, naplo: s => console.log(s),
     ctxEpit: f => ({
       utm: utmutatoAdat(cikkek[f.slug].json), fajl: kesz[f.slug] || null, now, be: ELAKADAS_BE,
-      indexek, indexLetolt, cikkSzoveg, keret, ask,
+      indexek, indexLetolt, cikkSzoveg: sugoSzoveg, keret, ask,
       koltseg: usd => { allapot.koltseg += usd; }
     }),
     mentes: (f, e) => {
