@@ -44,6 +44,7 @@ import { pdfLetoltesSor } from './pdf-download.js';
 import { bevaltSor, EXPORT_HIBA } from './bevalt-jelzes.js';   // 👍 „Bevált?” 10-23
 import { partnerKattintasSor } from './affiliate.js';
 import { cegLefedettsegSor } from './ceg-lefedettseg.js';   // 🏢 2026-11-05
+import { bingTerkepek, terkepAllapot, bingTerkepSor, ujrakuldesKell, ujrakuld, ELVART_TERKEPEK } from './bing-terkep.js';   // 🔍 2026-11-14
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -998,6 +999,26 @@ async function main() {
     const sor = fekLine(JSON.parse(readFileSync(join(ROOT, 'memory', 'fek-allapot.json'), 'utf-8')), new Date().toISOString().slice(0, 10));
     if (sor) lines.push(sor);
   } catch { /* még nem futott — nem baj */ }
+
+  // 🔍 BING-TÉRKÉP (2026-11-14): a Bing beolvassa-e a webhelytérképeinket (core/bing-terkep.js). Csendes, ha rendben;
+  // baj esetén magától újraküldi (legfeljebb 2 naponta, emlék: memory/bing-terkep.json). Hiba sosem állítja meg a riportot.
+  try {
+    const kulcs = process.env.BING_WM_API_KEY;
+    const feeds = await bingTerkepek(kulcs);
+    if (feeds) {
+      const emlekFajl = join(ROOT, 'memory', 'bing-terkep.json');
+      let emlek = null;
+      try { emlek = JSON.parse(readFileSync(emlekFajl, 'utf-8')); } catch { /* még nincs */ }
+      const allapot = terkepAllapot(feeds);
+      let ujrakuldve = [];
+      if (ujrakuldesKell(allapot, emlek)) {
+        ujrakuldve = await ujrakuld(kulcs, ELVART_TERKEPEK);
+        if (ujrakuldve.length) writeFileSync(emlekFajl, JSON.stringify({ utolsoUjrakuldes: new Date().toISOString(), terkepek: ujrakuldve }, null, 2) + '\n');
+      }
+      const sor = bingTerkepSor(allapot, { ujrakuldve });
+      if (sor) lines.push(sor);
+    }
+  } catch { /* a Bing-őr hibája nem állítja meg a riportot */ }
 
   // HÁZMESTER (2026-07-30): mit takarított el, és hízik-e valami vissza.
   // CSENDES a hétköznapokon: napi pár régi napló törlése nem hír. Csak akkor

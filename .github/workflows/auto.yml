@@ -942,6 +942,9 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           # 🔴 FELTÖLTÉS-SOR (2026-11-13): a bukott deploy eddig csak egy rejtélyes „FRESH_ARTICLE_DOWN” kódként látszott.
           DEPLOY_OUTCOME: ${{ steps.deploy.outcome }}
+          # 🔍 BING-TÉRKÉP (2026-11-14): a Bing 11-07-én „Failed”-re tette a sitemap.xml-t és egy hétig nem próbálta újra —
+          # senki nem látta. A napi riport most lekérdezi (GetFeeds), baj esetén szól és magától újraküldi. Ingyenes.
+          BING_WM_API_KEY: ${{ secrets.BING_WM_API_KEY }}
         run: node core/daily-report.js || true
 
       # Heti kereső-riport (vasárnap): GSC+Bing számok + hírlevél-lámpa
