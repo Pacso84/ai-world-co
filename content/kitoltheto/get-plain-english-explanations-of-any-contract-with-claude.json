@@ -1,6 +1,6 @@
 {
   "slug": "get-plain-english-explanations-of-any-contract-with-claude",
-  "keszult": "2026-11-04T04:08:54.158Z",
+  "keszult": "2026-11-14T14:50:21.505Z",
   "promptok": {
     "02399b072c28": [
       {
@@ -22,6 +22,53 @@
       {
         "eredeti": "early-termination fee",
         "hely": "the fee you're asking about"
+      }
+    ]
+  },
+  "promptok_hu": {
+    "f7b839d9f563": [
+      {
+        "eredeti": "lakásbérleti szerződés",
+        "hely": "a szerződésed fajtája"
+      }
+    ],
+    "44aa0771309d": [
+      {
+        "eredeti": "30 nappal",
+        "hely": "a felmondási időd"
+      },
+      {
+        "eredeti": "bérlőnek",
+        "hely": "a szerepköröd"
+      }
+    ],
+    "dc6d75a16743": [
+      {
+        "eredeti": "főbérlőt",
+        "hely": "a kérdezett személyed"
+      },
+      {
+        "eredeti": "korai kilépés díjáról",
+        "hely": "a fontos témád"
+      }
+    ]
+  },
+  "promptok_es": {
+    "ce2bd91bcaa3": [],
+    "8dd4ee8a23b5": [
+      {
+        "eredeti": "30 días",
+        "hely": "cuántos días de antelación"
+      }
+    ],
+    "cb99af916554": [
+      {
+        "eredeti": "casero",
+        "hely": "tu persona de contacto"
+      },
+      {
+        "eredeti": "comisión de salida anticipada",
+        "hely": "el tema a preguntar"
       }
     ]
   }
