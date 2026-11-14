@@ -1,0 +1,39 @@
+# SÚGÓ-PRÓBA (2026-11-14) — CSAK KÉZI INDÍTÁS, a napi gépsor NEM futtatja, költsége $0.
+# Miért: minden jóváhagyott hivatalos súgóra (core/sugo-index.js FORRASOK, 20 db) megnézzük, hogy az
+# USA-ban futó CI-ről letölthető-e a cikklista és két mintacikk. Helyben (HU) sok súgó olvasható,
+# a CI-ből mégis tiltott lehet (földrajz-/IP-alapú robotszűrés) — ez a próba ugyanonnan tölt le, ahonnan az éles gépsor.
+# Eredmény: kulcsonként egy sor (✅ / ❌) a naplóban, a végén egy PROBA_JSON sor.
+# Nincs titkos kulcs, nincs AI-hívás, nincs commit; az elakadas-gen.js függőségei miatt kell az npm ci.
+# Indítás: gh workflow run sugo-proba.yml   (csak néhány súgó: -f kulcsok="perplexity grok")
+name: Súgó-próba
+on:
+  workflow_dispatch:
+    inputs:
+      kulcsok:
+        description: 'Súgó-kulcsok szóközzel elválasztva (üresen: mind a 20)'
+        required: false
+        default: ''
+permissions:
+  contents: read
+jobs:
+  proba:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Súgók letöltése (cikklista + két mintacikk kulcsonként)
+        env:
+          # A bemenet környezeti változón át megy (nem közvetlenül a parancsba írva) → nem lehet parancsot
+          # csempészni bele. Üresen nincs kulcs-argumentum → mind a 20 súgó.
+          KULCSOK: ${{ inputs.kulcsok }}
+        run: |
+          if [ -n "$KULCSOK" ]; then
+            read -r -a ARGS <<< "$KULCSOK"
+            node core/sugo-proba.js --proba "${ARGS[@]}"
+          else
+            node core/sugo-proba.js --proba
+          fi
