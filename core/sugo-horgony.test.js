@@ -3,12 +3,15 @@
 import assert from 'assert/strict';
 import {
   HORGONY_BE, FUTAS_MAX_PROBA, UJRAPROBA_NAP,
-  indexSzukites, valasztoPromptTema, valasztoValasz, ellenorzoPromptTema, ellenorzoValaszTema
+  indexSzukites, valasztoPromptTema, valasztoValasz, ellenorzoPromptTema, ellenorzoValaszTema,
+  horgonyKeres, horgonyJegyzes, horgonyVar
 } from './sugo-horgony.js';
 import { valasztoValasz as parositoValasz } from './sugo-parositas.js';
 
 let pass = 0, hiba = 0;
 const t = (n, f) => { try { f(); pass++; console.log('  ✅ ' + n); } catch (e) { hiba++; console.log('  ❌ ' + n + '\n     ' + String(e.message).split('\n')[0]); } };
+const sorban = [];   // aszinkron esetek: egymás után futnak
+const ta = (n, f) => sorban.push([n, f]);
 console.log('🧪 súgó-horgony\n');
 
 const tema = { title: 'How to use Perplexity Spaces to keep research in one place', tool: 'Perplexity', company: 'Perplexity', angle: 'organize sources' };
@@ -107,6 +110,172 @@ t('ellenorzoPromptTema: ugyanaz a téma, csak szűkíthet; a súgó szövege és
   assert.match(p.rendszer, /SAME topic/i); assert.match(p.rendszer, /narrower/i);
   assert.match(p.felhasznalo, /Perplexity Spaces/); assert.match(p.felhasznalo, /What are Spaces\?/); assert.match(p.felhasznalo, /Kitalált tesztszöveg/);
 });
+
+// --- Parkolt javítások a 2. feladat átnézéséből ---
+t('szóalak: a többes „s” egyesítve (Space = Spaces), az „ss/us/is” végű szó marad', () => {
+  const l = [{ url: 'u1', cim: 'Billing and plans' }, { url: 'u2', cim: 'Create a Space' }, { url: 'u3', cim: 'Other topic' }];
+  assert.equal(indexSzukites(tema, l, 2)[0].url, 'u2', 'a „Space” pontot ér a téma „Spaces” szavára');
+  const t2 = { title: 'How to use Access settings', tool: 'X', company: 'Y', angle: '' };
+  const l2 = [{ url: 'a', cim: 'Unrelated' }, { url: 'b', cim: 'Access' }, { url: 'c', cim: 'Other' }];
+  assert.equal(indexSzukites(t2, l2, 2)[0].url, 'b', 'az „Access” változatlanul egyezik');
+  // „ss/us/is” végű szó nem csonkul: az „Access” nem lesz „Acces”, a „Status” nem „Statu”, az „Analysis” nem „Analysi”
+  const t3 = { title: 'How to check Status and Analysis', tool: 'X', company: 'Y', angle: '' };
+  const l3 = [{ url: 'a', cim: 'Statu' }, { url: 'b', cim: 'Analysi' }, { url: 'c', cim: 'Status' }, { url: 'd', cim: 'Analysis' }];
+  const sz3 = indexSzukites(t3, l3, 2).map(x => x.url).sort();
+  assert.deepEqual(sz3, ['c', 'd'], 'csak az ép szavak egyeznek');
+});
+
+t('ellenorzoValaszTema: Space / Spaces egyenlő → a szűkebb cím elfogadott', () => {
+  const v = ellenorzoValaszTema('{"ok": true, "title": "How to create a Space in Perplexity", "reason": "r"}', tema);
+  assert.equal(v.ok, true, v.reason);
+});
+
+t('ellenorzoPromptTema: részleges szintnél „ne találj ki lépést”', () => {
+  const sugo = { url: 'u', cim: 'c', szoveg: 'Kitalált tesztszöveg.' };
+  assert.match(ellenorzoPromptTema(tema, sugo, { szint: 'reszleges' }).rendszer, /do not invent steps the article does not state/i);
+  assert.doesNotMatch(ellenorzoPromptTema(tema, sugo, { szint: 'teljes' }).rendszer, /do not invent steps the article does not state/i);
+});
+
+t('ellenorzoPromptTema: a súgó szövege BEGIN/END jelek között', () => {
+  const p = ellenorzoPromptTema(tema, { url: 'u', cim: 'c', szoveg: 'Kitalált tesztszöveg.' }, { szint: 'teljes' });
+  const b = p.felhasznalo.indexOf('--- BEGIN HELP ARTICLE ---'), s = p.felhasznalo.indexOf('Kitalált tesztszöveg'), e = p.felhasznalo.indexOf('--- END HELP ARTICLE ---');
+  assert.ok(b >= 0 && s > b && e > s, 'a szöveg a két jel között van');
+});
+
+// --- Async keresés és jegyzés ---
+const CIKK_URL = 'https://www.perplexity.ai/help-center/en/articles/9999-spaces';
+const hosszu = 'Kitalált tesztszöveg a Spaces használatáról. '.repeat(30);
+const indexLista = [{ url: CIKK_URL, cim: 'What are Spaces?' }, { url: 'https://www.perplexity.ai/help-center/en/articles/1-x', cim: 'Other' }];
+const konkretTema = { id: 't1', title: 'How to use Perplexity Spaces to keep research in one place', tool: 'Perplexity', company: 'Perplexity', angle: 'organize sources' };
+function hamisAsk(valaszok) {
+  const hivasok = [];
+  const f = async (prompt, opciok) => { hivasok.push({ prompt, opciok }); const v = valaszok[hivasok.length - 1]; return v === undefined ? null : v; };
+  f.hivasok = hivasok; return f;
+}
+const val = (obj, c = 0.001) => ({ text: JSON.stringify(obj), costUsd: c, model: 'm', provider: 'p' });
+const okAsk = (cim = konkretTema.title) => hamisAsk([val({ pick: 1 }), val({ ok: true, title: cim, reason: 'rendben' })]);
+const indexFn = async () => indexLista;
+const szovegFn = async () => ({ szoveg: hosszu, cim: 'What are Spaces?', honnan: 'x' });
+
+ta('(a) siker: sugo_alapu, official_sources a listából, nincs title, cost 0.002', async () => {
+  const ask = okAsk();
+  const r = await horgonyKeres(konkretTema, { ask, indexFn, sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, true, r.reason);
+  assert.equal(r.frissites.sugo_alapu, true);
+  assert.deepEqual(r.frissites.official_sources, [{ url: CIKK_URL, title: 'What are Spaces?' }]);
+  assert.equal('title' in r.frissites, false, 'a cím nem változott');
+  assert.equal(r.cost, 0.002);
+  assert.equal(ask.hivasok.length, 2);
+  assert.equal(ask.hivasok[0].opciok.maxTokens, 200); assert.equal(ask.hivasok[1].opciok.maxTokens, 400);
+  assert.equal(ask.hivasok[0].opciok.jsonMode, true); assert.equal(ask.hivasok[0].opciok.agentName, 'guide');
+});
+
+ta('(a2) szűkebb cím → title bekerül a frissítésbe', async () => {
+  const r = await horgonyKeres(konkretTema, { ask: okAsk('How to create a Space in Perplexity'), indexFn, sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, true, r.reason); assert.equal(r.frissites.title, 'How to create a Space in Perplexity');
+});
+
+ta('(a3) a cikkcím a letöltött szövegből jön, ha van (sz.cim)', async () => {
+  const r = await horgonyKeres(konkretTema, { ask: okAsk(), indexFn, sugoSzovegFn: async () => ({ szoveg: hosszu, cim: 'Using Spaces' }) });
+  assert.equal(r.frissites.official_sources[0].title, 'Using Spaces');
+});
+
+ta('(b) cégfüggetlen téma → ok:false, 0 ask', async () => {
+  const ask = okAsk();
+  const r = await horgonyKeres({ title: 'How to write better prompts', tool: '', company: '', angle: '' }, { ask, indexFn, sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, false); assert.equal(r.reason, 'nem kell horgony'); assert.equal(ask.hivasok.length, 0); assert.equal(r.cost, 0);
+});
+
+ta('(c) pick 0 → nincs illő súgócikk, 1 ask', async () => {
+  const ask = hamisAsk([val({ pick: 0 })]);
+  const r = await horgonyKeres(konkretTema, { ask, indexFn, sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, false); assert.match(r.reason, /nincs illő súgócikk/); assert.equal(ask.hivasok.length, 1); assert.equal(r.cost, 0.001);
+});
+
+ta('(d) a súgószöveg null → nem tölthető le', async () => {
+  const ask = okAsk();
+  const r = await horgonyKeres(konkretTema, { ask, indexFn, sugoSzovegFn: async () => null });
+  assert.equal(r.ok, false); assert.match(r.reason, /nem tölthető le/); assert.equal(ask.hivasok.length, 1);
+});
+
+ta('(e) rövid szöveg (100 kar.) → nem tölthető le', async () => {
+  const r = await horgonyKeres(konkretTema, { ask: okAsk(), indexFn, sugoSzovegFn: async () => ({ szoveg: 'x'.repeat(100), cim: 'c' }) });
+  assert.equal(r.ok, false); assert.match(r.reason, /nem tölthető le/);
+});
+
+ta('(f) az ellenőrző ok:false → ok:false az okával', async () => {
+  const ask = hamisAsk([val({ pick: 1 }), val({ ok: false, reason: 'csak admin-felület' })]);
+  const r = await horgonyKeres(konkretTema, { ask, indexFn, sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, false); assert.match(r.reason, /csak admin-felület/); assert.equal(r.cost, 0.002);
+});
+
+ta('(g) az indexFn dob → ok:false, nincs kivétel', async () => {
+  const r = await horgonyKeres(konkretTema, { ask: okAsk(), indexFn: async () => { throw new Error('hálózat'); }, sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, false); assert.match(r.reason, /^hiba: /);
+});
+
+ta('(g2) az ask dob → ok:false, nincs kivétel', async () => {
+  const r = await horgonyKeres(konkretTema, { ask: async () => { throw new Error('ai'); }, indexFn, sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, false); assert.match(r.reason, /^hiba: /);
+});
+
+ta('(g3) üres index → a cikklista nem jött le', async () => {
+  const ask = okAsk();
+  const r = await horgonyKeres(konkretTema, { ask, indexFn: async () => [], sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, false); assert.match(r.reason, /cikklistája nem jött le/); assert.equal(ask.hivasok.length, 0);
+});
+
+ta('(g4) az ask null (nincs válasz) → nincs illő súgócikk, nincs kivétel', async () => {
+  const r = await horgonyKeres(konkretTema, { ask: hamisAsk([null]), indexFn, sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, false); assert.match(r.reason, /nincs illő súgócikk/); assert.equal(r.cost, 0);
+});
+
+ta('(h) két téma ugyanarra a kulcsra → az indexFn egyszer hívódik', async () => {
+  let n = 0; const fn = async () => { n++; return indexLista; };
+  const cache = {};
+  await horgonyKeres(konkretTema, { ask: okAsk(), indexFn: fn, sugoSzovegFn: szovegFn, indexCache: cache });
+  await horgonyKeres({ ...konkretTema, id: 't2' }, { ask: okAsk(), indexFn: fn, sugoSzovegFn: szovegFn, indexCache: cache });
+  assert.equal(n, 1);
+});
+
+ta('(i) pick 999 → nincs illő súgócikk (listán kívüli URL nem adható)', async () => {
+  const r = await horgonyKeres(konkretTema, { ask: hamisAsk([val({ pick: 999 })]), indexFn, sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, false); assert.match(r.reason, /nincs illő súgócikk/);
+});
+
+ta('(i2) a promptokban benne a téma és a BEGIN jel', async () => {
+  const ask = okAsk();
+  await horgonyKeres(konkretTema, { ask, indexFn, sugoSzovegFn: szovegFn });
+  assert.match(ask.hivasok[0].prompt, /Perplexity Spaces/); assert.match(ask.hivasok[1].prompt, /BEGIN HELP ARTICLE/);
+});
+
+const MOST = Date.parse('2026-11-14T10:00:00Z');
+t('(j) horgonyJegyzes: siker → { at, ok:true, url }', () => {
+  const j = horgonyJegyzes(konkretTema, { ok: true, frissites: { sugo_alapu: true, official_sources: [{ url: CIKK_URL, title: 'x' }] }, reason: 'r', cost: 0.002 }, MOST);
+  assert.deepEqual(j, { at: '2026-11-14T10:00:00.000Z', ok: true, url: CIKK_URL });
+});
+t('(j) horgonyJegyzes: kudarc → { at, ok:false, ok_ok } (súgószöveg nélkül, rövidítve)', () => {
+  const j = horgonyJegyzes(konkretTema, { ok: false, reason: 'nincs illő súgócikk', cost: 0.001 }, MOST);
+  assert.deepEqual(j, { at: '2026-11-14T10:00:00.000Z', ok: false, ok_ok: 'nincs illő súgócikk' });
+  const h = horgonyJegyzes(konkretTema, { ok: false, reason: 'x'.repeat(1000) }, MOST);
+  assert.ok(h.ok_ok.length <= 160);
+  assert.deepEqual(Object.keys(h).sort(), ['at', 'ok', 'ok_ok']);
+});
+
+t('(k) horgonyVar: tegnapi kudarc → igaz; 15 napos → hamis; siker → hamis; rossz dátum → hamis; nincs jegyzés → hamis', () => {
+  const nap = 86400000;
+  assert.equal(horgonyVar({ horgony: { ok: false, at: new Date(MOST - nap).toISOString() } }, MOST), true);
+  assert.equal(horgonyVar({ horgony: { ok: false, at: new Date(MOST - 15 * nap).toISOString() } }, MOST), false);
+  assert.equal(horgonyVar({ horgony: { ok: true, at: new Date(MOST - nap).toISOString() } }, MOST), false);
+  assert.equal(horgonyVar({ horgony: { ok: false, at: 'rossz' } }, MOST), false);
+  assert.equal(horgonyVar({ horgony: { ok: false } }, MOST), false);
+  assert.equal(horgonyVar({}, MOST), false); assert.equal(horgonyVar(null, MOST), false);
+  assert.equal(horgonyVar({ horgony: { ok: false, at: new Date(MOST + 400 * nap).toISOString() } }, MOST), false, 'távoli jövő nem ragad be');
+});
+
+for (const [n, f] of sorban) {
+  try { await f(); pass++; console.log('  ✅ ' + n); } catch (e) { hiba++; console.log('  ❌ ' + n + '\n     ' + String(e.message).split('\n')[0]); }
+}
 
 if (hiba) { console.log(`\n❌ sugo-horgony.test: ${hiba} hiba`); process.exit(1); }
 console.log(`\n✅ sugo-horgony.test: mind a ${pass} eset rendben`);
