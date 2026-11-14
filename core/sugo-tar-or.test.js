@@ -11,7 +11,7 @@
 // ===================================================================
 
 import assert from 'assert/strict';
-import { readFileSync } from 'fs';
+import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -26,13 +26,28 @@ function t(nev, fn) {
 const talalatok = (rel, re) => olvas(rel).map((s, i) => ({ s, n: i + 1 })).filter(x => re.test(x.s))
   .map(x => `${rel}:${x.n} — ${x.s.trim().slice(0, 110)}`);
 
+// A 3 ismert súgó-olvasó ügynök: ezek importálják a sugoSzoveg-et.
 const AGENTEK = ['agents/ellenorzo/agent.js', 'agents/guide/agent.js', 'agents/pairing/agent.js'];
 
-for (const f of AGENTEK) {
+// Az agents/ mappa MINDEN .js fájlja (rekurzívan): egyikben sem lehet cikkSzoveg — így egy új vagy eddig nem súgózó
+// ügynök sem csempészhet vissza közvetlen letöltést a tár megkerülésével (záró átnézés 11-14, I-4).
+const jsFajlok = rel => readdirSync(join(gyoker, rel), { withFileTypes: true }).flatMap(e =>
+  e.isDirectory() ? (e.name === 'node_modules' ? [] : jsFajlok(rel + '/' + e.name)) : (e.name.endsWith('.js') ? [rel + '/' + e.name] : []));
+const MIND = jsFajlok('agents');
+
+t('az agents/ bejárása nem üres, és a 3 ismert súgó-olvasó benne van', () => {
+  assert.ok(MIND.length >= AGENTEK.length, 'az agents/ bejárása üres — az őr nem őriz semmit');
+  for (const f of AGENTEK) assert.ok(MIND.includes(f), 'nincs a bejárásban: ' + f);
+});
+
+for (const f of MIND) {
   t(`${f}: nincs cikkSzoveg hívás / import (a súgót a tárból kéri)`, () => {
     const hibak = talalatok(f, /\bcikkSzoveg\b/);
     assert.deepEqual(hibak, [], `Az ügynök még közvetlenül a cikkSzoveg-et használja — a súgót a core/sugo-tar.js sugoSzoveg-én át kell kérni:\n    ${hibak.join('\n    ')}`);
   });
+}
+
+for (const f of AGENTEK) {
   t(`${f}: a sugoSzoveg-et a core/sugo-tar.js-ből importálja`, () => {
     assert.ok(talalatok(f, /import\s*\{[^}]*\bsugoSzoveg\b[^}]*\}\s*from\s*'\.\.\/\.\.\/core\/sugo-tar\.js'/).length === 1,
       `${f}: hiányzik az „import { sugoSzoveg } from '../../core/sugo-tar.js'” sor`);

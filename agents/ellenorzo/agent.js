@@ -860,9 +860,12 @@ async function main() {
     try {
       const sugoLista = sugoForrasok(writerData._meta);   // CSAK a sugo_alapu útmutatóra (a régi kézi forráslistára nem)
       if (sugoLista.length) {
-        for (const s of sugoLista) { const sz = await sugoSzoveg(s.url); if (sz?.szoveg) szovegek.push(sz.szoveg); }
+        const eredetek = [];   // honnan jött a súgó (csak a naplóba)
+        for (const s of sugoLista) { const sz = await sugoSzoveg(s.url); if (sz?.szoveg) { szovegek.push(sz.szoveg); eredetek.push(sz.honnan); } }
+        const eredetSzoveg = { tar: 'a tárból', elo: 'élő letöltés', 'regi-tar': '⚠️ régi tárolt példány' };
+        const eredet = eredetek.length ? ' (' + [...new Set(eredetek.map(h => eredetSzoveg[h] || 'ismeretlen eredet'))].join(', ') + ')' : '';
         const j = sugoUtmutatoJelzes(markdown, szovegek.join('\n\n'));
-        console.log(`   📘 súgó-mérés: ${szovegek.length ? (j ? '❌ ' + j.slice(0, 120) : '✅ a gombnevek a súgóban vannak') : '⏭️ a súgó nem tölthető le — nem ítél'}`);
+        console.log(`   📘 súgó-mérés: ${szovegek.length ? (j ? '❌ ' + j.slice(0, 120) : '✅ a gombnevek a súgóban vannak') + eredet : '⏭️ a súgó nem tölthető le — nem ítél'}`);
         if (j) { autoCheckResult.issues.push(j); autoCheckResult.passed = false; }
       }
     } catch { /* őr-hiba nem állítja meg az ellenőrzést */ }

@@ -32,7 +32,8 @@ export const ENGEDELY = [
   'https://huggingface.co/docs/',
   'https://docs.cohere.com/',
   'https://duckduckgo.com/duckduckgo-help-pages/',
-  // a proton.me/support/ tágabb a jóváhagyott …/support/lumo-nál — ezért a Lumo-index mintája szűkít a Lumóra
+  // a proton.me/support/ tágabb a jóváhagyott …/support/lumo-nál — ezért az engedelyezett() a cikk útvonalát a
+  // Lumóra szűkíti (SZUKITES, LUMO_UT); a Proton többi súgója (Pass, VPN, Mail…) NINCS jóváhagyva
   'https://proton.me/support/',
   'https://docs.z.ai/',
   'https://elevenlabs.io/docs/',
@@ -41,6 +42,13 @@ export const ENGEDELY = [
   'https://platform.minimax.io/docs/',
   'https://brave.com/leo/'
 ];
+
+// Szűkítés: az a jóváhagyott előtag, amely a spec-nél tágabb, csak az itt megadott útvonalmintára illő cikket engedi.
+// Proton (11-14 záró átnézés): csak a Lumo — a slug a „lumo” / „lumos” szót KÖTŐJEL-határon tartalmazza
+// (lumo, lumo-memory, apertus-lumo, custom-lumos), a „columbus”-féle részszó, a nyelvi mappa és az alkönyvtár nem.
+// Ugyanezt használja a Lumo-index mintája is (FORRASOK.lumo) — egy szabály, egy helyen.
+export const LUMO_UT = /^\/support\/(?:[a-z0-9]+-)*lumos?(?:-[a-z0-9]+)*$/;
+const SZUKITES = { 'https://proton.me/support/': LUMO_UT };
 
 /** Jóváhagyott forrás-e (pontos előtag, https)? */
 export function engedelyezett(url) {
@@ -51,7 +59,9 @@ export function engedelyezett(url) {
   if (/(^|\/)(\.|%2e){1,2}(\/|$|\?|#)/i.test(u.replace(/^https:\/\/[^/]+/, ''))) return false;
   try {
     const p = new URL(u);
-    return p.protocol === 'https:' && !p.port && !p.username && !p.password && ENGEDELY.some(e => p.href.startsWith(e));
+    if (!(p.protocol === 'https:' && !p.port && !p.username && !p.password && ENGEDELY.some(e => p.href.startsWith(e)))) return false;
+    // tágabb előtag → a cikk útvonalának illeszkednie kell a szűkítő mintára (pl. proton.me/support/ → csak Lumo)
+    return Object.entries(SZUKITES).every(([elotag, minta]) => !p.href.startsWith(elotag) || minta.test(p.pathname));
   } catch { return false; }
 }
 
@@ -183,8 +193,8 @@ export const FORRASOK = {
   // a VPN/adatvédelem/e-mail cikkek, a duckassistbot és az AI-képek szűrése kimarad.
   duckai: [{ sitemap: 'https://duckduckgo.com/duckduckgo-help-pages/sitemap.xml', minta: DUCKAI_MINTA }],
   // 11-14 mérés: a proton.me/support/lumo lap csak a saját nyelvi változatait linkeli (cikklistát nem) → a proton.me/support
-  // sitemapjából szűrünk: csak a gyökér-szintű, „lumo”-t tartalmazó angol cikkek (11-14 mért: 18 cikk; nyelvi változat és más termék nem).
-  lumo: [{ sitemap: 'https://proton.me/support/sitemap.xml', minta: /^https:\/\/proton\.me\/support\/[a-z0-9-]*lumo[a-z0-9-]*$/ }],
+  // sitemapjából szűrünk: csak a gyökér-szintű, a „lumo” szót kötőjel-határon tartalmazó angol cikkek (LUMO_UT) (11-14 mért: 18 cikk; nyelvi változat és más termék nem).
+  lumo: [{ sitemap: 'https://proton.me/support/sitemap.xml', minta: new RegExp('^https://proton\\.me' + LUMO_UT.source.slice(1)) }],
   zai: [{ sitemap: 'https://docs.z.ai/sitemap.xml', minta: /docs\.z\.ai\//, kizar: /\/api-reference\// }],
   elevenlabs: [{ sitemap: 'https://elevenlabs.io/docs/sitemap-en.xml', minta: /elevenlabs\.io\/docs\//, kizar: /\/docs\/(api-reference|developers|cookbooks?|sdks?)\// }],
   deepseek: [{ sitemap: 'https://api-docs.deepseek.com/sitemap.xml', minta: /api-docs\.deepseek\.com\//, kizar: /\/api\// }],

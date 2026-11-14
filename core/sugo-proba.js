@@ -56,7 +56,7 @@ async function main() {
   for (const kulcs of kulcsok) {   // egymás után, udvariasan — nincs párhuzamos zaklatás
     let r;
     try { r = await probaKulcs(kulcs); }
-    catch (e) { r = { kulcs, cikkek: 0, minta: [], ok: false, miert: 'váratlan hiba: ' + (e && e.message) }; }
+    catch (e) { r = { kulcs, cikkek: 0, minta: [], ok: false, olvashato: 0, miert: 'váratlan hiba: ' + (e && e.message) }; }
     console.log(sor(r));
     mind.push(r);
   }

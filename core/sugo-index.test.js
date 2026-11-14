@@ -60,7 +60,7 @@ assert.deepEqual(szolgaltatok('Copilot', 'Microsoft'), ['microsoft']);
 assert.deepEqual(szolgaltatok('Microsoft 365 Copilot', 'Microsoft'), ['microsoft']);
 assert.deepEqual(szolgaltatok('Le Chat', 'Mistral'), ['mistral']);
 assert.deepEqual(szolgaltatok('', ''), ['openai', 'gemini', 'claude'], 'eszköz nélküli útmutató: a nagy asszisztensek súgója');
-assert.deepEqual(szolgaltatok('Perplexity', 'Perplexity'), [], 'a Perplexity 403-at ad → nincs doboz');
+assert.deepEqual(szolgaltatok('Perplexity', 'Perplexity'), [], 'a doboz-bővítés egy későbbi rész feladata → most nincs doboz');
 assert.deepEqual(szolgaltatok('GitHub Copilot', 'GitHub'), [], 'a GitHub Copilot NEM a Microsoft-súgó (jóváhagyás kell)');
 assert.deepEqual(szolgaltatok('Qwen', 'Alibaba'), []);
 
@@ -194,6 +194,22 @@ for (const u of ['https://support.google.com/gemini/../accounts/x', 'https://sup
   const xml = '<urlset>' + [...lumo, ...mas].map(u => `<url><loc>${P}${u}</loc><lastmod>2026-10-09T01:58:19.000Z</lastmod></url>`).join('') + '</urlset>';
   const fetchFn = async () => ({ ok: true, text: async () => xml });
   assert.deepEqual((await indexLetolt('lumo', fetchFn)).map(c => c.url), lumo.map(u => P + u), 'a Lumo-index pontosan a Lumo-cikkek');
+}
+
+// 11-14 (záró átnézés, I-3): a proton.me/support/ előtag nem hagyja jóvá az egész Proton-súgót — csak a Lumo-cikkeket
+// (a spec 4.1 csak a Lumót engedte). Nem Lumo Proton-cikk, nyelvi változat, részszó („columbus”) nem mehet át.
+{
+  for (const ut of ['support/lumo', 'support/lumo-getting-started', 'support/custom-lumos', 'support/apertus-lumo', 'support/connect-slack-lumo', 'support/lumo-memory'])
+    assert.ok(engedelyezett('https://proton.me/' + ut), 'Lumo-cikk: ' + ut);
+  for (const ut of ['support/pass-getting-started', 'support/vpn-setup-linux', 'support/mail/x', 'support/mail/lumo-x', 'de/support/lumo', 'support/columbus-day',
+    'support/lumos-x/y', 'support/xlumo', 'support/lumox', 'support/', 'support', 'support/sitemap.xml', 'lumo/pricing', 'support/pass-lumo/x'])
+    assert.ok(!engedelyezett('https://proton.me/' + ut), 'nem Lumo-cikk, nem mehet át: ' + ut);
+  assert.ok(!engedelyezett('https://proton.me/support/lumo/../pass-x'), '„..” szakasz');
+  // a Lumo-index mintája ugyanaz a szabály (DRY): a FORRASOK.lumo.minta és az engedélyezett() egyet mond
+  for (const ut of ['support/lumo-x', 'support/custom-lumos', 'support/columbus-day', 'support/xlumo', 'support/pass-x'])
+    assert.equal(FORRASOK.lumo[0].minta.test('https://proton.me/' + ut), engedelyezett('https://proton.me/' + ut), 'minta ≠ engedélyezett: ' + ut);
+  // a sitemap-URL (forrás, nem cikk) nem megy át az engedelyezett()-en — az indexLetolt nem is hívja rá
+  assert.ok(!engedelyezett(FORRASOK.lumo[0].sitemap));
 }
 
 console.log('✅ sugo-index: rendben');

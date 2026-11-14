@@ -28,6 +28,12 @@ import { cikkSzoveg } from './elakadas-gen.js';
 export const SUGO_TAR_BE = true;
 /** Ennyi napig számít frissnek a tárolt szöveg — addig nem töltjük le újra. */
 export const SUGO_FRISS_NAP = 7;
+/**
+ * Ennél rövidebb élő lap NEM súgócikk (JS-héj, süti- vagy ellenőrző lap, hibalap 200-as kóddal): nem írjuk a tárba,
+ * mert felülírná a jó tárolt szöveget, hamis `valtozott`-at jelezne, és 7 napig „frissnek” számítana.
+ * Ugyanennyi a core/sugo-proba.js MIN_HOSSZ-a (olvasható súgó alsó határa).
+ */
+export const MIN_TAR_HOSSZ = 300;
 
 const NAP_MS = 86400000;
 
@@ -38,7 +44,11 @@ const mappa = dir => dir || process.env.SUGO_TAR_DIR || join(tarGyoker(), 'sugo'
 
 const sha16 = s => createHash('sha256').update(String(s)).digest('hex').slice(0, 16);
 
-/** Normalizált URL: https, kisbetűs host, query és # nélkül, záró perjel nélkül. Nem https / hibás → null. */
+/**
+ * Normalizált URL: https, kisbetűs host, query és # nélkül, záró perjel nélkül. Nem https / hibás → null.
+ * A query (pl. ?hl=en) eldobása MOST helyes, mert csak angol súgót tárolunk; ha egyszer nyelvenként tároljuk
+ * (spec 8.2), a nyelvnek bele kell kerülnie a kulcsba, különben a nyelvi változatok felülírnák egymást.
+ */
 function normalizalt(url) {
   try {
     const p = new URL(String(url || '').trim());
@@ -123,13 +133,17 @@ export async function sugoSzoveg(url, opciok) {
     }
     tarolt = sugoTarOlvas(url, { dir });
     const kor = tarolt ? most - Date.parse(tarolt.letoltve) : NaN;
-    if (tarolt && kor <= frissNap * NAP_MS) return { szoveg: tarolt.szoveg, cim: tarolt.cim, honnan: 'tar' };
+    // kor >= 0: a jövőbeli `letoltve` (rossz óra, kézzel írt meta) nem lehet „örökké friss”
+    if (tarolt && kor >= 0 && kor <= frissNap * NAP_MS) return { szoveg: tarolt.szoveg, cim: tarolt.cim, honnan: 'tar' };
     const r = await cikkSzoveg(url, fetchFn);
-    if (r && String(r.szoveg || '').trim()) {
+    if (r && String(r.szoveg || '').trim().length >= MIN_TAR_HOSSZ) {
       sugoTarIr(url, r, { dir, most });
       return { szoveg: r.szoveg, cim: r.cim, honnan: 'elo' };
     }
-    return tarolt ? { szoveg: tarolt.szoveg, cim: tarolt.cim, honnan: 'regi-tar' } : null;
+    // rövid élő lap (nem súgócikk): a tárat NEM írjuk felül — a jó régi szöveg jön, ha nincs, az élő eredmény tárolás nélkül
+    if (tarolt) return { szoveg: tarolt.szoveg, cim: tarolt.cim, honnan: 'regi-tar' };
+    if (r && String(r.szoveg || '').trim()) return { szoveg: r.szoveg, cim: r.cim, honnan: 'elo' };
+    return null;
   } catch {
     return tarolt ? { szoveg: tarolt.szoveg, cim: tarolt.cim, honnan: 'regi-tar' } : null;
   }

@@ -14,7 +14,7 @@ import { tmpdir } from 'os';
 import { join, relative, sep } from 'path';
 import { fileURLToPath } from 'url';
 import { FORRAS_TAR_DIR } from './forras-cache.js';
-import { SUGO_TAR_BE, SUGO_FRISS_NAP, sugoTarKulcs, sugoTarIr, sugoTarOlvas, sugoSzoveg } from './sugo-tar.js';
+import { SUGO_TAR_BE, SUGO_FRISS_NAP, MIN_TAR_HOSSZ, sugoTarKulcs, sugoTarIr, sugoTarOlvas, sugoSzoveg } from './sugo-tar.js';
 
 const dir = mkdtempSync(join(tmpdir(), 'sugo-tar-'));
 const regiKornyezet = process.env.SUGO_TAR_DIR;
@@ -184,6 +184,40 @@ await t('kemény: váratlan hiba a belsejében (fetchFn nem függvény, rossz id
   const r4 = await sugoSzoveg(UR, { fetchFn: elo, dir, most: Symbol('x') }).catch(hiba);
   assert.ok(r4 && r4.szoveg && r4.szoveg.includes('Saját tesztmondat.'), 'dobott vagy üres: ' + JSON.stringify(r4));
   assert.equal(r4.honnan, 'regi-tar');
+});
+
+// ── záró átnézés (11-14) ──────────────────────────────────────────────────────────────────────────
+await t('I-1: rövid (junk) élő lap jó tárolt szöveg mellett → NEM írja felül a tárat, régi tárolt szöveg jön, nincs valtozott', async () => {
+  assert.equal(MIN_TAR_HOSSZ, 300);
+  const UJ = 'https://support.claude.com/en/articles/20-rovid';
+  await sugoSzoveg(UJ, { fetchFn: elo, dir, most });
+  const elotte = readFileSync(metaUtja(dir, UJ), 'utf-8');
+  const txtElotte = readFileSync(metaUtja(dir, UJ).replace(/\.json$/, '.txt'), 'utf-8');
+  const rovid = async () => ({ ok: true, text: async () => '<html><title>Süti</title><body>Kérjük, engedélyezze a JavaScriptet.</body></html>' });
+  const r = await sugoSzoveg(UJ, { fetchFn: rovid, dir, most: most + 30 * NAP });
+  assert.equal(r.honnan, 'regi-tar');
+  assert.ok(r.szoveg.includes('Saját tesztmondat.'));
+  assert.equal(readFileSync(metaUtja(dir, UJ), 'utf-8'), elotte, 'a meta változatlan (nincs új letoltve, nincs valtozott)');
+  assert.equal(readFileSync(metaUtja(dir, UJ).replace(/\.json$/, '.txt'), 'utf-8'), txtElotte);
+  assert.equal(JSON.parse(readFileSync(metaUtja(dir, UJ), 'utf-8')).valtozott, undefined);
+});
+
+await t('I-1: rövid élő lap, nincs tárolt szöveg → élő eredmény tárolás nélkül (nincs fájl)', async () => {
+  const UN = 'https://support.claude.com/en/articles/21-rovid-nincs-tar';
+  const rovid = async () => ({ ok: true, text: async () => '<html><title>Süti</title><body>Ellenőrzés folyamatban…</body></html>' });
+  const r = await sugoSzoveg(UN, { fetchFn: rovid, dir, most });
+  assert.ok(r && r.honnan === 'elo');
+  assert.ok(r.szoveg.includes('Ellenőrzés'));
+  assert.equal(existsSync(metaUtja(dir, UN)), false);
+  assert.equal(sugoTarOlvas(UN, { dir }), null);
+});
+
+await t('M-3: jövőbeli `letoltve` (negatív kor) nem számít örökké frissnek → újra letöltjük', async () => {
+  const UF = 'https://support.claude.com/en/articles/22-jovo';
+  await sugoSzoveg(UF, { fetchFn: elo, dir, most: most + 400 * NAP });   // „a jövőben” tárolva
+  const r = await sugoSzoveg(UF, { fetchFn: elo2, dir, most });
+  assert.equal(r.honnan, 'elo', 'a jövőbeli időbélyeg nem friss');
+  assert.ok(r.szoveg.includes('Másik, kitalált'));
 });
 
 rmSync(dir, { recursive: true, force: true });

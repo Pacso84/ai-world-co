@@ -1323,14 +1323,16 @@ async function main() {
     // 📘 SÚGÓ-ALAPÚ TÉMA (2026-11-11): a súgócikk szövegét MOST töltjük le (a gitbe nem kerül — kiadói szöveg).
     // Ha nem jön le, ebben a futásban NEM írjuk meg: emlékezetből írni pont az, amit ez a téma kizár.
     let sugok = [];
+    const sugoEredet = [];   // honnan jött a súgó (csak a naplóba)
     const sugoLista = sugoForrasok(topic);   // CSAK a sugo_alapu témára (a régi kézi official_sources-ra nem)
     if (sugoLista.length) {
       for (const s of sugoLista) {
         const sz = await sugoSzoveg(s.url);
-        if (sz?.szoveg) sugok.push({ url: s.url, cim: sz.cim || s.title || '', szoveg: sz.szoveg });
+        if (sz?.szoveg) { sugok.push({ url: s.url, cim: sz.cim || s.title || '', szoveg: sz.szoveg }); sugoEredet.push(sz.honnan); }
       }
       if (!sugok.length) { console.log('   ⏭️  A súgó nem tölthető le — ebben a futásban nem írom meg (a téma vár).\n'); continue; }
-      console.log(`   📘 hivatalos súgó: ${sugok.map(s => s.cim).join(' · ')}`);
+      const eredetSzoveg = { tar: 'a tárból', elo: 'élő letöltés', 'regi-tar': '⚠️ régi tárolt példány' };
+      console.log(`   📘 hivatalos súgó: ${sugok.map((s, i) => s.cim + ' (' + (eredetSzoveg[sugoEredet[i]] || 'ismeretlen eredet') + ')').join(' · ')}`);
     }
     const response = await writeGuide(topic, brandContext, sugok);
     if (!response) { console.log('   ❌ Sikertelen (router null)\n'); stats.failed++; continue; }
