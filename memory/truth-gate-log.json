@@ -1,35 +1,4 @@
 {
-  "2026-10-03": [
-    {
-      "at": "2026-10-03T02:56:19.597Z",
-      "file": "WRITER_2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
-      "action": "block",
-      "reasons": [
-        "The article states that 'Claude Frontier Academy' is an Anthropic program with a '$100 million commitment to train 10,000' Frontier Deployed Engineers by end of 2027, but the SOURCE block only contains GitHub's announcement about three skills. Claude Frontier Academy, its $100M funding, the 10,000-engineer target, and the 'Frontier Deployed Engineers' title are not supported by the provided source — they appear to be added fabrications about Anthropic.",
-        "The article states 'more than 1 million Genie Agents were created in 2026 alone' as from GitHub, but the SOURCE block excerpt only contains GitHub's three-skills announcement. This 1 million Genie Agents statistic is not supported by the provided source excerpt and is an added fabrication."
-      ],
-      "confidence": 7
-    },
-    {
-      "at": "2026-10-03T03:07:00.983Z",
-      "file": "WRITER_2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
-      "action": "block",
-      "reasons": [
-        "The claim that 'Claude Frontier Academy' is an Anthropic program 'with a $100 million commitment to train 10,000 by the end of 2027' is a fabricated specific — it is presented as fact in the article's source-quoted block but does not appear in the official GitHub announcement and constitutes an invented program name, dollar figure, headcount, and timeline.",
-        "The claim that 'more than 1 million Genie Agents [were] created in 2026 alone' is an invented statistic presented as fact; it does not appear in the GitHub source and Genie One's agent creation metric is not stated there."
-      ],
-      "confidence": 9
-    },
-    {
-      "at": "2026-10-03T12:54:24.494Z",
-      "file": "WRITER_2026-10-03T02-49-44-934Z_github-ai_AI_is_changing_developer_work__Here_are_three_skil.json",
-      "action": "block",
-      "reasons": [
-        "The 'Claude Frontier Academy' is described as 'an Anthropic program with a $100 million commitment to train 10,000 Frontier Deployed Engineers by the end of 2027' — this is a fabricated program name with invented financial commitment, headcount, and deadline not supported by the source or any verified information."
-      ],
-      "confidence": 9
-    }
-  ],
   "2026-10-08": [
     {
       "at": "2026-10-08T03:33:13.259Z",
@@ -204,6 +173,20 @@
       "action": "block",
       "reasons": [
         "The repeated claim that DeepSeek cannot look up live information or check current opening hours and prices is inaccurate: DeepSeek's web and mobile apps include a web-search mode that can retrieve current web information. The warning should apply only when that mode is not enabled."
+      ],
+      "confidence": 9
+    }
+  ],
+  "2026-11-15": [
+    {
+      "at": "2026-11-15T15:09:21.141Z",
+      "file": "WRITER_2026-11-15T03-56-28-510Z_aiworld-editorial_This_Week_in_AI.json",
+      "action": "block",
+      "reasons": [
+        "The article claims OpenAI and Google both rolled out tools that let their AI assistants connect directly to users' financial accounts, including checking balances, comparing prices, and guiding purchases. The source block provides no support for these specific product launches or features.",
+        "The article claims Samsung launched AI-powered eyewear with Gentle Monster and Warby Parker, uses Google's Gemini AI for real-time listening, answering, and translation, has open pre-orders, and becomes available in the U.S. and South Korea on December 10. These specifics are not supported by the source block.",
+        "The article claims a new Salesforce survey found that more shoppers than ever ask AI tools for gift recommendations and price comparisons, and that retailers are building AI helpers to answer product questions and track inventory in real time. The source block provides no support for this survey or the stated retailer practices.",
+        "The article claims Microsoft researchers published a deep dive this week about a security risk called \"Lazarus\" involving hidden triggers in AI models. The source block provides no support for this named research item or its characterization."
       ],
       "confidence": 9
     }

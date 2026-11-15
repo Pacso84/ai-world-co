@@ -1,0 +1,61 @@
+{
+  "ok": 6,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.010338315,
+  "at": "2026-11-15T03:56:29.127Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 6,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-duck-ai-chats-with-your-own-files-for-research.json",
+      "cim": "How to Use Duck.ai Chats With Your Own Files for Research",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-find-your-color-season-with-chatgpt-using-words-not-p.json",
+      "cim": "How to Find Your Color Season With ChatGPT Using Words, Not Photos",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-13T15-49-02-606Z_zapier-blog_How_to_automate_your_AI_personal_assistant.json",
+      "cim": "How to automate your AI personal assistant",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Nincs ténybeli eltérés. A cikk pontosan parafrazeálja a forrás állításait, megfelelően enyhít where it leaves out specific plan names, and correctly represents Zapier's described features and limitations."
+    },
+    {
+      "file": "ARTICLE_2026-11-13T04-01-19-038Z_microsoft-research_Microsoft_Research_Focus___Edition__98.json",
+      "cim": "Microsoft Research Focus – Edition #98",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényszerű állítása alátámasztott a forrásszövegben, beleértve a Lazarus backdoor nevet, a 10 alatti alvó neuronok részletet, a 2027-es dátum triggert, a Foundry ellenőrzési funkcióit és a Microsoft ajánlott védelmi intézkedéseit."
+    },
+    {
+      "file": "ARTICLE_2026-11-13T04-01-19-038Z_microsoft-blog_From_AI_ambition_to_business_impact.json",
+      "cim": "From AI ambition to business impact",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényszerű állítása megegyezik a forrásszöveggel"
+    },
+    {
+      "file": "ARTICLE_2026-11-12T04-50-52-649Z_snowflake_The_Hidden_Cost_of_Moving_Data_for_AI_.json",
+      "cim": "The Hidden Cost of Moving Data for AI ",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrásokat: az open table format (Iceberg), a governance that travels with the data koncepció, a Horizon Catalog funkciói (row access és masking policies más engine-ekre kiterjesztve), az Agent identity capability, és a finance trust megjegyzés mindegyike megfelel a forráss"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "started_at": "2026-11-15T03:44:08.816Z",
+  "drafts_total": 6,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 7,
+  "merged_total": 2,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 5,
+    "html": 1,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.01910114,
+  "by_article": [
+    {
+      "draft": "2026-11-12T04-50-52-649Z_snowflake_The_Hidden_Cost_of_Moving_Data_for_AI_.json",
+      "writer_output": "WRITER_2026-11-12T04-50-52-649Z_snowflake_The_Hidden_Cost_of_Moving_Data_for_AI_.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Snowflake AI Data Infrastructure",
+      "source_via": [
+        "hirfolyam",
+        "hirfolyam"
+      ],
+      "source_chars": 9007,
+      "source_overlap_words": 13,
+      "cost_usd": 0.0042073,
+      "duration_ms": 16496,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-13T15-49-02-606Z_zapier-blog_How_to_automate_your_AI_personal_assistant.json",
+      "writer_output": "WRITER_2026-11-13T15-49-02-606Z_zapier-blog_How_to_automate_your_AI_personal_assistant.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 9,
+      "cost_usd": 0.0041561,
+      "duration_ms": 17264,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-13T04-01-19-038Z_microsoft-research_Microsoft_Research_Focus___Edition__98.json",
+      "writer_output": "WRITER_2026-11-13T04-01-19-038Z_microsoft-research_Microsoft_Research_Focus___Edition__98.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Microsoft AI Research Security",
+      "source_via": [
+        "hirfolyam",
+        "hirfolyam"
+      ],
+      "source_chars": 9007,
+      "source_overlap_words": 9,
+      "cost_usd": 0.004187,
+      "duration_ms": 16299,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-13T04-01-19-038Z_microsoft-blog_From_AI_ambition_to_business_impact.json",
+      "writer_output": "WRITER_2026-11-13T04-01-19-038Z_microsoft-blog_From_AI_ambition_to_business_impact.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 5999,
+      "source_overlap_words": 12,
+      "cost_usd": 0.0039562,
+      "duration_ms": 14403,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 0,
+  "termek_extra": 0,
+  "finished_at": "2026-11-15T03:45:32.108Z",
+  "duration_seconds": 83.292
+}

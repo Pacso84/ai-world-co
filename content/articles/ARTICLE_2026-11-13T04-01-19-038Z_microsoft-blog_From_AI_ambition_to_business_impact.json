@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "written_at": "2026-11-15T03:45:32.107Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0039562,
+    "original_draft": "2026-11-13T04-01-19-038Z_microsoft-blog_From_AI_ambition_to_business_impact.json",
+    "source_id": "microsoft-blog",
+    "source_name": "Official Microsoft Blog (hivatalos)",
+    "source_link": "https://blogs.microsoft.com/blog/2026/11/12/from-ai-ambition-to-business-impact/",
+    "source_links": [
+      "https://blogs.microsoft.com/blog/2026/11/12/from-ai-ambition-to-business-impact/"
+    ],
+    "source_snippet_len": 403,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 5999,
+    "source_text_key": "86862cc1e2a49fa5",
+    "source_overlap_words": 12,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "published_at": "2026-11-15T03:46:13.013Z",
+    "slug": "how-microsoft-s-frontier-company-aims-to-turn-ai-pilots-into-business-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 816
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured news article with clear explanations of technical terms, balanced presentation of Microsoft's claims without overstating, useful 'What this means for you' section with actionable advice for four audience types, and no prohibited content or clichés detected.",
+      "_aiCost": 0.0011844,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-15T03:47:19.533Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a business case study about Microsoft's enterprise consulting services, not a consumer product or specific named feature people can use",
+    "image_v": 2,
+    "image_at": "2026-11-15T03:49:46.508Z",
+    "seo": {
+      "meta_description": "Microsoft's Frontier Company worked on ~500 AI projects in 28 countries. Practical advice for turning AI pilots into real business results.",
+      "keywords": [
+        "Microsoft AI implementation",
+        "how to scale AI from pilot to production",
+        "AI business results",
+        "Enterprise AI rollout strategy",
+        "AI pilot program best practices",
+        "Microsoft Frontier Company AI"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add a clear definition section explaining what Microsoft's Frontier Company is and does, as the name alone may not be familiar to readers searching this topic",
+        "Include specific industry examples or use cases from the ~500 projects mentioned to make the advice more concrete and actionable",
+        "Consider adding an FAQ section addressing common challenges businesses face when scaling AI beyond initial pilots"
+      ],
+      "optimised_at": "2026-11-15T03:50:52.075Z"
+    },
+    "fact_verified_at": "2026-11-15T03:57:23.252Z",
+    "social": true,
+    "social_at": "2026-11-15T04:04:25.531Z"
+  },
+  "article_markdown": "---\ntitle: \"How Microsoft's Frontier Company Aims to Turn AI Pilots into Business Results\"\nsubtitle: \"Microsoft says its Frontier Company has worked on nearly 500 AI projects, and the lessons it draws apply to any business rolling out AI.\"\ncategory: \"news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"enterprise-ai\", \"business-strategy\", \"microsoft\", \"ai-agents\", \"ai-adoption\"]\n---\n\n# How Microsoft's Frontier Company Aims to Turn AI Pilots into Business Results\n\n> **In short:** Microsoft says its Frontier Company has worked on nearly 500 projects with more than 200 customers in 28 countries, helping them move AI from demos to measurable change. Its advice: start with the value, redesign the process, and plan for security and cost early.\n\nMany businesses have already tested AI. They have run a pilot, seen a flashy demo, or added an AI assistant to a few teams. The harder question is what happens next, and how AI changes the way the work actually gets done. That is the gap Microsoft says its new Frontier Company was built to close.\n\n## What the Frontier Company does\n\nAccording to Microsoft, the Frontier Company works on customer projects with what it calls Forward Deployed Engineering teams. A forward deployed engineer is a technical specialist who works directly alongside a customer's own staff, on site or in shared workspaces, rather than handing over a finished product and leaving.\n\nMicrosoft says it has engaged on nearly 500 projects with over 200 customers across 28 countries. It names well-known companies among them, including 3M, Alaska Airlines, BMW, Mastercard, and Unilever. The company also says that most customers who finished an initial project came back for more work, which it describes as hundreds of follow-on projects.\n\n## Four examples from the announcement\n\nMicrosoft shares a few cases to show what this looks like in practice:\n\n- **Unilever's factory work:** Microsoft says Unilever is bringing AI into its factories. At one plant, a \"digital twin\" (a virtual copy of a real factory, fed with live data) helps staff spot problems before they happen and guides operators through fixes.\n- **3M's order management:** The announcement describes an \"AI agent\" (software that can carry out a series of steps on its own) that helps check customer credit and update systems. A person still reviews and approves key decisions, a setup often called \"human-in-the-loop.\"\n- **Northern Trust's onboarding:** Microsoft says an AI onboarding agent, built inside Excel and SharePoint tools analysts already use, cut data preparation time by 83%, from about two and a half weeks to three days.\n- **Saint-Gobain's research:** Microsoft says its team helped gather 62,000 patents and 44,000 research abstracts into a searchable knowledge base in hours, work the company estimates would have taken researchers a year.\n\nIn each case, Microsoft stresses that people stay in control of the decisions.\n\n## The pattern Microsoft recommends\n\nAcross these projects, Microsoft says it follows four habits:\n\n1. **Begin with the value, not the technology.** Pick a result you can measure first.\n2. **Redesign the process, not just the task.** Speeding up one step rarely helps if the surrounding steps stay the same.\n3. **Build in fast cycles** with the customer's own teams.\n4. **Plan for security, governance (the rules for who can use what, and how), and cost from day one,** so growth does not stall later.\n\nMicrosoft also cites research from IDC, a market research firm. According to that research, 66% of organizations report substantial or transformative results from AI, yet only 48% are scaling it or seeing consistent value across the business. The same research says 71% expect AI spending to rise by at least 10% in the next year.\n\n## What this means for you\n\n- **If you run a small business**: Pick one repetitive task that eats time each week, such as sorting invoices or summarizing customer emails, and measure how long it takes now. That baseline tells you whether any AI tool actually helped.\n- **If you manage a team**: Ask who will review AI output before it reaches customers or affects money. Write that step into the process from the start, as Microsoft's examples suggest.\n- **If you work for a larger company**: Look for teams already testing AI and ask what they measured. Microsoft's own framing suggests that a clear result is more useful than a long list of pilots.\n- **If you're just getting started**: Begin with a small, low-risk job and a simple success measure. Note what you learned, then decide what to try next.\n\n## Wrap-up\n\nMicrosoft's announcement makes one point clearly: the technology is not the main obstacle, and the hard work is in choosing the right problem, redesigning the work, and keeping people in control. Start this week by naming one process in your business that takes too long, then write down how you would know if AI made it better. For current availability and details of any Microsoft service, check Microsoft's official website.",
+  "original_title": "From AI ambition to business impact"
+}
