@@ -1,0 +1,77 @@
+{
+  "_meta": {
+    "written_at": "2026-11-15T03:45:17.072Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.004187,
+    "original_draft": "2026-11-13T04-01-19-038Z_microsoft-research_Microsoft_Research_Focus___Edition__98.json",
+    "source_id": "microsoft-research",
+    "source_name": "Microsoft Research (hivatalos)",
+    "source_link": "https://www.microsoft.com/en-us/research/podcast/microsoft-research-focus-edition-98/",
+    "source_links": [
+      "https://www.microsoft.com/en-us/research/podcast/microsoft-research-focus-edition-98/",
+      "https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/"
+    ],
+    "source_snippet_len": 809,
+    "source_text_via": [
+      "hirfolyam",
+      "hirfolyam"
+    ],
+    "source_text_len": 9007,
+    "source_text_key": "303f04c7e880595e",
+    "source_overlap_words": 9,
+    "merged_from": 2,
+    "merged_theme": "Microsoft AI Research Security",
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "published_at": "2026-11-15T03:46:47.833Z",
+    "slug": "lazarus-how-a-hidden-ai-backdoor-works-and-what-microsoft-recommends",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 61 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 819
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid security explainer with clear hooks, well-explained technical terms in plain language, and a practical three-audience 'What this means for you' section. No prohibited content, no invented facts, and the Microsoft source attribution is appropriate.",
+      "_aiCost": 0.00135639,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-15T03:47:25.394Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a research paper about an AI security vulnerability (Lazarus backdoor), not a consumer feature or tool people can use — the advice targets enterprise security teams, not everyday users.",
+    "image_v": 2,
+    "image_at": "2026-11-15T03:49:55.133Z",
+    "seo": {
+      "meta_description": "Microsoft researchers explain the Lazarus AI backdoor—hidden triggers that let altered models run attacker commands. Their safety recommendations.",
+      "keywords": [
+        "AI backdoor attack",
+        "Lazarus AI backdoor Microsoft",
+        "AI model security vulnerability",
+        "how to protect AI from backdoors",
+        "Microsoft AI safety recommendations",
+        "AI agent security risks",
+        "hidden trigger AI model"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a subheading mentioning 'AI model security' to capture readers searching specifically for that term",
+        "Include a brief definition of what an AI backdoor is in the first paragraph for readers unfamiliar with the term, which could improve time-on-page",
+        "Add schema markup for the research/report content type to highlight this as expert analysis"
+      ],
+      "optimised_at": "2026-11-15T03:51:10.691Z"
+    },
+    "fact_verified_at": "2026-11-15T03:57:14.211Z"
+  },
+  "article_markdown": "---\ntitle: \"Lazarus: How a Hidden AI Backdoor Works and What Microsoft Recommends\"\nsubtitle: \"Microsoft researchers describe a way to hide a trigger inside an AI model, and explain the everyday safety habits that help.\"\ncategory: \"ai-news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"ai-security\", \"ai-agents\", \"model-provenance\", \"microsoft\"]\n---\n\n# Lazarus: How a Hidden AI Backdoor Works and What Microsoft Recommends\n\n> **In short:** Microsoft researchers have described \"Lazarus,\" a backdoor that can be added to an AI model without retraining it. The model passes normal tests until a hidden trigger appears, and then an AI agent with tool access can run an attacker's commands. Microsoft says the best defense is knowing where a model came from and limiting what it can do.\n\nIf you ever let an AI assistant open files, run commands, or send messages for you, you are trusting it with real access. A new Microsoft research report asks an uncomfortable question: what if the model itself has been secretly altered?\n\n## What Microsoft found\n\nMicrosoft researchers describe a technique they call \"Lazarus.\" A **backdoor** is a hidden behavior that stays dormant until a specific trigger shows up, like a sleeper agent waiting for a signal. In this case, the researchers say that changing fewer than 10 **dormant neurons** (small units inside a model's network that rarely contribute to its everyday answers) is enough to plant one in a language model. No retraining is needed.\n\nThe trick is the trigger. According to the researchers, the trigger can be as ordinary as a date. For example, once the clock passes midnight into 2027, an agent in the middle of a normal task could issue a command that downloads and runs an attacker's code. Until then, the model passes standard safety evaluations and behaves normally.\n\n## Why agents raise the stakes\n\nA chatbot that only writes text can make mistakes, but it cannot do much on its own. An **AI agent** is different. It is an AI that can use tools, such as a terminal (a text-based command line on your computer). Microsoft says the danger is greatest here, because the agent carries out whatever access you gave it.\n\n## How to think about model safety\n\nMicrosoft's advice comes down to a few habits that security teams have used for years:\n\n- **Provenance** means knowing where a model came from and confirming it has not been changed between its developer and your system.\n- **Weights** are the millions of numbers that store what a model learned. Changing them changes behavior.\n- **Diffing** means comparing two versions side by side to spot differences. Microsoft notes that reliable detection requires comparing a suspect model against the original, unchanged weights.\n- **Defense in depth** means using several layers of protection, so that if one fails, others still stand.\n\nMicrosoft also says that no scan can prove a model is completely safe, so these steps reduce risk rather than remove it. The company's recommended mindset is to treat a model like a possible insider threat, don't trust it blindly, limit what it can reach, and monitor what it does.\n\n## What Microsoft says it is doing\n\nAccording to Microsoft, its Foundry platform verifies where open-weight models (models whose weights anyone can download) come from, ties them to their original publishers, and scans the surrounding software before onboarding them. Models run inside Microsoft's own containers (sealed packages that keep software separate from the rest of a system), and those containers are scanned for serious vulnerabilities.\n\nThe company also says it is working on more protections. These include AI-powered weight scanning, red-teaming tools (tests that try to break a system on purpose), and cryptographic signing, which would give each model a verifiable seal and an audit trail. Microsoft is clear that the remaining risk is a trusted provider being compromised, and that these steps are still in progress.\n\n## What this means for you\n\n- **For your business**: Ask any AI vendor where its models come from, whether they are signed or verified, and what your agents are allowed to access. Limiting permissions is often the easiest protection to apply today.\n- **For your work team**: Treat AI tools like any other software you install. Only use models and tools from sources you can identify, and keep a record of what you approved.\n- **For personal use**: Be careful about giving an AI agent access to your passwords, files, or accounts. If a tool asks for broad access, ask yourself whether it truly needs it.\n\n## Wrap-up\n\nLazarus is a reminder that an AI model is not just a friendly voice. It is software with real power when you connect it to tools. The practical lesson is to know where your AI comes from, give it only the access it needs, and keep an eye on what it does. Today, you can review one AI tool you use and check what permissions it has been granted.",
+  "original_title": "Microsoft Research Focus – Edition #98"
+}

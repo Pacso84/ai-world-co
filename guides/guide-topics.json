@@ -8797,10 +8797,11 @@
       "audience": "personal",
       "level": "intermediate",
       "angle": "Bring a document into a Duck.ai conversation, ask specific questions about it, and verify each answer against the original.",
-      "status": "todo",
+      "status": "done",
       "icon": "🦆",
       "proposed_at": "2026-11-12T04:58:38.583Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-11-15T03:48:09.735Z"
     },
     {
       "id": "how-to-keep-private-ai-chats-separate-from-work-in-brave-leo",
@@ -8940,6 +8941,28 @@
         "datum": "2026-11-14"
       },
       "written_at": "2026-11-14T04:04:37.411Z"
+    },
+    {
+      "id": "how-to-find-your-color-season-with-chatgpt-using-words-not-p",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "How to Find Your Color Season With ChatGPT Using Words, Not Photos",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Show how to describe your veins, jewelry tests and hair and eye colors in plain words, then ask ChatGPT for a color-season guess and a list of questions to confirm it in daylight.",
+      "status": "done",
+      "icon": "🎨",
+      "proposed_at": "2026-11-15T03:47:42.154Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "chatgpt prompt for color analysis",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-11-15"
+      },
+      "written_at": "2026-11-15T03:48:31.726Z"
     }
   ],
   "trend_proba": [
@@ -9026,6 +9049,10 @@
     {
       "kifejezes": "chatgpt prompt for professional headshot",
       "at": "2026-11-14T04:03:32.579Z"
+    },
+    {
+      "kifejezes": "chatgpt prompt for color analysis",
+      "at": "2026-11-15T03:47:31.855Z"
     }
   ]
 }
