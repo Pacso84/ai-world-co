@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-11-15T15:22:53.097Z",
+    "updated": "2026-11-15T19:04:59.183Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -545,7 +545,7 @@
     },
     "databricks": {
       "name": "Databricks Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 3,
       "published30dAfterAgeGuard": 2,
       "truthBlocks": 0,
@@ -738,7 +738,7 @@
     },
     "duckduckgo-duck-ai": {
       "name": "DuckDuckGo / Duck.ai (hivatalos blog, csak Duck.ai)",
-      "feedAgeDays": 20,
+      "feedAgeDays": 21,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -801,7 +801,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 48,
+      "feedAgeDays": 49,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -814,7 +814,7 @@
     },
     "d-id-news": {
       "name": "D-ID (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 3,
       "published30dAfterAgeGuard": 2,
       "truthBlocks": 0,
@@ -891,7 +891,7 @@
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": -360,
+      "feedAgeDays": -359,
       "published30d": 9,
       "published30dAfterAgeGuard": 5,
       "truthBlocks": 0,
