@@ -26,10 +26,13 @@
 import { execFileSync } from 'node:child_process';
 import { mkdirSync, rmSync, writeFileSync, readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { BETU_CSALAD } from './video-font.js';
+import { BETU_CSALAD, betuRendben } from './video-font.js';
 import { horogCimbol, horogSzeles, W, H, SAV_FELSO } from './short-video.js';
 
-export const MOTION_REEL_BE = false;      // ⛔ élesítés CSAK user-jóváhagyással (előnézet: 11-15)
+// ✅ BE (user, 11-15, az előnézet után: „rád bízom, de úgy válassz, hogy amelyik a legtöbb nézőt hozhatja!”).
+// A döntés: mindhárom sablon váltakozva megy, 2 hét mérés után a győztes(ek) maradnak (cikkenként _meta.video_sablon).
+// ⛔ VISSZA A RÉGI REELRE: false → a core/reel-post.js minden útmutató-videót a régi short-video.js-sel gyárt.
+export const MOTION_REEL_BE = true;
 
 export const FPS = 30;
 export const LEPES_DB = 3;                // az útmutatóból ennyi lépés kerül a videóba
@@ -384,6 +387,8 @@ async function felolvas(et, kesz, voice, szoveg, dir, nev) {
  */
 export async function renderMotionReel(szegmensek, { out, workDir, kepUt = '', sablon = 'tinta', voice = 'en-US-AvaMultilingualNeural', nema = false, csakKockak = null }) {
   const sharp = (await import('sharp')).default;
+  // a betű-őrszem (core/video-font.js) ugyanúgy mér, mint a régi Reelnél → memory/reel-guard.json → napi riport
+  const betu = await betuRendben(sharp);
   rmSync(workDir, { recursive: true, force: true });
   mkdirSync(workDir, { recursive: true });
 
@@ -446,7 +451,25 @@ export async function renderMotionReel(szegmensek, { out, workDir, kepUt = '', s
     '-vf', `scale=${W}:${H}:out_range=tv,format=yuv420p`, '-color_range', 'tv',
     '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', out], { stdio: 'pipe' });
 
-  return { file: out, seconds: iv.osszes, kockak: kockaDb, idovonal: iv };
+  return { file: out, seconds: iv.osszes, kockak: kockaDb, idovonal: iv, betu, sablon };
+}
+
+/**
+ * Egy útmutató sablonja: a megjelenés napjából és az aznapi útmutatók közti sorszámából. Ugyanarra a cikkre
+ * MINDIG ugyanazt adja — a videót naponta többször újragyártjuk (a videók gitignore-oltak), és a mérésnek is
+ * rögzített sablon kell. A nap útmutatói más-más sablont kapnak, napról napra eltolva.
+ */
+export function sablonCikkhez(cikk, cikkek = []) {
+  const nap = String(cikk?.published_at || '').slice(0, 10) || '1970-01-01';
+  const aznapiak = cikkek.filter(c => c && c.type === 'guide' && String(c.published_at || '').slice(0, 10) === nap)
+    .sort((a, b) => String(a.published_at).localeCompare(String(b.published_at)) || String(a.slug).localeCompare(String(b.slug)));
+  const i = aznapiak.findIndex(c => c.slug === cikk?.slug);
+  return sablonValaszt(nap, i < 0 ? aznapiak.length : i);
+}
+
+/** Hány lépést mutat a videó (a Reel-leírás ne ígérjen mást) — null, ha ebből az útmutatóból nem lesz motion Reel. */
+export function motionLepesDb(md) {
+  return MOTION_REEL_BE && trukkSzkript(md).szegmensek ? LEPES_DB : null;
 }
 
 /** Sablon-forgatás: napról napra és Reelenként más (determinisztikus, a dátumból és a sorszámból). */
@@ -498,4 +521,4 @@ async function main() {
 const kozvetlen = process.argv[1] && process.argv[1].replace(/\\/g, '/').endsWith('core/motion-reel.js');
 if (kozvetlen) main().catch(e => { console.error('💥 motion-reel hiba:', e.message); process.exit(1); });
 
-export default { trukkSzkript, idovonal, kockaSvg, renderMotionReel, sablonValaszt, becsultHossz, MOTION_REEL_BE };
+export default { trukkSzkript, idovonal, kockaSvg, renderMotionReel, sablonValaszt, sablonCikkhez, motionLepesDb, becsultHossz, MOTION_REEL_BE };

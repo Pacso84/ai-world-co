@@ -277,6 +277,10 @@ const MASOLAT_KIVETEL = {
     + '(ami a közös függvényt hívja). Se fájlnév, se markdown nincs a kezében, '
     + 'tehát a három jelből kettőt meg sem tudna nézni — a bővítés itt nem '
     + 'pontosítana semmit, csak egy negyedik kérdés-alakot szülne.',
+  'motion-reel.js':
+    'nem osztályoz: a sablon-választó (sablonCikkhez) a core/reel-post.js cikkekBetolt()-jétől kapja a MÁR '
+    + 'NORMALIZÁLT `type` mezőt (utmutatoE()), csak az aznapi útmutatók sorszámához (2026-11-15) — ugyanaz a helyzet, '
+    + 'mint a reel-queue.js-nél.',
   'reel-post.js':
     'nem osztályoz, hanem a SAJÁT, néhány sorral feljebb kiszámolt mezőt olvassa '
     + 'vissza: a cikkekBetolt() ugyanebben a fájlban tölti a `type`-ot az '

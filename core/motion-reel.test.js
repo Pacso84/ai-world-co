@@ -7,7 +7,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   trukkSzkript, lepesRovid, becsultHossz, becsultSzavak, idovonal, illesztes, kockaSvg, allapot, sablonValaszt,
-  kimondottDb, nyers, vagasHatarok, MOTION_REEL_BE, CEL_MIN_MP, CEL_MAX_MP, HUROK_MP, LEPES_DB, SABLONOK, SZOVEG_SZELES,
+  kimondottDb, nyers, vagasHatarok, sablonCikkhez, motionLepesDb, MOTION_REEL_BE, CEL_MIN_MP, CEL_MAX_MP, HUROK_MP, LEPES_DB, SABLONOK, SZOVEG_SZELES,
   SZOVEG_ELRENDEZES, ABLAK_TETO, ABLAK_MAG, SOR_TAV
 } from './motion-reel.js';
 import { horogSzeles, SAV_FELSO } from './short-video.js';
@@ -35,8 +35,8 @@ const MINTAK = valodiUtmutatok();
 
 console.log('\n🧪 motion-reel.test');
 
-t('⛔ a kapcsoló KI: élesítés csak a user előnézet utáni jóváhagyásával', () => {
-  assert.equal(MOTION_REEL_BE, false);
+t('✅ a kapcsoló BE (user-döntés 11-15, az előnézet után); visszaállítás: false', () => {
+  assert.equal(MOTION_REEL_BE, true);
 });
 
 t('van valódi mintánk (legalább 5 friss útmutató)', () => assert.ok(MINTAK.length >= 5, 'csak ' + MINTAK.length));
@@ -183,6 +183,67 @@ t('őr: a concat-hanglista csak fájlnevet kap (a CI-ban a relatív út dupláz�
 
 t('kimondottDb: az írásjel nem szó', () => {
   assert.equal(kimondottDb('One. Attach your selfie — now.'), 5);
+});
+
+t('sablon cikkenként: ugyanarra a cikkre mindig ugyanaz; a nap útmutatói különbözőt kapnak; a hír nem számít', () => {
+  const cikkek = [
+    { slug: 'a', type: 'guide', published_at: '2026-11-16T04:01:00Z' },
+    { slug: 'b', type: 'guide', published_at: '2026-11-16T04:02:00Z' },
+    { slug: 'c', type: 'guide', published_at: '2026-11-16T12:30:00Z' },
+    { slug: 'h', type: 'news', published_at: '2026-11-16T04:00:00Z' },
+    { slug: 'x', type: 'guide', published_at: '2026-11-17T04:01:00Z' }
+  ];
+  const sa = sablonCikkhez(cikkek[0], cikkek), sb = sablonCikkhez(cikkek[1], cikkek), sc = sablonCikkhez(cikkek[2], cikkek);
+  assert.equal(new Set([sa, sb, sc]).size, 3, 'a nap 3 útmutatója nem 3 különböző sablont kapott');
+  assert.equal(sablonCikkhez(cikkek[0], cikkek), sa);
+  // egy később megjelenő útmutató nem változtatja meg a korábbiak sablonját (a nap közbeni újragyártás ugyanazt adja)
+  assert.equal(sablonCikkhez(cikkek[0], cikkek.slice(0, 2)), sa);
+  assert.equal(sablonCikkhez(cikkek[1], cikkek.slice(0, 2)), sb);
+  assert.notEqual(sablonCikkhez(cikkek[4], cikkek), sablonCikkhez({ ...cikkek[4], published_at: '2026-11-18T04:01:00Z' }, cikkek));
+});
+
+t('a leírás lépésszáma: motion Reelnél 3 (a videó ennyit mutat)', () => {
+  assert.equal(motionLepesDb(MINTAK[0].md), LEPES_DB);
+  assert.equal(motionLepesDb('---\ntitle: "X"\n---\n## Step 1 — a\n'), null);
+});
+
+// A VÁLTÓ (core/reel-post.js utmutatoRenderelo) — hamis renderelőkkel, ffmpeg nélkül.
+const { utmutatoRenderelo, videoLepesDb } = await import('./reel-post.js');
+const motionMod = await import('./motion-reel.js');
+const cikkMinta = { slug: MINTAK[0].slug, type: 'guide', published_at: '2026-11-16T04:00:00Z', md: MINTAK[0].md };
+const hivas = [];
+const regiRender = async (cards, o) => { hivas.push(['regi', o.out]); return { file: o.out, seconds: 30, betu: { ok: true } }; };
+const hamisMotion = (extra = {}) => ({
+  ...motionMod,
+  renderMotionReel: async (sz, o) => { hivas.push(['motion', o.out, o.sablon]); return { file: o.out, seconds: 14, betu: { ok: true }, sablon: o.sablon }; },
+  ...extra
+});
+const nemaNaplo = () => {};
+try {
+  hivas.length = 0;
+  const r = await utmutatoRenderelo({ cikkek: [cikkMinta], regi: regiRender, motion: hamisMotion(), naplo: nemaNaplo })([], { out: 'x\\shorts\\' + cikkMinta.slug + '.mp4', workDir: 'w', kepUt: 'k.jpg' });
+  assert.equal(hivas[0][0], 'motion', 'útmutató-videóra nem a motion Reel készült (Windows-útvonal)');
+  assert.ok(SABLONOK.includes(r.sablon));
+  hivas.length = 0;
+  const bukik = hamisMotion({ renderMotionReel: async () => { throw new Error('Edge 403'); } });
+  const r2 = await utmutatoRenderelo({ cikkek: [cikkMinta], regi: regiRender, motion: bukik, naplo: nemaNaplo })([], { out: '/x/' + cikkMinta.slug + '.mp4' });
+  assert.deepEqual(hivas.map(h => h[0]), ['regi'], 'motion-hibánál nem a régi Reel készült');
+  assert.equal(r2.seconds, 30);
+  hivas.length = 0;
+  await utmutatoRenderelo({ cikkek: [cikkMinta], regi: regiRender, motion: hamisMotion(), naplo: nemaNaplo })([], { out: '/x/packs-promo.mp4', kepUtak: ['a', 'b'] });
+  await utmutatoRenderelo({ cikkek: [cikkMinta], regi: regiRender, motion: hamisMotion(), naplo: nemaNaplo })([], { out: '/x/ismeretlen.mp4' });
+  await utmutatoRenderelo({ cikkek: [cikkMinta], regi: regiRender, motion: hamisMotion({ MOTION_REEL_BE: false }), naplo: nemaNaplo })([], { out: '/x/' + cikkMinta.slug + '.mp4' });
+  await utmutatoRenderelo({ cikkek: [{ ...cikkMinta, md: '---\ntitle: "X"\n---\n' }], regi: regiRender, motion: hamisMotion(), naplo: nemaNaplo })([], { out: '/x/' + cikkMinta.slug + '.mp4' });
+  assert.deepEqual(hivas.map(h => h[0]), ['regi', 'regi', 'regi', 'regi'], 'reklám / ismeretlen / KI-kapcsoló / nem videózható → régi');
+  assert.equal(await videoLepesDb(MINTAK[0].md, { cards: [1, 2, 3, 4, 5, 6] }), LEPES_DB);
+  console.log('  ✅ váltó: útmutató → motion; hiba → régi; reklám / ismeretlen / KI / nem videózható → régi');
+} catch (e) { hiba++; console.log('  ❌ váltó\n     ' + e.message); }
+
+t('őr: a reel-post.js mindkét gyártó fázisa a váltón át renderel, a küldés rögzíti a sablont', () => {
+  const rp = readFileSync(join(ROOT, 'core', 'reel-post.js'), 'utf-8');
+  assert.equal((rp.match(/const renderVideo = utmutatoRenderelo\(/g) || []).length, 2, 'prepareReel + prepareTiktokExtra');
+  assert.equal((rp.match(/videoSteps: await videoLepesDb\(/g) || []).length, 2, 'send + sendTiktokExtraFb');
+  assert.match(rp, /cikk\._meta\.video_sablon = /);
 });
 
 console.log(`\n${hiba === 0 ? '✅' : '❌'} motion-reel.test: ${hiba} bukott`);

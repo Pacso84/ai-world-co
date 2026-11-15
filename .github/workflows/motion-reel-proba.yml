@@ -6,6 +6,11 @@ name: Motion Reel előnézet
 on:
   workflow_dispatch:
     inputs:
+      mod:
+        description: 'minta = a megadott cikkek mintái · eles_ut = a VALÓDI napi gyártás (reel-post.js --prepare), küldés és commit NÉLKÜL'
+        type: choice
+        options: [minta, eles_ut]
+        default: minta
       celok:
         description: 'slug:sablon szóközzel elválasztva (sablon: tinta | borito | papir)'
         required: true
@@ -39,9 +44,16 @@ jobs:
           fc-cache -f >/dev/null
           fc-list | grep -i schibsted || echo "⚠️ a betű nem települt"
       - name: Minták legyártása
+        if: inputs.mod != 'eles_ut'
         env:
           CELOK: ${{ inputs.celok }}
         run: node core/motion-reel.js $CELOK --ki motion-minta
+      - name: Az éles gyártási út (reel-post.js --prepare) — nem küld, nem commitol
+        if: inputs.mod == 'eles_ut'
+        run: |
+          node core/reel-post.js --prepare
+          mkdir -p motion-minta && cp website/assets/video/shorts/*.mp4 motion-minta/ 2>/dev/null || echo 'nincs videó'
+          cat memory/reel-guard.json 2>/dev/null | head -40 || true
       - uses: actions/upload-artifact@v4
         with:
           name: motion-reel-minta
