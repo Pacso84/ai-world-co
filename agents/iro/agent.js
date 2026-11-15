@@ -44,6 +44,7 @@ import { cikkForrasai, cikkForrasMeta, cikkKivonatSzoveg, leghosszabbKozosSzosor
 import { forrasCacheIr, cikkForrasSzovege, cikkKivonat, cikkKivonatIr, vazlatKivonat } from '../../core/forras-cache.js';   // 🔎 a szöveg git-en KÍVÜL
 import { tisztaUrl } from '../../core/forras-letoltes.js';
 import { atdolgozoMeta } from '../../core/biralo-forrasinfo.js';   // 🛟 2026-11-06 téves név-kifogás az átdolgozás elől
+import { hetiCikkE, hetiAtdolgozasSzabaly, hetiAtdolgozasJavit } from '../../core/heti-atdolgozas.js';   // 📰 2026-11-15 a heti összefoglaló formája átdolgozás után is marad
 
 // ===================================================================
 // SETUP
@@ -709,7 +710,7 @@ RULES (still apply):
   applies, and a "You'll know it worked when…" check; plus a "Common mistakes"
   section with 3+ entries (mistake AND fix). If you cannot write real, verifiable
   steps, do not promise them — retitle it honestly as an explainer.
-${forrasBlokk}
+${forrasBlokk}${hetiCikkE(rejectedData) ? hetiAtdolgozasSzabaly(rejectedData.original_title) : ''}
 THE ARTICLE TO FIX (rewrite it fully, corrected):
 ${original}
 
@@ -849,6 +850,18 @@ async function runReworkMode(brandContext) {
       console.log('   ❌ Nem sikerült (AI router null) — marad elutasítva\n');
       gaveUp++;
       continue;
+    }
+    // 📰 HETI ÖSSZEFOGLALÓ (2026-11-15): a pontos cím + H1 visszaáll (a slug this-week-in-ai-… marad → hírlevél és
+    // híradó megtalálja); ha a számozott hírek elvesztek, NEM küldjük vissza bírálatra — marad elutasítva.
+    if (hetiCikkE(data)) {
+      const h = hetiAtdolgozasJavit(response.text, data.original_title);
+      if (!h.ok) {
+        console.log(`   ⛔ Heti összefoglaló: az átdolgozás elvesztette a heti formát (${h.ok_ok}) — marad elutasítva\n`);
+        cost += response.costUsd || 0;
+        gaveUp++;
+        continue;
+      }
+      response.text = h.text;
     }
     const writerName = saveBackToReview(filename, data, {
       text: response.text, provider: response.provider, model: response.model, costUsd: response.costUsd
