@@ -1,0 +1,62 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.012960445,
+  "at": "2026-11-15T15:11:02.932Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-15T03-56-28-510Z_aiworld-editorial_This_Week_in_AI.json",
+      "cim": "This Week in AI: The 5 Stories That Matter (November 15, 2026)",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk általános magyarázó anyag, nem hivatkozik konkrét termékekre vagy dátumokra; a forrás nem tartalmaz olyan tényt, amelyet az article cáfolna."
+    },
+    {
+      "file": "ARTICLE_2026-09-02T19-04-24-111Z_microsoft-ai_How_Kier_Group_s_Louisa_Finlay_is_using_Copilot_to.json",
+      "cim": "How Kier Group’s Louisa Finlay is using Copilot to drive safety and productivity in the construction industry",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk nem hivatkozik és nem használ semmilyen konkrét tényt a forrásból a Kier Group Copilot-bevezetéséről"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-ask-alexa-to-translate-a-short-phrase-into-another-la.json",
+      "cim": "How to ask Alexa+ to translate a short phrase into another language on your Echo",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-08-27T16-08-30-208Z_picsart_Recraft_V4_Styles_in_Picsart__one_reference__every.json",
+      "cim": "Recraft V4 Styles in Picsart: one reference, every image matches",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk egy általános magyarázó cikk az AI képgeneráló eszközök stílusreferenciáiról, nem pedig a Recraft V4 technikai bemutatása. Helyesen magyarázza az általános koncepciót (referencia kép használata az összhangos új képekért), említi a Recraft-ot és a Picsart-ot példaként, leírja a vezérlési módok"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-run-your-first-open-source-llm-from-deepseek-on-a-hom.json",
+      "cim": "How to run your first open‑source LLM from DeepSeek on a home PC",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-08-25T00-37-56-602Z_google-workspace_Generate_interactive_simulations_and_models_in_the.json",
+      "cim": "Generate interactive simulations and models in the Gemini app",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás a forrásban nem szereplő állítást hozna be: „You trigger it with the right kind of prompt, and it works on web and mobile.”",
+      "modell_hu": "A forrás korlátozza az elérhetőséget Workspace ügyfelekre, Workspace Individual előfizetőkre és korhatári követelményeknek megfelelő felhasználókra — nem minden Google-fiókra."
+    }
+  ]
+}

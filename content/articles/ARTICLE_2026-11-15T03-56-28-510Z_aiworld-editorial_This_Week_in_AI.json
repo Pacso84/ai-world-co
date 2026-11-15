@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "written_at": "2026-11-15T15:09:36.502Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0037453,
+    "original_draft": null,
+    "source_id": "aiworld-editorial",
+    "source_name": "AI World HQ (AI-written weekly roundup)",
+    "source_link": "https://aiworldhq.com",
+    "status": "published",
+    "rejected_at": "2026-11-15T15:09:21.115Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 617
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that hits all required elements: hook, plain-language definitions, actionable habits, audience-segmented impact section, and a concrete next step. No prohibited content, no invented specifics, no cliches, and the cautious tone on money topics is appropriate.",
+      "_aiCost": 0.00110796,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article claims OpenAI and Google both rolled out tools that let their AI assistants connect directly to users' financial accounts, including checking balances, comparing prices, and guiding purcha",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-11-15T03-56-28-510Z_aiworld-editorial_This_Week_in_AI.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-11-15T15:09:54.925Z",
+    "slug": "ai-assistants-and-your-money-shopping-and-privacy-what-to-know",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-15T15:10:03.281Z",
+    "guide_worthy": false,
+    "pairing_reason": "Weekly roundup article (title explicitly states '5 Stories') with no single named feature introduced; content is a generic explainer on AI privacy and shopping habits rather than a specific tool or feature to use.",
+    "image_v": 2,
+    "image_at": "2026-11-15T15:10:16.599Z",
+    "seo": {
+      "meta_description": "AI assistants are connecting to your money and shopping accounts. Here's what to know about the privacy trade-offs and how to protect your data before you link up.",
+      "keywords": [
+        "AI assistant privacy",
+        "AI tools and bank accounts",
+        "shopping with AI assistants",
+        "AI data privacy concerns",
+        "linking accounts to AI",
+        "how to protect data when using AI"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add clear section headers like 'AI Assistant Privacy' or 'Shopping Safely with AI' to help search engines understand the content structure",
+        "Include specific examples of what data AI assistants can access and what they cannot, based on what companies have officially announced",
+        "Add a FAQ section addressing common concerns like 'Is it safe to link my bank account to an AI assistant?'"
+      ],
+      "optimised_at": "2026-11-15T15:10:29.304Z"
+    },
+    "fact_verified_at": "2026-11-15T15:11:18.022Z"
+  },
+  "article_markdown": "---\ntitle: \"AI Assistants and Your Money, Shopping, and Privacy: What to Know\"\nsubtitle: \"A plain-language guide to deciding what to share with AI tools and how to check their suggestions before you act.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"ai-safety\", \"privacy\", \"everyday-ai\", \"shopping\"]\n---\n\n# AI Assistants and Your Money, Shopping, and Privacy: What to Know\n\n> **In short:** Some AI assistants are starting to help with shopping and money tasks. Before you link an account or act on a suggestion, check what the company has officially confirmed, and keep the final decision in your own hands.\n\nMaybe you have asked a chatbot to help plan a grocery budget, or to suggest a gift. Those requests feel harmless, but once an assistant can see your bank or shopping information, the stakes change. This guide explains how to think about that trade-off.\n\n## Why the details matter\n\nAn AI assistant (a chat tool that answers questions and carries out some tasks for you) is only as useful as the information you give it. Some tools can now be connected to other services, such as accounts or stores. That connection is what makes them handy, and it is also what makes them worth a careful look.\n\nCompanies often describe new features in their own announcements, and those announcements are the best place to check what a tool actually does. Features change, and rollout dates vary, so treat any news summary, including this one, as a starting point rather than the final word.\n\n## Four habits to build\n\n- **Check the official source first.** Look for the company's own help page or announcement before you connect anything. If it does not say a feature exists, assume you cannot rely on it yet.\n- **Share the least you need.** Ask for help with a single question, such as \"Which of these two items is the better fit for my budget?\", instead of linking everything you own.\n- **Confirm before you act.** An AI suggestion about a price, a date, or a purchase is a draft. Open the store or bank app yourself and verify it.\n- **Know where the controls are.** Before you turn on any connection, find the settings where you can review it and turn it off. If you cannot find those settings, hold off.\n\n## Shopping suggestions and AI-generated content\n\nAI tools are increasingly part of how people research gifts and products. A helpful suggestion can save time, but it can also be out of date or based on incomplete information. Use it as a list of ideas, then compare details on the seller's own page.\n\nThe same caution applies to anything that looks unusual. If an AI-generated message, link, or request asks you for a password or a payment, stop and go to the official website or app directly, the way you normally would.\n\n## What this means for you\n\n- **In everyday life**: Use AI to brainstorm gift ideas or organize a budget on paper, and double-check any number that matters.\n- **For your work**: If your job touches customer data or payments, follow your employer's rules before connecting any AI tool to company systems.\n- **If you're just getting started**: Pick one low-stakes task, like drafting a shopping list, and notice how carefully the tool follows your instructions.\n\n## Wrap-up\n\nAI assistants can be genuinely useful, but usefulness and trust are not the same thing. Read the official announcement for any feature you are curious about, share only what a task requires, and verify anything involving money before you act. Your next step today: open the settings of one AI app you already use and look for what it is allowed to access.",
+  "original_title": "This Week in AI: The 5 Stories That Matter (November 15, 2026)"
+}
