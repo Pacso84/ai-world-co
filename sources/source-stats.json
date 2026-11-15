@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-11-15T19:04:59.183Z",
+    "updated": "2026-11-15T20:53:16.652Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -14,7 +14,7 @@
       "days": 14,
       "from": "2026-10-08",
       "to": "2026-11-15",
-      "blocks": 12
+      "blocks": 14
     }
   },
   "sources": {
@@ -788,7 +788,7 @@
     },
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 18,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -917,7 +917,7 @@
     },
     "samsung-newsroom": {
       "name": "Samsung Newsroom (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 2,
       "published30dAfterAgeGuard": 2,
       "truthBlocks": 0,
