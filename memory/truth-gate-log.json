@@ -189,6 +189,27 @@
         "The article claims Microsoft researchers published a deep dive this week about a security risk called \"Lazarus\" involving hidden triggers in AI models. The source block provides no support for this named research item or its characterization."
       ],
       "confidence": 9
+    },
+    {
+      "at": "2026-11-15T20:41:40.984Z",
+      "file": "WRITER_2026-11-15T18-56-13-241Z_aiworld-editorial_This_Week_in_AI.json",
+      "action": "block",
+      "reasons": [
+        "The claim that OpenAI and Google both launched assistant features connecting directly to users’ bank accounts and credit cards for spending tracking, budgeting, and purchase advice attributes fabricated financial-account integrations and privacy assurances to their assistants."
+      ],
+      "confidence": 10
+    },
+    {
+      "at": "2026-11-15T20:42:11.501Z",
+      "file": "WRITER_2026-11-15T18-56-13-241Z_aiworld-editorial_This_Week_in_AI.json",
+      "action": "block",
+      "reasons": [
+        "The headline and roundup claim there are five stories, but the article explicitly covers only four stories.",
+        "The claim that Samsung's AI smart glasses will launch on December 10, were built with Gentle Monster and Warby Parker, support voice questions, translation and directions, use Google's Gemini AI system, and have pre-orders open in the U.S. and South Korea is unsupported by the provided official source, which contains only the title and URL.",
+        "The claim that Microsoft's security team described a hidden-trigger attack technique called \"Lazarus\" is unsupported by the provided official source, which contains only the title and URL.",
+        "The claim that a new guide lists five specific practical uses for AI presenter videos is unsupported by the provided official source, which contains only the title and URL."
+      ],
+      "confidence": 9
     }
   ]
 }

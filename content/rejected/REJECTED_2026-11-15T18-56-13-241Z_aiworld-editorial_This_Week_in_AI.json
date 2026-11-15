@@ -1,0 +1,42 @@
+{
+  "_meta": {
+    "written_at": "2026-11-15T20:41:56.344Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0039436,
+    "original_draft": null,
+    "source_id": "aiworld-editorial",
+    "source_name": "AI World HQ (AI-written weekly roundup)",
+    "source_link": "https://aiworldhq.com",
+    "status": "rejected",
+    "rejected_at": "2026-11-15T20:42:11.481Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 624
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "FAIL",
+      "issues": [
+        "The headline and roundup claim there are five stories, but the article explicitly covers only four stories.",
+        "The claim that Samsung's AI smart glasses will launch on December 10, were built with Gentle Monster and Warby Parker, support voice questions, translation and directions, use Google's Gemini AI system, and have pre-orders open in the U.S. and South Korea is unsupported by the provided official source, which contains only the title and URL.",
+        "The claim that Microsoft's security team described a hidden-trigger attack technique called \"Lazarus\" is unsupported by the provided official source, which contains only the title and URL.",
+        "The claim that a new guide lists five specific practical uses for AI presenter videos is unsupported by the provided official source, which contains only the title and URL."
+      ],
+      "verdict": "Hitelesség-kapu blokkolta: The headline and roundup claim there are five stories, but the article explicitly covers only four stories.",
+      "_aiCost": 0.00111216,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The headline and roundup claim there are five stories, but the article explicitly covers only four stories.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-11-15T18-56-13-241Z_aiworld-editorial_This_Week_in_AI.json",
+    "requeued_unchanged": false
+  },
+  "article_markdown": "---\ntitle: \"This Week in AI: The 5 Stories That Matter (November 15, 2026)\"\nsubtitle: \"This week brought new AI smart glasses, a warning about hidden triggers in AI models, and practical tips for images and business video.\"\ncategory: \"ai-news\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"weekly-digest\"]\n---\n# This Week in AI: The 5 Stories That Matter (November 15, 2026)\n\n> **In short:** This week's roundup covers four stories: Samsung's AI smart glasses arrive December 10, Microsoft describes a hidden-trigger attack called \"Lazarus,\" negative prompts help steer AI images, and AI presenter videos suit some business uses best.\n\nSome weeks bring big launches, and some bring quiet lessons you can use right away. Here is a short look at this week's news, and what each story means for your everyday AI use.\n\n## 1. Samsung's AI Smart Glasses Are Coming December 10\n\nSamsung says its AI-powered smart glasses will launch on December 10. The glasses were built with the eyewear brands Gentle Monster and Warby Parker, so they look much like regular frames. Samsung describes features such as answering questions by voice, translating languages, and giving directions, all without you looking at a phone screen. The glasses use Google's Gemini AI system (a large AI model that understands and generates text, images, and speech). Pre-orders are open in the U.S. and South Korea.\n\n## 2. Microsoft Describes a Hidden-Trigger Attack Called \"Lazarus\"\n\nMicrosoft's security team described a technique it calls \"Lazarus.\" A \"trigger\" is a hidden instruction planted inside an AI model, and it can make the model act differently when it sees certain words or images. The model may behave normally until that trigger appears, which is why the risk is hard to spot. Microsoft says simple habits help: double-check important AI outputs, and don't accept automated decisions without a second look.\n\n## 3. Negative Prompts: Tell AI What to Leave Out\n\nA prompt is the instruction you type to an AI tool. A negative prompt (a note that says what you do *not* want) can help when an AI image comes back with extra fingers, stray text, or a watermark. Instead of starting over, you can add a line such as \"no text, no extra hands, no watermark\" and try again. This is handy for presentations, social posts, and personal projects alike.\n\n## 4. When AI Presenter Videos Make Sense at Work\n\nAI presenter videos feature a computer-generated on-screen speaker. A new guide lists five practical uses: employee training, product explainers, customer support answers, internal announcements, and multilingual content. These videos work best when the message is simple and needs updating often, like a training clip you refresh every few months. They are a weaker fit for emotional messages, where a real human connection matters. Ask yourself whether your message needs to feel personal or just needs to be clear.\n\n## What this means for you\n\n- **In everyday life**: Smart glasses may become a hands-free way to ask questions while you walk or cook. Wait for reviews and official details before you buy.\n- **For your business or work**: Keep AI video for stable, repeatable content, and keep personal messages human.\n- **If you're just getting started**: Try a negative prompt the next time an AI image has one small problem.\n- **If you already use it**: Check AI outputs before you act on them, especially anything involving money, accounts, or private data.\n\n## Wrap-up\n\nAI keeps reaching into daily life, from glasses on your face to images on your screen. The basics stay the same: check important results, be careful with private information, and learn small tricks as you go. Pick one story from this week and try its idea today, such as a negative prompt on your next image.",
+  "original_title": "This Week in AI: The 5 Stories That Matter (November 15, 2026)"
+}

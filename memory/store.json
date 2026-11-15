@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "AI World rétegzett memória (hot/warm/cold, salience decay).",
-    "updated": "2026-11-15T18:52:53.576Z"
+    "updated": "2026-11-15T20:42:12.980Z"
   },
   "items": [
     {
@@ -26,8 +26,8 @@
         "lesson"
       ],
       "created": "2026-06-20T22:01:05.694Z",
-      "lastAccessed": "2026-11-15T15:09:24.033Z",
-      "accessCount": 1352,
+      "lastAccessed": "2026-11-15T20:41:43.057Z",
+      "accessCount": 1353,
       "salience": 1,
       "tier": "hot"
     },
@@ -99,8 +99,8 @@
         "design-rule"
       ],
       "created": "2026-06-22T19:24:53.845Z",
-      "lastAccessed": "2026-11-15T18:52:53.576Z",
-      "accessCount": 324,
+      "lastAccessed": "2026-11-15T20:42:12.980Z",
+      "accessCount": 325,
       "salience": 1,
       "tier": "hot"
     },
@@ -112,8 +112,8 @@
         "design-rule"
       ],
       "created": "2026-06-22T19:33:18.784Z",
-      "lastAccessed": "2026-11-15T18:52:53.576Z",
-      "accessCount": 321,
+      "lastAccessed": "2026-11-15T20:42:12.980Z",
+      "accessCount": 322,
       "salience": 1,
       "tier": "hot"
     },
@@ -142,8 +142,8 @@
         "design-rule"
       ],
       "created": "2026-06-28T19:44:51.115Z",
-      "lastAccessed": "2026-11-15T18:52:53.576Z",
-      "accessCount": 314,
+      "lastAccessed": "2026-11-15T20:42:12.980Z",
+      "accessCount": 315,
       "salience": 1,
       "tier": "hot"
     },
@@ -782,8 +782,8 @@
         "article"
       ],
       "created": "2026-07-08T01:44:49.826Z",
-      "lastAccessed": "2026-11-15T15:09:24.033Z",
-      "accessCount": 644,
+      "lastAccessed": "2026-11-15T20:41:43.057Z",
+      "accessCount": 645,
       "salience": 1,
       "tier": "hot"
     },
@@ -1351,12 +1351,12 @@
         "truth-gate"
       ],
       "created": "2026-07-17T09:48:45.563Z",
-      "lastAccessed": "2026-11-15T15:09:21.150Z",
-      "accessCount": 99,
-      "salience": 0.2,
-      "tier": "cold",
-      "repeats": 97,
-      "lastRepeat": "2026-11-15T15:09:21.150Z"
+      "lastAccessed": "2026-11-15T20:42:11.508Z",
+      "accessCount": 101,
+      "salience": 0.5,
+      "tier": "warm",
+      "repeats": 99,
+      "lastRepeat": "2026-11-15T20:42:11.508Z"
     },
     {
       "id": "m1784307723565467",
@@ -2565,8 +2565,8 @@
         "article"
       ],
       "created": "2026-07-22T10:30:10.241Z",
-      "lastAccessed": "2026-11-15T15:09:24.033Z",
-      "accessCount": 736,
+      "lastAccessed": "2026-11-15T20:41:43.057Z",
+      "accessCount": 737,
       "salience": 1,
       "tier": "hot"
     },
@@ -2977,8 +2977,8 @@
         "article"
       ],
       "created": "2026-07-23T10:15:43.016Z",
-      "lastAccessed": "2026-11-15T15:09:24.033Z",
-      "accessCount": 441,
+      "lastAccessed": "2026-11-15T20:41:43.057Z",
+      "accessCount": 442,
       "salience": 1,
       "tier": "hot"
     },
@@ -3948,8 +3948,8 @@
         "article"
       ],
       "created": "2026-07-25T01:52:03.838Z",
-      "lastAccessed": "2026-11-15T15:09:24.033Z",
-      "accessCount": 443,
+      "lastAccessed": "2026-11-15T20:41:43.057Z",
+      "accessCount": 444,
       "salience": 1,
       "tier": "hot"
     },
@@ -4541,8 +4541,8 @@
         "article"
       ],
       "created": "2026-07-28T01:42:38.073Z",
-      "lastAccessed": "2026-11-15T15:09:24.033Z",
-      "accessCount": 442,
+      "lastAccessed": "2026-11-15T20:41:43.057Z",
+      "accessCount": 443,
       "salience": 1,
       "tier": "hot"
     },
@@ -6096,12 +6096,12 @@
         "article"
       ],
       "created": "2026-08-16T08:16:11.150Z",
-      "lastAccessed": "2026-11-15T15:09:21.118Z",
-      "accessCount": 20,
-      "salience": 0.2,
-      "tier": "cold",
-      "repeats": 17,
-      "lastRepeat": "2026-11-15T15:09:21.118Z"
+      "lastAccessed": "2026-11-15T20:41:40.973Z",
+      "accessCount": 21,
+      "salience": 0.35,
+      "tier": "warm",
+      "repeats": 18,
+      "lastRepeat": "2026-11-15T20:41:40.973Z"
     },
     {
       "id": "m1786868171152828",
@@ -8629,16 +8629,16 @@
     {
       "id": "m1788789085494956",
       "scope": "shared",
-      "text": "Hitelesség-kapu blokk: The article claims OpenAI and Google both rolled out tools that let their AI assistants connect directly to users' financial accounts, including check — kitalált felületet/linket/számot SOHA ne írj le tényként",
+      "text": "Hitelesség-kapu blokk: The headline and roundup claim there are five stories, but the article explicitly covers only four stories. — kitalált felületet/linket/számot SOHA ne írj le tényként",
       "kulcs": "hitelesseg-kapu",
       "tags": [],
       "created": "2026-09-07T13:51:25.494Z",
-      "lastAccessed": "2026-11-15T15:09:21.144Z",
-      "accessCount": 47,
-      "salience": 0.2535718162037037,
-      "tier": "cold",
-      "repeats": 47,
-      "lastRepeat": "2026-11-15T15:09:21.144Z"
+      "lastAccessed": "2026-11-15T20:42:11.503Z",
+      "accessCount": 49,
+      "salience": 0.5535718162037038,
+      "tier": "warm",
+      "repeats": 49,
+      "lastRepeat": "2026-11-15T20:42:11.503Z"
     },
     {
       "id": "m1788833241347628",
@@ -11390,8 +11390,8 @@
         "article"
       ],
       "created": "2026-10-27T03:02:53.239Z",
-      "lastAccessed": "2026-11-15T15:09:24.033Z",
-      "accessCount": 101,
+      "lastAccessed": "2026-11-15T20:41:43.057Z",
+      "accessCount": 102,
       "salience": 1,
       "tier": "hot"
     },
@@ -11525,9 +11525,9 @@
         "article"
       ],
       "created": "2026-11-04T03:53:54.017Z",
-      "lastAccessed": "2026-11-15T03:45:17.630Z",
-      "accessCount": 65,
-      "salience": 0.9996065125,
+      "lastAccessed": "2026-11-15T20:41:43.057Z",
+      "accessCount": 66,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -11928,6 +11928,66 @@
       "created": "2026-11-15T15:09:21.136Z",
       "lastAccessed": "2026-11-15T15:09:24.033Z",
       "accessCount": 1,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1794775300979856",
+      "scope": "iro",
+      "text": "The claim that OpenAI and Google both launched assistant features connecting directly to users’ bank accounts and credit cards for spending tracking, budgeting, and purchase advice attributes fabricated financial-account integrations and privacy assurances to their assistants.",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-11-15T20:41:40.979Z",
+      "lastAccessed": "2026-11-15T20:41:40.979Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1794775331487285",
+      "scope": "iro",
+      "text": "The headline and roundup claim there are five stories, but the article explicitly covers only four stories.",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-11-15T20:42:11.487Z",
+      "lastAccessed": "2026-11-15T20:42:11.487Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1794775331492722",
+      "scope": "iro",
+      "text": "The claim that Samsung's AI smart glasses will launch on December 10, were built with Gentle Monster and Warby Parker, support voice questions, translation and directions, use Google's Gemini AI system, and have pre-orders open in the U.S. and South Korea is unsupported by the provided official source, which contains only the title and URL.",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-11-15T20:42:11.492Z",
+      "lastAccessed": "2026-11-15T20:42:11.492Z",
+      "accessCount": 0,
+      "salience": 1,
+      "tier": "hot"
+    },
+    {
+      "id": "m1794775331497877",
+      "scope": "iro",
+      "text": "The claim that Microsoft's security team described a hidden-trigger attack technique called \"Lazarus\" is unsupported by the provided official source, which contains only the title and URL.",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-11-15T20:42:11.497Z",
+      "lastAccessed": "2026-11-15T20:42:11.497Z",
+      "accessCount": 0,
       "salience": 1,
       "tier": "hot"
     }
