@@ -36,11 +36,10 @@ export const LEPES_DB = 3;                // az útmutatóból ennyi lépés ker
 export const SZUNET_MP = 0.22;            // szegmensek közti levegő (a régi Reelben 0,45)
 export const HUROK_MP = 0.4;              // a végén az első képkocka ennyi ideig → varrat nélküli hurok
 export const CEL_MIN_MP = 12, CEL_MAX_MP = 18;
-export const SZO_PER_MP = 2.7;            // becsléshez (Ava, mért ~2,6–2,9)
+export const SZO_PER_MP = 2.5;            // becsléshez (Ava a CI-ban 11-15: ~2,9 szó/mp + mondatvégi szünetek)
 export const SABLONOK = ['tinta', 'borito', 'papir'];
 export const MARKA_URL = 'aiworldhq.com';
 
-const SORSZAM = ['One', 'Two', 'Three', 'Four', 'Five'];
 const SZIN = {
   tinta: '#1c1a16', papir: '#f2ede4', zsalya: '#5f8a76', sarga: '#f5d547', menta: '#9cc7b2', feher: '#ffffff'
 };
@@ -101,16 +100,16 @@ export function trukkSzkript(md) {
   const db = LEPES_DB;
   const szegmensek = [{
     tipus: 'horog', kep: horog, elotag: 0,
-    mond: `${horog}. Here's how, in ${SORSZAM[db - 1].toLowerCase()} steps.`
+    // 11-15 CI-minta: a mondatvégi szünetek (~0,4 mp) holt időt adtak → rövid zárás, a „3 QUICK STEPS” a képen látszik
+    mond: `${horog}. Here's how.`
   }];
   lepesek.slice(0, db).forEach((l, i) => {
     const r = lepesRovid(l);
-    szegmensek.push({ tipus: 'lepes', szam: i + 1, db, kep: r, elotag: 1, mond: `${SORSZAM[i]}. ${r}.` });
+    // a sorszám CSAK a képen („STEP 1 / 3”): kimondva („One.”) utána ~0,4 mp csend jött, üres képpel
+    szegmensek.push({ tipus: 'lepes', szam: i + 1, db, kep: r, elotag: 0, mond: `${r}.` });
   });
   // ⚠️ A felolvasó a pontot nem mondja ki — ezért „dot com” (ugyanaz, mint a régi Reelben).
   szegmensek.push({ tipus: 'vege', kep: 'Full guide: ' + MARKA_URL, elotag: 0, mond: 'Full guide at aiworldhq dot com.' });
-  // hosszú cím esetén a horog utáni mondat rövidül, hogy a videó a 18 mp-es célon belül maradjon
-  if (becsultHossz(szegmensek) > CEL_MAX_MP) szegmensek[0].mond = `${horog}. Here's how.`;
   return { szegmensek, reason: '' };
 }
 

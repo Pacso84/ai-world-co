@@ -41,15 +41,15 @@ t('⛔ a kapcsoló KI: élesítés csak a user előnézet utáni jóváhagyásá
 
 t('van valódi mintánk (legalább 5 friss útmutató)', () => assert.ok(MINTAK.length >= 5, 'csak ' + MINTAK.length));
 
-t('a szkript: horog + 3 lépés + webcím; a lépés sorszáma kimondva, de a képen nem', () => {
+t('a szkript: horog + 3 lépés + webcím; a lépés sorszáma se kimondva, se a szövegben (csak a „STEP n / 3” címke)', () => {
   for (const m of MINTAK) {
     const { szegmensek, reason } = trukkSzkript(m.md);
     assert.ok(szegmensek, m.slug + ': ' + reason);
     assert.deepEqual(szegmensek.map(s => s.tipus), ['horog', 'lepes', 'lepes', 'lepes', 'vege'], m.slug);
     assert.equal(szegmensek.filter(s => s.tipus === 'lepes').length, LEPES_DB);
     for (const s of szegmensek.filter(s => s.tipus === 'lepes')) {
-      assert.match(s.mond, /^(One|Two|Three)\. /, m.slug);
-      assert.ok(!/^(One|Two|Three)\b/.test(s.kep), m.slug + ': a sorszám a képre is kikerült');
+      assert.ok(!/^(One|Two|Three)\. /.test(s.mond), m.slug + ': kimondott sorszám (utána holt idő jön)');
+      assert.equal(s.mond, s.kep + '.', m.slug);
     }
     assert.match(szegmensek.at(-1).mond, /aiworldhq dot com/);
   }
