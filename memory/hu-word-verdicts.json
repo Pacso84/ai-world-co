@@ -98,6 +98,7 @@
     "alapanyagokról",
     "alapcsomagokat",
     "alapelven",
+    "alapelvet",
     "alapköltséget",
     "alapmagyarazatot",
     "alapszférő",
@@ -1056,6 +1057,7 @@
     "gyakorlóanyagod",
     "gyengeségen",
     "gyengeséget",
+    "gyerekkorodból",
     "gyerekskorodban",
     "gyerekzsúroknál",
     "gyorsgombokat",
@@ -1388,6 +1390,7 @@
     "játszótéren",
     "játékvilágok",
     "jébe",
+    "jéig",
     "jére",
     "jével",
     "jócselekedethez",
@@ -3142,6 +3145,7 @@
     "webhosztingért",
     "webináriumhoz",
     "webináriumuk",
+    "webinárra",
     "webinárt",
     "webmail",
     "weboldalszöveget",
@@ -4702,6 +4706,11 @@
     "ai-jal": {
       "correct": "AI-val",
       "at": "2026-11-09",
+      "mondattal": true
+    },
+    "ai-től": {
+      "correct": "AI-tól",
+      "at": "2026-11-15",
       "mondattal": true
     }
   },
@@ -6420,8 +6429,8 @@
     }
   },
   "scan": {
-    "at": "2026-11-14",
-    "files": 863,
-    "candidates": 0
+    "at": "2026-11-15",
+    "files": 869,
+    "candidates": 7
   }
 }
