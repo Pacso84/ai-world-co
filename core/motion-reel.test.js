@@ -7,7 +7,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   trukkSzkript, lepesRovid, becsultHossz, becsultSzavak, idovonal, illesztes, kockaSvg, allapot, sablonValaszt,
-  kimondottDb, nyers, MOTION_REEL_BE, CEL_MIN_MP, CEL_MAX_MP, HUROK_MP, LEPES_DB, SABLONOK, SZOVEG_SZELES,
+  kimondottDb, nyers, vagasHatarok, MOTION_REEL_BE, CEL_MIN_MP, CEL_MAX_MP, HUROK_MP, LEPES_DB, SABLONOK, SZOVEG_SZELES,
   SZOVEG_ELRENDEZES, ABLAK_TETO, ABLAK_MAG, SOR_TAV
 } from './motion-reel.js';
 import { horogSzeles, SAV_FELSO } from './short-video.js';
@@ -168,6 +168,17 @@ t('raw-adat továbbadása: csak méret és csatorna (a premultiplied jelzés ki�
   assert.deepEqual(nyers({ width: 2, height: 3, channels: 3, premultiplied: true, size: 18, format: 'raw' }), { width: 2, height: 3, channels: 3 });
   const src = readFileSync(join(ROOT, 'core', 'motion-reel.js'), 'utf-8');
   assert.ok(!/\{\s*raw:\s*\w+\.info\s*\}/.test(src), 'van még nyers .info-továbbadás');
+});
+
+t('csendvágás: az első szó előtt 0,04, az utolsó után 0,12 mp marad; szóidőzítés nélkül nincs vágás', () => {
+  assert.deepEqual(vagasHatarok([{ t: 0.3, d: 0.2 }, { t: 1.0, d: 0.4 }], 2.5), { tol: 0.26, ig: 1.52 });
+  assert.deepEqual(vagasHatarok([], 2.5), { tol: 0, ig: 2.5 });
+  assert.deepEqual(vagasHatarok([{ t: 0.01, d: 2.6 }], 2.5), { tol: 0, ig: 2.5 });
+});
+
+t('őr: a concat-hanglista csak fájlnevet kap (a CI-ban a relatív út duplázódott → 0 videó, 11-15)', () => {
+  const src = readFileSync(join(ROOT, 'core', 'motion-reel.js'), 'utf-8');
+  assert.match(src, /darabok\.push\(`p\$\{i\}\.wav`\)/);
 });
 
 t('kimondottDb: az írásjel nem szó', () => {

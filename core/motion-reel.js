@@ -340,6 +340,13 @@ async function hatterKeszito(sharp, sablon, kepUt) {
   };
 }
 
+/** A hang vágási határai a szóidőzítésből: kevés levegő az első szó előtt és az utolsó után. */
+export function vagasHatarok(szavak, teljes, { elotte = 0.04, utana = 0.12 } = {}) {
+  if (!szavak?.length) return { tol: 0, ig: teljes };
+  const utolso = szavak[szavak.length - 1];
+  return { tol: Math.max(0, szavak[0].t - elotte), ig: Math.min(teljes, utolso.t + utolso.d + utana) };
+}
+
 // ── HANG ────────────────────────────────────────────────────────────
 function hangHossz(ut) {
   return Number(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', ut], { encoding: 'utf-8' }).trim());
@@ -391,11 +398,14 @@ export async function renderMotionReel(szegmensek, { out, workDir, kepUt = '', s
     const kesz = await et.edgeTts();
     for (let i = 0; i < szegmensek.length; i++) {
       const { mp3, szavak: sz } = await felolvas(et, kesz, voice, szegmensek[i].mond, workDir, 'h' + i);
-      const hossz = hangHossz(mp3);
-      hangok.push({ hossz, szavak: sz });
-      const pad = join(workDir, `p${i}.wav`);
-      execFileSync('ffmpeg', ['-y', '-i', mp3, '-af', `aresample=48000,apad=pad_dur=${SZUNET_MP}`, '-ac', '1', pad], { stdio: 'pipe' });
-      darabok.push(pad);
+      // a felolvasó csendjét levágjuk az első szó előtt és az utolsó után (11-15: 18,5–19,3 mp lett a becsült 15–16 helyett)
+      const { tol, ig } = vagasHatarok(sz, hangHossz(mp3));
+      const vagott = join(workDir, `t${i}.wav`), pad = join(workDir, `p${i}.wav`);
+      execFileSync('ffmpeg', ['-y', '-i', mp3, '-ss', tol.toFixed(3), '-to', ig.toFixed(3), '-af', 'aresample=48000', '-ac', '1', vagott], { stdio: 'pipe' });
+      const hossz = hangHossz(vagott);
+      hangok.push({ hossz, szavak: sz.map(w => ({ ...w, t: Math.max(0, w.t - tol) })) });
+      execFileSync('ffmpeg', ['-y', '-i', vagott, '-af', `apad=pad_dur=${SZUNET_MP}`, pad], { stdio: 'pipe' });
+      darabok.push(`p${i}.wav`);   // ⚠️ a concat-lista a SAJÁT mappájához képest old fel → csak a fájlnév
     }
   }
   const iv = idovonal(szegmensek, hangok);
@@ -426,7 +436,7 @@ export async function renderMotionReel(szegmensek, { out, workDir, kepUt = '', s
   if (nema) {
     execFileSync('ffmpeg', ['-y', '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=mono', '-t', iv.osszes.toFixed(3), hang], { stdio: 'pipe' });
   } else {
-    writeFileSync(join(workDir, 'hangok.txt'), darabok.map(d => `file '${d.replace(/\\/g, '/')}'`).join('\n'), 'utf-8');
+    writeFileSync(join(workDir, 'hangok.txt'), darabok.map(d => `file '${d}'`).join('\n'), 'utf-8');
     execFileSync('ffmpeg', ['-y', '-f', 'concat', '-safe', '0', '-i', join(workDir, 'hangok.txt'),
       '-af', `apad=pad_dur=${HUROK_MP + 0.2}`, '-t', iv.osszes.toFixed(3), hang], { stdio: 'pipe' });
   }
