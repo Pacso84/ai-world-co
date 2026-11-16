@@ -1,0 +1,80 @@
+{
+  "_meta": {
+    "written_at": "2026-11-16T19:33:45.666Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0036619,
+    "original_draft": "2026-11-16T19-32-39-717Z_google-gemini_Regional_voices_are_rolling_out_in_the_Gemini_app_.json",
+    "source_id": "google-gemini",
+    "source_name": "Google Gemini termékhírek (hivatalos, blog.google)",
+    "source_link": "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices/",
+    "source_links": [
+      "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices/"
+    ],
+    "source_snippet_len": 147,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 1383,
+    "source_text_key": "29dbeb3791183a6f",
+    "source_overlap_words": 14,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": true,
+    "termek_extra": true,
+    "status": "published",
+    "rejected_at": "2026-11-16T19:33:35.258Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 743
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Article is well-structured with a clear hook, friendly explanatory tone, consistent terminology, and a useful 'What this means for you' section covering multiple reader personas. Technical terms are defined accessibly, US English is used correctly, and no prohibited content or invented facts appear.",
+      "_aiCost": 0.00159096,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article says the selected voice carries across the whole app, but later advises users to \"Try setting one voice for Gemini Live and a different one for chat read-aloud.\" This contradicts Google's ",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-11-16T19-32-39-717Z_google-gemini_Regional_voices_are_rolling_out_in_the_Gemini_app_.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-11-16T19:34:12.579Z",
+    "slug": "gemini-s-66-new-regional-voices-what-they-are-and-how-to-preview-them",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-16T19:34:20.512Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-preview-and-choose-a-regional-voice-in-gemini",
+    "image_v": 2,
+    "image_at": "2026-11-16T19:34:38.372Z",
+    "seo": {
+      "meta_description": "Google adds 66 regional voices to Gemini app for Android and iOS. Preview and pick voices for U.S., U.K. English, Hindi, Portuguese, Indonesian, Korean.",
+      "keywords": [
+        "Gemini regional voices",
+        "Google Gemini voice options",
+        "how to change Gemini voice",
+        "Gemini app voice settings",
+        "Gemini new voices Android iOS",
+        "Google AI voice assistant regional accents",
+        "Gemini voice preview"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add step-by-step instructions on how to access and preview the regional voices in the Gemini app",
+        "Include more specific details about the rollout date and availability by region",
+        "Add a direct quote from Neel Joshi to increase credibility and engagement"
+      ],
+      "optimised_at": "2026-11-16T19:34:47.716Z"
+    },
+    "fact_verified_at": "2026-11-16T19:35:46.762Z"
+  },
+  "article_markdown": "---\ntitle: \"Gemini's 66 New Regional Voices: What They Are and How to Preview Them\"\nsubtitle: \"Google is adding regional voices to the Gemini app on Android and iOS, so you can pick one that feels more like you.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"gemini\", \"voice-ai\", \"google\", \"language-learning\", \"getting-started\"]\n---\n\n# Gemini's 66 New Regional Voices: What They Are and How to Preview Them\n\n> **In short:** Google has added 66 regional voices to the Gemini app on Android and iOS, covering U.S. English, U.K. English, India English, Hindi, Brazilian Portuguese, Indonesian, and Korean. You can preview them and choose the one you like best, and your pick applies across the app.\n\nHave you ever talked to a voice assistant and felt it sounded like it came from somewhere else? Maybe the rhythm was off, or the pitch didn't match how people near you actually speak. Google's latest update to Gemini aims to fix that feeling.\n\n## What changed\n\nOn November 16, 2026, Neel Joshi, director of product management for Gemini Live, announced that Google is rolling out regional voices in the Gemini app. He noted that Google first talked about bringing local dialects to Gemini at its I/O developer conference, and that those plans are now reaching users.\n\nA few terms first:\n\n- **Gemini Live** is the spoken, back-and-forth conversation mode in the Gemini app. Think of it as talking on the phone with an assistant instead of typing.\n- A **voice** here is the sound the AI uses when it talks back to you.\n- A **regional voice** is a voice tuned to sound more like the way people in a specific place speak.\n\nGoogle says each of the 66 voices is tuned for natural, everyday clarity rather than an exaggerated accent. According to the announcement, the voices capture familiar local rhythm, pitch, and inflection, so the conversation feels more personal. Tailored options are included for each language.\n\n## Where your voice choice applies\n\nAccording to the announcement, the voice you pick is not limited to one feature. It carries across the whole app, including:\n\n- **Gemini Live**, when you brainstorm out loud.\n- **Language practice**, when you want to hear how a phrase sounds.\n- **The Listen icon in chat**, which reads a longer written answer aloud to you.\n\nThis means you only need to choose once. A change in one place changes the voice everywhere else in the app.\n\n## How to preview the voices\n\nThe announcement points to two places where you can preview the new options and pick a favorite:\n\n- The **three-dot menu** inside Gemini Live.\n- **Gemini's voice settings** in your app settings.\n\nTry a few before you settle on one. Listen to the same sentence in two or three voices. Your ear will usually tell you quickly which one feels comfortable for a long chat.\n\n## What this means for you\n\n- **In everyday life**: If you use Gemini to talk through your day, pick a voice that sounds natural to you. You'll likely enjoy longer conversations more.\n- **For your business or work**: If you present ideas or reports by voice, try a few voices on a sample script first. Choose the one your audience will find easiest to follow.\n- **If you're just getting started**: Open the Gemini app, find the three-dot menu in Gemini Live, and preview two voices. Don't overthink it. Pick the one you'd want to hear every morning.\n- **If you're learning a language**: Use a voice that matches the language you're practicing, and listen to the same phrase a few times. Hearing it repeated can help you notice rhythm and sounds you might miss the first time.\n- **If you already use it**: Since your voice choice applies across the app, test your favorite on a long answer. Ask Gemini a question that needs a detailed reply, tap the Listen icon in chat, and see whether the voice still feels comfortable over a few minutes. If it doesn't, try a different one in the settings and compare.\n\n## Wrap-up\n\nGoogle's update gives Gemini's spoken responses more regional character, with 66 voices across several languages and regional options. The announcement describes the voices as tuned for everyday clarity, so the goal is comfort, not a performance. Your next step is simple: open Gemini on your phone, use the three-dot menu in Gemini Live or the voice settings, and preview a few voices until one feels right.",
+  "original_title": "Regional voices are rolling out in the Gemini app."
+}

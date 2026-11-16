@@ -1,16 +1,4 @@
 {
-  "2026-10-08": [
-    {
-      "at": "2026-10-08T03:33:13.259Z",
-      "file": "WRITER_2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
-      "action": "block",
-      "reasons": [
-        "The article attributes a six-week 'AI Builder' internal training program to Google, but the SOURCE block is from AWS Machine Learning Blog, not Google. The article fabricates Google's authorship of this playbook. Specifics like 'six-week structured program,' weekly cadence (Foundations, First build, Iteration, Sharing, Real customer problem, Public showcase), 'internal AI champions,' and the customer-facing staff description are not in the provided source excerpt and are attributed to the wrong company.",
-        "Confidence: 9 — the source is explicitly labeled as AWS, the article repeatedly and falsely attributes the playbook to Google."
-      ],
-      "confidence": 9
-    }
-  ],
   "2026-10-13": [
     {
       "at": "2026-10-13T15:25:23.962Z",
@@ -210,6 +198,17 @@
         "The claim that a new guide lists five specific practical uses for AI presenter videos is unsupported by the provided official source, which contains only the title and URL."
       ],
       "confidence": 9
+    }
+  ],
+  "2026-11-16": [
+    {
+      "at": "2026-11-16T19:33:35.268Z",
+      "file": "WRITER_2026-11-16T19-32-39-717Z_google-gemini_Regional_voices_are_rolling_out_in_the_Gemini_app_.json",
+      "action": "block",
+      "reasons": [
+        "The article says the selected voice carries across the whole app, but later advises users to \"Try setting one voice for Gemini Live and a different one for chat read-aloud.\" This contradicts Google's announcement that the selected voice carries across the entire app, including Gemini Live, language practice, and chat's Listen feature."
+      ],
+      "confidence": 10
     }
   ]
 }

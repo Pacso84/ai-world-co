@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179475540342762",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-15T15:10:03.427Z",
-      "updated": "2026-11-15T15:10:03.661Z"
-    },
-    {
-      "id": "t179475540366314",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-15T15:10:03.663Z",
-      "updated": "2026-11-15T15:10:03.890Z"
-    },
-    {
-      "id": "t179475540393336",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-15T15:10:03.933Z",
-      "updated": "2026-11-15T15:10:16.644Z"
-    },
-    {
-      "id": "t179475541664639",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-15T15:10:16.646Z",
-      "updated": "2026-11-15T15:10:29.364Z"
-    },
-    {
-      "id": "t179475542936667",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-15T15:10:29.366Z",
-      "updated": "2026-11-15T15:10:37.504Z"
-    },
-    {
-      "id": "t179475543750686",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-15T15:10:37.506Z",
-      "updated": "2026-11-15T15:11:01.616Z"
-    },
-    {
-      "id": "t179476865073384",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-15T18:50:50.734Z",
-      "updated": "2026-11-15T18:50:50.942Z"
-    },
-    {
-      "id": "t179476865094429",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-15T18:50:50.944Z",
-      "updated": "2026-11-15T18:51:20.329Z"
-    },
-    {
-      "id": "t179476868033155",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-15T18:51:20.331Z",
-      "updated": "2026-11-15T18:51:20.531Z"
-    },
-    {
-      "id": "t179476868058259",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-15T18:51:20.582Z",
-      "updated": "2026-11-15T18:52:51.812Z"
-    },
-    {
-      "id": "t179476877181367",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-15T18:52:51.813Z",
-      "updated": "2026-11-15T18:52:52.029Z"
-    },
-    {
-      "id": "t179476877203258",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-15T18:52:52.032Z",
-      "updated": "2026-11-15T18:52:52.288Z"
-    },
-    {
-      "id": "t179476877237271",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-15T18:52:52.372Z",
-      "updated": "2026-11-15T18:52:52.596Z"
-    },
-    {
-      "id": "t179476877259885",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-15T18:52:52.598Z",
-      "updated": "2026-11-15T18:52:52.822Z"
-    },
-    {
       "id": "t179476877286467",
       "title": "Run designer",
       "status": "done",
@@ -479,57 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-16T17:47:22.753Z",
       "updated": "2026-11-16T17:47:48.944Z"
+    },
+    {
+      "id": "t179485750639545",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-16T19:31:46.395Z",
+      "updated": "2026-11-16T19:31:46.531Z"
+    },
+    {
+      "id": "t179485750653399",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-16T19:31:46.533Z",
+      "updated": "2026-11-16T19:32:46.028Z"
+    },
+    {
+      "id": "t179485756603035",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-16T19:32:46.030Z",
+      "updated": "2026-11-16T19:32:46.161Z"
+    },
+    {
+      "id": "t179485756619347",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-16T19:32:46.193Z",
+      "updated": "2026-11-16T19:33:16.498Z"
+    },
+    {
+      "id": "t179485759649966",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-16T19:33:16.499Z",
+      "updated": "2026-11-16T19:33:35.283Z"
+    },
+    {
+      "id": "t179485761528477",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-16T19:33:35.284Z",
+      "updated": "2026-11-16T19:33:45.677Z"
+    },
+    {
+      "id": "t179485762567851",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-16T19:33:45.678Z",
+      "updated": "2026-11-16T19:34:12.589Z"
+    },
+    {
+      "id": "t179485765259122",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-16T19:34:12.591Z",
+      "updated": "2026-11-16T19:34:20.549Z"
+    },
+    {
+      "id": "t179485766060555",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-16T19:34:20.605Z",
+      "updated": "2026-11-16T19:34:20.750Z"
+    },
+    {
+      "id": "t179485766075184",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-16T19:34:20.751Z",
+      "updated": "2026-11-16T19:34:20.898Z"
+    },
+    {
+      "id": "t17948576609258",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-16T19:34:20.925Z",
+      "updated": "2026-11-16T19:34:38.402Z"
+    },
+    {
+      "id": "t179485767840311",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-16T19:34:38.403Z",
+      "updated": "2026-11-16T19:34:47.758Z"
+    },
+    {
+      "id": "t179485768775998",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-16T19:34:47.759Z",
+      "updated": "2026-11-16T19:35:01.420Z"
+    },
+    {
+      "id": "t179485770142299",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-16T19:35:01.422Z",
+      "updated": "2026-11-16T19:35:21.999Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17941081437527",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — practical, varied, and covers real everyday needs from privacy to professional writing. Quick check: Article 7 (resume) doesn't name a tool while others do, so decide if that",
-      "agent": "publisher",
-      "at": "2026-11-08T03:22:23.752Z",
-      "loud": false
-    },
-    {
-      "id": "n17941081570462",
-      "level": "success",
-      "text": "4 hír + 3 útmutató publikálva (költség: $0.0502).",
-      "agent": "ceo",
-      "at": "2026-11-08T03:22:37.046Z",
-      "loud": false
-    },
-    {
-      "id": "n179410817388175",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"Getting started with MiniMax Code: a beginner's gu\" — A cég tanulság",
-      "agent": "fact-check",
-      "at": "2026-11-08T03:22:53.881Z",
-      "loud": false
-    },
-    {
-      "id": "n179414879561152",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „In short:** An art ",
-      "agent": "fact-check",
-      "at": "2026-11-08T14:39:55.611Z",
-      "loud": false
-    },
-    {
-      "id": "n179416826312793",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (túl nagy átírás (2158 szó a 1550-ből)): \"27 AI video editing prompts for f",
-      "agent": "fact-check",
-      "at": "2026-11-08T20:04:23.127Z",
-      "loud": false
-    },
-    {
-      "id": "n179416828358656",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „The announcement do",
-      "agent": "fact-check",
-      "at": "2026-11-08T20:04:43.586Z",
-      "loud": false
-    },
     {
       "id": "n179419585407060",
       "level": "info",
@@ -1281,75 +1233,57 @@
       "agent": "fact-check",
       "at": "2026-11-16T17:48:46.213Z",
       "loud": false
+    },
+    {
+      "id": "n179485766051397",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to preview and choose a regional voice in Gemini\"",
+      "agent": "pairing",
+      "at": "2026-11-16T19:34:20.513Z",
+      "loud": false
+    },
+    {
+      "id": "n179485768773273",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-11-16T19:34:47.732Z",
+      "loud": false
+    },
+    {
+      "id": "n179485770979680",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — practical, varied, and perfect for everyday people wanting real help with AI. Good mix of foundational pieces (privacy, what AI is actually good at) plus specific writing task",
+      "agent": "publisher",
+      "at": "2026-11-16T19:35:09.796Z",
+      "loud": false
+    },
+    {
+      "id": "n179485772202673",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0132).",
+      "agent": "ceo",
+      "at": "2026-11-16T19:35:22.026Z",
+      "loud": false
+    },
+    {
+      "id": "n17948577863019",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Pick a photo, brush",
+      "agent": "fact-check",
+      "at": "2026-11-16T19:36:26.301Z",
+      "loud": false
+    },
+    {
+      "id": "n179485779781473",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to summarize a long YouTube video in 60 second\" — A legtöbb AI a",
+      "agent": "fact-check",
+      "at": "2026-11-16T19:36:37.814Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179391493233013",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Ellenőrizendő állítás: \"Best AI Summer Prompts for Photos Travel Beach and\" — A cikk a Microsoft Designer képgenerátoráról szól, de a forrás csak a Pixlr AI képgenerátoráról említi — a Microsoft eszköze sehol sem szerepel a forrásban",
-      "ref": "2026-08-03T01-49-28-320Z_pixlr_Best_AI_Summer_Prompts_for_Photos_Travel_Beach_and.json",
-      "open": true,
-      "at": "2026-11-05T21:42:12.330Z"
-    },
-    {
-      "id": "m179391495928837",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „A browser** (on a computer or phone) **or the Gemini app on Android.** Both work the same ”): \"How to use Gemini: A detailed beginner's guide\" — A cikk úgy mutatja be a mobilalkalmazást, mintha csak Androidon lenne elérhető, holott iOS-en is elérhető, és a Beállítások ikon helye nem megerősített a ",
-      "ref": "ARTICLE_2026-10-07T14-54-17-512Z_zapier-blog_How_to_use_Gemini__A_detailed_beginner_s_guide.json",
-      "open": true,
-      "at": "2026-11-05T21:42:39.288Z"
-    },
-    {
-      "id": "m179393813562573",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"More Performance From Every Byte: How Full-Stack Codesign Solves AI’s Memory Challenge\" — mi a baj: The article describes Nemotron sub-models \"Nemotron 3.5 Lightning\" and \"Nemotron Ultra\" as distinct products suited for different jobs, but the source only references \"NVIDIA Nemotron 3.5 Super VL\" and describes the Nemotron family in general terms — \"Nemotron 3.5 Lightning\" a",
-      "ref": "2026-11-06T04-06-30-395Z_nvidia-blog_More_Performance_From_Every_Byte__How_Full-Stack_C.json",
-      "at": "2026-11-06T04:08:55.625Z"
-    },
-    {
-      "id": "m179393814830636",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"More Performance From Every Byte: How Full-Stack Codesign Solves AI’s Memory Challenge\" — javítva: The article describes Nemotron sub-models \"Nemotron 3.5 Lightning\" and \"Nemotron Ultra\" as distinct products suited for different jobs, but the source only references \"NVIDIA Nemotron 3.5 Super VL\" and describes the Nemotron family in general terms — \"Nemotron 3.5 Lightning\" and \"Nemotr",
-      "ref": "2026-11-06T04-06-30-395Z_nvidia-blog_More_Performance_From_Every_Byte__How_Full-Stack_C.json",
-      "at": "2026-11-06T04:09:08.306Z"
-    },
-    {
-      "id": "m179393817412586",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"More Performance From Every Byte: How Full-Stack Codesign Solves AI’s Memory Challenge\" — mi a baj: Unverified product name 'NVIDIA Nemotron 3.5 Super VL' — source blog post does not list this model; company lessons forbid inventing AI model names; Claim 'Several model builders... have released NVFP4 versions' is not corroborated by source; should be attributed to NVIDIA or ",
-      "ref": "2026-11-06T04-06-30-395Z_nvidia-blog_More_Performance_From_Every_Byte__How_Full-Stack_C.json",
-      "at": "2026-11-06T04:09:34.125Z"
-    },
-    {
-      "id": "m179393837851429",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 24 → 6/4/3 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-06T04:12:58.514Z"
-    },
-    {
-      "id": "m179393841783610",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Ellenőrizendő állítás: \"Smart Approvals in Amazon Quick: Human oversight w\" — A forrás azt mondja, hogy az Enterprise előfizetés a bemutatót követő felhasználónak szükséges, nem pedig általános követelmény — a cikk túlzottan általánosít",
-      "ref": "2026-11-05T04-09-11-668Z_aws-ml_Smart_Approvals_in_Amazon_Quick__Human_oversight_w.json",
-      "open": true,
-      "at": "2026-11-06T04:13:37.836Z"
-    },
     {
       "id": "m179393842790031",
       "from": "fact-check",
@@ -2690,6 +2624,72 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-16T17:58:03.443Z"
+    },
+    {
+      "id": "m17948576152672",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Regional voices are rolling out in the Gemini app.\" — mi a baj: The article says the selected voice carries across the whole app, but later advises users to \"Try setting one voice for Gemini Live and a different one for chat read-aloud.\" This contradicts Google's announcement that the selected voice carries across the entire app, including Gemini Live, language practice, and",
+      "ref": "2026-11-16T19-32-39-717Z_google-gemini_Regional_voices_are_rolling_out_in_the_Gemini_app_.json",
+      "at": "2026-11-16T19:33:35.267Z"
+    },
+    {
+      "id": "m179485762566794",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Regional voices are rolling out in the Gemini app.\" — javítva: The article says the selected voice carries across the whole app, but later advises users to \"Try setting one voice for Gemini Live and a different one for chat read-aloud.\" This contradicts Google's announcement that the selected voice carries across the entire app, including Gemini Live, language practice, and chat's Li",
+      "ref": "2026-11-16T19-32-39-717Z_google-gemini_Regional_voices_are_rolling_out_in_the_Gemini_app_.json",
+      "at": "2026-11-16T19:33:45.667Z"
+    },
+    {
+      "id": "m179485765258087",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Regional voices are rolling out in the Gemini app.\" (?/10)",
+      "ref": "2026-11-16T19-32-39-717Z_google-gemini_Regional_voices_are_rolling_out_in_the_Gemini_app_.json",
+      "at": "2026-11-16T19:34:12.580Z"
+    },
+    {
+      "id": "m179485766051381",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to preview and choose a regional voice in Gemini\"",
+      "ref": "how-to-preview-and-choose-a-regional-voice-in-gemini",
+      "open": true,
+      "at": "2026-11-16T19:34:20.513Z"
+    },
+    {
+      "id": "m17948577013828",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-16T19:35:01.382Z"
+    },
+    {
+      "id": "m179485778630139",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Pick a photo, brush over something simple like a lamp in the background, type \"empty wall,”): \"How to replace objects with inpainting in Picsart \" — A cikk a fő Picsart alkalmazás AI eszközei között említi a funkciót, de a forrás kizárólag a Picsart Flow sablonfunkciójaként, csomópont-alapú munkafo",
+      "ref": "ARTICLE_2026-09-15T12-59-05-469Z_picsart_How_to_replace_objects_with_inpainting_in_Picsart_.json",
+      "open": true,
+      "at": "2026-11-16T19:36:26.301Z"
+    },
+    {
+      "id": "m179485779781476",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to summarize a long YouTube video in 60 second\" — A legtöbb AI asszisztens nem tud külső URL-ekből (például YouTube linkekből) tartalmat lekérni specifikus bővítmények vagy fizetős funkciók nélkül — az útmutató túl általánosnak ábrázolja ezt a funkciót. (állítás: Any modern AI assistant can read the page a YouTube link points to and pull out ",
+      "ref": "ARTICLE_GUIDE_how-to-summarize-a-long-youtube-video-in-60-seconds-with-any.json",
+      "open": true,
+      "at": "2026-11-16T19:36:37.814Z"
     }
   ]
 }

@@ -1,0 +1,63 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.0099919,
+  "at": "2026-11-16T19:35:37.599Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-16T19-32-39-717Z_google-gemini_Regional_voices_are_rolling_out_in_the_Gemini_app_.json",
+      "cim": "Regional voices are rolling out in the Gemini app.",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényalítása alátámasztott az forrásban"
+    },
+    {
+      "file": "ARTICLE_2026-09-25T02-23-56-384Z_midjourney-updates_Edit_updates__thumbnail_previews__and_more.json",
+      "cim": "Edit updates, thumbnail previews, and more",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (52 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-spot-hidden-errors-in-an-excel-budget-using-copilot.json",
+      "cim": "How to spot hidden errors in an Excel budget using Copilot",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-09-15T12-59-05-469Z_picsart_How_to_replace_objects_with_inpainting_in_Picsart_.json",
+      "cim": "How to replace objects with inpainting in Picsart Flow",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „Pick a photo, brush over something simple like a lamp in the background, type \"empty wall,”",
+      "modell_hu": "A cikk a fő Picsart alkalmazás AI eszközei között említi a funkciót, de a forrás kizárólag a Picsart Flow sablonfunkciójaként, csomópont-alapú munkafolyamat-kezelő felületén keresztül, Inpaint műveletként írja le."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-summarize-a-long-youtube-video-in-60-seconds-with-any.json",
+      "cim": "How to summarize a long YouTube video in 60 seconds with any AI",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "A legtöbb AI asszisztens nem tud külső URL-ekből (például YouTube linkekből) tartalmat lekérni specifikus bővítmények vagy fizetős funkciók nélkül — az útmutató túl általánosnak ábrázolja ezt a funkciót."
+    },
+    {
+      "file": "ARTICLE_2026-09-11T12-26-23-861Z_microsoft-365_6_Python_in_Excel_techniques_worth_stealing_from_a.json",
+      "cim": "6 Python in Excel techniques worth stealing from an Excel champion",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk egy kezdőknak szóló útmutató, amely az alapvető Python in Excel használatát mutatja be. A forrás egy blogbejegyzés 6 haladó technikáról. A kettő nem mond ellent egymásnak."
+    }
+  ]
+}
