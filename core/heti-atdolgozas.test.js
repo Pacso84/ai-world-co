@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { hetiCikkE, hetiAtdolgozasSzabaly, hetiAtdolgozasJavit, hetiCimSzammal, HETI_MIN_HIR, HETI_SLUG } from './heti-atdolgozas.js';
+import { hetiCikkE, hetiAtdolgozasSzabaly, hetiAtdolgozasJavit, hetiCimSzammal, hirAlcimekSzamozasa, HETI_MIN_HIR, HETI_SLUG } from './heti-atdolgozas.js';
 import { focimek } from './heti-hirado.js';
 
 let hiba = 0;
@@ -115,6 +115,43 @@ t('hetiCimSzammal: a régi címformák is (5 Headlines, 5 Practical Shifts), 5 h
   // a dátum száma (15, 2026) SOHA nem cserélődik; szám nélküli cím változatlan
   assert.equal(hetiCimSzammal('This Week in AI (November 15, 2026)', 3), 'This Week in AI (November 15, 2026)');
   assert.equal(hetiCimSzammal(CIM, 0), CIM);
+});
+
+// A 11-16-i pótló vázlat alakja: számozatlan hír-alcímek, mindegyik alatt saját cikk-link.
+const SZAMOZATLAN = `---\ntitle: "${CIM}"\n---\n# ${CIM}\n\nIntro.\n\n` +
+  `## Your AI Assistant Now Sounds More Like You\nx\n\n[Read the full story](https://aiworldhq.com/article/a-one)\n\n` +
+  `## One App Now Does Video, Images, Voice\nx\n\n[Read the full story](https://aiworldhq.com/article/b-two)\n\n` +
+  `## A New Free Tool for Planning Group Trips\nx\n\n[![k](/assets/images/c.jpg)](https://aiworldhq.com/article/c-three)\n\n[Read the full story](https://aiworldhq.com/article/c-three)\n\n` +
+  `## What this means for you\nx [lásd](https://aiworldhq.com/article/a-one)\n\n## Wrap-up\nx\n`;
+
+t('11-16: számozatlan hír-alcímek (saját cikk-linkkel) → beszámozva, a záró részek NEM', () => {
+  const r = hetiAtdolgozasJavit(SZAMOZATLAN, CIM);
+  assert.equal(r.ok, true, r.ok_ok);
+  assert.equal(r.hirDb, 3);
+  assert.ok(r.text.includes('\n## 1. Your AI Assistant Now Sounds More Like You\n'));
+  assert.ok(r.text.includes('\n## 3. A New Free Tool for Planning Group Trips\n'));
+  assert.ok(r.text.includes('\n## What this means for you\n'), 'a záró rész számot kapott');
+  assert.ok(r.text.includes('\n## Wrap-up\n'));
+  assert.ok(r.text.includes('The 3 Stories That Matter'));
+  assert.deepEqual(focimek(r.text, 5), ['Your AI Assistant Now Sounds More Like You', 'One App Now Does Video, Images, Voice', 'A New Free Tool for Planning Group Trips']);
+});
+
+t('számozás: CRLF-es szövegen is; a már számozott szöveg változatlan', () => {
+  const crlf = SZAMOZATLAN.replace(/\n/g, '\r\n');
+  assert.equal((hirAlcimekSzamozasa(crlf).match(/^## \d+\. /gm) || []).length, 3);
+  const kesz = '## 1. A\n[x](https://aiworldhq.com/article/a)\n## Two\n[x](https://aiworldhq.com/article/b)\n';
+  assert.equal(hirAlcimekSzamozasa(kesz), kesz);
+});
+
+t('a 11-15-i tanácsadó szakaszok (saját link nélkül) továbbra sem hírek', () => {
+  assert.equal(hirAlcimekSzamozasa(ELRONTOTT), ELRONTOTT);
+  assert.equal(hetiAtdolgozasJavit(ELRONTOTT, CIM).ok, false);
+});
+
+t('őr: a digest promptja számozott hír-alcímet és In short dobozt kér', () => {
+  const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'agents', 'digest', 'agent.js'), 'utf-8');
+  assert.match(src, /NUMBERED "## 1\. <short catchy heading>"/);
+  assert.match(src, /> \*\*In short:\*\*/);
 });
 
 t('frontmatter nélküli válasz → elutasítva (nem találgatunk)', () => {

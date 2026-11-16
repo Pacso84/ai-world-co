@@ -13,7 +13,7 @@
 //   hetiAtdolgozasJavit(t,cim) — KÓD-BIZTOSÍTÉK a válaszon: a címsort és a H1-et visszaállítja a pontos heti címre;
 //                                ha kevesebb mint HETI_MIN_HIR számozott hír maradt → ok:false (marad elutasítva,
 //                                nem jelenik meg rossz formában, nem megy ki rossz hírlevél)
-import { focimek } from './heti-hirado.js';
+import { focimek, NEM_HIR } from './heti-hirado.js';
 
 export const HETI_MIN_HIR = 3;   // a hírlevél is ennyit kér (core/hirlevel.js: „csak N hír-alcím — nem küldöm”)
 
@@ -48,6 +48,25 @@ export function hetiCimSzammal(cim, db) {
   return Number.isInteger(db) && db > 0 ? String(cim).replace(CIM_SZAM, `$1${db}`) : String(cim);
 }
 
+// SZÁMOZATLAN HÍR-ALCÍMEK (2026-11-16): a digest „## <cím>” alakban is írhatja a híreket, a fenti biztosíték viszont
+// csak a számozott alcímet számolja hírnek → a 11-16-i pótló vázlat átdolgozás után 0 hírrel bukott volna. Ha NINCS
+// számozott alcím: az a „## …” szakasz hír, amelynek a szövegében SAJÁT cikkre mutató link (/article/…) van, és nem
+// záró rész (NEM_HIR) — ezek kapnak sorszámot. A 11-15-i tanácsadó szakaszokban („Four habits to build”) nincs saját
+// link → azok továbbra sem hírek.
+export function hirAlcimekSzamozasa(torzs) {
+  const t = String(torzs || '');
+  if (/^##\s+\d+\.\s+\S/m.test(t)) return t;
+  let k = 0;
+  return t.split(/^(?=##\s+(?!#))/m).map(r => {
+    const m = r.match(/^##\s+(?!#)(.+?)[ \t]*(\r?\n|$)/);
+    if (!m) return r;
+    const cim = m[1].replace(/[*_`]/g, '').trim();
+    if (NEM_HIR.test(cim) || !/\]\([^)]*\/article\/[^)]+\)/.test(r)) return r;
+    k++;
+    return r.replace(/^##\s+/, `## ${k}. `);
+  }).join('');
+}
+
 /** @returns {{ok:boolean, text:string, hirDb:number, ok_ok?:string}} */
 export function hetiAtdolgozasJavit(text, cim) {
   let md = String(text || '').trimStart();
@@ -55,6 +74,9 @@ export function hetiAtdolgozasJavit(text, cim) {
   if (!fm) return { ok: false, text: md, hirDb: 0, ok_ok: 'nincs frontmatter' };
 
   let torzs = md.slice(fm[0].length);
+
+  // 0) számozatlan hír-alcímek beszámozása (csak az a szakasz hír, amely SAJÁT cikkünkre linkel — a tanácsadó rész nem)
+  torzs = hirAlcimekSzamozasa(torzs);
 
   // 1) a hírlevél / híradó ugyanígy számolja a híreket (CSAK számozott alcím számít: a tanácsadó szakasz nem hír)
   const szamozott = (torzs.match(/^##\s+\d+\.\s+\S/gm) || []).length;

@@ -135,8 +135,9 @@ read_time_minutes: 4
 tags: ["weekly-digest"]
 ---
 - Immediately after the closing "---" of the frontmatter, repeat the title as an H1 markdown heading on its own line: # ${exactTitle}
+- Right after the H1, a one-line summary box on its own line: > **In short:** <1-2 plain sentences naming this week's five stories>
 - Then a warm 2-3 sentence intro (what kind of week it was).
-- Then the 5 picks, each as a "## <short catchy heading>" section with 2-4 sentences: WHAT happened and WHY a normal person should care. End each section with a markdown link to OUR article, exactly in this form: [Read the full story](<the link I gave you>).
+- Then the 5 picks, each as a NUMBERED "## 1. <short catchy heading>" … "## 5. <short catchy heading>" section with 2-4 sentences: WHAT happened and WHY a normal person should care. End each section with a markdown link to OUR article, exactly in this form: [Read the full story](<the link I gave you>).
 - Use ONLY the links I provided above — never invent URLs.
 - Finish with a "## What this means for you" section (3-4 sentences, practical takeaway for the week).
 - 700-1000 words total. Output the markdown only — no commentary.
