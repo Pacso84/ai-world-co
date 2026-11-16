@@ -1,0 +1,61 @@
+{
+  "ok": 6,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.00991437,
+  "at": "2026-11-16T03:54:35.714Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 6,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-z-ai-to-compare-two-documents-and-spot-the-differ.json",
+      "cim": "How to Use Z.ai to Compare Two Documents and Spot the Differences",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-ask-gemini-for-a-trending-portrait-style-look-from-yo.json",
+      "cim": "How to Ask Gemini for a Trending Portrait-Style Look From Your Own Photo",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató a Gemini képfeltöltési és szerkesztési funkcióinak leírását tartalmazza, amely összhangban van a Gemini vizuális tartalmak generálásáról és szerkesztéséről szóló hivatalos hírekkel. Nincs konkrét állítás, amely ellentmondana az ismert információknak."
+    },
+    {
+      "file": "ARTICLE_2026-11-12T04-50-52-650Z_elevenlabs_Voice_cloning_for_content_creators__Scale_your_con.json",
+      "cim": "Voice cloning for content creators: Scale your content workflows with voice AI",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényszerű állítása megfelel a forrásszövegnek - a klónozási módszerek, funkciók, felhasználási esetek és értékelési szempontok pontosan vannak leírva."
+    },
+    {
+      "file": "ARTICLE_2026-11-12T04-50-34-840Z_google-ai-blog_Try_Tabletop__Customizable__collaborative_spaces_f.json",
+      "cim": "Try Tabletop: Customizable, collaborative spaces for groups to plan, play and do more together.",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi az összes kulcsfontosságú tényt a forrásból: a termék nevét Tabletop, a négy típusú kimenetet (utazási menetrendek, vacsorai szavazások, költségmegosztók, torna kieséses táblázatok), működését (linkek/fájlök/ötletek hozzáadása, @tabletop prompt használata vagy sablonok), elér"
+    },
+    {
+      "file": "ARTICLE_2026-11-10T05-08-29-262Z_aws-ml_How_skills_and_agents_work_in_AWS_Quick.json",
+      "cim": "How skills and agents work in AWS Quick",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk minden tényszerű állítását az forrásszöveg alátámasztja: az ügynök definíciója, a készség definíciója, a tér definíciója, a tudásbázis leírása (beleértve a megnevezett forrásokat, mint a Google Drive, SharePoint, S3), a konnektor leírása (beleértve a megnevezett alkalmazásokat, mint az Outloo"
+    },
+    {
+      "file": "ARTICLE_2026-10-17T02-02-59-661Z_openai-blog_How_Ita__is_building_generative_AI_for_its_entire_.json",
+      "cim": "How Itaú is building generative AI for its entire customer base",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben minden tényszerű állítást a forrás alátámaszt - ia.i mint beszélgetési felület, IARA mint irányítási platform, AI First stratégia, 300 000 ügyfél az első fázisban, 100% cél 2026 végéig, 90M+ dokumentum, 2M feladat/hó, 20-80% hatékonyságnövekedés, GPT-5.x modellek és 70 millió ügyfél."
+    }
+  ]
+}
