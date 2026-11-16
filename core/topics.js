@@ -45,33 +45,49 @@ export function temaMinta(szavak) {
 export const TEMAK = [
   { id: 'safe', cim: 'Staying safe', rovid: 'Staying safe with AI',
     szavak: ['scam', 'phishing', 'deepfake', 'fraud', 'privacy', 'password', 'security key',
-      'safely with your', 'never share', 'chat history', 'training data', 'data saving', 'fake content'] },
+      'safely with your', 'never share', 'chat history', 'training data', 'data saving', 'fake content',
+      // 2026-11-16 (PDF-újragyártás: 117 jó útmutató besorolatlan volt) — EXPLICIT szóalakok, a valódi címekből:
+      'consent', 'detector'] },
   { id: 'money', cim: 'Money & admin', rovid: 'Money and paperwork',
     szavak: ['budget spreadsheet', 'personal budget', 'money', 'savings', 'saving money', 'spending',
-      'bill', 'receipt', 'tax', 'insurance', 'subscription', 'price compar'] },   // ⚠️ a 'grocery budget' SZÁNDÉKOSAN nincs itt:
+      'bill', 'receipt', 'tax', 'insurance', 'subscription', 'price compar',
+      'monthly budget', 'excel budget', 'billing', 'invoice', 'payment', 'refund', 'complaint', 'personal-finance',
+      'customer service', 'cost'] },   // ⚠️ a 'grocery budget' SZÁNDÉKOSAN nincs itt:
     // az étkezés-tervezés OTTHONI téma, és a money hamarabb fut, mint a home.
   { id: 'home', cim: 'Home & family', rovid: 'Home and family',
     szavak: ['meal', 'dinner', 'grocer', 'recipe', 'fridge', 'trip', 'travel', 'vacation', 'getaway',
       'packing', 'holiday', 'family', 'kid', 'bedtime', 'home', 'household', 'garden', 'pet',
-      'shopping list', 'birthday', 'party'] },
+      'shopping list', 'birthday', 'party',
+      'grocery', 'cooking', 'kitchen', 'bake', 'chore', 'gift', 'wedding', 'thank-you speech', 'child', 'parent', 'homework',
+      'teacher', 'landlord', 'invitation', 'rsvp', 'moving day', 'moving-house', 'garage sale', 'renovation',
+      'veggie', 'workout', 'sleep', 'outfit', 'tv'] },
   { id: 'create', cim: 'Photos, video & music', rovid: 'Photos, video and music',
     szavak: ['photo', 'image', 'picture', 'video', 'music', 'song', 'logo', 'avatar', 'wallpaper',
-      'illustration', 'podcast'] },
+      'illustration', 'podcast',
+      'selfie', 'headshot', 'portrait', 'mascot', 'audio'] },
   { id: 'learn', cim: 'Learning & getting started', rovid: 'First steps with AI',
     szavak: ['beginner', 'getting started', 'first try', 'first 15', 'explained', 'study', 'learn',
-      'language', 'basics', 'simply'] },
+      'language', 'basics', 'simply',
+      'prompt', 'custom instructions', 'memory', 'preferences', 'everyday tasks ai', 'daily tasks', 'default helper',
+      'start using', 'reading list', 'free ai demo'] },
   { id: 'work', cim: 'Work & email', rovid: 'Work and email',
     szavak: ['email', 'inbox', 'cv', 'resume', 'cover letter', 'interview', 'meeting', 'note',
-      'report', 'spreadsheet', 'presentation', 'document', 'contract', 'small business'] },
+      'report', 'spreadsheet', 'presentation', 'document', 'contract', 'small business',
+      'gmail', 'linkedin', 'resignation', 'salary', 'performance review', 'status update', 'project timeline',
+      'swot', 'faq', 'readme', 'code', 'code snippet', 'unit test', 'product description', 'testimonial',
+      'job opening', 'side project', 'web app', 'sign-up form', 'folder', 'writing partner', 'writing and editing'] },
   // A két utolsó téma a MARADÉKBÓL született: a besorolatlanok között két
   // valódi csoport látszott — „magyaráztasd el" és „automatizáld". Nem
   // kitalált kategóriák: a tényleges címekből olvastam ki őket.
   { id: 'explain', cim: 'Understand anything', rovid: 'Make sense of things',
     szavak: ['explain', 'compare', 'summarize', 'summarise', 'translate', 'understand', 'unpack',
-      'gauge', 'analyze', 'analyse', 'research', 'fact-check', 'jargon'] },
+      'gauge', 'analyze', 'analyse', 'research', 'fact-check', 'jargon',
+      'fact‑check', 'summary', 'summarizer', 'paraphrase', 'plain english', 'plain-english', 'simplify', 'cite',
+      'source', 'insight', 'pros-and-cons', 'decision'] },
   { id: 'automate', cim: 'Automate the boring bits', rovid: 'Let AI do the repetitive work',
     szavak: ['automate', 'routine', 'schedule', 'workflow', 'script', 'chatbot', 'widget',
-      'reminder', 'batch', 'template'] }
+      'reminder', 'batch', 'template',
+      'briefing', 'to-do list', 'repeat task'] }
 ];
 
 // ===================================================================

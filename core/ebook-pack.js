@@ -92,7 +92,9 @@ export const DB_TERULETENKENT = 5;
 // 10-19-én, 382 útmutatóból: work 88 · home 54 · learn 35 · explain 27 ·
 // create 23 alkalmas — ezek 20-at kapnak; safe 8 · automate 8 · money 5 marad
 // annyi, amennyi van (feltölteni idegen témával tilos, a teszt őrzi).
-export const DB_MINI = 20;
+// 2026-11-16 (user: „nézd át, mit tudunk beletenni a meglévő anyagból!”): 20 → 30. A témaminták bővítése
+// (core/topics.js) után MÉRVE: home 48 · learn 47 · work 47 · explain 35 · create 33 · money 19 · automate 12 · safe 9.
+export const DB_MINI = 30;
 
 /**
  * A NAGY gyűjtemény felső határa — cikkben, nem oldalban, mert a cikkszám az,
@@ -111,7 +113,8 @@ export const DB_MINI = 20;
 // 2026-10-19: 150 → 250. A besorolt útmutatók száma 248 (MÉRVE) — a
 // gyűjtemény így MIND tartalmazza őket (~600 oldal, ~12 MB). A plafon a
 // gyors növekedés ellen marad, nem a mostani készlet ellen.
-export const DB_NAGY = 250;
+// 2026-11-16: 250 → 400. A témaminták bővítése után 353 besorolt, alkalmas útmutató van (MÉRVE) — mind belefér.
+export const DB_NAGY = 400;
 
 /** Ennél kevesebb útmutatóból NEM gyártunk terméket. */
 export const MIN_CSOMAG = 3;
@@ -487,7 +490,7 @@ export function sorrend(mezony) {
  */
 export function valogat(cikkek, {
   dbTeruletenkent = DB_TERULETENKENT, tema = null, nyelv = 'en',
-  dbMini = DB_MINI, dbNagy = DB_NAGY
+  dbMini = DB_MINI, dbNagy = DB_NAGY, olvasott = null
 } = {}) {
   // A minőségi mérce MINDIG az angol eredetin fut: a `topics.js` mintái angol
   // szavak, és a lépés-számláló is angol („## Step 1"). A nyelv csak azt
@@ -495,8 +498,11 @@ export function valogat(cikkek, {
   // dolgozik, nem egy másikból.
   const jo = (Array.isArray(cikkek) ? cikkek : [])
     .filter(c => alkalmas(c) && szovegNyelven(c, nyelv) !== null);
-  // A RÉSZLETESEBB elöl: több lépés, majd hosszabb szöveg.
-  jo.sort((a, b) => lepesSzam(b.md) - lepesSzam(a.md) || b.md.length - a.md.length);
+  // 📈 2026-11-16: a LEGOLVASOTTABB elöl (az utolsó 30 nap valódi olvasói, core/ebook-build.js olvasottsagBetolt) —
+  // MÉRVE: a 30 nap top-20 útmutatójából csak 12 volt a PDF-ekben. Olvasottság nélkül (vagy egyenlőségnél) a régi
+  // rend: a RÉSZLETESEBB elöl (több lépés, majd hosszabb szöveg). A változatosság (sorrend()) ezután is érvényes.
+  const olv = c => (olvasott && Number(olvasott[c.slug])) || 0;
+  jo.sort((a, b) => olv(b) - olv(a) || lepesSzam(b.md) - lepesSzam(a.md) || b.md.length - a.md.length);
 
   // 1) BESOROLÁS — minden útmutató PONTOSAN egy területre (első illeszkedő).
   const szerint = new Map(TERULETEK.map(t => [t.id, []]));
@@ -545,14 +551,14 @@ export function valogat(cikkek, {
  * A számok MÉRTEK, nem becsültek: a szószám azon a szövegen fut, ami
  * TÉNYLEGESEN a csomagba kerül (spanyolnál a spanyolon).
  */
-export function csomag(cikkek, { tema = 'all', nyelv = 'en', dbMini = DB_MINI, dbNagy = DB_NAGY } = {}) {
+export function csomag(cikkek, { tema = 'all', nyelv = 'en', dbMini = DB_MINI, dbNagy = DB_NAGY, olvasott = null } = {}) {
   if (!NYELVEK.includes(nyelv)) {
     return { ok: false, indok: `ismeretlen nyelv: „${nyelv}" (${NYELVEK.join(', ')})`, db: 0 };
   }
   if (tema !== 'all' && !TERULETEK.some(t => t.id === tema)) {
     return { ok: false, indok: `ismeretlen téma: „${tema}" (all, ${TERULETEK.map(t => t.id).join(', ')})`, db: 0 };
   }
-  const szakaszok = valogat(cikkek, { tema, nyelv, dbMini, dbNagy });
+  const szakaszok = valogat(cikkek, { tema, nyelv, dbMini, dbNagy, olvasott });
   const mind = szakaszok.flatMap(sz => sz.cikkek);
   if (mind.length < MIN_CSOMAG) {
     return {

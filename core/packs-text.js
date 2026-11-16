@@ -139,7 +139,7 @@ export const PACKS_UI = {
 
     packsFaqH: 'Questions',
     packsQ1: 'What do I get, exactly?',
-    packsA1: 'A PDF. A subject pack collects the guides on one theme — each card above shows exactly how many. The complete collection holds all eight packs in a single file with a clickable table of contents. No subscription, no app, no sign-up.',
+    packsA1: 'A PDF. A subject pack collects the guides on one theme — each card above shows exactly how many. The complete collection holds all eight packs in a single file with a clickable table of contents. Every pack ends with all its prompts in one list, ready to type, and a plain-language glossary of AI words. No subscription, no app, no sign-up.',
     packsQ2: 'How do I get it?',
     packsA2: 'Click the download button. The PDF opens straight away — no account, no email address, no payment. The file is yours to keep, print and read offline.',
     packsQ3: 'Can I share it?',
@@ -180,7 +180,7 @@ export const PACKS_UI = {
 
     packsFaqH: 'Kérdések',
     packsQ1: 'Mit kapok pontosan?',
-    packsA1: 'Egy PDF-et. Egy téma-csomag egyetlen téma útmutatóit gyűjti össze — hogy pontosan hányat, az ott áll minden kártyán. A teljes gyűjteményben mind a nyolc csomag egyetlen fájlban, kattintható tartalomjegyzékkel. Nincs előfizetés, nincs alkalmazás, nincs regisztráció.',
+    packsA1: 'Egy PDF-et. Egy téma-csomag egyetlen téma útmutatóit gyűjti össze — hogy pontosan hányat, az ott áll minden kártyán. A teljes gyűjteményben mind a nyolc csomag egyetlen fájlban, kattintható tartalomjegyzékkel. Minden csomag végén egy listában ott van az összes beírható prompt, és egy közérthető AI-szójegyzék. Nincs előfizetés, nincs alkalmazás, nincs regisztráció.',
     packsQ2: 'Hogyan kapom meg?',
     packsA2: 'Kattints a letöltés gombra. A PDF azonnal megnyílik — fiók, email-cím és fizetés nélkül. A fájl a tiéd: megtarthatod, kinyomtathatod, offline is olvashatod.',
     packsQ3: 'Megoszthatom?',
@@ -221,7 +221,7 @@ export const PACKS_UI = {
 
     packsFaqH: 'Preguntas',
     packsQ1: '¿Qué recibo exactamente?',
-    packsA1: 'Un PDF. Un pack temático agrupa las guías de un mismo tema; cada tarjeta de arriba dice cuántas. La colección completa reúne los ocho packs en un solo archivo con índice interactivo. Sin suscripción, sin aplicación y sin registro.',
+    packsA1: 'Un PDF. Un pack temático agrupa las guías de un mismo tema; cada tarjeta de arriba dice cuántas. La colección completa reúne los ocho packs en un solo archivo con índice interactivo. Cada pack termina con todos sus prompts en una lista, listos para escribir, y un glosario de IA en lenguaje sencillo. Sin suscripción, sin aplicación y sin registro.',
     packsQ2: '¿Cómo lo recibo?',
     packsA2: 'Pulsa el botón de descarga. El PDF se abre al momento: sin cuenta, sin correo y sin pago. El archivo es tuyo: puedes guardarlo, imprimirlo y leerlo sin conexión.',
     packsQ3: '¿Puedo compartirlo?',
