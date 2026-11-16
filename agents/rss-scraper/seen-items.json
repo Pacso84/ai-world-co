@@ -1,13 +1,5 @@
 {
   "openai-blog": [
-    "https://openai.com/index/openai-to-acquire-ona",
-    "https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem",
-    "https://openai.com/index/bbva",
-    "https://openai.com/index/openai-on-oracle-cloud",
-    "https://openai.com/index/chatgpt-enterprise-spend-controls",
-    "https://openai.com/index/improving-health-intelligence-in-chatgpt",
-    "https://openai.com/index/diagnose-rare-childhood-diseases",
-    "https://openai.com/index/ai-chemist-improves-reaction",
     "https://openai.com/index/introducing-life-sci-bench",
     "https://openai.com/index/gpt-5-immunology-mystery",
     "https://openai.com/index/omio",
@@ -299,7 +291,15 @@
     "https://openai.com/index/introducing-chatgpt-wallet",
     "https://openai.com/business/customer-stories/shield",
     "https://openai.com/index/step-toward-defining-the-standard-model",
-    "https://openai.com/index/our-new-blog-for-science"
+    "https://openai.com/index/our-new-blog-for-science",
+    "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
+    "https://openai.com/index/strengthening-online-child-safety",
+    "https://openai.com/index/science-at-the-frontier",
+    "https://openai.com/index/lvmh-media-division-partnership",
+    "https://openai.com/index/our-first-phase-of-embedded-assessments",
+    "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
+    "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare",
+    "https://openai.com/index/the-kings-trust-and-openai"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -424,7 +424,8 @@
     "https://blog.google/company-news/outreach-and-initiatives/arts-culture/esther-mahlangu/",
     "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
     "https://blog.google/innovation-and-ai/models-and-research/google-labs/tabletop/",
-    "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/"
+    "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/",
+    "https://blog.google/products-and-platforms/products/maps/ask-maps-holiday-travel-features-2026/"
   ],
   "meta-ai": [
     "https://about.fb.com/news/2026/06/creator-assistant-more-languages-for-ai-translations-on-facebook/",
@@ -780,7 +781,13 @@
     "https://blogs.nvidia.com/blog/ai-recycling-startups/",
     "https://blogs.nvidia.com/blog/geforce-now-thursday-warhammer-dawn-of-war-iv-coming/",
     "https://blogs.nvidia.com/blog/how-ai-is-helping-care-teams/",
-    "https://blogs.nvidia.com/blog/ai-day-seoul-wrapup/"
+    "https://blogs.nvidia.com/blog/ai-day-seoul-wrapup/",
+    "https://blogs.nvidia.com/blog/lambda-photonics/",
+    "https://blogs.nvidia.com/blog/slurm-quantum-computing-supercomputing/",
+    "https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/",
+    "https://blogs.nvidia.com/blog/cuda-x-libraries-agents-accelerate-scientific-discovery/",
+    "https://blogs.nvidia.com/blog/20-years-cuda/",
+    "https://blogs.nvidia.com/blog/rubin-hpc/"
   ],
   "google-workspace": [
     "http://workspaceupdates.googleblog.com/2026/06/google-vault-now-supports-retention-rules-and-litigation-holds-for-Gemini-app.html",
@@ -1052,7 +1059,8 @@
     "https://www.microsoft.com/en-us/research/podcast/learn-the-rules-the-hacker-mindset/",
     "https://www.microsoft.com/en-us/research/blog/formally-verifying-agent-written-full-stack-web-apps-with-pdd-kit/",
     "https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/",
-    "https://www.microsoft.com/en-us/research/podcast/microsoft-research-focus-edition-98/"
+    "https://www.microsoft.com/en-us/research/podcast/microsoft-research-focus-edition-98/",
+    "https://www.microsoft.com/en-us/research/blog/tokeneconomizer-learning-from-experience-to-make-ai-coding-agents-more-efficient/"
   ],
   "github-ai": [
     "https://github.blog/security/making-secret-scanning-more-trustworthy-reducing-false-positives-at-scale/",
@@ -1108,12 +1116,6 @@
     "https://github.blog/ai-and-ml/github-copilot/build-once-run-on-any-agent-a-practical-guide-to-agent-skills/"
   ],
   "aws-ml": [
-    "https://aws.amazon.com/blogs/machine-learning/preparing-data-for-supervised-fine-tuning-part-2-advanced-data-strategies/",
-    "https://aws.amazon.com/blogs/machine-learning/preparing-data-for-supervised-fine-tuning-part-1-formatting-and-quality/",
-    "https://aws.amazon.com/blogs/machine-learning/evaluate-any-agent-framework-with-amazon-bedrock-agentcore-evaluations/",
-    "https://aws.amazon.com/blogs/machine-learning/how-godaddy-transformed-its-analytics-with-amazon-quick/",
-    "https://aws.amazon.com/blogs/machine-learning/reduce-asr-inference-costs-by-75-with-nvidia-mps-on-amazon-ec2/",
-    "https://aws.amazon.com/blogs/machine-learning/deepgram-deepens-amazon-sagemaker-ai-observability-with-enhanced-metrics/",
     "https://aws.amazon.com/blogs/machine-learning/introducing-openai-models-on-amazon-bedrock-for-in-country-inferencing-in-india/",
     "https://aws.amazon.com/blogs/machine-learning/build-agentic-creative-workflows-with-amazon-quick-and-fal/",
     "https://aws.amazon.com/blogs/machine-learning/how-decathlon-runs-demand-forecasting-at-scale-with-chronos-2/",
@@ -1407,7 +1409,13 @@
     "https://aws.amazon.com/blogs/machine-learning/production-mlops-at-gs-caltex-with-amazon-sagemaker-canvas-part-1/",
     "https://aws.amazon.com/blogs/machine-learning/route-coding-agent-requests-to-the-right-model-on-amazon-bedrock-with-nvidia-nemo-switchyard/",
     "https://aws.amazon.com/blogs/machine-learning/architecture-patterns-for-fast-session-startup-on-amazon-bedrock-agentcore-runtime/",
-    "https://aws.amazon.com/blogs/machine-learning/openfold3-on-amazon-sagemaker-jumpstart-predict-biomolecular-structures/"
+    "https://aws.amazon.com/blogs/machine-learning/openfold3-on-amazon-sagemaker-jumpstart-predict-biomolecular-structures/",
+    "https://aws.amazon.com/blogs/machine-learning/modernizing-mainframe-assembler-to-java-using-amazon-bedrock-and-aws-transform/",
+    "https://aws.amazon.com/blogs/machine-learning/novo-nordisk-modernizes-manufacturing-process-documents-with-amazon-bedrock-agentcore/",
+    "https://aws.amazon.com/blogs/machine-learning/get-answers-from-tables-with-tabular-search-in-amazon-bedrock-managed-knowledge-base/",
+    "https://aws.amazon.com/blogs/machine-learning/best-practices-for-writing-denied-topics-in-amazon-bedrock-guardrails/",
+    "https://aws.amazon.com/blogs/machine-learning/customize-answers-per-tenant-in-amazon-bedrock-managed-knowledge-base/",
+    "https://aws.amazon.com/blogs/machine-learning/use-prompt-caching-with-open-weight-models-on-amazon-bedrock/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -1861,10 +1869,12 @@
     "https://news.sap.com/2026/11/a-smooth-ride-through-peak-season-with-trek-bikes/",
     "https://news.sap.com/2026/11/hybrid-ai-buyer-customer-experience-research-data-journey-progress/",
     "https://news.sap.com/2026/11/sap-leader-idc-marketscapes-warehouse-management-manufacturing-retail/",
-    "https://news.sap.com/2026/11/successful-sap-transformation-business-processes/"
+    "https://news.sap.com/2026/11/successful-sap-transformation-business-processes/",
+    "https://news.sap.com/2026/11/sap-completes-acquisition-of-techwolf/",
+    "https://news.sap.com/2026/11/india-promise-to-platform-global-growth/",
+    "https://news.sap.com/2026/11/order-management-built-straight-into-sap-dataxstream/"
   ],
   "databricks": [
-    "https://www.databricks.com/blog/automatic-upgrades-best-practice-features-your-lakehouse-tables",
     "https://www.databricks.com/blog/reimagining-data-modeling-lakehouse-introducing-vibe-data-modeling",
     "https://www.databricks.com/blog/contextual-policies-omnigent-using-session-state-better-govern-ai-agents",
     "https://www.databricks.com/blog/barracuda-makes-security-logs-conversational-genie",
@@ -2163,7 +2173,8 @@
     "https://www.databricks.com/blog/how-h6ai-builds-ai-powered-financial-automation-lakebase-postgres",
     "https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data",
     "https://www.databricks.com/blog/spark-vs-flink",
-    "https://www.databricks.com/blog/teach-genie-one-your-workflows-ultimate-guide-skills-genie-one"
+    "https://www.databricks.com/blog/teach-genie-one-your-workflows-ultimate-guide-skills-genie-one",
+    "https://www.databricks.com/blog/databricks-leader-and-positioned-highest-execution-2026-gartnerr-magic-quadranttm-data"
   ],
   "snowflake": [
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-postgres-ml-online-feature-store",
@@ -2337,7 +2348,8 @@
     "https://www.together.ai/blog/together-post-training",
     "https://www.together.ai/blog/auto-repair-for-together-gpu-clusters",
     "https://www.together.ai/blog/together-compiler-continual-compilation-for-ai-inference",
-    "https://www.together.ai/blog/polymorphic-inference"
+    "https://www.together.ai/blog/polymorphic-inference",
+    "https://www.together.ai/blog/how-we-do-agent-evals-at-together-ai"
   ],
   "pinecone": [
     "https://www.pinecone.io/blog/generating-test-data-for-pinecone/",
@@ -2443,7 +2455,9 @@
     "https://research.ibm.com/blog/qdc-2026?utm_medium=rss&utm_source=rss",
     "https://research.ibm.com/blog/dev-tools-qdc-2026?utm_medium=rss&utm_source=rss",
     "https://research.ibm.com/blog/path-to-ibm-quantum-starling?utm_medium=rss&utm_source=rss",
-    "https://research.ibm.com/blog/spin-qubits-explained?utm_medium=rss&utm_source=rss"
+    "https://research.ibm.com/blog/spin-qubits-explained?utm_medium=rss&utm_source=rss",
+    "https://research.ibm.com/blog/sc26?utm_medium=rss&utm_source=rss",
+    "https://research.ibm.com/blog/pelagos?utm_medium=rss&utm_source=rss"
   ],
   "ntt-research": [
     "https://ntt-research.com/ntt-researchers-contribute-17-papers-to-eurocrypt-2026/",
@@ -2466,7 +2480,8 @@
     "https://ntt-research.com/can-scientists-build-a-living-heart-that-grows-with-a-child/",
     "https://ntt-research.com/how-can-we-build-more-trustworthy-computing-three-ntt-research-papers-at-ieee-focs-2026-advance-randomness-quantum-software-protection-and-succinct-cryptography/",
     "https://ntt-research.com/cardiovascular-bio-digital-twin/",
-    "https://ntt-research.com/ntt-research-rapidly-creates-cardiovascular-bio-digital-twins-using-a-precomputed-virtual-population/"
+    "https://ntt-research.com/ntt-research-rapidly-creates-cardiovascular-bio-digital-twins-using-a-precomputed-virtual-population/",
+    "https://ntt-research.com/post-quantum-attribute-based-encryption/"
   ],
   "deeparteffects": [
     "https://www.deeparteffects.com/blog/best-offline-ai-image-generators-2026/",
@@ -2879,7 +2894,8 @@
     "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5kOWZ2LWVwakZKT3V5VDFHMHh1OTJoRjFHUmxqLXNOUE56REhrNlFZVGZpVUphUDBoTmlKTXVRdmdib0RWOHF6a045YXJ0NjA?oc=5",
     "https://news.google.com/rss/articles/CBMiRkFVX3lxTE0xZngzVlRGN0U2ekZKazV0UWpTbHpYblFTNVVuNDJXX0RVM1ltYzRONG5VQXJBd0o4Y1NCdHRCR3RLVmdFQnc?oc=5",
     "https://news.google.com/rss/articles/CBMiQ0FVX3lxTFBPZDlEXzMtam02TXVDRGh2aEU4eEJnSm1PbDhxWkVweDJjZE9qN2lnSlVHNTVRNFNENlBaZjVvbnZsQWM?oc=5",
-    "https://news.google.com/rss/articles/CBMiR0FVX3lxTE1mUXdFTmVHSDdLN2w1NVpDeE9qSHVqbWZVYWd0bWJOX0JVQUdvZm5SUnlMZjc1c2VKUmJnUkJ0RjVVMndNeDUw?oc=5"
+    "https://news.google.com/rss/articles/CBMiR0FVX3lxTE1mUXdFTmVHSDdLN2w1NVpDeE9qSHVqbWZVYWd0bWJOX0JVQUdvZm5SUnlMZjc1c2VKUmJnUkJ0RjVVMndNeDUw?oc=5",
+    "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBKVUtuODlrcjNUdVBTMEkwR3lwNWVpSDQ2UmY0SjNXUGZzQ3pQLXM5TFNER05UWlZHRnhkZWV1N1FZUzcxWm5vMg?oc=5"
   ],
   "grammarly-blog": [
     "https://www.grammarly.com/blog/product/say-it-then-send-it-with-speech-to-text/",
@@ -3260,7 +3276,11 @@
     "https://picsart.com/blog/how-to-relight-videos-with-ai/",
     "https://picsart.com/blog/seedream-5-5-integration/",
     "https://picsart.com/blog/generate-4k-video-with-seedance-2-5/",
-    "https://picsart.com/blog/minimax-h3-image-integration/"
+    "https://picsart.com/blog/minimax-h3-image-integration/",
+    "https://picsart.com/blog/black-friday-design-ideas/",
+    "https://picsart.com/blog/how-to-make-ai-animated-videos-with-picsart-mcp/",
+    "https://picsart.com/blog/seedance-2-5-flash-integration/",
+    "https://picsart.com/blog/how-gpt-live-voice-agents-work/"
   ],
   "zapier-blog": [
     "https://zapier.com/blog/stay-focused-avoid-distractions",
@@ -3474,7 +3494,8 @@
     "https://zapier.com/blog/tray-pricing",
     "https://zapier.com/blog/uipath-pricing",
     "https://zapier.com/blog/lindy-pricing",
-    "https://zapier.com/blog/automate-ai-personal-assistant"
+    "https://zapier.com/blog/automate-ai-personal-assistant",
+    "https://zapier.com/blog/zapier-ideas"
   ],
   "dropbox-blog": [
     "  https://blog.dropbox.com/topics/company/dropbox-announces-q1-2026-results ",
@@ -3597,7 +3618,10 @@
     "https://news.samsung.com/global/finding-the-perfect-tv-a-guide-to-samsung-tvs",
     "https://news.samsung.com/global/samsung-announces-december-release-for-intelligent-eyewear-bringing-a-smarter-way-to-see-the-world",
     "https://news.samsung.com/global/samsungs-latest-products-recognized-by-consumer-technology-association-ahead-of-ces-2027",
-    "https://news.samsung.com/global/inside-dakar-2026-how-galaxy-innovation-shaped-the-athlete-experience"
+    "https://news.samsung.com/global/inside-dakar-2026-how-galaxy-innovation-shaped-the-athlete-experience",
+    "https://news.samsung.com/global/samsung-employees-celebrate-diwali-with-lights-color-and-togetherness",
+    "https://news.samsung.com/global/samsung-launches-smartplan-in-singapore-with-flexible-payments-and-extended-product-care",
+    "https://news.samsung.com/global/samsung-celebrates-100000-smart-signage-flip-displays-sold-in-germany"
   ],
   "deepseek-sitemap": [
     "https://www.deepseek.com/en/news/deepseek-v4-1-flash/"
@@ -3780,7 +3804,8 @@
     "https://brave.com/blog/browser-ai-e2ee/",
     "https://brave.com/blog/google-goto-anti-scraping/",
     "https://brave.com/blog/search-api-agentic-payments/",
-    "https://brave.com/privacy-updates/40-remove-tracking-metadata/"
+    "https://brave.com/privacy-updates/40-remove-tracking-metadata/",
+    "https://brave.com/blog/brave-mini-games/"
   ],
   "proton-lumo": [
     "https://proton.me/blog/privacy-while-traveling",
@@ -3842,6 +3867,9 @@
     "https://elevenlabs.io/blog/customer-service-skills",
     "https://elevenlabs.io/blog/impact-sofia-oxford-said",
     "https://elevenlabs.io/blog/introducing-forward-deployed-creatives",
-    "https://elevenlabs.io/blog/open-source-tts-vs-paid-apis"
+    "https://elevenlabs.io/blog/open-source-tts-vs-paid-apis",
+    "https://elevenlabs.io/blog/postnord",
+    "https://elevenlabs.io/blog/autotorino-agents",
+    "https://elevenlabs.io/blog/the-year-of-more"
   ]
 }

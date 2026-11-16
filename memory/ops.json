@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179471456961589",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-15T03:49:29.615Z",
-      "updated": "2026-11-15T03:50:22.980Z"
-    },
-    {
-      "id": "t179471462298281",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-15T03:50:22.982Z",
-      "updated": "2026-11-15T03:51:48.479Z"
-    },
-    {
-      "id": "t179471470848117",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-15T03:51:48.481Z",
-      "updated": "2026-11-15T03:51:59.413Z"
-    },
-    {
-      "id": "t179471471941429",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-15T03:51:59.414Z",
-      "updated": "2026-11-15T03:52:41.002Z"
-    },
-    {
-      "id": "t179475522861663",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-15T15:07:08.616Z",
-      "updated": "2026-11-15T15:07:08.846Z"
-    },
-    {
-      "id": "t179475522884883",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-15T15:07:08.848Z",
-      "updated": "2026-11-15T15:07:40.982Z"
-    },
-    {
-      "id": "t179475526098449",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-15T15:07:40.984Z",
-      "updated": "2026-11-15T15:07:41.198Z"
-    },
-    {
-      "id": "t179475526124968",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-15T15:07:41.249Z",
-      "updated": "2026-11-15T15:09:04.251Z"
-    },
-    {
-      "id": "t179475534425393",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-15T15:09:04.253Z",
-      "updated": "2026-11-15T15:09:21.164Z"
-    },
-    {
-      "id": "t179475536116627",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-15T15:09:21.166Z",
-      "updated": "2026-11-15T15:09:36.517Z"
-    },
-    {
-      "id": "t179475537652046",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-15T15:09:36.520Z",
-      "updated": "2026-11-15T15:09:54.944Z"
-    },
-    {
-      "id": "t179475539494771",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-15T15:09:54.947Z",
-      "updated": "2026-11-15T15:10:03.342Z"
-    },
-    {
       "id": "t179475540342762",
       "title": "Run guide",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-11-16T03:54:15.067Z",
       "updated": "2026-11-16T03:54:34.977Z"
+    },
+    {
+      "id": "t179485084621442",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-16T17:40:46.214Z",
+      "updated": "2026-11-16T17:40:46.454Z"
+    },
+    {
+      "id": "t179485084645628",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-16T17:40:46.456Z",
+      "updated": "2026-11-16T17:42:03.102Z"
+    },
+    {
+      "id": "t179485092310345",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-16T17:42:03.103Z",
+      "updated": "2026-11-16T17:45:37.959Z"
+    },
+    {
+      "id": "t179485113800221",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-16T17:45:38.002Z",
+      "updated": "2026-11-16T17:46:27.922Z"
+    },
+    {
+      "id": "t179485118792465",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-16T17:46:27.924Z",
+      "updated": "2026-11-16T17:46:43.246Z"
+    },
+    {
+      "id": "t179485120324922",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-16T17:46:43.249Z",
+      "updated": "2026-11-16T17:46:50.748Z"
+    },
+    {
+      "id": "t179485121082268",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-16T17:46:50.822Z",
+      "updated": "2026-11-16T17:46:50.994Z"
+    },
+    {
+      "id": "t179485121099693",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-16T17:46:50.996Z",
+      "updated": "2026-11-16T17:46:51.175Z"
+    },
+    {
+      "id": "t179485121121138",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-16T17:46:51.211Z",
+      "updated": "2026-11-16T17:47:02.500Z"
+    },
+    {
+      "id": "t179485122250213",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-16T17:47:02.502Z",
+      "updated": "2026-11-16T17:47:12.555Z"
+    },
+    {
+      "id": "t179485123255622",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-16T17:47:12.556Z",
+      "updated": "2026-11-16T17:47:22.752Z"
+    },
+    {
+      "id": "t179485124275386",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-16T17:47:22.753Z",
+      "updated": "2026-11-16T17:47:48.944Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179406204634299",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Newer video models ",
-      "agent": "fact-check",
-      "at": "2026-11-07T14:34:06.342Z",
-      "loud": false
-    },
-    {
-      "id": "n179406208211737",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (megváltozott a fejezetek száma): \"24 AI Polaroid prompts that actually loo",
-      "agent": "fact-check",
-      "at": "2026-11-07T14:34:42.117Z",
-      "loud": false
-    },
-    {
-      "id": "n179408069767919",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „In short:** NVIDIA ",
-      "agent": "fact-check",
-      "at": "2026-11-07T19:44:57.679Z",
-      "loud": false
-    },
-    {
-      "id": "n179410812117117",
-      "level": "info",
-      "text": "SEO: 7 cikk optimalizálva (átlag 7.9/10).",
-      "agent": "seo",
-      "at": "2026-11-08T03:22:01.171Z",
-      "loud": false
-    },
     {
       "id": "n17941081437527",
       "level": "success",
@@ -1281,28 +1249,41 @@
       "agent": "ceo",
       "at": "2026-11-16T03:54:35.005Z",
       "loud": false
+    },
+    {
+      "id": "n17948512325317",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-11-16T17:47:12.531Z",
+      "loud": false
+    },
+    {
+      "id": "n179485125466060",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — it's practical, covers real everyday needs (emails, resumes, privacy, fact-checking), and uses specific tools in a helpful way. One note: articles 8 and 9 both feature Cohere ",
+      "agent": "publisher",
+      "at": "2026-11-16T17:47:34.660Z",
+      "loud": false
+    },
+    {
+      "id": "n179485126897935",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0144).",
+      "agent": "ceo",
+      "at": "2026-11-16T17:47:48.979Z",
+      "loud": false
+    },
+    {
+      "id": "n179485132621378",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „According to Anthro",
+      "agent": "fact-check",
+      "at": "2026-11-16T17:48:46.213Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179389421233666",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a forrás alátámasztja, amit kivenne: „Try it today:** open Picsart Flow, find the Captions node on your canvas, and run it on th”): \"Picsart Flow now adds AI captioning in 30 animated\" — A forrás egyértelműen mondja, hogy bármilyen képarányú bemenet megengedett, és kifejezetten említi a fekvő vagy négyzetes videókat is — a cikk hibásan állítja, hogy cs",
-      "ref": "ARTICLE_2026-10-12T17-08-31-032Z_picsart_Picsart_Flow_now_adds_AI_captioning_in_30_animated.json",
-      "open": true,
-      "at": "2026-11-05T15:56:52.336Z"
-    },
-    {
-      "id": "m179389454989978",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-05T16:02:29.899Z"
-    },
     {
       "id": "m17939149191095",
       "from": "fact-check",
@@ -2691,6 +2672,25 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-16T04:03:38.812Z"
+    },
+    {
+      "id": "m179485124271189",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-16T17:47:22.711Z"
+    },
+    {
+      "id": "m179485132621330",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „According to Anthropic, the company has a new life sciences research lab, and in its early”): \"Claude discovers a novel enzyme system \\ Anthropic\" — A forrás ellentmond a cikknek, mert a cikk azt állítja, hogy nem osztottak meg részleteket, miközben a forrás konkrétan megnevezi az enzimet (RT), a s",
+      "ref": "ARTICLE_2026-09-24T02-07-26-706Z_anthropic-blog_Claude_discovers_a_novel_enzyme_system___Anthropic.json",
+      "open": true,
+      "at": "2026-11-16T17:48:46.213Z"
     }
   ]
 }
