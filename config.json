@@ -27,8 +27,8 @@
   },
   "content": {
     "guide_focus": {
-      "_comment": "2026-10-09 — user: „először legyen eladásunk”. A napi 2 útmutatóból 1 a fókusz-eszközről (Alexa+, ott az Amazon-partnerlink), ha fogy a téma az ötletelő célzottan pótol (guide --focus), és naponta 1 Reel/TikTok ebből. Lejár: until után minden a régi; enabled:false = azonnal ki. core/guide-focus.js",
-      "enabled": true,
+      "_comment": "2026-10-09 — user: „először legyen eladásunk”. A napi 2 útmutatóból 1 a fókusz-eszközről (Alexa+, ott az Amazon-partnerlink), ha fogy a téma az ötletelő célzottan pótol (guide --focus), és naponta 1 Reel/TikTok ebből. Lejár: until után minden a régi; enabled:false = azonnal ki. core/guide-focus.js · 2026-11-16 user: „alexa ne maradjon elég volt!” → KI; új Alexa-téma sem jön (core/megszunt-eszkozok.js SZUNETELO_ESZKOZOK)",
+      "enabled": false,
       "tool": "Alexa+",
       "company": "Amazon",
       "until": "2026-10-23",
