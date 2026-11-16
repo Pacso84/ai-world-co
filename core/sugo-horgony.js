@@ -52,15 +52,54 @@ function tartalmiSzavak(szoveg, tema) {
 }
 
 /**
+ * FEJLESZTŐI / API-oldal felismerése az URL-ből. Ezek NEM a hétköznapi felhasználónak szólnak, ezért a cikklistában
+ * hátrébb kerülnek (de nem törlődnek: ha csak ilyen van, az ellenőrző AI dönt). Mért eset (11-16): az ElevenLabs
+ * „Voice isolator” címe 4× szerepelt, a választó az elsőt, az API-oldalt kapta, és az ellenőrző jogosan elutasította.
+ * Mit fog meg:
+ *   - útvonal-szegmens: /api, /api-reference, /reference, /sdk(s), /cookbook(s), /devpack, /developer(s)
+ *   - /eleven-api/ (ElevenLabs fejlesztői útmutatók), /docs/overview/capabilities/ (ElevenLabs API-áttekintő)
+ *   - fejlesztői gazdanév: platform.*, api.*, developer(s).* (pl. platform.kimi.ai)
+ * Mit NEM fog meg (felhasználói súgó): help-center, eleven-creative, support.google.com/gemini/answer/...,
+ * help.openai.com/en/articles/..., proton.me/support/..., duckduckgo.com/duckduckgo-help-pages/...
+ */
+export const FEJLESZTOI_URL = /\/(api|api-reference|reference|sdks?|cookbooks?|devpack|developers?)(\/|$)|\/eleven-api\/|\/docs\/overview\/capabilities\/|^https?:\/\/(platform|api|developers?)\./i;
+/** Fejlesztői oldal pontlevonása a szűkítéskor (hosszú listán a témához illő, de felhasználói cikk elé nem kerülhet). */
+const FEJLESZTOI_LEVONAS = 2;
+
+/**
+ * Az URL rövidített útvonala a választó promptjához: gazdanév + útvonal, protokoll / „www.” / query / hash nélkül.
+ * Tisztított: szóköz, sortörés, vezérlő- és szokatlan karakter nem maradhat benne (utasítás nem csempészhető be).
+ * Legfeljebb URL_HOSSZ karakter; ha hosszabb, a közepét vágja ki, mert a végén álló névrész a lényeg.
+ */
+const URL_HOSSZ = 90;
+export function urlRovid(url) {
+  let s = String(url || '').trim();
+  try {
+    const u = new URL(s);
+    s = u.host + u.pathname;
+  } catch {
+    s = s.replace(/^[a-z][a-z0-9+.-]*:\/\//i, '').replace(/[?#].*$/s, '');
+  }
+  s = s.replace(/^www\./i, '').replace(/[^A-Za-z0-9\-._~%/:@+=,;()]/g, '').replace(/\/+$/, '');
+  return s.length > URL_HOSSZ ? `${s.slice(0, 30)}…${s.slice(-(URL_HOSSZ - 31))}` : s;
+}
+
+/**
  * A súgó cikklistájának szűkítése a témához: pontszám = a téma címének és szögének szavai közül hány szerepel
- * a cikk címében. Csökkenő pontszám szerint rendez, egyenlőségnél az eredeti sorrend marad. Ha a lista nem
- * hosszabb a keretnél, változatlan sorrendű másolatot ad.
+ * a cikk címében; a fejlesztői/API-oldal (FEJLESZTOI_URL) pontlevonást kap. Csökkenő pontszám szerint rendez,
+ * egyenlőségnél az eredeti sorrend marad. Ha a lista nem hosszabb a keretnél, nem szűkít és nem pontoz, csak
+ * a fejlesztői oldalakat teszi stabilan hátra (a választó a lista sorrendjében látja őket); semmi nem vész el.
  */
 export function indexSzukites(tema, index, max = INDEX_MAX) {
   const lista = Array.isArray(index) ? index : [];
-  if (lista.length <= max) return lista.slice();
+  const fejl = c => FEJLESZTOI_URL.test(String(c?.url || ''));
+  if (lista.length <= max) return [...lista.filter(c => !fejl(c)), ...lista.filter(fejl)];
   const kulcsok = new Set(tartalmiSzavak(`${tema?.title || ''} ${tema?.angle || ''}`, tema));
-  const pont = c => { let n = 0; for (const w of tartalmiSzavak(c?.cim, tema)) if (kulcsok.has(w)) n++; return n; };
+  const pont = c => {
+    let n = 0;
+    for (const w of tartalmiSzavak(c?.cim, tema)) if (kulcsok.has(w)) n++;
+    return fejl(c) ? n - FEJLESZTOI_LEVONAS : n;
+  };
   return lista
     .map((c, i) => ({ c, i, p: pont(c) }))
     .sort((a, b) => b.p - a.p || a.i - b.i)   // stabil: azonos pontnál az eredeti sorrend
@@ -68,14 +107,18 @@ export function indexSzukites(tema, index, max = INDEX_MAX) {
     .map(x => x.c);
 }
 
-/** A választó promptja: a téma + a súgó számozott cikkcímei; a válasz egy sorszám (0 = egyik sem). */
+/** A választó promptja: a téma + a súgó számozott cikkcímei és rövid útvonalai; a válasz egy sorszám (0 = egyik sem). */
 export function valasztoPromptTema(tema, index) {
-  const lista = (index || []).slice(0, INDEX_MAX).map((c, i) => `${i + 1}. ${tiszta(c.cim).slice(0, 110)}`).join('\n');
+  const lista = (index || []).slice(0, INDEX_MAX).map((c, i) => {
+    const u = urlRovid(c.url);
+    return `${i + 1}. ${tiszta(c.cim).slice(0, 110)}${u ? ` — ${u}` : ''}`;
+  }).join('\n');
   return {
     rendszer: `You match a GUIDE TOPIC for everyday users to ONE article of the company's OFFICIAL HELP CENTER.
 Pick the help article that explains to an ordinary user how to use the feature named in the topic.
 Pick 0 if no article is clearly about that exact feature (a neighbouring or unrelated feature is NOT a match).
 Admin-only, developer/API-only or billing articles are NOT a match.
+Each line shows the article title and its URL path. When several articles have the same or similar titles, use the URL path to choose: prefer the end-user product guide or help-center article, never the API / developer / SDK / cookbook page.
 A generic "getting started" article matches ONLY a topic that itself is "Getting started with ...".
 Output ONLY JSON: {"pick": <number>, "reason": "one short sentence"}`,
     felhasznalo: `GUIDE TOPIC: "${tiszta(tema?.title)}"
