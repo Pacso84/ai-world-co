@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-11-16T17:59:04.234Z",
+    "updated": "2026-11-16T19:45:57.831Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -12,8 +12,8 @@
     },
     "truth_log": {
       "days": 14,
-      "from": "2026-10-08",
-      "to": "2026-11-15",
+      "from": "2026-10-13",
+      "to": "2026-11-16",
       "blocks": 14
     }
   },
@@ -59,14 +59,14 @@
     },
     "google-gemini": {
       "name": "Google Gemini termékhírek (hivatalos, blog.google)",
-      "feedAgeDays": 3,
-      "published30d": 6,
-      "published30dAfterAgeGuard": 6,
-      "truthBlocks": 1,
+      "feedAgeDays": 0,
+      "published30d": 7,
+      "published30dAfterAgeGuard": 7,
+      "truthBlocks": 2,
       "truthUnfixed": 0,
-      "totalAttempts": 3,
+      "totalAttempts": 4,
       "alreadyDisabled": false,
-      "lastArticle": "2026-11-13",
+      "lastArticle": "2026-11-16",
       "verdict": "ok",
       "reason": ""
     },
@@ -173,7 +173,7 @@
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 18,
       "published30dAfterAgeGuard": 7,
       "truthBlocks": 0,
@@ -610,7 +610,7 @@
     },
     "ntt-research": {
       "name": "NTT Research (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": null,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -662,7 +662,7 @@
     },
     "perplexity-news": {
       "name": "Perplexity (hivatalos, Google News szűrve)",
-      "feedAgeDays": 0,
+      "feedAgeDays": null,
       "published30d": 4,
       "published30dAfterAgeGuard": 3,
       "truthBlocks": 0,
@@ -738,7 +738,7 @@
     },
     "duckduckgo-duck-ai": {
       "name": "DuckDuckGo / Duck.ai (hivatalos blog, csak Duck.ai)",
-      "feedAgeDays": 21,
+      "feedAgeDays": 22,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -788,7 +788,7 @@
     },
     "qwen-news": {
       "name": "Qwen / Alibaba (hivatalos, Google News szűrve)",
-      "feedAgeDays": 1,
+      "feedAgeDays": null,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -801,7 +801,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 49,
+      "feedAgeDays": 50,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -814,7 +814,7 @@
     },
     "d-id-news": {
       "name": "D-ID (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 3,
       "published30dAfterAgeGuard": 2,
       "truthBlocks": 0,

@@ -1,6 +1,6 @@
 {
   "slug": "set-up-chatgpt-custom-instructions-so-it-stops-asking-the-same-questio",
-  "keszult": "2026-11-03T21:27:30.982Z",
+  "keszult": "2026-11-16T19:38:25.895Z",
   "promptok": {
     "4d51100e490c": [
       {
@@ -20,6 +20,50 @@
       {
         "eredeti": "American English",
         "hely": "your preferred English"
+      }
+    ]
+  },
+  "promptok_hu": {
+    "22f8e430357d": [
+      {
+        "eredeti": "Tizenkettedik éve",
+        "hely": "a tanítási éveid"
+      },
+      {
+        "eredeti": "matematikát",
+        "hely": "a tantárgyad"
+      },
+      {
+        "eredeti": "Két gyerekem",
+        "hely": "a gyerekeid száma"
+      }
+    ],
+    "d8d4b02e5077": [
+      {
+        "eredeti": "Amerikai angolt",
+        "hely": "a nyelvváltozatod"
+      }
+    ]
+  },
+  "promptok_es": {
+    "ac7914236763": [
+      {
+        "eredeti": "profesor",
+        "hely": "tu profesión"
+      },
+      {
+        "eredeti": "matemáticas",
+        "hely": "tu asignatura"
+      },
+      {
+        "eredeti": "dos hijos",
+        "hely": "tu número de hijos"
+      }
+    ],
+    "4f6ae404b75b": [
+      {
+        "eredeti": "inglés americano",
+        "hely": "tu idioma preferido"
       }
     ]
   }
