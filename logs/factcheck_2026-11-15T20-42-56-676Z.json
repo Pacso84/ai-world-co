@@ -1,0 +1,62 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.013780470000000001,
+  "at": "2026-11-15T20:42:56.676Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 1
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-10-17T02-02-59-661Z_openai-blog_How_Ita__is_building_generative_AI_for_its_entire_.json",
+      "cim": "How Itaú is building generative AI for its entire customer base",
+      "tipus": "hir",
+      "eredmeny": "ertelmezhetetlen",
+      "ok_hu": "a modell válasza nem volt értelmezhető (1/2. alkalom, 6170 karakter)"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-set-up-a-shared-family-grocery-list-in-alexa-anyone-c.json",
+      "cim": "How to set up a shared family grocery list in Alexa+ anyone can add to by voice",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-07T03-13-46-175Z_openai-blog_Sharing_AI_progress_in_mathematics.json",
+      "cim": "Sharing AI progress in mathematics",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Az összes tényállítás egyezik a forrással: belső határmodell nyitott matematikai problémákon, Lean bizonyításformalizációk a GitHubon, és a kutatási modell még nem érhető el a normál felhasználók számára."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-set-up-gemini-as-your-default-helper-on-an-android-ph.json",
+      "cim": "How to Set Up Gemini as Your Default Helper on an Android Phone",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "Az útmutató ellentmond önmagának: a bevezetésben a 'home button' (home gomb) lenyomva tartásáról van szó, de az 5. lépésben a 'power button' (bekapcsoló gomb) lenyomva tartásáról. A legtöbb modern Android telefonon a bekapcsoló gomb a helyes módszer a Gemini aktiválására, nem a home gomb."
+    },
+    {
+      "file": "ARTICLE_2026-10-02T03-03-36-994Z_google-workspace_Find_your_learning_tools_all_in_one_place_with_the.json",
+      "cim": "Find your learning tools all in one place with the student hub in Gemini",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „It works on personal and Workspace for Education accounts globally, except in the EEA; ski”",
+      "modell_hu": "A cikk azt állítja, hogy a diák központ még nem érhető el az EGT-ben, de az 1. forrás kifejezetten megerősíti, hogy a funkció már elérhető ott a Google Workspace-felhasználók számára."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-spot-a-deepfake-video-or-voice-clone-before-you-share.json",
+      "cim": "How to Spot a Deepfake Video or Voice Clone Before You Share It",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}

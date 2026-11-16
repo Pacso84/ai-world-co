@@ -20,6 +20,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
+import { digestFuthat, hetKulcs } from '../../core/heti-utemezes.js';   // 🗓️ 2026-11-16 vasárnapi hét-jelző + pótlás
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -37,20 +38,14 @@ try { SITE_URL = (JSON.parse(readFileSync(join(ROOT, 'config.json'), 'utf-8')).c
 
 function slugify(t) { return (t || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70); }
 
-function isoWeek(d = new Date()) {
-  const t = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
-  t.setUTCDate(t.getUTCDate() + 4 - (t.getUTCDay() || 7));
-  const y = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
-  return t.getUTCFullYear() + '-W' + String(Math.ceil((((t - y) / 86400000) + 1) / 7)).padStart(2, '0');
-}
-
+// ÜTEMEZÉS (2026-11-16, core/heti-utemezes.js): vasárnap fut; egyszeri pótlás a digest-state `potlas_nap` mezőjével.
+// A „kész” jelző a legutóbbi VASÁRNAP hete — egy hétfői pótlás így nem nyeli el a következő vasárnapot.
 function guard() {
   if (FORCE) return true;
-  if (new Date().getUTCDay() !== 0) { console.log('⏭️  Heti összefoglaló: nem vasárnap van — kihagyom.'); return false; }
-  try {
-    const s = JSON.parse(readFileSync(STATE_PATH, 'utf-8'));
-    if (s.last_week === isoWeek()) { console.log('⏭️  Heti összefoglaló: ezen a héten már készült.'); return false; }
-  } catch { /* első futás */ }
+  let s = {}; try { s = JSON.parse(readFileSync(STATE_PATH, 'utf-8')); } catch { /* első futás */ }
+  const d = digestFuthat(s);
+  if (!d.fut) { console.log(`⏭️  Heti összefoglaló: ${d.ok} — kihagyom.`); return false; }
+  if (d.potlas) console.log(`   🩹 Heti összefoglaló PÓTLÁS: ${d.ok}`);
   return true;
 }
 
@@ -63,6 +58,7 @@ function collectWeek() {
     try {
       const d = JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'));
       if (d._meta?.type === 'guide') continue;
+      if (d._meta?.source_id === 'aiworld-editorial') continue;     // 2026-11-16: saját szerkesztőségi cikk nem hír (a 11-15-i elrontott heti cikk sem)
       const pub = new Date(d._meta?.published_at || 0).getTime();
       if (now - pub > 7 * 24 * 3600e3) continue;
       const md = d.article_markdown || '';
@@ -139,8 +135,9 @@ read_time_minutes: 4
 tags: ["weekly-digest"]
 ---
 - Immediately after the closing "---" of the frontmatter, repeat the title as an H1 markdown heading on its own line: # ${exactTitle}
+- Right after the H1, a one-line summary box on its own line: > **In short:** <1-2 plain sentences naming this week's five stories>
 - Then a warm 2-3 sentence intro (what kind of week it was).
-- Then the 5 picks, each as a "## <short catchy heading>" section with 2-4 sentences: WHAT happened and WHY a normal person should care. End each section with a markdown link to OUR article, exactly in this form: [Read the full story](<the link I gave you>).
+- Then the 5 picks, each as a NUMBERED "## 1. <short catchy heading>" … "## 5. <short catchy heading>" section with 2-4 sentences: WHAT happened and WHY a normal person should care. End each section with a markdown link to OUR article, exactly in this form: [Read the full story](<the link I gave you>).
 - Use ONLY the links I provided above — never invent URLs.
 - Finish with a "## What this means for you" section (3-4 sentences, practical takeaway for the week).
 - 700-1000 words total. Output the markdown only — no commentary.
@@ -218,7 +215,7 @@ async function main() {
     original_title: exactTitle
   };
   writeFileSync(join(DRAFTS_DIR, filename), JSON.stringify(out, null, 2), 'utf-8');
-  try { writeFileSync(STATE_PATH, JSON.stringify({ last_week: isoWeek(), created_at: new Date().toISOString(), consecutive_failures: 0 }, null, 2), 'utf-8'); } catch { /* nem kritikus */ }
+  try { writeFileSync(STATE_PATH, JSON.stringify({ last_week: hetKulcs(), created_at: new Date().toISOString(), consecutive_failures: 0 }, null, 2), 'utf-8'); } catch { /* nem kritikus */ }
   console.log(`✅ Heti összefoglaló vázlat kész → ${filename} (az Ellenőrző kapuja következik) | $${response.costUsd.toFixed(4)}`);
 }
 

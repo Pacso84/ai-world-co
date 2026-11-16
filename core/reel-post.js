@@ -410,6 +410,38 @@ async function main() {
  * papírszínű kártyán; így minden Reel a saját cikkének képét hozza.
  * Részletek: core/short-video.js hatterekKepbol().
  */
+// 🎬 MOTION DESIGN REEL (2026-11-15, user: „rád bízom, de úgy válassz, hogy amelyik a legtöbb nézőt hozhatja!”)
+// A meglévő gyártási helyek (fő ág, újragyártás, TikTok-extra, a nap korábbi Reelje) VÁLTOZATLANUL a
+// `renderVideo(cards, { out, kepUt, workDir })` hívást teszik — ez a váltó adja nekik a renderelőt:
+//   • útmutató-videó (az `out` fájlneve egy útmutató slugja) + MOTION_REEL_BE → core/motion-reel.js (12–18 mp)
+//   • csomag-reklám (kepUtak), ismeretlen slug, nem videózható útmutató → a RÉGI renderVideo
+//   • a motion-gyártás BÁRMILYEN hibája → a RÉGI renderVideo (inkább a régi Reel, mint semmi)
+export function utmutatoRenderelo({ cikkek, regi, motion, naplo = console.log }) {
+  const szerint = new Map((cikkek || []).map(c => [c.slug, c]));
+  return async (cards, o = {}) => {
+    const slug = String(o.out || '').replace(/\\/g, '/').split('/').pop().replace(/\.mp4$/, '');
+    const c = szerint.get(slug);
+    if (!motion?.MOTION_REEL_BE || !c || o.kepUtak) return regi(cards, o);
+    const { szegmensek } = motion.trukkSzkript(c.md || '');
+    if (!szegmensek) return regi(cards, o);
+    const sablon = motion.sablonCikkhez(c, cikkek);
+    try {
+      const r = await motion.renderMotionReel(szegmensek, { out: o.out, workDir: o.workDir, kepUt: o.kepUt, sablon });
+      naplo('   🎬 motion Reel [' + sablon + ']');
+      return r;
+    } catch (e) {
+      naplo('   ⚠️ motion Reel hiba (' + String(e?.message || e).slice(0, 160) + ') → a régi Reel készül');
+      return regi(cards, o);
+    }
+  };
+}
+
+/** A leírásban ígért lépésszám ellenőrzéséhez: a videó ennyi lépést mutat. */
+export async function videoLepesDb(md, kartyak) {
+  const m = await import('./motion-reel.js');
+  return m.motionLepesDb(md) ?? (kartyak?.cards ? kartyak.cards.length - 2 : null);
+}
+
 export function boritoUt(ROOT, join, slug) {
   return slug ? join(ROOT, 'website', 'assets', 'images', slug + '.jpg') : '';
 }
@@ -577,8 +609,11 @@ async function prepare(ROOT, join) {
 async function prepareTiktokExtra(ROOT, join) {
   const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync } = await import('fs');
   const { tiktokExtra, maiTiktokExtra, tiktokPotlas } = await import('./reel-queue.js');
-  const { cardsFromGuide, renderVideo, horogSlugbol } = await import('./short-video.js');
+  const sv = await import('./short-video.js');
+  const { cardsFromGuide, horogSlugbol } = sv;
   const cikkek = await cikkekBetolt(ROOT, join);
+  const motion = await import('./motion-reel.js');
+  const renderVideo = utmutatoRenderelo({ cikkek, regi: sv.renderVideo, motion });   // 🎬 11-15
   const kiDir = join(ROOT, 'website', 'assets', 'video', 'shorts');
   const gyart = async (c) => {
     // 2026-10-25: az új nyitókép (fájdalom-kérdés) — lásd core/short-video.js UJ_NYITOKEP_BE
@@ -627,6 +662,7 @@ async function prepareTiktokExtra(ROOT, join) {
   const cikk = JSON.parse(readFileSync(ut, 'utf-8'));
   cikk._meta = cikk._meta || {};
   cikk._meta.tiktok_video_at = new Date().toISOString();
+  if (r.sablon) cikk._meta.video_sablon = r.sablon;   // a 2 hetes sablon-méréshez (11-15)
   writeFileSync(ut, JSON.stringify(cikk, null, 2), 'utf-8');
   console.log('   ✅ ' + r.seconds.toFixed(1) + ' mp — a TikTokra a Buffer-poszter viszi ki');
 }
@@ -635,11 +671,13 @@ async function prepareReel(ROOT, join) {
   const { writeFileSync, existsSync, mkdirSync, rmSync, readFileSync, readdirSync } = await import('fs');
   const { kovetkezoReel } = await import('./reel-queue.js');
   const fokusz = (await import('./guide-focus.js')).fokuszConfigbol();
-  const { cardsFromGuide, renderVideo, horogSlugbol } = await import('./short-video.js');
+  const sv = await import('./short-video.js');
+  const { cardsFromGuide, horogSlugbol } = sv;
   const { promoKell, promoKartyak, promoKepUtak, PROMO_SLUG } = await import('./packs-reel.js');
 
   const { maiReelCikkek } = await import('./reel-queue.js');
   const cikkek = await cikkekBetolt(ROOT, join);
+  const renderVideo = utmutatoRenderelo({ cikkek, regi: sv.renderVideo, motion: await import('./motion-reel.js') });   // 🎬 11-15
 
   // ── CSOMAG-REKLÁM (2026-09-20) ────────────────────────────────────
   //
@@ -855,7 +893,7 @@ export async function send(ROOT, join, dry) {
 
   const { slug } = guideMeta(cikk);
   const kartyak = cardsFromGuide(cikk.article_markdown || '');
-  const caption = reelCaption(cikk, { videoSteps: kartyak.cards ? kartyak.cards.length - 2 : null });
+  const caption = reelCaption(cikk, { videoSteps: await videoLepesDb(cikk.article_markdown || '', kartyak) });
   const video = reelVideoUrl(slug || pending.slug);
   const hook = (process.env.MAKE_REEL_WEBHOOK_URL || '').trim();
 
@@ -871,6 +909,13 @@ export async function send(ROOT, join, dry) {
   if (r.ok || r.sent === 'unknown') {
     cikk._meta = cikk._meta || {};
     cikk._meta.reel_at = new Date().toISOString();
+    // a 2 hetes sablon-méréshez (11-15): ugyanaz a determinisztikus választás, amivel a videó készült
+    try {
+      const m = await import('./motion-reel.js');
+      if (m.MOTION_REEL_BE && m.trukkSzkript(cikk.article_markdown || '').szegmensek) {
+        cikk._meta.video_sablon = m.sablonCikkhez({ slug: slug || pending.slug, published_at: cikk._meta.published_at || cikk.published_at || '' }, await cikkekBetolt(ROOT, join));
+      }
+    } catch { /* a mérés nem akadályozhatja a jelölést */ }
     writeFileSync(cikkPath, JSON.stringify(cikk, null, 2), 'utf-8');
   }
   try { unlinkSync(P); } catch { /* */ }
@@ -968,7 +1013,7 @@ export async function sendTiktokExtraFb(ROOT, join, dry) {
   const cikkPath = join(ROOT, 'content', 'articles', c.file);
   const cikk = JSON.parse(readFileSync(cikkPath, 'utf-8'));
   const kartyak = cardsFromGuide(cikk.article_markdown || '');
-  const caption = reelCaption(cikk, { videoSteps: kartyak.cards ? kartyak.cards.length - 2 : null });
+  const caption = reelCaption(cikk, { videoSteps: await videoLepesDb(cikk.article_markdown || '', kartyak) });
   const video = reelVideoUrl(c.slug);
   const hook = (process.env.MAKE_REEL_WEBHOOK_URL || '').trim();
 

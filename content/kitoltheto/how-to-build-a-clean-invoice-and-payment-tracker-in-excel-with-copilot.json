@@ -1,6 +1,6 @@
 {
   "slug": "how-to-build-a-clean-invoice-and-payment-tracker-in-excel-with-copilot",
-  "keszult": "2026-11-01T03:19:44.930Z",
+  "keszult": "2026-11-16T17:51:01.920Z",
   "promptok": {
     "32f501e2c3cb": [],
     "46ec4c03df5b": [],
@@ -12,6 +12,30 @@
       {
         "eredeti": "between 1 and 7",
         "hely": "your yellow range"
+      }
+    ]
+  },
+  "promptok_hu": {
+    "eb69b6354bd8": [],
+    "87bbb10106e9": [],
+    "a47c4ee78092": [
+      {
+        "eredeti": "7-nél",
+        "hely": "a saját késedelmi határod"
+      }
+    ]
+  },
+  "promptok_es": {
+    "8f1b07c55e22": [],
+    "26663f158fb8": [],
+    "eec422d69182": [
+      {
+        "eredeti": "mayor que 7",
+        "hely": "el límite de días en rojo"
+      },
+      {
+        "eredeti": "entre 1 y 7",
+        "hely": "el rango de días en amarillo"
       }
     ]
   }

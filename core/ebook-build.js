@@ -36,6 +36,8 @@ import {
 } from './ebook-pack.js';
 import { utmutatoE } from './guide-kind.js';
 import { temaSzoveg } from './topics.js';
+import { elakadasBetolt, elakadasHtml } from './elakadas-html.js';   // 🔧 2026-11-16 a „Ha elakadsz” doboz a PDF-ben is
+import { regiBetolt } from './kitoltheto-regi.js';                     // 🧩 2026-11-16 a kitölthető mezők jelölése nyomtatásban
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const KI_DIR = join(ROOT, 'dist', 'ebook');
@@ -66,9 +68,73 @@ export function utmutatokBetolt(dir = join(ROOT, 'content', 'articles'),
     let es = '';
     const fUt = join(forditasDir, f);
     if (existsSync(fUt)) { try { es = JSON.parse(readFileSync(fUt, 'utf-8')).es || ''; } catch { es = ''; } }
-    ki.push({ slug: m.slug, tool: m.tool || '', md: d.article_markdown || '', es });
+    // 🔧🧩 2026-11-16: a honlap két kiegészítője UGYANABBÓL a fájlból, amiből a honlap is dolgozik (hiány → null).
+    ki.push({ slug: m.slug, tool: m.tool || '', md: d.article_markdown || '', es,
+      elakadas: elakadasBetolt(ROOT, m.slug),
+      mezok: { en: regiBetolt(ROOT, m.slug, 'en'), es: regiBetolt(ROOT, m.slug, 'es') } });
   }
   return ki;
+}
+
+/**
+ * 📈 OLVASOTTSÁG (2026-11-16): útmutatónként az utolsó `nap` nap látogatása a forgalmi naplóból (memory/traffic-log.json,
+ * a CI írja; itt CSAK olvassuk). Az angol és a spanyol cikk-útvonal számít, a /hu/ NEM (a mérésből kizárva — memória-szabály).
+ * A határ a napló UTOLSÓ napjától számít (nem a mai naptól), hogy egy régebbi napló se adjon üres listát.
+ * Hiányzó / sérült napló → {} (a válogatás ilyenkor a régi rendet adja).
+ * @returns {Object<string, number>} slug → látogatás
+ */
+export function olvasottsagBetolt(ut = join(ROOT, 'memory', 'traffic-log.json'), nap = 30) {
+  let napok = {};
+  try { napok = JSON.parse(readFileSync(ut, 'utf-8')).days || {}; } catch { return {}; }
+  const kulcsok = Object.keys(napok).filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k)).sort();
+  if (!kulcsok.length) return {};
+  const hatar = new Date(Date.parse(kulcsok.at(-1)) - (nap - 1) * 864e5).toISOString().slice(0, 10);
+  const ki = {};
+  for (const k of kulcsok) {
+    if (k < hatar || !Array.isArray(napok[k])) continue;
+    for (const r of napok[k]) {
+      const m = String(r?.path || '').match(/^\/(?:es\/)?article\/([^/?#]+?)(?:\.html)?\/?$/);
+      if (m) ki[m[1]] = (ki[m[1]] || 0) + (Number(r.visits) || 0);
+    }
+  }
+  return ki;
+}
+
+/** 📖 A szótár (website/glossary-data.json) az adott nyelven: [{term, def}] — hiányzó nyelvű tétel kimarad (NEM angol tartalék). */
+export function szotarBetolt(nyelv = 'en', ut = join(ROOT, 'website', 'glossary-data.json')) {
+  try {
+    const t = JSON.parse(readFileSync(ut, 'utf-8')).terms || [];
+    return t.map(x => x?.[nyelv]).filter(x => x && typeof x.term === 'string' && x.term.trim() && typeof x.def === 'string' && x.def.trim())
+      .sort((a, b) => a.term.localeCompare(b.term, nyelv));
+  } catch { return []; }
+}
+
+/**
+ * 🧩 KITÖLTHETŐ MEZŐK NYOMTATÁSBAN (2026-11-16). A honlapon a régi promptok példaszava egy előre kitöltött mező
+ * (core/kitoltheto-regi.js); papíron mező nincs, ezért a példaszó ALÁHÚZVA marad, mellette kis betűvel, mit írj a helyére.
+ * A SZÖVEG NEM VÁLTOZIK (a példaszó benne marad). Csak a SZÖVEG-csomópontokban keresünk (címkében/linkben soha), és csak
+ * ott jelölünk, ahol a szó a kapott HTML-ben PONTOSAN EGYSZER fordul elő — a hiányzó jelölés jobb, mint a rossz helyen álló.
+ * @param {string} html  kész HTML (escape-elt szöveggel)
+ * @param {Object<string, {eredeti:string, hely:string}[]>|null} mezok  regiBetolt kimenete
+ */
+export function mezoJeloles(html, mezok) {
+  let h = String(html || '');
+  if (!mezok || typeof mezok !== 'object') return h;
+  const lista = Object.values(mezok).flat().filter(m => m && typeof m.eredeti === 'string' && m.eredeti.trim().length >= 2 && typeof m.hely === 'string' && m.hely.trim());
+  for (const { eredeti, hely } of lista) {
+    const cel = esc(eredeti);
+    const reszek = h.split(/(<[^>]*>)/);
+    let db = 0;
+    for (let i = 0; i < reszek.length; i += 2) { let j = -1; while ((j = reszek[i].indexOf(cel, j + 1)) >= 0) db++; }
+    if (db !== 1) continue;
+    for (let i = 0; i < reszek.length; i += 2) {
+      if (!reszek[i].includes(cel)) continue;
+      reszek[i] = reszek[i].replace(cel, () => `<span class="fill">${cel}</span><span class="fill__h">${esc(hely.trim())}</span>`);
+      break;
+    }
+    h = reszek.join('');
+  }
+  return h;
 }
 
 /**
@@ -146,6 +212,15 @@ export const SZOVEG = {
       + 'can copy and type (marked ➤), and the example labels and screen text that go with them. '
       + 'Each guide title links back to the guide it came from.',
     promptSzam: (db, beir, g) => `${db} examples from ${g} guides — ${beir} of them prompts you can type`,
+    // 🔧📖🧩 2026-11-16 (a honlap meglévő anyagából): „Ha elakadsz” doboz, szójegyzék, kitölthető mezők — a feliratok
+    // a honlap saját angol szövegével egyeznek (website/build.js elakCim / elakMiert / elakMit / elakForras).
+    elak: { cim: '🔧 If you get stuck', miert: 'Why:', mitTegyel: 'What to do:', forras: 'Source:' },
+    szotarCim: 'AI words in plain language',
+    szotarBev: 'The words you will meet in these guides and in AI apps, explained without jargon. '
+      + 'The same list is on our website, under Glossary.',
+    kitoltes: '<strong>Make the prompts yours.</strong> In many prompts, an <span class="fill">underlined example</span>'
+      + '<span class="fill__h">what to write instead</span> shows the part you can swap for your own details — '
+      + 'the small grey note says what goes there. Type the prompt with your own words in that spot.',
     oszinteCim: 'Before you start — what this is, honestly',
     // ⚠️ 2026-10-01: a „no ads" rész is KIKERÜLT (a honlapra AdSense jöhet) —
     // csak a fizetőfal-mentességet állítjuk, mert az mérhetően igaz.
@@ -204,6 +279,13 @@ export const SZOVEG = {
       + 'los prompts que puedes copiar y escribir (marcados con ➤) y los ejemplos de etiquetas y '
       + 'textos de pantalla que los acompañan. El título de cada guía enlaza con la guía de la que procede.',
     promptSzam: (db, beir, g) => `${db} ejemplos de ${g} guías — ${beir} son prompts que puedes escribir`,
+    elak: { cim: '🔧 Si te atascas', miert: 'Por qué:', mitTegyel: 'Qué hacer:', forras: 'Fuente:' },
+    szotarCim: 'Palabras de IA en lenguaje sencillo',
+    szotarBev: 'Las palabras que encontrarás en estas guías y en las aplicaciones de IA, explicadas sin jerga. '
+      + 'La misma lista está en nuestra web, en el Glosario.',
+    kitoltes: '<strong>Haz tuyos los prompts.</strong> En muchos prompts, un <span class="fill">ejemplo subrayado</span>'
+      + '<span class="fill__h">qué escribir en su lugar</span> marca la parte que puedes cambiar por tus propios datos; '
+      + 'la nota gris pequeña indica qué va ahí. Escribe el prompt con tus propias palabras en ese lugar.',
     oszinteCim: 'Antes de empezar: qué es esto, con sinceridad',
     ingyen: '<strong>Esta colección es gratuita, y todas sus guías están también gratis en nuestra web.</strong> '
       + 'Este archivo solo las reúne en un lugar, en orden de lectura, para que puedas imprimirlo, llevarlo '
@@ -289,13 +371,16 @@ export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = '
     <h2>${esc(cimBol(sz(c)))}</h2>
     <p class="guide__meta">${lepesSzam(c.md)} ${T.lepes} &middot;
       <a href="${site}${T.ut}/article/${esc(c.slug)}">${T.online}</a></p>
-    ${marked.parse(konyvMd(torzs(sz(c))))}
+    ${mezoJeloles(marked.parse(konyvMd(torzs(sz(c)))), c.mezok?.[nyelv])}
+    ${elakadasHtml(c.elakadas, nyelv, T.elak)}
   </article>`).join('')}`).join('');
 
   // 💬 PROMPT-FÜGGELÉK — CSAK A NAGY GYŰJTEMÉNYBEN (a termékszöveg is csak ott
   // ígéri). A promptok a csomagba kerülő NYELVEN jönnek, és a forrás-útmutató
   // címe visszalinkel a fejezetére.
-  const lista = tema === 'all' ? promptLista(szakaszok, nyelv) : [];
+  // 2026-11-16: a függelék MINDEN csomagba kerül (eddig csak a nagy gyűjteménybe) — a kis csomag olvasója is egy helyen
+  // akarja látni a beírható promptokat. A letöltőoldal szövege ehhez igazítva.
+  const lista = promptLista(szakaszok, nyelv);
   const promptDb = lista.reduce((n, x) => n + x.promptok.length, 0);
   const beirDb = lista.reduce((n, x) => n + x.promptok.filter(p => p.beir).length, 0);
   const fuggelek = promptDb ? `
@@ -311,12 +396,21 @@ export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = '
     // A kerítésből jött prompt SORTÖRÉSE TARTALOM, nem formázás: escape + <br>.
     // Az egysorosé markdown (dőlt/félkövér/kód) — ugyanaz, amit a törzs kap.
     // QA 10-19: a kódként kigyűjtött promptban a „**Focus**" nyers csillagként látszott → félkövér.
-    + `<span class="pr__t">${p.kod ? felkover(esc(p.szoveg)).replace(/\n/g, '<br>') : marked.parseInline(konyvMd(p.szoveg))}</span>`
+    + `<span class="pr__t">${mezoJeloles(p.kod ? felkover(esc(p.szoveg)).replace(/\n/g, '<br>') : marked.parseInline(konyvMd(p.szoveg)), x.cikk.mezok?.[nyelv])}</span>`
     + `</li>`).join('')}</ul>
     </div>`).join('')}
   </section>` : '';
-  const tocFuggelek = promptDb
-    ? `<li class="toc-sec"><a href="#prompts">${esc(T.promptCim)}</a></li>` : '';
+  // 📖 SZÓJEGYZÉK (2026-11-16): a honlap szótára (website/glossary-data.json) az adott nyelven, ábécérendben.
+  const szotar = szotarBetolt(nyelv);
+  const szotarHtml = szotar.length ? `
+  <section class="gloss" id="glossary">
+    <h1 class="area__h">${esc(T.szotarCim)}</h1>
+    <p class="prompts__lead">${esc(T.szotarBev)}</p>
+    <dl>${szotar.map(x => `<dt>${esc(x.term)}</dt><dd>${esc(x.def)}</dd>`).join('')}</dl>
+  </section>` : '';
+  const tocFuggelek = (promptDb
+    ? `<li class="toc-sec"><a href="#prompts">${esc(T.promptCim)}</a></li>` : '')
+    + (szotar.length ? `<li class="toc-sec"><a href="#glossary">${esc(T.szotarCim)}</a></li>` : '');
   // ⚠️ A LÉPÉSSZÁM MINDIG AZ ANGOL EREDETIBŐL JÖN (`c.md`). Kimérve: a
   // spanyol fordításban a lépés-fejlécek „## Paso 1" alakúak, amire a
   // `lepesSzam()` angol mintája NEM illeszkedik — a fordításból mérve MIND a
@@ -375,6 +469,19 @@ export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = '
   /* QA 10-19: a hosszú kódsor kilógott a lapról (all-en 265., learn-en 6. oldal) → tördelés. */
   pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #f2f2ef; padding: 3mm 4mm; border-radius: 2mm; }
   pre code { background: none; padding: 0; }
+  /* 🧩 kitölthető rész: aláhúzott példaszó + kis szürke „mit írj ide” */
+  .fill { text-decoration: underline; text-decoration-style: dashed; text-decoration-color: #14507d; text-underline-offset: 2px; }
+  .fill__h { font: 7.5pt Helvetica, Arial, sans-serif; color: #555; background: #eef3f8; border-radius: 1mm; padding: 0 1mm; margin-left: 1mm; }
+  /* 🔧 „Ha elakadsz” doboz (a honlap g-elakad szerkezete) */
+  .g-elakad { page-break-inside: avoid; margin-top: 7mm; border: 1pt solid #d9d1c0; background: #fbf8f1; border-radius: 2mm; padding: 3mm 5mm; }
+  .g-elakad h2 { font-size: 12.5pt; margin: 0 0 2mm; }
+  .g-elakad__t h3 { font-size: 11pt; margin: 3mm 0 1mm; }
+  .g-elakad__t p { margin: 0.5mm 0; }
+  .g-elakad__forras { font-size: 8.5pt; color: #666; }
+  /* 📖 szójegyzék */
+  .gloss { page-break-before: always; padding-top: 18mm; }
+  .gloss dt { font: bold 11pt Helvetica, Arial, sans-serif; margin-top: 4mm; page-break-after: avoid; }
+  .gloss dd { margin: 1mm 0 0 0; }
   blockquote { border-left: 3px solid #ccc; margin-left: 0; padding-left: 4mm; color: #444; }
 </style></head><body>
 
@@ -393,12 +500,14 @@ export function konyvHtml(szakaszok, { site = 'https://aiworldhq.com', nyelv = '
   <p>${T.ingyen}</p>
   <p>${T.aiSzerzo(site)}</p>
   <p>${T.valtozas}</p>
+  <p>${T.kitoltes}</p>
   <p>${T.licenc}</p>
 </div>
 
 <nav class="toc"><h2>${esc(T.tocCim)}</h2><ol>${toc}${tocFuggelek}</ol></nav>
 ${fejezetek}
 ${fuggelek}
+${szotarHtml}
 </body></html>`;
 }
 // ⚠️ A BORÍTÓ TERÜLET-FELSOROLÁSA A VALÓDI SZAKASZOKBÓL ÉPÜL, nem beégetve.
@@ -418,10 +527,10 @@ function ertek(argv, nev) {
  * Egy csomag legyártása HTML-be (és kérésre PDF-be).
  * @returns {{ok:boolean, indok?:string, db?:number, szo?:number, oldal?:number, nev?:string}}
  */
-export function gyart(cikkek, { tema = null, nyelv = 'en', pdf = false } = {}) {
+export function gyart(cikkek, { tema = null, nyelv = 'en', pdf = false, olvasott = null } = {}) {
   // Téma nélkül a RÉGI csomag: 8 terület × 5 útmutató, `starter-pack` néven.
   const c = tema
-    ? csomag(cikkek, { tema, nyelv })
+    ? csomag(cikkek, { tema, nyelv, olvasott })
     : (() => {
       const szakaszok = valogat(cikkek, { nyelv });
       const mind = szakaszok.flatMap(s => s.cikkek);
@@ -436,11 +545,14 @@ export function gyart(cikkek, { tema = null, nyelv = 'en', pdf = false } = {}) {
   writeFileSync(htmlUt, konyvHtml(c.szakaszok, { nyelv, tema }), 'utf-8');
 
   // MÉRT SZÁMOK A HÍVÓNAK — ugyanabból a függvényből, amiből a HTML készül.
-  const lista = tema === 'all' ? promptLista(c.szakaszok, nyelv) : [];
+  const lista = promptLista(c.szakaszok, nyelv);
   const ki = {
     ok: true, nev, db: c.db, szo: c.szo, oldal: c.oldal, html: htmlUt, szakaszok: c.szakaszok,
     horgony: horgonyok(c.szakaszok).size,
     promptCikk: lista.length,
+    elakDb: c.szakaszok.flatMap(sz => sz.cikkek).filter(x => elakadasHtml(x.elakadas, nyelv, (SZOVEG[nyelv] || SZOVEG.en).elak)).length,
+    mezoDb: c.szakaszok.flatMap(sz => sz.cikkek).filter(x => x.mezok?.[nyelv]).length,
+    szotarDb: szotarBetolt(nyelv).length,
     promptDb: lista.reduce((n, x) => n + x.promptok.length, 0),
     beirDb: lista.reduce((n, x) => n + x.promptok.filter(p => p.beir).length, 0)
   };
@@ -469,10 +581,11 @@ if (process.argv[1] && process.argv[1].endsWith('ebook-build.js')) {
     : [{ tema: temaArg || (nyelvArg ? 'all' : null), nyelv: nyelvArg || 'en' }];
 
   const cikkek = utmutatokBetolt();
-  console.log(`📚 ${cikkek.length} örökzöld útmutató betöltve\n`);
+  const olvasott = olvasottsagBetolt();   // 📈 2026-11-16 a legolvasottabb elöl
+  console.log(`📚 ${cikkek.length} örökzöld útmutató betöltve · 📈 olvasottság ${Object.keys(olvasott).length} cikkre (30 nap, /hu/ nélkül)\n`);
   const pdfbe = new Set();   // 📕 11-08: a PDF-ekbe került útmutatók (core/pdf-frissesseg.js)
   for (const { tema, nyelv } of melyek) {
-    const r = gyart(cikkek, { tema, nyelv, pdf });
+    const r = gyart(cikkek, { tema, nyelv, pdf, olvasott });
     if (r.ok) for (const s of r.szakaszok || []) for (const c of s.cikkek || []) if (c.slug) pdfbe.add(c.slug);
     const nev = tema ? `${tema}-${nyelv}` : 'starter-pack';
     if (!r.ok) { console.log(`⛔ ${nev}: NINCS CSOMAG — ${r.indok}`); continue; }
@@ -484,6 +597,7 @@ if (process.argv[1] && process.argv[1].endsWith('ebook-build.js')) {
     // A HORGONYOK ÉS A PROMPTOK SZÁMA IS KIMEGY: a termékszöveg mindkettőt
     // ígéri, és ami nincs kiírva, annak a hiánya NEM tűnik fel a gyártáskor.
     console.log(`      🔗 ${r.horgony} horgony · 💬 ${r.promptDb} példa (${r.beirDb} beírható) ${r.promptCikk} útmutatóból`);
+    console.log(`      🔧 ${r.elakDb} „Ha elakadsz” doboz · 🧩 ${r.mezoDb} útmutatóban kitölthető mező · 📖 ${r.szotarDb} szótár-szó`);
     console.log(`      HTML: ${r.html}`);
     if (r.pdfHiba) console.log(`      ⚠️ ${r.pdfHiba}`);
     else if (r.pdf) console.log(`      PDF: ${r.pdf} — ${r.pdfMb.toFixed(1)} MB, ${r.pdfEp ? '✅ ép' : '❌ NEM PDF'}`);
@@ -497,4 +611,4 @@ if (process.argv[1] && process.argv[1].endsWith('ebook-build.js')) {
   }
 }
 
-export default { utmutatokBetolt, torzs, konyvHtml, csomagCim, gyart, SZOVEG };
+export default { utmutatokBetolt, olvasottsagBetolt, szotarBetolt, mezoJeloles, torzs, konyvHtml, csomagCim, gyart, SZOVEG };

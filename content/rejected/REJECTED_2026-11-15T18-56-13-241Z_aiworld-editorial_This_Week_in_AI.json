@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "written_at": "2026-11-16T03:45:51.029Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0042777,
+    "original_draft": null,
+    "source_id": "aiworld-editorial",
+    "source_name": "AI World HQ (AI-written weekly roundup)",
+    "source_link": "https://aiworldhq.com",
+    "status": "rejected",
+    "rejected_at": "2026-11-16T03:46:10.756Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 509
+    },
+    "ai_review": {
+      "overall_score": 6,
+      "clarity_score": null,
+      "decision": "FAIL",
+      "issues": [
+        "Title claims five stories but article covers only three",
+        "Headline-roundup mismatch violates company lesson about invented story counts"
+      ],
+      "verdict": "The article is well-written with excellent factual caution and clear explanations, but the title promises five stories while the article delivers only three. This is a factual inconsistency that must be corrected before publication.",
+      "_aiCost": 0.000996912,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "The article is well-written with excellent factual caution and clear explanations, but the title promises five stories while the article delivers only three. This is a factual inconsistency that must be corrected before publication.",
+    "can_retry": false,
+    "rework_attempts": 2,
+    "reworked_from": "REJECTED_2026-11-15T18-56-13-241Z_aiworld-editorial_This_Week_in_AI.json",
+    "requeued_unchanged": false,
+    "ceo_decision": "duplicate"
+  },
+  "article_markdown": "---\ntitle: \"This Week in AI: The 5 Stories That Matter (November 15, 2026)\"\nsubtitle: \"This week brought news about AI smart glasses, a security warning about hidden triggers in AI models, and a guide to AI presenter videos.\"\ncategory: \"ai-news\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"weekly-digest\"]\n---\n# This Week in AI: The 5 Stories That Matter (November 15, 2026)\n\n> **In short:** This week's roundup covers three stories from official company sources: Samsung has announced AI smart glasses, Microsoft has published work on hidden-trigger risks in AI models, and a new guide covers AI presenter videos. Most specifics, such as dates and details, are not yet confirmed in our source.\n\nSome weeks bring big launches, and some bring quiet warnings you can use right away. Here is what this week's official announcements tell us, and what they might mean for your everyday AI use.\n\n## 1. Samsung Has Announced AI Smart Glasses\n\nSamsung has announced AI-powered smart glasses. \"Smart glasses\" are regular-looking eyeglasses with a small computer inside, so you can use AI without pulling out your phone. Samsung's launch timing, partners, and feature list are not confirmed in the material we have, so we will not guess at them here. Check Samsung's official site for the latest details before you plan around them.\n\n## 2. Microsoft Has Published Work on Hidden Triggers in AI\n\nMicrosoft has published information about hidden-trigger attacks on AI models. A \"trigger\" is a hidden instruction planted inside a model that can change its behavior when it sees a certain word or image. The model may seem normal until that trigger appears, which makes the risk hard to spot. The specifics of Microsoft's findings are not confirmed in our source, so read its official publication for the full picture.\n\n## 3. A New Guide to AI Presenter Videos\n\nAI presenter videos use a computer-generated speaker on screen. A new guide covers how these videos can be used, but the specific use cases it lists are not confirmed in our source. In general, these videos suit simple, frequently updated messages, such as a training clip you refresh every few months. They suit emotional or personal messages less well.\n\n## What this means for you\n\n- **In everyday life**: Smart glasses may someday offer hands-free help, but wait for official details before you buy anything.\n- **For your business or work**: Before you use AI video for any message, ask whether the message needs to feel personal or just needs to be clear.\n- **If you're just getting started**: Save this week's official pages in your browser, so you can check the details once they are confirmed.\n- **If you already use it**: Check AI outputs before you act on them, especially anything involving money, accounts, or private data.\n\n## Wrap-up\n\nThis week's news is a reminder to read the official source before you act on a headline. Pick one story you care about and open the company's own announcement today. You will get the facts straight from the people who made the news.",
+  "original_title": "This Week in AI: The 5 Stories That Matter (November 15, 2026)"
+}

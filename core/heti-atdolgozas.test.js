@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { hetiCikkE, hetiAtdolgozasSzabaly, hetiAtdolgozasJavit, HETI_MIN_HIR } from './heti-atdolgozas.js';
+import { hetiCikkE, hetiAtdolgozasSzabaly, hetiAtdolgozasJavit, hetiCimSzammal, hirAlcimekSzamozasa, HETI_MIN_HIR, HETI_SLUG } from './heti-atdolgozas.js';
 import { focimek } from './heti-hirado.js';
 
 let hiba = 0;
@@ -76,12 +76,14 @@ t('a 11-15-i elrontott átdolgozás ELUTASÍTVA (nincs számozott hír)', () => 
   assert.ok(r.hirDb < HETI_MIN_HIR);
 });
 
-t('új címmel visszaadott, de jó átdolgozás → a cím és a H1 visszaáll a pontos heti címre', () => {
+t('új címmel visszaadott, de jó átdolgozás → a cím és a H1 visszaáll a heti címre (a hír-szám a valódi: 4)', () => {
   const r = hetiAtdolgozasJavit(JO_DE_UJ_CIMMEL, CIM);
   assert.equal(r.ok, true);
   assert.equal(r.hirDb, 4);
-  assert.match(r.text, new RegExp(`^title: "${CIM.replace(/[()]/g, '\\$&')}"$`, 'm'));
-  assert.match(r.text, new RegExp(`^# ${CIM.replace(/[()]/g, '\\$&')}$`, 'm'));
+  const CIM4 = 'This Week in AI: The 4 Stories That Matter (November 15, 2026)';
+  assert.equal(r.cim, CIM4);
+  assert.match(r.text, new RegExp(`^title: "${CIM4.replace(/[()]/g, '\\$&')}"$`, 'm'));
+  assert.match(r.text, new RegExp(`^# ${CIM4.replace(/[()]/g, '\\$&')}$`, 'm'));
   assert.ok(!r.text.includes('AI News This Week: Five Updates'), 'a modell címe bent maradt');
   // a hírlevél / híradó ugyanazokat a híreket látja
   assert.deepEqual(focimek(r.text, 5), ['Gmail gets a new helper', 'NVIDIA laptops', 'Alexa routines', 'Gemini in Sheets']);
@@ -93,6 +95,63 @@ t('H1 nélküli átdolgozásba a kód beszúrja a pontos H1-et a frontmatter ut�
   assert.equal(r.ok, true);
   assert.equal((r.text.match(/^# /gm) || []).length, 1);
   assert.match(r.text, /---\n# This Week in AI/);
+});
+
+// A 11-16-i valódi hiba: az átdolgozás 3 hírt hagyott, a cím „The 5 Stories” maradt → a bíráló elutasította.
+t('11-16: 3 megmaradt hír → a cím „The 3 Stories”, nem ígér 5-öt', () => {
+  const md = `---\ntitle: "${CIM}"\n---\n# ${CIM}\n\n## 1. Samsung glasses\nx\n\n## 2. Hidden triggers\nx\n\n## 3. Presenter videos\nx\n\n## What this means for you\nx\n`;
+  const r = hetiAtdolgozasJavit(md, CIM);
+  assert.equal(r.ok, true);
+  assert.equal(r.hirDb, 3);
+  assert.ok(r.text.includes('title: "This Week in AI: The 3 Stories That Matter (November 15, 2026)"'));
+  assert.ok(r.text.includes('\n# This Week in AI: The 3 Stories That Matter (November 15, 2026)\n'));
+  assert.ok(!/The 5 Stories/.test(r.text), 'az 5-ös ígéret bent maradt');
+});
+
+t('hetiCimSzammal: a régi címformák is (5 Headlines, 5 Practical Shifts), 5 hírnél változatlan', () => {
+  assert.equal(hetiCimSzammal('This Week in AI: 5 Headlines to Follow (October 18, 2026)', 4), 'This Week in AI: 4 Headlines to Follow (October 18, 2026)');
+  assert.equal(hetiCimSzammal('This Week in AI: 5 Practical Shifts Worth Knowing', 3), 'This Week in AI: 3 Practical Shifts Worth Knowing');
+  assert.equal(hetiCimSzammal(CIM, 5), CIM);
+  // a dátum száma (15, 2026) SOHA nem cserélődik; szám nélküli cím változatlan
+  assert.equal(hetiCimSzammal('This Week in AI (November 15, 2026)', 3), 'This Week in AI (November 15, 2026)');
+  assert.equal(hetiCimSzammal(CIM, 0), CIM);
+});
+
+// A 11-16-i pótló vázlat alakja: számozatlan hír-alcímek, mindegyik alatt saját cikk-link.
+const SZAMOZATLAN = `---\ntitle: "${CIM}"\n---\n# ${CIM}\n\nIntro.\n\n` +
+  `## Your AI Assistant Now Sounds More Like You\nx\n\n[Read the full story](https://aiworldhq.com/article/a-one)\n\n` +
+  `## One App Now Does Video, Images, Voice\nx\n\n[Read the full story](https://aiworldhq.com/article/b-two)\n\n` +
+  `## A New Free Tool for Planning Group Trips\nx\n\n[![k](/assets/images/c.jpg)](https://aiworldhq.com/article/c-three)\n\n[Read the full story](https://aiworldhq.com/article/c-three)\n\n` +
+  `## What this means for you\nx [lásd](https://aiworldhq.com/article/a-one)\n\n## Wrap-up\nx\n`;
+
+t('11-16: számozatlan hír-alcímek (saját cikk-linkkel) → beszámozva, a záró részek NEM', () => {
+  const r = hetiAtdolgozasJavit(SZAMOZATLAN, CIM);
+  assert.equal(r.ok, true, r.ok_ok);
+  assert.equal(r.hirDb, 3);
+  assert.ok(r.text.includes('\n## 1. Your AI Assistant Now Sounds More Like You\n'));
+  assert.ok(r.text.includes('\n## 3. A New Free Tool for Planning Group Trips\n'));
+  assert.ok(r.text.includes('\n## What this means for you\n'), 'a záró rész számot kapott');
+  assert.ok(r.text.includes('\n## Wrap-up\n'));
+  assert.ok(r.text.includes('The 3 Stories That Matter'));
+  assert.deepEqual(focimek(r.text, 5), ['Your AI Assistant Now Sounds More Like You', 'One App Now Does Video, Images, Voice', 'A New Free Tool for Planning Group Trips']);
+});
+
+t('számozás: CRLF-es szövegen is; a már számozott szöveg változatlan', () => {
+  const crlf = SZAMOZATLAN.replace(/\n/g, '\r\n');
+  assert.equal((hirAlcimekSzamozasa(crlf).match(/^## \d+\. /gm) || []).length, 3);
+  const kesz = '## 1. A\n[x](https://aiworldhq.com/article/a)\n## Two\n[x](https://aiworldhq.com/article/b)\n';
+  assert.equal(hirAlcimekSzamozasa(kesz), kesz);
+});
+
+t('a 11-15-i tanácsadó szakaszok (saját link nélkül) továbbra sem hírek', () => {
+  assert.equal(hirAlcimekSzamozasa(ELRONTOTT), ELRONTOTT);
+  assert.equal(hetiAtdolgozasJavit(ELRONTOTT, CIM).ok, false);
+});
+
+t('őr: a digest promptja számozott hír-alcímet és In short dobozt kér', () => {
+  const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'agents', 'digest', 'agent.js'), 'utf-8');
+  assert.match(src, /NUMBERED "## 1\. <short catchy heading>"/);
+  assert.match(src, /> \*\*In short:\*\*/);
 });
 
 t('frontmatter nélküli válasz → elutasítva (nem találgatunk)', () => {
@@ -108,6 +167,17 @@ t('őr: az agents/iro átdolgozója a heti szabályt a promptba fűzi és a vál
   const javit = src.indexOf('hetiAtdolgozasJavit(response.text');
   const mentes = src.search(/const writerName = saveBackToReview\(filename, data, \{\r?\n\s*text: response\.text/);
   assert.ok(javit > 0 && mentes > javit, 'a kód-biztosíték nem a visszaküldés ELŐTT fut');
+});
+
+// ŐR (2026-11-16): a főnök-asztal a heti cikket CSAK megjelent heti cikkel veti össze (nem „duplikátum” attól, hogy
+// egy félresikerült, más slugú cikk original_title-je ugyanaz).
+t('őr: a főnök-asztal duplikátum-vizsgálata heti cikknél csak a this-week-in-ai- slugokat nézi', () => {
+  const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), '..', 'agents', 'ceo', 'desk.js'), 'utf-8');
+  assert.match(src, /import\s*\{[^}]*hetiCikkE[^}]*HETI_SLUG[^}]*\}\s*from\s*'\.\.\/\.\.\/core\/heti-atdolgozas\.js'/);
+  assert.match(src, /hetiCikkE\(d\)\s*\?\s*cikkek\.filter\(c => HETI_SLUG\.test/);
+  assert.match(src, /publishedSourceKeys\(vizsgalt\)/);
+  assert.equal(HETI_SLUG.test('this-week-in-ai-the-5-stories-that-matter-november-8-2026'), true);
+  assert.equal(HETI_SLUG.test('ai-assistants-and-your-money-shopping-and-privacy-what-to-know'), false);
 });
 
 console.log(`\n${hiba === 0 ? '✅' : '❌'} heti-atdolgozas.test: ${hiba} bukott`);

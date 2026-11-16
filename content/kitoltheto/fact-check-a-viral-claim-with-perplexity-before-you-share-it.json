@@ -1,6 +1,6 @@
 {
   "slug": "fact-check-a-viral-claim-with-perplexity-before-you-share-it",
-  "keszult": "2026-11-02T17:37:21.879Z",
+  "keszult": "2026-11-15T18:59:06.004Z",
   "promptok": {
     "96d324dd9fe8": [
       {
@@ -13,5 +13,35 @@
       }
     ],
     "0c5417d0b741": []
+  },
+  "promptok_hu": {
+    "58cc25d2accb": [
+      {
+        "eredeti": "Harvard-tanulmány",
+        "hely": "a forrásod"
+      },
+      {
+        "eredeti": "az 5G memóriavesztést okoz",
+        "hely": "a megosztandó állításod"
+      }
+    ],
+    "969a669da4b6": []
+  },
+  "promptok_es": {
+    "94b5c0405b7c": [
+      {
+        "eredeti": "Harvard",
+        "hely": "nombre de la universidad"
+      },
+      {
+        "eredeti": "5G",
+        "hely": "tecnología a verificar"
+      },
+      {
+        "eredeti": "pérdida de memoria",
+        "hely": "efecto que se afirma"
+      }
+    ],
+    "3b7af3a745f9": []
   }
 }

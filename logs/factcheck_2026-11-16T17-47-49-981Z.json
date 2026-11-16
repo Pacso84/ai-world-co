@@ -1,0 +1,63 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.010337820000000001,
+  "at": "2026-11-16T17:47:49.981Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-16T17-41-52-399Z_picsart_Seedance_2_5_Flash_brings_faster__lower-cost_AI_vi.json",
+      "cim": "Seedance 2.5 Flash brings faster, lower-cost AI video to Picsart",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk minden tényszerű állítása megfelel a hivatalos forrásszövegeknek."
+    },
+    {
+      "file": "ARTICLE_2026-09-30T02-55-14-268Z_picsart_How_to_create_an_AI_explosion_effect_with_Seedance.json",
+      "cim": "How to create an AI explosion effect with Seedance 2.5",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Minden tényszerű állítás alátámasztott a forrásban - az egyetlen felvétel szabálya, a 480p vázlat mód, a 1080p végső verzió, a felvételtípus-táblázat, a termékek referenciaképei és a 30 másodperces folyamatos felvétel mind pontosan le van írva."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-spot-a-phishing-email-or-scam-text-before-you-click.json",
+      "cim": "How to Spot a Phishing Email or Scam Text Before You Click",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-09-24T02-07-26-706Z_anthropic-blog_Claude_discovers_a_novel_enzyme_system___Anthropic.json",
+      "cim": "Claude discovers a novel enzyme system \\ Anthropic",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „According to Anthropic, the company has a new life sciences research lab, and in its early”",
+      "modell_hu": "A forrás ellentmond a cikknek, mert a cikk azt állítja, hogy nem osztottak meg részleteket, miközben a forrás konkrétan megnevezi az enzimet (RT), a szervezetet (bakteriofágok/jumbo fág) és a rendszer három elemét."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-spot-an-ai-scam-call-fake-email-or-deepfake-voice-tod.json",
+      "cim": "How to spot an AI scam call, fake email, or deepfake voice today",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-09-25T02-23-56-384Z_midjourney-updates_Edit_updates__thumbnail_previews__and_more.json",
+      "cim": "Edit updates, thumbnail previews, and more",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (52 karakter))",
+      "status": 200
+    }
+  ]
+}

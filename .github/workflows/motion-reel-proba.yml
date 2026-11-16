@@ -1,0 +1,61 @@
+# MOTION DESIGN REEL — ELŐNÉZET (2026-11-15) — CSAK KÉZI INDÍTÁS, a napi gépsort NEM futtatja, költsége $0.
+# Miért itt: a Microsoft-felolvasó (hang + szóidőzítés) Magyarországról 403-at ad, az USA-beli futtatón működik
+# (ugyanott, ahol a valódi Reel-gyártás fut). A minták letölthető csomagba (artifact) kerülnek — NEM posztol semmit,
+# NEM commitol semmit. Az éles bekötés kapcsolója: core/motion-reel.js → MOTION_REEL_BE (alapból KI).
+name: Motion Reel előnézet
+on:
+  workflow_dispatch:
+    inputs:
+      mod:
+        description: 'minta = a megadott cikkek mintái · eles_ut = a VALÓDI napi gyártás (reel-post.js --prepare), küldés és commit NÉLKÜL'
+        type: choice
+        options: [minta, eles_ut]
+        default: minta
+      celok:
+        description: 'slug:sablon szóközzel elválasztva (sablon: tinta | borito | papir)'
+        required: true
+        default: 'how-to-find-your-color-season-with-chatgpt-using-words-not-photos:tinta how-to-upload-a-selfie-to-chatgpt-and-ask-for-a-professional-headshot-:borito how-to-explain-a-spreadsheet-formula-in-plain-english-and-fix-it-when-:papir'
+permissions:
+  contents: read
+concurrency:
+  group: aiworld-motion-reel-proba
+  cancel-in-progress: false
+jobs:
+  minta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Függőségek (edge-tts rögzített commit + npm)
+        run: |
+          pip install "git+https://github.com/rany2/edge-tts@bd44c1d1aaebdc1db7f47456ee12431b42ec7cac"
+          npm ci --no-audit --no-fund
+      - name: ffmpeg + a videó betűje
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fontconfig
+          mkdir -p "$HOME/.local/share/fonts"
+          cp shared/fonts/schibsted-grotesk-900.ttf "$HOME/.local/share/fonts/"
+          fc-cache -f >/dev/null
+          fc-list | grep -i schibsted || echo "⚠️ a betű nem települt"
+      - name: Minták legyártása
+        if: inputs.mod != 'eles_ut'
+        env:
+          CELOK: ${{ inputs.celok }}
+        run: node core/motion-reel.js $CELOK --ki motion-minta
+      - name: Az éles gyártási út (reel-post.js --prepare) — nem küld, nem commitol
+        if: inputs.mod == 'eles_ut'
+        run: |
+          node core/reel-post.js --prepare
+          mkdir -p motion-minta && cp website/assets/video/shorts/*.mp4 motion-minta/ 2>/dev/null || echo 'nincs videó'
+          cat memory/reel-guard.json 2>/dev/null | head -40 || true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: motion-reel-minta
+          path: motion-minta/*.mp4
+          retention-days: 7

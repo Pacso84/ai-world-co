@@ -28,6 +28,7 @@ import { message } from '../../core/ops.js';
 import { escalateStale, listEscalated, closeCase } from '../../core/handback.js';
 import { publishedSourceKeys, isAlreadyWritten } from '../../core/source-lock.js';
 import { cikkKivonat } from '../../core/forras-cache.js';   // 🔒 2026-11-03 a kivonat a privát tárban
+import { hetiCikkE, HETI_SLUG } from '../../core/heti-atdolgozas.js';   // 📰 2026-11-16 heti cikk ≠ duplikátum
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -143,7 +144,11 @@ function isDuplicate(d) {
   for (const f of readdirSync(ARTICLES_DIR).filter(x => x.endsWith('.json'))) {
     try { cikkek.push(JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8'))); } catch { /* skip */ }
   }
-  return isAlreadyWritten(d, publishedSourceKeys(cikkek));
+  // 📰 HETI CIKK (2026-11-16): csak egy valóban MEGJELENT heti cikk (this-week-in-ai-… slug) számít duplikátumnak.
+  // 11-16: a 11-15-i, félresikerült „AI Assistants and Your Money…” cikk original_title-je a heti cím maradt →
+  // a pótolt heti cikket a főnök-asztal „már megírtuk” címkével lezárta, pedig heti cikk NEM jelent meg.
+  const vizsgalt = hetiCikkE(d) ? cikkek.filter(c => HETI_SLUG.test(String(c?._meta?.slug || ''))) : cikkek;
+  return isAlreadyWritten(d, publishedSourceKeys(vizsgalt));
 }
 
 async function verdictFor(d, context) {

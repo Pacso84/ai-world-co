@@ -18,17 +18,17 @@
       "adblock_recovery": true
     },
     "affiliate": {
-      "_comment": "2026-10-09 — Amazon partnerlink-PRÓBA (core/affiliate.js): az Alexa+ útmutatók végén EGY jelölt Echo-link + kattintásszámláló (Worker /aff-hit), 4 hét. enabled:true + tag (…-20, NEM titok) = be a következő build-től; hibás tag = KI. Bekapcsoláskor a shared/legal-rules-ai.md és company-info.md 'NINCS affiliate' sorát is át kell írni (teszt őrzi).",
+      "_comment": "⛔ 2026-11-15 LEÁLLÍTVA (user: „ha van fönn affiliate linkünk, azokat vegyük le!”) — enabled:false ÉS a kódbeli főkapcsoló core/affiliate.js PARTNER_LINK_BE = false (a config magában nem elég). Előzmény: 2026-10-09 — Amazon partnerlink-PRÓBA (core/affiliate.js): az Alexa+ útmutatók végén EGY jelölt Echo-link + kattintásszámláló (Worker /aff-hit), 4 hét. enabled:true + tag (…-20, NEM titok) = be a következő build-től; hibás tag = KI. Bekapcsoláskor a shared/legal-rules-ai.md és company-info.md 'NINCS affiliate' sorát is át kell írni (teszt őrzi).",
       "amazon": {
-        "enabled": true,
+        "enabled": false,
         "tag": "aiworldhq-20"
       }
     }
   },
   "content": {
     "guide_focus": {
-      "_comment": "2026-10-09 — user: „először legyen eladásunk”. A napi 2 útmutatóból 1 a fókusz-eszközről (Alexa+, ott az Amazon-partnerlink), ha fogy a téma az ötletelő célzottan pótol (guide --focus), és naponta 1 Reel/TikTok ebből. Lejár: until után minden a régi; enabled:false = azonnal ki. core/guide-focus.js",
-      "enabled": true,
+      "_comment": "2026-10-09 — user: „először legyen eladásunk”. A napi 2 útmutatóból 1 a fókusz-eszközről (Alexa+, ott az Amazon-partnerlink), ha fogy a téma az ötletelő célzottan pótol (guide --focus), és naponta 1 Reel/TikTok ebből. Lejár: until után minden a régi; enabled:false = azonnal ki. core/guide-focus.js · 2026-11-16 user: „alexa ne maradjon elég volt!” → KI; új Alexa-téma sem jön (core/megszunt-eszkozok.js SZUNETELO_ESZKOZOK)",
+      "enabled": false,
       "tool": "Alexa+",
       "company": "Amazon",
       "until": "2026-10-23",

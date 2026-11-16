@@ -14,6 +14,7 @@
 //   - Kötelező mondat: „As an Amazon Associate I earn from qualifying purchases."
 //   - PDF-be, nyomtatott anyagba Amazon-link NEM kerülhet.
 //
+// ⛔ 2026-11-15 LEÁLLÍTVA (user): PARTNER_LINK_BE = false (lent) — a config hiába enabled.
 // KAPCSOLÓ: config.json `website.affiliate.amazon` { enabled, tag }.
 // Hibás vagy hiányzó azonosító NEM kapcsol be semmit (mint a core/ads.js).
 // Az azonosító (…-20) NEM titok: minden linkben látszik.
@@ -66,11 +67,19 @@ export const SZOVEG = {
   }
 };
 
+/**
+ * ⛔ KÉZI FŐKAPCSOLÓ (2026-11-15, user: „ha van fönn affiliate linkünk, azokat vegyük le!”).
+ * false = a config.json `enabled` értékétől FÜGGETLENÜL egyetlen oldalra sem kerül
+ * partnerlink, jelölés vagy adatvédelmi „partnerlink” kártya. Visszakapcsolni CSAK
+ * user-döntéssel szabad, és akkor a jogi szövegeket is vissza kell írni (teszt őrzi).
+ */
+export const PARTNER_LINK_BE = false;
+
 /** A config.json `website` blokkjából: be van-e kapcsolva, és melyik azonosítóval. */
-export function partnerBeallitas(web) {
+export function partnerBeallitas(web, { kapcsolo = PARTNER_LINK_BE } = {}) {
   const a = (web && web.affiliate && web.affiliate.amazon) || {};
   const tag = String(a.tag || '').trim();
-  const be = a.enabled === true && TAG_MINTA.test(tag);
+  const be = kapcsolo === true && a.enabled === true && TAG_MINTA.test(tag);
   return { be, tag: be ? tag : '' };
 }
 
@@ -130,4 +139,4 @@ export function partnerKattintasSor(aff, now = Date.now()) {
   return `🛒 Amazon-kattintás tegnap: ${osszeg(aff[nap(now, 1)])} · 7 nap: ${het}`;
 }
 
-export default { TAG_MINTA, TERMEKEK, SZOVEG, partnerBeallitas, termekFor, amazonUrl, partnerDoboz, partnerJelzes, affKulcs, partnerKattintasSor };
+export default { PARTNER_LINK_BE, TAG_MINTA, TERMEKEK, SZOVEG, partnerBeallitas, termekFor, amazonUrl, partnerDoboz, partnerJelzes, affKulcs, partnerKattintasSor };

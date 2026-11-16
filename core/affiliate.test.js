@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { partnerBeallitas, termekFor, amazonUrl, partnerDoboz, partnerJelzes, affKulcs,
+import { PARTNER_LINK_BE, partnerBeallitas, termekFor, amazonUrl, partnerDoboz, partnerJelzes, affKulcs,
   partnerKattintasSor, SZOVEG, TERMEKEK, TAG_MINTA } from './affiliate.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -17,7 +17,8 @@ let hiba = 0;
 const t = (nev, fn) => { try { fn(); console.log('  ✅ ' + nev); } catch (e) { hiba++; console.log('  ❌ ' + nev + '\n     ' + e.message); } };
 
 const TAG = 'aiworldhq-20';
-const BE = partnerBeallitas({ affiliate: { amazon: { enabled: true, tag: TAG } } });
+// A doboz-/link-tesztek a (most leállított) működést próbálják: a főkapcsolót a teszt kapcsolja be.
+const BE = partnerBeallitas({ affiliate: { amazon: { enabled: true, tag: TAG } } }, { kapcsolo: true });
 const ALEXA = { tool: 'Alexa+', company: 'Amazon', slug: 'alexa-routines' };
 const CHATGPT = { tool: 'ChatGPT', company: 'OpenAI', slug: 'x' };
 const KOTELEZO = 'As an Amazon Associate I earn from qualifying purchases.';
@@ -32,9 +33,17 @@ t('🔒 alapból KI: hiányzó / kikapcsolt beállítás → semmi nem kerül ki
   }
 });
 
+t('⛔ 11-15 LEÁLLÍTVA: a kódbeli főkapcsoló KI → bekapcsolt config + jó azonosító mellett sincs partnerlink', () => {
+  assert.equal(PARTNER_LINK_BE, false, 'a partnerlinket a user 11-15-én levetette — visszakapcsolás csak user-döntéssel');
+  const b = partnerBeallitas({ affiliate: { amazon: { enabled: true, tag: TAG } } });
+  assert.equal(b.be, false);
+  assert.equal(partnerDoboz(b, ALEXA, 'en'), '');
+  assert.equal(partnerJelzes(b, ALEXA, 'hu'), '');
+});
+
 t('🔒 hibás azonosítóval NEM kapcsol be (elgépelés / beinjektált szöveg)', () => {
   for (const tag of ['', ' ', 'aiworldhq', 'aiworldhq-21', 'AIWORLD-20', '"><script>-20', 'a b-20']) {
-    assert.equal(partnerBeallitas({ affiliate: { amazon: { enabled: true, tag } } }).be, false, tag);
+    assert.equal(partnerBeallitas({ affiliate: { amazon: { enabled: true, tag } } }, { kapcsolo: true }).be, false, tag);
   }
   assert.ok(TAG_MINTA.test(TAG));
 });
@@ -122,6 +131,11 @@ t('⚖️ config: a kapcsoló létezik; BEKAPCSOLVA a „nincs affiliate" állí
   if (partnerBeallitas(cfg.website).be) {
     assert.doesNotMatch(olvas('shared/legal-rules-ai.md'), /NO affiliate links/, 'az MI még azt mondja: nincs affiliate link');
     assert.doesNotMatch(olvas('shared/company-info.md'), /NINCS affiliate/, 'a cégleírás (és a chatbot) még azt mondja: nincs affiliate');
+  } else {
+    // KI-állapotban a szövegeink se állítsák, hogy van partnerlink (a chatbot és a cikkíró ebből dolgozik).
+    assert.match(olvas('shared/legal-rules-ai.md'), /NO affiliate links/, 'az MI-szabály még partnerlinket említ');
+    assert.match(olvas('shared/company-info.md'), /NINCS affiliate/, 'a cégleírás még élő partnerlinket ír');
+    assert.doesNotMatch(olvas('shared/legal-rules-ai.md'), /adds one labelled Amazon link/, 'az MI-szabály még azt mondja: az oldal Amazon-linket tesz ki');
   }
 });
 

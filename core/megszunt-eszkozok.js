@@ -33,9 +33,25 @@ export const MEGSZUNT_ESZKOZOK = [
   }
 ];
 
-/** Megszűnt eszközről szól-e a téma (eszköz, cím vagy szög alapján)? */
+// ⏸️ SZÜNETELŐ ESZKÖZÖK — az eszköz él, de a USER DÖNTÉSE szerint nem írunk róla új útmutatót.
+// Ugyanazokon a kapukon akad fenn, mint a megszűnt (témaválasztó, ötletelő, kiegyenlítő, cég-lefedettségi extra hely),
+// DE az író-promptba NEM kerül „end of life” jelzéssel (az a MEGSZUNT_ESZKOZOK listából épül) — az eszköz nem szűnt meg.
+// Visszakapcsolás: a sor törlése (+ a teszt esete) — CSAK user-döntéssel.
+export const SZUNETELO_ESZKOZOK = [
+  {
+    // 2026-11-16 (user: „alexa ne maradjon elég volt!”): 41 Alexa+ útmutató készült (10-09-től a napi fókusz-hely,
+    // az Amazon-partnerlink miatt; a link 11-15 óta KI, d9311e3e). A fókusz 10-23-án lejárt, de a témasor és a
+    // kiegyenlítő tovább hozta (11-08, 11-09, 11-10). A meglévő Alexa-útmutatók MARADNAK.
+    nev: 'Alexa+ (Amazon)',
+    minta: /\balexa\b/i,
+    datum: '2026-11-16',
+    forras: 'user-döntés'
+  }
+];
+
+/** Megszűnt VAGY (user-döntésre) szünetelő eszközről szól-e a téma (eszköz, cím vagy szög alapján)? */
 export function megszuntTema(t) {
   if (!t) return null;
   const szoveg = [t.tool, t.title, t.angle].filter(Boolean).join(' ');
-  return MEGSZUNT_ESZKOZOK.find(e => e.minta.test(szoveg)) || null;
+  return MEGSZUNT_ESZKOZOK.find(e => e.minta.test(szoveg)) || SZUNETELO_ESZKOZOK.find(e => e.minta.test(szoveg)) || null;
 }

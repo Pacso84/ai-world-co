@@ -1,0 +1,62 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.01278071,
+  "at": "2026-11-15T18:56:14.283Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-08-18T00-36-50-105Z_picsart_How_to_use_AI_motion_control_for_character_animati.json",
+      "cim": "How to use AI motion control for character animation",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes konkrét állítása összhangban van a forrásszöveggel. A cikk pontosan írja le a motion transfer funkciót, a kulcsfontosságú jellemzőket (nincs keyframe vagy rigging), a stílustámogatást (realisztikus, anime, 3D render), a korlátozásokat (a pontosság csökken nem humanoid alakoknál, kezek "
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-scale-a-family-recipe-up-or-down-for-any-number-of-gu.json",
+      "cim": "How to scale a family recipe up or down for any number of guests",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-07-24T17-20-24-127Z_anthropic-blog_Introducing_Claude_Opus_5___Anthropic.json",
+      "cim": "Introducing Claude Opus 5 \\ Anthropic",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „💬 *The button itself reads the model name, so if it says **Sonnet 4.5**, you're in the ri”",
+      "modell_hu": "A cikk az Opus 4.5-re való váltásról szól, de a hivatalos forrás a Claude Opus 5-öt jelenti be új modellként"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-search-years-of-your-gmail-with-plain-english-questio.json",
+      "cim": "How to search years of your Gmail with plain-English questions using Gemini",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-07-07T17-51-02-626Z_apple-ml_MT-EditFlow__Reinforcement_Learning_for_Multi-Turn.json",
+      "cim": "MT-EditFlow: Reinforcement Learning for Multi-Turn Image Editing with Flow Matching",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk nem erről a forrásból származik - egy általános útmutató az ingyenes AI eszközökről, míg a forrás egy konkrét keretrendszerről (MT-EditFlow) szóló technológiai kutatási tanulmány"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-send-a-quick-voice-message-to-a-family-member-s-echo-.json",
+      "cim": "How to send a quick voice message to a family member's Echo with Alexa+",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}

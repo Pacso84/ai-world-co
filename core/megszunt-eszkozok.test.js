@@ -9,7 +9,7 @@
 
 import assert from 'assert/strict';
 import { readFileSync, readdirSync } from 'fs';
-import { megszuntTema } from './megszunt-eszkozok.js';
+import { megszuntTema, MEGSZUNT_ESZKOZOK, SZUNETELO_ESZKOZOK } from './megszunt-eszkozok.js';
 
 let pass = 0;
 const t = (name, fn) => { fn(); pass++; console.log('  ✅ ' + name); };
@@ -65,8 +65,25 @@ t('📜 nincs élő ChatRTX-útmutató', () => {
     const fej = (a.article_markdown || '').slice(0, 600);
     const tool = (fej.match(/^tool:\s*"([^"]*)"/m) || [])[1] || '';
     const title = (fej.match(/^title:\s*"([^"]*)"/m) || [])[1] || '';
-    assert.equal(megszuntTema({ tool, title }), null, f);
+    // csak a MEGSZŰNT eszköz tilos élőben — a szünetelő (Alexa+) meglévő útmutatói a user döntése szerint maradnak
+    assert.equal(MEGSZUNT_ESZKOZOK.find(e => e.minta.test([tool, title].join(' '))) || null, null, f);
   }
+});
+
+t('⏸️ 11-16 Alexa+ szünetel (user: „alexa ne maradjon elég volt!”): új téma nem jön róla', () => {
+  assert.ok(megszuntTema({ tool: 'Alexa+', title: 'How to convert cups to grams' }));
+  assert.ok(megszuntTema({ tool: 'Amazon Alexa+', title: 'x' }));
+  assert.ok(megszuntTema({ tool: 'Amazon', title: 'How to set reminders with Alexa on your Echo' }));
+  assert.equal(megszuntTema({ tool: 'Amazon Q', title: 'Summarize a document' }), null);
+  assert.equal(megszuntTema({ tool: 'ChatGPT', title: 'Write a lexical list' }), null);   // szóhatár: „lexa” nem Alexa
+});
+
+t('⏸️ a szünetelő eszköz NEM kerül az író-prompt „end of life” listájába (az eszköz nem szűnt meg)', () => {
+  assert.ok(SZUNETELO_ESZKOZOK.some(e => /Alexa/.test(e.nev)));
+  assert.ok(!MEGSZUNT_ESZKOZOK.some(e => /Alexa/i.test(e.nev)));
+  const src = readFileSync(new URL('../agents/guide/agent.js', import.meta.url), 'utf-8');
+  assert.match(src, /MEGSZUNT_ESZKOZOK\.map\(e => `\$\{e\.nev\} \(end of life/);
+  assert.doesNotMatch(src, /SZUNETELO_ESZKOZOK\.map\(e => `\$\{e\.nev\} \(end of life/);
 });
 
 

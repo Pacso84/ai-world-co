@@ -1,18 +1,24 @@
 {
   "_meta": {
-    "generated_at": "2026-11-13T15:52:13.593Z",
+    "generated_at": "2026-11-16T17:45:37.902Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
     "checked_orgs": 18,
     "newly_discovered": 0,
     "uj_most": 0,
-    "ures_futasok": 3,
-    "rejected_count": 1,
+    "ures_futasok": 4,
+    "rejected_count": 2,
     "rejected_examples": [
       {
-        "name": "ChatGPT Feature Updates",
-        "host": "openai.com",
+        "name": "Slack Release Notes",
+        "host": "slack.com",
+        "reason": "a friss cikkeinek csak 35%-a szól AI-ról (kell: 60%)",
+        "score": 100
+      },
+      {
+        "name": "ElevenLabs Official Blog",
+        "host": "elevenlabs.io",
         "reason": "ezt a hírfolyamot már követjük",
         "score": 0
       }

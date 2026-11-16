@@ -1,0 +1,73 @@
+{
+  "started_at": "2026-11-16T03:43:35.596Z",
+  "drafts_total": 3,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 1,
+    "html": 2,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.013365700000000001,
+  "by_article": [
+    {
+      "draft": "2026-11-12T04-50-52-650Z_elevenlabs_Voice_cloning_for_content_creators__Scale_your_con.json",
+      "writer_output": "WRITER_2026-11-12T04-50-52-650Z_elevenlabs_Voice_cloning_for_content_creators__Scale_your_con.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 17,
+      "cost_usd": 0.004288,
+      "duration_ms": 17598,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-12T04-50-34-840Z_google-ai-blog_Try_Tabletop__Customizable__collaborative_spaces_f.json",
+      "writer_output": "WRITER_2026-11-12T04-50-34-840Z_google-ai-blog_Try_Tabletop__Customizable__collaborative_spaces_f.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 1466,
+      "source_overlap_words": 8,
+      "cost_usd": 0.0036487,
+      "duration_ms": 13126,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-10T05-08-29-262Z_aws-ml_How_skills_and_agents_work_in_AWS_Quick.json",
+      "writer_output": "WRITER_2026-11-10T05-08-29-262Z_aws-ml_How_skills_and_agents_work_in_AWS_Quick.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 5999,
+      "source_overlap_words": 13,
+      "cost_usd": 0.0040793,
+      "duration_ms": 15114,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 0,
+  "termek_extra": 0,
+  "finished_at": "2026-11-16T03:44:33.380Z",
+  "duration_seconds": 57.784
+}

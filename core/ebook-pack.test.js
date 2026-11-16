@@ -132,7 +132,7 @@ t('🔑 nem lesz öt „Getting started with…" egymás mellett', () => {
   const jeloltek = [
     ...Array.from({ length: 5 }, (_, i) => cikk(`Sort your inbox with tool ${i}`, { lep: 9 - i })),
     cikk('Clean up a flooded inbox', { lep: 4 }),
-    cikk('Write a polite complaint email', { lep: 4 })
+    cikk('Write a polite follow-up email', { lep: 4 })
   ];
   const work = valogat(jeloltek).find(x => x.id === 'work');
   const kezdetek = work.cikkek.map(c => cimBol(c.md).toLowerCase().split(' ').slice(0, 3).join(' '));
@@ -335,7 +335,7 @@ t('🔑 a PLAFON a mélyítést fogja vissza, a minikbe SOHA nem vág bele', () 
   const db = szoros.reduce((s, x) => s + x.cikkek.length, 0);
   assert.equal(db, TERULETEK.length * DB_MINI, 'a plafon megcsonkította a mini-csomagokat');
   // …a bőséges plafon viszont TÖBBET hoz, mint a puszta minik összege.
-  assert.ok(valogat(mintaKeszlet(30), { tema: 'all' }).reduce((s, x) => s + x.cikkek.length, 0) > db,
+  assert.ok(valogat(mintaKeszlet(DB_MINI + 10), { tema: 'all' }).reduce((s, x) => s + x.cikkek.length, 0) > db,
     'a gyűjtemény nem mélyít a minik fölé');
   assert.ok(DB_NAGY > TERULETEK.length * DB_MINI, 'a plafon a minik összege alatt van');
 });
@@ -360,7 +360,7 @@ t('nincs ÁTFEDÉS két MINI-csomag között (egy cikk EGY témában van)', () =
 t('🔴 a spanyol csomagba SPANYOL szöveg kerül', () => {
   const k = [
     esCikk('Sort your inbox fast', 'Ordena tu bandeja de entrada'),
-    esCikk('Write a polite complaint email', 'Escribe una queja educada'),
+    esCikk('Write a polite follow-up email', 'Escribe un correo de seguimiento educado'),
     esCikk('Draft a meeting note', 'Redacta una nota de reunión')
   ];
   const v = valogat(k, { tema: 'work', nyelv: 'es' });
@@ -390,7 +390,7 @@ t('🔴 a NÉMA VISSZAESÉS három alakja mind kiesik a spanyol csomagból', () 
 
 t('a spanyol felületi szöveg a NYELVI TÁBLÁBÓL jön, nem helyszíni fordításból', () => {
   const k = [esCikk('Sort your inbox fast', 'Ordena tu bandeja de entrada'),
-    esCikk('Write a polite complaint email', 'Escribe una queja educada'),
+    esCikk('Write a polite follow-up email', 'Escribe un correo de seguimiento educado'),
     esCikk('Draft a meeting note', 'Redacta una nota de reunión')];
   const html = konyvHtml(valogat(k, { tema: 'work', nyelv: 'es' }), { nyelv: 'es', tema: 'work' });
   // 🇪🇺 A MI-JELÖLÉS ÉS AZ ŐSZINTE NYITÓ RÉSZ MINDKÉT NYELVEN KÖTELEZŐ.
@@ -461,7 +461,7 @@ t('🔑 a horgony a SLUG-ból jön, NEM a címből (a kettő a cikkek ~11%-áná
 });
 
 t('🔑 az azonosítók EGYEDIEK — két EGYFORMA slug is két külön horgonyt kap', () => {
-  const a = cikk('Sort your inbox one'), b = cikk('Write a polite complaint email');
+  const a = cikk('Sort your inbox one'), b = cikk('Write a polite follow-up email');
   b.slug = a.slug;                                     // szándékos ütközés
   const m = horgonyok([{ id: 'work', cikkek: [a, b] }]);
   assert.equal(new Set(m.values()).size, 2, '🔴 két cikk UGYANAZT a horgonyt kapta');
@@ -537,21 +537,19 @@ t('🔑 a BEÍRHATÓ prompt és a szemléltető példa különválik', () => {
 
 t('💬 prompt nélküli útmutató KIMARAD a függelékből (nem kap üres helyet)', () => {
   const nincs = cikk('Sort your inbox fast');
-  const van = cikk('Write a polite complaint email');
+  const van = cikk('Write a polite follow-up email');
   van.md += '\n💬 *"Draft a polite complaint about a late delivery."*\n';
   const lista = promptLista([{ id: 'work', cikkek: [nincs, van] }], 'en');
   assert.equal(lista.length, 1, 'a prompt nélküli útmutató is bekerült a függelékbe');
   assert.equal(lista[0].cikk, van);
 });
 
-t('💬 a függelék CSAK a nagy gyűjteményben van (a termékszöveg is csak ott ígéri)', () => {
+t('💬 a függelék MINDEN csomagban ott van (2026-11-16: eddig csak a nagyban — user: „tegyük bele a meglévő anyagot”)', () => {
   const k = mintaKeszlet().map(c => ({ ...c, md: c.md + '\n💬 *"Do the thing."*\n' }));
-  const nagy = konyvHtml(valogat(k, { tema: 'all' }), { tema: 'all' });
-  assert.match(nagy, /id="prompts"/, '🔴 a nagy csomagból hiányzik a prompt-függelék');
-  assert.match(nagy, /Every prompt and example in this pack/);
-  for (const tema of [null, 'work']) {
-    assert.ok(!/id="prompts"/.test(konyvHtml(valogat(k, tema ? { tema } : {}), { tema })),
-      `${tema}: a mini csomagba is bekerült a függelék`);
+  for (const tema of ['all', null, 'work']) {
+    const html = konyvHtml(valogat(k, tema ? { tema } : {}), { tema });
+    assert.match(html, /id="prompts"/, `🔴 ${tema}: hiányzik a prompt-függelék`);
+    assert.match(html, /Every prompt and example in this pack/);
   }
 });
 
@@ -711,7 +709,8 @@ t('🔗 ÉLES: MIND A 18 csomagban 0 halott belső link és 0 ütköző azonosí
       assert.deepEqual(halott, [], `${tema}-${nyelv}: ${halott.length} halott belső link`);
       // A jegyzékben MINDEN útmutató szerepel, és mind link.
       const toc = tocResz(html);
-      assert.equal((toc.match(/href="#/g) || []).length, c.db + c.szakaszok.length + (tema === 'all' ? 1 : 0),
+      const fuggelekDb = (/id="prompts"/.test(html) ? 1 : 0) + (/id="glossary"/.test(html) ? 1 : 0);   // 2026-11-16: minden csomagban
+      assert.equal((toc.match(/href="#/g) || []).length, c.db + c.szakaszok.length + fuggelekDb,
         `${tema}-${nyelv}: a jegyzék nem a teljes csomagot sorolja fel`);
     }
   }
@@ -764,11 +763,11 @@ t('a mért oldalszám a MÉRT 600 szó/oldal arányból jön', () => {
 // ===================================================================
 console.log('\n🧪 frissített kiadás (10-19)');
 
-t('📚 több útmutató: témánként 20, a gyűjteményben minden besorolt (250-es plafon)', () => {
-  // MÉRVE 10-19 (382 útmutató): work 88 · home 54 · learn 35 · explain 27 ·
-  // create 23 · safe 8 · automate 8 · money 5 alkalmas; besorolt összesen 248.
-  assert.equal(DB_MINI, 20);
-  assert.equal(DB_NAGY, 250);
+t('📚 több útmutató: témánként 30, a gyűjteményben minden besorolt (400-as plafon)', () => {
+  // MÉRVE 11-16 (383 útmutató, a témaminták bővítése után): 353 besorolt, alkalmas útmutató; a nagy csomagban 354.
+  // (10-19: 20 / 250 volt, 248 besorolttal.)
+  assert.equal(DB_MINI, 30);
+  assert.equal(DB_NAGY, 400);
 });
 
 t('🔄 a borítón kint van, hogy FRISSÍTETT kiadás, a gyártás napjával — angolul és spanyolul', () => {
@@ -790,7 +789,8 @@ t('💬 a FÉLKÖVÉREN BELÜLI címke („**💬 Example:**”) után is megtal
 t('🧾 QA 10-19: a függelék FELVEZETŐ sorában sem marad nyers „**Focus**" (all-en 579. oldal)', () => {
   const src = readFileSync(join(ROOT, 'core', 'ebook-build.js'), 'utf-8');
   assert.match(src, /pr__b">\$\{felkover\(esc\(p\.bevezeto\)\)\}/, 'a felvezető sor nyersen marad');
-  assert.match(src, /pr__t">\$\{p\.kod \? felkover\(esc\(p\.szoveg\)\)/, 'a kódként kigyűjtött prompt nyersen marad');
+  // 2026-11-16: a kitölthető-jelölés (mezoJeloles) körbeveszi — a felkövér-javítás belül ugyanaz
+  assert.match(src, /pr__t">\$\{(?:mezoJeloles\()?p\.kod \? felkover\(esc\(p\.szoveg\)\)/, 'a kódként kigyűjtött prompt nyersen marad');
 });
 
 t('🧾 QA 10-19: a hosszú kódsor TÖRDELŐDIK, nem lóg ki a lapról (all-en 265., learn-en 6. oldal)', () => {
