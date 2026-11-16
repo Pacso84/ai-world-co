@@ -1,6 +1,6 @@
 {
   "slug": "use-claude-to-pull-out-the-key-points-of-a-long-research-paper",
-  "keszult": "2026-11-03T21:27:30.982Z",
+  "keszult": "2026-11-16T17:51:01.920Z",
   "promptok": {
     "2ffe3707247a": [],
     "dea05903c28d": [
@@ -11,6 +11,33 @@
       {
         "eredeti": "240 participants",
         "hely": "number of participants"
+      }
+    ]
+  },
+  "promptok_hu": {
+    "52fb4c1b3af8": [],
+    "e40203b52a14": [
+      {
+        "eredeti": "240 résztvevővel",
+        "hely": "a résztvevők száma"
+      }
+    ]
+  },
+  "promptok_es": {
+    "12c4cfa652bc": [
+      {
+        "eredeti": "cinco secciones",
+        "hely": "el número de secciones"
+      }
+    ],
+    "e9aba21c0a9d": [
+      {
+        "eredeti": "ensayo controlado aleatorizado",
+        "hely": "el tipo de estudio"
+      },
+      {
+        "eredeti": "240 participantes",
+        "hely": "el número de participantes"
       }
     ]
   }
