@@ -27,6 +27,8 @@ import { sugoForrasok } from './sugo-parositas.js';
 import { HORGONY_BE, FUTAS_MAX_PROBA, UJRAPROBA_NAP, horgonyJegyzes } from './sugo-horgony.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+/** Az állapotfájl alapértelmezett helye (a napi riport ezt olvassa). */
+const ALLAPOT_UT = join(ROOT, 'memory', 'horgony-allapot.json');
 const rovid = (s, n) => String(s ?? '').replace(/\s+/g, ' ').trim().slice(0, n);
 
 /**
@@ -91,7 +93,7 @@ export async function horgonyozottValasztas(jeloltek, limit, { keres, most = Dat
  * NYILVÁNOS repó → csak a téma címe, az eszköz neve és a RÖGZÍTETT magyar ok kerül bele; súgószöveg és az AI szabad
  * szövegű indoka (`reason`) soha. Hibára nem dob (a futást nem állíthatja le).
  */
-export function horgonyAllapotIr(osszegzes, { fajl = 'memory/horgony-allapot.json', most = Date.now() } = {}) {
+export function horgonyAllapotIr(osszegzes, { fajl = null, most = Date.now() } = {}) {
   try {
     const o = osszegzes && typeof osszegzes === 'object' ? osszegzes : {};
     const jegyzesek = (Array.isArray(o.jegyzesek) ? o.jegyzesek : []).filter(x => x && typeof x === 'object');
@@ -102,10 +104,12 @@ export function horgonyAllapotIr(osszegzes, { fajl = 'memory/horgony-allapot.jso
       sikertelen: jegyzesek.filter(x => x.horgony?.ok === false || x.atmeneti === true).map(x => ({
         cim: rovid(x.cim, 120),
         eszkoz: rovid(x.eszkoz, 60),
-        ok: rovid(x.horgony?.ok_ok ?? x.ok_ok, 80) || 'ismeretlen ok'   // CSAK a rögzített magyar ok — a `reason`-t nem olvassuk
+        ok: rovid(x.horgony?.ok_ok ?? x.ok_ok, 80) || 'ismeretlen ok',   // CSAK a rögzített magyar ok — a `reason`-t nem olvassuk
+        // átmeneti = a súgó most nem volt elérhető: nem kap 14 napos várakozást, a riport ezt külön kimondja
+        ...(x.atmeneti === true ? { atmeneti: true } : {})
       }))
     };
-    const ut = isAbsolute(fajl) ? fajl : join(ROOT, fajl);
+    const ut = fajl ? (isAbsolute(fajl) ? fajl : join(ROOT, fajl)) : ALLAPOT_UT;
     mkdirSync(dirname(ut), { recursive: true });
     writeFileSync(ut, JSON.stringify(j, null, 2), 'utf-8');
   } catch (e) {

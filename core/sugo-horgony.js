@@ -181,7 +181,10 @@ export async function horgonyKeres(tema, { ask, indexFn = indexLetolt, sugoSzove
 
     // 6. a cikk szövege (privát tárból)
     const sz = await sugoSzovegFn(cikk.url);
-    if (!sz || String(sz.szoveg || '').length < MIN_SUGO_SZOVEG) return { ok: false, reason: 'a súgócikk nem tölthető le', jegyzesOk: 'a súgócikk nem tölthető le', atmeneti: true, cost };
+    // nem jött le → ÁTMENETI (a következő futás újra próbálja); lejött, de túl rövid → TARTÓS (14 nap): egy tartósan rövid
+    // cikkre különben minden futás újabb AI-hívást égetne.
+    if (!sz) return { ok: false, reason: 'a súgócikk nem tölthető le', jegyzesOk: 'a súgócikk nem tölthető le', atmeneti: true, cost };
+    if (String(sz.szoveg || '').length < MIN_SUGO_SZOVEG) return { ok: false, reason: 'a súgócikk túl rövid', jegyzesOk: 'a súgócikk túl rövid', cost };
     const sugoCim = tiszta(sz.cim || cikk.cim).slice(0, 160);   // a cikkcím hossza korlátos (a téma-fájl nyilvános)
 
     // 7. ellenőrző AI: a cikkből tényleg írható-e útmutató ehhez a témához

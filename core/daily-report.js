@@ -27,7 +27,7 @@ import { summarizeRuns, describeFailures } from './make-health.js';
 // A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
 // összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
 import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
-import { describePosts, describeRepeat, ismetlesSuru, describeTranslationGaps, mergeLine, termekHirLine,huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor, fekLine, deployLine, eloOrszemLine } from './report-lines.js';
+import { describePosts, describeRepeat, ismetlesSuru, describeTranslationGaps, mergeLine, termekHirLine,huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor, fekLine, horgonyLine, deployLine, eloOrszemLine } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
@@ -999,6 +999,13 @@ async function main() {
     const sor = fekLine(JSON.parse(readFileSync(join(ROOT, 'memory', 'fek-allapot.json'), 'utf-8')), new Date().toISOString().slice(0, 10));
     if (sor) lines.push(sor);
   } catch { /* még nem futott — nem baj */ }
+
+  // 🧭 SÚGÓ-HORGONY (2026-11-14, TÉNYKÖZPONT 1d): hány útmutató-téma kapott hivatalos súgócikket, melyik nem, és mikor
+  // próbáljuk újra. Csendes, ha aznap/előző nap nem volt horgony-próba. A fájl hiánya/hibája sosem állítja meg a riportot.
+  try {
+    const sor = horgonyLine(JSON.parse(readFileSync(join(ROOT, 'memory', 'horgony-allapot.json'), 'utf-8')), new Date().toISOString().slice(0, 10));
+    if (sor) lines.push(sor);
+  } catch { /* még nem volt horgony-próba — nem baj */ }
 
   // 🔍 BING-TÉRKÉP (2026-11-14): a Bing beolvassa-e a webhelytérképeinket (core/bing-terkep.js). Csendes, ha rendben;
   // baj esetén magától újraküldi (legfeljebb 2 naponta, emlék: memory/bing-terkep.json). Hiba sosem állítja meg a riportot.

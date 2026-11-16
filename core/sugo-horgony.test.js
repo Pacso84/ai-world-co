@@ -198,9 +198,17 @@ ta('(d) a súgószöveg null → nem tölthető le', async () => {
   assert.equal(r.ok, false); assert.match(r.reason, /nem tölthető le/); assert.equal(ask.hivasok.length, 1);
 });
 
-ta('(e) rövid szöveg (100 kar.) → nem tölthető le', async () => {
+ta('(e) rövid szöveg (100 kar.) → túl rövid, TARTÓS kudarc (14 nap; nem átmeneti)', async () => {
   const r = await horgonyKeres(konkretTema, { ask: okAsk(), indexFn, sugoSzovegFn: async () => ({ szoveg: 'x'.repeat(100), cim: 'c' }) });
-  assert.equal(r.ok, false); assert.match(r.reason, /nem tölthető le/);
+  assert.equal(r.ok, false); assert.match(r.reason, /túl rövid/);
+  assert.equal(r.jegyzesOk, 'a súgócikk túl rövid');
+  assert.equal(r.atmeneti, undefined, 'a lejött, de rövid cikk nem átmeneti: különben minden futás AI-hívást égetne rá');
+});
+
+ta('(e2) a súgószöveg null (nem jött le) → nem tölthető le, ÁTMENETI', async () => {
+  const r = await horgonyKeres(konkretTema, { ask: okAsk(), indexFn, sugoSzovegFn: async () => null });
+  assert.equal(r.ok, false); assert.equal(r.jegyzesOk, 'a súgócikk nem tölthető le');
+  assert.equal(r.atmeneti, true);
 });
 
 ta('(f) az ellenőrző ok:false → ok:false az okával', async () => {
@@ -327,6 +335,7 @@ ta('(l4) minden további kudarc-ág rögzített jegyzetet ad', async () => {
   assert.equal((await horgonyKeres(konkretTema, { ask: okAsk(), indexFn: async () => [], sugoSzovegFn: szovegFn })).jegyzesOk, 'a súgó cikklistája nem jött le');
   assert.equal((await horgonyKeres(konkretTema, { ask: hamisAsk([val({ pick: 0 })]), indexFn, sugoSzovegFn: szovegFn })).jegyzesOk, 'nincs illő súgócikk');
   assert.equal((await horgonyKeres(konkretTema, { ask: okAsk(), indexFn, sugoSzovegFn: async () => null })).jegyzesOk, 'a súgócikk nem tölthető le');
+  assert.equal((await horgonyKeres(konkretTema, { ask: okAsk(), indexFn, sugoSzovegFn: async () => ({ szoveg: 'x', cim: 'c' }) })).jegyzesOk, 'a súgócikk túl rövid');
 });
 
 ta('a forráscím legfeljebb 160 karakter', async () => {

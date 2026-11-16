@@ -10,8 +10,9 @@
 
 import assert from 'assert/strict';
 import {
-  describePosts, describeRepeat, ismetlesSuru, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine, zaroSor, hibaSorok, fekLine, deployLine, eloOrszemLine
+  describePosts, describeRepeat, ismetlesSuru, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine, zaroSor, hibaSorok, fekLine, horgonyLine, deployLine, eloOrszemLine
 } from './report-lines.js';
+import { UJRAPROBA_NAP } from './sugo-horgony.js';
 import { readFileSync } from 'fs';
 
 let pass = 0;
@@ -485,6 +486,75 @@ t('🧯 a napi jelentés beköti a fék-sort, hibás/hiányzó fájlra sem dől 
   assert.match(src, /fek-allapot\.json/);
   assert.match(src, /fekLine\([\s\S]{0,200}\} catch \{/, 'try/catch védi');
 });
+
+// ---------- 🧭 Súgó-horgony sor (TÉNYKÖZPONT 1d, 2026-11-14) ----------
+
+{
+  const MA = '2026-11-14';
+  const AT = '2026-11-14T02:10:00.000Z';
+  const bukas = (eszkoz, atmeneti) => ({ cim: 'How to use ' + (eszkoz || 'X'), eszkoz, ok: 'a súgócikk túl rövid', ...(atmeneti ? { atmeneti: true } : {}) });
+
+  t('🧭 horgonyLine: hibás / hiányzó / régi állapot vagy nincs mit mondani → csendes (null), kivétel nélkül', () => {
+    for (const rossz of [null, undefined, 'rossz', 42, [], {}]) assert.equal(horgonyLine(rossz, MA), null, String(rossz));
+    assert.equal(horgonyLine({ at: AT, probak: 0, sikeres: 3, sikertelen: [] }, MA), null, '0 próba → csendes');
+    assert.equal(horgonyLine({ at: AT, probak: -1, sikeres: 3, sikertelen: [] }, MA), null, 'negatív próba');
+    assert.equal(horgonyLine({ at: AT, probak: 'sok', sikeres: 3, sikertelen: [] }, MA), null, 'nem szám');
+    assert.equal(horgonyLine({ at: '2026-11-12T23:59:00.000Z', probak: 3, sikeres: 3, sikertelen: [] }, MA), null, 'két napos → régi');
+    assert.equal(horgonyLine({ probak: 3, sikeres: 3, sikertelen: [] }, MA), null, 'at nélkül nem hihető');
+    assert.equal(horgonyLine({ at: 'nem dátum', probak: 3, sikeres: 3, sikertelen: [] }, MA), null, 'rossz dátum');
+    assert.equal(horgonyLine({ at: AT, probak: 3, sikeres: 3, sikertelen: [] }, 'rossz'), null, 'rossz maNap');
+    assert.equal(horgonyLine({ at: AT, probak: 3, sikeres: 3, sikertelen: [] }), null, 'maNap nélkül');
+    assert.equal(horgonyLine({ at: AT, probak: 2, sikeres: 0, sikertelen: [] }, MA), null, 'nincs sikeres és nincs sikertelen → nincs mit mondani');
+    assert.equal(horgonyLine({ at: AT, probak: 2, sikeres: 0, sikertelen: 'rossz' }, MA), null, 'nem-tömb sikertelen = üres lista');
+    assert.equal(horgonyLine({ at: AT, probak: 2, sikeres: 0, sikertelen: [null, 'x', 7] }, MA), null, 'csak nem-objektum elemek → üres');
+  });
+
+  t('🧭 horgonyLine: csak sikerek — ma és tegnap', () => {
+    const j = { at: AT, probak: 3, sikeres: 3, sikertelen: [] };
+    assert.equal(horgonyLine(j, MA), '🧭 Súgó-horgony: ma 3 útmutató-téma kapott hivatalos súgócikket — ezek a súgóból íródnak.');
+    assert.equal(horgonyLine(j, '2026-11-15'), '🧭 Súgó-horgony: tegnap 3 útmutató-téma kapott hivatalos súgócikket — ezek a súgóból íródnak.');
+    assert.equal(horgonyLine(j, '2026-11-16'), null, 'a tegnapnál régebbi állapot nem állítható');
+  });
+
+  t('🧭 horgonyLine: mind tartós kudarc → 14 nap múlva újra (csökkenő darab, döntetlennél ábécé)', () => {
+    const j = { at: AT, probak: 5, sikeres: 2, sikertelen: [bukas('Lumo'), bukas('Kimi'), bukas('Kimi')] };
+    assert.equal(horgonyLine(j, MA),
+      '🧭 Súgó-horgony: 2 téma kapott hivatalos súgócikket, 3 nem (Kimi 2, Lumo 1) — azok 14 nap múlva újra próbálkoznak, addig más téma íródik.');
+  });
+
+  t('🧭 horgonyLine: mind átmeneti → a következő futásban újra', () => {
+    const j = { at: AT, probak: 2, sikeres: 0, sikertelen: [bukas('Kimi', true), bukas('Kimi', true)] };
+    assert.equal(horgonyLine(j, MA),
+      '🧭 Súgó-horgony: 0 téma kapott hivatalos súgócikket, 2 nem (Kimi 2) — a súgó most nem volt elérhető, a következő futásban újra próbálkoznak, addig más téma íródik.');
+  });
+
+  t('🧭 horgonyLine: vegyes (tartós + átmeneti) → a két szám külön', () => {
+    const j = { at: AT, probak: 4, sikeres: 1, sikertelen: [bukas('Kimi'), bukas('Kimi', true), bukas('Lumo')] };
+    assert.equal(horgonyLine(j, MA),
+      '🧭 Súgó-horgony: 1 téma kapott hivatalos súgócikket, 3 nem (Kimi 2, Lumo 1) — 2 közülük 14 nap múlva próbálkozik újra, 1 (átmeneti hiba) már a következő futásban; addig más téma íródik.');
+  });
+
+  t('🧭 horgonyLine: eszköznév nélkül nincs zárójel; a nem-objektum elemek kimaradnak', () => {
+    assert.equal(horgonyLine({ at: AT, probak: 1, sikeres: 0, sikertelen: [{ cim: 'x', eszkoz: '', ok: 'y' }] }, MA),
+      '🧭 Súgó-horgony: 0 téma kapott hivatalos súgócikket, 1 nem — azok 14 nap múlva újra próbálkoznak, addig más téma íródik.');
+    assert.equal(horgonyLine({ at: AT, probak: 1, sikeres: 0, sikertelen: [{ cim: 'x', ok: 'y' }, null, 'rossz'] }, MA),
+      '🧭 Súgó-horgony: 0 téma kapott hivatalos súgócikket, 1 nem — azok 14 nap múlva újra próbálkoznak, addig más téma íródik.');
+  });
+
+  t('🧭 horgonyLine: a sor egysoros, és a „14” egyezik a sugo-horgony UJRAPROBA_NAP-jával', () => {
+    const sor = horgonyLine({ at: AT, probak: 1, sikeres: 0, sikertelen: [bukas('Kimi')] }, MA);
+    assert.ok(!sor.includes('\n'));
+    assert.ok(sor.includes(`${UJRAPROBA_NAP} nap múlva`), 'a várakozási idő a konstansból jön, nem beégetve');
+  });
+
+  t('🧭 a napi jelentés beköti a horgony-sort a fék után, hibás/hiányzó fájlra sem dől el', () => {
+    const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
+    assert.match(src, /horgonyLine\(/);
+    assert.ok(src.includes("join(ROOT, 'memory', 'horgony-allapot.json')"));
+    assert.match(src, /horgonyLine\([\s\S]{0,200}\} catch \{/, 'try/catch védi');
+    assert.ok(src.indexOf('horgonyLine(JSON') > src.indexOf('fekLine(JSON'), 'a 🧯 Fék blokk után áll');
+  });
+}
 
 console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');
 

@@ -5,6 +5,7 @@ import { szortToldalek } from './szort-robot.js';
 import { utmutatoE } from './guide-kind.js';
 import { leckeNevHu } from './auto-check-codes.js';
 import { eszkozFelsorolas } from './fek.js';   // 🧯 közös felsorolás-sorrend a fék konzol- és riport-sorához
+import { UJRAPROBA_NAP } from './sugo-horgony.js';   // 🧭 hány nap múlva próbálja újra a horgony a tartósan sikertelen témát
 //
 // User-jelzés (2026-08-06): "ne küldjön valótlan adatokat".
 //
@@ -623,5 +624,47 @@ export function fekLine(allapot, maNap) {
     if (at !== String(maNap) && at !== tegnap) return null;
     const nevek = eszkozFelsorolas(allapot.eszkozok);
     return `🧯 Fék: ${db} útmutató-téma vár hivatalos súgóra${nevek ? ` (${nevek})` : ''} — ezekről addig nem írunk.`;
+  } catch { return null; }
+}
+
+/**
+ * 🧭 A SÚGÓ-HORGONY sora a napi Telegram-riportban (TÉNYKÖZPONT 1d, 2026-11-14): hány útmutató-téma kapott hivatalos
+ * súgócikket (azokat a súgóból írjuk), és hány nem — és mikor próbálkozunk velük újra (core/horgony-valasztas.js írja:
+ * memory/horgony-allapot.json).
+ * `allapot` = { at, probak, sikeres, sikertelen: [{ cim, eszkoz, ok, atmeneti? }] } · `maNap` = 'YYYY-MM-DD' (UTC).
+ * Kétféle kudarc van: a TARTÓS (a téma miatt: nincs illő cikk, túl rövid cikk…) UJRAPROBA_NAP napot vár, az ÁTMENETI
+ * (a súgó most nem volt elérhető) már a következő futásban újra próbálkozik — a sor ezt külön kimondja.
+ * CSENDES (null), ha nincs fájl / hibás a tartalma / nem volt próba / az `at` nem a mai vagy tegnapi napé (a CI naponta
+ * 3-szor fut, a riport az első futás előtt is mehet, ezért a tegnapi állapot még friss) / nincs mit mondani.
+ * SOSEM dob.
+ */
+export function horgonyLine(allapot, maNap) {
+  try {
+    if (!allapot || typeof allapot !== 'object' || Array.isArray(allapot)) return null;
+    const probak = Number(allapot.probak);
+    if (!Number.isFinite(probak) || probak <= 0) return null;
+    const at = String(allapot.at || '').slice(0, 10);
+    const ma = Date.parse(String(maNap) + 'T00:00:00Z');
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(at) || !Number.isFinite(Date.parse(at + 'T00:00:00Z')) || !Number.isFinite(ma)) return null;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(maNap))) return null;
+    const tegnap = new Date(ma - 86400000).toISOString().slice(0, 10);
+    if (at !== String(maNap) && at !== tegnap) return null;
+
+    const sikeres = Math.max(0, Math.floor(Number(allapot.sikeres) || 0));
+    const bukasok = (Array.isArray(allapot.sikertelen) ? allapot.sikertelen : []).filter(x => x && typeof x === 'object' && !Array.isArray(x));
+    if (!sikeres && !bukasok.length) return null;
+
+    const nap = at === String(maNap) ? 'ma' : 'tegnap';
+    if (!bukasok.length) return `🧭 Súgó-horgony: ${nap} ${sikeres} útmutató-téma kapott hivatalos súgócikket — ezek a súgóból íródnak.`;
+
+    const darabok = {};
+    for (const x of bukasok) { const n = String(x.eszkoz ?? '').trim(); if (n) darabok[n] = (darabok[n] || 0) + 1; }
+    const nevek = eszkozFelsorolas(darabok);
+    const atmeneti = bukasok.filter(x => x.atmeneti === true).length;
+    const tartos = bukasok.length - atmeneti;
+    const elso = `🧭 Súgó-horgony: ${sikeres} téma kapott hivatalos súgócikket, ${bukasok.length} nem${nevek ? ` (${nevek})` : ''} — `;
+    if (!atmeneti) return elso + `azok ${UJRAPROBA_NAP} nap múlva újra próbálkoznak, addig más téma íródik.`;
+    if (!tartos) return elso + 'a súgó most nem volt elérhető, a következő futásban újra próbálkoznak, addig más téma íródik.';
+    return elso + `${tartos} közülük ${UJRAPROBA_NAP} nap múlva próbálkozik újra, ${atmeneti} (átmeneti hiba) már a következő futásban; addig más téma íródik.`;
   } catch { return null; }
 }

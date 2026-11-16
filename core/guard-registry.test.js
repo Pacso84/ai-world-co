@@ -67,7 +67,8 @@ console.log('🧪 őrszem-nyilvántartás — író · riport-olvasás · frisse
 /** Őrszem-kimenet, bár a neve nem `-guard.json` — ugyanazok a szabályok vonatkoznak rá. */
 const EGYEB_ORSZEM = {
   'housekeeping.json': 'a Házmester beépített hízás-őre (watchGrowth) ide írja a figyelmeztetést, a napi riport ebből szól',
-  'ceg-lefedettseg.json': 'a guide --cover MINDEN futásban írja (CEO 3i2); témátlan cég / elakadt coverage-téma → 🏢 riport-sor (2026-11-05)'
+  'ceg-lefedettseg.json': 'a guide --cover MINDEN futásban írja (CEO 3i2); témátlan cég / elakadt coverage-téma → 🏢 riport-sor (2026-11-05)',
+  'horgony-allapot.json': 'a súgó-horgony próbáinak állapota (core/horgony-valasztas.js horgonyAllapotIr, a guide agent írja): hány próba, hány siker, mely témák nem kaptak súgócikket; a napi riport 🧭 sora olvassa (tényközpont 1d)'
 };
 
 /**
@@ -88,7 +89,8 @@ const FRISSESSEG_KIVETEL = {
   'budget-guard.json': 'csak GOND esetén íródik (core/budget.js jeletHagy) — élesben a fájl nem is létezik',
   'ai-latency-guard.json': 'csak akkor íródik, ha VOLT AI-hívás: a HAVI keret betelte (user-döntés — minden agent paid-only, az ask() hívás nélkül null-t ad) hónapfordulóig egyetlen hívást sem enged, és ott a régi `at` a helyes állapot, nem lefagyás',
   'semantic-guard.json': 'naponta csak az ELSŐ szemantikus keresés írja, és csak ha az Író/Útmutató dolgozott — üres napon nincs keresés, a régi `at` normális',
-  'name-guard.json': 'csak NÉV-ZÁR-kifogásnál íródik (core/name-guard.js jegyezNevZar), és nincs felső szintű `at` mezője'
+  'name-guard.json': 'csak NÉV-ZÁR-kifogásnál íródik (core/name-guard.js jegyezNevZar), és nincs felső szintű `at` mezője',
+  'horgony-allapot.json': 'csak akkor íródik, ha VOLT horgony-próba (agents/guide/agent.js: if (valasztas.probak)); próba nélküli napon a régi `at` a helyes állapot, nem lefagyás'
 };
 
 /** Memória-író, ami NEM őrszem-kimenet. Új állapotfájl → ide, egy mondat indoklással. */

@@ -129,7 +129,7 @@ ta('átmeneti kudarc: próbának számít, a téma kimarad, de NINCS horgony-jeg
   horgonyAllapotIr(r, { fajl, most: MOST });
   const j = JSON.parse(readFileSync(fajl, 'utf-8'));
   assert.equal(j.sikeres, 1);
-  assert.deepEqual(j.sikertelen, [{ cim: 'How to use Perplexity Spaces', eszkoz: 'Perplexity', ok: 'a súgó cikklistája nem jött le' }]);
+  assert.deepEqual(j.sikertelen, [{ cim: 'How to use Perplexity Spaces', eszkoz: 'Perplexity', ok: 'a súgó cikklistája nem jött le', atmeneti: true }]);
 });
 
 ta('a keres dobása is átmeneti: nincs jegyzés', async () => {
