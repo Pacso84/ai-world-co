@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "written_at": "2026-11-17T05:41:48.291Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.00427,
+    "original_draft": "2026-11-17T05-40-35-714Z_openai-blog_At_Holiday_Extras__dots_get_to_work_before_anyone_.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/business/customer-stories/holiday-extras-dots",
+    "source_links": [
+      "https://openai.com/business/customer-stories/holiday-extras-dots",
+      "https://www.databricks.com/blog/how-block-powers-collaborative-ai-agents-buzz-and-unity-gateway"
+    ],
+    "source_snippet_len": 229,
+    "source_text_via": [
+      "html",
+      "html"
+    ],
+    "source_text_len": 9007,
+    "source_text_key": "eb036f719461625b",
+    "source_overlap_words": 8,
+    "merged_from": 2,
+    "merged_theme": "AI agents in workplace automation",
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-17T05:43:25.773Z",
+    "slug": "ai-agents-at-work-what-holiday-extras-and-block-show-us",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 669
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent teaching voice with clear explanations of terms, balanced presentation of two different approaches without ranking, friendly tone throughout, strong What this means for you section with actionable advice for different reader levels, and a practical wrap-up with a concrete next step.",
+      "_aiCost": 0.00118146,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-17T05:45:05.063Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a case study about how Holiday Extras and Block built internal AI agents ('dots' and 'Buzz') - not a product announcement for everyday users · súgó: The news is about Holiday Extras' internal AI agents they call 'dots' (not ChatGPT), while the help article is about OpenAI's dot feature in Ch",
+    "image_v": 2,
+    "image_at": "2026-11-17T05:49:34.661Z",
+    "seo": {
+      "meta_description": "Learn how AI agents like Holiday Extras' dots and Block's Buzz are changing workplaces by preparing reports and collaborating with humans.",
+      "keywords": [
+        "AI agents at work",
+        "AI agents in workplace",
+        "what are AI agents",
+        "AI agent use cases",
+        "AI agents for business",
+        "AI workplace collaboration"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add more specific details about what AI agents actually do (e.g., specific tasks, time saved) to improve keyword relevance",
+        "Include the term 'AI agent' earlier in the subtitle for better topical signal",
+        "Consider adding a practical example or use case to help readers understand real-world applications"
+      ],
+      "optimised_at": "2026-11-17T05:50:35.280Z"
+    },
+    "fact_verified_at": "2026-11-17T05:52:31.387Z"
+  },
+  "article_markdown": "---\ntitle: \"AI Agents at Work: What Holiday Extras and Block Show Us\"\nsubtitle: \"Two recent company announcements describe AI agents that prepare reports, track follow-ups and share workspaces with people.\"\ncategory: \"ai-news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"workplace-ai\", \"productivity\", \"getting-started\"]\n---\n\n# AI Agents at Work: What Holiday Extras and Block Show Us\n\n> **In short:** Holiday Extras says its employees' AI agents, which it calls \"dots,\" produce reports and flag problems before anyone asks. Block says its open source Buzz workspace lets people and AI agents collaborate in the same conversations.\n\nImagine opening your laptop and finding the report you needed already waiting, along with a note about the email you forgot to answer. Two recent official announcements describe workplaces where this kind of help is becoming normal.\n\n## What an AI agent is\n\nAn **AI agent** is an AI program that does more than answer questions. It can look up information, use connected apps and work through a task step by step. Think of it as a capable assistant who reads your to-do list, not just your questions.\n\n## Example 1: A travel company's daily helpers\n\nHoliday Extras, a UK travel technology company, shared how its staff use what it calls \"dots.\" According to the company, one dot noticed a new app feature had launched and pulled performance data on its own. The VP of AI Innovation, Liam Thompson, said he didn't have to ask for it.\n\nThe dots work with connected tools. The company describes one dot pulling data from **Google BigQuery** (a service for storing and searching large amounts of data) through a **plugin** (an add-on that links one app to another).\n\nAnother employee, David Lee, talks with his dot during his morning commute. He can ask it to run a report, and the company says the results are ready when he reaches his desk. When some **API keys** (secret codes that let one program access another) needed retiring, his dot searched his email and listed the people who might be affected. David didn't have to rebuild that list from old threads.\n\n## Example 2: A shared space for people and agents\n\nBlock, the payments company, describes a different approach. Its open source workspace, called Buzz, puts employees and AI agents in the same group chats and one-on-one conversations. Users can create an agent, choose the **model** (the AI brain behind the agent) and bring it into a discussion with colleagues.\n\nBlock also says Buzz can use a range of models through one connection, provided by Databricks Unity Gateway. Some are **open-weight models**, meaning their underlying files are publicly available. Block describes one setup where a more capable model coordinates several smaller, cheaper models. The company says it is still experimenting with which combinations work best.\n\n## What this means for you\n\n- **In everyday life**: Think about recurring tasks you repeat each week, like gathering notes or summarizing messages. Those are good candidates to hand to an agent later.\n- **For your business or work**: Before connecting an agent to email, files or chat, check with your employer about which accounts are allowed. Both companies stress connected company data, so access rules matter.\n- **If you're just getting started**: Start with a low-stakes task, such as asking an AI tool to turn your rough meeting notes into a short checklist. Review the result yourself before you rely on it.\n- **If you already use it**: Ask your agent to remind you of unanswered messages and to explain where a past answer came from. Keep a short note of what you have shared with it.\n\n## Wrap-up\n\nHoliday Extras and Block both describe AI agents that work with people, not just for them. The lesson for everyday workers is that the most useful agents are connected carefully, checked regularly and given clear, specific tasks. Today, pick one repetitive task you do at work and write down exactly what you would want an assistant to finish for you. That list is your starting point.",
+  "original_title": "At Holiday Extras, dots get to work before anyone asks"
+}

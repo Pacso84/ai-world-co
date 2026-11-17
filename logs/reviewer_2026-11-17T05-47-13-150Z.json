@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-11-17T05:46:11.741Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00384478,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-run-your-first-viral-chatgpt-trend-prompt-from-start-.json",
+      "rejected": "REJECTED_GUIDE_how-to-run-your-first-viral-chatgpt-trend-prompt-from-start-.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.00181587
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-use-minimax-for-a-reusable-writing-prompt-you-can-sav.json",
+      "article": "ARTICLE_GUIDE_how-to-use-minimax-for-a-reusable-writing-prompt-you-can-sav.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00146244
+    }
+  ],
+  "finished_at": "2026-11-17T05:47:13.150Z",
+  "duration_seconds": 61.409
+}

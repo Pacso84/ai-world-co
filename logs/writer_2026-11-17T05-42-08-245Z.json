@@ -1,0 +1,74 @@
+{
+  "started_at": "2026-11-17T05:40:51.363Z",
+  "drafts_total": 4,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 6,
+  "merged_total": 1,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 1,
+    "html": 3,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.015338300000000001,
+  "by_article": [
+    {
+      "draft": "2026-11-17T05-40-35-715Z_google-workspace_Share_skills_and_add_files_from_Google_Drive__Gemi.json",
+      "writer_output": "WRITER_2026-11-17T05-40-35-715Z_google-workspace_Share_skills_and_add_files_from_Google_Drive__Gemi.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 2816,
+      "source_overlap_words": 14,
+      "cost_usd": 0.0044594,
+      "duration_ms": 19487,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-17T05-40-35-714Z_openai-blog_At_Holiday_Extras__dots_get_to_work_before_anyone_.json",
+      "writer_output": "WRITER_2026-11-17T05-40-35-714Z_openai-blog_At_Holiday_Extras__dots_get_to_work_before_anyone_.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "AI agents in workplace automation",
+      "source_via": [
+        "html",
+        "html"
+      ],
+      "source_chars": 9007,
+      "source_overlap_words": 8,
+      "cost_usd": 0.00427,
+      "duration_ms": 17499,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-16T17-42-03-088Z_zapier-blog_Zapier_ideas__25_Zaps_you_can_build_with_one_promp.json",
+      "writer_output": "WRITER_2026-11-16T17-42-03-088Z_zapier-blog_Zapier_ideas__25_Zaps_you_can_build_with_one_promp.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 16,
+      "cost_usd": 0.0044204,
+      "duration_ms": 18182,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 2,
+  "termek_extra": 0,
+  "finished_at": "2026-11-17T05:42:08.245Z",
+  "duration_seconds": 76.882
+}

@@ -1,6 +1,5 @@
 {
   "openai-blog": [
-    "https://openai.com/index/introducing-life-sci-bench",
     "https://openai.com/index/gpt-5-immunology-mystery",
     "https://openai.com/index/omio",
     "https://openai.com/index/patch-the-planet",
@@ -299,7 +298,8 @@
     "https://openai.com/index/our-first-phase-of-embedded-assessments",
     "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
     "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare",
-    "https://openai.com/index/the-kings-trust-and-openai"
+    "https://openai.com/index/the-kings-trust-and-openai",
+    "https://openai.com/business/customer-stories/holiday-extras-dots"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -787,7 +787,9 @@
     "https://blogs.nvidia.com/blog/mlperf-training-endpoints-vera-rubin/",
     "https://blogs.nvidia.com/blog/cuda-x-libraries-agents-accelerate-scientific-discovery/",
     "https://blogs.nvidia.com/blog/20-years-cuda/",
-    "https://blogs.nvidia.com/blog/rubin-hpc/"
+    "https://blogs.nvidia.com/blog/rubin-hpc/",
+    "https://blogs.nvidia.com/blog/dgx-spark-hpc-developer-kit-sc26/",
+    "https://blogs.nvidia.com/blog/ai-infrastructure-supply-chain/"
   ],
   "google-workspace": [
     "http://workspaceupdates.googleblog.com/2026/06/google-vault-now-supports-retention-rules-and-litigation-holds-for-Gemini-app.html",
@@ -1004,7 +1006,8 @@
     "http://workspaceupdates.googleblog.com/2026/11/more-detail-google-classroom-log-events-admin.html",
     "http://workspaceupdates.googleblog.com/2026/11/review-edits-across-microsoft-word-docx-and-Google-Docs-files.html",
     "http://workspaceupdates.googleblog.com/2026/11/customize-and-extend-workspace-with-apps-script.html",
-    "http://workspaceupdates.googleblog.com/2026/11/schedule-meetings-with-default-buffer-google-calendar.html"
+    "http://workspaceupdates.googleblog.com/2026/11/schedule-meetings-with-default-buffer-google-calendar.html",
+    "http://workspaceupdates.googleblog.com/2026/11/share-skills-add-files-from-Drive-Notebook-Photos-to-skills-Gemini-app.html"
   ],
   "google-research": [
     "https://research.google/blog/towards-passive-heart-health-monitoring-via-smartphone-camera/",
@@ -1121,9 +1124,6 @@
     "https://github.blog/ai-and-ml/github-copilot/build-once-run-on-any-agent-a-practical-guide-to-agent-skills/"
   ],
   "aws-ml": [
-    "https://aws.amazon.com/blogs/machine-learning/build-agentic-creative-workflows-with-amazon-quick-and-fal/",
-    "https://aws.amazon.com/blogs/machine-learning/how-decathlon-runs-demand-forecasting-at-scale-with-chronos-2/",
-    "https://aws.amazon.com/blogs/machine-learning/spreading-the-load-how-salesforce-met-multi-az-ha-with-sagemaker-inference-components/",
     "https://aws.amazon.com/blogs/machine-learning/batch-write-and-discover-records-in-amazon-sagemaker-feature-store/",
     "https://aws.amazon.com/blogs/machine-learning/manage-agents-tools-and-skills-at-scale-with-aws-agent-registry/",
     "https://aws.amazon.com/blogs/machine-learning/build-observable-enterprise-agentic-retrieval-using-managed-amazon-bedrock-knowledge-base-with-aws-cloudformation/",
@@ -1420,7 +1420,10 @@
     "https://aws.amazon.com/blogs/machine-learning/best-practices-for-writing-denied-topics-in-amazon-bedrock-guardrails/",
     "https://aws.amazon.com/blogs/machine-learning/customize-answers-per-tenant-in-amazon-bedrock-managed-knowledge-base/",
     "https://aws.amazon.com/blogs/machine-learning/use-prompt-caching-with-open-weight-models-on-amazon-bedrock/",
-    "https://aws.amazon.com/blogs/machine-learning/how-moengage-built-agentic-customer-engagement-on-amazon-bedrock-agentcore/"
+    "https://aws.amazon.com/blogs/machine-learning/how-moengage-built-agentic-customer-engagement-on-amazon-bedrock-agentcore/",
+    "https://aws.amazon.com/blogs/machine-learning/build-memory-aware-ai-agents-with-agentic-retrieve-on-amazon-bedrock-managed-knowledge-base/",
+    "https://aws.amazon.com/blogs/machine-learning/how-duco-transforms-financial-data-automation-with-amazon-bedrock-agentcore/",
+    "https://aws.amazon.com/blogs/machine-learning/taxonomy-of-multi-agent-design-patterns-anti-patterns-and-lessons-from-manufacturing/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -1882,7 +1885,6 @@
     "https://news.sap.com/2026/11/order-management-built-straight-into-sap-dataxstream/"
   ],
   "databricks": [
-    "https://www.databricks.com/blog/benchmarking-coding-agents-databricks-multi-million-line-codebase",
     "https://www.databricks.com/blog/enterprise-analytics-platform-evaluation",
     "https://www.databricks.com/blog/ambulatory-intelligence-gap",
     "https://www.databricks.com/blog/introducing-feature-views",
@@ -2181,7 +2183,8 @@
     "https://www.databricks.com/blog/build-real-time-next-best-offer-recommender-using-databricks-feature-views",
     "https://www.databricks.com/blog/introducing-databricks-ai-index-state-enterprise-ai-tokenomics",
     "https://www.databricks.com/blog/what-is-real-time-mode",
-    "https://www.databricks.com/blog/tabular-foundation-models-databricks-ai-runtime"
+    "https://www.databricks.com/blog/tabular-foundation-models-databricks-ai-runtime",
+    "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0"
   ],
   "snowflake": [
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-postgres-ml-online-feature-store",
@@ -2309,7 +2312,9 @@
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/inkling-2-small-snowflake-cortex-training",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/expedition-ai-customer-stories",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/gartner-magic-quadrant-data-lakehouse-platforms",
-    "https://www.snowflake.com/content/snowflake-site/global/en/blog/agentic-analytics-explained"
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/agentic-analytics-explained",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/trusted-american-si-partner-nations",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/open-data-sharing-iceberg-rest-catalog"
   ],
   "together": [
     "https://www.together.ai/blog/announcing-our-series-c",
@@ -2357,7 +2362,9 @@
     "https://www.together.ai/blog/auto-repair-for-together-gpu-clusters",
     "https://www.together.ai/blog/together-compiler-continual-compilation-for-ai-inference",
     "https://www.together.ai/blog/polymorphic-inference",
-    "https://www.together.ai/blog/how-we-do-agent-evals-at-together-ai"
+    "https://www.together.ai/blog/how-we-do-agent-evals-at-together-ai",
+    "https://www.together.ai/blog/road-to-together-compiler",
+    "https://www.together.ai/blog/making-open-models-work-for-long-horizon-agentic-workloads"
   ],
   "pinecone": [
     "https://www.pinecone.io/blog/generating-test-data-for-pinecone/",
@@ -3001,7 +3008,17 @@
     "https://www.notion.so/releases/2026-09-15",
     "https://www.notion.so/releases/2026-10-13",
     "https://www.notion.so/releases/2026-10-19",
-    "https://www.notion.so/releases/2026-08-14"
+    "https://www.notion.so/releases/2026-08-14",
+    "https://www.notion.com/releases/2026-10-19",
+    "https://www.notion.com/releases/2026-10-13",
+    "https://www.notion.com/releases/2026-09-15",
+    "https://www.notion.com/releases/2026-09-09",
+    "https://www.notion.com/releases/2026-08-28",
+    "https://www.notion.com/releases/2026-08-19",
+    "https://www.notion.com/releases/2026-08-14",
+    "https://www.notion.com/releases/2026-08-07",
+    "https://www.notion.com/releases/2026-07-31",
+    "https://www.notion.com/releases/2026-07-30"
   ],
   "microsoft-365": [
     "https://techcommunity.microsoft.com/t5/microsoft-365-insider-blog/more-control-and-better-accessibility-with-permalinks-in/ba-p/4532713",
@@ -3513,7 +3530,10 @@
     "https://zapier.com/blog/automate-microsoft-outlook-email-with-zapier",
     "https://zapier.com/blog/automate-google-hangouts-chat",
     "https://zapier.com/blog/automate-microsoft-excel",
-    "https://zapier.com/blog/automate-email-marketing"
+    "https://zapier.com/blog/automate-email-marketing",
+    "https://zapier.com/blog/track-google-alerts-in-any-app",
+    "https://zapier.com/blog/sms-messaging-automation",
+    "https://zapier.com/blog/automate-facebook-conversion-api-with-zapier"
   ],
   "dropbox-blog": [
     "  https://blog.dropbox.com/topics/company/dropbox-announces-q1-2026-results ",
@@ -3767,7 +3787,11 @@
     "https://github.blog/changelog/2026-11-10-github-app-support-for-enterprise-copilot-seat-management",
     "https://github.blog/changelog/2026-11-13-github-enterprise-server-support-in-the-github-copilot-app",
     "https://github.blog/changelog/2026-11-13-gemini-4-hydrogen-in-github-copilot",
-    "https://github.blog/changelog/2026-11-13-upcoming-deprecation-of-selected-github-copilot-models-in-december"
+    "https://github.blog/changelog/2026-11-13-upcoming-deprecation-of-selected-github-copilot-models-in-december",
+    "https://github.blog/changelog/2026-11-16-vs-code-retires-the-local-harness-in-february-2027",
+    "https://github.blog/changelog/2026-11-16-github-copilot-weekly-releases-november-9",
+    "https://github.blog/changelog/2026-11-16-github-copilot-models-deprecated-on-november-16-2026",
+    "https://github.blog/changelog/2026-11-16-control-where-github-copilot-customizations-come-from"
   ],
   "apple-newsroom": [
     "https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/",
@@ -3889,6 +3913,8 @@
     "https://elevenlabs.io/blog/open-source-tts-vs-paid-apis",
     "https://elevenlabs.io/blog/postnord",
     "https://elevenlabs.io/blog/autotorino-agents",
-    "https://elevenlabs.io/blog/the-year-of-more"
+    "https://elevenlabs.io/blog/the-year-of-more",
+    "https://elevenlabs.io/blog/what-is-an-llm",
+    "https://elevenlabs.io/blog/kotoba"
   ]
 }

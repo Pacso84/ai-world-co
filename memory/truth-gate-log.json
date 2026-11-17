@@ -1,19 +1,4 @@
 {
-  "2026-10-13": [
-    {
-      "at": "2026-10-13T15:25:23.962Z",
-      "file": "WRITER_GUIDE_how-to-ask-alexa-to-read-recipe-steps-out-loud-while-you-coo.json",
-      "action": "block",
-      "reasons": [
-        "Step 4 fabricates a specific voice command flow: 'Alexa, walk me through this recipe' followed by reading a URL aloud, or 'Alexa, read me this recipe' followed by pasting steps. Alexa+ does not have a documented recipe-walking feature triggered by these specific phrasings, and the article presents these as if they are confirmed flows. The behaviors described (repeating ingredients, asking 'are you ready to start', responding to 'next', 'pause', 'resume', 'repeat that', 'what step am I on?', 'go back one step', 'skip to the last step') are not verified Alexa+ features.",
-        "Step 8 fabricates the command 'Alexa, save this recipe' to save within the Alexa app and 'Alexa, send this recipe to my phone' to receive a text version, presented as features that exist on Alexa+ devices.",
-        "Step 1 instructs the user to look for a specific 'banner, badge, or label that says \"Alexa+\"' on a device's page in the Alexa app, presented as the way to verify Alexa+ is active. This UI element as described is not verified to exist in the Alexa app.",
-        "Step 2 instructs the user to 'read the URL aloud' for Alexa+ to use a webpage recipe. There is no verified Alexa+ feature that fetches a recipe from a URL spoken aloud by the user.",
-        "Step 7 fabricates that Alexa+ can convert metric measurements on the fly during a recipe session and resume the recipe with 'continue' at the same step, as a specific Alexa+ capability."
-      ],
-      "confidence": 7
-    }
-  ],
   "2026-10-14": [
     {
       "at": "2026-10-14T02:46:48.081Z",
@@ -209,6 +194,21 @@
         "The article says the selected voice carries across the whole app, but later advises users to \"Try setting one voice for Gemini Live and a different one for chat read-aloud.\" This contradicts Google's announcement that the selected voice carries across the entire app, including Gemini Live, language practice, and chat's Listen feature."
       ],
       "confidence": 10
+    }
+  ],
+  "2026-11-17": [
+    {
+      "at": "2026-11-17T05:42:52.190Z",
+      "file": "WRITER_2026-11-16T19-35-36-903Z_aiworld-editorial_This_Week_in_AI.json",
+      "action": "block",
+      "reasons": [
+        "The article describes a Google Labs tool called \"Tabletop\" for group planning via a shared link. This is an invented product/feature not supported by the source and not verifiable as real.",
+        "The article states Zapier launched a way to connect AI assistants to \"5,000 apps\" — this specific number is an invented statistic stated as fact.",
+        "The article states Google \"just added 66 new regional voices to its Gemini app\" — this specific number and feature detail is not supported by the source and appears fabricated.",
+        "The article claims Picsart integrated \"Claude\" as a writing assistant — a specific product integration claim not supported by the source.",
+        "The article contains the Chinese characters '趋势' (truncated/garbled text) in the 'What this means for you' section, which is not a factual fabrication but indicates broken/mangled content (likely a translation artifact where 'trend' was partially rendered)."
+      ],
+      "confidence": 7
     }
   ]
 }

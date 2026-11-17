@@ -1,0 +1,61 @@
+{
+  "ok": 6,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.010201695,
+  "at": "2026-11-17T05:51:43.616Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 6,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-make-purchases-with-chatgpt-wallet.json",
+      "cim": "How to make purchases with ChatGPT Wallet",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-minimax-for-a-reusable-writing-prompt-you-can-sav.json",
+      "cim": "How to Use MiniMax for a Reusable Writing Prompt You Can Save",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-16T19-35-36-903Z_aiworld-editorial_This_Week_in_AI.json",
+      "cim": "This Week in AI: The 5 Stories That Matter (November 16, 2026)",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk három történetet mutat be (Picsart, Zapier, hangklónozás), amelyek mindegyike megtalálható a forrásban. A forrás 5 történetet sorol fel a \"Ma\" szekcióban, de a cikk nem állítja, hogy mind az 5-et lefedi - 3 gyakorlati történet kiválasztását mutatja be. Nincs ellentmondás."
+    },
+    {
+      "file": "ARTICLE_2026-11-17T05-40-35-715Z_google-workspace_Share_skills_and_add_files_from_Google_Drive__Gemi.json",
+      "cim": "Share skills and add files from Google Drive, Gemini Notebook and Google Photos to your skills in the Gemini app",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Az összes tényszerű állítás pontosan megegyezik a hivatalos forrással."
+    },
+    {
+      "file": "ARTICLE_2026-11-17T05-40-35-714Z_openai-blog_At_Holiday_Extras__dots_get_to_work_before_anyone_.json",
+      "cim": "At Holiday Extras, dots get to work before anyone asks",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrásokat. Az összes tényállítás (Holiday Extras: dot-ok, Beast, Brian, Google BigQuery plugin, API kulcsok, ingázós hívások, hangos eligazítások; Block: Buzz munkaterület, Unity Gateway, nyílt súlyú modellek, multi-agents koordináció) megfelel a forrásoknak."
+    },
+    {
+      "file": "ARTICLE_2026-11-16T17-42-03-088Z_zapier-blog_Zapier_ideas__25_Zaps_you_can_build_with_one_promp.json",
+      "cim": "Zapier ideas: 25 Zaps you can build with one prompt in Claude, ChatGPT, or Cursor",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrást: helyesen írja le az egy-promptos automatizációt, tartalmazza mind a három triggert (ütemezett/webhook/alkalmazás-esemény), helyesen állítja, hogy a Zapier kezeli a bejelentkezést API kulcsok nélkül, egyezik a három példa leírásaival (lead riasztás csak téged textoz"
+    }
+  ]
+}

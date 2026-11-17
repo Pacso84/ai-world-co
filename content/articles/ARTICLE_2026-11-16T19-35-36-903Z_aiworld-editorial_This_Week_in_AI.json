@@ -1,0 +1,66 @@
+{
+  "_meta": {
+    "written_at": "2026-11-17T05:44:14.359Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0044696,
+    "original_draft": null,
+    "source_id": "aiworld-editorial",
+    "source_name": "AI World HQ (AI-written weekly roundup)",
+    "source_link": "https://aiworldhq.com",
+    "status": "published",
+    "rejected_at": "2026-11-17T05:42:52.175Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 658
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured weekly digest with clear explanations of terms, proper attribution for company claims, kind tone throughout, and a helpful 'What this means for you' section with actionable advice for different reader levels. No prohibited content, no rankings, no clichés.",
+      "_aiCost": 0.0012096,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article describes a Google Labs tool called \"Tabletop\" for group planning via a shared link. This is an invented product/feature not supported by the source and not verifiable as real.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-11-16T19-35-36-903Z_aiworld-editorial_This_Week_in_AI.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-11-17T05:44:33.301Z",
+    "slug": "this-week-in-ai-the-3-stories-that-matter-november-16-2026",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-17T05:44:46.292Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a weekly news roundup/digest covering three different stories, not a single specific feature introduction",
+    "image_v": 2,
+    "image_at": "2026-11-17T05:49:16.167Z",
+    "seo": {
+      "meta_description": "Weekly AI news roundup covering Picsart's AI tools, Zapier automation for apps, and voice cloning tips for creators. Practical updates for everyday users.",
+      "keywords": [
+        "this week in AI",
+        "AI news this week",
+        "Picsart AI tools",
+        "AI automation apps",
+        "voice cloning tools",
+        "Zapier AI assistant integration",
+        "AI tools for creators",
+        "practical AI news"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add a brief introduction explaining who this weekly roundup is for (e.g., small business owners, content creators) to improve relevance targeting",
+        "Include anchor links to each of the three stories within the article for better user navigation and reduced bounce rate",
+        "Consider adding schema markup for NewsArticle type to enhance search appearance for this dated weekly format"
+      ],
+      "optimised_at": "2026-11-17T05:50:26.138Z"
+    },
+    "fact_verified_at": "2026-11-17T05:52:07.667Z"
+  },
+  "article_markdown": "---\ntitle: \"This Week in AI: The 3 Stories That Matter (November 16, 2026)\"\nsubtitle: \"This week's AI news covered one app for video, voice and images, automation for everyday apps, and voice cloning for creators.\"\ncategory: \"ai-news\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"weekly-digest\"]\n---\n# This Week in AI: The 3 Stories That Matter (November 16, 2026)\n\n> **In short:** This week's AI news centered on three practical topics: Picsart's new AI tools for video, voice and images, Zapier's way to connect AI assistants to everyday apps, and what to check before cloning your voice.\n\nIf you spend your days juggling photos, emails and small projects, this week's news is worth a few minutes. Here are the three stories that matter most for everyday people.\n\n## 1. One App Now Does Video, Images, Voice and Writing Help\n\n[![One App Now Does Video, Images, Voice and Writing Help](/assets/images/picsart-s-new-ai-tools-explained-video-voice-images-and-claude.jpg)](https://aiworldhq.com/article/picsart-s-new-ai-tools-explained-video-voice-images-and-claude)\n\nPicsart, the photo editing app, has added several AI features at once. According to the company, you can now create a short video from a written description, make images from text, clone your voice to narrate a project, and get help with writing.\n\nPicsart describes these tools as working together. Think of a small business owner making a product promo: write the script, turn it into a voiceover, generate matching images, and assemble the video, all in one place. Check the official Picsart site to see which features your plan includes.\n\n[Read the full story](https://aiworldhq.com/article/picsart-s-new-ai-tools-explained-video-voice-images-and-claude)\n\n## 2. Connecting AI Assistants to the Apps You Already Use\n\n[![Connect Your AI Assistant to Everyday Apps](/assets/images/what-automating-an-ai-personal-assistant-with-zapier-means.jpg)](https://aiworldhq.com/article/what-automating-an-ai-personal-assistant-with-zapier-means)\n\nZapier, an automation service, says it has launched a way to connect AI assistants to apps such as Gmail, Slack and Google Sheets. An automation (a set of steps that runs by itself when something happens) saves you from copying the same information between apps.\n\nFor example, you could set up a workflow where an AI reads incoming emails, pulls out action items, and adds them to a spreadsheet. You describe what you want once, and the steps repeat without your help. Setup takes some patience, so start with one small task you do every week.\n\n[Read the full story](https://aiworldhq.com/article/what-automating-an-ai-personal-assistant-with-zapier-means)\n\n## 3. Voice Cloning for Creators: What to Check First\n\n[![Voice Cloning for Creators: What to Check First](/assets/images/voice-cloning-for-creators-what-it-does-and-how-to-judge-it.jpg)](https://aiworldhq.com/article/voice-cloning-for-creators-what-it-does-and-how-to-judge-it)\n\nVoice cloning is a tool that learns the sound of a person's voice from a recording, then reads new text in that voice. For YouTubers, podcasters, and anyone who narrates a lot of audio, it can mean recording once and generating narration later.\n\nBefore you pick a tool, check three things: how clean your original recording is, whether the tool stores your voice data, and what its privacy policy says about how that data is used. Only clone your own voice, or a voice you have clear permission to use.\n\n[Read the full story](https://aiworldhq.com/article/voice-cloning-for-creators-what-it-does-and-how-to-judge-it)\n\n## What this means for you\n\n- **In everyday life**: If you take photos or make videos for family or hobbies, Picsart's announced tools may help you turn a simple idea into a finished clip.\n- **For your business or work**: If you make social posts or training content, an automation like Zapier's can take repeat admin work off your plate.\n- **If you're just getting started**: Pick one repeat task, such as sorting emails or logging notes, and describe it to an AI assistant in plain sentences before connecting any apps.\n- **If you already use it**: Map out a two-step workflow, such as a new form submission that creates a spreadsheet row and sends you a reminder, and test it with dummy data first.\n\n## Wrap-up\n\nThree stories, one common thread: AI is moving into the tools you already open every day. Each one is worth a closer look, but also worth checking the company's official information before you rely on it. Today, choose one story and open its official page, or try one small automation with an AI assistant you already have.",
+  "original_title": "This Week in AI: The 5 Stories That Matter (November 16, 2026)"
+}
