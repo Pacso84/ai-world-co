@@ -1,8 +1,5 @@
 {
   "openai-blog": [
-    "https://openai.com/index/gpt-5-immunology-mystery",
-    "https://openai.com/index/omio",
-    "https://openai.com/index/patch-the-planet",
     "https://openai.com/index/daybreak-securing-the-world",
     "https://openai.com/index/codex-maxxing-long-running-work",
     "https://openai.com/index/how-agents-are-transforming-work",
@@ -299,7 +296,10 @@
     "https://openai.com/index/advancing-computer-use-for-healthcare-teams",
     "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare",
     "https://openai.com/index/the-kings-trust-and-openai",
-    "https://openai.com/business/customer-stories/holiday-extras-dots"
+    "https://openai.com/business/customer-stories/holiday-extras-dots",
+    "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
+    "https://openai.com/index/introducing-openai-for-chile",
+    "https://openai.com/business/customer-stories/revolut"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -425,7 +425,8 @@
     "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
     "https://blog.google/innovation-and-ai/models-and-research/google-labs/tabletop/",
     "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/",
-    "https://blog.google/products-and-platforms/products/maps/ask-maps-holiday-travel-features-2026/"
+    "https://blog.google/products-and-platforms/products/maps/ask-maps-holiday-travel-features-2026/",
+    "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/"
   ],
   "meta-ai": [
     "https://about.fb.com/news/2026/06/creator-assistant-more-languages-for-ai-translations-on-facebook/",
@@ -789,7 +790,8 @@
     "https://blogs.nvidia.com/blog/20-years-cuda/",
     "https://blogs.nvidia.com/blog/rubin-hpc/",
     "https://blogs.nvidia.com/blog/dgx-spark-hpc-developer-kit-sc26/",
-    "https://blogs.nvidia.com/blog/ai-infrastructure-supply-chain/"
+    "https://blogs.nvidia.com/blog/ai-infrastructure-supply-chain/",
+    "https://blogs.nvidia.com/blog/ian-buck-sc26/"
   ],
   "google-workspace": [
     "http://workspaceupdates.googleblog.com/2026/06/google-vault-now-supports-retention-rules-and-litigation-holds-for-Gemini-app.html",
@@ -1068,7 +1070,8 @@
     "https://www.microsoft.com/en-us/research/blog/formally-verifying-agent-written-full-stack-web-apps-with-pdd-kit/",
     "https://www.microsoft.com/en-us/research/blog/lazare-veni-foras-reprogramming-dormant-neurons-to-backdoor-ai-agents/",
     "https://www.microsoft.com/en-us/research/podcast/microsoft-research-focus-edition-98/",
-    "https://www.microsoft.com/en-us/research/blog/tokeneconomizer-learning-from-experience-to-make-ai-coding-agents-more-efficient/"
+    "https://www.microsoft.com/en-us/research/blog/tokeneconomizer-learning-from-experience-to-make-ai-coding-agents-more-efficient/",
+    "https://www.microsoft.com/en-us/research/podcast/can-ai-help-build-a-healthier-future/"
   ],
   "github-ai": [
     "https://github.blog/security/making-secret-scanning-more-trustworthy-reducing-false-positives-at-scale/",
@@ -1124,10 +1127,6 @@
     "https://github.blog/ai-and-ml/github-copilot/build-once-run-on-any-agent-a-practical-guide-to-agent-skills/"
   ],
   "aws-ml": [
-    "https://aws.amazon.com/blogs/machine-learning/batch-write-and-discover-records-in-amazon-sagemaker-feature-store/",
-    "https://aws.amazon.com/blogs/machine-learning/manage-agents-tools-and-skills-at-scale-with-aws-agent-registry/",
-    "https://aws.amazon.com/blogs/machine-learning/build-observable-enterprise-agentic-retrieval-using-managed-amazon-bedrock-knowledge-base-with-aws-cloudformation/",
-    "https://aws.amazon.com/blogs/machine-learning/build-multi-tenant-agentic-chat-applications-on-enterprise-data-with-amazon-bedrock-managed-knowledge-base/",
     "https://aws.amazon.com/blogs/machine-learning/aws-recognized-as-a-leader-in-the-forrester-wave-ai-infrastructure-solutions-q4-2025/",
     "https://aws.amazon.com/blogs/machine-learning/connect-an-agentcore-runtime-hosted-mcp-server-to-amazon-quick/",
     "https://aws.amazon.com/blogs/machine-learning/tokenomics-at-scale-how-jamf-built-real-time-spend-enforcement-for-amazon-bedrock/",
@@ -1423,7 +1422,11 @@
     "https://aws.amazon.com/blogs/machine-learning/how-moengage-built-agentic-customer-engagement-on-amazon-bedrock-agentcore/",
     "https://aws.amazon.com/blogs/machine-learning/build-memory-aware-ai-agents-with-agentic-retrieve-on-amazon-bedrock-managed-knowledge-base/",
     "https://aws.amazon.com/blogs/machine-learning/how-duco-transforms-financial-data-automation-with-amazon-bedrock-agentcore/",
-    "https://aws.amazon.com/blogs/machine-learning/taxonomy-of-multi-agent-design-patterns-anti-patterns-and-lessons-from-manufacturing/"
+    "https://aws.amazon.com/blogs/machine-learning/taxonomy-of-multi-agent-design-patterns-anti-patterns-and-lessons-from-manufacturing/",
+    "https://aws.amazon.com/blogs/machine-learning/how-loanpro-built-an-agentic-ai-loan-servicing-assistant-with-amazon-bedrock-agentcore/",
+    "https://aws.amazon.com/blogs/machine-learning/how-arisglobal-scaled-generative-ai-inference-on-amazon-bedrock/",
+    "https://aws.amazon.com/blogs/machine-learning/your-complete-guide-to-aws-quick-at-aws-reinvent-2026/",
+    "https://aws.amazon.com/blogs/machine-learning/responsible-ai-for-agentic-ai-a-phased-roadmap-for-platform-and-application-teams/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -1882,13 +1885,12 @@
     "https://news.sap.com/2026/11/successful-sap-transformation-business-processes/",
     "https://news.sap.com/2026/11/sap-completes-acquisition-of-techwolf/",
     "https://news.sap.com/2026/11/india-promise-to-platform-global-growth/",
-    "https://news.sap.com/2026/11/order-management-built-straight-into-sap-dataxstream/"
+    "https://news.sap.com/2026/11/order-management-built-straight-into-sap-dataxstream/",
+    "https://news.sap.com/2026/11/gxp-compliance-life-sciences-sap-raising-standard/",
+    "https://news.sap.com/2026/11/sap-named-leader-idc-marketscape-supply-chain-assessments/",
+    "https://news.sap.com/2026/11/thomas-saueressig-to-leave-sap-executive-board/"
   ],
   "databricks": [
-    "https://www.databricks.com/blog/enterprise-analytics-platform-evaluation",
-    "https://www.databricks.com/blog/ambulatory-intelligence-gap",
-    "https://www.databricks.com/blog/introducing-feature-views",
-    "https://www.databricks.com/blog/ask-build-compose-what-our-5th-genie-hackathon-taught-us-about-databricks-genie",
     "https://www.databricks.com/blog/agentic-marketing-stack-starts-data-layer",
     "https://www.databricks.com/blog/how-unity-catalog-managed-tables-bring-interoperability-performance-and-unified-governance",
     "https://www.databricks.com/blog/foundational-context-cross-industry-function-specific-accelerators-lakebase",
@@ -2184,7 +2186,11 @@
     "https://www.databricks.com/blog/introducing-databricks-ai-index-state-enterprise-ai-tokenomics",
     "https://www.databricks.com/blog/what-is-real-time-mode",
     "https://www.databricks.com/blog/tabular-foundation-models-databricks-ai-runtime",
-    "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0"
+    "https://www.databricks.com/blog/clean-data-was-never-enough-how-ifs-copperleaf-taught-ai-its-business-databricks-genie-one-0",
+    "https://www.databricks.com/blog/advancing-catalog-interoperability-unity-catalog-and-google-clouds-borderless-lakehouse",
+    "https://www.databricks.com/blog/liveramp-rampid-identity-resolution-packaged-clean-rooms",
+    "https://www.databricks.com/blog/new-azure-databricks-azure-government-now-beta",
+    "https://www.databricks.com/blog/built-object-storage-served-cache"
   ],
   "snowflake": [
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-postgres-ml-online-feature-store",
@@ -2400,7 +2406,8 @@
     "https://www.pinecone.io/blog/introducing-pg-pinecone/",
     "https://www.pinecone.io/blog/webinar-recap-data-to-vectors-to-context/",
     "https://www.pinecone.io/blog/integrated-embedding-openai/",
-    "https://www.pinecone.io/blog/integrated-embedding-google/"
+    "https://www.pinecone.io/blog/integrated-embedding-google/",
+    "https://www.pinecone.io/blog/index-conversion/"
   ],
   "ibm": [
     "https://research.ibm.com/blog/ponder-this-july-2026?utm_medium=rss&utm_source=rss",
@@ -2472,7 +2479,8 @@
     "https://research.ibm.com/blog/path-to-ibm-quantum-starling?utm_medium=rss&utm_source=rss",
     "https://research.ibm.com/blog/spin-qubits-explained?utm_medium=rss&utm_source=rss",
     "https://research.ibm.com/blog/sc26?utm_medium=rss&utm_source=rss",
-    "https://research.ibm.com/blog/pelagos?utm_medium=rss&utm_source=rss"
+    "https://research.ibm.com/blog/pelagos?utm_medium=rss&utm_source=rss",
+    "https://research.ibm.com/blog/how-low-sWaP-radar-is-making-sensing-smarter?utm_medium=rss&utm_source=rss"
   ],
   "ntt-research": [
     "https://ntt-research.com/ntt-researchers-contribute-17-papers-to-eurocrypt-2026/",
@@ -2843,7 +2851,8 @@
     "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBMcTRXSTdRZ1ZRZjdrR2RNbUdWZk94UFBrSS1nUE14dXVlNWJnQU0zZkRyWjltYzR6ZVBIeURZT2xyeDFCTTl1cWhBVQ?oc=5",
     "https://news.google.com/rss/articles/CBMiT0FVX3lxTE12VWRwby11N21YZlBPMXRMRjBmWDkyY1JROWxZaWJjV3lMVlhaYjVMU2dEa21mRWxlc0Q3REhxcVEwRTFxZXAyWUlKR2hBREk?oc=5",
     "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBOYnFSNm1tZGd0U0EtYTZTM2ppYUlLZVVJYzVoMTRYY1lnT3ZJVDljNm9fOW1NRGJYekxUd2FNRktwTC0xZk1rSVUzT0FwblFaZ0IzQlBsWGpSX05f?oc=5",
-    "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBVZlVrcGltVFh3WExxS0N0SnA2TWo3cnNOWUJlSHM4VnJRVzlqcXdDbkpkdXBtbHJfamNuWUx3YlFWUlBhYUE?oc=5"
+    "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBVZlVrcGltVFh3WExxS0N0SnA2TWo3cnNOWUJlSHM4VnJRVzlqcXdDbkpkdXBtbHJfamNuWUx3YlFWUlBhYUE?oc=5",
+    "https://news.google.com/rss/articles/CBMiekFVX3lxTE1POTc1bVkzNnRBU1dQRkJqWmVrYnlISHlubkk2cHNDTmpqQ1p1X0FJU1NoSk5Ca0N6Zm1sUzNib2ZEcFBNMXprd3Vua0JWTHROd1p1TUFMWExuZUc5LVhhR1hsMkp6QjQtUi1uWTFKRzBENWs1YjdINzhR?oc=5"
   ],
   "deepseek-news": [
     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9zbUkzc1FDYmZIVjVRdW5wakpEOEgwSHFHZ05zNDhZLWwydGFjcEVtTVdEZW50RWw4MF9sVlYtMDhOb3RNdDdLM1VDOGgxTEZOWnRXZXhvTGVVQ25Rbk1uRg?oc=5",
@@ -3533,7 +3542,16 @@
     "https://zapier.com/blog/automate-email-marketing",
     "https://zapier.com/blog/track-google-alerts-in-any-app",
     "https://zapier.com/blog/sms-messaging-automation",
-    "https://zapier.com/blog/automate-facebook-conversion-api-with-zapier"
+    "https://zapier.com/blog/automate-facebook-conversion-api-with-zapier",
+    "https://zapier.com/blog/link-facebook-page-to-linkedin",
+    "https://zapier.com/blog/automate-telegram",
+    "https://zapier.com/blog/theatre-passe-muraille-next-gen-zaps",
+    "https://zapier.com/blog/task-management",
+    "https://zapier.com/blog/connect-everything-calendar",
+    "https://zapier.com/blog/automate-google-drive",
+    "https://zapier.com/blog/crm-automation",
+    "https://zapier.com/blog/how-to-automate-your-business-facebook-page-for-easier-marketing",
+    "https://zapier.com/blog/automate-google-calendar-with-zapier"
   ],
   "dropbox-blog": [
     "  https://blog.dropbox.com/topics/company/dropbox-announces-q1-2026-results ",
@@ -3705,7 +3723,8 @@
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
     "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome/",
     "https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/",
-    "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices/"
+    "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices/",
+    "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/"
   ],
   "google-photos": [
     "https://blog.google/products-and-platforms/products/photos/halloween-tricks-2026/",
@@ -3731,7 +3750,8 @@
     "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
     "https://blog.google/innovation-and-ai/models-and-research/google-labs/dreambeans/",
     "https://blog.google/innovation-and-ai/models-and-research/google-labs/tabletop/",
-    "https://blog.google/innovation-and-ai/models-and-research/google-labs/new-google-flow-tools/"
+    "https://blog.google/innovation-and-ai/models-and-research/google-labs/new-google-flow-tools/",
+    "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/"
   ],
   "amazon-alexa": [
     "https://www.aboutamazon.com/news/devices/new-alexa-devices-2026?utm_source=rss",
@@ -3810,7 +3830,9 @@
     "https://www.apple.com/newsroom/2026/11/apple-tv-introduces-new-sign-language-interpretation-feature/",
     "https://www.apple.com/newsroom/2026/11/football-manager-and-other-hit-franchises-headline-apple-arcades-holiday-lineup/",
     "https://www.apple.com/newsroom/2026/11/apple-homeview-available-today/",
-    "https://www.apple.com/newsroom/2026/11/apple-launches-research-study-to-explore-the-use-of-ai-for-health/"
+    "https://www.apple.com/newsroom/2026/11/apple-launches-research-study-to-explore-the-use-of-ai-for-health/",
+    "https://www.apple.com/newsroom/2026/11/formula-1-las-vegas-grand-prix-streams-live-on-apple-tv-this-weekend/",
+    "https://www.apple.com/newsroom/2026/11/apple-podcasts-names-baby-this-is-keke-palmer-the-2026-show-of-the-year/"
   ],
   "zai-release-notes": [
     "https://docs.z.ai/release-notes/new-released#2026-08-26",
@@ -3874,7 +3896,10 @@
     "https://proton.me/blog/apple-new-features-privacy-concerns",
     "https://proton.me/business/blog/claude-microsoft-365-connector-outage",
     "https://proton.me/business/blog/password-manager-roi",
-    "https://proton.me/business/blog/microsoft-365-outage-is-outlook-down"
+    "https://proton.me/business/blog/microsoft-365-outage-is-outlook-down",
+    "https://proton.me/business/blog/employee-onboarding",
+    "https://proton.me/business/blog/norcable-case-study",
+    "https://proton.me/blog/lumo-desktop-features"
   ],
   "elevenlabs": [
     "https://elevenlabs.io/blog/what-is-call-transcription",

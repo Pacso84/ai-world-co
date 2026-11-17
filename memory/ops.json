@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179480056754754",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-16T03:42:47.548Z",
-      "updated": "2026-11-16T03:43:35.323Z"
-    },
-    {
-      "id": "t179480061532461",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-16T03:43:35.324Z",
-      "updated": "2026-11-16T03:43:35.445Z"
-    },
-    {
-      "id": "t179480061547711",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-16T03:43:35.477Z",
-      "updated": "2026-11-16T03:44:33.398Z"
-    },
-    {
-      "id": "t179480067339978",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-16T03:44:33.399Z",
-      "updated": "2026-11-16T03:45:32.376Z"
-    },
-    {
-      "id": "t179480073237857",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-16T03:45:32.378Z",
-      "updated": "2026-11-16T03:45:51.040Z"
-    },
-    {
-      "id": "t179480075104160",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-16T03:45:51.041Z",
-      "updated": "2026-11-16T03:46:10.780Z"
-    },
-    {
-      "id": "t179480077078299",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-16T03:46:10.782Z",
-      "updated": "2026-11-16T03:46:37.514Z"
-    },
-    {
-      "id": "t179480079754343",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-16T03:46:37.543Z",
-      "updated": "2026-11-16T03:47:34.782Z"
-    },
-    {
-      "id": "t179480085478367",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-16T03:47:34.783Z",
-      "updated": "2026-11-16T03:48:17.109Z"
-    },
-    {
-      "id": "t179480089713742",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-16T03:48:17.137Z",
-      "updated": "2026-11-16T03:48:17.275Z"
-    },
-    {
-      "id": "t17948008972770",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-16T03:48:17.277Z",
-      "updated": "2026-11-16T03:48:17.416Z"
-    },
-    {
-      "id": "t179480089746873",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-16T03:48:17.468Z",
-      "updated": "2026-11-16T03:51:48.509Z"
-    },
-    {
-      "id": "t179480110851086",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-16T03:51:48.510Z",
-      "updated": "2026-11-16T03:54:03.054Z"
-    },
-    {
-      "id": "t179480124305692",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-16T03:54:03.056Z",
-      "updated": "2026-11-16T03:54:15.066Z"
-    },
-    {
       "id": "t179480125506722",
       "title": "Run publisher",
       "status": "done",
@@ -479,41 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-17T05:51:21.489Z",
       "updated": "2026-11-17T05:51:42.556Z"
+    },
+    {
+      "id": "t17949356029082",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-17T17:13:22.908Z",
+      "updated": "2026-11-17T17:13:23.048Z"
+    },
+    {
+      "id": "t179493560304954",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-17T17:13:23.049Z",
+      "updated": "2026-11-17T17:14:52.362Z"
+    },
+    {
+      "id": "t179493569236373",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-17T17:14:52.363Z",
+      "updated": "2026-11-17T17:14:52.491Z"
+    },
+    {
+      "id": "t179493569252265",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-17T17:14:52.522Z",
+      "updated": "2026-11-17T17:15:14.243Z"
+    },
+    {
+      "id": "t17949357142440",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-17T17:15:14.244Z",
+      "updated": "2026-11-17T17:15:14.391Z"
+    },
+    {
+      "id": "t179493571439458",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-17T17:15:14.394Z",
+      "updated": "2026-11-17T17:15:31.813Z"
+    },
+    {
+      "id": "t179493573181533",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-17T17:15:31.815Z",
+      "updated": "2026-11-17T17:15:50.143Z"
+    },
+    {
+      "id": "t179493575014475",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-17T17:15:50.144Z",
+      "updated": "2026-11-17T17:15:50.305Z"
+    },
+    {
+      "id": "t179493575036172",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-17T17:15:50.361Z",
+      "updated": "2026-11-17T17:15:50.506Z"
+    },
+    {
+      "id": "t179493575050717",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-17T17:15:50.507Z",
+      "updated": "2026-11-17T17:15:50.646Z"
+    },
+    {
+      "id": "t179493575067562",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-17T17:15:50.675Z",
+      "updated": "2026-11-17T17:16:13.614Z"
+    },
+    {
+      "id": "t179493577361594",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-17T17:16:13.615Z",
+      "updated": "2026-11-17T17:16:26.895Z"
+    },
+    {
+      "id": "t179493578689646",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-17T17:16:26.896Z",
+      "updated": "2026-11-17T17:16:41.219Z"
+    },
+    {
+      "id": "t17949358012219",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-17T17:16:41.221Z",
+      "updated": "2026-11-17T17:17:03.181Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17941959740685",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Zapier Explores How",
-      "agent": "fact-check",
-      "at": "2026-11-09T03:46:14.068Z",
-      "loud": false
-    },
-    {
-      "id": "n179424724662271",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-11-09T18:00:46.622Z",
-      "loud": false
-    },
-    {
-      "id": "n179424726737476",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). Your AI World HQ lineup is solid and ready—practical, varied, and touches exactly what everyday people need: useful tasks, safety smarts, and real tool examples. One note: it's fairly tool-heavy with ",
-      "agent": "publisher",
-      "at": "2026-11-09T18:01:07.374Z",
-      "loud": false
-    },
-    {
-      "id": "n179424728413344",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0083).",
-      "agent": "ceo",
-      "at": "2026-11-09T18:01:24.133Z",
-      "loud": false
-    },
     {
       "id": "n179424730427029",
       "level": "warn",
@@ -1281,56 +1249,41 @@
       "agent": "ceo",
       "at": "2026-11-17T05:51:42.592Z",
       "loud": false
+    },
+    {
+      "id": "n179493573180520",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to Run Your First Viral ChatGPT Trend Prompt From Start to Finish\" — az Ellenőrző tényt/forrást kér,",
+      "agent": "guide",
+      "at": "2026-11-17T17:15:31.805Z",
+      "loud": false
+    },
+    {
+      "id": "n179493578686846",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 7.0/10).",
+      "agent": "seo",
+      "at": "2026-11-17T17:16:26.868Z",
+      "loud": false
+    },
+    {
+      "id": "n179493581277676",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is coherent and ready to publish — it's a practical, everyday focus that will resonate with busy people. One note: the bulk of articles are writing-focused (7 out of 10), which is fine but ",
+      "agent": "publisher",
+      "at": "2026-11-17T17:16:52.776Z",
+      "loud": false
+    },
+    {
+      "id": "n179493582320897",
+      "level": "success",
+      "text": "0 hír + 1 útmutató publikálva (költség: $0.0089).",
+      "agent": "ceo",
+      "at": "2026-11-17T17:17:03.208Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179397957062069",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Ellenőrizendő állítás: \"Tech Crunch: D-ID acquires Berlin-based video star\" — A cikk a HeyGenről szól, de a forrás a D-ID általi simpleshow felvásárlásáról. Teljesen különböző termékekről van szó, nincs átfedés.",
-      "ref": "2026-07-25T01-45-20-126Z_d-id-news_Tech_Crunch__D-ID_acquires_Berlin-based_video_star.json",
-      "open": true,
-      "at": "2026-11-06T15:39:30.620Z"
-    },
-    {
-      "id": "m179397961297375",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (túl nagy átírás (132 szó a 703-ből)): \"SAP Advances Finance Operations with Embedded Paym\" — A forrás konkrét AI-asszisztens területeket és időpontokat ad meg, amelyeket a cikk tévesen homályosként ír le",
-      "ref": "ARTICLE_2026-10-12T17-08-23-913Z_sap_SAP_Advances_Finance_Operations_with_Embedded_Paym.json",
-      "open": true,
-      "at": "2026-11-06T15:40:12.973Z"
-    },
-    {
-      "id": "m179398025796046",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-06T15:50:57.960Z"
-    },
-    {
-      "id": "m17939994847965",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"More Performance From Every Byte: How Full-Stack Codesign Solves AI’s Memory Challenge\" (?/10)",
-      "ref": "2026-11-06T04-06-30-395Z_nvidia-blog_More_Performance_From_Every_Byte__How_Full-Stack_C.json",
-      "at": "2026-11-06T21:11:24.796Z"
-    },
-    {
-      "id": "m179399949933273",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Gemini Omni 1.2 Flash now in Picsart: a creator’s guide\" — javítva: Model name 'Gemini Omni 1.2 Flash' cannot be independently verified — Google AI documentation shows no product with this exact name; this appears to be an invented/hallucinated model name; Attribution to 'Google's announcement' lacks a verifiable source URL in the article, making claims about the model unverifiable; ",
-      "ref": "2026-11-06T15-30-26-279Z_picsart_Gemini_Omni_1_2_Flash_now_in_Picsart__a_creator_s_.json",
-      "at": "2026-11-06T21:11:39.332Z"
-    },
     {
       "id": "m17939995127719",
       "from": "ellenorzo",
@@ -2689,6 +2642,53 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-17T06:02:28.454Z"
+    },
+    {
+      "id": "m179493573180414",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Run Your First Viral ChatGPT Trend Prompt From Start to Finish\" — javítva: Beginner clarity too low (7/10): steps are vague or could mislead a first-time user; Step 1 is vague about WHERE to find trend prompts beyond 'a post, article or caption' - a beginner may not know where to look; újraküldöm.",
+      "ref": "GUIDE_how-to-run-your-first-viral-chatgpt-trend-prompt-from-start-.json",
+      "at": "2026-11-17T17:15:31.804Z"
+    },
+    {
+      "id": "m179493573180531",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to Run Your First Viral ChatGPT Trend Prompt From Start to Finish\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Step 3 references bracketed placeholders but Step 1 never explicitly says 'look for text in square brackets like [this]'",
+      "ref": "GUIDE_how-to-run-your-first-viral-chatgpt-trend-prompt-from-start-.json",
+      "open": false,
+      "at": "2026-11-17T17:15:31.805Z",
+      "resolved_at": "2026-11-17T17:15:50.132Z"
+    },
+    {
+      "id": "m179493575013148",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to Run Your First Viral ChatGPT Trend Prompt From Start to Finish\" (?/10)",
+      "ref": "GUIDE_how-to-run-your-first-viral-chatgpt-trend-prompt-from-start-.json",
+      "at": "2026-11-17T17:15:50.131Z"
+    },
+    {
+      "id": "m179493580118553",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-17T17:16:41.185Z"
+    },
+    {
+      "id": "m179493589811027",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt javítottam egy publikált cikkben: \"How to use Picsart inside Grok Bot for full conten\" — A forrás kifejezetten mondja, hogy 'A plugin ingyenesen hozzáadható', és nem említ semmilyen csomag alapú korlátozást",
+      "ref": "ARTICLE_2026-09-26T02-28-17-332Z_picsart_How_to_use_Picsart_inside_Grok_Bot_for_full_conten.json",
+      "at": "2026-11-17T17:18:18.110Z"
     }
   ]
 }
