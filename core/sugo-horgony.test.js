@@ -436,6 +436,54 @@ t('ellenorzoPromptTema: a BEGIN/END közti szöveg adat, az utasításokat figye
   assert.match(p.rendszer, /reference data/i); assert.match(p.rendszer, /ignore/i); assert.match(p.rendszer, /BEGIN/);
 });
 
+// --- 11-17 (2. javítókör): az egy-lapos termékoldal csak bevezetőt horgonyoz; az ígéret álljon a súgóban ---
+const braveTema = { id: 'b1', title: 'How to Keep Private AI Chats Separate from Work in Brave Leo', tool: 'Brave Leo', company: 'Brave', angle: 'separate private and work chats' };
+const braveIndex = async () => [{ url: 'https://brave.com/leo/', cim: 'Brave Leo', termekoldal: true }];
+
+ta('(t1) csak termékoldalas lista + nem „Getting started” téma → AI-hívás NÉLKÜL tartós elutasítás, rögzített magyar ok', async () => {
+  const ask = hamisAsk([val({ pick: 1 }), val({ ok: true, title: braveTema.title, reason: 'x' })]);
+  let szovegHivas = 0;
+  const r = await horgonyKeres(braveTema, { ask, indexFn: braveIndex, sugoSzovegFn: async () => { szovegHivas++; return { szoveg: hosszu, cim: 'c' }; } });
+  assert.equal(r.ok, false);
+  assert.equal(r.jegyzesOk, 'a súgó csak termékoldal — csak bevezető írható');
+  assert.equal(r.atmeneti, undefined, 'TARTÓS ok: 14 nap várakozás jár, nem átmeneti');
+  assert.equal(ask.hivasok.length, 0, 'nincs AI-hívás'); assert.equal(szovegHivas, 0, 'nincs szöveg-letöltés sem');
+  assert.equal(r.cost, 0);
+  assert.equal(horgonyJegyzes(braveTema, r).ok_ok, 'a súgó csak termékoldal — csak bevezető írható');
+});
+
+ta('(t2) termékoldalas lista + „Getting started with …” téma → a régi úton megy (az ellenőrző dönt)', async () => {
+  const gs = { ...braveTema, title: 'Getting started with Brave Leo' };
+  const ask = hamisAsk([val({ pick: 1 }), val({ ok: true, title: 'Getting started with Brave Leo', reason: 'rendben' })]);
+  const r = await horgonyKeres(gs, { ask, indexFn: braveIndex, sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, true, r.reason); assert.equal(ask.hivasok.length, 2);
+});
+
+ta('(t3) vegyes lista (nem minden tétel termékoldal) → a régi úton megy', async () => {
+  const vegyes = async () => [{ url: 'https://brave.com/leo/', cim: 'Brave Leo', termekoldal: true }, { url: CIKK_URL, cim: 'What are Spaces?' }];
+  const ask = hamisAsk([val({ pick: 2 }), val({ ok: true, title: konkretTema.title, reason: 'rendben' })]);
+  const r = await horgonyKeres(konkretTema, { ask, indexFn: vegyes, sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, true, r.reason); assert.equal(ask.hivasok.length, 2);
+});
+
+ta('(t4) a normál (jelölő nélküli) lista a régi úton megy — a jelölő hiánya nem zár ki', async () => {
+  const r = await horgonyKeres(konkretTema, { ask: okAsk(), indexFn, sugoSzovegFn: szovegFn });
+  assert.equal(r.ok, true, r.reason);
+});
+
+t('ellenorzoPromptTema: 4. feltétel — a téma ÍGÉRETE álljon a súgóban, a termékoldal nem igazol használati esetet', () => {
+  const r = ellenorzoPromptTema(tema, { url: 'u', cim: 'c', szoveg: 'x' }, { szint: 'teljes' }).rendszer;
+  assert.match(r, /GOAL or PROMISE/); assert.match(r, /separate from work/);
+  assert.match(r, /stated or directly described in the help article itself/);
+  assert.match(r, /does NOT count/); assert.match(r, /narrow the title/); assert.match(r, /ok = false/i);
+  assert.match(r, /product or marketing page proves only that a feature exists/i);
+  assert.match(r, /never supports a use-case the page does not state/i);
+  // a régi feltételek, az adat-mondat és a JSON-formátum megmaradt
+  assert.match(r, /SAME feature as the topic/); assert.match(r, /ordinary person/); assert.match(r, /ONLY what the help article says/);
+  assert.match(r, /reference data only/); assert.match(r, /Output ONLY JSON: \{"ok"/);
+  assert.match(ellenorzoPromptTema(tema, { url: 'u', cim: 'c', szoveg: 'x' }, { szint: 'reszleges' }).rendszer, /PARTIAL/);
+});
+
 t('(k) horgonyVar: tegnapi kudarc → igaz; 15 napos → hamis; siker → hamis; rossz dátum → hamis; nincs jegyzés → hamis', () => {
   const nap = 86400000;
   assert.equal(horgonyVar({ horgony: { ok: false, at: new Date(MOST - nap).toISOString() } }, MOST), true);

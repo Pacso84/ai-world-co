@@ -208,7 +208,9 @@ const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 export async function indexLetolt(szolg, fetchFn = fetch) {
   const ki = [];
   for (const f of FORRASOK[szolg] || []) {
-    if (f.egy) { ki.push({ url: f.egy, cim: f.cim }); continue; }   // egy-lapos forrás: nincs mit letölteni
+    // egy-lapos forrás: nincs mit letölteni. `termekoldal: true` = a lap a TERMÉK bemutatója, nem súgócikk: csak azt igazolja, hogy a funkció
+    // létezik, használati esetet nem (core/sugo-horgony.js: ilyen forrásból csak „Getting started with …” bevezető horgonyozható; 11-17 mérés)
+    if (f.egy) { ki.push({ url: f.egy, cim: f.cim, termekoldal: true }); continue; }
     try {
       const r = await fetchFn(f.sitemap || f.lap || f.lista, { headers: { 'User-Agent': UA, 'Accept-Language': 'en-US,en;q=0.9' }, signal: AbortSignal.timeout(30000) });
       if (!r.ok) continue;

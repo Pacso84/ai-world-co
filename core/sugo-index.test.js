@@ -39,7 +39,7 @@ const hibalap = async () => ({ ok: true, text: async () => '<html><title>Just a 
 assert.deepEqual(await indexLetolt('perplexity', hibalap), []);
 // egy-lapos forrás: letöltés nélkül az egy cikk
 let hivas = 0;
-assert.deepEqual(await indexLetolt('braveleo', async () => { hivas++; throw new Error('nem kéne'); }), [{ url: 'https://brave.com/leo/', cim: 'Brave Leo' }]);
+assert.deepEqual(await indexLetolt('braveleo', async () => { hivas++; throw new Error('nem kéne'); }), [{ url: 'https://brave.com/leo/', cim: 'Brave Leo', termekoldal: true }]);   // 11-17: az egy-lapos termékoldal jelölve (core/sugo-horgony.js: csak bevezetőt horgonyoz)
 assert.equal(hivas, 0);
 // minden FORRASOK-elem forrás-URL-je https, és minden elem mintája RegExp
 for (const [k, lista] of Object.entries(FORRASOK)) for (const f of lista) {
