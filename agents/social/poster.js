@@ -32,6 +32,8 @@ import { postsPerRun, usedThisMonth, MONTHLY_CAP } from '../../core/make-budget.
 // példány van: core/social-published.js (teszt + bekötés-őr mellette).
 import { isArticleFile, buildPublishedMap, queueStatus } from '../../core/social-published.js';
 import { cikkKint } from '../../core/cikk-kint.js';
+// A Make-ben elbukott fotóposzt magától vissza a sorba + lecsengés friss deploy után (2026-11-17).
+import { fbUjraproba, LECSENGES_FOTO_MS } from '../../core/fb-ujraproba.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..', '..');
@@ -87,6 +89,14 @@ async function main() {
   const hook = (process.env.MAKE_WEBHOOK_URL || '').trim();
   if (!hook) { console.log('   ⏭️  Nincs MAKE_WEBHOOK_URL — kihagyom (állítsd be a .env-ben / GitHub Secrets-ben).'); return; }
   if (!existsSync(SOCIAL_DIR)) { console.log('   💤 Nincs social mappa.'); return; }
+
+  // 🔁 A MAKE-BEN ELBUKOTT POSZT VISSZA A SORBA (2026-11-17, core/fb-ujraproba.js): a webhook „200 Accepted”-et
+  // ad akkor is, ha a Make utána elbukik (11-16: a kép 404) — enélkül a poszt soha nem menne ki. Max 1×.
+  if (!DRY) {
+    for (const u of await fbUjraproba({ dir: SOCIAL_DIR, token: process.env.MAKE_API_TOKEN })) {
+      console.log(`   🔁 A Make-ben elbukott FB-poszt újra a sorban: ${u.slug} (bukott: ${u.bukottAt.slice(0, 16).replace('T', ' ')} UTC)`);
+    }
+  }
 
   const pub = buildPublishedMap(loadArticles());
   const now = Date.now();
@@ -163,6 +173,12 @@ async function main() {
 
   let sent = 0, failed = 0, varakozik = 0;
   if (process.env.DEPLOY_OUTCOME === 'failure') console.log('   🔴 A feltöltés (deploy) ebben a futásban BUKOTT — csak a már élő cikkek posztja megy ki.');
+  // ⏳ LECSENGÉS FRISS DEPLOY UTÁN (2026-11-17): 11-16-án a futtató (USA) már látta a képet, a Make (Európa)
+  // ~20 mp-cel a deploy után még 404-et kapott → a poszt elbukott. A Reel ezt 10-01 óta tudja (reel-post.js).
+  if (!DRY && batch.length && process.env.DEPLOY_OUTCOME === 'success') {
+    console.log(`   ⏳ Friss feltöltés — ${Math.round(LECSENGES_FOTO_MS / 1000)} mp várakozás, hogy a kép minden szerverre odaérjen`);
+    await new Promise(r => setTimeout(r, LECSENGES_FOTO_MS));
+  }
   for (const { path, post } of batch) {
     // 🔴 POSZT CSAK ÉLŐ CIKKRE (2026-11-13, core/cikk-kint.js): bukott deploy után a poszt 404-re vitt.
     // A sorban marad (nincs posted_fb jelölés), a következő futás viszi ki.

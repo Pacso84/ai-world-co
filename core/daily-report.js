@@ -564,7 +564,8 @@ async function main() {
       // A kettő külön kérdés: itt a MŰKÖDIK-E, ott a MENNYIT FOGYASZT.
       // (A Reel 08-25-én éles lett, és 5 napig egyikben sem szerepelt.)
       const WATCH = [
-        { id: FB_SCENARIO_ID, pkg: 'facebook-pages', name: 'FB-POSZTOLÓ', fix: 'Facebook Pages → Upload a Photo' },
+        // ujraprobal (11-17): az elbukott fotóposztot a posztoló magától újraküldi (core/fb-ujraproba.js)
+        { id: FB_SCENARIO_ID, pkg: 'facebook-pages', name: 'FB-POSZTOLÓ', fix: 'Facebook Pages → Upload a Photo', ujraprobal: true },
         // 🎬 A REEL FELVÉVE (2026-08-30). A csatorna 08-25 óta automata, de
         // eddig KIMARADT mind a három rétegből (áll-e? · van-e kimeneti modul? ·
         // bukott-e ma?) — pontosan abból, amit a 9 napos néma FB-leállás után
@@ -617,7 +618,7 @@ async function main() {
           if (lr.ok) {
             const lj = await lr.json().catch(() => ({}));
             const since = new Date(Date.now() - 24 * 3600e3).toISOString();
-            const line = describeFailures(w.name, summarizeRuns(lj.scenarioLogs || lj.logs || [], since), { bizonytalan: !!w.bizonytalan });
+            const line = describeFailures(w.name, summarizeRuns(lj.scenarioLogs || lj.logs || [], since), { bizonytalan: !!w.bizonytalan, ujraprobal: !!w.ujraprobal });
             if (line) lines.push(line);
           }
         } catch { /* a napló hiánya nem némítja el a többi őrszemet */ }
