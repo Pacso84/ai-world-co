@@ -254,7 +254,7 @@ ta('(a) siker: sugo_alapu, official_sources a listából, nincs title, cost 0.00
   assert.equal('title' in r.frissites, false, 'a cím nem változott');
   assert.equal(r.cost, 0.002);
   assert.equal(ask.hivasok.length, 2);
-  assert.equal(ask.hivasok[0].opciok.maxTokens, 200); assert.equal(ask.hivasok[1].opciok.maxTokens, 400);
+  assert.equal(ask.hivasok[0].opciok.maxTokens, 1500); assert.equal(ask.hivasok[1].opciok.maxTokens, 2000);
   assert.equal(ask.hivasok[0].opciok.jsonMode, true); assert.equal(ask.hivasok[0].opciok.agentName, 'guide');
 });
 
@@ -469,6 +469,118 @@ ta('(t3) vegyes lista (nem minden tétel termékoldal) → a régi úton megy', 
 ta('(t4) a normál (jelölő nélküli) lista a régi úton megy — a jelölő hiánya nem zár ki', async () => {
   const r = await horgonyKeres(konkretTema, { ask: okAsk(), indexFn, sugoSzovegFn: szovegFn });
   assert.equal(r.ok, true, r.reason);
+});
+
+// --- 11-18 (súgókereső 4): második választó-kör a felfedezett súgóoldalakon + Haiku-keret (1500 / 2000) ---
+const mmTema = { id: 'mm1', title: 'How to use MiniMax Code agent mode', tool: 'MiniMax Code', company: 'MiniMax', angle: 'agent coding' };
+// (a platform.* gazdanév FEJLESZTOI_URL → itt nem fejlesztői, hogy az 1. kör lefusson; a fejlesztői eset az (m4)-ben van)
+const MM_FIX = 'https://www.minimax.io/help/x';
+const MM_FELF = 'https://agent.minimax.io/docs/code/a';
+const mmIndex = async () => [{ url: MM_FIX, cim: 'X' }];
+const felfLista = [{ url: MM_FELF, cim: 'A', felfedezett: true }];
+function hamisFelfedez(lista) {
+  const f = async (nev, o) => { f.hivasok.push({ nev, o }); return lista; };
+  f.hivasok = []; return f;
+}
+function hamisSzoveg() {
+  const f = async (url, o) => { f.hivasok.push({ url, o }); return { szoveg: hosszu, cim: 'A' }; };
+  f.hivasok = []; return f;
+}
+
+ta('(m1) 2. kör: a fix lista nem illik → felfedezett siker (jelölt forrás, szöveg-letöltés az eszköz nevével)', async () => {
+  const ask = hamisAsk([val({ pick: 0 }), val({ pick: 1 }), val({ ok: true, title: mmTema.title, reason: 'r' })]);
+  const felf = hamisFelfedez(felfLista), szov = hamisSzoveg(); const cache = {};
+  const r = await horgonyKeres(mmTema, { ask, indexFn: mmIndex, sugoSzovegFn: szov, felfedezFn: felf, indexCache: cache });
+  assert.equal(r.ok, true, r.reason);
+  assert.deepEqual(r.frissites.official_sources, [{ url: MM_FELF, title: 'A', felfedezett: true }]);
+  assert.equal(r.frissites.sugo_alapu, true); assert.equal(r.felfedezett, true);
+  assert.deepEqual(szov.hivasok, [{ url: MM_FELF, o: { felfedezettEszkoz: 'MiniMax Code' } }]);
+  assert.equal(ask.hivasok.length, 3, 'választó + 2. kör + ellenőrző');
+  assert.match(ask.hivasok[1].prompt, /1\. A — agent\.minimax\.io\/docs\/code\/a/, 'a 2. kör a felfedezett listát látja');
+  assert.equal(felf.hivasok.length, 1); assert.equal(felf.hivasok[0].nev, 'MiniMax Code');
+  assert.equal(felf.hivasok[0].o.cache, cache.__felfedezes, 'a futás-gyorsítótár az indexCache.__felfedezes');
+  assert.ok(cache.__felfedezes && typeof cache.__felfedezes === 'object');
+  assert.equal(r.cost, 0.003);
+});
+
+ta('(m2) a 2. kör üres → az eredeti ok („nincs illő súgócikk”), nem átmeneti', async () => {
+  const ask = hamisAsk([val({ pick: 0 })]);
+  const r = await horgonyKeres(mmTema, { ask, indexFn: mmIndex, sugoSzovegFn: hamisSzoveg(), felfedezFn: hamisFelfedez([]) });
+  assert.equal(r.ok, false); assert.equal(r.reason, 'nincs illő súgócikk'); assert.equal(r.jegyzesOk, 'nincs illő súgócikk');
+  assert.equal(r.atmeneti, undefined); assert.equal(ask.hivasok.length, 1);
+});
+
+ta('(m3) üres fix lista + üres felfedezés → átmeneti marad; a felfedezés előbb fut', async () => {
+  const felf = hamisFelfedez([]); const ask = okAsk();
+  const r = await horgonyKeres(mmTema, { ask, indexFn: async () => [], sugoSzovegFn: hamisSzoveg(), felfedezFn: felf });
+  assert.equal(r.ok, false); assert.equal(r.reason, 'a súgó cikklistája nem jött le'); assert.equal(r.atmeneti, true);
+  assert.equal(r.jegyzesOk, 'a súgó cikklistája nem jött le'); assert.equal(felf.hivasok.length, 1); assert.equal(ask.hivasok.length, 0);
+});
+
+ta('(m3b) üres fix lista + van felfedezett jelölt → a 2. kör közvetlenül fut, siker', async () => {
+  const ask = hamisAsk([val({ pick: 1 }), val({ ok: true, title: mmTema.title, reason: 'r' })]);
+  const r = await horgonyKeres(mmTema, { ask, indexFn: async () => [], sugoSzovegFn: hamisSzoveg(), felfedezFn: hamisFelfedez(felfLista) });
+  assert.equal(r.ok, true, r.reason); assert.equal(r.felfedezett, true); assert.equal(ask.hivasok.length, 2);
+});
+
+ta('(m4) csak fejlesztői fix lista → az 1. kör AI-hívása kimarad (az első hívás már a felfedezett listát látja)', async () => {
+  const ask = hamisAsk([val({ pick: 1 }), val({ ok: true, title: mmTema.title, reason: 'r' })]);
+  const r = await horgonyKeres(mmTema, { ask, indexFn: async () => [{ url: 'https://platform.minimax.io/docs/api-reference/z', cim: 'Z' }],
+    sugoSzovegFn: hamisSzoveg(), felfedezFn: hamisFelfedez(felfLista) });
+  assert.equal(r.ok, true, r.reason); assert.equal(ask.hivasok.length, 2);
+  assert.match(ask.hivasok[0].prompt, /agent\.minimax\.io\/docs\/code\/a/); assert.doesNotMatch(ask.hivasok[0].prompt, /api-reference/);
+});
+
+ta('(m4b) csak fejlesztői fix lista + üres felfedezés → a régi út (az 1. kör és az ellenőrző dönt)', async () => {
+  const ask = hamisAsk([val({ pick: 1 }), val({ ok: false, reason: 'csak API' })]);
+  const r = await horgonyKeres(mmTema, { ask, indexFn: async () => [{ url: 'https://platform.minimax.io/docs/api-reference/z', cim: 'Z' }],
+    sugoSzovegFn: hamisSzoveg(), felfedezFn: hamisFelfedez([]) });
+  assert.equal(r.ok, false); assert.equal(r.jegyzesOk, 'a cikkből nem írható útmutató'); assert.equal(ask.hivasok.length, 2);
+});
+
+ta('(m5) idegen hostú felfedezett jelölt nem választható', async () => {
+  const ask = hamisAsk([val({ pick: 0 }), val({ pick: 1 })]); const szov = hamisSzoveg();
+  const r = await horgonyKeres(mmTema, { ask, indexFn: mmIndex, sugoSzovegFn: szov, felfedezFn: hamisFelfedez([{ url: 'https://code.minimax.io/docs/a', cim: 'A', felfedezett: true }]) });
+  assert.equal(r.ok, false); assert.equal(r.reason, 'nincs illő súgócikk'); assert.equal(szov.hivasok.length, 0, 'szöveg-letöltés sincs');
+});
+
+ta('(m6) maxTokens: a választó (mindkét kör) 1500, az ellenőrző 2000', async () => {
+  const ask = hamisAsk([val({ pick: 0 }), val({ pick: 1 }), val({ ok: true, title: mmTema.title, reason: 'r' })]);
+  await horgonyKeres(mmTema, { ask, indexFn: mmIndex, sugoSzovegFn: hamisSzoveg(), felfedezFn: hamisFelfedez(felfLista) });
+  assert.deepEqual(ask.hivasok.map(h => h.opciok.maxTokens), [1500, 1500, 2000]);
+  assert.ok(ask.hivasok.every(h => h.opciok.jsonMode === true && h.opciok.agentName === 'guide'));
+});
+
+ta('(m7) a jóváhagyott siker esetén nincs felfedezés (0 hívás)', async () => {
+  const felf = hamisFelfedez(felfLista);
+  const r = await horgonyKeres(konkretTema, { ask: okAsk(), indexFn, sugoSzovegFn: szovegFn, felfedezFn: felf });
+  assert.equal(r.ok, true, r.reason); assert.equal(felf.hivasok.length, 0); assert.equal(r.felfedezett, undefined);
+  assert.deepEqual(r.frissites.official_sources, [{ url: CIKK_URL, title: 'What are Spaces?' }], 'nincs felfedezett jelölés a jóváhagyott forráson');
+});
+
+ta('(m8) a termékoldal-szabály (3b) előbb dönt, mint a felfedezés', async () => {
+  const felf = hamisFelfedez(felfLista); const ask = okAsk();
+  const r = await horgonyKeres(braveTema, { ask, indexFn: braveIndex, sugoSzovegFn: szovegFn, felfedezFn: felf });
+  assert.equal(r.jegyzesOk, 'a súgó csak termékoldal — csak bevezető írható'); assert.equal(felf.hivasok.length, 0); assert.equal(ask.hivasok.length, 0);
+});
+
+ta('(m9) felfedezett siker, de az ellenőrző elutasít → ok:false, nincs felfedezett jelölés, a költség megvan', async () => {
+  const ask = hamisAsk([val({ pick: 0 }), val({ pick: 1 }), val({ ok: false, reason: 'nem ugyanaz' })]);
+  const r = await horgonyKeres(mmTema, { ask, indexFn: mmIndex, sugoSzovegFn: hamisSzoveg(), felfedezFn: hamisFelfedez(felfLista) });
+  assert.equal(r.ok, false); assert.equal(r.jegyzesOk, 'a cikkből nem írható útmutató'); assert.equal(r.felfedezett, undefined); assert.equal(r.cost, 0.003);
+});
+
+ta('(m10) a felfedezFn dob → ok:false, nincs kivétel', async () => {
+  const r = await horgonyKeres(mmTema, { ask: hamisAsk([val({ pick: 0 })]), indexFn: mmIndex, sugoSzovegFn: hamisSzoveg(), felfedezFn: async () => { throw new Error('hálózat'); } });
+  assert.equal(r.ok, false); assert.match(r.reason, /^hiba: /); assert.equal(r.atmeneti, true);
+});
+
+ta('(m11) az alapértelmezett felfedezés nem hív hálózatot, ha az eszköznek nincs felfedezhető hostja (Perplexity)', async () => {
+  const eredeti = globalThis.fetch; let hivas = 0; globalThis.fetch = async () => { hivas++; throw new Error('hálózat tilos'); };
+  try {
+    const r = await horgonyKeres(konkretTema, { ask: hamisAsk([val({ pick: 0 })]), indexFn, sugoSzovegFn: szovegFn });
+    assert.equal(r.reason, 'nincs illő súgócikk'); assert.equal(hivas, 0);
+  } finally { globalThis.fetch = eredeti; }
 });
 
 t('ellenorzoPromptTema: 4. feltétel — a téma ÍGÉRETE álljon a súgóban, a termékoldal nem igazol használati esetet', () => {

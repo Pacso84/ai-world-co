@@ -12,6 +12,13 @@
 //   4. horgonyKeres — a fentieket összefűzi (súgó-lista → választó AI → letöltés → ellenőrző AI); az AI-hívás,
 //      a lista- és a szöveg-letöltés KÍVÜLRŐL jön (tesztben hamis), így a tesztek hálózat és pénz nélkül futnak.
 //      (Kivétel AI nélkül: ha a súgó csak egy-lapos termékoldal, a nem „Getting started” téma tartósan elbukik.)
+//   4b. MÁSODIK VÁLASZTÓ-KÖR (súgókereső, 11-18): ha a fix lista első köre „nincs illő súgócikk”, VAGY a fix lista üres,
+//      VAGY minden tétele fejlesztői/API-oldal (ekkor az 1. kör AI-hívása ki is marad), a core/sugo-felfedezo.js az eszköz
+//      SAJÁT hivatalos hosztján (robots/sitemap/llms.txt) talál súgóoldal-jelölteket; azokból ugyanígy sorszámot választ az AI
+//      (valasztoValasz + felfedezettEngedelyezett: csak az eszköz pontos hostja), a szöveget a sugo-tar hozza
+//      ({ felfedezettEszkoz }), az ellenőrző ugyanaz. Siker: official_sources[0].felfedezett = true (a gát minden használatkor
+//      újraellenőrzi), az eredményen felfedezett: true. Üres felfedezésnél az eredeti kudarc-ok és -jelleg marad.
+//      A termékoldal-szabály (3b) előbb dönt; jóváhagyott siker mellett felfedezés NINCS. Haiku-keret: választó 1500, ellenőrző 2000 token.
 //   5. horgonyJegyzes / horgonyVar — a próba eredménye a témán; sikertelen próba után UJRAPROBA_NAP napot várunk.
 //   (A bekötés az útmutató-írás elé a következő feladatban jön.)
 //
@@ -24,6 +31,7 @@ import { INDEX_MAX, MIN_SUGO_SZOVEG, szavak, jsonKibont, valasztoValasz } from '
 import { adatlap } from './termek-adatlap.js';
 import { indexLetolt } from './sugo-index.js';
 import { sugoSzoveg } from './sugo-tar.js';
+import { felfedez, felfedezettEngedelyezett } from './sugo-felfedezo.js';
 
 export const HORGONY_BE = true;
 /** Futásonként legfeljebb ennyi horgony-próba (költség-fék: témánként ≤ 2 AI-hívás). */
@@ -194,12 +202,13 @@ export function ellenorzoValaszTema(szoveg, tema) {
  * @param opciok.ask           az AI-hívó: ask(prompt, { agentName, systemPrompt, maxTokens, jsonMode }) → { text, costUsd } | null
  * @param opciok.indexFn       a súgó cikklistáját hozza (kulcs → [{url, cim}]); tesztben hamis
  * @param opciok.sugoSzovegFn  a cikk szövegét hozza (url → { szoveg, cim } | null); tesztben hamis
+ * @param opciok.felfedezFn     a 2. kör jelöltjeit hozza ((eszköznév, { cache }) → [{url, cim, felfedezett}]); tesztben hamis
  * @param opciok.indexCache    a sikeres (nem üres) cikklista itt marad egy futásra; üres/hibás letöltést kulcsonként legfeljebb LISTA_PROBA-szor próbálunk
  * Az `atmeneti: true` kudarc (a letöltés vagy egy hiba miatt, nem a téma miatt) NEM indít 14 napos várakozást — a hívó ne jegyezze fel.
- * @returns {Promise<{ok:true, frissites:{sugo_alapu:true, official_sources:{url:string,title:string}[], title?:string}, reason:string, cost:number}
+ * @returns {Promise<{ok:true, frissites:{sugo_alapu:true, official_sources:{url:string,title:string,felfedezett?:true}[], title?:string}, reason:string, cost:number, felfedezett?:true}
  *   | {ok:false, reason:string, cost:number}>}  Kivételt SOHA nem dob.
  */
-export async function horgonyKeres(tema, { ask, indexFn = indexLetolt, sugoSzovegFn = sugoSzoveg, indexCache = {}, agentName = 'guide' } = {}) {
+export async function horgonyKeres(tema, { ask, indexFn = indexLetolt, sugoSzovegFn = sugoSzoveg, indexCache = {}, agentName = 'guide', felfedezFn = felfedez } = {}) {
   let cost = 0;
   try {
     // 1. kell-e horgony (cégfüggetlen / megszűnt / ismeretlen eszköz: nem) — AI-hívás nélkül
@@ -219,26 +228,55 @@ export async function horgonyKeres(tema, { ask, indexFn = indexLetolt, sugoSzove
       }
       if (Array.isArray(indexCache[k])) index.push(...indexCache[k]);
     }
-    if (!index.length) return { ok: false, reason: 'a súgó cikklistája nem jött le', jegyzesOk: 'a súgó cikklistája nem jött le', atmeneti: true, cost };
+    // 2b. a felfedezett (az eszköz saját hostján talált) súgóoldalak: futásonként hostonként egyszer (indexCache.__felfedezes)
+    const felfed = async () => {
+      const l = await felfedezFn(ad.nev, { cache: (indexCache.__felfedezes ||= {}) });
+      return Array.isArray(l) ? l : [];
+    };
+    // egy választó-kör: a lista szűkítése → AI (sorszám) → a választott tétel (az engedély-függvény az 1. körben az alapértelmezett)
+    const valaszt = async (lista, engedelyFn) => {
+      const szukitett = indexSzukites(tema, lista);
+      const p1 = valasztoPromptTema(tema, szukitett);
+      const r1 = await ask(p1.felhasznalo, { agentName, systemPrompt: p1.rendszer, maxTokens: 1500, jsonMode: true });
+      cost += r1?.costUsd || 0;
+      return valasztoValasz(r1?.text, szukitett, engedelyFn);
+    };
+    const felfedezettEngedely = u => felfedezettEngedelyezett(u, ad.nev);
 
-    // 3b. egy-lapos TERMÉKOLDAL (pl. brave.com/leo): a lap csak azt igazolja, hogy a funkció létezik, használati esetet nem.
-    // Ha a téma cikklistájának MINDEN tétele ilyen, csak a „Getting started with …” bevezető horgonyozható — a többi téma AI-hívás
-    // NÉLKÜL, TARTÓS okkal (14 nap) elbukik. (11-17 mérés: a „Private AI Chats Separate from Work in Brave Leo” 3/5-ször átment
-    // az ellenőrzőn, pedig a lap a munka/magán szétválasztásról semmit nem ír → a gépi szabály nem függ az AI szórásától.)
-    if (index.every(c => c?.termekoldal === true) && !/^\s*Getting started with\b/i.test(String(tema?.title || ''))) {
-      return { ok: false, reason: 'a súgó csak termékoldal', jegyzesOk: JEGYZES_CSAK_TERMEKOLDAL, cost };
+    let cikk = null, felfedezett = false;
+    if (!index.length) {
+      // üres fix lista: a felfedezés előbb jön, mint az „átmeneti” válasz; üres felfedezésnél marad a régi kudarc
+      const jeloltek = await felfed();
+      if (!jeloltek.length) return { ok: false, reason: 'a súgó cikklistája nem jött le', jegyzesOk: 'a súgó cikklistája nem jött le', atmeneti: true, cost };
+      cikk = await valaszt(jeloltek, felfedezettEngedely); felfedezett = true;
+    } else {
+      // 3b. egy-lapos TERMÉKOLDAL (pl. brave.com/leo): a lap csak azt igazolja, hogy a funkció létezik, használati esetet nem.
+      // Ha a téma cikklistájának MINDEN tétele ilyen, csak a „Getting started with …” bevezető horgonyozható — a többi téma AI-hívás
+      // NÉLKÜL, TARTÓS okkal (14 nap) elbukik. (11-17 mérés: a „Private AI Chats Separate from Work in Brave Leo” 3/5-ször átment
+      // az ellenőrzőn, pedig a lap a munka/magán szétválasztásról semmit nem ír → a gépi szabály nem függ az AI szórásától.)
+      if (index.every(c => c?.termekoldal === true) && !/^\s*Getting started with\b/i.test(String(tema?.title || ''))) {
+        return { ok: false, reason: 'a súgó csak termékoldal', jegyzesOk: JEGYZES_CSAK_TERMEKOLDAL, cost };
+      }
+
+      // 4–5. választó AI: sorszámot választ a szűkített listából
+      const szukitett = indexSzukites(tema, index);
+      if (szukitett.every(c => FEJLESZTOI_URL.test(String(c?.url || '')))) {
+        // csak fejlesztői/API-oldal: az 1. kör AI-hívása kimarad, egyenesen a felfedezett jelöltekre (ha nincs, a régi út)
+        const jeloltek = await felfed();
+        if (jeloltek.length) { cikk = await valaszt(jeloltek, felfedezettEngedely); felfedezett = true; }
+        else cikk = await valaszt(index);
+      } else {
+        cikk = await valaszt(index);
+        if (!cikk) {
+          const jeloltek = await felfed();
+          if (jeloltek.length) { cikk = await valaszt(jeloltek, felfedezettEngedely); felfedezett = true; }
+        }
+      }
     }
-
-    // 4–5. választó AI: sorszámot választ a szűkített listából
-    const szukitett = indexSzukites(tema, index);
-    const p1 = valasztoPromptTema(tema, szukitett);
-    const r1 = await ask(p1.felhasznalo, { agentName, systemPrompt: p1.rendszer, maxTokens: 200, jsonMode: true });
-    cost += r1?.costUsd || 0;
-    const cikk = valasztoValasz(r1?.text, szukitett);
     if (!cikk) return { ok: false, reason: 'nincs illő súgócikk', jegyzesOk: 'nincs illő súgócikk', cost };
 
     // 6. a cikk szövege (privát tárból)
-    const sz = await sugoSzovegFn(cikk.url);
+    const sz = felfedezett ? await sugoSzovegFn(cikk.url, { felfedezettEszkoz: ad.nev }) : await sugoSzovegFn(cikk.url);
     // nem jött le → ÁTMENETI (a következő futás újra próbálja); lejött, de túl rövid → TARTÓS (14 nap): egy tartósan rövid
     // cikkre különben minden futás újabb AI-hívást égetne.
     if (!sz) return { ok: false, reason: 'a súgócikk nem tölthető le', jegyzesOk: 'a súgócikk nem tölthető le', atmeneti: true, cost };
@@ -247,14 +285,15 @@ export async function horgonyKeres(tema, { ask, indexFn = indexLetolt, sugoSzove
 
     // 7. ellenőrző AI: a cikkből tényleg írható-e útmutató ehhez a témához
     const p2 = ellenorzoPromptTema(tema, { url: cikk.url, cim: sugoCim, szoveg: sz.szoveg }, { szint: ad.szint });
-    const r2 = await ask(p2.felhasznalo, { agentName, systemPrompt: p2.rendszer, maxTokens: 400, jsonMode: true });
+    const r2 = await ask(p2.felhasznalo, { agentName, systemPrompt: p2.rendszer, maxTokens: 2000, jsonMode: true });
     cost += r2?.costUsd || 0;
     const v = ellenorzoValaszTema(r2?.text, tema);
     if (!v.ok) return { ok: false, reason: v.reason, jegyzesOk: 'a cikkből nem írható útmutató', cost };   // az AI indoka csak a naplónak
 
-    const frissites = { sugo_alapu: true, official_sources: [{ url: cikk.url, title: sugoCim }] };
+    const forras = felfedezett ? { url: cikk.url, title: sugoCim, felfedezett: true } : { url: cikk.url, title: sugoCim };
+    const frissites = { sugo_alapu: true, official_sources: [forras] };
     if (v.title && tiszta(v.title) !== tiszta(tema?.title)) frissites.title = v.title;   // cím csak akkor, ha szűkült
-    return { ok: true, frissites, reason: v.reason, cost };
+    return { ok: true, frissites, reason: v.reason, cost, ...(felfedezett ? { felfedezett: true } : {}) };
   } catch (e) {
     return { ok: false, reason: 'hiba: ' + String(e?.message || e).slice(0, 150), jegyzesOk: 'hiba', atmeneti: true, cost };   // a kivétel szövege nem kerül a jegyzésbe
   }

@@ -105,7 +105,7 @@ t('🔌 a párosító tényleg használja (második esély + új meglevoTema)', 
 // ── 2. RÉSZ: az útmutató-író CSAK a súgóból, az Ellenőrző a súgón méri a gombneveket ──────────────────
 const SP = await import('./sugo-parositas.js');
 const { sugoBlokk, sugoUtmutatoJelzes } = SP;
-const { engedelyezett } = await import('./sugo-index.js');
+const { forrasEngedelyezett } = await import('./sugo-felfedezo.js');
 const { readdirSync } = await import('fs');
 const { blockingIssues, lessonFor, LECKES_KODOK, issueCode } = await import('./auto-check-codes.js');
 
@@ -153,7 +153,8 @@ t('🔴 a régi, kézzel írt útmutatók official_sources-ára (sima URL, nem j
     if (!forrasok.length) continue;
     assert.equal(meta.sugo_alapu, true, '🔴 ' + f + ': a gát alá esik, de nincs sugo_alapu jelölése');
     assert.equal(meta.type, 'guide', '🔴 ' + f + ': a gát nem útmutatóra futna le');
-    for (const s of forrasok) assert.ok(engedelyezett(s.url), '🔴 ' + f + ': nem jóváhagyott súgó-URL: ' + s.url);
+    // a jóváhagyott lista VAGY a felfedezett jelölés + az eszköz saját hostja (ugyanaz a közös szabály, mint a gátban)
+    for (const s of forrasok) assert.ok(forrasEngedelyezett(s, meta), '🔴 ' + f + ': nem engedélyezett súgó-URL: ' + s.url);
   }
 });
 
