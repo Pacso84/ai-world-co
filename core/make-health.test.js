@@ -113,10 +113,24 @@ t('nem bizonytalan forgatókönyv (FB-link): a 2-es is ⚠️ ELBUKOTT, mint edd
   assert.match(describeFailures('FB-POSZTOLÓ', { ok: 1, failed: 1, warned: 1, topReason: '' }), /^⚠️ FB-POSZTOLÓ: 1\/2 poszt ELBUKOTT/);
 });
 
+// 11-17: a FB-fotóposztot a posztoló magától újraküldi (core/fb-ujraproba.js) → a sor ezt mondja, nem kézi újrajátszást
+t('újrapróbáló forgatókönyv (FB-fotó): „magától újra elküldi”, nem „újrajátszható”', () => {
+  const line = describeFailures('FB-POSZTOLÓ', { ok: 6, failed: 1, topReason: '' }, { ujraprobal: true });
+  assert.match(line, /^⚠️ FB-POSZTOLÓ: 1\/7 poszt ELBUKOTT/);
+  assert.match(line, /következő futás magától újra elküldi/);
+  assert.doesNotMatch(line, /újrajátszható/, '🔴 kézi munkát kér, amit a kód már elvégez — és a kézi újrajátszás DUPLA posztot csinálna');
+});
+
+t('bekötés: a daily-report a FB-fotó forgatókönyvet újrapróbálónak jelöli, és átadja', () => {
+  const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
+  assert.match(src, /name: 'FB-POSZTOLÓ'[^}]*ujraprobal: true/);
+  assert.match(src, /ujraprobal: !!w\.ujraprobal/);
+});
+
 t('bekötés: a daily-report a Reel-forgatókönyvet bizonytalannak jelöli, és átadja', () => {
   const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
   assert.match(src, /name: 'REEL-POSZTOLÓ'[^}]*bizonytalan: true/);
-  assert.match(src, /describeFailures\(w\.name, summarizeRuns\(.*, since\), \{ bizonytalan: !!w\.bizonytalan \}\)/);
+  assert.match(src, /describeFailures\(w\.name, summarizeRuns\(.*, since\), \{ bizonytalan: !!w\.bizonytalan[ ,]/);
 });
 
 console.log('\n✅ make-health.test: mind a ' + pass + ' eset rendben');

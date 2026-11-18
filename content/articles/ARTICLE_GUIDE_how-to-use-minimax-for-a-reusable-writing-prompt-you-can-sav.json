@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-use-minimax-for-a-reusable-writing-prompt-you-can-sav",
+    "company": "MiniMax",
+    "tool": "MiniMax",
+    "icon": "♻️",
+    "level": "intermediate",
+    "source_news": null,
+    "official_sources": null,
+    "trend": null,
+    "extra_slot": null,
+    "written_at": "2026-11-17T05:45:48.835Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0046458,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-11-17T05:47:13.149Z",
+    "slug": "how-to-use-minimax-for-a-reusable-writing-prompt-you-can-save",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1509
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide with clear step-by-step instructions, good fallback advice (checking official site for plan features), practical examples, and an encouraging tone that makes readers feel capable.",
+      "_aiCost": 0.00146244,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-17T05:50:02.323Z",
+    "seo": {
+      "meta_description": "Create a reusable writing prompt in MiniMax to save time. Build one template for emails, summaries, or social posts, then reuse it with fresh details.",
+      "keywords": [
+        "MiniMax writing prompt",
+        "how to use MiniMax",
+        "MiniMax reusable prompt",
+        "save prompt MiniMax",
+        "MiniMax prompt template",
+        "create prompt in MiniMax",
+        "MiniMax for emails"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding the word 'how to' in the title to match search intent better: 'How to Create a Reusable Writing Prompt in MiniMax'",
+        "Add a long-tail keyword like 'reuse prompts in MiniMax' to improve topical relevance",
+        "The meta description is strong but could mention 'template' earlier for clarity"
+      ],
+      "optimised_at": "2026-11-17T05:51:04.580Z"
+    },
+    "fact_verified_at": "2026-11-17T05:51:56.260Z",
+    "reel_at": "2026-11-17T06:01:40.510Z",
+    "video_sablon": "borito",
+    "social": true,
+    "social_at": "2026-11-17T06:02:28.453Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Use MiniMax for a Reusable Writing Prompt You Can Save\"\nsubtitle: \"Build one prompt template for emails, summaries, or posts, then reuse it with new details each time.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"MiniMax\"\ntool: \"MiniMax\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"prompts\", \"templates\", \"minimax\", \"productivity\"]\n---\n\n# How to Use MiniMax for a Reusable Writing Prompt You Can Save\n\n> **In short:** You will build one writing prompt template with fixed instructions and blanks for new details, save it, and reuse it for emails, summaries, or posts. Saving works best in a notes file, because chats can be hard to find later.\n\nIf you already use MiniMax to draft messages, you have probably retyped the same instructions many times. This guide shows you how to write those instructions once, keep them somewhere safe, and reuse them. It's for anyone who writes regularly, whether for work or for personal messages.\n\n## Before you start\n\n- A MiniMax account and the ability to start a chat and send a message. This guide assumes you already do both.\n- A notes app, a document, or a text file on your phone or computer. Any will do.\n- About 20 to 30 minutes.\n- A note on plans: some features differ between free and paid plans, and they can change. Check the official MiniMax website for what your plan includes. This guide only uses features that work in a plain chat.\n\n## Step 1 — Pick one job for your template\n\nChoose one kind of writing you do often, such as a weekly update email, a summary of a long article, or a social media post. A template works best when it has one clear job, because a single prompt can't do everything well.\n\nOpen your notes app and write the job at the top, for example \"Weekly team update email.\" Below it, list the three things the output must always include. For an update email, that might be the wins, the open questions, and the next steps. Think of this list as the skeleton of a recipe: the ingredients stay the same, and you change only the amounts.\n\nNothing shows up in MiniMax yet, and that's fine. You're planning on paper so the next step is easier.\n\n💬 Example: \"Weekly team update email: always include wins, open questions, and next steps.\"\n\nYou'll know it worked when you have one job and three must-have parts written in your notes.\n\n## Step 2 — Write the template with blanks\n\nNow turn your plan into a prompt. Write the instructions in full sentences, and mark each spot where new details will go with square brackets. Those brackets are your blanks. Each time you reuse the template, you replace only the bracketed words.\n\nInclude four kinds of instructions: who the writing is for, what it should do, the tone, and the length. Keep the blanks few, around three to five, so the template stays easy to fill in.\n\nIf your template has too many blanks, you'll spend more time filling it in than writing the message yourself. Start small and add more only if you need it.\n\n💬 Example: \"Write a short update email to [team name] about [project name]. Include the wins, open questions, and next steps. Use a friendly, direct tone and keep it under [number] words.\"\n\nYou'll know it worked when your template has clear instructions and only a few bracketed blanks.\n\n## Step 3 — Run the template once with real details\n\nOpen a new chat in MiniMax. Copy your template, replace each bracket with real details, and send it. For example, replace the team name with your team's name and the project name with a real project.\n\nAfter you send it, the answer appears below your message, usually within a few seconds. Read it the way the recipient would. Check that the length, tone, and required parts match your instructions.\n\nIf the answer is far off, don't assume the template is broken. Often the blanks were too vague. If you see no answer or an error message, wait a moment and try again, or start a new chat. If MiniMax asks you a question back, answer it briefly.\n\n💬 Example: \"Write a short update email to the Riverside design team about the spring menu redesign. Include the wins, open questions, and next steps. Use a friendly, direct tone and keep it under 150 words.\"\n\nYou'll know it worked when the answer follows every instruction in your template.\n\n## Step 4 — Tune the template, one change at a time\n\nYour first answer is a test, not the final version. Fix one thing at a time, so you learn what each change does. Ask for a single adjustment in the same chat, such as \"Make it shorter\" or \"Put the next steps first.\" When a change works, copy the improved wording back into your notes template.\n\nThis is the most useful skill in this guide. When the output is consistently good, the template is ready. Don't rewrite everything if only one line caused the problem; edit that line.\n\nIf a change makes the answer worse, go back to your earlier wording. Keep a copy of the version that worked.\n\n💬 Example: \"Good draft. Now shorten it to about 100 words and move the next steps to the top.\"\n\nYou'll know it worked when the revised answer matches your request and your notes template contains the improved sentence.\n\n## Step 5 — Save the finished template somewhere you can find it\n\nThis step matters most. Copy your finished template from Step 4 into your notes app, and give the note a clear title such as \"MiniMax template: weekly update email.\" Keep the blanks in square brackets so you can spot them quickly.\n\nDon't rely on chat history alone. Old chats can be hard to search, and a long conversation may make it harder to find the exact wording you want. Some accounts also offer a built-in place to store instructions. If you see one, you can use it, but check the official MiniMax site first to confirm it's available on your plan.\n\nWhatever you use, make sure the template stays in one place. One clean copy is better than five slightly different ones.\n\n💬 Example: Title the note \"MiniMax template: weekly update email,\" then paste the full template with its blanks.\n\nYou'll know it worked when you can open your notes app, find the template in under 30 seconds, and see every bracketed blank.\n\n## Step 6 — Reuse it with new details\n\nThe next time you need that kind of writing, open your notes, copy the template, and open a new MiniMax chat. Starting fresh keeps old details from leaking into the new answer. Replace each bracket with the new details, then send.\n\nCheck the answer before you use it. Confirm that names, dates, and numbers match what you meant. Edit anything that doesn't fit your situation. MiniMax can draft the message quickly, but it can't know facts you didn't give it, and it can't send the email for you.\n\nIf the new answer seems off, check whether a bracket was left unfilled or filled with something vague.\n\n💬 Example: \"Write a short update email to the Oak Street sales team about the July promotion. Include the wins, open questions, and next steps. Use a friendly, direct tone and keep it under 100 words.\"\n\nYou'll know it worked when the new draft uses your new details, follows the same structure as before, and needs only light editing.\n\n## Common mistakes\n\n- **Writing a template that's too vague.** Instructions like \"make it good\" give the tool nothing to work with. The fix is to name the audience, the length, and the parts the output must include.\n- **Reusing an old chat with stale details.** Old messages can mix into the new answer. The fix is to open a fresh chat each time and paste the template again.\n- **Trusting the draft without checking it.** A confident-sounding answer can still contain a wrong date or a made-up detail. The fix is to read every fact against what you know before you send.\n\n## What this means for you\n\n- **In everyday life:** Save one template for holiday cards, school notes, or a weekly family plan, and fill in the details each time.\n- **For your business or work:** Create a template for client follow-ups or meeting summaries so your team writes in a consistent voice. Review every draft before it goes out.\n- **If you want to go further:** Try a two-step template. The first prompt asks MiniMax to turn your rough notes into an outline, and the second turns that outline into the final email. Save both templates together.\n\n## Try it now\n\nPick one piece of writing you did recently, such as a message or a summary. Write a three-blank template for it in your notes app, then run it once in a new MiniMax chat. Save the version that works, and you'll have your first reusable prompt.",
+  "original_title": "How to Use MiniMax for a Reusable Writing Prompt You Can Save"
+}

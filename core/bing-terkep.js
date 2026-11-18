@@ -8,14 +8,17 @@
 // is ismerte. Ezt senki nem látta, mert sehol nem mértük. Kézi újraküldés (SubmitFeed) után „Pending” lett.
 //
 // MIT CSINÁL: a napi riport lekérdezi a Bing térkép-állapotát. CSENDES, ha minden rendben. Szól, ha egy elvárt
-// térkép (1) „Failed”, (2) 4 napnál régebben volt beolvasva, (3) a Bing nem ismeri, vagy (4) 3 napnál tovább
+// térkép (1) „Failed”, (2) 2 napnál régebben volt beolvasva, (3) a Bing nem ismeri, vagy (4) 3 napnál tovább
 // „Pending”. Ilyenkor MAGÁTÓL újraküldi a térképeket a Bingnek (legfeljebb 2 naponta), és a sor ezt is kimondja.
 // Ingyenes (Bing Webmaster API). Hiba (nincs kulcs, nincs net, furcsa válasz) SOHA nem állítja meg a riportot.
 // ===================================================================
 
 export const SITE = 'https://aiworldhq.com/';
 export const ELVART_TERKEPEK = ['https://aiworldhq.com/sitemap.xml', 'https://aiworldhq.com/news-sitemap.xml'];
-export const MAX_KOR_NAP = 4;          // ennél régebbi beolvasás = a Bing elavult állapotot lát
+// ennél régebbi beolvasás = a Bing elavult állapotot lát. 11-17: 4 → 2. A 11-14-i beolvasás után 3 nappal a Bing
+// már PIROSAN jelzett („Néhány fontos új lap nem szerepel a webhelytérképeken” — két, azóta frissült cikk), a 4 napos
+// küszöbünk pedig még hallgatott. 2 napnál az újraküldés (legfeljebb 2 naponta) a piros jelzés ELŐTT megy ki.
+export const MAX_KOR_NAP = 2;
 export const MAX_FUGGO_NAP = 3;        // ennyi napnál tovább „Pending” = beragadt
 export const UJRAKULDES_SZUNET_NAP = 2;
 const NAP = 86400000;

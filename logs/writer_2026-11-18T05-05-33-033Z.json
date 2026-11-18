@@ -1,0 +1,89 @@
+{
+  "started_at": "2026-11-18T05:04:13.884Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 2,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 3,
+    "html": 1,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.0173827,
+  "by_article": [
+    {
+      "draft": "2026-11-18T05-03-44-578Z_github-copilot-changelog_GitHub_Copilot_Fusion_updates__more_availability__.json",
+      "writer_output": "WRITER_2026-11-18T05-03-44-578Z_github-copilot-changelog_GitHub_Copilot_Fusion_updates__more_availability__.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 1657,
+      "source_overlap_words": 10,
+      "cost_usd": 0.0036573,
+      "duration_ms": 12810,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-18T05-03-44-577Z_github-copilot-changelog_OpenAI_s_GPT-6_2_Astra_and_GPT-6_2_Sol_now_availab.json",
+      "writer_output": "WRITER_2026-11-18T05-03-44-577Z_github-copilot-changelog_OpenAI_s_GPT-6_2_Astra_and_GPT-6_2_Sol_now_availab.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 1947,
+      "source_overlap_words": 17,
+      "cost_usd": 0.0036676,
+      "duration_ms": 12958,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-18T05-03-44-576Z_google-workspace_Gemini-powered_data_classification_in_Google_Drive.json",
+      "writer_output": "WRITER_2026-11-18T05-03-44-576Z_google-workspace_Gemini-powered_data_classification_in_Google_Drive.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 4901,
+      "source_overlap_words": 11,
+      "cost_usd": 0.003964,
+      "duration_ms": 14727,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-18T05-03-44-575Z_openai-blog_Introducing_ChatGPT_for_Sales.json",
+      "writer_output": "WRITER_2026-11-18T05-03-44-575Z_openai-blog_Introducing_ChatGPT_for_Sales.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 12,
+      "cost_usd": 0.0037535,
+      "duration_ms": 12362,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 4,
+  "termek_extra": 0,
+  "finished_at": "2026-11-18T05:05:33.033Z",
+  "duration_seconds": 79.149
+}

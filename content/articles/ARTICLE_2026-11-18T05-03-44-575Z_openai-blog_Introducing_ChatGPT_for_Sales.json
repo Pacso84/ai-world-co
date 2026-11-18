@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "written_at": "2026-11-18T05:05:33.032Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0037535,
+    "original_draft": "2026-11-18T05-03-44-575Z_openai-blog_Introducing_ChatGPT_for_Sales.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/introducing-chatgpt-for-sales",
+    "source_links": [
+      "https://openai.com/index/introducing-chatgpt-for-sales"
+    ],
+    "source_snippet_len": 161,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "f3bd52a76f1dfaae",
+    "source_overlap_words": 12,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-18T05:05:54.184Z",
+    "slug": "chatgpt-for-sales-what-openai-s-new-sales-tool-offers-your-team",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 711
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that explains key terms (plugin, CRM, agent, dot, pipeline) in plain language, includes clear attribution for the 65% figure to NeoBid, and provides actionable takeaways for readers at different experience levels. No prohibited content, no clichés, and the wrap-up gives a concrete next step.",
+      "_aiCost": 0.00130851,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-18T05:07:18.993Z",
+    "guide_worthy": true,
+    "related_guide_topic": "chatgpt-getting-started",
+    "image_v": 2,
+    "image_at": "2026-11-18T05:10:28.430Z",
+    "seo": {
+      "meta_description": "OpenAI's ChatGPT for Sales brings 30+ plugins into one chat, helping sales teams find accounts, understand customers, and close more deals.",
+      "keywords": [
+        "ChatGPT for Sales",
+        "OpenAI sales tool",
+        "ChatGPT sales plugins",
+        "AI for sales teams",
+        "ChatGPT CRM integration",
+        "sales automation AI",
+        "OpenAI sales plugin"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add an introductory paragraph with more specific details about the Sales plugin features to improve keyword placement",
+        "Consider adding section headings with long-tail keywords like 'how to use ChatGPT for sales' or 'AI sales tools 2024'",
+        "Expand the article to include a concrete use case example showing a typical sales workflow with the tool"
+      ],
+      "optimised_at": "2026-11-18T05:12:05.134Z"
+    },
+    "fact_verified_at": "2026-11-18T05:15:03.491Z",
+    "social": true,
+    "social_at": "2026-11-18T05:25:21.653Z"
+  },
+  "article_markdown": "---\ntitle: \"ChatGPT for Sales: What OpenAI's New Sales Tool Offers Your Team\"\nsubtitle: \"OpenAI's new ChatGPT for Sales brings your customer tools into one chat, from finding accounts to sending follow-ups.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"sales\", \"chatgpt\", \"work-tools\", \"crm\", \"productivity\"]\n---\n\n# ChatGPT for Sales: What OpenAI's New Sales Tool Offers Your Team\n\n> **In short:** OpenAI has introduced ChatGPT for Sales, which pairs a new Sales plugin with more than 30 new and expanded partner plugins. OpenAI says the goal is to help sellers understand customers better, spend less time on busywork, and close more deals.\n\nMost salespeople spend their day switching between a customer database, a call recording app, a slide tool, and their inbox. Each switch costs time and can drop a detail that matters. OpenAI's new ChatGPT for Sales is meant to bring those pieces into one conversation.\n\n## What it is, in plain terms\n\nA **plugin** is an add-on that connects ChatGPT to another app, so the chatbot can read information from that app and help you act on it. OpenAI's announcement describes two layers:\n\n- **A Sales plugin** with ready-made workflows for everyday selling, such as choosing which accounts to pursue, preparing for a call, and drafting a follow-up.\n- **Partner plugins** from other software companies. These link ChatGPT to tools your team already uses, such as a **CRM** (customer relationship management software, the database that tracks customers and deals).\n\nOpenAI also describes a **dot**, which it calls an always-on agent in ChatGPT. An **agent** is an AI that can carry out tasks over time instead of waiting for each question. According to OpenAI, a dot can prepare meeting briefs, track deal updates, and flag changes for you to review.\n\n## A few ways sales teams might use it\n\n- **Choosing accounts.** Ask ChatGPT to build a ranked list of target companies from your CRM data and prospecting research, then explain why each one fits.\n- **Preparing for a call.** Request a briefing that combines account history, past conversations, and what the buyer seems to care about.\n- **Following up.** After a call, have ChatGPT draft a follow-up email, list the next steps you agreed on, and suggest updates to the customer record.\n- **Spotting deal risk.** Ask what is holding up a deal, based on CRM history and call notes, and what changed in your pipeline (the list of deals at each stage of the sales process).\n\nOpenAI lists partner tools for each of these areas, including Salesforce, HubSpot, and Gong for account and call data, and Docusign and PandaDoc for quotes and agreements. You choose the ones that match your process.\n\nNeoBid, a company quoted in the announcement, says that using HubSpot with ChatGPT for Sales has cut its manual research and outreach work by around 65%. That is NeoBid's own estimate, not an independent measurement.\n\n## What this means for you\n\n- **In everyday life**: The same approach works for planning a trip or keeping track of a side hustle. Any time you need to pull notes from several places into one clear summary, a chat-based workflow can save you from copying and pasting.\n- **For your business or work**: If your team already uses a supported CRM and call recorder, start with one repeating task, such as post-call follow-ups. Review every draft before it goes to a customer.\n- **If you're just getting started**: Pick one account you know well and ask ChatGPT to summarize what you know about it. Then compare the summary with your own notes to see what it catches and what it misses.\n- **If you already use it**: Ask the dot to check your open deals each morning and flag any that have gone quiet, then review its proposed next steps before acting on them.\n\n## Wrap-up\n\nChatGPT for Sales is OpenAI's attempt to connect the scattered parts of a sales day in one place, through a Sales plugin and a network of partner tools. Its real value depends on the tools your team already uses and how carefully you review what the AI produces. To see where you stand today, list the three apps you open most during a sales call, then check whether any of them appear in OpenAI's announcement.",
+  "original_title": "Introducing ChatGPT for Sales"
+}

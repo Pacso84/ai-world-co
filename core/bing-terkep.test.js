@@ -39,11 +39,12 @@ assert.match(sor, /sitemap\.xml/);
 assert.match(sor, /11-07/, 'a sor megmondja, mikor olvasta utoljára');
 assert.ok(!/feed\.xml/.test(sor), 'a nem elvárt feed.xml nem számít');
 
-// 4) régóta nem olvasta (Success, de 5 napja) → baj; 4 nap még rendben
+// 4) régóta nem olvasta (Success, de 3 napja) → baj; 2 nap még rendben
+// (11-17: 4 → 2 nap — a Bing 3 nap után már pirosan jelzett: „fontos új lapok hiányoznak a térképről”)
 const regi = n => [{ ...jo[0], LastCrawled: d(MOST - n * NAP) }, jo[1]];
-assert.equal(terkepAllapot(regi(4), MOST).bajok.length, 0);
-assert.equal(terkepAllapot(regi(5), MOST).bajok.length, 1);
-assert.match(terkepAllapot(regi(5), MOST).bajok[0].ok, /napja/);
+assert.equal(terkepAllapot(regi(2), MOST).bajok.length, 0);
+assert.equal(terkepAllapot(regi(3), MOST).bajok.length, 1, '🔴 3 napos beolvasásnál a Bing már pirosan jelez — szólnunk kell');
+assert.match(terkepAllapot(regi(3), MOST).bajok[0].ok, /napja/);
 
 // 5) Pending: friss beküldés után rendben, 3 napnál tovább ragadva baj
 const fugg = n => [{ ...jo[0], Status: 'Pending', Submitted: d(MOST - n * NAP), LastCrawled: d(MOST - 7 * NAP) }, jo[1]];

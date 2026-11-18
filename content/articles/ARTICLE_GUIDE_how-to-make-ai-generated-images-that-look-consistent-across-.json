@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-make-ai-generated-images-that-look-consistent-across-",
+    "company": "",
+    "tool": "",
+    "icon": "🎨",
+    "level": "intermediate",
+    "source_news": null,
+    "official_sources": null,
+    "trend": null,
+    "extra_slot": null,
+    "written_at": "2026-11-18T05:08:45.664Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0057018,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-11-18T05:09:36.404Z",
+    "slug": "how-to-make-ai-generated-images-that-look-consistent-across-a-set",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1491
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide with clear step-by-step instructions, friendly tone, and helpful \"You'll know it worked\" checkpoints throughout. The What this means for you section covers everyday use cases, and the Common mistakes section addresses real pitfalls. The disclaimer about AI limitations is honest and useful.",
+      "_aiCost": 0.00142842,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-18T05:11:20.727Z",
+    "seo": {
+      "meta_description": "Learn how to create consistent AI-generated images using a reusable prompt template. Lock in your style and reference details for cohesive batches.",
+      "keywords": [
+        "how to make AI images consistent",
+        "AI image prompt template",
+        "consistent AI generated images",
+        "AI image batch processing",
+        "stable diffusion style consistency",
+        "how to keep AI images uniform",
+        "AI image generation tips"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add specific tool names like Midjourney, DALL-E, or Stable Diffusion to improve search visibility for tool-specific queries",
+        "Include actual prompt examples in the article body to capture more long-tail keyword opportunities",
+        "Add a troubleshooting section for common consistency issues to expand content depth"
+      ],
+      "optimised_at": "2026-11-18T05:12:48.605Z"
+    },
+    "fact_verified_at": "2026-11-18T05:13:56.632Z",
+    "elakadas_at": "2026-11-18T05:17:19.231Z",
+    "reel_at": "2026-11-18T05:24:48.864Z",
+    "video_sablon": "tinta",
+    "social": true,
+    "social_at": "2026-11-18T05:25:58.243Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Make AI-Generated Images That Look Consistent Across a Set\"\nsubtitle: \"Use one shared style description, fixed reference details, and a reusable prompt template so a batch of images looks like it belongs together.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"\"\ntool: \"\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"ai-images\", \"prompts\", \"workflow\", \"consistency\"]\n---\n\n# How to Make AI-Generated Images That Look Consistent Across a Set\n\n> **In short:** Write one fixed style description and one fixed set of reference details, then paste them into every image prompt in the same order. Consistency comes from repeating the same words, because most image tools treat each request separately. Expect to try a few times.\n\nYou'll learn how to build a reusable prompt template, lock the look of your characters or products, and check a batch of images side by side. This guide is for anyone making a set of pictures, such as a storyboard, a product photo series, a classroom poster set, or a set of holiday cards that should look like a family.\n\n## Before you start\n- An AI tool that can generate images from a written description. Many chat assistants offer this, and some apps focus on images. Check whether your plan includes image generation and how many images you get. Free allowances are often smaller and can change.\n- You should already know how to open your tool, start a chat, and send a message. This guide assumes that.\n- A notes app or document to save your templates. Plan about 40 minutes for a set of six images.\n\n## Step 1 — Write one style block\nOpen your notes app and write a short style description of two or three sentences. Cover the medium (watercolor, flat vector, photo-style), the color palette, the lighting, and the mood. Your goal is a paragraph you could paste into any prompt and get the same feel. Keep it plain and specific. The words \"nice\" and \"cool\" give the tool nothing to work with, but \"soft pastel palette, gentle morning light\" does. Once it's written, don't reword it for later images. Changing even one word can shift the whole look.\n\n💬 Example: \"Flat vector illustration in a [color palette] palette, [lighting] lighting, [mood] mood, plain background, no text in the image.\"\n\nYou'll know it worked when you have one saved paragraph that describes the whole look in a few sentences.\n\n## Step 2 — Lock your reference details\nNext, list every recurring element in your set: a character, a product, a room, or a signature object. For each one, write a single fixed description with specific details like age, hair, clothing colors, size, and one distinctive feature. Write it once and save it exactly as written. If you have three characters, you should have three fixed descriptions. Don't call the same character \"the girl\" in one prompt and \"the young kid\" in another. Use identical wording every time, because the tool reads words, not your intentions. This is the closest you can get to a reference sheet with text alone.\n\n💬 Example: \"a girl about eight with short curly red hair, a yellow raincoat, and round green glasses\"\n\nYou'll know it worked when each character or object has one description you could paste word-for-word into any prompt.\n\n## Step 3 — Build the reusable template\nNow combine your pieces into one template with a fixed order: the scene, the reference details, the style block, and then the camera view. Keeping the order the same helps the tool treat each part the same way every time. Write the template with square-bracket blanks where the parts change. The style block and reference details stay the same, while the scene and camera angle change for each image. Save this template next to your style block. It becomes the frame you reuse for every picture in the set.\n\n💬 Example: \"[scene in one sentence], [paste your character details], [paste your style block], [camera angle], plain background.\"\n\nYou'll know it worked when your template has blanks only for the parts that change from image to image.\n\n## Step 4 — Make the first image and judge it\nFill in the template for your first scene and send it as one message in your chat. Your image usually appears in the chat below your message. Some tools return a few options, so pick the one closest to your style block. If you get only text, ask again and say clearly that you want an image. If the tool won't make images on your plan, you'll need to upgrade or switch to a different tool. Then compare the result against your notes. Check the character's hair color, the palette, and the lighting. Note what drifted, because that tells you which words to tighten. Expect the first result to be a starting point, not a final answer.\n\n💬 Example: \"Flat vector illustration in a soft pastel palette, gentle morning light, friendly mood, plain background. A girl about eight with short curly red hair, a yellow raincoat, and round green glasses, standing at a bus stop, medium shot, facing right.\"\n\nYou'll know it worked when the image matches your style block closely enough that you'd be happy to keep the template for the rest of the set.\n\n## Step 5 — Save the template where you can reuse it\nRetyping the style block for every image is how drift creeps in, so store it in one place. Some assistants have a Projects area or custom instructions where you can save text that applies to future chats. Look for a name like those. If your tool doesn't have one, keep the style block and reference details pinned in your notes and copy them in at the top of every request. Either way, tell the assistant what the saved text is for, so it treats the text as a rule.\n\n💬 Example: \"For every image I ask for in this set, keep this style exactly: [paste your style block here].\"\n\nYou'll know it worked when you can start a new image request by pasting from one saved place, not by typing from memory.\n\n## Step 6 — Generate the set, then fix with small edits\nWork through your scene list one image at a time, pasting the same style block and reference details each time. When you have all the images, lay them out next to each other, either on your screen or printed out. Look for the things that don't match: a different palette, a changed outfit, or a shifted art style. Fix one thing at a time, since changing several details at once makes it hard to tell which edit helped. Ask the tool to keep everything the same except one detail. Repeating a request also helps, because each new image is a fresh attempt.\n\n💬 Example: \"Keep everything the same, but make the background warmer and the raincoat a deeper yellow.\"\n\nYou'll know it worked when all the images in the set look like they came from the same illustrator on the same day.\n\n## Common mistakes\n- **Rewording the style each time.** Writing \"cozy\" once and \"warm\" another time changes the look. Fix it by copying the same style block every time.\n- **Changing several things at once.** When you edit the palette, the outfit, and the background together, you can't tell what helped. Fix it by changing one detail per try.\n- **Expecting perfect matching.** An AI tool can follow your words, but it cannot promise the same face or object in every picture, and small drift is normal. Fix it by generating a few extra options and choosing the closest, or by simplifying the design, such as fewer tiny details.\n\n## What this means for you\n- **In everyday life:** A set of holiday cards, a birthday invitation series, or recipe illustrations for a family cookbook can share one look when you reuse the same style block.\n- **For your business or work:** A small shop or a team deck can use a consistent set of product or icon images. Check any brand guidelines and the rules of the platform where you'll publish before you use AI-generated images.\n- **If you want to go further:** Some image tools let you attach a picture as a reference. If yours does, attach your best image and describe what to keep from it, such as the outfit, while you change the scene. Results still vary, so test before you rely on it.\n\nThe tool can't promise that a character will look identical across every picture. It can only follow the words you give it, and it may still drift.\n\n## Try it now\nOpen a notes file and write your style block: two or three sentences covering the medium, the palette, and the mood. Then generate one image using only that style block and one simple scene. Keep the result, and you'll have the start of a consistent set.",
+  "original_title": "How to Make AI-Generated Images That Look Consistent Across a Set"
+}

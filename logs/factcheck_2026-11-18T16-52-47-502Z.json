@@ -1,0 +1,63 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.00696086,
+  "at": "2026-11-18T16:52:47.502Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 1,
+    "kihagyva": 2,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-18T16-50-28-117Z_perplexity-news_Introducing_Computer_s_Multiagent_effort_level_-_P.json",
+      "cim": "Introducing Computer’s Multiagent effort level - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-11-18T05-03-44-576Z_google-workspace_Gemini-powered_data_classification_in_Google_Drive.json",
+      "cim": "Gemini-powered data classification in Google Drive is now generally available ",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben szereplő összes állítás egyezik a hivatalos forrásszöveggel."
+    },
+    {
+      "file": "ARTICLE_2026-08-28T19-08-01-717Z_databricks_Beyond_answers__New_Genie_One_features_to_turn_ins.json",
+      "cim": "Beyond answers: New Genie One features to turn insights into action",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A közzétett cikk általános AI asszisztensekről (ChatGPT, Claude, Gemini) szól, amelyek alkalmazásokhoz kapcsolódnak, de a hivatalos forrás kizárólag a Databricks Genie One funkcióiról rendelkezik — ezek teljesen különböző termékek és témák, amelyeknek nincs átfedésük."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-translate-and-condense-long-foreign-language-articles.json",
+      "cim": "How to translate and condense long foreign-language articles or PDFs into plain English with Copilot",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-09-25T02-23-56-384Z_midjourney-updates_Edit_updates__thumbnail_previews__and_more.json",
+      "cim": "Edit updates, thumbnail previews, and more",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (52 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-translate-menus-signs-and-labels-with-your-phone-and-.json",
+      "cim": "How to Translate Menus, Signs and Labels with Your Phone and Gemini",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}

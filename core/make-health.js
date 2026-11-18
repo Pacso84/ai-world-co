@@ -75,7 +75,9 @@ function humanReason(raw) {
 /**
  * @param {{bizonytalan?: boolean}} [opt]  bizonytalan: a 2-es futás nem biztos bukás (a Reel-forgatókönyv)
  */
-export function describeFailures(name, summary, { bizonytalan = false } = {}) {
+// ujraprobal (11-17): a FB-fotóposztot a posztoló a következő futásban magától újraküldi (core/fb-ujraproba.js) —
+// a sor ezt mondja ki; a kézi újrajátszás a Make-ben ilyenkor DUPLA posztot csinálna.
+export function describeFailures(name, summary, { bizonytalan = false, ujraprobal = false } = {}) {
   if (!summary || !summary.failed) return null;
   const why = humanReason(summary.topReason);
   const total = summary.ok + summary.failed;
@@ -86,5 +88,7 @@ export function describeFailures(name, summary, { bizonytalan = false } = {}) {
   }
   return `⚠️ ${name}: ${summary.failed}/${total} poszt ELBUKOTT ma`
     + (why ? ` — "${why}"` : '')
-    + '. A Make hibasorában megvan, újrajátszható.';
+    + (ujraprobal
+      ? '. A következő futás magától újra elküldi (egyszer) — a Make-ben NE játszd újra, mert dupla lenne.'
+      : '. A Make hibasorában megvan, újrajátszható.');
 }

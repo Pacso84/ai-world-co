@@ -8855,10 +8855,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Build one reusable prompt for emails, summaries, or posts, save it, and reuse it with new details each time.",
-      "status": "todo",
+      "status": "done",
       "icon": "♻️",
       "proposed_at": "2026-11-12T04:58:44.035Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-11-17T05:45:48.835Z"
     },
     {
       "id": "how-to-turn-a-job-description-into-a-resume-checklist-with-a",
@@ -8881,10 +8882,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Use one shared style description, fixed reference details, and a reusable prompt structure so a batch of images stays visually consistent.",
-      "status": "todo",
+      "status": "done",
       "icon": "🎨",
       "proposed_at": "2026-11-12T04:58:49.671Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-11-18T05:08:45.665Z"
     },
     {
       "id": "how-to-check-a-word-document-for-missing-headings-on-windows",
@@ -8910,7 +8912,7 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Set up payment cards and approve AI-assisted purchases with biometric security",
-      "status": "todo",
+      "status": "done",
       "icon": "🆕",
       "source_news": {
         "file": "ARTICLE_2026-11-13T20-38-47-279Z_openai-blog_Introducing_ChatGPT_Wallet.json",
@@ -8923,7 +8925,8 @@
           "url": "https://help.openai.com/en/articles/20001654-making-purchases-with-chatgpt-wallet",
           "title": "Making purchases with ChatGPT Wallet"
         }
-      ]
+      ],
+      "written_at": "2026-11-17T05:47:49.934Z"
     },
     {
       "id": "how-to-upload-a-selfie-to-chatgpt-and-ask-for-a-professional",
@@ -9022,6 +9025,106 @@
         "title": "Regional voices are rolling out in the Gemini app."
       },
       "created_at": "2026-11-16T19:34:20.512Z"
+    },
+    {
+      "id": "how-to-run-your-first-viral-chatgpt-trend-prompt-from-start-",
+      "company": "OpenAI",
+      "tool": "ChatGPT",
+      "title": "How to Run Your First Viral ChatGPT Trend Prompt From Start to Finish",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Walk through copying a trend prompt, pasting it into ChatGPT, swapping in your own details, and judging whether the result is worth keeping.",
+      "status": "done",
+      "icon": "🔥",
+      "proposed_at": "2026-11-17T05:45:28.465Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "chatgpt trend prompt",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-11-17"
+      },
+      "written_at": "2026-11-17T05:46:11.560Z"
+    },
+    {
+      "id": "how-to-use-minimax-code-to-rename-a-folder-full-of-photos",
+      "company": "MiniMax",
+      "tool": "MiniMax Code",
+      "title": "How to Use MiniMax Code to Rename a Folder Full of Photos",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Describe the renaming rule in plain words, such as adding the trip name and date to each photo, then review the short script MiniMax Code writes before you run it on a copy of your folder.",
+      "status": "todo",
+      "icon": "🗂️",
+      "priority": "balance",
+      "proposed_at": "2026-11-17T05:47:22.782Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "asking-minimax-code-to-explain-a-script-before-you-run-it",
+      "company": "MiniMax",
+      "tool": "MiniMax Code",
+      "title": "Asking MiniMax Code to Explain a Script Before You Run It",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Paste a script you found online and ask for a line-by-line explanation in plain English, so you can tell what it will do to your files before you decide whether to run it.",
+      "status": "todo",
+      "icon": "🔍",
+      "priority": "balance",
+      "proposed_at": "2026-11-17T05:47:23.463Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "cleaning-up-a-messy-spreadsheet-export-with-minimax-code",
+      "company": "MiniMax",
+      "tool": "MiniMax Code",
+      "title": "Cleaning Up a Messy Spreadsheet Export with MiniMax Code",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Explain what is wrong with an exported sales or expense file, such as blank rows and dates in mixed formats, and ask for a script that tidies it into one consistent table you can open in any spreadsheet app.",
+      "status": "todo",
+      "icon": "📊",
+      "priority": "balance",
+      "proposed_at": "2026-11-17T05:47:24.214Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "building-a-simple-shopping-list-web-page-with-minimax-code",
+      "company": "MiniMax",
+      "tool": "MiniMax Code",
+      "title": "Building a Simple Shopping List Web Page with MiniMax Code",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Describe the page you want in everyday words, such as a checklist that remembers what you already ticked off, and use the result as a small file you open in your browser.",
+      "status": "todo",
+      "icon": "🛒",
+      "priority": "balance",
+      "proposed_at": "2026-11-17T05:47:25.157Z",
+      "proposed_by": "guide-balance"
+    },
+    {
+      "id": "how-to-pick-a-viral-photo-trend-without-handing-over-your-fa",
+      "company": "",
+      "tool": "",
+      "title": "How to Pick a Viral Photo Trend Without Handing Over Your Face",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Show readers how to check what a trend app or website does with uploaded photos (storage, training, deletion, sharing) and how to get a similar look from a description or a non-face photo instead.",
+      "status": "done",
+      "icon": "🛡️",
+      "proposed_at": "2026-11-18T05:08:13.146Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "ai photo trends",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-11-18"
+      },
+      "written_at": "2026-11-18T05:09:08.689Z"
     }
   ],
   "trend_proba": [
@@ -9116,6 +9219,14 @@
     {
       "kifejezes": "gemini trending prompt for girls",
       "at": "2026-11-16T03:46:37.665Z"
+    },
+    {
+      "kifejezes": "chatgpt trend prompt",
+      "at": "2026-11-17T05:45:16.387Z"
+    },
+    {
+      "kifejezes": "ai photo trends",
+      "at": "2026-11-18T05:07:59.786Z"
     }
   ]
 }
