@@ -24,7 +24,7 @@
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { ENGEDELY, engedelyezett } from './sugo-index.js';
+import { ENGEDELY, engedelyezett, slugCim, UA } from './sugo-index.js';
 import { forrasSzint } from './forras-szint.js';
 
 export const FELFEDEZO_BE = true;
@@ -95,4 +95,98 @@ export function forrasEngedelyezett(forras, tema, toolLinks = alapToolLinks()) {
   return felfedezettEngedelyezett(url, eszkoz, toolLinks);
 }
 
-export default { FELFEDEZO_BE, felfedezoHost, sugoJellegu, felfedezettEngedelyezett, forrasEngedelyezett };
+// ---------------------------------------------------------------------------------------------------
+// FELFEDEZÉS (súgókereső 2. lépés, 2026-11-18): robots.txt → sitemap, llms.txt → jelöltlista az eszköz saját hostjáról.
+// Nincs MI, a gyorsítótár csak a futáson belül él (a hívó `cache` objektuma). Soha nem dob: hiba/üres → [].
+// HOSTONKÉNT: max 12 kérés (a számláló közös a robots/sitemap/llms lépések között), 30 s kérésenként, max 5000 olvasott URL,
+// max 400 jelölt, a sitemap-index legfeljebb 2 szint mélyen. A kapcsoló (FELFEDEZO_BE / `be`) csak a KÉRÉSEKET állítja le.
+// ---------------------------------------------------------------------------------------------------
+
+export const KERES_MAX = 12, URL_MAX = 5000, JELOLT_MAX = 400, SZINT_MAX = 2, IDOKORLAT_MS = 30000;
+
+// a jelölt URL közös normalizálása: query/hash le (a .md-t a hívó vágja le, ha llms.txt-ből jött)
+const tisztaUrl = u => String(u).split('#')[0].split('?')[0];
+
+/** Linkszöveg → tiszta cím (markdown-jelek ki, szóközök össze, max 160 karakter); üres, ha nem marad érdemi szöveg. */
+function linkCim(szoveg) {
+  return String(szoveg).replace(/[*_`]/g, '').replace(/\s+/g, ' ').trim().slice(0, 160).trim();
+}
+
+/** A llms.txt markdown-linkjei: [szöveg](https://…); a .md végződés levágva. HTML-oldal (hibaoldal) → nincs link. */
+function llmsLinkek(szoveg) {
+  const s = String(szoveg || '');
+  if (/^\s*</.test(s)) return [];                                   // 200-as HTML hibaoldal a llms.txt helyén
+  const ki = [];
+  for (const m of s.matchAll(/\[([^\]]*)\]\((https:\/\/[^)\s]+)[^)]*\)/g)) ki.push({ url: tisztaUrl(m[2]).replace(/\.md$/i, ''), cim: linkCim(m[1]) });
+  return ki;
+}
+
+/** Az eszköz hostjának jelöltjei (robots → sitemap, llms.txt); [] ha nincs host / ki van kapcsolva / hiba. */
+export async function felfedez(eszkozNev, { fetchFn = fetch, cache = {}, toolLinks, be = FELFEDEZO_BE } = {}) {
+  try {
+    if (!be) return [];                                              // a kapcsoló csak a kéréseket állítja le
+    const host = toolLinks ? felfedezoHost(eszkozNev, toolLinks) : felfedezoHost(eszkozNev);
+    if (!host) return [];
+    if (Object.hasOwn(cache, host)) return cache[host];
+
+    const jeloltek = new Map();                                      // url → {url, cim, felfedezett}; a beszúrási sorrend marad
+    let keresek = 0, olvasott = 0;
+    const sajatHost = u => { try { const p = new URL(u); return p.protocol === 'https:' && p.hostname.toLowerCase() === host; } catch { return false; } };
+
+    // egy lekérés a közös számlálóval; nem-200, kivétel, időtúllépés → null (a lépés kimarad)
+    const kerel = async url => {
+      if (keresek >= KERES_MAX) return null;
+      keresek++;
+      try {
+        const r = await fetchFn(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'en-US,en;q=0.9' }, signal: AbortSignal.timeout(IDOKORLAT_MS) });
+        if (!r || r.status !== 200) return null;
+        return String(await r.text());
+      } catch { return null; }
+    };
+    const felvesz = (url, cim) => {
+      const u = tisztaUrl(url);
+      if (!felfedezettEngedelyezett(u, eszkozNev, toolLinks)) return;
+      const van = jeloltek.get(u);
+      if (van) { if (cim && !van.linkcim) { van.cim = cim; van.linkcim = true; } return; }   // a linkszöveg-cím nyer a slug ellen; több linkszövegből az első marad
+      if (jeloltek.size >= JELOLT_MAX) return;
+      jeloltek.set(u, { url: u, cim: cim || slugCim(u), felfedezett: true, linkcim: !!cim });
+    };
+
+    // 1) robots.txt → Sitemap-sorok (csak az eszköz hostja), sitemap-index rekurzió legfeljebb SZINT_MAX szint
+    const latottSitemap = new Set();
+    const sitemapBejar = async (url, szint) => {
+      if (latottSitemap.has(url) || !sajatHost(url) || olvasott >= URL_MAX) return;
+      latottSitemap.add(url);
+      const xml = await kerel(url);
+      if (xml === null) return;
+      const lockok = [...xml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)].map(m => m[1]);
+      if (/<sitemapindex[\s>]/i.test(xml)) {
+        if (szint >= SZINT_MAX) return;
+        for (const al of lockok) await sitemapBejar(al, szint + 1);
+        return;
+      }
+      for (const loc of lockok) {
+        if (olvasott >= URL_MAX) break;
+        olvasott++;
+        felvesz(loc, '');
+      }
+    };
+    const robots = await kerel(`https://${host}/robots.txt`);
+    if (robots !== null) {
+      for (const m of robots.matchAll(/^\s*sitemap:\s*(\S+)/gim)) await sitemapBejar(m[1], 0);
+    }
+
+    // 2) llms.txt (gyökér és /docs): markdown-linkek; a redirect után kapott tartalmat is feldolgozzuk, csak a jelölt-hostot szűrjük
+    for (const ut of ['/llms.txt', '/docs/llms.txt']) {
+      const szoveg = await kerel(`https://${host}${ut}`);
+      if (szoveg === null) continue;
+      for (const l of llmsLinkek(szoveg)) felvesz(l.url, l.cim);
+    }
+
+    const ki = [...jeloltek.values()].map(({ url, cim }) => ({ url, cim, felfedezett: true }));
+    cache[host] = ki;
+    return ki;
+  } catch { return []; }
+}
+
+export default { FELFEDEZO_BE, KERES_MAX, URL_MAX, JELOLT_MAX, SZINT_MAX, IDOKORLAT_MS, felfedezoHost, sugoJellegu, felfedezettEngedelyezett, forrasEngedelyezett, felfedez };

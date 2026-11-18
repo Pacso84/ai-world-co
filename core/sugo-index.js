@@ -202,7 +202,7 @@ export const FORRASOK = {
   minimax: [{ lap: 'https://platform.minimax.io/docs', alap: 'https://platform.minimax.io', minta: /^\/docs\/[a-z0-9\/-]+$/, kizar: /\/api-reference\// }], // helyben 0 — a CI-próba dönt
   braveleo: [{ egy: 'https://brave.com/leo/', cim: 'Brave Leo', minta: /./ }]    // egyetlen lap, letöltés nélkül
 };
-const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36';
+export const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36';
 
 /** Egy szolgáltató cikklistája. Hibánál üres lista (a futás nem áll meg). */
 export async function indexLetolt(szolg, fetchFn = fetch) {
