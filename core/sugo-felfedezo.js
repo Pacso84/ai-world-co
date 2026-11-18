@@ -15,7 +15,9 @@
 //   - Súgó-jellegű útvonal: súgó/GYIK/útmutató/docs szakasz igen; API, fejlesztői, referencia, blog, hír, jogi, ár, karrier nem;
 //     nem angol nyelvi előtag (zh, en-cn…) nem.
 //
-// KIKAPCSOLÁS: `FELFEDEZO_BE = false` → a forrasEngedelyezett() a felfedezett forrást nem fogadja el (csak a jóváhagyott lista marad).
+// KIKAPCSOLÁS: `FELFEDEZO_BE = false` → CSAK a felfedező kéréseit állítja le (core/sugo-felfedezo felfedez-lépése, 2. feladat);
+// a már eltárolt felfedezett forrásokat NEM érvényteleníti, ezért az engedély-függvények nem nézik a kapcsolót (controller döntés 11-18).
+// EGY KÖZÖS ELLENŐRZÉS: a felfedezettEngedelyezett() minden használatkor újra lefuttatja a host-őrt ÉS az útvonal-szűrőt (sugoJellegu).
 // Körkörös import ellen csak a core/sugo-index.js-t és a core/forras-szint.js-t importáljuk.
 // ===================================================================
 
@@ -71,7 +73,7 @@ export function sugoJellegu(url) {
   return SUGO_SZAKASZ.test(ut);
 }
 
-/** A felfedezett cím engedélyezett-e: https, az eszköz pontos hostja, nincs port/felhasználó/„..”. */
+/** A felfedezett cím engedélyezett-e: https, az eszköz pontos hostja, nincs port/felhasználó/„..”, ÉS súgó-jellegű útvonal. */
 export function felfedezettEngedelyezett(url, eszkozNev, toolLinks = alapToolLinks()) {
   const host = felfedezoHost(eszkozNev, toolLinks);
   if (!host) return false;
@@ -80,7 +82,7 @@ export function felfedezettEngedelyezett(url, eszkozNev, toolLinks = alapToolLin
   if (/(^|\/)(\.|%2e){1,2}(\/|$|\?|#)/i.test(u.replace(/^https:\/\/[^/]+/i, ''))) return false;
   try {
     const p = new URL(u);
-    return p.protocol === 'https:' && !p.port && !p.username && !p.password && p.hostname.toLowerCase() === host;
+    return p.protocol === 'https:' && !p.port && !p.username && !p.password && p.hostname.toLowerCase() === host && sugoJellegu(u);
   } catch { return false; }
 }
 
@@ -88,7 +90,7 @@ export function felfedezettEngedelyezett(url, eszkozNev, toolLinks = alapToolLin
 export function forrasEngedelyezett(forras, tema, toolLinks = alapToolLinks()) {
   const url = typeof forras === 'string' ? forras : (forras && forras.url);
   if (engedelyezett(url)) return true;
-  if (!FELFEDEZO_BE || !forras || typeof forras === 'string' || forras.felfedezett !== true) return false;
+  if (!forras || typeof forras === 'string' || forras.felfedezett !== true) return false;
   const eszkoz = forrasSzint(tema && tema.tool, tema && tema.company).eszkoz;
   return felfedezettEngedelyezett(url, eszkoz, toolLinks);
 }

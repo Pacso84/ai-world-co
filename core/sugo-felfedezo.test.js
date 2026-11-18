@@ -44,6 +44,14 @@ t('felfedezett: csak a tool-host', () => {
   assert.equal(felfedezettEngedelyezett('https://user@agent.minimax.io/docs/a', 'MiniMax Code', TL), false);
   assert.equal(felfedezettEngedelyezett('http://agent.minimax.io/docs/a', 'MiniMax Code', TL), false);
 });
+t('felfedezett: a helyes hoston is csak súgó-jellegű útvonal (host + útvonal egy függvényben)', () => {
+  const tema = { tool: 'MiniMax Code', company: 'MiniMax' };
+  for (const ut of ['/pricing', '/blog/x', '/docs/api/a']) {
+    const url = 'https://agent.minimax.io' + ut;
+    assert.equal(felfedezettEngedelyezett(url, 'MiniMax Code', TL), false, url);
+    assert.equal(forrasEngedelyezett({ url, felfedezett: true }, tema, TL), false, url);
+  }
+});
 t('forrasEngedelyezett: jóváhagyott marad, felfedezett jelöléssel bővül', () => {
   const tema = { tool: 'MiniMax Code', company: 'MiniMax' };
   assert.equal(forrasEngedelyezett({ url: 'https://help.openai.com/en/articles/1-a' }, tema, TL), true);
