@@ -27,20 +27,23 @@ for (const u of ['https://www.perplexity.ai/help-center/en/articles/1-x', 'https
 for (const u of ['https://docs.x.ai/developers/x', 'https://docs.x.ai/console/x', 'https://docs.github.com/en/actions/x', 'https://brave.com/search/'])
   assert.ok(!engedelyezett(u), 'jóváhagyáson kívüli rész: ' + u);
 
-// 11-18 (user-jóváhagyás 11-17): Kimi felhasználói súgó — www.kimi.com/help/
-assert.ok(engedelyezett('https://www.kimi.com/help/new-user-guide/x'), 'Kimi felhasználói súgó jóváhagyva');
+// 11-18 (user-jóváhagyás 11-17): Kimi felhasználói súgó — az ANGOL súgóközpont: www.kimi.com/en/help/
+// (11-18 mérés: a www.kimi.com/help/* a KÍNAI súgó, címe pl. „Kimi 新手入门指南” — az NINCS jóváhagyva)
+assert.ok(engedelyezett('https://www.kimi.com/en/help/new-user-guide/x'), 'Kimi angol súgó jóváhagyva');
+assert.ok(!engedelyezett('https://www.kimi.com/help/new-user-guide/x'), 'a kínai /help/ előtag NINCS jóváhagyva');
 assert.ok(!engedelyezett('https://www.kimi.com/'), 'a Kimi főoldal nincs jóváhagyva');
 assert.ok(!engedelyezett('https://www.kimi.com/chat/x'), 'a Kimi többi része nincs jóváhagyva');
-assert.ok(!engedelyezett('https://www.kimi.com/helpx/x'), 'nem szakasz-határos előtag');
+assert.ok(!engedelyezett('https://www.kimi.com/en/helpx/x'), 'nem szakasz-határos előtag');
 assert.equal(FORRASOK.kimi.length, 2, 'Kimi: platform-dok sor + súgó-sitemap sor');
 assert.equal(FORRASOK.kimi[0].lap, 'https://platform.kimi.ai/docs', 'a platform.kimi.ai sor marad');
-assert.equal(FORRASOK.kimi[1].sitemap, 'https://www.kimi.com/sitemap/sitemap-ug-helpcenter.xml');
+assert.equal(FORRASOK.kimi[1].sitemap, 'https://www.kimi.com/sitemap/sitemap-ug-helpcenter-en-cn.xml');
 {
-  const xml = ['/help/new-user-guide/x', '/help/kimi-api/y', '/help/search', '/en-cn/help/z', '/help', '/help/new-user-guide', '/help/membership/y-z']
+  const xml = ['/en/help/new-user-guide/x', '/en/help/kimi-api/y', '/en/help/search', '/en/help', '/en/help/new-user-guide', '/en/help/membership/y-z',
+    '/help/new-user-guide/x', '/en/help/search/z']
     .map(u => '<loc>https://www.kimi.com' + u + '</loc>').join('');
   assert.deepEqual(sitemapCikkek(xml, FORRASOK.kimi[1].minta, FORRASOK.kimi[1].kizar).map(c => c.url),
-    ['https://www.kimi.com/help/new-user-guide/x', 'https://www.kimi.com/help/membership/y-z'],
-    'csak a felhasználói súgó cikkei (kimi-api, search, /help gyökér, szakasz-nyitólap, nyelvi mappa kihagyva)');
+    ['https://www.kimi.com/en/help/new-user-guide/x', 'https://www.kimi.com/en/help/membership/y-z'],
+    'csak az angol súgócikkek (kimi-api, search, /en/help gyökér, szakasz-nyitólap, kínai /help/ kihagyva)');
 }
 
 // lista-forrás (GitHub pagelist: soronként egy útvonal)

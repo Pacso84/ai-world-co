@@ -9,7 +9,7 @@
 //
 // ENGEDÉLYLISTA: csak a user által 10-23-án jóváhagyott súgók. Új előtag CSAK user-jóváhagyással
 // (11-12: 13 új súgó jóváhagyva, spec 4.1).
-// 11-18 (user-jóváhagyás 11-17): Kimi felhasználói súgó · a felfedezett forrásokra a jóváhagyás a tool-links.json
+// 11-18 (user-jóváhagyás 11-17): Kimi felhasználói súgó (angol: www.kimi.com/en/help/) · a felfedezett forrásokra a jóváhagyás a tool-links.json
 // hivatalos címlistája (core/sugo-felfedezo.js), lásd spec 5.
 // 11-14: a CI-próba (futás 43634082156) szerint mind a 20 új forrás-kulcs letölthető, a Perplexity is (korábban 403).
 // Élőben 10-24: az Amazon (gépi lekérésre üres oldal) NEM tölthető le → nincs
@@ -41,7 +41,8 @@ export const ENGEDELY = [
   'https://elevenlabs.io/docs/',
   'https://api-docs.deepseek.com/',
   'https://platform.kimi.ai/docs/',
-  'https://www.kimi.com/help/',   // 11-18: a Kimi felhasználói súgója (a platform-dok mellett)
+  // 11-18: a Kimi felhasználói súgója — az ANGOL súgóközpont (a platform-dok mellett). A www.kimi.com/help/ a KÍNAI változat (11-18 mérés) → NINCS jóváhagyva.
+  'https://www.kimi.com/en/help/',
   'https://platform.minimax.io/docs/',
   'https://brave.com/leo/'
 ];
@@ -202,10 +203,10 @@ export const FORRASOK = {
   elevenlabs: [{ sitemap: 'https://elevenlabs.io/docs/sitemap-en.xml', minta: /elevenlabs\.io\/docs\//, kizar: /\/docs\/(api-reference|developers|cookbooks?|sdks?)\// }],
   deepseek: [{ sitemap: 'https://api-docs.deepseek.com/sitemap.xml', minta: /api-docs\.deepseek\.com\//, kizar: /\/api\// }],
   kimi: [{ lap: 'https://platform.kimi.ai/docs', alap: 'https://platform.kimi.ai', minta: /^\/docs\/[a-z0-9\/-]+$/, kizar: /\/(_mintlify|mintlify-assets|api)\// },
-    // 11-18 mérés: a sitemap 180 URL (angol); a kimi-api szakasz (14) a fejlesztői doksi, a /help/search keresőlap → kizárva;
-    // a szakasz-nyitólapok (/help/<szakasz>, 17 db) listaoldalak → kimaradnak: a minta legalább 2 szegmenst kér a /help/ után;
-    // a nem angol változat külön …-helpcenter-en-cn.xml-ben van, azt NEM kötjük be
-    { sitemap: 'https://www.kimi.com/sitemap/sitemap-ug-helpcenter.xml', minta: /^https:\/\/www\.kimi\.com\/help\/[a-z0-9-]+(\/[a-z0-9-]+)+$/, kizar: /\/help\/(kimi-api|search)(\/|$)/ }],
+    // 11-18 mérés: az ANGOL súgóközpont a www.kimi.com/en/help/* (sitemap: …-helpcenter-en-cn.xml, 178 URL); a www.kimi.com/help/* a KÍNAI
+    // (a címe „Kimi 新手入门指南”, Accept-Language-től függetlenül) → az nincs bekötve és nincs jóváhagyva. A kimi-api szakasz a fejlesztői doksi,
+    // a /en/help/search keresőlap → kizárva; a szakasz-nyitólapok (/en/help/<szakasz>) listaoldalak → a minta legalább 2 szegmenst kér a /en/help/ után
+    { sitemap: 'https://www.kimi.com/sitemap/sitemap-ug-helpcenter-en-cn.xml', minta: /^https:\/\/www\.kimi\.com\/en\/help\/[a-z0-9-]+(\/[a-z0-9-]+)+$/, kizar: /\/en\/help\/(kimi-api|search)(\/|$)/ }],
   minimax: [{ lap: 'https://platform.minimax.io/docs', alap: 'https://platform.minimax.io', minta: /^\/docs\/[a-z0-9\/-]+$/, kizar: /\/api-reference\// }], // helyben 0 — a CI-próba dönt
   braveleo: [{ egy: 'https://brave.com/leo/', cim: 'Brave Leo', minta: /./ }]    // egyetlen lap, letöltés nélkül
 };

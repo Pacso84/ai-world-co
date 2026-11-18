@@ -39,7 +39,7 @@ t('részleges: csak a funkció léte igazolható', () => {
 t('Kimi (11-18): a felhasználói súgó is a súgó-listán, a szint MARAD részleges', () => {
   const k = ESZKOZ_SZINT.Kimi;
   assert.equal(k.szint, SZINT.RESZLEGES);
-  assert.ok(k.sugo.includes('https://platform.kimi.ai/docs') && k.sugo.includes('https://www.kimi.com/help'), 'mindkét súgó-előtag');
+  assert.ok(k.sugo.includes('https://platform.kimi.ai/docs') && k.sugo.includes('https://www.kimi.com/en/help'), 'mindkét súgó-előtag');
   assert.equal(forrasSzint('Kimi', 'Moonshot AI').szint, 'reszleges');
 });
 
