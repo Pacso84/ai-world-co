@@ -13,3 +13,16 @@ A független ellenőrző 3 nyitott kérdést talált (fontossági sorrendben). H
    `official_sources[…].felfedezett === true` + URL legyen, vagy a memória-fájl? Kell-e pontos URL-egyezés?
 3. **Marad-e „részleges” a Kimi és a MiniMax szintje?** Részleges szinten az útmutató nem nevez meg gombot vagy menüt. Felhasználói
    súgóból viszont gombnevekkel is írhatnánk. KÉRDÉS: felmenjenek-e teljesre (core/forras-szint.js + tesztek)?
+
+## Döntések (2026-11-18, user jóváhagyta: „Igen, csináld” + push-feltétel „0 téves + indokolt kudarcok”)
+1. **Domain-őr = PONTOS HOST.** A felfedező KIZÁRÓLAG a tool-links.json `tools[<eszköz>]` címének pontos hostján fut
+   (agent.minimax.io, lumo.proton.me, duck.ai, gemini.google.com, www.kimi.com …), és csak e host URL-jeit fogadja el
+   jelöltnek (a sitemapban más hostra mutató URL kimarad). A regisztrálható domain www-jére NINCS visszaesés (különben pl. a
+   www.proton.me/support megkerülné a LUMO-szűkítést). Ha a pontos hoston (www-vel/nélkül) MÁR van ENGEDELY-előtag → nincs
+   felfedezés (pl. brave.com). → A 6.1 „regisztrálható domain” kizárása és a 6.2 „regisztrálható domain www-je” lépése ezzel CSERÉLVE.
+2. **Tartós azonosító = a témán.** `official_sources[i].felfedezett === true` + a pontos URL; a közös „felfedezett forrás-e”
+   ellenőrzés (EGY helyen) minden használatkor újra futtatja a domain-őrt (pontos host = az eszköz tool-links hostja) és az
+   útvonal-szűrőt (súgó-jellegű, kizárt szakaszok). A memory/sugo-felfedezes.json CSAK gyorsítótár (7 nap), NEM jogosultság.
+   Pontos URL-egyezés: igen (a témán tárolt URL-t fogadja el, előtagot nem).
+3. **Kimi/MiniMax szint MARAD „részleges”** ebben a körben (gombnév nélkül); a mérés után külön user-döntés.
+4. **Push-feltétel (user):** 0 téves párosítás + minden kudarc „valódi hiány” vagy indokolt ellenőrző-döntés kategóriában.
