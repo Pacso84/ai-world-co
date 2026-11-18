@@ -175,7 +175,7 @@ t('horgonyAllapotIr: összegzés a fájlba, súgószöveg és AI-indok nélkül'
 
 const felfSiker = (id, url) => ({ id, cim: 'How to use ' + id, eszkoz: 'MiniMax', horgony: { at: 'x', ok: true, url }, frissites: { sugo_alapu: true, official_sources: [{ url, title: 'Cikk', felfedezett: true }] } });
 
-t('horgonyAllapotIr: felfedezett súgó-forrás → host szerinti darabszám (csak host, útvonal soha)', () => {
+t('horgonyAllapotIr: NINCS `felfedezett` mező — az új súgó-forrás egyetlen igazságforrása a téma (core/report-lines.js felfedezettSzamok)', () => {
   const fajl = join(tmp, 'felfedezett.json');
   horgonyAllapotIr({
     probak: 3,
@@ -187,22 +187,9 @@ t('horgonyAllapotIr: felfedezett súgó-forrás → host szerinti darabszám (cs
   }, { fajl, most: MOST });
   const szoveg = readFileSync(fajl, 'utf-8');
   assert.ok(!szoveg.includes('titkos-utvonal'), 'útvonal nem kerül a nyilvános fájlba');
-  const j = JSON.parse(szoveg);
-  assert.deepEqual(j.felfedezett, { 'agent.minimax.io': 2 });
-  assert.equal(j.sikeres, 3);
-});
-
-t('horgonyAllapotIr: felfedezett nélkül nincs `felfedezett` mező; rossz host kimarad', () => {
-  const f1 = join(tmp, 'nincs-felf.json');
-  horgonyAllapotIr({ probak: 1, jegyzesek: [{ id: 's1', cim: 'x', eszkoz: 'Claude', horgony: { ok: true }, frissites: sikerFriss }] }, { fajl: f1, most: MOST });
-  assert.ok(!('felfedezett' in JSON.parse(readFileSync(f1, 'utf-8'))));
-  const f2 = join(tmp, 'rossz-host.json');
-  horgonyAllapotIr({ probak: 2, jegyzesek: [felfSiker('a', 'https://a b.example/x'), felfSiker('b', 'nem url'), felfSiker('c', 'https://Docs.Example.com/x')] }, { fajl: f2, most: MOST });
-  const j = JSON.parse(readFileSync(f2, 'utf-8'));
-  assert.deepEqual(j.felfedezett, { 'docs.example.com': 1 }, 'a hibás URL-ek/hostok kimaradnak, a host kisbetűs');
-  const f3 = join(tmp, 'rossz-host2.json');
-  horgonyAllapotIr({ probak: 1, jegyzesek: [felfSiker('a', 'https://a b.example/x')] }, { fajl: f3, most: MOST });
-  assert.ok(!('felfedezett' in JSON.parse(readFileSync(f3, 'utf-8'))), 'üresnél a mező hiányzik');
+  const o = JSON.parse(szoveg);
+  assert.ok(!('felfedezett' in o), 'a felfedezett-szám nem az állapotfájlban él (egy későbbi futás felülírná)');
+  assert.equal(o.sikeres, 3);
 });
 
 t('horgonyAllapotIr: üres/hibás bemenetre és írhatatlan útvonalra sem dob', () => {

@@ -10,7 +10,7 @@
 
 import assert from 'assert/strict';
 import {
-  describePosts, describeRepeat, ismetlesSuru, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine, zaroSor, hibaSorok, fekLine, horgonyLine, deployLine, eloOrszemLine
+  describePosts, describeRepeat, ismetlesSuru, REPEAT_URGENT_PER_WEEK, describeTranslationGaps, mergeLine, huSpellingLine, zaroSor, hibaSorok, fekLine, horgonyLine, felfedezettSzamok, deployLine, eloOrszemLine
 } from './report-lines.js';
 import { UJRAPROBA_NAP } from './sugo-horgony.js';
 import { readFileSync } from 'fs';
@@ -547,7 +547,7 @@ t('🧯 a napi jelentés beköti a fék-sort, hibás/hiányzó fájlra sem dől 
     assert.ok(sor.includes(`${UJRAPROBA_NAP} nap múlva`), 'a várakozási idő a konstansból jön, nem beégetve');
   });
 
-  t('🧭 horgonyLine: új súgó-forrás mondat minden nem-null kimenet végére; felfedezett nélkül betűre a régi', () => {
+  t('🧭 horgonyLine: új súgó-forrás mondat az alap-sor MÖGÉ; felfedezett nélkül betűre a régi', () => {
     const F = { 'agent.minimax.io': 2 };
     const veg = ' 🧭 Új súgó-forrás: agent.minimax.io (2 téma).';
     const alap = [
@@ -558,21 +558,64 @@ t('🧯 a napi jelentés beköti a fék-sort, hibás/hiányzó fájlra sem dől 
     for (const a of alap) {
       const regi = horgonyLine(a, MA);
       assert.ok(regi && !regi.includes('Új súgó-forrás'));
-      assert.equal(horgonyLine({ ...a, felfedezett: F }, MA), regi + veg);
-      assert.equal(horgonyLine({ ...a, felfedezett: {} }, MA), regi, 'üres felfedezett = a régi');
+      assert.equal(horgonyLine(a, MA, F), regi + veg);
+      assert.equal(horgonyLine(a, MA, {}), regi, 'üres felfedezett = a régi');
+      assert.equal(horgonyLine(a, MA, undefined), regi);
+      assert.equal(horgonyLine({ ...a, felfedezett: F }, MA), regi, 'az állapotfájl régi felfedezett mezőjét már nem olvassuk');
     }
-    assert.ok(horgonyLine({ at: AT, probak: 3, sikeres: 2, sikertelen: [], felfedezett: F }, MA).endsWith('🧭 Új súgó-forrás: agent.minimax.io (2 téma).'));
-    assert.equal(horgonyLine({ at: AT, probak: 0, sikeres: 2, sikertelen: [], felfedezett: F }, MA), null, 'a null kimenet null marad');
   });
 
-  t('🧭 horgonyLine: több host vesszővel, legfeljebb 3 + „+N”; hibás host/darab kimarad', () => {
+  t('🧭 horgonyLine: ha az alap-sor null (ma nem volt próba), a felfedezett mondat önmagában megjelenik (vezető szóköz nélkül)', () => {
+    const F = { 'agent.minimax.io': 2 };
+    const mondat = '🧭 Új súgó-forrás: agent.minimax.io (2 téma).';
+    assert.equal(horgonyLine({ at: AT, probak: 0, sikeres: 2, sikertelen: [] }, MA, F), mondat);
+    assert.equal(horgonyLine(null, MA, F), mondat);
+    assert.equal(horgonyLine(undefined, MA, F), mondat);
+    assert.equal(horgonyLine({ at: '2026-11-01T00:00:00.000Z', probak: 3, sikeres: 2, sikertelen: [] }, MA, F), mondat, 'régi állapotfájl mellett is');
+    assert.equal(horgonyLine(null, MA, {}), null);
+    assert.equal(horgonyLine(null, MA), null);
+  });
+
+  t('🧭 horgonyLine: több host vesszővel, legfeljebb 3, a többi „és még N”; hibás host/darab kimarad', () => {
     const a = { at: AT, probak: 6, sikeres: 6, sikertelen: [] };
-    const sor = horgonyLine({ ...a, felfedezett: { 'a.example.com': 1, 'b.example.com': 3, 'c.example.com': 2, 'd.example.com': 1, 'e.example.com': 1 } }, MA);
-    assert.ok(sor.endsWith(' 🧭 Új súgó-forrás: b.example.com (3 téma), c.example.com (2 téma), a.example.com (1 téma) +2.'), sor);
-    const rossz = horgonyLine({ ...a, felfedezett: { 'a b': 2, 'x.example.com': 0, 'y.example.com': 'sok', 'ok.example.com': 1 } }, MA);
+    const sor = horgonyLine(a, MA, { 'a.example.com': 1, 'b.example.com': 3, 'c.example.com': 2, 'd.example.com': 1, 'e.example.com': 1 });
+    assert.ok(sor.endsWith(' 🧭 Új súgó-forrás: b.example.com (3 téma), c.example.com (2 téma), a.example.com (1 téma) és még 2.'), sor);
+    assert.ok(!sor.includes('+2'), 'a „+N” forma megszűnt');
+    const negy = horgonyLine(null, MA, { 'a.hu': 2, 'b.hu': 1, 'c.hu': 1, 'd.hu': 1, 'e.hu': 1 });
+    assert.equal(negy, '🧭 Új súgó-forrás: a.hu (2 téma), b.hu (1 téma), c.hu (1 téma) és még 2.');
+    const harom = horgonyLine(null, MA, { 'a.hu': 1, 'b.hu': 1, 'c.hu': 1 });
+    assert.ok(!harom.includes('és még'), harom);
+    const rossz = horgonyLine(a, MA, { 'a b': 2, 'x.example.com': 0, 'y.example.com': 'sok', 'ok.example.com': 1 });
     assert.ok(rossz.endsWith(' 🧭 Új súgó-forrás: ok.example.com (1 téma).'), rossz);
-    assert.equal(horgonyLine({ ...a, felfedezett: 'rossz' }, MA), horgonyLine(a, MA));
-    assert.equal(horgonyLine({ ...a, felfedezett: ['x'] }, MA), horgonyLine(a, MA));
+    assert.equal(horgonyLine(a, MA, 'rossz'), horgonyLine(a, MA));
+    assert.equal(horgonyLine(a, MA, ['x']), horgonyLine(a, MA));
+    assert.equal(horgonyLine(a, MA, { 'a b': 2 }), horgonyLine(a, MA), 'csak hibás host → nincs mondat');
+  });
+
+  t('🧭 felfedezettSzamok: csak az utolsó 24 óra sikeres, felfedezett jelölésű témái, host szerint', () => {
+    const MOST = Date.parse('2026-11-18T12:00:00Z');
+    const ora = h => new Date(MOST - h * 3600000).toISOString();
+    const T = (host, at, extra = {}) => ({ id: host + at, horgony: { at, ok: true, url: 'https://' + host + '/x' }, official_sources: [{ url: 'https://' + host + '/titkos/x', title: 'c', felfedezett: true }], ...extra });
+    const topics = [
+      T('Agent.Minimax.io', ora(1)), T('agent.minimax.io', ora(23)),            // kisbetűs host, 24 órán belül
+      T('regi.example.com', ora(25)),                                           // 24 óránál régebbi
+      T('jovo.example.com', ora(-2)),                                           // jövőbeli dátum
+      T('rossz-datum.example.com', 'nem dátum'),
+      T('nem-ok.example.com', ora(1), { horgony: { at: ora(1), ok: false } }),
+      T('nem-felf.example.com', ora(1), { official_sources: [{ url: 'https://nem-felf.example.com/x', title: 'c' }] }),
+      T('nincs-forras.example.com', ora(1), { official_sources: undefined }),
+      T('rossz-host', ora(1), { official_sources: [{ url: 'https://a b.example/x', felfedezett: true }] }),
+      { id: 'nincs-horgony', official_sources: [{ url: 'https://x.example.com/a', felfedezett: true }] },
+      null, 'rossz', 7,
+      T('constructor', ora(2))                                                  // prototípus-kulcs nevű host: saját tulajdonság, nem öröklött
+    ];
+    const f = felfedezettSzamok(topics, MOST);
+    assert.deepEqual(Object.entries(f).sort(), [['agent.minimax.io', 2], ['constructor', 1]]);
+    assert.equal(f.toString, Object.prototype.toString, 'a kimenet nem szennyeződik');
+    assert.deepEqual(felfedezettSzamok([], MOST), {});
+    for (const rossz of [null, undefined, 'x', 5, {}, [null]]) assert.deepEqual(felfedezettSzamok(rossz, MOST), {}, String(rossz));
+    assert.equal(typeof felfedezettSzamok(topics), 'object', 'alapértelmezett most = Date.now(), nem dob');
+    assert.ok(!JSON.stringify(f).includes('titkos'), 'az útvonal sosem kerül a kimenetbe');
   });
 
   t('🧭 a napi jelentés beköti a horgony-sort a fék után, hibás/hiányzó fájlra sem dől el', () => {
@@ -580,7 +623,10 @@ t('🧯 a napi jelentés beköti a fék-sort, hibás/hiányzó fájlra sem dől 
     assert.match(src, /horgonyLine\(/);
     assert.ok(src.includes("join(ROOT, 'memory', 'horgony-allapot.json')"));
     assert.match(src, /horgonyLine\([\s\S]{0,200}\} catch \{/, 'try/catch védi');
-    assert.ok(src.indexOf('horgonyLine(JSON') > src.indexOf('fekLine(JSON'), 'a 🧯 Fék blokk után áll');
+    assert.ok(src.indexOf('horgonyLine(') > src.indexOf('fekLine(JSON'), 'a 🧯 Fék blokk után áll');
+    assert.match(src, /felfedezettSzamok\(/, 'a témákból számolja a felfedezett súgó-forrásokat');
+    assert.ok(src.includes("join(ROOT, 'guides', 'guide-topics.json')"), 'a téma-fájlból');
+    assert.match(src, /horgonyLine\([^\n]*felfedezett[^\n]*\)/, 'a 3. paraméter átadva');
   });
 }
 

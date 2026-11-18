@@ -631,27 +631,59 @@ export function fekLine(allapot, maNap) {
  * 🧭 A SÚGÓ-HORGONY sora a napi Telegram-riportban (TÉNYKÖZPONT 1d, 2026-11-14): hány útmutató-téma kapott hivatalos
  * súgócikket (azokat a súgóból írjuk), és hány nem — és mikor próbálkozunk velük újra (core/horgony-valasztas.js írja:
  * memory/horgony-allapot.json).
- * `allapot` = { at, probak, sikeres, sikertelen: [{ cim, eszkoz, ok, atmeneti? }] } · `maNap` = 'YYYY-MM-DD' (UTC).
+ * `allapot` = { at, probak, sikeres, sikertelen: [{ cim, eszkoz, ok, atmeneti? }] } · `maNap` = 'YYYY-MM-DD' (UTC) ·
+ * `felfedezett` (nem kötelező) = a felfedezettSzamok() kimenete: ha van, a sor mögé kerül az „Új súgó-forrás” mondat; ha az alap-sor
+ * nincs (ma nem volt próba), a mondat önmagában áll.
  * Kétféle kudarc van: a TARTÓS (a téma miatt: nincs illő cikk, túl rövid cikk…) UJRAPROBA_NAP napot vár, az ÁTMENETI
  * (a súgó most nem volt elérhető) már a következő futásban újra próbálkozik — a sor ezt külön kimondja.
  * CSENDES (null), ha nincs fájl / hibás a tartalma / nem volt próba / az `at` nem a mai vagy tegnapi napé (a CI naponta
  * 3-szor fut, a riport az első futás előtt is mehet, ezért a tegnapi állapot még friss) / nincs mit mondani.
  * SOSEM dob.
  */
-export function horgonyLine(allapot, maNap) {
+export function horgonyLine(allapot, maNap, felfedezett) {
   const sor = horgonyAlapSor(allapot, maNap);
-  if (!sor) return sor;
-  return sor + ujSugoForrasMondat(allapot);
+  const mondat = ujSugoForrasMondat(felfedezett);
+  if (!mondat) return sor;
+  return sor ? sor + ' ' + mondat : mondat;   // ha az alap-sor nincs (ma nem volt próba), a mondat önmagában áll
 }
 
 /**
- * ÚJ SÚGÓ-FORRÁS mondat a 🧭 sor végére (súgókereső 6): azok a hostok, amelyekről ma/tegnap ELŐSZÖR felfedezett súgócikket
- * írtunk (`allapot.felfedezett` = { host: téma-darab }). Legfeljebb 3 host (csökkenő darab, döntetlennél ábécé), a többi „+N”.
- * Hiányzó/üres/hibás mező → '' (a sor betűre a régi). SOSEM dob.
+ * Az ÚJONNAN felfedezett súgó-forrású témák száma hostonként — a napi riport 🧭 sorának „Új súgó-forrás” mondatához
+ * (súgókereső záró javítás, 11-18). EGYETLEN IGAZSÁGFORRÁS a téma maga (guides/guide-topics.json): a sikeres horgony-jegyzés
+ * (`horgony.ok === true`, `horgony.at` az utolsó 24 órán belül) ÉS `official_sources[0].felfedezett === true`. A memory/horgony-allapot.json
+ * nem jó forrás: minden próbás futás felülírja, így egy későbbi futás elnyelné a reggeli felfedezést.
+ * Visszaad: { "<host>": darab } — a host `new URL(url).hostname` kisbetűvel, csak `^[a-z0-9.-]+$`; útvonal SOSEM kerül bele.
+ * Jövőbeli / rossz dátum nem számít. SOSEM dob (hibás bemenetre {}).
  */
-function ujSugoForrasMondat(allapot) {
+export function felfedezettSzamok(topics, most = Date.now()) {
   try {
-    const f = allapot?.felfedezett;
+    const db = new Map();   // Map: a „constructor” / „__proto__” nevű host sem szennyezi az objektum-prototípust
+    for (const t of Array.isArray(topics) ? topics : []) {
+      try {
+        if (!t || typeof t !== 'object') continue;
+        if (t.horgony?.ok !== true) continue;
+        const ido = Date.parse(String(t.horgony.at || ''));
+        const kor = Number(most) - ido;
+        if (!Number.isFinite(ido) || !Number.isFinite(kor) || kor < 0 || kor > 86400000) continue;
+        const f = t.official_sources?.[0];
+        if (!f || f.felfedezett !== true) continue;
+        const host = new URL(String(f.url)).hostname.toLowerCase();
+        if (!/^[a-z0-9.-]+$/.test(host)) continue;
+        db.set(host, (db.get(host) || 0) + 1);
+      } catch { /* egy hibás téma kimarad */ }
+    }
+    return Object.fromEntries(db);   // a fromEntries saját tulajdonságot hoz létre (a „__proto__” sem öröklődik)
+  } catch { return {}; }
+}
+
+/**
+ * ÚJ SÚGÓ-FORRÁS mondat a 🧭 sorhoz (súgókereső 6): azok a hostok, amelyeknek a FELFEDEZETT (az eszköz saját hostján talált, nem
+ * a jóváhagyott listás) súgócikkéhez az utolsó 24 órában rögzítettünk témát. Nem „először látott host”, hanem a friss
+ * rögzítések hostonként (`felfedezett` = { host: téma-darab }, a felfedezettSzamok() adja). Legfeljebb 3 host (csökkenő darab, döntetlennél ábécé),
+ * a többi „és még N”. Hiányzó/üres/hibás bemenet → '' (a sor betűre a régi). SOSEM dob.
+ */
+function ujSugoForrasMondat(f) {
+  try {
     if (!f || typeof f !== 'object' || Array.isArray(f)) return '';
     const hostok = Object.entries(f)
       .map(([h, n]) => [String(h), Math.floor(Number(n))])
@@ -659,8 +691,8 @@ function ujSugoForrasMondat(allapot) {
       .sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0));
     if (!hostok.length) return '';
     const lista = hostok.slice(0, 3).map(([h, n]) => `${h} (${n} téma)`).join(', ');
-    const tobb = hostok.length > 3 ? ` +${hostok.length - 3}` : '';
-    return ` 🧭 Új súgó-forrás: ${lista}${tobb}.`;
+    const tobb = hostok.length > 3 ? ` és még ${hostok.length - 3}` : '';
+    return `🧭 Új súgó-forrás: ${lista}${tobb}.`;
   } catch { return ''; }
 }
 

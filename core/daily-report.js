@@ -27,7 +27,7 @@ import { summarizeRuns, describeFailures } from './make-health.js';
 // A forgatókönyv-azonosítók EGY helyen élnek (ott a művelet-keret is őket
 // összegzi) — egy kimásolt szám matematikai biztonsággal csúszik szét.
 import { FB_SCENARIO_ID, REEL_SCENARIO_ID } from './make-budget.js';
-import { describePosts, describeRepeat, ismetlesSuru, describeTranslationGaps, mergeLine, termekHirLine,huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor, fekLine, horgonyLine, deployLine, eloOrszemLine } from './report-lines.js';
+import { describePosts, describeRepeat, ismetlesSuru, describeTranslationGaps, mergeLine, termekHirLine,huSpellingLine, elakadasLine, kitolthetoRegiLine, tenyellenorzoLine, nevVedesLine, repeatLine, visitorLine, orFutott, zaroSor, rovidCim, fonokiDontesSor, kimenetOrSor, fekLine, horgonyLine, felfedezettSzamok, deployLine, eloOrszemLine } from './report-lines.js';
 import { bodyLooksUntranslated } from './translation-guard.js';
 import { shouldSendReport, sikeresKuldes } from './report-window.js';
 import { szurZajt, csendesSor } from './report-noise.js';
@@ -1004,7 +1004,12 @@ async function main() {
   // 🧭 SÚGÓ-HORGONY (2026-11-14, TÉNYKÖZPONT 1d): hány útmutató-téma kapott hivatalos súgócikket, melyik nem, és mikor
   // próbáljuk újra. Csendes, ha aznap/előző nap nem volt horgony-próba. A fájl hiánya/hibája sosem állítja meg a riportot.
   try {
-    const sor = horgonyLine(JSON.parse(readFileSync(join(ROOT, 'memory', 'horgony-allapot.json'), 'utf-8')), new Date().toISOString().slice(0, 10));
+    // az „Új súgó-forrás” mondat a TÉMÁKBÓL számolódik (utolsó 24 óra): az állapotfájlt minden próbás futás felülírja, a téma nem
+    let felfedezett = {};
+    try { felfedezett = felfedezettSzamok(JSON.parse(readFileSync(join(ROOT, 'guides', 'guide-topics.json'), 'utf-8')).topics); } catch { /* nincs téma-fájl — nincs mondat */ }
+    let allapot = null;
+    try { allapot = JSON.parse(readFileSync(join(ROOT, 'memory', 'horgony-allapot.json'), 'utf-8')); } catch { /* még nem volt horgony-próba — nem baj */ }
+    const sor = horgonyLine(allapot, new Date().toISOString().slice(0, 10), felfedezett);
     if (sor) lines.push(sor);
   } catch { /* még nem volt horgony-próba — nem baj */ }
 
