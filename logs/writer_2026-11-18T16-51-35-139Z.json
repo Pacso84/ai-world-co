@@ -1,0 +1,47 @@
+{
+  "started_at": "2026-11-18T16:50:33.585Z",
+  "drafts_total": 1,
+  "articles_written": 1,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 0,
+    "html": 0,
+    "rss": 0,
+    "kivonat": 1
+  },
+  "source_fail": [
+    {
+      "draft": "2026-11-18T16-50-28-117Z_perplexity-news_Introducing_Computer_s_Multiagent_effort_level_-_P.json",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9wd212c2g5X2o5UVlqZWtlYUc1TGNXOW93dFJ1OFg1QTFTSWhzSFU5QzR6SnZwd0czcDNvbHJ4SjJWTFU1N0xJakE2XzIzT3FCcTR0WGlCbWR1TlBXekQyVG9fd0wwYS1yM1QwLTVnSC1iU09s?oc=5",
+      "hiba": "túl rövid szöveg (11 karakter)"
+    }
+  ],
+  "total_cost_usd": 0.0074418,
+  "by_article": [
+    {
+      "draft": "2026-11-18T16-50-28-117Z_perplexity-news_Introducing_Computer_s_Multiagent_effort_level_-_P.json",
+      "writer_output": "WRITER_2026-11-18T16-50-28-117Z_perplexity-news_Introducing_Computer_s_Multiagent_effort_level_-_P.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "kivonat"
+      ],
+      "source_chars": 57,
+      "source_overlap_words": 5,
+      "cost_usd": 0.0036138,
+      "duration_ms": 15147,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 1,
+  "termek_extra": 1,
+  "finished_at": "2026-11-18T16:51:35.139Z",
+  "duration_seconds": 61.554
+}

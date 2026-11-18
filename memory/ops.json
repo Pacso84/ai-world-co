@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179485750653399",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-16T19:31:46.533Z",
-      "updated": "2026-11-16T19:32:46.028Z"
-    },
-    {
-      "id": "t179485756603035",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-16T19:32:46.030Z",
-      "updated": "2026-11-16T19:32:46.161Z"
-    },
-    {
-      "id": "t179485756619347",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-16T19:32:46.193Z",
-      "updated": "2026-11-16T19:33:16.498Z"
-    },
-    {
-      "id": "t179485759649966",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-16T19:33:16.499Z",
-      "updated": "2026-11-16T19:33:35.283Z"
-    },
-    {
-      "id": "t179485761528477",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-16T19:33:35.284Z",
-      "updated": "2026-11-16T19:33:45.677Z"
-    },
-    {
-      "id": "t179485762567851",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-16T19:33:45.678Z",
-      "updated": "2026-11-16T19:34:12.589Z"
-    },
-    {
-      "id": "t179485765259122",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-16T19:34:12.591Z",
-      "updated": "2026-11-16T19:34:20.549Z"
-    },
-    {
-      "id": "t179485766060555",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-16T19:34:20.605Z",
-      "updated": "2026-11-16T19:34:20.750Z"
-    },
-    {
-      "id": "t179485766075184",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-16T19:34:20.751Z",
-      "updated": "2026-11-16T19:34:20.898Z"
-    },
-    {
-      "id": "t17948576609258",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-16T19:34:20.925Z",
-      "updated": "2026-11-16T19:34:38.402Z"
-    },
-    {
-      "id": "t179485767840311",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-16T19:34:38.403Z",
-      "updated": "2026-11-16T19:34:47.758Z"
-    },
-    {
-      "id": "t179485768775998",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-16T19:34:47.759Z",
-      "updated": "2026-11-16T19:35:01.420Z"
-    },
-    {
       "id": "t179485770142299",
       "title": "Run publisher",
       "status": "done",
@@ -479,41 +383,105 @@
       "agent": "publisher",
       "created": "2026-11-18T05:13:10.954Z",
       "updated": "2026-11-18T05:13:36.189Z"
+    },
+    {
+      "id": "t179502058295150",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-18T16:49:42.951Z",
+      "updated": "2026-11-18T16:49:43.087Z"
+    },
+    {
+      "id": "t179502058308811",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-18T16:49:43.088Z",
+      "updated": "2026-11-18T16:50:33.276Z"
+    },
+    {
+      "id": "t17950206332775",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-18T16:50:33.277Z",
+      "updated": "2026-11-18T16:50:33.411Z"
+    },
+    {
+      "id": "t179502063344780",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-18T16:50:33.447Z",
+      "updated": "2026-11-18T16:51:35.157Z"
+    },
+    {
+      "id": "t179502069515930",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-18T16:51:35.159Z",
+      "updated": "2026-11-18T16:51:47.116Z"
+    },
+    {
+      "id": "t179502070711854",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-18T16:51:47.118Z",
+      "updated": "2026-11-18T16:51:54.156Z"
+    },
+    {
+      "id": "t179502071421385",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-18T16:51:54.213Z",
+      "updated": "2026-11-18T16:51:54.356Z"
+    },
+    {
+      "id": "t179502071435716",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-18T16:51:54.357Z",
+      "updated": "2026-11-18T16:51:54.495Z"
+    },
+    {
+      "id": "t179502071452373",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-18T16:51:54.523Z",
+      "updated": "2026-11-18T16:52:02.904Z"
+    },
+    {
+      "id": "t179502072290669",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-18T16:52:02.906Z",
+      "updated": "2026-11-18T16:52:16.718Z"
+    },
+    {
+      "id": "t179502073672087",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-18T16:52:16.720Z",
+      "updated": "2026-11-18T16:52:27.556Z"
+    },
+    {
+      "id": "t179502074755847",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-18T16:52:27.558Z",
+      "updated": "2026-11-18T16:52:46.649Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179428800780277",
-      "level": "success",
-      "text": "4 hír + 3 útmutató publikálva (költség: $0.0517).",
-      "agent": "ceo",
-      "at": "2026-11-10T05:20:07.802Z",
-      "loud": false
-    },
-    {
-      "id": "n179428809867466",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „Eligible enterprise",
-      "agent": "fact-check",
-      "at": "2026-11-10T05:21:38.674Z",
-      "loud": false
-    },
-    {
-      "id": "n179432642125245",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
-      "agent": "seo",
-      "at": "2026-11-10T16:00:21.252Z",
-      "loud": false
-    },
-    {
-      "id": "n179432644155727",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid—practical, varied, and directly useful for everyday readers. One note: article 10 mentions \"Qwen Chat,\" and I want to confirm that name matches our tool-links.json before publis",
-      "agent": "publisher",
-      "at": "2026-11-10T16:00:41.557Z",
-      "loud": false
-    },
     {
       "id": "n179432645517481",
       "level": "success",
@@ -1281,27 +1249,41 @@
       "agent": "fact-check",
       "at": "2026-11-18T05:14:28.908Z",
       "loud": false
+    },
+    {
+      "id": "n179502073669858",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 7.0/10).",
+      "agent": "seo",
+      "at": "2026-11-18T16:52:16.698Z",
+      "loud": false
+    },
+    {
+      "id": "n179502075527343",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is solid and ready — it's all practical, everyday AI use cases that busy people can actually apply, with nice tool variety (Perplexity, DeepSeek, ChatGPT, Cohere, Le Chat, Qwen). One small ",
+      "agent": "publisher",
+      "at": "2026-11-18T16:52:35.273Z",
+      "loud": false
+    },
+    {
+      "id": "n179502076667935",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0112).",
+      "agent": "ceo",
+      "at": "2026-11-18T16:52:46.679Z",
+      "loud": false
+    },
+    {
+      "id": "n179502079401587",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Ellenőrizendő állítás: \"Beyond answers: New Genie One features to turn ins\" — A közzétett cikk általános AI asszisztense",
+      "agent": "fact-check",
+      "at": "2026-11-18T16:53:14.015Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179400012212824",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-06T21:22:02.128Z"
-    },
-    {
-      "id": "m179402333452578",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 24 → 6/4/3 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-07T03:48:54.525Z"
-    },
     {
       "id": "m179402342241520",
       "from": "fact-check",
@@ -2688,6 +2670,25 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-18T05:26:08.481Z"
+    },
+    {
+      "id": "m179502074751823",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-18T16:52:27.518Z"
+    },
+    {
+      "id": "m179502079401566",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Ellenőrizendő állítás: \"Beyond answers: New Genie One features to turn ins\" — A közzétett cikk általános AI asszisztensekről (ChatGPT, Claude, Gemini) szól, amelyek alkalmazásokhoz kapcsolódnak, de a hivatalos forrás kizárólag a Databricks Genie One funkcióiról rendelkezik — ezek teljesen különböző termékek és témák, amelyeknek nincs átfedésük.",
+      "ref": "2026-08-28T19-08-01-717Z_databricks_Beyond_answers__New_Genie_One_features_to_turn_ins.json",
+      "open": true,
+      "at": "2026-11-18T16:53:14.015Z"
     }
   ]
 }

@@ -1,0 +1,78 @@
+{
+  "_meta": {
+    "written_at": "2026-11-18T16:51:35.138Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0036138,
+    "original_draft": "2026-11-18T16-50-28-117Z_perplexity-news_Introducing_Computer_s_Multiagent_effort_level_-_P.json",
+    "source_id": "perplexity-news",
+    "source_name": "Perplexity (hivatalos, Google News szűrve)",
+    "source_link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9wd212c2g5X2o5UVlqZWtlYUc1TGNXOW93dFJ1OFg1QTFTSWhzSFU5QzR6SnZwd0czcDNvbHJ4SjJWTFU1N0xJakE2XzIzT3FCcTR0WGlCbWR1TlBXekQyVG9fd0wwYS1yM1QwLTVnSC1iU09s?oc=5",
+    "source_links": [
+      "https://news.google.com/rss/articles/CBMidEFVX3lxTE9wd212c2g5X2o5UVlqZWtlYUc1TGNXOW93dFJ1OFg1QTFTSWhzSFU5QzR6SnZwd0czcDNvbHJ4SjJWTFU1N0xJakE2XzIzT3FCcTR0WGlCbWR1TlBXekQyVG9fd0wwYS1yM1QwLTVnSC1iU09s?oc=5"
+    ],
+    "source_snippet_len": 57,
+    "source_text_via": [
+      "kivonat"
+    ],
+    "source_text_len": 57,
+    "source_text_key": "92171839f253d808",
+    "source_overlap_words": 5,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": true,
+    "termek_extra": true,
+    "status": "published",
+    "published_at": "2026-11-18T16:51:47.100Z",
+    "slug": "perplexity-s-multiagent-effort-level-for-computer-what-the-announcemen",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "OPENING_REPETITIVE: A legutóbbi 20 cikkből 5 kezdődik ugyanígy (\"if you…\"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel."
+      ],
+      "wordCount": 637
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-crafted article that accurately reflects limited announcement information while remaining informative; explains technical terms clearly, maintains appropriate caution about unknowns, and delivers all required sections with a helpful wrap-up and next step.",
+      "_aiCost": 0.00103236,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-18T16:51:54.118Z",
+    "guide_worthy": false,
+    "pairing_reason": "The announcement names the feature but provides no details on how to use it, where to find it, or what it does in practice — there is no concrete action for users today.",
+    "image_v": 2,
+    "image_at": "2026-11-18T16:52:02.873Z",
+    "seo": {
+      "meta_description": "Perplexity has announced a Multiagent effort level setting for its Computer product. Here's what the announcement says and what it doesn't tell us yet.",
+      "keywords": [
+        "Perplexity Computer",
+        "Perplexity Multiagent effort level",
+        "Perplexity new features",
+        "Perplexity Computer setting",
+        "what is Perplexity Multiagent",
+        "Perplexity AI agent features",
+        "Perplexity Computer 2024"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add more specific details about the announcement date or where it was published to improve timeliness signals",
+        "Include the exact name of the official announcement post if available for better credibility",
+        "Consider adding a section on what similar multiagent AI tools do to help readers understand the concept"
+      ],
+      "optimised_at": "2026-11-18T16:52:16.682Z"
+    },
+    "fact_check_skip": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+    "fact_check_skip_count": 1,
+    "fact_check_skip_at": "2026-11-18T16:52:47.791Z"
+  },
+  "article_markdown": "---\ntitle: \"Perplexity's Multiagent Effort Level for Computer: What the Announcement Says So Far\"\nsubtitle: \"Perplexity has named a new setting for Computer, but the announcement shares few details yet. Here is what the name means and what to watch for.\"\ncategory: \"ai-news\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"perplexity\", \"ai-agents\", \"ai-news\", \"getting-started\"]\n---\n\n# Perplexity's Multiagent Effort Level for Computer: What the Announcement Says So Far\n\n> **In short:** Perplexity has announced a feature called \"Multiagent effort level\" for its product Computer. The announcement gives the name and the basic idea, but few other details, so it is not yet clear how to use it or what it costs.\n\nIf you have ever handed a big job to one helper when a few people could have split it up, you already understand the idea behind this announcement. Perplexity has introduced a new term for how its AI approaches work, and it is worth knowing what that term does and does not tell you.\n\n## What the announcement names\n\nThe official announcement is titled \"Introducing Computer's Multiagent effort level.\" Two pieces of that name carry most of the meaning:\n\n- **Multiagent**: \"multi\" means many, and an **agent** is an AI system that can work toward a goal, often by taking several steps on its own. A multiagent setup means more than one of these agents can be involved in a task.\n- **Effort level**: a setting that suggests you can choose how much work the system puts into a task. The name points that way, but we cannot tell from the announcement how the setting behaves in practice.\n\nWe have not seen further details in the announcement beyond its title and the name of the feature, so we will not describe specific levels, screens, or results.\n\n## Why the idea matters for everyday use\n\nThink about planning a weekend trip. You could ask one friend to find flights, hotels, and restaurants, and wait while they work through each one. Or you could split the list among a few friends, who work at the same time, and then compare notes.\n\nA multiagent approach follows the second pattern, at least in concept. Several AI agents can handle different parts of one request. Whether a given tool does this well, and when it is worth the extra effort, depends on the details that Perplexity has not yet shared in the material we have.\n\n## What we can't confirm yet\n\nUntil Perplexity publishes more, these questions remain open:\n\n- Which plans or account types include the feature\n- Where the setting appears and how to turn it on\n- What each effort level changes in the answers or the work the system does\n- Whether using it costs more. For current plan details, check Perplexity's official pricing page rather than relying on any third-party summary.\n\n## What this means for you\n\n- **In everyday life**: Keep an eye on the feature, but do not change your habits yet. A new setting is only useful once you know what it does.\n- **For your business or work**: If you rely on AI for research or multi-step tasks, note the term and watch for the official documentation before planning around it.\n- **If you're just getting started**: Begin with simple, clear requests to any AI tool. Learning how to describe what you want is a skill that carries over to any new feature.\n\n## Wrap-up\n\nPerplexity has named a multiagent effort level for Computer, and the core idea is that several AI agents can share a task. The announcement does not yet explain how to use it, so the most useful step today is to read the official announcement yourself and note exactly what it describes. When Perplexity publishes its help pages or setup guidance for the feature, check those directly before trying it.",
+  "original_title": "Introducing Computer’s Multiagent effort level - Perplexity"
+}

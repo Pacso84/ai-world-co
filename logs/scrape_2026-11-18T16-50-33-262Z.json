@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-11-18T16:49:43.215Z",
+  "feeds_total": 51,
+  "feeds_ok": 50,
+  "feeds_failed": 1,
+  "items_seen_before": 451,
+  "items_keyword_filtered": 4,
+  "candidates_for_ai": 11,
+  "ai_calls": 2,
+  "items_relevant": 5,
+  "items_saved": 5,
+  "ai_cost_usd": 0.00216152,
+  "failed_feeds": [
+    {
+      "id": "midjourney-updates",
+      "error": "Unexpected close tag\nLine: 34\nColumn: 11\nChar: >"
+    }
+  ],
+  "finished_at": "2026-11-18T16:50:33.262Z",
+  "duration_seconds": 50.047
+}
