@@ -15,7 +15,7 @@
 //                Duck.ai (duckduckgo.com/duckduckgo-help-pages) · Lumo (proton.me/support/lumo) · Z.ai (docs.z.ai) ·
 //                ElevenLabs (elevenlabs.io/docs)
 //   RÉSZLEGES  — csak a funkció LÉTEZÉSE igazolható, a felület nem → útmutató gomb-/menü-/ikonnév NÉLKÜL:
-//                DeepSeek (api-docs.deepseek.com) · Kimi (platform.kimi.ai/docs) · MiniMax (platform.minimax.io/docs) ·
+//                DeepSeek (api-docs.deepseek.com) · Kimi (platform.kimi.ai/docs + www.kimi.com/help) · MiniMax (platform.minimax.io/docs) ·
 //                Brave Leo (brave.com/leo)
 //   NINCS      — gépileg nem olvasható → új eszköz-útmutató NEM készül: Meta AI, Qwen, Midjourney, Picsart, Suno,
 //                Kling, minden más jóváhagyás nélküli eszköz (a leképezésben a táblán kívüli név is ide esik).
@@ -59,7 +59,7 @@ export const ESZKOZ_SZINT = {
 
   // ── RÉSZLEGES: csak a funkció léte igazolható — útmutató felület-név nélkül ────────────────────────
   'DeepSeek':          { szint: SZINT.RESZLEGES, aliasok: ['deepseek', 'deepseek chat'], cegek: ['deepseek'], kulcsok: ['deepseek'], sugo: ['https://api-docs.deepseek.com/'] },
-  'Kimi':              { szint: SZINT.RESZLEGES, aliasok: ['kimi'], cegek: ['moonshot'], kulcsok: ['kimi'], sugo: ['https://platform.kimi.ai/docs'] },
+  'Kimi':              { szint: SZINT.RESZLEGES, aliasok: ['kimi'], cegek: ['moonshot'], kulcsok: ['kimi'], sugo: ['https://platform.kimi.ai/docs', 'https://www.kimi.com/help'] },
   'MiniMax Code':      { szint: SZINT.RESZLEGES, aliasok: ['minimax code', 'minimax'], cegek: ['minimax'], kulcsok: ['minimax'], sugo: ['https://platform.minimax.io/docs'] },
   'Brave Leo':         { szint: SZINT.RESZLEGES, aliasok: ['brave leo'], cegek: ['brave'], kulcsok: ['braveleo'], sugo: ['https://brave.com/leo/'] },
 

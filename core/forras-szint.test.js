@@ -36,6 +36,13 @@ t('részleges: csak a funkció léte igazolható', () => {
     assert.equal(sz(tool, ceg), 'reszleges', tool);
 });
 
+t('Kimi (11-18): a felhasználói súgó is a súgó-listán, a szint MARAD részleges', () => {
+  const k = ESZKOZ_SZINT.Kimi;
+  assert.equal(k.szint, SZINT.RESZLEGES);
+  assert.ok(k.sugo.includes('https://platform.kimi.ai/docs') && k.sugo.includes('https://www.kimi.com/help'), 'mindkét súgó-előtag');
+  assert.equal(forrasSzint('Kimi', 'Moonshot AI').szint, 'reszleges');
+});
+
 t('🧯 nincs jóváhagyott súgó: fék', () => {
   for (const [tool, ceg] of [['Meta AI', 'Meta'], ['Qwen', 'Alibaba'], ['Qwen Chat', 'Alibaba'], ['Alibaba Cloud', 'Alibaba'],
     ['Midjourney', 'Midjourney'], ['Picsart', 'Picsart'], ['Suno.ai', 'Suno.ai'], ['Kling', 'Kling'], ['Recraft', 'Recraft'],

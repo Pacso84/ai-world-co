@@ -27,6 +27,22 @@ for (const u of ['https://www.perplexity.ai/help-center/en/articles/1-x', 'https
 for (const u of ['https://docs.x.ai/developers/x', 'https://docs.x.ai/console/x', 'https://docs.github.com/en/actions/x', 'https://brave.com/search/'])
   assert.ok(!engedelyezett(u), 'jóváhagyáson kívüli rész: ' + u);
 
+// 11-18 (user-jóváhagyás 11-17): Kimi felhasználói súgó — www.kimi.com/help/
+assert.ok(engedelyezett('https://www.kimi.com/help/new-user-guide/x'), 'Kimi felhasználói súgó jóváhagyva');
+assert.ok(!engedelyezett('https://www.kimi.com/'), 'a Kimi főoldal nincs jóváhagyva');
+assert.ok(!engedelyezett('https://www.kimi.com/chat/x'), 'a Kimi többi része nincs jóváhagyva');
+assert.ok(!engedelyezett('https://www.kimi.com/helpx/x'), 'nem szakasz-határos előtag');
+assert.equal(FORRASOK.kimi.length, 2, 'Kimi: platform-dok sor + súgó-sitemap sor');
+assert.equal(FORRASOK.kimi[0].lap, 'https://platform.kimi.ai/docs', 'a platform.kimi.ai sor marad');
+assert.equal(FORRASOK.kimi[1].sitemap, 'https://www.kimi.com/sitemap/sitemap-ug-helpcenter.xml');
+{
+  const xml = ['/help/new-user-guide/x', '/help/kimi-api/y', '/help/search', '/en-cn/help/z', '/help', '/help/membership']
+    .map(u => '<loc>https://www.kimi.com' + u + '</loc>').join('');
+  assert.deepEqual(sitemapCikkek(xml, FORRASOK.kimi[1].minta, FORRASOK.kimi[1].kizar).map(c => c.url),
+    ['https://www.kimi.com/help/new-user-guide/x', 'https://www.kimi.com/help/membership'],
+    'csak a felhasználói súgó cikkei (kimi-api, search, /help gyökér, nyelvi mappa kihagyva)');
+}
+
 // lista-forrás (GitHub pagelist: soronként egy útvonal)
 assert.deepEqual(listaCikkek('/en/copilot/get-started\n/en/actions/x\n/en/copilot/how-tos/chat\n', 'https://docs.github.com', /^\/en\/copilot\//).map(c => c.url),
   ['https://docs.github.com/en/copilot/get-started', 'https://docs.github.com/en/copilot/how-tos/chat']);

@@ -21,6 +21,7 @@ t('ENGEDELY-host kizár', () => assert.equal(felfedezoHost('Brave Leo', TL), nul
 t('www-eltérés is kizár', () => assert.equal(felfedezoHost('Proba', TL), null));          // proton.me/support/ az ENGEDELY-ben
 t('http-cím nem felfedezhető', () => assert.equal(felfedezoHost('Httpes', TL), null));
 t('port nem lehet', () => assert.equal(felfedezoHost('Portos', TL), null));
+t('Kimi (11-18): a www.kimi.com mostantól jóváhagyott host → nem felfedezhető (valódi tool-links.json)', () => assert.equal(felfedezoHost('Kimi'), null));
 t('ismeretlen eszköz', () => assert.equal(felfedezoHost('Nincs Ilyen', TL), null));
 
 t('súgó-jellegű útvonalak', () => {
