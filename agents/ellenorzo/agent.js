@@ -861,7 +861,7 @@ async function main() {
       const sugoLista = sugoForrasok(writerData._meta);   // CSAK a sugo_alapu útmutatóra (a régi kézi forráslistára nem)
       if (sugoLista.length) {
         const eredetek = [];   // honnan jött a súgó (csak a naplóba)
-        for (const s of sugoLista) { const sz = await sugoSzoveg(s.url); if (sz?.szoveg) { szovegek.push(sz.szoveg); eredetek.push(sz.honnan); } }
+        for (const s of sugoLista) { const sz = await sugoSzoveg(s.url, s.felfedezett ? { felfedezettEszkoz: s.eszkoz } : undefined); if (sz?.szoveg) { szovegek.push(sz.szoveg); eredetek.push(sz.honnan); } }
         const eredetSzoveg = { tar: 'a tárból', elo: 'élő letöltés', 'regi-tar': '⚠️ régi tárolt példány' };
         const eredet = eredetek.length ? ' (' + [...new Set(eredetek.map(h => eredetSzoveg[h] || 'ismeretlen eredet'))].join(', ') + ')' : '';
         const j = sugoUtmutatoJelzes(markdown, szovegek.join('\n\n'));

@@ -220,6 +220,30 @@ await t('M-3: jövőbeli `letoltve` (negatív kor) nem számít örökké frissn
   assert.ok(r.szoveg.includes('Másik, kitalált'));
 });
 
+await t('🔎 felfedezett forrás: csak a jelölt eszköz saját hostján tárolható', async () => {
+  const UM = 'https://agent.minimax.io/docs/code/a';
+  const adat = { cim: 'A', szoveg: 'x'.repeat(700) };
+  assert.equal(sugoTarIr(UM, adat, { dir }), false, 'eszköz-jelölés nélkül nem jóváhagyott → nem tárol');
+  assert.equal(sugoTarIr(UM, adat, { dir, felfedezettEszkoz: 'Kimi' }), false, 'más eszköz hostja → nem');
+  assert.equal(sugoTarOlvas(UM, { dir }), null);
+  assert.equal(sugoTarIr(UM, adat, { dir, felfedezettEszkoz: 'MiniMax Code' }), true);
+  assert.equal(sugoTarOlvas(UM, { dir }).szoveg, adat.szoveg);
+  // nem súgó-jellegű útvonal a jó hoston sem
+  assert.equal(sugoTarIr('https://agent.minimax.io/blog/x', adat, { dir, felfedezettEszkoz: 'MiniMax Code' }), false);
+});
+
+await t('🔎 sugoSzoveg: felfedezett forrást a jelölt eszközzel tárol, anélkül csak élőben ad', async () => {
+  const UM = 'https://agent.minimax.io/docs/code/b';
+  const r0 = await sugoSzoveg(UM, { fetchFn: elo, dir, most });
+  assert.equal(r0.honnan, 'elo');
+  assert.equal(sugoTarOlvas(UM, { dir }), null, 'eszköz nélkül nem kerül a tárba');
+  const r1 = await sugoSzoveg(UM, { fetchFn: elo, dir, most, felfedezettEszkoz: 'MiniMax Code' });
+  assert.equal(r1.honnan, 'elo');
+  assert.ok(sugoTarOlvas(UM, { dir }), 'az eszközzel tárolódik');
+  const r2 = await sugoSzoveg(UM, { fetchFn: halott, dir, most, felfedezettEszkoz: 'MiniMax Code' });
+  assert.equal(r2.honnan, 'tar', 'másodszor a tárból jön');
+});
+
 rmSync(dir, { recursive: true, force: true });
 if (regiKornyezet !== undefined) process.env.SUGO_TAR_DIR = regiKornyezet;
 console.log(`\n${bukott === 0 ? '✅' : '❌'} sugo-tar.test: ${pass} rendben, ${bukott} bukott`);

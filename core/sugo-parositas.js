@@ -22,6 +22,8 @@
 
 import { termekSzint, HIR_ELSOBBSEG_BE } from './hir-elsobbseg.js';
 import { engedelyezett } from './sugo-index.js';
+import { forrasEngedelyezett } from './sugo-felfedezo.js';
+import { forrasSzint } from './forras-szint.js';
 import { MIN_HIANYZO_FELIRAT } from './forras-tema.js';
 import { confidentUiClaims } from './guide-claims.js';
 
@@ -94,14 +96,18 @@ export function jsonKibont(szoveg) {
   try { return JSON.parse(t.slice(s, e + 1)); } catch { return null; }
 }
 
-/** A választó válasza → a kiválasztott cikk ({url, cim}) vagy null. Csak a listából, csak engedélyezett címmel. */
-export function valasztoValasz(szoveg, index) {
+/**
+ * A választó válasza → a kiválasztott cikk ({url, cim}) vagy null. Csak a listából, csak engedélyezett címmel.
+ * Az engedély-függvény alapból a jóváhagyott lista (a hír-párosító így változatlan); a súgó-horgony felfedezett
+ * jelöltnél a témához kötött ellenőrzést ad át (core/sugo-felfedezo.js).
+ */
+export function valasztoValasz(szoveg, index, engedelyFn = engedelyezett) {
   const j = jsonKibont(szoveg);
   const n = Number(j?.pick);
   const lista = (index || []).slice(0, INDEX_MAX);
   if (!Number.isInteger(n) || n < 1 || n > lista.length) return null;
   const c = lista[n - 1];
-  return c && engedelyezett(c.url) ? c : null;
+  return c && engedelyFn(c.url) ? c : null;
 }
 
 /** A súgócikk szövegének legkisebb hossza, amiből még útmutató írható (rövidebb = gyűjtőlap / hiba). */
@@ -182,13 +188,17 @@ export function meglevoTema(parsed, topics) {
  * A súgó-alapú téma / vázlat letöltendő súgócikkei [{url, title}]. CSAK a `sugo_alapu` jelölésűre (a régi, kézzel
  * írt útmutatók `official_sources`-a sima URL-lista, nem csak jóváhagyott súgóra — azokra ez a gát NEM vonatkozik),
  * és csak engedélyezett címmel. Elfogad sima URL-t és {url, title} objektumot is.
+ * FELFEDEZETT forrás ({url, title, felfedezett: true}): MINDEN használatkor újra ellenőrizzük (forrasEngedelyezett:
+ * az eszköz pontos hostja + súgó-jellegű útvonal); átmenve `felfedezett: true` és `eszkoz` jelöli, hogy a
+ * súgó-tár és az ügynökök tudják, melyik eszköz hostján tárolható. Jóváhagyott URL-nél a mező NEM kerül ki.
  */
 export function sugoForrasok(x) {
   if (!x || x.sugo_alapu !== true || !Array.isArray(x.official_sources)) return [];
   return x.official_sources
-    .map(s => (typeof s === 'string' ? { url: s, title: '' } : { url: String(s?.url || ''), title: String(s?.title || '') }))
-    .filter(s => engedelyezett(s.url))
-    .slice(0, 2);
+    .map(s => (typeof s === 'string' ? { url: s, title: '' } : { url: String(s?.url || ''), title: String(s?.title || ''), ...(s?.felfedezett === true ? { felfedezett: true } : {}) }))
+    .filter(s => forrasEngedelyezett(s, x))
+    .slice(0, 2)
+    .map(s => (s.felfedezett && !engedelyezett(s.url) ? { ...s, eszkoz: forrasSzint(x.tool, x.company).eszkoz } : { url: s.url, title: s.title }));
 }
 
 /** Az író promptjába fűzött blokk: a súgócikk(ek) szövege + a „csak ebből” szabály. Üres lista → ''. */

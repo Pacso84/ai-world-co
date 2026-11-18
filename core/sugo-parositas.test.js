@@ -157,6 +157,32 @@ t('🔴 a régi, kézzel írt útmutatók official_sources-ára (sima URL, nem j
   }
 });
 
+t('🔎 felfedezett forrás: a választó csak engedély-függvénnyel engedi át (a hír-párosító változatlan)', () => {
+  const idx = [{ url: 'https://agent.minimax.io/docs/code/a', cim: 'A' }];
+  assert.equal(valasztoValasz('{"pick":1}', idx), null, 'a jóváhagyott lista nem ismeri a MiniMax-hostot');
+  assert.deepEqual(valasztoValasz('{"pick":1}', idx, () => true), idx[0]);
+  assert.equal(valasztoValasz('{"pick":1}', [{ url: 'https://help.openai.com/en/articles/1-a', cim: 'O' }]).cim, 'O', 'jóváhagyott URL alapból átmegy');
+});
+
+t('🔎 felfedezett jelölés idegen hoston kiesik', () => {
+  assert.deepEqual(SP.sugoForrasok({ sugo_alapu: true, tool: 'MiniMax Code', company: 'MiniMax', official_sources: [
+    { url: 'https://code.minimax.io/docs/a', title: 'A', felfedezett: true },
+    { url: 'https://agent.minimax.io/docs/api/x', title: 'B', felfedezett: true }] }), []);
+});
+
+t('🔎 felfedezett forrás átmegy, eszközzel jelölve; jelölés nélkül nem', () => {
+  const url = 'https://agent.minimax.io/docs/code/a';
+  assert.deepEqual(SP.sugoForrasok({ sugo_alapu: true, tool: 'MiniMax Code', company: 'MiniMax', official_sources: [{ url, title: 'A', felfedezett: true }] }),
+    [{ url, title: 'A', felfedezett: true, eszkoz: 'MiniMax Code' }]);
+  assert.deepEqual(SP.sugoForrasok({ sugo_alapu: true, tool: 'MiniMax Code', company: 'MiniMax', official_sources: [{ url, title: 'A' }] }), [], 'jelölés (felfedezett:true) nélkül a host nem elég');
+  assert.deepEqual(SP.sugoForrasok({ sugo_alapu: true, tool: 'MiniMax Code', company: 'MiniMax', official_sources: [url] }), [], 'sima URL-string sem felfedezett');
+});
+
+t('🔎 jóváhagyott URL változatlanul átmegy, felfedezett mező nélkül', () => {
+  assert.deepEqual(SP.sugoForrasok({ sugo_alapu: true, tool: 'ChatGPT', company: 'OpenAI', official_sources: [{ url: 'https://help.openai.com/en/articles/1-a', title: 'A', felfedezett: true }] }),
+    [{ url: 'https://help.openai.com/en/articles/1-a', title: 'A' }], 'a jóváhagyott lista dönt, a jelölés nem kerül tovább');
+});
+
 t('🔌 az író letölti a súgót és nem ír nélküle; az Ellenőrző a súgón mér', () => {
   const g = readFileSync(new URL('../agents/guide/agent.js', import.meta.url), 'utf-8');
   assert.match(g, /sugoBlokk\(/, 'az író nem kapja a súgót');

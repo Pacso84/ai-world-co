@@ -22,6 +22,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import { FORRAS_TAR_DIR } from './forras-cache.js';
 import { engedelyezett } from './sugo-index.js';
+import { felfedezettEngedelyezett } from './sugo-felfedezo.js';
 import { cikkSzoveg } from './elakadas-gen.js';
 
 /** Kill-switch: false → nincs tár, a súgószöveg mindig élőben jön (a config `enabled` mező NEM kapcsol ki semmit). */
@@ -74,7 +75,14 @@ function utak(url, dir) {
 }
 
 /**
- * A súgócikk a privát tárba. Csak jóváhagyott súgó URL-re ír. Ha a korábbi tárolt szöveg lenyomata eltér az újétól,
+ * Tárolható-e a cím: jóváhagyott súgó, VAGY (felfedezett forrás) a megadott eszköz saját hostján álló, súgó-jellegű
+ * cím. A felfedezett engedély MINDEN híváskor újra fut — a téma jelölése önmagában nem elég.
+ */
+const tarolhato = (url, felfedezettEszkoz) =>
+  engedelyezett(url) || (!!felfedezettEszkoz && felfedezettEngedelyezett(url, felfedezettEszkoz));
+
+/**
+ * A súgócikk a privát tárba. Csak jóváhagyott súgó URL-re ír (vagy `felfedezettEszkoz`-zel az eszköz saját hostjára). Ha a korábbi tárolt szöveg lenyomata eltér az újétól,
  * a `valtozott` mezőbe a mostani idő kerül (azonos újraletöltés a régi `valtozott`-at megtartja).
  * @returns {boolean} sikerült-e (hiba esetén false, kivétel soha)
  */
@@ -82,8 +90,8 @@ export function sugoTarIr(url, adat, opciok) {
   try {
     // a destrukturálás a try-on BELÜL: null / hibás argumentum sem dobhat (a tár hibája nem állíthat meg futást)
     const { cim, szoveg } = adat || {};
-    const { dir, most = Date.now() } = opciok || {};
-    if (!engedelyezett(url) || !String(szoveg || '').trim()) return false;
+    const { dir, most = Date.now(), felfedezettEszkoz } = opciok || {};
+    if (!tarolhato(url, felfedezettEszkoz) || !String(szoveg || '').trim()) return false;
     const u = utak(url, dir);
     if (!u) return false;
     const ido = new Date(most).toISOString();
@@ -118,7 +126,7 @@ export function sugoTarOlvas(url, opciok) {
 
 /**
  * A súgócikk szövege, sorrendben: friss tár (≤ frissNap) → élő letöltés (siker: tárba ír) → régi tár → null.
- * Nem jóváhagyott URL (vagy kikapcsolt tár): csak élő letöltés, tárolás nélkül.
+ * Nem tárolható URL (nem jóváhagyott és nincs érvényes `felfedezettEszkoz`, vagy kikapcsolt tár): csak élő letöltés, tárolás nélkül.
  * @returns {Promise<{szoveg: string, cim: string, honnan: 'tar'|'elo'|'regi-tar'} | null>}
  */
 export async function sugoSzoveg(url, opciok) {
@@ -126,8 +134,8 @@ export async function sugoSzoveg(url, opciok) {
   // a hívó pedig a meglévő módon „nincs súgó”-ként kezeli. A destrukturálás is a try-on belül van (null opció sem dob).
   let tarolt = null;
   try {
-    const { fetchFn = fetch, dir, most = Date.now(), frissNap = SUGO_FRISS_NAP } = opciok || {};
-    if (!SUGO_TAR_BE || !engedelyezett(url)) {
+    const { fetchFn = fetch, dir, most = Date.now(), frissNap = SUGO_FRISS_NAP, felfedezettEszkoz } = opciok || {};
+    if (!SUGO_TAR_BE || !tarolhato(url, felfedezettEszkoz)) {
       const r = await cikkSzoveg(url, fetchFn);
       return r ? { szoveg: r.szoveg, cim: r.cim, honnan: 'elo' } : null;
     }
@@ -137,7 +145,7 @@ export async function sugoSzoveg(url, opciok) {
     if (tarolt && kor >= 0 && kor <= frissNap * NAP_MS) return { szoveg: tarolt.szoveg, cim: tarolt.cim, honnan: 'tar' };
     const r = await cikkSzoveg(url, fetchFn);
     if (r && String(r.szoveg || '').trim().length >= MIN_TAR_HOSSZ) {
-      sugoTarIr(url, r, { dir, most });
+      sugoTarIr(url, r, { dir, most, felfedezettEszkoz });
       return { szoveg: r.szoveg, cim: r.cim, honnan: 'elo' };
     }
     // rövid élő lap (nem súgócikk): a tárat NEM írjuk felül — a jó régi szöveg jön, ha nincs, az élő eredmény tárolás nélkül

@@ -990,7 +990,7 @@ async function reworkGuide(rejectedData, brandContext) {
   const sugok = [];
   const forrasok = sugoForrasok(rejectedData._meta);   // CSAK a sugo_alapu vázlatra
   for (const s of forrasok) {
-    const sz = await sugoSzoveg(s.url);
+    const sz = await sugoSzoveg(s.url, s.felfedezett ? { felfedezettEszkoz: s.eszkoz } : undefined);
     if (sz?.szoveg) sugok.push({ url: s.url, cim: sz.cim || s.title || '', szoveg: sz.szoveg });
   }
   if (forrasok.length && !sugok.length) { console.log('   ⏭️  A súgó nem tölthető le — az átdolgozás vár.'); return null; }
@@ -1071,7 +1071,7 @@ async function runGuideReworkMode(brandContext) {
     const sugoSzovegek = [];
     if (data._meta?.ai_review) {   // mentett bírálat nélkül nincs mit szűrni → nem töltünk le semmit
       for (const sg of sugoForrasok(data._meta)) {
-        try { const sz = await sugoSzoveg(sg.url); if (sz?.szoveg) sugoSzovegek.push(sz.szoveg); } catch { /* a súgó nélkül is megy */ }
+        try { const sz = await sugoSzoveg(sg.url, sg.felfedezett ? { felfedezettEszkoz: sg.eszkoz } : undefined); if (sz?.szoveg) sugoSzovegek.push(sz.szoveg); } catch { /* a súgó nélkül is megy */ }
       }
     }
     const nevSzuro = atdolgozoMeta(data._meta, { ...utmutatoNevForras(data._meta, { sugoSzovegek }), utmutato: true });
@@ -1376,7 +1376,7 @@ async function main() {
     const sugoLista = sugoForrasok(topic);   // CSAK a sugo_alapu témára (a régi kézi official_sources-ra nem)
     if (sugoLista.length) {
       for (const s of sugoLista) {
-        const sz = await sugoSzoveg(s.url);
+        const sz = await sugoSzoveg(s.url, s.felfedezett ? { felfedezettEszkoz: s.eszkoz } : undefined);
         if (sz?.szoveg) { sugok.push({ url: s.url, cim: sz.cim || s.title || '', szoveg: sz.szoveg }); sugoEredet.push(sz.honnan); }
       }
       if (!sugok.length) { console.log('   ⏭️  A súgó nem tölthető le — ebben a futásban nem írom meg (a téma vár).\n'); continue; }
