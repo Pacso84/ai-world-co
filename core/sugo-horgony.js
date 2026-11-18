@@ -34,7 +34,11 @@ import { sugoSzoveg } from './sugo-tar.js';
 import { felfedez, felfedezettEngedelyezett } from './sugo-felfedezo.js';
 
 export const HORGONY_BE = true;
-/** Futásonként legfeljebb ennyi horgony-próba (költség-fék: témánként ≤ 2 AI-hívás). */
+/**
+ * Futásonként legfeljebb ennyi horgony-próba (költség-fék: témánként ≤ 3 AI-hívás: választó 1. kör + választó 2. kör
+ * [felfedezett jelöltek] + ellenőrző). Ha az 1. kör AI-válasza üres, a 2. kör ettől még fut — a forrás ilyenkor is
+ * hivatalos (az eszköz saját hostja) és az ellenőrzőn átmegy.
+ */
 export const FUTAS_MAX_PROBA = 6;
 /** Sikertelen próba után ennyi nap múlva próbáljuk újra ugyanazt a témát. */
 export const UJRAPROBA_NAP = 14;
@@ -244,10 +248,14 @@ export async function horgonyKeres(tema, { ask, indexFn = indexLetolt, sugoSzove
     const felfedezettEngedely = u => felfedezettEngedelyezett(u, ad.nev);
 
     let cikk = null, felfedezett = false;
-    if (!index.length) {
+    // ÜRES FIX LISTA = a letöltés hibázott (nem a téma): ha a felfedezett kör kudarcot vall, az eredmény a régi ÁTMENETI válasz
+    // (nincs 14 napos várakozás; a következő futás újra próbál), a már elköltött költséggel együtt
+    const ures = !index.length;
+    const listaAtmeneti = () => ({ ok: false, reason: 'a súgó cikklistája nem jött le', jegyzesOk: 'a súgó cikklistája nem jött le', atmeneti: true, cost });
+    if (ures) {
       // üres fix lista: a felfedezés előbb jön, mint az „átmeneti” válasz; üres felfedezésnél marad a régi kudarc
       const jeloltek = await felfed();
-      if (!jeloltek.length) return { ok: false, reason: 'a súgó cikklistája nem jött le', jegyzesOk: 'a súgó cikklistája nem jött le', atmeneti: true, cost };
+      if (!jeloltek.length) return listaAtmeneti();
       cikk = await valaszt(jeloltek, felfedezettEngedely); felfedezett = true;
     } else {
       // 3b. egy-lapos TERMÉKOLDAL (pl. brave.com/leo): a lap csak azt igazolja, hogy a funkció létezik, használati esetet nem.
@@ -273,14 +281,14 @@ export async function horgonyKeres(tema, { ask, indexFn = indexLetolt, sugoSzove
         }
       }
     }
-    if (!cikk) return { ok: false, reason: 'nincs illő súgócikk', jegyzesOk: 'nincs illő súgócikk', cost };
+    if (!cikk) return ures ? listaAtmeneti() : { ok: false, reason: 'nincs illő súgócikk', jegyzesOk: 'nincs illő súgócikk', cost };
 
     // 6. a cikk szövege (privát tárból)
     const sz = felfedezett ? await sugoSzovegFn(cikk.url, { felfedezettEszkoz: ad.nev }) : await sugoSzovegFn(cikk.url);
     // nem jött le → ÁTMENETI (a következő futás újra próbálja); lejött, de túl rövid → TARTÓS (14 nap): egy tartósan rövid
     // cikkre különben minden futás újabb AI-hívást égetne.
-    if (!sz) return { ok: false, reason: 'a súgócikk nem tölthető le', jegyzesOk: 'a súgócikk nem tölthető le', atmeneti: true, cost };
-    if (String(sz.szoveg || '').length < MIN_SUGO_SZOVEG) return { ok: false, reason: 'a súgócikk túl rövid', jegyzesOk: 'a súgócikk túl rövid', cost };
+    if (!sz) return ures ? listaAtmeneti() : { ok: false, reason: 'a súgócikk nem tölthető le', jegyzesOk: 'a súgócikk nem tölthető le', atmeneti: true, cost };
+    if (String(sz.szoveg || '').length < MIN_SUGO_SZOVEG) return ures ? listaAtmeneti() : { ok: false, reason: 'a súgócikk túl rövid', jegyzesOk: 'a súgócikk túl rövid', cost };
     const sugoCim = tiszta(sz.cim || cikk.cim).slice(0, 160);   // a cikkcím hossza korlátos (a téma-fájl nyilvános)
 
     // 7. ellenőrző AI: a cikkből tényleg írható-e útmutató ehhez a témához
@@ -288,7 +296,7 @@ export async function horgonyKeres(tema, { ask, indexFn = indexLetolt, sugoSzove
     const r2 = await ask(p2.felhasznalo, { agentName, systemPrompt: p2.rendszer, maxTokens: 2000, jsonMode: true });
     cost += r2?.costUsd || 0;
     const v = ellenorzoValaszTema(r2?.text, tema);
-    if (!v.ok) return { ok: false, reason: v.reason, jegyzesOk: 'a cikkből nem írható útmutató', cost };   // az AI indoka csak a naplónak
+    if (!v.ok) return ures ? listaAtmeneti() : { ok: false, reason: v.reason, jegyzesOk: 'a cikkből nem írható útmutató', cost };   // az AI indoka csak a naplónak
 
     const forras = felfedezett ? { url: cikk.url, title: sugoCim, felfedezett: true } : { url: cikk.url, title: sugoCim };
     const frissites = { sugo_alapu: true, official_sources: [forras] };

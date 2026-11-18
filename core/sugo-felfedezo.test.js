@@ -1,7 +1,7 @@
 // TESZT — súgó-felfedező engedély-rész (core/sugo-felfedezo.js, tiszta függvények). Ingyenes, hálózat és MI nélküli.
 // A tesztszövegek kitaláltak (kiadói szöveg nem kerülhet a nyilvános repóba).
 import assert from 'assert/strict';
-import { FELFEDEZO_BE, felfedezoHost, sugoJellegu, felfedezettEngedelyezett, forrasEngedelyezett, felfedez, KERES_MAX, URL_MAX, JELOLT_MAX, SZINT_MAX, IDOKORLAT_MS } from './sugo-felfedezo.js';
+import { FELFEDEZO_BE, felfedezoHost, sugoJellegu, felfedezettEngedelyezett, forrasEngedelyezett, felfedez, KERES_MAX, URL_MAX, JELOLT_MAX, SZINT_MAX, IDOKORLAT_MS, OSSZIDO_MS } from './sugo-felfedezo.js';
 import { UA } from './sugo-index.js';
 
 let pass = 0, hiba = 0;
@@ -23,6 +23,45 @@ t('http-cím nem felfedezhető', () => assert.equal(felfedezoHost('Httpes', TL),
 t('port nem lehet', () => assert.equal(felfedezoHost('Portos', TL), null));
 t('Kimi (11-18): a www.kimi.com mostantól jóváhagyott host → nem felfedezhető (valódi tool-links.json)', () => assert.equal(felfedezoHost('Kimi'), null));
 t('ismeretlen eszköz', () => assert.equal(felfedezoHost('Nincs Ilyen', TL), null));
+
+// --- záró javítókör (11-18) ---
+t('I1: a több terméket kiszolgáló hoston (nem gyökér tool-link) nincs felfedezés', () => {
+  const L = { tools: { 'GitHub Copilot': 'https://github.com/features/copilot', 'Apple Intelligence': 'https://www.apple.com/apple-intelligence/',
+    'MiniMax Code': 'https://agent.minimax.io', 'MiniMax Perjel': 'https://agent.minimax.io/', 'Lekérdezéses': 'https://agent.minimax.io/?a=1' } };
+  assert.equal(felfedezoHost('GitHub Copilot', L), null);
+  assert.equal(felfedezoHost('Apple Intelligence', L), null);
+  assert.equal(felfedezoHost('MiniMax Code', L), 'agent.minimax.io');
+  assert.equal(felfedezoHost('MiniMax Perjel', L), 'agent.minimax.io');
+  assert.equal(felfedezoHost('Lekérdezéses', L), 'agent.minimax.io');
+  // a tárolt felfedezett forrás is elutasítódik az ilyen hoston (idegen repó /docs/ lapja nem „felfedezett súgó”)
+  assert.equal(forrasEngedelyezett({ url: 'https://github.com/x/y/docs/a', felfedezett: true }, { tool: 'GitHub Copilot' }, L), false);
+  assert.equal(felfedezettEngedelyezett('https://github.com/x/y/docs/a', 'GitHub Copilot', L), false);
+});
+t('I1: a valódi tool-links.json-ban sincs felfedezés a github.com / www.apple.com hoston', () => {
+  assert.equal(felfedezoHost('GitHub Copilot'), null);
+  assert.equal(felfedezoHost('Apple Intelligence'), null);
+  assert.equal(forrasEngedelyezett({ url: 'https://github.com/x/y/docs/a', felfedezett: true }, { tool: 'GitHub Copilot' }), false);
+});
+t('M5: SDK / *-api / authors / changelog / community szakasz kizárva, a súgó marad', () => {
+  for (const u of ['https://x.io/docs/cli/sdk-python', 'https://x.io/docs/code/account/minimax-api', 'https://x.io/docs/miniapp/authors/client-api',
+    'https://x.io/docs/community/x', 'https://x.io/docs/changelog'])
+    assert.equal(sugoJellegu(u), false, u);
+  assert.equal(sugoJellegu('https://agent.minimax.io/docs/code/welcome'), true);
+});
+t('M6: nyelvkód a súgó-szakasz után is kizár (csak ismert nem angol kódok)', () => {
+  for (const u of ['https://x.io/docs/zh/a', 'https://x.io/help/ja/a', 'https://x.io/support/pt-br/a', 'https://x.io/docs/zh-cn/a', 'https://x.io/help-center/de/a'])
+    assert.equal(sugoJellegu(u), false, u);
+  for (const u of ['https://x.io/docs/en/a', 'https://x.io/docs/en-us/a', 'https://x.io/docs/ai/a', 'https://x.io/docs/ui/a', 'https://x.io/docs/it-admin/a'])
+    assert.equal(sugoJellegu(u), true, u);
+});
+t('M7: felfedezett forrás csak TELJES/RÉSZLEGES eszköznél (NINCS-szintű eszköznél nem)', () => {
+  const L = { tools: { 'Meta AI': 'https://www.meta.ai', 'MiniMax Code': 'https://agent.minimax.io' } };
+  const f = { url: 'https://www.meta.ai/help/a', felfedezett: true };
+  assert.equal(felfedezettEngedelyezett(f.url, 'Meta AI', L), true, 'a host-őr önmagában átengedné');
+  assert.equal(forrasEngedelyezett(f, { tool: 'Meta AI', company: 'Meta' }, L), false);
+  assert.equal(forrasEngedelyezett({ url: 'https://agent.minimax.io/docs/code/welcome', felfedezett: true }, { tool: 'MiniMax Code', company: 'MiniMax' }, L), true);
+  assert.equal(forrasEngedelyezett({ url: 'https://agent.minimax.io/docs/code/welcome', felfedezett: true }, { tool: 'Ismeretlen' }, L), false);
+});
 
 t('súgó-jellegű útvonalak', () => {
   for (const u of ['https://agent.minimax.io/docs/code/welcome', 'https://x.io/help/start', 'https://x.io/faq', 'https://x.io/user-guide/a', 'https://x.io/support/a', 'https://x.io/guides/a'])
@@ -201,6 +240,21 @@ tt('kikapcsolva: egyetlen kérés sem', async () => {
   const naplo = [];
   assert.deepEqual(await felfedez('MiniMax Code', { toolLinks: TL, be: false, fetchFn: hamis({}, naplo) }), []);
   assert.equal(naplo.length, 0);
+});
+tt('M8: hostonkénti össz-időkeret 90 mp — letelte után nincs több kérés, a gyűjtött jelöltek mennek', async () => {
+  assert.equal(OSSZIDO_MS, 90000);
+  let ora = 1000000; const naplo = [];
+  const lap = { 'https://agent.minimax.io/robots.txt': { body: 'Sitemap: https://agent.minimax.io/sitemap.xml' },
+    'https://agent.minimax.io/sitemap.xml': { body: urlset(['https://agent.minimax.io/help/a']), ora: OSSZIDO_MS + 1 },
+    'https://agent.minimax.io/docs/llms.txt': { body: LLMS } };
+  const fetchFn = async url => { naplo.push(url); const r = lap[url]; if (!r) return { status: 404, text: async () => '' }; if (r.ora) ora += r.ora; return { status: 200, text: async () => r.body }; };
+  const l = await felfedez('MiniMax Code', { toolLinks: TL, fetchFn, most: () => ora });
+  assert.deepEqual(naplo, ['https://agent.minimax.io/robots.txt', 'https://agent.minimax.io/sitemap.xml'], 'a lejárat után nem kér az llms.txt-ért');
+  assert.deepEqual(l.map(x => x.url), ['https://agent.minimax.io/help/a']);
+  // keret alatt minden lekérés megy
+  let ora2 = 5; const naplo2 = [];
+  await felfedez('MiniMax Code', { toolLinks: TL, fetchFn: async url => { naplo2.push(url); ora2 += 1000; return { status: 404, text: async () => '' }; }, most: () => ora2 });
+  assert.equal(naplo2.length, 3);
 });
 tt('ENGEDELY-hoston nincs kérés', async () => {
   const naplo = [];

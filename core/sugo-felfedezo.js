@@ -11,6 +11,7 @@
 //     a regisztrált domainre vagy a www-ra (az aldomain nem öröklődik: lumo.proton.me ≠ proton.me).
 //   - Ha az eszköz hosztja (www-vel vagy anélkül) egy ENGEDELY-előtag hosztja → NINCS felfedezés (null): ott a
 //     jóváhagyott lista dönt, a felfedező nem tágíthatja.
+//   - Megosztott host (a tool-link útvonala nem gyökér: github.com/features/copilot) → NINCS felfedezés.
 //   - Csak https; port, felhasználónév, jelszó, „..” és „%2e%2e” nem lehet.
 //   - Súgó-jellegű útvonal: súgó/GYIK/útmutató/docs szakasz igen; API, fejlesztői, referencia, blog, hír, jogi, ár, karrier nem;
 //     nem angol nyelvi előtag (zh, en-cn…) nem.
@@ -25,7 +26,7 @@ import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { ENGEDELY, engedelyezett, slugCim, UA } from './sugo-index.js';
-import { forrasSzint } from './forras-szint.js';
+import { forrasSzint, SZINT } from './forras-szint.js';
 
 export const FELFEDEZO_BE = true;
 
@@ -49,6 +50,9 @@ export function felfedezoHost(eszkozNev, toolLinks = alapToolLinks()) {
   try {
     const p = new URL(cim);
     if (p.protocol !== 'https:' || p.port || p.username || p.password) return null;
+    // MEGOSZTOTT HOST: ha a tool-link útvonala nem gyökér (github.com/features/copilot, www.apple.com/apple-intelligence/),
+    // a host több terméket / harmadik felet is kiszolgál → NINCS felfedezés (spec 4: harmadik fél tartalma = kudarc)
+    if (p.pathname !== '/') return null;
     const h = p.hostname.toLowerCase();
     if (!h || ENGEDELY_HOSTOK.some(e => hostEgyezik(h, e))) return null;
     return h;
@@ -57,9 +61,12 @@ export function felfedezoHost(eszkozNev, toolLinks = alapToolLinks()) {
 
 // Súgó-jellegű szakasz (az útvonal bármely szakasza) és kizárt szakasz; a szakasz-határ (^|/)…(/|$)
 const SUGO_SZAKASZ = /(^|\/)(help(-center)?|faqs?|guides?|user-guide|support|docs)(\/|$)/;
-const KIZART_SZAKASZ = /(^|\/)(api[a-z-]*|developers?|platform|reference|sdks?|cookbooks?|pricing|[a-z-]*blog|news|legal|terms|privacy|careers)(\/|$)/;
+const KIZART_SZAKASZ = /(^|\/)(api[a-z-]*|[a-z-]*-api|developers?|platform|reference|sdk[a-z-]*|cookbooks?|pricing|[a-z-]*blog|news|legal|terms|privacy|careers|authors|changelog|community)(\/|$)/;
 const KIZART_HOST = /^(platform|api|developers?)\./;
 const NYELV_ELOTAG = /^[a-z]{2}(-[a-z]{2,4})?$/;
+// a 2. szakaszon csak ISMERT nem angol nyelvkód számít (a „ai”, „ui”, „it” stb. valódi útvonal-szó is lehet): régiós változattal (zh-cn, pt-br)
+const NEM_ANGOL_KOD = /^(zh|ja|ko|fr|de|es|pt|it|ru|ar|tr|vi|th|id|pl|nl|hu|cs|uk|he|hi)(-[a-z]{2,4})?$/;
+const SUGO_ELSO_SZAKASZ = /^(help(-center)?|faqs?|guides?|user-guide|support|docs)$/;
 
 /** Súgó-jellegű-e az útvonal (az angol, nem API/blog/jogi szakaszok közül a súgó/docs/GYIK jellegű)? */
 export function sugoJellegu(url) {
@@ -69,6 +76,8 @@ export function sugoJellegu(url) {
   const ut = p.pathname.toLowerCase().replace(/^\/+/, '');
   const elso = ut.split('/')[0];
   if (NYELV_ELOTAG.test(elso) && elso !== 'en' && elso !== 'en-us') return false;
+  const masodik = ut.split('/')[1] || '';
+  if (SUGO_ELSO_SZAKASZ.test(elso) && NEM_ANGOL_KOD.test(masodik)) return false;   // /docs/zh/…, /help/ja/…
   if (KIZART_SZAKASZ.test(ut)) return false;
   return SUGO_SZAKASZ.test(ut);
 }
@@ -91,18 +100,22 @@ export function forrasEngedelyezett(forras, tema, toolLinks = alapToolLinks()) {
   const url = typeof forras === 'string' ? forras : (forras && forras.url);
   if (engedelyezett(url)) return true;
   if (!forras || typeof forras === 'string' || forras.felfedezett !== true) return false;
-  const eszkoz = forrasSzint(tema && tema.tool, tema && tema.company).eszkoz;
-  return felfedezettEngedelyezett(url, eszkoz, toolLinks);
+  // csak TELJES / RÉSZLEGES forrásszintű eszköznél (NINCS / cégfüggetlen: nincs hivatalos súgó-alap, a felfedezés nem tágíthatja)
+  const sz = forrasSzint(tema && tema.tool, tema && tema.company);
+  if (sz.szint !== SZINT.TELJES && sz.szint !== SZINT.RESZLEGES) return false;
+  return felfedezettEngedelyezett(url, sz.eszkoz, toolLinks);
 }
 
 // ---------------------------------------------------------------------------------------------------
 // FELFEDEZÉS (súgókereső 2. lépés, 2026-11-18): robots.txt → sitemap, llms.txt → jelöltlista az eszköz saját hostjáról.
 // Nincs MI, a gyorsítótár csak a futáson belül él (a hívó `cache` objektuma). Soha nem dob: hiba/üres → [].
 // HOSTONKÉNT: max 12 kérés (a számláló közös a robots/sitemap/llms lépések között), 30 s kérésenként, max 5000 olvasott URL,
-// max 400 jelölt, a sitemap-index legfeljebb 2 szint mélyen. A kapcsoló (FELFEDEZO_BE / `be`) csak a KÉRÉSEKET állítja le.
+// max 400 jelölt, a sitemap-index legfeljebb 2 szint mélyen, az egész host-felfedezés legfeljebb 90 s (OSSZIDO_MS). A kapcsoló (FELFEDEZO_BE / `be`) csak a KÉRÉSEKET állítja le.
 // ---------------------------------------------------------------------------------------------------
 
 export const KERES_MAX = 12, URL_MAX = 5000, JELOLT_MAX = 400, SZINT_MAX = 2, IDOKORLAT_MS = 30000;
+/** Hostonkénti ÖSSZ-időkeret: a 12 kérés × 30 s elméleti 6 perc helyett legfeljebb ennyi; letelte után nincs több kérés. */
+export const OSSZIDO_MS = 90000;
 
 // a jelölt URL közös normalizálása: query/hash le (a .md-t a hívó vágja le, ha llms.txt-ből jött)
 const tisztaUrl = u => String(u).split('#')[0].split('?')[0];
@@ -122,7 +135,7 @@ function llmsLinkek(szoveg) {
 }
 
 /** Az eszköz hostjának jelöltjei (robots → sitemap, llms.txt); [] ha nincs host / ki van kapcsolva / hiba. */
-export async function felfedez(eszkozNev, { fetchFn = fetch, cache = {}, toolLinks, be = FELFEDEZO_BE } = {}) {
+export async function felfedez(eszkozNev, { fetchFn = fetch, cache = {}, toolLinks, be = FELFEDEZO_BE, most = Date.now } = {}) {
   try {
     if (!be) return [];                                              // a kapcsoló csak a kéréseket állítja le
     const host = toolLinks ? felfedezoHost(eszkozNev, toolLinks) : felfedezoHost(eszkozNev);
@@ -131,11 +144,12 @@ export async function felfedez(eszkozNev, { fetchFn = fetch, cache = {}, toolLin
 
     const jeloltek = new Map();                                      // url → {url, cim, felfedezett}; a beszúrási sorrend marad
     let keresek = 0, olvasott = 0;
+    const kezdet = most();
     const sajatHost = u => { try { const p = new URL(u); return p.protocol === 'https:' && p.hostname.toLowerCase() === host; } catch { return false; } };
 
     // egy lekérés a közös számlálóval; nem-200, kivétel, időtúllépés → null (a lépés kimarad)
     const kerel = async url => {
-      if (keresek >= KERES_MAX) return null;
+      if (keresek >= KERES_MAX || most() - kezdet >= OSSZIDO_MS) return null;   // kérés-keret ÉS össz-időkeret
       keresek++;
       try {
         const r = await fetchFn(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'en-US,en;q=0.9' }, signal: AbortSignal.timeout(IDOKORLAT_MS) });
@@ -189,4 +203,4 @@ export async function felfedez(eszkozNev, { fetchFn = fetch, cache = {}, toolLin
   } catch { return []; }
 }
 
-export default { FELFEDEZO_BE, KERES_MAX, URL_MAX, JELOLT_MAX, SZINT_MAX, IDOKORLAT_MS, felfedezoHost, sugoJellegu, felfedezettEngedelyezett, forrasEngedelyezett, felfedez };
+export default { FELFEDEZO_BE, KERES_MAX, URL_MAX, JELOLT_MAX, SZINT_MAX, IDOKORLAT_MS, OSSZIDO_MS, felfedezoHost, sugoJellegu, felfedezettEngedelyezett, forrasEngedelyezett, felfedez };

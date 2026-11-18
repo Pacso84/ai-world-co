@@ -575,6 +575,37 @@ ta('(m10) a felfedezFn dob → ok:false, nincs kivétel', async () => {
   assert.equal(r.ok, false); assert.match(r.reason, /^hiba: /); assert.equal(r.atmeneti, true);
 });
 
+// --- záró javítókör I2: üres fix lista + a felfedezett kör KUDARCA → a régi ÁTMENETI válasz (nem 14 nap) ---
+const ATMENETI_LISTA = { ok: false, reason: 'a súgó cikklistája nem jött le', jegyzesOk: 'a súgó cikklistája nem jött le', atmeneti: true };
+const ures = async () => [];
+ta('(m12) üres fix lista + felfedezett pick:0 → átmeneti (a költséggel)', async () => {
+  const ask = hamisAsk([val({ pick: 0 })]);
+  const r = await horgonyKeres(mmTema, { ask, indexFn: ures, sugoSzovegFn: hamisSzoveg(), felfedezFn: hamisFelfedez(felfLista) });
+  assert.deepEqual(r, { ...ATMENETI_LISTA, cost: 0.001 });
+});
+ta('(m13) üres fix lista + felfedezett, az ellenőrző elutasít → átmeneti (a költséggel)', async () => {
+  const ask = hamisAsk([val({ pick: 1 }), val({ ok: false, reason: 'nem ugyanaz' })]);
+  const r = await horgonyKeres(mmTema, { ask, indexFn: ures, sugoSzovegFn: hamisSzoveg(), felfedezFn: hamisFelfedez(felfLista) });
+  assert.deepEqual(r, { ...ATMENETI_LISTA, cost: 0.002 });
+});
+ta('(m13b) üres fix lista + felfedezett, a szöveg rövid / nem tölthető le → átmeneti', async () => {
+  const rovid = async () => ({ szoveg: 'x', cim: 'A' });
+  const r1 = await horgonyKeres(mmTema, { ask: hamisAsk([val({ pick: 1 })]), indexFn: ures, sugoSzovegFn: rovid, felfedezFn: hamisFelfedez(felfLista) });
+  assert.deepEqual(r1, { ...ATMENETI_LISTA, cost: 0.001 });
+  const nincs = async () => null;
+  const r2 = await horgonyKeres(mmTema, { ask: hamisAsk([val({ pick: 1 })]), indexFn: ures, sugoSzovegFn: nincs, felfedezFn: hamisFelfedez(felfLista) });
+  assert.deepEqual(r2, { ...ATMENETI_LISTA, cost: 0.001 });
+});
+ta('(m14) üres fix lista + felfedezett siker → siker marad', async () => {
+  const ask = hamisAsk([val({ pick: 1 }), val({ ok: true, title: mmTema.title, reason: 'r' })]);
+  const r = await horgonyKeres(mmTema, { ask, indexFn: ures, sugoSzovegFn: hamisSzoveg(), felfedezFn: hamisFelfedez(felfLista) });
+  assert.equal(r.ok, true, r.reason); assert.equal(r.felfedezett, true); assert.equal(r.atmeneti, undefined);
+});
+ta('(m14b) NEM üres fix lista + a felfedezett kör kudarca → a régi (nem átmeneti) ok marad', async () => {
+  const r = await horgonyKeres(mmTema, { ask: hamisAsk([val({ pick: 0 }), val({ pick: 0 })]), indexFn: mmIndex, sugoSzovegFn: hamisSzoveg(), felfedezFn: hamisFelfedez(felfLista) });
+  assert.equal(r.ok, false); assert.equal(r.reason, 'nincs illő súgócikk'); assert.equal(r.atmeneti, undefined);
+});
+
 ta('(m11) az alapértelmezett felfedezés nem hív hálózatot, ha az eszköznek nincs felfedezhető hostja (Perplexity)', async () => {
   const eredeti = globalThis.fetch; let hivas = 0; globalThis.fetch = async () => { hivas++; throw new Error('hálózat tilos'); };
   try {
