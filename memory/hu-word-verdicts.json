@@ -36,6 +36,7 @@
     "adminisztrátorodnak",
     "adminisztrátorok",
     "adminisztrátoroknak",
+    "adminisztrátoroknál",
     "adminisztrátorom",
     "adminjogokkal",
     "adminkapcsoló",
@@ -356,6 +357,7 @@
     "bámultsz",
     "bárokat",
     "bérbeadott",
+    "bétaalkalmazásokban",
     "bétaprogramot",
     "bétatesztjei",
     "bétaverziót",
@@ -1547,6 +1549,7 @@
     "képmodelje",
     "képmodeljének",
     "képmodelleként",
+    "képpromptba",
     "képpromptokkal",
     "képroma",
     "képötölettel",
@@ -1803,6 +1806,7 @@
     "megértésellenőrzésekkel",
     "mehívót",
     "melbourne",
+    "melegségen",
     "melegséget",
     "mellmagasságban",
     "mellébed",
@@ -2402,6 +2406,7 @@
     "reportphishing",
     "repozitóriumokban",
     "reptéren",
+    "requesten",
     "requestet",
     "reranking",
     "resetet",
@@ -2613,6 +2618,7 @@
     "struktúrált",
     "struktúráltnak",
     "stylised",
+    "stílerleírást",
     "stíluspromptot",
     "stílusösszefoglalódat",
     "subagents",
@@ -2645,6 +2651,7 @@
     "szektorok",
     "szellemszöveget",
     "szemcsésséget",
+    "szemcsézettségen",
     "szemléltetőanyagokat",
     "szemmagasság",
     "szemmagasságban",
@@ -6458,11 +6465,16 @@
       "correct": "dotnak",
       "at": "2026-11-17",
       "mondattal": true
+    },
+    "megcélzandó": {
+      "correct": "megcélzendő",
+      "at": "2026-11-18",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-11-17",
-    "files": 878,
-    "candidates": 7
+    "at": "2026-11-18",
+    "files": 884,
+    "candidates": 8
   }
 }
