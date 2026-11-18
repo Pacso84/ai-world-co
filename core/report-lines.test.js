@@ -547,6 +547,34 @@ t('🧯 a napi jelentés beköti a fék-sort, hibás/hiányzó fájlra sem dől 
     assert.ok(sor.includes(`${UJRAPROBA_NAP} nap múlva`), 'a várakozási idő a konstansból jön, nem beégetve');
   });
 
+  t('🧭 horgonyLine: új súgó-forrás mondat minden nem-null kimenet végére; felfedezett nélkül betűre a régi', () => {
+    const F = { 'agent.minimax.io': 2 };
+    const veg = ' 🧭 Új súgó-forrás: agent.minimax.io (2 téma).';
+    const alap = [
+      { at: AT, probak: 3, sikeres: 2, sikertelen: [] },
+      { at: AT, probak: 3, sikeres: 2, sikertelen: [bukas('Kimi')] },
+      { at: AT, probak: 3, sikeres: 1, sikertelen: [bukas('Kimi', true)] }
+    ];
+    for (const a of alap) {
+      const regi = horgonyLine(a, MA);
+      assert.ok(regi && !regi.includes('Új súgó-forrás'));
+      assert.equal(horgonyLine({ ...a, felfedezett: F }, MA), regi + veg);
+      assert.equal(horgonyLine({ ...a, felfedezett: {} }, MA), regi, 'üres felfedezett = a régi');
+    }
+    assert.ok(horgonyLine({ at: AT, probak: 3, sikeres: 2, sikertelen: [], felfedezett: F }, MA).endsWith('🧭 Új súgó-forrás: agent.minimax.io (2 téma).'));
+    assert.equal(horgonyLine({ at: AT, probak: 0, sikeres: 2, sikertelen: [], felfedezett: F }, MA), null, 'a null kimenet null marad');
+  });
+
+  t('🧭 horgonyLine: több host vesszővel, legfeljebb 3 + „+N”; hibás host/darab kimarad', () => {
+    const a = { at: AT, probak: 6, sikeres: 6, sikertelen: [] };
+    const sor = horgonyLine({ ...a, felfedezett: { 'a.example.com': 1, 'b.example.com': 3, 'c.example.com': 2, 'd.example.com': 1, 'e.example.com': 1 } }, MA);
+    assert.ok(sor.endsWith(' 🧭 Új súgó-forrás: b.example.com (3 téma), c.example.com (2 téma), a.example.com (1 téma) +2.'), sor);
+    const rossz = horgonyLine({ ...a, felfedezett: { 'a b': 2, 'x.example.com': 0, 'y.example.com': 'sok', 'ok.example.com': 1 } }, MA);
+    assert.ok(rossz.endsWith(' 🧭 Új súgó-forrás: ok.example.com (1 téma).'), rossz);
+    assert.equal(horgonyLine({ ...a, felfedezett: 'rossz' }, MA), horgonyLine(a, MA));
+    assert.equal(horgonyLine({ ...a, felfedezett: ['x'] }, MA), horgonyLine(a, MA));
+  });
+
   t('🧭 a napi jelentés beköti a horgony-sort a fék után, hibás/hiányzó fájlra sem dől el', () => {
     const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
     assert.match(src, /horgonyLine\(/);

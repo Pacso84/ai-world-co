@@ -173,6 +173,38 @@ t('horgonyAllapotIr: összegzés a fájlba, súgószöveg és AI-indok nélkül'
   assert.deepEqual(j.sikertelen, [{ cim: 'How to use Perplexity Spaces', eszkoz: 'Perplexity', ok: 'nincs illő súgócikk' }]);
 });
 
+const felfSiker = (id, url) => ({ id, cim: 'How to use ' + id, eszkoz: 'MiniMax', horgony: { at: 'x', ok: true, url }, frissites: { sugo_alapu: true, official_sources: [{ url, title: 'Cikk', felfedezett: true }] } });
+
+t('horgonyAllapotIr: felfedezett súgó-forrás → host szerinti darabszám (csak host, útvonal soha)', () => {
+  const fajl = join(tmp, 'felfedezett.json');
+  horgonyAllapotIr({
+    probak: 3,
+    jegyzesek: [
+      felfSiker('a', 'https://agent.minimax.io/doc/titkos-utvonal-1'),
+      felfSiker('b', 'https://agent.minimax.io/doc/titkos-utvonal-2'),
+      { id: 's1', cim: 'How to use Claude Projects', eszkoz: 'Claude', horgony: { at: 'x', ok: true }, frissites: sikerFriss }
+    ]
+  }, { fajl, most: MOST });
+  const szoveg = readFileSync(fajl, 'utf-8');
+  assert.ok(!szoveg.includes('titkos-utvonal'), 'útvonal nem kerül a nyilvános fájlba');
+  const j = JSON.parse(szoveg);
+  assert.deepEqual(j.felfedezett, { 'agent.minimax.io': 2 });
+  assert.equal(j.sikeres, 3);
+});
+
+t('horgonyAllapotIr: felfedezett nélkül nincs `felfedezett` mező; rossz host kimarad', () => {
+  const f1 = join(tmp, 'nincs-felf.json');
+  horgonyAllapotIr({ probak: 1, jegyzesek: [{ id: 's1', cim: 'x', eszkoz: 'Claude', horgony: { ok: true }, frissites: sikerFriss }] }, { fajl: f1, most: MOST });
+  assert.ok(!('felfedezett' in JSON.parse(readFileSync(f1, 'utf-8'))));
+  const f2 = join(tmp, 'rossz-host.json');
+  horgonyAllapotIr({ probak: 2, jegyzesek: [felfSiker('a', 'https://a b.example/x'), felfSiker('b', 'nem url'), felfSiker('c', 'https://Docs.Example.com/x')] }, { fajl: f2, most: MOST });
+  const j = JSON.parse(readFileSync(f2, 'utf-8'));
+  assert.deepEqual(j.felfedezett, { 'docs.example.com': 1 }, 'a hibás URL-ek/hostok kimaradnak, a host kisbetűs');
+  const f3 = join(tmp, 'rossz-host2.json');
+  horgonyAllapotIr({ probak: 1, jegyzesek: [felfSiker('a', 'https://a b.example/x')] }, { fajl: f3, most: MOST });
+  assert.ok(!('felfedezett' in JSON.parse(readFileSync(f3, 'utf-8'))), 'üresnél a mező hiányzik');
+});
+
 t('horgonyAllapotIr: üres/hibás bemenetre és írhatatlan útvonalra sem dob', () => {
   horgonyAllapotIr(undefined, { fajl: join(tmp, 'a.json'), most: MOST });
   horgonyAllapotIr(null, { fajl: join(tmp, 'b.json'), most: MOST });

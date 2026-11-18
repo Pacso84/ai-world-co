@@ -89,6 +89,19 @@ export async function horgonyozottValasztas(jeloltek, limit, { keres, most = Dat
 }
 
 /**
+ * A FELFEDEZETT súgó-forrás hostja (a sikeres jegyzés `frissites.official_sources[0].felfedezett`-je): csak a gazdagép
+ * neve (`^[a-z0-9.-]+$`), útvonal/lekérdezés SOHA — a fájl nyilvános repóba kerül. Nem felfedezett / hibás URL → null.
+ */
+function felfedezettHost(x) {
+  try {
+    const f = x?.frissites?.official_sources?.[0];
+    if (!f || f.felfedezett !== true) return null;
+    const host = new URL(String(f.url)).hostname.toLowerCase();
+    return /^[a-z0-9.-]+$/.test(host) ? host : null;
+  } catch { return null; }
+}
+
+/**
  * A napi riport állapotfájlja: hány próba, hány siker, mely témák nem kaptak horgonyt (és miért).
  * NYILVÁNOS repó → csak a téma címe, az eszköz neve és a RÖGZÍTETT magyar ok kerül bele; súgószöveg és az AI szabad
  * szövegű indoka (`reason`) soha. Hibára nem dob (a futást nem állíthatja le).
@@ -109,6 +122,10 @@ export function horgonyAllapotIr(osszegzes, { fajl = null, most = Date.now() } =
         ...(x.atmeneti === true ? { atmeneti: true } : {})
       }))
     };
+    // 🧭 az ÚJONNAN felfedezett súgó-forrás: host → hány téma kapott belőle cikket (üresnél a mező hiányzik)
+    const felfedezett = {};
+    for (const x of jegyzesek.filter(x => x.horgony?.ok === true)) { const h = felfedezettHost(x); if (h) felfedezett[h] = (felfedezett[h] || 0) + 1; }
+    if (Object.keys(felfedezett).length) j.felfedezett = felfedezett;
     const ut = fajl ? (isAbsolute(fajl) ? fajl : join(ROOT, fajl)) : ALLAPOT_UT;
     mkdirSync(dirname(ut), { recursive: true });
     writeFileSync(ut, JSON.stringify(j, null, 2), 'utf-8');

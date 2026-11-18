@@ -639,6 +639,32 @@ export function fekLine(allapot, maNap) {
  * SOSEM dob.
  */
 export function horgonyLine(allapot, maNap) {
+  const sor = horgonyAlapSor(allapot, maNap);
+  if (!sor) return sor;
+  return sor + ujSugoForrasMondat(allapot);
+}
+
+/**
+ * ÚJ SÚGÓ-FORRÁS mondat a 🧭 sor végére (súgókereső 6): azok a hostok, amelyekről ma/tegnap ELŐSZÖR felfedezett súgócikket
+ * írtunk (`allapot.felfedezett` = { host: téma-darab }). Legfeljebb 3 host (csökkenő darab, döntetlennél ábécé), a többi „+N”.
+ * Hiányzó/üres/hibás mező → '' (a sor betűre a régi). SOSEM dob.
+ */
+function ujSugoForrasMondat(allapot) {
+  try {
+    const f = allapot?.felfedezett;
+    if (!f || typeof f !== 'object' || Array.isArray(f)) return '';
+    const hostok = Object.entries(f)
+      .map(([h, n]) => [String(h), Math.floor(Number(n))])
+      .filter(([h, n]) => /^[a-z0-9.-]+$/.test(h) && Number.isFinite(n) && n > 0)
+      .sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0));
+    if (!hostok.length) return '';
+    const lista = hostok.slice(0, 3).map(([h, n]) => `${h} (${n} téma)`).join(', ');
+    const tobb = hostok.length > 3 ? ` +${hostok.length - 3}` : '';
+    return ` 🧭 Új súgó-forrás: ${lista}${tobb}.`;
+  } catch { return ''; }
+}
+
+function horgonyAlapSor(allapot, maNap) {
   try {
     if (!allapot || typeof allapot !== 'object' || Array.isArray(allapot)) return null;
     const probak = Number(allapot.probak);
