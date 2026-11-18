@@ -36,11 +36,11 @@ assert.equal(FORRASOK.kimi.length, 2, 'Kimi: platform-dok sor + súgó-sitemap s
 assert.equal(FORRASOK.kimi[0].lap, 'https://platform.kimi.ai/docs', 'a platform.kimi.ai sor marad');
 assert.equal(FORRASOK.kimi[1].sitemap, 'https://www.kimi.com/sitemap/sitemap-ug-helpcenter.xml');
 {
-  const xml = ['/help/new-user-guide/x', '/help/kimi-api/y', '/help/search', '/en-cn/help/z', '/help', '/help/membership']
+  const xml = ['/help/new-user-guide/x', '/help/kimi-api/y', '/help/search', '/en-cn/help/z', '/help', '/help/new-user-guide', '/help/membership/y-z']
     .map(u => '<loc>https://www.kimi.com' + u + '</loc>').join('');
   assert.deepEqual(sitemapCikkek(xml, FORRASOK.kimi[1].minta, FORRASOK.kimi[1].kizar).map(c => c.url),
-    ['https://www.kimi.com/help/new-user-guide/x', 'https://www.kimi.com/help/membership'],
-    'csak a felhasználói súgó cikkei (kimi-api, search, /help gyökér, nyelvi mappa kihagyva)');
+    ['https://www.kimi.com/help/new-user-guide/x', 'https://www.kimi.com/help/membership/y-z'],
+    'csak a felhasználói súgó cikkei (kimi-api, search, /help gyökér, szakasz-nyitólap, nyelvi mappa kihagyva)');
 }
 
 // lista-forrás (GitHub pagelist: soronként egy útvonal)

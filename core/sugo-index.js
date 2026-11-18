@@ -203,8 +203,9 @@ export const FORRASOK = {
   deepseek: [{ sitemap: 'https://api-docs.deepseek.com/sitemap.xml', minta: /api-docs\.deepseek\.com\//, kizar: /\/api\// }],
   kimi: [{ lap: 'https://platform.kimi.ai/docs', alap: 'https://platform.kimi.ai', minta: /^\/docs\/[a-z0-9\/-]+$/, kizar: /\/(_mintlify|mintlify-assets|api)\// },
     // 11-18 mérés: a sitemap 180 URL (angol); a kimi-api szakasz (14) a fejlesztői doksi, a /help/search keresőlap → kizárva;
+    // a szakasz-nyitólapok (/help/<szakasz>, 17 db) listaoldalak → kimaradnak: a minta legalább 2 szegmenst kér a /help/ után;
     // a nem angol változat külön …-helpcenter-en-cn.xml-ben van, azt NEM kötjük be
-    { sitemap: 'https://www.kimi.com/sitemap/sitemap-ug-helpcenter.xml', minta: /^https:\/\/www\.kimi\.com\/help\/[a-z0-9-]+(\/[a-z0-9-]+)*$/, kizar: /\/help\/(kimi-api|search)(\/|$)/ }],
+    { sitemap: 'https://www.kimi.com/sitemap/sitemap-ug-helpcenter.xml', minta: /^https:\/\/www\.kimi\.com\/help\/[a-z0-9-]+(\/[a-z0-9-]+)+$/, kizar: /\/help\/(kimi-api|search)(\/|$)/ }],
   minimax: [{ lap: 'https://platform.minimax.io/docs', alap: 'https://platform.minimax.io', minta: /^\/docs\/[a-z0-9\/-]+$/, kizar: /\/api-reference\// }], // helyben 0 — a CI-próba dönt
   braveleo: [{ egy: 'https://brave.com/leo/', cim: 'Brave Leo', minta: /./ }]    // egyetlen lap, letöltés nélkül
 };
