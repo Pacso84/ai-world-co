@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-11-18T05:05:33.260Z",
+  "total": 4,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.007856574000000002,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-11-18T05-03-44-575Z_openai-blog_Introducing_ChatGPT_for_Sales.json",
+      "article": "ARTICLE_2026-11-18T05-03-44-575Z_openai-blog_Introducing_ChatGPT_for_Sales.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00130851
+    },
+    {
+      "writer": "WRITER_2026-11-18T05-03-44-576Z_google-workspace_Gemini-powered_data_classification_in_Google_Drive.json",
+      "article": "ARTICLE_2026-11-18T05-03-44-576Z_google-workspace_Gemini-powered_data_classification_in_Google_Drive.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00125181
+    },
+    {
+      "writer": "WRITER_2026-11-18T05-03-44-577Z_github-copilot-changelog_OpenAI_s_GPT-6_2_Astra_and_GPT-6_2_Sol_now_availab.json",
+      "article": "ARTICLE_2026-11-18T05-03-44-577Z_github-copilot-changelog_OpenAI_s_GPT-6_2_Astra_and_GPT-6_2_Sol_now_availab.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00136815
+    },
+    {
+      "writer": "WRITER_2026-11-18T05-03-44-578Z_github-copilot-changelog_GitHub_Copilot_Fusion_updates__more_availability__.json",
+      "article": "ARTICLE_2026-11-18T05-03-44-578Z_github-copilot-changelog_GitHub_Copilot_Fusion_updates__more_availability__.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0012999
+    }
+  ],
+  "finished_at": "2026-11-18T05:06:57.095Z",
+  "duration_seconds": 83.835
+}

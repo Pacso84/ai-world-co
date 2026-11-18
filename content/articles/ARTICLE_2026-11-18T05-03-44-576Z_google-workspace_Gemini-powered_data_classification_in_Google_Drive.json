@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "written_at": "2026-11-18T05:05:19.506Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.003964,
+    "original_draft": "2026-11-18T05-03-44-576Z_google-workspace_Gemini-powered_data_classification_in_Google_Drive.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/11/gemini-powered-data-classification-in-Google-Drive-is-now-generally-available.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/11/gemini-powered-data-classification-in-Google-Drive-is-now-generally-available.html"
+    ],
+    "source_snippet_len": 1500,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 4901,
+    "source_text_key": "d8ced0e6190e3be2",
+    "source_overlap_words": 11,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-18T05:06:14.096Z",
+    "slug": "gemini-can-now-label-your-google-drive-files-automatically-what-to-kno",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 813
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured news piece with clear hook, good term definitions (label, DLP, audit logs), actionable 'What this means for you' for four audience types, and respectful tone throughout. All claims attributed to Google appropriately, and no prohibited content found.",
+      "_aiCost": 0.00125181,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-18T05:07:32.933Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an enterprise admin feature for setting up automatic file labeling in Google Drive — regular users have no action to take and will just see labels appear passively on their files. · súgó: nincs illő súgócikk",
+    "image_v": 2,
+    "image_at": "2026-11-18T05:10:37.379Z",
+    "seo": {
+      "meta_description": "Gemini can now automatically label Google Drive files for eligible Workspace customers. Admins can test and monitor classification rules.",
+      "keywords": [
+        "google drive ai classification",
+        "gemini google drive",
+        "automatic file labeling google drive",
+        "google workspace ai features",
+        "gemini for workspace",
+        "google drive file organization ai",
+        "google drive classification feature",
+        "ai file sorting google drive"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Consider adding when the feature became generally available (date) if known, as users often search for the latest features",
+        "The article could benefit from 1-2 concrete examples of labeling rules admins might set",
+        "Adding troubleshooting or eligibility requirements could help capture more search intent"
+      ],
+      "optimised_at": "2026-11-18T05:12:16.300Z"
+    },
+    "fact_check_parse_fail_count": 1
+  },
+  "article_markdown": "---\ntitle: \"Gemini Can Now Label Your Google Drive Files Automatically: What to Know\"\nsubtitle: \"Google's AI classification for Drive is generally available, and admins can now test instructions and track results before they go live.\"\ncategory: \"news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"google-drive\", \"gemini\", \"workspace-admin\", \"data-security\", \"file-labels\"]\n---\n\n# Gemini Can Now Label Your Google Drive Files Automatically: What to Know\n\n> **In short:** Google says Gemini-powered AI classification in Google Drive is now generally available for eligible Workspace customers. Admins describe in plain language how files should be labeled, test those instructions first, and monitor the results. Staff don't need to do anything new.\n\nThink about a shared folder that holds thousands of files: contracts, payroll sheets, draft presentations, and old project notes. Someone has to decide which ones are sensitive, and that job usually falls to a busy admin or to whoever remembers to tag each file. Google's new feature aims to take over much of that sorting.\n\n## What changed\n\nUntil now, AI classification in Drive needed you to hand-pick example files so the system could learn what each category looked like. Google says that step is no longer required. Instead, admins write instructions in everyday language, such as \"label any file that lists customer bank details,\" and Gemini, Google's AI model, applies the matching label. A **label** is simply a tag on a file that tells people and systems how sensitive it is.\n\n## How the pieces fit together\n\nGoogle describes a few parts that work as a set:\n\n- **Testing first.** Before anything goes live, admins can run their instructions in the Admin console and preview which label Gemini would apply.\n- **Control stays with admins.** Admins pick the label, write the instructions, and choose which files are in scope.\n- **A human check.** Editors and owners with the right label permissions can accept a Gemini-applied label or change it.\n- **A record of changes.** Audit logs, which are running records of who did what, show when files were labeled and when someone accepted or changed a label.\n- **Near real-time reporting.** On the model details page, admins can see how many files have been labeled, how often users accept labels, and Drive inventory figures.\n\nGoogle says these labels help organizations enforce **data loss prevention (DLP)** rules, which block sensitive information from being shared where it shouldn't go. They can also support retention rules, which decide how long files are kept.\n\n## Limits to know\n\nGoogle lists several boundaries:\n\n- An organization can have one active Gemini instruction model, and up to five AI classification models in total.\n- Files must be in Shared Drives or owned by users with supported licenses.\n- Gemini needs roughly 50 words and 200 characters of readable text to make a reliable call. Client-side encrypted files and images without readable text are skipped.\n- Labels that people applied manually, or labels set by DLP rules, are not overwritten.\n- Turning on auto-apply starts a one-time scan of existing files. Google says it typically begins within one to two weeks, but finishing can take weeks or months. On-demand rescanning of already-checked files is not part of this release.\n- Google says processing respects Data Regions (US or Europe) and that Drive files and prompts are not used to train Google's global models.\n\nRollout for Rapid Release and Scheduled Release domains starts November 17, 2026, with completion expected by December 15, 2026. Admins can find the setting under Security, then Data classification, in the Workspace Admin Console. Google lists Enterprise Plus, Google AI Pro for Education, and Frontline Plus as eligible editions. For plan details, check Google's official pricing and edition pages.\n\n## What this means for you\n\n- **In everyday life**: If you use a work or school Drive account, you may see labels appear on files. There is no end-user setting, so the best move is to know what a label means and to accept or correct it when asked.\n- **For your business or work**: If you manage Workspace, begin with the test step. Write clear instructions, check the preview against real files, and watch the reporting before widening the scope.\n- **If you're just getting started**: Read Google's Help Center article on labeling Drive files with AI classification before changing anything.\n- **If you already use it**: Once the feature appears in your console, compare the instructions you tested with the labels Gemini applied to a sample folder, then refine the wording and watch acceptance rates to see where the instructions are unclear.\n\n## Wrap-up\n\nGemini's AI classification in Google Drive moves labeling from example-based training to plain-language instructions, with testing, human review, and reporting built in. The most useful next step is to open the Data classification section of the Admin console, or read the Help Center guide, and decide which folder would benefit most from a trial.",
+  "original_title": "Gemini-powered data classification in Google Drive is now generally available "
+}

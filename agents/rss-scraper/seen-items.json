@@ -1,8 +1,5 @@
 {
   "openai-blog": [
-    "https://openai.com/index/daybreak-securing-the-world",
-    "https://openai.com/index/codex-maxxing-long-running-work",
-    "https://openai.com/index/how-agents-are-transforming-work",
     "https://openai.com/index/openai-broadcom-jalapeno-inference-chip",
     "https://openai.com/index/helping-build-shared-standards-for-advanced-ai",
     "https://openai.com/index/previewing-gpt-5-6-sol",
@@ -299,7 +296,10 @@
     "https://openai.com/business/customer-stories/holiday-extras-dots",
     "https://openai.com/index/strengthening-nato-allied-cyber-defences-ai",
     "https://openai.com/index/introducing-openai-for-chile",
-    "https://openai.com/business/customer-stories/revolut"
+    "https://openai.com/business/customer-stories/revolut",
+    "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+    "https://openai.com/index/introducing-chatgpt-for-sales",
+    "https://openai.com/index/astra-law-6-2"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -488,7 +488,8 @@
     "https://news.microsoft.com/maia-2026/",
     "https://news.microsoft.com/source/emea/features/missed-a-lecture-this-ai-agent-at-bar-ilan-university-helps-students-catch-up/",
     "https://news.microsoft.com/source/emea/features/a-concrete-vision-saint-gobain-and-microsoft-discovery-build-for-the-future/",
-    "https://news.microsoft.com/source/emea/features/before-the-ambulance-arrives-how-ai-is-helping-the-nhs-rethink-patient-care/"
+    "https://news.microsoft.com/source/emea/features/before-the-ambulance-arrives-how-ai-is-helping-the-nhs-rethink-patient-care/",
+    "https://news.microsoft.com/source/2026/11/17/microsoft-and-salesforce-announce-copilotforce-bringing-trusted-customer-context-and-action-into-microsoft-ai-experiences/"
   ],
   "techcrunch-ai": [
     "https://techcrunch.com/2026/06/06/what-to-expect-from-wwdc-2026-siris-highly-anticipated-revamp-and-apple-intelligence-updates/",
@@ -1009,7 +1010,9 @@
     "http://workspaceupdates.googleblog.com/2026/11/review-edits-across-microsoft-word-docx-and-Google-Docs-files.html",
     "http://workspaceupdates.googleblog.com/2026/11/customize-and-extend-workspace-with-apps-script.html",
     "http://workspaceupdates.googleblog.com/2026/11/schedule-meetings-with-default-buffer-google-calendar.html",
-    "http://workspaceupdates.googleblog.com/2026/11/share-skills-add-files-from-Drive-Notebook-Photos-to-skills-Gemini-app.html"
+    "http://workspaceupdates.googleblog.com/2026/11/share-skills-add-files-from-Drive-Notebook-Photos-to-skills-Gemini-app.html",
+    "http://workspaceupdates.googleblog.com/2026/11/gemini-powered-data-classification-in-Google-Drive-is-now-generally-available.html",
+    "http://workspaceupdates.googleblog.com/2026/11/schedule-more-easily-across-time-zones-with-time-zone-abbreviations-in-Google-Calendar-on-the-web.html"
   ],
   "google-research": [
     "https://research.google/blog/towards-passive-heart-health-monitoring-via-smartphone-camera/",
@@ -1127,16 +1130,6 @@
     "https://github.blog/ai-and-ml/github-copilot/build-once-run-on-any-agent-a-practical-guide-to-agent-skills/"
   ],
   "aws-ml": [
-    "https://aws.amazon.com/blogs/machine-learning/aws-recognized-as-a-leader-in-the-forrester-wave-ai-infrastructure-solutions-q4-2025/",
-    "https://aws.amazon.com/blogs/machine-learning/connect-an-agentcore-runtime-hosted-mcp-server-to-amazon-quick/",
-    "https://aws.amazon.com/blogs/machine-learning/tokenomics-at-scale-how-jamf-built-real-time-spend-enforcement-for-amazon-bedrock/",
-    "https://aws.amazon.com/blogs/machine-learning/how-t54-built-a-trust-layer-with-amazon-bedrock-agentcore-payments/",
-    "https://aws.amazon.com/blogs/machine-learning/how-zs-democratized-secure-ad-hoc-analytics-with-amazon-sagemaker/",
-    "https://aws.amazon.com/blogs/machine-learning/from-theory-to-delivery-how-atos-upskilled-400-engineers-in-agentic-ai/",
-    "https://aws.amazon.com/blogs/machine-learning/securing-amazon-quick-from-poc-to-production-agents-flows-and-spaces/",
-    "https://aws.amazon.com/blogs/machine-learning/how-boomi-scribe-streamlines-documentation-using-aws/",
-    "https://aws.amazon.com/blogs/machine-learning/introducing-claude-fable-5-1-on-aws/",
-    "https://aws.amazon.com/blogs/machine-learning/how-an-aws-team-detects-dashboard-content-failures-at-scale-using-amazon-bedrock/",
     "https://aws.amazon.com/blogs/machine-learning/from-code-to-diagrams-agentic-architecture-documentation-with-amazon-bedrock-agentcore/",
     "https://aws.amazon.com/blogs/machine-learning/modernizing-and-scaling-support-operations-with-generative-ai-on-aws/",
     "https://aws.amazon.com/blogs/machine-learning/trinity-agentic-ai-powered-transition-planning-for-students-with-disabilities/",
@@ -1426,7 +1419,17 @@
     "https://aws.amazon.com/blogs/machine-learning/how-loanpro-built-an-agentic-ai-loan-servicing-assistant-with-amazon-bedrock-agentcore/",
     "https://aws.amazon.com/blogs/machine-learning/how-arisglobal-scaled-generative-ai-inference-on-amazon-bedrock/",
     "https://aws.amazon.com/blogs/machine-learning/your-complete-guide-to-aws-quick-at-aws-reinvent-2026/",
-    "https://aws.amazon.com/blogs/machine-learning/responsible-ai-for-agentic-ai-a-phased-roadmap-for-platform-and-application-teams/"
+    "https://aws.amazon.com/blogs/machine-learning/responsible-ai-for-agentic-ai-a-phased-roadmap-for-platform-and-application-teams/",
+    "https://aws.amazon.com/blogs/machine-learning/managed-nvidia-dynamo-on-amazon-sagemaker-hyperpod-inference/",
+    "https://aws.amazon.com/blogs/machine-learning/reducing-token-costs-and-latency-in-amazon-bedrock-agentcore-json-workloads/",
+    "https://aws.amazon.com/blogs/machine-learning/amazon-sagemaker-ai-real-time-endpoints-now-support-kv-cache-aware-routing/",
+    "https://aws.amazon.com/blogs/machine-learning/secure-oauth-patterns-for-snowflake-cortex-ai-through-amazon-bedrock-agentcore/",
+    "https://aws.amazon.com/blogs/machine-learning/announcing-ai-data-preparation-capabilities-in-amazon-sagemaker-build-high-quality-datasets-for-model-development-workflows/",
+    "https://aws.amazon.com/blogs/machine-learning/build-whatsapp-ai-agents-with-amazon-bedrock-agentcore/",
+    "https://aws.amazon.com/blogs/machine-learning/reason-over-time-series-data-with-opentslm-on-amazon-sagemaker-jumpstart/",
+    "https://aws.amazon.com/blogs/machine-learning/cut-generative-ai-costs-code-for-rules-models-for-judgment/",
+    "https://aws.amazon.com/blogs/machine-learning/govern-and-discover-records-with-common-metadata-in-aws-agent-registry/",
+    "https://aws.amazon.com/blogs/machine-learning/getting-ai-out-of-the-demo-and-into-businesses-globally/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -1595,7 +1598,8 @@
     "https://machinelearning.apple.com/research/weighted-state-souping",
     "https://machinelearning.apple.com/research/theoretical-limits-alignment",
     "https://machinelearning.apple.com/research/private-evolution-clustering",
-    "https://machinelearning.apple.com/research/theory-evaluability"
+    "https://machinelearning.apple.com/research/theory-evaluability",
+    "https://machinelearning.apple.com/research/split-scale-latent-3d"
   ],
   "salesforce": [
     "https://www.salesforce.com/news/stories/salesforce-closing-ai-skills-gap/",
@@ -1712,7 +1716,9 @@
     "https://www.salesforce.com/news/stories/how-ai-agents-improve-crm-data-accuracy/",
     "https://www.salesforce.com/news/stories/agents-that-improve-ai-models/",
     "https://www.salesforce.com/news/stories/visual-ai-assistants-ivg-lessons/",
-    "https://www.salesforce.com/news/stories/ai-first-holiday/"
+    "https://www.salesforce.com/news/stories/ai-first-holiday/",
+    "https://www.salesforce.com/news/stories/informatica-trusted-enterprise-data-microsoft-collaboration/",
+    "https://www.salesforce.com/news/stories/copilotforce-announcement/"
   ],
   "sap": [
     "https://news.sap.com/2026/07/advanced-success-plan-for-sap-cx-offers-utilities/",
@@ -1891,9 +1897,6 @@
     "https://news.sap.com/2026/11/thomas-saueressig-to-leave-sap-executive-board/"
   ],
   "databricks": [
-    "https://www.databricks.com/blog/agentic-marketing-stack-starts-data-layer",
-    "https://www.databricks.com/blog/how-unity-catalog-managed-tables-bring-interoperability-performance-and-unified-governance",
-    "https://www.databricks.com/blog/foundational-context-cross-industry-function-specific-accelerators-lakebase",
     "https://www.databricks.com/blog/how-retail-finance-teams-are-using-agentic-ai-protect-omni-channel-margins",
     "https://www.databricks.com/blog/blocking-slow-burn-attacks-contextual-policies-omnigent",
     "https://www.databricks.com/blog/take-insights-anywhere-genie-one-mobile",
@@ -2190,7 +2193,10 @@
     "https://www.databricks.com/blog/advancing-catalog-interoperability-unity-catalog-and-google-clouds-borderless-lakehouse",
     "https://www.databricks.com/blog/liveramp-rampid-identity-resolution-packaged-clean-rooms",
     "https://www.databricks.com/blog/new-azure-databricks-azure-government-now-beta",
-    "https://www.databricks.com/blog/built-object-storage-served-cache"
+    "https://www.databricks.com/blog/built-object-storage-served-cache",
+    "https://www.databricks.com/blog/how-we-raised-databricks-cluster-rate-limits-75",
+    "https://www.databricks.com/blog/azure-databricks-sessions-microsoft-ignite-2026",
+    "https://www.databricks.com/blog/branch-sync-serve-what-our-lakebase-hackathon-taught-us-about-building-lakebase"
   ],
   "snowflake": [
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-postgres-ml-online-feature-store",
@@ -2578,7 +2584,8 @@
     "https://cohere.com/blog/open-source-model-vault",
     "https://cohere.com/blog/embed-rerank-5-openrouter",
     "https://cohere.com/blog/cohere-welcomes-jaya-baloo-as-first-ciso",
-    "https://cohere.com/blog/cohere-expands-its-sovereign-ai-platform-with-aisle-and-cubic"
+    "https://cohere.com/blog/cohere-expands-its-sovereign-ai-platform-with-aisle-and-cubic",
+    "https://cohere.com/blog/crunchbase-in-north"
   ],
   "anthropic-blog": [
     "https://www.anthropic.com/news/anthropic-economic-index-connector",
@@ -3576,7 +3583,8 @@
     "  https://blog.dropbox.com/topics/company/bring-trusted-dropbox-context-directly-into-microsoft-copilot ",
     "  https://blog.dropbox.com/topics/company/an-update-on-organizational-changes-2026 ",
     "https://blog.dropbox.com/topics/company/fall-launch-2026-put-ai-to-work-in-dropbox",
-    "https://blog.dropbox.com/topics/company/dropboxs-next-chapter"
+    "https://blog.dropbox.com/topics/company/dropboxs-next-chapter",
+    "https://blog.dropbox.com/topics/company/dropbox-completes-acquisition-of-tigris-data"
   ],
   "samsung-newsroom": [
     "https://news.samsung.com/global/video-samsung-ams-transforms-shared-classroom-displays-into-personalized-workspaces-for-teachers",
@@ -3724,7 +3732,8 @@
     "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome/",
     "https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/",
     "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices/",
-    "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/"
+    "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
+    "https://blog.google/products-and-platforms/products/gemini/gemini-4-carbon-builders/"
   ],
   "google-photos": [
     "https://blog.google/products-and-platforms/products/photos/halloween-tricks-2026/",
@@ -3779,7 +3788,8 @@
     "https://blogs.microsoft.com/blog/2026/10/19/securing-the-agentic-insider/",
     "https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/",
     "https://blogs.microsoft.com/blog/2026/11/12/scaling-ai-value-without-losing-control-lessons-from-frontier-firms/",
-    "https://blogs.microsoft.com/blog/2026/11/12/from-ai-ambition-to-business-impact/"
+    "https://blogs.microsoft.com/blog/2026/11/12/from-ai-ambition-to-business-impact/",
+    "https://blogs.microsoft.com/blog/2026/11/17/ignite-2026-building-the-frontier-ecosystem/"
   ],
   "github-copilot-changelog": [
     "https://github.blog/changelog/2026-10-28-github-enterprise-now-includes-access-to-github-copilot",
@@ -3811,7 +3821,17 @@
     "https://github.blog/changelog/2026-11-16-vs-code-retires-the-local-harness-in-february-2027",
     "https://github.blog/changelog/2026-11-16-github-copilot-weekly-releases-november-9",
     "https://github.blog/changelog/2026-11-16-github-copilot-models-deprecated-on-november-16-2026",
-    "https://github.blog/changelog/2026-11-16-control-where-github-copilot-customizations-come-from"
+    "https://github.blog/changelog/2026-11-16-control-where-github-copilot-customizations-come-from",
+    "https://github.blog/changelog/2026-11-17-openais-gpt-6-2-astra-and-gpt-6-2-sol-now-available",
+    "https://github.blog/changelog/2026-11-17-github-copilot-fusion-updates-more-availability-benchmarks-and-models",
+    "https://github.blog/changelog/2026-11-17-github-copilot-app-microsoft-ignite-releases",
+    "https://github.blog/changelog/2026-11-17-copilot-code-review-adaptive-effort-secret-detection-and-more",
+    "https://github.blog/changelog/2026-11-17-mai-code-2-and-mai-code-2-flash-in-github-copilot",
+    "https://github.blog/changelog/2026-11-17-github-copilot-in-jetbrains-ignite-releases",
+    "https://github.blog/changelog/2026-11-17-monitor-github-copilot-activity-through-microsoft-agent-365",
+    "https://github.blog/changelog/2026-11-17-github-copilot-cli-adds-microsoft-entra-sign-in-as-a-preview",
+    "https://github.blog/changelog/2026-11-17-track-copilot-code-review-outcomes-in-repository-insights",
+    "https://github.blog/changelog/2026-11-17-github-copilot-evals-is-now-in-public-preview"
   ],
   "apple-newsroom": [
     "https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/",
@@ -3940,6 +3960,9 @@
     "https://elevenlabs.io/blog/autotorino-agents",
     "https://elevenlabs.io/blog/the-year-of-more",
     "https://elevenlabs.io/blog/what-is-an-llm",
-    "https://elevenlabs.io/blog/kotoba"
+    "https://elevenlabs.io/blog/kotoba",
+    "https://elevenlabs.io/blog/retail-ai-assistant-webinar-recap",
+    "https://elevenlabs.io/blog/what-is-webrtc",
+    "https://elevenlabs.io/blog/scribe-v3-live-medical"
   ]
 }

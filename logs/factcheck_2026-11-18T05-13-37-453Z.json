@@ -1,0 +1,62 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.009780899999999999,
+  "at": "2026-11-18T05:13:37.453Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 1
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-pick-a-viral-photo-trend-without-handing-over-your-fa.json",
+      "cim": "How to Pick a Viral Photo Trend Without Handing Over Your Face",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-make-ai-generated-images-that-look-consistent-across-.json",
+      "cim": "How to Make AI-Generated Images That Look Consistent Across a Set",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-18T05-03-44-578Z_github-copilot-changelog_GitHub_Copilot_Fusion_updates__more_availability__.json",
+      "cim": "GitHub Copilot Fusion updates: more availability, benchmarks, and models",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás a forrásban nem szereplő állítást hozna be: „In short:** GitHub has expanded Copilot Fusion with three newly added AI models, support o”",
+      "modell_hu": "A forrás három házigazdó intézményt említ (Stanford, Harbor és Laude Institute), nem két leaderboardot"
+    },
+    {
+      "file": "ARTICLE_2026-11-18T05-03-44-577Z_github-copilot-changelog_OpenAI_s_GPT-6_2_Astra_and_GPT-6_2_Sol_now_availab.json",
+      "cim": "OpenAI’s GPT-6.2 Astra and GPT-6.2 Sol now available",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényszerű állítása megegyezik a forrásszöveggel."
+    },
+    {
+      "file": "ARTICLE_2026-11-18T05-03-44-576Z_google-workspace_Gemini-powered_data_classification_in_Google_Drive.json",
+      "cim": "Gemini-powered data classification in Google Drive is now generally available ",
+      "tipus": "hir",
+      "eredmeny": "ertelmezhetetlen",
+      "ok_hu": "a modell válasza nem volt értelmezhető (1/2. alkalom, 369 karakter)"
+    },
+    {
+      "file": "ARTICLE_2026-11-18T05-03-44-575Z_openai-blog_Introducing_ChatGPT_for_Sales.json",
+      "cim": "Introducing ChatGPT for Sales",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrás állításait: 30+ partner plugin, Sales plugin kész munkafolyamatokkal, a dot ügynök funkció, és a NeoBid 65%-os becslése (helyesen az saját becslésként feltüntetve)."
+    }
+  ]
+}

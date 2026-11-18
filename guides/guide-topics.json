@@ -8882,10 +8882,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Use one shared style description, fixed reference details, and a reusable prompt structure so a batch of images stays visually consistent.",
-      "status": "todo",
+      "status": "done",
       "icon": "🎨",
       "proposed_at": "2026-11-12T04:58:49.671Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-11-18T05:08:45.665Z"
     },
     {
       "id": "how-to-check-a-word-document-for-missing-headings-on-windows",
@@ -9102,6 +9103,28 @@
       "priority": "balance",
       "proposed_at": "2026-11-17T05:47:25.157Z",
       "proposed_by": "guide-balance"
+    },
+    {
+      "id": "how-to-pick-a-viral-photo-trend-without-handing-over-your-fa",
+      "company": "",
+      "tool": "",
+      "title": "How to Pick a Viral Photo Trend Without Handing Over Your Face",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Show readers how to check what a trend app or website does with uploaded photos (storage, training, deletion, sharing) and how to get a similar look from a description or a non-face photo instead.",
+      "status": "done",
+      "icon": "🛡️",
+      "proposed_at": "2026-11-18T05:08:13.146Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "ai photo trends",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-11-18"
+      },
+      "written_at": "2026-11-18T05:09:08.689Z"
     }
   ],
   "trend_proba": [
@@ -9200,6 +9223,10 @@
     {
       "kifejezes": "chatgpt trend prompt",
       "at": "2026-11-17T05:45:16.387Z"
+    },
+    {
+      "kifejezes": "ai photo trends",
+      "at": "2026-11-18T05:07:59.786Z"
     }
   ]
 }
