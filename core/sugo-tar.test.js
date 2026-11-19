@@ -14,7 +14,7 @@ import { tmpdir } from 'os';
 import { join, relative, sep } from 'path';
 import { fileURLToPath } from 'url';
 import { FORRAS_TAR_DIR } from './forras-cache.js';
-import { SUGO_TAR_BE, SUGO_FRISS_NAP, MIN_TAR_HOSSZ, sugoTarKulcs, sugoTarIr, sugoTarOlvas, sugoSzoveg } from './sugo-tar.js';
+import { SUGO_TAR_BE, SUGO_FRISS_NAP, MIN_TAR_HOSSZ, jsonSzennyezett, sugoTarKulcs, sugoTarIr, sugoTarOlvas, sugoSzoveg } from './sugo-tar.js';
 
 const dir = mkdtempSync(join(tmpdir(), 'sugo-tar-'));
 const regiKornyezet = process.env.SUGO_TAR_DIR;
@@ -242,6 +242,122 @@ await t('🔎 sugoSzoveg: felfedezett forrást a jelölt eszközzel tárol, ané
   assert.ok(sugoTarOlvas(UM, { dir }), 'az eszközzel tárolódik');
   const r2 = await sugoSzoveg(UM, { fetchFn: halott, dir, most, felfedezettEszkoz: 'MiniMax Code' });
   assert.equal(r2.honnan, 'tar', 'másodszor a tárból jön');
+});
+
+// ── 2. javítókör (11-19): .md-tartalék a JS-héj dokumentációs oldalakra (hamis fetch, hálózat nélkül) ──────────
+const HEJ = '<html><title>Welcome - MiniMax Code Docs</title><body><div id="__next">Loading… page scaffolding</div></body></html>';
+const MD = '# Welcome to MiniMax Code\n\n' + 'Ez egy kitalált, saját tesztmondat a dokumentációról. '.repeat(20);
+// útvonalonként beállítható hamis fetch: { 'url': { ok, ct, text, vegUrl } }; a hívások naplózva
+function utasFetch(terkep, naplo) {
+  return async (u) => {
+    naplo.push(u);
+    const x = terkep[u];
+    if (!x) return { ok: false, status: 404, headers: { get: () => null }, url: u, text: async () => '' };
+    return { ok: x.ok !== false, status: x.ok === false ? 404 : 200, url: x.vegUrl || u, headers: { get: k => (/content-type/i.test(k) ? (x.ct || null) : null) }, text: async () => x.text };
+  };
+}
+const UW = 'https://agent.minimax.io/docs/code/welcome';
+
+await t('.md-tartalék: a HTML-váz rövid → a `.md` (301 → code.minimax.io, text/markdown) szövege jön, a tárba az EREDETI URL-lel kerül', async () => {
+  const naplo = [];
+  const f = utasFetch({ [UW]: { ct: 'text/html', text: HEJ }, [UW + '.md']: { ct: 'text/markdown; charset=utf-8', text: MD, vegUrl: 'https://code.minimax.io/docs/code/welcome.md' } }, naplo);
+  const r = await sugoSzoveg(UW, { fetchFn: f, dir, most, felfedezettEszkoz: 'MiniMax Code' });
+  assert.equal(r.honnan, 'elo');
+  assert.ok(r.szoveg.includes('kitalált, saját tesztmondat'), 'a markdown szövege jön');
+  assert.equal(r.cim, 'Welcome to MiniMax Code', 'a cím az első # fejlécből');
+  assert.ok(r.szoveg.length >= MIN_TAR_HOSSZ && !/\n/.test(r.szoveg), 'sima szöveg: a sortörések szóközzé');
+  assert.deepEqual(naplo, [UW, UW + '.md']);
+  const t1 = sugoTarOlvas(UW, { dir });
+  assert.ok(t1 && t1.szoveg === r.szoveg, 'tárolva az eredeti (tool-hostú) cím kulcsán');
+  assert.equal(JSON.parse(readFileSync(metaUtja(dir, UW), 'utf-8')).url, UW);
+});
+
+await t('.md-tartalék: HOSSZÚ, de JSON-szennyezett HTML-szöveg (Mintlify manifest, mért eset) → a `.md` tiszta szövege jön', async () => {
+  const UMF = 'https://agent.minimax.io/docs/code/mintlify';
+  const manifest = '<template data-mint="manifest">{"docsConfig":{"theme":"mint","name":"Docs","colors":{"primary":"#181E25"},"logo":{"light":"x.svg"}}}</template>';
+  const hosszuHtml = '<html><title>Welcome</title><body><main>' + 'Olvasható, saját tesztmondat. '.repeat(15) + '</main>' + manifest.repeat(30) + '</body></html>';
+  const naplo = [];
+  const f = utasFetch({ [UMF]: { ct: 'text/html', text: hosszuHtml }, [UMF + '.md']: { ct: 'text/markdown', text: MD } }, naplo);
+  const r = await sugoSzoveg(UMF, { fetchFn: f, dir, most, felfedezettEszkoz: 'MiniMax Code' });
+  assert.ok(r.szoveg.includes('kitalált, saját tesztmondat') && !r.szoveg.includes('docsConfig'), 'a tiszta markdown jön, JSON nélkül');
+  assert.deepEqual(naplo, [UMF, UMF + '.md']);
+  // ha a .md nem jó → a HTML-eredmény marad (régi viselkedés)
+  const UMG = 'https://agent.minimax.io/docs/code/mintlify2';
+  const r2 = await sugoSzoveg(UMG, { fetchFn: utasFetch({ [UMG]: { ct: 'text/html', text: hosszuHtml } }, []), dir, most, felfedezettEszkoz: 'MiniMax Code' });
+  assert.ok(r2.szoveg.includes('Olvasható, saját tesztmondat.'));
+  // a jsonSzennyezett küszöbe: 1–2 JSON-példa egy cikkben még nem szennyezés
+  assert.equal(jsonSzennyezett('Példa: {"name": "x"} és {"id": 1}'), false);
+  assert.equal(jsonSzennyezett('{"a":1} {"b":2} {"c":3}'), true);
+  assert.equal(jsonSzennyezett(''), false);
+});
+
+await t('.md-tartalék: jó HTML-lap (≥ 300 karakter) mellett a `.md`-t NEM kéri le', async () => {
+  const naplo = [];
+  const UJ2 = 'https://agent.minimax.io/docs/code/jo-lap';
+  const f = utasFetch({ [UJ2]: { ct: 'text/html', text: '<html><title>x</title><body>' + 'Saját mondat. '.repeat(40) + '</body></html>' }, [UJ2 + '.md']: { ct: 'text/markdown', text: MD } }, naplo);
+  const r = await sugoSzoveg(UJ2, { fetchFn: f, dir, most, felfedezettEszkoz: 'MiniMax Code' });
+  assert.ok(r.szoveg.includes('Saját mondat.'));
+  assert.deepEqual(naplo, [UJ2], 'csak a HTML');
+});
+
+await t('.md-tartalék: a `.md` 404 → a régi eredmény (a rövid élő lap, tárolás nélkül); nem markdown content-type → elutasítva', async () => {
+  const UA1 = 'https://agent.minimax.io/docs/code/agents/skills';
+  // 404
+  const f404 = utasFetch({ [UA1]: { ct: 'text/html', text: HEJ } }, []);
+  const r1 = await sugoSzoveg(UA1, { fetchFn: f404, dir, most, felfedezettEszkoz: 'MiniMax Code' });
+  assert.ok(r1 && r1.honnan === 'elo' && r1.szoveg.includes('scaffolding'), 'a régi eredmény');
+  assert.equal(sugoTarOlvas(UA1, { dir }), null, 'rövid lap nem kerül a tárba');
+  // 200, de HTML content-type (az SPA minden címre ugyanazt a vázat adja) → elutasítva
+  const fHtml = utasFetch({ [UA1]: { ct: 'text/html', text: HEJ }, [UA1 + '.md']: { ct: 'text/html; charset=utf-8', text: MD } }, []);
+  const r2 = await sugoSzoveg(UA1, { fetchFn: fHtml, dir, most, felfedezettEszkoz: 'MiniMax Code' });
+  assert.ok(r2.szoveg.includes('scaffolding') && !r2.szoveg.includes('kitalált, saját'), 'HTML content-type → elutasítva');
+  // markdown fejléc, de a tartalom HTML → elutasítva
+  const fRossz = utasFetch({ [UA1]: { ct: 'text/html', text: HEJ }, [UA1 + '.md']: { ct: 'text/markdown', text: '<!DOCTYPE html><html><body>' + 'x'.repeat(500) + '</body></html>' } }, []);
+  const r3 = await sugoSzoveg(UA1, { fetchFn: fRossz, dir, most, felfedezettEszkoz: 'MiniMax Code' });
+  assert.ok(r3.szoveg.includes('scaffolding'), 'HTML tartalom → elutasítva');
+  // túl rövid markdown → elutasítva
+  const fRovid = utasFetch({ [UA1]: { ct: 'text/html', text: HEJ }, [UA1 + '.md']: { ct: 'text/plain', text: '# Cím\nrövid' } }, []);
+  assert.ok((await sugoSzoveg(UA1, { fetchFn: fRovid, dir, most, felfedezettEszkoz: 'MiniMax Code' })).szoveg.includes('scaffolding'));
+  // text/plain elfogadott
+  const fPlain = utasFetch({ [UA1]: { ct: 'text/html', text: HEJ }, [UA1 + '.md']: { ct: 'text/plain; charset=utf-8', text: MD } }, []);
+  assert.ok((await sugoSzoveg(UA1, { fetchFn: fPlain, dir, most, felfedezettEszkoz: 'MiniMax Code' })).szoveg.includes('kitalált, saját'));
+});
+
+await t('.md-tartalék: idegen céges végcím (az átirányítás más domainre visz) → elutasítva; http végcím → elutasítva', async () => {
+  const UB = 'https://agent.minimax.io/docs/code/idegen';
+  const fIdegen = utasFetch({ [UB]: { ct: 'text/html', text: HEJ }, [UB + '.md']: { ct: 'text/markdown', text: MD, vegUrl: 'https://evil.example.com/x.md' } }, []);
+  const r = await sugoSzoveg(UB, { fetchFn: fIdegen, dir, most, felfedezettEszkoz: 'MiniMax Code' });
+  assert.ok(r.szoveg.includes('scaffolding') && !r.szoveg.includes('kitalált, saját'));
+  const fHttp = utasFetch({ [UB]: { ct: 'text/html', text: HEJ }, [UB + '.md']: { ct: 'text/markdown', text: MD, vegUrl: 'http://code.minimax.io/x.md' } }, []);
+  assert.ok((await sugoSzoveg(UB, { fetchFn: fHttp, dir, most, felfedezettEszkoz: 'MiniMax Code' })).szoveg.includes('scaffolding'));
+  // hasonló nevű, de más regisztrált domain
+  const fMas = utasFetch({ [UB]: { ct: 'text/html', text: HEJ }, [UB + '.md']: { ct: 'text/markdown', text: MD, vegUrl: 'https://minimax.io.evil.com/x.md' } }, []);
+  assert.ok((await sugoSzoveg(UB, { fetchFn: fMas, dir, most, felfedezettEszkoz: 'MiniMax Code' })).szoveg.includes('scaffolding'));
+});
+
+await t('.md-tartalék: NEM tárolható URL-re (nincs jóváhagyás / eszköz-jelölés) nincs `.md`-kérés; a hívás hibája nem dob', async () => {
+  const naplo = [];
+  const f = utasFetch({ [UW]: { ct: 'text/html', text: HEJ }, [UW + '.md']: { ct: 'text/markdown', text: MD } }, naplo);
+  const r = await sugoSzoveg(UW, { fetchFn: f, dir, most });   // eszköz-jelölés nélkül
+  assert.ok(r.szoveg.includes('scaffolding'));
+  assert.deepEqual(naplo, [UW], 'csak a HTML');
+  // a .md-kérés dob → a régi eredmény
+  let n = 0;
+  const dob = async u => { if (n++ === 0) return { ok: true, text: async () => HEJ }; throw new Error('hálózati hiba'); };
+  const r2 = await sugoSzoveg('https://agent.minimax.io/docs/code/dob', { fetchFn: dob, dir, most, felfedezettEszkoz: 'MiniMax Code' });
+  assert.ok(r2 && r2.szoveg.includes('scaffolding'));
+});
+
+await t('.md-tartalék: a tárolt (jó) példány nem romlik — rövid HTML-váz + hibás `.md` esetén a régi tárolt szöveg jön', async () => {
+  const UT = 'https://agent.minimax.io/docs/code/tarolt';
+  const jo = utasFetch({ [UT]: { ct: 'text/html', text: HEJ }, [UT + '.md']: { ct: 'text/markdown', text: MD } }, []);
+  await sugoSzoveg(UT, { fetchFn: jo, dir, most, felfedezettEszkoz: 'MiniMax Code' });
+  const elotte = readFileSync(metaUtja(dir, UT), 'utf-8');
+  const rossz = utasFetch({ [UT]: { ct: 'text/html', text: HEJ } }, []);   // a .md most 404
+  const r = await sugoSzoveg(UT, { fetchFn: rossz, dir, most: most + 30 * NAP, felfedezettEszkoz: 'MiniMax Code' });
+  assert.equal(r.honnan, 'regi-tar');
+  assert.ok(r.szoveg.includes('kitalált, saját tesztmondat'));
+  assert.equal(readFileSync(metaUtja(dir, UT), 'utf-8'), elotte, 'a meta változatlan');
 });
 
 rmSync(dir, { recursive: true, force: true });

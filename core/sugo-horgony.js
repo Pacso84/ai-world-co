@@ -194,10 +194,48 @@ export function ellenorzoValaszTema(szoveg, tema) {
     return { ok: false, reason: 'a javasolt cím nem „How to …” / „Getting started with …” alakú' };
   }
   const eredeti = new Set(tartalmiSzavak(tema?.title, tema));
-  if (eredeti.size > 0 && !tartalmiSzavak(title, tema).some(w => eredeti.has(w))) {
-    return { ok: false, reason: 'a javasolt cím más témáról szól, mint az eredeti téma' };
+  const javasolt = tartalmiSzavak(title, tema);
+  if (eredeti.size > 0 && !javasolt.some(w => kozosSzo(w, eredeti))) {
+    // BEVEZETŐ téma („Getting started with X: a beginner's guide”): az egyetlen tartalmi szava a „beginner” — egy tényleges,
+    // szűkített cím (pl. „Getting started with X: installing the app …”) azt sosem tartja meg, mégis ugyanaz a téma. Ilyenkor
+    // az ESZKÖZ neve a horgony (kötelező a címben), és vagy „Getting started with …” a cím, vagy közös tartalmi szó van
+    // a téma címe + szöge (angle) és a javasolt cím között. Más eszközről szóló / a témától idegen cím így is elutasítva.
+    const bevezeto = /^\s*Getting started with\b/i.test(String(tema?.title || '')) || /^getting-started-/.test(String(tema?.id || ''));
+    const szogSzavak = new Set(tartalmiSzavak(`${tema?.title || ''} ${tema?.angle || ''}`, tema));
+    const bevezetoOk = bevezeto && eszkozACimben(title, tema)
+      && (/^Getting started with\b/i.test(title) || javasolt.some(w => kozosSzo(w, szogSzavak)));
+    if (!bevezetoOk) return { ok: false, reason: 'a javasolt cím más témáról szól, mint az eredeti téma' };
   }
   return { ok: true, title, reason: tiszta(j.reason).slice(0, 200) };
+}
+
+/**
+ * Egyezik-e a szó az eredeti szavak valamelyikével: azonos alak, VAGY közös ≥ SZOTO_MIN betűs előtag („transcribe” ↔ „transcript”:
+ * közös előtag „transcri”). A hosszú előtag-küszöb miatt a rokon szóalak egyezik, a hasonlóan kezdődő idegen szó nem
+ * („present” / „presence”, „general” / „generate”, „integrate” / „integrity” → 6 betű, NEM egyezik). Mért ok: 11-19, az ElevenLabs
+ * Scribe-téma „How to Transcribe Audio or Video …” címe a „Transcripts” szóval azonos témát jelent, de szóalakban eltért.
+ */
+export const SZOTO_MIN = 7;
+function kozosSzo(w, halmaz) {
+  if (halmaz.has(w)) return true;
+  for (const e of halmaz) {
+    const n = Math.min(w.length, e.length);
+    if (n < SZOTO_MIN) continue;
+    let i = 0;
+    while (i < n && w[i] === e[i]) i++;
+    if (i >= SZOTO_MIN) return true;
+  }
+  return false;
+}
+
+/** Szerepel-e az eszköz neve a címben (betű-szám alakra hozva: „Duck.ai” ≡ „duckai”), vagy az eszköznév MINDEN szava. Név nélküli eszköznévnél (pl. „Z.ai” → nincs 3+ betűs szó) csak a pontos alak számít. */
+function eszkozACimben(title, tema) {
+  const norm = s => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+  const tool = norm(tema?.tool);
+  if (!tool) return false;
+  if (norm(title).includes(tool)) return true;
+  const nevSzavak = [...szavak(tema?.tool)];
+  return nevSzavak.length > 0 && nevSzavak.every(w => norm(title).includes(w));
 }
 
 /**

@@ -21,7 +21,7 @@ import { createHash } from 'crypto';
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import { FORRAS_TAR_DIR } from './forras-cache.js';
-import { engedelyezett } from './sugo-index.js';
+import { engedelyezett, UA } from './sugo-index.js';
 import { felfedezettEngedelyezett } from './sugo-felfedezo.js';
 import { cikkSzoveg } from './elakadas-gen.js';
 
@@ -125,6 +125,72 @@ export function sugoTarOlvas(url, opciok) {
 }
 
 /**
+ * Két host ugyanahhoz a regisztrált doménhez tartozik-e (a cég saját átirányítása: agent.minimax.io → code.minimax.io).
+ * Egyszerű: az utolsó 2 címke (ország-kódos „co.uk”-féle végződésnél 3). Nem https / hibás cím → false.
+ */
+function azonosCeg(hostA, hostB) {
+  const reg = h => {
+    const c = String(h || '').toLowerCase().split('.').filter(Boolean);
+    const harom = c.length >= 3 && c[c.length - 1].length === 2 && ['co', 'com', 'org', 'net', 'gov', 'edu', 'ac'].includes(c[c.length - 2]);
+    return c.slice(harom ? -3 : -2).join('.');
+  };
+  return !!hostA && !!hostB && reg(hostA) === reg(hostB);
+}
+
+/**
+ * MARKDOWN-TARTALÉK (súgókereső 2. javítókör, 2026-11-19): egyes dokumentációs oldalak (Next.js-héj, pl. a MiniMax Code
+ * `agent.minimax.io/docs/code/...`) a HTML-ben csak „page scaffolding”-ot / az olvasható szöveg után konfig-JSON-t adnak; a tiszta szöveg a `<url>.md` címen van
+ * (301 → code.minimax.io/.../welcome.md, 200 text/markdown). Csak akkor hívjuk, ha az URL már tárolható (jóváhagyott vagy
+ * felfedezett, az eszköz saját hostján álló súgó) ÉS a HTML-ből kinyert szöveg túl rövid (MIN_TAR_HOSSZ alatt) VAGY JSON-szennyezett
+ * (jsonSzennyezett) — a jól működő lapokon semmi nem változik. Elfogadás: 200, `text/markdown` vagy `text/plain` content-type (a HTML-t nem), https és a
+ * végcím a kért oldal cégének SAJÁT domainjén (az átirányítás követve is), és a kinyert szöveg legalább MIN_TAR_HOSSZ hosszú.
+ * A forrás-URL (amit az engedély ellenőriz és a tár kulcsol) változatlanul az eredeti, tool-hostú cím marad.
+ * Hiba / bármi nem stimmel → null (a hívó a régi eredménnyel megy tovább). Soha nem dob.
+ */
+async function markdownTartalek(url, fetchFn) {
+  try {
+    const n = new URL(url);
+    if (n.protocol !== 'https:') return null;
+    const ut = n.pathname.replace(/\/+$/, '');
+    if (!ut || /\.(md|markdown|txt)$/i.test(ut)) return null;
+    const mdUrl = `${n.origin}${ut}.md`;
+    const r = await fetchFn(mdUrl, { headers: { 'User-Agent': UA, 'Accept': 'text/markdown, text/plain;q=0.9', 'Accept-Language': 'en-US,en;q=0.9' }, signal: AbortSignal.timeout(30000) });
+    if (!r?.ok) return null;
+    const ct = String(r.headers?.get?.('content-type') || '').toLowerCase();
+    if (!/^(text\/markdown|text\/plain)\b/.test(ct)) return null;
+    const veg = new URL(r.url || mdUrl);
+    if (veg.protocol !== 'https:' || !azonosCeg(veg.hostname, n.hostname)) return null;
+    const nyers = String(await r.text());
+    if (/^\s*<(!doctype|html|head|body)\b/i.test(nyers)) return null;   // HTML, csak rossz fejléccel
+    const szoveg = nyers.replace(/\s+/g, ' ').trim().slice(0, 6000);
+    if (szoveg.length < MIN_TAR_HOSSZ) return null;
+    const cim = (nyers.match(/^#\s+(.+)$/m) || [])[1]?.replace(/\s+/g, ' ').trim();
+    return { szoveg, cim };
+  } catch { return null; }
+}
+
+/**
+ * A kinyert szöveg JSON-szennyezett-e: legalább 3 `{"kulcs":` kezdet. Mért eset (11-19): a Mintlify-oldalak (MiniMax Code docs) HTML-je
+ * az olvasható szöveg után egy `<template data-mint="manifest">` JSON-blobot tartalmaz, amit a HTML→szöveg átalakítás nem hagy el —
+ * így a szöveg NEM rövid (6000 karakter), mégis csak töredéke valódi szöveg, a többi konfig-JSON.
+ */
+const JSON_KULCS = /\{"[A-Za-z$_][\w$]*":/g;
+export const jsonSzennyezett = szoveg => (String(szoveg || '').match(JSON_KULCS) || []).length >= 3;
+
+/**
+ * Élő letöltés tárolható URL-re: HTML-ből; ha az 200-as, de rövid (JS-héj) VAGY JSON-szennyezett (Mintlify/Next.js manifest),
+ * a `.md` változat (markdownTartalek). A `.md` hibája / elutasítása esetén a HTML-eredmény marad (régi viselkedés).
+ */
+async function eloLetoltes(url, fetchFn) {
+  const r = await cikkSzoveg(url, fetchFn);
+  if (!r) return r;
+  const szoveg = String(r.szoveg || '').trim();
+  if (szoveg.length >= MIN_TAR_HOSSZ && !jsonSzennyezett(szoveg)) return r;
+  const md = await markdownTartalek(url, fetchFn);
+  return md ? { szoveg: md.szoveg, cim: md.cim || r.cim } : r;
+}
+
+/**
  * A súgócikk szövege, sorrendben: friss tár (≤ frissNap) → élő letöltés (siker: tárba ír) → régi tár → null.
  * Nem tárolható URL (nem jóváhagyott és nincs érvényes `felfedezettEszkoz`, vagy kikapcsolt tár): csak élő letöltés, tárolás nélkül.
  * @returns {Promise<{szoveg: string, cim: string, honnan: 'tar'|'elo'|'regi-tar'} | null>}
@@ -143,7 +209,7 @@ export async function sugoSzoveg(url, opciok) {
     const kor = tarolt ? most - Date.parse(tarolt.letoltve) : NaN;
     // kor >= 0: a jövőbeli `letoltve` (rossz óra, kézzel írt meta) nem lehet „örökké friss”
     if (tarolt && kor >= 0 && kor <= frissNap * NAP_MS) return { szoveg: tarolt.szoveg, cim: tarolt.cim, honnan: 'tar' };
-    const r = await cikkSzoveg(url, fetchFn);
+    const r = await eloLetoltes(url, fetchFn);
     if (r && String(r.szoveg || '').trim().length >= MIN_TAR_HOSSZ) {
       sugoTarIr(url, r, { dir, most, felfedezettEszkoz });
       return { szoveg: r.szoveg, cim: r.cim, honnan: 'elo' };

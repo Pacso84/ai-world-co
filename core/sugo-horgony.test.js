@@ -3,7 +3,7 @@
 import assert from 'assert/strict';
 import {
   HORGONY_BE, FUTAS_MAX_PROBA, UJRAPROBA_NAP, LISTA_PROBA,
-  indexSzukites, FEJLESZTOI_URL, urlRovid, valasztoPromptTema, valasztoValasz, ellenorzoPromptTema, ellenorzoValaszTema,
+  indexSzukites, FEJLESZTOI_URL, SZOTO_MIN, urlRovid, valasztoPromptTema, valasztoValasz, ellenorzoPromptTema, ellenorzoValaszTema,
   horgonyKeres, horgonyJegyzes, horgonyVar
 } from './sugo-horgony.js';
 import { valasztoValasz as parositoValasz } from './sugo-parositas.js';
@@ -216,6 +216,62 @@ t('szóalak: a többes „s” egyesítve (Space = Spaces), az „ss/us/is” v�
 t('ellenorzoValaszTema: Space / Spaces egyenlő → a szűkebb cím elfogadott', () => {
   const v = ellenorzoValaszTema('{"ok": true, "title": "How to create a Space in Perplexity", "reason": "r"}', tema);
   assert.equal(v.ok, true, v.reason);
+});
+
+// --- 2. javítókör (11-19): a cím-szabály 3 valódi, mért címpárja + ellenpróbák (a kör3b mérés javasolt címei) ---
+const jv = (title, tm) => ellenorzoValaszTema(JSON.stringify({ ok: true, title, reason: 'r' }), tm);
+const duck = { id: 'getting-started-duck-ai', title: "Getting started with Duck.ai: a beginner's guide", tool: 'Duck.ai', company: 'DuckDuckGo',
+  angle: 'How to use Duck.ai, the free private AI chat from DuckDuckGo: how to start a chat without an account and what its privacy settings mean for you.' };
+const mmax = { id: 'getting-started-minimax-code', title: "Getting started with MiniMax Code: a beginner's guide", tool: 'MiniMax Code', company: 'MiniMax',
+  angle: 'A beginner-friendly first look at MiniMax Code (agent.minimax.io): what this AI helper can do for everyday tasks, not only coding, and how to try it safely.' };
+const scribe = { id: 'how-to-turn-elevenlabs-scribe-v3-transcripts-into-notes-and-', title: 'How to Turn ElevenLabs Scribe v3 Transcripts Into Notes and Tasks', tool: 'Scribe v3', company: 'ElevenLabs',
+  angle: 'Transcribe a recording with Scribe v3, then use the transcript to build a meeting recap, action list, and a follow-up email.' };
+
+t('cím-szabály: Duck.ai bevezető téma, szűkített „How to use Duck.ai: start a chat …” cím → ok (mért)', () => {
+  const v = jv('How to use Duck.ai: start a chat and manage your recent chats', duck);
+  assert.equal(v.ok, true, v.reason);
+});
+
+t('cím-szabály: MiniMax Code bevezető téma, „Getting started with MiniMax Code: installing the app …” → ok (mért)', () => {
+  const v = jv('Getting started with MiniMax Code: installing the app and choosing Work or Coding mode', mmax);
+  assert.equal(v.ok, true, v.reason);
+});
+
+t('cím-szabály: ElevenLabs Scribe — „Transcribe” ↔ „Transcripts” szótő-egyezés → ok (mért)', () => {
+  const v = jv('How to Transcribe Audio or Video with ElevenLabs Scribe v3', scribe);
+  assert.equal(v.ok, true, v.reason);
+  assert.equal(jv('How to Transcribe a Recording with ElevenLabs Scribe v3 and Export the Transcript', scribe).ok, true);
+});
+
+t('cím-szabály ellenpróba: idegen eszközről szóló „Getting started with …” bevezető témánál elutasítva', () => {
+  assert.equal(jv('Getting started with ChatGPT', duck).ok, false);
+  assert.equal(jv('Getting started with MiniMax Code: installing the app', duck).ok, false);
+  assert.equal(jv('Getting started with ChatGPT: installing the app', mmax).ok, false);
+  // nincs 3+ betűs eszköznév-szó („Z.ai”): csak a pontos alak számít, idegen eszköz így sem megy át
+  const z = { id: 'getting-started-z-ai', title: "Getting started with Z.ai: a beginner's guide", tool: 'Z.ai', company: 'Z.ai', angle: 'a first look at the chat assistant' };
+  assert.equal(jv('Getting started with ChatGPT', z).ok, false);
+  assert.equal(jv('Getting started with Z.ai', z).ok, true);
+});
+
+t('cím-szabály ellenpróba: bevezető téma + a témától idegen cím (ugyanaz az eszköz) elutasítva', () => {
+  assert.equal(jv('How to use Duck.ai to bake bread', duck).ok, false);
+  assert.equal(jv('How to cancel your Duck.ai subscription', duck).ok, false);
+});
+
+t('cím-szabály ellenpróba: NEM bevezető témánál az eszköznév + angle nem elég (a csendes témaváltás védelme marad)', () => {
+  const nemBev = { id: 'x', title: 'How to use Perplexity Spaces to keep research in one place', tool: 'Perplexity', company: 'Perplexity', angle: 'organize sources and notes in one place' };
+  assert.equal(jv('How to cancel your Perplexity subscription', nemBev).ok, false);
+  assert.equal(jv('Getting started with Perplexity: installing the app', nemBev).ok, false);
+});
+
+t('cím-szabály ellenpróba: a szótő-egyezés ≥ 7 betű — a rokon szóalak egyezik, a csak hasonlóan kezdődő idegen szó nem', () => {
+  assert.equal(SZOTO_MIN, 7);
+  const tm = { id: 'x', title: 'How to check presence status', tool: 'Teams', company: 'Microsoft', angle: '' };
+  assert.equal(jv('How to present slides in Teams', tm).ok, false, 'present / presence: 6 közös betű → nem egyezik');
+  const tg = { id: 'x', title: 'How to generalize notes', tool: 'Notes', company: 'Apple', angle: '' };
+  assert.equal(jv('How to generate summaries', tg).ok, false, 'generate / generalize: 6 közös betű → nem egyezik');
+  const td = { id: 'x', title: 'How to organize your documents', tool: 'Drive', company: 'Google', angle: '' };
+  assert.equal(jv('How to document your organization in Drive', td).ok, true, 'document / organiz…: rokon szóalak');
 });
 
 t('ellenorzoPromptTema: részleges szintnél „ne találj ki lépést”', () => {
