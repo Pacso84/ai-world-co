@@ -1,0 +1,78 @@
+{
+  "_meta": {
+    "written_at": "2026-11-19T04:59:40.937Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0045019,
+    "original_draft": "2026-11-18T05-03-44-573Z_openai-blog_Introducing_GPT-6_2_Astra_and_Sol.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+    "source_links": [
+      "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+      "https://openai.com/index/astra-law-6-2"
+    ],
+    "source_snippet_len": 300,
+    "source_text_via": [
+      "html",
+      "html"
+    ],
+    "source_text_len": 9007,
+    "source_text_key": "2dc27f6ef2db90b6",
+    "source_overlap_words": 11,
+    "merged_from": 2,
+    "merged_theme": "OpenAI GPT-6.2 Models & Astra Products",
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-19T05:00:45.137Z",
+    "slug": "gpt-6-2-astra-and-sol-what-openai-s-new-models-mean-for-everyday-work",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 824
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer that clearly defines technical terms (token, hallucination) for everyday readers, attributes all performance claims to OpenAI's own testing, and delivers actionable guidance in the What this means for you section. The writing is friendly, accessible, and avoids both cliches and prohibited content.",
+      "_aiCost": 0.00130956,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-19T05:02:22.262Z",
+    "guide_worthy": true,
+    "related_guide_topic": "create-your-own-custom-gpt-in-chatgpt-no-coding",
+    "image_v": 2,
+    "image_at": "2026-11-19T05:05:04.714Z",
+    "seo": {
+      "meta_description": "Learn what GPT-6.2 Astra and Sol mean for your work. OpenAI's new models aim to produce cleaner documents and handle more tasks.",
+      "keywords": [
+        "GPT 6.2 Astra",
+        "GPT 6.2 Sol",
+        "OpenAI GPT 6.2",
+        "OpenAI new models 2024",
+        "ChatGPT Enterprise",
+        "AI for document writing",
+        "OpenAI business tools",
+        "AI for legal work"
+      ],
+      "seo_score": "8",
+      "suggestions": [
+        "Add specific use cases or examples showing how Astra and Sol improve daily workflows",
+        "Include availability or rollout details for business customers",
+        "Add comparison details between Astra and Sol to help readers choose the right model"
+      ],
+      "optimised_at": "2026-11-19T05:07:12.034Z"
+    },
+    "fact_verified_at": "2026-11-19T05:09:21.091Z",
+    "social": true,
+    "social_at": "2026-11-19T05:18:53.932Z"
+  },
+  "article_markdown": "---\ntitle: \"GPT-6.2 Astra and Sol: What OpenAI's New Models Mean for Everyday Work\"\nsubtitle: \"OpenAI's two new models aim to produce cleaner documents and finish more tasks, and a legal setup is opening to business customers.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"openai\", \"chatgpt\", \"gpt-6-2\", \"getting-started\", \"productivity\"]\n---\n\n# GPT-6.2 Astra and Sol: What OpenAI's New Models Mean for Everyday Work\n\n> **In short:** OpenAI has introduced GPT-6.2 Astra, a model for its hardest projects, and GPT-6.2 Sol, a versatile everyday model that OpenAI says lets you get more done within your usage limits. Astra for Law, a legal-focused setup, can be requested by ChatGPT Enterprise customers.\n\nHave you ever asked an AI for a slide deck or a budget spreadsheet and gotten something that looked generic and needed a lot of cleanup? That's the problem OpenAI says these new models are designed to solve.\n\n## Two models, two jobs\n\nOpenAI describes two versions in its family:\n\n- **GPT-6.2 Astra** is the company's new top-tier model, built for demanding work. OpenAI says its slides, spreadsheets, and documents read less like AI-written text and follow the templates and conventions of your field more closely. It also says Astra writes cleaner code and builds better-looking websites and 3D designs.\n- **GPT-6.2 Sol** is the everyday model. Compared with GPT-6.1 Sol, OpenAI says it is smarter and more efficient, and it lets you complete more tasks on the same paid plan. It is also built to handle multistep workflows, which are tasks where the AI carries out several connected steps in a row.\n\nThink of Astra as the specialist you bring in for a big, complicated project, and Sol as the reliable colleague you go to for daily work.\n\n## Why \"fewer tokens\" matters\n\nOpenAI emphasizes that both models produce better results with fewer output tokens. A **token** is a small chunk of text, often a word or part of a word, that an AI reads or writes. Output tokens are the pieces the AI generates while it reasons and writes its answer.\n\nWhy should you care? Fewer tokens can mean you hit your usage limits more slowly, and for businesses using the API (the behind-the-scenes connection that lets programs talk to AI), it can affect cost at scale. OpenAI frames this as getting more done for the same effort.\n\n## Astra for Law: a setup built for lawyers\n\nOpenAI has also released an update to **Astra for Law**, a configuration of GPT-6.2 Astra designed for legal work. OpenAI says it pairs the model with an expanded legal search index (a larger library of legal sources to look things up in) and instructions for researching a question, weighing the sources, and writing an answer.\n\nOpenAI reports that on Harvey LAB-AA, a test of legal assignments, Astra for Law earned full credit on 20.8% of tasks, compared with 15.0% for GPT-6.2 Astra. A full-credit answer has to meet every requirement without a **hallucination**, which is when an AI confidently states something its source documents don't support. OpenAI also reports 0.03 material hallucinations per assignment in its own evaluation. These are the company's own test results, and you can read the official post for full details.\n\nAccess works differently from the standard ChatGPT tools. OpenAI says all ChatGPT Enterprise customers can now request access through its Trusted Access Program, including through the API. If your workplace uses an Enterprise plan, your administrator is the best person to ask about it.\n\n## What this means for you\n\n- **In everyday life**: If you use ChatGPT for emails, planning, or study, Sol is the model OpenAI positions for everyday tasks. OpenAI says it also handles practical tasks like comparing options, such as shortlisting schools after a move or planning a family budget.\n- **For your business or work**: If your team builds documents, spreadsheets, or code, Astra is aimed at complex professional output. Ask whether your workplace plan includes it before you plan around it.\n- **If you're just getting started**: Begin with a real task you already do. Write one clear instruction (a prompt) that describes the result you want, and check the output for accuracy before you rely on it.\n- **If you already use it**: Try giving the model your own template or a sample document from your field and ask it to match that format. This is where OpenAI says Astra's improvements in following conventions should show up most.\n\n## Wrap-up\n\nGPT-6.2 Astra targets demanding professional work, GPT-6.2 Sol targets everyday tasks, and Astra for Law brings a legal-focused setup to ChatGPT Enterprise customers who request access. Most of these claims come from OpenAI's own tests, so treat them as the company's view until you see results in your own work. Your next step: pick one document you write often, and this week, compare how well your current AI tool follows its format, then check the official OpenAI announcement for which models your plan includes.",
+  "original_title": "Introducing GPT-6.2 Astra and Sol"
+}

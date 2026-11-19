@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-11-19T05:00:07.115Z",
+  "total": 4,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.010932678000000001,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-11-18T05-03-44-573Z_openai-blog_Introducing_GPT-6_2_Astra_and_Sol.json",
+      "article": "ARTICLE_2026-11-18T05-03-44-573Z_openai-blog_Introducing_GPT-6_2_Astra_and_Sol.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.00130956
+    },
+    {
+      "writer": "WRITER_2026-11-18T05-03-44-576Z_microsoft-ai_Microsoft_and_Salesforce_Announce_Copilotforce__Br.json",
+      "article": "ARTICLE_2026-11-18T05-03-44-576Z_microsoft-ai_Microsoft_and_Salesforce_Announce_Copilotforce__Br.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00120057
+    },
+    {
+      "writer": "WRITER_2026-11-18T16-50-28-117Z_zapier-blog_How_to_build_a_secure_automated_system_on_Zapier.json",
+      "article": "ARTICLE_2026-11-18T16-50-28-117Z_zapier-blog_How_to_build_a_secure_automated_system_on_Zapier.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00121905
+    },
+    {
+      "writer": "WRITER_2026-11-19T04-58-33-014Z_google-ai-blog_The_Gemini_app_is_now_available_on_lower-memory_An.json",
+      "article": "ARTICLE_2026-11-19T04-58-33-014Z_google-ai-blog_The_Gemini_app_is_now_available_on_lower-memory_An.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00125328
+    }
+  ],
+  "finished_at": "2026-11-19T05:01:55.201Z",
+  "duration_seconds": 108.086
+}

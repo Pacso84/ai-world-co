@@ -1,0 +1,62 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.00999562,
+  "at": "2026-11-19T17:00:46.012Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 1,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-19T04-58-42-029Z_google-workspace_Add_inline_captions__cross-references__and_tables_.json",
+      "cim": "Add inline captions, cross-references, and tables of captions in Google Docs",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi az összes forrásinformációt a Google Docs beágyazott felirataira, kereszthivatkozásaira és felirattáblázataira vonatkozóan."
+    },
+    {
+      "file": "ARTICLE_2026-11-18T16-50-28-117Z_perplexity-news_Introducing_Computer_s_Multiagent_effort_level_-_P.json",
+      "cim": "Introducing Computer’s Multiagent effort level - Perplexity",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-09-30T02-55-14-270Z_dropbox-blog__Put_your_Dropbox_project_context_to_work_with_Mus.json",
+      "cim": " Put your Dropbox project context to work with Muse, from Meta ",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk általános magyarázó anyag a mesterséges intelligencia ügynökeiről. Az egyes konkrét állítások összhangban vannak a forrásokkal: az MCP helyesen van leírva mint Model Context Protocol, és az állítás, hogy a Zapier 'több mint 9000 alkalmazást és több ezer műveletet' kínál, nagyjából pontos (a 2"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-triage-and-clean-up-an-overwhelming-inbox-with-copilo.json",
+      "cim": "How to Triage and Clean Up an Overwhelming Inbox with Copilot",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-09-04T01-58-59-343Z_picsart_How_to_make_reels_with_AI__meet_your_personal_reel.json",
+      "cim": "How to make reels with AI: meet your personal reel director",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk általános útmutatóként van megírva az 'AI reel rendezők' témájában, de a forrás kifejezetten a Picsart Reel Maker agentjéről szól, Reeva néven, olyan funkciókkal és munkafolyamatokkal, amelyek nem vonatkoznak minden AI videóeszközre. A forrás kulcsfontosságú funkciói (felirat/hashtagek mellék"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-troubleshoot-your-home-wi-fi-step-by-step-with-an-ai-.json",
+      "cim": "How to troubleshoot your home Wi-Fi step by step with an AI assistant",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Az útmutató időtlen általános tanácsokat ad a Wi-Fi hibaelhárításáról AI asszisztensek segítségével. Nem észleltem konkrét állításokat elavult funkciókról, eltávolított termékekről vagy out-of-date információkról."
+    }
+  ]
+}

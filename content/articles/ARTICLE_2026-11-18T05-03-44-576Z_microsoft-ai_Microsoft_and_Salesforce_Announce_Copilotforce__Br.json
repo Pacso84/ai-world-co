@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "written_at": "2026-11-19T05:00:06.875Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0037591,
+    "original_draft": "2026-11-18T05-03-44-576Z_microsoft-ai_Microsoft_and_Salesforce_Announce_Copilotforce__Br.json",
+    "source_id": "microsoft-ai",
+    "source_name": "Microsoft AI (hivatalos)",
+    "source_link": "https://news.microsoft.com/source/2026/11/17/microsoft-and-salesforce-announce-copilotforce-bringing-trusted-customer-context-and-action-into-microsoft-ai-experiences/",
+    "source_links": [
+      "https://news.microsoft.com/source/2026/11/17/microsoft-and-salesforce-announce-copilotforce-bringing-trusted-customer-context-and-action-into-microsoft-ai-experiences/"
+    ],
+    "source_snippet_len": 157,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "10239f79cb325e1c",
+    "source_overlap_words": 10,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "published_at": "2026-11-19T05:01:08.415Z",
+    "slug": "copilotforce-how-salesforce-data-could-reach-your-microsoft-work-tools",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 755
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured announcement article with clear hook, proper term definitions, audience-segmented What this means for you section, and actionable next steps. All technical claims properly attributed to the companies, no invented quotes or details, US English throughout, and no prohibited content or rankings.",
+      "_aiCost": 0.00120057,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-19T05:02:28.638Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an enterprise partnership announcement for sales teams, not a consumer-facing tool. The features are in limited preview/pilot, require corporate Salesforce and Microsoft accounts, and there's no concrete action an everyday person can take today.",
+    "image_v": 2,
+    "image_at": "2026-11-19T05:05:20.222Z",
+    "seo": {
+      "meta_description": "Copilotforce brings Salesforce customer data into Microsoft Copilot, Teams, and Fabric—so sales teams can work without switching apps.",
+      "keywords": [
+        "copilotforce",
+        "microsoft salesforce partnership",
+        "sales workflow integration",
+        "microsoft copilot sales tools",
+        "customer data microsoft teams",
+        "sales app integration"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a concrete use case or example to illustrate how Copilotforce helps a sales rep in their daily workflow",
+        "Consider adding a brief FAQ section to capture featured snippet opportunities",
+        "Include the release date or timeline for when the partnership becomes available"
+      ],
+      "optimised_at": "2026-11-19T05:07:16.873Z"
+    },
+    "fact_verified_at": "2026-11-19T05:09:12.283Z",
+    "social": true,
+    "social_at": "2026-11-19T05:19:01.240Z"
+  },
+  "article_markdown": "---\ntitle: \"Copilotforce: How Salesforce Data Could Reach Your Microsoft Work Tools\"\nsubtitle: \"Microsoft and Salesforce say their new partnership brings customer details into Copilot, Teams and Fabric without extra copying.\"\ncategory: \"business\"\naudience: \"business\"\nread_time_minutes: 3\ntags: [\"copilot\", \"salesforce\", \"microsoft-teams\", \"sales\", \"enterprise-ai\", \"data\"]\n---\n\n# Copilotforce: How Salesforce Data Could Reach Your Microsoft Work Tools\n\n> **In short:** Microsoft and Salesforce announced Copilotforce, a partnership that brings Salesforce customer information and sales actions into Microsoft Copilot, Teams and Fabric. The companies say it lets sales staff act without switching apps, while existing security and permissions stay in place.\n\nThink about a typical sales morning. You check a customer's history in one system, read the email thread in another, and then open a chat or a meeting invite to find out what was promised. Each switch costs time, and details slip through the cracks. Microsoft and Salesforce say they are trying to close that gap.\n\n## What was announced\n\nMicrosoft and Salesforce unveiled Copilotforce on November 17, 2026, at Microsoft Ignite, Microsoft's annual conference. According to the companies, the goal is to help employees get more done in the tools they already use.\n\nHere are the main pieces:\n\n- **Salesforce in Copilot**: a plugin in public preview (an early version that a limited group can try before wider release). It includes more than 38 prebuilt sales skills.\n- **Sales Cloud in Teams**: now in pilot (a small, controlled trial). It shows pipeline and quota progress, deal notifications and briefing materials inside Teams.\n- **Two-way Zero Copy connections**: a link between Salesforce Data 360 and Microsoft Fabric. Zero Copy means each platform can query the other's data without keeping a duplicate copy.\n- **Accenture** is helping design and build the integrations, and is also testing them in its own global sales organization.\n\n## How the pieces fit together\n\nMicrosoft's Work IQ (the intelligence layer that gives Copilot context) pulls relevant information from Teams meetings, Outlook emails and documents in SharePoint and OneDrive. Combined with Salesforce records, it can show not only what the CRM (customer relationship management system, where sales records live) says, but also what is happening in conversations.\n\nSome examples the companies describe:\n\n- **Spotting trouble early**: a skill called Renewal Radar can surface a customer concern buried in an email thread, even when the CRM still shows a healthy renewal date.\n- **Faster follow-ups**: the Call Follow-Up skill can draft a follow-up email and a meeting recap, then propose CRM updates for the seller to review.\n- **Better planning**: Pipeline Review and Close Planning skills help decide which deals need attention and what the next steps are.\n\nThe companies also say that Salesforce will continue to control data access and business actions, while Microsoft applies its enterprise compliance controls to emails and documents. Any change pushed back to the CRM needs explicit confirmation from the user.\n\n## A quick word on the technical terms\n\n- **MCP** (Model Context Protocol, a standard way for AI tools to connect to apps) is how Copilot reaches Salesforce. The companies say access is authenticated, so people only see what their existing permissions allow.\n- **Microsoft Fabric** is Microsoft's data platform, a place where organizations analyze operational and financial information.\n\n## What this means for you\n\n- **If you run a sales team or manage accounts**: ask whether your organization plans to test the Salesforce plugin or Sales Cloud in Teams. Early access is limited, so it helps to know where your team fits.\n- **If you work in finance, operations or IT**: the Zero Copy link is worth a closer look. Fewer duplicate datasets can mean fewer versions of the truth, but your data governance team should confirm how it is set up.\n- **If you're just getting started**: you don't need to change anything today. Learn what your current Copilot and Salesforce permissions allow, since the companies say these settings carry over.\n- **If you already use it**: once your organization has access, compare a recent deal's email thread with its CRM record. Notice what the CRM misses. That gap is exactly what these skills are designed to surface.\n\n## Wrap-up\n\nCopilotforce is a partnership between Microsoft and Salesforce that aims to put customer context where people already work: in Copilot, Teams and Microsoft's data tools. Several features are still in preview or pilot, so availability will vary. Your next step is simple: ask your IT or Salesforce administrator whether Copilot and Salesforce in Copilot are available to your team, and what permissions you would need.",
+  "original_title": "Microsoft and Salesforce Announce Copilotforce, Bringing Trusted Customer Context and Action into Microsoft AI Experiences "
+}

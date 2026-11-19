@@ -594,7 +594,11 @@
       "icon": "📱",
       "angle": "Voice, on-screen help and quick everyday tasks on mobile.",
       "status": "done",
-      "written_at": "2026-06-24T20:02:22.581Z"
+      "written_at": "2026-06-24T20:02:22.581Z",
+      "source_news": {
+        "file": "ARTICLE_2026-11-19T04-58-33-014Z_google-ai-blog_The_Gemini_app_is_now_available_on_lower-memory_An.json",
+        "title": "The Gemini app is now available on lower-memory Android devices."
+      }
     },
     {
       "id": "claude-artifacts",
@@ -8664,11 +8668,12 @@
       "audience": "business",
       "level": "beginner",
       "angle": "Paste your rough notes from a meeting and ask Kimi to draft a clear follow-up email with decisions, owners, and deadlines, then edit the tone to match your workplace.",
-      "status": "todo",
+      "status": "done",
       "icon": "📧",
       "priority": "balance",
       "proposed_at": "2026-11-12T04:56:58.688Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "written_at": "2026-11-19T05:03:25.644Z"
     },
     {
       "id": "making-your-own-practice-quiz-with-kimi-before-an-exam",
@@ -9125,6 +9130,44 @@
         "datum": "2026-11-18"
       },
       "written_at": "2026-11-18T05:09:08.689Z"
+    },
+    {
+      "id": "how-to-brainstorm-a-book-idea-with-ai-and-shape-it-into-a-on",
+      "company": "",
+      "tool": "",
+      "title": "How to Brainstorm a Book Idea With AI and Shape It Into a One-Page Plan",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Use a short question-and-answer chat to test your book idea on the page, then turn the answers into a one-page summary you can check before writing a single chapter.",
+      "status": "done",
+      "icon": "💡",
+      "proposed_at": "2026-11-19T05:02:59.557Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "can ai help me write a book",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-11-19"
+      },
+      "written_at": "2026-11-19T05:03:48.116Z"
+    },
+    {
+      "id": "add-inline-captions-cross-references-and-tables-of-captions-",
+      "company": "",
+      "tool": "Google Docs",
+      "title": "How to use Add inline captions, cross-references, and tables of captions in Google Docs",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Focus on how to use Inline captions and cross-references to automatically number figures and tables, and how the cross-references update when captions change",
+      "status": "todo",
+      "icon": "🆕",
+      "source_news": {
+        "file": "ARTICLE_2026-11-19T04-58-42-029Z_google-workspace_Add_inline_captions__cross-references__and_tables_.json",
+        "title": "Add inline captions, cross-references, and tables of captions in Google Docs"
+      },
+      "created_at": "2026-11-19T16:59:08.033Z"
     }
   ],
   "trend_proba": [
@@ -9227,6 +9270,10 @@
     {
       "kifejezes": "ai photo trends",
       "at": "2026-11-18T05:07:59.786Z"
+    },
+    {
+      "kifejezes": "can ai help me write a book",
+      "at": "2026-11-19T05:02:49.253Z"
     }
   ]
 }
