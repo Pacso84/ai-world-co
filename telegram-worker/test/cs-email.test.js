@@ -1,7 +1,7 @@
 // node telegram-worker/test/cs-email.test.js — a hurok-védelem és a válasz-sablon tesztje (offline)
 // FIGYELEM: a rules-fájlt importáljuk, NEM a cs-email.js-t (abban cloudflare:email import van)!
 import { strict as assert } from 'assert';
-import { shouldAutoReply, replyText } from '../src/cs-email-rules.js';
+import { shouldAutoReply, replyText, nemValaszolhato } from '../src/cs-email-rules.js';
 
 // auto-reply fejléc → tilos
 assert.deepEqual(shouldAutoReply({ autoSubmitted: 'auto-replied', from: 'x@y.hu', todayCount: 0 }).ok, false);
@@ -26,4 +26,13 @@ for (const ny of ['en', 'hu', 'es']) {
   assert.ok(!/the team|a csapatnak|hamarosan ember|a human will reply/i.test(b), ny + ': túlígérő sablon');
 }
 assert.ok(/respuesta la ha escrito una IA/.test(replyText({ text: 'x', escalate: false, links: [] }, 'es')), 'nincs spanyol lábjegyzet');
+// 🔕 „NEM VÁLASZOLHATÓ” (DMARC nélküli / hamisított feladó) ≠ valódi kudarc. A Cloudflare kétféle
+// szöveggel dobja: 09-08 „original email is not repliable”, 11-17 körül „original email cannot be replied to”
+// (a második riasztást okozott egy adathalász levélnél). Mindkettő noreply, minden más replyfail.
+assert.equal(nemValaszolhato('original email is not repliable'), true);
+assert.equal(nemValaszolhato('Error: original email cannot be replied to'), true);
+assert.equal(nemValaszolhato('Original Email Cannot Be Replied To'), true);
+assert.equal(nemValaszolhato('destination address not verified'), false, 'a valódi hiba nem tűnhet el a noreply-ban');
+assert.equal(nemValaszolhato('network connection lost'), false);
+assert.equal(nemValaszolhato(''), false);
 console.log('✅ cs-email.test: minden átment');

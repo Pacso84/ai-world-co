@@ -6,6 +6,14 @@
 export const SUPPORT_ADDR = 'support@aiworldhq.com';
 const OWN_ADDRS = [SUPPORT_ADDR, 'news@aiworldhq.com'];
 
+// 🔕 A Cloudflare nem enged válaszolni érvényes DMARC nélküli (gyakran hamisított feladójú) levélre.
+// Ez a küldő hibája, nem a miénk → külön „noreply” számláló, NEM riasztás. Két ismert szövege:
+//   2026-09-08: „original email is not repliable”   ·   ~11-17: „original email cannot be replied to”
+// (a második eddig „AUTO-VÁLASZ NEM MENT KI” riasztást adott egy adathalász levélre).
+export function nemValaszolhato(hiba) {
+  return /not repliable|cannot be replied/i.test(String(hiba || ''));
+}
+
 // Hurok-védelem döntése: szabad-e automatikusan válaszolni?
 export function shouldAutoReply({ autoSubmitted, from, todayCount }) {
   if (autoSubmitted && autoSubmitted.toLowerCase() !== 'no') return { ok: false, reason: 'auto-submitted' };

@@ -373,7 +373,7 @@ try {
     assert.ok(/markUnsent\s*\(/.test(src), 'a markUnsent() nincs HÍVVA az email-ágon');
     assert.ok(/bumpCs\s*\(\s*env\s*,\s*nemValaszolhato\s*\?\s*'noreply'\s*:\s*'replyfail'\s*\)/.test(src),
       'a bukott auto-válasz megint némán vész el, vagy nincs szétválasztva a „nem válaszolható" eset');
-    assert.ok(/not repliable/i.test(src),
+    assert.ok(/nemValaszolhatoHiba\s*\(\s*ok\s*\)/.test(src) && /not repliable/i.test(readFileSync(new URL('../src/cs-email-rules.js', import.meta.url), 'utf-8')),
       '⚠️ a DMARC-hiány miatti eset nincs megkülönböztetve — minden marketing-levélre riasztanánk');
 
     // Az AI-motor hívása LEGYEN védve: kivétele visszapattintaná a levelet.

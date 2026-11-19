@@ -10,7 +10,7 @@ import { EmailMessage } from 'cloudflare:email';
 import { answer } from './cs-engine.js';
 import { tg } from './tg.js';
 import { bumpCs, globalLimitReached, dayKey, markUnsent, uzenetAzonosito } from './cs-routes.js';
-import { SUPPORT_ADDR, shouldAutoReply, replyText } from './cs-email-rules.js';
+import { SUPPORT_ADDR, shouldAutoReply, replyText, nemValaszolhato as nemValaszolhatoHiba } from './cs-email-rules.js';
 import { levelArchival, tgLevelSzoveg } from './email-archive.js';
 
 async function senderHash(from) {
@@ -136,7 +136,8 @@ export async function handleEmail(message, env) {
     // 🔑 EZÉRT KÜLÖN SZÁMLÁLÓ. Ha ezt is „hibának" vennénk, a napi riport
     // minden marketing-levélre riasztana — és a hamis riasztás zajában a
     // VALÓDI kudarc veszne el. Egy őr, ami nem-tennivalóra szól, zaj.
-    const nemValaszolhato = /not repliable/i.test(ok);
+    // ⚠️ 11-19: a Cloudflare szövege változott („cannot be replied to”) → a felismerés a rules-fájlban, teszttel
+    const nemValaszolhato = nemValaszolhatoHiba(ok);
     try {
       await bumpCs(env, nemValaszolhato ? 'noreply' : 'replyfail');
       if (!nemValaszolhato) {
