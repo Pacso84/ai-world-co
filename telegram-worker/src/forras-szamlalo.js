@@ -28,11 +28,11 @@ export async function srcExport(env, now = Date.now(), napok = 14) {
     let cursor;
     do {
       const l = await env.FEEDBACK.list({ prefix: 'src:', cursor });
-      for (const k of l.keys) {
-        const [, nap, s] = k.name.split(':');
-        if (!nap || nap < hatar || !FORRASOK.includes(s)) continue;
-        (ki[nap] = ki[nap] || {})[s] = parseInt(await env.FEEDBACK.get(k.name), 10) || 0;
-      }
+      // ⚡ PÁRHUZAMOSAN (11-19) — lásd pdf-dl.js dlExport
+      const kell = l.keys.map(k => [k.name, ...k.name.split(':').slice(1)])
+        .filter(([, nap, s]) => nap && nap >= hatar && FORRASOK.includes(s));
+      const ertekek = await Promise.all(kell.map(([nev]) => env.FEEDBACK.get(nev)));
+      kell.forEach(([, nap, s], i) => { (ki[nap] = ki[nap] || {})[s] = parseInt(ertekek[i], 10) || 0; });
       cursor = l.list_complete ? undefined : l.cursor;
     } while (cursor);
     return ki;

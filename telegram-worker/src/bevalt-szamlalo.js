@@ -52,9 +52,12 @@ export async function handleFbpHit(request, env, now = Date.now()) {
 export async function fbpExport(env, now = Date.now(), napok = 14) {
   try {
     const ki = {};
+    // ⚡ PÁRHUZAMOSAN (11-19) — a 15 napi kulcs egyszerre; a feldolgozás sorrendje (ma → régebbi) változatlan
+    const kulcsok = Array.from({ length: napok + 1 }, (_, i) => napKulcs(now - i * 864e5));
+    const napokAdat = await Promise.all(kulcsok.map(k => olvasNap(env, k)));
     for (let i = 0; i <= napok; i++) {
-      const kulcs = napKulcs(now - i * 864e5);
-      const nap = await olvasNap(env, kulcs);
+      const kulcs = kulcsok[i];
+      const nap = napokAdat[i];
       const tiszta = {};
       for (const [slug, r] of Object.entries(nap)) {
         if (SLUG.test(slug)) tiszta[slug] = { up: Number(r?.up) || 0, down: Number(r?.down) || 0 };

@@ -86,9 +86,9 @@ async function handleFeedbackExport(request, env) {
   }
   const out = {};
   const list = await env.FEEDBACK.list({ prefix: 'fb:' });
-  for (const k of list.keys) {
-    try { out[k.name.slice(3)] = JSON.parse(await env.FEEDBACK.get(k.name)); } catch { /* skip */ }
-  }
+  // ⚡ PÁRHUZAMOSAN (11-19) — lásd pdf-dl.js dlExport
+  const fbErtekek = await Promise.all(list.keys.map(k => env.FEEDBACK.get(k.name).catch(() => null)));
+  list.keys.forEach((k, i) => { try { out[k.name.slice(3)] = JSON.parse(fbErtekek[i]); } catch { /* skip */ } });
   // Ügyfélszolgálat napi számlálói + kézbesítetlen üzenetek a riportoknak
   // (2026-07-20, bővítve 2026-08-30 — lásd a fájl fejlécének 📮 szakaszát)
   try { out.__cs = await csExport(env); } catch { /* skip */ }

@@ -59,9 +59,10 @@ export async function csCounters(env) {
   // ⚠️ A `replyfail` 2026-09-08-tól van itt: a bukott AUTO-VÁLASZ eddig csak
   // `console.log`-ba ment, tehát sehova. Élesben meg is történt — és csak
   // abból derült ki, hogy egy KV-kulcs HIÁNYZOTT, amit a sikeres ág írt volna.
-  for (const k of ['chat', 'mail', 'esc', 'replyfail', 'noreply']) {
-    out[k] = parseInt(await env.FEEDBACK.get(`cs:${k}:${d}`) || '0', 10);
-  }
+  // ⚡ PÁRHUZAMOSAN (11-19) — lásd pdf-dl.js dlExport
+  const nevek = ['chat', 'mail', 'esc', 'replyfail', 'noreply'];
+  const ertekek = await Promise.all(nevek.map(k => env.FEEDBACK.get(`cs:${k}:${d}`)));
+  nevek.forEach((k, i) => { out[k] = parseInt(ertekek[i] || '0', 10); });
   // Az OK is kimegy: egy szám önmagában nem javítható hiba.
   out.replyfailWhy = out.replyfail > 0
     ? (await env.FEEDBACK.get(`cs:replyfailwhy:${d}`) || null)

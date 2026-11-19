@@ -39,12 +39,11 @@ export async function dlExport(env, now = Date.now(), napok = 14) {
     let cursor;
     do {
       const l = await env.FEEDBACK.list({ prefix: 'dl:', cursor });
-      for (const k of l.keys) {
-        const [, nap, fajl] = k.name.split(':');
-        if (!nap || nap < hatar || !PDF_FAJL_MINTA.test(fajl || '')) continue;
-        const v = parseInt(await env.FEEDBACK.get(k.name), 10) || 0;
-        (ki[nap] = ki[nap] || {})[fajl] = v;
-      }
+      // ⚡ PÁRHUZAMOSAN (11-19): sorban ~97 olvasás hideg csomóponton 8–20+ mp volt → a CI 20 mp-es próbája időtúllépett
+      const kell = l.keys.map(k => [k.name, ...k.name.split(':').slice(1)])
+        .filter(([, nap, fajl]) => nap && nap >= hatar && PDF_FAJL_MINTA.test(fajl || ''));
+      const ertekek = await Promise.all(kell.map(([nev]) => env.FEEDBACK.get(nev)));
+      kell.forEach(([, nap, fajl], i) => { (ki[nap] = ki[nap] || {})[fajl] = parseInt(ertekek[i], 10) || 0; });
       cursor = l.list_complete ? undefined : l.cursor;
     } while (cursor);
     return ki;

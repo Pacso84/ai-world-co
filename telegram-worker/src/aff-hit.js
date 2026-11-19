@@ -42,12 +42,11 @@ export async function affExport(env, now = Date.now(), napok = 14) {
     let cursor;
     do {
       const l = await env.FEEDBACK.list({ prefix: 'aff:', cursor });
-      for (const k of l.keys) {
-        const [, nap, id] = k.name.split(':');
-        if (!nap || nap < hatar || !affKulcs(id, now)) continue;
-        const v = parseInt(await env.FEEDBACK.get(k.name), 10) || 0;
-        (ki[nap] = ki[nap] || {})[id] = v;
-      }
+      // ⚡ PÁRHUZAMOSAN (11-19) — lásd pdf-dl.js dlExport
+      const kell = l.keys.map(k => [k.name, ...k.name.split(':').slice(1)])
+        .filter(([, nap, id]) => nap && nap >= hatar && affKulcs(id, now));
+      const ertekek = await Promise.all(kell.map(([nev]) => env.FEEDBACK.get(nev)));
+      kell.forEach(([, nap, id], i) => { (ki[nap] = ki[nap] || {})[id] = parseInt(ertekek[i], 10) || 0; });
       cursor = l.list_complete ? undefined : l.cursor;
     } while (cursor);
     return ki;
