@@ -589,6 +589,7 @@
     "csomagommal",
     "csomagon",
     "csomagonként",
+    "csomagotok",
     "csomagotokban",
     "csomagunkon",
     "csoportcsetbe",
@@ -1309,6 +1310,7 @@
     "informaciok",
     "információhozzáférés",
     "információkönyvtárra",
+    "információsorokat",
     "információsűrű",
     "információtömegen",
     "inget",
@@ -1578,6 +1580,7 @@
     "költőiességet",
     "könyvet",
     "könyvjelöld",
+    "könyvtervet",
     "környezetedbeli",
     "körülötte",
     "köteget",
@@ -6470,11 +6473,16 @@
       "correct": "megcélzendő",
       "at": "2026-11-18",
       "mondattal": true
+    },
+    "multiagent": {
+      "correct": "multiagent (or use Hungarian: multi-ügynök)",
+      "at": "2026-11-19",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-11-18",
-    "files": 885,
-    "candidates": 1
+    "at": "2026-11-19",
+    "files": 891,
+    "candidates": 4
   }
 }
