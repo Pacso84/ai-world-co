@@ -61,7 +61,8 @@ t('💾 az útmutató-író a téma extra_slot-ját a _meta-ba menti', () => {
 
 t('🧮 a CEO a rendes útmutató-keretből KIVONJA az extra útmutatókat, és az extra lépés a --cover UTÁN, az idle-fill ELŐTT fut', () => {
   const src = olvas('agents/ceo/agent.js');
-  assert.match(src, /guides_remaining:\s*Math\.max\(0,\s*GUIDES_MAX\s*-\s*\(byType\.guides\s*-\s*byType\.guidesExtra\)\s*-\s*\(drafts\.writerGuides\s*-\s*drafts\.writerGuidesExtra\)\)/,
+  // 11-19: a képlet a core/utmutato-keret.js-be költözött (az átdolgozandó régi is foglal) — az extra-kivonás ugyanaz
+  assert.match(src, /guides_remaining:\s*utmutatoKeret\(\{\s*max:\s*GUIDES_MAX,\s*maPublikalt:\s*byType\.guides\s*-\s*byType\.guidesExtra,\s*varoVazlat:\s*drafts\.writerGuides\s*-\s*drafts\.writerGuidesExtra,/,
     'a guides_remaining nem vonja ki az extra útmutatókat → az extra elvenné a rendes helyet');
   const cover = src.indexOf("['--cover']");
   const extra = src.indexOf("'3i3. CÉG-LEFEDETTSÉG +1'");

@@ -30,6 +30,7 @@ import { spawn } from 'child_process';
 import { addTask, setTaskStatus, notify } from '../../core/ops.js';
 import { meteredBlocked, budgetStatus } from '../../core/budget.js';
 import { hirIroKeret } from '../../core/hir-keret.js';
+import { utmutatoKeret } from '../../core/utmutato-keret.js';   // 📘 11-19: az átdolgozandó régi útmutató is foglal helyet
 import { extraTemaMa, extraUtmutato } from '../../core/lefedettseg-extra.js';
 import { fekezett } from '../../core/fek.js';   // 🧯 2026-11-12 FÉK: a fékezett téma nem számít várakozónak
 import { termekExtraMaradek, termekExtraHir, TERMEK_EXTRA_NAPI, nyitottExtraHely, EXTRA_NYITAS_UTC } from '../../core/hir-elsobbseg.js';   // 📰 11-09: +2 hely termékhírnek
@@ -125,15 +126,16 @@ function readRejected() {
     .map(f => { try { return JSON.parse(readFileSync(join(REJECTED_DIR, f), 'utf-8'))._meta || {}; } catch { return {}; } });
 }
 // Hány guide írható még újra (4 kör alatt, nincs CEO-döntés)?
-function countGuideReworkable() {
+function countGuideReworkable({ extraNelkul = false } = {}) {
   // 🧯 FÉK (2026-11-12): a fékezett (jóváhagyott súgó nélküli eszközű) útmutatót az Útmutató-agent nem dolgozza át
   // (listRejectedGuidesForRework), ezért itt sem számolhatjuk — különben a ciklus üresben futna a kör végéig.
   return readRejected().filter(m => m.type === 'guide' && !m.ceo_decision && m.can_retry !== false && (m.rework_attempts || 0) < GUIDE_MAX_REWORK
+    && !(extraNelkul && extraUtmutato(m))   // a cég-lefedettség +1 helye nem a rendes keretből megy
     && !fekezett({ tool: m.tool, company: m.company, sugo_alapu: m.sugo_alapu, official_sources: m.official_sources }).fek).length;
 }
 // Hány guide vár a FŐNÖK végső döntésére (4 kört kimerítette)?
-function countGuideEscalatable() {
-  return readRejected().filter(m => m.type === 'guide' && !m.ceo_decision && (m.rework_attempts || 0) >= GUIDE_MAX_REWORK).length;
+function countGuideEscalatable({ extraNelkul = false } = {}) {
+  return readRejected().filter(m => m.type === 'guide' && !m.ceo_decision && (m.rework_attempts || 0) >= GUIDE_MAX_REWORK && !(extraNelkul && extraUtmutato(m))).length;
 }
 // Hány MEGÍRANDÓ (todo) útmutató-téma van? (a párosító ide tesz új témákat a hírekből)
 const GUIDE_TOPICS_PATH = join(PROJECT_ROOT, 'guides', 'guide-topics.json');
@@ -330,7 +332,15 @@ function generateReport() {
     // ÚTMUTATÓ-sáv szabad helyei (az idle-fill ezt használja) — a MÁR MEGÍRT,
     // de még ellenőrzésre váró vázlatok IS foglalják a helyet:
     // A cég-lefedettség +1 helyén írtak (2026-11-07) NEM számítanak bele — külön lépés (3i3) kezeli.
-    guides_remaining: Math.max(0, GUIDES_MAX - (byType.guides - byType.guidesExtra) - (drafts.writerGuides - drafts.writerGuidesExtra)),
+    // 📘 11-19 (core/utmutato-keret.js): az ELUTASÍTOTT, de javítható / főnök-döntésre váró útmutató is foglal helyet —
+    // különben a helyére új íródik, és délután az átdolgozott régi is kimegy (11-12, 11-17: 3 / 2).
+    guides_remaining: utmutatoKeret({
+      max: GUIDES_MAX,
+      maPublikalt: byType.guides - byType.guidesExtra,
+      varoVazlat: drafts.writerGuides - drafts.writerGuidesExtra,
+      atdolgozhato: countGuideReworkable({ extraNelkul: true }),
+      fonokDontesre: countGuideEscalatable({ extraNelkul: true })
+    }),
     guides_extra_today: byType.guidesExtra
   };
 }
@@ -673,7 +683,7 @@ async function main() {
     const slots = now.guides_remaining;                 // napi útmutató-limit − ma írt útmutató
     const budgetOk = now.cost_remaining_usd > 0.01;     // van-e még költségkeret
     console.log(`\n━━━ 3j. LÉPÉS: IDLE-FILL (útmutatók a saját keretből) ━━━`);
-    console.log(`   Szabad útmutató-slot: ${slots} | költségkeret: $${now.cost_remaining_usd.toFixed(2)}`);
+    console.log(`   Szabad útmutató-slot: ${slots} (ebből lefoglalva: ${countGuideReworkable({ extraNelkul: true }) + countGuideEscalatable({ extraNelkul: true })} átdolgozandó/főnök-döntésre váró régi) | költségkeret: $${now.cost_remaining_usd.toFixed(2)}`);
 
     if (slots <= 0 || !budgetOk) {
       console.log('   ⏭️  Nincs szabad útmutató-keret vagy költségkeret — kihagyva.');
