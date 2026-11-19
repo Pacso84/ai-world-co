@@ -1,0 +1,81 @@
+{
+  "_meta": {
+    "written_at": "2026-11-19T04:59:22.768Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.003959,
+    "original_draft": "2026-11-19T04-58-33-014Z_google-ai-blog_The_Gemini_app_is_now_available_on_lower-memory_An.json",
+    "source_id": "google-ai-blog",
+    "source_name": "Google AI (hivatalos, blog.google)",
+    "source_link": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
+    "source_links": [
+      "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
+      "http://workspaceupdates.googleblog.com/2026/11/transform-your-notes-and-research-into-dynamic-tools-with-Gemini-Notebook.html",
+      "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
+      "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/"
+    ],
+    "source_snippet_len": 1975,
+    "source_text_via": [
+      "html",
+      "hirfolyam",
+      "html",
+      "html"
+    ],
+    "source_text_len": 7571,
+    "source_text_key": "ea3f3c6a4a94914a",
+    "source_overlap_words": 9,
+    "merged_from": 4,
+    "merged_theme": "Google Gemini App & Workspace Features",
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-19T05:01:55.195Z",
+    "slug": "gemini-s-latest-updates-what-s-new-and-who-can-use-each-one",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "OPENING_REPETITIVE: A legutóbbi 20 cikkből 6 kezdődik ugyanígy (\"if you…\"). Kezdj másképp — kérdéssel, ténnyel vagy egy konkrét helyzettel."
+      ],
+      "wordCount": 829
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured, friendly, and explains technical terms in plain language. Accurately covers four distinct Gemini updates with appropriate access rules noted. The What this means for you section gives practical, audience-specific advice. Minor missed opportunity to bold subscription tier names (Ultra, Pro) for scannability, but not a structural failure.",
+      "_aiCost": 0.00125328,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-19T05:02:48.951Z",
+    "guide_worthy": true,
+    "related_guide_topic": "gemini-phone",
+    "image_v": 2,
+    "image_at": "2026-11-19T05:06:34.322Z",
+    "seo": {
+      "meta_description": "Google's latest Gemini updates bring AI to lower memory Android phones, add a website builder, introduce Task mode for errands, and launch Genie 4 for Ultra subscribers.",
+      "keywords": [
+        "Google Gemini latest updates",
+        "Gemini Android phone compatibility",
+        "Google AI Ultra features",
+        "Gemini Notebook make me a site",
+        "Gemini Task mode",
+        "Genie 4 Google AI",
+        "Google AI updates 2024"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add a more specific keyword like 'Gemini app features' to the title to improve search intent matching",
+        "Include the specific Android memory requirement mentioned in the article for better long-tail search capture",
+        "Add publication date to help with freshness signals for recent Google announcements"
+      ],
+      "optimised_at": "2026-11-19T05:07:32.596Z"
+    },
+    "fact_verified_at": "2026-11-19T05:08:51.299Z"
+  },
+  "article_markdown": "---\ntitle: \"Gemini's Latest Updates: What's New and Who Can Use Each One\"\nsubtitle: \"Google's recent Gemini announcements cover phones, notes, everyday tasks, and interactive worlds, and each one has a different set of requirements.\"\ncategory: \"how-to\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"gemini\", \"google\", \"ai-assistant\", \"productivity\", \"getting-started\"]\n---\n\n# Gemini's Latest Updates: What's New and Who Can Use Each One\n\n> **In short:** Google has made the Gemini app work on lower-memory Android phones, added a \"make me a site\" feature to Gemini Notebook, introduced a Task mode for everyday errands, and released Genie 4 for Google AI Ultra subscribers. Each update has different access rules, so check which one applies to you.\n\nIf you have ever wished your phone could handle the small jobs on your to-do list, this round of updates is for you. Google's announcements cover everything from a phone that's a few years old to a work account with dozens of coworkers. Here is what each change does, and who can use it today.\n\n## Gemini on lower-memory Android phones\n\nGoogle says the Gemini app now runs on eligible Android phones with less memory, which is the working space a phone uses to keep apps open. Until now, many of these phones only handled basic voice commands. Google calls these \"Android (Go edition)\" devices.\n\nOnce installed, you can talk through a problem out loud instead of typing it. Gemini Live, the app's spoken conversation mode, works in more than 45 languages. You can also point your camera at notes or a form to learn from it or translate it, or ask for a custom image, such as a flyer for a bakery sale.\n\nTo get started, download the Gemini app from Google Play. On supported phones, you can also press and hold the power button to open it. Google says some upcoming phones from partners such as Transsion will have Gemini preloaded.\n\n## Gemini Notebook can build small websites\n\nGemini Notebook works with your own notes and sources. According to Google, it can now turn them into interactive sites that help you make sense of complicated information. Think of it as turning a messy study guide into a clickable page.\n\nType \"make me a site\" in the Notebook chat, then describe what you want, such as a visual explainer for a chemistry exam or a project tracker for your work deadlines. Select \"Open in a new tab\" to try it, or share it with others. Google gives examples like an interactive periodic table, a historical timeline, and a quarterly sales dashboard.\n\nThis feature is available on the web for users 18 and older. Google says mobile support is coming soon. Google Workspace administrators can control who in their organization uses Gemini Notebook.\n\n## Gemini Task mode handles errands\n\nGoogle describes Task mode as a way to hand Gemini real chores, such as scheduling appointments, reviewing bills, or managing a grocery list. To do this, Gemini connects to your emails, calendar, and payment methods. Google says these tasks run in isolated environments to help protect your private data.\n\nTo try it, switch the toggle in the Gemini app from Chat to Task. Google also says you can text Gemini on Android or iOS, or forward an email to gemini@google.com.\n\n## Genie 4 and Project Genie\n\nGenie 4 is a new model for creating interactive worlds. Google says it is rolling out to eligible Google AI Ultra subscribers. You can change the weather or add characters just by typing a prompt (the written instruction you give the AI), and you can hear audio that adjusts in real time. A new agent helps you build worlds through a simple conversation, and you can share your creations in a community gallery. Google AI Pro members can join a waitlist.\n\n## What this means for you\n\n- **In everyday life**: If you have an older Android phone, the lower-memory version may let you use Gemini Live and the camera tools without buying a new phone. If you use Task mode, check first what you're comfortable connecting, since it reads your email and calendar.\n- **For your business or work**: Workspace administrators can decide whether Notebook is turned on for their teams. Google says Notebook's site builder can turn project notes into simple trackers and dashboards.\n- **If you're just getting started**: Begin with Chat. Once you're comfortable, try one small Task, like a reminder or a bill question, and see what Gemini does.\n- **If you already use it**: Try combining features. Give Notebook your study notes, ask it to build an interactive timeline, then share the link with a study partner.\n\n## Wrap-up\n\nGemini's recent updates cover phones, notes, errands, and creative worlds, but each one has its own requirements. Check whether your phone, account, or subscription qualifies, and see the official Gemini help pages for current details. A good next step today is to open the Gemini app and ask it one question you have been putting off.",
+  "original_title": "The Gemini app is now available on lower-memory Android devices."
+}

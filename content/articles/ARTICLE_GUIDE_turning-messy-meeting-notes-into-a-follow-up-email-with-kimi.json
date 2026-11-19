@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "turning-messy-meeting-notes-into-a-follow-up-email-with-kimi",
+    "company": "Moonshot AI",
+    "tool": "Kimi",
+    "icon": "📧",
+    "level": "intermediate",
+    "source_news": null,
+    "official_sources": null,
+    "trend": null,
+    "extra_slot": null,
+    "written_at": "2026-11-19T05:03:25.643Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0050108,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-11-19T05:04:55.436Z",
+    "slug": "turning-messy-meeting-notes-into-a-follow-up-email-with-kimi",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "HOWTO_TOO_LONG: 1720 szó (~8.6 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig."
+      ],
+      "wordCount": 1720
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Strong guide with clear structure, practical examples, and helpful 'If it looks different' fallbacks for each step. Minor clarity gap in Step 6 where 'not directly into a recipient field' could confuse beginners, and the paper notes section in Step 1 could explain what to do if the app does not support image attachments. Otherwise well-written, friendly, and actionable.",
+      "_aiCost": 0.00205821,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-19T05:07:04.769Z",
+    "seo": {
+      "meta_description": "Learn how to turn messy meeting notes into clear follow-up emails with decisions, owners and deadlines using Kimi AI. Step-by-step guide.",
+      "keywords": [
+        "how to use Kimi for meeting notes",
+        "turn meeting notes into email AI",
+        "Kimi AI follow-up email",
+        "Kimi meeting summary productivity",
+        "AI meeting notes to email",
+        "Kimi AI tutorial productivity",
+        "use AI for meeting follow-up",
+        "Kimi Moonshot AI guide"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Add more specific long-tail keywords like 'Kimi AI meeting notes to follow-up email tutorial' in the first paragraph",
+        "Consider adding keywords about 'professional email writing' or 'workplace communication' to capture that search intent",
+        "The title could include 'step-by-step' to match what users typically search for"
+      ],
+      "optimised_at": "2026-11-19T05:07:49.336Z"
+    },
+    "fact_verified_at": "2026-11-19T05:08:36.245Z"
+  },
+  "article_markdown": "---\ntitle: \"Turning Messy Meeting Notes into a Follow-Up Email with Kimi\"\nsubtitle: \"Paste rough meeting notes into Kimi, get a clear follow-up email with decisions, owners and deadlines, then adjust the tone for your workplace.\"\ncategory: \"guide\"\naudience: \"business\"\ncompany: \"Moonshot AI\"\ntool: \"Kimi\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"meeting-notes\", \"email\", \"productivity\", \"kimi\"]\n---\n\n# Turning Messy Meeting Notes into a Follow-Up Email with Kimi\n\n> **In short:** You can turn scribbled meeting notes into a clear follow-up email with decisions, owners and deadlines by using a reusable instruction block and a checking pass. Keep sensitive details out unless your workplace allows sharing them with an AI tool.\n\nMost of us have sat through a meeting, scribbled a few half-sentences, and then stared at an empty email wondering what we actually agreed on. This guide shows you how to hand those rough notes to Kimi, the AI assistant made by Moonshot AI, and get back a draft you can send after a light edit. It is written for people who already have a Kimi account and know how to start a chat and send a message.\n\n## Before you start\n- **Assumed:** you have a Kimi account and have sent a message in a chat before.\n- **Your notes:** a rough list of what was said, even if it is messy, with names and dates if you have them.\n- **Permission check:** make sure your employer allows pasting work information into an AI tool. If you are unsure, remove names, client details and figures first.\n- **Plan:** the features you see may depend on whether you use a free or paid plan, and limits can change. Check the official Kimi website or app for current details.\n- **Time:** about 15 minutes.\n\n## Step 1 — Gather and clean up your notes\n\nOpen your notes app or the page where you typed during the meeting. Read through once and delete anything personal or confidential that the AI does not need, such as salary figures or medical details. Keep the decisions, action items and dates, even if they are in fragments like \"Priya – check vendor price – Fri?\". Copy the whole block of notes so you can paste it in one go.\n\nWhy this matters: Kimi can only work with what you give it. Clear raw material produces a much better draft than a vague summary typed from memory.\n\nIf your notes are on paper, take a clear photo and check whether the app lets you attach it. Look for a paperclip or plus icon near the message box. If you cannot find one, type the notes out instead.\n\nYou'll know it worked when you have one tidy block of text ready to paste, with no private details left in it.\n\n## Step 2 — Write a reusable instruction block\n\nOpen a new chat in Kimi. Before you paste any notes, type a short instruction block that explains the job once. This is the key intermediate technique: you write the rules a single time, then reuse them every meeting.\n\nInclude four things: who the email is from, what sections it must have, how the owners and deadlines should be handled, and the tone you want. Save this block in your notes app so you can copy it again next time.\n\n💬 Example: \"You are helping me write a follow-up email after a work meeting. Use three sections: Decisions, Owners and Deadlines. If a name or date is missing from my notes, write [not named] instead of guessing. Keep the tone friendly and professional, and keep it under 250 words.\"\n\nIf it looks different: if your version of Kimi has a place for saved instructions or reusable settings, you can paste the block there instead. If not, just paste it at the top of each new chat.\n\nYou'll know it worked when Kimi's answer follows the sections you named rather than writing a generic email.\n\n## Step 3 — Send your notes with the brief\n\nPaste your cleaned notes into the message box directly below your instruction block, then send the message. Kimi reads the whole thing and writes a draft. Depending on the length of your notes, the answer can take a few seconds to appear, and it will show up below your message.\n\nRead the first draft with a critical eye. Check that the decisions match what was actually agreed, and that every owner is a real person from the meeting.\n\n💬 Example: \"Here are my notes from today's project check-in: [paste your notes here]. Write the follow-up email to the team.\"\n\nIf it looks different: if Kimi's answer is cut off, type \"Please continue.\" If it misses a section, reply with \"Please add the missing Owners section.\" Limits on how long a reply can be vary, so long meetings may need two or three rounds.\n\nYou'll know it worked when the draft has all three sections and any gaps show up as [not named] instead of invented names.\n\n## Step 4 — Check the draft against your notes\n\nAI tools can sometimes add a detail that sounds plausible but was never said. A deadline is a common example. This step turns Kimi into a checker for its own work, which is a reliable habit for anything you will send under your name.\n\nAsk Kimi in the same chat to compare the draft with your original notes. Ask it to list any owner, date or decision in the email that does not appear in the notes. Then fix those items yourself before you send anything.\n\n💬 Example: \"Compare the email you just wrote with my original notes. List every owner, deadline or decision in the email that I did not write in the notes, and mark anything you are unsure about.\"\n\nIf it looks different: if Kimi says everything matches, check one or two items yourself anyway. The checking pass catches many problems, but it does not replace your own reading. Kimi cannot remember what was said in the room, so your notes remain the final source.\n\nYou'll know it worked when the reply either lists nothing new or points to specific lines that you can verify.\n\n## Step 5 — Adjust the tone in a follow-up message\n\nNow build on the draft. Instead of starting over, ask Kimi for a change in tone while keeping the content identical. This is where the multi-step approach shines: each request refers to the email already in the chat.\n\nDecide who the email is for. A note to a senior manager, a message to a client and a reminder to your own team each need a different voice. Tell Kimi the audience and the tone you want, and ask it to keep every decision, owner and date exactly as they are.\n\n💬 Example: \"Keep the same decisions, owners and deadlines, but rewrite the email for a client. Make the tone warm and formal, and end with a clear next step for them.\"\n\nIf it looks different: if the rewrite changes facts, reply with \"Keep every date and name exactly as in the previous version.\" If it feels too stiff or too casual, say so plainly, for example, \"Make it a little less formal.\" You can repeat this as many times as you need.\n\nYou'll know it worked when the new version sounds like you would speak to that audience, and the facts still match the earlier draft.\n\n## Step 6 — Final polish and send\n\nCopy the final text into your email app, not directly into a recipient field. Add the recipients, subject line and your signature there. Read the email out loud once. Anything that sounds awkward when spoken is worth rewording.\n\nBefore you press send, do one last comparison yourself: look at each owner and deadline and make sure it matches what you remember from the meeting. Then save your instruction block so next time you only need to paste fresh notes.\n\n💬 Example: \"Subject: Next steps from today's project check-in\" (write your own subject line, and keep it short and specific).\n\nIf it looks different: some email apps paste formatting strangely. If bullet points break, paste as plain text first, then add the bullets in your email app.\n\nYou'll know it worked when the email is in your outbox, every name and date matches your notes, and you saved the instruction block for next time.\n\n## Common mistakes\n- **Pasting confidential details without checking.** Some workplaces do not allow sharing client or personnel information with AI tools. Fix this by removing sensitive names and figures in Step 1, or by asking your manager first.\n- **Sending the first draft as it is.** The draft can contain a plausible but invented deadline. Fix it by running the checking pass in Step 4 and reading the owners and dates yourself.\n- **Starting over for every tone change.** Rewriting the whole brief each time wastes effort and can change the facts. Fix it by asking for a targeted change in the same chat, and naming what must stay the same.\n\nKimi can draft and reformat the email, but it cannot attend your meetings, know what was agreed off the record, or send the message for you. You stay responsible for the final facts.\n\n## What this means for you\n- **In everyday life:** use the same approach for a family planning call, a school meeting or a volunteer committee. The instruction block works for any group where you need a clear recap.\n- **For your business or work:** save one instruction block per recurring meeting type, such as a weekly team check-in or a client call. Your recaps become faster and more consistent across the team.\n- **If you want to go further:** try asking Kimi to turn the decisions and deadlines into a short task list you paste into your calendar or task app. Check each item against the notes, just as you did for the email.\n\n## Try it now\nOpen your most recent meeting notes, pick three decisions from them, and paste them into a new Kimi chat with this line added at the top: \"Write a three-sentence follow-up email that lists these decisions and asks for the owners to confirm their deadlines.\" Read the result against your notes. That one short pass is the whole workflow in miniature.",
+  "original_title": "Turning Messy Meeting Notes into a Follow-Up Email with Kimi"
+}
