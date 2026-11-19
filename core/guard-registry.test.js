@@ -68,7 +68,8 @@ console.log('🧪 őrszem-nyilvántartás — író · riport-olvasás · frisse
 const EGYEB_ORSZEM = {
   'housekeeping.json': 'a Házmester beépített hízás-őre (watchGrowth) ide írja a figyelmeztetést, a napi riport ebből szól',
   'ceg-lefedettseg.json': 'a guide --cover MINDEN futásban írja (CEO 3i2); témátlan cég / elakadt coverage-téma → 🏢 riport-sor (2026-11-05)',
-  'horgony-allapot.json': 'a súgó-horgony próbáinak állapota (core/horgony-valasztas.js horgonyAllapotIr, a guide agent írja): hány próba, hány siker, mely témák nem kaptak súgócikket; a napi riport 🧭 sora olvassa (tényközpont 1d)'
+  'horgony-allapot.json': 'a súgó-horgony próbáinak állapota (core/horgony-valasztas.js horgonyAllapotIr, a guide agent írja): hány próba, hány siker, mely témák nem kaptak súgócikket; a napi riport 🧭 sora olvassa (tényközpont 1d)',
+  'kokoro-tartalek.json': 'a Kokoro tartalék felolvasó napi feljegyzése (core/kokoro-tts.js tartalekFeljegyez): beugrott-e / elbukott-e ma a Microsoft-felolvasó helyett; a napi riport 🤗 sora olvassa (2026-11-19)'
 };
 
 /**
@@ -86,6 +87,7 @@ const RIPORT_KIVETEL = {
 
 /** Őrszem-fájl, ami NEM minden futásban íródik — a frissesség-térképben hamis riasztás lenne. */
 const FRISSESSEG_KIVETEL = {
+  'kokoro-tartalek.json': 'csak akkor íródik, ha a Microsoft-felolvasó elbukott és a Kokoro tartalék beugrott (core/kokoro-tts.js) — jó napon nem is létezik; a riport-sor a `nap` mezőt a mai dátumhoz méri, régi fájl nem szólal meg',
   'budget-guard.json': 'csak GOND esetén íródik (core/budget.js jeletHagy) — élesben a fájl nem is létezik',
   'ai-latency-guard.json': 'csak akkor íródik, ha VOLT AI-hívás: a HAVI keret betelte (user-döntés — minden agent paid-only, az ask() hívás nélkül null-t ad) hónapfordulóig egyetlen hívást sem enged, és ott a régi `at` a helyes állapot, nem lefagyás',
   'semantic-guard.json': 'naponta csak az ELSŐ szemantikus keresés írja, és csak ha az Író/Útmutató dolgozott — üres napon nincs keresés, a régi `at` normális',
@@ -95,6 +97,7 @@ const FRISSESSEG_KIVETEL = {
 
 /** Memória-író, ami NEM őrszem-kimenet. Új állapotfájl → ide, egy mondat indoklással. */
 const NEM_ORSZEM = {
+  'kokoro-be.json': 'NEM a memory/-ba kerül: a Kokoro-hívás bemenete a Reel ideiglenes munkamappájában (core/kokoro-tts.js kokoroFelolvas) — a statikus keresés a join() miatt sorolja ide',
   'bing-terkep.json': 'a Bing-térkép őr (core/bing-terkep.js) újraküldési lehűlése: csak baj esetén íródik, a riport-sor élőben kérdez — munkaállapot, nem lelet',
   'halott-url-allapot.json': 'az IndexNow halott-link sora (core/halott-url.js): élő slugok + eltűnt címek bejelentési állapota — munkaállapot, nem lelet',
   'ceo-desk-log.json': 'a CEO-asztal napi döntés-naplója (agents/ceo/desk.js) — a riport statisztikát olvas belőle, nem lelet',

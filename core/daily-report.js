@@ -45,6 +45,7 @@ import { bevaltSor, EXPORT_HIBA } from './bevalt-jelzes.js';   // 👍 „Bevál
 import { partnerKattintasSor } from './affiliate.js';
 import { cegLefedettsegSor } from './ceg-lefedettseg.js';   // 🏢 2026-11-05
 import { bingTerkepek, terkepAllapot, bingTerkepSor, ujrakuldesKell, ujrakuld, ELVART_TERKEPEK } from './bing-terkep.js';   // 🔍 2026-11-14
+import { kokoroRiportSor } from './kokoro-tts.js';   // 🤗 2026-11-19
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -709,6 +710,11 @@ async function main() {
         lines.push(`🎬 REEL-ŐRSZEM: a ${nev} elbukott — ${String(f.hiba || 'ismeretlen ok').slice(0, 90)}`);
       }
     }
+    // 🤗 TARTALÉK FELOLVASÓ (11-19): csak ha ma a Microsoft-felolvasó helyett a Kokoro adta a Reel hangját
+    try {
+      const kSor = kokoroRiportSor(JSON.parse(readFileSync(join(ROOT, 'memory', 'kokoro-tartalek.json'), 'utf-8')), today());
+      if (kSor) lines.push(kSor);
+    } catch { /* nincs fájl = ma nem kellett a tartalék */ }
 
     // ⚠️ BETŰTÍPUS-VISSZAESÉS (2026-09-17). A Reel-táblák „Arial Black"-et
     // kértek; az a futtatón NINCS, és a betűmotor ilyenkor nem hibázik,

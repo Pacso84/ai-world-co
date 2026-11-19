@@ -395,13 +395,25 @@ export async function renderMotionReel(szegmensek, { out, workDir, kepUt = '', s
   // 1) hang + szóidőzítés szegmensenként
   const hangok = [];
   const darabok = [];
+  let felolvaso = nema ? 'nema' : 'edge';
   if (nema) {
     for (const s of szegmensek) hangok.push(becsultSzavak(s.mond));
   } else {
-    const et = await import('./edge-tts.js');
-    const kesz = await et.edgeTts();
+    // 🤗 11-19: Edge-hibánál a Kokoro adja a hangot (core/kokoro-tts.js) — eddig ilyenkor a régi Reel jött, de az is Edge-es
+    const kt = await import('./kokoro-tts.js');
+    const { hangok: nyersHangok, felolvaso: fo } = await kt.hangokGyartasa(szegmensek.map(s => s.mond), {
+      edge: async () => {
+        const et = await import('./edge-tts.js');
+        const kesz = await et.edgeTts();
+        const l = [];
+        for (let i = 0; i < szegmensek.length; i++) l.push(await felolvas(et, kesz, voice, szegmensek[i].mond, workDir, 'h' + i));
+        return l;
+      },
+      kokoro: async () => kt.kokoroFelolvas(szegmensek.map(s => s.mond), join(workDir, 'kokoro'))
+    });
+    felolvaso = fo;
     for (let i = 0; i < szegmensek.length; i++) {
-      const { mp3, szavak: sz } = await felolvas(et, kesz, voice, szegmensek[i].mond, workDir, 'h' + i);
+      const { mp3, szavak: sz } = nyersHangok[i];
       // a felolvasó csendjét levágjuk az első szó előtt és az utolsó után (11-15: 18,5–19,3 mp lett a becsült 15–16 helyett)
       const { tol, ig } = vagasHatarok(sz, hangHossz(mp3));
       const vagott = join(workDir, `t${i}.wav`), pad = join(workDir, `p${i}.wav`);
@@ -451,7 +463,7 @@ export async function renderMotionReel(szegmensek, { out, workDir, kepUt = '', s
     '-vf', `scale=${W}:${H}:out_range=tv,format=yuv420p`, '-color_range', 'tv',
     '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', out], { stdio: 'pipe' });
 
-  return { file: out, seconds: iv.osszes, kockak: kockaDb, idovonal: iv, betu, sablon };
+  return { file: out, seconds: iv.osszes, kockak: kockaDb, idovonal: iv, betu, sablon, felolvaso };
 }
 
 /**

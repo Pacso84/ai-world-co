@@ -427,7 +427,7 @@ export function utmutatoRenderelo({ cikkek, regi, motion, naplo = console.log })
     const sablon = motion.sablonCikkhez(c, cikkek);
     try {
       const r = await motion.renderMotionReel(szegmensek, { out: o.out, workDir: o.workDir, kepUt: o.kepUt, sablon });
-      naplo('   🎬 motion Reel [' + sablon + ']');
+      naplo('   🎬 motion Reel [' + sablon + ']' + (r?.felolvaso === 'kokoro' ? ' — 🤗 Kokoro-hanggal (tartalék)' : ''));
       return r;
     } catch (e) {
       naplo('   ⚠️ motion Reel hiba (' + String(e?.message || e).slice(0, 160) + ') → a régi Reel készül');

@@ -11,6 +11,11 @@ on:
         type: choice
         options: [minta, eles_ut]
         default: minta
+      felolvaso:
+        description: 'auto = Microsoft-felolvasó (hibánál Kokoro) · kokoro = a Kokoro tartalék kényszerítve (próba)'
+        type: choice
+        options: [auto, kokoro]
+        default: auto
       celok:
         description: 'slug:sablon szóközzel elválasztva (sablon: tinta | borito | papir)'
         required: true
@@ -46,6 +51,7 @@ jobs:
       - name: Minták legyártása
         if: inputs.mod != 'eles_ut'
         env:
+          KOKORO_KENYSZER: ${{ inputs.felolvaso == 'kokoro' && '1' || '' }}
           CELOK: ${{ inputs.celok }}
         run: node core/motion-reel.js $CELOK --ki motion-minta
       - name: Az éles gyártási út (reel-post.js --prepare) — nem küld, nem commitol
