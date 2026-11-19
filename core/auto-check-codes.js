@@ -91,6 +91,21 @@ export function advisoryIssues(issues) {
   return (Array.isArray(issues) ? issues : []).filter(i => !isBlocking(i));
 }
 
+/**
+ * A napló „📐 Auto check:” sorának címkéje.
+ * (2026-11-19, user: „igen”) Eddig a puszta tanács (HOWTO_TOO_LONG, OPENING_REPETITIVE) is
+ * „❌ N probléma” lett → az állapot-összesítő hibának vette, pedig a cikk szabályosan kiment.
+ * ❌ CSAK elutasító jelzésre; a tanács 💡.
+ */
+export function autoCheckCimke(passed, issues) {
+  const lista = Array.isArray(issues) ? issues : [];
+  if (passed && lista.length === 0) return '✅ OK';
+  const blokk = blockingIssues(lista).length;
+  const tanacs = lista.length - blokk;
+  if (blokk === 0) return tanacs ? `💡 ${tanacs} tanács (nem blokkol)` : '✅ OK';
+  return `❌ ${blokk} probléma` + (tanacs ? ` + 💡 ${tanacs} tanács` : '');
+}
+
 // ===================================================================
 // LECKE-SZÖVEGEK — STABILAK, mert a memória ISMÉTLŐDÉSRE erősödik
 // ===================================================================

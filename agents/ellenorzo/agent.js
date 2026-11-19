@@ -31,7 +31,7 @@ import { truthGate, logGate } from '../../core/truth-gate.js';
 import { message, resolveNeed } from '../../core/ops.js';
 import { lengthIssue, HOWTO_MIN, HOWTO_MAX, GATE_MAX } from '../../core/article-length.js';
 import { repetitionIssue, firstParagraph, WINDOW as OPENING_WINDOW } from '../../core/opening-variety.js';
-import { blockingIssues, advisoryIssues, lessonFor } from '../../core/auto-check-codes.js';
+import { blockingIssues, advisoryIssues, lessonFor, autoCheckCimke } from '../../core/auto-check-codes.js';
 import { guideClaimIssues, sugoNelkuliFeluletJelzes, SUGO_NELKULI_FELULET_BE } from '../../core/guide-claims.js';
 import { forrasSzint } from '../../core/forras-szint.js';   // 🧯 11-12 (0c): melyik eszköznek van hivatalos súgója
 import { arJelzes } from '../../core/ar-tilalom.js';
@@ -889,7 +889,7 @@ async function main() {
         if (j) { autoCheckResult.issues.push(j); autoCheckResult.passed = false; }
       }
     } catch { /* őr-hiba nem állítja meg az ellenőrzést */ }
-    console.log(`   📐 Auto check: ${autoCheckResult.passed ? '✅ OK' : `❌ ${autoCheckResult.issues.length} probléma`}`);
+    console.log(`   📐 Auto check: ${autoCheckCimke(autoCheckResult.passed, autoCheckResult.issues)}`);
     if (!autoCheckResult.passed) {
       autoCheckResult.issues.slice(0, 3).forEach(i => console.log(`      • ${i}`));
     }

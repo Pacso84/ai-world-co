@@ -14,7 +14,7 @@
 import assert from 'assert/strict';
 import { readFileSync } from 'node:fs';
 import {
-  BLOCKING_CODES, issueCode, isBlocking, blockingIssues, advisoryIssues, lessonFor, leckeNevHu
+  BLOCKING_CODES, issueCode, isBlocking, blockingIssues, advisoryIssues, lessonFor, leckeNevHu, autoCheckCimke
 } from './auto-check-codes.js';
 import { HOWTO_RANGE } from './article-length.js';
 
@@ -60,6 +60,17 @@ t('💸 a tanácsadó jelzés NEM tehet fizetőssé egy ingyenes visszasorolást
   const vanValodi = ['HOWTO_TOO_LONG: 1823 szó — …', 'NO_H1: Nincs H1'];
   assert.equal(blockingIssues(vanValodi).length, 1, 'a valódi blokkoló hiba viszont számít');
   assert.equal(advisoryIssues(vanValodi).length, 1);
+});
+
+t('📐 napló-címke: ❌ csak elutasító jelzésre, a tanács 💡', () => {
+  assert.equal(autoCheckCimke(true, []), '✅ OK');
+  // a 11-19-i valódi eset: a cikk kiment, a riport mégis „❌ 1 probléma”-t írt
+  assert.equal(autoCheckCimke(false, ['HOWTO_TOO_LONG: 1805 szó (~9.0 perc olvasás)']), '💡 1 tanács (nem blokkol)');
+  assert.equal(autoCheckCimke(false, ['OPENING_REPETITIVE: 6 kezdődik ugyanígy']), '💡 1 tanács (nem blokkol)');
+  assert.equal(autoCheckCimke(false, ['NO_H1: Nincs H1']), '❌ 1 probléma');
+  assert.equal(autoCheckCimke(false, ['NO_H1: Nincs H1', 'HOWTO_TOO_LONG: 1805 szó']), '❌ 1 probléma + 💡 1 tanács');
+  assert.ok(!autoCheckCimke(false, ['CLICHE: x', 'HOWTO_TOO_THIN: y']).includes('❌'));
+  assert.equal(autoCheckCimke(false, undefined), '✅ OK');
 });
 
 t('rossz bemenetre nem esik szét', () => {
