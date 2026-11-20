@@ -7,7 +7,7 @@
 //   ha még nincs neki. TÖBB-BACKENDES kép-router fallback-kel:
 //     Cloudflare Workers AI (Flux, 10k/nap ingyen) -> Hugging Face (Flux)
 //     -> Gemini (gemini-2.5-flash-image, szűk kvóta)
-//   Kulcsok a .env-ben: CLOUDFLARE_API_TOKEN+CLOUDFLARE_ACCOUNT_ID, HF_API_KEY, GOOGLE_API_KEY
+//   Kulcsok a .env-ben: CLOUDFLARE_FLUX_TOKEN+CLOUDFLARE_ACCOUNT_ID (2026-11-20: a HF-tartalék kivéve, lásd core/kep-backendek.js)
 //   Ha egyik backendnek sincs kulcsa/mind elesik -> a build LÁGY GRADIENS borítót tesz.
 //   A képet HELYBEN menti (website/assets/images/<slug>.jpg).
 //
@@ -26,6 +26,7 @@ import { GoogleGenAI } from '@google/genai';
 import { ask } from '../../core/ai-router.js';
 import { skillsBlock } from '../../core/skills.js';
 import { szovegMentesJelenet, szovegKockazat, ujrairasKeres } from '../../core/cover-scene.js';
+import { kepBackendek } from '../../core/kep-backendek.js';
 
 const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 const IMAGE_MODEL = 'gemini-2.5-flash-image';
@@ -139,39 +140,13 @@ function buildPrompt(scene) {
 // Fekvő (landscape) méret — illeszkedik a borító-keretekhez (16:9)
 const IMG_W = 1280, IMG_H = 720;
 
-// 1) Cloudflare Workers AI (Flux) — INGYEN 10k neuron/nap. Kell: CLOUDFLARE_FLUX_TOKEN + CLOUDFLARE_ACCOUNT_ID
-//    (FLUX külön név, hogy NE ütközzön a wrangler/Pages OAuth-jával a deploynál)
-async function viaCloudflare(prompt) {
-  const token = process.env.CLOUDFLARE_FLUX_TOKEN, acct = process.env.CLOUDFLARE_ACCOUNT_ID;
-  if (!token || !acct) return null;
-  const url = `https://api.cloudflare.com/client/v4/accounts/${acct}/ai/run/@cf/black-forest-labs/flux-1-schnell`;
-  // ⚠️ 2026-08-14: a width/height paramétert a Cloudflare KIVEZETTE —
-  //    "Additional properties '/width, /height' not allowed" (HTTP 400).
-  // A kivezetés fokozatos volt: ugyanaz a kérés az egyik node-on átment, a
-  // másikon 400-at kapott — ezért tűnt átmenetinek. A modell négyzetes képet
-  // ad; a 16:9-et a compressImage vágja ki (fit:'cover'), így BÁRMELYIK
-  // backend bármilyen arányt ad, a keret stimmel.
-  const r = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
-  // A törzset IS olvassuk: a puszta "HTTP 400" miatt ma vakon találgattunk.
-  if (!r.ok) throw new Error('Cloudflare HTTP ' + r.status + ': ' + (await r.text().catch(() => '')).slice(0, 120));
-  const j = await r.json();
-  const b64 = j?.result?.image;
-  if (!b64) throw new Error('Cloudflare: nincs kép');
-  return Buffer.from(b64, 'base64');
-}
+// Cloudflare Workers AI (INGYEN 10k neuron/nap; CLOUDFLARE_FLUX_TOKEN + CLOUDFLARE_ACCOUNT_ID,
+// FLUX külön név, hogy NE ütközzön a wrangler/Pages OAuth-jával a deploynál).
+// 2026-11-20: két modell, fő = FLUX.2 klein 4B (natív 16:9), tartalék = FLUX.1 schnell
+// (négyzetes → a compressImage vágja 16:9-re). A régi Hugging Face-tartalék HALOTT volt
+// (api-inference.huggingface.co megszűnt) → kivéve. Részletek + kapcsoló: core/kep-backendek.js
 
-// 2) Hugging Face Inference (Flux/SD) — INGYEN (rate limit). Kell: HF_API_KEY
-async function viaHuggingFace(prompt) {
-  const key = process.env.HF_API_KEY;
-  if (!key) return null;
-  const r = await fetch('https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-schnell', {
-    method: 'POST', headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ inputs: prompt, parameters: { width: IMG_W, height: IMG_H } })
-  });
-  if (!r.ok) throw new Error('HuggingFace HTTP ' + r.status);
-  return Buffer.from(await r.arrayBuffer());
-}
-
-// 3) Gemini (gemini-2.5-flash-image) — szűk ingyenes kvóta. Kell: GOOGLE_API_KEY
+// (nem használt) Gemini (gemini-2.5-flash-image) — szűk ingyenes kvóta. Kell: GOOGLE_API_KEY
 async function viaGemini(prompt) {
   if (!process.env.GOOGLE_API_KEY) return null;
   const res = await ai.models.generateContent({ model: IMAGE_MODEL, contents: prompt, config: { responseModalities: ['IMAGE', 'TEXT'] } });
@@ -185,10 +160,8 @@ async function viaGemini(prompt) {
 // Ez volt a rejtett ~$37/hó szivárgás (a Flux-kvóta kimerülésekor a FIZETŐS Geminire
 // esett, a költség-plafon megkerülésével). Marad az INGYENES Cloudflare Flux (+HF, ha
 // van kulcs). Ha egyik sem ad képet: a cikk borító nélkül marad (a main() try/catch-eli).
-const IMAGE_BACKENDS = [
-  { name: 'Cloudflare', fn: viaCloudflare },
-  { name: 'HuggingFace', fn: viaHuggingFace }
-];
+// 2026-11-20: mindkét backend ingyenes Cloudflare-modell (klein 4B → schnell).
+const IMAGE_BACKENDS = kepBackendek(process.env);
 
 // Opcionális kép-tömörítés (sharp) — ha nincs telepítve, sima mentés.
 //
@@ -219,7 +192,7 @@ async function compressImage(buf) {
 }
 
 async function generateImage(prompt, destPath) {
-  let lastErr = 'nincs elérhető kép-backend (adj hozzá CLOUDFLARE/HF/GOOGLE kulcsot)';
+  let lastErr = 'nincs elérhető kép-backend (hiányzik a CLOUDFLARE_FLUX_TOKEN / CLOUDFLARE_ACCOUNT_ID)';
   for (const b of IMAGE_BACKENDS) {
     try {
       let buf = await b.fn(prompt);
