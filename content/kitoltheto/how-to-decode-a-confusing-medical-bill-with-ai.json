@@ -1,6 +1,6 @@
 {
   "slug": "how-to-decode-a-confusing-medical-bill-with-ai",
-  "keszult": "2026-11-01T20:03:33.185Z",
+  "keszult": "2026-11-20T16:39:56.316Z",
   "promptok": {
     "6314665c056b": [
       {
@@ -33,6 +33,88 @@
       {
         "eredeti": "$298.50",
         "hely": "previous total"
+      }
+    ]
+  },
+  "promptok_hu": {
+    "46b644862d76": [
+      {
+        "eredeti": "bill-jan2026.pdf",
+        "hely": "a fájlod neve"
+      }
+    ],
+    "567fb774ca0c": [],
+    "a308dc4112a3": [
+      {
+        "eredeti": "rendelői látogatásom",
+        "hely": "a látogatásod típusa"
+      },
+      {
+        "eredeti": "biztosítóm",
+        "hely": "a biztosítód neve"
+      }
+    ],
+    "cd5cc04df41d": [
+      {
+        "eredeti": "84,20 dollár",
+        "hely": "az engedélyezett összeg"
+      },
+      {
+        "eredeti": "25 dollárt",
+        "hely": "a beteg részének összege"
+      }
+    ],
+    "aaf2f8772bcb": [
+      {
+        "eredeti": "342,10 dollárt",
+        "hely": "a kézzel kapott végösszeg"
+      },
+      {
+        "eredeti": "298,50 dollár",
+        "hely": "az előző válaszban szereplő összeg"
+      }
+    ]
+  },
+  "promptok_es": {
+    "31b4bac0c0b9": [
+      {
+        "eredeti": "factura-ene2026.pdf",
+        "hely": "nombre de tu archivo"
+      }
+    ],
+    "06f6aa23e6b5": [],
+    "390637487f72": [
+      {
+        "eredeti": "clínica",
+        "hely": "tipo de centro médico"
+      },
+      {
+        "eredeti": "español",
+        "hely": "tu idioma"
+      }
+    ],
+    "077d9de99002": [
+      {
+        "eredeti": "línea 4",
+        "hely": "la línea de tu factura"
+      },
+      {
+        "eredeti": "CPT 99213",
+        "hely": "tu código de procedimiento"
+      },
+      {
+        "eredeti": "$84.20",
+        "hely": "el monto de tu cargo"
+      }
+    ],
+    "f7fa6e50934f": [
+      {
+        "eredeti": "$342.10",
+        "hely": "el total que te da"
+      },
+      {
+        "eredeti": "$298.50",
+        "hely": "el total de la respuesta anterior"
       }
     ]
   }

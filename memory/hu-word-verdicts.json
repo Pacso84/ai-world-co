@@ -2465,6 +2465,8 @@
     "rápillantnod",
     "részleteiddal",
     "részletességet",
+    "részvényértékesítésből",
+    "részvényértékesítést",
     "rétegen",
     "rétegsz",
     "rókaról",
@@ -2717,6 +2719,7 @@
     "szuperokos",
     "szállodaplugin",
     "számlaszkennesek",
+    "számsorokra",
     "széleskörű",
     "szélessáv",
     "szélessávot",
@@ -3242,6 +3245,7 @@
     "zsúra",
     "zsúrok",
     "zugokba",
+    "zártkörű",
     "zöldséget",
     "ában",
     "ábácileves",
@@ -3301,6 +3305,8 @@
     "érdekességet",
     "értelemgazdagabb",
     "érthetőséget",
+    "értékpapírok",
+    "értékpapíroknak",
     "érvet",
     "ésszerű",
     "ésszerűek",
@@ -4822,6 +4828,16 @@
       "correct": "geminiből",
       "at": "2026-11-19",
       "note": "Gemini ragozása (kézi, 11-19)"
+    },
+    "szamla-munkamasolat": {
+      "correct": "számla-munkamásolat",
+      "at": "2026-11-20",
+      "mondattal": true
+    },
+    "level-munkamasolat": {
+      "correct": "levél-munkamásolat",
+      "at": "2026-11-20",
+      "mondattal": true
     }
   },
   "review": {
@@ -6551,11 +6567,16 @@
       "correct": "multiagent (or use Hungarian: multi-ügynök)",
       "at": "2026-11-19",
       "mondattal": true
+    },
+    "pichoz": {
+      "correct": "Anthropichoz",
+      "at": "2026-11-20",
+      "mondattal": true
     }
   },
   "scan": {
     "at": "2026-11-20",
-    "files": 895,
-    "candidates": 5
+    "files": 898,
+    "candidates": 9
   }
 }
