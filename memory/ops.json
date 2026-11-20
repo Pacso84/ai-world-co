@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179497847957358",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-18T05:07:59.573Z",
-      "updated": "2026-11-18T05:09:08.705Z"
-    },
-    {
-      "id": "t179497854870732",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-18T05:09:08.707Z",
-      "updated": "2026-11-18T05:10:16.683Z"
-    },
-    {
-      "id": "t179497861672646",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-18T05:10:16.726Z",
-      "updated": "2026-11-18T05:10:16.945Z"
-    },
-    {
-      "id": "t179497861694671",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-18T05:10:16.946Z",
-      "updated": "2026-11-18T05:10:17.169Z"
-    },
-    {
-      "id": "t179497861725282",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-18T05:10:17.252Z",
-      "updated": "2026-11-18T05:11:55.142Z"
-    },
-    {
-      "id": "t179497871514466",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-18T05:11:55.144Z",
-      "updated": "2026-11-18T05:12:55.610Z"
-    },
-    {
-      "id": "t179497877561282",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-18T05:12:55.612Z",
-      "updated": "2026-11-18T05:13:10.952Z"
-    },
-    {
-      "id": "t179497879095433",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-18T05:13:10.954Z",
-      "updated": "2026-11-18T05:13:36.189Z"
-    },
-    {
-      "id": "t179502058295150",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-18T16:49:42.951Z",
-      "updated": "2026-11-18T16:49:43.087Z"
-    },
-    {
-      "id": "t179502058308811",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-18T16:49:43.088Z",
-      "updated": "2026-11-18T16:50:33.276Z"
-    },
-    {
-      "id": "t17950206332775",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-18T16:50:33.277Z",
-      "updated": "2026-11-18T16:50:33.411Z"
-    },
-    {
-      "id": "t179502063344780",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-18T16:50:33.447Z",
-      "updated": "2026-11-18T16:51:35.157Z"
-    },
-    {
-      "id": "t179502069515930",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-18T16:51:35.159Z",
-      "updated": "2026-11-18T16:51:47.116Z"
-    },
-    {
-      "id": "t179502070711854",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-18T16:51:47.118Z",
-      "updated": "2026-11-18T16:51:54.156Z"
-    },
-    {
       "id": "t179502071421385",
       "title": "Run guide",
       "status": "done",
@@ -479,49 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-20T04:57:20.129Z",
       "updated": "2026-11-20T04:57:47.470Z"
+    },
+    {
+      "id": "t179519227159864",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-20T16:31:11.598Z",
+      "updated": "2026-11-20T16:31:11.810Z"
+    },
+    {
+      "id": "t179519227181474",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-20T16:31:11.814Z",
+      "updated": "2026-11-20T16:31:51.768Z"
+    },
+    {
+      "id": "t179519231177030",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-20T16:31:51.770Z",
+      "updated": "2026-11-20T16:31:51.975Z"
+    },
+    {
+      "id": "t179519231202792",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-20T16:31:52.027Z",
+      "updated": "2026-11-20T16:32:15.858Z"
+    },
+    {
+      "id": "t179519233586014",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-20T16:32:15.860Z",
+      "updated": "2026-11-20T16:32:35.270Z"
+    },
+    {
+      "id": "t179519235527379",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-20T16:32:35.273Z",
+      "updated": "2026-11-20T16:33:09.181Z"
+    },
+    {
+      "id": "t179519238918239",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-20T16:33:09.182Z",
+      "updated": "2026-11-20T16:33:43.178Z"
+    },
+    {
+      "id": "t179519242318060",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-20T16:33:43.180Z",
+      "updated": "2026-11-20T16:33:54.380Z"
+    },
+    {
+      "id": "t179519243446891",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-20T16:33:54.468Z",
+      "updated": "2026-11-20T16:33:54.695Z"
+    },
+    {
+      "id": "t179519243469752",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-20T16:33:54.697Z",
+      "updated": "2026-11-20T16:33:54.920Z"
+    },
+    {
+      "id": "t179519243496262",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-20T16:33:54.962Z",
+      "updated": "2026-11-20T16:35:14.401Z"
+    },
+    {
+      "id": "t179519251440353",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-20T16:35:14.403Z",
+      "updated": "2026-11-20T16:35:37.024Z"
+    },
+    {
+      "id": "t179519253702524",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-20T16:35:37.025Z",
+      "updated": "2026-11-20T16:35:46.670Z"
+    },
+    {
+      "id": "t179519254667290",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-20T16:35:46.672Z",
+      "updated": "2026-11-20T16:36:13.116Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179443578663780",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „Then look for the n",
-      "agent": "fact-check",
-      "at": "2026-11-11T22:23:06.637Z",
-      "loud": false
-    },
-    {
-      "id": "n17944358373277",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „A **Google Workspac",
-      "agent": "fact-check",
-      "at": "2026-11-11T22:23:57.327Z",
-      "loud": false
-    },
-    {
-      "id": "n179443585666284",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „According to Salesf",
-      "agent": "fact-check",
-      "at": "2026-11-11T22:24:16.662Z",
-      "loud": false
-    },
-    {
-      "id": "n179445925135250",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to pause and schedule automated workflows in Google Workspace Studio\"",
-      "agent": "pairing",
-      "at": "2026-11-12T04:54:11.352Z",
-      "loud": false
-    },
-    {
-      "id": "n179445927128694",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to use Gemini 4 Carbon\"",
-      "agent": "pairing",
-      "at": "2026-11-12T04:54:31.286Z",
-      "loud": false
-    },
     {
       "id": "n179445972794666",
       "level": "info",
@@ -1281,75 +1241,49 @@
       "agent": "ceo",
       "at": "2026-11-20T04:57:47.512Z",
       "loud": false
+    },
+    {
+      "id": "n179519237274746",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to preview and choose a Gemini voice in the mobile app\" — az Ellenőrző tényt/forrást kér, amit nem t",
+      "agent": "guide",
+      "at": "2026-11-20T16:32:52.747Z",
+      "loud": false
+    },
+    {
+      "id": "n179519238916724",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to Remove Personal Details From a Document Before Sharing It With an AI Tool\" — az Ellenőrző tényt/f",
+      "agent": "guide",
+      "at": "2026-11-20T16:33:09.167Z",
+      "loud": false
+    },
+    {
+      "id": "n179519253701356",
+      "level": "info",
+      "text": "SEO: 3 cikk optimalizálva (átlag 7.7/10).",
+      "agent": "seo",
+      "at": "2026-11-20T16:35:37.013Z",
+      "loud": false
+    },
+    {
+      "id": "n179519255476177",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). **Publish Summary:** Great mix — you've got solid practical guides (emails, resumes, bios) paired with smart AI literacy pieces (fact-checking, privacy, what AI is actually good at). It's cohesive and",
+      "agent": "publisher",
+      "at": "2026-11-20T16:35:54.761Z",
+      "loud": false
+    },
+    {
+      "id": "n179519257316716",
+      "level": "success",
+      "text": "1 hír + 2 útmutató publikálva (költség: $0.0126).",
+      "agent": "ceo",
+      "at": "2026-11-20T16:36:13.167Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179414916545234",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-08T14:46:05.452Z"
-    },
-    {
-      "id": "m179416826312775",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (túl nagy átírás (2158 szó a 1550-ből)): \"27 AI video editing prompts for footage you alread\" — A forrás a Picsart-specifikus videószerkesztési promptekről szól, pontos ötlépcsős szerkezettel és konkrét modellajánlásokkal. A cikk általános AI videószerkesztési tanácsokként mutatja be, egyszerűsített recepttel, ami ellentmond a forrás módszertanának.",
-      "ref": "ARTICLE_2026-08-25T00-37-56-602Z_picsart_27_AI_video_editing_prompts_for_footage_you_alread.json",
-      "open": true,
-      "at": "2026-11-08T20:04:23.127Z"
-    },
-    {
-      "id": "m179416828358619",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „The announcement does not describe any new product, setting, or change you will see in an ”): \"OpenAI and Poland’s NASK partner to advance AI saf\" — A forrás konkrét eredményeket ad meg - a partnerség már konkrét biztonsági eredményeket hozott létre.",
-      "ref": "ARTICLE_2026-10-24T02-27-21-099Z_openai-blog_OpenAI_and_Poland_s_NASK_partner_to_advance_AI_saf.json",
-      "open": true,
-      "at": "2026-11-08T20:04:43.586Z"
-    },
-    {
-      "id": "m179416878027264",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "3 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-08T20:13:00.272Z"
-    },
-    {
-      "id": "m179419586065080",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 29 → 6/5/3 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-09T03:44:20.650Z"
-    },
-    {
-      "id": "m179419597406856",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Zapier Explores How Much AI Should Decide Without Asking You First”): \"This Week in AI: The 5 Stories That Matter (Novemb\" — Az ötödik történet hibásan azonosítja a Zapier-t mint céget; a forrás az Amazon Quick AI jóváhagyási funkcióit írja le",
-      "ref": "ARTICLE_2026-11-08T03-22-47-134Z_aiworld-editorial_This_Week_in_AI.json",
-      "open": true,
-      "at": "2026-11-09T03:46:14.068Z"
-    },
-    {
-      "id": "m179419661299339",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-09T03:56:52.993Z"
-    },
     {
       "id": "m179424726103083",
       "from": "designer",
@@ -2685,6 +2619,73 @@
       "text": "4 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-20T05:07:40.606Z"
+    },
+    {
+      "id": "m179519237274566",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to preview and choose a Gemini voice in the mobile app\" — javítva: The article claims that Gemini's Voice is available only in the mobile app and not in a web browser; this is presented as a firm limitation without support and is likely inaccurate given Gemini voice settings are also available on the web.; The article describes a mobile-app flow with a left-side Menu, then Settin",
+      "ref": "GUIDE_how-to-preview-and-choose-a-regional-voice-in-gemini.json",
+      "at": "2026-11-20T16:32:52.745Z"
+    },
+    {
+      "id": "m179519237274770",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to preview and choose a Gemini voice in the mobile app\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: The article states that specific regional voices including U.S. English, U.K. English, India English, Hindi, Brazilian Portuguese, Indonesian, and Korean are available in the app, but it provides no source and presents this list as current fact despite availability ",
+      "ref": "GUIDE_how-to-preview-and-choose-a-regional-voice-in-gemini.json",
+      "open": false,
+      "at": "2026-11-20T16:32:52.747Z",
+      "resolved_at": "2026-11-20T16:33:24.484Z"
+    },
+    {
+      "id": "m179519238916534",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Remove Personal Details From a Document Before Sharing It With an AI Tool\" — javítva: HOWTO_TOO_LONG: 1721 szó (~8.6 perc olvasás) — a cél 1000-1400 szó, a felső kapu 1700. A Facebookról érkező mobilolvasó ennyit ritkán olvas végig.; UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"find\", \"replace\", \"replace all\"). Vagy nézd meg a hivatalos olda",
+      "ref": "GUIDE_how-to-remove-personal-details-from-a-document-before-sharin.json",
+      "at": "2026-11-20T16:33:09.165Z"
+    },
+    {
+      "id": "m17951923891676",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to Remove Personal Details From a Document Before Sharing It With an AI Tool\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: UI_CLAIMS_UNSOURCED: 3 konkrét képernyő-feliratot állít tényként forrás nélkül (\"find\", \"replace\", \"replace all\"). Vagy nézd meg a hivatalos oldalon, vagy írd hedge-elve (\"if you don't see…\").",
+      "ref": "GUIDE_how-to-remove-personal-details-from-a-document-before-sharin.json",
+      "open": false,
+      "at": "2026-11-20T16:33:09.167Z",
+      "resolved_at": "2026-11-20T16:33:43.159Z"
+    },
+    {
+      "id": "m179519240448322",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to preview and choose a Gemini voice in the mobile app\" (?/10)",
+      "ref": "GUIDE_how-to-preview-and-choose-a-regional-voice-in-gemini.json",
+      "at": "2026-11-20T16:33:24.483Z"
+    },
+    {
+      "id": "m179519242315788",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to Remove Personal Details From a Document Before Sharing It With an AI Tool\" (?/10)",
+      "ref": "GUIDE_how-to-remove-personal-details-from-a-document-before-sharin.json",
+      "at": "2026-11-20T16:33:43.157Z"
+    },
+    {
+      "id": "m179519254661361",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-20T16:35:46.613Z"
     }
   ]
 }

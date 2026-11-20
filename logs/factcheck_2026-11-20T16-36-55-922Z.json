@@ -1,0 +1,62 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.009263315000000001,
+  "at": "2026-11-20T16:36:55.922Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-remove-personal-details-from-a-document-before-sharin.json",
+      "cim": "How to Remove Personal Details From a Document Before Sharing It With an AI Tool",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-preview-and-choose-a-regional-voice-in-gemini.json",
+      "cim": "How to preview and choose a Gemini voice in the mobile app",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Nincs konkrét bizonyíték, amely ellentmondana az útmutató állításainak a hangbeállítások mobilalkalmazás-korlátozottságáról; a legfrissebb hírek nem említik a webes hangbeállításokat."
+    },
+    {
+      "file": "ARTICLE_2026-11-20T16-31-51-749Z_anthropic-blog_Anthropic_announces_closing_of_initial_public_offe.json",
+      "cim": "Anthropic announces closing of initial public offering, including full exercise of underwriters’ option to purchase addi",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben szereplő összes tényalapú állítás megegyezik a hivatalos forrásszöveggel"
+    },
+    {
+      "file": "ARTICLE_2026-09-08T19-07-52-017Z_cohere-blog_Cohere__x27_s_North_Mini_Code_Megakernel_Serving_E.json",
+      "cim": "Cohere&#x27;s North Mini Code Megakernel Serving Engine",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrásanyagot. A megakerneleket helyesen azonosítja mint szolgáltató motor optimalizálást, helyesen azonosítja a Cohere-t, mint a technikai részleteket közlő vállalatot, és helyesen jegyzi meg, hogy a dekódoláshoz kapcsolódik (a tokenek autoregresszív generálási folyamatáho"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-turn-a-blurry-photo-into-a-crisp-poster-with-nvidia-a.json",
+      "cim": "How to turn a blurry photo into a crisp poster with NVIDIA AI Image Super‑Resolution in 5 minutes",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-10-05T02-56-31-463Z_perplexity-news_How_Credits_Work_on_Perplexity_-_perplexity_ai.json",
+      "cim": "How Credits Work on Perplexity - perplexity.ai",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    }
+  ]
+}
