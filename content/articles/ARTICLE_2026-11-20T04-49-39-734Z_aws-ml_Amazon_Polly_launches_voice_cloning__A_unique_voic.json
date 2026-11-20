@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "written_at": "2026-11-20T04:50:31.823Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0037328,
+    "original_draft": "2026-11-20T04-49-39-734Z_aws-ml_Amazon_Polly_launches_voice_cloning__A_unique_voic.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/amazon-polly-launches-voice-cloning-a-unique-voice-for-your-brand/",
+    "source_links": [
+      "https://aws.amazon.com/blogs/machine-learning/amazon-polly-launches-voice-cloning-a-unique-voice-for-your-brand/"
+    ],
+    "source_snippet_len": 289,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "cdf0ac5b5c8760f7",
+    "source_overlap_words": 14,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-20T04:52:22.490Z",
+    "slug": "amazon-polly-voice-cloning-what-it-is-and-who-can-use-it",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 767
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Article is well-structured with clear hook, definitions, process steps, privacy details, and actionable What this means for you section. Technical terms like TTS, IVR, S3 bucket are explained in plain language. Claims are properly attributed to Amazon. No prohibited content, no clichés, no British spellings.",
+      "_aiCost": 0.00201936,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-20T04:53:00.823Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a gated enterprise feature requiring AWS account approval and technical setup - not accessible for ordinary people to use today",
+    "image_v": 2,
+    "image_at": "2026-11-20T04:55:46.151Z",
+    "seo": {
+      "meta_description": "Amazon Polly voice cloning creates custom synthetic voices from just a few minutes of recordings. Learn what's available and who can access it.",
+      "keywords": [
+        "amazon polly voice cloning",
+        "voice cloning amazon",
+        "amazon text to speech custom voice",
+        "ai voice cloning text to speech",
+        "how to use amazon polly voice cloning",
+        "amazon polly synthetic voice"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific details about which seven languages are supported to improve ranking for language-specific searches",
+        "Include the current access requirements or how to request gated release access to help users take action",
+        "Add more practical use cases beyond phone lines and audiobooks to broaden search relevance"
+      ],
+      "optimised_at": "2026-11-20T04:56:47.676Z"
+    },
+    "fact_verified_at": "2026-11-20T04:58:12.164Z"
+  },
+  "article_markdown": "---\ntitle: \"Amazon Polly Voice Cloning: What It Is and Who Can Use It\"\nsubtitle: \"Amazon says a few minutes of recorded speech can now become a custom synthetic voice, with consent and access controls built in.\"\ncategory: \"ai-news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"voice-cloning\", \"text-to-speech\", \"amazon-polly\", \"ai-audio\"]\n---\n\n# Amazon Polly Voice Cloning: What It Is and Who Can Use It\n\n> **In short:** Amazon Polly, Amazon's text-to-speech service, now offers voice cloning in a gated release. According to Amazon, a few minutes of recordings from one speaker who has agreed to it can produce a custom voice that reads any text you give it, in seven languages.\n\nHave you ever wished a company's phone line, audiobook or app narrator sounded like one familiar voice, not a generic robot? That is the problem this new feature is meant to solve.\n\n## What voice cloning means\n\nText-to-speech (TTS) is software that turns written words into spoken audio. Voice cloning goes one step further. It learns the sound of one specific person, so the output sounds like that person, even when they never recorded the words being read.\n\nAmazon says its cloned voices run on the Amazon Polly generative engine, the company's newer system for producing speech. Amazon states that these voices sound about as natural and accurate as the other generative voices in the service.\n\n## How the process works\n\nAmazon describes four stages:\n\n- **Record:** You gather recordings from one speaker. You can send them directly with a request, upload them in the console, or store them in an Amazon S3 bucket (a cloud storage space) and point Amazon Polly to them.\n- **Create:** You submit between one and ten recordings, the language they were spoken in, and a confirmation that the speaker agreed. Amazon Polly returns a voice ID right away.\n- **Wait:** Building the voice happens in the background and typically takes five to ten minutes. Amazon says the service also checks the quality of the audio during this time.\n- **Use:** Once the voice is ready, you send text and receive speech in that voice.\n\n💬 Example: Think of the recordings as the raw material. The more clean, consistent audio the speaker provides, the better the result Amazon can build from it. (Amazon's own recording tips are in its official documentation.)\n\n## Languages, privacy and access\n\nAt launch, Amazon lists seven languages: English, Spanish, German, French, Italian, Portuguese and Hindi. Each cloned voice speaks only the language it was recorded in. If you need a voice in several languages, you create and review one per language.\n\nAmazon says cloned voices are encrypted automatically (scrambled so outsiders cannot read them) and access-controlled, so only your account can use them. Each time you create a voice, you confirm that the speaker has consented.\n\nAmazon says the feature is available in every AWS Region that supports the generative engine, including the AWS GovCloud (US) Region. Access is already enabled for some customers. Others can contact their AWS account team or apply for access.\n\nBilling is usage-based. Amazon says there is no charge for building a cloned voice itself, while cloned-voice usage is billed pay-as-you-go. For current rates, check the official Amazon Polly pricing page.\n\n## What this means for you\n\n- **In everyday life:** Most people will never build a voice themselves, but they may hear one. A company phone system, a course narrator or a reading app may soon use a steady, recognizable voice that is easier to follow.\n- **For your business or work:** Teams that run phone menus (called IVR, or interactive voice response), training courses or podcasts can keep one brand voice and update scripts without booking a new studio session.\n- **If you're just getting started:** Learn the difference between a generic voice and a cloned one, and ask whoever manages your audio tools whether cloning is on their roadmap. Ask how consent is recorded, too.\n- **If you already use it:** If you already work with Amazon Polly, check whether your AWS account has access. If not, your account team or the access application route is the official path. Then test one short, non-critical script before using a voice in customer-facing audio.\n\n## Wrap-up\n\nAmazon Polly voice cloning turns a few minutes of consented recordings into a custom voice that can read new text in seven languages. Amazon says the voices are encrypted, access-controlled and available across many AWS Regions. If you work with voice content, a good next step is to read Amazon's official announcement and its voice cloning documentation, then decide whether a short test fits your project.",
+  "original_title": "Amazon Polly launches voice cloning: A unique voice for your brand"
+}

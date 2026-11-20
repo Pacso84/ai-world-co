@@ -1,0 +1,20 @@
+{
+  "started_at": "2026-11-20T04:54:32.620Z",
+  "total": 2,
+  "passed": 0,
+  "failed": 1,
+  "auto_check_failed": 1,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.002417694,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_how-to-remove-personal-details-from-a-document-before-sharin.json",
+      "decision": "FAIL",
+      "reason": "auto-check critical",
+      "skipped_ai": true
+    }
+  ],
+  "truth_blocked": 1,
+  "finished_at": "2026-11-20T04:54:59.486Z",
+  "duration_seconds": 26.866
+}

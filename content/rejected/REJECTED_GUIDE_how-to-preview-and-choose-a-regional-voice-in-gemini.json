@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-preview-and-choose-a-regional-voice-in-gemini",
+    "company": "Google",
+    "tool": "Gemini",
+    "icon": "🆕",
+    "level": "beginner",
+    "source_news": {
+      "file": "ARTICLE_2026-11-16T19-32-39-717Z_google-gemini_Regional_voices_are_rolling_out_in_the_Gemini_app_.json",
+      "title": "Regional voices are rolling out in the Gemini app."
+    },
+    "official_sources": [
+      {
+        "url": "https://support.google.com/gemini/answer/15277943",
+        "title": "Change Gemini’s voice"
+      }
+    ],
+    "sugo_alapu": true,
+    "trend": null,
+    "extra_slot": null,
+    "written_at": "2026-11-20T04:54:04.749Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0047205,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "rejected",
+    "rejected_at": "2026-11-20T04:54:59.416Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1168
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "FAIL",
+      "issues": [
+        "The article claims that Gemini's Voice is available only in the mobile app and not in a web browser; this is presented as a firm limitation without support and is likely inaccurate given Gemini voice settings are also available on the web.",
+        "The article describes a mobile-app flow with a left-side Menu, then Settings > Gemini's Voice, voice previews, and a Confirm button, but the exact UI labels and controls are asserted too specifically for the current Gemini app and risk misrepresenting the actual interface.",
+        "The article claims that a confirmed voice is used in Gemini Live and whenever Gemini reads replies aloud; this overstates the scope of the setting and may incorrectly attribute a Live-specific voice selection to the general Gemini voice setting.",
+        "The article states that specific regional voices including U.S. English, U.K. English, India English, Hindi, Brazilian Portuguese, Indonesian, and Korean are available in the app, but it provides no source and presents this list as current fact despite availability varying by language and region."
+      ],
+      "verdict": "Hitelesség-kapu blokkolta: The article claims that Gemini's Voice is available only in the mobile app and not in a web browser; this is presented as a firm limitation without support and is likely inaccurate given Gemini voice ",
+      "_aiCost": 0.00162435,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Hitelesség-kapu blokkolta: The article claims that Gemini's Voice is available only in the mobile app and not in a web browser; this is presented as a firm limitation without support and is likely inaccurate given Gemini voice ",
+    "can_retry": true
+  },
+  "article_markdown": "---\ntitle: \"How to Preview and Choose a Gemini Voice in the Gemini Mobile App\"\nsubtitle: \"Hear each regional Gemini voice before you pick one, so the voice you choose sounds right for you.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"Google\"\ntool: \"Gemini\"\nlevel: \"beginner\"\nread_time_minutes: 5\ntags: [\"getting-started\", \"gemini\", \"voice\", \"mobile\"]\n---\n\n# How to Preview and Choose a Gemini Voice in the Gemini Mobile App\n\n> **In short:** In the Gemini mobile app, you can listen to each available voice and pick the one you like best. Your choice applies across the app, including spoken replies. You must be signed in, and the list of voices depends on your language.\n\nHave you ever used a voice assistant that sounded a little off, with a rhythm or accent that didn't feel like anyone you know? Gemini now offers regional voices, and this guide shows you how to hear them and choose one. It's written for anyone who has the Gemini app on a phone and wants a voice that feels more natural.\n\n## Before you start\n- **A Gemini account.** You need to be signed in to use this setting.\n- **The Gemini mobile app** on an Android or iPhone. Voice settings are only available in the mobile app for now, not in a web browser.\n- **A quiet moment and about five minutes.** You'll listen to a few voices, so headphones help if you have them.\n\n## Step 1 — Open the Gemini app and check that you're signed in\nTap the **Gemini app icon** on your home screen or in your app drawer to open it. You should see your conversation screen, with a message box at the bottom. Your profile picture or initial usually sits in the top corner of the screen. That's how you know which account you're using.\n\nIf you aren't signed in, the app will ask you to sign in before you can change the voice. Use the account you normally use with Gemini. Voice settings are tied to that account, so signing in with a different one can make your choice look like it disappeared.\n\nYou'll know it worked when you can see your profile picture or initial and your account is the one you expect.\n\n## Step 2 — Open the Menu at the left\nLook at the left side of the screen. You'll find a **Menu** control there, often shown as a small icon with three horizontal lines. Tap it once. A side panel should slide out from the left, with options for your conversations and your account.\n\nIf you don't see the Menu icon, the screen may be showing a conversation in full view. Try tapping the top-left corner, or go back to the main screen first. Apps change their layout from time to time, so if the icon looks different, look for anything on the left edge that says Menu or shows three lines.\n\nYou'll know it worked when the side panel opens and shows your options.\n\n## Step 3 — Open Settings, then Gemini's Voice\nInside the side panel, find the option labeled **Settings** and tap it. Then scroll down until you see the **Gemini's Voice** setting and tap it. This is the screen where Gemini's voice choices are listed.\n\nKeep in mind that the number of voice options changes depending on the language your app uses. If you don't see Gemini's Voice at all, the setting may not be available in your language yet. The official Gemini help center has the current list of supported languages, and you can check your app language in the app's settings.\n\nYou'll know it worked when a list of voice names appears on your screen.\n\n## Step 4 — Preview voices by tapping their names\nTap a voice name once. The app plays a short sample so you can hear how that voice sounds. Tap another name to compare it. Take your time and listen to two or three voices before deciding. Some voices may sound more natural to you if you speak English with a particular accent, or if you prefer a certain rhythm.\n\nThe new regional voices cover several languages and dialects, including U.S. English, U.K. English, India English, Hindi, Brazilian Portuguese, Indonesian, and Korean. Which of these you see depends on your language setting. Pick the voice that feels most comfortable to you. There's no wrong answer.\n\n💬 Example: Say a short sentence to yourself, such as \"Good morning, how are you today?\" and notice which voice sounds the most natural when you listen to it.\n\nYou'll know it worked when each name you tap plays a short voice sample.\n\n## Step 5 — Confirm your choice and test it\nWhen you find a voice you like, tap **Confirm**. The setting saves, and you return to the Gemini app. This voice is now used in Gemini Live, which is the spoken, back-and-forth conversation mode, and whenever Gemini reads a reply aloud. For example, when you tap Listen next to a response, the new voice speaks it.\n\nTo test it, open a Gemini Live conversation and speak a short request. Listen closely to the reply. If it doesn't sound right, go back to the same setting and try another voice. You can change it as often as you like.\n\n💬 Example: \"Tell me a fun fact about [your favorite animal].\"\n\nYou'll know it worked when Gemini answers out loud in the voice you confirmed.\n\n## Common mistakes\n- **Tapping Confirm too early.** Tapping a voice name only plays a sample. Your choice isn't saved until you tap Confirm. If you leave without confirming, the old voice stays. Fix: listen to your favorites, then tap Confirm on the one you want.\n- **Looking for the setting on the web.** For now, the voice setting is only in the Gemini mobile app. Fix: open the app on your phone, and remember the steps above start from the left Menu.\n- **Expecting the voice to change the language.** The voice changes how Gemini sounds, not what language it understands or speaks. It can't translate your conversation for you. Fix: if you want replies in a different language, change the app's language setting, then check the voice list again.\n\n## What this means for you\n- **In everyday life:** If you use Gemini while cooking, driving or getting ready in the morning, a voice that sounds like it fits your speech can make listening to replies feel more comfortable.\n- **For your business or work:** If you have customers or coworkers who speak a particular dialect, you can hear which voice sounds closest to them before using spoken Gemini in your daily work.\n- **If you're just getting started:** Begin with the voice you hear first, then try two more. You can always change it later.\n\n## Try it now\nOpen the Gemini mobile app, tap the Menu at the left, go to Settings, then Gemini's Voice. Tap two voice names, listen to both, and confirm the one you like best.",
+  "original_title": "How to preview and choose a Gemini voice in the mobile app"
+}

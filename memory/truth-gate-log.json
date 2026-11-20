@@ -1,15 +1,4 @@
 {
-  "2026-10-14": [
-    {
-      "at": "2026-10-14T02:46:48.081Z",
-      "file": "WRITER_GUIDE_how-to-ask-alexa-for-outfit-suggestions-based-on-the-day-s-w.json",
-      "action": "block",
-      "reasons": [
-        "Az AI-bíró kitalált állítást talált (részletek nélkül)"
-      ],
-      "confidence": null
-    }
-  ],
   "2026-10-15": [
     {
       "at": "2026-10-15T02:30:02.405Z",
@@ -209,6 +198,20 @@
         "The article contains the Chinese characters '趋势' (truncated/garbled text) in the 'What this means for you' section, which is not a factual fabrication but indicates broken/mangled content (likely a translation artifact where 'trend' was partially rendered)."
       ],
       "confidence": 7
+    }
+  ],
+  "2026-11-20": [
+    {
+      "at": "2026-11-20T04:54:59.439Z",
+      "file": "WRITER_GUIDE_how-to-preview-and-choose-a-regional-voice-in-gemini.json",
+      "action": "block",
+      "reasons": [
+        "The article claims that Gemini's Voice is available only in the mobile app and not in a web browser; this is presented as a firm limitation without support and is likely inaccurate given Gemini voice settings are also available on the web.",
+        "The article describes a mobile-app flow with a left-side Menu, then Settings > Gemini's Voice, voice previews, and a Confirm button, but the exact UI labels and controls are asserted too specifically for the current Gemini app and risk misrepresenting the actual interface.",
+        "The article claims that a confirmed voice is used in Gemini Live and whenever Gemini reads replies aloud; this overstates the scope of the setting and may incorrectly attribute a Live-specific voice selection to the general Gemini voice setting.",
+        "The article states that specific regional voices including U.S. English, U.K. English, India English, Hindi, Brazilian Portuguese, Indonesian, and Korean are available in the app, but it provides no source and presents this list as current fact despite availability varying by language and region."
+      ],
+      "confidence": 6
     }
   ]
 }
