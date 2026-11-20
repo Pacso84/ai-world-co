@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "AI World rétegzett memória (hot/warm/cold, salience decay).",
-    "updated": "2026-11-20T04:57:04.084Z"
+    "updated": "2026-11-20T05:01:00.330Z"
   },
   "items": [
     {
@@ -28,7 +28,7 @@
       "created": "2026-06-20T22:01:05.694Z",
       "lastAccessed": "2026-11-20T04:51:01.606Z",
       "accessCount": 1378,
-      "salience": 1,
+      "salience": 0.999722813425926,
       "tier": "hot"
     },
     {
@@ -101,7 +101,7 @@
       "created": "2026-06-22T19:24:53.845Z",
       "lastAccessed": "2026-11-20T04:57:04.083Z",
       "accessCount": 335,
-      "salience": 1,
+      "salience": 0.9998906268518518,
       "tier": "hot"
     },
     {
@@ -114,7 +114,7 @@
       "created": "2026-06-22T19:33:18.784Z",
       "lastAccessed": "2026-11-20T04:57:04.083Z",
       "accessCount": 332,
-      "salience": 1,
+      "salience": 0.9998906268518518,
       "tier": "hot"
     },
     {
@@ -144,7 +144,7 @@
       "created": "2026-06-28T19:44:51.115Z",
       "lastAccessed": "2026-11-20T04:57:04.083Z",
       "accessCount": 325,
-      "salience": 1,
+      "salience": 0.9998906268518518,
       "tier": "hot"
     },
     {
@@ -784,7 +784,7 @@
       "created": "2026-07-08T01:44:49.826Z",
       "lastAccessed": "2026-11-20T04:51:01.606Z",
       "accessCount": 670,
-      "salience": 1,
+      "salience": 0.999722813425926,
       "tier": "hot"
     },
     {
@@ -1275,7 +1275,7 @@
       "created": "2026-07-17T01:52:26.985Z",
       "lastAccessed": "2026-11-20T04:54:59.447Z",
       "accessCount": 38,
-      "salience": 0.2,
+      "salience": 0.19983292500000002,
       "tier": "cold",
       "repeats": 36,
       "lastRepeat": "2026-11-20T04:54:59.447Z"
@@ -1353,8 +1353,8 @@
       "created": "2026-07-17T09:48:45.563Z",
       "lastAccessed": "2026-11-17T05:42:52.195Z",
       "accessCount": 103,
-      "salience": 0.6691395722222222,
-      "tier": "hot",
+      "salience": 0.5503024731481481,
+      "tier": "warm",
       "repeats": 101,
       "lastRepeat": "2026-11-17T05:42:52.195Z"
     },
@@ -2059,7 +2059,7 @@
       "created": "2026-07-20T10:47:06.283Z",
       "lastAccessed": "2026-11-20T04:54:05.222Z",
       "accessCount": 271,
-      "salience": 1,
+      "salience": 0.9998078208333333,
       "tier": "hot"
     },
     {
@@ -2567,7 +2567,7 @@
       "created": "2026-07-22T10:30:10.241Z",
       "lastAccessed": "2026-11-20T04:51:01.606Z",
       "accessCount": 762,
-      "salience": 1,
+      "salience": 0.999722813425926,
       "tier": "hot"
     },
     {
@@ -2979,7 +2979,7 @@
       "created": "2026-07-23T10:15:43.016Z",
       "lastAccessed": "2026-11-20T04:51:01.606Z",
       "accessCount": 467,
-      "salience": 1,
+      "salience": 0.999722813425926,
       "tier": "hot"
     },
     {
@@ -3503,7 +3503,7 @@
       "created": "2026-07-24T02:05:34.262Z",
       "lastAccessed": "2026-11-20T04:54:05.222Z",
       "accessCount": 277,
-      "salience": 1,
+      "salience": 0.9998078208333333,
       "tier": "hot",
       "repeats": 17,
       "lastRepeat": "2026-11-17T05:46:43.303Z"
@@ -3950,7 +3950,7 @@
       "created": "2026-07-25T01:52:03.838Z",
       "lastAccessed": "2026-11-20T04:51:01.606Z",
       "accessCount": 469,
-      "salience": 1,
+      "salience": 0.999722813425926,
       "tier": "hot"
     },
     {
@@ -4543,7 +4543,7 @@
       "created": "2026-07-28T01:42:38.073Z",
       "lastAccessed": "2026-11-20T04:51:01.606Z",
       "accessCount": 468,
-      "salience": 1,
+      "salience": 0.999722813425926,
       "tier": "hot"
     },
     {
@@ -6098,8 +6098,8 @@
       "created": "2026-08-16T08:16:11.150Z",
       "lastAccessed": "2026-11-17T05:42:52.178Z",
       "accessCount": 22,
-      "salience": 0.3691254120370371,
-      "tier": "warm",
+      "salience": 0.25028830509259264,
+      "tier": "cold",
       "repeats": 19,
       "lastRepeat": "2026-11-17T05:42:52.178Z"
     },
@@ -6220,7 +6220,7 @@
       "created": "2026-08-17T00:45:58.307Z",
       "lastAccessed": "2026-11-20T04:54:59.470Z",
       "accessCount": 288,
-      "salience": 1,
+      "salience": 0.9998329356481481,
       "tier": "hot",
       "repeats": 61,
       "lastRepeat": "2026-11-20T04:54:59.470Z"
@@ -6321,7 +6321,7 @@
       "created": "2026-08-18T00:56:35.435Z",
       "lastAccessed": "2026-11-20T04:54:59.477Z",
       "accessCount": 284,
-      "salience": 1,
+      "salience": 0.9998329388888889,
       "tier": "hot",
       "repeats": 38,
       "lastRepeat": "2026-11-20T04:54:59.477Z"
@@ -6717,7 +6717,7 @@
       "created": "2026-08-21T00:53:02.248Z",
       "lastAccessed": "2026-11-20T04:54:05.222Z",
       "accessCount": 276,
-      "salience": 1,
+      "salience": 0.9998078208333333,
       "tier": "hot",
       "repeats": 23,
       "lastRepeat": "2026-10-23T02:38:04.595Z"
@@ -7893,7 +7893,7 @@
       "created": "2026-08-31T15:56:16.964Z",
       "lastAccessed": "2026-11-14T04:11:47.652Z",
       "accessCount": 9,
-      "salience": 0.12387638703703693,
+      "salience": 0.05,
       "tier": "cold"
     },
     {
@@ -8635,7 +8635,7 @@
       "created": "2026-09-07T13:51:25.494Z",
       "lastAccessed": "2026-11-20T04:54:59.442Z",
       "accessCount": 51,
-      "salience": 0.6719378791666667,
+      "salience": 0.6717708013888889,
       "tier": "hot",
       "repeats": 51,
       "lastRepeat": "2026-11-20T04:54:59.442Z"
@@ -8848,7 +8848,7 @@
       "created": "2026-09-09T02:09:22.187Z",
       "lastAccessed": "2026-11-20T04:54:05.222Z",
       "accessCount": 181,
-      "salience": 1,
+      "salience": 0.9998078203703704,
       "tier": "hot",
       "repeats": 3,
       "lastRepeat": "2026-11-12T04:56:44.286Z"
@@ -8940,7 +8940,7 @@
       "created": "2026-09-11T02:06:30.057Z",
       "lastAccessed": "2026-11-20T04:54:05.222Z",
       "accessCount": 174,
-      "salience": 1,
+      "salience": 0.9998078203703704,
       "tier": "hot"
     },
     {
@@ -10731,7 +10731,7 @@
       "created": "2026-10-11T02:48:59.533Z",
       "lastAccessed": "2026-11-20T04:52:36.851Z",
       "accessCount": 24,
-      "salience": 1,
+      "salience": 0.9997669078703704,
       "tier": "hot",
       "repeats": 24,
       "lastRepeat": "2026-11-20T04:52:36.851Z"
@@ -11347,7 +11347,7 @@
       "created": "2026-10-24T02:36:20.413Z",
       "lastAccessed": "2026-11-20T04:54:05.222Z",
       "accessCount": 64,
-      "salience": 1,
+      "salience": 0.9998078203703704,
       "tier": "hot"
     },
     {
@@ -11392,7 +11392,7 @@
       "created": "2026-10-27T03:02:53.239Z",
       "lastAccessed": "2026-11-20T04:51:01.606Z",
       "accessCount": 127,
-      "salience": 1,
+      "salience": 0.999722812962963,
       "tier": "hot"
     },
     {
@@ -11527,7 +11527,7 @@
       "created": "2026-11-04T03:53:54.017Z",
       "lastAccessed": "2026-11-20T04:51:01.606Z",
       "accessCount": 91,
-      "salience": 1,
+      "salience": 0.999722812962963,
       "tier": "hot"
     },
     {
@@ -11868,8 +11868,8 @@
       "created": "2026-11-14T04:02:06.639Z",
       "lastAccessed": "2026-11-14T04:02:06.639Z",
       "accessCount": 0,
-      "salience": 0.3927331416666666,
-      "tier": "warm"
+      "salience": 0.15109717361111105,
+      "tier": "cold"
     },
     {
       "id": "m179462892664338",
@@ -11883,8 +11883,8 @@
       "created": "2026-11-14T04:02:06.643Z",
       "lastAccessed": "2026-11-14T04:02:06.643Z",
       "accessCount": 0,
-      "salience": 0.3927331527777776,
-      "tier": "warm"
+      "salience": 0.1510971865740739,
+      "tier": "cold"
     },
     {
       "id": "m1794755361127348",
@@ -11898,8 +11898,8 @@
       "created": "2026-11-15T15:09:21.127Z",
       "lastAccessed": "2026-11-15T15:09:21.127Z",
       "accessCount": 0,
-      "salience": 0.667100874074074,
-      "tier": "hot"
+      "salience": 0.48399939120370367,
+      "tier": "warm"
     },
     {
       "id": "m1794755361132792",
@@ -11913,8 +11913,8 @@
       "created": "2026-11-15T15:09:21.132Z",
       "lastAccessed": "2026-11-15T15:09:21.132Z",
       "accessCount": 0,
-      "salience": 0.6671008833333334,
-      "tier": "hot"
+      "salience": 0.48399940277777787,
+      "tier": "warm"
     },
     {
       "id": "m1794755361136905",
@@ -11928,8 +11928,8 @@
       "created": "2026-11-15T15:09:21.136Z",
       "lastAccessed": "2026-11-15T15:09:24.033Z",
       "accessCount": 1,
-      "salience": 0.6671062555555556,
-      "tier": "hot"
+      "salience": 0.4840061180555556,
+      "tier": "warm"
     },
     {
       "id": "m1794775300979856",
@@ -11943,8 +11943,8 @@
       "created": "2026-11-15T20:41:40.979Z",
       "lastAccessed": "2026-11-15T20:41:40.979Z",
       "accessCount": 0,
-      "salience": 0.704026525925926,
-      "tier": "hot"
+      "salience": 0.5301564560185186,
+      "tier": "warm"
     },
     {
       "id": "m1794775331487285",
@@ -11958,8 +11958,8 @@
       "created": "2026-11-15T20:42:11.487Z",
       "lastAccessed": "2026-11-15T20:42:11.487Z",
       "accessCount": 0,
-      "salience": 0.7040830222222223,
-      "tier": "hot"
+      "salience": 0.530227076388889,
+      "tier": "warm"
     },
     {
       "id": "m1794775331492722",
@@ -11973,8 +11973,8 @@
       "created": "2026-11-15T20:42:11.492Z",
       "lastAccessed": "2026-11-15T20:42:11.492Z",
       "accessCount": 0,
-      "salience": 0.7040830314814814,
-      "tier": "hot"
+      "salience": 0.5302270879629629,
+      "tier": "warm"
     },
     {
       "id": "m1794775331497877",
@@ -11988,8 +11988,8 @@
       "created": "2026-11-15T20:42:11.497Z",
       "lastAccessed": "2026-11-15T20:42:11.497Z",
       "accessCount": 0,
-      "salience": 0.7040830407407407,
-      "tier": "hot"
+      "salience": 0.530227099537037,
+      "tier": "warm"
     },
     {
       "id": "m1794800770761981",
@@ -12003,8 +12003,8 @@
       "created": "2026-11-16T03:46:10.761Z",
       "lastAccessed": "2026-11-16T03:46:10.761Z",
       "accessCount": 0,
-      "salience": 0.7511927888888889,
-      "tier": "hot"
+      "salience": 0.5891142847222222,
+      "tier": "warm"
     },
     {
       "id": "m179480077076829",
@@ -12018,8 +12018,8 @@
       "created": "2026-11-16T03:46:10.768Z",
       "lastAccessed": "2026-11-16T03:46:10.768Z",
       "accessCount": 0,
-      "salience": 0.7511928018518519,
-      "tier": "hot"
+      "salience": 0.589114300925926,
+      "tier": "warm"
     },
     {
       "id": "m1794850846439409",
@@ -12029,7 +12029,7 @@
       "created": "2026-11-16T17:40:46.439Z",
       "lastAccessed": "2026-11-16T17:40:46.439Z",
       "accessCount": 0,
-      "salience": 0.8210648638888889,
+      "salience": 0.6821695439814814,
       "tier": "hot"
     },
     {
@@ -12044,7 +12044,7 @@
       "created": "2026-11-16T19:33:35.263Z",
       "lastAccessed": "2026-11-16T19:33:35.263Z",
       "accessCount": 0,
-      "salience": 0.8304660083333333,
+      "salience": 0.6947044032407407,
       "tier": "hot"
     },
     {
@@ -12059,7 +12059,7 @@
       "created": "2026-11-17T05:46:43.309Z",
       "lastAccessed": "2026-11-17T05:46:43.309Z",
       "accessCount": 0,
-      "salience": 0.8815605166666666,
+      "salience": 0.7628304143518517,
       "tier": "hot"
     },
     {
@@ -12074,7 +12074,7 @@
       "created": "2026-11-17T05:46:43.314Z",
       "lastAccessed": "2026-11-17T05:46:43.314Z",
       "accessCount": 0,
-      "salience": 0.8815605236111111,
+      "salience": 0.7628304236111112,
       "tier": "hot"
     },
     {
@@ -12089,7 +12089,7 @@
       "created": "2026-11-20T04:54:59.423Z",
       "lastAccessed": "2026-11-20T04:54:59.423Z",
       "accessCount": 0,
-      "salience": 1,
+      "salience": 0.999832913425926,
       "tier": "hot"
     },
     {
@@ -12104,7 +12104,7 @@
       "created": "2026-11-20T04:54:59.429Z",
       "lastAccessed": "2026-11-20T04:54:59.429Z",
       "accessCount": 0,
-      "salience": 1,
+      "salience": 0.9998329162037037,
       "tier": "hot"
     },
     {
@@ -12119,7 +12119,7 @@
       "created": "2026-11-20T04:54:59.434Z",
       "lastAccessed": "2026-11-20T04:54:59.434Z",
       "accessCount": 0,
-      "salience": 1,
+      "salience": 0.9998329185185185,
       "tier": "hot"
     },
     {
@@ -12134,9 +12134,9 @@
       "created": "2026-11-20T04:54:59.482Z",
       "lastAccessed": "2026-11-20T04:54:59.482Z",
       "accessCount": 0,
-      "salience": 1,
+      "salience": 0.9998329407407407,
       "tier": "hot"
     }
   ],
-  "lastDecay": "2026-11-19"
+  "lastDecay": "2026-11-20"
 }
