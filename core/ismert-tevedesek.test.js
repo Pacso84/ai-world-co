@@ -63,6 +63,13 @@ await t('💳 Alexa+ „fizetős” a Prime említése nélkül — fogja; Prime
   nincs('Az Alexa+ a Prime-előfizetés része; Prime nélkül fizetős szolgáltatás.', 'hu');
   nincs('Egyes zenei funkciókhoz fizetős előfizetés kell (például Spotify Premium).', 'hu');
   nincs('Alexa+ está incluido con Prime; sin Prime es un servicio de pago.', 'es');
+  // 11-21 élő eset (build-a-reusable-alexa-morning-routine…): a terméknév a „paid … tier” közé ékelve
+  van('alexa-plus-fizetos', "Depending on your plan and region, some routine features may sit behind a paid Alexa+ tier — check Amazon's current offering if you're unsure.", 'en');
+  van('alexa-plus-fizetos', 'Előfizetéstől és régiótól függően egyes rutinfunkciók fizetős Alexa+ csomag mögé eshetnek — ha nem vagy biztos, nézd meg az Amazon aktuális ajánlatát.', 'hu');
+  van('alexa-plus-fizetos', 'Según tu plan y tu región, algunas funciones de rutinas pueden estar detrás de una versión de pago de Alexa+: echa un vistazo a la oferta actual de Amazon si tienes dudas.', 'es');
+  nincs("In the US, Alexa+ is included with Amazon Prime; without Prime it's a separate paid plan — check Amazon's Alexa+ page if you're unsure which applies to you.", 'en');
+  nincs('Az USA-ban az Alexa+ az Amazon Prime része; Prime nélkül külön fizetős csomag — ha nem vagy biztos benne, melyik vonatkozik rád, nézd meg az Amazon Alexa+ oldalát.', 'hu');
+  nincs('En EE. UU., Alexa+ está incluida en Amazon Prime; sin Prime es un plan de pago aparte: consulta la página de Alexa+ de Amazon si no sabes cuál es tu caso.', 'es');
 });
 
 await t('📦 Alexa+ „nincs széles körben kint” — fogja; a széles körű elérhetőséget nem', () => {

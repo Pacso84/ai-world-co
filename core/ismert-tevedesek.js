@@ -63,7 +63,9 @@ export const TEVEDESEK = [
     id: 'alexa-plus-fizetos',
     leiras: 'Az Alexa+ „fizetős előfizetés / szolgáltatás”, a Prime említése nélkül — az USA-ban a Prime része, Prime nélkül havi 19,99 dollár (aboutamazon.com; 10-29, 10-31).',
     nyelvek: {
-      en: { mind: [ALEXA_PLUS], egyik: [alak(['paid subscription', 'paid upgrade', 'paid service', 'paid tier']), /Alexa\+ is a paid(?![\p{L}])/iu], nem: [PRIME] },
+      en: { mind: [ALEXA_PLUS], egyik: [alak(['paid subscription', 'paid upgrade', 'paid service', 'paid tier']), /Alexa\+ is a paid(?![\p{L}])/iu,
+        // 11-21 élő eset (alexa-morning-routine): „behind a paid Alexa+ tier” — a terméknév a „paid” és a főnév KÖZÖTT
+        /(?<![\p{L}])paid Alexa\+ (?:tier|plan|version|subscription|upgrade)(?![\p{L}])/iu], nem: [PRIME] },
       hu: {
         mind: [ALEXA_PLUS],
         egyik: [alak(['fizetős előfizetés', 'fizetős előfizetése', 'fizetős előfizetést', 'fizetős előfizetéses', 'fizetős előfizetésnek',
@@ -71,10 +73,14 @@ export const TEVEDESEK = [
           'fizetős szolgáltatást', 'fizetős szolgáltatásként', 'fizetős szolgáltatásnak', 'fizetős szolgáltatásra']),
         // „Az Alexa+ egy fizetős csomag” = „Alexa+ is a paid …” (a magyarban nincs „van”) — a „fizetős csomag”
         // ÖNMAGÁBAN a helyes „paid plan” fordítása is („egyes funkciókhoz fizetős csomag kell”), ezért csak így.
-        /Alexa\+ egy fizetős(?![\p{L}])/iu],
+        /Alexa\+ egy fizetős(?![\p{L}])/iu,
+        // 11-21 élő eset: „fizetős Alexa+ csomag mögé eshetnek” — a terméknév a jelző és a főnév között
+        /(?<![\p{L}])fizetős Alexa\+[ -](?:csomag|előfizetés|szint|változat)/iu],
         nem: [PRIME]
       },
-      es: { mind: [ALEXA_PLUS], egyik: [alak(['suscripción de pago', 'servicio de pago', 'mejora de pago', 'nivel de pago'])], nem: [PRIME] }
+      es: { mind: [ALEXA_PLUS], egyik: [alak(['suscripción de pago', 'servicio de pago', 'mejora de pago', 'nivel de pago']),
+        // 11-21 élő eset: „detrás de una versión de pago de Alexa+”
+        /(?<![\p{L}])(?:versión|plan|nivel) de pago de Alexa\+/iu], nem: [PRIME] }
     }
   },
   {
