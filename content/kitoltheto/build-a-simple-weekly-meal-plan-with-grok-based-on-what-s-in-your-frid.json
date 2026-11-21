@@ -1,6 +1,6 @@
 {
   "slug": "build-a-simple-weekly-meal-plan-with-grok-based-on-what-s-in-your-frid",
-  "keszult": "2026-11-04T15:58:36.082Z",
+  "keszult": "2026-11-21T04:56:13.902Z",
   "promptok": {
     "6e2e464fdf8d": [
       {
@@ -46,5 +46,42 @@
         "hely": "number of days"
       }
     ]
+  },
+  "promptok_hu": {
+    "d7d739b9cbe3": [
+      {
+        "eredeti": "2 csirkemell",
+        "hely": "a fő húsod"
+      },
+      {
+        "eredeti": "rizs",
+        "hely": "a kamrai köretod"
+      },
+      {
+        "eredeti": "2 felnőttre",
+        "hely": "a létszámod"
+      }
+    ],
+    "0bac43ad05a5": [
+      {
+        "eredeti": "keddi curryt",
+        "hely": "a kedvenc ételed"
+      },
+      {
+        "eredeti": "20 perc",
+        "hely": "a főzési idő"
+      },
+      {
+        "eredeti": "lassúfőzőben",
+        "hely": "a konyhai eszközöd"
+      }
+    ],
+    "5299cca0aa5f": [
+      {
+        "eredeti": "25 tétel",
+        "hely": "a listád hossza"
+      }
+    ],
+    "1cb0932698ab": []
   }
 }
