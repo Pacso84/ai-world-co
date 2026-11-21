@@ -1,0 +1,27 @@
+{
+  "started_at": "2026-11-21T04:49:02.953Z",
+  "total": 2,
+  "passed": 1,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.00394137,
+  "by_article": [
+    {
+      "writer": "WRITER_GUIDE_building-a-simple-shopping-list-web-page-with-minimax-code.json",
+      "rejected": "REJECTED_GUIDE_building-a-simple-shopping-list-web-page-with-minimax-code.json",
+      "decision": "FAIL",
+      "score": 6,
+      "cost_usd": 0.00149859
+    },
+    {
+      "writer": "WRITER_GUIDE_how-to-turn-a-confusing-bill-into-a-short-list-of-questions-.json",
+      "article": "ARTICLE_GUIDE_how-to-turn-a-confusing-bill-into-a-short-list-of-questions-.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.00135126
+    }
+  ],
+  "finished_at": "2026-11-21T04:49:07.016Z",
+  "duration_seconds": 4.063
+}

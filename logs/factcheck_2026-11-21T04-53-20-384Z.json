@@ -1,0 +1,62 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.00800058,
+  "at": "2026-11-21T04:53:20.384Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-turn-a-confusing-bill-into-a-short-list-of-questions-.json",
+      "cim": "How to Turn a Confusing Bill Into a Short List of Questions for the Company",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-21T04-45-13-396Z_zapier-blog_4_ways_to_automate_ChatGPT_with_Zapier_MCP.json",
+      "cim": "4 ways to automate ChatGPT with Zapier MCP",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Az összes állítás megfelel a forrásanyagoknak"
+    },
+    {
+      "file": "ARTICLE_2026-11-21T04-44-49-347Z_google-workspace_Google_Vids_now_lets_you_reuse_your_media_in_video.json",
+      "cim": "Google Vids now lets you reuse your media in video generation",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Minden tényszerű állítás egyezik a forrással - az Assets szekció támogatja a képeket/videókat/hangot, a bevezetési dátumok (2026. november 17. és december 2.), az összes felsorolt kiadás elérhetősége és az admin-vezérlés részletei mind pontosak."
+    },
+    {
+      "file": "ARTICLE_2026-11-21T04-44-49-347Z_aws-ml_New_in_AWS_Quick__More_capable_flows__an_updated_w.json",
+      "cim": "New in AWS Quick: More capable flows, an updated web experience, and agents that work together",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényállítása pontosan megfelel a forrásszövegnek."
+    },
+    {
+      "file": "ARTICLE_2026-11-20T04-49-39-734Z_together_Tencent_Hy4_is_live_on_Together_AI.json",
+      "cim": "Tencent Hy4 is live on Together AI",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényszerű állítása megegyezik a forrásanyagokkal"
+    },
+    {
+      "file": "ARTICLE_2026-10-05T02-56-31-463Z_perplexity-news_How_Credits_Work_on_Perplexity_-_perplexity_ai.json",
+      "cim": "How Credits Work on Perplexity - perplexity.ai",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "written_at": "2026-11-21T04:46:04.752Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0038111,
+    "original_draft": "2026-11-21T04-44-49-347Z_google-workspace_Google_Vids_now_lets_you_reuse_your_media_in_video.json",
+    "source_id": "google-workspace",
+    "source_name": "Google Workspace Updates (hivatalos)",
+    "source_link": "http://workspaceupdates.googleblog.com/2026/11/google-vids-now-lets-you-reuse-your-media-in-video-generation.html",
+    "source_links": [
+      "http://workspaceupdates.googleblog.com/2026/11/google-vids-now-lets-you-reuse-your-media-in-video-generation.html"
+    ],
+    "source_snippet_len": 1500,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 1668,
+    "source_text_key": "5da7d05c98cf1e3a",
+    "source_overlap_words": 8,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-21T04:47:05.436Z",
+    "slug": "google-vids-now-keeps-your-media-in-an-assets-section-for-reuse-in-ai-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 728
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clear, accessible explainer with proper structure and helpful practical guidance. No prohibited content, no invented facts beyond what the source supports, and the tone is friendly without clichés.",
+      "_aiCost": 0.00097479,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-21T04:47:39.624Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-use-the-assets-section-in-google-vids-to-reuse-your-m",
+    "image_v": 2,
+    "image_at": "2026-11-21T04:50:25.013Z",
+    "seo": {
+      "meta_description": "Google Vids' new Assets section lets you reuse images, videos and audio across AI-generated videos in the same project. No more re-uploading files.",
+      "keywords": [
+        "Google Vids assets section",
+        "Google Vids new feature",
+        "Google Vids reuse media",
+        "Google Vids asset library",
+        "AI video reuse files"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add step-by-step instructions on how to access and use the Assets section in Google Vids",
+        "Include a practical example showing how this feature saves time in a real video project",
+        "Mention any limitations or requirements (like file size limits) if available in the full article"
+      ],
+      "optimised_at": "2026-11-21T04:52:06.325Z"
+    },
+    "fact_verified_at": "2026-11-21T04:53:55.997Z"
+  },
+  "article_markdown": "---\ntitle: \"Google Vids Now Keeps Your Media in an Assets Section for Reuse in AI Videos\"\nsubtitle: \"A new Assets section holds your images, videos and audio so you can reuse them in later AI video generations within the same project.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"google-vids\", \"ai-video\", \"gemini-omni\", \"media-library\", \"getting-started\"]\n---\n\n# Google Vids Now Keeps Your Media in an Assets Section for Reuse in AI Videos\n\n> **In short:** Google Vids now keeps the media you use for AI video generation in a new Assets section. Google says you can reuse images, videos and audio in later generations within the same project, and the feature rolls out starting November 17, 2026 or December 2, 2026, depending on your domain's release track.\n\nHave you ever made a short video with a logo or a product photo, then had to upload that same file again for the next clip? Google's new change is meant to cut out that repeat step.\n\n## What Google Vids is, and what changed\n\nGoogle Vids is Google's video creation app. When you make AI-generated clips with Gemini Omni, the model Google names for video generation in Vids, the media you use as building blocks is now saved in an **Assets** section (a shared folder of media for one project).\n\nGoogle says the Assets section supports images, videos and audio. Because it sits right inside the AI video generation experience, you can grab a file from your recent assets without leaving the flow. Google describes these building blocks as \"ingredients\" for a new clip.\n\n## How it helps in practice\n\nThink of Assets as a project pantry. You stock it once, then pull ingredients from it whenever you cook up something new.\n\n- **A recurring logo or brand photo**: add it once and reuse it across several clips in the same project.\n- **A short background track**: keep one audio file handy for every scene instead of searching your files each time.\n- **A clip you like**: reuse a previous video as an ingredient when you want a similar look.\n\nThe key phrase is \"within the same project.\" Google's announcement describes reuse inside a project, so plan to work on related videos together.\n\n## Who can use it, and when\n\nGoogle lists the feature as available by default, with no end-user setting to turn it on or off. Admins have no control over it.\n\nGoogle's announcement says it's available across several Google Workspace editions, including Business, Enterprise and Education plans. For personal Google accounts, it's available to users of Google AI Pro and Ultra. Google also notes that users with AI Expanded Access add-on licenses get higher usage limits for Omni in Vids.\n\nRollout timing depends on your domain:\n\n- **Rapid Release domains**: a gradual rollout starting Tuesday, November 17, 2026, which can take up to 15 days before the feature shows up for you.\n- **Scheduled Release domains**: a full rollout starting Wednesday, December 2, 2026, with feature visibility in about 1 to 3 days.\n\nIf you don't see the Assets section yet, it may simply not have reached your account.\n\n## What this means for you\n\n- **In everyday life**: If you make family slideshows, school projects or birthday videos, your photos and music can stay in one place for the whole project.\n- **For your business or work**: If you make training clips or product videos, keeping approved logos and brand audio in one Assets section helps keep your videos consistent.\n- **If you're just getting started**: Begin with one small project. Add two or three images or a short audio clip, then check whether you can pick them as ingredients for your first AI clip.\n- **If you already use it**: Organize your project assets before each batch of generations, so your most-used logo, footage and audio are the first things you see when you start a new scene.\n\n## Wrap-up\n\nGoogle Vids' new Assets section means your media doesn't have to be re-uploaded for every AI video in a project. Images, videos and audio can all serve as ingredients for Gemini Omni generations. For the official details, check Google's Help Center article on how to store and reuse media files in Google Vids. Your next step: open a project you're already working on and see what you'd want to keep on hand for your next clip.",
+  "original_title": "Google Vids now lets you reuse your media in video generation"
+}

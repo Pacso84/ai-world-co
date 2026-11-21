@@ -1,8 +1,5 @@
 {
   "openai-blog": [
-    "https://openai.com/index/introducing-gpt-live",
-    "https://openai.com/index/government-national-security-partnerships",
-    "https://openai.com/index/separating-signal-from-noise-coding-evaluations",
     "https://openai.com/index/gpt-5-6",
     "https://openai.com/index/chatgpt-for-your-most-ambitious-work",
     "https://openai.com/index/bio-bug-bounty",
@@ -299,7 +296,10 @@
     "https://openai.com/business/learn/pr-scans-demo",
     "https://openai.com/business/learn/codex-security-plugin-demo",
     "https://openai.com/business/learn/daybreak-blue-onboarding-demo",
-    "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast"
+    "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast",
+    "https://openai.com/index/combatting-adversarial-distillation",
+    "https://openai.com/business/customer-stories/hebbia",
+    "https://openai.com/index/introducing-medchembench"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -464,7 +464,8 @@
     "https://about.fb.com/news/2026/10/meta-partners-with-five-us-universities-to-accelerate-medical-and-scientific-breakthroughs/",
     "https://about.fb.com/news/2026/11/introducing-muse-ai-voice-expressive-avatars/",
     "https://about.fb.com/news/2026/11/introducing-spaces-customize-muse-app/",
-    "https://about.fb.com/news/2026/11/meta-new-agreements-clean-manufacturing-data-center-supply-chains/"
+    "https://about.fb.com/news/2026/11/meta-new-agreements-clean-manufacturing-data-center-supply-chains/",
+    "https://about.fb.com/news/2026/11/advancing-science-together-highlights-from-the-open-source-ai-for-science-summit/"
   ],
   "microsoft-ai": [
     "https://blogs.microsoft.com/ai/a-conversation-with-kevin-scott-whats-next-in-ai/",
@@ -1028,7 +1029,11 @@
     "http://workspaceupdates.googleblog.com/2026/11/seamlessly-share-presented-file-links-with-viewers-in-Google-Meet.html",
     "http://workspaceupdates.googleblog.com/2026/11/new-admin-setting-to-control-collaboration-steps-in-Workspace-Studio-flows.html",
     "http://workspaceupdates.googleblog.com/2026/11/email-meeting-guests-from-google-Calendar-with-the-full-capabilities-of-Gmail.html",
-    "http://workspaceupdates.googleblog.com/2026/11/google-workspace-studio-support-for-Data-Regions-is-now-generally-available.html"
+    "http://workspaceupdates.googleblog.com/2026/11/google-workspace-studio-support-for-Data-Regions-is-now-generally-available.html",
+    "http://workspaceupdates.googleblog.com/2026/11/weekly-recap-11-20-2026.html",
+    "http://workspaceupdates.googleblog.com/2026/11/expanded-google-vault-support-for-external-spaces-and-group-conversations-in-Google-Chat.html",
+    "http://workspaceupdates.googleblog.com/2026/11/google-vids-now-lets-you-reuse-your-media-in-video-generation.html",
+    "http://workspaceupdates.googleblog.com/2026/11/now-available-in-beta-collaborate-in-real-time-on-client-side-encrypted-Google-Docs.html"
   ],
   "google-research": [
     "https://research.google/blog/towards-passive-heart-health-monitoring-via-smartphone-camera/",
@@ -1146,12 +1151,6 @@
     "https://github.blog/ai-and-ml/github-copilot/build-once-run-on-any-agent-a-practical-guide-to-agent-skills/"
   ],
   "aws-ml": [
-    "https://aws.amazon.com/blogs/machine-learning/how-didi-built-intelligent-contact-center-qa-with-amazon-bedrock/",
-    "https://aws.amazon.com/blogs/machine-learning/take-on-your-most-ambitious-work-with-gpt-6-astra-on-amazon-bedrock/",
-    "https://aws.amazon.com/blogs/machine-learning/pathways-brain-inspired-architecture-development-on-amazon-sagemaker-hyperpod/",
-    "https://aws.amazon.com/blogs/machine-learning/deploying-qwen3-8-2-4t-a95b-on-amazon-sagemaker-hyperpod-with-vllm/",
-    "https://aws.amazon.com/blogs/machine-learning/how-heurist-finance-built-an-ai-native-investment-workbench-on-amazon-bedrock-agentcore/",
-    "https://aws.amazon.com/blogs/machine-learning/icymi-what-landed-for-ai-builders-in-august-2026/",
     "https://aws.amazon.com/blogs/machine-learning/simplify-and-support-your-torchserve-workloads-using-ray-serve-deep-learning-containers/",
     "https://aws.amazon.com/blogs/machine-learning/automate-user-level-custom-permissions-for-amazon-quick/",
     "https://aws.amazon.com/blogs/machine-learning/reduce-llm-latency-with-prefix-aware-routing-on-amazon-sagemaker-inference/",
@@ -1445,7 +1444,13 @@
     "https://aws.amazon.com/blogs/machine-learning/how-the-bmw-group-governs-hundreds-of-agents-across-thousands-of-developers/",
     "https://aws.amazon.com/blogs/machine-learning/run-your-whole-selling-business-in-aws-quick/",
     "https://aws.amazon.com/blogs/machine-learning/inside-amazon-connect-talent-the-science-of-structured-ai-interviews/",
-    "https://aws.amazon.com/blogs/machine-learning/amazon-polly-launches-voice-cloning-a-unique-voice-for-your-brand/"
+    "https://aws.amazon.com/blogs/machine-learning/amazon-polly-launches-voice-cloning-a-unique-voice-for-your-brand/",
+    "https://aws.amazon.com/blogs/machine-learning/cut-self-hosted-llm-cost-and-latency-with-the-distributed-kv-caching-agent-skill/",
+    "https://aws.amazon.com/blogs/machine-learning/introducing-managed-cluster-extensions-for-observability-and-user-management-in-amazon-sagemaker-hyperpod-slurm/",
+    "https://aws.amazon.com/blogs/machine-learning/introducing-amazon-sagemaker-hyperpod-global-inference-gateway-one-endpoint-across-regions-and-clusters/",
+    "https://aws.amazon.com/blogs/machine-learning/new-in-aws-quick-more-capable-flows-an-updated-web-experience-and-agents-that-work-together/",
+    "https://aws.amazon.com/blogs/machine-learning/how-standard-bank-group-automates-ai-risk-assessment-for-generative-ai/",
+    "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -1616,7 +1621,8 @@
     "https://machinelearning.apple.com/research/private-evolution-clustering",
     "https://machinelearning.apple.com/research/theory-evaluability",
     "https://machinelearning.apple.com/research/split-scale-latent-3d",
-    "https://machinelearning.apple.com/research/differentially-private-selection"
+    "https://machinelearning.apple.com/research/differentially-private-selection",
+    "https://machinelearning.apple.com/research/depth-pro-2-monocular"
   ],
   "salesforce": [
     "https://www.salesforce.com/news/stories/salesforce-closing-ai-skills-gap/",
@@ -2357,7 +2363,8 @@
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/cortex-watch-hear-understand-video-twelvelabs",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/spark-iceberg-write-audit-publish",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-app-runtime",
-    "https://www.snowflake.com/content/snowflake-site/global/en/blog/agentic-ai-vendor-evaluation"
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/agentic-ai-vendor-evaluation",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/sap-snowflake-predictive-analytics"
   ],
   "together": [
     "https://www.together.ai/blog/announcing-our-series-c",
@@ -2409,7 +2416,8 @@
     "https://www.together.ai/blog/road-to-together-compiler",
     "https://www.together.ai/blog/making-open-models-work-for-long-horizon-agentic-workloads",
     "https://www.together.ai/blog/introducing-together-storage-accelerator",
-    "https://www.together.ai/blog/tencent-hy4"
+    "https://www.together.ai/blog/tencent-hy4",
+    "https://www.together.ai/blog/qwen3-tts"
   ],
   "pinecone": [
     "https://www.pinecone.io/blog/generating-test-data-for-pinecone/",
@@ -2900,7 +2908,9 @@
     "https://news.google.com/rss/articles/CBMiekFVX3lxTE1POTc1bVkzNnRBU1dQRkJqWmVrYnlISHlubkk2cHNDTmpqQ1p1X0FJU1NoSk5Ca0N6Zm1sUzNib2ZEcFBNMXprd3Vua0JWTHROd1p1TUFMWExuZUc5LVhhR1hsMkp6QjQtUi1uWTFKRzBENWs1YjdINzhR?oc=5",
     "https://news.google.com/rss/articles/CBMidEFVX3lxTE9wd212c2g5X2o5UVlqZWtlYUc1TGNXOW93dFJ1OFg1QTFTSWhzSFU5QzR6SnZwd0czcDNvbHJ4SjJWTFU1N0xJakE2XzIzT3FCcTR0WGlCbWR1TlBXekQyVG9fd0wwYS1yM1QwLTVnSC1iU09s?oc=5",
     "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00RFNIZkowcjhLOUd0SElVMXBNbDR3TEN4cVBhNjRSMWpoeGVCLW9WM2dPd3VlQlZ1TW9lRl84dktCYjRIQUNORWx1eWQ?oc=5",
-    "https://news.google.com/rss/articles/CBMilAFBVV95cUxQZHpIUE8xV3cwalVvNEhPN3d4S21PSTRiU1I1QjZMMHRJeC1VQ1VpeVRoSEFCVHZvLTNrVTdTemxaeGE4a1I0Rl9UOU5YQWtQcDB4d1NYMWlaVFFETjA0RkRCSHNrZl9TRTY3Q2pkU2RsVll6MWlpMUhzVll6N2NRQi1obl9MS0FaSi1USGwtdGJ1LXdv?oc=5"
+    "https://news.google.com/rss/articles/CBMilAFBVV95cUxQZHpIUE8xV3cwalVvNEhPN3d4S21PSTRiU1I1QjZMMHRJeC1VQ1VpeVRoSEFCVHZvLTNrVTdTemxaeGE4a1I0Rl9UOU5YQWtQcDB4d1NYMWlaVFFETjA0RkRCSHNrZl9TRTY3Q2pkU2RsVll6MWlpMUhzVll6N2NRQi1obl9MS0FaSi1USGwtdGJ1LXdv?oc=5",
+    "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBqZlNVcmE1N2QzSGUxYlp1VGdYdmxKWGhJYWc5TmlYcjQ3bVVwaU85WUZUQUE1Z1dndTQxMkRnR3JTZGU4SWFiMVZPWFVsVkRPcWRGQVI1VWtDM1A2YkMzQlZHUjFwd00?oc=5",
+    "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5UdVBoZklObEFyS1VCWVN1RW5rbGE1YnFheEVrVVdEMTBFeEZaaGtXc1ZnanJ6VFB0YXo0dGt1M2RxZXpJLVByRlJfM01Xdw?oc=5"
   ],
   "deepseek-news": [
     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9zbUkzc1FDYmZIVjVRdW5wakpEOEgwSHFHZ05zNDhZLWwydGFjcEVtTVdEZW50RWw4MF9sVlYtMDhOb3RNdDdLM1VDOGgxTEZOWnRXZXhvTGVVQ25Rbk1uRg?oc=5",
@@ -3620,7 +3630,14 @@
     "https://zapier.com/blog/automate-canva",
     "https://zapier.com/blog/automate-notion",
     "https://zapier.com/blog/automate-whatsapp-business",
-    "https://zapier.com/blog/automate-spotify"
+    "https://zapier.com/blog/automate-spotify",
+    "https://zapier.com/blog/popular-zaps",
+    "https://zapier.com/blog/panoramic-properties-next-gen-zaps",
+    "https://zapier.com/blog/ways-to-manage-your-discord-server-with-automation",
+    "https://zapier.com/blog/automate-chatgpt-zapier-mcp",
+    "https://zapier.com/blog/automate-granola",
+    "https://zapier.com/blog/automate-claude-zapier-mcp",
+    "https://zapier.com/blog/automate-plaud"
   ],
   "dropbox-blog": [
     "  https://blog.dropbox.com/topics/company/dropbox-announces-q1-2026-results ",
@@ -3804,7 +3821,8 @@
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
     "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/",
     "https://blog.google/innovation-and-ai/products/gemini-app/switch-ai-assistants-transfer-history/",
-    "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/"
+    "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/",
+    "https://blog.google/products-and-platforms/products/search/connected-apps-holiday-errands/"
   ],
   "google-photos": [
     "https://blog.google/products-and-platforms/products/photos/halloween-tricks-2026/",
@@ -4048,6 +4066,10 @@
     "https://elevenlabs.io/blog/vector-database",
     "https://elevenlabs.io/blog/elevenagents-for-healthcare",
     "https://elevenlabs.io/blog/how-many-calls-can-an-ai-voice-agent-handle",
-    "https://elevenlabs.io/blog/candid-health"
+    "https://elevenlabs.io/blog/candid-health",
+    "https://elevenlabs.io/blog/fix-text-to-speech-accuracy-problems",
+    "https://elevenlabs.io/blog/fundacion-televisa-posible",
+    "https://elevenlabs.io/blog/build-an-outbound-reminder-agent-with-architect",
+    "https://elevenlabs.io/blog/video-variants-localization-ads-engine"
   ]
 }

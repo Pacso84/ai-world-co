@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179502071421385",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-18T16:51:54.213Z",
-      "updated": "2026-11-18T16:51:54.356Z"
-    },
-    {
-      "id": "t179502071435716",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-18T16:51:54.357Z",
-      "updated": "2026-11-18T16:51:54.495Z"
-    },
-    {
-      "id": "t179502071452373",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-18T16:51:54.523Z",
-      "updated": "2026-11-18T16:52:02.904Z"
-    },
-    {
-      "id": "t179502072290669",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-18T16:52:02.906Z",
-      "updated": "2026-11-18T16:52:16.718Z"
-    },
-    {
-      "id": "t179502073672087",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-18T16:52:16.720Z",
-      "updated": "2026-11-18T16:52:27.556Z"
-    },
-    {
-      "id": "t179502074755847",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-18T16:52:27.558Z",
-      "updated": "2026-11-18T16:52:46.649Z"
-    },
-    {
-      "id": "t179506427702454",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-19T04:57:57.024Z",
-      "updated": "2026-11-19T04:57:57.230Z"
-    },
-    {
-      "id": "t179506427723216",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-19T04:57:57.232Z",
-      "updated": "2026-11-19T04:58:49.446Z"
-    },
-    {
-      "id": "t179506432944726",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-19T04:58:49.447Z",
-      "updated": "2026-11-19T04:58:49.648Z"
-    },
-    {
-      "id": "t179506432969872",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-19T04:58:49.698Z",
-      "updated": "2026-11-19T05:00:06.900Z"
-    },
-    {
-      "id": "t17950644069015",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-19T05:00:06.901Z",
-      "updated": "2026-11-19T05:01:55.212Z"
-    },
-    {
-      "id": "t179506451521518",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-19T05:01:55.215Z",
-      "updated": "2026-11-19T05:02:48.996Z"
-    },
-    {
-      "id": "t179506456904185",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-19T05:02:49.041Z",
-      "updated": "2026-11-19T05:03:48.132Z"
-    },
-    {
-      "id": "t179506462813466",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-19T05:03:48.134Z",
-      "updated": "2026-11-19T05:04:55.453Z"
-    },
-    {
       "id": "t179506469549582",
       "title": "Run guide",
       "status": "done",
@@ -479,41 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-20T16:35:46.672Z",
       "updated": "2026-11-20T16:36:13.116Z"
+    },
+    {
+      "id": "t179523623552259",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-21T04:43:55.522Z",
+      "updated": "2026-11-21T04:43:55.664Z"
+    },
+    {
+      "id": "t179523623566599",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-21T04:43:55.665Z",
+      "updated": "2026-11-21T04:45:24.147Z"
+    },
+    {
+      "id": "t179523632414822",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-21T04:45:24.148Z",
+      "updated": "2026-11-21T04:45:24.280Z"
+    },
+    {
+      "id": "t179523632431248",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-21T04:45:24.312Z",
+      "updated": "2026-11-21T04:46:58.757Z"
+    },
+    {
+      "id": "t179523641875888",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-21T04:46:58.758Z",
+      "updated": "2026-11-21T04:47:07.487Z"
+    },
+    {
+      "id": "t179523642748923",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-21T04:47:07.489Z",
+      "updated": "2026-11-21T04:47:52.298Z"
+    },
+    {
+      "id": "t179523647232978",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-21T04:47:52.329Z",
+      "updated": "2026-11-21T04:49:02.815Z"
+    },
+    {
+      "id": "t179523654281752",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-21T04:49:02.817Z",
+      "updated": "2026-11-21T04:49:07.025Z"
+    },
+    {
+      "id": "t179523654705591",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-21T04:49:07.055Z",
+      "updated": "2026-11-21T04:49:07.208Z"
+    },
+    {
+      "id": "t179523654720929",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-21T04:49:07.209Z",
+      "updated": "2026-11-21T04:49:07.357Z"
+    },
+    {
+      "id": "t179523654741230",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-21T04:49:07.412Z",
+      "updated": "2026-11-21T04:51:16.845Z"
+    },
+    {
+      "id": "t179523667684647",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-21T04:51:16.846Z",
+      "updated": "2026-11-21T04:52:29.266Z"
+    },
+    {
+      "id": "t179523674926720",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-21T04:52:29.267Z",
+      "updated": "2026-11-21T04:52:50.747Z"
+    },
+    {
+      "id": "t179523677074950",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-21T04:52:50.749Z",
+      "updated": "2026-11-21T04:53:19.545Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179445972794666",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 7.4/10).",
-      "agent": "seo",
-      "at": "2026-11-12T05:02:07.946Z",
-      "loud": false
-    },
-    {
-      "id": "n17944597377796",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and ready — you have a nice mix of practical how-tos, privacy guidance, and task-specific writing templates that everyday people will actually use. One quick check: verify all the",
-      "agent": "publisher",
-      "at": "2026-11-12T05:02:17.779Z",
-      "loud": false
-    },
-    {
-      "id": "n179445974861972",
-      "level": "success",
-      "text": "4 hír + 1 útmutató publikálva (költség: $0.0674).",
-      "agent": "ceo",
-      "at": "2026-11-12T05:02:28.619Z",
-      "loud": false
-    },
-    {
-      "id": "n179445981129279",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Try one of the four",
-      "agent": "fact-check",
-      "at": "2026-11-12T05:03:31.292Z",
-      "loud": false
-    },
     {
       "id": "n179450095823359",
       "level": "warn",
@@ -1281,38 +1249,41 @@
       "agent": "ceo",
       "at": "2026-11-20T16:36:13.167Z",
       "loud": false
+    },
+    {
+      "id": "n179523645962519",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to use the Assets section in Google Vids to reuse your media in AI videos\"",
+      "agent": "pairing",
+      "at": "2026-11-21T04:47:39.625Z",
+      "loud": false
+    },
+    {
+      "id": "n179523674925859",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 7.6/10).",
+      "agent": "seo",
+      "at": "2026-11-21T04:52:29.258Z",
+      "loud": false
+    },
+    {
+      "id": "n179523678666767",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup is ready to go live — it covers a nice mix of practical how-tos, privacy awareness, and real-life writing scenarios. One heads-up: we introduce several tools (Perplexity, DeepSeek, Le Chat,",
+      "agent": "publisher",
+      "at": "2026-11-21T04:53:06.667Z",
+      "loud": false
+    },
+    {
+      "id": "n179523679957488",
+      "level": "success",
+      "text": "4 hír + 1 útmutató publikálva (költség: $0.0512).",
+      "agent": "ceo",
+      "at": "2026-11-21T04:53:19.574Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179424730427091",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Ellenőrizendő állítás: \"Manage AI applications on Mac with Jamf’s AI Gover\" — A megadott forrás egyáltalán nem kapcsolódik a cikkhez - teljesen különböző termékekről és témákról van szó (ChatGPT hangmód vs. Jamf/Amazon Bedrock Mac AI irányítás)",
-      "ref": "2026-07-08T17-18-32-414Z_aws-ml_Manage_AI_applications_on_Mac_with_Jamf_s_AI_Gover.json",
-      "open": true,
-      "at": "2026-11-09T18:01:44.270Z"
-    },
-    {
-      "id": "m179424731241649",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Lock In Lower AI Costs with Reserved Capaci\" — A ChatGPT-nak nincs 'Instant' nevű modellje. Az ingyenes verzió a GPT-4o mini-t használja, ami egy könnyebb modell, de az 'Instant' nem érvényes modellnév a ChatGPT felületén. (állítás: ChatGPT's faster option is called 'Instant'). Nem nyúltam hozzá; ha valódi, forrással erősítsd meg.",
-      "ref": "ARTICLE_GUIDE_how-to-lock-in-lower-ai-costs-with-reserved-capacity.json",
-      "open": true,
-      "at": "2026-11-09T18:01:52.416Z"
-    },
-    {
-      "id": "m179424826196855",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-09T18:17:41.968Z"
-    },
     {
       "id": "m179428758821467",
       "from": "pairing",
@@ -2686,6 +2657,34 @@
       "text": "3 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-20T16:50:08.578Z"
+    },
+    {
+      "id": "m179523645962567",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to use the Assets section in Google Vids to reuse your media in AI videos\"",
+      "ref": "how-to-use-the-assets-section-in-google-vids-to-reuse-your-m",
+      "open": true,
+      "at": "2026-11-21T04:47:39.625Z"
+    },
+    {
+      "id": "m179523654504695",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"How to Ask MiniMax Code to Build a Simple Web Page\" — mi a baj: LEDE_TOO_LONG: A RÖVIDEN-doboz 61 szó (max ~45) — ami hosszú, az már nem \"röviden\".; Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; Step 1 lacks an exact location for New Task or the home composer; the help article reference is vague",
+      "ref": "GUIDE_building-a-simple-shopping-list-web-page-with-minimax-code.json",
+      "at": "2026-11-21T04:49:05.046Z"
+    },
+    {
+      "id": "m179523677074091",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-21T04:52:50.740Z"
     }
   ]
 }

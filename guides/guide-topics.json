@@ -8725,7 +8725,12 @@
       "icon": "✉️",
       "priority": "balance",
       "proposed_at": "2026-11-12T04:57:00.814Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-21T04:47:52.506Z",
+        "ok": false,
+        "ok_ok": "nincs illő súgócikk"
+      }
     },
     {
       "id": "how-to-remove-personal-details-from-a-document-before-sharin",
@@ -8749,10 +8754,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Ask an AI assistant to explain each line item in plain words, then build a numbered list of specific questions to bring to the customer service call.",
-      "status": "todo",
+      "status": "done",
       "icon": "🧾",
       "proposed_at": "2026-11-12T04:57:17.851Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-11-21T04:48:38.711Z"
     },
     {
       "id": "how-to-explain-a-hard-topic-to-a-child-at-their-level-not-yo",
@@ -9089,7 +9095,12 @@
       "icon": "🗂️",
       "priority": "balance",
       "proposed_at": "2026-11-17T05:47:22.782Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-21T04:47:52.506Z",
+        "ok": false,
+        "ok_ok": "nincs illő súgócikk"
+      }
     },
     {
       "id": "asking-minimax-code-to-explain-a-script-before-you-run-it",
@@ -9103,7 +9114,12 @@
       "icon": "🔍",
       "priority": "balance",
       "proposed_at": "2026-11-17T05:47:23.463Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-21T04:47:52.506Z",
+        "ok": false,
+        "ok_ok": "a cikkből nem írható útmutató"
+      }
     },
     {
       "id": "cleaning-up-a-messy-spreadsheet-export-with-minimax-code",
@@ -9117,21 +9133,40 @@
       "icon": "📊",
       "priority": "balance",
       "proposed_at": "2026-11-17T05:47:24.214Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-21T04:47:52.506Z",
+        "ok": false,
+        "ok_ok": "nincs illő súgócikk"
+      }
     },
     {
       "id": "building-a-simple-shopping-list-web-page-with-minimax-code",
       "company": "MiniMax",
       "tool": "MiniMax Code",
-      "title": "Building a Simple Shopping List Web Page with MiniMax Code",
+      "title": "How to Ask MiniMax Code to Build a Simple Web Page",
       "audience": "personal",
       "level": "beginner",
       "angle": "Describe the page you want in everyday words, such as a checklist that remembers what you already ticked off, and use the result as a small file you open in your browser.",
-      "status": "todo",
+      "status": "done",
       "icon": "🛒",
       "priority": "balance",
       "proposed_at": "2026-11-17T05:47:25.157Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-21T04:47:52.506Z",
+        "ok": true,
+        "url": "https://agent.minimax.io/docs/code/get-started/first-task"
+      },
+      "sugo_alapu": true,
+      "official_sources": [
+        {
+          "url": "https://agent.minimax.io/docs/code/get-started/first-task",
+          "title": "Create Your First Task",
+          "felfedezett": true
+        }
+      ],
+      "written_at": "2026-11-21T04:49:02.804Z"
     },
     {
       "id": "how-to-pick-a-viral-photo-trend-without-handing-over-your-fa",
@@ -9239,6 +9274,22 @@
         "ok": false,
         "ok_ok": "nincs illő súgócikk"
       }
+    },
+    {
+      "id": "how-to-use-the-assets-section-in-google-vids-to-reuse-your-m",
+      "company": "Google",
+      "tool": "Vids",
+      "title": "How to use the Assets section in Google Vids to reuse your media in AI videos",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "How to add images, videos, and audio to the Assets section and reuse them as ingredients in AI-generated video clips within the same project",
+      "status": "todo",
+      "icon": "🆕",
+      "source_news": {
+        "file": "ARTICLE_2026-11-21T04-44-49-347Z_google-workspace_Google_Vids_now_lets_you_reuse_your_media_in_video.json",
+        "title": "Google Vids now lets you reuse your media in video generation"
+      },
+      "created_at": "2026-11-21T04:47:39.624Z"
     }
   ],
   "trend_proba": [

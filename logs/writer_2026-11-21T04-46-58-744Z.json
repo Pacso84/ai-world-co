@@ -1,0 +1,94 @@
+{
+  "started_at": "2026-11-21T04:45:24.451Z",
+  "drafts_total": 9,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 6,
+  "merged_total": 2,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 3,
+    "html": 6,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.0190117,
+  "by_article": [
+    {
+      "draft": "2026-11-21T04-44-49-347Z_google-workspace_Google_Vids_now_lets_you_reuse_your_media_in_video.json",
+      "writer_output": "WRITER_2026-11-21T04-44-49-347Z_google-workspace_Google_Vids_now_lets_you_reuse_your_media_in_video.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 1668,
+      "source_overlap_words": 8,
+      "cost_usd": 0.0038111,
+      "duration_ms": 14704,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-21T04-44-49-347Z_aws-ml_New_in_AWS_Quick__More_capable_flows__an_updated_w.json",
+      "writer_output": "WRITER_2026-11-21T04-44-49-347Z_aws-ml_New_in_AWS_Quick__More_capable_flows__an_updated_w.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 10,
+      "cost_usd": 0.0036786,
+      "duration_ms": 11925,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-21T04-45-13-396Z_zapier-blog_4_ways_to_automate_ChatGPT_with_Zapier_MCP.json",
+      "writer_output": "WRITER_2026-11-21T04-45-13-396Z_zapier-blog_4_ways_to_automate_ChatGPT_with_Zapier_MCP.json",
+      "success": true,
+      "merged_from": 4,
+      "merged_theme": "Zapier platform automation guides",
+      "source_via": [
+        "html",
+        "html",
+        "html",
+        "html"
+      ],
+      "source_chars": 9021,
+      "source_overlap_words": 20,
+      "cost_usd": 0.0047884,
+      "duration_ms": 21179,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-20T04-49-39-734Z_together_Tencent_Hy4_is_live_on_Together_AI.json",
+      "writer_output": "WRITER_2026-11-20T04-49-39-734Z_together_Tencent_Hy4_is_live_on_Together_AI.json",
+      "success": true,
+      "merged_from": 3,
+      "merged_theme": "AI model deployments on cloud platforms",
+      "source_via": [
+        "html",
+        "html",
+        "hirfolyam"
+      ],
+      "source_chars": 6936,
+      "source_overlap_words": 10,
+      "cost_usd": 0.0040987,
+      "duration_ms": 15889,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 2,
+  "termek_extra": 0,
+  "finished_at": "2026-11-21T04:46:58.744Z",
+  "duration_seconds": 94.293
+}

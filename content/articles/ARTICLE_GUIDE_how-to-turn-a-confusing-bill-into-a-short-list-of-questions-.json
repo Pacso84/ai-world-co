@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-turn-a-confusing-bill-into-a-short-list-of-questions-",
+    "company": "",
+    "tool": "",
+    "icon": "🧾",
+    "level": "beginner",
+    "source_news": null,
+    "official_sources": null,
+    "trend": null,
+    "extra_slot": null,
+    "written_at": "2026-11-21T04:48:38.711Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0044062,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-11-21T04:49:07.015Z",
+    "slug": "how-to-turn-a-confusing-bill-into-a-short-list-of-questions-for-the-co",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1511
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [
+        "Step 4 example uses placeholder '$-free charge' which may confuse readers copying the template"
+      ],
+      "verdict": "Clear, beginner-friendly guide with solid structure, plain language, and proper privacy precautions. The only minor issue is a slightly awkward placeholder in the Step 4 example that could confuse readers.",
+      "_aiCost": 0.00135126,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-21T04:51:16.826Z",
+    "seo": {
+      "meta_description": "Learn how to use AI to decode confusing bills and create a simple list of questions to ask customer service. No technical skills needed.",
+      "keywords": [
+        "how to understand a confusing bill",
+        "questions to ask about your bill",
+        "AI for bill problems",
+        "how to dispute a bill",
+        "reading confusing bills",
+        "customer service call tips",
+        "utility bill questions"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add subheadings to break up the content and improve SEO structure",
+        "Include a concrete example list of sample questions readers can adapt",
+        "Consider adding FAQ schema markup for better search visibility"
+      ],
+      "optimised_at": "2026-11-21T04:52:29.250Z"
+    },
+    "fact_verified_at": "2026-11-21T04:53:29.797Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Turn a Confusing Bill Into a Short List of Questions for the Company\"\nsubtitle: \"Use an AI assistant to decode each line of your bill, then build a clear list of questions for your call.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"\"\ntool: \"\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"everyday-ai\", \"bills\", \"customer-service\"]\n---\n\n# How to Turn a Confusing Bill Into a Short List of Questions for the Company\n\n> **In short:** You can paste a bill's line items into an AI assistant, ask it to explain each one in plain words, and turn those explanations into numbered questions for the company. Remove account numbers and personal details first, and check every answer against your bill.\n\nBills are often written in codes, abbreviations and small print that make sense to the company but not to you. In this guide, you'll learn how to use an AI assistant to translate each line into everyday language, then build a short, numbered list of specific questions to bring to a customer service call. You don't need any technical skills. You only need your bill, a device with internet access, and a free or paid account with an AI assistant such as ChatGPT, Gemini or Claude.\n\n## Before you start\n- **Your bill**, either as a paper copy, a PDF or a screenshot. Have it open where you can read it.\n- **An AI assistant account.** Free accounts for ChatGPT, Gemini and Claude are available, though limits and features can vary by plan.\n- **About 30 to 45 minutes**, including a short wait for the company's customer service.\n- **A notepad or a document** to save your questions in.\n\n## Step 1 — Remove private details from your bill\nBefore you paste anything into an AI assistant, cover up the private parts of your bill. Use a black marker on paper, or a simple photo editor on a screenshot. Hide your full name, home address, account or customer number, phone number, card digits and any barcode. You're keeping the charges, dates, amounts and descriptions, which are what matter for the questions.\n\nIf you're typing the lines yourself, replace private information with a word like \"account\" or \"phone\". The AI doesn't need your personal details to explain a charge like \"monthly service fee\" or \"equipment rental.\"\n\n💬 Example: \"I'm going to paste the charges from my [type of bill] bill. My account details have been removed.\"\n\nYou'll know it worked when your bill still shows every charge, date and amount, but nothing that identifies you personally.\n\n## Step 2 — Paste the line items and ask for plain-language explanations\nOpen your AI assistant and start a new chat. You'll see an empty chat with a message box at the bottom of the screen. Type your request there, then paste the charges you copied from the bill. Copy one section at a time if the bill is long, such as the main charges, the fees, and the taxes.\n\nSend your message with the send button, usually a small arrow or paper-plane icon next to the message box. After a few seconds, the explanations appear below your message. Read them slowly and make sure each line you pasted has an explanation. If the answer skips some lines, ask again and say which ones are missing.\n\nIf the assistant asks for more information, answer briefly. If its answer uses words you don't understand, reply with \"Explain that again in simpler words.\" The AI can't see your account, so it can only guess what a code means. Treat its explanations as a starting point.\n\n💬 Example: \"Please explain each of these bill lines in plain, everyday words. Tell me what each one usually means, and mark any line you're not sure about: [paste your bill lines here].\"\n\nYou'll know it worked when each charge you pasted has a short, plain explanation below it.\n\n## Step 3 — Sort the charges into groups\nNext, ask the assistant to organize the bill so it's easier to scan. Grouping charges shows you where the questions are likely to be. A typical grouping might be: regular service charges, one-time charges, fees, taxes, and anything that is different from last month.\n\nThe AI will usually reply with a list under headings. Read each group and check it against your bill, since a charge can look like it belongs in one group but actually belongs in another. If you're comparing two bills, you can paste last month's total and this month's total as well, but keep private details out of it.\n\nIf the assistant groups things oddly, tell it what you want: \"Please move the one-time charges into their own group.\" It may not always get the grouping right, so it's fine to fix it by hand.\n\n💬 Example: \"Group these charges into regular monthly charges, one-time charges, fees, taxes, and anything that changed from my last bill: [paste your bill lines here].\"\n\nYou'll know it worked when your charges appear in clearly labeled groups you can read at a glance.\n\n## Step 4 — Turn each confusing item into a specific question\nThis is the step that makes the call easier. For each item you don't understand, or that seems higher than expected, write one specific question. Vague questions like \"Why is my bill so high?\" are hard for a representative to answer. A question like \"Can you explain the $-free charge dated [date] labeled [charge name]?\" gives them something they can check.\n\nAsk the assistant to help. Give it the group you want to question, and ask for one question per charge in a numbered list. Read every question and make sure it's something you would actually say out loud. Delete any question that is only a guess.\n\nRemember what an AI assistant can't do here. It can't see your account, can't know your company's policy, and can't tell whether a charge is an error. Only the company can confirm that. Your questions are for asking, not for deciding.\n\n💬 Example: \"For each charge in the 'changed from last month' group, write one clear, polite question I can ask a customer service representative. Number them, and keep each question to one sentence.\"\n\nYou'll know it worked when you have a numbered list where each question names one specific charge, date or amount from your bill.\n\n## Step 5 — Build your final call list\nNow combine everything into one short list you can read during the call. Put your most important questions first, and keep the list to about five to ten items. Add a line at the top with your account reference, the date on your bill and the total amount, but leave out private details you don't want to say aloud.\n\nAsk the assistant to tidy it up. It can shorten the questions, put them in a logical order and add a final question like \"Can you send me a written explanation?\" Then read the list yourself. Make sure every question matches your actual bill. Print the list or keep it on your phone, and leave space to write down the representative's name, the date of the call and any reference number they give you.\n\n💬 Example: \"Combine these questions into one numbered call list, most important first, with room at the bottom to write notes: [paste your questions here].\"\n\nYou'll know it worked when you have a short, numbered list you can read out loud in under five minutes, with space to write answers.\n\n## Common mistakes\n- **Pasting private details.** Many people paste the whole bill, including their address and account number. The fix is Step 1: cover or remove them first.\n- **Trusting the AI's explanation as the final word.** The assistant can misread a code or miss a detail. The fix is to check each explanation against the bill and ask the company to confirm anything important.\n- **Asking vague questions on the call.** \"Why is this so expensive?\" rarely gets a clear answer. The fix is to name a specific charge, date and amount, as in Step 4.\n\n## What this means for you\n- **In everyday life:** When a bill arrives with confusing charges, you can understand it in minutes and call with a clear, calm list instead of feeling lost.\n- **For your business or work:** If you handle bills for a small office or household budget, the same method helps you sort charges into groups and prepare focused questions for a vendor.\n- **If you're just getting started:** Start with one short bill. Paste only three or four lines, ask for plain explanations, and see how it feels before you tackle a longer statement.\n\n## Try it now\nPick one line from your most recent bill that you don't understand. Remove any private details, open your AI assistant, and type: \"Explain this bill line in plain words and suggest one question I could ask the company about it: [paste one line here].\" Read the answer and check it against your bill. You've just made your first question for the call.",
+  "original_title": "How to Turn a Confusing Bill Into a Short List of Questions for the Company"
+}

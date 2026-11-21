@@ -1,0 +1,77 @@
+{
+  "_meta": {
+    "written_at": "2026-11-21T04:46:17.639Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0036786,
+    "original_draft": "2026-11-21T04-44-49-347Z_aws-ml_New_in_AWS_Quick__More_capable_flows__an_updated_w.json",
+    "source_id": "aws-ml",
+    "source_name": "AWS Machine Learning (hivatalos)",
+    "source_link": "https://aws.amazon.com/blogs/machine-learning/new-in-aws-quick-more-capable-flows-an-updated-web-experience-and-agents-that-work-together/",
+    "source_links": [
+      "https://aws.amazon.com/blogs/machine-learning/new-in-aws-quick-more-capable-flows-an-updated-web-experience-and-agents-that-work-together/"
+    ],
+    "source_snippet_len": 315,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "feadc47ce74b6539",
+    "source_overlap_words": 10,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-21T04:47:03.551Z",
+    "slug": "what-aws-quick-s-new-flows-and-web-app-updates-mean-for-your-team",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 68 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 748
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "Minor: subhead could be tighter; the line 'AWS Quick, Amazon Web Services AI workspace for work' reads slightly redundant"
+      ],
+      "verdict": "Clear, friendly explainer with strong structure, plain-language definitions of agent and flow, and no prohibited content. One small wording tweak would sharpen it.",
+      "_aiCost": 0.00102024,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m3",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-21T04:47:27.735Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a roundup of multiple updates (flows, web app, multi-agent orchestration, data sources, skills, safety controls, languages) rather than one specific named feature. No single concrete action for everyday users.",
+    "image_v": 2,
+    "image_at": "2026-11-21T04:49:52.075Z",
+    "seo": {
+      "meta_description": "AWS Quick's new features let teams share workflows, run multiple AI agents on one task, and keep processes running after closing tabs.",
+      "keywords": [
+        "AWS Quick updates",
+        "AWS Quick Flows",
+        "AWS AI workspace",
+        "team workflow automation",
+        "AWS Quick agents",
+        "Amazon AI for teams",
+        "AWS Quick daily briefing"
+      ],
+      "seo_score": 7,
+      "suggestions": [
+        "Add more specific use cases showing how teams can benefit from sharing processes",
+        "Include the exact name 'Amazon Q' if that's the current official product name to match search behavior",
+        "Add more long-tail keywords like 'how to automate team workflows with AWS'"
+      ],
+      "optimised_at": "2026-11-21T04:51:51.007Z"
+    },
+    "fact_verified_at": "2026-11-21T04:54:06.636Z"
+  },
+  "article_markdown": "---\ntitle: \"What AWS Quick's New Flows and Web App Updates Mean for Your Team\"\nsubtitle: \"Amazon's AI workspace can now turn one person's routine into a shared process, and it can run several agents on the same request.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"aws-quick\", \"ai-agents\", \"workflow-automation\", \"team-productivity\", \"work\"]\n---\n\n# What AWS Quick's New Flows and Web App Updates Mean for Your Team\n\n> **In short:** AWS Quick, Amazon Web Services' AI workspace for work, has new updates. Flows can now be built by describing a process in chat, the web app adds a daily briefing and keeps work running after you close the tab, and several agents can now work on one request at the same time. AWS says these changes help teams repeat good work without waiting on one person.\n\nEver had a monthly report that only one person knows how to build? When that person is on vacation, the report either waits or comes out looking different. AWS has released a set of updates aimed at exactly that problem.\n\n## Turning one person's process into a team process\n\nAWS describes Quick as an AI workspace built for work. An **AI agent** is a program that can take actions for you, such as pulling data or writing a draft. A **flow** is a set of steps that connects agents, reusable skills, and tools in a fixed order.\n\nThe new part is how you build a flow. You describe the process in chat, the way you would explain it to a new coworker. Quick builds the flow and shows a diagram next to the chat, so you can check each step before you rely on it.\n\nAWS also added **deterministic steps**. A deterministic step gives the same result every time, like a formula in a spreadsheet, so the numbers do not change depending on who runs the flow. AWS says flows can now run longer and handle larger amounts of data.\n\nAWS gives an example of a finance manager who builds a monthly cost report. The flow pulls the latest results, compares each region to the plan, flags large changes, and drafts a summary for review. A teammate can run the same flow later, and a person still reviews the draft before it goes out. AWS notes that this example is fictional.\n\n## Working in the web app\n\nThe updated web app puts items that need your attention, plus a daily briefing, on your home screen. It also adds the agents and skills you use on desktop, and AWS says your work keeps running after you close the browser tab.\n\nAnother change is **multi-agent orchestration**. Instead of one agent answering your request, several specialized agents work on it at once, and Quick combines their findings into one response.\n\n## Other updates\n\n- **More data sources:** You can connect Meta ads and Amplitude, a product analytics tool, then ask questions in plain language across your sources.\n- **Skills on the web:** You can turn the way you do a task into a **skill**, a reusable recipe Quick can run again.\n- **Safety controls:** Admins can set content safety and sensitive-information controls for user prompts.\n- **More languages:** Japanese, German, Chinese (Simplified and Traditional), and Vietnamese are now supported.\n\nA customer, Pomelo, a fintech company, says that after adopting Quick, nearly four times as many people work with data each month without adding to its data team.\n\n## What this means for you\n\n- **In everyday life:** Think about one recurring task you handle, like a weekly summary. Writing down the steps in plain language is a good first move, because that is how you describe a process to Quick.\n- **For your business or work:** If a single person holds a key process, a flow can make it shareable. Keep a person in the loop for final approval.\n- **If you're just getting started:** Check with your IT or admin team whether Quick is available to you before planning around it.\n- **If you already use it:** Try turning a task you repeat into a skill, then add deterministic steps for any calculation that must stay consistent.\n\n## Wrap-up\n\nAWS presents these updates as a way to turn individual know-how into team workflows, check the results, and keep work moving when someone steps away. Your next step is simple: pick one recurring task this week and write out its steps in plain sentences. Those notes are the starting point for any flow you build later.",
+  "original_title": "New in AWS Quick: More capable flows, an updated web experience, and agents that work together"
+}
