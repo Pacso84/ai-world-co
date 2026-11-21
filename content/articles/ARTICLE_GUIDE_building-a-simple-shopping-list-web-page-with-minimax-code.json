@@ -1,0 +1,78 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "building-a-simple-shopping-list-web-page-with-minimax-code",
+    "company": "MiniMax",
+    "tool": "MiniMax Code",
+    "icon": "🛒",
+    "level": "beginner",
+    "source_news": null,
+    "official_sources": [
+      {
+        "url": "https://agent.minimax.io/docs/code/get-started/first-task",
+        "title": "Create Your First Task",
+        "felfedezett": true
+      }
+    ],
+    "sugo_alapu": true,
+    "trend": null,
+    "extra_slot": null,
+    "written_at": "2026-11-21T15:47:54.975Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0048506,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "rejected_at": "2026-11-21T04:49:05.028Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1500
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 8,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured beginner guide with appropriate disclaimers about variable UI, honest uncertainty throughout, and a helpful honest limit note. Clarity is strong with fallback instructions and clear 'you'll know it worked' criteria for each step. One minor note: while no specific invented facts or quotes appear, the article wisely avoids specifying exact UI control names the writer cannot verify.",
+      "_aiCost": 0.0031422,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Multiple steps rely on guessed UI labels and an unverifiable help article without concrete fallbacks, making the guide hard to follow for a true beginner.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_GUIDE_building-a-simple-shopping-list-web-page-with-minimax-code.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-11-21T15:47:59.744Z",
+    "slug": "how-to-ask-minimax-code-to-build-a-checklist-web-page-you-can-open",
+    "image_v": 2,
+    "image_at": "2026-11-21T15:49:00.724Z",
+    "seo": {
+      "meta_description": "Create a checklist web page with MiniMax Code using simple words—no coding required. Follow this beginner's guide to build, open, and save your first page.",
+      "keywords": [
+        "MiniMax Code checklist",
+        "create checklist web page",
+        "MiniMax Code beginner guide",
+        "build web page without coding",
+        "how to use MiniMax Code"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the full product name 'MiniMax Code' in the first paragraph to improve keyword prominence",
+        "Include the exact phrase 'checklist web page' earlier in the title or subtitle for better ranking",
+        "Add more specific long-tail keywords like 'save checklist to browser' to capture related searches"
+      ],
+      "optimised_at": "2026-11-21T15:49:17.416Z"
+    },
+    "fact_verified_at": "2026-11-21T15:50:21.081Z",
+    "fact_check_suspect": "Ezek a MiniMax Code konkrét felületi/funkciós állításai (hangbemenet, munkaterület-kiválasztás, súgólap tartalom) nem ellenőrizhetők, és nem biztos, hogy megfelelnek a jelenlegi terméknek.",
+    "fact_check_suspect_at": "2026-11-21T15:50:21.081Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Ask MiniMax Code to Build a Checklist Web Page You Can Open\"\nsubtitle: \"Describe a checklist in everyday words, let MiniMax Code build it as a small file, and open it in your browser.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"MiniMax\"\ntool: \"MiniMax Code\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"minimax-code\", \"web-page\", \"beginner\"]\n---\n\n# How to Ask MiniMax Code to Build a Checklist Web Page You Can Open\n\n> **In short:** Describe your checklist in plain words, let MiniMax Code build it as one web page file, then open that file in your browser. Test that your ticks stay after you reload it, because the official help page doesn't promise saved ticks.\n\nBy the end of this guide, you'll have asked MiniMax Code to build a small checklist page, opened it on your own computer, and tested it. You don't need any coding knowledge. This is written for someone who has never built a web page and wants a simple, practical first try.\n\n## Before you start\n\n- **MiniMax Code, installed and open on your computer.** The official help page \"Create Your First Task\" describes a sidebar on the left and a message box where you type. If your version looks different, the official help center is the best place to check.\n- **A folder on your computer** where the finished file can go. You will select it as your workspace in Step 3. A workspace is simply the folder the Agent works inside.\n- **About 20 to 30 minutes** for the first try, including testing.\n- **Plan details:** the help page doesn't say whether any plan limits this feature. Check the official MiniMax website for current plan information.\n\n## Step 1 — Start a new task\n\nA task is one piece of work you give the Agent, like a single project folder for one job. To start one, look for **New Task** in the sidebar. You can also type directly in the message box on the home screen, which the official help page calls the home composer. Either way works.\n\nWhen the task opens, you should see an empty chat with a message box at the bottom. Nothing has been built yet, and that's normal. If your sidebar is hidden or the layout looks different, look for a small menu or icon that opens it, or check the official help center for your version's layout.\n\n💬 Example: type the request from Step 2 into the message box once you've read it.\n\nYou'll know it worked when you have a fresh, empty task with the message box ready for your request.\n\n## Step 2 — Describe the result you want\n\nThis is the most important step. The official help page advises describing the outcome you want, not every click. For a coding task like this one, it also suggests naming the technology, any limits you care about, and how you'll check the result. You don't need technical words. Say what the page shows, what should happen when you tick an item, and that you want one file you can open in a browser.\n\nWrite it the way you'd explain it to a friend. Keep it to a few sentences so it's easy to read back.\n\n💬 Example: \"Build a simple web page with a checklist of [number] grocery items. Each item has a box I can tick. The page should remember which boxes are ticked after I reload it. Save everything as one HTML file I can open in my web browser.\"\n\nYou'll know it worked when your request sits in the message box and you can read it back clearly. If it feels long, cut it down to the outcome plus one or two important details.\n\n## Step 3 — Select your folder as the workspace\n\nNext, tell MiniMax Code where to work. The official help page says you can select a workspace, add files by dragging them in, or mention a project file with the @ symbol. Choose the folder you prepared earlier as your workspace. If you have no existing files to share, you can skip the drag and @ options.\n\nThe help page doesn't name the exact control for selecting a workspace, and I can't see your screen, so look near the message box for something that mentions a workspace, folder or project. If you can't find one, you can still continue. Just add the folder name to your request, as shown below.\n\n💬 Example: \"Put the finished file in my checklist folder and name it checklist.html.\"\n\nYou'll know it worked when the folder you chose appears as the workspace for this task, or when your request clearly names the folder.\n\n## Step 4 — Speak your request instead of typing (optional)\n\nIf typing is slow for you, MiniMax Code has voice input. The official help page says to click the microphone in the bottom-right corner of the message box. The first time, allow the app to use your microphone. Then speak in a normal voice. Your words appear in the message box as you talk, and you can edit them before sending.\n\nThe help page also mentions a **Transcribe and send** option while you're recording, which sends your words right away. If you'd like a different microphone, the page says to go to **Settings**, then **Voice**, then **Microphone**. Dictation shortcuts are in **Settings**, then **Voice**, then **Dictation**. None is assigned by default. If you don't see the microphone, check the official help center, or simply type your request instead.\n\n💬 Example: say, \"Build a simple checklist web page that remembers my ticks.\"\n\nYou'll know it worked when your spoken words appear in the message box and you can read them before you send.\n\n## Step 5 — Send it and answer any prompts\n\nSend your request, then let the Agent work. The help page says you can add more requirements while it runs, and you may be asked for permission along the way. Read each prompt before you answer. A request to create or change a file in your chosen folder is expected for this task. If a prompt asks for something unrelated, decline it and describe what you actually want.\n\nWhen the Agent finishes, read its reply. If it doesn't say where the file was saved or what it's called, ask directly. The official help page doesn't describe where saved files appear, so the official help center is the place to confirm.\n\n💬 Example: \"Please tell me the full file name and the folder where you saved it.\"\n\nYou'll know it worked when the Agent says the task is finished and names the file it created.\n\n## Step 6 — Open the page and test it\n\nFind the HTML file in the folder you chose. On many computers, double-clicking a file ending in .html opens it in your web browser. If that doesn't happen, right-click the file and look for an option to open it with a browser you already have.\n\nNow test it. Tick three boxes, then reload the page or close it and open it again. If the ticks are still there, the saving feature works. If they disappear, don't worry. Go back to your task and describe what happened.\n\n💬 Example: \"When I tick two items and reload the page, the ticks disappear. Please fix it so the checked items stay ticked.\"\n\nYou'll know it worked when your ticks stay after you reload the page.\n\n## Common mistakes\n\n- **Describing every click instead of the result.** Writing \"add a div, then a button\" makes the request harder to follow. Fix it by describing the checklist you want, and let MiniMax Code handle the building.\n- **Skipping the test.** A page can look right but not remember ticks. Fix it by ticking boxes, reloading, and asking for a change if the ticks vanish.\n- **Trusting a confident reply without opening the file.** Always open the file yourself. If something is missing, say exactly what, such as \"the ticks don't save.\"\n\n## What this means for you\n\n- **In everyday life:** make a packing list for a trip, a weekly chore chart, or a grocery checklist you can open on your computer.\n- **For your business or work:** build a simple internal checklist, such as a setup or onboarding list, saved as one file a colleague can open.\n- **If you're just getting started:** ask for one small page with three checkboxes, test it, then add one feature at a time.\n\nHonest limit: MiniMax Code can build the page and explain how to open it, but it can't promise the page will behave the same in every browser or on every device. Test it yourself before you rely on it.\n\n## Try it now\n\nOpen MiniMax Code, start a new task, and type: \"Build a simple web page with a checklist of [number] items. Each item has a box I can tick. Save it as one HTML file.\" Then open the file in your browser and tick two boxes.",
+  "original_title": "How to Ask MiniMax Code to Build a Simple Web Page"
+}

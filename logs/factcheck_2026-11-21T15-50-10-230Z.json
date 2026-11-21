@@ -1,0 +1,63 @@
+{
+  "ok": 2,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.01093866,
+  "at": "2026-11-21T15:50:10.230Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 2,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 2,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_building-a-simple-shopping-list-web-page-with-minimax-code.json",
+      "cim": "How to Ask MiniMax Code to Build a Simple Web Page",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "Ezek a MiniMax Code konkrét felületi/funkciós állításai (hangbemenet, munkaterület-kiválasztás, súgólap tartalom) nem ellenőrizhetők, és nem biztos, hogy megfelelnek a jelenlegi terméknek."
+    },
+    {
+      "file": "ARTICLE_2026-10-05T02-56-31-463Z_perplexity-news_How_Credits_Work_on_Perplexity_-_perplexity_ai.json",
+      "cim": "How Credits Work on Perplexity - perplexity.ai",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-turn-a-long-pdf-contract-into-a-plain-english-summary.json",
+      "cim": "How to turn a long PDF contract into a plain-English summary in 5 minutes",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-08-31T15-39-10-034Z_openai-blog_A_milestone_in_expanding_access_to_AI.json",
+      "cim": "A milestone in expanding access to AI",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk általános állításai a mesterséges intelligencia ingyenes eszközeiről összhangban vannak az OpenAI forrásával. A forrás kifejezetten említi a \"hirdetésekkel támogatott ingyenes szintet\" és \"hetente több mint 1 milliárd aktív felhasználót\", amelyek megfelelnek a cikk hivatkozásainak. A forrás n"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-turn-a-long-voice-memo-into-a-short-summary-in-minute.json",
+      "cim": "How to Turn a Long Voice Memo Into a Short Summary in Minutes",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "Az útmutató egy nem létező iPhone átirat funkciót ír le tartalékmódszerként. Az iPhone beépített hangrögzítőjén nincs olyan átirat funkció, amivel ki lehet másolni a szöveget, így a leírt lépések nem működnének a legtöbb felhasználónál."
+    },
+    {
+      "file": "ARTICLE_2026-08-21T00-39-46-760Z_picsart_How_to_use_AI_for_interior_design__4_looks_from_on.json",
+      "cim": "How to use AI for interior design: 4 looks from one photo",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "megváltozott a fejezetek száma",
+      "modell_hu": "A cikk más eszközöket (RoomGPT, ReRoom AI) tárgyal, nem a forrásban leírt Picsart Interior Studio eszközt. Azt is állítja, hogy a bútor nem vásárolható meg, holott a forrás kifejezetten azt mondja, hogy az eszköz 6-12 terméket tartalmazó valós bevásárlólistát készít."
+    }
+  ]
+}

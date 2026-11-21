@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179506469549582",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-19T05:04:55.495Z",
-      "updated": "2026-11-19T05:04:55.708Z"
-    },
-    {
-      "id": "t179506469570954",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-19T05:04:55.709Z",
-      "updated": "2026-11-19T05:04:55.927Z"
-    },
-    {
-      "id": "t179506469600871",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-19T05:04:56.008Z",
-      "updated": "2026-11-19T05:07:04.786Z"
-    },
-    {
-      "id": "t179506482478776",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-19T05:07:04.787Z",
-      "updated": "2026-11-19T05:07:49.351Z"
-    },
-    {
-      "id": "t179506486935364",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-19T05:07:49.353Z",
-      "updated": "2026-11-19T05:08:03.717Z"
-    },
-    {
-      "id": "t179506488371826",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-19T05:08:03.718Z",
-      "updated": "2026-11-19T05:08:28.636Z"
-    },
-    {
-      "id": "t179510742308080",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-19T16:57:03.080Z",
-      "updated": "2026-11-19T16:57:03.293Z"
-    },
-    {
-      "id": "t179510742329547",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-19T16:57:03.295Z",
-      "updated": "2026-11-19T16:57:37.973Z"
-    },
-    {
-      "id": "t179510745797510",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-19T16:57:37.975Z",
-      "updated": "2026-11-19T16:57:38.179Z"
-    },
-    {
-      "id": "t179510745823045",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-19T16:57:38.230Z",
-      "updated": "2026-11-19T16:58:39.221Z"
-    },
-    {
-      "id": "t179510751922363",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-19T16:58:39.223Z",
-      "updated": "2026-11-19T16:58:59.848Z"
-    },
-    {
-      "id": "t17951075398514",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-19T16:58:59.851Z",
-      "updated": "2026-11-19T16:59:08.058Z"
-    },
-    {
-      "id": "t179510754814473",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-19T16:59:08.144Z",
-      "updated": "2026-11-19T16:59:08.366Z"
-    },
-    {
-      "id": "t179510754836863",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-19T16:59:08.368Z",
-      "updated": "2026-11-19T16:59:08.585Z"
-    },
-    {
       "id": "t179510754862638",
       "title": "Run designer",
       "status": "done",
@@ -479,65 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-21T04:52:50.749Z",
       "updated": "2026-11-21T04:53:19.545Z"
+    },
+    {
+      "id": "t179527601572065",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-21T15:46:55.720Z",
+      "updated": "2026-11-21T15:46:55.932Z"
+    },
+    {
+      "id": "t179527601593589",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-21T15:46:55.935Z",
+      "updated": "2026-11-21T15:47:21.471Z"
+    },
+    {
+      "id": "t17952760414737",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-21T15:47:21.473Z",
+      "updated": "2026-11-21T15:47:21.686Z"
+    },
+    {
+      "id": "t179527604174477",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-21T15:47:21.744Z",
+      "updated": "2026-11-21T15:47:37.919Z"
+    },
+    {
+      "id": "t179527605792123",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-21T15:47:37.921Z",
+      "updated": "2026-11-21T15:47:38.147Z"
+    },
+    {
+      "id": "t179527605815039",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-21T15:47:38.150Z",
+      "updated": "2026-11-21T15:47:54.990Z"
+    },
+    {
+      "id": "t179527607499263",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-21T15:47:54.992Z",
+      "updated": "2026-11-21T15:47:59.764Z"
+    },
+    {
+      "id": "t179527607976730",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-21T15:47:59.767Z",
+      "updated": "2026-11-21T15:48:00.026Z"
+    },
+    {
+      "id": "t179527608011545",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-21T15:48:00.115Z",
+      "updated": "2026-11-21T15:48:00.344Z"
+    },
+    {
+      "id": "t179527608034670",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-21T15:48:00.346Z",
+      "updated": "2026-11-21T15:48:00.584Z"
+    },
+    {
+      "id": "t179527608062870",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-21T15:48:00.628Z",
+      "updated": "2026-11-21T15:49:00.767Z"
+    },
+    {
+      "id": "t179527614076926",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-21T15:49:00.769Z",
+      "updated": "2026-11-21T15:49:17.455Z"
+    },
+    {
+      "id": "t179527615745746",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-21T15:49:17.457Z",
+      "updated": "2026-11-21T15:49:29.718Z"
+    },
+    {
+      "id": "t179527616972197",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-21T15:49:29.721Z",
+      "updated": "2026-11-21T15:50:08.924Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179450095823359",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"How to pause and schedule automated workflows in Google Workspace Studio\" — az Ellenőrző tényt/forrást k",
-      "agent": "guide",
-      "at": "2026-11-12T16:29:18.233Z",
-      "loud": false
-    },
-    {
-      "id": "n179450097861079",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"How to use Gemini 4 Carbon\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Other model names ",
-      "agent": "guide",
-      "at": "2026-11-12T16:29:38.610Z",
-      "loud": false
-    },
-    {
-      "id": "n179450118170611",
-      "level": "info",
-      "text": "SEO: 4 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-11-12T16:33:01.706Z",
-      "loud": false
-    },
-    {
-      "id": "n179450119176673",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is solid and practical — it covers real everyday needs from fact-checking and privacy to writing emails, resumes, and LinkedIn bios, with a good mix of AI tools. Ready to go. One gentle no",
-      "agent": "publisher",
-      "at": "2026-11-12T16:33:11.766Z",
-      "loud": false
-    },
-    {
-      "id": "n179450120183822",
-      "level": "success",
-      "text": "1 hír + 3 útmutató publikálva (költség: $0.0200).",
-      "agent": "ceo",
-      "at": "2026-11-12T16:33:21.838Z",
-      "loud": false
-    },
-    {
-      "id": "n179450121835297",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to use Gemini 4 Carbon\" — A \"Gemini 4 Carbon\" termék neve nem lé",
-      "agent": "fact-check",
-      "at": "2026-11-12T16:33:38.352Z",
-      "loud": false
-    },
-    {
-      "id": "n179450125948432",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „In short:** People ",
-      "agent": "fact-check",
-      "at": "2026-11-12T16:34:19.484Z",
-      "loud": false
-    },
     {
       "id": "n179454313586896",
       "level": "info",
@@ -1281,74 +1225,65 @@
       "agent": "ceo",
       "at": "2026-11-21T04:53:19.574Z",
       "loud": false
+    },
+    {
+      "id": "n179527607497865",
+      "level": "warn",
+      "text": "📨 guide → ceo: Kell még adat: \"How to Ask MiniMax Code to Build a Simple Web Page\" — az Ellenőrző tényt/forrást kér, amit nem találhato",
+      "agent": "guide",
+      "at": "2026-11-21T15:47:54.978Z",
+      "loud": false
+    },
+    {
+      "id": "n179527615744229",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-11-21T15:49:17.442Z",
+      "loud": false
+    },
+    {
+      "id": "n179527619019211",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is coherent and publish-ready — it's a practical, writing-heavy mix (resumes, emails, bios, speeches) nicely balanced by a privacy guide and an everyday-tasks overview, which doubles as a ",
+      "agent": "publisher",
+      "at": "2026-11-21T15:49:50.192Z",
+      "loud": false
+    },
+    {
+      "id": "n179527620897499",
+      "level": "success",
+      "text": "0 hír + 1 útmutató publikálva (költség: $0.0056).",
+      "agent": "ceo",
+      "at": "2026-11-21T15:50:08.974Z",
+      "loud": false
+    },
+    {
+      "id": "n179527622108234",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Ask MiniMax Code to Build a Simple Web Page\" — Ezek a MiniMax",
+      "agent": "fact-check",
+      "at": "2026-11-21T15:50:21.082Z",
+      "loud": false
+    },
+    {
+      "id": "n179527625627265",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Turn a Long Voice Memo Into a Short Summary\" — Az útmutató eg",
+      "agent": "fact-check",
+      "at": "2026-11-21T15:50:56.272Z",
+      "loud": false
+    },
+    {
+      "id": "n179527630105949",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (megváltozott a fejezetek száma): \"How to use AI for interior design: 4 loo",
+      "agent": "fact-check",
+      "at": "2026-11-21T15:51:41.060Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179428798692877",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-10T05:19:46.928Z"
-    },
-    {
-      "id": "m179428809867452",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „Eligible enterprise customers can use zero data retention, meaning nothing is stored after”): \"Claude Fable 5.2 in GitHub Copilot\" — A cikkben az AWS jogosult ügyfelei számára a nulla adatmegőrzés határideje június 30., 2027, nem 'a naptári év végéig'.",
-      "ref": "ARTICLE_2026-11-10T05-08-29-261Z_github-copilot-changelog_Claude_Fable_5_2_in_GitHub_Copilot.json",
-      "open": true,
-      "at": "2026-11-10T05:21:38.674Z"
-    },
-    {
-      "id": "m179428870208027",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-10T05:31:42.080Z"
-    },
-    {
-      "id": "m179432643286351",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-10T16:00:32.863Z"
-    },
-    {
-      "id": "m17943264860080",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt javítottam egy publikált cikkben: \"Building policy enforcement into the AI stack with\" — A forrás kifejezetten felsorolja az 'erőforrásokat' (resources) mint egyik szabályzat céltárgyat, amelyet a PPE kezel. Ez egy konkrét ténybeli elem, amelyet bele kell foglalni.",
-      "ref": "ARTICLE_2026-11-09T17-59-31-276Z_ibm_Building_policy_enforcement_into_the_AI_stack_with.json",
-      "at": "2026-11-10T16:01:26.008Z"
-    },
-    {
-      "id": "m179432650786866",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Pick the video to get both the moving character and a watermark-free version of the cartoo”): \"How to make a cartoon of yourself with AI in Picsa\" — A forrás nem említ semmilyen fizetős csomagot, előfizetési követelményt vagy vízjelet. Csak annyit mond: 'Először általában be kell jelentkezned.'",
-      "ref": "ARTICLE_2026-08-19T08-23-54-514Z_picsart_How_to_make_a_cartoon_of_yourself_with_AI_in_Picsa.json",
-      "open": true,
-      "at": "2026-11-10T16:01:47.868Z"
-    },
-    {
-      "id": "m179432703069399",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-10T16:10:30.693Z"
-    },
     {
       "id": "m179434659946825",
       "from": "ellenorzo",
@@ -2685,6 +2620,74 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-21T05:02:35.703Z"
+    },
+    {
+      "id": "m179527607497672",
+      "from": "guide",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"How to Ask MiniMax Code to Build a Simple Web Page\" — javítva: LEDE_TOO_LONG: A RÖVIDEN-doboz 61 szó (max ~45) — ami hosszú, az már nem \"röviden\".; Beginner clarity too low (5/10): steps are vague or could mislead a first-time user; újraküldöm.",
+      "ref": "GUIDE_building-a-simple-shopping-list-web-page-with-minimax-code.json",
+      "at": "2026-11-21T15:47:54.976Z"
+    },
+    {
+      "id": "m179527607497864",
+      "from": "guide",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Kell még adat: \"How to Ask MiniMax Code to Build a Simple Web Page\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Step 1 lacks an exact location for New Task or the home composer; the help article reference is vague",
+      "ref": "GUIDE_building-a-simple-shopping-list-web-page-with-minimax-code.json",
+      "open": false,
+      "at": "2026-11-21T15:47:54.978Z",
+      "resolved_at": "2026-11-21T15:47:59.747Z"
+    },
+    {
+      "id": "m179527607974558",
+      "from": "ellenorzo",
+      "to": "guide",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"How to Ask MiniMax Code to Build a Simple Web Page\" (?/10)",
+      "ref": "GUIDE_building-a-simple-shopping-list-web-page-with-minimax-code.json",
+      "at": "2026-11-21T15:47:59.745Z"
+    },
+    {
+      "id": "m179527616966354",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-21T15:49:29.663Z"
+    },
+    {
+      "id": "m179527622108288",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Ask MiniMax Code to Build a Simple Web Page\" — Ezek a MiniMax Code konkrét felületi/funkciós állításai (hangbemenet, munkaterület-kiválasztás, súgólap tartalom) nem ellenőrizhetők, és nem biztos, hogy megfelelnek a jelenlegi terméknek. (állítás: MiniMax Code has voice input with microphone icon in message box, and voice settings under Sett",
+      "ref": "ARTICLE_GUIDE_building-a-simple-shopping-list-web-page-with-minimax-code.json",
+      "open": true,
+      "at": "2026-11-21T15:50:21.082Z"
+    },
+    {
+      "id": "m179527625627212",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Turn a Long Voice Memo Into a Short Summary\" — Az útmutató egy nem létező iPhone átirat funkciót ír le tartalékmódszerként. Az iPhone beépített hangrögzítőjén nincs olyan átirat funkció, amivel ki lehet másolni a szöveget, így a leírt lépések nem működnének a legtöbb felhasználónál. (állítás: Step 3 fallback mentions 'Settings → Voice Memo",
+      "ref": "ARTICLE_GUIDE_how-to-turn-a-long-voice-memo-into-a-short-summary-in-minute.json",
+      "open": true,
+      "at": "2026-11-21T15:50:56.272Z"
+    },
+    {
+      "id": "m179527630105927",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (megváltozott a fejezetek száma): \"How to use AI for interior design: 4 looks from on\" — A cikk más eszközöket (RoomGPT, ReRoom AI) tárgyal, nem a forrásban leírt Picsart Interior Studio eszközt. Azt is állítja, hogy a bútor nem vásárolható meg, holott a forrás kifejezetten azt mondja, hogy az eszköz 6-12 terméket tartalmazó valós bevásárlólistát készít",
+      "ref": "ARTICLE_2026-08-21T00-39-46-760Z_picsart_How_to_use_AI_for_interior_design__4_looks_from_on.json",
+      "open": true,
+      "at": "2026-11-21T15:51:41.059Z"
     }
   ]
 }
