@@ -72,6 +72,19 @@ await t('💳 Alexa+ „fizetős” a Prime említése nélkül — fogja; Prime
   nincs('En EE. UU., Alexa+ está incluida en Amazon Prime; sin Prime es un plan de pago aparte: consulta la página de Alexa+ de Amazon si no sabes cuál es tu caso.', 'es');
 });
 
+await t('🐙 11-21: GitHub Copilot „ingyenes próbaidő” — fogja mindhárom nyelven; a Copilot Free-t és a más eszközt nem', () => {
+  van('github-copilot-proba', 'GitHub Copilot is a paid feature on most plans. The free trial may offer limited suggestions.', 'en');
+  van('github-copilot-proba', 'A GitHub Copilot a legtöbb csomagban fizetős funkció. Az ingyenes próbaverzió korlátozott számú javaslatot ad.', 'hu');
+  van('github-copilot-proba', 'GitHub Copilot es una función de pago en la mayoría de los planes. La prueba gratuita puede ofrecer sugerencias limitadas.', 'es');
+  nincs('GitHub Copilot has a free plan, Copilot Free, for individual accounts, with a limited monthly allowance; the paid plans raise the limits.', 'en');
+  nincs('A GitHub Copilotnak van ingyenes csomagja (Copilot Free) magánszemélyeknek, korlátozott havi kerettel.', 'hu');
+  nincs('GitHub Copilot tiene un plan gratuito, Copilot Free, para cuentas personales, con un límite mensual.', 'es');
+  // GitHub Copilot nélkül a „free trial” más termékről szól → nem hiba
+  nincs('Start the free trial of the editor, then open the settings.', 'en');
+  // a „versión de prueba” = béta (11-05 Xcode-hír, élő korpusz-eset) → nem a Copilot próbaideje
+  nincs('GitHub Copilot ya está en Xcode. Una beta es una versión de prueba de un programa, publicada antes de la versión final.', 'es');
+});
+
 await t('📦 Alexa+ „nincs széles körben kint” — fogja; a széles körű elérhetőséget nem', () => {
   van('alexa-plus-nincs-kint', 'Alexa+ has not been widely released yet, so most users cannot try it.', 'en');
   nincs('Alexa+ is now widely available in the US.', 'en');

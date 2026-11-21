@@ -433,6 +433,19 @@ export const TEVEDESEK = [
     }
   },
   {
+    id: 'github-copilot-proba',
+    leiras: 'GitHub Copilot: „fizetős, csak ingyenes próbaidővel/próbaverzióval lehet kipróbálni” — magánszemélyeknek van állandó ingyenes csomag (Copilot Free, havi kerettel), az új Copilot Pro-próbákat a GitHub 2026 áprilisában szüneteltette (docs.github.com/en/copilot/get-started/plans; 11-02-án és 11-21-én javítva).',
+    javitas: 'GitHub Copilot has a permanent free plan for individual accounts, Copilot Free, with a limited monthly allowance; paid plans raise the limits (docs.github.com/en/copilot/get-started/plans). Do not describe a Copilot "free trial" — new Copilot Pro trials have been paused since April 2026.',
+    szovegben: /GitHub Copilot/,
+    nyelvek: {
+      en: { mind: [], egyik: [alak(['free trial', '30-day trial', 'trial period'])], nem: [alak(['Copilot Free'], false)] },
+      hu: { mind: [], egyik: [alak(['ingyenes próbaverzió', 'ingyenes próbaverziót', 'ingyenes próbaverzióval', 'ingyenes próbaverzióban',
+        'ingyenes próbaidő', 'ingyenes próbaidőt', 'ingyenes próbaidőszak', 'ingyenes próbaidőszakot', 'ingyenes próbaidőszakkal', '30 napos próbaidő',
+        '30 napos próbaidőszak'])], nem: [alak(['Copilot Free'], false)] },
+      es: { mind: [], egyik: [alak(['prueba gratuita', 'periodo de prueba', 'período de prueba', 'prueba de 30 días'])], nem: [alak(['Copilot Free'], false)] }
+    }
+  },
+  {
     id: 'qwen-chat-konzol-widget',
     leiras: 'Qwen: „az Alibaba Cloud konzolban keresd a Qwen Chat szolgáltatást, hozz létre bot-projektet, és tedd ki widgetként a webshopodra” — a Qwen Chat a fogyasztói csevegő (chat.qwen.ai); saját Qwen-alapú asszisztenst az Alibaba Cloud Model Studióban lehet építeni (agent application → Publish), „Qwen Chat” konzol-szolgáltatás és kész webshop-widget nincs (help.aliyun.com/en/model-studio/single-agent-application; 11-11-én az útmutató 301-gyel levéve).',
     javitas: 'Qwen Chat is the consumer chat app at chat.qwen.ai. A custom Qwen-based assistant is built in Alibaba Cloud Model Studio (agent applications, then Publish) — there is no "Qwen Chat" service in the Alibaba Cloud console and no ready-made Qwen Chat widget for online shops, so never write setup steps for one.',
