@@ -1,6 +1,6 @@
 {
   "slug": "build-a-simple-weekly-meal-plan-with-grok-based-on-what-s-in-your-frid",
-  "keszult": "2026-11-21T04:56:13.902Z",
+  "keszult": "2026-11-21T15:53:41.038Z",
   "promptok": {
     "6e2e464fdf8d": [
       {
@@ -83,5 +83,55 @@
       }
     ],
     "1cb0932698ab": []
+  },
+  "promptok_es": {
+    "9e422b161cd8": [
+      {
+        "eredeti": "pechugas de pollo",
+        "hely": "tu carne"
+      },
+      {
+        "eredeti": "cheddar",
+        "hely": "tu queso"
+      },
+      {
+        "eredeti": "2 adultos",
+        "hely": "número de personas"
+      }
+    ],
+    "b73b3c0c41d6": [
+      {
+        "eredeti": "curry",
+        "hely": "tu plato"
+      },
+      {
+        "eredeti": "olla lenta",
+        "hely": "tu electrodoméstico"
+      },
+      {
+        "eredeti": "champiñones",
+        "hely": "tu ingrediente"
+      }
+    ],
+    "fb578d0c23d5": [
+      {
+        "eredeti": "2 adultos",
+        "hely": "número de personas"
+      },
+      {
+        "eredeti": "25 productos",
+        "hely": "límite de productos"
+      }
+    ],
+    "60738dc10e7e": [
+      {
+        "eredeti": "7 días",
+        "hely": "número de días"
+      },
+      {
+        "eredeti": "app de notas",
+        "hely": "tu app preferida"
+      }
+    ]
   }
 }
