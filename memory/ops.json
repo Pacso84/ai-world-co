@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179510754862638",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-19T16:59:08.626Z",
-      "updated": "2026-11-19T16:59:20.088Z"
-    },
-    {
-      "id": "t179510756008976",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-19T16:59:20.089Z",
-      "updated": "2026-11-19T16:59:29.650Z"
-    },
-    {
-      "id": "t179510756965219",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-19T16:59:29.652Z",
-      "updated": "2026-11-19T17:00:18.883Z"
-    },
-    {
-      "id": "t179510761888417",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-19T17:00:18.884Z",
-      "updated": "2026-11-19T17:00:44.746Z"
-    },
-    {
-      "id": "t179515011234868",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-20T04:48:32.348Z",
-      "updated": "2026-11-20T04:48:32.559Z"
-    },
-    {
-      "id": "t179515011256053",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-20T04:48:32.560Z",
-      "updated": "2026-11-20T04:49:56.917Z"
-    },
-    {
-      "id": "t179515019691967",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-20T04:49:56.919Z",
-      "updated": "2026-11-20T04:49:57.128Z"
-    },
-    {
-      "id": "t17951501971779",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-20T04:49:57.177Z",
-      "updated": "2026-11-20T04:51:17.515Z"
-    },
-    {
-      "id": "t179515027751667",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-20T04:51:17.517Z",
-      "updated": "2026-11-20T04:52:36.865Z"
-    },
-    {
-      "id": "t179515035686854",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-20T04:52:36.868Z",
-      "updated": "2026-11-20T04:53:11.045Z"
-    },
-    {
-      "id": "t179515039109010",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-20T04:53:11.091Z",
-      "updated": "2026-11-20T04:54:32.423Z"
-    },
-    {
-      "id": "t179515047242573",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-20T04:54:32.425Z",
-      "updated": "2026-11-20T04:54:59.496Z"
-    },
-    {
       "id": "t179515049954116",
       "title": "Run guide",
       "status": "done",
@@ -479,57 +383,105 @@
       "agent": "publisher",
       "created": "2026-11-21T15:49:29.721Z",
       "updated": "2026-11-21T15:50:08.924Z"
+    },
+    {
+      "id": "t179529593799972",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-21T21:18:57.999Z",
+      "updated": "2026-11-21T21:18:58.138Z"
+    },
+    {
+      "id": "t179529593814059",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-21T21:18:58.140Z",
+      "updated": "2026-11-21T21:19:39.823Z"
+    },
+    {
+      "id": "t179529597982574",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-21T21:19:39.825Z",
+      "updated": "2026-11-21T21:19:39.961Z"
+    },
+    {
+      "id": "t179529597999728",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-21T21:19:39.997Z",
+      "updated": "2026-11-21T21:19:56.551Z"
+    },
+    {
+      "id": "t179529599655276",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-21T21:19:56.552Z",
+      "updated": "2026-11-21T21:19:56.705Z"
+    },
+    {
+      "id": "t179529599670754",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-21T21:19:56.707Z",
+      "updated": "2026-11-21T21:19:56.872Z"
+    },
+    {
+      "id": "t179529599692967",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-21T21:19:56.929Z",
+      "updated": "2026-11-21T21:19:57.078Z"
+    },
+    {
+      "id": "t179529599708047",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-21T21:19:57.080Z",
+      "updated": "2026-11-21T21:19:57.231Z"
+    },
+    {
+      "id": "t179529599726096",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-21T21:19:57.260Z",
+      "updated": "2026-11-21T21:19:57.417Z"
+    },
+    {
+      "id": "t179529599741978",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-21T21:19:57.419Z",
+      "updated": "2026-11-21T21:19:57.577Z"
+    },
+    {
+      "id": "t179529599757840",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-21T21:19:57.578Z",
+      "updated": "2026-11-21T21:20:12.018Z"
+    },
+    {
+      "id": "t179529601202030",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-21T21:20:12.020Z",
+      "updated": "2026-11-21T21:20:35.055Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179454313586896",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 7.5/10).",
-      "agent": "seo",
-      "at": "2026-11-13T04:12:15.868Z",
-      "loud": false
-    },
-    {
-      "id": "n179454315327434",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid — it's a practical, everyday AI toolkit covering everything from privacy and fact-checking to resumes, emails, and LinkedIn bios. The mix of general guides (what AI is great at,",
-      "agent": "publisher",
-      "at": "2026-11-13T04:12:33.274Z",
-      "loud": false
-    },
-    {
-      "id": "n179454316734365",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0539).",
-      "agent": "ceo",
-      "at": "2026-11-13T04:12:47.343Z",
-      "loud": false
-    },
-    {
-      "id": "n179454321774295",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Google says it now ",
-      "agent": "fact-check",
-      "at": "2026-11-13T04:13:37.742Z",
-      "loud": false
-    },
-    {
-      "id": "n179458520320310",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to Check a Word Document for Missing Headings on Windows\"",
-      "agent": "pairing",
-      "at": "2026-11-13T15:53:23.203Z",
-      "loud": false
-    },
-    {
-      "id": "n179458525721655",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 9.0/10).",
-      "agent": "seo",
-      "at": "2026-11-13T15:54:17.216Z",
-      "loud": false
-    },
     {
       "id": "n179458527439473",
       "level": "success",
@@ -1281,56 +1233,57 @@
       "agent": "fact-check",
       "at": "2026-11-21T15:51:41.060Z",
       "loud": false
+    },
+    {
+      "id": "n17952960216683",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Publish summary: The lineup is ready and coherent — it leans heavily into practical \"write this in 2 minutes\" how-tos, nicely balanced by the privacy guide and the \"what AI is actually good at (and wh",
+      "agent": "publisher",
+      "at": "2026-11-21T21:20:21.668Z",
+      "loud": false
+    },
+    {
+      "id": "n179529603509030",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-11-21T21:20:35.090Z",
+      "loud": false
+    },
+    {
+      "id": "n179529605996660",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „The most promising ",
+      "agent": "fact-check",
+      "at": "2026-11-21T21:20:59.966Z",
+      "loud": false
+    },
+    {
+      "id": "n179529606964849",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to turn a selfie into a polaroid-style portrai\" — A képgenerálás",
+      "agent": "fact-check",
+      "at": "2026-11-21T21:21:09.648Z",
+      "loud": false
+    },
+    {
+      "id": "n179529609043231",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Turn Voice Memos Into Clean, Searchable Not\" — Az audiófájlok",
+      "agent": "fact-check",
+      "at": "2026-11-21T21:21:30.432Z",
+      "loud": false
+    },
+    {
+      "id": "n179529613346266",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Every major AI serv",
+      "agent": "fact-check",
+      "at": "2026-11-21T21:22:13.462Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179434661319778",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Gemini 4 Carbon is now available\" — javítva: Az AI-bíró kitalált állítást talált (részletek nélkül); Reviewer verdict: Hitelesség-kapu blokkolta: Az AI-bíró kitalált állítást talált (részletek nélkül); újraküldöm.",
-      "ref": "2026-11-10T21-35-05-523Z_google-gemini_Gemini_4_Carbon_is_now_available.json",
-      "at": "2026-11-10T21:36:53.197Z"
-    },
-    {
-      "id": "m179434663367042",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"Gemini 4 Carbon is now available\" (?/10)",
-      "ref": "2026-11-10T21-35-05-523Z_google-gemini_Gemini_4_Carbon_is_now_available.json",
-      "at": "2026-11-10T21:37:13.670Z"
-    },
-    {
-      "id": "m17943466790560",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-10T21:37:59.056Z"
-    },
-    {
-      "id": "m179434671920396",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (nincs title mező): \"Gemini 4 Carbon is now available\" — A forrás kifejezetten states 'fejlesztők, vállalkozások, tudósok és fogyasztók most kipróbálhatják' a modellt, de a cikk kihagyja a tudósokat és fogyasztókat mint jogosult csoportokat",
-      "ref": "ARTICLE_2026-11-10T21-35-05-523Z_google-gemini_Gemini_4_Carbon_is_now_available.json",
-      "open": true,
-      "at": "2026-11-10T21:38:39.203Z"
-    },
-    {
-      "id": "m179434675657431",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (túl nagy átírás (1761 szó a 1403-ből)): \"How to make longer AI videos with consistent chara\" — A forrás egy Picsart-útmutató, amely kifejezetten a Picsart Flow-t ajánlja Nano Banana Pro képgeneráláshoz, Seedance 2.0 videókhoz és Recraft V4 Pro logótípushoz. A cikk nem említi a Picsart-ot és teljesen más eszközöket ajánl.",
-      "ref": "ARTICLE_2026-09-10T01-59-31-972Z_picsart_How_to_make_longer_AI_videos_with_consistent_chara.json",
-      "open": true,
-      "at": "2026-11-10T21:39:16.574Z"
-    },
     {
       "id": "m179434678779222",
       "from": "fact-check",
@@ -2688,6 +2641,55 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-21T16:01:07.905Z"
+    },
+    {
+      "id": "m179529601197643",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-21T21:20:11.976Z"
+    },
+    {
+      "id": "m179529605996510",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „The most promising workflow uses three frames:”): \"How to make AI fight videos with one workflow\" — A cikk egy Picsart-specifikus munkafolyamatot általánosít úgy, mintha az AI-videó eszközöket általánosságban írná le, és hibásan írja le a három kulcsképet kezdő/befejező fotóként, nem üres környezet",
+      "ref": "ARTICLE_2026-08-15T00-37-23-464Z_picsart_How_to_make_AI_fight_videos_with_one_workflow.json",
+      "open": true,
+      "at": "2026-11-21T21:20:59.965Z"
+    },
+    {
+      "id": "m179529606964885",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to turn a selfie into a polaroid-style portrai\" — A képgeneráláshoz való hozzáféréssel kapcsolatos állítás valószínűleg elavult, mivel a Google bővítette a hozzáférést; a Create image kapcsoló leírása úgy tűnik, kitalált felületi elem (állítás: Image creation may sit behind a paid Google AI plan on some accounts; If your prompt returns only t",
+      "ref": "ARTICLE_GUIDE_how-to-turn-a-selfie-into-a-polaroid-style-portrait-with-a-g.json",
+      "open": true,
+      "at": "2026-11-21T21:21:09.648Z"
+    },
+    {
+      "id": "m179529609043217",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Turn Voice Memos Into Clean, Searchable Not\" — Az audiófájlokat fel lehet tölteni néhány AI asszisztensbe, de nem lehet 'beilleszteni' őket mint szöveget — ez hibás műveletet ír le. (állítás: You can paste the audio file directly into an AI assistant that accepts voice (most do now, including ChatGPT, Gemini, and Claude)). Nem nyúltam hozz",
+      "ref": "ARTICLE_GUIDE_how-to-turn-voice-memos-into-clean-searchable-notes.json",
+      "open": true,
+      "at": "2026-11-21T21:21:30.432Z"
+    },
+    {
+      "id": "m179529613346226",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Every major AI service has a billing page where you can set a hard cap on what you'll be c”): \"Vibe coding security: How to be sure your vibe-cod\" — A forrás egyértelműen az RLS-t (sor-szintű adatbázisbiztonság) azonosítja a legfontosabb biztonsági intézkedésként, nem a költségkorlátokat.",
+      "ref": "ARTICLE_2026-09-17T02-18-56-349Z_zapier-blog_Vibe_coding_security__How_to_be_sure_your_vibe-cod.json",
+      "open": true,
+      "at": "2026-11-21T21:22:13.462Z"
     }
   ]
 }

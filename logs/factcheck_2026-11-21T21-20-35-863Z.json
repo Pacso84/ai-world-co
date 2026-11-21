@@ -1,0 +1,63 @@
+{
+  "ok": 2,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.01462014,
+  "at": "2026-11-21T21:20:35.863Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 2,
+    "javitva": 0,
+    "visszautasitva": 2,
+    "gyanu": 2,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-08-15T00-37-23-464Z_picsart_How_to_make_AI_fight_videos_with_one_workflow.json",
+      "cim": "How to make AI fight videos with one workflow",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „The most promising workflow uses three frames:”",
+      "modell_hu": "A cikk egy Picsart-specifikus munkafolyamatot általánosít úgy, mintha az AI-videó eszközöket általánosságban írná le, és hibásan írja le a három kulcsképet kezdő/befejező fotóként, nem üres környezet/ütközés/utóhatás szerint."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-turn-a-selfie-into-a-polaroid-style-portrait-with-a-g.json",
+      "cim": "How to turn a selfie into a polaroid-style portrait with a Gemini prompt",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "A képgeneráláshoz való hozzáféréssel kapcsolatos állítás valószínűleg elavult, mivel a Google bővítette a hozzáférést; a Create image kapcsoló leírása úgy tűnik, kitalált felületi elem"
+    },
+    {
+      "file": "ARTICLE_2026-09-17T02-18-40-128Z_apple-ml_How_Value_Induction_Reshapes_LLM_Behaviour.json",
+      "cim": "How Value Induction Reshapes LLM Behaviour",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrás megállapításait az értékindukcióról: helyesen írja le, hogy az empátia mint tulajdonság szívélyességet eredményez, az értékek összefüggnek, és minden érték növeli az antropomorf nyelvhasználatot. A \"függőséget okozó\" megfogalmazás a forrás \"káros hatás a felhasználór"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-turn-voice-memos-into-clean-searchable-notes.json",
+      "cim": "How to Turn Voice Memos Into Clean, Searchable Notes",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "Az audiófájlokat fel lehet tölteni néhány AI asszisztensbe, de nem lehet 'beilleszteni' őket mint szöveget — ez hibás műveletet ír le."
+    },
+    {
+      "file": "ARTICLE_2026-09-17T02-18-56-349Z_zapier-blog_Vibe_coding_security__How_to_be_sure_your_vibe-cod.json",
+      "cim": "Vibe coding security: How to be sure your vibe-coded apps are safe to use",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „Every major AI service has a billing page where you can set a hard cap on what you'll be c”",
+      "modell_hu": "A forrás egyértelműen az RLS-t (sor-szintű adatbázisbiztonság) azonosítja a legfontosabb biztonsági intézkedésként, nem a költségkorlátokat."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-turn-your-class-notes-into-practice-questions-with-an.json",
+      "cim": "How to turn your class notes into practice questions with any AI assistant",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}
