@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179519243446891",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-20T16:33:54.468Z",
-      "updated": "2026-11-20T16:33:54.695Z"
-    },
-    {
-      "id": "t179519243469752",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-20T16:33:54.697Z",
-      "updated": "2026-11-20T16:33:54.920Z"
-    },
-    {
-      "id": "t179519243496262",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-20T16:33:54.962Z",
-      "updated": "2026-11-20T16:35:14.401Z"
-    },
-    {
-      "id": "t179519251440353",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-20T16:35:14.403Z",
-      "updated": "2026-11-20T16:35:37.024Z"
-    },
-    {
-      "id": "t179519253702524",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-20T16:35:37.025Z",
-      "updated": "2026-11-20T16:35:46.670Z"
-    },
-    {
-      "id": "t179519254667290",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-20T16:35:46.672Z",
-      "updated": "2026-11-20T16:36:13.116Z"
-    },
-    {
-      "id": "t179523623552259",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-21T04:43:55.522Z",
-      "updated": "2026-11-21T04:43:55.664Z"
-    },
-    {
-      "id": "t179523623566599",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-21T04:43:55.665Z",
-      "updated": "2026-11-21T04:45:24.147Z"
-    },
-    {
-      "id": "t179523632414822",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-21T04:45:24.148Z",
-      "updated": "2026-11-21T04:45:24.280Z"
-    },
-    {
-      "id": "t179523632431248",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-21T04:45:24.312Z",
-      "updated": "2026-11-21T04:46:58.757Z"
-    },
-    {
-      "id": "t179523641875888",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-21T04:46:58.758Z",
-      "updated": "2026-11-21T04:47:07.487Z"
-    },
-    {
-      "id": "t179523642748923",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-21T04:47:07.489Z",
-      "updated": "2026-11-21T04:47:52.298Z"
-    },
-    {
-      "id": "t179523647232978",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-21T04:47:52.329Z",
-      "updated": "2026-11-21T04:49:02.815Z"
-    },
-    {
-      "id": "t179523654281752",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-21T04:49:02.817Z",
-      "updated": "2026-11-21T04:49:07.025Z"
-    },
-    {
       "id": "t179523654705591",
       "title": "Run guide",
       "status": "done",
@@ -479,49 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-22T04:07:26.654Z",
       "updated": "2026-11-22T04:08:02.098Z"
+    },
+    {
+      "id": "t179536249269324",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-22T15:48:12.693Z",
+      "updated": "2026-11-22T15:48:12.869Z"
+    },
+    {
+      "id": "t179536249287254",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-22T15:48:12.872Z",
+      "updated": "2026-11-22T15:48:45.342Z"
+    },
+    {
+      "id": "t179536252534488",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-22T15:48:45.344Z",
+      "updated": "2026-11-22T15:48:45.511Z"
+    },
+    {
+      "id": "t179536252556325",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-22T15:48:45.563Z",
+      "updated": "2026-11-22T15:49:01.283Z"
+    },
+    {
+      "id": "t179536254128536",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-22T15:49:01.285Z",
+      "updated": "2026-11-22T15:49:04.459Z"
+    },
+    {
+      "id": "t179536254446118",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-22T15:49:04.461Z",
+      "updated": "2026-11-22T15:49:24.651Z"
+    },
+    {
+      "id": "t179536256465463",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-22T15:49:24.654Z",
+      "updated": "2026-11-22T15:49:30.684Z"
+    },
+    {
+      "id": "t179536257068736",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-22T15:49:30.687Z",
+      "updated": "2026-11-22T15:49:38.703Z"
+    },
+    {
+      "id": "t179536257879429",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-22T15:49:38.794Z",
+      "updated": "2026-11-22T15:49:38.975Z"
+    },
+    {
+      "id": "t179536257897725",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-22T15:49:38.977Z",
+      "updated": "2026-11-22T15:49:39.166Z"
+    },
+    {
+      "id": "t179536257921291",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-22T15:49:39.212Z",
+      "updated": "2026-11-22T15:50:05.325Z"
+    },
+    {
+      "id": "t17953626053283",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-22T15:50:05.328Z",
+      "updated": "2026-11-22T15:50:27.609Z"
+    },
+    {
+      "id": "t179536262761184",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-22T15:50:27.611Z",
+      "updated": "2026-11-22T15:50:39.970Z"
+    },
+    {
+      "id": "t179536263997264",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-22T15:50:39.972Z",
+      "updated": "2026-11-22T15:51:06.854Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179460240166392",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to make purchases with ChatGPT Wallet\"",
-      "agent": "pairing",
-      "at": "2026-11-13T20:40:01.663Z",
-      "loud": false
-    },
-    {
-      "id": "n179460242439656",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 7.0/10).",
-      "agent": "seo",
-      "at": "2026-11-13T20:40:24.396Z",
-      "loud": false
-    },
-    {
-      "id": "n179460246451578",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is coherent and publish-ready — a balanced mix of practical how-tos (emails, resumes, bios, product copy), trust-building pieces (fact-checking with Perplexity, the privacy guide), and a f",
-      "agent": "publisher",
-      "at": "2026-11-13T20:41:04.515Z",
-      "loud": false
-    },
-    {
-      "id": "n179460248199239",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0108).",
-      "agent": "ceo",
-      "at": "2026-11-13T20:41:21.992Z",
-      "loud": false
-    },
-    {
-      "id": "n179460251794829",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to plan a stress-free family road trip with Co\" — A Copilot konk",
-      "agent": "fact-check",
-      "at": "2026-11-13T20:41:57.948Z",
-      "loud": false
-    },
     {
       "id": "n179460632262915",
       "level": "warn",
@@ -1281,64 +1241,49 @@
       "agent": "ceo",
       "at": "2026-11-22T04:08:02.126Z",
       "loud": false
+    },
+    {
+      "id": "n179536262760180",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-11-22T15:50:27.601Z",
+      "loud": false
+    },
+    {
+      "id": "n179536264951946",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready — you have a nice mix of privacy awareness, practical how-to guides, and everyday writing tasks that show AI as a helpful tool, not something scary. One small note: t",
+      "agent": "publisher",
+      "at": "2026-11-22T15:50:49.519Z",
+      "loud": false
+    },
+    {
+      "id": "n179536266690241",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0099).",
+      "agent": "ceo",
+      "at": "2026-11-22T15:51:06.902Z",
+      "loud": false
+    },
+    {
+      "id": "n179536274451082",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (megváltozott a fejezetek száma): \"Daily Trend Drop Vol. 97: “Save Yourself",
+      "agent": "fact-check",
+      "at": "2026-11-22T15:52:24.510Z",
+      "loud": false
+    },
+    {
+      "id": "n179536278493370",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „In short:** Small l",
+      "agent": "fact-check",
+      "at": "2026-11-22T15:53:04.933Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17943691520113",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-11T03:52:32.011Z"
-    },
-    {
-      "id": "m179436921718150",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt javítottam egy publikált cikkben: \"Introducing Scribe v3 and v3 Live, our most accura\" — A forrás pontosan megadja a 39%-os javulást az élő idejű diarizációra, amit a cikk kihagy",
-      "ref": "ARTICLE_2026-11-10T21-35-17-131Z_elevenlabs_Introducing_Scribe_v3_and_v3_Live__our_most_accura.json",
-      "at": "2026-11-11T03:53:37.181Z"
-    },
-    {
-      "id": "m179436923149179",
-      "from": "fact-check",
-      "to": "team",
-      "kind": "fix",
-      "text": "Valótlanná vált részt javítottam egy publikált cikkben: \"Gemini Intelligence: New features, on more devices\" — A hivatalos forrás mindenhol 'motorola signature 27' kisbetűvel írja — a terméknevet pontosan így kell hagyni",
-      "ref": "ARTICLE_2026-11-10T21-35-05-522Z_google-ai-blog_Gemini_Intelligence__New_features__on_more_devices.json",
-      "at": "2026-11-11T03:53:51.491Z"
-    },
-    {
-      "id": "m17943698102253",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-11T04:03:30.225Z"
-    },
-    {
-      "id": "m179441186347288",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Ellenőrizendő állítás: \"How to make travel videos with AI from one selfie\" — A forrás a Picsart Travel Vlog Maker sablonjáról szól, de a cikk egy általános áttekintés különböző eszközökről, anélkül, hogy említené a forrás eszközét",
-      "ref": "2026-08-21T08-26-53-488Z_picsart_How_to_make_travel_videos_with_AI_from_one_selfie.json",
-      "open": true,
-      "at": "2026-11-11T15:44:23.472Z"
-    },
-    {
-      "id": "m179441607335580",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "2 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-11T16:54:33.355Z"
-    },
     {
       "id": "m179443578663761",
       "from": "fact-check",
@@ -2690,6 +2635,62 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-22T04:16:51.333Z"
+    },
+    {
+      "id": "m179536254444688",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"This Week in AI: The 5 Stories That Matter (November 22, 2026)\" — mi a baj: CLICHE: Tiltott klisé találva: \"game-changer\"; Cliché in story 4: 'game-changer' is a tired phrase — rewrite to describe what voice cloning actually enables; Story 1 oversells with 'a big deal' — replace with specific impact (e.g., what the IPO means for AI investment)",
+      "ref": "2026-11-22T04-08-25-757Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-11-22T15:49:04.446Z"
+    },
+    {
+      "id": "m179536256464267",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"This Week in AI: The 5 Stories That Matter (November 22, 2026)\" — javítva: CLICHE: Tiltott klisé találva: \"game-changer\"; Cliché in story 4: 'game-changer' is a tired phrase — rewrite to describe what voice cloning actually enables; újraküldöm.",
+      "ref": "2026-11-22T04-08-25-757Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-11-22T15:49:24.642Z"
+    },
+    {
+      "id": "m179536257067064",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"This Week in AI: The 5 Stories That Matter (November 22, 2026)\" (?/10)",
+      "ref": "2026-11-22T04-08-25-757Z_aiworld-editorial_This_Week_in_AI.json",
+      "at": "2026-11-22T15:49:30.670Z"
+    },
+    {
+      "id": "m179536263992267",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-22T15:50:39.922Z"
+    },
+    {
+      "id": "m179536274451084",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (megváltozott a fejezetek száma): \"Daily Trend Drop Vol. 97: “Save Yourself” – The Cl\" — A forrás egy kattintásos Picsartpresetet ír le, amely NEM igényel prompot, 7 másodperces videókat készít, és a Picsart Gen AI Studio-jában található. A cikk helytelenül állítja, hogy a felhasználóknak prompot kell írniuk és eszközöket kell használniuk mint a ChatGPT",
+      "ref": "ARTICLE_2026-09-10T01-59-45-639Z_picsart_Daily_Trend_Drop_Vol__97___Save_Yourself____The_Cl.json",
+      "open": true,
+      "at": "2026-11-22T15:52:24.510Z"
+    },
+    {
+      "id": "m17953627849333",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „In short:** Small language models (SLMs) are compact AI models designed to run on a phone,”): \"The Benefits of Small Language Models (SLMs)\" — A forrásszöveg nem említi a telefonokat az SLM-ek telepítési platformjaként - laptopokról, fogyasztói szintű hardverekről és edge/IoT eszközökről beszél, de",
+      "ref": "ARTICLE_2026-09-04T01-58-59-343Z_cohere-blog_The_Benefits_of_Small_Language_Models__SLMs_.json",
+      "open": true,
+      "at": "2026-11-22T15:53:04.933Z"
     }
   ]
 }

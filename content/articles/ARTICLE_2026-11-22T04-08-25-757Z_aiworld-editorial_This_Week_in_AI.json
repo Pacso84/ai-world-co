@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "written_at": "2026-11-22T15:49:24.641Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0046289,
+    "original_draft": null,
+    "source_id": "aiworld-editorial",
+    "source_name": "AI World HQ (AI-written weekly roundup)",
+    "source_link": "https://aiworldhq.com",
+    "status": "published",
+    "rejected_at": "2026-11-22T15:49:04.423Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1120
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Strong weekly digest with excellent structure, clear explanations of all technical terms (IPO, computer use, AI agents), kind and non-judgmental tone, and all four required sections present. No prohibited content, no company rankings, no clichés, and all claims are properly attributed to companies rather than stated as facts. Ready to publish.",
+      "_aiCost": 0.0042282,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Good structure, friendly tone, and all five stories fit the audience. Fails on prohibited content check due to the cliché 'game-changer' in story 4, and story 1 relies on vague hype language instead of specifics.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-11-22T04-08-25-757Z_aiworld-editorial_This_Week_in_AI.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-11-22T15:49:30.669Z",
+    "slug": "this-week-in-ai-the-5-stories-that-matter-november-22-2026",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-22T15:49:38.652Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a weekly news roundup/digest covering 5 separate stories - roundups are explicitly not guide-worthy per criteria",
+    "image_v": 2,
+    "image_at": "2026-11-22T15:50:05.285Z",
+    "seo": {
+      "meta_description": "This week in AI: Anthropic IPO, Salesforce holiday sales predictions, Google Gemini for Mac, Amazon voice cloning, and ChatGPT agents. Your roundup.",
+      "keywords": [
+        "AI news this week",
+        "Anthropic IPO",
+        "latest AI updates November 2026",
+        "Google Gemini Mac",
+        "Amazon voice cloning",
+        "ChatGPT agents",
+        "AI holiday shopping"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add publication date to title for better CTR and SEO: 'This Week in AI: The 5 Stories That Matter (November 22, 2026)'",
+        "Include more specific keywords like 'AI weekly roundup' and 'AI news November 2026' to capture search traffic",
+        "Consider adding 'what happened in AI this week' as a conversational keyword people search for"
+      ],
+      "optimised_at": "2026-11-22T15:50:27.573Z"
+    },
+    "fact_verified_at": "2026-11-22T15:51:18.402Z"
+  },
+  "article_markdown": "---\ntitle: \"This Week in AI: The 5 Stories That Matter (November 22, 2026)\"\nsubtitle: \"A major AI company went public, your holiday shopping gets smarter, and your computer gains a new helper.\"\ncategory: \"ai-news\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"weekly-digest\"]\n---\n# This Week in AI: The 5 Stories That Matter (November 22, 2026)\n\n> **In short:** Anthropic completed its first public stock sale, Salesforce predicted AI will influence tens of billions in holiday sales, Google gave Gemini new powers to work on your Mac, Amazon let anyone create a digital copy of their voice, and OpenAI showed how AI agents now keep ChatGPT running smoothly.\n\nSome weeks bring a single big launch. This week brought five separate updates, and each one touches something you may already do: buying gifts, using a laptop, or listening to a narrated video. Let's walk through them.\n\n## 1. Anthropic Completes Its IPO\n\n[![1. Anthropic Completes Its IPO](/assets/images/anthropic-completes-its-ipo-what-the-share-sale-means-for-you.jpg)](https://aiworldhq.com/article/anthropic-completes-its-ipo-what-the-share-sale-means-for-you)\n\nAnthropic, the company behind the Claude assistant, completed its first initial public offering, or IPO (the first time a company sells shares to the general public on a stock market). Shares are now open to ordinary investors, not only to large funds and early backers.\n\nThe company says it will put the money toward continuing to build Claude and expanding its research. For you, the practical effect is visibility: a public company must regularly report on its finances and direction, so there will be more official information to read about where Anthropic is heading. If you follow AI news, that is a useful place to look. This article doesn't offer investment advice; it simply explains what the listing is.\n\n[Read the full story](https://aiworldhq.com/article/anthropic-completes-its-ipo-what-the-share-sale-means-for-you)\n\n## 2. Salesforce Predicts AI Will Influence $75.8B in Cyber Week Sales\n\n[![2. Salesforce Predicts AI Will Influence $75.8B in Cyber Week Sales](/assets/images/salesforce-predicts-ai-will-influence-75-8b-in-cyber-week-sales.jpg)](https://aiworldhq.com/article/salesforce-predicts-ai-will-influence-75-8b-in-cyber-week-sales)\n\nCyber Week is the stretch of online shopping that follows the holiday weekend. Salesforce, a company that makes software for businesses, forecasts that AI will influence $75.8 billion in sales during the 2026 Cyber Week period. \"Influence\" is the key word: the forecast counts sales where AI played a part, such as a recommendation or a chatbot answer, not sales made by a robot shopper.\n\nThink about what that looks like on your screen. An AI shopping assistant suggests a gift based on what you looked at last. A chatbot answers a question about sizing at midnight. A retailer adjusts prices to stay competitive. You may notice more personalized suggestions and faster answers, and you may also notice more pressure to decide quickly. Slow down before you buy.\n\n[Read the full story](https://aiworldhq.com/article/salesforce-predicts-ai-will-influence-75-8b-in-cyber-week-sales)\n\n## 3. Gemini on Mac Can Now Handle Repetitive Computer Chores\n\n[![3. Gemini on Mac Can Now Handle Repetitive Computer Chores](/assets/images/gemini-on-mac-can-now-handle-repetitive-computer-chores-what-it-does-a.jpg)](https://aiworldhq.com/article/gemini-on-mac-can-now-handle-repetitive-computer-chores-what-it-does-a)\n\nGoogle says Gemini, its AI assistant, can now work on Mac computers by clicking, typing, and filling in forms for you. This is what the industry calls \"computer use\" (an AI that operates your screen the way you would, instead of only answering questions).\n\nPicture a task you repeat every Monday: copying numbers from one spreadsheet into another, or entering the same details into several forms. Google describes this kind of work as the target. The assistant handles the repetitive part while you focus on something that needs your judgment. Because the feature acts on your device, it is worth reading Google's official instructions before letting it run tasks on files that matter to you.\n\n[Read the full story](https://aiworldhq.com/article/gemini-on-mac-can-now-handle-repetitive-computer-chores-what-it-does-a)\n\n## 4. Amazon Polly Voice Cloning: What It Is and Who Can Use It\n\n[![4. Amazon Polly Voice Cloning: What It Is and Who Can Use It](/assets/images/amazon-polly-voice-cloning-what-it-is-and-who-can-use-it.jpg)](https://aiworldhq.com/article/amazon-polly-voice-cloning-what-it-is-and-who-can-use-it)\n\nVoice cloning is a technology that creates a synthetic copy of a real person's voice. Amazon says its Polly text-to-speech service, which turns written words into spoken audio, now offers this option, and that a clone can be built from a few minutes of recorded speech.\n\nWhat does that enable? Imagine writing a script and having narration generated in your own voice, without recording every line yourself. Amazon says the feature has consent controls, meaning the person whose voice is cloned must give explicit permission, and that access is limited. Those limits matter: they are the company's stated safeguards against someone copying a voice without permission. If you're a creator, a teacher, or someone who needs audio versions of written material, read Amazon's official details on eligibility before you plan around it.\n\n[Read the full story](https://aiworldhq.com/article/amazon-polly-voice-cloning-what-it-is-and-who-can-use-it)\n\n## 5. How OpenAI's Automated Performance System Uses AI Agents to Keep ChatGPT Fast\n\n[![5. How OpenAI's Performance Factory Uses AI Agents to Keep ChatGPT Fast](/assets/images/how-openai-s-performance-factory-uses-ai-agents-to-keep-chatgpt-fast.jpg)](https://aiworldhq.com/article/how-openai-s-performance-factory-uses-ai-agents-to-keep-chatgpt-fast)\n\nEver notice ChatGPT feeling slower than usual? OpenAI describes an internal system for finding and fixing those slowdowns, and says it now uses AI agents (programs that can carry out multi-step tasks with limited supervision) to do much of the investigating. Instead of engineers diagnosing each performance problem by hand, the agents look into what is causing a delay and help put a fix in place.\n\nFor you, the promise is fewer long waits and more consistent response times. It is a behind-the-scenes story, but it shows AI companies using AI to maintain the tools millions of people rely on each day.\n\n[Read the full story](https://aiworldhq.com/article/how-openai-s-performance-factory-uses-ai-agents-to-keep-chatgpt-fast)\n\n## What this means for you\n\nThis week's stories share one theme: AI is moving from answering questions toward handling tasks, from shopping suggestions to screen work to voices and behind-the-scenes maintenance. Here is how to read them, depending on where you are.\n\n- **In everyday life**: Holiday shopping is where you'll meet AI first. Compare a suggestion against a store's own listing before you buy, and treat urgent chatbot prompts with the same caution you'd give any sales pitch.\n- **For your business or work**: If your work includes repetitive computer tasks, Google's Mac feature is worth a test on non-sensitive files. Check the official guidance first so you know what the assistant can access.\n- **If you're just getting started**: Pick one story and read the official page linked above. Notice what the company says it does, and what it says it limits.\n- **If you already use it**: If you use Gemini on a Mac, try a small, reversible task first, such as sorting a folder of test files, and watch each step before you let it repeat the job.\n\n## Wrap-up\n\nFive stories, one common thread: AI is becoming part of ordinary tasks, from the way you shop to the way your computer works. Your next step is simple. Choose the story that touches your life most, open its official link, and write down two facts the company itself states. That habit will help you separate what AI can do from what a headline says it can do.",
+  "original_title": "This Week in AI: The 5 Stories That Matter (November 22, 2026)"
+}
