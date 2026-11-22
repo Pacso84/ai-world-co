@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "written_at": "2026-11-22T03:59:54.163Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0037979,
+    "original_draft": "2026-11-20T04-49-21-794Z_openai-blog_How_OpenAI_s_Performance_Factory_keeps_ChatGPT_fas.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast",
+    "source_links": [
+      "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast"
+    ],
+    "source_snippet_len": 150,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 5999,
+    "source_text_key": "ea2e757d7a447cda",
+    "source_overlap_words": 11,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "published_at": "2026-11-22T04:00:01.783Z",
+    "slug": "how-openai-s-performance-factory-uses-ai-agents-to-keep-chatgpt-fast",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 744
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid news explainer that explains key terms (regression, baseline, alert), structures information clearly with a hook and practical takeaways, and keeps language accessible for the business audience without any prohibited content or clichés.",
+      "_aiCost": 0.0028134,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-22T04:00:46.717Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an internal engineering system at OpenAI that regular users cannot access or use - there's no concrete action for everyday people",
+    "image_v": 2,
+    "image_at": "2026-11-22T04:03:09.257Z",
+    "seo": {
+      "meta_description": "OpenAI's Performance Factory uses AI agents to investigate and fix ChatGPT slowdowns. In 3+ months, it tracked over 1,700 investigations and found root causes in 600+ cases.",
+      "keywords": [
+        "OpenAI Performance Factory",
+        "ChatGPT slow",
+        "AI agents performance monitoring",
+        "how OpenAI keeps ChatGPT fast",
+        "OpenAI AI agents"
+      ],
+      "seo_score": 9,
+      "suggestions": [
+        "Consider adding more specific long-tail keywords like 'ChatGPT latency' or 'fix slow ChatGPT responses' to capture common user search queries",
+        "The title could benefit from being more specific about 'AI agents' in the main headline for better topical relevance"
+      ],
+      "optimised_at": "2026-11-22T04:06:34.910Z"
+    },
+    "fact_verified_at": "2026-11-22T04:09:13.871Z"
+  },
+  "article_markdown": "---\ntitle: \"How OpenAI's Performance Factory Uses AI Agents to Keep ChatGPT Fast\"\nsubtitle: \"OpenAI says its internal system now investigates and fixes slowdowns with AI agents, and here's what that looks like.\"\ncategory: \"ai-news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"openai\", \"chatgpt\", \"codex\", \"ai-agents\", \"performance\", \"engineering\"]\n---\n\n# How OpenAI's Performance Factory Uses AI Agents to Keep ChatGPT Fast\n\n> **In short:** OpenAI says its Performance Factory, an automated system built on Codex and its own models, now investigates and proposes fixes for slowdowns in its services. In just over three months, its first workflow tracked more than 1,700 investigations and found the root cause in over 600 of them.\n\nHave you ever typed a question into a chatbot and waited a few seconds for the first word to appear? That short pause is exactly the kind of problem engineers at AI companies work hard to prevent. OpenAI has published an inside look at how it now handles these slowdowns, and the approach shows where AI agents are heading inside large software teams.\n\n## What a \"regression\" is\n\nA **regression** is when a change to software makes something worse than it was before, such as a page loading more slowly. Engineers call the normal, expected level of performance the **baseline** (the reference point you compare against). When performance falls below it, an **alert** (an automatic warning) usually fires.\n\nOpenAI says its engineers used to dig through metrics, logs, and live machines by hand to find the cause. Over time the team built more than 30 performance tools to help, but the work still depended on people knowing where to look.\n\n## From manual digging to an automated workflow\n\nOpenAI describes its progress in stages. First, engineers started asking Codex, its AI coding agent, to investigate slowdowns in code they didn't know well. Next, the team wrote down its investigation method as a reusable \"skill\" called perf-forensics, which tells Codex which tools to use and how to narrow down a problem.\n\nEventually the company moved these investigations to the cloud, so an alert could start one automatically. The catch was that the automation stopped at the diagnosis. A person still had to write the fix and check it after release. That gap is what the Performance Factory was built to close.\n\n## How the first workflow runs\n\nThe Performance Factory is a set of connected parts. According to OpenAI, it includes:\n\n- **A task tracker** where engineers define workflows using configuration files and written instructions for the agents.\n- **A dispatch loop** that hands each ready task to an agent.\n- **Cloud execution** that runs Codex in the cloud.\n- **Subscriptions** that wake an agent when something happens, such as a review comment or a finished deployment.\n\nIn the Regression Workflow, an alert opens a task. An agent investigates, records its findings in that task, and proposes a fix for an engineer to review. After the fix is released, another agent checks whether performance is back to its baseline. OpenAI says this first workflow now covers the whole process, from investigation to verifying the fix.\n\n💬 Think of it like a relay race: each agent hands the baton to the next, and the task itself keeps the notes so nothing gets lost between handoffs.\n\n## What this means for you\n\n- **In everyday life**: You won't see the Performance Factory itself, but its purpose is simple. OpenAI says the goal is to keep its products responsive while it ships changes quickly.\n- **For your business or work**: If your team gets frequent performance or bug alerts, the idea of a tracked task that carries its own notes, with an agent doing the first investigation and a person approving the fix, is a practical pattern to consider. OpenAI says it started with one narrow workflow and expanded from there.\n- **If you're just getting started**: Notice the human role. Engineers still review every proposed fix. Automation handled the repetitive legwork, not the final decisions.\n\n## Wrap-up\n\nOpenAI says its Performance Factory turned a slow, manual process into a tracked, mostly automated one, handling 17 investigations a day on average in its first workflow. For you, the lesson is that AI agents work best when they follow clear instructions, keep good notes, and hand off to a person at the right moment. Your next step: the next time a tool feels slow, think about where in the process a clear record and a checkpoint would help most.",
+  "original_title": "How OpenAI’s Performance Factory keeps ChatGPT fast"
+}

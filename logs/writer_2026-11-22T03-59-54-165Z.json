@@ -1,0 +1,89 @@
+{
+  "started_at": "2026-11-22T03:58:39.008Z",
+  "drafts_total": 4,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 1,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 2,
+    "html": 2,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.0176584,
+  "by_article": [
+    {
+      "draft": "2026-11-22T03-58-38-682Z_together_Security_event__Prompt_leakage_for_requests_in_Jun.json",
+      "writer_output": "WRITER_2026-11-22T03-58-38-682Z_together_Security_event__Prompt_leakage_for_requests_in_Jun.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 11,
+      "cost_usd": 0.0035986,
+      "duration_ms": 11509,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-22T03-58-38-681Z_aws-ml_Meta_ads_is_now_available_in_AWS_Quick.json",
+      "writer_output": "WRITER_2026-11-22T03-58-38-681Z_aws-ml_Meta_ads_is_now_available_in_AWS_Quick.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 8,
+      "cost_usd": 0.0040717,
+      "duration_ms": 15185,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-19T16-57-37-958Z_salesforce_Salesforce_Data__Record_Cyber_Week_Expected_to_Del.json",
+      "writer_output": "WRITER_2026-11-19T16-57-37-958Z_salesforce_Salesforce_Data__Record_Cyber_Week_Expected_to_Del.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 11,
+      "cost_usd": 0.0043797,
+      "duration_ms": 18177,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-20T04-49-21-794Z_openai-blog_How_OpenAI_s_Performance_Factory_keeps_ChatGPT_fas.json",
+      "writer_output": "WRITER_2026-11-20T04-49-21-794Z_openai-blog_How_OpenAI_s_Performance_Factory_keeps_ChatGPT_fas.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 5999,
+      "source_overlap_words": 11,
+      "cost_usd": 0.0037979,
+      "duration_ms": 13882,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 0,
+  "termek_extra": 0,
+  "finished_at": "2026-11-22T03:59:54.165Z",
+  "duration_seconds": 75.157
+}

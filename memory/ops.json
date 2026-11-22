@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179515049954116",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-20T04:54:59.541Z",
-      "updated": "2026-11-20T04:54:59.766Z"
-    },
-    {
-      "id": "t179515049976810",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-20T04:54:59.768Z",
-      "updated": "2026-11-20T04:54:59.995Z"
-    },
-    {
-      "id": "t179515050008194",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-20T04:55:00.081Z",
-      "updated": "2026-11-20T04:56:11.910Z"
-    },
-    {
-      "id": "t179515057191252",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-20T04:56:11.912Z",
-      "updated": "2026-11-20T04:57:03.872Z"
-    },
-    {
-      "id": "t179515062387432",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-20T04:57:03.874Z",
-      "updated": "2026-11-20T04:57:20.126Z"
-    },
-    {
-      "id": "t179515064012991",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-20T04:57:20.129Z",
-      "updated": "2026-11-20T04:57:47.470Z"
-    },
-    {
-      "id": "t179519227159864",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-20T16:31:11.598Z",
-      "updated": "2026-11-20T16:31:11.810Z"
-    },
-    {
-      "id": "t179519227181474",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-20T16:31:11.814Z",
-      "updated": "2026-11-20T16:31:51.768Z"
-    },
-    {
-      "id": "t179519231177030",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-20T16:31:51.770Z",
-      "updated": "2026-11-20T16:31:51.975Z"
-    },
-    {
-      "id": "t179519231202792",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-20T16:31:52.027Z",
-      "updated": "2026-11-20T16:32:15.858Z"
-    },
-    {
-      "id": "t179519233586014",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-20T16:32:15.860Z",
-      "updated": "2026-11-20T16:32:35.270Z"
-    },
-    {
-      "id": "t179519235527379",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-20T16:32:35.273Z",
-      "updated": "2026-11-20T16:33:09.181Z"
-    },
-    {
-      "id": "t179519238918239",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-20T16:33:09.182Z",
-      "updated": "2026-11-20T16:33:43.178Z"
-    },
-    {
-      "id": "t179519242318060",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-20T16:33:43.180Z",
-      "updated": "2026-11-20T16:33:54.380Z"
-    },
-    {
       "id": "t179519243446891",
       "title": "Run guide",
       "status": "done",
@@ -479,41 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-21T21:20:12.020Z",
       "updated": "2026-11-21T21:20:35.055Z"
+    },
+    {
+      "id": "t179531986938576",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-22T03:57:49.385Z",
+      "updated": "2026-11-22T03:57:49.535Z"
+    },
+    {
+      "id": "t179531986953679",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-22T03:57:49.536Z",
+      "updated": "2026-11-22T03:58:38.695Z"
+    },
+    {
+      "id": "t179531991869642",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-22T03:58:38.696Z",
+      "updated": "2026-11-22T03:58:38.836Z"
+    },
+    {
+      "id": "t179531991887050",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-22T03:58:38.870Z",
+      "updated": "2026-11-22T03:59:54.179Z"
+    },
+    {
+      "id": "t179531999418122",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-22T03:59:54.181Z",
+      "updated": "2026-11-22T04:00:20.142Z"
+    },
+    {
+      "id": "t179532002014431",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-22T04:00:20.144Z",
+      "updated": "2026-11-22T04:01:04.271Z"
+    },
+    {
+      "id": "t179532006430256",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-22T04:01:04.302Z",
+      "updated": "2026-11-22T04:02:07.011Z"
+    },
+    {
+      "id": "t179532012701364",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-22T04:02:07.013Z",
+      "updated": "2026-11-22T04:02:18.322Z"
+    },
+    {
+      "id": "t179532013835077",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-22T04:02:18.350Z",
+      "updated": "2026-11-22T04:02:18.511Z"
+    },
+    {
+      "id": "t179532013851381",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-22T04:02:18.513Z",
+      "updated": "2026-11-22T04:02:18.660Z"
+    },
+    {
+      "id": "t179532013871517",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-22T04:02:18.715Z",
+      "updated": "2026-11-22T04:06:16.165Z"
+    },
+    {
+      "id": "t179532037616771",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-22T04:06:16.167Z",
+      "updated": "2026-11-22T04:07:14.303Z"
+    },
+    {
+      "id": "t179532043430536",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-22T04:07:14.305Z",
+      "updated": "2026-11-22T04:07:26.652Z"
+    },
+    {
+      "id": "t179532044665444",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-22T04:07:26.654Z",
+      "updated": "2026-11-22T04:08:02.098Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179458527439473",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid — mix of practical how-tos, privacy guidance, and real-world writing tasks that everyday people can actually use. A few quick checks before publish: confirm all the tool names ",
-      "agent": "publisher",
-      "at": "2026-11-13T15:54:34.394Z",
-      "loud": false
-    },
-    {
-      "id": "n179458529224551",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0103).",
-      "agent": "ceo",
-      "at": "2026-11-13T15:54:52.245Z",
-      "loud": false
-    },
-    {
-      "id": "n179458531946980",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Behind that face si",
-      "agent": "fact-check",
-      "at": "2026-11-13T15:55:19.469Z",
-      "loud": false
-    },
-    {
-      "id": "n179458535280154",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „A small account wit",
-      "agent": "fact-check",
-      "at": "2026-11-13T15:55:52.801Z",
-      "loud": false
-    },
     {
       "id": "n179460240166392",
       "level": "warn",
@@ -1281,28 +1249,41 @@
       "agent": "fact-check",
       "at": "2026-11-21T21:22:13.462Z",
       "loud": false
+    },
+    {
+      "id": "n179532006426049",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to enable zero data retention in Together AI to protect your prompts\"",
+      "agent": "pairing",
+      "at": "2026-11-22T04:01:04.260Z",
+      "loud": false
+    },
+    {
+      "id": "n179532043429469",
+      "level": "info",
+      "text": "SEO: 6 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-11-22T04:07:14.294Z",
+      "loud": false
+    },
+    {
+      "id": "n179532046902758",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Line-up is solid and on-brand overall — Article 2 is a perfect welcoming anchor, Article 3 covers important privacy ground, and Article 1 builds AI literacy, giving non-writing readers something to ch",
+      "agent": "publisher",
+      "at": "2026-11-22T04:07:49.027Z",
+      "loud": false
+    },
+    {
+      "id": "n179532048212662",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0547).",
+      "agent": "ceo",
+      "at": "2026-11-22T04:08:02.126Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179434678779222",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (nincs title mező): \"GeForce NOW Gives Gamers More Ways to Play at Game\" — két kisebb ténykülönbség a cikk állításai és a forrásszöveg között",
-      "ref": "ARTICLE_2026-08-27T16-08-08-409Z_nvidia-blog_GeForce_NOW_Gives_Gamers_More_Ways_to_Play_at_Game.json",
-      "open": true,
-      "at": "2026-11-10T21:39:47.792Z"
-    },
-    {
-      "id": "m179434721286633",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-10T21:46:52.866Z"
-    },
     {
       "id": "m179436889334964",
       "from": "pairing",
@@ -2690,6 +2671,25 @@
       "ref": "ARTICLE_2026-09-17T02-18-56-349Z_zapier-blog_Vibe_coding_security__How_to_be_sure_your_vibe-cod.json",
       "open": true,
       "at": "2026-11-21T21:22:13.462Z"
+    },
+    {
+      "id": "m179532006426076",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to enable zero data retention in Together AI to protect your prompts\"",
+      "ref": "how-to-enable-zero-data-retention-in-together-ai-to-protect-",
+      "open": true,
+      "at": "2026-11-22T04:01:04.260Z"
+    },
+    {
+      "id": "m179532044661361",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-22T04:07:26.613Z"
     }
   ]
 }

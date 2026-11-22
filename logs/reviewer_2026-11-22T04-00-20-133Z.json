@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-11-22T03:59:54.320Z",
+  "total": 4,
+  "passed": 4,
+  "failed": 0,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.01485991,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-11-19T16-57-37-958Z_salesforce_Salesforce_Data__Record_Cyber_Week_Expected_to_Del.json",
+      "article": "ARTICLE_2026-11-19T16-57-37-958Z_salesforce_Salesforce_Data__Record_Cyber_Week_Expected_to_Del.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.002814
+    },
+    {
+      "writer": "WRITER_2026-11-20T04-49-21-794Z_openai-blog_How_OpenAI_s_Performance_Factory_keeps_ChatGPT_fas.json",
+      "article": "ARTICLE_2026-11-20T04-49-21-794Z_openai-blog_How_OpenAI_s_Performance_Factory_keeps_ChatGPT_fas.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0028134
+    },
+    {
+      "writer": "WRITER_2026-11-22T03-58-38-681Z_aws-ml_Meta_ads_is_now_available_in_AWS_Quick.json",
+      "article": "ARTICLE_2026-11-22T03-58-38-681Z_aws-ml_Meta_ads_is_now_available_in_AWS_Quick.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0031194
+    },
+    {
+      "writer": "WRITER_2026-11-22T03-58-38-682Z_together_Security_event__Prompt_leakage_for_requests_in_Jun.json",
+      "article": "ARTICLE_2026-11-22T03-58-38-682Z_together_Security_event__Prompt_leakage_for_requests_in_Jun.json",
+      "decision": "PASS",
+      "score": 8,
+      "cost_usd": 0.0032154
+    }
+  ],
+  "finished_at": "2026-11-22T04:00:20.132Z",
+  "duration_seconds": 25.812
+}

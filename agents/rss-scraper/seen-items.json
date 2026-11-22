@@ -1151,7 +1151,6 @@
     "https://github.blog/ai-and-ml/github-copilot/build-once-run-on-any-agent-a-practical-guide-to-agent-skills/"
   ],
   "aws-ml": [
-    "https://aws.amazon.com/blogs/machine-learning/simplify-and-support-your-torchserve-workloads-using-ray-serve-deep-learning-containers/",
     "https://aws.amazon.com/blogs/machine-learning/automate-user-level-custom-permissions-for-amazon-quick/",
     "https://aws.amazon.com/blogs/machine-learning/reduce-llm-latency-with-prefix-aware-routing-on-amazon-sagemaker-inference/",
     "https://aws.amazon.com/blogs/machine-learning/reduce-inference-cold-starts-on-amazon-sagemaker-hyperpod-with-model-caching/",
@@ -1450,7 +1449,8 @@
     "https://aws.amazon.com/blogs/machine-learning/introducing-amazon-sagemaker-hyperpod-global-inference-gateway-one-endpoint-across-regions-and-clusters/",
     "https://aws.amazon.com/blogs/machine-learning/new-in-aws-quick-more-capable-flows-an-updated-web-experience-and-agents-that-work-together/",
     "https://aws.amazon.com/blogs/machine-learning/how-standard-bank-group-automates-ai-risk-assessment-for-generative-ai/",
-    "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents/"
+    "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents/",
+    "https://aws.amazon.com/blogs/machine-learning/meta-ads-is-now-available-in-aws-quick/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -2418,7 +2418,8 @@
     "https://www.together.ai/blog/introducing-together-storage-accelerator",
     "https://www.together.ai/blog/tencent-hy4",
     "https://www.together.ai/blog/qwen3-tts",
-    "https://www.together.ai/blog/qwen4-max"
+    "https://www.together.ai/blog/qwen4-max",
+    "https://www.together.ai/blog/security-event-prompt-leakage-for-requests-in-june-and-july-of-2026"
   ],
   "pinecone": [
     "https://www.pinecone.io/blog/generating-test-data-for-pinecone/",
@@ -2763,7 +2764,8 @@
     "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBhUVd2RlNvWTlzd1Z4NlpOV19VQmZ2V2h6RkV0NlRia1dNSGV6Qk1LUXdQZXFwX0hoMFJXREs0aGNWWHhRZHM5X3otQ2pSQWhzdlFHTWhR?oc=5",
     "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBzMGQ1cE1DR3RNNXI3bDBodEI2NjlGdHhPOWlDVW1RVTlKWk9ubUtpRk5LY1NCcWdfTUlHd2FmSExVa2FicXIzUTdLVDc?oc=5",
     "https://news.google.com/rss/articles/CBMiNEFVX3lxTE05dzhLazRVM1Y0dS1TR2NhWUg1VmpkVjhXUjJVc3VjNS14T0xQM1NoT2NlMFM?oc=5",
-    "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5SSWpuZUY3a1FobWtVSDFKSUUzdFJVZnZWS2JWdEttczNFLXl3RWJndXRSZmZiNUgyVmVUemVCcFhBUWVrY1YxUC1OUnF0c1FNektRQg?oc=5"
+    "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5SSWpuZUY3a1FobWtVSDFKSUUzdFJVZnZWS2JWdEttczNFLXl3RWJndXRSZmZiNUgyVmVUemVCcFhBUWVrY1YxUC1OUnF0c1FNektRQg?oc=5",
+    "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9LalVkNmtRSTNYbWROaWtWVklWXzVUWENoRzA3dWJVbFlsN3RuYkJpWUozQldOZHB3bFlqSTVpX0tiM1EyODViaQ?oc=5"
   ],
   "perplexity-news": [
     "https://news.google.com/rss/articles/CBMiP0FVX3lxTE9YTkRwd0ZQU2VUZXRGVGJwWm0yRnJWaWw2WnlpeEp0MWFJZnJ0Y0s0VzFweHdUZUJXV0JCYVlacw?oc=5",
@@ -2911,7 +2913,9 @@
     "https://news.google.com/rss/articles/CBMiTEFVX3lxTE00RFNIZkowcjhLOUd0SElVMXBNbDR3TEN4cVBhNjRSMWpoeGVCLW9WM2dPd3VlQlZ1TW9lRl84dktCYjRIQUNORWx1eWQ?oc=5",
     "https://news.google.com/rss/articles/CBMilAFBVV95cUxQZHpIUE8xV3cwalVvNEhPN3d4S21PSTRiU1I1QjZMMHRJeC1VQ1VpeVRoSEFCVHZvLTNrVTdTemxaeGE4a1I0Rl9UOU5YQWtQcDB4d1NYMWlaVFFETjA0RkRCSHNrZl9TRTY3Q2pkU2RsVll6MWlpMUhzVll6N2NRQi1obl9MS0FaSi1USGwtdGJ1LXdv?oc=5",
     "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBqZlNVcmE1N2QzSGUxYlp1VGdYdmxKWGhJYWc5TmlYcjQ3bVVwaU85WUZUQUE1Z1dndTQxMkRnR3JTZGU4SWFiMVZPWFVsVkRPcWRGQVI1VWtDM1A2YkMzQlZHUjFwd00?oc=5",
-    "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5UdVBoZklObEFyS1VCWVN1RW5rbGE1YnFheEVrVVdEMTBFeEZaaGtXc1ZnanJ6VFB0YXo0dGt1M2RxZXpJLVByRlJfM01Xdw?oc=5"
+    "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5UdVBoZklObEFyS1VCWVN1RW5rbGE1YnFheEVrVVdEMTBFeEZaaGtXc1ZnanJ6VFB0YXo0dGt1M2RxZXpJLVByRlJfM01Xdw?oc=5",
+    "https://news.google.com/rss/articles/CBMijwFBVV95cUxNbUxKbU14cHViVHdQYTdoS1drRFNGUjhqRUo0T3ZWZm1CTm1Pb0dqeXNmYmktNXFMUUZmVUl1dHE5ODVDeUwwYmZ6UkFKWWFocW9jNzdYSTllcE5FZXA1OUZISEJNbUlyMGU0c1NHN3d5SlFydl9RZVJOeU5WdmtqWkZCWEhxa01TOG41dUVIUQ?oc=5",
+    "https://news.google.com/rss/articles/CBMihAFBVV95cUxPaGlMdXFuTjZvcXVlOHQzODNPa0E3S1FmMlMyY1hpOFN4M25SMFhLNWdFcmpQOGx1QXB0bDhxS0tndXN5WWFPN0ZTNi1hd0R3b0VCLWJyRHNYdS15QUlHaWNNZXNJekZ4TjBuaFFmeWk0X3R3ZENXNzB2aExPWmRhekF3M3U?oc=5"
   ],
   "deepseek-news": [
     "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9zbUkzc1FDYmZIVjVRdW5wakpEOEgwSHFHZ05zNDhZLWwydGFjcEVtTVdEZW50RWw4MF9sVlYtMDhOb3RNdDdLM1VDOGgxTEZOWnRXZXhvTGVVQ25Rbk1uRg?oc=5",

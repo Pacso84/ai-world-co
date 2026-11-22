@@ -8768,10 +8768,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Tell the assistant the child's age and what they already know, then ask for an explanation with one everyday example and a question to check understanding.",
-      "status": "todo",
+      "status": "done",
       "icon": "👨‍👩‍👧",
       "proposed_at": "2026-11-12T04:57:22.267Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-11-22T04:01:40.579Z"
     },
     {
       "id": "how-to-save-your-preferences-so-every-new-ai-chat-starts-clo",
@@ -8840,7 +8841,12 @@
       "status": "todo",
       "icon": "🦁",
       "proposed_at": "2026-11-12T04:58:40.694Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "horgony": {
+        "at": "2026-11-22T04:01:04.471Z",
+        "ok": false,
+        "ok_ok": "a súgó csak termékoldal — csak bevezető írható"
+      }
     },
     {
       "id": "how-to-use-proton-ai-assistant-for-research-without-uploadin",
@@ -8853,7 +8859,12 @@
       "status": "todo",
       "icon": "🔒",
       "proposed_at": "2026-11-12T04:58:41.908Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "horgony": {
+        "at": "2026-11-22T04:01:04.471Z",
+        "ok": false,
+        "ok_ok": "a cikkből nem írható útmutató"
+      }
     },
     {
       "id": "how-to-use-z-ai-to-compare-two-documents-and-spot-the-differ",
@@ -8891,10 +8902,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Paste a job posting and get a list of skills, keywords, and experience to check against your own resume.",
-      "status": "todo",
+      "status": "done",
       "icon": "📋",
       "proposed_at": "2026-11-12T04:58:45.369Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-11-22T04:02:06.999Z"
     },
     {
       "id": "how-to-make-ai-generated-images-that-look-consistent-across-",
@@ -9290,6 +9302,22 @@
         "title": "Google Vids now lets you reuse your media in video generation"
       },
       "created_at": "2026-11-21T04:47:39.624Z"
+    },
+    {
+      "id": "how-to-enable-zero-data-retention-in-together-ai-to-protect-",
+      "company": "Together AI",
+      "tool": "Together AI",
+      "title": "How to enable zero data retention in Together AI to protect your prompts",
+      "audience": "business",
+      "level": "beginner",
+      "angle": "Step-by-step guide to finding and enabling the zero data retention setting in account settings",
+      "status": "todo",
+      "icon": "🆕",
+      "source_news": {
+        "file": "ARTICLE_2026-11-22T03-58-38-682Z_together_Security_event__Prompt_leakage_for_requests_in_Jun.json",
+        "title": "Security event: Prompt leakage for requests in June and July of 2026"
+      },
+      "created_at": "2026-11-22T04:01:04.259Z"
     }
   ],
   "trend_proba": [

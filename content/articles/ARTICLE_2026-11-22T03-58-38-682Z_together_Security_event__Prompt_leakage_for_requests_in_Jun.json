@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "written_at": "2026-11-22T03:59:03.823Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0035986,
+    "original_draft": "2026-11-22T03-58-38-682Z_together_Security_event__Prompt_leakage_for_requests_in_Jun.json",
+    "source_id": "together",
+    "source_name": "Together AI Blog (hivatalos)",
+    "source_link": "https://www.together.ai/blog/security-event-prompt-leakage-for-requests-in-june-and-july-of-2026",
+    "source_links": [
+      "https://www.together.ai/blog/security-event-prompt-leakage-for-requests-in-june-and-july-of-2026"
+    ],
+    "source_snippet_len": 161,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "9d42f79c6a0d527d",
+    "source_overlap_words": 11,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "published_at": "2026-11-22T04:00:20.131Z",
+    "slug": "together-ai-reports-prompt-exposure-in-june-and-july-2026-what-users-s",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 748
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured security news with clear term definitions (prompt, sample, credential, ZDR), proper attribution throughout, actionable 'What this means for you' guidance, and no prohibited content or product rankings.",
+      "_aiCost": 0.0032154,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-22T04:01:04.259Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-enable-zero-data-retention-in-together-ai-to-protect-",
+    "image_v": 2,
+    "image_at": "2026-11-22T04:04:44.105Z",
+    "seo": {
+      "meta_description": "Together AI reports a prompt exposure incident from June-July 2026 after an access key was leaked. Users should enable zero data retention for sensitive prompts.",
+      "keywords": [
+        "Together AI data breach",
+        "Together AI prompt exposure",
+        "AI prompt security",
+        "AI data privacy",
+        "zero data retention AI",
+        "how to protect AI prompts"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the specific date of the announcement to improve timeliness ranking",
+        "Include a brief explanation of what 'zero data retention' means for users unfamiliar with the term",
+        "Consider adding schema markup for security incident news articles"
+      ],
+      "optimised_at": "2026-11-22T04:06:55.607Z"
+    },
+    "fact_verified_at": "2026-11-22T04:08:49.020Z"
+  },
+  "article_markdown": "---\ntitle: \"Together AI Reports Prompt Exposure in June and July 2026: What Users Should Know\"\nsubtitle: \"The company says a leaked access key let an outside party download some stored prompts, and it lists the fixes it has made.\"\ncategory: \"news\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"data-security\", \"privacy\", \"ai-providers\", \"zero-data-retention\"]\n---\n\n# Together AI Reports Prompt Exposure in June and July 2026: What Users Should Know\n\n> **In short:** Together AI says an outside party downloaded some stored prompt samples from requests made in June and July 2026, after a access key was accidentally posted publicly. The company is reviewing what was exposed, will contact affected customers directly, and recommends enabling zero data retention if you send sensitive prompts.\n\nIf you send work emails, customer details, or internal documents to an AI service, you probably assume those messages stay private. This announcement is a reminder that where your data is stored matters as much as how the AI answers you.\n\n## What happened\n\nAccording to Together AI's announcement, the company collected some prompt samples during routine software testing and saved them in a private storage location on Hugging Face, a platform where developers share code and AI models. A prompt is simply the text you type into an AI tool, and a sample is a copy of some of those messages.\n\nThe samples came from requests sent to three open models: MiniMax M3, GLM-5.2, and Kimi K2.6. Most of the affected requests date from June 24, July 4, July 8, and July 14, 2026.\n\nThe company explains that an AI coding tool used during development of a public project committed a credential, which is a digital key that proves who you are and grants access. That key opened the private storage location. Together AI's automated scanning spotted the exposed key, and the company reverted the change, but an outside party had already found the key and used it to download the samples.\n\nThe announcement also says that party searched the samples for other passwords and keys, and tested whether some of them still worked. Five of the tested credentials were deliberate test keys tied to a security research experiment. Together AI says it has no reason to think the data spread further and understands the copies have been deleted.\n\n## What the company says it has done\n\nTogether AI says it worked with an outside forensic investigation firm and with law enforcement. It reports that its review has not found evidence of other prompt leaks beyond this incident.\n\nThe company also lists changes it has made:\n\n- Using limited or short-lived credentials, and keyless access where the system supports it, so a leaked key does less damage.\n- Checking all code changes for credentials before they go live.\n- Making zero data retention (ZDR) the default setting for new accounts. ZDR means the provider does not keep your prompts after your request is handled.\n- Updating its rules for how AI coding tools are used in development.\n\nTogether AI also says its review of the affected prompts is still ongoing, to find out whether personal information or other customer data was included. It will contact affected customers directly if it finds something relevant to them. The company's CEO, Vipul Ved Prakash, apologized in the announcement.\n\n## What this means for you\n\n- **For your business**: If your team sends customer records, contracts, or internal plans to any AI provider, ask your provider how long it keeps prompts and whether you can turn that storage off. Keep a record of which tools touch sensitive data.\n- **For your team**: Remind staff never to paste passwords, access keys, or private customer details into an AI tool, even for quick tasks.\n- **If you have an account with Together AI**: Together AI recommends enabling ZDR in your account settings if you handle sensitive prompt data. Check the company's official announcement and your account for the current options.\n- **If you have questions**: Together AI asks anyone with concerns about this incident to contact security@together.ai.\n\n## Wrap-up\n\nThis incident shows how one leaked access key can expose data that was never meant to leave a company's systems. Together AI says it is still reviewing what was affected, and it will reach out to customers when it has specifics. Your next step today is simple: look at how your organization's AI accounts handle stored prompts, and decide whether any of them need ZDR or a more careful rule about what goes in.",
+  "original_title": "Security event: Prompt leakage for requests in June and July of 2026"
+}
