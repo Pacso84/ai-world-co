@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179523654705591",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-21T04:49:07.055Z",
-      "updated": "2026-11-21T04:49:07.208Z"
-    },
-    {
-      "id": "t179523654720929",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-21T04:49:07.209Z",
-      "updated": "2026-11-21T04:49:07.357Z"
-    },
-    {
-      "id": "t179523654741230",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-21T04:49:07.412Z",
-      "updated": "2026-11-21T04:51:16.845Z"
-    },
-    {
-      "id": "t179523667684647",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-21T04:51:16.846Z",
-      "updated": "2026-11-21T04:52:29.266Z"
-    },
-    {
-      "id": "t179523674926720",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-21T04:52:29.267Z",
-      "updated": "2026-11-21T04:52:50.747Z"
-    },
-    {
-      "id": "t179523677074950",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-21T04:52:50.749Z",
-      "updated": "2026-11-21T04:53:19.545Z"
-    },
-    {
-      "id": "t179527601572065",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-21T15:46:55.720Z",
-      "updated": "2026-11-21T15:46:55.932Z"
-    },
-    {
-      "id": "t179527601593589",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-21T15:46:55.935Z",
-      "updated": "2026-11-21T15:47:21.471Z"
-    },
-    {
-      "id": "t17952760414737",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-21T15:47:21.473Z",
-      "updated": "2026-11-21T15:47:21.686Z"
-    },
-    {
-      "id": "t179527604174477",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-21T15:47:21.744Z",
-      "updated": "2026-11-21T15:47:37.919Z"
-    },
-    {
-      "id": "t179527605792123",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-21T15:47:37.921Z",
-      "updated": "2026-11-21T15:47:38.147Z"
-    },
-    {
-      "id": "t179527605815039",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-21T15:47:38.150Z",
-      "updated": "2026-11-21T15:47:54.990Z"
-    },
-    {
       "id": "t179527607499263",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,25 +383,105 @@
       "agent": "publisher",
       "created": "2026-11-22T15:50:39.972Z",
       "updated": "2026-11-22T15:51:06.854Z"
+    },
+    {
+      "id": "t179538271617182",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-22T21:25:16.171Z",
+      "updated": "2026-11-22T21:25:16.377Z"
+    },
+    {
+      "id": "t179538271637950",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-22T21:25:16.379Z",
+      "updated": "2026-11-22T21:25:57.460Z"
+    },
+    {
+      "id": "t179538275746166",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-22T21:25:57.461Z",
+      "updated": "2026-11-22T21:25:57.657Z"
+    },
+    {
+      "id": "t179538275770994",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-22T21:25:57.709Z",
+      "updated": "2026-11-22T21:26:15.045Z"
+    },
+    {
+      "id": "t179538277504787",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-22T21:26:15.047Z",
+      "updated": "2026-11-22T21:26:15.268Z"
+    },
+    {
+      "id": "t179538277527031",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-22T21:26:15.270Z",
+      "updated": "2026-11-22T21:26:15.504Z"
+    },
+    {
+      "id": "t179538277559119",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-22T21:26:15.591Z",
+      "updated": "2026-11-22T21:26:15.820Z"
+    },
+    {
+      "id": "t179538277582273",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-22T21:26:15.822Z",
+      "updated": "2026-11-22T21:26:16.044Z"
+    },
+    {
+      "id": "t179538277608651",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-22T21:26:16.086Z",
+      "updated": "2026-11-22T21:26:16.322Z"
+    },
+    {
+      "id": "t179538277632539",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-22T21:26:16.325Z",
+      "updated": "2026-11-22T21:26:16.553Z"
+    },
+    {
+      "id": "t179538277655452",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-22T21:26:16.554Z",
+      "updated": "2026-11-22T21:26:27.581Z"
+    },
+    {
+      "id": "t179538278758347",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-22T21:26:27.583Z",
+      "updated": "2026-11-22T21:26:53.387Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179460632262915",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Give me a product n",
-      "agent": "fact-check",
-      "at": "2026-11-13T21:45:22.629Z",
-      "loud": false
-    },
-    {
-      "id": "n179460633788221",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Ellenőrizendő állítás: \"Apple is getting this wrong\" — A forrás nem tartalmaz információt a telefonok AI asszisztenseirő",
-      "agent": "fact-check",
-      "at": "2026-11-13T21:45:37.882Z",
-      "loud": false
-    },
     {
       "id": "n179462933036436",
       "level": "info",
@@ -1281,19 +1265,25 @@
       "agent": "fact-check",
       "at": "2026-11-22T15:53:04.933Z",
       "loud": false
+    },
+    {
+      "id": "n179538279539344",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready to go! It's a practical mix of how-to guides, privacy tips, and real-world writing examples that everyday people can actually use. One small note: Cohere appears in tw",
+      "agent": "publisher",
+      "at": "2026-11-22T21:26:35.393Z",
+      "loud": false
+    },
+    {
+      "id": "n179538281343126",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-11-22T21:26:53.431Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179443583732772",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „A **Google Workspace** account through your school or employer, or a **Google AI, Pro, or ”): \"Use Gemini in Google Forms to quickly create a new\" — A cikk három kulcsfontosságú pontban mond ellent a hivatalos forrásnak: bevezetési időpont, fiók elérhetőség és fájlhivatkozási képesség tekintetében.",
-      "ref": "ARTICLE_2026-07-30T17-14-04-999Z_google-workspace_Use_Gemini_in_Google_Forms_to_quickly_create_a_new.json",
-      "open": true,
-      "at": "2026-11-11T22:23:57.327Z"
-    },
     {
       "id": "m179443585666215",
       "from": "fact-check",
@@ -2690,6 +2680,15 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-22T16:00:51.875Z"
+    },
+    {
+      "id": "m179538278752793",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-22T21:26:27.527Z"
     }
   ]
 }
