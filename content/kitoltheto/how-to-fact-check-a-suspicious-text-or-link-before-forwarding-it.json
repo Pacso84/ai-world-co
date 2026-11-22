@@ -1,6 +1,6 @@
 {
   "slug": "how-to-fact-check-a-suspicious-text-or-link-before-forwarding-it",
-  "keszult": "2026-11-06T15:42:19.346Z",
+  "keszult": "2026-11-22T21:29:05.068Z",
   "promptok": {
     "90b2110a7565": [],
     "180ba784ca95": [],
@@ -9,12 +9,24 @@
         "eredeti": "three",
         "hely": "number of claims"
       }
+    ],
+    "bf4e78920764": [
+      {
+        "eredeti": "example.com/update",
+        "hely": "suspicious link"
+      }
     ]
   },
   "promptok_hu": {
     "335c3563ad54": [],
     "ddf57624d57d": [],
-    "94974fe2468d": []
+    "94974fe2468d": [],
+    "b0d7362fdd1f": [
+      {
+        "eredeti": "example.com/update",
+        "hely": "a gyanús linked"
+      }
+    ]
   },
   "promptok_es": {
     "727b51e17908": [],
@@ -23,6 +35,12 @@
       {
         "eredeti": "tres",
         "hely": "cuántas afirmaciones"
+      }
+    ],
+    "83b23baa5ca9": [
+      {
+        "eredeti": "example.com/update",
+        "hely": "tu enlace sospechoso"
       }
     ]
   }

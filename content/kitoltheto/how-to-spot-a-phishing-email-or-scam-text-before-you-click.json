@@ -1,22 +1,68 @@
 {
   "slug": "how-to-spot-a-phishing-email-or-scam-text-before-you-click",
-  "keszult": "2026-11-19T05:11:47.686Z",
+  "keszult": "2026-11-22T21:29:05.068Z",
   "promptok": {
     "d70909013849": [
       {
         "eredeti": "fraud detector",
         "hely": "your role"
       }
+    ],
+    "c3f0581fd2f9": [
+      {
+        "eredeti": "package",
+        "hely": "your item type"
+      },
+      {
+        "eredeti": "example.com/track",
+        "hely": "your tracking link"
+      }
+    ],
+    "e154ebc52a6c": [
+      {
+        "eredeti": "billing problem",
+        "hely": "your problem type"
+      },
+      {
+        "eredeti": "24 hours",
+        "hely": "your deadline"
+      },
+      {
+        "eredeti": "example.com/billing",
+        "hely": "your billing link"
+      }
     ]
   },
   "promptok_hu": {
-    "245e21afadfb": []
+    "245e21afadfb": [],
+    "508d4c373d30": [],
+    "fb3219cf10fb": [
+      {
+        "eredeti": "számlázási probléma",
+        "hely": "a probléma típusa"
+      },
+      {
+        "eredeti": "24 órán belül",
+        "hely": "a határidő ideje"
+      }
+    ]
   },
   "promptok_es": {
     "4ef0c07277af": [
       {
         "eredeti": "detector de fraudes",
         "hely": "otro rol de experto"
+      }
+    ],
+    "95a9edeecac7": [],
+    "a9f35e1f7337": [
+      {
+        "eredeti": "problema de facturación",
+        "hely": "el motivo del bloqueo"
+      },
+      {
+        "eredeti": "24 horas",
+        "hely": "el plazo de horas"
       }
     ]
   }
