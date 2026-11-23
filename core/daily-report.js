@@ -46,6 +46,7 @@ import { partnerKattintasSor } from './affiliate.js';
 import { cegLefedettsegSor } from './ceg-lefedettseg.js';   // 🏢 2026-11-05
 import { bingTerkepek, terkepAllapot, bingTerkepSor, ujrakuldesKell, ujrakuld, ELVART_TERKEPEK } from './bing-terkep.js';   // 🔍 2026-11-14
 import { kokoroRiportSor } from './kokoro-tts.js';   // 🤗 2026-11-19
+import { csalasKepRiportSorok } from './csalas-kepek.js';   // 🛡️ 2026-11-23 (csalás-figyelő 4. rész)
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -715,6 +716,11 @@ async function main() {
       const kSor = kokoroRiportSor(JSON.parse(readFileSync(join(ROOT, 'memory', 'kokoro-tartalek.json'), 'utf-8')), today());
       if (kSor) lines.push(kSor);
     } catch { /* nincs fájl = ma nem kellett a tartalék */ }
+    // 🛡️ CSALÁS-KÉPEK (11-23): elmaradt példa-kép vagy hiányzó normál betűvastagság. Kikapcsolt csalás-figyelőnél
+    // a fájl nem is létezik (core/csalas-kepek.js azonnal kilép) → nincs sor.
+    try {
+      lines.push(...csalasKepRiportSorok(JSON.parse(readFileSync(join(ROOT, 'memory', 'csalas-guard.json'), 'utf-8'))));
+    } catch { /* nincs fájl = a csalás-figyelő ki van kapcsolva */ }
 
     // ⚠️ BETŰTÍPUS-VISSZAESÉS (2026-09-17). A Reel-táblák „Arial Black"-et
     // kértek; az a futtatón NINCS, és a betűmotor ilyenkor nem hibázik,
@@ -943,7 +949,10 @@ async function main() {
       // A Házmester (core/housekeeping.js) a CI MINDEN futásában ír, és a beépített
       // hízás-őre (watchGrowth) ide teszi a figyelmeztetést. Ha a lépés elmarad, a
       // „semmi nem hízik" csend nem bizonyíték. (Ugyanaz a lelet, 2026-09-15.)
-      'housekeeping.json': 'házmester'
+      'housekeeping.json': 'házmester',
+      // A csalás-kép lépés (2026-11-23, core/csalas-kepek.js) bekapcsolt csalás-figyelőnél MINDEN futásban ír `at`-et;
+      // kikapcsolva a fájl nem létezik, és a hiányzó fájlt ez a térkép kihagyja.
+      'csalas-guard.json': 'csalás-kép'
     };
     const beolvasott = {};
     for (const [f, nev] of Object.entries(nevek)) {

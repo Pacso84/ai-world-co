@@ -27,6 +27,9 @@ import { ask } from '../../core/ai-router.js';
 import { skillsBlock } from '../../core/skills.js';
 import { szovegMentesJelenet, szovegKockazat, ujrairasKeres } from '../../core/cover-scene.js';
 import { kepBackendek } from '../../core/kep-backendek.js';
+// Csalás-hír (2026-11-23, csalás-figyelő 4. rész): a borítóját a core/csalas-kepek.js RAJZOLJA a kitalált
+// példaüzenetből — MI-kép ide nem kell (a szöveges/valódi márkás kép-kockázat miatt sem).
+import { csalasHir } from '../../core/csalas-figyelo.js';
 
 const ai = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 const IMAGE_MODEL = 'gemini-2.5-flash-image';
@@ -230,7 +233,7 @@ async function main() {
   if (REFRESH > 0) {
     files = files
       .map(f => { try { return { f, d: JSON.parse(readFileSync(join(ARTICLES_DIR, f), 'utf-8')) }; } catch { return null; } })
-      .filter(x => x && x.d._meta?.published_at && (x.d._meta.image_v || 0) < 2)
+      .filter(x => x && x.d._meta?.published_at && (x.d._meta.image_v || 0) < 2 && !csalasHir(x.d._meta))
       .sort((a, b) => {
         const ag = a.d._meta.type === 'guide' ? 0 : 1;   // útmutató előre
         const bg = b.d._meta.type === 'guide' ? 0 : 1;
@@ -247,6 +250,9 @@ async function main() {
     let data;
     try { data = JSON.parse(readFileSync(join(ARTICLES_DIR, file), 'utf-8')); }
     catch { continue; }
+
+    // Csalás-hír: a borítót a core/csalas-kepek.js rajzolja (--force / --only / --refresh ágon SEM kap MI-képet).
+    if (csalasHir(data._meta)) { skipped++; continue; }
 
     const meta = parseMeta(data.article_markdown);
     // A RÖGZÍTETT slug az igazság (2026-07-30) — ugyanaz a hiba, mint a

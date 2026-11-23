@@ -98,7 +98,8 @@ const FRISSESSEG_KIVETEL = {
 /** Memória-író, ami NEM őrszem-kimenet. Új állapotfájl → ide, egy mondat indoklással. */
 const NEM_ORSZEM = {
   'kokoro-be.json': 'NEM a memory/-ba kerül: a Kokoro-hívás bemenete a Reel ideiglenes munkamappájában (core/kokoro-tts.js kokoroFelolvas) — a statikus keresés a join() miatt sorolja ide',
-  'bing-terkep.json': 'a Bing-térkép őr (core/bing-terkep.js) újraküldési lehűlése: csak baj esetén íródik, a riport-sor élőben kérdez — munkaállapot, nem lelet',
+  'csalas-kep-hash.json': 'a csalás-képrajzoló (core/csalas-kepek.js) kép→példa ujjlenyomat-tára: változatlan példát nem rajzol újra — gyorsítótár; a lelet a csalas-guard.json-ba megy',
+  'bing-terkep.json':'a Bing-térkép őr (core/bing-terkep.js) újraküldési lehűlése: csak baj esetén íródik, a riport-sor élőben kérdez — munkaállapot, nem lelet',
   'halott-url-allapot.json': 'az IndexNow halott-link sora (core/halott-url.js): élő slugok + eltűnt címek bejelentési állapota — munkaállapot, nem lelet',
   'ceo-desk-log.json': 'a CEO-asztal napi döntés-naplója (agents/ceo/desk.js) — a riport statisztikát olvas belőle, nem lelet',
   'chat-history.json': 'a Telegram-bot beszélgetés-előzménye (core/telegram.js) — munkaanyag, nincs benne ellenőrzés',

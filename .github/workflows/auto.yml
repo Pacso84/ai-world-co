@@ -636,6 +636,21 @@ jobs:
             fc-match "Schibsted Grotesk"
           fi
 
+      # 🛡️ CSALÁS-KÉPEK (2026-11-23, csalás-figyelő 4. rész) — a csalás-hír kitalált példaüzenetéből sablonból
+      # rajzolt, megjelölt kép (4:5 a cikkbe + 16:9 borító, en/hu/es), MI nélkül. Kikapcsolt kapcsolónál
+      # (core/csalas-figyelo.js CSALAS_FIGYELO_BE) azonnal kilép. A Reel ELŐTT fut, hogy egy csalás-hír Reelje
+      # már a kész borítót kapja. A normál (500) betűvastagsághoz a VÁLTOZTATHATÓ betűfájl kell — CSAK erre a
+      # lépésre telepítjük, utána levesszük, hogy a Reel-táblák betűválasztását semmi ne változtassa meg.
+      # A betű tényleges megérkezését a kód méri (memory/csalas-guard.json kep_betu → napi riport).
+      - name: Csalás-képek (példaüzenet-rajz + borító, a Reel ELŐTT)
+        if: always()
+        run: |
+          VF="$HOME/.local/share/fonts/schibsted-grotesk-var.ttf"
+          mkdir -p "$HOME/.local/share/fonts"
+          cp shared/fonts/schibsted-grotesk-var.ttf "$VF" && fc-cache -f >/dev/null || true
+          node core/csalas-kepek.js || true
+          rm -f "$VF"; fc-cache -f >/dev/null || true
+
       - name: Reel — napi videó gyártása (a build ELŐTT)
         if: always()
         run: node core/reel-post.js --prepare || true
