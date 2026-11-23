@@ -1,0 +1,64 @@
+{
+  "ok": 3,
+  "fixed": 1,
+  "removed": 0,
+  "cost": 0.00999768,
+  "at": "2026-11-23T19:16:41.360Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 1,
+    "visszautasitva": 1,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-23T19-10-54-308Z_picsart_Kling_Image_4_0_is_in_Picsart__series__long_images.json",
+      "cim": "Kling Image 4.0 is in Picsart: series, long images, 8K",
+      "tipus": "hir",
+      "eredmeny": "javitva",
+      "ok_hu": "A forrás szerint a hosszú képmód legfeljebb 3 hivatkozási képet használ, nem 10-et, mint az egyképes és a sorozatmód",
+      "modell_hu": "Article says reference images can include up to 10 for long images, but source says ecommerce long images require 1-3 images and webpage long images use 0-3 images"
+    },
+    {
+      "file": "ARTICLE_2026-11-23T19-10-42-119Z_google-workspace_Google_Meet_on_the_web_now_supports_sending_1080p_.json",
+      "cim": "Google Meet on the web now supports sending 1080p video for all users, enabled by default",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Minden ténymegállapítás megfelel a forrásnak"
+    },
+    {
+      "file": "ARTICLE_2026-11-23T19-10-42-118Z_google-photos_Organize_and_share_your_holiday_memories_with_thes.json",
+      "cim": "Organize and share your holiday memories with these five updates in Google Photos.",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikkben található összes tényállítás megegyezik a forrásszöveggel."
+    },
+    {
+      "file": "ARTICLE_2026-11-18T16-50-28-117Z_xai-news_Use_Grok_Bot_in_Microsoft_Teams_-_docs_x_ai.json",
+      "cim": "Use Grok Bot in Microsoft Teams - docs.x.ai",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
+      "cim": "Prevent accidental disclosures with new Reply All BCC warnings in Gmail",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „Gmail has had Reply All warnings for some time.”",
+      "modell_hu": "A cikk azt állítja, hogy a Gmail nem figyelmeztet konkrétan a BCC-re, de a forrás ÚJ figyelmeztetést ír le: \"Nincs a címzettek listáján, ha mindenkinek válaszol, mindenki megtudja, hogy Ön is benne volt\" - ez akkor lép működésbe, ha az Ön címe nincs a To vagy CC mezőben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-claude-to-draft-a-polite-work-email-in-5-minutes.json",
+      "cim": "How to use Claude to draft a polite work email in 5 minutes",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}

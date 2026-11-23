@@ -1,0 +1,73 @@
+{
+  "started_at": "2026-11-23T19:13:01.337Z",
+  "drafts_total": 3,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 2,
+    "html": 1,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.013800299999999998,
+  "by_article": [
+    {
+      "draft": "2026-11-23T19-10-42-119Z_google-workspace_Google_Meet_on_the_web_now_supports_sending_1080p_.json",
+      "writer_output": "WRITER_2026-11-23T19-10-42-119Z_google-workspace_Google_Meet_on_the_web_now_supports_sending_1080p_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 1362,
+      "source_overlap_words": 11,
+      "cost_usd": 0.0034756,
+      "duration_ms": 11589,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-23T19-10-42-118Z_google-photos_Organize_and_share_your_holiday_memories_with_thes.json",
+      "writer_output": "WRITER_2026-11-23T19-10-42-118Z_google-photos_Organize_and_share_your_holiday_memories_with_thes.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 1472,
+      "source_overlap_words": 9,
+      "cost_usd": 0.0035477,
+      "duration_ms": 11906,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-23T19-10-54-308Z_picsart_Kling_Image_4_0_is_in_Picsart__series__long_images.json",
+      "writer_output": "WRITER_2026-11-23T19-10-54-308Z_picsart_Kling_Image_4_0_is_in_Picsart__series__long_images.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 13,
+      "cost_usd": 0.0043887,
+      "duration_ms": 17981,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 3,
+  "termek_extra": 2,
+  "finished_at": "2026-11-23T19:14:04.147Z",
+  "duration_seconds": 62.81
+}

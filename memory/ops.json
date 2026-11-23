@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179531986938576",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-22T03:57:49.385Z",
-      "updated": "2026-11-22T03:57:49.535Z"
-    },
-    {
-      "id": "t179531986953679",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-22T03:57:49.536Z",
-      "updated": "2026-11-22T03:58:38.695Z"
-    },
-    {
-      "id": "t179531991869642",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-22T03:58:38.696Z",
-      "updated": "2026-11-22T03:58:38.836Z"
-    },
-    {
-      "id": "t179531991887050",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-22T03:58:38.870Z",
-      "updated": "2026-11-22T03:59:54.179Z"
-    },
-    {
-      "id": "t179531999418122",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-22T03:59:54.181Z",
-      "updated": "2026-11-22T04:00:20.142Z"
-    },
-    {
-      "id": "t179532002014431",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-22T04:00:20.144Z",
-      "updated": "2026-11-22T04:01:04.271Z"
-    },
-    {
-      "id": "t179532006430256",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-22T04:01:04.302Z",
-      "updated": "2026-11-22T04:02:07.011Z"
-    },
-    {
-      "id": "t179532012701364",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-22T04:02:07.013Z",
-      "updated": "2026-11-22T04:02:18.322Z"
-    },
-    {
-      "id": "t179532013835077",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-22T04:02:18.350Z",
-      "updated": "2026-11-22T04:02:18.511Z"
-    },
-    {
-      "id": "t179532013851381",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-22T04:02:18.513Z",
-      "updated": "2026-11-22T04:02:18.660Z"
-    },
-    {
-      "id": "t179532013871517",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-22T04:02:18.715Z",
-      "updated": "2026-11-22T04:06:16.165Z"
-    },
-    {
-      "id": "t179532037616771",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-22T04:06:16.167Z",
-      "updated": "2026-11-22T04:07:14.303Z"
-    },
-    {
       "id": "t179532043430536",
       "title": "Run designer",
       "status": "done",
@@ -479,57 +383,105 @@
       "agent": "publisher",
       "created": "2026-11-23T04:46:03.993Z",
       "updated": "2026-11-23T04:46:31.305Z"
+    },
+    {
+      "id": "t179546098227725",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-23T19:09:42.277Z",
+      "updated": "2026-11-23T19:09:42.437Z"
+    },
+    {
+      "id": "t179546098244052",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-23T19:09:42.440Z",
+      "updated": "2026-11-23T19:10:54.324Z"
+    },
+    {
+      "id": "t179546105432613",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-23T19:10:54.326Z",
+      "updated": "2026-11-23T19:13:01.137Z"
+    },
+    {
+      "id": "t179546118118339",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-23T19:13:01.183Z",
+      "updated": "2026-11-23T19:14:04.165Z"
+    },
+    {
+      "id": "t179546124416773",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-23T19:14:04.167Z",
+      "updated": "2026-11-23T19:14:18.104Z"
+    },
+    {
+      "id": "t179546125810685",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-23T19:14:18.106Z",
+      "updated": "2026-11-23T19:14:43.785Z"
+    },
+    {
+      "id": "t179546128386056",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-23T19:14:43.860Z",
+      "updated": "2026-11-23T19:14:44.023Z"
+    },
+    {
+      "id": "t179546128402431",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-23T19:14:44.024Z",
+      "updated": "2026-11-23T19:14:44.204Z"
+    },
+    {
+      "id": "t179546128424356",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-23T19:14:44.243Z",
+      "updated": "2026-11-23T19:15:39.583Z"
+    },
+    {
+      "id": "t17954613395858",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-23T19:15:39.585Z",
+      "updated": "2026-11-23T19:16:08.111Z"
+    },
+    {
+      "id": "t179546136811233",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-23T19:16:08.112Z",
+      "updated": "2026-11-23T19:16:16.394Z"
+    },
+    {
+      "id": "t179546137639626",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-23T19:16:16.396Z",
+      "updated": "2026-11-23T19:16:40.360Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179462937962393",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Upload a Selfie to ChatGPT and Ask for a Pr\" — A ChatGPT képe",
-      "agent": "fact-check",
-      "at": "2026-11-14T04:09:39.623Z",
-      "loud": false
-    },
-    {
-      "id": "n179462943434145",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (túl nagy átírás (198 szó a 893-ből)): \"AI Cost Management: Why Cost Per To",
-      "agent": "fact-check",
-      "at": "2026-11-14T04:10:34.341Z",
-      "loud": false
-    },
-    {
-      "id": "n179466763465571",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid and ready to go — it flows naturally from learning what AI can do, to practical writing tasks, to career tools, with a much-needed privacy guide anchoring the trust angle. One ",
-      "agent": "publisher",
-      "at": "2026-11-14T14:47:14.655Z",
-      "loud": false
-    },
-    {
-      "id": "n179466765150950",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-11-14T14:47:31.509Z",
-      "loud": false
-    },
-    {
-      "id": "n179468745899890",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up looks solid—practical, varied, and hits everyday use cases from privacy to career writing. Good mix of tools and tasks. One note: since many readers may be new to AI, consider adding a fri",
-      "agent": "publisher",
-      "at": "2026-11-14T20:17:38.998Z",
-      "loud": false
-    },
-    {
-      "id": "n179468747634549",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-11-14T20:17:56.345Z",
-      "loud": false
-    },
     {
       "id": "n179468754528551",
       "level": "warn",
@@ -1281,55 +1233,57 @@
       "agent": "ceo",
       "at": "2026-11-23T04:46:31.347Z",
       "loud": false
+    },
+    {
+      "id": "n179546118050647",
+      "level": "info",
+      "text": "🧭 Forráskutató: 1 ÚJ megbízható forrás-javaslat (küszöb 100).\n• [100] Pika Labs (hivatalos)\nJóváhagyod valamelyiket?",
+      "agent": "source-scout",
+      "at": "2026-11-23T19:13:00.506Z",
+      "loud": false
+    },
+    {
+      "id": "n179546127321333",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to enable or adjust 1080p video quality in Google Meet on the web\"",
+      "agent": "pairing",
+      "at": "2026-11-23T19:14:33.213Z",
+      "loud": false
+    },
+    {
+      "id": "n179546136810214",
+      "level": "info",
+      "text": "SEO: 3 cikk optimalizálva (átlag 296.0/10).",
+      "agent": "seo",
+      "at": "2026-11-23T19:16:08.102Z",
+      "loud": false
+    },
+    {
+      "id": "n17954613856565",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid—practical how-tos, privacy guidance, and real-life task examples. It covers a nice range from beginners (resume, LinkedIn bio) to more confident users (fact-checking, marketing)",
+      "agent": "publisher",
+      "at": "2026-11-23T19:16:25.656Z",
+      "loud": false
+    },
+    {
+      "id": "n179546140039851",
+      "level": "success",
+      "text": "3 hír + 0 útmutató publikálva (költség: $0.0281).",
+      "agent": "ceo",
+      "at": "2026-11-23T19:16:40.398Z",
+      "loud": false
+    },
+    {
+      "id": "n179546148623215",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Gmail has had Reply",
+      "agent": "fact-check",
+      "at": "2026-11-23T19:18:06.232Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179445964508090",
-      "from": "ellenorzo",
-      "to": "guide",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"Plan a weekend trip itinerary with DeepSeek\" — mi a baj: The repeated claim that DeepSeek cannot look up live information or check current opening hours and prices is inaccurate: DeepSeek's web and mobile apps include a web-search mode that can retrieve current web information. The warning should apply only when that mode is not enabled.",
-      "ref": "GUIDE_plan-a-weekend-trip-itinerary-with-deepseek.json",
-      "at": "2026-11-12T05:00:45.080Z"
-    },
-    {
-      "id": "m179445973423379",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-12T05:02:14.233Z"
-    },
-    {
-      "id": "m179445981129285",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Try one of the four features on your next call or voice memo — the new languages should al”): \"Samsung Expands Language Support Across AI Experie\" — A forrás egyértelműen states that az új Galaxy AI nyelvek 'a következő hetekben' jelennek meg, nem pedig már élőben vannak",
-      "ref": "ARTICLE_2026-10-15T02-18-20-785Z_samsung-newsroom_Samsung_Expands_Language_Support_Across_AI_Experie.json",
-      "open": true,
-      "at": "2026-11-12T05:03:31.292Z"
-    },
-    {
-      "id": "m179446024871915",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "5 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-12T05:10:48.719Z"
-    },
-    {
-      "id": "m179450095823241",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to pause and schedule automated workflows in Google Workspace Studio\" — javítva: ACCESS_NOT_SELF_SERVE: 2 jel arra, hogy az olvasónak céges/IT-hozzáférés kell (\"your work account\", \"ask your admin\") — a hétköznapi olvasónk el sem tud indulni.; Product name Workspace Studio cannot be independently verified as a real Google product - this is the core factual gate issue; újraküldöm.",
-      "ref": "GUIDE_how-to-pause-and-schedule-automated-workflows-in-google-work.json",
-      "at": "2026-11-12T16:29:18.232Z"
-    },
     {
       "id": "m179450095823389",
       "from": "guide",
@@ -2686,6 +2640,53 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-23T04:57:26.665Z"
+    },
+    {
+      "id": "m17954612732131",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to enable or adjust 1080p video quality in Google Meet on the web\"",
+      "ref": "how-to-enable-or-adjust-1080p-video-quality-in-google-meet-o",
+      "open": true,
+      "at": "2026-11-23T19:14:33.213Z"
+    },
+    {
+      "id": "m179546128377359",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "info",
+      "text": "A \"Kling Image 4.0 is in Picsart: series, long images, 8K\" hír a meglévő útmutatóra mutat: how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio",
+      "ref": "how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio",
+      "at": "2026-11-23T19:14:43.773Z"
+    },
+    {
+      "id": "m179546137635226",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-23T19:16:16.352Z"
+    },
+    {
+      "id": "m179546143665399",
+      "from": "fact-check",
+      "to": "team",
+      "kind": "fix",
+      "text": "Valótlanná vált részt javítottam egy publikált cikkben: \"Kling Image 4.0 is in Picsart: series, long images\" — A forrás szerint a hosszú képmód legfeljebb 3 hivatkozási képet használ, nem 10-et, mint az egyképes és a sorozatmód",
+      "ref": "ARTICLE_2026-11-23T19-10-54-308Z_picsart_Kling_Image_4_0_is_in_Picsart__series__long_images.json",
+      "at": "2026-11-23T19:17:16.653Z"
+    },
+    {
+      "id": "m179546148623231",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Gmail has had Reply All warnings for some time.”): \"Prevent accidental disclosures with new Reply All \" — A cikk azt állítja, hogy a Gmail nem figyelmeztet konkrétan a BCC-re, de a forrás ÚJ figyelmeztetést ír le: \"Nincs a címzettek listáján, ha mindenkinek válaszol, mindenki megtudja, hogy Ön is b",
+      "ref": "ARTICLE_2026-07-31T17-18-49-790Z_google-workspace_Prevent_accidental_disclosures_with_new_Reply_All_.json",
+      "open": true,
+      "at": "2026-11-23T19:18:06.232Z"
     }
   ]
 }
