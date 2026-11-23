@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-11-23T04:40:54.280Z",
+  "total": 3,
+  "passed": 2,
+  "failed": 1,
+  "auto_check_failed": 0,
+  "ai_review_failed": 0,
+  "total_cost_usd": 0.01161356,
+  "by_article": [
+    {
+      "writer": "WRITER_2026-11-18T16-50-28-117Z_nvidia-blog_NVIDIA_RTX_Spark_Compact_Desktops_Out_Now.json",
+      "article": "ARTICLE_2026-11-18T16-50-28-117Z_nvidia-blog_NVIDIA_RTX_Spark_Compact_Desktops_Out_Now.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0039516
+    },
+    {
+      "writer": "WRITER_2026-11-18T16-50-28-117Z_xai-news_Use_Grok_Bot_in_Microsoft_Teams_-_docs_x_ai.json",
+      "article": "ARTICLE_2026-11-18T16-50-28-117Z_xai-news_Use_Grok_Bot_in_Microsoft_Teams_-_docs_x_ai.json",
+      "decision": "PASS",
+      "score": 9,
+      "cost_usd": 0.0031164
+    },
+    {
+      "writer": "WRITER_2026-11-21T04-44-49-346Z_openai-blog_Can_AI_help_scientists_identify_promising_drug_can.json",
+      "rejected": "REJECTED_2026-11-21T04-44-49-346Z_openai-blog_Can_AI_help_scientists_identify_promising_drug_can.json",
+      "decision": "FAIL",
+      "score": 7,
+      "cost_usd": 0.0032148
+    }
+  ],
+  "finished_at": "2026-11-23T04:41:07.308Z",
+  "duration_seconds": 13.028
+}

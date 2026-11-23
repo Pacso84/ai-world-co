@@ -1,0 +1,62 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.0084771,
+  "at": "2026-11-23T04:46:32.581Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-ai-to-write-a-polite-repair-request-to-your-landl.json",
+      "cim": "How to Use AI to Write a Polite Repair Request to Your Landlord",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "Ez egy általános útmutató a mesterséges intelligencia használatáról bérbeadóknak szóló javítási kérelmek megfogalmazásához. Nem tartalmaz konkrét állításokat konkrét AI-eszközökről, funkciókról, árakról vagy vállalatokról, amelyek elavulhatnának."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-turn-a-recurring-chore-into-a-reusable-ai-prompt-temp.json",
+      "cim": "How to Turn a Recurring Chore Into a Reusable AI Prompt Template",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-21T04-44-49-346Z_openai-blog_Can_AI_help_scientists_identify_promising_drug_can.json",
+      "cim": "Can AI help scientists identify promising drug candidates?",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk nem tartalmaz a forrással ellentmondásos tényt - a forrás néhány konkrét modell-nevet és pontszámot említ, de a cikk nem állít ezekről semmi konkrétumot, egyszerűen nem tér ki rájuk."
+    },
+    {
+      "file": "ARTICLE_2026-11-18T16-50-28-117Z_xai-news_Use_Grok_Bot_in_Microsoft_Teams_-_docs_x_ai.json",
+      "cim": "Use Grok Bot in Microsoft Teams - docs.x.ai",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-11-18T16-50-28-117Z_nvidia-blog_NVIDIA_RTX_Spark_Compact_Desktops_Out_Now.json",
+      "cim": "NVIDIA RTX Spark Compact Desktops Out Now",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk minden tényszerű állítása megegyezik a forrásszöveggel: specifikációk (20 magos Grace CPU, 6144 CUDA mag, 128GB egységes memória, tízgigabites Ethernet, 1 petaflop), elérhetőség (ASUS/Dell/MSI most, Acer/GIGABYTE/Surface hamarosan), funkciók (Switchyard, Hermes Agent, NemoClaw, Unsloth) és sz"
+    },
+    {
+      "file": "ARTICLE_2026-08-07T02-05-16-308Z_databricks_What_are_Agentic_Workflows_.json",
+      "cim": "What are Agentic Workflows?",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk egy közérthető fogalmi magyarázó, amely pontosan ragadja meg az agentic workflows általános ötletet anélkül, hogy konkrét tényszerű állításokat tenne, amelyek ellentmondanának a forrásnak. Helyesen magyarázza el a fogalmakat: az ügynöök olyan AI-rendszerek, amelyek több lépéses feladatokat tu"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "_meta": {
+    "written_at": "2026-11-23T04:41:20.586Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.004236,
+    "original_draft": "2026-11-21T04-44-49-346Z_openai-blog_Can_AI_help_scientists_identify_promising_drug_can.json",
+    "source_id": "openai-blog",
+    "source_name": "OpenAI Blog (hivatalos)",
+    "source_link": "https://openai.com/index/introducing-medchembench",
+    "source_links": [
+      "https://openai.com/index/introducing-medchembench"
+    ],
+    "source_snippet_len": 154,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "6dd3e589147cff89",
+    "source_overlap_words": 15,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "rejected_at": "2026-11-23T04:41:07.290Z",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 895
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "This is a well-structured explainer that hits every required section: hook with analogy, plain-language definitions, the What this means for you block, and a wrap-up with a next step. Technical terms are explained consistently, the tone is warm and non-condescending, and no prohibited content or product comparisons appear. One minor note: the article states two different source numbers (99 problems vs 117 papers) which could cause reader confusion, but since both come from the verified official source, this is acceptable editorial choice rather than an error.",
+      "_aiCost": 0.0032568,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "reason": "Good structure, clear explanations, friendly tone, and solid audience fit. However, the British spelling 'behaviour' must be corrected to 'behavior' for US English compliance. Consider also clarifying what 'partial credit' means concretely so readers don't overestimate the benchmark's rigor.",
+    "can_retry": true,
+    "rework_attempts": 1,
+    "reworked_from": "REJECTED_2026-11-21T04-44-49-346Z_openai-blog_Can_AI_help_scientists_identify_promising_drug_can.json",
+    "requeued_unchanged": false,
+    "published_at": "2026-11-23T04:41:24.821Z",
+    "slug": "can-ai-help-scientists-pick-promising-drug-candidates",
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-23T04:41:44.409Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a research benchmark announcement for evaluating AI models in drug chemistry, not a consumer-usable product or feature",
+    "image_v": 2,
+    "image_at": "2026-11-23T04:44:16.160Z",
+    "seo": {
+      "meta_description": "OpenAI's MedChemBench tests whether AI can help scientists pick promising drug candidates through 99 chemistry problems from published research.",
+      "keywords": [
+        "MedChemBench",
+        "OpenAI drug discovery",
+        "AI medicinal chemistry",
+        "AI drug research",
+        "AI chemistry benchmark",
+        "AI pharmaceutical research",
+        "drug candidate AI"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add a publication or release date for MedChemBench to improve timeliness signals",
+        "Include a brief example of a specific drug design tradeoff to illustrate the concept for general readers",
+        "Consider adding current limitations or challenges of using AI in drug discovery to provide balanced context"
+      ],
+      "optimised_at": "2026-11-23T04:45:25.853Z"
+    },
+    "fact_verified_at": "2026-11-23T04:46:56.318Z"
+  },
+  "article_markdown": "---\ntitle: \"Can AI Help Scientists Pick Promising Drug Candidates?\"\nsubtitle: \"OpenAI's new MedChemBench tests whether AI can reason through the molecule-level tradeoffs that drug researchers face.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"ai-research\", \"science\", \"benchmarks\", \"openai\"]\n---\n\n# Can AI Help Scientists Pick Promising Drug Candidates?\n\n> **In short:** OpenAI has introduced MedChemBench, a test built from 99 problems drawn from published drug-chemistry research. According to the company, it checks whether AI models can read molecular structures, explain experimental results and choose which compounds to test next.\n\nThink about baking a cake where adding more sugar makes it sweeter but also makes it collapse. Fixing one problem often creates another. Drug researchers face this kind of puzzle constantly, and a new OpenAI benchmark asks whether AI can help them think it through.\n\n## Why drug design is a balancing act\n\nThe field is called medicinal chemistry (the science of designing molecules that might become medicines). A **molecule** is a small group of atoms joined together, and a **compound** is a specific molecule a researcher is studying.\n\nA promising compound can have a serious weakness. OpenAI's announcement gives an example: a compound may block a disease-related protein (a large molecule in the body that does a specific job, and that a drug can target) very effectively, yet pass poorly into the body or break down too fast. Researchers handle these tradeoffs by designing related compounds, testing them, and deciding what to try next.\n\n## What MedChemBench actually tests\n\nA **benchmark** is a standard set of test questions with a scoring guide, a bit like a practice exam that every student takes under the same rules. OpenAI says MedChemBench draws on 117 papers and patents and includes 761 distinct molecular structures.\n\nAccording to the company, the benchmark grades four skills:\n\n- **Molecular structures:** Can the model correctly assemble a molecule from drawings and chemical groups? This includes **stereochemistry**, which is the three-dimensional arrangement of atoms.\n- **Scientific reasoning:** Does the model explain its choices using the evidence it was given?\n- **Ranking and selection:** Does it rank or choose compounds that meet the stated requirements?\n- **Property predictions:** Do its predicted values and categories match the measured numbers in the source research?\n\nMost problems give the model context from a point in a research project: the biological target, the researchers' goals, the compounds tested so far, and some experimental findings.\n\n## How the scoring works\n\nOpenAI reports results as a percentage of the available credit. For property predictions, the benchmark gives **partial credit**, which means a prediction earns more credit the closer it lands to the measured value, instead of counting only as right or wrong. The measurements already supplied in a problem must also be reproduced correctly.\n\nThe announcement does not publish the exact scoring formula, so you can't tell from it precisely how much a near-miss is worth. Treat the percentages as a helpful comparison point inside OpenAI's own test, not as a precise measure of scientific skill.\n\n## A closer look at one example\n\nOne problem focuses on inhibitors of PRMT5, a protein studied in cancer drug discovery. (An **inhibitor** is a molecule that slows or blocks a protein's activity.) The model receives structures and early results, then predicts how three related compounds will behave in three ways: how strongly they block PRMT5 in cells, how easily they cross a cell barrier, and how quickly liver enzymes break them down in a lab assay.\n\nLater experiments, which were hidden from the model, showed a tradeoff. One compound blocked PRMT5 at a lower concentration, while another crossed the cell barrier more readily and broke down more slowly.\n\nThe company also highlights a basic step: before a model reasons about a compound, it has to draw the molecule correctly. OpenAI reports that a change to a single ring of atoms can produce a completely different molecule, which is why the structure test matters.\n\n## What this means for you\n\n- **In everyday life:** Most of us will never design a drug, but this work explains why new medicines take so long to develop. Each change that helps one property can hurt another. Keep that in mind when you read science news, and be patient with headlines that promise quick breakthroughs.\n- **For your business or work:** If you work in research, pharmaceuticals, or data science, a benchmark is a useful lens. Ask vendors what they tested, how the test was scored, and whether the results came from real research data.\n- **If you're just getting started:** Read the official announcement and skim the linked paper. Notice the difference between a test score and proof that a tool works in a real lab. OpenAI describes this benchmark as one step, not a finished solution.\n\nThis is a research announcement, not a tool you can use today, so there's no step-by-step setup to follow. It is not medical advice, and decisions about health or treatment belong with qualified professionals.\n\n## Wrap-up\n\nMedChemBench tests whether AI models can read molecules, reason from lab evidence, rank compounds, and predict properties, using 99 problems drawn from published research. OpenAI presents it as a way to measure progress toward helping scientists design better medicines. Your next step is simple: open the official announcement, read the PRMT5 example, and notice how the test rewards careful reasoning, not just a confident answer.",
+  "original_title": "Can AI help scientists identify promising drug candidates?"
+}

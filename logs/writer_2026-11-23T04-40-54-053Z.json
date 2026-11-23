@@ -1,0 +1,79 @@
+{
+  "started_at": "2026-11-23T04:39:50.405Z",
+  "drafts_total": 3,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 2,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 1,
+    "html": 1,
+    "rss": 0,
+    "kivonat": 1
+  },
+  "source_fail": [
+    {
+      "draft": "2026-11-18T16-50-28-117Z_xai-news_Use_Grok_Bot_in_Microsoft_Teams_-_docs_x_ai.json",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5SSWpuZUY3a1FobWtVSDFKSUUzdFJVZnZWS2JWdEttczNFLXl3RWJndXRSZmZiNUgyVmVUemVCcFhBUWVrY1YxUC1OUnF0c1FNektRQg?oc=5",
+      "hiba": "túl rövid szöveg (11 karakter)"
+    }
+  ],
+  "total_cost_usd": 0.0133102,
+  "by_article": [
+    {
+      "draft": "2026-11-21T04-44-49-346Z_openai-blog_Can_AI_help_scientists_identify_promising_drug_can.json",
+      "writer_output": "WRITER_2026-11-21T04-44-49-346Z_openai-blog_Can_AI_help_scientists_identify_promising_drug_can.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 15,
+      "cost_usd": 0.0045335,
+      "duration_ms": 19609,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-18T16-50-28-117Z_xai-news_Use_Grok_Bot_in_Microsoft_Teams_-_docs_x_ai.json",
+      "writer_output": "WRITER_2026-11-18T16-50-28-117Z_xai-news_Use_Grok_Bot_in_Microsoft_Teams_-_docs_x_ai.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "kivonat"
+      ],
+      "source_chars": 41,
+      "source_overlap_words": 5,
+      "cost_usd": 0.0034423,
+      "duration_ms": 11952,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-18T16-50-28-117Z_nvidia-blog_NVIDIA_RTX_Spark_Compact_Desktops_Out_Now.json",
+      "writer_output": "WRITER_2026-11-18T16-50-28-117Z_nvidia-blog_NVIDIA_RTX_Spark_Compact_Desktops_Out_Now.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 16,
+      "cost_usd": 0.0037717,
+      "duration_ms": 12283,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 0,
+  "termek_extra": 0,
+  "finished_at": "2026-11-23T04:40:54.053Z",
+  "duration_seconds": 63.648
+}
