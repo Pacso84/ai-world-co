@@ -855,6 +855,18 @@
       "country": "KR",
       "comment": "HIVATALOS Samsung Newsroom (Galaxy AI - a fogyasztoi telefon-AI). ELOBEN MERVE 2026-08-15: HTTP 200, text/xml, 50 tetel, 2 napos frissesseg, 50/50 link a sajat domainre. HASZNOSSAG: 10/50 cim AI-s (20%). ⚠️ AZ ARANY ONMAGABAN FELREVEZET: 50 tetel 20%-a ugyanannyi hasznalhato cikk, mint a picsart 19 tetelenek 26%-a - a HOZAMOT abszolut szamban kell nezni, a zajt a parosito ugyis kiszuri, ingyen. ⚠️ MERESI CSAPDA: a samsung a HEAD-kerest 403-mal tiltja, ezert a \"mintacikk el\" probam elsore 0/3-at adott; GET-tel mind a 3 cikk 200, 143-171 KB valodi tartalommal. Ha egy nap ujrameritek: NE HEAD-del.",
       "enabled": true
+    },
+    {
+      "id": "pika",
+      "name": "Pika (hivatalos)",
+      "url": "https://pika.art/blog/feed.xml",
+      "category": "ai-company-official",
+      "priority": 3,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "comment": "Felvéve user-jóváhagyással 2026-11-23 (source-scout, 100/100; kézzel ellenőrizve: 16 tétel, utolsó 11-18, ~fele hétköznapi termékhír — Music/SFX/Speech/ChatGPT-ben)",
+      "audience_gate": "everyday"
     }
   ],
   "categories": {
