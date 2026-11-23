@@ -1,0 +1,63 @@
+{
+  "ok": 4,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.006089160000000001,
+  "at": "2026-11-23T19:39:23.898Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 4,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 0,
+    "kihagyva": 2,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-18T16-50-28-117Z_xai-news_Use_Grok_Bot_in_Microsoft_Teams_-_docs_x_ai.json",
+      "cim": "Use Grok Bot in Microsoft Teams - docs.x.ai",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_2026-08-04T01-24-26-497Z_picsart_All_about_the_Grok_text_to_speech_model_and_how_to.json",
+      "cim": "All about the Grok text to speech model and how to use it",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: HTTP 403)",
+      "status": 403
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-copilot-in-word-to-rewrite-a-long-report-into-a-o.json",
+      "cim": "How to use Copilot in Word to rewrite a long report into a one-page summary",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-07-31T04-08-41-143Z_openai-blog_How_avatarin_built_a_24_7_retail_agent_with_GPT-Re.json",
+      "cim": "How avatarin built a 24/7 retail agent with GPT-Realtime",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk minden fő állítása alátámasztott a forrásban - a 30 000 felhasználó, a naprakész többnyelvű támogatás, a 92%-os pozitív visszajelzés és a GPT-Realtime használata mind pontosan reprezentált"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-gemini-deep-research-to-plan-a-big-purchase-decis.json",
+      "cim": "How to use Gemini Deep Research to plan a big purchase decision",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-07-22T10-14-03-157Z_deeparteffects_Batch_Processing_in_Deep_Art_Effects_Pro__Scale_AI.json",
+      "cim": "Batch Processing in Deep Art Effects Pro: Scale AI Art for Agencies & Designers",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk általános magyarázat a batch feldolgozásról AI képgeneráláshoz. Nem tartalmaz konkrét állításokat a Deep Art Effects Pro-ról, amelyek ellentmondanának a forrásnak. A forrás a Deep Art Effects Pro termékoldala, míg a cikk általános oktató tartalom a batch feldolgozásról. Nincs ellentmondás a f"
+    }
+  ]
+}
