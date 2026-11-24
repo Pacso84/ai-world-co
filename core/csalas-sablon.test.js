@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import {
   CSALAS_FEJEZETEK, PELDA_JELOLES, PELDA_VIZJEL, PELDA_HELYETTES,
   peldaBlokk, peldaBlokkNelkul, csalasSzerkezetHiba, peldaBiztonsag,
-  forditasEgyezik, peldaBlokkCsere, tiltottNevek, csalasIroUtasitas, csalasHibaAngolul,
+  forditasEgyezik, peldaBlokkCsere, tiltottNevek, csalasIroUtasitas, csalasHibaAngolul, csalasBiroKiegeszites,
 } from './csalas-sablon.js';
 import { vedekezesCsatornara, BEJELENTES, ORSZAGFUGGETLEN, PENZ_VISSZA } from './csalas-vedekezes.js';
 import { CSATORNAK } from './csalas-figyelo.js';
@@ -349,6 +349,23 @@ t('🌐 hibák angolul az író újrapróbájához: minden valódi őr-hiba ango
   assert.ok(ang.some(s => s.includes("## What's happening")), ang.join(' | '));
   assert.ok(ang.some(s => s.includes('paypal.com')), 'a konkrét domain elveszett');
   assert.ok(ang.some(s => s.includes('+1 (800) 123-4567')), 'a konkrét szám elveszett');
+});
+
+// ── 7. rész: az AI-bíró kiegészítése ─────────────────────────────────────────
+t('⚖️ bíró-kiegészítés: a tár MINDEN lépése benne, és a forráson/listán kívüli lépés = elutasítás', () => {
+  for (const cs of CSATORNAK) {
+    const k = csalasBiroKiegeszites(cs);
+    for (const { lepes } of vedekezesCsatornara(cs)) assert.ok(k.includes(lepes), cs + ': ' + lepes);
+    assert.ok(/FAIL/.test(k) && /not in the source/i.test(k), cs);
+    assert.ok(/warning signs/i.test(k), cs);
+    assert.ok(/fictional/i.test(k) && /not a factual claim/i.test(k), cs + ': a példaüzenetet nem tényként kell kezelni');
+  }
+});
+
+t('⚖️ bíró-kiegészítés: ismeretlen csatornánál is ad szöveget, lista nélkül (csak a forrás számít)', () => {
+  const k = csalasBiroKiegeszites('fax');
+  assert.ok(/FAIL/.test(k));
+  assert.ok(!/Checked official advice/.test(k), k);
 });
 
 if (hiba) { console.log(`\n❌ csalas-sablon: ${hiba} hiba`); process.exit(1); }

@@ -191,4 +191,20 @@ latottPrompt = '';
 await truthGate(hir('x', { source_link: '  https://blog.dropbox.com/topics/news/work-seamlessly-with-dropbox-in-claude ', source_snippet: 'Dropbox in Claude.' }), { ask: figyelo, fetcher: nincsLink });
 assert.ok(/=== SOURCE/.test(latottPrompt) && latottPrompt.includes('Dropbox in Claude.'), 'szóközös forráslinknél a bíró forrás nélkül ítél');
 
-console.log('✅ truth-gate.test: mind a 10 blokk átment');
+// --- 11. 🛡️ CSALÁS-HÍR (2026-11-24, csalás-figyelő 7. rész): a védekezési lépések és a bejelentő helyek a KÉZZEL
+// ellenőrzött tárból is jöhetnek (core/csalas-vedekezes.js) → a bíró a forrás mellett ezt is megkapja, különben
+// a „forward it to 7726” vagy a reportfraud.ftc.gov kitaláltnak látszana. A kitalált példaüzenetet NEM látja.
+{
+  const { vedekezesCsatornara, BEJELENTES } = await import('./csalas-vedekezes.js');
+  const csalasMd = '# Fake toll texts\n\n## Warning signs\n\n> 🧪 [sms]\n> 👤 [[1|+1 (555) 555-0199]]\n> Unpaid toll.\n> [[2|Pay in 24 hours]]\n> [[3|toll-pay.example.com]]\n\n1. **a** — x\n2. **b** — y\n3. **c** — z\n';
+  latottPrompt = '';
+  await truthGate(hir(csalasMd, { csalas: { csatorna: 'sms', forras_id: 'ic3-psa' } }), { ask: figyelo, fetcher: nincsLink });
+  for (const { lepes } of vedekezesCsatornara('sms')) assert.ok(latottPrompt.includes(lepes), 'a tár lépése nincs a bíró forrásában: ' + lepes);
+  for (const b of BEJELENTES) assert.ok(latottPrompt.includes(b.url), 'a bejelentő hely nincs a bíró forrásában: ' + b.url);
+  assert.ok(!latottPrompt.includes('toll-pay.example.com'), 'a bíró a kitalált példaüzenetet is látja');
+  latottPrompt = '';
+  await truthGate(hir('Rendes hír.'), { ask: figyelo, fetcher: nincsLink });
+  assert.ok(!latottPrompt.includes(vedekezesCsatornara('sms')[0].lepes), 'rendes hírnél is bekerült a csalás-tár');
+}
+
+console.log('✅ truth-gate.test: mind a 11 blokk átment');

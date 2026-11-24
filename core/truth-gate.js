@@ -16,6 +16,7 @@
 
 import { readFileSync, writeFileSync } from 'fs';
 import { cikkForrasSzovege, cikkKivonat } from './forras-cache.js';   // 🔎 2026-11-01 a forrásszöveg git-en KÍVÜL
+import { peldaBlokkNelkul, csalasTenyTar } from './csalas-sablon.js';   // 🛡️ 2026-11-24 csalás-hír
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -222,7 +223,10 @@ export function forrasVisszaigazol(problems, { originalTitle = '', sourceUrl = '
 //   pass=false + hold=false → rejected (kitaláltság)
 // ---------------------------------------------------------------
 export async function truthGate(writerData, { ask, fetcher = fetch } = {}) {
-  const md = writerData.article_markdown || '';
+  // 🛡️ CSALÁS-HÍR (2026-11-24, csalás-figyelő 7. rész): a kitalált példaüzenet helyett a jelölő sort látja a bíró (nem
+  // tényállítás), a forrás MELLÉ pedig a kézzel ellenőrzött védekezés-/bejelentés-tárat kapja (core/csalas-sablon.js).
+  const csalas = writerData._meta?.csalas;
+  const md = csalas ? peldaBlokkNelkul(writerData.article_markdown || '') : (writerData.article_markdown || '');
   const meta = {
     title: (md.match(/^title:\s*["']?(.+?)["']?\s*$/m) || [])[1] || writerData.original_title,
     tool: writerData._meta?.tool, company: writerData._meta?.company, type: writerData._meta?.type,
@@ -237,7 +241,8 @@ export async function truthGate(writerData, { ask, fetcher = fetch } = {}) {
     // de a forrásban HELYES részletet kitaláltnak hinné. A szöveg a git-en KÍVÜLI gyorsítótárban van
     // (core/forras-cache.js, a _meta.source_text_key / a linkek alapján); ha ott nincs (régi cikk, másik
     // CI-futás), a régi kivonat (source_snippet) marad.
-    sourceSnippet: String(cikkForrasSzovege(writerData._meta) || cikkKivonat(writerData._meta) || '').slice(0, BIRO_FORRAS_MAX),
+    sourceSnippet: String(cikkForrasSzovege(writerData._meta) || cikkKivonat(writerData._meta) || '').slice(0, BIRO_FORRAS_MAX)
+      + (csalas ? `\n\n${csalasTenyTar(csalas.csatorna)}` : ''),
     today: new Date().toISOString().slice(0, 10)
   };
 

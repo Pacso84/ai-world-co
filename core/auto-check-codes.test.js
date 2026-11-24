@@ -31,14 +31,15 @@ t('a "KÓD: szöveg" alakból kiszedi a kódot', () => {
   assert.equal(issueCode(null), '');
 });
 
-t('🚧 a TÍZ blokkoló kód utasít el — más semmi', () => {
+t('🚧 a TIZENKÉT blokkoló kód utasít el — más semmi', () => {
+  // 2026-11-24: +SCAM_TEMPLATE_MISSING, +SCAM_EXAMPLE_UNSAFE (csalás-figyelő 7. rész — core/csalas-sablon.js)
   // 2026-11-12: +GUIDE_UI_NO_HELP (TÉNYKÖZPONT 0c: súgó nélküli útmutató nem nevez meg gombot/menüt — core/guide-claims.js)
   // 2026-11-11: +GUIDE_UI_NOT_IN_HELP (hír-elsőbbség 3. rész: a súgóból írt útmutató a súgóban nem szereplő gombneveket állít — core/sugo-parositas.js)
   // 2026-11-10: +UI_NOT_IN_SOURCE (a hír a forrásban nem szereplő gombneveket állít — core/forras-tema.js)
   // 2026-11-10: +SOURCE_TOPIC_MISMATCH (user: „többször ne forduljanak elő” — a hír a forrásban nem szereplő eszközről szól, core/forras-tema.js)
   // 2026-11-01: +PRICE_IN_ARTICLE (user: „árakat nem közlünk!” — user-tilalom, ~1%-on tüzel, core/ar-tilalom.js)
   // 2026-11-04: +KNOWN_FALSE_CLAIM (user: „ne forduljanak elő még egyszer” — hivatalos forrással cáfolt állítás, core/ismert-tevedesek.js)
-  for (const kod of ['NO_FRONTMATTER', 'NO_H1', 'MISSING_SECTION', 'GUIDE_TOO_SHORT', 'PRICE_IN_ARTICLE', 'KNOWN_FALSE_CLAIM', 'SOURCE_TOPIC_MISMATCH', 'UI_NOT_IN_SOURCE', 'GUIDE_UI_NOT_IN_HELP', 'GUIDE_UI_NO_HELP']) {
+  for (const kod of ['NO_FRONTMATTER', 'NO_H1', 'MISSING_SECTION', 'GUIDE_TOO_SHORT', 'PRICE_IN_ARTICLE', 'KNOWN_FALSE_CLAIM', 'SOURCE_TOPIC_MISMATCH', 'UI_NOT_IN_SOURCE', 'GUIDE_UI_NOT_IN_HELP', 'GUIDE_UI_NO_HELP', 'SCAM_TEMPLATE_MISSING', 'SCAM_EXAMPLE_UNSAFE']) {
     assert.ok(isBlocking(kod + ': valami'), kod + ' blokkol');
   }
   // A 2026-08-16-i ÚJ jelzések SZÁNDÉKOSAN tanácsadók: a user döntése szerint
@@ -46,7 +47,16 @@ t('🚧 a TÍZ blokkoló kód utasít el — más semmi', () => {
   for (const kod of ['HOWTO_TOO_LONG', 'OPENING_REPETITIVE', 'HOWTO_TOO_THIN', 'CLICHE']) {
     assert.ok(!isBlocking(kod + ': valami'), kod + ' NEM blokkolhat');
   }
-  assert.equal(BLOCKING_CODES.length, 10, 'a lista nem nőhet észrevétlenül');
+  assert.equal(BLOCKING_CODES.length, 12, 'a lista nem nőhet észrevétlenül');
+});
+
+t('🛡️ csalás-kódok: a terv szerinti angol lecke és magyar név', () => {
+  assert.equal(lessonFor('SCAM_TEMPLATE_MISSING: hiányzó fejezet: Warning signs'),
+    "A scam alert must have the five sections (What's happening, Warning signs, How to protect yourself, If it already happened, What this means for you) and one example block in the exact 🧪 format with three [[n|…]] marks and three numbered explanations.");
+  assert.equal(lessonFor('SCAM_EXAMPLE_UNSAFE: nem example.com domain: paypal.com'),
+    'The example scam message may only use example.com links, 555-01xx phone numbers and no real company, brand or agency names.');
+  assert.equal(leckeNevHu('SCAM_TEMPLATE_MISSING'), 'hiányos csalás-sablon');
+  assert.equal(leckeNevHu('SCAM_EXAMPLE_UNSAFE'), 'nem biztonságos csalás-példa');
 });
 
 t('💸 a tanácsadó jelzés NEM tehet fizetőssé egy ingyenes visszasorolást', () => {

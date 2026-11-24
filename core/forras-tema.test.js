@@ -108,7 +108,7 @@ t('🔌 BEKÖTVE: az Ellenőrző a gépi kapu után hívja, a kód ELUTASÍT, va
   // a jelzés a blokkolók kigyűjtése ELŐTT kerül a listába — különben nem utasítana el
   assert.ok(e.indexOf('forrasHirJelzesek({') < e.indexOf('const criticalAutoFailures = blockingIssues(autoCheckResult.issues)'));
   // TELJES forrásszöveget kap (nem a rövid kivonatot)
-  assert.ok(e.includes("forrasHirJelzesek({ ...writerData, article_markdown: markdown }, cikkForrasSzovege(writerData._meta) || '')"));
+  assert.ok(e.includes("forrasHirJelzesek({ ...writerData, article_markdown: vizsgaltMd }, cikkForrasSzovege(writerData._meta) || '')"));   // 11-24: csalás-hírnél a példaüzenet nélkül (vizsgaltMd), máskor = markdown
   assert.ok(isBlocking('UI_NOT_IN_SOURCE: x'));
   assert.notEqual(lessonFor('UI_NOT_IN_SOURCE: x'), 'UI_NOT_IN_SOURCE');
   assert.ok(leckeNevHu('UI_NOT_IN_SOURCE'));

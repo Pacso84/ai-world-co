@@ -129,7 +129,10 @@ export const FAIL = {
   ENGLISH_BODY: 'a törzs angolul maradt',
   ENGLISH_TITLE: 'a cím angolul maradt',
   PROMPT_LEAK: 'a válasz a promptot vagy a modell gondolkodását tartalmazza',
-  FOREIGN_SCRIPT: 'kínai/japán/koreai írásjel szivárgott a fordításba'
+  FOREIGN_SCRIPT: 'kínai/japán/koreai írásjel szivárgott a fordításba',
+  // 🛡️ 2026-11-24 (csalás-figyelő 7. rész): a csalás-hír példaüzenete széttört, megváltozott benne egy
+  // kitalált domain/telefonszám, vagy angolul maradt (core/csalas-sablon.js forditasEgyezik)
+  SCAM_BLOCK: 'a csalás-példaüzenet széttört, megváltozott benne egy cím/szám, vagy angolul maradt'
 };
 
 // ===================================================================

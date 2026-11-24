@@ -35,6 +35,7 @@ import { orderForTranslation, pruneFails } from '../../core/translation-queue.js
 import { fileHandback, sourceDefect } from '../../core/handback.js';
 import { remember } from '../../core/memory-manager.js';
 import { peldaDomainJavit } from '../../core/example-domain.js';
+import { forditasEgyezik } from '../../core/csalas-sablon.js';   // 🛡️ 11-24 csalás-példablokk kapu
 import { SZOTAR, szotarBetolt, hianyzoForditasok, valaszFeldolgoz } from '../../core/trend-forditas.js';
 import { angolDarabok, csere, javitoPrompt, ujjlenyomat, valaszFeldolgoz as valaszJavito, MAX_FUTASONKENT as JAVITO_MAX } from '../../core/forditas-javito.js';
 
@@ -104,6 +105,13 @@ SENTENCE — the label is human text, not a brand name. Keep the "> " and the bo
 markers exactly as they are. Natural local equivalents:
   Hungarian "**Röviden:**" · Spanish "**En resumen:**"
 Never leave "In short" in English on a non-English page.
+
+SCAM ALERT EXAMPLE BLOCK (2026-11-24): a scam-alert article may contain a fictional example message — a blockquote
+that starts with a line like "> 🧪 [sms]". Keep that first line EXACTLY as it is (the channel word stays English).
+Keep every "> " prefix, the 👤 sender line and the 📌 subject line markers. Inside "[[n|…]]" keep the brackets, the
+number and the "|" exactly, and translate only the text after "|". NEVER change, translate or localize a web
+address, e-mail address or phone number (e.g. "parcel-track.example.com", "+1 (555) 555-0199") — copy them letter
+for letter. Translate the message text itself and the 3 numbered explanations under it.
 
 TITLES AND SUBTITLES: never translate word-for-word. Rewrite them as a NATIVE headline a local journalist would write — natural word order, correct grammar, instantly understandable. Watch out for English "your X" in generic statements: in many languages the natural form is the plain definite noun, not a possessive (e.g. Hungarian: "Your Cloud Services" → "a felhőszolgáltatások", NOT "felhőszolgáltatásaid(at)"). If a literal translation sounds odd or ambiguous, rephrase the meaning instead.
 
@@ -201,6 +209,10 @@ async function translateMarkdown(markdown, langName, { maxTokens = BASE_TOKENS }
   if (looksLikePromptLeak(title) || looksLikePromptLeak(sub) || looksLikePromptLeak(body)) {
     return { reason: FAIL.PROMPT_LEAK, cost: r.costUsd || 0 };
   }
+  // 🛡️ CSALÁS-PÉLDABLOKK (2026-11-24, csalás-figyelő 7. rész): ha az angol cikkben van „> 🧪 [csatorna]” példaüzenet,
+  // a fordításban is épen kell lennie — ugyanaz a csatorna, a 3 jel és a 3 magyarázat, betűre ugyanazok a kitalált
+  // domainek/telefonszámok, és a szöveg lefordítva. Példablokk nélküli cikkre mindig igaz (semmi nem változik).
+  if (!forditasEgyezik(parts.body, body)) return { reason: FAIL.SCAM_BLOCK, cost: r.costUsd || 0 };
 
   const fm = parts.fm
     .replace(/^title:\s*.*$/m, `title: "${title.replace(/"/g, '')}"`)

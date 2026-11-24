@@ -26,7 +26,7 @@
 
 import { readFileSync } from 'fs';
 import { CSATORNAK } from './csalas-figyelo.js';
-import { ORSZAGFUGGETLEN, PENZ_VISSZA } from './csalas-vedekezes.js';
+import { ORSZAGFUGGETLEN, PENZ_VISSZA, vedekezesCsatornara, BEJELENTES } from './csalas-vedekezes.js';
 
 export const CSALAS_FEJEZETEK = ["What's happening", 'Warning signs', 'How to protect yourself', 'If it already happened', 'What this means for you'];
 
@@ -375,4 +375,34 @@ export function csalasHibaAngolul(hibak) {
     for (const [re, fn] of HIBA_ANGOL) { const m = s.match(re); if (m) return fn(...m); }
     return `template problem: ${s}`;
   });
+}
+
+// ── 7. rész (2026-11-24): az AI-bíró kiegészítése csalás-hírnél ─────────────────────────────────────────
+// A bíró a példablokk HELYETT a PELDA_HELYETTES sort látja (peldaBlokkNelkul) — a kitalált üzenet nem tényállítás.
+// A 3 figyelmeztető jelet és a védekezési lépéseket viszont a forráshoz és a kézzel ellenőrzött tárhoz méri.
+// A kézzel ellenőrzött tény-tár szövege (védekezési lépések + bejelentő helyek, forrás-URL-lel) — az igazság-kapu a
+// forrásszöveg MELLÉ kapja (core/truth-gate.js), az AI-bíró a kiegészítésben (lent).
+export function csalasTenyTar(csatorna) {
+  const lista = vedekezesCsatornara(csatorna);
+  const sorok = [];
+  if (lista.length) sorok.push(`Checked official advice for this channel (${csatorna}):`, ...lista.map((x, i) => `${i + 1}. ${x.lepes} (${x.forras})`));
+  sorok.push('Checked official reporting places and follow-up steps:',
+    ...BEJELENTES.map(b => `- ${b.nev}: ${b.url}`),
+    `- ${PENZ_VISSZA.lepes} (${PENZ_VISSZA.forras})`,
+    `- ${ORSZAGFUGGETLEN}`);
+  return sorok.join('\n');
+}
+
+export function csalasBiroKiegeszites(csatorna) {
+  const vanLista = vedekezesCsatornara(csatorna).length > 0;
+  return `
+
+SCAM ALERT CHECK (this article is a consumer scam warning):
+- The example message itself was replaced by a placeholder line: it is a fictional, clearly labeled illustration, not a factual claim — do not judge it as one.
+- The 3 numbered warning signs right under "## Warning signs" must be signs the official source names or clearly describes. A warning sign that is not in the source = FAIL.
+- Every step under "## How to protect yourself" must come from the official source or from the checked list below (faithful rewording is fine). A step that is not in the source and not in the list = FAIL.
+- The reporting places and follow-up steps listed below are checked official guidance — they are allowed even if the source does not mention them.
+- Loss amounts or statistics must appear in the source. Any product or service price = FAIL.
+${vanLista ? '' : '(No checked advice list for this channel: protection steps must come from the source.)\n'}${csalasTenyTar(csatorna)}
+`;
 }

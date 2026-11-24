@@ -39,6 +39,8 @@ import { tevedesJelzes } from '../../core/ismert-tevedesek.js';
 import { biraloForrasInfo, tevesNevKifogas, nevJavitoMegjegyzes, utmutatoNevForras } from '../../core/biralo-forrasinfo.js';
 import { cikkForrasSzovege, cikkKivonat } from '../../core/forras-cache.js';
 import { forrasHirJelzesek } from '../../core/forras-tema.js';   // 11-10: a hír a forrásáról szóljon (eszköz + gombnevek)
+import { csalasHir } from '../../core/csalas-figyelo.js';   // 🛡️ 11-24 csalás-figyelő 7. rész
+import { csalasSzerkezetHiba, peldaBlokk, peldaBiztonsag, peldaBlokkNelkul, csalasBiroKiegeszites } from '../../core/csalas-sablon.js';
 import { sugoUtmutatoJelzes, sugoForrasok } from '../../core/sugo-parositas.js';   // 📘 11-11: súgó-alapú útmutató a súgón mérve
 import { sugoSzoveg } from '../../core/sugo-tar.js';
 import { publikalasMeta, foglaltSlugok } from '../../core/publish-meta.js';
@@ -844,13 +846,25 @@ async function main() {
 
     // 4a. Auto check (ingyenes)
     const autoCheckResult = runAutoCheck(markdown, writerData._meta?.type, writerData._meta || {});
+    // 🛡️ CSALÁS-HÍR (2026-11-24, csalás-figyelő 7. rész): a sablon és a példaüzenet kapui (mindkettő elutasít), és a
+    // forrás-kapuk + az AI-bíró a példaüzenet NÉLKÜLI szöveget kapják (a kitalált üzenet nem tényállítás). Az igazság-
+    // kapu ugyanezt maga teszi (core/truth-gate.js). Nem csalás-hírnél semmi nem változik.
+    const csalasE = csalasHir(writerData._meta);
+    const vizsgaltMd = csalasE ? peldaBlokkNelkul(markdown) : markdown;
+    if (csalasE) {
+      const szerkezet = csalasSzerkezetHiba(markdown);
+      if (szerkezet.length) { autoCheckResult.issues.push(`SCAM_TEMPLATE_MISSING: ${szerkezet.join('; ')}`); autoCheckResult.passed = false; }
+      const biztonsag = peldaBlokk(markdown) ? peldaBiztonsag(peldaBlokk(markdown)) : [];
+      if (biztonsag.length) { autoCheckResult.issues.push(`SCAM_EXAMPLE_UNSAFE: ${biztonsag.join('; ')}`); autoCheckResult.passed = false; }
+      console.log(`   🛡️ csalás-sablon: ${szerkezet.length || biztonsag.length ? '❌ ' + [...szerkezet, ...biztonsag].join('; ').slice(0, 140) : '✅ az 5 fejezet és a biztonságos példa rendben'}`);
+    }
     // 🧭 FORRÁS ↔ TÉMA ŐR (2026-11-10, user: „többször ne forduljanak elő ezek a hibák!”): hat régi HÍR a
     // forrásától független útmutató volt (Jamf-hír → ChatGPT-hangmód). Ha a cikk olyan eszközről szól, amit a
     // TELJES forrásszöveg sehol nem említ → SOURCE_TOPIC_MISMATCH; ha 2+ magabiztos gomb-/menünév nincs a
     // forrásban → UI_NOT_IN_SOURCE (mindkettő elutasít; az átdolgozó a leckét kapja).
     // Forrásszöveg nélkül / kivonatból NEM ítél. Szabályok és mérés: core/forras-tema.js.
     try {
-      const forrasJelzesek = forrasHirJelzesek({ ...writerData, article_markdown: markdown }, cikkForrasSzovege(writerData._meta) || '');
+      const forrasJelzesek = forrasHirJelzesek({ ...writerData, article_markdown: vizsgaltMd }, cikkForrasSzovege(writerData._meta) || '');
       if (forrasJelzesek.length) { autoCheckResult.issues.push(...forrasJelzesek); autoCheckResult.passed = false; }
     } catch { /* őr-hiba nem állítja meg az ellenőrzést */ }
     // 📘 SÚGÓ-ALAPÚ ÚTMUTATÓ (2026-11-11, hír-elsőbbség 3. rész): a gomb-/menüneveket a HIVATALOS súgócikken
@@ -921,9 +935,10 @@ async function main() {
     // 4b. AI review (Gemini Pro ingyenes 50/nap)
     // 2026-11-06: hiteles névlista + mai dátum + „a forrás címében szereplő név VALÓDI”
     // (a Gemini Omni 1.2 Flash hírt „kitalált név” miatt utasította el) — core/biralo-forrasinfo.js
-    const sourceInfo = biraloForrasInfo(writerData);
+    // 🛡️ csalás-hírnél a bíró a jeleket és a lépéseket a forráshoz + a kézzel ellenőrzött tárhoz méri (core/csalas-sablon.js)
+    const sourceInfo = biraloForrasInfo(writerData) + (csalasE ? csalasBiroKiegeszites(writerData._meta.csalas.csatorna) : '');
 
-    let aiReviewResult = await aiReview(markdown, sourceInfo, brandContext, writerData._meta?.brief_attempt === true);
+    let aiReviewResult = await aiReview(vizsgaltMd, sourceInfo, brandContext, writerData._meta?.brief_attempt === true);
 
     // 🛟 TÉVES „KITALÁLT NÉV” KIFOGÁS — KÓD-BIZTOSÍTÉK (2026-11-06, user: „a hibák ne forduljanak többet elő”).
     // A bíró MÉGIS kitaláltnak mondhatja a hivatalos forrásban álló / hiteles listás nevet (Gemini Omni 1.2 Flash,
@@ -944,7 +959,7 @@ async function main() {
       const elso = tevesNevKifogas(aiReviewResult, nevForras, nevOpt);
       if (elso.nevek.length) {
         console.log(`   🛟 Téves „kitalált név” kifogás (a név a hivatalos forrásban / hiteles listán van): ${elso.nevek.join(', ')} → újrabírálat`);
-        const ujra = await aiReview(markdown, sourceInfo + nevJavitoMegjegyzes(elso.nevek), brandContext, writerData._meta?.brief_attempt === true);
+        const ujra = await aiReview(vizsgaltMd, sourceInfo + nevJavitoMegjegyzes(elso.nevek), brandContext, writerData._meta?.brief_attempt === true);
         // az első bírálat költsége (a lenti közös sor csak a VÉGSŐ bírálatét adja hozzá)
         if (ujra) stats.total_cost_usd += aiReviewResult._aiCost || 0;
         let vegso = ujra || aiReviewResult;

@@ -198,6 +198,10 @@ assert.equal(UNTRANSLATED_BODY_THRESHOLD, 0.06);
   assert.equal(retryTokenFrame(null), RETRY_TOKEN_CAP);
   assert.ok(retryTokenFrame(16000) > 16000, 'az újrapróba SOSEM szűkebb kerettel megy');
 
+  // 🛡️ CSALÁS-PÉLDABLOKK (2026-11-24): a széttört/angolul hagyott példablokk saját ok, és újrapróbálható.
+  assert.ok(FAIL.SCAM_BLOCK, 'nincs SCAM_BLOCK hibaok');
+  assert.equal(shouldRetryTranslation(FAIL.SCAM_BLOCK), true, 'a széttört példablokk újrapróbálható');
+
   // Az okok emberi szövegek — a naplóba mennek, ott kell érteni őket.
   for (const [kulcs, szoveg] of Object.entries(FAIL)) {
     assert.ok(szoveg.length > 8, `a(z) ${kulcs} indoka mondja is meg, mi történt`);

@@ -247,5 +247,25 @@ t('🔌 Író: --csalas-extra beolvasva; a rendes ág csak a rendes listát kapj
   assert.ok(/response\.__csalasHibak/.test(k), 'a hibás csalás-sablon is mentődne');
 });
 
+// ── 7. rész: ellenőrző + fordító kapui ─────────────────────────────────────────
+t('🔌 Ellenőrző: csalás-hírnél a sablon- és példa-kapu elutasít, a bíró és a forrás-kapu a példa NÉLKÜL olvas', () => {
+  const k = AGENT('ellenorzo/agent.js');
+  assert.ok(/const csalasE = csalasHir\(writerData\._meta\)/.test(k), 'nincs csalás-felismerés');
+  assert.ok(/csalasE \? peldaBlokkNelkul\(markdown\) : markdown/.test(k), 'a vizsgált szöveg a példaüzenettel együtt megy');
+  assert.ok(/SCAM_TEMPLATE_MISSING: \$\{szerkezet/.test(k) && /SCAM_EXAMPLE_UNSAFE: \$\{biztonsag/.test(k), 'hiányzik egy csalás-kapu');
+  // a kapuk az elutasítás-döntés ELŐTT futnak
+  assert.ok(k.indexOf('SCAM_EXAMPLE_UNSAFE: ${') < k.indexOf('blockingIssues(autoCheckResult.issues)'), 'a csalás-kapu az elutasítás után fut');
+  assert.ok(/forrasHirJelzesek\(\{ \.\.\.writerData, article_markdown: vizsgaltMd \}/.test(k), 'a forrás-kapu a kitalált példát is nézi');
+  assert.ok(/csalasBiroKiegeszites\(writerData\._meta\.csalas\.csatorna\)/.test(k), 'a bíró nem kapja a csalás-szabályt');
+  assert.ok(!/aiReview\(markdown,/.test(k), 'van aiReview-hívás a példaüzenettel együtt');
+});
+
+t('🔌 Fordító: a példablokk szabálya a promptban, és a széttört blokk újrapróbálható hiba', () => {
+  const k = AGENT('translator/agent.js');
+  assert.ok(/🧪/.test(k) && /\[\[n\|/.test(k), 'a fordító-prompt nem ismeri a példablokkot');
+  assert.ok(/SCAM_BLOCK/.test(k), 'nincs SCAM_BLOCK hibaok');
+  assert.ok(/forditasEgyezik\(/.test(k), 'a fordítás nem ellenőrzi a példablokkot');
+});
+
 if (hiba) { console.log(`\n❌ ${hiba} hiba`); process.exit(1); }
 console.log('\n✅ csalas-figyelo: minden rendben');

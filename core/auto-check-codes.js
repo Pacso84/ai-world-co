@@ -66,7 +66,12 @@ export const BLOCKING_CODES = Object.freeze([
   'GUIDE_UI_NOT_IN_HELP',
   // GUIDE_UI_NO_HELP (2026-11-12, TÉNYKÖZPONT 0c): olyan útmutató, aminek az eszközéhez nincs (vagy csak részleges)
   // hivatalos súgó, vagy cégfüggetlen, mégis 2+ magabiztos gomb-/menünevet állít (core/guide-claims.js).
-  'GUIDE_UI_NO_HELP'
+  'GUIDE_UI_NO_HELP',
+  // SCAM_TEMPLATE_MISSING / SCAM_EXAMPLE_UNSAFE (2026-11-24, csalás-figyelő 7. rész — core/csalas-sablon.js): CSAK
+  // csalás-hírnél (_meta.csalas) fut. Hiányos sablonnal a kép nem rajzolható, nem biztonságos példával (valódi cég,
+  // nem example.com link, nem 555-01xx szám) pedig egy valódi céget vagy számot mutatnánk csalónak.
+  'SCAM_TEMPLATE_MISSING',
+  'SCAM_EXAMPLE_UNSAFE'
 ]);
 
 /** A "KÓD: emberi szöveg" alakú jelzésből a puszta kód. */
@@ -176,6 +181,10 @@ const LESSON_TEXT = Object.freeze({
     + '(or it is a general guide that is not tied to one app), so those labels could not be checked and may be wrong. '
     + 'Without an official help article, describe the action in plain words and do not name on-screen labels. '
     + 'Tell the reader that the help center of the app itself has the exact steps.',
+  SCAM_TEMPLATE_MISSING:
+    "A scam alert must have the five sections (What's happening, Warning signs, How to protect yourself, If it already happened, What this means for you) and one example block in the exact 🧪 format with three [[n|…]] marks and three numbered explanations.",
+  SCAM_EXAMPLE_UNSAFE:
+    'The example scam message may only use example.com links, 555-01xx phone numbers and no real company, brand or agency names.',
   UI_NOT_IN_SOURCE:
     'The news article named buttons, menus or screens that its official source never mentions — the steps were written '
     + 'from memory. In a news article, describe only what the source shows. If the source gives no click-by-click steps, '
@@ -248,6 +257,8 @@ const HU_NEV = Object.freeze({
   KNOWN_FALSE_CLAIM: 'ismert, cáfolt állítás',
   SOURCE_TOPIC_MISMATCH: 'a cikk másról szól, mint a forrása',
   UI_NOT_IN_SOURCE: 'a forrásban nem szereplő gomb- és menünevek',
+  SCAM_TEMPLATE_MISSING: 'hiányos csalás-sablon',
+  SCAM_EXAMPLE_UNSAFE: 'nem biztonságos csalás-példa',
   GUIDE_UI_NOT_IN_HELP: 'a súgócikkben nem szereplő gomb- és menünevek',
   GUIDE_UI_NO_HELP: 'súgó nélkül leírt gomb- és menünevek',
   ACCESS_NOT_SELF_SERVE: 'céges hozzáférést igénylő eszköz',
