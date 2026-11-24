@@ -76,6 +76,25 @@ t('🔴 10-16 élesben: gyanúsan szegény nap az ablakban (a szokásos sorszám
   assert.equal(lefedettseg(days, MOST, 60).ok, true, 'egy csendesebb nap (a szokásos negyede felett) rendben');
 });
 
+t('🔴 11-24 élesben: NÖVEKVŐ forgalom — a régi, csendes, de a maga idejében szokásos nap NEM hibás (a környezetéhez mérjük)', () => {
+  // Élő napló 11-24: augusztusban napi 10–20 sor, novemberben 50–250 → a 90 napos medián ~41; a 08-29 (10 sor,
+  // szomszédai 12 és 15) a „negyed alatt” mérce miatt 11-22 óta minden futásban megállította a hír-törlést (127 vár).
+  const sorok = n => Array.from({ length: n }, (_, k) => ({ path: '/p' + k, visits: 1, views: 1 }));
+  const days = {};
+  for (let i = 1; i <= 70; i++) days[d(i)] = sorok(i <= 35 ? 60 : 12);
+  days[d(50)] = sorok(10);
+  assert.equal(lefedettseg(days, MOST, 60).ok, true, '🔴 a régi csendes nap megállítja a törlést');
+  // a valódi hibás nap (1 sor) a régi, kis forgalmú szakaszban is megállít
+  days[d(50)] = sorok(1);
+  const lf = lefedettseg(days, MOST, 60);
+  assert.equal(lf.ok, false, 'a régi szakasz hibás napja átcsúszott');
+  assert.match(lf.ok_ok, new RegExp(d(50)));
+  // és a friss szakaszban is (a 10-16-i eset: 1 sor a szokásos ~60 helyett)
+  days[d(50)] = sorok(12);
+  days[d(5)] = sorok(1);
+  assert.equal(lefedettseg(days, MOST, 60).ok, false, 'a friss hibás nap átcsúszott');
+});
+
 t('I1: maiToroltDb — a törölt-lista MA (UTC) bejegyzéseit számolja', () => {
   const lista = [{ slug: 'a', at: new Date(MOST).toISOString() }, { slug: 'b', at: new Date(MOST - 3600e3).toISOString() }, { slug: 'c', at: new Date(MOST - NAP).toISOString() }];
   assert.equal(maiToroltDb(lista, MOST), 2);

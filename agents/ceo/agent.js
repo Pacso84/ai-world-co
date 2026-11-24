@@ -34,6 +34,7 @@ import { utmutatoKeret } from '../../core/utmutato-keret.js';   // 📘 11-19: a
 import { extraTemaMa, extraUtmutato } from '../../core/lefedettseg-extra.js';
 import { csalasExtraHir, csalasExtraMaradek, CSALAS_EXTRA_NAPI } from '../../core/csalas-figyelo.js';   // 🛡️ 11-24: napi +1 csalás-hely
 import { fekezett } from '../../core/fek.js';   // 🧯 2026-11-12 FÉK: a fékezett téma nem számít várakozónak
+import { elerhetoTemaDb } from '../../core/tema-elerheto.js';   // ⚓ 2026-11-24: a parkolt téma sem
 import { termekExtraMaradek, termekExtraHir, TERMEK_EXTRA_NAPI, nyitottExtraHely, EXTRA_NYITAS_UTC } from '../../core/hir-elsobbseg.js';   // 📰 11-09: +2 hely termékhírnek
 
 // ===================================================================
@@ -147,7 +148,9 @@ function maiExtraTema() {
 }
 
 function countTodoGuideTopics() {
-  try { return JSON.parse(readFileSync(GUIDE_TOPICS_PATH, 'utf-8')).topics.filter(t => t.status !== 'done' && !fekezett(t).fek).length; }   // 🧯 a fékezett téma nem „vár”
+  // 🧯 a fékezett téma nem „vár” · ⚓ 11-24 élesben: a 14 napra PARKOLT (súgó-horgony nélküli) sem — 29 nyitottból 17 parkolt,
+  // a CEO 23-at látott (cél 16) → nem ötletelt → 1 útmutató a 2 helyett (core/tema-elerheto.js)
+  try { return elerhetoTemaDb(JSON.parse(readFileSync(GUIDE_TOPICS_PATH, 'utf-8')).topics); }
   catch { return 0; }
 }
 

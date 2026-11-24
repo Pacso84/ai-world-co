@@ -22,6 +22,7 @@ const UTVONAL_RX = /^\/(?:hu\/|es\/)?article\/([^/?#]+)/;
 const GYANUS_ARANY = 0.6;
 export const CSONKA_SOR = 1000;  // a core/traffic-log.js ennyi útvonalat kér naponta (NAPI_LIMIT; 10-22 előtt 200)
 const SZEGENY_ARANY = 0.25;      // ennél kevesebb sor a szokásoshoz képest = hibás naplónap (10-16)
+const SZOMSZED_NAP = 7;          // a „szokásos” a nap ±7 napos környezetéből (11-24: nő a forgalom)
 // BECSÜLT NAP (10-26, user: „csináld!”): a Cloudflare a 10-23-at órásan is csak mintavételezve adta; kimaradt
 // napként a törlést ~januárig leállította volna. A becsült nap jelen lévőnek számít (ami azon a napon olvasott,
 // olvasott marad), ugyanazzal a szegény-nap alsó határral, mint a pontos napok — és ablakonként legfeljebb
@@ -73,14 +74,21 @@ export function lefedettseg(days, now, ablakNap) {
     return { ok: false, ok_ok: `túl sok becsült (mintavételezett) nap az ablakban: ${becsultek.length} (legfeljebb ${MAX_BECSULT}: ${becsultek.map(b => b[0]).join(', ')})`, ig };
   // 10-16 élesben: a Cloudflare egy futásban napi 1 sort adott a szokásos ~40 helyett — az ilyen
   // napon olvasott útmutató is „olvasatlannak" látszana. A szokásos sorszám negyede alatt: nincs törlés.
-  const rendezett = hosszak.map(h => h[1]).sort((a, b) => a - b);
-  const szokasos = rendezett[Math.floor(rendezett.length / 2)] || 0;
-  const szegeny = hosszak.find(([, n]) => n < SZEGENY_ARANY * szokasos);
-  if (szegeny) return { ok: false, ok_ok: `a forgalmi napló ${szegeny[0]} napja gyanúsan kevés sort tartalmaz (${szegeny[1]}, a szokásos ~${szokasos}) — hibás Cloudflare-válasz lehet`, ig };
+  // 11-24 élesben: a „szokásos” a nap KÖRNYEZETE (±SZOMSZED_NAP nap mediánja, a becsült napok nélkül), nem az egész
+  // ablaké — a forgalom nő (aug. napi 10–20 sor → nov. 50–250), és a 08-29 (10 sor, szomszédai 12/15) az ablak ~41-es
+  // mediánja miatt 11-22 óta megállította a hír-törlést. A hibás válasz (1 sor) a saját környezetében is kirí.
+  const szokasos = nap => {
+    const t0 = Date.parse(nap);
+    const kornyek = hosszak.filter(([n]) => n !== nap && Math.abs(Date.parse(n) - t0) <= SZOMSZED_NAP * NAP)
+      .map(h => h[1]).sort((a, b) => a - b);
+    return kornyek[Math.floor((kornyek.length - 1) / 2)] || 0;   // ALSÓ medián: egy forgalmi ugrás határán se riasszon
+  };
+  const szegeny = hosszak.find(([nap, n]) => n < SZEGENY_ARANY * szokasos(nap));
+  if (szegeny) return { ok: false, ok_ok: `a forgalmi napló ${szegeny[0]} napja gyanúsan kevés sort tartalmaz (${szegeny[1]}, a környező napokon szokásos ~${szokasos(szegeny[0])}) — hibás Cloudflare-válasz lehet`, ig };
   // a becsült napra is ugyanez az alsó határ (független átnézés 10-26): a 10-16-i „1 sor, 100 látogató” hibás
   // válasz különben „becsültként” átmenne, és a csak aznap olvasott cikk törlődne. (A 10-23 becsülten 106 sor.)
-  const szegenyB = becsultek.find(([, n]) => n < SZEGENY_ARANY * szokasos);
-  if (szegenyB) return { ok: false, ok_ok: `a becsült ${szegenyB[0]} nap gyanúsan kevés sort tartalmaz (${szegenyB[1]}, a szokásos ~${szokasos})`, ig };
+  const szegenyB = becsultek.find(([nap, n]) => n < SZEGENY_ARANY * szokasos(nap));
+  if (szegenyB) return { ok: false, ok_ok: `a becsült ${szegenyB[0]} nap gyanúsan kevés sort tartalmaz (${szegenyB[1]}, a környező napokon szokásos ~${szokasos(szegenyB[0])})`, ig };
   return { ok: true, ok_ok: '', ig };
 }
 

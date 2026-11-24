@@ -226,6 +226,9 @@ t('🔴 Review Focus 5: téma-felvétel naponta egyszer — sikertelen ötletel�
   assert.equal(holnap.kifejezes, 'can ai help with daily tasks', 'a már kipróbált kifejezés 30 napig nem jön újra');
   assert.equal(trendFelvetelKell({ topics: [{ priority: 'trend', status: 'todo' }] }, TR, MOST), null, 'ha már vár egy trend-téma, ne halmozzon');
   assert.equal(trendFelvetelKell({ topics: [] }, null, MOST), null);
+  // 🔴 11-24 élesben: a 11-20-i trend-téma parkolt (nincs illő súgócikk, 14 napig) → „várónak” számított → 11-20 óta 0 trend
+  const parkolt = { priority: 'trend', status: 'todo', title: 'How to Spot Fake ChatGPT Tricks', horgony: { ok: false, at: new Date(MOST - NAP).toISOString() } };
+  assert.ok(trendFelvetelKell({ topics: [parkolt] }, TR, MOST), '🔴 a parkolt trend-téma megállítja a trend-útmutatót');
   assert.equal(kovetkezoTrendTema(TR, [{ kifejezes: 'gemini trending photo prompt', at: new Date(MOST - 40 * NAP).toISOString() }], MOST).kifejezes, 'gemini trending photo prompt', '30 nap után újra jöhet');
   assert.equal(trendProbaJegyez(null, 'x', MOST).length, 1);
 });

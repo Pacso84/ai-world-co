@@ -23,7 +23,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { utmutatoE } from './guide-kind.js';
-import { fekezett } from './fek.js';   // 🧯 2026-11-12 FÉK
+import { varoTrendTemaE } from './tema-elerheto.js';   // ⚓ 2026-11-24: a parkolt (horgony nélküli) trend-téma sem vár
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const NAP = 864e5;
@@ -392,7 +392,8 @@ export function trendFelvetelKell(store, trendek, now = Date.now()) {
   if (!trendek?.temak?.length) return null;
   const ma = new Date(now).toISOString().slice(0, 10);
   // 🧯 FÉK (2026-11-12): a jóváhagyott súgó nélküli eszköz trend-témája nem „vár” — nem akadályozza a következő felvételét
-  if ((store?.topics || []).some(t => t?.priority === 'trend' && t.status !== 'done' && !fekezett(t).fek)) return null;
+  // ⚓ 11-24 élesben: a 14 napra PARKOLT trend-téma (nincs illő súgócikk) sem — 11-20 óta így állt a trend-útmutató
+  if ((store?.topics || []).some(t => varoTrendTemaE(t, now))) return null;
   if ((store?.trend_proba || []).some(p => String(p?.at || '').startsWith(ma))) return null;
   return kovetkezoTrendTema(trendek, store?.trend_proba, now);
 }
