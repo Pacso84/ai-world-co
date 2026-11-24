@@ -6,7 +6,7 @@ import {
   CSALAS_FIGYELO_BE, CSALAS_EXTRA_NAPI, CSALAS_MAX_KOR_NAP, CSATORNAK,
   csalasForras, csalasFriss, csalasExtraMaradek, csalasHir, csalasExtraHir,
   CSALAS_SZURO_RENDSZER, csalasSzuroPrompt, csalasDontesek,
-  CSALAS_FORRASOK, csalasSzetosztas, csalasVazlatMeta, csalasGuardFrissit,
+  CSALAS_FORRASOK, csalasSzetosztas, csalasVazlatMeta, csalasGuardFrissit, csalasSzetvalaszt,
 } from './csalas-figyelo.js';
 import { readFileSync } from 'node:fs';
 
@@ -200,6 +200,51 @@ t('🛰️ őrszem: hibás régi tartalom (null, tömb, szöveg) → tiszta obje
     assert.equal(Array.isArray(g), false);
     assert.equal(g.figyelo_at, most.toISOString());
   }
+});
+
+// ── 6. rész: az író szétválasztója ─────────────────────────────────────────────────────────────────────
+
+t('✂️ szétválasztás: a terv esete (a, c rendes; b csalás), a rendes sorrend marad', () => {
+  assert.deepEqual(csalasSzetvalaszt(['a', 'b', 'c'], id => ({ csalas: id === 'b' })), { rendes: ['a', 'c'], csalas: ['b'] });
+});
+
+t('✂️ szétválasztás: üres / hiányzó bemenet → üres listák', () => {
+  assert.deepEqual(csalasSzetvalaszt([], () => ({ csalas: true })), { rendes: [], csalas: [] });
+  assert.deepEqual(csalasSzetvalaszt(undefined, () => ({})), { rendes: [], csalas: [] });
+});
+
+t('✂️ szétválasztás: a csalás-lista a legfrissebb forrás-tétellel kezdődik; dátum nélküli a végére', () => {
+  const ido = { x: '2026-11-20T10:00:00Z', y: '2026-11-23T10:00:00Z', z: null, w: 'Mon, 22 Nov 2026 10:00:00 GMT' };
+  const r = csalasSzetvalaszt(['x', 'r', 'z', 'y', 'w'], id => ({ csalas: id !== 'r', ido: ido[id] }));
+  assert.deepEqual(r, { rendes: ['r'], csalas: ['y', 'w', 'x', 'z'] });
+});
+
+t('✂️ szétválasztás: olvashatatlan vázlat (info hibát dob vagy üres) → rendes ág, mint eddig', () => {
+  const r = csalasSzetvalaszt(['a', 'b'], id => { if (id === 'a') throw new Error('x'); return {}; });
+  assert.deepEqual(r, { rendes: ['a', 'b'], csalas: [] });
+});
+
+// ── 6. rész: bekötés-őr (az agentet importálni tilos — a forrásszövegét nézzük) ─────────────────────────
+const AGENT = p => readFileSync(new URL('../agents/' + p, import.meta.url), 'utf-8');
+
+t('🔌 CEO: a csalás-hely számol, levonódik, és --csalas-extra-ként jut az Íróhoz', () => {
+  const k = AGENT('ceo/agent.js');
+  assert.ok(/csalasExtraMaradek\(byType\.newsCsalas \+ drafts\.writerNewsCsalas\)/.test(k), 'publikált + váró csalás-hír nem vonódik le');
+  assert.ok(/byType\.news - byType\.newsExtra - byType\.newsCsalas/.test(k), 'a csalás-hír a rendes keretet fogyasztja');
+  assert.ok(/'--csalas-extra', String\(csalasExtra\)/.test(k), 'az Író nem kapja meg a csalás-helyet');
+  assert.ok(/!\(report\.csalas_extra_remaining > 0\)/.test(k), 'a newsBlocked nem nézi a csalás-helyet');
+  assert.ok(/vazlat\.writerNewsCsalas/.test(k), 'a váró csalás-vázlat rendes helyet foglal');
+});
+
+t('🔌 Író: --csalas-extra beolvasva; a rendes ág csak a rendes listát kapja; a csalás-hír csalas_extra-val mentődik', () => {
+  const k = AGENT('iro/agent.js');
+  assert.ok(/'--csalas-extra'/.test(k), 'nincs --csalas-extra kapcsoló');
+  assert.ok(/csalasSzetvalaszt\(elo,/.test(k) && /elo\.splice\(0, elo\.length, \.\.\.szet\.rendes\)/.test(k), 'a csalás-vázlat a rendes ágba kerülhet');
+  // a szétválasztás a válogatás ELŐTT fut
+  assert.ok(k.indexOf('csalasSzetvalaszt(elo,') < k.indexOf('const terv = valogat('), 'a szétválasztás a válogatás után fut');
+  assert.ok(/csalasVazlatok\.slice\(0, args\.csalasExtra \|\| 0\)/.test(k), 'a csalás-ág nem a kapott helyszámmal fut');
+  assert.ok(/csalas_extra: true/.test(k), 'a csalás-hír nem kap csalas_extra jelet');
+  assert.ok(/response\.__csalasHibak/.test(k), 'a hibás csalás-sablon is mentődne');
 });
 
 if (hiba) { console.log(`\n❌ ${hiba} hiba`); process.exit(1); }

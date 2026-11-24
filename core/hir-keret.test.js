@@ -41,7 +41,8 @@ t('🧭 a CEO az Író keretét hirIroKeret-tel számolja (átdolgozandó + vár
   assert.match(blokk, /writerGuides/, 'a váró hír-vázlatok nincsenek levonva');
   // 📰 11-09 (core/hir-elsobbseg.js): 0-s rendes keretnél az Író CSAK akkor indul, ha extra termékhír-hely van —
   // ilyenkor `--limit 0 --termek-extra N`-nel, és csak termékhírt írhat (hir-elsobbseg.test „extra hely”).
-  assert.match(blokk, /if \(remaining > 0 \|\| termekExtra > 0\)/, '0-s keretnél is elindulna az Író');
+  // 11-24: a csalás-hely (core/csalas-figyelo.js) ugyanígy extra hely — bekapcsolt figyelőnél azért is indul.
+  assert.match(blokk, /if \(remaining > 0 \|\| termekExtra > 0(?: \|\| csalasExtra > 0)?\)/, '0-s keretnél is elindulna az Író');
 });
 
 t('🧭 az Író `--limit 0` esetén SEMMIT nem ír (nem „korlát nélkül”)', () => {

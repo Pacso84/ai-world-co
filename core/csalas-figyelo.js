@@ -154,3 +154,23 @@ export function csalasGuardFrissit(regi, { jelolt = 0, csalas = 0, eldobva = [],
   if (hiba) alap.figyelo_hiba = String(hiba);
   return alap;
 }
+
+// ── 6. rész (2026-11-24): az író szétválasztója ─────────────────────────────────────────────────────────
+
+// A vázlatlista (fájlnevek) kettéválasztása: a csalás-vázlat (_meta.csalas) SOSEM kerül a rendes ágba (összevonás,
+// válogatás, rendes hely). `info(id)` → { csalas, ido } (ido = a forrás-tétel dátuma). A rendes sorrend marad;
+// a csalás-lista a legfrissebb forrás-tétellel kezdődik, a dátum nélküli a végén. Olvashatatlan vázlat → rendes ág.
+export function csalasSzetvalaszt(ids, info) {
+  const ki = { rendes: [], csalas: [] };
+  const datum = [];
+  for (const id of Array.isArray(ids) ? ids : []) {
+    let x = {};
+    try { x = info(id) || {}; } catch { x = {}; }
+    if (x.csalas) {
+      const t = Date.parse(x.ido ?? '');
+      datum.push({ id, t: Number.isFinite(t) ? t : -Infinity });
+    } else ki.rendes.push(id);
+  }
+  ki.csalas = datum.sort((a, b) => b.t - a.t).map(d => d.id);
+  return ki;
+}

@@ -6,8 +6,10 @@ import assert from 'node:assert/strict';
 import {
   CSALAS_FEJEZETEK, PELDA_JELOLES, PELDA_VIZJEL, PELDA_HELYETTES,
   peldaBlokk, peldaBlokkNelkul, csalasSzerkezetHiba, peldaBiztonsag,
-  forditasEgyezik, peldaBlokkCsere, tiltottNevek,
+  forditasEgyezik, peldaBlokkCsere, tiltottNevek, csalasIroUtasitas, csalasHibaAngolul,
 } from './csalas-sablon.js';
+import { vedekezesCsatornara, BEJELENTES, ORSZAGFUGGETLEN, PENZ_VISSZA } from './csalas-vedekezes.js';
+import { CSATORNAK } from './csalas-figyelo.js';
 
 let hiba = 0;
 const t = (nev, fn) => { try { fn(); console.log('  ✅ ' + nev); } catch (e) { hiba++; console.log('  ❌ ' + nev + '\n     ' + e.message); } };
@@ -277,6 +279,76 @@ t('🖼️ a HTML-blokkban nincs üres sor (különben a marked szétszedi)', ()
 
 t('🖼️ peldaBlokkCsere: ha nincs blokk, a szöveg változatlan', () => {
   assert.equal(peldaBlokkCsere('# A\n\nSzöveg.\n', { kepUt: '/x.jpg', alt: 'a' }), '# A\n\nSzöveg.\n');
+});
+
+// ── 6. rész: az író csalás-utasítása ─────────────────────────────────────────
+const UT = (csatorna, extra = {}) => csalasIroUtasitas({ csatorna, vedekezes: vedekezesCsatornara(csatorna), bejelentes: BEJELENTES, ...extra });
+
+t('✍️ író-utasítás: a terv mintája (## Warning signs, > 🧪 [sms], a megadott lépés)', () => {
+  const u = csalasIroUtasitas({ csatorna: 'sms', vedekezes: [{ lepes: 'X', forras: 'u' }], bejelentes: BEJELENTES });
+  assert.ok(u.includes('## Warning signs'), u);
+  assert.ok(u.includes('> 🧪 [sms]'), u);
+  assert.ok(u.includes('X'), u);
+});
+
+t('✍️ író-utasítás: mind az 5 kötelező H2, a sablon sorrendjében', () => {
+  const u = UT('email');
+  let elozo = -1;
+  for (const f of CSALAS_FEJEZETEK) {
+    const i = u.indexOf('## ' + f);
+    assert.ok(i > elozo, 'hiányzik vagy rossz helyen: ' + f);
+    elozo = i;
+  }
+});
+
+t('✍️ író-utasítás: a benne mutatott minta MAGA is átmegy a szerkezet- és a kép-őrön (minden csatornán)', () => {
+  for (const cs of CSATORNAK) {
+    const u = UT(cs);
+    assert.deepEqual(csalasSzerkezetHiba(u), [], cs);
+    assert.deepEqual(peldaBiztonsag(peldaBlokk(u)), [], cs);
+    assert.equal(peldaBlokk(u).csatorna, cs, cs);
+  }
+});
+
+t('✍️ író-utasítás: a tár minden lépése szó szerint benne (csak ezekből választhat)', () => {
+  for (const cs of CSATORNAK) {
+    const u = UT(cs);
+    for (const { lepes } of vedekezesCsatornara(cs)) assert.ok(u.includes(lepes), cs + ': ' + lepes);
+  }
+});
+
+t('✍️ író-utasítás: bejelentő helyek URL-lel + pénz-visszaszerzés + országfüggetlen mondat', () => {
+  const u = UT('call');
+  for (const b of BEJELENTES) { assert.ok(u.includes(b.url), b.url); assert.ok(u.includes(b.nev), b.nev); }
+  assert.ok(u.includes(ORSZAGFUGGETLEN));
+  assert.ok(u.includes(PENZ_VISSZA.lepes));
+});
+
+t('✍️ író-utasítás: kimondja a határokat (example.com, 555-01xx, csak a forrás jelei, ár nincs, nyugodt cím)', () => {
+  const u = UT('sms').toLowerCase();
+  for (const szo of ['example.com', '555-01', 'only warning signs that the official source', 'no prices', 'loss amounts', 'calm', 'alarm', 'real company', 'exactly once', 'exactly 3']) {
+    assert.ok(u.includes(szo), 'hiányzik: ' + szo);
+  }
+});
+
+t('✍️ író-utasítás: védekezés-lépés nélkül nincs csalás-hír (hiba), ismeretlen csatorna is hiba', () => {
+  assert.throws(() => csalasIroUtasitas({ csatorna: 'sms', vedekezes: [], bejelentes: BEJELENTES }), /védekezés/);
+  assert.throws(() => csalasIroUtasitas({ csatorna: 'fax', vedekezes: [{ lepes: 'X', forras: 'u' }], bejelentes: BEJELENTES }), /csatorna/);
+});
+
+t('🌐 hibák angolul az író újrapróbájához: minden valódi őr-hiba angol mondat lesz, ékezet nélkül', () => {
+  // Valódi hibák a VALÓDI őrökből (nem kézzel kitalált szövegek).
+  const rossz = '# A\n\n## Warning signs\n\n> 🧪 [fax]\n> Hello paypal.com +1 (800) 123-4567\n';
+  const hibak = [...csalasSzerkezetHiba(rossz), ...peldaBiztonsag(peldaBlokk(rossz)), ...csalasSzerkezetHiba('nincs blokk')];
+  assert.ok(hibak.length >= 8, 'kevés valódi hiba: ' + hibak.join(' | '));
+  const ang = csalasHibaAngolul(hibak);
+  assert.equal(ang.length, hibak.length);
+  for (const [i, s] of ang.entries()) {
+    assert.ok(!/[áéíóöőúüű]/i.test(s.replace(/[„”]/g, '')), 'magyar maradt: ' + hibak[i] + ' → ' + s);
+  }
+  assert.ok(ang.some(s => s.includes("## What's happening")), ang.join(' | '));
+  assert.ok(ang.some(s => s.includes('paypal.com')), 'a konkrét domain elveszett');
+  assert.ok(ang.some(s => s.includes('+1 (800) 123-4567')), 'a konkrét szám elveszett');
 });
 
 if (hiba) { console.log(`\n❌ csalas-sablon: ${hiba} hiba`); process.exit(1); }

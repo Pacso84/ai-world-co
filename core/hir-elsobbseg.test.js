@@ -183,11 +183,13 @@ t('🔌 bekötés: Író (sorrend + válogatás + jelölés) és CEO (extra nem 
   const iro = readFileSync(join(ROOT, 'agents', 'iro', 'agent.js'), 'utf-8');
   assert.match(iro, /elsobbsegiSorrend\(elo, draftInfo, elsobbseg\.olv\)/);
   assert.match(iro, /valogat\(tervRendez\(planWriteOrder\(elo, groups\), elo\)/);
-  assert.match(iro, /termek_hir: lista\.some\(d => termekSzint\(/, '🔴 a jelölés nem a bővített (minden cég) szabályt használja');
+  // 11-24: a csalás-hír (core/csalas-figyelo.js) sosem termékhír → `!extraMeta.csalas &&` előtag megengedett
+  assert.match(iro, /termek_hir: (?:!extraMeta\.csalas && )?lista\.some\(d => termekSzint\(/, '🔴 a jelölés nem a bővített (minden cég) szabályt használja');
   assert.match(iro, /termek_extra: true/);
   assert.match(iro, /'--termek-extra'/);
   const ceo = readFileSync(join(ROOT, 'agents', 'ceo', 'agent.js'), 'utf-8');
-  assert.match(ceo, /LIMITS\.daily_articles_max - \(byType\.news - byType\.newsExtra\)/);
+  // 11-24: a csalás-helyen született hír sem fogyasztja a rendes keretet (core/csalas-figyelo.js)
+  assert.match(ceo, /LIMITS\.daily_articles_max - \(byType\.news - byType\.newsExtra(?: - byType\.newsCsalas)?\)/);
   assert.match(ceo, /'--termek-extra', String\(termekExtra\)/);
   assert.match(ceo, /newsBlocked: report\.articles_remaining <= 0 && !\(report\.termek_extra_remaining > 0\)/);
   assert.match(ceo, /maPublikalt: most\.news_published_today - most\.news_extra_today/);

@@ -26,6 +26,7 @@
 
 import { readFileSync } from 'fs';
 import { CSATORNAK } from './csalas-figyelo.js';
+import { ORSZAGFUGGETLEN, PENZ_VISSZA } from './csalas-vedekezes.js';
 
 export const CSALAS_FEJEZETEK = ["What's happening", 'Warning signs', 'How to protect yourself', 'If it already happened', 'What this means for you'];
 
@@ -263,4 +264,115 @@ export function peldaBlokkCsere(md, { kepUt = '', alt = '', nyelv = 'en' } = {})
     ].join('\n');
   }
   return cserel(md, html);
+}
+
+// ── 6. rész (2026-11-24): az író csalás-utasítása ───────────────────────────────────────────────────────
+// Az író rendes userPrompt-jához fűzött ANGOL utasítás. A benne mutatott váz MAGA is átmegy a
+// csalasSzerkezetHiba-n és a peldaBiztonsag-on (teszt) — az író sosem kap hibás mintát.
+
+// Csatornánkénti FORMAMINTA (a 4. rész képtesztjével egyező, biztonságos példák). social → chat-, web → email-alak.
+const MINTA_BLOKK = {
+  sms: ['👤 [[1|+1 (555) 555-0199]]', 'Your package is on hold because the address is incomplete.', '[[2|It will be deleted in 24 hours!]]', 'Confirm here: [[3|parcel-track.example.com]]'],
+  email: ['👤 [[1|Account Team <security@account-alerts.example.com>]]', '📌 Unusual sign-in detected', 'We noticed a sign-in to your account from a new location.', '[[2|Verify within 2 hours or your account will be locked.]]', 'Review activity: [[3|secure-login.example.com/verify]]'],
+  chat: ['👤 [[1|Mom (new number)]]', "Hi, it's me. I dropped my phone and this is my new number.", "[[2|Can you send me the money right now? I'll pay you back tomorrow.]]", "[[3|Please don't call, I can't talk right now.]]"],
+  call: ['👤 [[1|Unknown caller · +1 (555) 555-0142]]', "This is your bank's fraud department.", '[[2|Someone is using your card right now.]]', '[[3|Read me the code we just texted you so we can stop it.]]'],
+};
+MINTA_BLOKK.social = MINTA_BLOKK.chat;
+MINTA_BLOKK.web = MINTA_BLOKK.email;
+const MINTA_MAGYARAZAT = {
+  sms: ['**Unknown number** — a real delivery company does not text like this.', "**Pressure** — so you don't have time to think.", "**Odd link** — it's not the company's own address."],
+  email: ["**Odd sender** — the address isn't the company's own.", '**Deadline** — a threat to make you hurry.', '**Fake login page** — the link leads somewhere else.'],
+  chat: ['**New number** — a family member suddenly writes from an unknown number.', '**Money, fast** — an urgent request to send money.', "**No calls** — they avoid a call so you can't check."],
+  call: ['**Unexpected call** — they called you, not the other way around.', '**Alarm** — a scare so you act before thinking.', '**Asks for a code** — no real bank asks for this code.'],
+};
+MINTA_MAGYARAZAT.social = MINTA_MAGYARAZAT.chat;
+MINTA_MAGYARAZAT.web = MINTA_MAGYARAZAT.email;
+
+export function csalasIroUtasitas({ csatorna, vedekezes, bejelentes, orszagfuggetlen = ORSZAGFUGGETLEN, penzVissza = PENZ_VISSZA } = {}) {
+  if (!CSATORNAK.includes(csatorna)) throw new Error(`ismeretlen csatorna: ${csatorna}`);
+  const lepesek = (vedekezes || []).filter(x => x && x.lepes);
+  if (!lepesek.length) throw new Error(`nincs védekezés-lépés a(z) ${csatorna} csatornához — csalás-hír nem készülhet`);
+  const helyek = (bejelentes || []).filter(b => b && b.url);
+  const tobbi = [penzVissza?.lepes, orszagfuggetlen].filter(Boolean);
+  const [h1, h2, h3, h4, h5] = CSALAS_FEJEZETEK;
+
+  const vaz = [
+    `## ${h1}`,
+    '(2–3 short paragraphs from the official source: who the scammers pretend to be, how they reach people, what they ask for.)',
+    '',
+    `## ${h2}`,
+    '',
+    `> 🧪 [${csatorna}]`,
+    ...MINTA_BLOKK[csatorna].map(s => `> ${s}`),
+    '',
+    ...MINTA_MAGYARAZAT[csatorna].map((s, i) => `${i + 1}. ${s}`),
+    '',
+    `## ${h3}`,
+    '(numbered steps, chosen from the list below)',
+    '',
+    `## ${h4}`,
+    '(where to report it, how to try to get the money back)',
+    '',
+    `## ${h5}`,
+    '(two or three sentences: who is most likely to be targeted, and the one habit that protects them)',
+  ].join('\n');
+
+  return `
+SCAM ALERT TEMPLATE — this article is a consumer warning about a scam described in the official source above.
+Follow this template instead of the usual article shape.
+
+STRUCTURE (exact H2 headings, in this order; keep the usual H1 title and the "In short" line before the first H2):
+${CSALAS_FEJEZETEK.map((f, i) => `${i + 1}. ## ${f}`).join('\n')}
+
+THE EXAMPLE MESSAGE BLOCK — put it directly under "## ${h2}", in exactly this format:
+- first line: > 🧪 [${csatorna}]   (the channel tag stays exactly like this, in English)
+- then > 👤 [[1|sender]]  (for an email, also one > 📌 subject line)
+- then 2–5 short message lines starting with > (each under ~80 characters — the whole message must fit a phone screen)
+- mark exactly 3 warning signs inside the message: [[1|…]], [[2|…]], [[3|…]] — each number exactly once
+- right after the block: a numbered list of exactly 3 explanations, "1. **Label** — explanation", in the same order as the marks
+- mark only warning signs that the official source itself names or clearly describes — never invent a new trick
+- the message is FICTIONAL and clearly an example: links only example.com addresses (like parcel-track.example.com),
+  phone numbers only +1 (555) 555-0100 to 555-0199; never a real company, brand, bank, app, store or government agency name
+- write your OWN message that matches the scam in the source — the sample below only shows the format
+
+FORMAT SAMPLE (do not copy its wording):
+${vaz}
+
+"## ${h3}": use ONLY steps from the official source above or from this list of checked official advice
+(you may shorten or rephrase them faithfully; do not add other advice):
+${lepesek.map((x, i) => `${i + 1}. ${x.lepes}`).join('\n')}
+
+"## ${h4}": tell readers where to report it, with these exact names and links:
+${helyek.map(b => `- ${b.nev}: ${b.url}`).join('\n')}
+${tobbi.map(s => `Also say: "${s}"`).join('\n')}
+
+OTHER RULES:
+- A US agency may be named (for example the FBI or the FTC), but explain the trick and the defense so they help anyone, anywhere.
+- Loss amounts or statistics only if the official source states them — quote them exactly. No prices of any product or service.
+- Calm, helpful tone. The title names the scam plainly — no alarm words, no ALL CAPS, no "urgent" or "warning!!" style.
+- Never ask readers to like, share or forward the article.
+`;
+}
+
+// A szerkezet-őr és a kép-őr (magyar) hibái angolul — az író újrapróba-kérése angol prompt.
+const HIBA_ANGOL = [
+  [/^hiányzó fejezet: (.+)$/, (_, f) => `missing section: "## ${f}"`],
+  [/^nincs példablokk$/, () => 'there is no example message block (starting with "> 🧪 [channel]") under "## Warning signs"'],
+  [/^ismeretlen csatorna$/, () => 'the channel tag must be one of sms|email|chat|call|social|web, exactly as given'],
+  [/^nincs feladó$/, () => 'the block has no sender line ("> 👤 [[1|…]]")'],
+  [/^nem 2–5 üzenetsor$/, () => 'the example message must have 2 to 5 lines'],
+  [/^nem 3 jel$/, () => 'mark exactly 3 warning signs in the message: [[1|…]], [[2|…]], [[3|…]], each number exactly once'],
+  [/^nem 3 magyarázat$/, () => 'right after the block, give exactly 3 numbered explanations ("1. **Label** — …")'],
+  [/^a példablokk nem a „Warning signs” alatt van$/, () => 'the example block must be directly under "## Warning signs"'],
+  [/^nem example\.com domain: (.+)$/, (_, d) => `not allowed in the example (use only example.com addresses): ${d}`],
+  [/^nem kitalált \(555-01xx\) telefonszám: (.+)$/, (_, t) => `phone number not allowed in the example (use only +1 (555) 555-0100 to 555-0199): ${t}`],
+  [/^tiltott név: (.+)$/, (_, n) => `real company, brand or agency name not allowed in the example: ${n}`],
+];
+
+export function csalasHibaAngolul(hibak) {
+  return (hibak || []).map(h => {
+    const s = String(h);
+    for (const [re, fn] of HIBA_ANGOL) { const m = s.match(re); if (m) return fn(...m); }
+    return `template problem: ${s}`;
+  });
 }

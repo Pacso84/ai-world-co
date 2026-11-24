@@ -43,6 +43,9 @@ import { tartalomKapcsolok } from '../../core/content-switches.js';
 import { cikkForrasai, cikkForrasMeta, cikkKivonatSzoveg, leghosszabbKozosSzosor, LETOLTES_KERET_MS, ATFEDES_FIGYELMEZTET, OSSZEVONT_FORRAS_MAX } from '../../core/iro-forras.js';   // 🔎 2026-11-01 forrásszöveg
 import { forrasCacheIr, cikkForrasSzovege, cikkKivonat, cikkKivonatIr, vazlatKivonat } from '../../core/forras-cache.js';   // 🔎 a szöveg git-en KÍVÜL
 import { tisztaUrl } from '../../core/forras-letoltes.js';
+import { csalasSzetvalaszt } from '../../core/csalas-figyelo.js';   // 🛡️ 2026-11-24 csalás-figyelő 6. rész
+import { csalasIroUtasitas, csalasSzerkezetHiba, peldaBiztonsag, peldaBlokk, csalasHibaAngolul } from '../../core/csalas-sablon.js';
+import { vedekezesCsatornara, BEJELENTES } from '../../core/csalas-vedekezes.js';
 import { atdolgozoMeta } from '../../core/biralo-forrasinfo.js';   // 🛟 2026-11-06 téves név-kifogás az átdolgozás elől
 import { hetiCikkE, hetiAtdolgozasSzabaly, hetiAtdolgozasJavit } from '../../core/heti-atdolgozas.js';   // 📰 2026-11-15 a heti összefoglaló formája átdolgozás után is marad
 
@@ -108,7 +111,7 @@ function loadSkills() {
 
 function parseArgs() {
   const args = process.argv.slice(2);
-  const parsed = { limit: null, file: null, termekExtra: 0 };
+  const parsed = { limit: null, file: null, termekExtra: 0, csalasExtra: 0 };
   parsed.rework = args.includes('--rework');
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--limit' && args[i + 1]) {
@@ -117,6 +120,10 @@ function parseArgs() {
     } else if (args[i] === '--termek-extra' && args[i + 1]) {
       // 📰 11-09: ennyi EXTRA hely CSAK termékhírnek (a CEO számolja, core/hir-elsobbseg.js)
       parsed.termekExtra = Math.max(0, parseInt(args[i + 1], 10) || 0);
+      i++;
+    } else if (args[i] === '--csalas-extra' && args[i + 1]) {
+      // 🛡️ 11-24: ennyi hely CSAK csalás-hírnek (a CEO számolja, core/csalas-figyelo.js csalasExtraMaradek)
+      parsed.csalasExtra = Math.max(0, parseInt(args[i + 1], 10) || 0);
       i++;
     } else if (args[i] === '--file' && args[i + 1]) {
       parsed.file = args[i + 1];
@@ -376,7 +383,10 @@ One paragraph: summary + a next step to try today.`;
 // EGY VAGY TÖBB DRAFTBÓL EGY CIKK
 // ===================================================================
 
-async function writeArticle(drafts, brandContext, theme = null, forras = null) {
+// csalas (2026-11-24): { utasitas, hibak(md) → string[] } — a csalás-sablon utasítása a promptba, és a szerkezet-
+// /kép-őr hibái 1 nyomatékos újrapróbát kérnek. Ha az újrapróba után is hibás, a válasz `__csalasHibak`-ot kap
+// (a hívó NEM menti). Csalás nélkül a viselkedés pontosan a régi.
+async function writeArticle(drafts, brandContext, theme = null, forras = null, csalas = null) {
   // TÖBB HÍRBŐL EGY CIKK (2026-08-18, user-kérés). A `drafts` mindig tömb —
   // egyelemű is lehet, akkor a viselkedés pontosan a régi.
   const lista = Array.isArray(drafts) ? drafts : [drafts];
@@ -391,8 +401,9 @@ async function writeArticle(drafts, brandContext, theme = null, forras = null) {
   // vagy a letöltött forrásoldal jön (core/iro-forras.js; a main() adja át `forras`-ként): vázlatonként
   // ≤6000, összevonva együtt ≤9000 karakter. Ha hiányzik, a régi kivonat marad.
   const tenybazis = (d, i) => forras?.reszek?.[i]?.text ?? String(vazlatKivonat(d) || '').slice(0, 1500);
+  const forrasNev = csalas ? 'Official consumer-safety warning (FBI IC3 or Google Safety & Security)' : "Official announcement (the company's own source)";
   const jelzesek = lista.map((d, i) => `
-[${i + 1}] Official announcement (the company's own source) — title:
+[${i + 1}] ${forrasNev} — title:
 "${d.title}"
 What it says (your FACT BASE — use these facts, in your own words, never copy sentences):
 ${tenybazis(d, i)}`).join('\n');
@@ -438,7 +449,7 @@ ${topicSignal}
 
 BRAND CONTEXT (must follow):
 ${brandContext}${lessons}${skills}
-
+${csalas ? csalas.utasitas : ''}
 Now write the original article. Output the markdown only — no extra commentary, no source line.`;
 
   // 1. próba
@@ -466,7 +477,26 @@ Now write the original article. Output the markdown only — no extra commentary
     }
   }
 
-  return response; // null vagy { text, provider, model, costUsd }
+  // 🛡️ CSALÁS-SABLON (2026-11-24): az 5 fejezet + a példablokk szerkezete + a kép-őr (example.com, 555-01xx, márkanév).
+  if (response && csalas) {
+    const hibak = csalas.hibak(response.text);
+    if (hibak.length) {
+      console.log(`   ↻ Csalás-sablon hiba (${hibak.join('; ')}) — újrapróbálom nyomatékkal...`);
+      const retry = await ask(userPrompt + `
+
+⚠️ CRITICAL: your article does not follow the SCAM ALERT TEMPLATE. Problems: ${csalasHibaAngolul(hibak).join('; ')}.
+Fix every one of them and write the full article again, complete.`, {
+        agentName: AGENT_NAME,
+        systemPrompt: WRITER_SYSTEM_PROMPT,
+        maxTokens: WRITER_MAX_TOKENS
+      });
+      const ujHibak = retry ? csalas.hibak(retry.text) : hibak;
+      if (retry) { retry.costUsd += response.costUsd; response = retry; }
+      if (ujHibak.length) response.__csalasHibak = ujHibak;
+    }
+  }
+
+  return response; // null vagy { text, provider, model, costUsd[, __csalasHibak] }
 }
 
 // Kötelező szekciók ellenőrzése (a brand szabály szerint)
@@ -596,7 +626,8 @@ function saveWrittenArticle(originalDraftFilename, drafts, articleResponse, them
       trend: trendJeloles(lista),
       // 📰 11-09 (core/hir-elsobbseg.js): termékhír-e, és extra helyen született-e (a rendes 4-es keretbe nem számít)
       // 11-10: bármely cég új funkciója/modellje/fejlesztése (termekSzint 1 = más cég, 2 = LLM-cég)
-      termek_hir: lista.some(d => termekSzint(d._meta?.source_id, d.title) > 0),
+      // 🛡️ 11-24: a csalás-hír (pl. a google-safety forrásból) nem termékhír, akkor sem, ha a címe annak látszik
+      termek_hir: !extraMeta.csalas && lista.some(d => termekSzint(d._meta?.source_id, d.title) > 0),
       ...(fo.__termekExtra ? { termek_extra: true } : {}),
       status: 'awaiting-review' // → Ellenőrző agent veszi fel
     },
@@ -950,6 +981,18 @@ async function main() {
     elo.push(f);
   }
 
+  // 🛡️ CSALÁS-VÁZLAT KÜLÖN (2026-11-24, core/csalas-figyelo.js): sosem kerül az összevonásba, a válogatásba vagy rendes
+  // helyre — a rendes hírek után, a CEO által adott --csalas-extra helyen íródik (lent). --csalas-extra 0-nál érintetlenül vár.
+  const szet = csalasSzetvalaszt(elo, f => {
+    const d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8'));
+    return { csalas: !!d._meta?.csalas, ido: d.pub_date };
+  });
+  const csalasVazlatok = szet.csalas;
+  elo.splice(0, elo.length, ...szet.rendes);
+  stats.csalas_irt = 0;
+  stats.csalas_hiba = [];
+  if (csalasVazlatok.length) console.log(`🛡️ ${csalasVazlatok.length} csalás-vázlat vár · ma ${args.csalasExtra} csalás-hely`);
+
   // 📰 HÍR-ELSŐBBSÉG (2026-11-09, user: „amiket nem olvasnak, azokat háttérbe szorítani!”): termékhír előre,
   // utána a forrás 30 napos olvasottsága szerint — a keveset olvasott forrás hátra kerül (core/hir-elsobbseg.js).
   const draftInfo = (() => {
@@ -1113,6 +1156,75 @@ async function main() {
     });
   }
 
+  // 4b. 🛡️ CSALÁS-HÍREK (2026-11-24): legfeljebb args.csalasExtra darab, a legfrissebb forrás-tétel elöl, egyenként,
+  // csalás-sablonnal (core/csalas-sablon.js csalasIroUtasitas). Ugyanaz a forrásletöltés, ismétlés-őr és mentés, mint fent.
+  // Ha az újrapróba után is hibás a sablon, NEM mentjük — a vázlat marad, a következő futás újra próbálja
+  // (a 7 napos romlás a listUnprocessedDrafts-ban).
+  for (const f of csalasVazlatok.slice(0, args.csalasExtra || 0)) {
+    let d;
+    try { d = JSON.parse(readFileSync(join(DRAFTS_DIR, f), 'utf-8')); d.__filename = f; } catch { continue; }
+    const csatorna = d._meta?.csalas?.csatorna;
+    const vedekezes = vedekezesCsatornara(csatorna);
+    console.log(`🛡️ Csalás-hír: [${csatorna || '?'}] ${String(d.title || f).slice(0, 70)}`);
+    if (!vedekezes.length) {
+      console.log('   ⏭️ ehhez a csatornához nincs védekezés-tár — csalás-hír nem készül (a vázlat marad)\n');
+      stats.csalas_hiba.push({ draft: f, hiba: 'nincs védekezés-tár a csatornához' });
+      continue;
+    }
+    const forras = await cikkForrasai([d], { ido: letoltesIdo });
+    forras.reszek.forEach(r => {
+      stats.source_via[r.via] = (stats.source_via[r.via] || 0) + 1;
+      if (r.hiba) stats.source_fail.push({ draft: f, link: tisztaUrl(d.link) || d.link || '', hiba: r.hiba });
+      console.log(`   📄 Forrás: ${FORRAS_CIMKE[r.via] || r.via}, ${r.text.length} kar.${r.hiba ? ` — ⚠️ ${r.hiba}` : ''}`);
+    });
+
+    const startTime = Date.now();
+    const response = await writeArticle([d], brandContext, null, forras, {
+      utasitas: csalasIroUtasitas({ csatorna, vedekezes, bejelentes: BEJELENTES }),
+      hibak: md => [...new Set([...csalasSzerkezetHiba(md), ...peldaBiztonsag(peldaBlokk(md))])]
+    });
+    const elapsedMs = Date.now() - startTime;
+    if (!response) {
+      console.log('   ❌ Sikertelen (AI router nem válaszolt)\n');
+      stats.articles_failed++;
+      stats.by_article.push({ draft: f, success: false, csalas: true, error: 'AI router returned null' });
+      continue;
+    }
+    if (response.__csalasHibak) {
+      stats.total_cost_usd += response.costUsd;
+      stats.articles_failed++;
+      stats.csalas_hiba.push({ draft: f, hiba: response.__csalasHibak.join('; ') });
+      console.log(`   ❌ A csalás-sablon az újrapróba után is hibás (${response.__csalasHibak.join('; ')}) — nem mentem, a vázlat marad\n`);
+      stats.by_article.push({ draft: f, success: false, csalas: true, reason: 'csalas-sablon', hibak: response.__csalasHibak, cost_usd: response.costUsd });
+      continue;
+    }
+    const ism = await ismetlesE(response.text, [d], null);
+    if (ism) {
+      stats.total_cost_usd += response.costUsd;
+      stats.skipped_repeat = (stats.skipped_repeat || 0) + 1;
+      (stats.repeats = stats.repeats || []).push(ism);
+      console.log(`   🔁 ISMÉTLÉS — nem publikálom: "${ism.cim.slice(0, 52)}" (már megvan: "${ism.mar.slice(0, 52)}")\n`);
+      try { unlinkSync(join(DRAFTS_DIR, f)); } catch { /* már nincs ott */ }
+      stats.by_article.push({ draft: f, success: false, csalas: true, reason: 'repeat', repeat_of: ism.mar, score: ism.pont, cost_usd: response.costUsd });
+      continue;
+    }
+    const atfedes = leghosszabbKozosSzosor(response.text, forras.osszes);
+    const writerFilename = saveWrittenArticle(f, [d], response, null, forras, {
+      source_overlap_words: atfedes.szavak,
+      csalas: { csatorna, forras_id: d._meta?.csalas?.forras_id ?? d._meta?.source_id ?? null },
+      csalas_extra: true
+    });
+    stats.total_cost_usd += response.costUsd;
+    stats.articles_written++;
+    stats.csalas_irt++;
+    console.log(`   ✅ Csalás-hír megírva → ${writerFilename} · $${response.costUsd.toFixed(4)} · ${(elapsedMs / 1000).toFixed(1)}s\n`);
+    stats.by_article.push({
+      draft: f, writer_output: writerFilename, success: true, csalas: true,
+      source_via: forras.reszek.map(r => r.via), source_chars: forras.osszes.length, source_overlap_words: atfedes.szavak,
+      cost_usd: response.costUsd, duration_ms: elapsedMs, provider: response.provider, model: response.model
+    });
+  }
+
   // 5. Log mentés
   stats.finished_at = new Date().toISOString();
   stats.duration_seconds = (new Date(stats.finished_at) - new Date(stats.started_at)) / 1000;
@@ -1124,6 +1236,9 @@ async function main() {
   // ⚠️ NEM „megírt/összes" TÖRTKÉNT írjuk ki. Az összevonás óta a drafts_total a
   // FELHASZNÁLT HÍREK száma, nem a célszám — az „5/8" tévesen 3 bukást sugallna.
   console.log(`   Cikkek megírva: ${stats.articles_written} (${stats.drafts_total} hírből)`);
+  if (stats.csalas_irt || stats.csalas_hiba.length) {
+    console.log(`   🛡️ Csalás-hír: ${stats.csalas_irt} megírva${stats.csalas_hiba.length ? ` · ${stats.csalas_hiba.length} nem sikerült (a vázlat marad)` : ''}`);
+  }
   if (stats.clusters_found) {
     console.log(`   Összevonva: ${stats.merged_total} cikk · ${stats.clusters_found} téma-csoport`);
   }
