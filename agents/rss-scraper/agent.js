@@ -37,6 +37,7 @@ import {
   CSALAS_FIGYELO_BE, csalasForras, csalasFriss, CSALAS_SZURO_RENDSZER, csalasSzuroPrompt, csalasDontesek,
   csalasSzetosztas, csalasVazlatMeta, csalasGuardFrissit,
 } from '../../core/csalas-figyelo.js';   // 🛡️ 2026-11-24 csalás-figyelő ága (terv 5. rész)
+import { relevanciaLista } from '../../core/relevancia-lista.js';   // 🐛 2026-11-24 „Title: undefined” javítás
 
 // ===================================================================
 // SETUP
@@ -227,10 +228,8 @@ Categories: ai-news, how-to, business, work, creative, other.
 Score 1-10 (how well it fits our portal).`;
 
 async function checkRelevanceBatch(batch) {
-  // batch: [{ globalIndex, title, snippet }]
-  const list = batch.map((it, i) =>
-    `[${i}] Title: ${it.title}\n    Summary: ${(it.snippet || '').slice(0, 200)}`
-  ).join('\n\n');
+  // batch: [{ feedConfig, item, snippet }] — 2026-11-24: a cím az item.title-ben van (eddig „Title: undefined”).
+  const list = relevanciaLista(batch);
 
   const prompt = `Evaluate these ${batch.length} articles. Respond with {"decisions": [...]} containing exactly ${batch.length} objects (index 0 to ${batch.length - 1}).
 
