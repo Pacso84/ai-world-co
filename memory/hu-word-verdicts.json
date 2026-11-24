@@ -553,6 +553,7 @@
     "csempéként",
     "cserbenhagy",
     "cserbenhagyott",
+    "cseresznyevirágok",
     "cseveagések",
     "csevegdobozzal",
     "csevegében",
@@ -1487,6 +1488,7 @@
     "klipt",
     "knak",
     "knál",
+    "koi-tó",
     "kombó",
     "kombót",
     "komollyak",
@@ -3192,6 +3194,7 @@
     "vlogoknál",
     "voice-overrel",
     "vous",
+    "voxeljelenet",
     "válasszd",
     "válaszata",
     "válaszlehetőséget",
@@ -3326,6 +3329,7 @@
     "életkorokkal",
     "életlenséget",
     "életviteleted",
+    "élőstreamelési",
     "érdekels",
     "érdekességet",
     "értelemgazdagabb",
@@ -6617,11 +6621,16 @@
       "correct": "sztereoiizoméria",
       "at": "2026-11-23",
       "mondattal": true
+    },
+    "ai-tól": {
+      "correct": "ai-tól (értelmetlen) — valószínűleg: \"attól\" vagy \"tőle\"",
+      "at": "2026-11-24",
+      "utkozes": true
     }
   },
   "scan": {
-    "at": "2026-11-23",
-    "files": 917,
-    "candidates": 0
+    "at": "2026-11-24",
+    "files": 922,
+    "candidates": 5
   }
 }
