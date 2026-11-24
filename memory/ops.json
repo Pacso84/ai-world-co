@@ -1,142 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179532043430536",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-22T04:07:14.305Z",
-      "updated": "2026-11-22T04:07:26.652Z"
-    },
-    {
-      "id": "t179532044665444",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-22T04:07:26.654Z",
-      "updated": "2026-11-22T04:08:02.098Z"
-    },
-    {
-      "id": "t179536249269324",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-22T15:48:12.693Z",
-      "updated": "2026-11-22T15:48:12.869Z"
-    },
-    {
-      "id": "t179536249287254",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-22T15:48:12.872Z",
-      "updated": "2026-11-22T15:48:45.342Z"
-    },
-    {
-      "id": "t179536252534488",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-22T15:48:45.344Z",
-      "updated": "2026-11-22T15:48:45.511Z"
-    },
-    {
-      "id": "t179536252556325",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-22T15:48:45.563Z",
-      "updated": "2026-11-22T15:49:01.283Z"
-    },
-    {
-      "id": "t179536254128536",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-22T15:49:01.285Z",
-      "updated": "2026-11-22T15:49:04.459Z"
-    },
-    {
-      "id": "t179536254446118",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-22T15:49:04.461Z",
-      "updated": "2026-11-22T15:49:24.651Z"
-    },
-    {
-      "id": "t179536256465463",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-22T15:49:24.654Z",
-      "updated": "2026-11-22T15:49:30.684Z"
-    },
-    {
-      "id": "t179536257068736",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-22T15:49:30.687Z",
-      "updated": "2026-11-22T15:49:38.703Z"
-    },
-    {
-      "id": "t179536257879429",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-22T15:49:38.794Z",
-      "updated": "2026-11-22T15:49:38.975Z"
-    },
-    {
-      "id": "t179536257897725",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-22T15:49:38.977Z",
-      "updated": "2026-11-22T15:49:39.166Z"
-    },
-    {
-      "id": "t179536257921291",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-22T15:49:39.212Z",
-      "updated": "2026-11-22T15:50:05.325Z"
-    },
-    {
-      "id": "t17953626053283",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-22T15:50:05.328Z",
-      "updated": "2026-11-22T15:50:27.609Z"
-    },
-    {
-      "id": "t179536262761184",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-22T15:50:27.611Z",
-      "updated": "2026-11-22T15:50:39.970Z"
-    },
-    {
-      "id": "t179536263997264",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-22T15:50:39.972Z",
-      "updated": "2026-11-22T15:51:06.854Z"
-    },
-    {
-      "id": "t179538271617182",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-22T21:25:16.171Z",
-      "updated": "2026-11-22T21:25:16.377Z"
-    },
-    {
       "id": "t179538271637950",
       "title": "Run rss-scraper",
       "status": "done",
@@ -479,49 +343,145 @@
       "agent": "publisher",
       "created": "2026-11-23T19:16:16.396Z",
       "updated": "2026-11-23T19:16:40.360Z"
+    },
+    {
+      "id": "t179550550935736",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-24T07:31:49.357Z",
+      "updated": "2026-11-24T07:31:49.560Z"
+    },
+    {
+      "id": "t179550550956284",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-24T07:31:49.562Z",
+      "updated": "2026-11-24T07:32:35.109Z"
+    },
+    {
+      "id": "t179550555511130",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-24T07:32:35.111Z",
+      "updated": "2026-11-24T07:32:35.310Z"
+    },
+    {
+      "id": "t17955055553610",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-24T07:32:35.361Z",
+      "updated": "2026-11-24T07:34:09.811Z"
+    },
+    {
+      "id": "t179550564981315",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-24T07:34:09.813Z",
+      "updated": "2026-11-24T07:34:26.240Z"
+    },
+    {
+      "id": "t179550566624295",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-24T07:34:26.242Z",
+      "updated": "2026-11-24T07:35:20.428Z"
+    },
+    {
+      "id": "t179550572047476",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-24T07:35:20.474Z",
+      "updated": "2026-11-24T07:35:40.723Z"
+    },
+    {
+      "id": "t179550574072456",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-24T07:35:40.724Z",
+      "updated": "2026-11-24T07:35:40.943Z"
+    },
+    {
+      "id": "t179550574098630",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-24T07:35:40.986Z",
+      "updated": "2026-11-24T07:35:41.205Z"
+    },
+    {
+      "id": "t17955057412076",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-24T07:35:41.207Z",
+      "updated": "2026-11-24T07:35:41.431Z"
+    },
+    {
+      "id": "t179550574152064",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-24T07:35:41.520Z",
+      "updated": "2026-11-24T07:35:58.356Z"
+    },
+    {
+      "id": "t179550575836396",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-24T07:35:58.363Z",
+      "updated": "2026-11-24T07:36:42.759Z"
+    },
+    {
+      "id": "t179550580276161",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-24T07:36:42.761Z",
+      "updated": "2026-11-24T07:36:48.418Z"
+    },
+    {
+      "id": "t179550580842087",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-24T07:36:48.420Z",
+      "updated": "2026-11-24T07:38:13.647Z"
+    },
+    {
+      "id": "t179550589364916",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-24T07:38:13.649Z",
+      "updated": "2026-11-24T07:39:03.996Z"
+    },
+    {
+      "id": "t179550594399735",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-24T07:39:03.997Z",
+      "updated": "2026-11-24T07:39:14.447Z"
+    },
+    {
+      "id": "t179550595444965",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-24T07:39:14.449Z",
+      "updated": "2026-11-24T07:39:46.799Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179468754528551",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „This guide walks yo",
-      "agent": "fact-check",
-      "at": "2026-11-14T20:19:05.285Z",
-      "loud": false
-    },
-    {
-      "id": "n179471470847097",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 7.7/10).",
-      "agent": "seo",
-      "at": "2026-11-15T03:51:48.470Z",
-      "loud": false
-    },
-    {
-      "id": "n179471475014793",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is coherent and on-brand — it's practical, people-first, and covers the safety basics (privacy + fact-checking) alongside the writing how-tos, which is a healthy mix. My one real concern: ",
-      "agent": "publisher",
-      "at": "2026-11-15T03:52:30.147Z",
-      "loud": false
-    },
-    {
-      "id": "n17947147610347",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0493).",
-      "agent": "ceo",
-      "at": "2026-11-15T03:52:41.034Z",
-      "loud": false
-    },
-    {
-      "id": "n17947554293318",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 7.0/10).",
-      "agent": "seo",
-      "at": "2026-11-15T15:10:29.331Z",
-      "loud": false
-    },
     {
       "id": "n179475544314196",
       "level": "success",
@@ -1281,38 +1241,49 @@
       "agent": "fact-check",
       "at": "2026-11-23T19:18:06.232Z",
       "loud": false
+    },
+    {
+      "id": "n179550594398578",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 7.6/10).",
+      "agent": "seo",
+      "at": "2026-11-24T07:39:03.985Z",
+      "loud": false
+    },
+    {
+      "id": "n179550596857476",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up is solid and on-brand — a nice blend of practical writing how-tos, a privacy guide, a fact-checker, and a meta \"what AI is good at\" piece that grounds it all for everyday readers. Two smal",
+      "agent": "publisher",
+      "at": "2026-11-24T07:39:28.574Z",
+      "loud": false
+    },
+    {
+      "id": "n179550598684127",
+      "level": "success",
+      "text": "4 hír + 1 útmutató publikálva (költség: $0.0507).",
+      "agent": "ceo",
+      "at": "2026-11-24T07:39:46.841Z",
+      "loud": false
+    },
+    {
+      "id": "n179550600245073",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Ask Duck.ai to Explain Hard Ideas in Plain \" — A konkrét limi",
+      "agent": "fact-check",
+      "at": "2026-11-24T07:40:02.450Z",
+      "loud": false
+    },
+    {
+      "id": "n179550603713717",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „A 3D desert ranch.*",
+      "agent": "fact-check",
+      "at": "2026-11-24T07:40:37.137Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179450097860919",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to use Gemini 4 Carbon\" — javítva: ACCESS_NOT_SELF_SERVE: 2 jel arra, hogy az olvasónak céges/IT-hozzáférés kell (\"your work account\", \"ask your administrator\") — a hétköznapi olvasónk el sem tud indulni.; Model name 'Gemini 4 Carbon' not in verified-real names list - cannot verify this product exists; újraküldöm.",
-      "ref": "GUIDE_how-to-use-gemini-4-carbon.json",
-      "at": "2026-11-12T16:29:38.609Z"
-    },
-    {
-      "id": "m179450097861055",
-      "from": "guide",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Kell még adat: \"How to use Gemini 4 Carbon\" — az Ellenőrző tényt/forrást kér, amit nem találhatok ki: Other model names mentioned (Gemini 4 Argon, Flash-Lite) also not verified against official source",
-      "ref": "GUIDE_how-to-use-gemini-4-carbon.json",
-      "open": false,
-      "at": "2026-11-12T16:29:38.610Z",
-      "resolved_at": "2026-11-12T16:31:17.878Z"
-    },
-    {
-      "id": "m179450099519760",
-      "from": "guide",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"Plan a weekend trip itinerary with DeepSeek\" — javítva: The repeated claim that DeepSeek cannot look up live information or check current opening hours and prices is inaccurate: DeepSeek's web and mobile apps include a web-search mode that can retrieve current web information. The warning should apply only when that mode is not enabled.; Reviewer verdict: Hitelesség-kapu blokkolta: T",
-      "ref": "GUIDE_plan-a-weekend-trip-itinerary-with-deepseek.json",
-      "at": "2026-11-12T16:29:55.197Z"
-    },
     {
       "id": "m179450102269839",
       "from": "ellenorzo",
@@ -2685,6 +2656,35 @@
       "text": "3 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-23T19:27:08.450Z"
+    },
+    {
+      "id": "m179550595438418",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-24T07:39:14.384Z"
+    },
+    {
+      "id": "m179550600245067",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Ask Duck.ai to Explain Hard Ideas in Plain \" — A konkrét limit (öt beszélgetés) és a helyi tárolás állítása ellenőrizhető részleteknek tűnnek, amelyeket nem tudok megerősíteni; jobb jelezni, mint feltételezni, hogy pontosak (állítás: pins up to five chats to the top of the list for quick access; chats are stored locally on your device rath",
+      "ref": "ARTICLE_GUIDE_how-students-can-use-duck-ai-to-explain-hard-ideas-in-plain-.json",
+      "open": true,
+      "at": "2026-11-24T07:40:02.450Z"
+    },
+    {
+      "id": "m179550603713762",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „A 3D desert ranch.** One builder ran the same prompt on an earlier model and on Hydrogen, ”): \"See what 6 builders are making with Gemini 4 Hydro\" — A factual detail (the 1 minute time) is omitted from the desert ranch project description",
+      "ref": "ARTICLE_2026-11-24T07-32-35-089Z_google-gemini_See_what_6_builders_are_making_with_Gemini_4_Hydro.json",
+      "open": true,
+      "at": "2026-11-24T07:40:37.137Z"
     }
   ]
 }

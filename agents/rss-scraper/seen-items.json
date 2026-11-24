@@ -1,8 +1,5 @@
 {
   "openai-blog": [
-    "https://openai.com/index/chatgpt-for-your-most-ambitious-work",
-    "https://openai.com/index/bio-bug-bounty",
-    "https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot",
     "https://openai.com/index/deutsche-telekom",
     "https://openai.com/academy/getting-started",
     "https://openai.com/index/managing-ai-investments-in-agentic-era",
@@ -299,7 +296,10 @@
     "https://openai.com/index/combatting-adversarial-distillation",
     "https://openai.com/business/customer-stories/hebbia",
     "https://openai.com/index/introducing-medchembench",
-    "https://openai.com/index/perplexity-and-intelligence"
+    "https://openai.com/index/perplexity-and-intelligence",
+    "https://openai.com/index/introducing-shirudo",
+    "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
+    "https://openai.com/business/customer-stories/richpanel-ai-customer-support"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -1157,7 +1157,6 @@
     "https://github.blog/ai-and-ml/github-copilot/build-once-run-on-any-agent-a-practical-guide-to-agent-skills/"
   ],
   "aws-ml": [
-    "https://aws.amazon.com/blogs/machine-learning/automate-user-level-custom-permissions-for-amazon-quick/",
     "https://aws.amazon.com/blogs/machine-learning/reduce-llm-latency-with-prefix-aware-routing-on-amazon-sagemaker-inference/",
     "https://aws.amazon.com/blogs/machine-learning/reduce-inference-cold-starts-on-amazon-sagemaker-hyperpod-with-model-caching/",
     "https://aws.amazon.com/blogs/machine-learning/video-and-image-search-in-amazon-bedrock-knowledge-base-using-marengo-3-0/",
@@ -1456,7 +1455,8 @@
     "https://aws.amazon.com/blogs/machine-learning/new-in-aws-quick-more-capable-flows-an-updated-web-experience-and-agents-that-work-together/",
     "https://aws.amazon.com/blogs/machine-learning/how-standard-bank-group-automates-ai-risk-assessment-for-generative-ai/",
     "https://aws.amazon.com/blogs/machine-learning/announcing-amazon-textract-insights-verifiable-generative-ai-for-documents/",
-    "https://aws.amazon.com/blogs/machine-learning/meta-ads-is-now-available-in-aws-quick/"
+    "https://aws.amazon.com/blogs/machine-learning/meta-ads-is-now-available-in-aws-quick/",
+    "https://aws.amazon.com/blogs/machine-learning/introducing-the-amazon-bedrock-trusted-access-api-with-anthropics-enterprise-frontier-safeguards-and-enterprise-data-controls/"
   ],
   "mistral-ai": [
     "https://mistral.ai/news/ai-now-summit-2026/",
@@ -1937,9 +1937,6 @@
     "https://news.sap.com/2026/11/interview-sindhu-gangadharan-sap-labs-india/"
   ],
   "databricks": [
-    "https://www.databricks.com/blog/metas-spark-muse-11-now-available-databricks-fully-governed-unity-ai-gateway",
-    "https://www.databricks.com/blog/three-ways-ai-unlocks-transformation-retail-travel-and-consumer-goods",
-    "https://www.databricks.com/blog/branching-databases-code-cicd-pattern-lakebase-production-glaspoort",
     "https://www.databricks.com/blog/scaling-document-classification-100k-labels",
     "https://www.databricks.com/blog/ai-transparency",
     "https://www.databricks.com/blog/responsible-ai",
@@ -2236,7 +2233,10 @@
     "https://www.databricks.com/blog/genie-one-accuracy-why-curated-agents-need-governed-context",
     "https://www.databricks.com/blog/ai-architecture-patterns-regulated-industries",
     "https://www.databricks.com/blog/postgresql-19-available-lakebase",
-    "https://www.databricks.com/blog/interactive-databricks-reference-architectures-across-70-industries"
+    "https://www.databricks.com/blog/interactive-databricks-reference-architectures-across-70-industries",
+    "https://www.databricks.com/blog/sharing-catalog-metadata-across-data-platforms-engines-and-agents",
+    "https://www.databricks.com/blog/what-5400-malicious-npm-packages-reveal-about-software-supply-chain-risk-2026",
+    "https://www.databricks.com/blog/announcing-general-availability-native-lakebase-postgres-sink-spark-structured-streaming"
   ],
   "snowflake": [
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-postgres-ml-online-feature-store",
@@ -2372,7 +2372,9 @@
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/spark-iceberg-write-audit-publish",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-app-runtime",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/agentic-ai-vendor-evaluation",
-    "https://www.snowflake.com/content/snowflake-site/global/en/blog/sap-snowflake-predictive-analytics"
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/sap-snowflake-predictive-analytics",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/trust-ai-agents-data-foundation",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-manufacturing-institutional-knowledge"
   ],
   "together": [
     "https://www.together.ai/blog/announcing-our-series-c",
@@ -3851,7 +3853,8 @@
     "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/",
     "https://blog.google/products-and-platforms/products/search/connected-apps-holiday-errands/",
     "https://blog.google/innovation-and-ai/products/gemini-app/gemini-canvas-tasks/",
-    "https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/"
+    "https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/",
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-hydrogen-builders/"
   ],
   "google-photos": [
     "https://blog.google/products-and-platforms/products/photos/halloween-tricks-2026/",
@@ -4101,6 +4104,19 @@
     "https://elevenlabs.io/blog/fundacion-televisa-posible",
     "https://elevenlabs.io/blog/build-an-outbound-reminder-agent-with-architect",
     "https://elevenlabs.io/blog/video-variants-localization-ads-engine",
-    "https://elevenlabs.io/blog/elevenmusic-vs-elevencreative"
+    "https://elevenlabs.io/blog/elevenmusic-vs-elevencreative",
+    "https://elevenlabs.io/blog/choose-the-best-speech-to-text-api"
+  ],
+  "pika": [
+    "https://pika.art/blog/pika-h3-flex",
+    "https://pika.art/blog/pika-h3-flex-research",
+    "https://pika.art/blog/pika-chatgpt-plugin",
+    "https://pika.art/blog/api-member-spotlights",
+    "https://pika.art/blog/welcome-to-the-new-pika",
+    "https://pika.art/blog/pika-music",
+    "https://pika.art/blog/pika-sfx",
+    "https://pika.art/blog/pika-soundtrack",
+    "https://pika.art/blog/pika-speech",
+    "https://pika.art/blog/pika-enact"
   ]
 }

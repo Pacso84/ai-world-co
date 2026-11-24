@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "written_at": "2026-11-24T07:33:28.849Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0035705,
+    "original_draft": "2026-11-24T07-32-35-091Z_pika_Research_Preview__Pika_Enact.json",
+    "source_id": "pika",
+    "source_name": "Pika (hivatalos)",
+    "source_link": "https://pika.art/blog/pika-enact",
+    "source_links": [
+      "https://pika.art/blog/pika-enact"
+    ],
+    "source_snippet_len": 140,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "ca980fed8895632c",
+    "source_overlap_words": 12,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-24T07:34:22.223Z",
+    "slug": "pika-enact-what-live-directing-for-ai-video-means",
+    "auto_check": {
+      "passed": false,
+      "issues": [
+        "LEDE_TOO_LONG: A RÖVIDEN-doboz 63 szó (max ~45) — ami hosszú, az már nem \"röviden\"."
+      ],
+      "wordCount": 686
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Clear, well-structured explainer with strong hook, plain-language definitions, and a useful 'What this means for you' section with audience-specific guidance. US English used throughout, no prohibited content, no rankings or invented facts. Minor caveat: performance claims (H100 latency) are attributed to Pika with appropriate disclosure that independent testing is not described, which is honest and transparent.",
+      "_aiCost": 0.0030318,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-24T07:35:13.658Z",
+    "guide_worthy": false,
+    "pairing_reason": "Pika Enact is a research preview with no announced availability - the article explicitly states the company has not said when or how everyday users can try it.",
+    "image_v": 2,
+    "image_at": "2026-11-24T07:37:42.253Z",
+    "seo": {
+      "meta_description": "Pika Enact is a research preview for live directing AI video—move objects, talk to actors, steer the camera while video plays.",
+      "keywords": [
+        "Pika Enact",
+        "live directing AI video",
+        "real-time AI video control",
+        "AI video editing",
+        "how to control AI video",
+        "interactive AI video generation"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the phrase 'real-time AI video' earlier in the title or subtitle for better ranking",
+        "Expand article with more details on features to increase word count and keyword density",
+        "Consider adding release date or availability information if available"
+      ],
+      "optimised_at": "2026-11-24T07:38:43.642Z"
+    },
+    "fact_verified_at": "2026-11-24T07:40:14.446Z"
+  },
+  "article_markdown": "---\ntitle: \"Pika Enact: What Live Directing for AI Video Means\"\nsubtitle: \"Pika's research preview lets you move actors, talk to them, and steer the camera while a video is still playing.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"ai-video\", \"creative-tools\", \"pika\", \"research-preview\"]\n---\n\n# Pika Enact: What Live Directing for AI Video Means\n\n> **In short:** Pika has announced Pika Enact, a research preview that lets you change an AI video while it plays. You can move people or objects with your mouse, give spoken notes to the people on screen, and steer the camera in real time. The company describes it as experimental, and it has not said when or how everyday users can try it.\n\nMost AI video tools work like a vending machine: you type a request, wait, and hope the result matches what you pictured. Pika Enact tries a different approach, and it is worth understanding even if you never get access to it.\n\n## How it differs from a typical prompt\n\nA prompt is the text instruction you type into an AI tool. Pika says that a prompt box can only get you so close to what you want, because words like \"a little to the left\" leave a lot to interpretation. Pika Enact instead lets you act on the scene directly while it runs.\n\nThe company describes it as an experimental live-streaming environment. In plain terms, the video keeps playing and gets generated in small pieces, each a fraction of a second long. Pika says each piece carries the scene forward, so the story does not reset every time you change something.\n\nThe system is built on Pika H3 Flex, which Pika names as the model underneath.\n\n## The three ways you interact with it\n\n**Live staging** means placing people or objects inside a running video with your mouse. You drag a subject to a spot, and the scene keeps going while you move it. Pika says the subject adjusts its pose, lighting, and shadows to fit its surroundings, so you do not have to clean up edges afterward.\n\n**Live actor direction** means talking to the people in the video. You type or say a note, such as asking someone to move closer or to sound upset, and they carry it out while the clip keeps running. Pika says the actors remember your earlier notes, and they deliver a fresh, continuous take when you call \"Action.\"\n\n**Live camera control** means moving the camera with your mouse around a scene that is already playing. You shape the shot as it happens instead of regenerating it from scratch.\n\n## Why the speed matters\n\nFor this to feel like directing rather than waiting, the response has to be quick. Pika states that on a single server, the model generates video faster than it plays back, and that in a low-latency setting the picture responds in under 0.4 seconds on an H100, a high-end graphics chip. Latency is the delay between your action and the result. These are the company's own performance claims, and independent testing is not described in the announcement.\n\n## What this means for you\n\n- **In everyday life**: If you make short videos for family, school projects, or hobby channels, this kind of live control points to a future where you fix a shot by nudging it instead of rerunning it several times.\n- **For your business or work**: If you create marketing or client videos, watch for how Pika handles access and pricing. Check the official pricing page for any plan details, since the announcement does not cover them.\n- **If you're just getting started**: Learn the basics of prompts now. Describing a scene clearly is still the foundation, whichever tool you end up using.\n\n## Wrap-up\n\nPika Enact shows where AI video creation may be heading: less waiting, more hands-on control. Right now it is a research preview, so treat it as a glimpse rather than something to plan around. Your next step is simple. Open Pika's official blog, read the announcement for yourself, and note any details about availability so you know when to revisit it.",
+  "original_title": "Research Preview: Pika Enact"
+}

@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "written_at": "2026-11-24T07:33:16.509Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0040658,
+    "original_draft": "2026-11-24T07-32-35-089Z_google-gemini_See_what_6_builders_are_making_with_Gemini_4_Hydro.json",
+    "source_id": "google-gemini",
+    "source_name": "Google Gemini termékhírek (hivatalos, blog.google)",
+    "source_link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-hydrogen-builders/",
+    "source_links": [
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-hydrogen-builders/",
+      "https://blog.google/innovation-and-ai/products/gemini-app/gemini-canvas-tasks/"
+    ],
+    "source_snippet_len": 283,
+    "source_text_via": [
+      "html",
+      "html"
+    ],
+    "source_text_len": 4402,
+    "source_text_key": "fe9ab994b447ea4b",
+    "source_overlap_words": 13,
+    "merged_from": 2,
+    "merged_theme": "Google Gemini features and projects",
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-24T07:34:17.594Z",
+    "slug": "what-gemini-4-hydrogen-builders-are-making-and-4-ideas-for-gemini-canv",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 816
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article hits all the right marks: explains technical terms in plain language, maintains a friendly and encouraging tone, follows the required structure with a clear hook and actionable What this means for you section, avoids prohibited content and comparisons, and stays factual based on the Google blog source. Ready to publish.",
+      "_aiCost": 0.0029982,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-24T07:35:07.989Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article discusses two things (Gemini 4 Hydrogen model and Gemini Canvas workspace) without focusing on one specific named feature with clear action steps for everyday users · súgó: The news announces Gemini 4 Hydrogen (a new model), but the help article covers Canvas (a workspace feature) - these ar",
+    "image_v": 2,
+    "image_at": "2026-11-24T07:37:26.523Z",
+    "seo": {
+      "meta_description": "See what Google's Gemini 4 Hydrogen can build, from 3D animations to interactive tools, plus 4 practical Gemini Canvas uses for everyday tasks.",
+      "keywords": [
+        "Gemini 4 Hydrogen",
+        "Gemini Canvas",
+        "Google AI tools",
+        "AI workspace features",
+        "what is Gemini Canvas",
+        "building with AI",
+        "Google Gemini features"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific details about the six builder projects to improve keyword relevance",
+        "Include step-by-step use cases for Gemini Canvas features to capture more search traffic",
+        "Consider adding FAQ section addressing common questions about Gemini 4 and Canvas capabilities"
+      ],
+      "optimised_at": "2026-11-24T07:38:32.623Z"
+    },
+    "fact_verified_at": "2026-11-24T07:40:37.133Z"
+  },
+  "article_markdown": "---\ntitle: \"What Gemini 4 Hydrogen Builders Are Making, and 4 Ideas for Gemini Canvas\"\nsubtitle: \"Six early projects show what Google's newest model can build, plus four everyday uses for the Canvas workspace.\"\ncategory: \"tips\"\naudience: \"personal\"\nread_time_minutes: 3\ntags: [\"gemini\", \"gemini-canvas\", \"google\", \"getting-started\", \"creative-ai\"]\n---\n\n# What Gemini 4 Hydrogen Builders Are Making, and 4 Ideas for Gemini Canvas\n\n> **In short:** Google says its newest model, Gemini 4 Hydrogen, is built for fast, multi-step tasks, and it shared six early projects made with it, from 3D animations to a sound-filled moth. Gemini Canvas, a side workspace inside the chat, can turn notes into quizzes, spreadsheets into trackers, and drafts into polished text.\n\nHave you ever wished an AI could build the small thing you keep describing, like a checklist app or a study quiz, instead of just explaining how to make one? That's the idea behind the newest Gemini work, and the examples Google shared give you a good sense of what to expect.\n\n## What Gemini 4 Hydrogen is\n\nGoogle introduced Gemini 4 Hydrogen as a model for everyday work. A model is the AI engine that answers your requests. Google describes Hydrogen as built for \"agentic\" workflows, meaning tasks where the AI works through several steps toward a goal rather than answering one question. Google also says Hydrogen can work alone or alongside its Gemini 4 Carbon model, where Carbon coordinates and Hydrogen does the fast execution.\n\n## Six projects from builders\n\nGoogle highlighted work from outside creators. Here are the highlights, in plain terms:\n\n- **A rainy sci-fi skyline.** One builder made a 3D city scene in a web browser, using Three.js (a tool for building 3D graphics on the web), with Hydrogen set to its high-thinking mode in Google Antigravity.\n- **A seaplane flight from morning to night.** The scene changes gradually as the plane crosses the sea, so the passage of time is visible.\n- **A blocky koi pond.** Made in the Gemini app, it's a voxel scene (built from tiny 3D cubes, like a digital LEGO set) with a pagoda, cherry blossoms, and lantern-lit bridges.\n- **A jelly-like koi pond.** The same idea, but with soft, rounded shapes instead of sharp edges.\n- **An interactive ruby-red moth.** Here Carbon directed a group of Hydrogen workers, and the result responds to clicks and includes sound. Hydrogen also recorded the demo video.\n- **A 3D desert ranch.** One builder ran the same prompt on an earlier model and on Hydrogen, showing how the scene changed between them.\n\nGoogle credits each builder for their own work. What they share is the same lesson: you describe what you want, and the AI does the building.\n\n## Where you can use it\n\nAccess depends on who you are:\n\n- **Developers** can start with Gemini 4 Hydrogen through the Gemini API in Google AI Studio and Android Studio.\n- **Paid Google AI Pro and Ultra subscribers** can try it in Google Antigravity. Check the official pricing page for plan details.\n- **Anyone** can choose Hydrogen from the model drop-down in the Gemini app, and Google Search also uses it.\n- **Free users** in the Gemini app get Hydrogen through automatic model selection when the app decides it fits the prompt.\n- **Enterprise teams** can access it in Gemini for business.\n\n## Four ideas for Gemini Canvas\n\nCanvas is a workspace that opens beside your chat, so your draft or project stays visible while you talk to the AI. Google suggests four uses:\n\n1. **Build a web app or mini-game.** Ask for a 3D visualizer or a simple browser game to play with.\n2. **Make a study tool.** 💬 *\"Turn these notes into a 10-question quiz with answers hidden until I reveal them.\"*\n3. **Build an office helper.** Convert a spreadsheet into a sales tracker, a pricing calculator, or a task list.\n4. **Refine your writing.** Highlight a section of text on the canvas and ask for a different tone or a clearer sentence.\n\n## What this means for you\n\n- **In everyday life**: Use Canvas for a personal project, like a packing checklist or a flashcard set for a class you're taking.\n- **For your work**: Turn a messy spreadsheet into a simple tracker, then highlight a paragraph in a proposal and ask for a tighter version.\n- **If you're just getting started**: Begin with one small idea from the list above, and keep the request short.\n- **If you already use it**: Pick a model in the Gemini app and compare how a spreadsheet tracker looks when you ask for extra features in one follow-up message.\n\n## Wrap-up\n\nGoogle's examples show that Gemini 4 Hydrogen and Canvas are meant for practical building, not only for answering questions. Pick one idea from this article, such as turning your notes into a quiz, and open Gemini today to see what it creates for you.",
+  "original_title": "See what 6 builders are making with Gemini 4 Hydrogen"
+}

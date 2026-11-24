@@ -9369,7 +9369,12 @@
       "icon": "📚",
       "priority": "balance",
       "proposed_at": "2026-11-23T04:41:57.732Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-24T07:35:20.717Z",
+        "ok": false,
+        "ok_ok": "nincs illő súgócikk"
+      }
     },
     {
       "id": "how-to-understand-a-confusing-letter-or-notice-in-plain-engl",
@@ -9383,7 +9388,12 @@
       "icon": "🔍",
       "priority": "balance",
       "proposed_at": "2026-11-23T04:41:58.482Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-24T07:35:20.717Z",
+        "ok": false,
+        "ok_ok": "nincs illő súgócikk"
+      }
     },
     {
       "id": "how-to-use-ai-to-write-a-polite-repair-request-to-your-landl",
@@ -9424,7 +9434,12 @@
       "status": "todo",
       "icon": "📰",
       "proposed_at": "2026-11-23T04:42:27.236Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "horgony": {
+        "at": "2026-11-24T07:35:20.717Z",
+        "ok": false,
+        "ok_ok": "a súgó csak termékoldal — csak bevezető írható"
+      }
     },
     {
       "id": "how-to-check-permissions-before-adding-the-grok-bot-to-micro",
@@ -9437,7 +9452,12 @@
       "status": "todo",
       "icon": "🛡️",
       "proposed_at": "2026-11-23T04:42:27.904Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "horgony": {
+        "at": "2026-11-24T07:35:20.717Z",
+        "ok": false,
+        "ok_ok": "a cikkből nem írható útmutató"
+      }
     },
     {
       "id": "how-to-use-proton-lumo-to-rewrite-a-sensitive-message-before",
@@ -9450,7 +9470,12 @@
       "status": "todo",
       "icon": "🔒",
       "proposed_at": "2026-11-23T04:42:28.547Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "horgony": {
+        "at": "2026-11-24T07:35:20.717Z",
+        "ok": false,
+        "ok_ok": "a cikkből nem írható útmutató"
+      }
     },
     {
       "id": "how-to-enable-or-adjust-1080p-video-quality-in-google-meet-o",
@@ -9467,6 +9492,71 @@
         "title": "Google Meet on the web now supports sending 1080p video for all users, enabled by default"
       },
       "created_at": "2026-11-23T19:14:33.212Z"
+    },
+    {
+      "id": "how-to-practice-for-a-job-interview-with-duck-ai",
+      "company": "DuckDuckGo",
+      "tool": "Duck.ai",
+      "title": "How to Practice for a Job Interview With Duck.ai",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Ask Duck.ai to act as an interviewer for your job, answer its questions in your own words, and then ask for feedback on how clear your answers were.",
+      "status": "todo",
+      "icon": "💼",
+      "priority": "balance",
+      "proposed_at": "2026-11-24T07:35:55.144Z",
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-24T07:35:58.621Z",
+        "ok": false,
+        "ok_ok": "a cikkből nem írható útmutató"
+      }
+    },
+    {
+      "id": "how-students-can-use-duck-ai-to-explain-hard-ideas-in-plain-",
+      "company": "DuckDuckGo",
+      "tool": "Duck.ai",
+      "title": "How to Ask Duck.ai to Explain Hard Ideas in Plain English",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "When a textbook section doesn't make sense, ask Duck.ai to explain it with a everyday comparison, then ask follow-up questions until the idea clicks.",
+      "status": "done",
+      "icon": "🎓",
+      "priority": "balance",
+      "proposed_at": "2026-11-24T07:35:57.420Z",
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-24T07:35:58.621Z",
+        "ok": true,
+        "url": "https://duckduckgo.com/duckduckgo-help-pages/duckai"
+      },
+      "sugo_alapu": true,
+      "official_sources": [
+        {
+          "url": "https://duckduckgo.com/duckduckgo-help-pages/duckai",
+          "title": "Duck.ai - DuckDuckGo Help Pages"
+        }
+      ],
+      "written_at": "2026-11-24T07:36:42.746Z"
+    },
+    {
+      "id": "chatting-privately-with-duck-ai-what-to-share-and-what-to-ke",
+      "company": "DuckDuckGo",
+      "tool": "Duck.ai",
+      "title": "Chatting Privately With Duck.ai: What to Share and What to Keep to Yourself",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Duck.ai is built with privacy in mind, but the safest habit is still to leave out passwords, account numbers and other sensitive personal details from any chat.",
+      "status": "todo",
+      "icon": "🔒",
+      "priority": "balance",
+      "proposed_at": "2026-11-24T07:35:58.329Z",
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-24T07:35:58.621Z",
+        "ok": false,
+        "ok_ok": "a cikkből nem írható útmutató"
+      }
     }
   ],
   "trend_proba": [

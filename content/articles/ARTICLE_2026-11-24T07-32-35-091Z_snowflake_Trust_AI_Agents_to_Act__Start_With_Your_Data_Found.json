@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "written_at": "2026-11-24T07:34:09.785Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0039565,
+    "original_draft": "2026-11-24T07-32-35-091Z_snowflake_Trust_AI_Agents_to_Act__Start_With_Your_Data_Found.json",
+    "source_id": "snowflake",
+    "source_name": "Snowflake Blog (hivatalos)",
+    "source_link": "https://www.snowflake.com/content/snowflake-site/global/en/blog/trust-ai-agents-data-foundation",
+    "source_links": [
+      "https://www.snowflake.com/content/snowflake-site/global/en/blog/trust-ai-agents-data-foundation",
+      "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-manufacturing-institutional-knowledge"
+    ],
+    "source_snippet_len": 320,
+    "source_text_via": [
+      "kivonat",
+      "kivonat"
+    ],
+    "source_text_len": 320,
+    "source_text_key": "f08e0bdeae550307",
+    "source_overlap_words": 4,
+    "merged_from": 2,
+    "merged_theme": "Snowflake AI agents for enterprise",
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "published_at": "2026-11-24T07:34:26.220Z",
+    "slug": "ai-agents-that-take-action-why-your-company-s-data-comes-first",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 741
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with clear analogies (chatbot vs. agent, filing cabinet, air traffic control), proper attribution to Snowflake throughout, and a useful three-tiered What this means for you section. No prohibited content, no invented facts, no rankings or comparisons. The Wolfspeed and United Rentals examples are appropriately hedged as directions to explore rather than blueprints. Usable as-is.",
+      "_aiCost": 0.003195,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-24T07:35:20.413Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is a conceptual explainer about why data foundation matters for AI agents, not an introduction of a specific named feature users can go use",
+    "image_v": 2,
+    "image_at": "2026-11-24T07:37:58.885Z",
+    "seo": {
+      "meta_description": "Snowflake explains why organized, access-controlled company data must come before AI agents can take real business action.",
+      "keywords": [
+        "AI agents for business",
+        "implementing AI agents",
+        "company data for AI",
+        "AI knowledge capture",
+        "enterprise AI data preparation"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific industry examples (manufacturing, finance) to the article to improve search relevance for niche queries",
+        "Include the phrase 'AI agents' earlier in the first paragraph to strengthen topical relevance",
+        "Consider adding a brief subhead explaining what AI agents actually do for readers searching the term"
+      ],
+      "optimised_at": "2026-11-24T07:38:54.043Z"
+    },
+    "fact_check_skip": "a forrás nem olvasható (0/2: HTTP 403)",
+    "fact_check_skip_count": 1,
+    "fact_check_skip_at": "2026-11-24T07:40:03.370Z"
+  },
+  "article_markdown": "---\ntitle: \"AI Agents That Take Action: Why Your Company's Data Comes First\"\nsubtitle: \"Snowflake says organized, well-governed data is the starting point for businesses that want AI to finish real tasks.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"enterprise-ai\", \"data-governance\", \"knowledge-management\"]\n---\n\n# AI Agents That Take Action: Why Your Company's Data Comes First\n\n> **In short:** Snowflake describes a shift from AI that replies to questions toward AI agents that carry out tasks for a business. The company says a well-organized, access-controlled data foundation should come first. It also says manufacturers Wolfspeed and United Rentals are using agents to capture expert knowledge before experienced staff retire.\n\nThink about the coworker who knows which supplier always runs late, or which machine needs a special restart. That knowledge often lives in one person's head, and nobody writes it down until it is too late. Snowflake's recent announcements focus on a new kind of AI that could help with that problem, as long as the business gets its data in order first.\n\n## From answering to doing\n\nMost people have used a chatbot, which waits for a question and returns an answer. An **AI agent** is a step further. It is an AI program that can work toward a goal, such as looking up records, checking a status, or passing a task along to the next step. Think of a chatbot as a helpful reference librarian and an agent as an assistant who also goes and pulls the files, fills out the form, and sends the email.\n\nSnowflake says businesses are moving toward agents that take action, not just agents that talk. That makes the question less about what the AI knows and more about what it is allowed to touch.\n\n## Why the data foundation comes first\n\nSnowflake argues that agents are only as useful as the data behind them. Its announcement describes two pieces that work together:\n\n- **A governed data foundation**: the organized base of company information, with rules about who can see and use each part. \"Governed\" means those rules are written down and enforced, like a locked filing cabinet with a sign-out sheet.\n- **An agentic control plane**: the management layer that decides what agents can do, which information they can reach, and how their work is tracked. The term \"control plane\" comes from computer networking. Think of it as the air traffic control tower for your AI helpers.\n\nSnowflake says these pieces help enterprises \"scale\" AI, meaning move from a few small experiments to wider, dependable use across the company. If an agent is working in a messy pile of files, mistakes multiply quickly. Clean, labeled, and controlled data makes the work safer and easier to trust.\n\n## Saving know-how before it retires\n\nSnowflake's second announcement focuses on manufacturing. As veteran engineers retire, companies risk losing **institutional knowledge**, the practical know-how that experienced people build up over years and rarely put in a manual.\n\nAccording to Snowflake, Wolfspeed and United Rentals are using AI agents on the Snowflake platform to capture that kind of knowledge. The announcement shares their stories at a high level. It does not describe the exact setup, so treat these examples as a direction to explore, not a blueprint to copy.\n\n## What this means for you\n\n- **If you run or work in a business**: Ask where your team's key know-how actually lives. If the answer is \"in Dave's head,\" that is your first project, long before any AI tool enters the picture.\n- **If you lead a team**: Before you think about agents, check who can see what. Clear access rules protect customers and employees, and they make any AI tool easier to trust.\n- **If you're just getting started**: Begin with a simple habit. Write down one process you know well, including the exceptions, and store it somewhere your coworkers can find it. That is the kind of material a future AI tool will need.\n\n## Wrap-up\n\nThe big idea from Snowflake's announcements is that AI agents can move from answering questions to completing tasks, but that only works smoothly when company data is organized and governed. Wolfspeed and United Rentals show how businesses are thinking about saving expert knowledge. Snowflake's own product pages and documentation are the best place to learn what its platform offers today. Your next step is small: this week, pick one process that depends on one experienced person and write its steps down.",
+  "original_title": "Trust AI Agents to Act: Start With Your Data Foundation"
+}

@@ -1,15 +1,15 @@
 {
-  "at": "2026-11-23T19:40:02.643Z",
-  "nap": "2026-11-23",
-  "hivasok": 111,
+  "at": "2026-11-24T07:40:56.773Z",
+  "nap": "2026-11-24",
+  "hivasok": 54,
   "bukott": 0,
-  "osszMp": 1078.1,
+  "osszMp": 419.2,
   "veszettMp": 0,
   "leglassabb": {
-    "agent": "fact-check",
+    "agent": "guide",
     "provider": "openrouter",
-    "model": "minimax/minimax-m2.5",
-    "mp": 35.1,
+    "model": "anthropic/claude-haiku-5.5",
+    "mp": 25,
     "ok": true,
     "tullepes": false
   },

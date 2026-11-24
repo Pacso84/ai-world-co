@@ -1,0 +1,102 @@
+{
+  "started_at": "2026-11-24T07:32:35.568Z",
+  "drafts_total": 6,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 4,
+  "merged_total": 2,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 0,
+    "html": 4,
+    "rss": 0,
+    "kivonat": 2
+  },
+  "source_fail": [
+    {
+      "draft": "2026-11-24T07-32-35-091Z_snowflake_Trust_AI_Agents_to_Act__Start_With_Your_Data_Found.json",
+      "link": "https://www.snowflake.com/content/snowflake-site/global/en/blog/trust-ai-agents-data-foundation",
+      "hiba": "HTTP 403"
+    },
+    {
+      "draft": "2026-11-24T07-32-35-091Z_snowflake_AI_in_Manufacturing__Preserving_Institutional_Know.json",
+      "link": "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-manufacturing-institutional-knowledge",
+      "hiba": "HTTP 403"
+    }
+  ],
+  "total_cost_usd": 0.018858399999999997,
+  "by_article": [
+    {
+      "draft": "2026-11-24T07-32-35-089Z_google-gemini_See_what_6_builders_are_making_with_Gemini_4_Hydro.json",
+      "writer_output": "WRITER_2026-11-24T07-32-35-089Z_google-gemini_See_what_6_builders_are_making_with_Gemini_4_Hydro.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Google Gemini features and projects",
+      "source_via": [
+        "html",
+        "html"
+      ],
+      "source_chars": 4402,
+      "source_overlap_words": 13,
+      "cost_usd": 0.0040658,
+      "duration_ms": 15229,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-24T07-32-35-091Z_pika_Research_Preview__Pika_Enact.json",
+      "writer_output": "WRITER_2026-11-24T07-32-35-091Z_pika_Research_Preview__Pika_Enact.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 12,
+      "cost_usd": 0.0035705,
+      "duration_ms": 11218,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-23T19-10-54-311Z_zapier-blog_Google_Sheets_automation_ideas_to_organize_your_wo.json",
+      "writer_output": "WRITER_2026-11-23T19-10-54-311Z_zapier-blog_Google_Sheets_automation_ideas_to_organize_your_wo.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 26,
+      "cost_usd": 0.0044789,
+      "duration_ms": 18566,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-24T07-32-35-091Z_snowflake_Trust_AI_Agents_to_Act__Start_With_Your_Data_Found.json",
+      "writer_output": "WRITER_2026-11-24T07-32-35-091Z_snowflake_Trust_AI_Agents_to_Act__Start_With_Your_Data_Found.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Snowflake AI agents for enterprise",
+      "source_via": [
+        "kivonat",
+        "kivonat"
+      ],
+      "source_chars": 320,
+      "source_overlap_words": 4,
+      "cost_usd": 0.0039565,
+      "duration_ms": 16909,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "termek_hir": 2,
+  "termek_extra": 0,
+  "finished_at": "2026-11-24T07:34:09.786Z",
+  "duration_seconds": 94.218
+}

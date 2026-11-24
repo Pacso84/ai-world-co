@@ -1,0 +1,64 @@
+{
+  "ok": 2,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.00895284,
+  "at": "2026-11-24T07:39:50.586Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 2,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 2,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-students-can-use-duck-ai-to-explain-hard-ideas-in-plain-.json",
+      "cim": "How to Ask Duck.ai to Explain Hard Ideas in Plain English",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "A konkrét limit (öt beszélgetés) és a helyi tárolás állítása ellenőrizhető részleteknek tűnnek, amelyeket nem tudok megerősíteni; jobb jelezni, mint feltételezni, hogy pontosak"
+    },
+    {
+      "file": "ARTICLE_2026-11-24T07-32-35-091Z_snowflake_Trust_AI_Agents_to_Act__Start_With_Your_Data_Found.json",
+      "cim": "Trust AI Agents to Act: Start With Your Data Foundation",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/2: HTTP 403)",
+      "status": 403
+    },
+    {
+      "file": "ARTICLE_2026-11-24T07-32-35-091Z_pika_Research_Preview__Pika_Enact.json",
+      "cim": "Research Preview: Pika Enact",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényszerű állítása alátámasztott a forrásszövegben."
+    },
+    {
+      "file": "ARTICLE_2026-11-24T07-32-35-089Z_google-gemini_See_what_6_builders_are_making_with_Gemini_4_Hydro.json",
+      "cim": "See what 6 builders are making with Gemini 4 Hydrogen",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „A 3D desert ranch.** One builder ran the same prompt on an earlier model and on Hydrogen, ”",
+      "modell_hu": "A factual detail (the 1 minute time) is omitted from the desert ranch project description"
+    },
+    {
+      "file": "ARTICLE_2026-11-23T19-10-54-311Z_zapier-blog_Google_Sheets_automation_ideas_to_organize_your_wo.json",
+      "cim": "Google Sheets automation ideas to organize your work",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrásszöveget – a főbb részletek (szerző, dátum, lépések, funkciók, példák) egyeznek."
+    },
+    {
+      "file": "ARTICLE_2026-08-04T01-24-26-497Z_picsart_All_about_the_Grok_text_to_speech_model_and_how_to.json",
+      "cim": "All about the Grok text to speech model and how to use it",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: HTTP 403)",
+      "status": 403
+    }
+  ]
+}
