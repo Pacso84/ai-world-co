@@ -1,0 +1,63 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.0056721,
+  "at": "2026-11-24T19:18:39.626Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 1,
+    "kihagyva": 2,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-24T19-14-08-985Z_google-workspace_New_study_enhancements_for_Flashcards_in_Gemini_No.json",
+      "cim": "New study enhancements for Flashcards in Gemini Notebook",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Minden ténybeli állítás egyezik a forrással: képek a feltöltött anyagokból, időmérő gyakorláshoz, mobilalkalmazásból emlékeztetők, elérhető most minden Google Workspace ügyfél/Individual előfizető/személyes fiók esetében, nincs admin vezérlés, mindkét kiadási csatornán elérhető."
+    },
+    {
+      "file": "ARTICLE_2026-11-24T07-32-35-091Z_snowflake_Trust_AI_Agents_to_Act__Start_With_Your_Data_Found.json",
+      "cim": "Trust AI Agents to Act: Start With Your Data Foundation",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/2: HTTP 403)",
+      "status": 403
+    },
+    {
+      "file": "ARTICLE_2026-08-04T01-24-26-497Z_picsart_All_about_the_Grok_text_to_speech_model_and_how_to.json",
+      "cim": "All about the Grok text to speech model and how to use it",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: HTTP 403)",
+      "status": 403
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-ideogram-character-for-consistent-ai-mascot-visua.json",
+      "cim": "How to Use Ideogram Character for Consistent AI Mascot Visuals",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-07-22T10-14-03-157Z_deeparteffects_AI_Image_Upscaling_Tools___Best_AI_Upscaler_Softwa.json",
+      "cim": "AI Image Upscaling Tools – Best AI Upscaler Software 2025",
+      "tipus": "hir",
+      "eredmeny": "gyanu",
+      "ok_hu": "A cikk a ChatGPT képnagyításáról szól, de a forrás a Deep Art Effects és más eszközökről — nincs átfedés"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-kling-ai-video-templates-in-picsart-flow.json",
+      "cim": "How to use Kling AI video templates in Picsart Flow",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}
