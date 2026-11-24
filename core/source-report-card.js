@@ -23,6 +23,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { CSALAS_FIGYELO_BE, csalasForras } from './csalas-figyelo.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -119,6 +120,8 @@ const iso = (d) => new Date(d).toISOString().slice(0, 10);
 export function judgeSource(m) {
   // m: { feedAgeDays, published30d, truthBlocks, totalAttempts, alreadyDisabled }
   if (m.alreadyDisabled) return { verdict: 'disabled', auto: false, reason: 'már ki van kapcsolva' };
+  // 🛡️ 2026-11-24: csalás-forrás kikapcsolt figyelővel — cikk nem is jöhet belőle, ne legyen „nem termel” javaslat.
+  if (m.csalasSzunetel) return { verdict: 'disabled', auto: false, reason: 'szünetel — a csalás-figyelő (CSALAS_FIGYELO_BE) ki van kapcsolva' };
 
   if (m.feedAgeDays != null && m.feedAgeDays > DEAD_FEED_DAYS) {
     return {
@@ -351,7 +354,8 @@ export async function runReportCard({ dryRun = false, fetchFn = fetch, stats } =
 
   for (const s of feeds.sources) {
     const a = arts[s.id] || { published30d: 0, truthBlocks: 0, totalAttempts: 0, truthUnfixed: 0, lastArticle: '' };
-    const age = s.enabled === false ? null : await feedAgeDays(s.url, fetchFn);
+    const csalasSzunetel = csalasForras(s) && !CSALAS_FIGYELO_BE;
+    const age = s.enabled === false || csalasSzunetel ? null : await feedAgeDays(s.url, fetchFn);
     const m = {
       feedAgeDays: age,
       published30d: a.published30d,
@@ -361,7 +365,7 @@ export async function runReportCard({ dryRun = false, fetchFn = fetch, stats } =
       totalAttempts: a.totalAttempts,
       alreadyDisabled: s.enabled === false
     };
-    const j = judgeSource(m);
+    const j = judgeSource({ ...m, csalasSzunetel });
     card[s.id] = {
       name: s.name, ...m,
       feedAgeDays: age == null ? null : Math.round(age),

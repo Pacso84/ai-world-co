@@ -6,7 +6,9 @@ import {
   CSALAS_FIGYELO_BE, CSALAS_EXTRA_NAPI, CSALAS_MAX_KOR_NAP, CSATORNAK,
   csalasForras, csalasFriss, csalasExtraMaradek, csalasHir, csalasExtraHir,
   CSALAS_SZURO_RENDSZER, csalasSzuroPrompt, csalasDontesek,
+  CSALAS_FORRASOK, csalasSzetosztas, csalasVazlatMeta, csalasGuardFrissit,
 } from './csalas-figyelo.js';
+import { readFileSync } from 'node:fs';
 
 let hiba = 0;
 const t = (nev, fn) => { try { fn(); console.log('  ✅ ' + nev); } catch (e) { hiba++; console.log('  ❌ ' + nev + '\n     ' + e.message); } };
@@ -99,6 +101,105 @@ t('🧩 hibás JSON → null', () => {
   assert.equal(csalasDontesek('nem json', 1), null);
   assert.equal(csalasDontesek('', 1), null);
   assert.equal(csalasDontesek('{"valami":1}', 1), null);
+});
+
+// ── 5. rész: források, szétosztás, vázlat-jelölés, őrszem ──────────────────────────────────────────────
+
+t('📡 forrásfájl-őr: pontosan a két jóváhagyott csalás-forrás (user 11-21), más nem kerülhet be', () => {
+  const feeds = JSON.parse(readFileSync(new URL('../sources/rss-feeds.json', import.meta.url), 'utf-8'));
+  const cs = feeds.sources.filter(s => s.csalas === true);
+  assert.deepEqual(cs.map(s => [s.id, s.url]).sort(), [
+    ['google-safety', 'https://blog.google/technology/safety-security/rss/'],
+    ['ic3-psa', 'https://www.ic3.gov/PSA/RSS'],
+  ]);
+  assert.deepEqual(CSALAS_FORRASOK, { 'ic3-psa': 'https://www.ic3.gov/PSA/RSS', 'google-safety': 'https://blog.google/technology/safety-security/rss/' });
+  for (const s of cs) {
+    assert.equal(s.category, 'scam-official', s.id);
+    assert.equal(s.enabled, true, s.id);
+    assert.equal(s.country, 'US', s.id);
+    assert.equal(s.language, 'en', s.id);
+    assert.ok(/11-21/.test(s.comment || ''), s.id + ': a comment-ben a 11-21-i user-jóváhagyás');
+    assert.ok(csalasForras(s), s.id);
+  }
+  // Csalás-kategóriát csak csalas-jelölésű forrás kaphat.
+  assert.ok(feeds.sources.filter(s => s.category === 'scam-official').every(s => s.csalas === true));
+});
+
+const J = (cim) => ({ feedConfig: { id: 'ic3-psa' }, item: { title: cim, link: 'https://www.ic3.gov/PSA/' + cim } });
+
+t('🧮 szétosztás: csalás → vázlat, „nem” → eldobva, döntés nélküli → újrapróba', () => {
+  const jeloltek = [J('a'), J('b'), J('c')];
+  const r = csalasSzetosztas(jeloltek, [
+    { index: 0, csalas: true, csatorna: 'sms', ok: 'toll text' },
+    { index: 1, csalas: false, csatorna: null, ok: 'aimed at officials' },
+  ]);
+  assert.equal(r.csalas.length, 1);
+  assert.equal(r.csalas[0].jelolt, jeloltek[0]);
+  assert.equal(r.csalas[0].csatorna, 'sms');
+  assert.equal(r.csalas[0].ok, 'toll text');
+  assert.deepEqual(r.eldobva, [{ jelolt: jeloltek[1], cim: 'b', ok: 'aimed at officials' }]);
+  assert.deepEqual(r.dontetlen, [jeloltek[2]]);
+});
+
+t('🧮 szétosztás: csalás csatorna nélkül → eldobva (kép nem készülhetne), indokkal', () => {
+  const r = csalasSzetosztas([J('a')], [{ index: 0, csalas: true, csatorna: null, ok: 'x' }]);
+  assert.equal(r.csalas.length, 0);
+  assert.equal(r.eldobva.length, 1);
+  assert.ok(/csatorn/i.test(r.eldobva[0].ok), r.eldobva[0].ok);
+});
+
+t('🧮 szétosztás: sikertelen hívás (null) → minden újrapróba, semmi sem eldobva', () => {
+  const jeloltek = [J('a'), J('b')];
+  const r = csalasSzetosztas(jeloltek, null);
+  assert.deepEqual(r, { csalas: [], eldobva: [], dontetlen: jeloltek });
+});
+
+t('🧮 szétosztás: ugyanarra az indexre kétszer jött döntés → csak az első számít', () => {
+  const r = csalasSzetosztas([J('a')], [
+    { index: 0, csalas: true, csatorna: 'email', ok: '1' },
+    { index: 0, csalas: false, csatorna: null, ok: '2' },
+  ]);
+  assert.equal(r.csalas.length, 1);
+  assert.equal(r.eldobva.length, 0);
+});
+
+t('🏷️ vázlat-jelölés: _meta.csalas + 10-es relevancia „scam” kategóriával', () => {
+  const m = csalasVazlatMeta({ csatorna: 'call', ok: 'fake bank call' }, { id: 'google-safety' });
+  assert.deepEqual(m.csalas, { csatorna: 'call', ok: 'fake bank call', forras_id: 'google-safety' });
+  assert.deepEqual(m.relevance, { relevant: true, score: 10, category: 'scam', reason: 'fake bank call' });
+});
+
+t('🛰️ őrszem: saját figyelo_* mezők; a kép-lépés at-je és kep_* mezői érintetlenek', () => {
+  const regi = { at: '2026-11-23T19:00:00.000Z', kep_at: '2026-11-23T19:00:00.000Z', kep_hibak: [{ slug: 's' }], figyelo_jelolt: 99 };
+  const most = new Date('2026-11-24T12:00:00Z');
+  const g = csalasGuardFrissit(regi, { jelolt: 3, csalas: 1, eldobva: [{ cim: 'b', ok: 'y' }] }, most);
+  assert.equal(g.at, regi.at);
+  assert.equal(g.kep_at, regi.kep_at);
+  assert.deepEqual(g.kep_hibak, regi.kep_hibak);
+  assert.equal(g.figyelo_at, most.toISOString());
+  assert.equal(g.figyelo_jelolt, 3);
+  assert.equal(g.figyelo_csalas, 1);
+  assert.deepEqual(g.figyelo_eldobva, [{ cim: 'b', ok: 'y' }]);
+  assert.equal('figyelo_hiba' in g, false);
+  assert.notEqual(g, regi, 'új objektum, a régit nem módosítja');
+  assert.equal(regi.figyelo_jelolt, 99);
+});
+
+t('🛰️ őrszem: hibánál figyelo_hiba; a következő jó futás törli', () => {
+  const most = new Date('2026-11-24T12:00:00Z');
+  const rossz = csalasGuardFrissit({}, { jelolt: 2, csalas: 0, eldobva: [], hiba: 'AI router elesett' }, most);
+  assert.equal(rossz.figyelo_hiba, 'AI router elesett');
+  const jo = csalasGuardFrissit(rossz, { jelolt: 0, csalas: 0, eldobva: [] }, most);
+  assert.equal('figyelo_hiba' in jo, false);
+});
+
+t('🛰️ őrszem: hibás régi tartalom (null, tömb, szöveg) → tiszta objektum', () => {
+  const most = new Date('2026-11-24T12:00:00Z');
+  for (const regi of [null, undefined, [1, 2], 'x']) {
+    const g = csalasGuardFrissit(regi, { jelolt: 0, csalas: 0, eldobva: [] }, most);
+    assert.equal(Array.isArray(g), false);
+    assert.equal(g.figyelo_at, most.toISOString());
+  }
 });
 
 if (hiba) { console.log(`\n❌ ${hiba} hiba`); process.exit(1); }

@@ -33,6 +33,10 @@ import { isStaticPage, googleNewsForras, keszulekBemutato } from '../../core/sta
 import { cimSzuronAtmegy, datumCimPotlas, kulcsszoSzuroKell } from '../../core/forras-cimszuro.js';   // 🎯 2026-10-30 forrásonkénti címszűrő
 import { tisztaUrl, latottLinkek, htmlSzoveg } from '../../core/forras-letoltes.js';   // ✂️ 2026-11-01 szóközös linkek
 import { hirfolyamSzovegIr, vazlatKivonatIr } from '../../core/forras-cache.js';   // 🔒 2026-11-02 a teljes szöveg git-en kívül
+import {
+  CSALAS_FIGYELO_BE, csalasForras, csalasFriss, CSALAS_SZURO_RENDSZER, csalasSzuroPrompt, csalasDontesek,
+  csalasSzetosztas, csalasVazlatMeta, csalasGuardFrissit,
+} from '../../core/csalas-figyelo.js';   // 🛡️ 2026-11-24 csalás-figyelő ága (terv 5. rész)
 
 // ===================================================================
 // SETUP
@@ -45,6 +49,7 @@ const FEEDS_PATH = join(PROJECT_ROOT, 'sources', 'rss-feeds.json');
 const DRAFTS_DIR = join(PROJECT_ROOT, 'content', 'drafts');
 const LOGS_DIR = join(PROJECT_ROOT, 'logs');
 const SEEN_ITEMS_PATH = join(__dirname, 'seen-items.json');
+const CSALAS_GUARD_PATH = join(PROJECT_ROOT, 'memory', 'csalas-guard.json');
 
 const AGENT_NAME = 'rss-scraper';
 
@@ -256,7 +261,8 @@ ${skillsBlock('rss-scraper')}`;
 // A vázlat kivonata: ennyit használ az író is (core/iro-forras.js: content_snippet.slice(0, 1500)).
 const KIVONAT_MAX = 1500;
 
-function saveDraft(item, feedConfig, relevance) {
+// extraMeta (2026-11-24): a csalás-ág { csalas: {...} }-t ad — a _meta-ba terül (core/csalas-figyelo.js csalasVazlatMeta).
+function saveDraft(item, feedConfig, relevance, extraMeta = {}) {
   if (!existsSync(DRAFTS_DIR)) mkdirSync(DRAFTS_DIR, { recursive: true });
 
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
@@ -280,7 +286,8 @@ function saveDraft(item, feedConfig, relevance) {
       source_id: feedConfig.id,
       source_name: feedConfig.name,
       source_country: feedConfig.country,
-      relevance: relevance
+      relevance: relevance,
+      ...extraMeta
     },
     title: item.title,
     link: item.link,
@@ -339,8 +346,15 @@ async function main() {
   console.log('━━━ 1. FÁZIS: Letöltés + kulcsszó előszűrés (ingyenes) ━━━\n');
 
   const candidates = []; // { feedConfig, item, snippet }
+  // 🛡️ CSALÁS-FIGYELŐ (2026-11-24, core/csalas-figyelo.js): a két hivatalos csalás-forrás (ic3-psa, google-safety)
+  // tételei KÜLÖN listába mennek, saját besorolással. A rendes kulcsszó-, közönség- és készülék-kapu NEM fut rájuk,
+  // és rendes hír sem lesz belőlük.
+  const csalasJeloltek = []; // { feedConfig, item, snippet }
 
   for (const feedConfig of enabledFeeds) {
+    // Kikapcsolt figyelőnél a csalás-forrást le sem töltjük, és semmit nem jelölünk látottnak
+    // (bekapcsoláskor a 7 napos frissesség-kapu úgyis kiszűri a régieket).
+    if (csalasForras(feedConfig) && !CSALAS_FIGYELO_BE) continue;
     if (!seen[feedConfig.id]) seen[feedConfig.id] = [];
     // ✂️ LEVÁGOTT összevetés (2026-11-01): a régi, szóközös bejegyzések (21 Dropbox-link) is találjanak
     // a lent már levágott új linkre — különben minden régi Dropbox-hír újként jönne vissza.
@@ -364,6 +378,21 @@ async function main() {
     for (const it of recent) {
       const tiszta = tisztaUrl(it?.link);
       if (tiszta) it.link = tiszta;
+    }
+
+    if (csalasForras(feedConfig)) {
+      let uj = 0, latott = 0, regi = 0;
+      for (const item of recent) {
+        if (!item.link) continue;
+        if (seenLinks.has(item.link)) { latott++; continue; }
+        // 7 napnál régebbi (vagy dátum nélküli) tétel: látott lesz, hogy holnap se jöjjön vissza.
+        if (!csalasFriss(item)) { regi++; seen[feedConfig.id].push(item.link); continue; }
+        csalasJeloltek.push({ feedConfig, item, snippet: item.contentSnippet || item.content || '' });
+        uj++;
+      }
+      stats.items_seen_before += latott;
+      console.log(`🛡️ ${feedConfig.name.slice(0, 28).padEnd(28)} ${uj} csalás-jelölt | ${latott} régi${regi ? ` | ${regi} 7 napnál régebbi` : ''}`);
+      continue;
     }
 
     // LISTAOLDAL ELSŐ FUTÁSA (2026-09-26): a dátum nélküli bejegyzések csak
@@ -503,6 +532,57 @@ async function main() {
         stats.items_saved++;
         console.log(`   ✅ [${decision.score}] ${candidate.item.title?.slice(0, 60)}`);
       }
+    }
+  }
+
+  // ===== 2b. FÁZIS: csalás-besorolás (core/csalas-figyelo.js) =====
+  // Egy köteg-hívás. „Csalás” → csalás-vázlat; „nem” → eldobva (NEM rendes hír), látott lesz. Sikertelen
+  // hívásnál semmi sem lesz látott — a következő futás újra próbálja. Az őrszem bekapcsolt figyelőnél MINDEN
+  // futásban íródik (jelölt nélkül is), hogy a „nem futott” látsszon; kikapcsolva a fájlt nem írjuk
+  // (a napi riport frissesség-térképe a hiányzó fájlt kihagyja — core/daily-report.js).
+  if (CSALAS_FIGYELO_BE) {
+    const guardAdat = { jelolt: csalasJeloltek.length, csalas: 0, eldobva: [] };
+    if (csalasJeloltek.length && stats.ai_calls >= args.maxAiCalls) {
+      guardAdat.hiba = `AI-hívás limit (${args.maxAiCalls}) — a ${csalasJeloltek.length} csalás-jelölt a következő futásban`;
+    } else if (csalasJeloltek.length) {
+      console.log(`\n━━━ 2b. FÁZIS: csalás-besorolás (${csalasJeloltek.length} tétel) ━━━\n`);
+      try {
+        const response = await ask(
+          csalasSzuroPrompt(csalasJeloltek.map(j => ({ title: j.item.title, snippet: j.snippet }))),
+          { agentName: AGENT_NAME, systemPrompt: CSALAS_SZURO_RENDSZER, maxTokens: 2000, jsonMode: true }
+        );
+        stats.ai_calls++;
+        stats.ai_cost_usd += response?.costUsd || 0;
+        const dontesek = response ? csalasDontesek(response.text, csalasJeloltek.length) : null;
+        const sz = csalasSzetosztas(csalasJeloltek, dontesek);
+        for (const c of sz.csalas) {
+          const meta = csalasVazlatMeta(c, c.jelolt.feedConfig);
+          saveDraft(c.jelolt.item, c.jelolt.feedConfig, meta.relevance, { csalas: meta.csalas });
+          seen[c.jelolt.feedConfig.id].push(c.jelolt.item.link);
+          stats.items_saved++;
+          console.log(`   🛡️ [${c.csatorna}] ${String(c.jelolt.item.title || '').slice(0, 60)}`);
+        }
+        for (const e of sz.eldobva) {
+          seen[e.jelolt.feedConfig.id].push(e.jelolt.item.link);
+          console.log(`   ⏭️ nem csalás-hír: ${e.cim.slice(0, 60)} — ${e.ok.slice(0, 60)}`);
+        }
+        guardAdat.csalas = sz.csalas.length;
+        guardAdat.eldobva = sz.eldobva.map(({ cim, ok }) => ({ cim, ok }));
+        if (!response) guardAdat.hiba = 'a csalás-besoroló hívása sikertelen — a következő futás újrapróbálja';
+        else if (!dontesek) guardAdat.hiba = 'a csalás-besoroló válasza nem értelmezhető — a következő futás újrapróbálja';
+        else if (sz.dontetlen.length) guardAdat.hiba = `${sz.dontetlen.length} tételre nem jött döntés — a következő futás újrapróbálja`;
+      } catch (e) {
+        guardAdat.hiba = `csalás-besorolás hiba: ${String(e?.message || e).split('\n')[0].slice(0, 200)}`;
+      }
+      if (guardAdat.hiba) console.log(`   ⚠️ ${guardAdat.hiba}`);
+    }
+    try {
+      let regi = {};
+      try { regi = JSON.parse(readFileSync(CSALAS_GUARD_PATH, 'utf-8')); } catch { /* nincs még fájl */ }
+      mkdirSync(dirname(CSALAS_GUARD_PATH), { recursive: true });
+      writeFileSync(CSALAS_GUARD_PATH, JSON.stringify(csalasGuardFrissit(regi, guardAdat), null, 2), 'utf-8');
+    } catch (e) {
+      console.log(`   ⚠️ csalas-guard.json nem írható: ${e.message}`);
     }
   }
 

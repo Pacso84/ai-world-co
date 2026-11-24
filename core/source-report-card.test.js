@@ -570,6 +570,25 @@ await (async () => {
   });
 })();
 
+// 🛡️ CSALÁS-FORRÁS KIKAPCSOLT FIGYELŐVEL (2026-11-24). A két csalás-forrásból (ic3-psa, google-safety) a kapcsoló
+// (core/csalas-figyelo.js CSALAS_FIGYELO_BE) bekapcsolásáig NEM IS LEHET cikk — a „🔎 Nem termel … érdemes megnézni,
+// kell-e még” sor a usert a jóváhagyott forrás kidobására biztatná. Kikapcsolva: szünetel, nem javaslat.
+await (async () => {
+  const { CSALAS_FIGYELO_BE } = await import('./csalas-figyelo.js');
+  const eredmeny = await runReportCard({ dryRun: true, fetchFn: halottFeed, stats: {} });
+  t('🛡️ csalás-forrás: kikapcsolt figyelőnél szünetel, nem kerül a „Nem termel” javaslatok közé', () => {
+    for (const id of ['ic3-psa', 'google-safety']) {
+      const c = eredmeny.card[id];
+      assert.ok(c, id + ' nincs a bizonyítványban');
+      if (CSALAS_FIGYELO_BE) continue;   // bekapcsolva a rendes szabályok érvényesek
+      assert.equal(c.verdict, 'disabled', id + ': ' + c.verdict);
+      assert.ok(/csalás-figyelő/.test(c.reason), id + ': ' + c.reason);
+      assert.ok(!eredmeny.proposals.some(p => p.id === id), id + ' a javaslatok között');
+      assert.ok(!eredmeny.autoDisabled.some(d => d.id === id), id + ' automatikusan kikapcsolva');
+    }
+  });
+})();
+
 t('A JAVÍTÁS TÉNYLEG SZÁMOL: az éles naplóból >0 blokk jut el a mérőig', () => {
   // Ez a lépés bukik, ha a mérő újra egy ürülő mappát néz. A régi kód
   // ÖSSZESEN 1 blokkot talált 57 forrásra — a napló 29-et rögzít.

@@ -867,6 +867,30 @@
       "enabled": true,
       "comment": "Felvéve user-jóváhagyással 2026-11-23 (source-scout, 100/100; kézzel ellenőrizve: 16 tétel, utolsó 11-18, ~fele hétköznapi termékhír — Music/SFX/Speech/ChatGPT-ben)",
       "audience_gate": "everyday"
+    },
+    {
+      "id": "ic3-psa",
+      "name": "FBI IC3 nyilvános figyelmeztetések (hivatalos, csalás-figyelő)",
+      "url": "https://www.ic3.gov/PSA/RSS",
+      "category": "scam-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "csalas": true,
+      "comment": "Csalás-figyelő forrás — user-jóváhagyás 2026-11-21 („Mindkettőt”). Csak a csalás-ágon fut (core/csalas-figyelo.js, kapcsoló CSALAS_FIGYELO_BE); a „nem csalás” tétele eldobódik, NEM rendes hír. A hírfolyam kivonat nélküli (csak cím) — 2026-11-24 kipróbálva: 5 tétel."
+    },
+    {
+      "id": "google-safety",
+      "name": "Google Safety & Security blog (hivatalos, csalás-figyelő)",
+      "url": "https://blog.google/technology/safety-security/rss/",
+      "category": "scam-official",
+      "priority": 2,
+      "language": "en",
+      "country": "US",
+      "enabled": true,
+      "csalas": true,
+      "comment": "Csalás-figyelő forrás — user-jóváhagyás 2026-11-21 („Mindkettőt”). Csak a csalás-ágon fut (core/csalas-figyelo.js, kapcsoló CSALAS_FIGYELO_BE); a „nem csalás” tétele (pl. termékfunkció-bejelentés) eldobódik, NEM rendes hír. 2026-11-24 kipróbálva: 20 tétel."
     }
   ],
   "categories": {
@@ -881,6 +905,10 @@
     "tech-media": {
       "description": "KIKAPCSOLVA - más hírmagazinok, nem másolunk",
       "scrape_frequency": "never"
+    },
+    "scam-official": {
+      "description": "Hivatalos fogyasztóvédelmi csalás-figyelmeztetések — CSAK a csalás-figyelő ága (core/csalas-figyelo.js), rendes hír nem lesz belőlük",
+      "scrape_frequency": "every_run"
     }
   },
   "future_sources_todo": [

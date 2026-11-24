@@ -20,6 +20,13 @@ const NAP_MS = 24 * 3600 * 1000;
 // Hibás órájú forrás: kis jövőbeli csúszás még elfogadott, nagy nem.
 const JOVO_TURES_MS = 1 * NAP_MS;
 
+// A két jóváhagyott forrás (user 11-21: „Mindkettőt”). A tesztje a sources/rss-feeds.json-t is ehhez méri:
+// más csalás-forrás user-jóváhagyás nélkül nem kerülhet be.
+export const CSALAS_FORRASOK = {
+  'ic3-psa': 'https://www.ic3.gov/PSA/RSS',
+  'google-safety': 'https://blog.google/technology/safety-security/rss/',
+};
+
 export function csalasForras(feedConfig) {
   return feedConfig?.csalas === true;
 }
@@ -96,4 +103,54 @@ export function csalasDontesek(text, n) {
     kesz.push({ index, csalas, csatorna, ok: typeof d.ok === 'string' ? d.ok : '' });
   }
   return kesz;
+}
+
+// ── 5. rész (2026-11-24): a hírgyűjtő ága — szétosztás, vázlat-jelölés, őrszem ──────────────────────────
+
+// A besoroló döntései (csalasDontesek kimenete) → mi lesz vázlat, mi eldobva, mi marad újrapróbára.
+// `dontesek === null` (sikertelen hívás / értelmezhetetlen válasz): SEMMI sem dől el — a hírgyűjtő ilyenkor
+// egyik tételt sem jelöli látottnak, a következő futás újra próbálja.
+// Csalás csatorna nélkül → eldobva: a kép-sablon csatornából készül (4. rész), csatorna nélkül nem lenne kép.
+export function csalasSzetosztas(jeloltek, dontesek) {
+  const lista = Array.isArray(jeloltek) ? jeloltek : [];
+  const ki = { csalas: [], eldobva: [], dontetlen: [] };
+  if (!Array.isArray(dontesek)) { ki.dontetlen = lista; return ki; }
+  const eldontve = new Set();
+  for (const d of dontesek) {
+    const jelolt = lista[d?.index];
+    if (!jelolt || eldontve.has(d.index)) continue;
+    eldontve.add(d.index);
+    const cim = String(jelolt.item?.title ?? '');
+    if (d.csalas === true && d.csatorna) ki.csalas.push({ jelolt, csatorna: d.csatorna, ok: d.ok || '' });
+    else if (d.csalas === true) ki.eldobva.push({ jelolt, cim, ok: 'csalás, de a besoroló nem adott csatornát' + (d.ok ? ` (${d.ok})` : '') });
+    else ki.eldobva.push({ jelolt, cim, ok: d.ok || '' });
+  }
+  ki.dontetlen = lista.filter((_, i) => !eldontve.has(i));
+  return ki;
+}
+
+// A csalás-vázlat _meta-kiegészítése (a hírgyűjtő saveDraft-ja a _meta-ba teríti).
+export function csalasVazlatMeta(dontes, feedConfig) {
+  const ok = dontes?.ok || '';
+  return {
+    csalas: { csatorna: dontes?.csatorna ?? null, ok, forras_id: feedConfig?.id ?? null },
+    relevance: { relevant: true, score: 10, category: 'scam', reason: ok },
+  };
+}
+
+// memory/csalas-guard.json frissítése a hírgyűjtő futása után. A fájlon a kép-lépés (4. rész) is osztozik:
+// az `at` és a kep_* mezők az övéi — ezeket NEM bántjuk. A hírgyűjtő SAJÁT figyelo_* mezőket ír, minden
+// futásban (akkor is, ha nem volt jelölt), hogy a „nem futott” is látsszon. Hibánál figyelo_hiba, a következő
+// jó futás törli.
+export function csalasGuardFrissit(regi, { jelolt = 0, csalas = 0, eldobva = [], hiba } = {}, now = new Date()) {
+  const alap = regi && typeof regi === 'object' && !Array.isArray(regi) ? { ...regi } : {};
+  delete alap.figyelo_hiba;
+  Object.assign(alap, {
+    figyelo_at: now.toISOString(),
+    figyelo_jelolt: jelolt,
+    figyelo_csalas: csalas,
+    figyelo_eldobva: eldobva,
+  });
+  if (hiba) alap.figyelo_hiba = String(hiba);
+  return alap;
 }
