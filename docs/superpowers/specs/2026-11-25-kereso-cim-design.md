@@ -1,5 +1,30 @@
 # Kereső-cím csiszoló (adatvezérelt SEO-javítás) — design (2026-11-25)
 
+## 0. ⚠️ BŐVÍTÉS (user 11-25 este — ez az ELSŐDLEGES, a lenti 1–8. a 4. rész)
+User: „jó lenne optimalizálni az összes mindent amit írtunk! azért volt a seo agent! nem azért hogy tippeket adjon!” →
+a bővített tervre: „oké csináld!”. Az SEO-agent munkája július óta nem jutott ki (`meta_description` ↔ build
+`seo.description`); a 924 élő cikk mindegyikéhez van leírás (814 jó hosszú, 1 áras, 11 összehasonlító szavas, 4 sablonos);
+644 cím > 60 karakter, ebből 402-nél a `<title>` csonkolt.
+
+**Részek (egyszerre 1):**
+1. **Bekötés + kapuk + új SEO-agent + őrök (kapcsoló KI)** → 10 minta a user elé.
+   - `core/seo-kapuk.js`: a 6.5 kapui KÖZÖS modulban (a 4. rész is ezt használja) + „with our guide”-sablon tiltás.
+   - SEO-agent v2: a TELJES cikkből (cím, alcím, In short, H2-k, első ~2500 kar.) `seo_title` (25–60) + `meta_description`
+     (120–158) — tippek NINCSENEK. Modell: az író modellje (Claude Haiku 5.5, minőség-először). `_meta.seo.v = 2`.
+     Kapu-bukás → 1 újrapróba a hibával → ha úgy is bukik: `seo.v = 2, seo.eles = false` (az oldal a régi marad), riport-szám.
+   - Tömeges mód: `--atiras N` (v<2 cikkek, legolvasottabb elöl), új cikk a megjelenéskor magától v2.
+   - VÉDETT oldalak: Bing ≥100 megjelenés ÉS átlag feletti kattintási arány (ma pl. Stable Diffusion 9,6%) → a tömeges kör
+     NEM nyúl hozzájuk (`seo.megtartva = true`), őket csak a 4. rész mért csiszolása kezelheti.
+     Lista: `memory/seo-vedett.json` (a Bing-lekérő írja; ha nincs friss lista, a tömeges kör nem indul).
+   - build: angol cikkoldalon, ha `SEO_ELES_BE` (core/seo-kapuk.js) és `seo.v === 2 && seo.eles !== false && !seo.megtartva`
+     → `<title>` = cimTag(seo_title), `<meta name="description">` = meta_description. og:*, twitter:*, JSON-LD, H1,
+     hu/es változatlan. (A 4. rész élő köre ezt felülírja.)
+   - ŐRÖK: (a) állandó teszt: minden `_meta` mező, amit a build/core olvas, a valódi cikkekben vagy egy író kódjában létezik
+     (a `seo.description` ma ezen bukott volna); (b) kimenet-őr: élő v2-es angol cikk buildelt `<title>`/leírása = az elvárt.
+2. **Kapcsoló BE + tömeges angol kör a CI-ben** (100 cikk / futás → ~3 nap, ~$2; napi $1 plafon alatt).
+3. **hu/es**: a fordító lefordítja a `seo_title` + `meta_description` párt (nem angol oldalon nincs angol mondat).
+4. **Heti Bing-mért csiszolás** a top oldalakra (a lenti 1–8. pont).
+
 ## 1. Szándék — miért
 A user (11-25): „örülnék, ha az SEO-javítások javítások lennének, ne csak tárolások!” Majd: „hogy a leghatékonyabb?” →
 a javasolt 1. utat választotta („oké”).
@@ -34,7 +59,7 @@ ingyenes, önjáró, és visszamérhető.
 - A hu/es oldalak (mérve: elhanyagolható Bing-forgalom; a /hu/ ki is van zárva a mérésből).
 - Google-adat (Search Console API nincs bekötve; a Google a forgalom ~2%-ánál is kevesebb).
 - Belső linkek a top oldalakra — külön, 2. kör (a 3 hónapos kereső-tervben).
-- Az SEO-agent `meta_description` mezőjének globális bekötése (lásd 5. — saját döntés).
+- ~~Az SEO-agent `meta_description` mezőjének globális bekötése~~ → FELÜLÍRVA a 0. bővítéssel (user: minden cikk).
 
 ## 4. Anti-célok (ha ez történik, akkor is kudarc)
 - A cím/leírás olyat ígér, amit a cikk nem ad meg (ÍGÉRET-FEDEZET, style-guide §3b).
