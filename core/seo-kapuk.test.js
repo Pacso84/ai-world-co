@@ -10,7 +10,7 @@ import { dirname, join } from 'path';
 import { cimTag } from './title-tag.js';
 import {
   SEO_ELES_BE, CIM_MIN, CIM_MAX, LEIRAS_MIN, LEIRAS_MAX,
-  seoKapuk, igeretKapuk, keresoFej, fejCimEsLeiras, withBrand
+  seoKapuk, igeretKapuk, keresoFej, fejCimEsLeiras, withBrand, SITE_NAME
 } from './seo-kapuk.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -86,7 +86,7 @@ t('keresoFej: a cikk azóta megváltozott, a cím már nem fedezett → null', (
   assert.equal(keresoFej(kanonos, { lang: 'en', cikkMd: atirt, be: true }), null);
 });
 t('withBrand: ha belefér, márkanév; ha nem, a cím magában', () => {
-  assert.equal(withBrand('Short title'), 'Short title — AI World HQ');
+  assert.equal(withBrand('Short title'), 'Short title — AI WORLD HQ');
   assert.equal(withBrand(JO_CIM), JO_CIM);
 });
 t('fejCimEsLeiras: nincs keresőcím → az eredeti', () => {
@@ -96,6 +96,37 @@ t('fejCimEsLeiras: van keresőcím → az kerül a <title>-be és a leírásba',
   assert.deepEqual(fejCimEsLeiras({ title: 'X', description: 'Y', kereso: { cim: JO_CIM, leiras: JO_LEIRAS } }), { titleTag: cimTag(withBrand(JO_CIM)), metaDesc: JO_LEIRAS });
 });
 t('SEO_ELES_BE = false (1. rész: a user a 10 minta után kapcsolja be)', () => assert.equal(SEO_ELES_BE, false));
+
+// ── A build-bekötés forrás-szintű őre (a build.js-t helyben futtatni TILOS → a forrását nézzük) ──
+const BUILD = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
+t('build: a halott `_meta?.seo?.description` olvasás KIKERÜLT (ezen veszett el július óta minden leírás)', () => {
+  assert.ok(!/_meta\?\.seo\?\.description/.test(BUILD));
+});
+t('build: a pageShell a fejCimEsLeiras-t hívja, a <title> és a meta-leírás abból jön', () => {
+  assert.match(BUILD, /fejCimEsLeiras\(\{\s*title,\s*description,\s*kereso\s*\}\)/);
+  assert.match(BUILD, /<title>\$\{escapeHtml\(titleTag\)\}<\/title>/);
+  assert.match(BUILD, /<meta name="description" content="\$\{escapeHtml\(metaDesc\)\}">/);
+});
+t('build: az og:title / twitter:title NEM a keresőcím (a Facebook-előnézet változatlan)', () => {
+  assert.match(BUILD, /<meta property="og:title" content="\$\{escapeHtml\(title\)\}">/);
+  assert.match(BUILD, /<meta name="twitter:title" content="\$\{escapeHtml\(title\)\}">/);
+  assert.match(BUILD, /<meta property="og:description" content="\$\{escapeHtml\(description\)\}">/);
+});
+t('build: a betöltő angolul keresoFej-et számol, a lokalizáló hu/es-re null-t ad', () => {
+  assert.match(BUILD, /kereso: keresoFej\(data\._meta, \{ lang: 'en', cikkMd: body \}\)/);
+  const lok = BUILD.slice(BUILD.indexOf('function localizeArticle'), BUILD.indexOf('function localizeArticle') + 900);
+  assert.match(lok, /kereso: null/);
+});
+t('build: mindkét cikk-sablon átadja a keresőcímet a pageShell-nek', () => {
+  assert.equal((BUILD.match(/kereso: a\.kereso/g) || []).length, 2);
+});
+t('build: SITE.name = SITE_NAME (a márkanév egy igazság)', () => {
+  assert.match(BUILD, new RegExp("name: '" + SITE_NAME + "'"));
+});
+t('build: a withBrand a core-ból jön (egy igazság a buildben és az őrben)', () => {
+  assert.match(BUILD, /import \{[^}]*withBrand[^}]*\} from '\.\.\/core\/seo-kapuk\.js'/);
+  assert.ok(!/^function withBrand\(/m.test(BUILD));
+});
 
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} rendben, ${bukott} bukott`);
 if (bukott) process.exit(1);

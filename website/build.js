@@ -44,6 +44,8 @@ import { utmutatoE } from '../core/guide-kind.js';
 import { CSOMAG_SZOVEG, PACKS_UI, csomagSzoveg } from '../core/packs-text.js';
 import { CSOMAG_IDK, NAGY_ID } from '../core/packs-data.js';
 import { cimTag } from '../core/title-tag.js';
+// 🔎 SEO KERESŐCÍM (2026-11-25, user: „azért volt a seo agent!”): a <title> + meta-leírás döntése a core-ban él
+import { withBrand as markasCim, keresoFej, fejCimEsLeiras } from '../core/seo-kapuk.js';
 import { lepesReszek, dobozSzoveg } from '../core/guide-step-parts.js';
 import { kitolthetoHtml, promptJelolt } from '../core/kitoltheto-prompt.js';   // 🧩 2026-10-23
 import { regiBetolt, mezosites, promptKulcs } from '../core/kitoltheto-regi.js';   // 🧩 2026-10-29 régi promptok
@@ -914,6 +916,7 @@ function localizeArticle(a, lang) {
     title: meta.title || a.title,
     subtitle: meta.subtitle || a.subtitle,
     seoDescription: meta.subtitle || a.seoDescription,
+    kereso: null,   // 🔎 a keresőcím CSAK angol (hu/es: a fordított alcím marad — a 3. rész fordítja)
     bodyHtml: wrapTables(wrapInShort(wrapImpactSection(torzsH1(marked.parse(body), meta.title || a.title)))),
     bodyMd: body
   };
@@ -1181,7 +1184,11 @@ function loadArticles() {
         audience: ['personal', 'business', 'both'].includes(meta.audience) ? meta.audience : 'both',
         readTime: meta.read_time_minutes || 3,
         tags: meta.tags || [],
-        seoDescription: data._meta?.seo?.description || meta.subtitle || '',
+        // 2026-11-25: a régi `_meta.seo.description` olvasás KIVÉVE — ilyen mezőt senki nem írt (az SEO-agent
+        // `meta_description`-t ír), így július óta minden leírás az alcím volt. A JSON-LD továbbra is az alcímből;
+        // a keresőben látszó leírás a `kereso` mezőből jön (core/seo-kapuk.js keresoFej).
+        seoDescription: meta.subtitle || '',
+        kereso: keresoFej(data._meta, { lang: 'en', cikkMd: body }),
         seoKeywords: (data._meta?.seo?.keywords || meta.tags || []).join(', '),
         bodyHtml: wrapTables(wrapInShort(wrapImpactSection(torzsH1(marked.parse(body), meta.title || data.original_title)))),
         bodyMd: body,
@@ -1484,12 +1491,13 @@ function imageDims(absUrl) {
 // SZÁNDÉKOSAN NEM mindig hagyjuk el: ahol a cím rövid, ott a márkanév
 // ingyen van és segít a felismerésben. Csak ott esik ki, ahol ára lenne.
 const SERP_TITLE_MAX = 60;
-function withBrand(title) {
-  const full = `${title} — ${SITE.name}`;
-  return full.length <= SERP_TITLE_MAX ? full : title;
-}
+// 2026-11-25: a logika a core/seo-kapuk.js-ben (a kimenet-őr is azt használja — egy igazság)
+const withBrand = title => markasCim(title, SITE.name, SERP_TITLE_MAX);
 
-function pageShell({ title, description, bodyContent, isArticle = false, noIntro = false, ogImage = '', keywords = '', jsonld = null, pagePath = '', articleMeta = null }) {
+function pageShell({ title, description, bodyContent, isArticle = false, noIntro = false, ogImage = '', keywords = '', jsonld = null, pagePath = '', articleMeta = null, kereso = null }) {
+  // 🔎 A KERESŐBEN LÁTSZÓ cím + leírás (2026-11-25): ha a cikknek élő SEO-keresőcíme van, CSAK a <title> és a
+  // <meta name="description"> kapja; az og:* / twitter:* (Facebook-előnézet) és a JSON-LD változatlan marad.
+  const { titleTag, metaDesc } = fejCimEsLeiras({ title, description, kereso });
   // ABSZOLÚT útvonalak (gyökértől) — így a /hu/article/... mélységnél is jók.
   const homePath = `${LP}/`;
   const supportPath = `${LP}/support`;
@@ -1549,8 +1557,8 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(cimTag(title))}</title>
-  <meta name="description" content="${escapeHtml(description)}">
+  <title>${escapeHtml(titleTag)}</title>
+  <meta name="description" content="${escapeHtml(metaDesc)}">
   ${keywords ? `<meta name="keywords" content="${escapeHtml(keywords)}">` : ''}
   <link rel="canonical" href="${escapeHtml(url)}">
   <!-- GOOGLE DISCOVER (2026-07-29): a Discover az a hírfolyam, ami magától
@@ -2250,7 +2258,7 @@ function buildArticlePage(a) {
     description: buildMetaDescription(a.seoDescription || a.subtitle, a.bodyMd),
     keywords: a.seoKeywords,
     ogImage, jsonld: [jsonld, breadcrumbSchema(a, canonical)], pagePath: `article/${a.slug}`,
-    bodyContent: body, isArticle: true,
+    bodyContent: body, isArticle: true, kereso: a.kereso,
     articleMeta: { published: a.publishedAt, modified: a.modifiedAt || a.publishedAt, section: catNev(cat) }
   });
 }
@@ -2735,7 +2743,7 @@ function buildGuidePage(a) {
     // HowTo + FAQPage + morzsamenü együtt (a JSON-LD tömböt is érti a Google)
     jsonld: [jsonld, ...(faqSchema ? [faqSchema] : []), breadcrumbSchema(a, canonical)],
     pagePath: `article/${a.slug}`,
-    bodyContent: body, isArticle: true,
+    bodyContent: body, isArticle: true, kereso: a.kereso,
     articleMeta: { published: a.publishedAt, modified: a.modifiedAt || a.publishedAt }
   });
 }

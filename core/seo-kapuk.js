@@ -94,8 +94,11 @@ export function keresoFej(meta, { lang, cikkMd, be = SEO_ELES_BE } = {}) {
   return { cim: s.seo_title, leiras: s.meta_description };
 }
 
-/** A build `withBrand`-je egy helyen: „Cím — AI World HQ”, ha belefér; különben a cím magában. */
-export function withBrand(t, siteName = 'AI World HQ', max = 60) {
+/** A build `withBrand`-je egy helyen: „Cím — AI WORLD HQ”, ha belefér; különben a cím magában. */
+/** A megjelenő márkanév — a website/build.js SITE.name-mel AZONOS (teszt őrzi). */
+export const SITE_NAME = 'AI WORLD HQ';
+
+export function withBrand(t, siteName = SITE_NAME, max = 60) {
   const full = `${t} — ${siteName}`;
   return full.length <= max ? full : t;
 }
