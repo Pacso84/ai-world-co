@@ -97,6 +97,7 @@ const FRISSESSEG_KIVETEL = {
 
 /** Memória-író, ami NEM őrszem-kimenet. Új állapotfájl → ide, egy mondat indoklással. */
 const NEM_ORSZEM = {
+  'seo-vedett.json': 'a Bing-győztes oldalak listája (core/seo-vedett.js, 2026-11-25): az SEO-agent tömeges átírása ezeket nem bántja — bemenet, nem lelet; elavult listával az átírás nem indul',
   'kokoro-be.json': 'NEM a memory/-ba kerül: a Kokoro-hívás bemenete a Reel ideiglenes munkamappájában (core/kokoro-tts.js kokoroFelolvas) — a statikus keresés a join() miatt sorolja ide',
   'csalas-kep-hash.json': 'a csalás-képrajzoló (core/csalas-kepek.js) kép→példa ujjlenyomat-tára: változatlan példát nem rajzol újra — gyorsítótár; a lelet a csalas-guard.json-ba megy',
   'bing-terkep.json':'a Bing-térkép őr (core/bing-terkep.js) újraküldési lehűlése: csak baj esetén íródik, a riport-sor élőben kérdez — munkaállapot, nem lelet',

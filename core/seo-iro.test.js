@@ -33,7 +33,7 @@ t('seoBemenet: a valódi Meet-cikk részei', () => {
 });
 t('seoPrompt: a határok, a tilalmak és csak a cikk tényei', () => {
   const p = seoPrompt(seoBemenet(MD));
-  for (const r of [/25.?60/, /120.?158/, /no prices/i, /no comparisons/i, /only facts stated in the article/i, /American English/i]) assert.match(p, r);
+  for (const r of [/25.?60/, /120.?158/, /no prices/i, /no comparisons/i, /only facts stated in the article/i, /American English/i, /natural, grammatical/i]) assert.match(p, r);
   assert.match(p, /How to Find Your Google Meet Recordings/);
 });
 t('seoPrompt: újrapróbánál a kapu-hibák visszamennek', () => {

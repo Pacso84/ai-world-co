@@ -38,7 +38,7 @@ export function seoPrompt(b, { hibak = [], regi = null } = {}) {
 
 RULES (all required):
 - Use only facts stated in the article. Do not promise anything the article does not deliver.
-- seo_title: ${CIM_MIN}-${CIM_MAX} characters. Put the words a searcher would type first (e.g. "Where to Find Google Meet Recordings" rather than "A Practical Guide to..."). No brand suffix — it is added automatically.
+- seo_title: ${CIM_MIN}-${CIM_MAX} characters, a natural, grammatical English headline (not a keyword list: "Google's New Gemini Tools for Small Businesses", never "Gemini New Tools for Small Business Owners"). Put the words a searcher would type first (e.g. "Where to Find Google Meet Recordings" rather than "A Practical Guide to..."). No brand suffix — it is added automatically.
 - meta_description: ${LEIRAS_MIN}-${LEIRAS_MAX} characters, one or two plain sentences that say what the reader gets.
 - no prices, no plan prices, no credit counts, no dollar amounts.
 - no comparisons and no superlatives: never "best", "vs", "versus", "better than", "compared", "alternative", "top 5", "#1".
