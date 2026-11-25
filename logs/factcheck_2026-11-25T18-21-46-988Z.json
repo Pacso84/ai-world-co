@@ -1,0 +1,63 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.0108738,
+  "at": "2026-11-25T18:21:46.988Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-11-21T04-44-49-345Z_openai-blog_Combatting_adversarial_distillation.json",
+      "cim": "Combatting adversarial distillation",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "All factual claims in the article are supported by the source materials"
+    },
+    {
+      "file": "ARTICLE_2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
+      "cim": "Building AI builders: Playbook for closing the AI knowledge-capability gap",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás a forrásban nem szereplő állítást hozna be: „Four hours per week, for six weeks.** Block this on everyone's calendar before week one.”",
+      "modell_hu": "A heti időpontosság rossz - a forrás 4 órát mond, a cikk 90 percet"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio.json",
+      "cim": "How to use Nano Banana 2.1 in Picsart for AI image generation",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "A \"Nano Banana 2.1\" nem tűnik valódi Picsart funkciónak - a cikk tartalmában nem szerepel, és a legújabb Picsart bejelentésekben sem szerepel, úgy tűnik, kitalált terméknév."
+    },
+    {
+      "file": "ARTICLE_2026-09-23T02-19-43-916Z_aws-ml_Claude_Opus_5_5_is_now_available_on_AWS.json",
+      "cim": "Claude Opus 5.5 is now available on AWS",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk állításai a Claude Opus 5.5-ról, mint az Anthropic csúcsmodeljéről, amely elérhető az Amazon Bedrockon, összhangban vannak a forrással. Nem találtam ellentmondásos tényeket."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-notebooklm-to-study-three-sources-for-one-exam-to.json",
+      "cim": "How to use Gemini Notebook to study three sources for one exam topic",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-09-19T02-08-38-038Z_qwen-news_Qwen3_8-LiveTranslate__Names_the_speaker__Carries_.json",
+      "cim": "Qwen3.8-LiveTranslate: Names the speaker. Carries the meaning. - qwen.ai",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    }
+  ]
+}

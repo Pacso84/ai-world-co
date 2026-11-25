@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179546105432613",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-23T19:10:54.326Z",
-      "updated": "2026-11-23T19:13:01.137Z"
-    },
-    {
-      "id": "t179546118118339",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-23T19:13:01.183Z",
-      "updated": "2026-11-23T19:14:04.165Z"
-    },
-    {
-      "id": "t179546124416773",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-23T19:14:04.167Z",
-      "updated": "2026-11-23T19:14:18.104Z"
-    },
-    {
-      "id": "t179546125810685",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-23T19:14:18.106Z",
-      "updated": "2026-11-23T19:14:43.785Z"
-    },
-    {
-      "id": "t179546128386056",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-23T19:14:43.860Z",
-      "updated": "2026-11-23T19:14:44.023Z"
-    },
-    {
-      "id": "t179546128402431",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-23T19:14:44.024Z",
-      "updated": "2026-11-23T19:14:44.204Z"
-    },
-    {
-      "id": "t179546128424356",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-23T19:14:44.243Z",
-      "updated": "2026-11-23T19:15:39.583Z"
-    },
-    {
-      "id": "t17954613395858",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-23T19:15:39.585Z",
-      "updated": "2026-11-23T19:16:08.111Z"
-    },
-    {
-      "id": "t179546136811233",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-23T19:16:08.112Z",
-      "updated": "2026-11-23T19:16:16.394Z"
-    },
-    {
-      "id": "t179546137639626",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-23T19:16:16.396Z",
-      "updated": "2026-11-23T19:16:40.360Z"
-    },
-    {
-      "id": "t179550550935736",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-24T07:31:49.357Z",
-      "updated": "2026-11-24T07:31:49.560Z"
-    },
-    {
-      "id": "t179550550956284",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-24T07:31:49.562Z",
-      "updated": "2026-11-24T07:32:35.109Z"
-    },
-    {
-      "id": "t179550555511130",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-24T07:32:35.111Z",
-      "updated": "2026-11-24T07:32:35.310Z"
-    },
-    {
-      "id": "t17955055553610",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-24T07:32:35.361Z",
-      "updated": "2026-11-24T07:34:09.811Z"
-    },
-    {
       "id": "t179550564981315",
       "title": "Run ellenorzo",
       "status": "done",
@@ -479,49 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-25T06:10:04.314Z",
       "updated": "2026-11-25T06:10:29.442Z"
+    },
+    {
+      "id": "t179563067790195",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-25T18:17:57.901Z",
+      "updated": "2026-11-25T18:17:58.070Z"
+    },
+    {
+      "id": "t17956306780712",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-25T18:17:58.071Z",
+      "updated": "2026-11-25T18:18:41.816Z"
+    },
+    {
+      "id": "t179563072181839",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-25T18:18:41.818Z",
+      "updated": "2026-11-25T18:18:41.977Z"
+    },
+    {
+      "id": "t179563072202149",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-25T18:18:42.021Z",
+      "updated": "2026-11-25T18:19:21.680Z"
+    },
+    {
+      "id": "t179563076168144",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-25T18:19:21.681Z",
+      "updated": "2026-11-25T18:19:36.363Z"
+    },
+    {
+      "id": "t179563077637247",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-25T18:19:36.372Z",
+      "updated": "2026-11-25T18:19:47.464Z"
+    },
+    {
+      "id": "t179563078746582",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-25T18:19:47.465Z",
+      "updated": "2026-11-25T18:20:10.370Z"
+    },
+    {
+      "id": "t179563081037267",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-25T18:20:10.372Z",
+      "updated": "2026-11-25T18:20:20.989Z"
+    },
+    {
+      "id": "t179563082106481",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-25T18:20:21.064Z",
+      "updated": "2026-11-25T18:20:21.247Z"
+    },
+    {
+      "id": "t179563082124879",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-25T18:20:21.248Z",
+      "updated": "2026-11-25T18:20:21.423Z"
+    },
+    {
+      "id": "t179563082146135",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-25T18:20:21.461Z",
+      "updated": "2026-11-25T18:20:41.735Z"
+    },
+    {
+      "id": "t179563084173712",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-25T18:20:41.737Z",
+      "updated": "2026-11-25T18:20:56.255Z"
+    },
+    {
+      "id": "t179563085625736",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-25T18:20:56.257Z",
+      "updated": "2026-11-25T18:21:18.992Z"
+    },
+    {
+      "id": "t179563087899495",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-25T18:21:18.994Z",
+      "updated": "2026-11-25T18:21:45.949Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179477535807668",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). **Line-up ready:** Yes! The 10 articles have a nice logical flow — practical how-tos that show real everyday value, from privacy awareness to writing help for resumes, emails, and bios. The mix feels ",
-      "agent": "publisher",
-      "at": "2026-11-15T20:42:38.076Z",
-      "loud": false
-    },
-    {
-      "id": "n179477537546314",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-11-15T20:42:55.463Z",
-      "loud": false
-    },
-    {
-      "id": "n179477543007614",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Set Up Gemini as Your Default Helper on an \" — Az útmutató el",
-      "agent": "fact-check",
-      "at": "2026-11-15T20:43:50.076Z",
-      "loud": false
-    },
-    {
-      "id": "n179477546669294",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „It works on persona",
-      "agent": "fact-check",
-      "at": "2026-11-15T20:44:26.692Z",
-      "loud": false
-    },
-    {
-      "id": "n179480079051161",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to sign up for Google Tabletop and create your first group plan\"",
-      "agent": "pairing",
-      "at": "2026-11-16T03:46:30.511Z",
-      "loud": false
-    },
     {
       "id": "n179480124303750",
       "level": "info",
@@ -1281,65 +1241,49 @@
       "agent": "ceo",
       "at": "2026-11-25T06:10:29.480Z",
       "loud": false
+    },
+    {
+      "id": "n179563085623374",
+      "level": "info",
+      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-11-25T18:20:56.233Z",
+      "loud": false
+    },
+    {
+      "id": "n179563089111974",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid and ready to go — you have a nice mix of practical how-tos, privacy guidance, and real-world writing tasks that everyday people will actually find useful. One small note: articl",
+      "agent": "publisher",
+      "at": "2026-11-25T18:21:31.119Z",
+      "loud": false
+    },
+    {
+      "id": "n179563090599239",
+      "level": "success",
+      "text": "1 hír + 0 útmutató publikálva (költség: $0.0171).",
+      "agent": "ceo",
+      "at": "2026-11-25T18:21:45.992Z",
+      "loud": false
+    },
+    {
+      "id": "n179563097632958",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „Four hours per week",
+      "agent": "fact-check",
+      "at": "2026-11-25T18:22:56.329Z",
+      "loud": false
+    },
+    {
+      "id": "n179563099368591",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to use Nano Banana 2.1 in Picsart for AI image\" — A \"Nano Banana",
+      "agent": "fact-check",
+      "at": "2026-11-25T18:23:13.685Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179454285224571",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "info",
-      "text": "A \"Introducing Gemini 4 Hydrogen\" hír a meglévő útmutatóra mutat: how-to-search-years-of-your-gmail-with-plain-english-questio",
-      "ref": "how-to-search-years-of-your-gmail-with-plain-english-questio",
-      "at": "2026-11-13T04:07:32.245Z"
-    },
-    {
-      "id": "m179454314770197",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-13T04:12:27.701Z"
-    },
-    {
-      "id": "m17945432177424",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Google says it now powers Search globally and is available in the Gemini app and Chrome's ”): \"Introducing Gemini 4 Hydrogen\" — A Chrome forrás általános Gemini-funkciót ír le, nem kifejezetten a Gemini 4 Hydrogent",
-      "ref": "ARTICLE_2026-11-13T04-01-19-037Z_google-gemini_Introducing_Gemini_4_Hydrogen.json",
-      "open": true,
-      "at": "2026-11-13T04:13:37.742Z"
-    },
-    {
-      "id": "m179454373831250",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-13T04:22:18.312Z"
-    },
-    {
-      "id": "m179458520320347",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "need",
-      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to Check a Word Document for Missing Headings on Windows\"",
-      "ref": "how-to-check-a-word-document-for-missing-headings-on-windows",
-      "open": true,
-      "at": "2026-11-13T15:53:23.203Z"
-    },
-    {
-      "id": "m179458526694563",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-13T15:54:26.945Z"
-    },
     {
       "id": "m179458531946940",
       "from": "fact-check",
@@ -2685,6 +2629,62 @@
       "text": "5 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-25T06:21:22.320Z"
+    },
+    {
+      "id": "m179563077633199",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"Combatting adversarial distillation\" — mi a baj: Specific model names GPT-6.1 Astra and GPT-6.2 Astra are not found in the source title or URL — verify these are what OpenAI actually called the models, not invented examples",
+      "ref": "2026-11-21T04-44-49-345Z_openai-blog_Combatting_adversarial_distillation.json",
+      "at": "2026-11-25T18:19:36.331Z"
+    },
+    {
+      "id": "m179563078745425",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"Combatting adversarial distillation\" — javítva: Specific model names GPT-6.1 Astra and GPT-6.2 Astra are not found in the source title or URL — verify these are what OpenAI actually called the models, not invented examples; Reviewer verdict: Article is well-structured with good technical explanations in plain language, appropriate brand voice, and no prohibited content. The hook, exp",
+      "ref": "2026-11-21T04-44-49-345Z_openai-blog_Combatting_adversarial_distillation.json",
+      "at": "2026-11-25T18:19:47.455Z"
+    },
+    {
+      "id": "m179563081036045",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"Combatting adversarial distillation\" (?/10)",
+      "ref": "2026-11-21T04-44-49-345Z_openai-blog_Combatting_adversarial_distillation.json",
+      "at": "2026-11-25T18:20:10.360Z"
+    },
+    {
+      "id": "m17956308789830",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-25T18:21:18.983Z"
+    },
+    {
+      "id": "m179563097632959",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „Four hours per week, for six weeks.** Block this on everyone's calendar before week one.”): \"Building AI builders: Playbook for closing the AI \" — A heti időpontosság rossz - a forrás 4 órát mond, a cikk 90 percet",
+      "ref": "ARTICLE_2026-10-08T03-29-26-576Z_aws-ml_Building_AI_builders__Playbook_for_closing_the_AI_.json",
+      "open": true,
+      "at": "2026-11-25T18:22:56.329Z"
+    },
+    {
+      "id": "m179563099368564",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to use Nano Banana 2.1 in Picsart for AI image\" — A \"Nano Banana 2.1\" nem tűnik valódi Picsart funkciónak - a cikk tartalmában nem szerepel, és a legújabb Picsart bejelentésekben sem szerepel, úgy tűnik, kitalált terméknév. (állítás: The title mentions \"Nano Banana 2.1\" but the guide content never references this at all - it appears to be a h",
+      "ref": "ARTICLE_GUIDE_how-to-use-nano-banana-2-1-in-picsart-for-ai-image-generatio.json",
+      "open": true,
+      "at": "2026-11-25T18:23:13.685Z"
     }
   ]
 }

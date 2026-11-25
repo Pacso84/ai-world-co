@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "AI World rétegzett memória (hot/warm/cold, salience decay).",
-    "updated": "2026-11-25T06:13:31.470Z"
+    "updated": "2026-11-25T18:20:56.430Z"
   },
   "items": [
     {
@@ -12,10 +12,10 @@
         "rejection"
       ],
       "created": "2026-06-10T19:08:58.085Z",
-      "lastAccessed": "2026-10-24T02:29:38.033Z",
-      "accessCount": 935,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-11-25T18:19:36.906Z",
+      "accessCount": 937,
+      "salience": 0.35,
+      "tier": "warm"
     },
     {
       "id": "m1781992865694902",
@@ -26,9 +26,9 @@
         "lesson"
       ],
       "created": "2026-06-20T22:01:05.694Z",
-      "lastAccessed": "2026-11-25T06:03:33.774Z",
-      "accessCount": 1404,
-      "salience": 0.9997232888888888,
+      "lastAccessed": "2026-11-25T18:19:36.906Z",
+      "accessCount": 1406,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -99,9 +99,9 @@
         "design-rule"
       ],
       "created": "2026-06-22T19:24:53.845Z",
-      "lastAccessed": "2026-11-25T06:09:49.474Z",
-      "accessCount": 347,
-      "salience": 0.9998972240740741,
+      "lastAccessed": "2026-11-25T18:20:56.430Z",
+      "accessCount": 348,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -112,9 +112,9 @@
         "design-rule"
       ],
       "created": "2026-06-22T19:33:18.784Z",
-      "lastAccessed": "2026-11-25T06:09:49.474Z",
-      "accessCount": 344,
-      "salience": 0.9998972240740741,
+      "lastAccessed": "2026-11-25T18:20:56.430Z",
+      "accessCount": 345,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -142,9 +142,9 @@
         "design-rule"
       ],
       "created": "2026-06-28T19:44:51.115Z",
-      "lastAccessed": "2026-11-25T06:09:49.474Z",
-      "accessCount": 337,
-      "salience": 0.9998972240740741,
+      "lastAccessed": "2026-11-25T18:20:56.430Z",
+      "accessCount": 338,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -2565,9 +2565,9 @@
         "article"
       ],
       "created": "2026-07-22T10:30:10.241Z",
-      "lastAccessed": "2026-11-25T06:03:33.774Z",
-      "accessCount": 788,
-      "salience": 0.9997232888888888,
+      "lastAccessed": "2026-11-25T18:19:36.906Z",
+      "accessCount": 790,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -6096,10 +6096,10 @@
         "article"
       ],
       "created": "2026-08-16T08:16:11.150Z",
-      "lastAccessed": "2026-11-17T05:42:52.178Z",
-      "accessCount": 22,
-      "salience": 0.05,
-      "tier": "cold",
+      "lastAccessed": "2026-11-25T18:19:36.906Z",
+      "accessCount": 24,
+      "salience": 0.35,
+      "tier": "warm",
       "repeats": 19,
       "lastRepeat": "2026-11-17T05:42:52.178Z"
     },
@@ -11390,9 +11390,9 @@
         "article"
       ],
       "created": "2026-10-27T03:02:53.239Z",
-      "lastAccessed": "2026-11-25T06:03:33.774Z",
-      "accessCount": 153,
-      "salience": 0.9997232888888888,
+      "lastAccessed": "2026-11-25T18:19:36.906Z",
+      "accessCount": 155,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -11480,10 +11480,10 @@
         "article"
       ],
       "created": "2026-11-03T04:36:22.143Z",
-      "lastAccessed": "2026-11-03T04:36:22.143Z",
-      "accessCount": 0,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-11-25T18:19:36.906Z",
+      "accessCount": 2,
+      "salience": 0.35,
+      "tier": "warm"
     },
     {
       "id": "m1793680582150764",
@@ -11525,9 +11525,9 @@
         "article"
       ],
       "created": "2026-11-04T03:53:54.017Z",
-      "lastAccessed": "2026-11-25T06:03:33.774Z",
-      "accessCount": 116,
-      "salience": 0.9997232888888888,
+      "lastAccessed": "2026-11-25T18:19:36.906Z",
+      "accessCount": 118,
+      "salience": 1,
       "tier": "hot"
     },
     {
@@ -11716,10 +11716,10 @@
         "article"
       ],
       "created": "2026-11-06T04:09:34.122Z",
-      "lastAccessed": "2026-11-06T04:09:34.122Z",
-      "accessCount": 0,
-      "salience": 0.05,
-      "tier": "cold"
+      "lastAccessed": "2026-11-25T18:19:36.906Z",
+      "accessCount": 2,
+      "salience": 0.35,
+      "tier": "warm"
     },
     {
       "id": "m1793979360670493",
@@ -12240,6 +12240,21 @@
       "lastAccessed": "2026-11-23T04:41:07.302Z",
       "accessCount": 0,
       "salience": 0.8721517462962963,
+      "tier": "hot"
+    },
+    {
+      "id": "m1795630776328343",
+      "scope": "iro",
+      "text": "Specific model names GPT-6.1 Astra and GPT-6.2 Astra are not found in the source title or URL — verify these are what OpenAI actually called the models, not invented examples",
+      "tags": [
+        "rejection",
+        "lesson",
+        "article"
+      ],
+      "created": "2026-11-25T18:19:36.328Z",
+      "lastAccessed": "2026-11-25T18:19:36.328Z",
+      "accessCount": 0,
+      "salience": 1,
       "tier": "hot"
     }
   ],
