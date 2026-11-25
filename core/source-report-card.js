@@ -235,6 +235,11 @@ const baseName = (file) => String(file || '').replace(/^(WRITER_|REJECTED_|ARTIC
 // A paraméterek azért injektálhatók, hogy a teszt valódi fájlok írása NÉLKÜL
 // tudjon élethű helyzetet előállítani. `truthLog: undefined` = olvasd a naplót.
 // -------------------------------------------------------------------
+// Nem külső hírforrás → kimarad a forrás-mérésből: az útmutató, és (2026-11-25) a SAJÁT heti
+// összefoglaló — ez új fájlnéven íródik újra, így a régi blokk sosem „jönne rendbe”, és a
+// 09-08-i „rendbe jön” lelet-tesztet hamisan pirosra billentette (2/4, mind aiworld-editorial).
+export const NEM_HIRFORRAS = new Set(['guide', 'aiworld-editorial']);
+
 export function collectArticleStats({
   articlesDir = ARTICLES_DIR,
   truthLog,
@@ -267,7 +272,7 @@ export function collectArticleStats({
     for (const e of entries) {
       if (!e || e.action !== 'block') continue;      // a `hold` nem a forrás hibája
       const id = sourceIdFromFile(e.file);
-      if (!id || id === 'guide') continue;
+      if (!id || NEM_HIRFORRAS.has(id)) continue;
       const bn = baseName(e.file);
       const a = get(id);
       a._blocked.add(bn);
@@ -287,7 +292,7 @@ export function collectArticleStats({
       if (!f.startsWith('ARTICLE_')) continue;
       const d = readJson(join(articlesDir, f), null); if (!d) continue;
       const id = d._meta?.source_id, at = (d._meta?.published_at || '').slice(0, 10);
-      if (!id || id === 'guide') continue;
+      if (!id || NEM_HIRFORRAS.has(id)) continue;
       const a = get(id);
       if (at > a.lastArticle) a.lastArticle = at;
       if (at >= sinceYield) a.published30d++;

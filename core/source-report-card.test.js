@@ -409,6 +409,20 @@ t('az ÚTMUTATÓ blokkjai nem terhelnek hírforrást', () => {
   assert.equal(per['guide'], undefined, 'a "guide" nem hírforrás — ki kell maradnia');
 });
 
+// 2026-11-25: a „🔑 ÉLESBEN … rendbe jön” teszt 2/4-gyel pirosra váltott — a 2 „elakadt” cikk
+// a SAJÁT heti összefoglalónk volt (11-15-i incidens, b418a3de-vel javítva; a heti cikk új
+// fájlnéven íródik újra, így a régi alapnév sosem „jön rendbe”). Ez nem külső forrás:
+// nincs mit osztályozni / kikapcsolni rajta, és a forrás-mérést sem torzíthatja.
+t('a SAJÁT heti összefoglaló (aiworld-editorial) nem hírforrás — sem blokk, sem termés', () => {
+  uritCikkek();
+  cikk('aiworld-editorial', 'This_Week_in_AI', 2);
+  const log = naplo(
+    { alap: 'ARTICLE_2026-11-15T18-56-13-241Z_aiworld-editorial_This_Week_in_AI.json', napokkalEzelott: 9 }
+  );
+  const per = collectArticleStats({ articlesDir: CIKKEK, truthLog: log, now: MOST });
+  assert.equal(per['aiworld-editorial'], undefined, 'a saját szerkesztőségi anyag ki kell maradjon a forrás-mérésből');
+});
+
 t('hiányzó/olvashatatlan napló → 0 blokk, de NEM omlik össze', () => {
   uritCikkek();
   for (let i = 1; i <= 4; i++) cikk('naplotlan', 'Ok_' + i, i);
