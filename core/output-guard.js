@@ -118,6 +118,29 @@ export function altEllenorzes(lapok) {
 }
 
 // ------------------------------------------------------------------
+// 🔎 SEO-FEJ (2026-11-25): az SEO-agent meta-leírása július óta NEM jutott ki egyetlen oldalra sem
+// (a build más mezőnevet olvasott), és minden „működött”. Ez a lánc VÉGÉT nézi: ha egy cikknek élő
+// keresőcíme van, a kiépített lap <title>-jében és meta-leírásában pontosan annak kell lennie.
+// Az escape a build escapeHtml-jével AZONOS (& < > ").
+// ------------------------------------------------------------------
+const seoEsc = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+/** @param {{f:string, h:string}[]} lapok @param {Map<string,{titleTag:string, metaDesc:string}>} elvart @returns {object|null} SEO_FEJ_ELTER lelet vagy null */
+export function seoFejEllenorzes(lapok, elvart) {
+  if (!elvart || !elvart.size) return null;
+  const rossz = [];
+  for (const { f, h } of lapok) {
+    const e = elvart.get(String(f).replace(/\.html$/, ''));
+    if (!e) continue;
+    const cim = (String(h).match(/<title>([^<]*)<\/title>/) || [])[1];
+    const leiras = (String(h).match(/<meta name="description" content="([^"]*)">/) || [])[1];
+    if (cim !== seoEsc(e.titleTag) || leiras !== seoEsc(e.metaDesc)) rossz.push(f);
+  }
+  return rossz.length
+    ? { code: 'SEO_FEJ_ELTER', uzenet: `🔎 ${rossz.length} cikkoldalon nem az SEO-agent címe/leírása van kint — a keresőoptimalizálás nem jut ki! pl. ${rossz.slice(0, 3).join(', ')}`, pelda: rossz.slice(0, 10), db: rossz.length }
+    : null;
+}
+
+// ------------------------------------------------------------------
 // CLI — csak közvetlen futtatáskor (a CI-lépés hívja). Importkor nem fut.
 // ------------------------------------------------------------------
 /** Közvetlenül futtatták-e a modult? Külön függvény, hogy tesztelhető legyen:
@@ -141,6 +164,22 @@ if (kozvetlenFuttatas(process.argv[1])) {
       try { lapok.push({ f, h: readFileSync(join(PUB, f), 'utf-8') }); } catch { /* romlott fájl — a többit nézzük */ }
     }
     eredmeny = kimenetEllenorzes(lapok);
+    // 🔎 az élő SEO-keresőcímek (ugyanaz a döntés, mint a buildben: core/seo-kapuk.js keresoFej)
+    try {
+      const { keresoFej, fejCimEsLeiras } = await import('./seo-kapuk.js');
+      const CIKKEK = join(ROOT, 'content', 'articles');
+      const elvart = new Map();
+      for (const f of readdirSync(CIKKEK).filter(x => x.startsWith('ARTICLE_') && x.endsWith('.json'))) {
+        let d; try { d = JSON.parse(readFileSync(join(CIKKEK, f), 'utf-8')); } catch { continue; }
+        if (d?._meta?.status !== 'published' || !d._meta.slug) continue;
+        const body = String(d.article_markdown || '').replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');
+        const kereso = keresoFej(d._meta, { lang: 'en', cikkMd: body });
+        if (kereso) elvart.set(d._meta.slug, fejCimEsLeiras({ title: '', description: '', kereso }));
+      }
+      const seo = seoFejEllenorzes(lapok, elvart);
+      if (seo) eredmeny.problems.unshift(seo);
+      eredmeny.seoKeresocim = elvart.size;
+    } catch (e) { eredmeny.problems.unshift({ code: 'SEO_FEJ_HIBA', uzenet: `🔎 a keresőcím-őr nem futott le: ${String(e.message).slice(0, 120)}` }); }
   }
   // 🔠 egy H1 MINDEN kiépített lapon (nem csak a cikkeken)
   const PUBLIC = join(ROOT, 'website', 'public');

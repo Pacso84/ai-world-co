@@ -157,5 +157,29 @@ t('🔌 napi riport: olvassa a leletet, és a frissesség-térképben is ott van
   assert.ok((/og\.problems/.test(dr) || /kimenetOrSor\(og\)/.test(dr)) && /og\.megjavult/.test(dr), '🔴 a riport nem írja ki a leletet');
 });
 
+// ── 🔎 SEO_FEJ_ELTER (2026-11-25): az SEO-agent leírása július óta NEM jutott ki, és senki nem vette észre ──
+const { seoFejEllenorzes } = await import('./output-guard.js');
+const seoLap = (slug, titleTag, metaDesc) => ({ f: slug + '.html', h: `<html><head><title>${titleTag}</title>\n  <meta name="description" content="${metaDesc}"></head></html>` });
+const SEO_ELV = new Map([['meet', { titleTag: 'Where to Find Google Meet Recordings', metaDesc: 'Google Meet saves recordings in Drive.' }]]);
+t('SEO: egyező <title> + leírás → nincs lelet', () => {
+  assert.equal(seoFejEllenorzes([seoLap('meet', 'Where to Find Google Meet Recordings', 'Google Meet saves recordings in Drive.')], SEO_ELV), null);
+});
+t('🔴 SEO: más van kint, mint az SEO-agent címe → SEO_FEJ_ELTER', () => {
+  const r = seoFejEllenorzes([seoLap('meet', 'How to Find Your Google Meet Recordings', 'Google Meet saves recordings in Drive.')], SEO_ELV);
+  assert.equal(r?.code, 'SEO_FEJ_ELTER');
+  assert.match(r.uzenet, /nem az SEO-agent/);
+});
+t('🔴 SEO: a leírás tér el → SEO_FEJ_ELTER', () => {
+  assert.equal(seoFejEllenorzes([seoLap('meet', 'Where to Find Google Meet Recordings', 'Valami más.')], SEO_ELV)?.code, 'SEO_FEJ_ELTER');
+});
+t('SEO: „&” és idézőjel a címben — a build escape-jével egyezik → nincs lelet', () => {
+  const elv = new Map([['x', { titleTag: 'Notes & "Recaps" in Meet', metaDesc: 'A & B <ok>' }]]);
+  assert.equal(seoFejEllenorzes([seoLap('x', 'Notes &amp; &quot;Recaps&quot; in Meet', 'A &amp; B &lt;ok&gt;')], elv), null);
+});
+t('SEO: üres elvárás-lista / hiányzó lap → nincs lelet', () => {
+  assert.equal(seoFejEllenorzes([seoLap('meet', 'a', 'b')], new Map()), null);
+  assert.equal(seoFejEllenorzes([], SEO_ELV), null);
+});
+
 VEGE = true;
 console.log(`\n✅ ${pass} teszt rendben`);

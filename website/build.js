@@ -1184,7 +1184,7 @@ function loadArticles() {
         audience: ['personal', 'business', 'both'].includes(meta.audience) ? meta.audience : 'both',
         readTime: meta.read_time_minutes || 3,
         tags: meta.tags || [],
-        // 2026-11-25: a régi `_meta.seo.description` olvasás KIVÉVE — ilyen mezőt senki nem írt (az SEO-agent
+        // 2026-11-25: a régi SEO-„description” mező olvasása KIVÉVE — ilyen mezőt senki nem írt (az SEO-agent
         // `meta_description`-t ír), így július óta minden leírás az alcím volt. A JSON-LD továbbra is az alcímből;
         // a keresőben látszó leírás a `kereso` mezőből jön (core/seo-kapuk.js keresoFej).
         seoDescription: meta.subtitle || '',
