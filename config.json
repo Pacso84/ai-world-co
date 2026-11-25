@@ -318,12 +318,13 @@
     "seo": {
       "primary_model": {
         "provider": "openrouter",
-        "model": "minimax/minimax-m2.5"
+        "model": "anthropic/claude-haiku-5.5"
       },
       "fallback_model": {
         "provider": "openrouter",
-        "model": "minimax/minimax-m2.7"
+        "model": "minimax/minimax-m3"
       },
+      "_model_comment": "MODELL-VÁLTÁS 2026-11-25 (user: „azért volt a seo agent!”): az SEO-agent v2 keresőcímet + meta-leírást ír, ami a keresőben látszik → minőség-először: az író modellje (Claude Haiku 5.5), tartalék M3. Cikkenként 1–2 hívás.",
       "enabled": true,
       "comment": "MODELL-TIERING 2026-07-24 (user: minden fizetős). KÖLTSÉG-OPTIMUM = MiniMax M2.5 — a legolcsóbb működő fizetős tier gépies munkára (parse/terv/formátum). MEGJEGYZÉS: az M2.5/M2.7 NEM engedi kikapcsolni a gondolkodást (HTTP 400), így reasoning marad ON. Fallback M2.7, vég-tartalék az ingyenes VÉSZHÁLÓ.",
       "routing": "paid-only"
