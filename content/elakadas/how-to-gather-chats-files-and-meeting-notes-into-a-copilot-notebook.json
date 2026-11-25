@@ -1,0 +1,89 @@
+{
+  "slug": "how-to-gather-chats-files-and-meeting-notes-into-a-copilot-notebook",
+  "probalva": "2026-11-25T06:13:31.630Z",
+  "doboz": {
+    "keszult": "2026-11-25T06:13:31.630Z",
+    "enHash": "3a79c359b3db467fa25b22543309e75d3195445a",
+    "forrasok": {
+      "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook": "Add references to your Microsoft Copilot Notebook"
+    },
+    "en": [
+      {
+        "symptom": "I can't create a notebook in Copilot.",
+        "why": "Copilot Notebooks is available to Microsoft Copilot and Copilot Chat licensed users. Accounts must have a SharePoint or OneDrive license (service plan) to create notebooks.",
+        "fix": "Check that your account has a SharePoint or OneDrive license (service plan). Accounts must have that license to create notebooks.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook"
+      },
+      {
+        "symptom": "Copilot doesn't use a web link I added to my notebook.",
+        "why": "External web links must be publicly accessible. Authenticated, paywalled content and linked subpages are not supported.",
+        "fix": "Add only web links that are publicly accessible. Authenticated or paywalled content and linked subpages are not supported, so they won't be used.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook"
+      },
+      {
+        "symptom": "Copilot can't use a SharePoint folder I added to my notebook.",
+        "why": "Copilot only uses content from the sites, folders, or files that you add as references and have permission to access. It doesn't use other organizational content unless you add those locations to your notebook.",
+        "fix": "Add SharePoint sites, document libraries, or folders that you have permission to access. Copilot will only use supported files stored in those locations.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook"
+      },
+      {
+        "symptom": "I can't find where to add files to my notebook.",
+        "why": "The Add references panel is where you add references to a notebook in the Microsoft Copilot app. If the Content pane isn't open, it has to be opened first.",
+        "fix": "In the Microsoft Copilot app, select Add references at the top of the Content pane on the right. If the Content pane isn't open, select the pane toggle in the upper-right corner to open it.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Nem tudok jegyzetfüzetet létrehozni a Copilotban.",
+        "why": "A Copilot Notebooks a Microsoft Copilot és a Copilot Chat licenccel rendelkező felhasználók számára érhető el. A jegyzetfüzetek létrehozásához a fióknak SharePoint- vagy OneDrive-licenccel (szolgáltatáscsomaggal) kell rendelkeznie.",
+        "fix": "Ellenőrizd, hogy a fiókod rendelkezik-e SharePoint- vagy OneDrive-licenccel (szolgáltatáscsomaggal). A jegyzetfüzetek létrehozásához a fióknak rendelkeznie kell ezzel a licenccel.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook"
+      },
+      {
+        "symptom": "A Copilot nem használja a jegyzetfüzetemhez hozzáadott webhivatkozást.",
+        "why": "A külső webhivatkozásoknak nyilvánosan elérhetőknek kell lenniük. A hitelesítést igénylő, fizetőfal mögötti tartalmak és a hivatkozott aloldalak nem támogatottak.",
+        "fix": "Csak nyilvánosan elérhető webhivatkozásokat adj hozzá. A hitelesítést igénylő vagy fizetőfal mögötti tartalmak és a hivatkozott aloldalak nem támogatottak, ezért a rendszer nem fogja használni őket.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook"
+      },
+      {
+        "symptom": "A Copilot nem tudja használni a jegyzetfüzetemhez hozzáadott SharePoint-mappát.",
+        "why": "A Copilot csak az általad hivatkozásként hozzáadott, és az általad elérési engedéllyel rendelkező webhelyekről, mappákból vagy fájlokból származó tartalmat használja. Más szervezeti tartalmakat nem használ, kivéve, ha ezeket a helyeket hozzáadod a jegyzetfüzetedhez.",
+        "fix": "Adj hozzá olyan SharePoint-webhelyeket, dokumentumtárakat vagy mappákat, amelyekhez van hozzáférési engedélyed. A Copilot csak az ezekben a helyeken tárolt, támogatott fájlokat fogja használni.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook"
+      },
+      {
+        "symptom": "Nem találom, hol adhatok fájlokat a jegyzetfüzetemhez.",
+        "why": "A Microsoft Copilot alkalmazásban az Add references panelen adhatsz hivatkozásokat a jegyzetfüzethez. Ha a Content panel nincs megnyitva, először meg kell nyitni.",
+        "fix": "A Microsoft Copilot alkalmazásban válaszd az Add references lehetőséget a jobb oldali Content panel tetején. Ha a Content panel nincs megnyitva, a megnyitásához válaszd a panel kapcsolóját a jobb felső sarokban.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "No puedo crear un cuaderno en Copilot.",
+        "why": "Copilot Notebooks está disponible para los usuarios con licencia de Microsoft Copilot y Copilot Chat. Las cuentas deben tener una licencia (plan de servicio) de SharePoint o OneDrive para crear cuadernos.",
+        "fix": "Comprueba que tu cuenta tenga una licencia (plan de servicio) de SharePoint o OneDrive. Las cuentas deben tener esa licencia para crear cuadernos.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook"
+      },
+      {
+        "symptom": "Copilot no usa un enlace web que añadí a mi cuaderno.",
+        "why": "Los enlaces web externos deben ser accesibles públicamente. El contenido autenticado, de pago y las subpáginas enlazadas no son compatibles.",
+        "fix": "Añade solo enlaces web que sean accesibles públicamente. El contenido autenticado o de pago y las subpáginas enlazadas no son compatibles, por lo que no se usarán.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook"
+      },
+      {
+        "symptom": "Copilot no puede usar una carpeta de SharePoint que añadí a mi cuaderno.",
+        "why": "Copilot solo usa contenido de los sitios, carpetas o archivos que añadas como referencias y a los que tengas permiso para acceder. No usa otro contenido de la organización a menos que añadas esas ubicaciones a tu cuaderno.",
+        "fix": "Añade sitios de SharePoint, bibliotecas de documentos o carpetas a las que tengas permiso para acceder. Copilot solo usará archivos compatibles almacenados en esas ubicaciones.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook"
+      },
+      {
+        "symptom": "No encuentro dónde añadir archivos a mi cuaderno.",
+        "why": "El panel Add references es donde añades referencias a un cuaderno en la aplicación Microsoft Copilot. Si el panel Content no está abierto, primero debes abrirlo.",
+        "fix": "En la aplicación Microsoft Copilot, selecciona Add references en la parte superior del panel Content, a la derecha. Si el panel Content no está abierto, selecciona el control de alternancia del panel en la esquina superior derecha para abrirlo.",
+        "source": "https://support.microsoft.com/en-us/microsoft-365-copilot/add-references-to-your-microsoft-365-copilot-notebook"
+      }
+    ]
+  }
+}

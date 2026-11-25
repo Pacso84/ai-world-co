@@ -1528,6 +1528,8 @@
     "kreatívat",
     "kreatívkodás",
     "kreatívplatformok",
+    "kreditcsomagok",
+    "kreditköltséget",
     "kriptikus",
     "kriptóban",
     "kriptót",
@@ -2150,6 +2152,7 @@
     "országokban",
     "országomban",
     "országonként",
+    "osat",
     "ossze",
     "osszefoglalót",
     "osztálytermben",
@@ -2679,6 +2682,7 @@
     "szabadúszol",
     "szabadúszás",
     "szabálykönyvet",
+    "szakaszsal",
     "szaknyelvet",
     "szakácskönyvet",
     "szalagod",
@@ -2800,6 +2804,7 @@
     "tabletten",
     "tabok",
     "tabot",
+    "tabulátoroknál",
     "tabváltás",
     "tacót",
     "tagalog",
@@ -3005,6 +3010,7 @@
     "tányérok",
     "tányérokat",
     "tányérom",
+    "tányéron",
     "tárgysorod",
     "tárgysorok",
     "tárgysorokat",
@@ -6626,11 +6632,16 @@
       "correct": "ai-tól (értelmetlen) — valószínűleg: \"attól\" vagy \"tőle\"",
       "at": "2026-11-24",
       "utkozes": true
+    },
+    "interjúl": {
+      "correct": "interjúba",
+      "at": "2026-11-25",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-11-24",
-    "files": 923,
-    "candidates": 0
+    "at": "2026-11-25",
+    "files": 928,
+    "candidates": 7
   }
 }
