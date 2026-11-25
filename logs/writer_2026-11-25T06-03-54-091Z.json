@@ -1,0 +1,92 @@
+{
+  "started_at": "2026-11-25T06:02:19.709Z",
+  "drafts_total": 6,
+  "articles_written": 3,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 4,
+  "merged_total": 1,
+  "skipped_repeat": 1,
+  "repeats": [
+    {
+      "cim": "What to Check Before Buying an AI Video Platform for Training",
+      "mar": "Choosing an AI Video Platform: What to Check Before Your Team Commits",
+      "pont": 0.9415527142882163,
+      "by": "embedding",
+      "theme": "AI video platform buyer's guides"
+    }
+  ],
+  "source_via": {
+    "hirfolyam": 3,
+    "html": 3,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.019816800000000002,
+  "by_article": [
+    {
+      "draft": "2026-11-25T06-02-19-331Z_zapier-blog_5_problems_talent_leaders_are_facing_with_AI_in_hi.json",
+      "writer_output": "WRITER_2026-11-25T06-02-19-331Z_zapier-blog_5_problems_talent_leaders_are_facing_with_AI_in_hi.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 25,
+      "cost_usd": 0.0044958,
+      "duration_ms": 19991,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-24T19-14-08-987Z_d-id-news_AI_Video_Platforms_for_Training__2027_Buyer_s_Guid.json",
+      "success": false,
+      "reason": "repeat",
+      "repeat_of": "Choosing an AI Video Platform: What to Check Before Your Team Commits",
+      "score": 0.9415527142882163,
+      "cost_usd": 0.0038911
+    },
+    {
+      "draft": "2026-11-24T19-14-23-107Z_pika_What_Does_Pika_Cost_Inside_ChatGPT_and_Claude__Pla.json",
+      "writer_output": "WRITER_2026-11-24T19-14-23-107Z_pika_What_Does_Pika_Cost_Inside_ChatGPT_and_Claude__Pla.json",
+      "success": true,
+      "merged_from": 2,
+      "merged_theme": "Pika pricing and free plans",
+      "source_via": [
+        "html",
+        "html"
+      ],
+      "source_chars": 9007,
+      "source_overlap_words": 18,
+      "cost_usd": 0.0047239,
+      "duration_ms": 18237,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-24T19-14-08-987Z_picsart_How_to_make_a_Thanksgiving_invitation__5_styles_to.json",
+      "writer_output": "WRITER_2026-11-24T19-14-08-987Z_picsart_How_to_make_a_Thanksgiving_invitation__5_styles_to.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 24,
+      "cost_usd": 0.004564,
+      "duration_ms": 19920,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "csalas_irt": 0,
+  "csalas_hiba": [],
+  "termek_hir": 0,
+  "termek_extra": 0,
+  "finished_at": "2026-11-25T06:03:54.091Z",
+  "duration_seconds": 94.382
+}

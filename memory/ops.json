@@ -1,134 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179540888060326",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-23T04:41:20.603Z",
-      "updated": "2026-11-23T04:41:24.839Z"
-    },
-    {
-      "id": "t179540888484180",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-23T04:41:24.841Z",
-      "updated": "2026-11-23T04:41:44.422Z"
-    },
-    {
-      "id": "t179540890446978",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-23T04:41:44.469Z",
-      "updated": "2026-11-23T04:41:44.738Z"
-    },
-    {
-      "id": "t179540890473953",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-23T04:41:44.739Z",
-      "updated": "2026-11-23T04:41:44.971Z"
-    },
-    {
-      "id": "t179540890501231",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-23T04:41:45.012Z",
-      "updated": "2026-11-23T04:41:45.224Z"
-    },
-    {
-      "id": "t179540890522633",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-23T04:41:45.226Z",
-      "updated": "2026-11-23T04:41:45.452Z"
-    },
-    {
-      "id": "t179540890554128",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-23T04:41:45.541Z",
-      "updated": "2026-11-23T04:41:58.507Z"
-    },
-    {
-      "id": "t179540891851148",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-23T04:41:58.511Z",
-      "updated": "2026-11-23T04:42:28.573Z"
-    },
-    {
-      "id": "t179540894857886",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-23T04:42:28.578Z",
-      "updated": "2026-11-23T04:43:18.432Z"
-    },
-    {
-      "id": "t179540899843466",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-23T04:43:18.434Z",
-      "updated": "2026-11-23T04:43:28.758Z"
-    },
-    {
-      "id": "t179540900876028",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-23T04:43:28.760Z",
-      "updated": "2026-11-23T04:44:58.539Z"
-    },
-    {
-      "id": "t179540909854163",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-23T04:44:58.541Z",
-      "updated": "2026-11-23T04:45:53.906Z"
-    },
-    {
-      "id": "t179540915390772",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-23T04:45:53.907Z",
-      "updated": "2026-11-23T04:46:03.991Z"
-    },
-    {
-      "id": "t179540916399338",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-23T04:46:03.993Z",
-      "updated": "2026-11-23T04:46:31.305Z"
-    },
-    {
-      "id": "t179546098227725",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-23T19:09:42.277Z",
-      "updated": "2026-11-23T19:09:42.437Z"
-    },
-    {
-      "id": "t179546098244052",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-23T19:09:42.440Z",
-      "updated": "2026-11-23T19:10:54.324Z"
-    },
-    {
       "id": "t179546105432613",
       "title": "Run source-scout",
       "status": "done",
@@ -479,41 +351,137 @@
       "agent": "publisher",
       "created": "2026-11-24T19:18:14.227Z",
       "updated": "2026-11-24T19:18:36.444Z"
+    },
+    {
+      "id": "t179558645219872",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-25T06:00:52.198Z",
+      "updated": "2026-11-25T06:00:52.357Z"
+    },
+    {
+      "id": "t17955864523594",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-25T06:00:52.359Z",
+      "updated": "2026-11-25T06:02:19.345Z"
+    },
+    {
+      "id": "t179558653934796",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-25T06:02:19.347Z",
+      "updated": "2026-11-25T06:02:19.504Z"
+    },
+    {
+      "id": "t179558653954724",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-25T06:02:19.547Z",
+      "updated": "2026-11-25T06:03:54.112Z"
+    },
+    {
+      "id": "t179558663411446",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-25T06:03:54.114Z",
+      "updated": "2026-11-25T06:04:08.409Z"
+    },
+    {
+      "id": "t179558664841298",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-25T06:04:08.412Z",
+      "updated": "2026-11-25T06:04:39.952Z"
+    },
+    {
+      "id": "t17955866800277",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-25T06:04:40.027Z",
+      "updated": "2026-11-25T06:04:40.205Z"
+    },
+    {
+      "id": "t179558668020641",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-25T06:04:40.206Z",
+      "updated": "2026-11-25T06:04:40.380Z"
+    },
+    {
+      "id": "t179558668046147",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-25T06:04:40.461Z",
+      "updated": "2026-11-25T06:04:52.645Z"
+    },
+    {
+      "id": "t179558669264830",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-25T06:04:52.648Z",
+      "updated": "2026-11-25T06:06:05.285Z"
+    },
+    {
+      "id": "t179558676528942",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-25T06:06:05.289Z",
+      "updated": "2026-11-25T06:07:06.619Z"
+    },
+    {
+      "id": "t179558682662031",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-25T06:07:06.620Z",
+      "updated": "2026-11-25T06:07:17.424Z"
+    },
+    {
+      "id": "t179558683742693",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-25T06:07:17.426Z",
+      "updated": "2026-11-25T06:09:05.217Z"
+    },
+    {
+      "id": "t179558694521918",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-25T06:09:05.219Z",
+      "updated": "2026-11-25T06:09:49.297Z"
+    },
+    {
+      "id": "t179558698929965",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-25T06:09:49.299Z",
+      "updated": "2026-11-25T06:10:04.313Z"
+    },
+    {
+      "id": "t179558700431414",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-25T06:10:04.314Z",
+      "updated": "2026-11-25T06:10:29.442Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179476893841017",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup feels coherent and ready: article 2 anchors newcomers, articles 1 and 3 build trust through fact-checking and privacy, and the seven writing tasks span a nice variety of tools (ChatGPT, Dee",
-      "agent": "publisher",
-      "at": "2026-11-15T18:55:38.410Z",
-      "loud": false
-    },
-    {
-      "id": "n179476895602361",
-      "level": "info",
-      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
-      "agent": "ceo",
-      "at": "2026-11-15T18:55:56.023Z",
-      "loud": false
-    },
-    {
-      "id": "n17947690147779",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „💬 *The button itse",
-      "agent": "fact-check",
-      "at": "2026-11-15T18:56:54.777Z",
-      "loud": false
-    },
-    {
-      "id": "n179476903231595",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Ellenőrizendő állítás: \"MT-EditFlow: Reinforcement Learning for Multi-Turn\" — A cikk nem erről a forrásból származik - e",
-      "agent": "fact-check",
-      "at": "2026-11-15T18:57:12.315Z",
-      "loud": false
-    },
     {
       "id": "n179477535807668",
       "level": "success",
@@ -1281,29 +1249,41 @@
       "agent": "fact-check",
       "at": "2026-11-24T19:19:18.338Z",
       "loud": false
+    },
+    {
+      "id": "n179558666331715",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to create a Thanksgiving invitation with Picsart Flow templates\"",
+      "agent": "pairing",
+      "at": "2026-11-25T06:04:23.317Z",
+      "loud": false
+    },
+    {
+      "id": "n179558698928836",
+      "level": "info",
+      "text": "SEO: 5 cikk optimalizálva (átlag 8.0/10).",
+      "agent": "seo",
+      "at": "2026-11-25T06:09:49.288Z",
+      "loud": false
+    },
+    {
+      "id": "n179558701444831",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The line-up looks strong — practical, varied, and genuinely useful for everyday people. You've got a nice balance of critical advice (privacy, what to avoid) alongside hands-on writing tasks. One smal",
+      "agent": "publisher",
+      "at": "2026-11-25T06:10:14.448Z",
+      "loud": false
+    },
+    {
+      "id": "n179558702948051",
+      "level": "success",
+      "text": "3 hír + 2 útmutató publikálva (költség: $0.0594).",
+      "agent": "ceo",
+      "at": "2026-11-25T06:10:29.480Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m17945012183528",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to use Gemini 4 Carbon\" — A \"Gemini 4 Carbon\" termék neve nem létezik, és a leírt modellek kiválasztására, gondolkodási szintek beállítására és a gondolkodási lépések megtekintésére szolgáló felület nem felel meg a valós Gemini működésnek (állítás: The guide title mentions \"Gemini 4 Carbon\" as if it is a current Google AI product — this exact",
-      "ref": "ARTICLE_GUIDE_how-to-use-gemini-4-carbon.json",
-      "open": true,
-      "at": "2026-11-12T16:33:38.352Z"
-    },
-    {
-      "id": "m179450125948458",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „In short:** People who use AI at work keep reporting the same pattern: AI helps get work s”): \" AI is the new starting point for work, but finish\" — A cikk konkrét százalékokat (70-80%, utolsó 20%) állít, amelyek ellentmondnak a tényleges tanulmány számainak",
-      "ref": "ARTICLE_2026-09-24T02-07-47-678Z_dropbox-blog__AI_is_the_new_starting_point_for_work__but_finish.json",
-      "open": true,
-      "at": "2026-11-12T16:34:19.484Z"
-    },
     {
       "id": "m179450181198258",
       "from": "social",
@@ -2686,6 +2666,25 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-24T19:23:57.889Z"
+    },
+    {
+      "id": "m179558666331716",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to create a Thanksgiving invitation with Picsart Flow templates\"",
+      "ref": "how-to-create-a-thanksgiving-invitation-with-picsart-flow-te",
+      "open": true,
+      "at": "2026-11-25T06:04:23.317Z"
+    },
+    {
+      "id": "m179558700426614",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-25T06:10:04.266Z"
     }
   ]
 }

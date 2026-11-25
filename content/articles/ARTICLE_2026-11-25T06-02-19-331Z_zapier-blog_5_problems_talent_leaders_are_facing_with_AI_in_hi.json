@@ -1,0 +1,73 @@
+{
+  "_meta": {
+    "written_at": "2026-11-25T06:02:59.958Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0044958,
+    "original_draft": "2026-11-25T06-02-19-331Z_zapier-blog_5_problems_talent_leaders_are_facing_with_AI_in_hi.json",
+    "source_id": "zapier-blog",
+    "source_name": "Zapier Blog (hivatalos)",
+    "source_link": "https://zapier.com/blog/ai-in-hiring-problems-and-solutions",
+    "source_links": [
+      "https://zapier.com/blog/ai-in-hiring-problems-and-solutions"
+    ],
+    "source_snippet_len": 500,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "b2ef4cca57ead8e1",
+    "source_overlap_words": 25,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "published_at": "2026-11-25T06:04:08.398Z",
+    "slug": "ai-in-hiring-five-problems-teams-are-running-into-and-some-fixes-that-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 866
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with clear structure, good explanations of technical terms (IP address, VPN, proxy), helpful actionable prompt for recruiters, and practical 'What this means for you' takeaways organized by role. No prohibited content, no company rankings, no cliches, and brand voice is friendly and teaching-focused throughout.",
+      "_aiCost": 0.003198,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-25T06:04:39.937Z",
+    "guide_worthy": false,
+    "pairing_reason": "Article is a general discussion of AI hiring challenges, not the announcement of a specific named product or feature for consumers to use",
+    "image_v": 2,
+    "image_at": "2026-11-25T06:08:21.312Z",
+    "seo": {
+      "meta_description": "Zapier spoke with 100 hiring leaders about AI in hiring. They found 5 problems—fake applicants, unclear steps, weak ROI—and fixes that actually work.",
+      "keywords": [
+        "AI in hiring",
+        "AI recruitment problems",
+        "artificial intelligence hiring challenges",
+        "AI job application screening",
+        "hiring with AI tools",
+        "AI interview verification",
+        "recruitment technology issues"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add more specific examples of the fixes that work in the subheadings or intro to improve keyword relevance",
+        "Consider adding a section on specific tools or methods for solving the disconnected tools problem",
+        "Include the term 'AI recruiting' as an additional keyword variant since it's commonly searched"
+      ],
+      "optimised_at": "2026-11-25T06:09:30.282Z"
+    },
+    "fact_verified_at": "2026-11-25T06:10:58.711Z"
+  },
+  "article_markdown": "---\ntitle: \"AI in Hiring: Five Problems Teams Are Running Into, and Some Fixes That Work\"\nsubtitle: \"Zapier spoke with about 100 talent leaders and heard the same struggles again and again, along with a few approaches that help.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"ai-hiring\", \"recruiting\", \"talent-teams\", \"fraud-detection\", \"workplace-ai\"]\n---\n\n# AI in Hiring: Five Problems Teams Are Running Into, and Some Fixes That Work\n\n> **In short:** Zapier says it spoke with roughly 100 hiring leaders and kept hearing the same problems: fake applicants, unclear new interview steps, disconnected tools, and weak return-on-investment math. Teams handling them well layer several checks, redesign one stage at a time, and connect the tools they already own.\n\nIf you have ever wondered whether the person on a video interview is really the one on the resume, you are not alone. Recruiters and hiring managers are asking the same questions about AI right now, and the answers are still taking shape.\n\n## The five problems on the list\n\nZapier, which makes automation software, describes five recurring challenges: fraud is climbing, every team is redesigning hiring with no shared playbook, teams have plenty of tools that don't connect, time saved no longer makes a strong return-on-investment case, and security reviews set the timeline. Here are the first three in more detail, since the company shared the most about them.\n\n## Problem 1: Fake applicants are rising\n\nZapier says one company once reported that 20% of its applicants were fraudulent. A few months later, 40% was a figure the team heard often, and some leaders now report close to 80% for certain technical roles.\n\nFraud has also become more sophisticated. The post mentions three tactics:\n\n- **Deepfaked interviews**: AI-generated video or audio that imitates a real person.\n- **Proxy candidates**: someone else takes the interview for the applicant.\n- **Coached answers**: a hidden helper feeds the applicant responses in real time.\n\nThe teams doing this best don't rely on one check. They flag a candidate only when several signals line up, such as an IP address (the number that identifies a device's internet connection) that doesn't match the stated location, a VPN (a tool that hides a connection's real location) or proxy in use, or a suspicious phone number. A reference and background check serves as the final gate, and a human recruiter reviews anything that gets flagged.\n\n💬 Here is a prompt in your own words that a recruiter could adapt: *\"Compare this candidate's resume with the screening notes and interview transcript. List any conflicts in dates, job titles, employers, or project details. Don't decide whether it's fraud. Just flag what a recruiter should review.\"*\n\n## Problem 2: Nobody has a playbook for interviews\n\nCandidates now use AI at every stage, so the old interview process doesn't reveal what it used to. Zapier says some companies have rebuilt their process from end to end, while others are still getting their own teams comfortable with AI.\n\nThe post shares a few approaches from teams further along:\n\n- A large tech company put less weight on standard applications and created a fast-track path for candidates who showed proof of excellent work.\n- A workforce management company replaced \"show me what you built\" with live exercises that change as the candidate works, testing judgment and iteration.\n- An insurance company that struggled to find specialized sales talent began hiring for aptitude and runs 12-week internal academies to build skills and AI fluency.\n\nZapier's advice is to start with the single stage your team trusts least, define what a strong candidate looks like there, and then change how you assess it. Speed can come later.\n\n## Problem 3: Good tools that don't talk to each other\n\nThe question Zapier hears most is \"which tool should we buy?\" The company argues that's often the wrong question. Many teams already own enough software. The real gap is that those tools aren't connected.\n\n## A pattern worth borrowing\n\nZapier describes habits shared by the teams it considers most forward-thinking:\n\n- Map and connect the tools you already have before adding new ones.\n- Let the people closest to the work build the solutions.\n- Set clear guardrails, so people can build quickly while IT keeps oversight.\n- Measure every build against a real goal, such as candidate quality, team capacity, or candidate experience.\n\n## What this means for you\n\n- **If you lead a talent team**: Map your current tools first and look for the stage where candidates are hardest to verify.\n- **If you manage hiring**: Ask your recruiters which interview stage they trust least, and start there.\n- **If you're a recruiter**: Treat AI flags as prompts for review, not verdicts. A human makes the final call.\n- **If you're a job seeker**: Expect more verification steps, and be ready to explain your work with real examples.\n\n## Wrap-up\n\nZapier's message is that AI in hiring is less about buying one magic product and more about layering checks, rethinking one step at a time, and making your existing tools work together. Your next step: this week, pick one stage of your hiring process and write down what a strong candidate looks like there.",
+  "original_title": "5 problems talent leaders are facing with AI in hiring, and what's working"
+}

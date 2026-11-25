@@ -1,10 +1,5 @@
 {
   "openai-blog": [
-    "https://openai.com/academy/getting-started",
-    "https://openai.com/index/managing-ai-investments-in-agentic-era",
-    "https://openai.com/academy/codex-for-work/how-sales-teams-use-codex",
-    "https://openai.com/academy/codex-for-work/how-data-science-teams-use-codex",
-    "https://openai.com/index/advancing-ai-safety-through-state-and-federal-action",
     "https://openai.com/index/why-teens-deserve-access-safe-ai",
     "https://openai.com/index/cars24",
     "https://openai.com/index/unlocking-self-improvement-gpt-red",
@@ -299,7 +294,12 @@
     "https://openai.com/index/introducing-shirudo",
     "https://openai.com/business/learn/connected-intelligence-for-in-house-legal",
     "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
-    "https://openai.com/index/ifood"
+    "https://openai.com/index/ifood",
+    "https://openai.com/index/searching-for-distant-planets-with-astra",
+    "https://openai.com/business/customer-stories/intentful-dots",
+    "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities",
+    "https://openai.com/business/customer-stories/ifood",
+    "https://openai.com/business/customer-stories/clay-plugins-openai"
   ],
   "google-deepmind": [
     "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
@@ -1942,7 +1942,6 @@
     "https://news.sap.com/2026/11/less-code-more-context-how-ai-is-reshaping-developer-role/"
   ],
   "databricks": [
-    "https://www.databricks.com/blog/scaling-document-classification-100k-labels",
     "https://www.databricks.com/blog/ai-transparency",
     "https://www.databricks.com/blog/responsible-ai",
     "https://www.databricks.com/blog/last-mile-first-party-data-great-marketing",
@@ -2241,7 +2240,8 @@
     "https://www.databricks.com/blog/interactive-databricks-reference-architectures-across-70-industries",
     "https://www.databricks.com/blog/sharing-catalog-metadata-across-data-platforms-engines-and-agents",
     "https://www.databricks.com/blog/what-5400-malicious-npm-packages-reveal-about-software-supply-chain-risk-2026",
-    "https://www.databricks.com/blog/announcing-general-availability-native-lakebase-postgres-sink-spark-structured-streaming"
+    "https://www.databricks.com/blog/announcing-general-availability-native-lakebase-postgres-sink-spark-structured-streaming",
+    "https://www.databricks.com/blog/agentic-cdp-data-modeling-data-foundation"
   ],
   "snowflake": [
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/snowflake-postgres-ml-online-feature-store",
@@ -2380,7 +2380,8 @@
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/sap-snowflake-predictive-analytics",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/trust-ai-agents-data-foundation",
     "https://www.snowflake.com/content/snowflake-site/global/en/blog/ai-manufacturing-institutional-knowledge",
-    "https://www.snowflake.com/content/snowflake-site/global/en/blog/iceberg-observability-horizon-catalog"
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/iceberg-observability-horizon-catalog",
+    "https://www.snowflake.com/content/snowflake-site/global/en/blog/healthcare-interoperability-snowflake-hl7-fhir"
   ],
   "together": [
     "https://www.together.ai/blog/announcing-our-series-c",
@@ -2784,7 +2785,8 @@
     "https://news.google.com/rss/articles/CBMiNEFVX3lxTE05dzhLazRVM1Y0dS1TR2NhWUg1VmpkVjhXUjJVc3VjNS14T0xQM1NoT2NlMFM?oc=5",
     "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5SSWpuZUY3a1FobWtVSDFKSUUzdFJVZnZWS2JWdEttczNFLXl3RWJndXRSZmZiNUgyVmVUemVCcFhBUWVrY1YxUC1OUnF0c1FNektRQg?oc=5",
     "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9LalVkNmtRSTNYbWROaWtWVklWXzVUWENoRzA3dWJVbFlsN3RuYkJpWUozQldOZHB3bFlqSTVpX0tiM1EyODViaQ?oc=5",
-    "https://news.google.com/rss/articles/CBMipAFBVV95cUxQYWNEaXNSQzlQWGU2VjZOcVZJV2hRMzd6aEsxN3lPb1RHSS13cU9pY0ZwUV9XRFJKWk9PNTdtb0hXOXZqcWxNQjJ3NEtDRTg4Q0FmMEZ1bXllX0xpaktqUHAyc3N4UVBxZ0JKa09JTEJ6ek1wRnpDOXh4OVNHZTNLcnpzeko2eGZ5R3FGQ0xSQ2ZPSkVkQ3VIZVBKQVM2TlRKMVJaSA?oc=5"
+    "https://news.google.com/rss/articles/CBMipAFBVV95cUxQYWNEaXNSQzlQWGU2VjZOcVZJV2hRMzd6aEsxN3lPb1RHSS13cU9pY0ZwUV9XRFJKWk9PNTdtb0hXOXZqcWxNQjJ3NEtDRTg4Q0FmMEZ1bXllX0xpaktqUHAyc3N4UVBxZ0JKa09JTEJ6ek1wRnpDOXh4OVNHZTNLcnpzeko2eGZ5R3FGQ0xSQ2ZPSkVkQ3VIZVBKQVM2TlRKMVJaSA?oc=5",
+    "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5VSUlQZUhIZ1N0SlU0UmFILUIxaHBqemJpWjhsc25WUE5ZaXhiYXJlQkJLZ3AyS3RSRWo1VUc3TUhTaDJpRWswM1p5ZlFNdFRkakVPZXlqSWZnN3NmUC1IckZrVQ?oc=5"
   ],
   "perplexity-news": [
     "https://news.google.com/rss/articles/CBMiP0FVX3lxTE9YTkRwd0ZQU2VUZXRGVGJwWm0yRnJWaWw2WnlpeEp0MWFJZnJ0Y0s0VzFweHdUZUJXV0JCYVlacw?oc=5",
@@ -3679,7 +3681,8 @@
     "https://zapier.com/blog/zapier-automation-examples",
     "https://zapier.com/blog/workflow-automation",
     "https://zapier.com/blog/what-you-should-automate",
-    "https://zapier.com/blog/openai-agent-builder-alternatives"
+    "https://zapier.com/blog/openai-agent-builder-alternatives",
+    "https://zapier.com/blog/ai-in-hiring-problems-and-solutions"
   ],
   "dropbox-blog": [
     "  https://blog.dropbox.com/topics/company/dropbox-announces-q1-2026-results ",
@@ -3811,7 +3814,8 @@
     "https://news.samsung.com/global/samsung-tv-plus-brings-2026-mama-awards-to-k-pop-fans-around-the-world",
     "https://news.samsung.com/global/samsung-electronics-announces-new-leadership-5",
     "https://news.samsung.com/global/the-technology-behind-more-precise-finding-with-galaxy-smarttag3-and-smartthings",
-    "https://news.samsung.com/global/samsung-launches-odyssey-g6-the-worlds-first-1100hz-gaming-monitor"
+    "https://news.samsung.com/global/samsung-launches-odyssey-g6-the-worlds-first-1100hz-gaming-monitor",
+    "https://news.samsung.com/global/a-day-in-the-life-of-a-dog-with-galaxy-smarttag3-and-smartthings"
   ],
   "deepseek-sitemap": [
     "https://www.deepseek.com/en/news/deepseek-v4-1-flash/"
@@ -4129,7 +4133,8 @@
     "https://elevenlabs.io/blog/video-variants-localization-ads-engine",
     "https://elevenlabs.io/blog/elevenmusic-vs-elevencreative",
     "https://elevenlabs.io/blog/choose-the-best-speech-to-text-api",
-    "https://elevenlabs.io/blog/yahoo"
+    "https://elevenlabs.io/blog/yahoo",
+    "https://elevenlabs.io/blog/what-is-sip-trunking"
   ],
   "pika": [
     "https://pika.art/blog/pika-h3-flex",

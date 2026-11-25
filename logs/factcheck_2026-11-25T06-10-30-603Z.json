@@ -1,0 +1,62 @@
+{
+  "ok": 5,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.008781780000000001,
+  "at": "2026-11-25T06:10:30.603Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 5,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 0,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-copilot-notebooks-to-keep-all-your-notes-on-one-t.json",
+      "cim": "How to Gather Chats, Files and Meeting Notes into a Copilot Notebook",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-give-ai-a-spreadsheet-export-and-ask-for-clean-summar.json",
+      "cim": "How to Give AI a Spreadsheet Export and Ask for Clean Summary Tables",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-25T06-02-19-331Z_zapier-blog_5_problems_talent_leaders_are_facing_with_AI_in_hi.json",
+      "cim": "5 problems talent leaders are facing with AI in hiring, and what's working",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrásszöveget: körülbelül 100 tehetségügyi vezetővel folytattak beszélgetést, a csalások aránya 20%-ról 40%-ra majd közel 80%-ra emelkedett bizonyos technikai pozíciókban, a három csalási módszer (deepfake interjúk, helyettesítő jelöltek, betanított válaszok) helyesen van "
+    },
+    {
+      "file": "ARTICLE_2026-11-24T19-14-23-107Z_pika_What_Does_Pika_Cost_Inside_ChatGPT_and_Claude__Pla.json",
+      "cim": "What Does Pika Cost Inside ChatGPT and Claude? Plans, Credits and Per-Generation Prices",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényszerű állítása megegyezik a forrásszöveggel"
+    },
+    {
+      "file": "ARTICLE_2026-11-24T19-14-08-987Z_picsart_How_to_make_a_Thanksgiving_invitation__5_styles_to.json",
+      "cim": "How to make a Thanksgiving invitation: 5 styles to try",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk összes tényszerű állítása összhangban van a forrásszöveggel."
+    },
+    {
+      "file": "ARTICLE_2026-11-24T07-32-35-091Z_snowflake_Trust_AI_Agents_to_Act__Start_With_Your_Data_Found.json",
+      "cim": "Trust AI Agents to Act: Start With Your Data Foundation",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/2: HTTP 403)",
+      "status": 403
+    }
+  ]
+}

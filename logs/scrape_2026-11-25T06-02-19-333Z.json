@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-11-25T06:00:52.520Z",
+  "feeds_total": 53,
+  "feeds_ok": 50,
+  "feeds_failed": 1,
+  "items_seen_before": 450,
+  "items_keyword_filtered": 4,
+  "candidates_for_ai": 6,
+  "ai_calls": 1,
+  "items_relevant": 1,
+  "items_saved": 1,
+  "ai_cost_usd": 0.0017565,
+  "failed_feeds": [
+    {
+      "id": "microsoft-research",
+      "error": "Request timed out after 15000ms"
+    }
+  ],
+  "finished_at": "2026-11-25T06:02:19.333Z",
+  "duration_seconds": 86.813
+}

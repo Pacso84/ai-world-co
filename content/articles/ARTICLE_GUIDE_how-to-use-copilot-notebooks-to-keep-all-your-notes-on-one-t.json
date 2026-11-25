@@ -1,0 +1,77 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-use-copilot-notebooks-to-keep-all-your-notes-on-one-t",
+    "company": "Microsoft",
+    "tool": "Copilot",
+    "icon": "📓",
+    "level": "beginner",
+    "source_news": null,
+    "official_sources": [
+      {
+        "url": "https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-microsoft-365-copilot-notebooks",
+        "title": "Get started with Microsoft Copilot Notebooks"
+      }
+    ],
+    "sugo_alapu": true,
+    "trend": {
+      "kifejezes": "how to use copilot notebooks",
+      "forras": [
+        "google-javaslat"
+      ],
+      "datum": "2026-11-25"
+    },
+    "extra_slot": null,
+    "written_at": "2026-11-25T06:07:06.603Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0051103,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-11-25T06:07:17.413Z",
+    "slug": "how-to-gather-chats-files-and-meeting-notes-into-a-copilot-notebook",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1608
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": 9,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured beginner guide with clear steps, friendly tone, appropriate use of 'you'll know it worked when' checkpoints, useful common mistakes section, and an actionable wrap-up. No prohibited content, no clichés, and factual accuracy is maintained with appropriate disclaimers about rolling-out features.",
+      "_aiCost": 0.0038988,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-25T06:09:05.196Z",
+    "seo": {
+      "meta_description": "Learn how to gather your Copilot chats, Microsoft 365 files, and meeting notes into one notebook, then ask questions about them all in one place.",
+      "keywords": [
+        "Microsoft Copilot notebook",
+        "Copilot notebook feature",
+        "how to use Copilot notebook",
+        "gather chats in Copilot",
+        "Copilot notebook tutorial",
+        "Copilot notebook files meeting notes",
+        "Microsoft Copilot Chat notebook"
+      ],
+      "seo_score": 8,
+      "suggestions": [
+        "Add the specific system requirements or supported Microsoft 365 plans in the article to improve search visibility for technical queries",
+        "Include step-by-step numbering or clearer headings structure to target featured snippet opportunities",
+        "Add the exact date of the feature rollout or last update to improve freshness signals for search"
+      ],
+      "optimised_at": "2026-11-25T06:09:49.279Z"
+    },
+    "fact_verified_at": "2026-11-25T06:10:40.863Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Gather Chats, Files and Meeting Notes into a Copilot Notebook\"\nsubtitle: \"Pull the scattered chats, files and notes for one topic into a single notebook, so you can ask questions about them in one place.\"\ncategory: \"guide\"\naudience: \"personal\"\ncompany: \"Microsoft\"\ntool: \"Copilot\"\nlevel: \"beginner\"\nread_time_minutes: 6\ntags: [\"getting-started\", \"copilot\", \"notebooks\", \"organization\", \"microsoft\"]\n---\n\n# How to Gather Chats, Files and Meeting Notes into a Copilot Notebook\n\n> **In short:** You can gather your Copilot chats, Microsoft 365 files, pages, meeting notes and links for one subject into a single notebook, then ask questions about that material. You need a Microsoft Copilot or Copilot Chat license, and the help center notes that some features are still rolling out.\n\nBy the end of this guide, you will have one notebook for one subject, filled with the chats, documents and notes you already have, and you will have asked it a question about them. This is for anyone who keeps losing track of a project, a trip, a home repair or a class across many chats and apps.\n\n## Before you start\n\n- **A Microsoft account and a Microsoft Copilot or Copilot Chat license.** Microsoft's help center says a license is required to use Copilot Notebooks. Accounts also need a SharePoint or OneDrive license to create notebooks. Microsoft 365 Personal, Family, Premium and Pro subscribers can also use it. If your account comes through an employer or school, your administrator may need to turn this on, so ask them first.\n- **A web browser on a computer, or the Microsoft Copilot app.** The steps below describe the web version. The help center says the same notebook also opens in OneNote for a fuller view.\n- **About 15 minutes**, plus a few minutes to collect the files and notes you want to include.\n\n## Step 1 — Open the Notebooks area\n\nOpen the Microsoft Copilot app in your web browser and sign in with your Microsoft account. Look at the **left navigation** (the column of links down the side of the screen) and find an entry called **Notebooks**. Select it. A page called the Notebooks dashboard should open, and it shows the notebooks you already have, if any.\n\nIf you don't see Notebooks in the left navigation, Microsoft's help center says to open the app launcher (the grid-of-dots icon at the top of the left navigation pane) and look for **Workspaces**, which is the newer name for this feature. Microsoft also notes that Copilot's start page is still rolling out, so your screen may look a little different. If you're stuck, the official Microsoft help center has the current layout.\n\nYou'll know it worked when you see the Notebooks dashboard, or a page listing your notebooks, with a way to start a new one.\n\n## Step 2 — Create a new notebook\n\nOn the Notebooks area, expand the **Notebooks** list and select **All notebooks**. On the page that lists all your notebooks, select **New notebook**. A new, empty notebook opens.\n\nOnce you have one notebook, you can make more by selecting the **plus button** next to Notebooks on the left side of the screen. Think of each notebook as a folder for one subject only. A notebook called \"Kitchen remodel\" works better than one called \"Home stuff,\" because the AI works best when everything inside it belongs to the same topic.\n\nIf the menu looks different, look for any option that says New, Create or a plus sign, near the list of notebooks. It's usually close to the top of the page.\n\nYou'll know it worked when a blank notebook opens and waits for you to name it and fill it with content.\n\n## Step 3 — Name your notebook\n\nMicrosoft's help article says you create a name for your notebook right after it opens. Click the empty title area, or look for a field near the top of the page that asks for a name, and type a short, specific title. Type something like **Kitchen remodel 2026** or **Spring trip to Denver**, then press Enter or click away from the field.\n\nA clear name matters because it helps you find the notebook later, and it tells you (and the AI) what belongs inside. Keep it to one subject. If you're planning two trips, make two notebooks.\n\nIf you can't find a place to type a name, the notebook may already be called something generic. Look for a title or settings option near the top of the page. You can rename the notebook later.\n\nYou'll know it worked when the notebook shows the name you typed at the top, or in the list of your notebooks.\n\n## Step 4 — Add your chats, files and notes\n\nThis is the step that saves you from digging through old chats and apps. Microsoft describes a notebook as a place to bring together your Copilot chats, Microsoft 365 files, pages, meeting notes, links and more. Look inside the notebook for an option to add reference content. Its exact wording and location may change, so look for something like **Add content** or **Add reference**.\n\nAdd one or two things at a time: a Copilot chat about the topic, a Word or PDF file from your Microsoft 365 storage, a page you wrote in Copilot, notes from a meeting, or a web link. Pick items that really belong to this one subject. Mixing unrelated material makes the answers vaguer.\n\nHere's an example of the kind of mix you might pick for a home project: an old chat where you compared paint colors, a budget spreadsheet, and a link to the contractor's estimate. Microsoft says references can update as your project changes, so you can add more later.\n\nYou'll know it worked when each item you added appears in the notebook's list of references or sources.\n\n## Step 5 — Ask a question about your notebook\n\nNow the notebook can answer questions using only what you put in it. Find the message box in the notebook, usually at the bottom of the page, and type your question. Ask about the notebook's content directly by saying so in your question.\n\n💬 Example: \"Using only the files and notes in this notebook, list the decisions I have already made about [your project topic] and show where each one came from.\"\n\nCopilot should write an answer based on your added content. Read it carefully. If the answer misses something, the item may not have been added, or the question may be too broad. Try again with a narrower question, such as \"What did the meeting notes say about the deadline?\"\n\nYou'll know it worked when an answer appears below your question and it refers to the material you added, not general information from the internet.\n\n## Step 6 — Draft something from your notebook\n\nMicrosoft's help center says you can also draft new content based on what's in the notebook. This is useful when you need a summary, an email or a checklist without rereading everything yourself.\n\n💬 Example: \"Based on the content in this notebook, draft a short update email to [recipient name] about the current status of [your project topic].\"\n\nReview the draft before you send it anywhere. The AI can miss details or phrase something in a way you wouldn't, and it cannot send the email for you. It can only write the text. Copy the draft into your own email program and check every date, name and number against your original files.\n\nYou'll know it worked when a draft appears in the notebook, and it uses names and facts from your added content.\n\n## Common mistakes\n\n- **Mixing several subjects in one notebook.** The answers get fuzzy when the material is about three different things. The fix is to make one notebook per subject and use the plus button to start a new one.\n- **Assuming everything is included automatically.** Only the chats, files and notes you add are part of the notebook. The fix is to check the list of references and add anything you forgot.\n- **Trusting an answer without checking it.** The AI can make mistakes or summarize something inaccurately, especially with long documents. The fix is to open the original file or meeting note for any important fact, such as a deadline or a price you're about to pay.\n\n## What this means for you\n\n- **In everyday life:** Create one notebook for a trip, a home project or a school class. Add the relevant chats and documents, then ask it for a checklist or a summary when you need one.\n- **For your business or work:** Build a notebook for one client or project, add meeting notes and shared files, and ask for a draft update. Microsoft says notebooks can be shared with a team for real-time collaboration, but sharing details may depend on your account and organization settings.\n- **If you're just getting started:** Make a single notebook for something you already have in several places, and add only three items. That small start is enough to see how the answers work.\n\nKeep in mind that this tool can gather and summarize the material you give it, but it can't read files you haven't added, and it can't know what your meeting attendees decided unless it's written down somewhere it can see.\n\n## Try it now\n\nOpen the Notebooks area, create one new notebook named after a project you're working on, and add one document to it. Then ask it: \"Using only the content in this notebook, what are the three most important points so far?\" Read the answer, and compare it with the document yourself.",
+  "original_title": "How to Gather Chats, Files and Meeting Notes into a Copilot Notebook"
+}
