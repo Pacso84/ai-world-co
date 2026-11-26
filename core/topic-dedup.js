@@ -18,6 +18,7 @@ import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { utmutatoE } from './guide-kind.js';
+import { terKuszob } from './cf-embed.js';   // 2026-11-26: a küszöb a vektor TERÉBEN (Cloudflare 512 ≠ Mistral 1024)
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -125,7 +126,8 @@ export async function isNearDuplicateTitle(candidate, existingTitles, opts = {})
         const beagyazott = !!sv;
         if (!beagyazott) hianyzo++;
         const score = beagyazott ? cosine(cv, sv) : s.jac;
-        const kuszob = beagyazott ? cosineThreshold : jaccardThreshold;
+        // A cosineThreshold Mistral-skálán érkezik; az új (512 dim) térben a mért táblával átváltjuk.
+        const kuszob = beagyazott ? terKuszob(cosineThreshold, cv.length) : jaccardThreshold;
         if (score >= kuszob) talalat = true;
         // a JELENTÉSHEZ azt tartjuk meg, amelyik a saját küszöbéhez képest
         // a legközelebb jár — így a riportban összemérhető marad

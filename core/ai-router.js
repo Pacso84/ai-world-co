@@ -36,6 +36,7 @@ import { shouldRetryTruncated } from './truncation-guard.js';
 import { sikeresKuldes } from './report-window.js';
 import { jegyezEmbed } from './embed-guard.js';
 import { probalSorban } from './embed-chain.js';
+import { CF_EMBED_MODELL, CF_ELOTAG, cfVektor } from './cf-embed.js';   // ☁️ 2026-11-26
 import { jegyezLatencia } from './ai-latency-guard.js';
 
 // ===================================================================
@@ -181,6 +182,39 @@ async function embedMistral(t, probak = 3) {
   return { v: null, error: utolso + ` (${probak} próba után)` };
 }
 
+// ☁️ CLOUDFLARE WORKERS AI (2026-11-26) — 11-25 este óta a Mistral 402 („You need a subscription”),
+// a Google 402 („prepayment credits are depleted”). A meglévő Cloudflare-fiók + a borítóképek
+// kulcsa (CLOUDFLARE_FLUX_TOKEN) ingyenes keretből ad beágyazást. EmbeddingGemma → 512 dimenzió
+// (egyedi tér-méret; a küszöb-átváltás és a mérés: core/cf-embed.js). ELSŐ a sorban: ingyenes,
+// és nem függ más cég számlázásától; ha elbukik, a régi lánc (Google → Mistral) jön.
+async function embedCloudflare(t, probak = 3) {
+  const token = (process.env.CLOUDFLARE_FLUX_TOKEN || '').trim(), acct = (process.env.CLOUDFLARE_ACCOUNT_ID || '').trim();
+  if (!token || !acct) return { v: null, error: 'nincs CLOUDFLARE_FLUX_TOKEN / CLOUDFLARE_ACCOUNT_ID' };
+  let utolso = 'ismeretlen';
+  for (let i = 0; i < probak; i++) {
+    try {
+      const r = await fetch(`https://api.cloudflare.com/client/v4/accounts/${acct}/ai/run/${CF_EMBED_MODELL}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ text: [CF_ELOTAG + t] }),
+        signal: AbortSignal.timeout(20000)
+      });
+      if (r.status === 429 || r.status >= 500) {
+        utolso = `HTTP ${r.status}`;
+        await new Promise(s => setTimeout(s, 1200 * (i + 1)));
+        continue;
+      }
+      if (!r.ok) return { v: null, error: `HTTP ${r.status}: ${(await r.text().catch(() => '')).slice(0, 80)}` };
+      const v = cfVektor((await r.json())?.result?.data?.[0]);
+      return { v, error: v ? null : 'üres / hibás vektor' };
+    } catch (e) {
+      utolso = String(e.message || e).slice(0, 120);
+      await new Promise(s => setTimeout(s, 1200 * (i + 1)));
+    }
+  }
+  return { v: null, error: utolso + ` (${probak} próba után)` };
+}
+
 /**
  * @returns {Promise<number[]|null>} a vektor, vagy null, ha EGYIK szolgáltató
  *          sem tudott adni. A `null` itt „nem tudom", nem „nem hasonló" —
@@ -204,7 +238,7 @@ export async function embedText(text) {
   //     kód itt felülírta a Google hibáját a Mistraléval, ezért az őrszem-
   //     fájlból sosem derült ki, MIÉRT halott a Google.
   const r = await probalSorban(
-    [['google', embedGoogle], ['mistral', embedMistral]],
+    [['cloudflare', embedCloudflare], ['google', embedGoogle], ['mistral', embedMistral]],
     _embedKiesett,
     rovid
   );

@@ -424,7 +424,12 @@ console.log(JSON.stringify({ hivasok }));
 
 // ── 6. TRIPWIRE: SZOLGÁLTATÓ-VÁLTÁS ─────────────────────────────────
 
-t('🚨 a beágyazó-lánc szolgáltatói VÁLTOZATLANOK (google 768 + mistral 1024)', () => {
+t('🚨 a beágyazó-lánc szolgáltatói VÁLTOZATLANOK (cloudflare 512 + google 768 + mistral 1024)', () => {
+  // 2026-11-26: a Cloudflare (EmbeddingGemma, 512-re vágva — core/cf-embed.js) az ELSŐ. A 512
+  // SZÁNDÉKOSAN egyedi méret, így a dimenzió-őr továbbra is szétválasztja a tereket; ezt itt mérjük.
+  const CF = readFileSync(join(REPO, 'core', 'cf-embed.js'), 'utf-8');
+  const cfDim = Number((CF.match(/export const CF_DIM = (\d+);/) || [])[1]);
+  assert.ok(cfDim && ![768, 1024].includes(cfDim), `a Cloudflare-dimenzió (${cfDim}) ütközik egy régi térrel — a téma-gyorsítótár vak lenne`);
   // 🔑 A TÉMA-ŐR gyorsítótára (guides/topic-embeddings.json) — a memóriáétól
   // eltérően — NEM tárol szolgáltató-fejlécet: csak a DIMENZIÓ különbözteti
   // meg a tereket. Ma ez elég (768 ≠ 1024). Ha viszont bekerül a láncba egy
@@ -436,7 +441,7 @@ t('🚨 a beágyazó-lánc szolgáltatói VÁLTOZATLANOK (google 768 + mistral 1
   // szól ez a teszt AZON A HELYEN, ahol a változás történne.
   const blokk = ROUTER.slice(ROUTER.indexOf('probalSorban('), ROUTER.indexOf('probalSorban(') + 400);
   const nevek = [...blokk.matchAll(/\['([a-z0-9-]+)',\s*embed/gi)].map(m => m[1]);
-  assert.deepEqual(nevek, ['google', 'mistral'],
+  assert.deepEqual(nevek, ['cloudflare', 'google', 'mistral'],
     'MEGVÁLTOZOTT A BEÁGYAZÓ-LÁNC: ' + JSON.stringify(nevek) + '. Ellenőrizd, hogy az új '
     + 'szolgáltató dimenziója KÜLÖNBÖZIK-e a többiétől. Ha nem, a '
     + 'guides/topic-embeddings.json dimenzió-őre vak lesz — ilyenkor a '

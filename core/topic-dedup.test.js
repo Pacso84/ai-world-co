@@ -61,6 +61,24 @@ assert.ok(d1.closest.title.includes('Meeting Notes'), 'a legközelebbi a meeting
 const d2 = await isNearDuplicateTitle('How to Plan a Weekly Budget with AI', EXISTING, { embedFn: fakeEmbed });
 assert.equal(d2.duplicate, false, 'budget-téma nem duplikátum');
 
+// 2b) TÉR SZERINTI KÜSZÖB (2026-11-26, Cloudflare EmbeddingGemma-512): ugyanaz a 0,85-ös koszinusz
+// az új (512 dimenziós) térben ISMÉTLÉS (a 0,88-as Mistral-küszöb ott 0,821), a Mistral-térben (1024) NEM.
+{
+  const parVektor = (dim, cos) => async (title) => {
+    const v = Array(dim).fill(0);
+    if (/clear/i.test(title)) { v[0] = cos; v[1] = Math.sqrt(1 - cos * cos); } else v[0] = 1;
+    return v;
+  };
+  const ter512 = await isNearDuplicateTitle('How to Turn Meeting Notes into Clear Action Plans', EXISTING, { embedFn: parVektor(512, 0.85) });
+  assert.equal(ter512.duplicate, true, '512 dim, 0,85 → ismétlés (átváltott küszöb 0,821)');
+  const ter1024 = await isNearDuplicateTitle('How to Turn Meeting Notes into Clear Action Plans', EXISTING, { embedFn: parVektor(1024, 0.85) });
+  assert.equal(ter1024.duplicate, false, '1024 dim, 0,85 → nem ismétlés (Mistral-küszöb 0,88)');
+  // a hívó által adott (Mistral-skálás) küszöb is átváltódik: 0,92 → 0,888
+  const hir512 = await isNearDuplicateTitle('How to Turn Meeting Notes into Clear Action Plans', EXISTING, { embedFn: parVektor(512, 0.87), cosineThreshold: 0.92 });
+  assert.equal(hir512.duplicate, false, '512 dim, 0,87 a 0,92-es (→0,888) hír-küszöbön → nem ismétlés');
+  console.log('  ✅ tér szerinti küszöb: 512 dim átváltva, 1024 dim változatlan');
+}
+
 // 3) SZÓ SZERINT azonos (normalizálva) → duplikátum, embedding nélkül is
 const d3 = await isNearDuplicateTitle('write a polite complaint email with chatgpt', EXISTING, { embedFn: null });
 assert.equal(d3.duplicate, true, 'normalizálva azonos cím = duplikátum (exact)');

@@ -261,6 +261,9 @@ jobs:
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          # ☁️ beágyazás (2026-11-26): Cloudflare Workers AI az első (core/cf-embed.js)
+          CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           # ⚠️ TELEGRAM MINDEN FIZETŐS LÉPÉSBE (2026-08-30, hibavadászat).
           # A config.json szerint MIND A 23 agent paid-only, tehát BÁRMELYIK
           # lépés elsütheti az `core/ai-router.js` vészháló-riasztását („a cég
@@ -295,6 +298,9 @@ jobs:
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          # ☁️ beágyazás (2026-11-26): Cloudflare Workers AI az első (core/cf-embed.js)
+          CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           # Vészháló-riasztás — lásd a „Heti összefoglaló" lépés indoklását.
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
@@ -360,6 +366,9 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          # ☁️ beágyazás (2026-11-26): Cloudflare Workers AI az első (core/cf-embed.js)
+          CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         run: node agents/seo/agent.js --atiras 100 --perc 6 || true
@@ -388,6 +397,9 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          # ☁️ beágyazás (2026-11-26): Cloudflare Workers AI az első (core/cf-embed.js)
+          CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         # 2026-11-01 (4. rész, user 10-31: „igen!”): 4 → 6 — a régi, olvasott hírek is a sorba kerültek (napi ~+$0,03)
@@ -401,6 +413,9 @@ jobs:
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          # ☁️ beágyazás (2026-11-26): Cloudflare Workers AI az első (core/cf-embed.js)
+          CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         run: node agents/video/agent.js || true
@@ -441,6 +456,9 @@ jobs:
           CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          # ☁️ beágyazás (2026-11-26): Cloudflare Workers AI az első (core/cf-embed.js)
+          CLOUDFLARE_FLUX_TOKEN: ${{ secrets.CLOUDFLARE_FLUX_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           # ⚠️ TELEGRAM IS KELL IDE (2026-08-30, hibavadászat). A fordító
           # paid-only, tehát ITT is elsülhet a vészháló-riasztás („a fizetős
           # lánc kiesett") — de token nélkül a `sendMessage()` némán
