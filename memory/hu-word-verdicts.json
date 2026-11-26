@@ -3222,6 +3222,7 @@
     "vízvezetékszerelő",
     "vízvezetékszerelőt",
     "walkie",
+    "webhookká",
     "webhosztingért",
     "webináriumhoz",
     "webináriumuk",
@@ -4872,6 +4873,11 @@
     "level-munkamasolat": {
       "correct": "levél-munkamásolat",
       "at": "2026-11-20",
+      "mondattal": true
+    },
+    "válaszoljank": {
+      "correct": "válaszoljanak",
+      "at": "2026-11-26",
       "mondattal": true
     }
   },
@@ -6637,11 +6643,16 @@
       "correct": "interjúba",
       "at": "2026-11-25",
       "mondattal": true
+    },
+    "oktatóanyagokon": {
+      "correct": "oktatóanyagokká",
+      "at": "2026-11-26",
+      "mondattal": true
     }
   },
   "scan": {
-    "at": "2026-11-25",
-    "files": 925,
-    "candidates": 0
+    "at": "2026-11-26",
+    "files": 930,
+    "candidates": 3
   }
 }
