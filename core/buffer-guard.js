@@ -52,6 +52,22 @@ const rovid = (x, n = 140) => String(x == null ? '' : x).slice(0, n);
  *   kikuldve         {number}
  * @returns {Array<{code: string, detail: string}>}
  */
+export const KOZZETETEL_ORA = 48;
+const HIBAS_ALLAPOT = /error|fail/i;
+
+/**
+ * A Buffer posztjainak állapota egy csatornán (lekerPosztok nodes: { status, sentAt, createdAt }):
+ * az utolsó 48 óra posztjai közül hány HIBÁS (a Buffer nem tudta közzétenni). Hibás bemenet → null.
+ */
+export function kozzetetelHibak(nodes, now = Date.now(), ora = KOZZETETEL_ORA) {
+  if (!Array.isArray(nodes)) return null;
+  const hatar = now - ora * 3600000;
+  const friss = nodes.filter(n => { const t = Date.parse(n?.sentAt || n?.createdAt || ''); return Number.isFinite(t) && t >= hatar; });
+  const statuszok = {};
+  for (const n of friss) { const s = String(n.status || '?'); statuszok[s] = (statuszok[s] || 0) + 1; }
+  return { osszes: friss.length, hibas: friss.filter(n => HIBAS_ALLAPOT.test(String(n.status || ''))).length, statuszok };
+}
+
 export function bufferProblemak(allapot = {}) {
   const a = (allapot && typeof allapot === 'object' && !Array.isArray(allapot)) ? allapot : {};
   const ki = [];
@@ -97,6 +113,19 @@ export function bufferProblemak(allapot = {}) {
 
   if (a.csatornaLekerdezes === 'ok' && Array.isArray(a.ismertCsatornak) && a.ismertCsatornak.length === 0) {
     ki.push({ code: 'NINCS_HASZNALHATO_CSATORNA', detail: 'egy használható csatorna sem maradt a Bufferben' });
+  }
+
+  // KÖZZÉTÉTEL-ÁLLAPOT (2026-11-26): a Buffer átvette, de NEM tudta közzétenni (status: error).
+  // A Threads 11-25-én így tűnt el 3 napra: a createPost sikeres volt, a poszt mégsem jelent meg.
+  if (Array.isArray(a.kozzetetel)) {
+    for (const k of a.kozzetetel) {
+      if (!k || !(k.hibas > 0)) continue;
+      ki.push({
+        code: 'KOZZETETEL_BUKOTT',
+        detail: `${rovid(k.csatorna, 20) || '?'}: a Buffer ${k.hibas} posztot NEM tudott közzétenni az utolsó ${KOZZETETEL_ORA} órában `
+          + `(${Object.entries(k.statuszok || {}).map(([s, n]) => s + ' ' + n).join(', ')}) — nézd meg a Bufferben (Sent → hibás), és küldd újra`
+      });
+    }
   }
 
   if (Array.isArray(a.hibak)) {

@@ -33,7 +33,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync, mkdtempSync, rmSync
 import { tmpdir } from 'os';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { bufferProblemak, bufferSor, irBufferGuard, futtatBuffer, GUARD_FAJL, tiktokSor } from './buffer-guard.js';
+import { bufferProblemak, bufferSor, irBufferGuard, futtatBuffer, GUARD_FAJL, tiktokSor, kozzetetelHibak } from './buffer-guard.js';
 import { szurZajt } from './report-noise.js';
 import { elavultOrszemek, frissessegSor } from './guard-freshness.js';
 
@@ -412,6 +412,31 @@ t('🎵 10-13: TikTok-sor — 3/3 rendben; délután a hiány ⚠️ (a záróso
   rmSync(tmp, { recursive: true, force: true });
   const dr = readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'daily-report.js'), 'utf-8');
   assert.match(dr, /tiktokSor\(bufg[,)]/, '🔴 a napi jelentés nem írja ki a TikTok-sort');   // 11-05: + ok paraméter
+});
+
+// ── KÖZZÉTÉTEL-ÁLLAPOT (2026-11-26) — a Threads 11-25-én úgy esett ki, hogy a Buffer ÁTVETTE a
+// posztokat (createPost siker), de közzétenni már nem tudta; 3 napig semmi nem jelezte. ──
+const MOST = Date.parse('2026-11-26T20:00:00Z');
+t('kozzetetelHibak: az utolsó 48 óra hibás állapotú posztjait számolja, a régebbit nem', () => {
+  const k = kozzetetelHibak([
+    { status: 'sent', sentAt: '2026-11-26T19:45:00Z', createdAt: '2026-11-26T19:45:00Z' },
+    { status: 'error', createdAt: '2026-11-25T06:23:00Z' },
+    { status: 'error', createdAt: '2026-11-20T06:23:00Z' },          // 6 napos — kívül esik
+    { status: 'sending', createdAt: '2026-11-26T19:59:00Z' }
+  ], MOST);
+  assert.equal(k.osszes, 3); assert.equal(k.hibas, 1);
+  assert.deepEqual(k.statuszok, { sent: 1, error: 1, sending: 1 });
+});
+t('kozzetetelHibak: hiányzó / hibás bemenet → null (a „nem tudom” nem „rendben”)', () => {
+  assert.equal(kozzetetelHibak(null, MOST), null);
+  assert.equal(kozzetetelHibak('x', MOST), null);
+});
+t('bufferProblemak: hibás közzététel → KOZZETETEL_BUKOTT a csatorna nevével; tiszta csatorna → nincs lelet', () => {
+  const p = bufferProblemak({ tokenVan: true, socialMappa: true, csatornaLekerdezes: 'ok', ismertCsatornak: ['threads', 'tiktok'], hibak: [],
+    kozzetetel: [{ csatorna: 'threads', osszes: 7, hibas: 5, statuszok: { error: 5, sent: 2 } }, { csatorna: 'tiktok', osszes: 6, hibas: 0, statuszok: { sent: 6 } }] });
+  assert.equal(p.length, 1, JSON.stringify(p));
+  assert.equal(p[0].code, 'KOZZETETEL_BUKOTT');
+  assert.match(p[0].detail, /threads.*5/);
 });
 
 console.log(bukott === 0

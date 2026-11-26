@@ -59,7 +59,7 @@ import { jelolMezo } from '../../core/social-mark.js';
 // a GitHub Actions is zöld pipát adott. A döntés-logika azért van a `core/`
 // alatt, mert EZ A FÁJL NEM IMPORTÁLHATÓ (valódi posztot küldene), tehát
 // tesztelni sem lehet. Lásd: core/buffer-guard.js + core/buffer-guard.test.js.
-import { futtatBuffer } from '../../core/buffer-guard.js';
+import { futtatBuffer, kozzetetelHibak, KOZZETETEL_ORA } from '../../core/buffer-guard.js';
 // ⚠️ A HÁLÓZATI RÉTEG IS KIKÖLTÖZÖTT (2026-09-16), ugyanabból az okból: ami
 // ebben a fájlban lakik, az TESZTELHETETLEN. A Buffer-hívások — köztük a
 // „HTTP 200 ≠ siker" döntés — most a core/buffer-api.js-ben vannak, injektált
@@ -629,7 +629,26 @@ async function main() {
     console.log(`🎵 TikTok ma összesen: ${tiktokMa.db === null ? '?' : tiktokMa.db}/${tiktokMa.plafon}`);
   }
 
+  // 🔎 KÖZZÉTÉTEL-ÁLLAPOT (2026-11-26): a createPost sikere csak annyi, hogy a Buffer ÁTVETTE a posztot.
+  // A Threads 11-25-én így tűnt el: átvett, de soha meg nem jelent posztok, 3 napig jelzés nélkül.
+  // Csatornánként a Buffer legutóbbi posztjainak `status`-a (csak olvasás, próbában is) → őrszem + riport.
+  const kozzetetel = [];
+  if (token() && channels.length) {
+    let org = ORG;
+    if (!org) { const o = await orgId(); org = o.error ? null : o.id; }
+    for (const c of org ? channels : []) {
+      if (String(c.id).startsWith('(próba')) continue;
+      const r = await lekerPosztok({ organizationId: org, channelId: c.id }, api());
+      const k = r.error ? null : kozzetetelHibak(r.nodes, Date.now());
+      if (!k) { console.log(`🔎 Buffer-állapot ${c.key}: nem sikerült lekérdezni${r.error ? ' — ' + String(r.error).slice(0, 80) : ''}`); continue; }
+      kozzetetel.push({ csatorna: c.key, ...k });
+      console.log(`🔎 Buffer-állapot ${c.key} (utolsó ${KOZZETETEL_ORA} óra, max 10 poszt): `
+        + (Object.entries(k.statuszok).map(([s, n]) => `${s} ${n}`).join(' · ') || 'nincs poszt') + (k.hibas ? `  ⚠️ ${k.hibas} HIBÁS` : '  ✅'));
+    }
+  }
+
   return {
+    kozzetetel,
     tiktokMa,
     tokenVan: !!token(),
     socialMappa: true,
