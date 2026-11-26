@@ -123,7 +123,9 @@ export function bufferProblemak(allapot = {}) {
       ki.push({
         code: 'KOZZETETEL_BUKOTT',
         detail: `${rovid(k.csatorna, 20) || '?'}: a Buffer ${k.hibas} posztot NEM tudott közzétenni az utolsó ${KOZZETETEL_ORA} órában `
-          + `(${Object.entries(k.statuszok || {}).map(([s, n]) => s + ' ' + n).join(', ')}) — nézd meg a Bufferben (Sent → hibás), és küldd újra`
+          + `(${Object.entries(k.statuszok || {}).map(([s, n]) => s + ' ' + n).join(', ')})`
+          + (Array.isArray(k.pelda) && k.pelda[0] ? ` · pl. „${rovid(k.pelda[0].szoveg, 40)}” — ${rovid(k.pelda[0].hiba, 100)}` : '')
+          + ' — nézd meg a Bufferben (Sent → hibás), és küldd újra'
       });
     }
   }

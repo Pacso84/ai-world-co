@@ -364,6 +364,35 @@ const createPost = args => createPostApi(args, api());
 // A Buffer „még nem érem el a videót" hibája (10-13 élesben) — erre van értelme újrapróbálni.
 const VIDEO_NEM_OLVASHATO = /could not be read from its URL/i;
 
+// A HIBÁS (közzé nem tett) posztok RÉSZLETEI (2026-11-26). A Post típus mezőit nem ismerjük biztosan
+// (egy rossz mezőnév az EGÉSZ lekérdezést elrontaná) → előbb a sémát kérdezzük meg, és csak a létező
+// szöveg/hiba mezőket kérjük. Csak hibás állapot esetén fut. Visszaad: [{ szoveg, hiba }] (max 5).
+async function hibasPosztok(organizationId, channelId) {
+  try {
+    const tipus = async nev => (await gql(`{ __type(name: "${nev}") { fields { name type { name kind ofType { name kind } } } } }`)).data?.__type?.fields || [];
+    const nevE = t => t?.name || t?.ofType?.name;
+    const skalarE = t => ['SCALAR', 'ENUM'].includes(t?.kind) || ['SCALAR', 'ENUM'].includes(t?.ofType?.kind);
+    const mezok = await tipus('Post');
+    const valaszt = [];
+    for (const f of mezok) {
+      if (/^(status|text|createdAt|sentAt|dueAt)$/.test(f.name) && skalarE(f.type)) valaszt.push(f.name);
+      else if (/error|fail/i.test(f.name)) {
+        if (skalarE(f.type)) valaszt.push(f.name);
+        else { const al = (await tipus(nevE(f.type))).filter(x => skalarE(x.type)).map(x => x.name).slice(0, 6); if (al.length) valaszt.push(`${f.name} { ${al.join(' ')} }`); }
+      }
+    }
+    if (!valaszt.includes('status')) return [{ szoveg: '?', hiba: 'a Post típusnak nincs status mezője' }];
+    const r = await gql(`query($i: PostsInput!){ posts(input:$i){ edges { node { ${valaszt.join(' ')} } } } }`,
+      { i: { organizationId, filter: { channelIds: [channelId] } } });
+    if (r.error) return [{ szoveg: '?', hiba: 'részlet-lekérdezés: ' + String(r.error).slice(0, 100) }];
+    return (r.data?.posts?.edges || []).map(e => e?.node).filter(n => /error|fail/i.test(String(n?.status || ''))).slice(0, 5)
+      .map(n => {
+        const hibaMezo = Object.entries(n).filter(([kk]) => /error|fail/i.test(kk)).map(([, v]) => (v && typeof v === 'object' ? Object.values(v).filter(Boolean).join(' / ') : v)).filter(Boolean).join(' · ');
+        return { szoveg: String(n.text || '?').replace(/\s+/g, ' ').slice(0, 60), hiba: String(hibaMezo || 'a Buffer nem adott okot').slice(0, 160) };
+      });
+  } catch (e) { return [{ szoveg: '?', hiba: 'részlet-hiba: ' + String(e?.message || e).slice(0, 100) }]; }
+}
+
 async function main() {
   console.log('📤 BUFFER-POSZTER (X · Threads · TikTok)');
   console.log('─'.repeat(60));
@@ -641,7 +670,9 @@ async function main() {
       const r = await lekerPosztok({ organizationId: org, channelId: c.id }, api());
       const k = r.error ? null : kozzetetelHibak(r.nodes, Date.now());
       if (!k) { console.log(`🔎 Buffer-állapot ${c.key}: nem sikerült lekérdezni${r.error ? ' — ' + String(r.error).slice(0, 80) : ''}`); continue; }
+      if (k.hibas) k.pelda = await hibasPosztok(org, c.id);
       kozzetetel.push({ csatorna: c.key, ...k });
+      for (const p of k.pelda || []) console.log(`   ⚠️ ${c.key} HIBÁS: „${p.szoveg}” — ${p.hiba}`);
       console.log(`🔎 Buffer-állapot ${c.key} (utolsó ${KOZZETETEL_ORA} óra, max 10 poszt): `
         + (Object.entries(k.statuszok).map(([s, n]) => `${s} ${n}`).join(' · ') || 'nincs poszt') + (k.hibas ? `  ⚠️ ${k.hibas} HIBÁS` : '  ✅'));
     }
