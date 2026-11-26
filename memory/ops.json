@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179554766327043",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-24T19:14:23.270Z",
-      "updated": "2026-11-24T19:14:57.930Z"
-    },
-    {
-      "id": "t179554769793145",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-24T19:14:57.931Z",
-      "updated": "2026-11-24T19:15:15.533Z"
-    },
-    {
-      "id": "t179554771553521",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-24T19:15:15.535Z",
-      "updated": "2026-11-24T19:17:00.860Z"
-    },
-    {
-      "id": "t179554782088933",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-24T19:17:00.889Z",
-      "updated": "2026-11-24T19:17:01.046Z"
-    },
-    {
-      "id": "t17955478210471",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-24T19:17:01.047Z",
-      "updated": "2026-11-24T19:17:01.169Z"
-    },
-    {
-      "id": "t179554782119592",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-24T19:17:01.195Z",
-      "updated": "2026-11-24T19:17:01.320Z"
-    },
-    {
-      "id": "t179554782132415",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-24T19:17:01.324Z",
-      "updated": "2026-11-24T19:17:01.448Z"
-    },
-    {
-      "id": "t179554782149968",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-24T19:17:01.499Z",
-      "updated": "2026-11-24T19:17:13.050Z"
-    },
-    {
-      "id": "t179554783305573",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-24T19:17:13.055Z",
-      "updated": "2026-11-24T19:17:13.233Z"
-    },
-    {
-      "id": "t179554783323460",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-24T19:17:13.234Z",
-      "updated": "2026-11-24T19:17:13.372Z"
-    },
-    {
-      "id": "t179554783337370",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-24T19:17:13.373Z",
-      "updated": "2026-11-24T19:17:35.896Z"
-    },
-    {
-      "id": "t179554785589735",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-24T19:17:35.897Z",
-      "updated": "2026-11-24T19:17:49.657Z"
-    },
-    {
       "id": "t179554786965918",
       "title": "Run designer",
       "status": "done",
@@ -479,49 +383,105 @@
       "agent": "publisher",
       "created": "2026-11-26T06:02:48.615Z",
       "updated": "2026-11-26T06:03:14.212Z"
+    },
+    {
+      "id": "t179571599025832",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-26T17:59:50.258Z",
+      "updated": "2026-11-26T17:59:50.435Z"
+    },
+    {
+      "id": "t179571599043760",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-26T17:59:50.437Z",
+      "updated": "2026-11-26T18:01:08.298Z"
+    },
+    {
+      "id": "t179571606830050",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-26T18:01:08.300Z",
+      "updated": "2026-11-26T18:01:08.665Z"
+    },
+    {
+      "id": "t17957160687113",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-26T18:01:08.711Z",
+      "updated": "2026-11-26T18:01:31.619Z"
+    },
+    {
+      "id": "t179571609162133",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-26T18:01:31.621Z",
+      "updated": "2026-11-26T18:01:31.798Z"
+    },
+    {
+      "id": "t17957160918003",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-26T18:01:31.800Z",
+      "updated": "2026-11-26T18:01:31.996Z"
+    },
+    {
+      "id": "t179571609207193",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-26T18:01:32.071Z",
+      "updated": "2026-11-26T18:01:32.262Z"
+    },
+    {
+      "id": "t179571609226442",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-26T18:01:32.264Z",
+      "updated": "2026-11-26T18:01:32.454Z"
+    },
+    {
+      "id": "t179571609249468",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-26T18:01:32.494Z",
+      "updated": "2026-11-26T18:01:32.691Z"
+    },
+    {
+      "id": "t179571609269249",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-26T18:01:32.692Z",
+      "updated": "2026-11-26T18:01:32.898Z"
+    },
+    {
+      "id": "t179571609290066",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-26T18:01:32.900Z",
+      "updated": "2026-11-26T18:01:57.842Z"
+    },
+    {
+      "id": "t179571611784471",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-26T18:01:57.844Z",
+      "updated": "2026-11-26T18:02:33.561Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179485126897935",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0144).",
-      "agent": "ceo",
-      "at": "2026-11-16T17:47:48.979Z",
-      "loud": false
-    },
-    {
-      "id": "n179485132621378",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „According to Anthro",
-      "agent": "fact-check",
-      "at": "2026-11-16T17:48:46.213Z",
-      "loud": false
-    },
-    {
-      "id": "n179485766051397",
-      "level": "warn",
-      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to preview and choose a regional voice in Gemini\"",
-      "agent": "pairing",
-      "at": "2026-11-16T19:34:20.513Z",
-      "loud": false
-    },
-    {
-      "id": "n179485768773273",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-11-16T19:34:47.732Z",
-      "loud": false
-    },
-    {
-      "id": "n179485770979680",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid — practical, varied, and perfect for everyday people wanting real help with AI. Good mix of foundational pieces (privacy, what AI is actually good at) plus specific writing task",
-      "agent": "publisher",
-      "at": "2026-11-16T19:35:09.796Z",
-      "loud": false
-    },
     {
       "id": "n179485772202673",
       "level": "success",
@@ -1281,46 +1241,49 @@
       "agent": "ceo",
       "at": "2026-11-26T06:03:14.250Z",
       "loud": false
+    },
+    {
+      "id": "n179571613845378",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — it covers practical everyday uses (emails, resumes, LinkedIn bios), important privacy guidance, and a balanced view of AI's strengths and limits. That's a good mix. One small ",
+      "agent": "publisher",
+      "at": "2026-11-26T18:02:18.453Z",
+      "loud": false
+    },
+    {
+      "id": "n179571615360244",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-11-26T18:02:33.602Z",
+      "loud": false
+    },
+    {
+      "id": "n179571628676879",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „It is rolling out t",
+      "agent": "fact-check",
+      "at": "2026-11-26T18:04:46.768Z",
+      "loud": false
+    },
+    {
+      "id": "n179571630896045",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Use Picsart AI Playground on Your Desktop\" — A képgenerálásho",
+      "agent": "fact-check",
+      "at": "2026-11-26T18:05:08.960Z",
+      "loud": false
+    },
+    {
+      "id": "n17957163473053",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Use Project Genie with Street View\" — Az útmutató egy konkrét",
+      "agent": "fact-check",
+      "at": "2026-11-26T18:05:47.305Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179460633788234",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Ellenőrizendő állítás: \"Apple is getting this wrong\" — A forrás nem tartalmaz információt a telefonok AI asszisztenseiről, adatvédelmi beállításokról, Siri-ről, Gemini-ről - ez egy Apple és OpenAI közötti jogi vitáról szól",
-      "ref": "2026-08-04T10-26-43-543Z_openai-blog_Apple_is_getting_this_wrong.json",
-      "open": true,
-      "at": "2026-11-13T21:45:37.882Z"
-    },
-    {
-      "id": "m179462892664699",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "problem",
-      "text": "Visszaadva javításra: \"How to get a Google Gemini API key—and use the Gemini API\" — mi a baj: Model names Gemini 4 Carbon, Argon, and Hydrogen appear invented — not on verified-real list, no evidence Google uses these names; The math on tokens is questionable: 1 million tokens estimated at 750,000 words implies ~1.3 tokens per word, which contradicts the article's own token definition; Article tar",
-      "ref": "2026-11-12T04-51-01-201Z_zapier-blog_How_to_get_a_Google_Gemini_API_key_and_use_the_Gem.json",
-      "at": "2026-11-14T04:02:06.646Z"
-    },
-    {
-      "id": "m179462896702216",
-      "from": "iro",
-      "to": "ellenorzo",
-      "kind": "fix",
-      "text": "Átdolgoztam: \"How to get a Google Gemini API key—and use the Gemini API\" — javítva: Model names Gemini 4 Carbon, Argon, and Hydrogen appear invented — not on verified-real list, no evidence Google uses these names; The math on tokens is questionable: 1 million tokens estimated at 750,000 words implies ~1.3 tokens per word, which contradicts the article's own token definition; újraküldöm.",
-      "ref": "2026-11-12T04-51-01-201Z_zapier-blog_How_to_get_a_Google_Gemini_API_key_and_use_the_Gem.json",
-      "at": "2026-11-14T04:02:47.022Z"
-    },
-    {
-      "id": "m179462898224370",
-      "from": "ellenorzo",
-      "to": "iro",
-      "kind": "info",
-      "text": "Rendben ✓ átment: \"How to get a Google Gemini API key—and use the Gemini API\" (?/10)",
-      "ref": "2026-11-12T04-51-01-201Z_zapier-blog_How_to_get_a_Google_Gemini_API_key_and_use_the_Gem.json",
-      "at": "2026-11-14T04:03:02.243Z"
-    },
     {
       "id": "m179462934314272",
       "from": "designer",
@@ -2682,6 +2645,45 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-26T06:13:23.696Z"
+    },
+    {
+      "id": "m179571611783345",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-26T18:01:57.833Z"
+    },
+    {
+      "id": "m179571628676867",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „It is rolling out to students, educators, and workplace accounts, with a paid add-on for e”): \"Notebooks in Gemini: a dedicated workspace for foc\" — a cikk tévedésből fizetős bővítményt említ a szakértői forrásokhoz, de a forrás szerint a Expert Intelligence minden jogosult felhasználó számára ingy",
+      "ref": "ARTICLE_2026-09-18T12-28-19-452Z_google-workspace_Notebooks_in_Gemini__a_dedicated_workspace_for_foc.json",
+      "open": true,
+      "at": "2026-11-26T18:04:46.768Z"
+    },
+    {
+      "id": "m17957163089602",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Use Picsart AI Playground on Your Desktop\" — A képgeneráláshoz felhőalapú feldolgozás szükséges – a képeket a Picsart szervereire küldik, nem a felhasználó számítógépén dolgozzák fel, annak ellenére, hogy az útmutató offline működést állít (állítás: After that, many of the AI tools run on your own computer, so they keep working offline and",
+      "ref": "ARTICLE_GUIDE_how-to-use-picsart-ai-playground-on-your-desktop.json",
+      "open": true,
+      "at": "2026-11-26T18:05:08.960Z"
+    },
+    {
+      "id": "m179571634730544",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Use Project Genie with Street View\" — Az útmutató egy konkrét dátumot (2026. május) és egy konkrét előfizetési szintet (Google AI Ultra) említ, amelyeket nem tudok ellenőrizni - ezek fiktív vagy elavult részletek lehetnek. (állítás: Project Genie Street View option added in May 2026; Google AI Ultra subscribers is the required subscription",
+      "ref": "ARTICLE_GUIDE_how-to-use-project-genie-with-street-view.json",
+      "open": true,
+      "at": "2026-11-26T18:05:47.305Z"
     }
   ]
 }

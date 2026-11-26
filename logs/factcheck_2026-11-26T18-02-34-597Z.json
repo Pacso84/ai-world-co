@@ -1,0 +1,64 @@
+{
+  "ok": 1,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.008791980000000001,
+  "at": "2026-11-26T18:02:34.597Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 1,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 2,
+    "kihagyva": 2,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-09-19T02-08-38-038Z_qwen-news_Qwen3_8-LiveTranslate__Names_the_speaker__Carries_.json",
+      "cim": "Qwen3.8-LiveTranslate: Names the speaker. Carries the meaning. - qwen.ai",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-perplexity-s-focus-modes-to-get-cleaner-faster-an.json",
+      "cim": "How to use Perplexity's Focus modes to get cleaner, faster answers",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-09-18T12-28-19-452Z_google-workspace_Notebooks_in_Gemini__a_dedicated_workspace_for_foc.json",
+      "cim": "Notebooks in Gemini: a dedicated workspace for focused, organized work, now for schools and organizations",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "a javítás törölne egy mondatot, amit a forrás igazol: „It is rolling out to students, educators, and workplace accounts, with a paid add-on for e”",
+      "modell_hu": "a cikk tévedésből fizetős bővítményt említ a szakértői forrásokhoz, de a forrás szerint a Expert Intelligence minden jogosult felhasználó számára ingyenesen elérhető"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-picsart-ai-playground-on-your-desktop.json",
+      "cim": "How to Use Picsart AI Playground on Your Desktop",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "A képgeneráláshoz felhőalapú feldolgozás szükséges – a képeket a Picsart szervereire küldik, nem a felhasználó számítógépén dolgozzák fel, annak ellenére, hogy az útmutató offline működést állít"
+    },
+    {
+      "file": "ARTICLE_2026-09-11T01-58-37-979Z_google-workspace_Gemini_in_Google_Sheets_is_now_available_on_Androi.json",
+      "cim": "Gemini in Google Sheets is now available on Android devices",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (1/2: HTTP 429; RSS-tartalék: nincs a hírcsatornában)",
+      "status": 429
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-project-genie-with-street-view.json",
+      "cim": "How to Use Project Genie with Street View",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "Az útmutató egy konkrét dátumot (2026. május) és egy konkrét előfizetési szintet (Google AI Ultra) említ, amelyeket nem tudok ellenőrizni - ezek fiktív vagy elavult részletek lehetnek."
+    }
+  ]
+}
