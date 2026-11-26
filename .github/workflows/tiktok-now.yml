@@ -20,6 +20,13 @@ on:
         type: boolean
         required: true
         default: true
+      # 2026-11-26 (user: „de a lemaradt posztokat is kéne!”): a Threads-csatorna 11-25-én leváltott,
+      # visszakötés után a lemaradt friss (≤7 napos) posztok kézzel is kiküldhetők. Alap: tiktok (régi viselkedés).
+      csatorna:
+        description: 'Melyik csatorna? (tiktok / threads)'
+        type: choice
+        options: [tiktok, threads]
+        default: tiktok
 
 permissions:
   contents: write
@@ -43,14 +50,15 @@ jobs:
       - name: Függőségek
         run: npm install
 
-      - name: TikTok-küldés
+      - name: Küldés (TikTok vagy Threads)
         env:
           BUFFER_ACCESS_TOKEN: ${{ secrets.BUFFER_ACCESS_TOKEN }}
+          CSATORNA: ${{ inputs.csatorna || 'tiktok' }}
         run: |
           if [ "${{ inputs.dry }}" = "true" ]; then
-            node agents/social/buffer-poster.js --only tiktok --dry
+            node agents/social/buffer-poster.js --only "$CSATORNA" --dry
           else
-            node agents/social/buffer-poster.js --only tiktok
+            node agents/social/buffer-poster.js --only "$CSATORNA"
           fi
 
       - name: Jelölés visszacommitolása
