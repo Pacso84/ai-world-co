@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-keep-a-long-project-organized-across-several-ai-chats",
+    "company": "",
+    "tool": "",
+    "icon": "🗂️",
+    "level": "intermediate",
+    "source_news": null,
+    "official_sources": null,
+    "trend": null,
+    "extra_slot": null,
+    "written_at": "2026-11-26T05:58:03.724Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0046729,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-11-26T05:58:26.470Z",
+    "slug": "how-to-keep-a-long-project-organized-across-several-ai-chats",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1591
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured guide with friendly, teaching tone that clearly explains each step without assuming technical knowledge. The five steps are actionable and include If it looks different troubleshooting sections. The honest limit section appropriately sets expectations. No prohibited content, clichés, or factual concerns.",
+      "_aiCost": 0.0038688,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-26T06:00:13.038Z",
+    "seo": {
+      "keywords": [
+        "keep long project organized across AI chats",
+        "AI chat running summary",
+        "carry project over to new AI chat",
+        "AI assistant forgot previous chat",
+        "handoff summary for AI chat",
+        "continue long AI conversation in new chat",
+        "save AI chat summary for next session"
+      ],
+      "seo_title": "How to Keep a Long Project Organized Across AI Chats",
+      "meta_description": "Learn to write a running summary at the end of each chat, paste it into the next one, and check names, numbers, and dates so details carry over.",
+      "v": 2,
+      "eles": true,
+      "optimised_at": "2026-11-26T06:02:25.942Z"
+    },
+    "fact_verified_at": "2026-11-26T06:03:37.218Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Keep a Long Project Organized Across Several AI Chats\"\nsubtitle: \"Learn to write a running summary at the end of each chat and reuse it at the start of the next, so decisions and details carry over.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"\"\ntool: \"\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"ai-chat\", \"project-management\", \"prompting\", \"workflow\"]\n---\n\n# How to Keep a Long Project Organized Across Several AI Chats\n\n> **In short:** You can carry a multi-session project forward by asking the assistant for a running summary at the end of each chat, then pasting that summary into the start of the next one. Most assistants don't reliably remember old chats, so always check the summary for accuracy.\n\nLong projects, like planning a move, writing a thesis, or building a budget for a small business, rarely fit into one conversation. By the time you return the next day, the assistant has usually forgotten the decisions you made. In this guide you'll learn a simple handoff routine: summarize, check, save, and restart. It works with any AI chat assistant, and it's for anyone juggling a project over several days or weeks.\n\n## Before you start\n\n- An account with an AI chat assistant you already use, and a way to start a new chat and send messages.\n- A notes app or document where you can save text (any notes app on your phone or computer will do).\n- A project you're willing to work on across at least two or three sessions.\n- Roughly 30 minutes the first time, and about 5 minutes per session afterward.\n\n## Step 1 — Ask for a running summary before you close the chat\n\nBefore you leave a chat, ask the assistant to write a summary of everything important so far. Think of it as the notes a colleague would leave you before going on vacation: what we decided, what's still open, and what comes next. Type your request in the message box at the bottom of the chat and send it.\n\nUsually, the assistant replies with a structured block of text, often with headings or bullet points. If the answer is short or vague, that's a sign your request was too loose. Don't worry, you can ask it to expand.\n\n💬 Example: \"Write a handoff summary of our project so far with four sections: goal, decisions made, open questions, and next steps. Keep each section under [number] bullet points.\"\n\nIf it looks different: if the assistant starts a new topic or gives a general essay, reply with \"Stick to the project details only,\" and ask again. Long chats can also make answers slower or less precise, so don't be alarmed if the reply takes a moment.\n\nYou'll know it worked when the reply lists your real decisions and open questions in clearly labeled sections you can read at a glance.\n\n## Step 2 — Check the summary before you trust it\n\nThis step matters most. The assistant can misremember a number, merge two decisions into one, or leave out something you cared about. Read the summary line by line and compare it with what you remember. Fix anything that's wrong by asking for a correction in plain words, then confirm the revised version.\n\nA good habit: check for three things, namely names, numbers, and dates. Those are the details that cause the most confusion later.\n\n💬 Example: \"In the decisions section, I said we'd use [your budget amount] as the cap, not [other amount]. Please correct that and show me the updated section.\"\n\nIf it looks different: if the assistant insists something is right when you know it isn't, don't argue in circles. Simply edit the text yourself in your notes app in Step 3. You are the final editor of your own summary.\n\nYou'll know it worked when every decision and number in the summary matches what you actually agreed on.\n\n## Step 3 — Save the summary outside the chat\n\nChats can be hard to find later, and some assistants may not carry context from one chat to another. So copy the final summary into your notes app or a document. Give the note a clear title, like the project name plus a date, for example \"Garden Redesign, Session 3.\" Then keep one master note for the project and add a new version each time you finish a session.\n\nTap or click the copy option on the summary, or select the text and copy it. Paste it into your note. If you prefer, you can also use a simple numbered version history, such as \"Version 1,\" \"Version 2,\" at the top of the note.\n\n💬 Example: \"Garden Redesign, Session [number] — paste the summary here and note the date at the top.\"\n\nIf it looks different: if your assistant has a built-in project or folder feature for storing chat instructions, you may be able to keep the summary there. Those features and their availability vary, and some may need a paid plan, so check what your assistant offers before relying on it. Your notes app works either way.\n\nYou'll know it worked when you can open your notes and find the latest summary under a clear title, even days later.\n\n## Step 4 — Start a new chat with a handoff message\n\nOpen a new chat. Begin with a short message that explains what you're giving the assistant, then paste the full summary underneath. Ask it to confirm it understands before doing anything else. This small pause catches misunderstandings early, before you build on them.\n\nThink of this like handing a new team member the file folder before they start work. You're not asking them to remember; you're giving them what they need to pick up the thread.\n\n💬 Example: \"I'm continuing a project from an earlier chat. Here is my summary: [paste summary here]. Please confirm the goal and the next steps in your own words, then wait for my instructions.\"\n\nIf it looks different: if the assistant ignores the summary and starts asking basic questions, that's usually because the paste didn't go through. Check that the full text is in the message. If the message is very long, the assistant may only use part of it, so you can split the summary into two messages and say \"Part 1 of 2\" and \"Part 2 of 2.\"\n\nYou'll know it worked when the assistant restates your goal and next steps accurately and asks a sensible follow-up question.\n\n## Step 5 — Keep building the project and update the summary each session\n\nContinue working as usual in the new chat. When you're done for the day, return to Step 1 and ask for an updated summary that includes everything from the previous summary plus what changed this session. This keeps one growing record instead of scattered fragments. Then repeat Steps 2 and 3 to check and save the new version.\n\nAsk the assistant to mark what changed, such as \"New since last session\" or \"Changed decisions.\" That makes the check much faster, and it's easy to spot an error.\n\n💬 Example: \"Update the handoff summary with what we decided today. Add a 'Changed this session' section at the top, and move any resolved questions out of the open questions list.\"\n\nIf it looks different: if the summary grows so long that it's hard to read, ask the assistant to shorten older sections into one paragraph while keeping every decision and number. Always check the shortened version against your notes.\n\nYou'll know it worked when your latest note shows a clear version number, a changes section, and a shorter list of open questions over time.\n\n## Common mistakes\n\n- **Trusting the summary without checking it.** Assistants can slip details into a summary that never happened. The fix: read names, numbers, and dates every time before you save.\n- **Relying on the assistant to remember.** Don't assume a new chat knows anything. The fix: always paste your summary at the start, even if the assistant seems to recall something.\n- **Letting the summary get messy.** Repeated updates can pile up clutter. The fix: keep one master note with version numbers, and ask the assistant to condense older sections while keeping every decision intact.\n\n## What this means for you\n\n- **In everyday life:** Use this routine for a home project, like planning a kitchen remodel or organizing a family trip across several weeks. Each session starts where the last one ended.\n- **For your business or work:** Keep a running brief for a client proposal or a product launch. A checked, versioned summary helps a team member pick up your work without a long meeting.\n- **If you want to go further:** Try writing a reusable instruction block that you paste at the start of every session, describing your role, your audience, and your style rules. Some assistants offer built-in ways to store instructions, but check what's available on your plan first.\n\n**Honest limit:** An AI assistant can help you organize and rewrite your notes, but it cannot guarantee that it remembers your project perfectly, and it cannot make decisions for you. You remain the one who checks the facts and chooses the next step.\n\n## Try it now\n\nOpen the chat you used most recently for a project, send this message, and paste the reply into a new note: 💬 Example: \"Write a handoff summary of our project so far with four sections: goal, decisions made, open questions, and next steps.\" Then read it once and fix any mistake you spot.",
+  "original_title": "How to Keep a Long Project Organized Across Several AI Chats"
+}

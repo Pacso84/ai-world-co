@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "written_at": "2026-11-26T05:55:03.507Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0041715,
+    "original_draft": "2026-11-25T18-18-41-802Z_picsart_Seed_TTS_3_0_is_now_in_Picsart__text_to_speech_wit.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/direct-ai-voiceovers-with-seed-tts-3-0/",
+    "source_links": [
+      "https://picsart.com/blog/direct-ai-voiceovers-with-seed-tts-3-0/"
+    ],
+    "source_snippet_len": 385,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 5999,
+    "source_text_key": "f22bb2ca928d3762",
+    "source_overlap_words": 16,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": true,
+    "status": "published",
+    "published_at": "2026-11-26T05:56:23.734Z",
+    "slug": "seed-tts-3-0-in-picsart-what-the-text-to-speech-model-does-and-who-it-",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 747
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "The article meets all quality gates: clear structure with hook, explanations, 'What this means for you' section, and actionable wrap-up; it explains technical terms like semitone and sample rate in plain language; no prohibited content, clichés, or invented facts; all specifics come directly from the source announcement (520 voices, 22 languages, character limits, audio format options); friendly and respectful tone throughout.",
+      "_aiCost": 0.0030582,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-26T05:57:18.049Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-create-voiceovers-with-seed-tts-3-0-in-picsart-ai-pla",
+    "image_v": 2,
+    "image_at": "2026-11-26T05:59:28.557Z",
+    "seo": {
+      "keywords": [
+        "seed tts 3.0 picsart",
+        "bytedance text to speech",
+        "picsart ai playground voices",
+        "tts delivery note how it works",
+        "bytedance tts model",
+        "text to speech 520 voices",
+        "how to test a text to speech read",
+        "picsart voiceover tool"
+      ],
+      "seo_title": "Seed TTS 3.0 in Picsart: How the Voice Model Works",
+      "meta_description": "ByteDance's text-to-speech model is now in Picsart AI Playground with 520 voices and a plain-words delivery note. Here's how to test a read.",
+      "v": 2,
+      "eles": false,
+      "kapu_hibak": [
+        "KATTINTASVADASZ: kattintásvadász elem (CSUPA NAGY: TTS)"
+      ],
+      "optimised_at": "2026-11-26T06:02:01.111Z"
+    },
+    "fact_verified_at": "2026-11-26T06:04:19.771Z"
+  },
+  "article_markdown": "---\ntitle: \"Seed TTS 3.0 in Picsart: What the Text-to-Speech Model Does and Who It Helps\"\nsubtitle: \"ByteDance's voice model is now in Picsart AI Playground, with 520 voices and a plain-words delivery note.\"\ncategory: \"ai-news\"\naudience: \"both\"\nread_time_minutes: 3\ntags: [\"text-to-speech\", \"voiceover\", \"picsart\", \"audio-creation\"]\n---\n\n# Seed TTS 3.0 in Picsart: What the Text-to-Speech Model Does and Who It Helps\n\n> **In short:** Seed TTS 3.0, ByteDance's text-to-speech model, is now live in Picsart AI Playground. You paste a script of up to 10,000 characters, choose one of 520 voices, and describe how it should sound in plain words.\n\nRecording a voiceover usually means reading the same line five times until one sounds right. A tool that can produce several versions of one script in seconds can save a lot of that back-and-forth.\n\n## What text-to-speech means\n\nText-to-speech (often shortened to TTS) is software that turns written text into spoken audio. You give it words, and it gives you a sound file that reads them aloud. Seed TTS 3.0 is the model behind this feature, and according to the announcement from ByteDance and Picsart, it is now available inside Picsart AI Playground, the area of the app where you can try AI tools.\n\n## How the tool works\n\nThe announcement describes three main inputs:\n\n- **The script.** You can paste up to 10,000 characters, enough for a full article or a long chapter section.\n- **The voice.** The model launches with 520 voices, spread across 22 languages. Each voice has a short description and tags, such as audiobook, dubbing, customer service, or role-play, so you can narrow the list. The model reads the language from your script, so your main job is picking a voice that matches it.\n- **The delivery note.** This is the headline feature. Instead of adjusting a pile of sliders to get a mood, you write a short sentence of up to 500 characters, such as \"speak in a whisper, slow and close\" or \"calm and serious, for a documentary.\" The model shapes the read around that note.\n\nAlong with these, you can adjust the measurable parts. Speed and volume each range from half to double. Pitch moves up or down by as many as 12 semitones (a semitone is the smallest step between two neighboring piano keys). You can also choose an export format, such as MP3 or WAV, and a sample rate, which is how many snapshots of sound are taken per second. Higher numbers usually mean more detail, and the announcement suggests 8 or 16 kHz for phone systems and 44.1 or 48 kHz for video or podcast work.\n\nThe company says a clip comes back in about 10 seconds.\n\n## A simple way to test a read\n\nKeep the script the same and change only the delivery note. Generate one take, then another, and compare them side by side. Because the words stay fixed, you can hear exactly what the mood change does. Change one setting at a time, so you know which change made the difference.\n\n## What this means for you\n\n- **In everyday life**: If you make family slideshows, study videos, or short narrated clips, you can hear a few different reads of your own words before you pick one.\n- **For your business or work**: Teams building product videos, training clips, or phone prompts can test several voices on one script. The announcement says the voice tags cover those uses.\n- **If you're just getting started**: Pick a short paragraph, leave the delivery note empty, and generate it once. Then add a note such as \"warm and friendly\" and listen to the difference.\n- **If you already use it**: Try a longer script in two versions, one for a podcast-style read at 44.1 kHz and one for a short phone message at 8 kHz, and compare how the delivery note holds up across both. Remember that Seed TTS 3.0 cannot clone your own voice. The announcement says Seed Audio, a separate model, handles voices built from your own recordings.\n\n## Wrap-up\n\nSeed TTS 3.0 brings a large voice library, a plain-language way to direct the read, and a choice of audio settings to Picsart AI Playground. The most useful habit is to keep your script fixed and test several delivery notes until one fits. For the official details, including every setting, check the Seed TTS 3.0 model page on Picsart, then paste a short paragraph from your own work and try one voice today.",
+  "original_title": "Seed TTS 3.0 is now in Picsart: text to speech with 500+ voices"
+}

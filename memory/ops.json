@@ -1,134 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179550564981315",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-24T07:34:09.813Z",
-      "updated": "2026-11-24T07:34:26.240Z"
-    },
-    {
-      "id": "t179550566624295",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-24T07:34:26.242Z",
-      "updated": "2026-11-24T07:35:20.428Z"
-    },
-    {
-      "id": "t179550572047476",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-24T07:35:20.474Z",
-      "updated": "2026-11-24T07:35:40.723Z"
-    },
-    {
-      "id": "t179550574072456",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-24T07:35:40.724Z",
-      "updated": "2026-11-24T07:35:40.943Z"
-    },
-    {
-      "id": "t179550574098630",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-24T07:35:40.986Z",
-      "updated": "2026-11-24T07:35:41.205Z"
-    },
-    {
-      "id": "t17955057412076",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-24T07:35:41.207Z",
-      "updated": "2026-11-24T07:35:41.431Z"
-    },
-    {
-      "id": "t179550574152064",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-24T07:35:41.520Z",
-      "updated": "2026-11-24T07:35:58.356Z"
-    },
-    {
-      "id": "t179550575836396",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-24T07:35:58.363Z",
-      "updated": "2026-11-24T07:36:42.759Z"
-    },
-    {
-      "id": "t179550580276161",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-24T07:36:42.761Z",
-      "updated": "2026-11-24T07:36:48.418Z"
-    },
-    {
-      "id": "t179550580842087",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-24T07:36:48.420Z",
-      "updated": "2026-11-24T07:38:13.647Z"
-    },
-    {
-      "id": "t179550589364916",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-24T07:38:13.649Z",
-      "updated": "2026-11-24T07:39:03.996Z"
-    },
-    {
-      "id": "t179550594399735",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-24T07:39:03.997Z",
-      "updated": "2026-11-24T07:39:14.447Z"
-    },
-    {
-      "id": "t179550595444965",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-24T07:39:14.449Z",
-      "updated": "2026-11-24T07:39:46.799Z"
-    },
-    {
-      "id": "t179554759328949",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-24T19:13:13.289Z",
-      "updated": "2026-11-24T19:13:13.403Z"
-    },
-    {
-      "id": "t179554759340469",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-24T19:13:13.404Z",
-      "updated": "2026-11-24T19:14:23.120Z"
-    },
-    {
-      "id": "t179554766312135",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-24T19:14:23.121Z",
-      "updated": "2026-11-24T19:14:23.239Z"
-    },
-    {
       "id": "t179554766327043",
       "title": "Run iro",
       "status": "done",
@@ -479,49 +351,137 @@
       "agent": "publisher",
       "created": "2026-11-25T18:21:18.994Z",
       "updated": "2026-11-25T18:21:45.949Z"
+    },
+    {
+      "id": "t179567242955310",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-26T05:53:49.553Z",
+      "updated": "2026-11-26T05:53:49.708Z"
+    },
+    {
+      "id": "t179567242970943",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-26T05:53:49.709Z",
+      "updated": "2026-11-26T05:54:35.537Z"
+    },
+    {
+      "id": "t179567247553845",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-26T05:54:35.539Z",
+      "updated": "2026-11-26T05:54:35.694Z"
+    },
+    {
+      "id": "t179567247573734",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-26T05:54:35.737Z",
+      "updated": "2026-11-26T05:56:10.480Z"
+    },
+    {
+      "id": "t179567257048236",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-26T05:56:10.482Z",
+      "updated": "2026-11-26T05:56:27.634Z"
+    },
+    {
+      "id": "t179567258763656",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-26T05:56:27.636Z",
+      "updated": "2026-11-26T05:56:45.846Z"
+    },
+    {
+      "id": "t179567260584889",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-26T05:56:45.848Z",
+      "updated": "2026-11-26T05:56:50.515Z"
+    },
+    {
+      "id": "t17956726105176",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-26T05:56:50.517Z",
+      "updated": "2026-11-26T05:57:25.485Z"
+    },
+    {
+      "id": "t179567264552897",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-26T05:57:25.528Z",
+      "updated": "2026-11-26T05:58:22.227Z"
+    },
+    {
+      "id": "t179567270222827",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-26T05:58:22.228Z",
+      "updated": "2026-11-26T05:58:31.609Z"
+    },
+    {
+      "id": "t179567271164629",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-26T05:58:31.646Z",
+      "updated": "2026-11-26T05:58:31.838Z"
+    },
+    {
+      "id": "t179567271183974",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-26T05:58:31.839Z",
+      "updated": "2026-11-26T05:58:32.010Z"
+    },
+    {
+      "id": "t17956727120876",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-26T05:58:32.087Z",
+      "updated": "2026-11-26T06:00:51.595Z"
+    },
+    {
+      "id": "t179567285159628",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-26T06:00:51.596Z",
+      "updated": "2026-11-26T06:02:34.331Z"
+    },
+    {
+      "id": "t179567295433334",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-26T06:02:34.333Z",
+      "updated": "2026-11-26T06:02:48.613Z"
+    },
+    {
+      "id": "t17956729686159",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-26T06:02:48.615Z",
+      "updated": "2026-11-26T06:03:14.212Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179480124303750",
-      "level": "info",
-      "text": "SEO: 5 cikk optimalizálva (átlag 7.4/10).",
-      "agent": "seo",
-      "at": "2026-11-16T03:54:03.037Z",
-      "loud": false
-    },
-    {
-      "id": "n179480126451864",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up is coherent and ready — there's a nice mix of intro-level guidance (everyday tasks, privacy), a fact-checking piece, and a strong cluster of practical writing how-tos that everyday readers",
-      "agent": "publisher",
-      "at": "2026-11-16T03:54:24.518Z",
-      "loud": false
-    },
-    {
-      "id": "n179480127500522",
-      "level": "success",
-      "text": "3 hír + 2 útmutató publikálva (költség: $0.0339).",
-      "agent": "ceo",
-      "at": "2026-11-16T03:54:35.005Z",
-      "loud": false
-    },
-    {
-      "id": "n17948512325317",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-11-16T17:47:12.531Z",
-      "loud": false
-    },
-    {
-      "id": "n179485125466060",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid — it's practical, covers real everyday needs (emails, resumes, privacy, fact-checking), and uses specific tools in a helpful way. One note: articles 8 and 9 both feature Cohere ",
-      "agent": "publisher",
-      "at": "2026-11-16T17:47:34.660Z",
-      "loud": false
-    },
     {
       "id": "n179485126897935",
       "level": "success",
@@ -1281,66 +1241,49 @@
       "agent": "fact-check",
       "at": "2026-11-25T18:23:13.685Z",
       "loud": false
+    },
+    {
+      "id": "n179567262142495",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to export your OpenAI Agent Builder workflows and rebuild them in Zapier\"",
+      "agent": "pairing",
+      "at": "2026-11-26T05:57:01.424Z",
+      "loud": false
+    },
+    {
+      "id": "n179567263805069",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to create voiceovers with Seed TTS 3.0 in Picsart AI Playground\"",
+      "agent": "pairing",
+      "at": "2026-11-26T05:57:18.050Z",
+      "loud": false
+    },
+    {
+      "id": "n179567295431964",
+      "level": "info",
+      "text": "SEO: 16 cikk új keresőcímet kapott, 2 kapun elbukott.",
+      "agent": "seo",
+      "at": "2026-11-26T06:02:34.319Z",
+      "loud": false
+    },
+    {
+      "id": "n179567297932524",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Hi! The lineup looks strong and ready to go — it covers a nice arc from foundational guidance (what AI is good for, privacy) to practical how-tos, with solid tool variety. One small note: articles 8 a",
+      "agent": "publisher",
+      "at": "2026-11-26T06:02:59.325Z",
+      "loud": false
+    },
+    {
+      "id": "n179567299425093",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0655).",
+      "agent": "ceo",
+      "at": "2026-11-26T06:03:14.250Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179458535280065",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „A small account with high engagement often earns more than a big account with bored viewer”): \"How to get more views on TikTok on a small account\" — A forrás azt tárgyalja, hogy a TikTok nézetei hogyan keresnek pénzt fizetett kampánybriefeken keresztül minimális követőszám nélkül, amit a cikk egyál",
-      "ref": "ARTICLE_2026-09-15T12-59-05-469Z_picsart_How_to_get_more_views_on_TikTok_on_a_small_account.json",
-      "open": true,
-      "at": "2026-11-13T15:55:52.801Z"
-    },
-    {
-      "id": "m179458599306540",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-13T16:06:33.065Z"
-    },
-    {
-      "id": "m179460240166314",
-      "from": "pairing",
-      "to": "guide",
-      "kind": "need",
-      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to make purchases with ChatGPT Wallet\"",
-      "ref": "how-to-make-purchases-with-chatgpt-wallet",
-      "open": true,
-      "at": "2026-11-13T20:40:01.663Z"
-    },
-    {
-      "id": "m179460244118963",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-13T20:40:41.189Z"
-    },
-    {
-      "id": "m179460251794877",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to plan a stress-free family road trip with Co\" — A Copilot konkrét felhasználói felületi elemei (pl. mikrofon ikon, Másolás gomb) megváltozhattak a publikálás óta; érdemes ellenőrizni a jelenlegi felületet (állítás: voice mode microphone icon near the text box in the mobile app; small 'Copy' icon at the bottom-right of Copilot's reply). Nem ",
-      "ref": "ARTICLE_GUIDE_how-to-plan-a-stress-free-family-road-trip-with-copilot.json",
-      "open": true,
-      "at": "2026-11-13T20:41:57.948Z"
-    },
-    {
-      "id": "m179460301894381",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "1 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-13T20:50:18.943Z"
-    },
     {
       "id": "m179460632262926",
       "from": "fact-check",
@@ -2684,6 +2627,62 @@
       "text": "1 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-25T18:30:24.336Z"
+    },
+    {
+      "id": "m17956725756295",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "problem",
+      "text": "Visszaadva javításra: \"OpenAI Agent Builder is shutting down: How to export your workflows and move to Zapier\" — mi a baj: Step 3 vague on where to find the AI builder in Zapier's interface (no menu path); Step 5 doesn't say where to reconnect apps in Zapier; Step 4 says 'add a header in your message' but doesn't clarify this is a chat message to the AI builder",
+      "ref": "2026-11-24T19-14-23-106Z_zapier-blog_OpenAI_Agent_Builder_is_shutting_down__How_to_expo.json",
+      "at": "2026-11-26T05:56:15.629Z"
+    },
+    {
+      "id": "m179567260583765",
+      "from": "iro",
+      "to": "ellenorzo",
+      "kind": "fix",
+      "text": "Átdolgoztam: \"OpenAI Agent Builder is shutting down: How to export your workflows and move to Zapier\" — javítva: Step 3 vague on where to find the AI builder in Zapier's interface (no menu path); Step 5 doesn't say where to reconnect apps in Zapier; újraküldöm.",
+      "ref": "2026-11-24T19-14-23-106Z_zapier-blog_OpenAI_Agent_Builder_is_shutting_down__How_to_expo.json",
+      "at": "2026-11-26T05:56:45.837Z"
+    },
+    {
+      "id": "m179567261049665",
+      "from": "ellenorzo",
+      "to": "iro",
+      "kind": "info",
+      "text": "Rendben ✓ átment: \"OpenAI Agent Builder is shutting down: How to export your workflows and move to Zapier\" (?/10)",
+      "ref": "2026-11-24T19-14-23-106Z_zapier-blog_OpenAI_Agent_Builder_is_shutting_down__How_to_expo.json",
+      "at": "2026-11-26T05:56:50.496Z"
+    },
+    {
+      "id": "m179567262142486",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to export your OpenAI Agent Builder workflows and rebuild them in Zapier\"",
+      "ref": "how-to-export-your-openai-agent-builder-workflows-and-rebuil",
+      "open": true,
+      "at": "2026-11-26T05:57:01.424Z"
+    },
+    {
+      "id": "m179567263805081",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to create voiceovers with Seed TTS 3.0 in Picsart AI Playground\"",
+      "ref": "how-to-create-voiceovers-with-seed-tts-3-0-in-picsart-ai-pla",
+      "open": true,
+      "at": "2026-11-26T05:57:18.050Z"
+    },
+    {
+      "id": "m179567296857046",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-26T06:02:48.570Z"
     }
   ]
 }

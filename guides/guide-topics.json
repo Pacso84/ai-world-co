@@ -9658,11 +9658,24 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Describe the situation in your own words, such as a noisy late-night party, and ask Lumo for a friendly draft that you can edit to match your tone.",
-      "status": "todo",
+      "status": "done",
       "icon": "🏡",
       "priority": "balance",
       "proposed_at": "2026-11-25T06:04:50.649Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-26T05:57:33.887Z",
+        "ok": true,
+        "url": "https://proton.me/support/lumo"
+      },
+      "sugo_alapu": true,
+      "official_sources": [
+        {
+          "url": "https://proton.me/support/lumo",
+          "title": "Proton Lumo support | Proton"
+        }
+      ],
+      "written_at": "2026-11-26T05:58:22.213Z"
     },
     {
       "id": "using-lumo-to-build-a-7-day-study-plan-for-a-test",
@@ -9780,10 +9793,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Ask for a running summary at the end of each session and paste it at the start of the next chat so decisions and details carry over.",
-      "status": "todo",
+      "status": "done",
       "icon": "🗂️",
       "proposed_at": "2026-11-25T06:05:14.225Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-11-26T05:58:03.724Z"
     },
     {
       "id": "how-to-use-claude-projects-to-keep-reference-files-for-one-o",
@@ -9896,6 +9910,64 @@
         }
       ],
       "written_at": "2026-11-25T06:07:06.603Z"
+    },
+    {
+      "id": "how-to-export-your-openai-agent-builder-workflows-and-rebuil",
+      "company": "OpenAI",
+      "tool": "Zapier",
+      "title": "How to export your OpenAI Agent Builder workflows and rebuild them in Zapier",
+      "audience": "business",
+      "level": "intermediate",
+      "angle": "Focus on the export-to-code step and using Zapier's AI builder to reconstruct workflows from the Agents SDK code and test results",
+      "status": "todo",
+      "icon": "🆕",
+      "source_news": {
+        "file": "ARTICLE_2026-11-24T19-14-23-106Z_zapier-blog_OpenAI_Agent_Builder_is_shutting_down__How_to_expo.json",
+        "title": "OpenAI Agent Builder is shutting down: How to export your workflows and move to Zapier"
+      },
+      "created_at": "2026-11-26T05:57:01.423Z"
+    },
+    {
+      "id": "how-to-create-voiceovers-with-seed-tts-3-0-in-picsart-ai-pla",
+      "company": "ByteDance",
+      "tool": "Picsart",
+      "title": "How to create voiceovers with Seed TTS 3.0 in Picsart AI Playground",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Focus on the delivery note feature (plain-language direction) and how to compare different voice reads by keeping the script the same while changing only the mood description.",
+      "status": "todo",
+      "icon": "🆕",
+      "source_news": {
+        "file": "ARTICLE_2026-11-25T18-18-41-802Z_picsart_Seed_TTS_3_0_is_now_in_Picsart__text_to_speech_wit.json",
+        "title": "Seed TTS 3.0 is now in Picsart: text to speech with 500+ voices"
+      },
+      "created_at": "2026-11-26T05:57:18.049Z"
+    },
+    {
+      "id": "how-to-use-copilot-to-take-notes-during-a-microsoft-teams-me",
+      "company": "Microsoft",
+      "tool": "Copilot",
+      "title": "How to Use Copilot to Take Notes During a Microsoft Teams Meeting",
+      "audience": "both",
+      "level": "beginner",
+      "angle": "Learn how to turn on Copilot's meeting notes in Teams, what it captures automatically, and how to find the notes afterward, so you can focus on the conversation instead of typing.",
+      "status": "todo",
+      "icon": "📝",
+      "proposed_at": "2026-11-26T05:57:33.853Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "how to use copilot to take notes in teams",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-11-26"
+      },
+      "horgony": {
+        "at": "2026-11-26T05:57:33.887Z",
+        "ok": false,
+        "ok_ok": "nincs illő súgócikk"
+      }
     }
   ],
   "trend_proba": [
@@ -10010,6 +10082,10 @@
     {
       "kifejezes": "how to use copilot notebooks",
       "at": "2026-11-25T06:06:05.466Z"
+    },
+    {
+      "kifejezes": "how to use copilot to take notes in teams",
+      "at": "2026-11-26T05:57:25.698Z"
     }
   ]
 }
