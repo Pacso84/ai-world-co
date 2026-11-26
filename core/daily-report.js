@@ -46,6 +46,7 @@ import { partnerKattintasSor } from './affiliate.js';
 import { cegLefedettsegSor } from './ceg-lefedettseg.js';   // 🏢 2026-11-05
 import { bingTerkepek, terkepAllapot, bingTerkepSor, ujrakuldesKell, ujrakuld, ELVART_TERKEPEK } from './bing-terkep.js';   // 🔍 2026-11-14
 import { kokoroRiportSor } from './kokoro-tts.js';   // 🤗 2026-11-19
+import { seoRiportSor } from './seo-iro.js';          // 🔎 2026-11-26
 import { csalasKepRiportSorok } from './csalas-kepek.js';   // 🛡️ 2026-11-23 (csalás-figyelő 4. rész)
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -716,6 +717,11 @@ async function main() {
       const kSor = kokoroRiportSor(JSON.parse(readFileSync(join(ROOT, 'memory', 'kokoro-tartalek.json'), 'utf-8')), today());
       if (kSor) lines.push(kSor);
     } catch { /* nincs fájl = ma nem kellett a tartalék */ }
+    // 🔎 SEO TÖMEGES KÖR (11-26): halad-e a régi cikkek keresőcím-átírása (memory/seo-tomeges.json, agents/seo/agent.js --atiras)
+    try {
+      const sSor = seoRiportSor(JSON.parse(readFileSync(join(ROOT, 'memory', 'seo-tomeges.json'), 'utf-8')), today());
+      if (sSor) lines.push(sSor);
+    } catch { /* nincs fájl = a tömeges kör még egyszer sem futott */ }
     // 🛡️ CSALÁS-KÉPEK (11-23): elmaradt példa-kép vagy hiányzó normál betűvastagság. Kikapcsolt csalás-figyelőnél
     // a fájl nem is létezik (core/csalas-kepek.js azonnal kilép) → nincs sor.
     try {
@@ -940,6 +946,8 @@ async function main() {
       // A cég-lefedettség (2026-11-05) a guide --cover-ből MINDEN futásban ír. 10-30–11-05 között a
       // lépés egy sosem futó ágban ült, és semmi nem jelezte — ezt a rést zárja az `at` bélyeg.
       'ceg-lefedettseg.json': 'cég-lefedettség',
+      // Az SEO tömeges kör (2026-11-26) MINDEN futásban ír (kész kör / kikapcsolva is) — megálló `at` = a lépés kimaradt.
+      'seo-tomeges.json': 'SEO tömeges kör',
       // A belső hivatkozás-őr (2026-09-08) MINDEN sikeres build után ír, üres
       // `problems`-szel is (core/internal-link-guard.js parancssori ága), ugyanabban
       // a lépés-láncban, mint a SEO- és a kimenet-őr. Ha a lépés kimarad, a lemezen

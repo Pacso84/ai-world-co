@@ -344,6 +344,26 @@ jobs:
           TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
         run: node agents/designer/agent.js --refresh 8 || true
 
+      # SEO TÖMEGES KÖR (2026-11-26, user: „rádbízom! … minél több olvasót vonzzon”).
+      # A régi (v1) angol cikkek új keresőcímet + meta-leírást kapnak a TELJES cikkből,
+      # a legolvasottabbak elöl (core/seo-iro.js atirasSorrend), kód-kapukkal (core/seo-kapuk.js:
+      # hossz, ár, összehasonlítás, ígéret-fedezet, MÁRKANÉV). A Bing-védett oldalakhoz nem nyúl
+      # (memory/seo-vedett.json; elavult listával a kör magától NEM indul). A cikk szövege, URL-je,
+      # „Frissítve” dátuma NEM változik; a fordító nem fordít újra (fájl+nyelv kulcsú gyorsítótár).
+      # IDŐ: timeout-minutes NEM fér a lépés-keretbe (core/ci-timeouts.test.js) → belső --perc 6.
+      # Ha minden v2, a lépés másodpercek alatt üresen fut le. KI: core/seo-kapuk.js SEO_ELES_BE=false.
+      - name: SEO — régi cikkek keresőcíme (tömeges kör, 6 perc)
+        if: always()
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_OWNER_CHAT_ID: ${{ secrets.TELEGRAM_OWNER_CHAT_ID }}
+        run: node agents/seo/agent.js --atiras 100 --perc 6 || true
+
       # TÉNY-ELLENŐRZŐ (2026-07-30): a MÁR KINT LÉVŐ útmutatók frissesség-őre.
       #
       # MIÉRT KELLETT: a hitelesség-kapu (core/truth-gate.js) CSAK publikálás

@@ -126,5 +126,25 @@ t('seoPrompt: a valódi keresési kifejezések bekerülnek, a „csak ha a cikk 
   assert.doesNotMatch(seoPrompt(seoBemenet(MD)), /What people type into Google/i, 'kifejezés nélkül a szakasz ne legyen ott');
 });
 
+// ── TÖMEGES KÖR ŐRSZEME (11-26): a napi riport sora memory/seo-tomeges.json-ból ──
+const seoRiportSor = (...a) => { if (!seoIro.seoRiportSor) throw new Error('seoRiportSor nincs'); return seoIro.seoRiportSor(...a); };
+const seoOrszem = (...a) => { if (!seoIro.seoOrszem) throw new Error('seoOrszem nincs'); return seoIro.seoOrszem(...a); };
+t('seoOrszem: ugyanazon a napon összeadja a futásokat, új napon újrakezdi', () => {
+  const a = seoOrszem(null, { nap: '2026-11-27', kesz: 40, bukott: 2, hiba: 1, maradt: 880, javaslatHiba: '' }, '2026-11-27T06:00:00Z');
+  const b = seoOrszem(a, { nap: '2026-11-27', kesz: 30, bukott: 1, hiba: 0, maradt: 849, javaslatHiba: 'HTTP 429 (letiltott)' }, '2026-11-27T13:00:00Z');
+  assert.deepEqual({ kesz: b.kesz, bukott: b.bukott, hiba: b.hiba, maradt: b.maradt, futas: b.futas, javaslatHiba: b.javaslatHiba }, { kesz: 70, bukott: 3, hiba: 1, maradt: 849, futas: 2, javaslatHiba: 'HTTP 429 (letiltott)' });
+  const c = seoOrszem(b, { nap: '2026-11-28', kesz: 5, bukott: 0, hiba: 0, maradt: 844, javaslatHiba: '' }, '2026-11-28T06:00:00Z');
+  assert.equal(c.kesz, 5); assert.equal(c.futas, 1);
+});
+t('seoRiportSor: mai munka → sor; kész + ma semmi → üres; hátralék mellett ma nem futott → figyelmeztetés', () => {
+  const ma = '2026-11-27';
+  assert.match(seoRiportSor({ nap: ma, kesz: 70, bukott: 3, hiba: 1, maradt: 849, futas: 2 }, ma), /70 régi cikk új keresőcímet kapott.*849/);
+  assert.equal(seoRiportSor({ nap: ma, kesz: 0, bukott: 0, hiba: 0, maradt: 0, futas: 3 }, ma), '');
+  assert.match(seoRiportSor({ nap: '2026-11-25', kesz: 10, maradt: 500 }, ma), /⚠️.*nem futott/);
+  assert.match(seoRiportSor({ nap: ma, kikapcsolva: true }, ma), /kikapcsolva/);
+  assert.match(seoRiportSor({ nap: ma, kesz: 1, maradt: 9, javaslatHiba: 'HTTP 429 (letiltott)' }, ma), /Google-javaslat.*429/);
+  assert.equal(seoRiportSor(null, ma), '');
+});
+
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} rendben, ${bukott} bukott`);
 if (bukott) process.exit(1);

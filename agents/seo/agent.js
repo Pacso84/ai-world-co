@@ -24,8 +24,8 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { notify } from '../../core/ops.js';
-import { seoKapuk, withBrand } from '../../core/seo-kapuk.js';
-import { seoBemenet, seoPrompt, seoValasz, forgalom30, atirasSorrend, vedettFriss, javaslatMagok, hasznosKeresesek } from '../../core/seo-iro.js';
+import { seoKapuk, withBrand, SEO_ELES_BE } from '../../core/seo-kapuk.js';
+import { seoBemenet, seoPrompt, seoValasz, forgalom30, atirasSorrend, vedettFriss, javaslatMagok, hasznosKeresesek, seoOrszem } from '../../core/seo-iro.js';
 import { googleJavaslatok } from '../../core/trend-kutato.js';
 import { cimTag } from '../../core/title-tag.js';
 import { buildMetaDescription } from '../../core/meta-description.js';
@@ -42,6 +42,10 @@ const ATIRAS = ertek('--atiras') ? Math.max(0, parseInt(ertek('--atiras'), 10) |
 const MINTA = ertek('--minta') ? Math.max(1, parseInt(ertek('--minta'), 10) || 10) : 0;
 const SLUG = ertek('--slug');
 const KI = ertek('--ki');
+// --perc N: ennyi perc után nem kezd új cikket (a CI-lépésnek nem jut timeout-minutes — core/ci-timeouts.test.js —,
+// ezért a keret itt, belül van; a maradékot a következő futás folytatja).
+const PERC = ertek('--perc') ? Math.max(1, Number(ertek('--perc')) || 0) : 0;
+const INDULAS = Date.now();
 const UJ_ABLAK_ORA = 48;
 
 const SYSTEM = 'You are a careful SEO editor. You only state facts that are in the article. You answer with JSON only.';
@@ -99,6 +103,14 @@ function ir(c, seo) {
   writeFileSync(c.path, JSON.stringify(c.data, null, 2), 'utf-8');
 }
 
+let atirasHatra = 0;
+const ORSZEM_UT = join(ROOT, 'memory', 'seo-tomeges.json');
+/** A tömeges kör őrszeme (a napi riport olvassa: core/daily-report.js → seoRiportSor). */
+function orszemIr(f) {
+  try { writeFileSync(ORSZEM_UT, JSON.stringify(seoOrszem(olvas(ORSZEM_UT), { nap: new Date().toISOString().slice(0, 10), ...f }), null, 2) + '\n', 'utf-8'); }
+  catch (e) { console.log('⚠️ őrszem-írás hiba: ' + String(e.message).slice(0, 80)); }
+}
+
 async function main() {
   console.log('🔍 SEO AGENT v2 INDUL' + (DRY ? ' (előnézet — cikkfájlt nem ír)' : ATIRAS ? ` (tömeges átírás: ${ATIRAS})` : ''));
   console.log('─'.repeat(60));
@@ -113,8 +125,13 @@ async function main() {
     const slugok = SLUG ? [SLUG] : sor.slice(0, MINTA || 10);
     lista = slugok.map(s => minden.find(c => c.data._meta.slug === s)).filter(Boolean);
   } else if (ATIRAS) {
-    if (!vedettFriss(vedettJson)) { console.log('⏭️  nincs friss védett-lista (memory/seo-vedett.json, ≤14 nap) — a tömeges kör nem indul'); return; }
+    if (!SEO_ELES_BE) { orszemIr({ kikapcsolva: true }); console.log('⏭️  SEO_ELES_BE=false — a tömeges kör nem indul'); return; }
     const r = atirasSorrend(minden.map(c => ({ slug: c.data._meta.slug, v: c.data._meta.seo?.v })), forgalom, vedett);
+    if (!vedettFriss(vedettJson)) {
+      orszemIr({ kesz: 0, bukott: 0, hiba: 0, maradt: r.sor.length, javaslatHiba: 'nincs friss Bing-védett lista (memory/seo-vedett.json) — a kör áll' });
+      console.log('⏭️  nincs friss védett-lista (memory/seo-vedett.json, ≤14 nap) — a tömeges kör nem indul'); return;
+    }
+    atirasHatra = r.sor.length;
     megtartva = r.megtartva.map(s => minden.find(c => c.data._meta.slug === s)).filter(Boolean);
     lista = r.sor.slice(0, ATIRAS).map(s => minden.find(c => c.data._meta.slug === s)).filter(Boolean);
   } else {
@@ -129,7 +146,9 @@ async function main() {
 
   let kesz = 0, bukott = 0, hiba = 0, koltseg = 0;
   const mintak = [];
-  for (const c of lista) {
+  let idoKifutott = 0;
+  for (const [i, c] of lista.entries()) {
+    if (PERC && Date.now() - INDULAS > PERC * 60000) { idoKifutott = lista.length - i; console.log(`⏱️ ${PERC} perces keret letelt — ${idoKifutott} cikk a következő futásra marad`); break; }
     console.log(`🔎 ${c.data._meta.slug.slice(0, 70)}`);
     const r = await optimalizal(c.data);
     koltseg += r.koltseg || 0;
@@ -151,6 +170,8 @@ async function main() {
   if (DRY && KI) writeFileSync(KI, JSON.stringify(mintak, null, 2), 'utf-8');
   console.log('\n' + '─'.repeat(60));
   console.log(`📊 SEO: ${kesz} kész · ${bukott} kapun elbukott (régi marad) · ${megtartva.length} védett · ${hiba} válasz nélkül · költség $${koltseg.toFixed(4)}`);
+  if (ATIRAS) orszemIr({ kesz, bukott, hiba, maradt: Math.max(0, atirasHatra - kesz - bukott), javaslatHiba: JAVASLAT.hiba });
+  if (ATIRAS) console.log(`🔁 tömeges kör: ${kesz + bukott + hiba} cikk ${Math.round((Date.now() - INDULAS) / 1000)} mp alatt` + (idoKifutott ? ` · ${idoKifutott} maradt (időkeret)` : ''));
   console.log(`🔤 Google-javaslat: ${JAVASLAT.lekert} cikkhez lekérve` + (JAVASLAT.hiba ? ` · ⚠️ kiesett: ${JAVASLAT.hiba}` : ''));
   if (!DRY && kesz + bukott > 0) notify('info', `SEO: ${kesz} cikk új keresőcímet kapott, ${bukott} kapun elbukott.`, { agent: 'seo' });
 }

@@ -18,7 +18,8 @@ import { eszkozNevek } from './forras-tema.js';
 import { cimTag } from './title-tag.js';
 
 /** A KAPCSOLÓ. 1. rész: KI (a user a 10 minta jóváhagyása után kapcsolja be — 2. rész). */
-export const SEO_ELES_BE = false;
+// 2. rész ÉLES 2026-11-26 (user a 10 minta után: „rádbízom! … minél több olvasót vonzzon”). Vissza: false.
+export const SEO_ELES_BE = true;
 
 export const CIM_MIN = 25;
 export const CIM_MAX = 60;
@@ -79,7 +80,23 @@ export function seoKapuk({ cim, leiras, cikkMd, regiCim, regiLeiras } = {}) {
   if (SABLON.test(mindketto)) hibak.push('SABLON: sablonos önreklám („with our guide”, „our step-by-step”) — mondd ki, mit kap az olvasó');
   hibak.push(...igeretKapuk(c, cikkMd));
   if (regiCim && c === String(regiCim).trim() && regiLeiras && l === String(regiLeiras).trim()) hibak.push('VALTOZATLAN: ugyanaz, mint a mostani cím és leírás');
+  hibak.push(...markaKapu(c, regiCim));
   return hibak;
+}
+
+/**
+ * MÁRKANÉV-KAPU (11-26): a régi címben szereplő eszköznév (website/tool-links.json + ismert nevek)
+ * az új címből sem maradhat ki — az olvasók az eszköz nevére keresnek („hugging face spaces”),
+ * név nélkül a cím a keresésben láthatatlan. A hosszabb név fedi a benne lévő rövidebbet
+ * („GitHub Copilot” ⊃ „Copilot”), így elég a leghosszabbat megtartani.
+ */
+export function markaKapu(cim, regiCim, nevek = eszkozNevek()) {
+  if (!regiCim) return [];
+  const r = String(regiCim).toLowerCase(), c = String(cim || '').toLowerCase();
+  const regiben = nevek.filter(n => n && n.length >= 3 && szohatarral(r, n));
+  const fo = regiben.filter(n => !regiben.some(m => m !== n && m.length > n.length && szohatarral(m.toLowerCase(), n)));
+  const hianyzik = fo.filter(n => !szohatarral(c, n));
+  return hianyzik.length ? [`MARKANEV: a régi címben szereplő név kimaradt (${hianyzik.join(', ')}) — az olvasók erre keresnek, maradjon a címben`] : [];
 }
 
 /**

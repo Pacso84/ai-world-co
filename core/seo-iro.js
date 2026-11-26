@@ -86,6 +86,7 @@ export function seoPrompt(b, { hibak = [], regi = null, keresesek = [] } = {}) {
 RULES (all required):
 - Use only facts stated in the article. Do not promise anything the article does not deliver.
 - seo_title: ${CIM_MIN}-${CIM_MAX} characters, a natural, grammatical English headline (not a keyword list: "Google's New Gemini Tools for Small Businesses", never "Gemini New Tools for Small Business Owners"). Put the words a searcher would type first (e.g. "Where to Find Google Meet Recordings" rather than "A Practical Guide to..."). No brand suffix — it is added automatically.
+- Keep every product or tool name from the article title in seo_title (for example "Hugging Face", "Qwen", "GitHub Copilot") — people search for the name.
 - meta_description: ${LEIRAS_MIN}-${LEIRAS_MAX} characters, one or two plain sentences that say what the reader gets.
 - no prices, no plan prices, no credit counts, no dollar amounts.
 - no comparisons and no superlatives: never "best", "vs", "versus", "better than", "compared", "alternative", "top 5", "#1".
@@ -150,4 +151,28 @@ export function vedettFriss(vedettJson, most = Date.now()) {
   return Number.isFinite(at) && (most - at) <= VEDETT_MAX_KOR_NAP * NAP;
 }
 
-export default { seoBemenet, seoPrompt, seoValasz, forgalom30, atirasSorrend, vedettFriss, javaslatMagok, hasznosKeresesek };
+// ── TÖMEGES KÖR ŐRSZEME (11-26) — „feltételes ágban ülő lépés = néma halál”: a CI-lépés MINDEN
+// futásban ír (memory/seo-tomeges.json), a napi riport ebből mondja meg, halad-e a kör. ──
+
+/** Az őrszem új állapota: ugyanazon a napon a számok összeadódnak, új napon újraindulnak. */
+export function seoOrszem(regi, f, at = new Date().toISOString()) {
+  const uj = regi && regi.nap === f.nap && !regi.kikapcsolva;
+  const n = k => (uj ? Number(regi[k]) || 0 : 0) + (Number(f[k]) || 0);
+  if (f.kikapcsolva) return { at, nap: f.nap, kikapcsolva: true };
+  return { at, nap: f.nap, kesz: n('kesz'), bukott: n('bukott'), hiba: n('hiba'), maradt: Number(f.maradt) || 0,
+    futas: (uj ? Number(regi.futas) || 0 : 0) + 1, javaslatHiba: f.javaslatHiba || '' };
+}
+
+/** A napi Telegram-riport sora ('' = nincs mit mondani: a kör kész, és ma nem volt munka). */
+export function seoRiportSor(e, ma) {
+  if (!e) return '';
+  if (e.kikapcsolva) return '🔎 SEO tömeges kör: kikapcsolva (core/seo-kapuk.js SEO_ELES_BE=false)';
+  if (e.nap !== ma) return (Number(e.maradt) || 0) > 0 ? `⚠️ 🔎 SEO tömeges kör: ma nem futott (utolsó: ${e.nap}, hátra ${e.maradt} régi cikk)` : '';
+  const kesz = Number(e.kesz) || 0, bukott = Number(e.bukott) || 0, hiba = Number(e.hiba) || 0;
+  if (!kesz && !bukott && !hiba) return '';
+  return `🔎 SEO: ma ${kesz} régi cikk új keresőcímet kapott` + (bukott ? ` · ${bukott} kapun elbukott (a régi marad)` : '')
+    + (hiba ? ` · ${hiba} válasz nélkül` : '') + ` · hátra ${Number(e.maradt) || 0}`
+    + (e.javaslatHiba ? ` · ⚠️ Google-javaslat kiesett: ${String(e.javaslatHiba).slice(0, 60)}` : '');
+}
+
+export default { seoBemenet, seoPrompt, seoValasz, forgalom30, atirasSorrend, vedettFriss, javaslatMagok, hasznosKeresesek, seoOrszem, seoRiportSor };

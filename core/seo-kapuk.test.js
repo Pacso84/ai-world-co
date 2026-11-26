@@ -95,7 +95,23 @@ t('fejCimEsLeiras: nincs keresőcím → az eredeti', () => {
 t('fejCimEsLeiras: van keresőcím → az kerül a <title>-be és a leírásba', () => {
   assert.deepEqual(fejCimEsLeiras({ title: 'X', description: 'Y', kereso: { cim: JO_CIM, leiras: JO_LEIRAS } }), { titleTag: cimTag(withBrand(JO_CIM)), metaDesc: JO_LEIRAS });
 });
-t('SEO_ELES_BE = false (1. rész: a user a 10 minta után kapcsolja be)', () => assert.equal(SEO_ELES_BE, false));
+// ── MÁRKANÉV-KAPU (11-26, user: „úgy döntsél, minél több olvasót vonzzon”) — a 11-26-i mintában a
+// „Try Free AI Demos in Your Browser with Hugging Face Spaces” → „How to Run AI Demos in Your Web Browser”
+// lett: kiesett a „Hugging Face”, pedig az emberek az eszköz nevére keresnek.
+t('MARKANEV: a régi címben lévő eszköznév kimarad az újból → hiba', () => {
+  const h = kodok(seoKapuk({ cim: 'How to Run AI Demos in Your Web Browser', leiras: JO_LEIRAS, regiCim: 'Try Free AI Demos in Your Browser with Hugging Face Spaces' }));
+  assert.ok(h.includes('MARKANEV'), JSON.stringify(h));
+});
+t('MARKANEV: megmaradt név → nincs hiba; a hosszabb név („GitHub Copilot”) a rövidebbet („Copilot”) is fedi', () => {
+  assert.ok(!kodok(seoKapuk({ cim: 'Run Free AI Demos in Your Browser with Hugging Face', leiras: JO_LEIRAS, regiCim: 'Try Free AI Demos in Your Browser with Hugging Face Spaces' })).includes('MARKANEV'));
+  assert.ok(!kodok(seoKapuk({ cim: 'GPT-6.2 Astra and Sol Now in GitHub Copilot', leiras: JO_LEIRAS, regiCim: 'GPT-6.2 Astra and Sol Come to GitHub Copilot: What They Do' })).includes('MARKANEV'));
+  assert.ok(!kodok(seoKapuk({ cim: JO_CIM, leiras: JO_LEIRAS, regiCim: 'How to Find Your Google Meet Recordings' })).includes('MARKANEV'));
+});
+t('MARKANEV: a hiba megnevezi a kimaradt nevet (az AI ebből javít)', () => {
+  const h = seoKapuk({ cim: 'Plan a Family Dinner Week and Shopping List', leiras: JO_LEIRAS, regiCim: 'Plan a Week of Family Dinners with Qwen' });
+  assert.ok(h.some(x => x.startsWith('MARKANEV') && x.includes('Qwen')), JSON.stringify(h));
+});
+t('SEO_ELES_BE = true (2. rész, user 11-26: „rádbízom!” a 10 minta után)', () => assert.equal(SEO_ELES_BE, true));
 
 // ── A build-bekötés forrás-szintű őre (a build.js-t helyben futtatni TILOS → a forrását nézzük) ──
 const BUILD = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');

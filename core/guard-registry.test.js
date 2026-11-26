@@ -69,7 +69,8 @@ const EGYEB_ORSZEM = {
   'housekeeping.json': 'a Házmester beépített hízás-őre (watchGrowth) ide írja a figyelmeztetést, a napi riport ebből szól',
   'ceg-lefedettseg.json': 'a guide --cover MINDEN futásban írja (CEO 3i2); témátlan cég / elakadt coverage-téma → 🏢 riport-sor (2026-11-05)',
   'horgony-allapot.json': 'a súgó-horgony próbáinak állapota (core/horgony-valasztas.js horgonyAllapotIr, a guide agent írja): hány próba, hány siker, mely témák nem kaptak súgócikket; a napi riport 🧭 sora olvassa (tényközpont 1d)',
-  'kokoro-tartalek.json': 'a Kokoro tartalék felolvasó napi feljegyzése (core/kokoro-tts.js tartalekFeljegyez): beugrott-e / elbukott-e ma a Microsoft-felolvasó helyett; a napi riport 🤗 sora olvassa (2026-11-19)'
+  'kokoro-tartalek.json': 'a Kokoro tartalék felolvasó napi feljegyzése (core/kokoro-tts.js tartalekFeljegyez): beugrott-e / elbukott-e ma a Microsoft-felolvasó helyett; a napi riport 🤗 sora olvassa (2026-11-19)',
+  'seo-tomeges.json': 'az SEO tömeges kör őrszeme (agents/seo/agent.js --atiras, core/seo-iro.js seoOrszem): MINDEN futásban íródik (kikapcsolva / védett-lista hiány is); a napi riport 🔎 sora olvassa (seoRiportSor, 2026-11-26)'
 };
 
 /**
