@@ -6,7 +6,10 @@ import assert from 'assert/strict';
 import { readFileSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { seoBemenet, seoPrompt, seoValasz, atirasSorrend, vedettFriss, forgalom30 } from './seo-iro.js';
+import * as seoIro from './seo-iro.js';
+const { seoBemenet, seoPrompt, seoValasz, atirasSorrend, vedettFriss, forgalom30 } = seoIro;
+const javaslatMagok = (...a) => { if (!seoIro.javaslatMagok) throw new Error('javaslatMagok nincs'); return seoIro.javaslatMagok(...a); };
+const hasznosKeresesek = (...a) => { if (!seoIro.hasznosKeresesek) throw new Error('hasznosKeresesek nincs'); return seoIro.hasznosKeresesek(...a); };
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 let pass = 0, bukott = 0;
@@ -77,6 +80,50 @@ t('vedettFriss: 13 nap még friss, 15 már nem, hiányzó nem', () => {
   assert.equal(vedettFriss({ at: '2026-11-10T11:00:00Z', vedett: [] }, most), false);
   assert.equal(vedettFriss(null, most), false);
   assert.equal(vedettFriss({ vedett: [] }, most), false);
+});
+
+// ── GOOGLE-KERESŐJAVASLATOK (user 11-25: „de a google trends is kéne. nem?”) ──
+t('javaslatMagok: a 2 legrövidebb régi kulcsszó, max 4 szó, kisbetű, ismétlés nélkül', () => {
+  assert.deepEqual(
+    javaslatMagok({ keywords: ['how to find your google meet recordings fast', 'Google Meet recordings', 'google meet recordings', 'Meet transcript location'], cim: 'X' }),
+    ['google meet recordings', 'meet transcript location']
+  );
+});
+t('javaslatMagok: kulcsszó nélkül a címből („How to” nélkül, első 4 szó)', () => {
+  assert.deepEqual(javaslatMagok({ keywords: [], cim: 'How to Find Your Google Meet Recordings, Transcripts and Notes' }), ['find your google meet']);
+});
+t('hasznosKeresesek: csak amit a cikk TÉNYLEG lefed; ár, összehasonlítás, ismétlés ki; max 8', () => {
+  const szoveg = seoBemenet(MD);
+  const teljes = [szoveg.cim, szoveg.alcim, MD].join(' ');
+  const talalat = [
+    'google meet recording drive',              // lefedi (mind a 4 szó a cikkben)
+    'google meet transcript',                   // lefedi (transcript ~ transcripts: többes szám tűrés)
+    'where do google meet recordings go',       // lefedi
+    'google meet recording location',           // NINCS a cikkben (location — 11-26 mérve: 0 előfordulás)
+    'google meet recording zoom',                // NINCS a cikkben (zoom)
+    'best google meet recorder',                 // összehasonlítás
+    'google meet recording price',               // ár
+    'Google Meet recording drive'                // ismétlés
+  ].map(kifejezes => ({ kifejezes }));
+  const k = hasznosKeresesek(talalat, teljes);
+  assert.ok(k.includes('google meet recording drive'), JSON.stringify(k));
+  assert.ok(k.includes('google meet transcript'), JSON.stringify(k));
+  assert.ok(k.includes('where do google meet recordings go'), JSON.stringify(k));
+  assert.ok(!k.some(x => /zoom|best|price|location/.test(x)), JSON.stringify(k));
+  assert.equal(k.filter(x => x === 'google meet recording drive').length, 1);
+  assert.ok(hasznosKeresesek(Array.from({ length: 20 }, () => ({ kifejezes: 'google meet recording' })).map((x, i) => ({ kifejezes: x.kifejezes + ' ' + ['notes', 'transcripts', 'drive'][i % 3] + ' ' + i })), teljes + ' 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19').length <= 8);
+});
+t('hasznosKeresesek: navigációs keresés ki (download, near me, login, záró betűpár) — 11-26 minta', () => {
+  const teljes = 'qwen chat download weekend getaways near me gemini notes meeting login sign in lm ai';
+  const k = hasznosKeresesek(['qwen chat download', 'weekend getaways near me', 'gemini notes lm', 'gemini login', 'gemini notes meeting', 'qwen chat ai']
+    .map(kifejezes => ({ kifejezes })), teljes);
+  assert.deepEqual(k, ['gemini notes meeting', 'qwen chat ai']);
+});
+t('seoPrompt: a valódi keresési kifejezések bekerülnek, a „csak ha a cikk lefedi” szabállyal', () => {
+  const p = seoPrompt(seoBemenet(MD), { keresesek: ['google meet recording drive'] });
+  assert.match(p, /google meet recording drive/);
+  assert.match(p, /only if the article covers/i);
+  assert.doesNotMatch(seoPrompt(seoBemenet(MD)), /What people type into Google/i, 'kifejezés nélkül a szakasz ne legyen ott');
 });
 
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} rendben, ${bukott} bukott`);

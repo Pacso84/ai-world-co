@@ -14,7 +14,7 @@
 //   node agents/seo/agent.js --dry --minta 10 [--slug x] [--ki fajl.json]
 //                                               előnézet: régi vs új, cikkfájlt NEM ír
 //
-// Írt mező: _meta.seo = { keywords, seo_title, meta_description, v: 2, eles, kapu_hibak?, megtartva?, optimised_at }
+// Írt mező: _meta.seo = { keywords, keresesek, seo_title, meta_description, v: 2, eles, kapu_hibak?, megtartva?, optimised_at }
 // Spec: docs/superpowers/specs/2026-11-25-kereso-cim-design.md (0. szakasz)
 // ===================================================================
 
@@ -25,7 +25,8 @@ import { dirname, join } from 'path';
 import { ask } from '../../core/ai-router.js';
 import { notify } from '../../core/ops.js';
 import { seoKapuk, withBrand } from '../../core/seo-kapuk.js';
-import { seoBemenet, seoPrompt, seoValasz, forgalom30, atirasSorrend, vedettFriss } from '../../core/seo-iro.js';
+import { seoBemenet, seoPrompt, seoValasz, forgalom30, atirasSorrend, vedettFriss, javaslatMagok, hasznosKeresesek } from '../../core/seo-iro.js';
+import { googleJavaslatok } from '../../core/trend-kutato.js';
 import { cimTag } from '../../core/title-tag.js';
 import { buildMetaDescription } from '../../core/meta-description.js';
 import { toUS } from '../../core/us-spelling.js';
@@ -48,14 +49,32 @@ const SYSTEM = 'You are a careful SEO editor. You only state facts that are in t
 const olvas = p => { try { return JSON.parse(readFileSync(p, 'utf-8')); } catch { return null; } };
 const torzsBol = md => String(md || '').replace(/\r\n/g, '\n').replace(/^---\n[\s\S]*?\n---\n?/, '');
 
+// ── GOOGLE-KERESŐJAVASLATOK (11-26) — ingyenes, kulcs nélküli; 403/429/hálózati hiba vagy
+// használhatatlan válasz → a futás HÁTRALEVŐ részében kihagyjuk (nem kopogtatunk tovább),
+// a cikk javaslatok nélkül, a régi módon kap címet. A hiba a záró sorba kerül.
+const JAVASLAT = { be: true, hiba: '', lekert: 0 };
+const CIKK_SZUNET_MS = 1000;
+const alszik = ms => new Promise(r => setTimeout(r, ms));
+
+async function keresesekLeker(data, b) {
+  if (!JAVASLAT.be) return [];
+  const magok = javaslatMagok({ keywords: data._meta?.seo?.keywords, cim: b.cim });
+  if (!magok.length) return [];
+  if (JAVASLAT.lekert++) await alszik(CIKK_SZUNET_MS);
+  const r = await googleJavaslatok(magok, { hatarido: Date.now() + 30000 });
+  if (r.hiba) { JAVASLAT.be = false; JAVASLAT.hiba = r.hiba; console.log(`   ⚠️ Google-javaslat kiesett (${r.hiba}) — a futás többi cikke nélküle megy`); }
+  return hasznosKeresesek(r.talalat, [b.cim, b.alcim, data.article_markdown || ''].join(' '));
+}
+
 /** Egy cikk optimalizálása: 1 hívás + legfeljebb 1 újrapróba a kapu-hibákkal. */
 async function optimalizal(data) {
   const md = data.article_markdown || '';
   const b = seoBemenet(md);
   const regi = { cim: cimTag(withBrand(b.cim)), leiras: buildMetaDescription(b.alcim, torzsBol(md)) };
+  const keresesek = await keresesekLeker(data, b);
   let hibak = [], koltseg = 0, utolso = null, valaszVolt = false;
   for (let kor = 1; kor <= 2; kor++) {
-    const r = await ask(seoPrompt(b, { hibak, regi }), { agentName: AGENT_NAME, systemPrompt: SYSTEM, maxTokens: 1500, jsonMode: true });
+    const r = await ask(seoPrompt(b, { hibak, regi, keresesek }), { agentName: AGENT_NAME, systemPrompt: SYSTEM, maxTokens: 1500, jsonMode: true });
     koltseg += r?.costUsd || 0;
     const v = seoValasz(r?.text);
     if (!v) continue;                                   // üres / nem JSON → újra (nem kapu-bukás)
@@ -63,9 +82,9 @@ async function optimalizal(data) {
     v.seo_title = toUS(v.seo_title).text; v.meta_description = toUS(v.meta_description).text;
     hibak = seoKapuk({ cim: v.seo_title, leiras: v.meta_description, cikkMd: torzsBol(md), regiCim: b.cim, regiLeiras: regi.leiras });
     utolso = v;
-    if (!hibak.length) return { ok: true, v, koltseg, regi };
+    if (!hibak.length) return { ok: true, v, koltseg, regi, keresesek };
   }
-  return valaszVolt ? { ok: false, v: utolso, hibak, koltseg, regi } : { ok: null, koltseg, regi };
+  return valaszVolt ? { ok: false, v: utolso, hibak, koltseg, regi, keresesek } : { ok: null, koltseg, regi, keresesek };
 }
 
 function cikkek() {
@@ -119,18 +138,20 @@ async function main() {
     const seo = {
       keywords: (r.v.keywords?.length ? r.v.keywords : regiSeo.keywords) || [],
       seo_title: r.v.seo_title, meta_description: r.v.meta_description,
+      keresesek: r.keresesek || [],
       v: 2, eles: r.ok, ...(r.ok ? {} : { kapu_hibak: r.hibak }),
       optimised_at: new Date().toISOString()
     };
     if (r.ok) { kesz++; console.log(`   ✅ „${seo.seo_title}” (${seo.seo_title.length}) · leírás ${seo.meta_description.length} kar.`); }
     else { bukott++; console.log(`   ⛔ kapun elbukott, a régi marad: ${r.hibak.map(h => h.split(':')[0]).join(', ')}`); }
-    if (DRY) mintak.push({ slug: c.data._meta.slug, latogatas30: forgalom.get(c.data._meta.slug) || 0, regi: r.regi, uj: { cim: seo.seo_title, leiras: seo.meta_description }, ok: r.ok, hibak: r.hibak || [] });
+    if (DRY) mintak.push({ slug: c.data._meta.slug, latogatas30: forgalom.get(c.data._meta.slug) || 0, regi: r.regi, uj: { cim: seo.seo_title, leiras: seo.meta_description }, keresesek: seo.keresesek, ok: r.ok, hibak: r.hibak || [] });
     else ir(c, seo);
   }
 
   if (DRY && KI) writeFileSync(KI, JSON.stringify(mintak, null, 2), 'utf-8');
   console.log('\n' + '─'.repeat(60));
   console.log(`📊 SEO: ${kesz} kész · ${bukott} kapun elbukott (régi marad) · ${megtartva.length} védett · ${hiba} válasz nélkül · költség $${koltseg.toFixed(4)}`);
+  console.log(`🔤 Google-javaslat: ${JAVASLAT.lekert} cikkhez lekérve` + (JAVASLAT.hiba ? ` · ⚠️ kiesett: ${JAVASLAT.hiba}` : ''));
   if (!DRY && kesz + bukott > 0) notify('info', `SEO: ${kesz} cikk új keresőcímet kapott, ${bukott} kapun elbukott.`, { agent: 'seo' });
 }
 

@@ -8,6 +8,7 @@
 // ===================================================================
 
 import { CIM_MIN, CIM_MAX, LEIRAS_MIN, LEIRAS_MAX } from './seo-kapuk.js';
+import { normal, szavak, OSSZEHASONLITAS_RX, TENY_RX, TILTOTT_RX } from './trend-kutato.js';
 
 const NAP = 86400000;
 export const VEDETT_MAX_KOR_NAP = 14;
@@ -32,8 +33,54 @@ export function seoBemenet(markdown) {
   return { cim: mezo('title'), alcim: mezo('subtitle'), roviden, h2k, torzs };
 }
 
-/** A prompt: a cikk + a szabályok (+ újrapróbánál a kapu-hibák). */
-export function seoPrompt(b, { hibak = [], regi = null } = {}) {
+// ── GOOGLE-KERESŐJAVASLATOK (user 11-25: „de a google trends is kéne. nem?” → „igen”) ──
+// A Trends API zárt alfa → helyette a Google automatikus kiegészítése (suggestqueries), amit a
+// core/trend-kutato.js googleJavaslatok() már ingyen használ. Cikkenként 1–2 rövid „mag” megy ki,
+// a visszajött valódi keresésekből CSAK az marad, amit a cikk TÉNYLEG lefed (minden tartalmas
+// szava benne van a cikkben) — különben a cím olyat ígérne, amit a szöveg nem ad (style-guide §3b).
+export const MAG_MAX_SZO = 4;
+export const KERESES_MAX = 8;
+
+/** Cikkenként legfeljebb 2 lekérdezés-mag: a 2 legrövidebb régi kulcsszó (≤4 szó), ennek híján a cím eleje. */
+export function javaslatMagok({ keywords = [], cim = '' } = {}) {
+  const lat = new Set(), ki = [];
+  for (const k of (Array.isArray(keywords) ? keywords : []).map(normal).filter(Boolean)) {
+    if (k.split(' ').length > MAG_MAX_SZO || lat.has(k)) continue;
+    lat.add(k); ki.push(k);
+  }
+  ki.sort((a, b) => a.length - b.length);
+  if (ki.length) return ki.slice(0, 2);
+  const c = normal(String(cim).replace(/^\s*how\s+to\s+/i, '')).replace(/[^a-z0-9+\-' ]+/g, ' ').replace(/\s+/g, ' ').trim();
+  return c ? [c.split(' ').slice(0, MAG_MAX_SZO).join(' ')] : [];
+}
+
+// Navigációs / helyi keresés (letöltés, belépés, „near me”, egyetlen betűpár mint az „lm”): nem a cikk
+// témája, a címbe nem való. 11-26 mintában mérve: „qwen chat download”, „weekend getaways near me”, „gemini notes lm”.
+export const NAVIGACIO_RX = /\b(download\w*|apk|log ?in|sign ?(in|up)|near me)\b|\s(?!(ai|go|do|me|up|in|on|to|it|is|us|tv|pc|my|of|or|an|as|at|be|by|no|so|we|uk|id|os)$)[a-z]{2}$/i;
+
+/** Egy szó szerepel-e a cikk szóhalmazában (egyes/többes szám tűréssel). */
+const lefedett = (w, h) => h.has(w) || h.has(w + 's') || h.has(w + 'es')
+  || (w.endsWith('es') && h.has(w.slice(0, -2))) || (w.endsWith('s') && h.has(w.slice(0, -1)));
+
+/** A Google-javaslatokból a cikkhez illő valódi keresések: lefedett, nem ár/összehasonlítás/tiltott, ismétlés nélkül, max 8. */
+export function hasznosKeresesek(talalat, cikkSzoveg, max = KERESES_MAX) {
+  const h = new Set(normal(cikkSzoveg).replace(/[^a-z0-9 ]+/g, ' ').split(' ').filter(Boolean));
+  const lat = new Set(), ki = [];
+  for (const t of talalat || []) {
+    const k = normal(t?.kifejezes);
+    if (!k || lat.has(k)) continue;
+    lat.add(k);
+    if (OSSZEHASONLITAS_RX.test(k) || TENY_RX.test(k) || TILTOTT_RX.test(k) || NAVIGACIO_RX.test(k)) continue;
+    const sz = [...szavak(k)];
+    if (!sz.length || !sz.every(w => lefedett(w, h))) continue;
+    ki.push(k);
+    if (ki.length >= max) break;
+  }
+  return ki;
+}
+
+/** A prompt: a cikk + a szabályok (+ újrapróbánál a kapu-hibák; + a valódi Google-keresések, ha vannak). */
+export function seoPrompt(b, { hibak = [], regi = null, keresesek = [] } = {}) {
   return `You write the search-result title and meta description for one article on AI World HQ (plain-language AI news and how-to guides for everyday people).
 
 RULES (all required):
@@ -46,7 +93,7 @@ RULES (all required):
 - No self-promotion like "with our guide" or "our step-by-step guide".
 - American English spelling.
 - keywords: 5-8 realistic search phrases people type.
-${hibak.length ? `\nYOUR PREVIOUS ANSWER WAS REJECTED. Fix every problem:\n${hibak.map(h => '- ' + h).join('\n')}\n` : ''}${regi ? `\nCurrent search title: ${regi.cim || '-'}\nCurrent description: ${regi.leiras || '-'}\n` : ''}
+${keresesek.length ? `\nWhat people type into Google (real autocomplete searches). Use these words in the title or description only if the article covers them; never add a topic the article does not explain:\n${keresesek.map(k => '- ' + k).join('\n')}\n` : ''}${hibak.length ? `\nYOUR PREVIOUS ANSWER WAS REJECTED. Fix every problem:\n${hibak.map(h => '- ' + h).join('\n')}\n` : ''}${regi ? `\nCurrent search title: ${regi.cim || '-'}\nCurrent description: ${regi.leiras || '-'}\n` : ''}
 ARTICLE
 Title: ${b.cim}
 Subtitle: ${b.alcim}
@@ -103,4 +150,4 @@ export function vedettFriss(vedettJson, most = Date.now()) {
   return Number.isFinite(at) && (most - at) <= VEDETT_MAX_KOR_NAP * NAP;
 }
 
-export default { seoBemenet, seoPrompt, seoValasz, forgalom30, atirasSorrend, vedettFriss };
+export default { seoBemenet, seoPrompt, seoValasz, forgalom30, atirasSorrend, vedettFriss, javaslatMagok, hasznosKeresesek };
