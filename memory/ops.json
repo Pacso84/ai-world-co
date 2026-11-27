@@ -1,102 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179558683742693",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-25T06:07:17.426Z",
-      "updated": "2026-11-25T06:09:05.217Z"
-    },
-    {
-      "id": "t179558694521918",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-25T06:09:05.219Z",
-      "updated": "2026-11-25T06:09:49.297Z"
-    },
-    {
-      "id": "t179558698929965",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-25T06:09:49.299Z",
-      "updated": "2026-11-25T06:10:04.313Z"
-    },
-    {
-      "id": "t179558700431414",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-25T06:10:04.314Z",
-      "updated": "2026-11-25T06:10:29.442Z"
-    },
-    {
-      "id": "t179563067790195",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-25T18:17:57.901Z",
-      "updated": "2026-11-25T18:17:58.070Z"
-    },
-    {
-      "id": "t17956306780712",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-25T18:17:58.071Z",
-      "updated": "2026-11-25T18:18:41.816Z"
-    },
-    {
-      "id": "t179563072181839",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-25T18:18:41.818Z",
-      "updated": "2026-11-25T18:18:41.977Z"
-    },
-    {
-      "id": "t179563072202149",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-25T18:18:42.021Z",
-      "updated": "2026-11-25T18:19:21.680Z"
-    },
-    {
-      "id": "t179563076168144",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-25T18:19:21.681Z",
-      "updated": "2026-11-25T18:19:36.363Z"
-    },
-    {
-      "id": "t179563077637247",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-25T18:19:36.372Z",
-      "updated": "2026-11-25T18:19:47.464Z"
-    },
-    {
-      "id": "t179563078746582",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-25T18:19:47.465Z",
-      "updated": "2026-11-25T18:20:10.370Z"
-    },
-    {
-      "id": "t179563081037267",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-25T18:20:10.372Z",
-      "updated": "2026-11-25T18:20:20.989Z"
-    },
-    {
       "id": "t179563082106481",
       "title": "Run guide",
       "status": "done",
@@ -479,49 +383,105 @@
       "agent": "publisher",
       "created": "2026-11-27T05:58:14.670Z",
       "updated": "2026-11-27T05:58:39.631Z"
+    },
+    {
+      "id": "t179580150379680",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-27T17:45:03.796Z",
+      "updated": "2026-11-27T17:45:03.932Z"
+    },
+    {
+      "id": "t179580150393347",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-27T17:45:03.933Z",
+      "updated": "2026-11-27T17:45:32.555Z"
+    },
+    {
+      "id": "t179580153255656",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-27T17:45:32.556Z",
+      "updated": "2026-11-27T17:45:32.686Z"
+    },
+    {
+      "id": "t179580153272065",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-27T17:45:32.720Z",
+      "updated": "2026-11-27T17:45:32.873Z"
+    },
+    {
+      "id": "t179580153287462",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-27T17:45:32.874Z",
+      "updated": "2026-11-27T17:45:33.017Z"
+    },
+    {
+      "id": "t179580153301928",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-27T17:45:33.019Z",
+      "updated": "2026-11-27T17:45:43.902Z"
+    },
+    {
+      "id": "t179580154396026",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-27T17:45:43.960Z",
+      "updated": "2026-11-27T17:45:44.113Z"
+    },
+    {
+      "id": "t179580154411426",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-27T17:45:44.114Z",
+      "updated": "2026-11-27T17:45:44.268Z"
+    },
+    {
+      "id": "t179580154429764",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-27T17:45:44.297Z",
+      "updated": "2026-11-27T17:45:44.457Z"
+    },
+    {
+      "id": "t179580154445863",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-27T17:45:44.458Z",
+      "updated": "2026-11-27T17:45:44.637Z"
+    },
+    {
+      "id": "t179580154463817",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-27T17:45:44.638Z",
+      "updated": "2026-11-27T17:45:57.261Z"
+    },
+    {
+      "id": "t179580155726241",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-27T17:45:57.262Z",
+      "updated": "2026-11-27T17:46:21.630Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n17948947025924",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0519).",
-      "agent": "ceo",
-      "at": "2026-11-17T05:51:42.592Z",
-      "loud": false
-    },
-    {
-      "id": "n179493573180520",
-      "level": "warn",
-      "text": "📨 guide → ceo: Kell még adat: \"How to Run Your First Viral ChatGPT Trend Prompt From Start to Finish\" — az Ellenőrző tényt/forrást kér,",
-      "agent": "guide",
-      "at": "2026-11-17T17:15:31.805Z",
-      "loud": false
-    },
-    {
-      "id": "n179493578686846",
-      "level": "info",
-      "text": "SEO: 1 cikk optimalizálva (átlag 7.0/10).",
-      "agent": "seo",
-      "at": "2026-11-17T17:16:26.868Z",
-      "loud": false
-    },
-    {
-      "id": "n179493581277676",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup is coherent and ready to publish — it's a practical, everyday focus that will resonate with busy people. One note: the bulk of articles are writing-focused (7 out of 10), which is fine but ",
-      "agent": "publisher",
-      "at": "2026-11-17T17:16:52.776Z",
-      "loud": false
-    },
-    {
-      "id": "n179493582320897",
-      "level": "success",
-      "text": "0 hír + 1 útmutató publikálva (költség: $0.0089).",
-      "agent": "ceo",
-      "at": "2026-11-17T17:17:03.208Z",
-      "loud": false
-    },
     {
       "id": "n179497877559996",
       "level": "info",
@@ -1281,36 +1241,49 @@
       "agent": "seo",
       "at": "2026-11-27T06:04:44.854Z",
       "loud": false
+    },
+    {
+      "id": "n179580156836038",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). The lineup looks solid — you've got a nice mix of privacy guidance, practical how-tos, and real-world writing examples that everyday people can actually use. A few articles target specific tools, whic",
+      "agent": "publisher",
+      "at": "2026-11-27T17:46:08.360Z",
+      "loud": false
+    },
+    {
+      "id": "n179580158166359",
+      "level": "info",
+      "text": "Pipeline lefutott — ma nem volt publikálható új tartalom.",
+      "agent": "ceo",
+      "at": "2026-11-27T17:46:21.663Z",
+      "loud": false
+    },
+    {
+      "id": "n179580194909574",
+      "level": "info",
+      "text": "SEO: 50 cikk új keresőcímet kapott, 1 kapun elbukott.",
+      "agent": "seo",
+      "at": "2026-11-27T17:52:29.095Z",
+      "loud": false
+    },
+    {
+      "id": "n17958019882381",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (túl nagy átírás (132 szó a 1370-ből)): \"Custom instructions for Gemini in ",
+      "agent": "fact-check",
+      "at": "2026-11-27T17:53:08.238Z",
+      "loud": false
+    },
+    {
+      "id": "n179580202467973",
+      "level": "warn",
+      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to use Qwen Chat to plan a weekend road trip i\" — Az útmutató kö",
+      "agent": "fact-check",
+      "at": "2026-11-27T17:53:44.679Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179463000026216",
-      "from": "social",
-      "to": "team",
-      "kind": "info",
-      "text": "6 közösségi poszt megírva (Facebook)",
-      "ref": null,
-      "at": "2026-11-14T04:20:00.262Z"
-    },
-    {
-      "id": "m179466762135094",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-14T14:47:01.350Z"
-    },
-    {
-      "id": "m179468744928865",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-14T20:17:29.288Z"
-    },
     {
       "id": "m179468754528527",
       "from": "fact-check",
@@ -2683,6 +2656,35 @@
       "text": "6 közösségi poszt megírva (Facebook)",
       "ref": null,
       "at": "2026-11-27T06:17:04.361Z"
+    },
+    {
+      "id": "m17958015572242",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-27T17:45:57.224Z"
+    },
+    {
+      "id": "m179580198823854",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanús állítás, de a javítás nem mehetett ki (túl nagy átírás (132 szó a 1370-ből)): \"Custom instructions for Gemini in Workspace now av\" — A forrás azt mondja, hogy az egyéni utasítások minden olyan Workspace ügyfél számára elérhetők, akik hozzáférnek a releváns Gemini funkciókhoz, nincs adminisztrátori vezérlés, és nem tesz különbséget ingyenes vs fizetős csomagok között — a cikk feltételezéseke",
+      "ref": "ARTICLE_2026-09-02T19-04-24-112Z_google-workspace_Custom_instructions_for_Gemini_in_Workspace_now_av.json",
+      "open": true,
+      "at": "2026-11-27T17:53:08.238Z"
+    },
+    {
+      "id": "m17958020246798",
+      "from": "fact-check",
+      "to": "ceo",
+      "kind": "need",
+      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to use Qwen Chat to plan a weekend road trip i\" — Az útmutató következetlenül keveri az amerikai és ausztráliai helyszíneket - a cím/US alcím Portlandet (Oregon állam) említi, de a látnivalók ausztráliaiak (Great Ocean Road) (állítás: Guide title says \"Australia\" but the example uses Portland (US city) to Pacific Coast Highway, then switches ",
+      "ref": "ARTICLE_GUIDE_how-to-use-qwen-chat-to-plan-a-weekend-road-trip-in-australi.json",
+      "open": true,
+      "at": "2026-11-27T17:53:44.679Z"
     }
   ]
 }

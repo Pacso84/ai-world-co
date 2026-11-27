@@ -1,0 +1,63 @@
+{
+  "ok": 3,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.00957324,
+  "at": "2026-11-27T17:52:29.265Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 3,
+    "javitva": 0,
+    "visszautasitva": 1,
+    "gyanu": 1,
+    "kihagyva": 1,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_2026-09-02T19-04-24-112Z_google-workspace_Custom_instructions_for_Gemini_in_Workspace_now_av.json",
+      "cim": "Custom instructions for Gemini in Workspace now available in more apps",
+      "tipus": "hir",
+      "eredmeny": "visszautasitva",
+      "ok_hu": "túl nagy átírás (132 szó a 1370-ből)",
+      "modell_hu": "A forrás azt mondja, hogy az egyéni utasítások minden olyan Workspace ügyfél számára elérhetők, akik hozzáférnek a releváns Gemini funkciókhoz, nincs adminisztrátori vezérlés, és nem tesz különbséget ingyenes vs fizetős csomagok között — a cikk feltételezéseket tesz az árképzési szintekről és az adm"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-qwen-chat-to-create-personalised-study-flashcards.json",
+      "cim": "How to use Qwen Chat to create personalised study flashcards for any subject",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-09-21T14-40-42-926Z_openai-blog_How_V7_gives_AI_agents_institutional_memory.json",
+      "cim": "How V7 gives AI agents institutional memory",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk egy általános ismertető az AI ügynökökről, nem konkrét V7-es esettanulmány. A forrásban említett GPT-5.6 család, MCP szerverek és RAG fogalmak helyesen jelennek meg, és a cikk nem tartalmaz a forrásnak ellentmondó konkrét állítást."
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-qwen-chat-to-plan-a-weekend-road-trip-in-australi.json",
+      "cim": "How to use Qwen Chat to plan a weekend road trip in Australia without getting lost",
+      "tipus": "utmutato",
+      "eredmeny": "gyanu",
+      "ok_hu": "Az útmutató következetlenül keveri az amerikai és ausztráliai helyszíneket - a cím/US alcím Portlandet (Oregon állam) említi, de a látnivalók ausztráliaiak (Great Ocean Road)"
+    },
+    {
+      "file": "ARTICLE_2026-09-19T02-08-38-038Z_qwen-news_Qwen3_8-LiveTranslate__Names_the_speaker__Carries_.json",
+      "cim": "Qwen3.8-LiveTranslate: Names the speaker. Carries the meaning. - qwen.ai",
+      "tipus": "hir",
+      "eredmeny": "kihagyva",
+      "ok_hu": "a forrás nem olvasható (0/1: túl rövid szöveg (11 karakter))",
+      "status": 200
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-write-a-gemini-prompt-that-turns-a-casual-selfie-into.json",
+      "cim": "How to write a Gemini prompt that turns a casual selfie into a clean LinkedIn headshot",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    }
+  ]
+}
