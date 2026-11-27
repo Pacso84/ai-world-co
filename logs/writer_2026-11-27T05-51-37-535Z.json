@@ -1,0 +1,95 @@
+{
+  "started_at": "2026-11-27T05:48:23.441Z",
+  "drafts_total": 8,
+  "articles_written": 4,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 1,
+  "merged_total": 1,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 2,
+    "html": 6,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.0180308,
+  "by_article": [
+    {
+      "draft": "2026-11-23T19-10-54-310Z_zapier-blog_How_to_use_Zapier_for_social_media_automation.json",
+      "writer_output": "WRITER_2026-11-23T19-10-54-310Z_zapier-blog_How_to_use_Zapier_for_social_media_automation.json",
+      "success": true,
+      "merged_from": 5,
+      "merged_theme": "Zapier AI agent automation guides (YouTube, Gmail, social media, image generation, email)",
+      "source_via": [
+        "html",
+        "html",
+        "html",
+        "html",
+        "html"
+      ],
+      "source_chars": 9028,
+      "source_overlap_words": 6,
+      "cost_usd": 0.0046559,
+      "duration_ms": 89979,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-26T18-01-08-282Z_d-id-news_How_to_Create_Product_Demo_Videos_with_AI_Avatars.json",
+      "writer_output": "WRITER_2026-11-26T18-01-08-282Z_d-id-news_How_to_Create_Product_Demo_Videos_with_AI_Avatars.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 20,
+      "cost_usd": 0.0044473,
+      "duration_ms": 20228,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-26T18-01-08-282Z_minimax-blog_The_H3_Family__Models__Community__and_What_s_Next_.json",
+      "writer_output": "WRITER_2026-11-26T18-01-08-282Z_minimax-blog_The_H3_Family__Models__Community__and_What_s_Next_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "html"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 10,
+      "cost_usd": 0.0038531,
+      "duration_ms": 13967,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    },
+    {
+      "draft": "2026-11-26T18-01-08-284Z_picsart_Topaz_Generative_Upscale_explained__all_10_models_.json",
+      "writer_output": "WRITER_2026-11-26T18-01-08-284Z_picsart_Topaz_Generative_Upscale_explained__all_10_models_.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 6000,
+      "source_overlap_words": 12,
+      "cost_usd": 0.0038157,
+      "duration_ms": 12261,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "csalas_irt": 0,
+  "csalas_hiba": [],
+  "termek_hir": 0,
+  "termek_extra": 0,
+  "finished_at": "2026-11-27T05:51:37.535Z",
+  "duration_seconds": 194.094
+}

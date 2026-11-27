@@ -1,0 +1,61 @@
+{
+  "ok": 6,
+  "fixed": 0,
+  "removed": 0,
+  "cost": 0.010124099999999999,
+  "at": "2026-11-27T06:04:45.091Z",
+  "claim": null,
+  "osszes": 6,
+  "darab": {
+    "ok": 6,
+    "javitva": 0,
+    "visszautasitva": 0,
+    "gyanu": 0,
+    "kihagyva": 0,
+    "ertelmezhetetlen": 0
+  },
+  "items": [
+    {
+      "file": "ARTICLE_GUIDE_how-to-write-a-short-r-sum-summary-when-you-have-little-work.json",
+      "cim": "How to Write a Short Résumé Summary When You Have Little Work Experience",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_GUIDE_how-to-use-claude-projects-to-keep-reference-files-for-one-o.json",
+      "cim": "How to Use Claude Projects to Keep Reference Files for One Ongoing Task",
+      "tipus": "utmutato",
+      "eredmeny": "ok",
+      "ok_hu": "rendben"
+    },
+    {
+      "file": "ARTICLE_2026-11-26T18-01-08-282Z_minimax-blog_The_H3_Family__Models__Community__and_What_s_Next_.json",
+      "cim": "The H3 Family: Models, Community, and What's Next - MiniMax Research",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "a cikk pontosan tükrözi a forrás anyagot"
+    },
+    {
+      "file": "ARTICLE_2026-11-26T18-01-08-284Z_picsart_Topaz_Generative_Upscale_explained__all_10_models_.json",
+      "cim": "Topaz Generative Upscale explained: all 10 models and when to use each",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "Nincs tényleges ellentmondás a cikk és a forrásszöveg között"
+    },
+    {
+      "file": "ARTICLE_2026-11-26T18-01-08-282Z_d-id-news_How_to_Create_Product_Demo_Videos_with_AI_Avatars.json",
+      "cim": "How to Create Product Demo Videos with AI Avatars",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrást - minden kulcsállítás (három mérce, 120+ nyelv, közönség/feladat struktúra, present elhelyezése, képernyőfelvétel követelmények) egyezik a forrásszöveggel."
+    },
+    {
+      "file": "ARTICLE_2026-11-23T19-10-54-310Z_zapier-blog_How_to_use_Zapier_for_social_media_automation.json",
+      "cim": "How to use Zapier for social media automation",
+      "tipus": "hir",
+      "eredmeny": "ok",
+      "ok_hu": "A cikk pontosan tükrözi a forrásokat: a Zapier telepítését (Claude, ChatGPT vagy Cursor), az alkalmazásokat (YouTube, Slack, Google Sheets, Notion, Trello), a 10 000+ alkalmazás említését és az alapvető működést."
+    }
+  ]
+}

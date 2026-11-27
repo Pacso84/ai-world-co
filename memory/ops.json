@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179554786965918",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-24T19:17:49.659Z",
-      "updated": "2026-11-24T19:18:14.225Z"
-    },
-    {
-      "id": "t179554789422768",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-24T19:18:14.227Z",
-      "updated": "2026-11-24T19:18:36.444Z"
-    },
-    {
-      "id": "t179558645219872",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-25T06:00:52.198Z",
-      "updated": "2026-11-25T06:00:52.357Z"
-    },
-    {
-      "id": "t17955864523594",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-25T06:00:52.359Z",
-      "updated": "2026-11-25T06:02:19.345Z"
-    },
-    {
-      "id": "t179558653934796",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-25T06:02:19.347Z",
-      "updated": "2026-11-25T06:02:19.504Z"
-    },
-    {
-      "id": "t179558653954724",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-25T06:02:19.547Z",
-      "updated": "2026-11-25T06:03:54.112Z"
-    },
-    {
-      "id": "t179558663411446",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-25T06:03:54.114Z",
-      "updated": "2026-11-25T06:04:08.409Z"
-    },
-    {
-      "id": "t179558664841298",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-25T06:04:08.412Z",
-      "updated": "2026-11-25T06:04:39.952Z"
-    },
-    {
-      "id": "t17955866800277",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-25T06:04:40.027Z",
-      "updated": "2026-11-25T06:04:40.205Z"
-    },
-    {
-      "id": "t179558668020641",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-25T06:04:40.206Z",
-      "updated": "2026-11-25T06:04:40.380Z"
-    },
-    {
-      "id": "t179558668046147",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-25T06:04:40.461Z",
-      "updated": "2026-11-25T06:04:52.645Z"
-    },
-    {
-      "id": "t179558669264830",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-25T06:04:52.648Z",
-      "updated": "2026-11-25T06:06:05.285Z"
-    },
-    {
-      "id": "t179558676528942",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-25T06:06:05.289Z",
-      "updated": "2026-11-25T06:07:06.619Z"
-    },
-    {
-      "id": "t179558682662031",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-25T06:07:06.620Z",
-      "updated": "2026-11-25T06:07:17.424Z"
-    },
-    {
       "id": "t179558683742693",
       "title": "Run designer",
       "status": "done",
@@ -479,49 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-26T18:01:57.844Z",
       "updated": "2026-11-26T18:02:33.561Z"
+    },
+    {
+      "id": "t179575845843544",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-27T05:47:38.435Z",
+      "updated": "2026-11-27T05:47:38.635Z"
+    },
+    {
+      "id": "t179575845863783",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-27T05:47:38.637Z",
+      "updated": "2026-11-27T05:48:11.141Z"
+    },
+    {
+      "id": "t179575849114370",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-27T05:48:11.143Z",
+      "updated": "2026-11-27T05:48:23.165Z"
+    },
+    {
+      "id": "t179575850321994",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-27T05:48:23.219Z",
+      "updated": "2026-11-27T05:51:37.554Z"
+    },
+    {
+      "id": "t179575869755534",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-27T05:51:37.555Z",
+      "updated": "2026-11-27T05:52:03.609Z"
+    },
+    {
+      "id": "t179575872361168",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-27T05:52:03.611Z",
+      "updated": "2026-11-27T05:52:42.414Z"
+    },
+    {
+      "id": "t179575876246263",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-27T05:52:42.462Z",
+      "updated": "2026-11-27T05:54:59.801Z"
+    },
+    {
+      "id": "t179575889980271",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-27T05:54:59.802Z",
+      "updated": "2026-11-27T05:55:14.285Z"
+    },
+    {
+      "id": "t179575891432941",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-27T05:55:14.329Z",
+      "updated": "2026-11-27T05:55:14.559Z"
+    },
+    {
+      "id": "t179575891456123",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-27T05:55:14.561Z",
+      "updated": "2026-11-27T05:55:14.803Z"
+    },
+    {
+      "id": "t179575891488832",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-27T05:55:14.888Z",
+      "updated": "2026-11-27T05:57:23.249Z"
+    },
+    {
+      "id": "t17957590432508",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-27T05:57:23.250Z",
+      "updated": "2026-11-27T05:57:52.354Z"
+    },
+    {
+      "id": "t179575907235656",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-27T05:57:52.356Z",
+      "updated": "2026-11-27T05:58:14.668Z"
+    },
+    {
+      "id": "t179575909467096",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-27T05:58:14.670Z",
+      "updated": "2026-11-27T05:58:39.631Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179485772202673",
-      "level": "success",
-      "text": "1 hír + 0 útmutató publikálva (költség: $0.0132).",
-      "agent": "ceo",
-      "at": "2026-11-16T19:35:22.026Z",
-      "loud": false
-    },
-    {
-      "id": "n17948577863019",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás törölne egy mondatot, amit a forrás igazol: „Pick a photo, brush",
-      "agent": "fact-check",
-      "at": "2026-11-16T19:36:26.301Z",
-      "loud": false
-    },
-    {
-      "id": "n179485779781473",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to summarize a long YouTube video in 60 second\" — A legtöbb AI a",
-      "agent": "fact-check",
-      "at": "2026-11-16T19:36:37.814Z",
-      "loud": false
-    },
-    {
-      "id": "n179489466458860",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 7.8/10).",
-      "agent": "seo",
-      "at": "2026-11-17T05:51:04.588Z",
-      "loud": false
-    },
-    {
-      "id": "n179489468769261",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The line-up covers useful, real-world use cases and balances practical how-tos with important safety guidance — that's solid. My one note: it's a bit scattered for total newcomers, so a gentle \"Gettin",
-      "agent": "publisher",
-      "at": "2026-11-17T05:51:27.692Z",
-      "loud": false
-    },
     {
       "id": "n17948947025924",
       "level": "success",
@@ -1281,28 +1241,49 @@
       "agent": "fact-check",
       "at": "2026-11-26T18:05:47.305Z",
       "loud": false
+    },
+    {
+      "id": "n179575876240016",
+      "level": "warn",
+      "text": "📨 pairing → guide: Új funkció-hír → kéne hozzá útmutató: \"How to use Topaz Generative Upscale to enlarge and restore your photos\"",
+      "agent": "pairing",
+      "at": "2026-11-27T05:52:42.400Z",
+      "loud": false
+    },
+    {
+      "id": "n179575907234276",
+      "level": "info",
+      "text": "SEO: 6 cikk új keresőcímet kapott, 0 kapun elbukott.",
+      "agent": "seo",
+      "at": "2026-11-27T05:57:52.342Z",
+      "loud": false
+    },
+    {
+      "id": "n179575910101751",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). A lineup egységes és kész a publikálásra: a cikkek gyakorlati, hétköznapi AI-feladatokat fednek le, barátságos hangnemben. Egy apró javaslat: a 2. cikk címe lehetne konkrétabb (pl. \"Mire jó az AI a mi",
+      "agent": "publisher",
+      "at": "2026-11-27T05:58:21.017Z",
+      "loud": false
+    },
+    {
+      "id": "n179575911967431",
+      "level": "success",
+      "text": "4 hír + 2 útmutató publikálva (költség: $0.0622).",
+      "agent": "ceo",
+      "at": "2026-11-27T05:58:39.674Z",
+      "loud": false
+    },
+    {
+      "id": "n179575948485429",
+      "level": "info",
+      "text": "SEO: 44 cikk új keresőcímet kapott, 1 kapun elbukott.",
+      "agent": "seo",
+      "at": "2026-11-27T06:04:44.854Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179462934314272",
-      "from": "designer",
-      "to": "team",
-      "kind": "fix",
-      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
-      "ref": "mobile",
-      "at": "2026-11-14T04:09:03.142Z"
-    },
-    {
-      "id": "m179462937962320",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanú (nem megerősített, a gép emlékezetből ítél): \"How to Upload a Selfie to ChatGPT and Ask for a Pr\" — A ChatGPT képeket tud elemezni és a DALL-E-val új képeket generálni, de nem módosítja vagy alakítja át a feltöltött szelfit - az AI az Ön leírása alapján nulláról generál új képet, nem az eredeti fénykép módosításával. (állítás: You can attach a casual selfie to ChatGPT, describe the professio",
-      "ref": "ARTICLE_GUIDE_how-to-upload-a-selfie-to-chatgpt-and-ask-for-a-professional.json",
-      "open": true,
-      "at": "2026-11-14T04:09:39.623Z"
-    },
     {
       "id": "m179462943434125",
       "from": "fact-check",
@@ -2684,6 +2665,25 @@
       "ref": "ARTICLE_GUIDE_how-to-use-project-genie-with-street-view.json",
       "open": true,
       "at": "2026-11-26T18:05:47.305Z"
+    },
+    {
+      "id": "m179575876240081",
+      "from": "pairing",
+      "to": "guide",
+      "kind": "need",
+      "text": "Új funkció-hír → kéne hozzá útmutató: \"How to use Topaz Generative Upscale to enlarge and restore your photos\"",
+      "ref": "how-to-use-topaz-generative-upscale-to-enlarge-and-restore-y",
+      "open": true,
+      "at": "2026-11-27T05:52:42.400Z"
+    },
+    {
+      "id": "m179575909465875",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-27T05:58:14.658Z"
     }
   ]
 }

@@ -1,52 +1,15 @@
 {
   "_meta": {
-    "generated_at": "2026-11-23T19:13:00.505Z",
+    "generated_at": "2026-11-27T05:48:23.112Z",
     "generated_by": "source-scout agent v3.0 (megbízhatóság-kapu)",
     "note": "JAVASLATOK új, MEGBÍZHATÓ hivatalos forrásokra. A felhasználó/főnök dönti el, melyiket adjuk a sources/rss-feeds.json-hoz (enabled:true-val). Minden jelölt megbízhatósági pontszámmal + indoklással.",
     "min_score": 100,
-    "checked_orgs": 19,
-    "newly_discovered": 1,
-    "uj_most": 1,
-    "ures_futasok": 0,
-    "rejected_count": 6,
-    "rejected_examples": [
-      {
-        "name": "Figma",
-        "host": "figma.com",
-        "reason": "pont 94 < 100",
-        "score": 94
-      },
-      {
-        "name": "Runway",
-        "host": "runwayml.com",
-        "reason": "pont 94 < 100",
-        "score": 94
-      },
-      {
-        "name": "Luma AI",
-        "host": "lumalabs.ai",
-        "reason": "pont 94 < 100",
-        "score": 94
-      },
-      {
-        "name": "DeepSeek Product Updates",
-        "host": "deepseek.com",
-        "reason": "ezt a hírfolyamot már követjük",
-        "score": 0
-      },
-      {
-        "name": "Hugging Face Product Updates",
-        "host": "huggingface.co",
-        "reason": "ezt a hírfolyamot már követjük",
-        "score": 0
-      },
-      {
-        "name": "Cohere Product Blog",
-        "host": "cohere.com",
-        "reason": "ezt a hírfolyamot már követjük",
-        "score": 0
-      }
-    ]
+    "checked_orgs": 2,
+    "newly_discovered": 0,
+    "uj_most": 0,
+    "ures_futasok": 1,
+    "rejected_count": 0,
+    "rejected_examples": []
   },
   "user_rejected_hosts": [
     "aisingapore.org",

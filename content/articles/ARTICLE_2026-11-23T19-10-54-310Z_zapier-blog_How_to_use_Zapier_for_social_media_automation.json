@@ -1,0 +1,80 @@
+{
+  "_meta": {
+    "written_at": "2026-11-27T05:50:10.184Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0046559,
+    "original_draft": "2026-11-23T19-10-54-310Z_zapier-blog_How_to_use_Zapier_for_social_media_automation.json",
+    "source_id": "zapier-blog",
+    "source_name": "Zapier Blog (hivatalos)",
+    "source_link": "https://zapier.com/blog/social-media-automation",
+    "source_links": [
+      "https://zapier.com/blog/social-media-automation",
+      "https://zapier.com/blog/automate-youtube",
+      "https://zapier.com/blog/automate-gmail-with-zapier",
+      "https://zapier.com/blog/automate-ai-images",
+      "https://zapier.com/blog/email-automation"
+    ],
+    "source_snippet_len": 2526,
+    "source_text_via": [
+      "html",
+      "html",
+      "html",
+      "html",
+      "html"
+    ],
+    "source_text_len": 9028,
+    "source_text_key": "9e3e22dc7758fea6",
+    "source_overlap_words": 6,
+    "merged_from": 5,
+    "merged_theme": "Zapier AI agent automation guides (YouTube, Gmail, social media, image generation, email)",
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "published_at": "2026-11-27T05:51:49.562Z",
+    "slug": "zapier-s-ai-agent-automations-for-email-youtube-and-social-media",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 736
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [
+        "MCP definition is cut off mid-sentence — 'Model Context Protocol' needs a closing parenthesis and completion"
+      ],
+      "verdict": "Solid explainer that meets brand voice, audience fit, and structure requirements with clear term definitions, friendly tone, and actionable takeaways. One minor issue: the MCP parenthetical is incomplete. Otherwise ready to publish.",
+      "_aiCost": 0.0031164,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-27T05:52:16.105Z",
+    "guide_worthy": false,
+    "pairing_reason": "This is an explainer/overview of Zapier's general automation capabilities with AI assistants, not the introduction of ONE specific named feature or tool that users can go use today.",
+    "image_v": 2,
+    "image_at": "2026-11-27T05:55:40.732Z",
+    "seo": {
+      "keywords": [
+        "Zapier AI agent",
+        "AI assistant automation",
+        "Zapier email automation",
+        "Zapier YouTube automation",
+        "automate social media posts with AI",
+        "Zapier MCP connector"
+      ],
+      "seo_title": "Zapier AI Agent Automations for Email and YouTube",
+      "meta_description": "Zapier's guides show how to add it to an AI assistant like Claude, ChatGPT or Cursor so automations keep running after the chat closes.",
+      "keresesek": [],
+      "v": 2,
+      "eles": true,
+      "optimised_at": "2026-11-27T05:57:27.980Z"
+    },
+    "fact_verified_at": "2026-11-27T06:05:57.991Z"
+  },
+  "article_markdown": "---\ntitle: \"Zapier's AI Agent Automations for Email, YouTube and Social Media\"\nsubtitle: \"Zapier's guides explain how an AI assistant can build automations that keep running after the chat ends, and what that could mean for your daily work.\"\ncategory: \"explainer\"\naudience: \"both\"\nread_time_minutes: 4\ntags: [\"ai-agents\", \"automation\", \"zapier\", \"productivity\", \"getting-started\"]\n---\n\n# Zapier's AI Agent Automations for Email, YouTube and Social Media\n\n> **In short:** Zapier's guides explain how to add Zapier to an AI assistant like Claude, ChatGPT or Cursor, describe a task, and let the agent build an automation that keeps running after the chat closes.\n\nYou ask your AI assistant to draft a reply or a social media caption. It does a good job, then the chat ends, and the sending, saving and sharing lands back on your plate. Zapier, a service that connects your apps, says it has a way to keep that work going.\n\n## The key terms, in plain words\n\n- **Automation**: a set of steps that run by themselves once something starts them, like a reminder that fires on its own.\n- **Zap**: Zapier's name for one automation. It has a trigger (the event that starts it, such as a new email arriving) and the actions that follow.\n- **AI agent**: an AI that can do things with your apps, not just write text. Think of it as an assistant that can open the drawer, not just describe what's inside.\n- **Connector** and **MCP** (Model Context Protocol, a standard way to plug outside tools into an AI): these are the links that let your AI tool talk to Zapier. The guides describe adding Zapier as a connector or as a custom MCP server.\n\n## How the pattern works\n\nAcross all five guides, the setup follows the same general path:\n\n1. Add Zapier to the AI tool you already use.\n2. Connect the apps you work in. The examples include YouTube, Slack, Google Sheets, Notion and Trello.\n3. Describe the job in plain language.\n4. The agent builds the Zap, and Zapier runs it even after you close the chat.\n\nZapier also says you can build the same automation directly inside Zapier if you prefer. It says it connects more than 10,000 apps.\n\n## What the examples look like\n\n- **Gmail and email**: the guides suggest saving attachments, logging a new lead, or turning a request like \"can you send me the deck?\" into a task.\n- **YouTube**: when a new video goes up, the automation can share it in Slack and log it in a spreadsheet.\n- **Social media**: Zapier describes this as scheduling posts and monitoring your channels, so you stay consistent without being online all day. The social media guide also covers when you should automate and when you shouldn't.\n- **AI image generation**: a finished image can be saved and sent to the person who asked for it, instead of staying stuck in the chat.\n\nA quick note: automation is most useful for tasks that repeat the same way every time. Anything that needs your judgment, like a sensitive reply, is still worth checking yourself. For plan details, Zapier's official pricing page is the place to look.\n\n## What this means for you\n\n- **In everyday life**: if you keep forgetting to save invoices or attachments from email, an automation can handle that step while you focus on the rest.\n- **For your business or work**: a team that posts new videos or content can have each launch announced and logged automatically, so nobody has to remember the follow-up.\n- **If you're just getting started**: pick one task you repeat every week and write it down in a single sentence, such as \"When a new invoice arrives, save it to a folder.\" That sentence is the start of your automation.\n- **If you already use it**: try adding a second step to a Zap you already built, like a spreadsheet entry after a notification. Then check the results for a few days to confirm both steps are running as you expect.\n\n## Wrap-up\n\nZapier's guides show that the AI assistant you already use can do more than write text. It can help you build automations that keep working after the chat closes, whether that's email, YouTube, social media or image sharing. Start small: choose one repetitive task you handle each week, describe it in plain words, and watch what happens the next time it occurs.",
+  "original_title": "How to use Zapier for social media automation"
+}

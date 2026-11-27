@@ -9689,7 +9689,12 @@
       "icon": "📚",
       "priority": "balance",
       "proposed_at": "2026-11-25T06:04:51.881Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-27T05:53:03.061Z",
+        "ok": false,
+        "ok_ok": "nincs illő súgócikk"
+      }
     },
     {
       "id": "how-to-practice-job-interview-answers-with-lumo",
@@ -9703,7 +9708,12 @@
       "icon": "🎤",
       "priority": "balance",
       "proposed_at": "2026-11-25T06:04:52.620Z",
-      "proposed_by": "guide-balance"
+      "proposed_by": "guide-balance",
+      "horgony": {
+        "at": "2026-11-27T05:53:03.061Z",
+        "ok": false,
+        "ok_ok": "nincs illő súgócikk"
+      }
     },
     {
       "id": "explaining-a-tricky-work-term-to-a-colleague-using-lumo",
@@ -9727,10 +9737,11 @@
       "audience": "personal",
       "level": "beginner",
       "angle": "Feed the assistant your school projects, part-time jobs and skills, and learn to check that every claim in the summary is one you can back up in an interview.",
-      "status": "todo",
+      "status": "done",
       "icon": "📄",
       "proposed_at": "2026-11-25T06:05:10.065Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-11-27T05:54:59.780Z"
     },
     {
       "id": "how-to-turn-a-recipe-you-found-online-into-a-simple-grocery-",
@@ -9807,10 +9818,23 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Create a Project, add the documents you keep returning to, and write a short set of instructions so every new chat starts with the same background.",
-      "status": "todo",
+      "status": "done",
       "icon": "📂",
       "proposed_at": "2026-11-25T06:05:57.737Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "horgony": {
+        "at": "2026-11-27T05:53:03.061Z",
+        "ok": true,
+        "url": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects"
+      },
+      "sugo_alapu": true,
+      "official_sources": [
+        {
+          "url": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
+          "title": "How can i create and manage projects"
+        }
+      ],
+      "written_at": "2026-11-27T05:54:30.255Z"
     },
     {
       "id": "how-to-ask-gemini-to-build-a-packing-list-for-any-trip-step-",
@@ -9968,6 +9992,48 @@
         "ok": false,
         "ok_ok": "nincs illő súgócikk"
       }
+    },
+    {
+      "id": "how-to-use-topaz-generative-upscale-to-enlarge-and-restore-y",
+      "company": "Picsart",
+      "tool": "Picsart",
+      "title": "How to use Topaz Generative Upscale to enlarge and restore your photos",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Focus on the 10 model options: start with Wonder 4 (default), try Recover 3 for tiny/damaged images, use Wonder 3.5 for documents/charts, Standard MAX for keeping original faithful",
+      "status": "todo",
+      "icon": "🆕",
+      "source_news": {
+        "file": "ARTICLE_2026-11-26T18-01-08-284Z_picsart_Topaz_Generative_Upscale_explained__all_10_models_.json",
+        "title": "Topaz Generative Upscale explained: all 10 models and when to use each"
+      },
+      "created_at": "2026-11-27T05:52:42.399Z"
+    },
+    {
+      "id": "how-to-use-copilot-agents-for-a-simple-multi-step-task-witho",
+      "company": "Microsoft",
+      "tool": "Copilot",
+      "title": "How to Use Copilot Agents for a Simple Multi-Step Task Without Losing Track",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Give Copilot one small, clearly limited job with three or four steps, have it show its plan before it works, and review each step's output yourself, since what you can access depends on your account and settings.",
+      "status": "todo",
+      "icon": "🤖",
+      "proposed_at": "2026-11-27T05:53:03.016Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "how to use copilot agents",
+        "forras": [
+          "google-javaslat"
+        ],
+        "datum": "2026-11-27"
+      },
+      "horgony": {
+        "at": "2026-11-27T05:53:03.061Z",
+        "ok": false,
+        "ok_ok": "a cikkből nem írható útmutató"
+      }
     }
   ],
   "trend_proba": [
@@ -10086,6 +10152,10 @@
     {
       "kifejezes": "how to use copilot to take notes in teams",
       "at": "2026-11-26T05:57:25.698Z"
+    },
+    {
+      "kifejezes": "how to use copilot agents",
+      "at": "2026-11-27T05:52:42.674Z"
     }
   ]
 }

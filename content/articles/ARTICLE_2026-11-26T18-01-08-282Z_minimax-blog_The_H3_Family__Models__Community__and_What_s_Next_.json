@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "written_at": "2026-11-27T05:51:14.518Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0038531,
+    "original_draft": "2026-11-26T18-01-08-282Z_minimax-blog_The_H3_Family__Models__Community__and_What_s_Next_.json",
+    "source_id": "minimax-blog",
+    "source_name": "MiniMax (hivatalos, blog-listaoldal)",
+    "source_link": "https://www.minimax.io/blog/minimax-h3-family",
+    "source_links": [
+      "https://www.minimax.io/blog/minimax-h3-family"
+    ],
+    "source_snippet_len": 0,
+    "source_text_via": [
+      "html"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "6d7ccb383cc439be",
+    "source_overlap_words": 10,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "published_at": "2026-11-27T05:55:04.334Z",
+    "slug": "minimax-s-h3-family-explained-what-the-new-video-and-image-models-do",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 846
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Solid explainer with clear definitions, friendly tone, and well-organized audience-specific guidance; explains all technical terms in plain language, attributes company claims appropriately, and avoids prohibited content or clichés.",
+      "_aiCost": 0.0030348,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-27T05:56:18.864Z",
+    "seo": {
+      "keywords": [
+        "MiniMax H3",
+        "MiniMax H3 video model",
+        "MiniMax H3-Image",
+        "MiniMax open source model",
+        "AI video generation from text",
+        "AI image model from text",
+        "what is MiniMax H3"
+      ],
+      "seo_title": "MiniMax H3 Video and Image Models Explained",
+      "meta_description": "Learn what MiniMax's H3 video and image models do, why their open-source roots matter, and what they could mean for creative and commercial work.",
+      "keresesek": [],
+      "v": 2,
+      "eles": true,
+      "optimised_at": "2026-11-27T05:57:37.208Z"
+    },
+    "fact_verified_at": "2026-11-27T06:05:17.945Z"
+  },
+  "article_markdown": "---\ntitle: \"MiniMax's H3 Family Explained: What the New Video and Image Models Do\"\nsubtitle: \"A plain-language look at MiniMax's H3 video and image models, their open-source roots, and what they could mean for creative and commercial work.\"\ncategory: \"explainer\"\naudience: \"business\"\nread_time_minutes: 4\ntags: [\"video-generation\", \"image-generation\", \"open-source-ai\", \"minimax\", \"creative-tools\"]\n---\n\n# MiniMax's H3 Family Explained: What the New Video and Image Models Do\n\n> **In short:** MiniMax has introduced the H3 Family, a set of AI models that create video and images from text descriptions. The company says the models are used across e-commerce, gaming, film, and advertising, and that the flagship models are available through its own platform and a few partners.\n\nIf you've ever scrolled past a product video that looked a little too polished to be filmed by hand, there's a good chance AI helped make it. New model families like this one are part of how that work gets done faster and in larger volumes.\n\n## What the H3 family is\n\nMiniMax describes the H3 Family as a group of models that turn written ideas into visual content. A **model** is a trained AI system that performs one kind of task, and in this case that task is making pictures or short moving clips.\n\nThe family includes a flagship video model called H3, an image model called H3-Image, and several extended versions built for specific needs. MiniMax says the flagship models and some extended models can be used directly through its Open Platform and MiniMax Code, as well as other platforms.\n\nThe company also says the video models can follow detailed direction, such as the mood of a scene or the style of an animation. It says you can also make precise edits, like swapping an object or changing the light in one part of a shot while the rest of the frame stays the same.\n\n## Why \"open source\" matters here\n\n**Open source** means the model's underlying code or weights are shared publicly, so other people can download, study, and build on them. MiniMax says it open-sourced H3 and that, in the 100 days since, developers have created 1,472 **derivative models**. A derivative model is a version someone else adapted from the original for their own purpose.\n\nThe company reports that these models have been downloaded more than 148 million times. It also says major technology firms, AI platforms, and several university research teams have trained their own versions. Those numbers come from MiniMax, so treat them as the company's own account of how the community is using H3.\n\n## The models at a glance\n\nAccording to MiniMax, the family is designed for different jobs:\n\n- **H3 (flagship video):** Aimed at high-end work. The company says it can render up to 2K and can carry a story forward in a way that fits its characters.\n- **H3-Highspeed:** Positioned as an everyday option for large batches of material, with clips up to 30 seconds long.\n- **H3-Lite:** Described as a lower-cost way to test ideas before committing more time and money.\n- **H3-Image:** An image model that the company says follows instructions closely and can take up to 16 reference images. A **reference image** is a picture you supply so the AI can match its look.\n- **H3-Image Highspeed:** Described by MiniMax as capable of producing a 4K image in under 10 seconds.\n- **Extended models:** Versions offered through partners, including options that the company says generate video faster or let users apply their own **LoRAs**. A LoRA is a small add-on file that teaches a model a specific visual style.\n\nFor current pricing, check MiniMax's official pricing information. Prices and plan details can change, so the company's site is the place to confirm them.\n\n## What this means for you\n\n- **If you run an online shop or a marketing team**: The company says the models are built for producing many product clips or ad variations. Test one short, simple clip first, so you can judge the quality before planning larger batches.\n- **If you work in film, animation, or design**: The emphasis on style control and precise edits may matter more than raw speed. Compare outputs against your own quality standards, not just the company's examples.\n- **If you're just curious**: Start by reading the official announcement and the model descriptions. Notice the difference between \"fast\" and \"high quality\" options, since each model is tuned for a different trade-off.\n- **If you already use it**: Try using a reference image with H3-Image to keep a product's look consistent across several scenes, then check whether your results hold up when you change the setting.\n\n## Wrap-up\n\nMiniMax's H3 Family is a set of video and image models built for speed, style control, and volume, and the company says they are already being used widely by developers and businesses. The claims about speed, downloads, and quality are MiniMax's own, so they are worth checking yourself. Your next step: open the official announcement, pick the one model description that fits your work, and decide what a useful first test would look like.",
+  "original_title": "The H3 Family: Models, Community, and What's Next - MiniMax Research"
+}

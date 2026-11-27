@@ -1,0 +1,71 @@
+{
+  "_meta": {
+    "written_at": "2026-11-27T05:51:37.534Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0038157,
+    "original_draft": "2026-11-26T18-01-08-284Z_picsart_Topaz_Generative_Upscale_explained__all_10_models_.json",
+    "source_id": "picsart",
+    "source_name": "PicsArt Blog (hivatalos)",
+    "source_link": "https://picsart.com/blog/topaz-generative-upscale-explained/",
+    "source_links": [
+      "https://picsart.com/blog/topaz-generative-upscale-explained/"
+    ],
+    "source_snippet_len": 407,
+    "source_text_via": [
+      "hirfolyam"
+    ],
+    "source_text_len": 6000,
+    "source_text_key": "7841b4e5e37ba763",
+    "source_overlap_words": 12,
+    "merged_from": 1,
+    "merged_theme": null,
+    "trend": null,
+    "termek_hir": false,
+    "status": "published",
+    "published_at": "2026-11-27T05:52:03.588Z",
+    "slug": "topaz-generative-upscale-explained-what-each-of-its-10-models-does",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 751
+    },
+    "ai_review": {
+      "overall_score": 8,
+      "clarity_score": null,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Well-structured explainer with clear hook, thorough but accessible explanations of technical terms like diffusion model and pixels, useful What this means for you section with persona-based guidance, and actionable wrap-up with next step. No prohibited content, no clichés, and factual claims align with the Topaz Labs source.",
+      "_aiCost": 0.002904,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "pairing_checked": true,
+    "pairing_checked_at": "2026-11-27T05:52:42.399Z",
+    "guide_worthy": true,
+    "related_guide_topic": "how-to-use-topaz-generative-upscale-to-enlarge-and-restore-y",
+    "image_v": 2,
+    "image_at": "2026-11-27T05:56:44.455Z",
+    "seo": {
+      "keywords": [
+        "Topaz Generative Upscale",
+        "Topaz Labs upscaler",
+        "Topaz upscale models",
+        "Topaz Wonder 4 model",
+        "Picsart AI Playground upscale",
+        "enlarge blurry photo with AI",
+        "AI photo upscaler for old pictures"
+      ],
+      "seo_title": "Topaz Generative Upscale Models Explained",
+      "meta_description": "Learn what each of Topaz Generative Upscale's 10 models does, how it enlarges and repairs photos, and which model suits your picture.",
+      "keresesek": [],
+      "v": 2,
+      "eles": true,
+      "optimised_at": "2026-11-27T05:57:41.359Z"
+    },
+    "fact_verified_at": "2026-11-27T06:05:31.163Z"
+  },
+  "article_markdown": "---\ntitle: \"Topaz Generative Upscale Explained: What Each of Its 10 Models Does\"\nsubtitle: \"Learn how Topaz's photo upscaler enlarges and repairs images, and which of its 10 models suits your picture.\"\ncategory: \"explainer\"\naudience: \"personal\"\nread_time_minutes: 4\ntags: [\"image-upscaling\", \"photo-restoration\", \"topaz-labs\", \"picsart\", \"getting-started\"]\n---\n\n# Topaz Generative Upscale Explained: What Each of Its 10 Models Does\n\n> **In short:** Topaz Labs' Generative Upscale enlarges a photo and repairs grain, blur, and soft faces in the same run. It runs in Picsart AI Playground, where you upload one image and pick from 10 Topaz models. Each model suits a different kind of picture.\n\nEver found a great old photo that's too small and fuzzy to print, or a screenshot you wish were sharper? That's the problem this tool is built for.\n\n## Why photos lose detail\n\nMost blurry pictures weren't always blurry. Detail often disappears after the photo is taken:\n\n- **Compression** shrinks files when you send them through messaging or social apps. Every reshare can remove a little more detail.\n- **Small or older cameras** capture fewer pixels (the tiny dots that make up a digital image), especially indoors or at night.\n- **Scans and screenshots** only hold as much detail as the original print or screen showed.\n\nThe usual result is soft edges, grainy patches, and smudged faces.\n\n## Standard vs. generative upscaling\n\nTopaz splits its upscalers into two families:\n\n- **Standard upscaling** enlarges and sharpens the pixels already in the photo. A blurry picture stays blurry, just bigger.\n- **Generative upscaling** rebuilds detail the camera never captured clearly. It's a type of AI model called a *diffusion model*, which learns what natural textures look like and fills gaps with them.\n\nTopaz says generative upscaling can restore natural-looking detail in images that conventional upscaling can't improve much. In practice, that can mean eyes, lips, and hair that were a blur becoming defined again.\n\n## The 10 models, in four groups\n\nYou don't need to memorize all ten. Think of them as specialists.\n\n**Wonder 4 (the default).** Topaz calls this its most advanced all-purpose model. It handles enhancing, refocusing, face restoration, noise removal, and upscaling in one pass. Picsart preselects it, so it's the natural first try for most photos.\n\n**The rest of the Wonder line (3.5, 3, 2, and the original Wonder).** These earlier versions have their own strengths. Wonder 3.5 is recommended for real-world photos, and also for charts, tables, and documents, where it keeps text sharp.\n\n**The Recover family (Recover 3, Recovery V2, and Recovery).** These target the hardest cases: worn-out pictures and files with very few pixels. Recover 3 is designed for images of about one megapixel or less, and it's especially good at faces that are small or blurry.\n\n**Standard MAX and Redefine.** These sit at opposite ends. Standard MAX stays close to the original and suits photos already in decent shape. Redefine adds new detail, which Topaz recommends for CGI (computer-generated imagery) and visual effects work.\n\n## What it can fix, and what may stay\n\nThe tool starts from whatever survives in your picture and rebuilds the gaps. It can smooth grain and blocky compression marks, and make outlines cleaner. It can't work miracles, though. Very old prints may keep faded colors and paper marks, and deep scratches or stains may not disappear entirely.\n\n## What this means for you\n\n- **In everyday life**: Try an old family photo or a grainy phone picture. Start with Wonder 4, then compare with Recover 3 if the image is tiny or damaged.\n- **For your work or side projects**: Use Wonder 3.5 for documents or charts where text needs to be crisp, and Standard MAX when you need a bigger version that stays faithful to the original.\n- **If you're just getting started**: Upload one photo, keep the default model, and compare the result with the original side by side. Remember that the tool processes one picture per run.\n- **If you already use it**: Run the same scan through two models, such as Recover 3 and Recovery V2, and keep whichever version looks most like the real people or scene. Topaz suggests this as the easiest route to a good result.\n\n## Wrap-up\n\nTopaz Generative Upscale does more than enlarge a picture. Its ten models each target a different kind of image, from everyday snapshots to tiny, damaged scans. Pick a photo you've been wanting to fix, start with Wonder 4, and compare it with a second model before you decide which copy to keep.",
+  "original_title": "Topaz Generative Upscale explained: all 10 models and when to use each"
+}
