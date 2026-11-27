@@ -1,5 +1,53 @@
 {
   "slug": "get-tables-charts-and-clear-layouts-from-chatgpt-5-everyday-prompts",
-  "probalva": "2026-10-28T03:23:44.025Z",
-  "doboz": null
+  "probalva": "2026-11-27T06:07:49.277Z",
+  "doboz": {
+    "keszult": "2026-11-27T06:07:49.277Z",
+    "enHash": "735afe56c1645222d62794ca10c76dc33f94efde",
+    "forrasok": {
+      "https://help.openai.com/en/articles/9213685-extracting-insights-with-chatgpt-data-analysis": "Extracting insights with ChatGPT data analysis"
+    },
+    "en": [
+      {
+        "symptom": "ChatGPT picked a chart type I didn't want.",
+        "why": "If you don't specify a chart type, ChatGPT chooses one based on your data. Other chart types are available when you name them in your prompt.",
+        "fix": "Name one of the supported chart types in your prompt, such as line graph, bar chart, pie chart, or scatter plot. You can also let ChatGPT determine the ideal chart type for the dataset.",
+        "source": "https://help.openai.com/en/articles/9213685-extracting-insights-with-chatgpt-data-analysis"
+      },
+      {
+        "symptom": "My data may have mistakes, and I don't know where they are.",
+        "why": "ChatGPT knows how to identify data which might be missing or incorrect. Common issues it can find include missing values, outlier values, duplicate rows, and incorrect data types.",
+        "fix": "Start your analysis with a prompt like this: Check this data for common issues. Once ChatGPT has identified common issues, you can ask it to fix those issues.",
+        "source": "https://help.openai.com/en/articles/9213685-extracting-insights-with-chatgpt-data-analysis"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A ChatGPT olyan diagramtípust választott, amilyet nem szerettem volna.",
+        "why": "Ha nem adod meg a diagramtípust, a ChatGPT az adataid alapján választ egyet. Más diagramtípusok is elérhetők, ha megnevezed őket az utasításodban.",
+        "fix": "Nevezd meg az utasításodban az egyik támogatott diagramtípust, például a vonaldiagramot, az oszlopdiagramot, a kördiagramot vagy a pontdiagramot. Azt is rábízhatod a ChatGPT-re, hogy meghatározza az adathalmazhoz ideális diagramtípust.",
+        "source": "https://help.openai.com/en/articles/9213685-extracting-insights-with-chatgpt-data-analysis"
+      },
+      {
+        "symptom": "Lehetnek hibák az adataimban, és nem tudom, hol vannak.",
+        "why": "A ChatGPT tudja azonosítani a hiányzó vagy helytelen adatokat. A gyakori problémák közé tartoznak a hiányzó értékek, a kiugró értékek, a duplikált sorok és a helytelen adattípusok.",
+        "fix": "Kezdd az elemzést egy ehhhez hasonló utasítással: Ellenőrizd ezt az adathalmazt a gyakori problémák szempontjából. Miután a ChatGPT azonosította a gyakori problémákat, megkérheted, hogy javítsa ki őket.",
+        "source": "https://help.openai.com/en/articles/9213685-extracting-insights-with-chatgpt-data-analysis"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "ChatGPT eligió un tipo de gráfico que no quería.",
+        "why": "Si no especificas un tipo de gráfico, ChatGPT elige uno según tus datos. Hay otros tipos de gráficos disponibles cuando los mencionas en tu indicación.",
+        "fix": "Menciona en tu indicación uno de los tipos de gráficos compatibles, como un gráfico de líneas, un gráfico de barras, un gráfico circular o un diagrama de dispersión. También puedes dejar que ChatGPT determine el tipo de gráfico ideal para el conjunto de datos.",
+        "source": "https://help.openai.com/en/articles/9213685-extracting-insights-with-chatgpt-data-analysis"
+      },
+      {
+        "symptom": "Es posible que mis datos contengan errores y no sé dónde están.",
+        "why": "ChatGPT sabe identificar datos que podrían faltar o ser incorrectos. Entre los problemas comunes que puede encontrar están los valores faltantes, los valores atípicos, las filas duplicadas y los tipos de datos incorrectos.",
+        "fix": "Comienza tu análisis con una indicación como esta: Comprueba estos datos para detectar problemas comunes. Una vez que ChatGPT haya identificado los problemas comunes, puedes pedirle que los corrija.",
+        "source": "https://help.openai.com/en/articles/9213685-extracting-insights-with-chatgpt-data-analysis"
+      }
+    ]
+  }
 }

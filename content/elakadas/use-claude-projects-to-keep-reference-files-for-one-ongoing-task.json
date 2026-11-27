@@ -1,0 +1,89 @@
+{
+  "slug": "use-claude-projects-to-keep-reference-files-for-one-ongoing-task",
+  "probalva": "2026-11-27T06:07:49.277Z",
+  "doboz": {
+    "keszult": "2026-11-27T06:07:49.277Z",
+    "enHash": "e89c3cee70182d19f7a3594d961acc141d3e6c07",
+    "forrasok": {
+      "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork": "Organize your tasks with projects in claude cowork"
+    },
+    "en": [
+      {
+        "symptom": "Claude brings up details from my other chats or projects while I'm working in this project.",
+        "why": "Memory is enabled for Cowork projects, and a project also shares memory with your chats outside of projects. What Claude learns in one project doesn't carry over to other projects.",
+        "fix": "To keep a project's memory fully separate, turn off 'Use account memory' under Memory on the project's page. Context from your work within the project is still remembered by Claude for future tasks in that project.",
+        "source": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"
+      },
+      {
+        "symptom": "My project I created from a folder on my computer is missing from my projects list.",
+        "why": "Claude Desktop moves projects you created from a folder on your computer into your Claude account automatically. After the move, the original local project no longer appears in your projects list.",
+        "fix": "Each project keeps its name, and the project's folders and files stay on your computer. Nothing is uploaded or deleted. On Team and Enterprise plans, this move happens once Chat and Cowork unified is on for you.",
+        "source": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"
+      },
+      {
+        "symptom": "Will archiving a project delete the files on my computer?",
+        "why": "When you archive a project in Cowork, the project's metadata is removed from the UI, but is not removed locally. Any related files or folders stored on your computer are not affected.",
+        "fix": "Archiving does not change the folders and files stored on your computer. You can archive a project without losing its local files.",
+        "source": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"
+      },
+      {
+        "symptom": "How do I let a teammate see or edit my project?",
+        "why": "Project sharing is available on Team and Enterprise plans. Cowork projects share the same way as projects in Claude.",
+        "fix": "You can give people in your organization 'Can view' or 'Can edit' access. You can change or remove that access later.",
+        "source": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Claude más csevegéseimből vagy projektjeimből származó részleteket hoz fel, miközben ebben a projektben dolgozom.",
+        "why": "A Cowork-projektekhez engedélyezve van a memória, és egy projekt a projekteken kívüli csevegéseiddel is megosztja a memóriát. Amit Claude az egyik projektben megtanul, az nem kerül át más projektekbe.",
+        "fix": "Ha teljesen külön szeretnéd tartani egy projekt memóriáját, a projekt oldalán a Memory alatt kapcsold ki a „Use account memory” lehetőséget. A projektben végzett munkád kontextusára Claude továbbra is emlékszik a projektben végzett későbbi feladatokhoz.",
+        "source": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"
+      },
+      {
+        "symptom": "A számítógépemen lévő mappából létrehozott projektem hiányzik a projektlistámból.",
+        "why": "A Claude Desktop automatikusan áthelyezi a számítógépeden lévő mappából létrehozott projekteket a Claude-fiókodba. Az áthelyezés után az eredeti helyi projekt többé nem jelenik meg a projektlistádban.",
+        "fix": "Minden projekt megőrzi a nevét, a projekt mappái és fájljai pedig a számítógépeden maradnak. Semmi sem kerül feltöltésre vagy törlésre. Team- és Enterprise-csomagban ez az áthelyezés egyszer történik meg, miután nálad be van kapcsolva a Chat and Cowork unified.",
+        "source": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"
+      },
+      {
+        "symptom": "A projekt archiválása törli a számítógépemen lévő fájlokat?",
+        "why": "Amikor archiválsz egy projektet a Coworkban, a projekt metaadatai eltávolításra kerülnek a felületről, helyileg azonban nem törlődnek. A számítógépeden tárolt kapcsolódó fájlokat és mappákat ez nem érinti.",
+        "fix": "Az archiválás nem módosítja a számítógépeden tárolt mappákat és fájlokat. Úgy is archiválhatsz egy projektet, hogy nem veszíted el a helyi fájljait.",
+        "source": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"
+      },
+      {
+        "symptom": "Hogyan engedhetem meg egy csapattársamnak, hogy megtekintse vagy szerkessze a projektemet?",
+        "why": "A projektmegosztás Team- és Enterprise-csomagban érhető el. A Cowork-projekteket ugyanúgy lehet megosztani, mint a Claude projektjeit.",
+        "fix": "A szervezetedben lévő személyeknek „Can view” vagy „Can edit” hozzáférést adhatsz. Ezt a hozzáférést később módosíthatod vagy eltávolíthatod.",
+        "source": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "Claude muestra detalles de mis otros chats o proyectos mientras trabajo en este proyecto.",
+        "why": "La memoria está activada para los proyectos de Cowork, y un proyecto también comparte la memoria con tus chats fuera de los proyectos. Lo que Claude aprende en un proyecto no se transfiere a otros proyectos.",
+        "fix": "Para mantener completamente separada la memoria de un proyecto, desactiva «Use account memory» en Memory, en la página del proyecto. Claude seguirá recordando el contexto de tu trabajo dentro del proyecto para futuras tareas en ese proyecto.",
+        "source": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"
+      },
+      {
+        "symptom": "No encuentro en mi lista de proyectos el proyecto que creé desde una carpeta de mi computadora.",
+        "why": "Claude Desktop mueve automáticamente a tu cuenta de Claude los proyectos que creaste desde una carpeta de tu computadora. Después del traslado, el proyecto local original ya no aparece en tu lista de proyectos.",
+        "fix": "Cada proyecto conserva su nombre, y las carpetas y los archivos del proyecto permanecen en tu computadora. No se sube ni se elimina nada. En los planes Team y Enterprise, este traslado ocurre una vez que Chat and Cowork unified está activado para ti.",
+        "source": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"
+      },
+      {
+        "symptom": "¿Archivar un proyecto eliminará los archivos de mi computadora?",
+        "why": "Cuando archivas un proyecto en Cowork, los metadatos del proyecto se eliminan de la interfaz, pero no se eliminan localmente. Los archivos o las carpetas relacionados que estén almacenados en tu computadora no se ven afectados.",
+        "fix": "Archivar no cambia las carpetas ni los archivos almacenados en tu computadora. Puedes archivar un proyecto sin perder sus archivos locales.",
+        "source": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"
+      },
+      {
+        "symptom": "¿Cómo permito que un compañero de equipo vea o edite mi proyecto?",
+        "why": "Compartir proyectos está disponible en los planes Team y Enterprise. Los proyectos de Cowork se comparten de la misma manera que los proyectos de Claude.",
+        "fix": "Puedes dar a las personas de tu organización acceso «Can view» o «Can edit». Más adelante puedes cambiar o eliminar ese acceso.",
+        "source": "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"
+      }
+    ]
+  }
+}

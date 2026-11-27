@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Szétszórt-robot JELZÉS naponta (core/szort-robot.js). Írja: core/traffic-log.js a CI-ban. Semmiből nem von le.",
-    "updated": "2026-11-26T18:12:31.047Z"
+    "updated": "2026-11-27T06:21:06.875Z"
   },
   "days": {
     "2026-11-04": {
@@ -246,6 +246,15 @@
         "DE": 3,
         "GB": 2,
         "CN": 1
+      }
+    },
+    "2026-11-26": {
+      "elteres": 4,
+      "becsles": 8,
+      "jelzes": false,
+      "orszagok": {
+        "CN": 3,
+        "US": 1
       }
     }
   }

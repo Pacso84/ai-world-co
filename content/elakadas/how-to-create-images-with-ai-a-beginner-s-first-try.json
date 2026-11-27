@@ -1,5 +1,71 @@
 {
   "slug": "how-to-create-images-with-ai-a-beginner-s-first-try",
-  "probalva": "2026-10-28T03:23:44.025Z",
-  "doboz": null
+  "probalva": "2026-11-27T06:07:49.277Z",
+  "doboz": {
+    "keszult": "2026-11-27T06:07:49.277Z",
+    "enHash": "1b653edb821f4528a192e87c711d78a5e9e8314d",
+    "forrasok": {
+      "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq": "ChatGPT Free Tier FAQ"
+    },
+    "en": [
+      {
+        "symptom": "Image creation stopped working after I made several images in a row.",
+        "why": "Tools such as image creation have separate limits. When you reach a limit, ChatGPT shows when you can try again.",
+        "fix": "In ChatGPT: wait until the image creation limit resets before using it again, and check the time ChatGPT shows in the message. If you reach a limit for one tool, wait until its limit resets before using it again.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "I'm not sure whether I can create images without upgrading my account.",
+        "why": "Free tier users can create images in ChatGPT, alongside other tools. The default model and available limits can change over time.",
+        "fix": "In ChatGPT: free-tier users can create images without upgrading, and image creation has its own usage limit that is separate from chat messages.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "ChatGPT says the chat is full while I'm refining my image prompt.",
+        "why": "\"Context window full\" refers to how much information ChatGPT can use in the current conversation. Your messages and ChatGPT's replies both take up space, so a few long exchanges can fill a chat faster than many short ones.",
+        "fix": "In ChatGPT: start a new chat right away from the sidebar, since the notice does not give a reset time for the original conversation. Send only the prompt you want to work on, and add earlier details as you need them.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A képkészítés leállt, miután egymás után több képet készítettem.",
+        "why": "Az olyan eszközöknek, mint a képkészítés, külön korlátaik vannak. Amikor eléred a korlátot, a ChatGPT megjeleníti, mikor próbálkozhatsz újra.",
+        "fix": "A ChatGPT-ben: várd meg, amíg a képkészítési korlát visszaáll, mielőtt újra használnád, és ellenőrizd az üzenetben megjelenő időpontot. Ha egy eszköz korlátját éred el, várd meg, amíg annak korlátja visszaáll, mielőtt újra használnád.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "Nem vagyok biztos benne, hogy a fiókom bővítése nélkül is készíthetek-e képeket.",
+        "why": "Az ingyenes csomagot használók a ChatGPT-ben más eszközök mellett képeket is készíthetnek. Az alapértelmezett modell és az elérhető korlátok idővel változhatnak.",
+        "fix": "A ChatGPT-ben: az ingyenes csomagot használók a fiók bővítése nélkül is készíthetnek képeket, a képkészítésnek pedig a csevegőüzenetektől különálló használati korlátja van.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "A ChatGPT azt írja, hogy a csevegés megtelt, miközben finomítom a képkérésemet.",
+        "why": "A „Context window full” azt jelenti, hogy a ChatGPT mennyi információt tud felhasználni az aktuális beszélgetésben. Az üzeneteid és a ChatGPT válaszai egyaránt helyet foglalnak, ezért néhány hosszú váltás gyorsabban megtölthet egy csevegést, mint sok rövid.",
+        "fix": "A ChatGPT-ben: azonnal kezdj új csevegést az oldalsávból, mivel az értesítés nem adja meg, mikor áll vissza az eredeti beszélgetés. Csak azt a kérést küldd el, amelyiken dolgozni szeretnél, és szükség szerint add hozzá a korábbi részleteket.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "La creación de imágenes dejó de funcionar después de crear varias imágenes seguidas.",
+        "why": "Las herramientas, como la creación de imágenes, tienen límites independientes. Cuando alcanzas un límite, ChatGPT muestra cuándo puedes volver a intentarlo.",
+        "fix": "En ChatGPT: espera hasta que se restablezca el límite de creación de imágenes antes de volver a usarla y comprueba la hora que ChatGPT muestra en el mensaje. Si alcanzas el límite de una herramienta, espera hasta que se restablezca su límite antes de volver a usarla.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "No sé si puedo crear imágenes sin mejorar mi cuenta.",
+        "why": "Los usuarios del nivel gratuito pueden crear imágenes en ChatGPT, además de usar otras herramientas. El modelo predeterminado y los límites disponibles pueden cambiar con el tiempo.",
+        "fix": "En ChatGPT: los usuarios del nivel gratuito pueden crear imágenes sin mejorar su cuenta, y la creación de imágenes tiene su propio límite de uso, independiente de los mensajes de chat.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      },
+      {
+        "symptom": "ChatGPT dice que el chat está lleno mientras estoy perfeccionando mi indicación para la imagen.",
+        "why": "\"Ventana de contexto llena\" se refiere a cuánta información puede usar ChatGPT en la conversación actual. Tus mensajes y las respuestas de ChatGPT ocupan espacio, por lo que unos pocos intercambios largos pueden llenar un chat más rápido que muchos intercambios cortos.",
+        "fix": "En ChatGPT: inicia de inmediato un chat nuevo desde la barra lateral, ya que el aviso no indica cuándo se restablecerá la conversación original. Envía solo la indicación en la que quieres trabajar y añade los detalles anteriores cuando los necesites.",
+        "source": "https://help.openai.com/en/articles/9275245-chatgpt-free-tier-faq"
+      }
+    ]
+  }
 }
