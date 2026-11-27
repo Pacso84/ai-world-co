@@ -1,5 +1,71 @@
 {
   "slug": "write-a-resume-from-scratch-even-with-no-work-experience",
-  "probalva": "2026-10-28T14:45:47.398Z",
-  "doboz": null
+  "probalva": "2026-11-27T17:54:30.899Z",
+  "doboz": {
+    "keszult": "2026-11-27T17:54:30.899Z",
+    "enHash": "1a7604b8a7b874875855883326791b93dda6a7c7",
+    "forrasok": {
+      "https://support.google.com/gemini/answer/17102773": "Write effective skills for Gemini Apps"
+    },
+    "en": [
+      {
+        "symptom": "I rewrite my resume from scratch for every job application.",
+        "why": "You should consider writing a skill if you frequently repeat prompts, giving Gemini the same instructions over and over. A skill is a set of instructions and preferences that teaches Gemini how to handle a specific type of task the way you would.",
+        "fix": "In Gemini: write a skill that captures your process, preferences, and the details only you would know, so Gemini can do a recurring task correctly every time without you explaining it again. Name the skill in all lower case with hyphens separating words, starting with an action verb, such as plan-meal-from-recipe. Focus the skill on the type of task, not one specific result.",
+        "source": "https://support.google.com/gemini/answer/17102773"
+      },
+      {
+        "symptom": "Gemini doesn't use my resume skill when I actually need it.",
+        "why": "A generic description means Gemini might not use the skill when it's needed. Gemini only checks the skill's name and description to determine if a skill is relevant for your task.",
+        "fix": "In Gemini: write the skill's description with specific situations where the skill is useful, and start the statement with \"Use when…\". Write the description as a third-person capability statement, not in the first person (\"I can help you\") or second person (\"You can use this to\"). Keep the description within the 1024 character limit.",
+        "source": "https://support.google.com/gemini/answer/17102773"
+      },
+      {
+        "symptom": "My resume skill instructions are long, and I'm not sure what to keep.",
+        "why": "Gemini only loads details from a skill when it needs them for the task.",
+        "fix": "In Gemini: keep the skill to quick instructions on how to do the task, formatting rules so the output is exactly how you want, and common mistakes for Gemini to avoid. Leave out long paragraphs of general explanation. Gemini can already do a lot of things well, so the skill only needs your specific expertise and preferences.",
+        "source": "https://support.google.com/gemini/answer/17102773"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Minden álláspályázathoz a nulláról írom újra az önéletrajzomat.",
+        "why": "Érdemes lehet készséget írnod, ha gyakran ismétled ugyanazokat a promptokat, és újra meg újra ugyanazokat az utasításokat adod a Gemini számára. A készség utasítások és beállítások olyan együttese, amely megtanítja a Geminit arra, hogyan kezeljen egy adott feladattípust úgy, ahogyan te tennéd.",
+        "fix": "A Geminiben: írj egy olyan készséget, amely rögzíti a munkafolyamatodat, a beállításaidat és azokat a részleteket, amelyeket csak te ismernél, hogy a Gemini minden alkalommal helyesen el tudjon végezni egy ismétlődő feladatot anélkül, hogy újra elmagyaráznád neki. A készség nevét csupa kisbetűvel írd, a szavakat kötőjelekkel válaszd el, és cselekvést kifejező igével kezdd, például plan-meal-from-recipe. A készséget a feladattípusra összpontosítsd, ne egyetlen konkrét eredményre.",
+        "source": "https://support.google.com/gemini/answer/17102773"
+      },
+      {
+        "symptom": "A Gemini nem használja az önéletrajz-készségemet, amikor tényleg szükségem lenne rá.",
+        "why": "Az általános leírás miatt előfordulhat, hogy a Gemini nem használja a készséget, amikor szükség lenne rá. A Gemini csak a készség nevét és leírását ellenőrzi annak meghatározásához, hogy a készség releváns-e a feladatodhoz.",
+        "fix": "A Geminiben: írd le a készség leírásában azokat a konkrét helyzeteket, amelyekben a készség hasznos, és a mondatot kezdd ezzel: „Akkor használd, ha…”. A leírást harmadik személyű képességleírásként írd meg, ne első személyben („Segíthetek neked”) vagy második személyben („Ezt használhatod arra, hogy…”). A leírás ne legyen hosszabb 1024 karakternél.",
+        "source": "https://support.google.com/gemini/answer/17102773"
+      },
+      {
+        "symptom": "Az önéletrajz-készségem utasításai hosszúak, és nem tudom, mit tartsak meg.",
+        "why": "A Gemini csak akkor tölti be egy készség részleteit, amikor szüksége van rájuk a feladathoz.",
+        "fix": "A Geminiben: korlátozd a készséget a feladat végrehajtására vonatkozó rövid utasításokra, azokra a formázási szabályokra, amelyek biztosítják, hogy a kimenet pontosan olyan legyen, amilyet szeretnél, valamint a gyakori hibákra, amelyeket a Gemininek el kell kerülnie. Hagyd ki az általános magyarázatokat tartalmazó hosszú bekezdéseket. A Gemini már önmagában is sok mindent jól el tud végezni, ezért a készségnek csak a saját szaktudásodra és beállításaidra van szüksége.",
+        "source": "https://support.google.com/gemini/answer/17102773"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "Reescribo mi currículum desde cero para cada solicitud de empleo.",
+        "why": "Deberías considerar escribir una habilidad si repites instrucciones con frecuencia, dando a Gemini las mismas indicaciones una y otra vez. Una habilidad es un conjunto de instrucciones y preferencias que enseña a Gemini a encargarse de un tipo específico de tarea como lo harías tú.",
+        "fix": "En Gemini: escribe una habilidad que capture tu proceso, tus preferencias y los detalles que solo tú conocerías, para que Gemini pueda realizar correctamente una tarea recurrente cada vez sin que tengas que volver a explicarla. Ponle a la habilidad un nombre completamente en minúsculas, con guiones entre las palabras y empezando con un verbo de acción, como plan-meal-from-recipe. Enfoca la habilidad en el tipo de tarea, no en un resultado específico.",
+        "source": "https://support.google.com/gemini/answer/17102773"
+      },
+      {
+        "symptom": "Gemini no usa mi habilidad para el currículum cuando realmente la necesito.",
+        "why": "Una descripción genérica significa que Gemini podría no usar la habilidad cuando haga falta. Gemini solo comprueba el nombre y la descripción de la habilidad para determinar si es relevante para tu tarea.",
+        "fix": "En Gemini: escribe la descripción de la habilidad con situaciones específicas en las que sea útil y empieza la frase con «Úsala cuando…». Escribe la descripción como una afirmación de capacidad en tercera persona, no en primera persona («Puedo ayudarte») ni en segunda persona («Puedes usar esto para»). Mantén la descripción dentro del límite de 1024 caracteres.",
+        "source": "https://support.google.com/gemini/answer/17102773"
+      },
+      {
+        "symptom": "Las instrucciones de mi habilidad para el currículum son largas y no estoy seguro de qué conservar.",
+        "why": "Gemini solo carga los detalles de una habilidad cuando los necesita para la tarea.",
+        "fix": "En Gemini: limita la habilidad a instrucciones breves sobre cómo realizar la tarea, reglas de formato para que el resultado sea exactamente como quieres y errores comunes que Gemini debe evitar. Omite los párrafos largos de explicación general. Gemini ya puede hacer muchas cosas bien, así que la habilidad solo necesita tus conocimientos especializados y preferencias específicos.",
+        "source": "https://support.google.com/gemini/answer/17102773"
+      }
+    ]
+  }
 }

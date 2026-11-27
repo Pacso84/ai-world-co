@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-11-27T06:20:52.437Z",
+    "updated": "2026-11-27T18:01:17.786Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -110,7 +110,7 @@
     },
     "microsoft-blog": {
       "name": "Official Microsoft Blog (hivatalos)",
-      "feedAgeDays": 9,
+      "feedAgeDays": 10,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -225,7 +225,7 @@
     },
     "github-copilot-changelog": {
       "name": "GitHub Changelog – Copilot (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 6,
       "published30dAfterAgeGuard": 6,
       "truthBlocks": 0,
@@ -238,7 +238,7 @@
     },
     "aws-ml": {
       "name": "AWS Machine Learning (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 8,
       "published30dAfterAgeGuard": 8,
       "truthBlocks": 0,
@@ -276,7 +276,7 @@
     },
     "apple-ml": {
       "name": "Apple Machine Learning Research (hivatalos)",
-      "feedAgeDays": 7,
+      "feedAgeDays": 8,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -533,7 +533,7 @@
     },
     "sap": {
       "name": "SAP Innovation Blog (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -559,7 +559,7 @@
     },
     "snowflake": {
       "name": "Snowflake Blog (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 5,
       "published30dAfterAgeGuard": 5,
       "truthBlocks": 0,
@@ -598,7 +598,7 @@
     },
     "ibm": {
       "name": "IBM Research (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -751,7 +751,7 @@
     },
     "brave-leo": {
       "name": "Brave / Leo (hivatalos blog, csak MI)",
-      "feedAgeDays": 11,
+      "feedAgeDays": 12,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -777,7 +777,7 @@
     },
     "proton-lumo": {
       "name": "Proton / Lumo (hivatalos blog, csak Lumo)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 0,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -802,7 +802,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -828,7 +828,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 149,
+      "feedAgeDays": 150,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -841,7 +841,7 @@
     },
     "notion-releases": {
       "name": "Notion – Mi újság (hivatalos)",
-      "feedAgeDays": 39,
+      "feedAgeDays": 40,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -853,7 +853,7 @@
     },
     "microsoft-365": {
       "name": "Microsoft 365 Insider (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 1,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -866,7 +866,7 @@
     },
     "pixlr": {
       "name": "Pixlr Blog (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -892,7 +892,7 @@
     },
     "zapier-blog": {
       "name": "Zapier Blog (hivatalos)",
-      "feedAgeDays": -348,
+      "feedAgeDays": -347,
       "published30d": 14,
       "published30dAfterAgeGuard": 13,
       "truthBlocks": 0,
@@ -905,7 +905,7 @@
     },
     "dropbox-blog": {
       "name": "Dropbox Blog (hivatalos)",
-      "feedAgeDays": 9,
+      "feedAgeDays": 10,
       "published30d": 2,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -918,7 +918,7 @@
     },
     "samsung-newsroom": {
       "name": "Samsung Newsroom (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": null,
       "published30d": 2,
       "published30dAfterAgeGuard": 2,
       "truthBlocks": 0,
@@ -931,7 +931,7 @@
     },
     "pika": {
       "name": "Pika (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 2,
       "published30dAfterAgeGuard": 2,
       "truthBlocks": 0,

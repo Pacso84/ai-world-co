@@ -1,5 +1,89 @@
 {
   "slug": "use-gemini-in-gmail-to-draft-replies-that-still-sound-like-you",
-  "probalva": "2026-10-27T20:23:46.711Z",
-  "doboz": null
+  "probalva": "2026-11-27T17:54:30.899Z",
+  "doboz": {
+    "keszult": "2026-11-27T17:54:30.899Z",
+    "enHash": "9972c29aae930df4c81f11bf30e8ccfa75b0b3d9",
+    "forrasok": {
+      "https://support.google.com/gemini/answer/18741629": "Draft Gmail messages in Gemini chats - Computer"
+    },
+    "en": [
+      {
+        "symptom": "The draft opened in Gmail without a recipient or subject line.",
+        "why": "A new Gmail compose window opens with the drafted content, subject, and recipient only if you specify the recipient in your prompt. The draft is transferred to Gmail when you select Edit in Gmail below it.",
+        "fix": "Name the recipient in your prompt, then select Edit in Gmail below the draft. Check that the subject and recipient are correct in the Gmail compose window before you send.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      },
+      {
+        "symptom": "I can't find the Edit in Gmail option under the draft.",
+        "why": "Drafting Gmail messages in Gemini requires Google Workspace to be connected to Gemini Apps. The Edit in Gmail option is used to send the draft to Gmail.",
+        "fix": "Connect Google Workspace to Gemini Apps first. Then, below the draft, select Edit in Gmail.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      },
+      {
+        "symptom": "The Gemini draft is too long and wordy.",
+        "why": "After Gemini provides an initial draft, you can ask for revisions and improvements directly in the chat. You can highlight text in the email body and describe your changes.",
+        "fix": "Highlight the text in the email body, select Help me write, and describe the change you want. Repeat this until you are satisfied with the email draft.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      },
+      {
+        "symptom": "The tone of the draft doesn't match how I would write to this person.",
+        "why": "You can ask for revisions in the chat to change the tone of the email. Tone changes are made within the editor in the same chat.",
+        "fix": "Within the editor in the same chat, select Help me write or highlight the text and describe the tone you want. Once you are satisfied, select Send.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A piszkozat a Gmailben címzett és tárgy nélkül nyílt meg.",
+        "why": "Egy új Gmail-üzenetíró ablak a piszkozat tartalmával, tárgyával és címzettjével csak akkor nyílik meg, ha a kérésedben megadod a címzettet. A piszkozat akkor kerül át a Gmailbe, amikor alatta kiválasztod az Edit in Gmail lehetőséget.",
+        "fix": "Add meg a címzettet a kérésedben, majd a piszkozat alatt válaszd az Edit in Gmail lehetőséget. Mielőtt elküldöd, ellenőrizd a Gmail-üzenetíró ablakában, hogy a tárgy és a címzett helyes-e.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      },
+      {
+        "symptom": "Nem találom az Edit in Gmail lehetőséget a piszkozat alatt.",
+        "why": "A Gmail-üzenetek piszkozatainak elkészítéséhez a Gemini szolgáltatásban a Google Workspace-nek csatlakoznia kell a Gemini Appshez. Az Edit in Gmail lehetőség a piszkozat Gmailbe küldésére szolgál.",
+        "fix": "Először csatlakoztasd a Google Workspace-t a Gemini Appshez. Ezután a piszkozat alatt válaszd az Edit in Gmail lehetőséget.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      },
+      {
+        "symptom": "A Gemini piszkozata túl hosszú és szószátyár.",
+        "why": "Miután a Gemini elkészíti a kezdeti piszkozatot, közvetlenül a csevegésben kérhetsz módosításokat és javításokat. Kijelölheted az e-mail törzsében lévő szöveget, és leírhatod, milyen változtatásokat szeretnél.",
+        "fix": "Jelöld ki az e-mail törzsében lévő szöveget, válaszd a Help me write lehetőséget, és írd le, milyen változtatást szeretnél. Ismételd ezt addig, amíg elégedett nem leszel az e-mail piszkozatával.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      },
+      {
+        "symptom": "A piszkozat hangvétele nem olyan, ahogyan én írnék ennek a személynek.",
+        "why": "A csevegésben módosításokat kérhetsz az e-mail hangvételének megváltoztatásához. A hangvétel módosítása ugyanabban a csevegésben, a szerkesztőn belül történik.",
+        "fix": "Ugyanabban a csevegésben, a szerkesztőn belül válaszd a Help me write lehetőséget, vagy jelöld ki a szöveget, és írd le, milyen hangvételt szeretnél. Ha elégedett vagy, válaszd a Send lehetőséget.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "El borrador se abrió en Gmail sin destinatario ni asunto.",
+        "why": "Una nueva ventana de redacción de Gmail se abre con el contenido, el asunto y el destinatario del borrador solo si especificas el destinatario en tu indicación. El borrador se transfiere a Gmail cuando seleccionas Edit in Gmail debajo de él.",
+        "fix": "Menciona al destinatario en tu indicación y, después, selecciona Edit in Gmail debajo del borrador. Comprueba que el asunto y el destinatario sean correctos en la ventana de redacción de Gmail antes de enviar el mensaje.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      },
+      {
+        "symptom": "No encuentro la opción Edit in Gmail debajo del borrador.",
+        "why": "Para redactar mensajes de Gmail en Gemini, Google Workspace debe estar conectado a Gemini Apps. La opción Edit in Gmail se usa para enviar el borrador a Gmail.",
+        "fix": "Conecta primero Google Workspace a Gemini Apps. Después, debajo del borrador, selecciona Edit in Gmail.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      },
+      {
+        "symptom": "El borrador de Gemini es demasiado largo y redundante.",
+        "why": "Después de que Gemini proporcione un borrador inicial, puedes pedir revisiones y mejoras directamente en el chat. Puedes resaltar texto en el cuerpo del correo y describir los cambios que quieres.",
+        "fix": "Resalta el texto en el cuerpo del correo, selecciona Help me write y describe el cambio que quieres. Repite esto hasta que estés satisfecho con el borrador del correo.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      },
+      {
+        "symptom": "El tono del borrador no coincide con la forma en que yo escribiría a esta persona.",
+        "why": "Puedes pedir revisiones en el chat para cambiar el tono del correo. Los cambios de tono se hacen dentro del editor, en el mismo chat.",
+        "fix": "Dentro del editor, en el mismo chat, selecciona Help me write o resalta el texto y describe el tono que quieres. Cuando estés satisfecho, selecciona Send.",
+        "source": "https://support.google.com/gemini/answer/18741629"
+      }
+    ]
+  }
 }

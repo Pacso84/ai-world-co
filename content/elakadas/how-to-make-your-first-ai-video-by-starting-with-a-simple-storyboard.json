@@ -1,5 +1,89 @@
 {
   "slug": "how-to-make-your-first-ai-video-by-starting-with-a-simple-storyboard",
-  "probalva": "2026-10-27T20:23:46.711Z",
-  "doboz": null
+  "probalva": "2026-11-27T17:54:30.899Z",
+  "doboz": {
+    "keszult": "2026-11-27T17:54:30.899Z",
+    "enHash": "5e7098e1215f1fa9504394ee246e0a15217eab2e",
+    "forrasok": {
+      "https://support.google.com/gemini/answer/16126339": "Generate videos with Gemini Apps - Computer"
+    },
+    "en": [
+      {
+        "symptom": "The first try has the wrong camera angle or scene, and I want to fix it.",
+        "why": "After generating a video, you can make edits across the full video with a prompt. Edits can change camera angles, modify the scene, or remove or replace objects and characters.",
+        "fix": "In Gemini: after the video is generated, enter a new prompt in the same chat to change the camera angle or modify the scene. Use it to remove or replace objects and characters as well.",
+        "source": "https://support.google.com/gemini/answer/16126339"
+      },
+      {
+        "symptom": "Generation is taking a long time, and I can't use the chat while I wait.",
+        "why": "It may take a few minutes for the video or GIF to be generated. While your video or GIF is being generated, you can't interact with the same chat.",
+        "fix": "In Gemini: start a new chat while the video is generating. Come back to the first chat later to view your video.",
+        "source": "https://support.google.com/gemini/answer/16126339"
+      },
+      {
+        "symptom": "My video is missing after I generated it.",
+        "why": "Gemini Apps may remove videos when our systems detect a possible violation of Google's Terms of Service, including the Prohibited Use Policy.",
+        "fix": "In Gemini: make sure your prompts and uploads follow Google's Terms of Service, including the Prohibited Use Policy. Only upload photos you have the right to use.",
+        "source": "https://support.google.com/gemini/answer/16126339"
+      },
+      {
+        "symptom": "How do I download or share the finished video?",
+        "why": "To export or download a video, under the video, click Share. You can then share it on YouTube or download the video.",
+        "fix": "In Gemini: under the finished video, click Share. Then click Download video to save it, or click Share on YouTube to post it there.",
+        "source": "https://support.google.com/gemini/answer/16126339"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "Az első próbálkozásnál rossz a kameraállás vagy a jelenet, és ezt szeretném kijavítani.",
+        "why": "A videó létrehozása után utasítással a teljes videón végezhetsz szerkesztéseket. A szerkesztések módosíthatják a kameraállást, megváltoztathatják a jelenetet, illetve eltávolíthatják vagy lecserélhetik a tárgyakat és a szereplőket.",
+        "fix": "A Gemini szolgáltatásban: a videó létrehozása után írj be egy új utasítást ugyanabban a csevegésben a kameraállás módosításához vagy a jelenet megváltoztatásához. Ezzel a tárgyakat és a szereplőket is eltávolíthatod vagy lecserélheted.",
+        "source": "https://support.google.com/gemini/answer/16126339"
+      },
+      {
+        "symptom": "Sokáig tart a létrehozás, és várakozás közben nem tudom használni a csevegést.",
+        "why": "A videó vagy a GIF létrehozása néhány percig tarthat. Amíg a videó vagy a GIF létrehozása folyamatban van, nem léphetsz kapcsolatba ugyanazzal a csevegéssel.",
+        "fix": "A Gemini szolgáltatásban: a videó létrehozása közben indíts új csevegést. Később térj vissza az első csevegéshez a videó megtekintéséhez.",
+        "source": "https://support.google.com/gemini/answer/16126339"
+      },
+      {
+        "symptom": "A létrehozás után hiányzik a videóm.",
+        "why": "A Gemini Apps eltávolíthat videókat, ha rendszereink a Google Általános Szerződési Feltételeinek, többek között a Tiltott felhasználási irányelveknek a lehetséges megsértését észlelik.",
+        "fix": "A Gemini szolgáltatásban: győződj meg róla, hogy az utasításaid és a feltöltéseid megfelelnek a Google Általános Szerződési Feltételeinek, többek között a Tiltott felhasználási irányelveknek. Csak olyan fényképeket tölts fel, amelyek használatára jogosult vagy.",
+        "source": "https://support.google.com/gemini/answer/16126339"
+      },
+      {
+        "symptom": "Hogyan tölthetem le vagy oszthatom meg az elkészült videót?",
+        "why": "Videó exportálásához vagy letöltéséhez kattints a videó alatt a Share lehetőségre. Ezután megoszthatod a YouTube-on, vagy letöltheted a videót.",
+        "fix": "A Gemini szolgáltatásban: kattints az elkészült videó alatt a Share lehetőségre. Ezután a mentéshez kattints a Download video lehetőségre, vagy a YouTube-on való közzétételhez kattints a Share on YouTube lehetőségre.",
+        "source": "https://support.google.com/gemini/answer/16126339"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "El primer intento tiene un ángulo de cámara o una escena incorrectos, y quiero corregirlo.",
+        "why": "Después de generar un vídeo, puedes hacer ediciones en todo el vídeo mediante una instrucción. Las ediciones pueden cambiar los ángulos de cámara, modificar la escena o quitar o sustituir objetos y personajes.",
+        "fix": "En Gemini: después de generar el vídeo, introduce una nueva instrucción en el mismo chat para cambiar el ángulo de cámara o modificar la escena. También puedes usarla para quitar o sustituir objetos y personajes.",
+        "source": "https://support.google.com/gemini/answer/16126339"
+      },
+      {
+        "symptom": "La generación está tardando mucho y no puedo usar el chat mientras espero.",
+        "why": "El vídeo o el GIF pueden tardar unos minutos en generarse. Mientras se genera el vídeo o el GIF, no puedes interactuar con el mismo chat.",
+        "fix": "En Gemini: inicia un chat nuevo mientras se genera el vídeo. Vuelve al primer chat más tarde para ver el vídeo.",
+        "source": "https://support.google.com/gemini/answer/16126339"
+      },
+      {
+        "symptom": "Mi vídeo ha desaparecido después de generarlo.",
+        "why": "Las aplicaciones de Gemini pueden eliminar vídeos cuando nuestros sistemas detectan una posible infracción de las Condiciones del Servicio de Google, incluida la Política de uso prohibido.",
+        "fix": "En Gemini: asegúrate de que tus instrucciones y cargas cumplan las Condiciones del Servicio de Google, incluida la Política de uso prohibido. Sube únicamente fotos que tengas derecho a utilizar.",
+        "source": "https://support.google.com/gemini/answer/16126339"
+      },
+      {
+        "symptom": "¿Cómo descargo o comparto el vídeo terminado?",
+        "why": "Para exportar o descargar un vídeo, haz clic en Share debajo del vídeo. Después, puedes compartirlo en YouTube o descargarlo.",
+        "fix": "En Gemini: haz clic en Share debajo del vídeo terminado. Después, haz clic en Download video para guardarlo o en Share on YouTube para publicarlo allí.",
+        "source": "https://support.google.com/gemini/answer/16126339"
+      }
+    ]
+  }
 }
