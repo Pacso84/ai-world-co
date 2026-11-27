@@ -81,4 +81,17 @@ const PLAIN = 'openai/gpt-4o-mini';
   }
 }
 
+// 8) ★ CLAUDE HAIKU 5.5 IS GONDOLKODÓ MODELL (2026-11-27, napi ellenőrzésből)
+//    A SEO-agent (maxTokens 1500) élesben 112 hívásból 7-szer ÜRES választ kapott:
+//    „finish: length · gondolkodás: 1500 tok / 0 kar · kimenő: 1500/1500 tok”.
+//    Mérve ugyanarra a cikkre: 1500-as kerettel 3-ból 1 üres; 4000/8000-rel 6/6 jó,
+//    a gondolkodás NEM nő a kerettel (821–1526 tok), a költség azonos → a padló ingyen van.
+{
+  const HAIKU = 'anthropic/claude-haiku-5.5';
+  assert.equal(effectiveMaxTokens({ model: HAIKU, maxTokens: 1500, noThink: false }), 8000,
+    'a Haiku 5.5 kis kerettel is megkapja a 8000-es gondolkodó-padlót');
+  assert.equal(effectiveMaxTokens({ model: HAIKU, maxTokens: 10000, noThink: false }), 10000,
+    'a nagy keretű Haiku-hívások (író) változatlanok');
+}
+
 console.log('✅ token-ceiling.test: minden átment');

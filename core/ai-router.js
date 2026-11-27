@@ -698,7 +698,10 @@ function isThinkingModel(model) {
   const m = String(model || '').toLowerCase();
   // gpt-oss (2026-10-02, Groq vész-háló): a gondolkodó-tokenjei a max_tokens-be
   // számítanak — kis keretnél (pairing 400, seo 500) üres választ adna. $0-s modell.
-  return m.includes('zai-glm') || m.includes('minimax') || m.includes('gpt-oss');
+  // claude-haiku-5.5 (2026-11-27): az OpenRouteren alapból gondolkodik, és a SEO-agent
+  // 1500-as keretét ~minden 3. hívásnál végig elgondolkodta (finish: length, 0 kar szöveg).
+  // Mérve: nagyobb kerettel sem gondolkodik többet, a költség azonos → token-ceiling.test.js 8).
+  return m.includes('zai-glm') || m.includes('minimax') || m.includes('gpt-oss') || m.includes('claude-haiku-5');
 }
 // Melyik modell TUDJA kikapcsolni a gondolkodást? CSAK az M3 — az M2.5/M2.7
 // HTTP 400-zal ("Reasoning is mandatory") utasítja el (2026-07-24 mérés).
