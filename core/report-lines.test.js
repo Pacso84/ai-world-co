@@ -721,3 +721,39 @@ console.log('\n✅ report-lines.test: mind a ' + pass + ' eset rendben');
   assert.match(src, /eloOrszemLine\(lg\)/);
   console.log('  ✅ deployLine + eloOrszemLine');
 }
+
+// 🛡️ CSALÁS-FIGYELŐ SOR (2026-11-27, csalás-figyelő 10. rész): memory/csalas-guard.json + a ma megírt csalás-hírek
+{
+  const { csalasLine } = await import('./report-lines.js');
+  const most = Date.parse('2026-11-27T18:00:00Z');
+  const friss = { at: '2026-11-27T17:00:00Z', figyelo_at: '2026-11-27T17:30:00Z', figyelo_jelolt: 4, figyelo_csalas: 1,
+    figyelo_eldobva: [{ cim: 'IC3 annual report', ok: 'not a consumer scam' }, { cim: 'B', ok: 'x' }, { cim: 'C', ok: 'y' }, { cim: 'D', ok: 'z' }], kep_hibak: [] };
+  // 1) kikapcsolva
+  assert.deepEqual(csalasLine(friss, [], most, { be: false }), ['🛡️ Csalás-figyelő: kikapcsolva']);
+  // 2) nem futott: hiányzó fájl / hiányzó figyelo_at / 24 óránál régebbi
+  for (const g of [null, { at: '2026-11-27T17:00:00Z' }, { ...friss, figyelo_at: '2026-11-26T17:59:00Z' }]) {
+    const s = csalasLine(g, [], most, { be: true });
+    assert.equal(s.length, 1);
+    assert.ok(s[0].startsWith('🛡️ Csalás-figyelő: ⚠️ NEM FUTOTT'), s[0]);
+  }
+  // 3) normál: fősor + legfeljebb 3 eldobva-sor + a megírt címek
+  const n = csalasLine(friss, ['Fake package-delivery texts ask you to confirm your address'], most, { be: true });
+  assert.equal(n[0], '🛡️ Csalás-figyelő: 4 új tétel · 1 csalás · 1 megírva');
+  assert.equal(n.filter(s => s.includes('eldobva:')).length, 3);
+  assert.ok(n.some(s => s.includes('eldobva: IC3 annual report — not a consumer scam')));
+  assert.ok(n.some(s => s.includes('✅ Fake package-delivery texts')));
+  assert.ok(!n.some(s => s.includes('képhiba')));
+  // 4) képhibával
+  const k = csalasLine({ ...friss, kep_hibak: [{ slug: 'a', lang: 'hu', hiba: 'x' }, { slug: 'b', lang: 'es', hiba: 'y' }] }, [], most, { be: true });
+  assert.ok(k.includes('   🖼️ képhiba: 2'), k.join(' | '));
+  // 5) besoroló-hiba és a ma meg nem írt csalás-vázlat (író) a zárósor hibái közé kerül
+  const h = csalasLine({ ...friss, figyelo_hiba: 'ask timeout' }, [], most, { be: true, irasHibak: [{ draft: 'd.json', hiba: 'nincs példablokk' }] });
+  assert.ok(h.some(s => s.includes('besoroló') && s.includes('ask timeout')));
+  assert.ok(hibaSorok(h).length >= 2, 'a besoroló- és írás-hiba nem számít hibajelzésnek: ' + h.join(' | '));
+  assert.equal(hibaSorok(n).length, 0, 'jó napon hibajelzés: ' + n.join(' | '));
+  // bekötés: a napi riport hívja, a ma megírt csalás-hírekkel és a writer-naplók csalas_hiba-jával
+  const src = readFileSync(new URL('./daily-report.js', import.meta.url), 'utf-8');
+  assert.match(src, /lines\.push\(\.\.\.csalasLine\(/, 'a riport nem hívja a csalasLine-t');
+  assert.match(src, /csalas_hiba/, 'a riport nem olvassa a writer-naplók csalas_hiba-ját');
+  console.log('  ✅ csalasLine (kikapcsolva / nem futott / normál / képhiba / hibák) + bekötés');
+}

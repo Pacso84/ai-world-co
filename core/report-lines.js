@@ -6,6 +6,7 @@ import { utmutatoE } from './guide-kind.js';
 import { leckeNevHu } from './auto-check-codes.js';
 import { eszkozFelsorolas } from './fek.js';   // 🧯 közös felsorolás-sorrend a fék konzol- és riport-sorához
 import { UJRAPROBA_NAP } from './sugo-horgony.js';   // 🧭 hány nap múlva próbálja újra a horgony a tartósan sikertelen témát
+import { CSALAS_FIGYELO_BE } from './csalas-figyelo.js';   // 🛡️ 2026-11-27 csalás-figyelő 10. rész
 //
 // User-jelzés (2026-08-06): "ne küldjön valótlan adatokat".
 //
@@ -725,4 +726,30 @@ function horgonyAlapSor(allapot, maNap) {
     if (!tartos) return elso + 'a súgó most nem volt elérhető, a következő futásban újra próbálkoznak, addig más téma íródik.';
     return elso + `${tartos} közülük ${UJRAPROBA_NAP} nap múlva próbálkozik újra, ${atmeneti} (átmeneti hiba) már a következő futásban; addig más téma íródik.`;
   } catch { return null; }
+}
+
+// 🛡️ CSALÁS-FIGYELŐ SOR (2026-11-27, csalás-figyelő 10. rész; spec 8.8). Forrás: memory/csalas-guard.json — a hírgyűjtő
+// (figyelo_*: utolsó futás jelöltjei, csalásai, eldobott tételei, besoroló-hibája) és a kép-lépés (kep_hibak) őrszeme —,
+// a ma megírt csalás-hírek címe, és a mai writer-naplók csalas_hiba-ja (megíratlan, mert a sablon-/kép-őr kétszer is
+// hibát talált; a vázlat marad). „NEM FUTOTT”: a hírgyűjtő 24 órája nem írt figyelo_at-et (a feltétel nélküli lépés
+// kimaradt — 11-05-i tanulság). Sorok tömbje: a zárósor (hibaSorok) soronként keres hibajelet.
+export function csalasLine(guard, maiCsalasCimek = [], now = Date.now(), { be = CSALAS_FIGYELO_BE, irasHibak = [] } = {}) {
+  if (!be) return ['🛡️ Csalás-figyelő: kikapcsolva'];
+  const g = guard && typeof guard === 'object' ? guard : {};
+  const at = Date.parse(g.figyelo_at || '');
+  if (!Number.isFinite(at) || now - at > 24 * 3600000) {
+    return ['🛡️ Csalás-figyelő: ⚠️ NEM FUTOTT az elmúlt 24 órában (a hírgyűjtő nem írta az őrszemet) — nézd meg a CI hírgyűjtő lépését'];
+  }
+  const cimek = Array.isArray(maiCsalasCimek) ? maiCsalasCimek.filter(Boolean) : [];
+  const sorok = [`🛡️ Csalás-figyelő: ${Number(g.figyelo_jelolt) || 0} új tétel · ${Number(g.figyelo_csalas) || 0} csalás · ${cimek.length} megírva`];
+  for (const c of cimek.slice(0, 3)) sorok.push(`   ✅ ${rovidCim(c)}`);
+  for (const e of (Array.isArray(g.figyelo_eldobva) ? g.figyelo_eldobva : []).slice(0, 3)) {
+    sorok.push(`   eldobva: ${rovidCim(e?.cim || '?', 60)}${e?.ok ? ` — ${String(e.ok).slice(0, 80)}` : ''}`);
+  }
+  if (g.figyelo_hiba) sorok.push(`⚠️ Csalás-besoroló hiba: ${String(g.figyelo_hiba).slice(0, 120)} (a tételek a következő futásban újra jönnek)`);
+  const ih = Array.isArray(irasHibak) ? irasHibak : [];
+  if (ih.length) sorok.push(`⚠️ Csalás-hír: ${ih.length} vázlatot nem sikerült megírni (a vázlat marad) — ${String(ih[0]?.hiba || '').slice(0, 90)}`);
+  const kh = Array.isArray(g.kep_hibak) ? g.kep_hibak.length : 0;
+  if (kh) sorok.push(`   🖼️ képhiba: ${kh}`);
+  return sorok;
 }

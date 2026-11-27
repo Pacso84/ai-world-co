@@ -48,6 +48,8 @@ import { bingTerkepek, terkepAllapot, bingTerkepSor, ujrakuldesKell, ujrakuld, E
 import { kokoroRiportSor } from './kokoro-tts.js';   // 🤗 2026-11-19
 import { seoRiportSor } from './seo-iro.js';          // 🔎 2026-11-26
 import { csalasKepRiportSorok } from './csalas-kepek.js';   // 🛡️ 2026-11-23 (csalás-figyelő 4. rész)
+import { csalasLine } from './report-lines.js';   // 🛡️ 2026-11-27 (csalás-figyelő 10. rész)
+import { csalasHir } from './csalas-figyelo.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -727,6 +729,23 @@ async function main() {
     try {
       lines.push(...csalasKepRiportSorok(JSON.parse(readFileSync(join(ROOT, 'memory', 'csalas-guard.json'), 'utf-8'))));
     } catch { /* nincs fájl = a csalás-figyelő ki van kapcsolva */ }
+    // 🛡️ CSALÁS-FIGYELŐ (11-27, 10. rész): AKKOR IS kimegy, ha nem volt csalás — kikapcsolva „kikapcsolva”, ha a hírgyűjtő
+    // 24 órája nem írta az őrszemet, „⚠️ NEM FUTOTT”. A megíratlan csalás-vázlatok a mai writer-naplók csalas_hiba-jából
+    // (a CI 3× fut → vázlatonként egyszer számolva).
+    {
+      let csGuard = null;
+      try { csGuard = JSON.parse(readFileSync(join(ROOT, 'memory', 'csalas-guard.json'), 'utf-8')); } catch { /* nincs fájl → NEM FUTOTT / kikapcsolva */ }
+      const irasHibak = new Map();
+      try {
+        for (const f of readdirSync(join(ROOT, 'logs'))) {
+          if (!f.startsWith('writer_') || !f.endsWith('.json') || !f.includes(today())) continue;
+          try { for (const h of JSON.parse(readFileSync(join(ROOT, 'logs', f), 'utf-8')).csalas_hiba || []) irasHibak.set(h?.draft || String(irasHibak.size), h); } catch { /* sérült napló */ }
+        }
+      } catch { /* nincs logs mappa */ }
+      const csCimek = (r.maiCikkek || []).filter(d => csalasHir(d?._meta))
+        .map(d => (String(d.article_markdown || '').match(/^title:s*"?(.*?)"?s*$/m) || [])[1] || d.original_title || d._meta?.slug || '');
+      lines.push(...csalasLine(csGuard, csCimek, Date.now(), { irasHibak: [...irasHibak.values()] }));
+    }
 
     // ⚠️ BETŰTÍPUS-VISSZAESÉS (2026-09-17). A Reel-táblák „Arial Black"-et
     // kértek; az a futtatón NINCS, és a betűmotor ilyenkor nem hibázik,
