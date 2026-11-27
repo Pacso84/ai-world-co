@@ -1637,3 +1637,53 @@ body {
 .nls .nl__form button { padding: 9px 16px; font-size: 14.5px; white-space: nowrap; }
 .nls .nl__msg { flex-basis: 100%; margin: 0; }
 @media (max-width: 520px) { .nls { padding: 12px 14px; } .nls .nl__form { flex-basis: 100%; } }
+
+/* ---------- 🛡️ CSALÁS-FIGYELŐ (2026-11-27, csalás-figyelő 8. rész) ----------
+   „Scam alert” címke (hírkártya + cikkfej), a cikkbeli példa-kép / szöveges példa (core/csalas-sablon.js
+   peldaBlokkCsere), és a /scams gyűjtőoldal (core/csalas-oldal.js). Csak tokenek → sötét módban is olvasható. */
+:root { --c-scam: #b4442f; --c-scam-soft: #f6e2dc; }
+[data-theme="dark"] { --c-scam: #c8573f; --c-scam-soft: #3a231d; }
+.tag--scam { background: var(--c-scam); }
+.sc-more { margin: 28px 0 0; font-weight: 700; }
+.sc-more a { color: var(--c-scam); text-decoration: none; }
+.sc-more a:hover { text-decoration: underline; }
+
+/* A cikkbeli példa: 4:5 kép felirattal, vagy jelölt szöveges változat (ha a kép még nincs) */
+.csalas-pelda { margin: 28px auto; max-width: 460px; }
+.csalas-pelda img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line-strong); }
+.csalas-pelda figcaption { margin-top: 12px; font-size: 15px; color: var(--ink-soft); }
+.csalas-pelda__jeloles { margin: 0 0 8px; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--c-scam); }
+.csalas-pelda__jelek { margin: 0; padding-left: 22px; }
+.csalas-pelda__jelek li { margin: 4px 0; }
+.csalas-pelda--szoveg { padding: 16px 18px; border: 2px dashed var(--c-scam); border-radius: 10px; background: var(--card); }
+.csalas-pelda__uzenet { margin: 0 0 12px; padding: 12px 14px; border-radius: 8px; background: var(--paper-2); }
+.csalas-pelda__uzenet p { margin: 4px 0; }
+.csalas-pelda__felado, .csalas-pelda__targy { font-weight: 700; }
+mark.csalas-jel { background: var(--c-scam-soft); color: var(--ink); padding: 0 3px; border-radius: 3px; }
+mark.csalas-jel sup { margin-left: 2px; font-weight: 800; color: var(--c-scam); }
+
+/* /scams gyűjtőoldal */
+.sc-lap-kep img { display: block; width: 100%; max-width: 300px; height: auto; margin: 6px auto 0; border-radius: 8px; }
+.sc-lap-orszag { margin: 10px 0 0; font-size: 13.5px; color: var(--ink-soft); }
+.sc-sec { margin: 0 0 44px; }
+.sc-sec h2, .sc-report h2 { margin: 0 0 14px; font-size: 24px; letter-spacing: -0.01em; }
+.sc-sec__lead { margin: -6px 0 14px; color: var(--ink-soft); }
+.sc-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.sc-card a { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); text-decoration: none; }
+.sc-card a:hover { border-color: var(--c-scam); }
+.sc-card__kep img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px; }
+.sc-card__badge { align-self: flex-start; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--c-scam); }
+.sc-card__t { margin: 0; font-size: 18px; line-height: 1.3; }
+.sc-card__s { margin: 0; font-size: 15px; color: var(--ink-soft); }
+.sc-card time { margin-top: auto; font-size: 13px; color: var(--muted); }
+.sc-empty { margin: 0; padding: 16px 18px; border: 1px dashed var(--line-strong); border-radius: 10px; color: var(--ink-soft); }
+.sc-guides { margin: 0; padding: 0; list-style: none; }
+.sc-guides li { border-bottom: 1px solid var(--line); }
+.sc-guides a { display: block; padding: 12px 2px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.sc-guides a:hover { color: var(--c-scam); }
+.sc-report { margin: 0 0 32px; padding: 20px 22px; border-left: 4px solid var(--c-scam); border-radius: 8px; background: var(--card); }
+.sc-report p { margin: 0 0 8px; }
+.sc-report__list { margin: 0 0 10px; padding-left: 20px; }
+.sc-report__list a { font-weight: 700; color: var(--c-scam); }
+.sc-report__country { color: var(--ink-soft); }
+@media (max-width: 520px) { .sc-cards { grid-template-columns: minmax(0, 1fr); } .sc-sec h2, .sc-report h2 { font-size: 21px; } }

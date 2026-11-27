@@ -69,6 +69,9 @@ const TREND_SZOTAR = szotarBetolt();   // a Felkapott oldal kereséseinek fordí
 import { aktivTrendek } from '../core/trend-kutato.js';
 import { partnerBeallitas, partnerDoboz, partnerJelzes } from '../core/affiliate.js';
 import { kedvencForrasHtml } from '../core/preferred-source.js';
+import { CSALAS_FIGYELO_BE, csalasHir } from '../core/csalas-figyelo.js';   // 🛡️ 2026-11-27 csalás-figyelő 8. rész
+import { peldaBlokkCsere } from '../core/csalas-sablon.js';
+import { csalasOldalHtml, csalasFejlecLap, CSALAS_UTMUTATOK, CSALAS_UI, bejelentesNyelven, csalasBorito } from '../core/csalas-oldal.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -577,6 +580,8 @@ const UI_TREND = {
         trBanner: 'Tendencias de la semana', trMore: 'Mira todas las tendencias de IA de la semana' }
 };
 for (const l of SITE_LANGS) Object.assign(UI[l], UI_TREND[l] || {});
+// 🛡️ Csalás-figyelő (/scams, 2026-11-27) feliratok — core/csalas-oldal.js
+for (const l of SITE_LANGS) Object.assign(UI[l], CSALAS_UI[l] || {});
 
 // "Melyik AI való neked?" varázsló feliratok (2026-07-08)
 const UI_WIZ = {
@@ -906,6 +911,16 @@ function loadTranslation(file) {
 }
 // Cikk lokalizálása: a SLUG és a metaadatok maradnak (angolból), csak a
 // megjelenő tartalom (cím/alcím/törzs) cserélődik. Ha nincs fordítás → angol.
+// 🛡️ CSALÁS-HÍR (2026-11-27, csalás-figyelő 8. rész): a törzs példablokkja a marked ELŐTT a rajzolt képre
+// (website/assets/images/csalas/<slug>-<lang>.jpg, core/csalas-kepek.js) cserélődik; ha a kép még nincs,
+// a jelölt szöveges változatra — a nyers [[n|…]] jel sosem kerül ki.
+const kepVan = rel => existsSync(join(ASSETS_SRC, 'images', rel));
+function csalasTorzs(md, csalas, slug, lang, cim) {
+  if (!csalas) return md;
+  const rel = `csalas/${slug}-${lang}.jpg`;
+  return peldaBlokkCsere(md, { kepUt: kepVan(rel) ? `/assets/images/${rel}` : '', alt: `${cim} — ${(UI[lang] || UI.en).scImgAlt}`, nyelv: lang });
+}
+
 function localizeArticle(a, lang) {
   if (lang === 'en') return a;
   const md = loadTranslation(a.file)[lang];
@@ -917,7 +932,9 @@ function localizeArticle(a, lang) {
     subtitle: meta.subtitle || a.subtitle,
     seoDescription: meta.subtitle || a.seoDescription,
     kereso: null,   // 🔎 a keresőcím CSAK angol (hu/es: a fordított alcím marad — a 3. rész fordítja)
-    bodyHtml: wrapTables(wrapInShort(wrapImpactSection(torzsH1(marked.parse(body), meta.title || a.title)))),
+    // 🛡️ csalás-hír: a hu/es oldal a saját nyelvű 16:9 borítót kapja (a <slug>.jpg angol feliratú)
+    image: a.csalas ? csalasBorito(a, lang, kepVan) : a.image,
+    bodyHtml: wrapTables(wrapInShort(wrapImpactSection(torzsH1(marked.parse(csalasTorzs(body, a.csalas, a.slug, lang, meta.title || a.title)), meta.title || a.title)))),
     bodyMd: body
   };
 }
@@ -1190,8 +1207,10 @@ function loadArticles() {
         seoDescription: meta.subtitle || '',
         kereso: keresoFej(data._meta, { lang: 'en', cikkMd: body }),
         seoKeywords: (data._meta?.seo?.keywords || meta.tags || []).join(', '),
-        bodyHtml: wrapTables(wrapInShort(wrapImpactSection(torzsH1(marked.parse(body), meta.title || data.original_title)))),
+        bodyHtml: wrapTables(wrapInShort(wrapImpactSection(torzsH1(marked.parse(csalasTorzs(body, csalasHir(data._meta), slug, 'en', meta.title || data.original_title)), meta.title || data.original_title)))),
         bodyMd: body,
+        // 🛡️ csalás-hír (2026-11-27): „Scam alert” címke, /scams gyűjtő, rajzolt példa-kép
+        csalas: csalasHir(data._meta),
         // AZ ANGOL TÖRZS MEGŐRZÉSE (2026-10-23): a lokalizáló felülírja a bodyMd-t, a lépés-ikon
         // viszont az angol lépésből jön (core/lepes-kep.js) — így minden nyelven ugyanaz a kép
         bodyMdEn: body,
@@ -1607,7 +1626,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <a href="${homePath}" class="navbar__logo"><img src="/assets/logo.svg" alt="${escapeHtml(SITE.name)} logo" class="navbar__mark">${SITE.name}<span class="navbar__dot">.</span></a>
       <nav class="navbar__nav" id="navMenu">
         <a href="${homePath}">${T.news}</a>
-        <a href="${LP}/trending">🔥 ${tr('trNav')}</a>
+        <a href="${LP}/trending">🔥 ${tr('trNav')}</a>${CSALAS_FIGYELO_BE ? `<a href="${LP}/scams">🛡️ ${tr('scNav')}</a>` : ''}
         <a href="${guidesPath}">${T.guides}</a>
         <a href="${LP}/prompts">📋 ${tr('plNavS')}</a>
         <a href="${toolsPath}">${T.tools}</a>
@@ -1649,6 +1668,7 @@ function pageShell({ title, description, bodyContent, isArticle = false, noIntro
       <p class="site-footer__support"><a href="${LP}/about">${tr('aboutNav')}</a></p>
       <p class="site-footer__support"><a href="${LP}/prompts">📋 ${tr('plNav')}</a></p>
       <p class="site-footer__support"><a href="${LP}/trending">🔥 ${tr('trBanner')}</a></p>
+      ${CSALAS_FIGYELO_BE ? `<p class="site-footer__support"><a href="${LP}/scams">🛡️ ${tr('scTitle')}</a></p>` : ''}
       <p class="site-footer__support"><a href="${archivePath}">🗂️ ${tr('archNavS')}</a></p>
       ${PACKS.enabled ? `<p class="site-footer__support"><a href="${packsPath}">${tr('packsNav')}</a></p>` : ''}
       ${SUPPORT.enabled ? `<p class="site-footer__support"><a href="${supportPath}">${T.support}</a></p>` : ''}
@@ -1712,7 +1732,7 @@ function articleCard(a, featured = false) {
       <h2 class="card__title">${escapeHtml(a.title)}</h2>
       <p class="card__subtitle">${escapeHtml(a.subtitle)}</p>
       <div class="card__foot">
-        <span class="tag ${cat.cls}">${catNev(cat)}</span>
+        ${a.csalas ? `<span class="tag tag--scam">🛡️ ${tr('scBadge')}</span>` : `<span class="tag ${cat.cls}">${catNev(cat)}</span>`}
         <span class="card__arrow">→</span>
       </div>
     </a>
@@ -2204,7 +2224,7 @@ function buildArticlePage(a) {
     <div class="article__head">
       <div class="article__badges">
         <span class="aud ${aud.cls}">${aud.icon} ${tr(aud.key)}</span>
-        <span class="tag ${cat.cls}">${catNev(cat)}</span>
+        ${a.csalas ? `<span class="tag tag--scam">🛡️ ${tr('scBadge')}</span>` : `<span class="tag ${cat.cls}">${catNev(cat)}</span>`}
       </div>
       <h1 class="article__title">${escapeHtml(a.title)}</h1>
       <p class="article__subtitle">${escapeHtml(a.subtitle)}</p>
@@ -2222,6 +2242,7 @@ function buildArticlePage(a) {
       ${hirTorzs.html}
     </div>
     ${tagsHtml}
+    ${(a.csalas && CSALAS_FIGYELO_BE) ? `<p class="sc-more"><a href="../scams">🛡️ ${escapeHtml(tr('scMore'))} →</a></p>` : ''}
     ${xrefBox(a)}
     ${relatedBox(a)}
     <div class="article__foot">
@@ -3380,6 +3401,29 @@ function buildTrendingPage(alap, loc) {
   });
 }
 
+// 🛡️ /scams GYŰJTŐOLDAL (2026-11-27, csalás-figyelő 8. rész; spec 8.6) — CSAK bekapcsolt CSALAS_FIGYELO_BE mellett.
+// Papírlapos fejléc (lap: a legutóbbi csalás 4:5 képe, ha nincs: a bejelentő lista) → hírek → 1 hirdetés →
+// átnézett útmutatók → bejelentő doboz → MI-címke. A kép a lap nyelvén (csalas/<slug>-<lang>.jpg).
+function buildScamsPage(loc) {
+  const sz = Object.fromEntries(Object.keys(CSALAS_UI.en).map(k => [k, tr(k)]));
+  const bejelentes = bejelentesNyelven(LANG);
+  const hirek = loc.filter(a => a.csalas && !a.isGuide).map(a => {
+    const rel = `csalas/${a.slug}-${LANG}.jpg`;
+    return { slug: a.slug, title: a.title, summary: a.subtitle, kep: kepVan(rel) ? `/assets/images/${rel}` : '', datum: a.publishedAt };
+  });
+  const utmutatok = CSALAS_UTMUTATOK.map(s => loc.find(a => a.slug === s)).filter(Boolean).map(a => ({ slug: a.slug, title: a.title }));
+  const fejlec = lapHeroHtml({
+    badge: tr('scHeroBadge'), badgeIkon: '🛡️', h1: tr('scTitle'), lead: tr('scTag'),
+    lap: csalasFejlecLap({ hirek, sz, bejelentes })
+  });
+  const body = csalasOldalHtml({ hirek, utmutatok, sz, bejelentes, hirdetes: hirdetesBlokk(HIRDETES, LANG), fejlec, datumSzoveg: formatDate });
+  return pageShell({
+    title: `${tr('scTitle')} — ${SITE.name}`,
+    description: tr('scTag'),
+    noIntro: true, pagePath: 'scams.html', bodyContent: body
+  });
+}
+
 // ===================================================================
 // "MINDEN HÍR" ARCHÍVUM (2026-07-11) — a régi hírek eddig csak keresőből
 // voltak elérhetők; itt hónapok szerint, kompakt listában mind megvan.
@@ -3840,6 +3884,7 @@ function main() {
     writeFileSync(join(outBase, 'glossary.html'), buildGlossaryPage(), 'utf-8');   // AI-kisszótár
     writeFileSync(join(outBase, 'prompts.html'), buildPromptsPage(articles, loc), 'utf-8');   // Prompt-tár (2026-10-16)
     writeFileSync(join(outBase, 'trending.html'), buildTrendingPage(articles, loc), 'utf-8'); // Trend-radar (2026-10-18)
+    if (CSALAS_FIGYELO_BE) writeFileSync(join(outBase, 'scams.html'), buildScamsPage(loc), 'utf-8');   // 🛡️ /scams (2026-11-27, kapcsoló mögött)
     writeFileSync(join(outBase, ESZKOZ_UTAK.sp + '.html'), buildSafePastePage(), 'utf-8');   // 🧰 Ingyenes eszközök (2026-10-21; a gyűjtő a Prompt-tár)
     writeFileSync(join(outBase, ESZKOZ_UTAK.pb + '.html'), buildPromptBuilderPage(), 'utf-8');
     writeFileSync(join(outBase, 'wizard.html'), buildWizardPage(), 'utf-8');       // Melyik AI való neked?
@@ -3921,6 +3966,7 @@ function main() {
       sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary`, date: null });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/prompts`, date: gyujtoLastmod(guides) });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/trending`, date: gyujtoLastmod(loc.filter(a => a.trend)) });
+      if (CSALAS_FIGYELO_BE) sitemapUrls.push({ loc: `${SITE.url}${lp}/scams`, date: gyujtoLastmod(loc.filter(a => a.csalas)) });   // 🛡️
       sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: null });
       for (const ut of Object.values(ESZKOZ_UTAK)) sitemapUrls.push({ loc: `${SITE.url}${lp}/${ut}`, date: null });   // 🧰
       sitemapUrls.push({ loc: `${SITE.url}${lp}/about`, date: null });

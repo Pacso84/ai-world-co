@@ -110,7 +110,8 @@ for (const lang of LANGS) {
   // ⚠️ EZ A LISTA KÉZZEL NŐ. Ami nincs benne, azt az őrszem NEM nézi meg —
   // az eladó oldal (2026-09-20) pont az a lap, ahol egy angolul maradt
   // mondat pénzbe kerül, ezért felvettük.
-  const pages = ['index.html', 'guides.html', 'tools.html', 'support.html', 'packs.html']
+  // 🛡️ scams.html (2026-11-27): csak bekapcsolt csalás-figyelőnél létezik
+  const pages = ['index.html', 'guides.html', 'tools.html', 'support.html', 'packs.html', 'scams.html']
     .map(f => join(base, f)).filter(existsSync);
   const artDir = join(base, 'article');
   const articles = existsSync(artDir) ? readdirSync(artDir).map(f => join(artDir, f)) : [];

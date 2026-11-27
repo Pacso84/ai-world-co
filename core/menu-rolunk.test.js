@@ -42,6 +42,8 @@ t('🧭 menü 2 (10-18, user: „nem látom se a Prompt-tárat, se a másikat”
   // 2026-10-21: az ingyenes eszközök a Prompt-tár TETEJÉN vannak, nem külön menüpontban (user: „a prompttárral vond össze!”)
   const sorrend = ['${T.news}', "/trending\">🔥 ${tr('trNav')}", '${T.guides}', "/prompts\">📋 ${tr('plNavS')}", '${T.tools}', "${tr('glossNav')}"];
   sorrend.forEach((k, i) => assert.ok(sorok[i] && sorok[i].includes(k), `a(z) ${i + 1}. menüpont nem ez: ${k} (hanem: ${sorok[i]})`));
+  // 🛡️ 2026-11-27 (csalás-figyelő, spec 8.6): a „Csalások” közvetlenül a Felkapott után, CSAK a kapcsoló mögött
+  assert.match(sorok[1], /\/trending">🔥 \$\{tr\('trNav'\)\}<\/a>\$\{CSALAS_FIGYELO_BE \? `<a href="\$\{LP\}\/scams">🛡️ \$\{tr\('scNav'\)\}<\/a>` : ''\}/, 'a Csalások nem a Felkapott után / nem a kapcsoló mögött');
   assert.ok(!sorok.some(s => s.includes('archivePath')), 'az Archívum még a menüben van');
   assert.match(src, /<a href="\$\{archivePath\}">🗂️ \$\{tr\('archNavS'\)\}<\/a>/, 'az Archívum nincs a láblécben');
   assert.equal((src.match(/plNavS: '/g) || []).length, 3, 'a rövid Prompt-tár menüfelirat nem 3 nyelven');

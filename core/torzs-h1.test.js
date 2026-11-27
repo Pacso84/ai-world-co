@@ -45,7 +45,8 @@ t('az első H2 ELŐTTI, a címre csak hasonlító (fordított) H1 kimarad — ne
 
 t('a build mindkét helyen (angol + lokalizált) a torzsH1-et használja, a címmel', () => {
   const src = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8');
-  assert.equal((src.match(/torzsH1\(marked\.parse\(body\),/g) || []).length, 2, 'a build nem mindkét helyen hívja');
+  // 2026-11-27: a csalás-hír példablokkja a marked ELŐTT cserélődik (csalasTorzs) — a H1-szűrő ugyanúgy fut
+  assert.equal((src.match(/torzsH1\(marked\.parse\((?:csalasTorzs\()?body[,)]/g) || []).length, 2, 'a build nem mindkét helyen hívja');
   assert.doesNotMatch(src, /stripLeadH1\(marked/, 'maradt régi stripLeadH1-hívás');
 });
 
