@@ -125,5 +125,15 @@ t('🔌 build.js: menüpont, lábléc, scams.html, sitemap-sor és a /scams-link
   for (const s of sorok) assert.ok(/CSALAS_FIGYELO_BE/.test(s), 'kapcsoló nélküli sor: ' + s.trim());
 });
 
+// 11-28 ELŐNÉZET-LELET (390 px): a cikkfej-kép fix 340 px magas + object-fit: cover → mobilon négyzet, és a SZÖVEGES
+// 16:9-es csalás-borító két széle lemaradt („What this sca…”, „Pressure to hurr…”). Csalás-hírnél 16:9 doboz, nem vág.
+t('📱 csalás-hír cikkfej-képe mobilon sem vág (16:9 doboz, contain)', () => {
+  const b = readFileSync(join(ROOT, 'website', 'build.js'), 'utf8');
+  assert.match(b, /coverHtml\(a, '\.\.\/', a\.csalas \? 'article__cover article__cover--csalas' : 'article__cover', true\)/);
+  const css = readFileSync(join(ROOT, 'website', 'assets', 'style.css'), 'utf8');
+  assert.match(css, /\.article__cover--csalas\s*\{[^}]*height:\s*auto[^}]*aspect-ratio:\s*16\s*\/\s*9/);
+  assert.match(css, /\.article__cover--csalas img\s*\{[^}]*object-fit:\s*contain/);
+});
+
 if (hiba) { console.log(`\n❌ csalas-oldal: ${hiba} hiba`); process.exit(1); }
 console.log('✅ csalas-oldal: minden eset zöld');

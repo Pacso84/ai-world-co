@@ -233,6 +233,9 @@ body {
   height: 340px; margin: 0 0 34px; border-radius: var(--radius); overflow: hidden;
 }
 .article__cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* 11-28: a csalás-borító SZÖVEGES 16:9-es kép — a fix 340 px-es doboz mobilon négyzet lenne és levágná a széleit */
+.article__cover--csalas { height: auto; aspect-ratio: 16 / 9; }
+.article__cover--csalas img { object-fit: contain; }
 .article__cover.cover--gen { display: flex; align-items: center; justify-content: center; }
 .article__cover .cover__icon { font-size: 96px; }
 

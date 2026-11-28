@@ -333,6 +333,9 @@ THE EXAMPLE MESSAGE BLOCK — put it directly under "## ${h2}", in exactly this 
 - mark only warning signs that the official source itself names or clearly describes — never invent a new trick
 - the message is FICTIONAL and clearly an example: links only example.com addresses (like parcel-track.example.com),
   phone numbers only +1 (555) 555-0100 to 555-0199; never a real company, brand, bank, app, store or government agency name
+  (so no FBI, FTC, IRS, Social Security, USPS, Medicare or any other real agency — not even in the sender line)
+- if the scammer pretends to be an official agency, use a made-up generic sender instead, like "Election Help Desk",
+  "Benefits Office" or "Federal Case Unit", and keep every link and number fictional as above
 - write your OWN message that matches the scam in the source — the sample below only shows the format
 
 FORMAT SAMPLE (do not copy its wording):
@@ -347,7 +350,7 @@ ${helyek.map(b => `- ${b.nev}: ${b.url}`).join('\n')}
 ${tobbi.map(s => `Also say: "${s}"`).join('\n')}
 
 OTHER RULES:
-- A US agency may be named (for example the FBI or the FTC), but explain the trick and the defense so they help anyone, anywhere.
+- In the article text (not in the example message) a US agency may be named (for example the FBI or the FTC), but explain the trick and the defense so they help anyone, anywhere.
 - Loss amounts or statistics only if the official source states them — quote them exactly. No prices of any product or service.
 - Calm, helpful tone. The title names the scam plainly — no alarm words, no ALL CAPS, no "urgent" or "warning!!" style.
 - Never ask readers to like, share or forward the article.
@@ -366,7 +369,7 @@ const HIBA_ANGOL = [
   [/^a példablokk nem a „Warning signs” alatt van$/, () => 'the example block must be directly under "## Warning signs"'],
   [/^nem example\.com domain: (.+)$/, (_, d) => `not allowed in the example (use only example.com addresses): ${d}`],
   [/^nem kitalált \(555-01xx\) telefonszám: (.+)$/, (_, t) => `phone number not allowed in the example (use only +1 (555) 555-0100 to 555-0199): ${t}`],
-  [/^tiltott név: (.+)$/, (_, n) => `real company, brand or agency name not allowed in the example: ${n}`],
+  [/^tiltott név: (.+)$/, (_, n) => `real company, brand or agency name not allowed in the example: ${n} — use a made-up generic sender instead (for example "Benefits Office"), and no other real name either`],
 ];
 
 export function csalasHibaAngolul(hibak) {

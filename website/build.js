@@ -2220,7 +2220,7 @@ function buildArticlePage(a) {
   const hirTorzs = hirdetesHirbe(withMidRead(guideAutolink(glossAutolink(a.bodyHtml, { linked: new Set(), count: 0 }), a), a), hirdetesBlokk(HIRDETES, LANG));
 
   const body = `<article class="article">
-    ${coverHtml(a, '../', 'article__cover', true)}
+    ${coverHtml(a, '../', a.csalas ? 'article__cover article__cover--csalas' : 'article__cover', true)}
     <div class="article__head">
       <div class="article__badges">
         <span class="aud ${aud.cls}">${aud.icon} ${tr(aud.key)}</span>

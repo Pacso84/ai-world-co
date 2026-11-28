@@ -331,6 +331,19 @@ t('✍️ író-utasítás: kimondja a határokat (example.com, 555-01xx, csak a
   }
 });
 
+// 11-28 ELŐNÉZET-LELET: az FBI választási PSA-ján az író kétszer is valódi hivatalt írt a példaüzenetbe (FBI, majd
+// Social Security), mert az „OTHER RULES” azt mondta: „A US agency may be named (for example the FBI…)” — ez a cikk
+// szövegére vonatkozott, de a példára is értette. A szabálynak ki kell mondania, hogy a PÉLDÁBAN nem, és adnia kell
+// kitalált, általános feladót (ha a csaló hivatalnak adja ki magát).
+t('✍️ író-utasítás: hivatalnév CSAK a cikk szövegében; a példában kitalált, általános feladó', () => {
+  const u = UT('call');
+  const sor = u.split('\n').find(s => /US agency may be named/.test(s)) || '';
+  assert.match(sor, /not in the example/i, 'a hivatal-engedély sora mondja ki: a példában nem');
+  assert.match(u, /pretends to be an official agency[^\n]*made-up generic/i, 'adjon általános feladót hivatal-csaláshoz');
+  assert.match(u, /FBI, FTC, IRS, Social Security/, 'a példák közt a tipikus hivatalnevek is tiltva');
+  assert.match(csalasHibaAngolul(['tiltott név: FBI'])[0], /made-up generic/i, 'az újrapróba is mondja meg, mit írjon helyette');
+});
+
 t('✍️ író-utasítás: védekezés-lépés nélkül nincs csalás-hír (hiba), ismeretlen csatorna is hiba', () => {
   assert.throws(() => csalasIroUtasitas({ csatorna: 'sms', vedekezes: [], bejelentes: BEJELENTES }), /védekezés/);
   assert.throws(() => csalasIroUtasitas({ csatorna: 'fax', vedekezes: [{ lepes: 'X', forras: 'u' }], bejelentes: BEJELENTES }), /csatorna/);
