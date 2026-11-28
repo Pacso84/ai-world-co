@@ -38,6 +38,7 @@
 // ===================================================================
 
 import { azonosEszkoz } from './guide-focus.js';
+import { maiCsalasVideok } from './csalas-reel.js';   // 🛡️ 13. rész: a mai csalás-videó a videós csatornákra is
 
 const napja = (x) => {
   const t = Date.parse(String(x || ''));
@@ -197,7 +198,8 @@ export function videoCsatornaMai(cikkek, postOf, field, now = Date.now()) {
   const ki = [];
   const volt = new Set();
   // 2026-10-11: a mai Facebook-Reelek UTÁN a mai TikTok-extra videók is (lent).
-  for (const c of [...maiReelCikkek(cikkek, now), ...maiTiktokExtra(cikkek, now)]) {
+  // 🛡️ 2026-11-28 (csalás-figyelő 13. rész): + a mai csalás-videó (core/csalas-reel.js, `csalas_video_at`).
+  for (const c of [...maiReelCikkek(cikkek, now), ...maiTiktokExtra(cikkek, now), ...maiCsalasVideok(cikkek, now)]) {
     if (!c?.slug || volt.has(c.slug)) continue;
     volt.add(c.slug);
     const post = postOf(c.slug);

@@ -54,8 +54,12 @@ export const ABLAK_TETO = SAV_FELSO + 120, ABLAK_MAG = 400;      // 370…770
 export const SZOVEG_ELRENDEZES = {
   // lepesMaxMag: a lépés alatt a pöttysor is elfér (alja + ~90 px ≤ 1290)
   ablakos: { kozepY: 1060, maxMag: 380, lepesMaxMag: 280 },    // 870…1250 (a leírás-sáv 1290-nél kezdődik)
-  borito:  { kozepY: 860, maxMag: 600, lepesMaxMag: 600 }
+  borito:  { kozepY: 860, maxMag: 600, lepesMaxMag: 600 },
+  // 🛡️ csalás-Reel (13. rész, core/csalas-reel.js): fent a kamu üzenet-kártya (360…880), a címke ≥ 886-tól, a pöttysor ≤ 1290
+  csalas:  { kozepY: 1090, maxMag: 280, lepesMaxMag: 230 }
 };
+// 🛡️ csalás-Reel: a ①②③ jelekkel rajzolt üzenet-kártya doboza (core/csalas-kep.js csalasKartyaSvg → PNG = kepUt)
+export const CSALAS_KARTYA = { x: SZOVEG_X, y: ABLAK_TETO - 10, w: SZOVEG_SZELES, h: 520 };
 export const SOR_TAV = 1.14;
 export const SZOKOZ_SZORZO = 1.3;     // a kiemelő „pirula” ne érjen a szomszéd szóhoz
 
@@ -217,7 +221,9 @@ export function szoAllapot(seg, j, t) {
 const SABLON_STILUS = {
   tinta:  { szoveg: SZIN.papir, aktiv: SZIN.sarga, halvany: 'rgba(242,237,228,0.55)', cimke: SZIN.menta, pirula: null },
   borito: { szoveg: SZIN.feher, aktiv: SZIN.tinta, halvany: 'rgba(255,255,255,0.7)', cimke: SZIN.sarga, pirula: SZIN.sarga },
-  papir:  { szoveg: SZIN.tinta, aktiv: SZIN.zsalya, halvany: 'rgba(28,26,22,0.55)', cimke: SZIN.zsalya, pirula: null, alahuz: true }
+  papir:  { szoveg: SZIN.tinta, aktiv: SZIN.zsalya, halvany: 'rgba(28,26,22,0.55)', cimke: SZIN.zsalya, pirula: null, alahuz: true },
+  // 🛡️ csalás-Reel: a tinta-alap, a címke a csalás-szín világos (sötét alapon olvasható) változata
+  csalas: { szoveg: SZIN.papir, aktiv: SZIN.sarga, halvany: 'rgba(242,237,228,0.55)', cimke: '#f08a73', pirula: null }
 };
 
 function szovegBlokk(seg, t, st, { kozepY, tipusMeret } = {}) {
@@ -273,15 +279,17 @@ export function kockaSvg(iv, t, sablon) {
   // a szöveg „beúszása” szegmensváltáskor (a horog NEM úszik: az első kockán a helyén van)
   const be = (seg.tipus === 'horog' || hurok) ? 1 : kiKifut(a.lt / 0.22);
   const eltol = (1 - be) * 70;
-  const elr = sablon === 'borito' ? SZOVEG_ELRENDEZES.borito : SZOVEG_ELRENDEZES.ablakos;
+  const elr = SZOVEG_ELRENDEZES[sablon === 'borito' || sablon === 'csalas' ? sablon : 'ablakos'];
   const blokk = szovegBlokk(seg, tt, st, {
     kozepY: elr.kozepY + eltol,
     tipusMeret: { maxMag: seg.tipus === 'lepes' ? elr.lepesMaxMag : elr.maxMag, ...(seg.tipus === 'horog' ? { maxMeret: 112, minMeret: 60 } : seg.tipus === 'vege' ? { maxMeret: 96, minMeret: 60 } : { maxMeret: 104, minMeret: 60 }) }
   });
   const kiBe = seg.tipus === 'horog' || hurok ? 1 : be;
   // címke a szöveg fölött
-  let cimke = '';
-  if (seg.tipus === 'horog') cimke = `${LEPES_DB} QUICK STEPS`;
+  // a szegmens saját címkéje (🛡️ csalás-Reel: „SCAM ALERT”, „WARNING SIGN 1 / 3”…) elsőbbséget kap
+  let cimke = seg.cimke || '';
+  if (cimke) { /* megvan */ }
+  else if (seg.tipus === 'horog') cimke = `${LEPES_DB} QUICK STEPS`;
   else if (seg.tipus === 'lepes') cimke = `STEP ${seg.szam} / ${seg.db}`;
   else cimke = 'THE FULL STEP-BY-STEP GUIDE';
   r.push(`<g opacity="${kiBe.toFixed(3)}">`);
@@ -310,6 +318,21 @@ export function kameraAllas(t, osszes, hurok) {
 
 async function hatterKeszito(sharp, sablon, kepUt) {
   const van = kepUt && existsSync(kepUt);
+  if (sablon === 'csalas' && van) {
+    // 🛡️ csalás-Reel: tinta-alap + a TELJES üzenet-kártya (nem vágjuk: a ①②③ jel és a vízjel mindig látszik),
+    // lassú „lélegzés” 0,97 → 1,00 a doboz közepére — az első kockától mozog, de soha nem lóg ki a dobozból.
+    const B = CSALAS_KARTYA;
+    const alap = await sharp({ create: { width: W, height: H, channels: 3, background: SZIN.tinta } }).png().toBuffer();
+    const kartya = await sharp(kepUt).resize(B.w, B.h, { fit: 'inside' }).png().toBuffer({ resolveWithObject: true });
+    return async (t, osszes, hurok) => {
+      const x = hurok ? 0 : korlat(t / osszes);
+      const f = 0.97 + 0.03 * x;
+      const w = Math.round(kartya.info.width * f), h = Math.round(kartya.info.height * f);
+      const k = await sharp(kartya.data).resize(w, h).png().toBuffer();
+      return sharp(alap).composite([{ input: k, left: Math.round(B.x + (B.w - w) / 2), top: Math.round(B.y + (B.h - h) / 2) }])
+        .removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    };
+  }
   if (sablon === 'borito' && van) {
     // teljes képernyős borító, alul-középen sötétítés a felirat alá
     const nagy = await sharp(kepUt).resize(Math.round(W * 1.12), Math.round(H * 1.12), { fit: 'cover' }).raw().toBuffer({ resolveWithObject: true });
@@ -509,6 +532,28 @@ async function main() {
   let hiba = 0;
   for (const [n, cel] of celok.entries()) {
     const [kulcs, sab] = cel.split(':');
+    // 🛡️ csalás-Reel minta (13. rész): a valódi FBI IC3 csalás-hír mintájából (core/fixtures) — a CI-előnézethez
+    if (kulcs === 'csalas-minta') {
+      try {
+        const { readFileSync: rf } = await import('node:fs');
+        const cr = await import('./csalas-reel.js');
+        const { csalasKartyaSvg } = await import('./csalas-kep.js');
+        const sharp = (await import('sharp')).default;
+        const f = JSON.parse(rf(join(ROOT, 'core', 'fixtures', 'csalas-ic3-valasztas.json'), 'utf-8'));
+        const md = `---\ntitle: "Scammers Are Using the 2026 Midterm Elections to Run Fake Campaign Schemes"\n---\n\n${f.en}`;
+        const { szegmensek, pelda } = cr.csalasReelSzkript(md);
+        console.log(`🛡️ csalás-minta — becsült ${becsultHossz(szegmensek).toFixed(1)} mp`);
+        for (const s of szegmensek) console.log('   «' + s.mond + '»');
+        if (dry) continue;
+        const kartya = join(kiDir, 'csalas-kartya.png');
+        await sharp(Buffer.from(csalasKartyaSvg(pelda, { lang: 'en', maxMag: 640 }).svg)).png().toFile(kartya);
+        const r = await renderMotionReel(szegmensek, { out: join(kiDir, 'csalas-minta.mp4'), workDir: join(kiDir, '.munka-' + n), sablon: 'csalas', nema, csakKockak, kepUt: kartya });
+        rmSync(join(kiDir, '.munka-' + n), { recursive: true, force: true });
+        console.log(r.kepek ? '🖼️  ' + r.kepek.length + ' kocka' : `✅ ${r.file} — ${r.seconds.toFixed(1)} mp, ${r.kockak} kocka`);
+        console.log('📝 leírás:\n' + cr.csalasReelCaption({ slug: f.slug, title: 'Scammers Are Using the 2026 Midterm Elections to Run Fake Campaign Schemes', subtitle: 'Learn how fake donations, merchandise, and voter-registration messages work, and how to spot them before you click.', jelek: pelda.magyarazat }));
+      } catch (e) { hiba++; console.log('💥 csalas-minta: ' + e.message.slice(0, 300)); }
+      continue;
+    }
     const sablon = SABLONOK.includes(sab) ? sab : SABLONOK[n % SABLONOK.length];
     const talalt = findArticleBySlug(join(ROOT, 'content', 'articles'), kulcs);
     if (!talalt) { console.log('❌ nincs ilyen cikk: ' + kulcs); hiba++; continue; }

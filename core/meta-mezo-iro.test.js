@@ -36,6 +36,8 @@ export function metaOlvasasok(szoveg) {
 // ⚠️ `seo.description` SOHA nem kerülhet ide.
 const KIVETEL = new Map([
   ["csalas", "csalás-figyelő: az író a csalás-vázlatra teszi (agents/iro/agent.js); élő cikkben a /scams oldal (8. rész) után lesz"],
+  ["csalas_video_at", "csalás-Reel (13. rész): a core/reel-post.js prepareCsalasReel írja a gyártáskor — élő cikkben a kapcsoló (CSALAS_FIGYELO_BE) bekapcsolása után lesz"],
+  ["csalas_reel_at", "csalás-Reel (13. rész): a core/reel-post.js sendCsalasReel írja a Facebook-küldéskor — élő cikkben a kapcsoló bekapcsolása után lesz"],
   ["fact_check_flag", "a tény-ellenőrző CSAK elavultság-gyanúnál írja (agents/fact-check/agent.js: 'may-be-obsolete') — ma épp egy cikkben sincs"],
   ["source_snippet", "régi kivonat-mező (11-02 óta a privát forrás-tárban; core/forras-cache.js visszafelé-kompatibilis tartaléka)"],
   ["source_text", "csak KOMMENT (core/iro-forras.js 147. sor: a bíró szövegének leírása), nem olvasás"],

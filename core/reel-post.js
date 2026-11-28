@@ -40,6 +40,7 @@ import { followCta, trimToWords, AI_JELOLES } from './social-text.js';
 import { guideMeta, findArticleBySlug } from './frontmatter.js';
 import { utmutatoE } from './guide-kind.js';
 import { friss } from './cikk-kint.js';
+import { csalasHir } from './csalas-figyelo.js';
 
 export const SITE = 'https://aiworldhq.com';
 
@@ -475,6 +476,8 @@ async function cikkekBetolt(ROOT, join) {
       published_at: m.published_at || '', reel_at: m.reel_at || '', tool: m.tool || '',
       tiktok_video_at: m.tiktok_video_at || '', fb_reel_at: m.fb_reel_at || '',
       tiktok_foto_at: tiktokFotoAt(m.slug),
+      // 🛡️ 13. rész (11-28): csalás-hír → csalás-Reel (core/csalas-reel.js)
+      csalas: csalasHir(m), csalas_video_at: m.csalas_video_at || '', csalas_reel_at: m.csalas_reel_at || '',
       title: j.original_title || '',
       md: j.article_markdown || '' });
   }
@@ -591,10 +594,111 @@ async function prepare(ROOT, join) {
   let extra = null;
   try { extra = await prepareTiktokExtra(ROOT, join); }
   catch (e) { console.log('⚠️  TikTok-extra videó kimaradt: ' + String(e?.message || e).slice(0, 160)); }
+  // 🛡️ CSALÁS-REEL (13. rész, 11-28): szintén független ág — a hibája a rendes Reelt és a TikTok-extrát nem rontja el
+  let csalas = null;
+  try { csalas = await prepareCsalasReel(ROOT, join); }
+  catch (e) { csalas = { csalasHiba: String(e?.message || e).slice(0, 200) }; console.log('⚠️  Csalás-Reel kimaradt: ' + csalas.csalasHiba); }
   if (reelHiba) throw reelHiba;
+  const alap = ki && typeof ki === 'object' ? ki : {};
+  const csalasRekord = csalas?.csalasReel ? { csalasReel: csalas.csalasReel } : (csalas?.csalasHiba ? { csalasHiba: csalas.csalasHiba } : {});
   // 11-06: a „nincs miből” ok a riportba megy (futtatFazis → memory/reel-guard.json → prepare.tiktokExtraOk)
-  if (extra?.tiktokExtraOk) return { ...(ki && typeof ki === 'object' ? ki : {}), tiktokExtraOk: extra.tiktokExtraOk };
-  return ki;
+  if (extra?.tiktokExtraOk) return { ...alap, tiktokExtraOk: extra.tiktokExtraOk, ...csalasRekord };
+  return Object.keys(csalasRekord).length ? { ...alap, ...csalasRekord } : ki;
+}
+
+// ===================================================================
+// 🛡️ CSALÁS-REEL (13. rész, 2026-11-28; user: „jöjjenek le a social médiában is! … lehet hogy a reel jobb lenne!”)
+// ===================================================================
+// A csalás-hírből napi legfeljebb 1 Reel (core/csalas-reel.js), a rendes napi 2 útmutató-Reel MELLÉ. A videó a
+// mozgóképes motor „csalas” elrendezésével készül: fent a cikk kitalált, vízjeles példaüzenete (core/csalas-kep.js
+// csalasKartyaSvg), alatta szavanként szinkron felirat. Jelölés: `_meta.csalas_video_at` a gyártáskor (ettől a
+// FB-képes poszt kimarad — core/social-published.js —, és a Buffer a TikTokra viszi), `_meta.csalas_reel_at` a
+// Facebook-küldéskor (sendCsalasReel). Kapcsoló: CSALAS_FIGYELO_BE (KI → semmi nem történik).
+async function csalasVideoGyart(ROOT, join, c, out) {
+  const { mkdirSync, rmSync } = await import('fs');
+  const { tmpdir } = await import('os');
+  const { dirname } = await import('path');
+  const cr = await import('./csalas-reel.js');
+  const { szegmensek, pelda, reason } = cr.csalasReelSzkript(c.md);
+  if (!szegmensek) throw new Error('a csalás-hírből nem telik videó: ' + reason);
+  const { csalasKartyaSvg } = await import('./csalas-kep.js');
+  const { renderMotionReel } = await import('./motion-reel.js');
+  const sharp = (await import('sharp')).default;
+  mkdirSync(dirname(out), { recursive: true });
+  // a kártya-PNG a rendszer ideiglenes mappájába: a renderMotionReel a workDir-t az elején kiüríti, a repóba
+  // (a CI visszacommitol) és a shorts/-ba (a deploy kitenné) pedig nem való
+  const kartyaUt = join(tmpdir(), `csalas-kartya-${process.pid}.png`);
+  const workDir = join(ROOT, '.video-munka');
+  try {
+    await sharp(Buffer.from(csalasKartyaSvg(pelda, { lang: 'en', maxMag: 640 }).svg)).png().toFile(kartyaUt);
+    return await renderMotionReel(szegmensek, { out, workDir, kepUt: kartyaUt, sablon: 'csalas' });
+  } finally {
+    try { rmSync(workDir, { recursive: true, force: true }); } catch { /* */ }
+    try { rmSync(kartyaUt, { force: true }); } catch { /* */ }
+  }
+}
+
+export async function prepareCsalasReel(ROOT, join) {
+  const { CSALAS_FIGYELO_BE } = await import('./csalas-figyelo.js');
+  if (!CSALAS_FIGYELO_BE) return null;
+  const { existsSync, readFileSync, writeFileSync } = await import('fs');
+  const cr = await import('./csalas-reel.js');
+  const cikkek = await cikkekBetolt(ROOT, join);
+  const kiDir = join(ROOT, 'website', 'assets', 'video', 'shorts');
+  let betu;
+  // 1) ÉLETBEN TARTÁS: a ma gyártott és a még ki nem küldött csalás-videó (a shorts/ minden futásban üres)
+  for (const c of cr.eletbenTartandoCsalasVideok(cikkek)) {
+    const ut = join(kiDir, c.slug + '.mp4');
+    if (existsSync(ut)) continue;
+    const r = await csalasVideoGyart(ROOT, join, c, ut);
+    betu = r.betu;
+    console.log('♻️  Csalás-Reel: a videó újragyártva (' + c.slug + ') — ' + r.seconds.toFixed(1) + ' mp');
+  }
+  // 2) ÚJ: a friss, még videó nélküli csalás-hír (napi max 1)
+  const c = cr.kovetkezoCsalasReel(cikkek, Date.now(), { alkalmas: x => !!cr.csalasReelSzkript(x.md).szegmensek });
+  if (!c) return betu ? { betu } : null;
+  console.log('🛡️ Csalás-Reel készül: ' + c.slug);
+  const r = await csalasVideoGyart(ROOT, join, c, join(kiDir, c.slug + '.mp4'));
+  console.log('   ✅ ' + r.seconds.toFixed(1) + ' mp' + (r.felolvaso === 'kokoro' ? ' — 🤗 Kokoro-hanggal (tartalék)' : ''));
+  const p = join(ROOT, 'content', 'articles', c.file);
+  const d = JSON.parse(readFileSync(p, 'utf-8'));
+  d._meta = d._meta || {};
+  d._meta.csalas_video_at = new Date().toISOString();
+  writeFileSync(p, JSON.stringify(d, null, 2), 'utf-8');
+  return { betu: r.betu, csalasReel: c.slug };
+}
+
+/**
+ * A legyártott csalás-Reel Facebookra (Make). Jelölés `_meta.csalas_reel_at` — siker VAGY bizonytalan kimenetel
+ * után (a duplikált Reel rosszabb, mint a kimaradt). Bukáskor DOB (a sendFazis a 'send_csalas' rekordba írja).
+ * @returns {{kiment: boolean, slug: string}|null}
+ */
+export async function sendCsalasReel(ROOT, join, dry) {
+  const { CSALAS_FIGYELO_BE } = await import('./csalas-figyelo.js');
+  if (!CSALAS_FIGYELO_BE) return null;
+  const { readFileSync, writeFileSync } = await import('fs');
+  const cr = await import('./csalas-reel.js');
+  const c = cr.kuldendoCsalasReel(await cikkekBetolt(ROOT, join));
+  if (!c) return null;
+  const cikkPath = join(ROOT, 'content', 'articles', c.file);
+  const cikk = JSON.parse(readFileSync(cikkPath, 'utf-8'));
+  const { slug, title, subtitle } = guideMeta(cikk);
+  const { pelda } = cr.csalasReelSzkript(cikk.article_markdown || '');
+  const caption = cr.csalasReelCaption({ slug: slug || c.slug, title, subtitle, jelek: pelda?.magyarazat || [] });
+  if (!caption) throw new Error('a csalás-Reel leírása nem állt össze (cím/slug hiányzik)');
+  console.log('🛡️ Csalás-Reel küldése: ' + c.slug);
+  const r = await sendReel({ video: reelVideoUrl(c.slug), caption, hook: (process.env.MAKE_REEL_WEBHOOK_URL || '').trim(), dry });
+  if (r.ok && r.dry) { console.log('   🧪 PRÓBA — nem küldtem el.'); return null; }
+  if (r.ok || r.sent === 'unknown') {
+    cikk._meta = cikk._meta || {};
+    cikk._meta.csalas_reel_at = new Date().toISOString();
+    writeFileSync(cikkPath, JSON.stringify(cikk, null, 2), 'utf-8');
+  }
+  if (r.ok) { console.log('   ✅ Átvette a Make (HTTP ' + r.status + ')'); return { kiment: true, slug: c.slug }; }
+  console.error('   ❌ ' + r.reason);
+  const hiba = new Error(r.reason || 'A csalás-Reel kiküldése nem sikerült.');
+  hiba.sent = r.sent;
+  throw hiba;
 }
 
 /**
@@ -977,10 +1081,22 @@ export async function sendFazis(ROOT, join, dry) {
   }
   let ki = null, normalHiba = null;
   try { ki = await send(ROOT, join, dry); } catch (e) { normalHiba = e; }
+  // 🛡️ CSALÁS-REEL (13. rész): a rendes Reel nélküli futásban, a TikTok-extra ELŐTT (ritka, időérzékeny figyelmeztetés).
+  // Ha ebben a futásban ment rendes Reel, a következő futásra marad (≤ 2 napig — core/csalas-reel.js).
+  let csalasKi = null;
+  try {
+    if (!reelKiment(ki, normalHiba)) csalasKi = await sendCsalasReel(ROOT, join, dry);
+    reelAllapot(ROOT, join, { fazis: 'send_csalas', ok: true, ...(csalasKi?.slug ? { slug: csalasKi.slug } : {}) });
+  } catch (e) {
+    csalasKi = { kiment: e?.sent === 'unknown' };   // bizonytalan: a Make átvehette — ne menjen mellé a TikTok-extra
+    console.error('⚠️  Csalás-Reel kimaradt: ' + String(e?.message || e).slice(0, 160));
+    reelAllapot(ROOT, join, { fazis: 'send_csalas', ok: false, hiba: String(e?.message || e).slice(0, 200) });
+  }
   try {
     // 2026-10-15 (végső review M6): két Facebook-Reel egymás után egy futásban feltűnő — az extra
     // csak olyan futásban megy, ahol a rendes Reel NEM ment ki. Az extra egész nap él, később kiküldhető.
-    if (!reelKiment(ki, normalHiba)) await sendTiktokExtraFb(ROOT, join, dry);
+    if (csalasKi?.kiment) console.log('💤 TikTok-extra Facebook-Reel: ebben a futásban csalás-Reel ment — a következő futásra marad.');
+    else if (!reelKiment(ki, normalHiba)) await sendTiktokExtraFb(ROOT, join, dry);
     else console.log('💤 TikTok-extra Facebook-Reel: ebben a futásban már ment rendes Reel — a következő futásra marad.');
     // Siker VAGY „nem volt dolga" → ok:true: az előző nap bukása ne ragadjon be.
     reelAllapot(ROOT, join, { fazis: 'send_extra', ok: true });

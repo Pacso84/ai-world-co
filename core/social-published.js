@@ -26,6 +26,7 @@
 // ===================================================================
 
 import { utmutatoE } from './guide-kind.js';
+import { csalasFotoPosztHelyettReel } from './csalas-reel.js';
 
 /** Hír ennyi napig megy ki; utána lezárjuk. Az útmutató örökzöld. */
 export const FRESH_DAYS = 7;
@@ -69,7 +70,10 @@ export function buildPublishedMap(entries) {
       // „hír" itt egy örökzöld cikket zárna ki a terjesztésből 7 nap után.
       const isGuide = utmutatoE(f, d);
       // reel: Reelként már kiment (2026-09-27, user: „amik kimennek Reelbe, azok ne jelenjenek meg posztba")
-      const rec = { at: d._meta?.published_at || '', guide: isGuide, reel: !!(d._meta?.reel_at || d._meta?.fb_reel_at) };
+      // 🛡️ 2026-11-28 (csalás-figyelő 13. rész, user: „vagy poszt vagy reel”): a csalás-hír Facebook-formája a Reel,
+      // ha a videója elkészült (core/csalas-reel.js) — különben a képes poszt megy (tartalék)
+      const rec = { at: d._meta?.published_at || '', guide: isGuide,
+        reel: !!(d._meta?.reel_at || d._meta?.fb_reel_at) || csalasFotoPosztHelyettReel(d._meta) };
       if (d._meta?.slug) map[d._meta.slug] = rec;
       const m = (d.article_markdown || '').match(/^---\n[\s\S]*?^title:\s*["']?(.+?)["']?\s*$/m);
       const legacy = matchSlug((m && m[1]) || d.original_title || f);

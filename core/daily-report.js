@@ -707,13 +707,16 @@ async function main() {
   try {
     const rg = JSON.parse(readFileSync(join(ROOT, 'memory', 'reel-guard.json'), 'utf-8'));
     // 'send_extra' (2026-10-15): a TikTok-extra videó Facebook-Reelje, külön rekord.
-    for (const fazis of ['prepare', 'send', 'send_extra']) {
+    // 'send_csalas' (2026-11-28, csalás-figyelő 13. rész): a csalás-Reel Facebook-küldése, külön rekord.
+    for (const fazis of ['prepare', 'send', 'send_extra', 'send_csalas']) {
       const f = rg[fazis];
       if (f && f.ok === false) {
-        const nev = fazis === 'prepare' ? 'videó-gyártás' : fazis === 'send' ? 'kiküldés' : 'extra Reel kiküldése';
+        const nev = { prepare: 'videó-gyártás', send: 'kiküldés', send_extra: 'extra Reel kiküldése', send_csalas: 'csalás-Reel kiküldése' }[fazis];
         lines.push(`🎬 REEL-ŐRSZEM: a ${nev} elbukott — ${String(f.hiba || 'ismeretlen ok').slice(0, 90)}`);
       }
     }
+    // 🛡️ a csalás-Reel gyártása független ág (a rendes Reel sikeres lehet mellette) → saját hibasor
+    if (rg.prepare?.csalasHiba) lines.push(`🎬 REEL-ŐRSZEM: a csalás-Reel videója nem készült el — ${String(rg.prepare.csalasHiba).slice(0, 90)} (a képes poszt megy helyette)`);
     // 🤗 TARTALÉK FELOLVASÓ (11-19): csak ha ma a Microsoft-felolvasó helyett a Kokoro adta a Reel hangját
     try {
       const kSor = kokoroRiportSor(JSON.parse(readFileSync(join(ROOT, 'memory', 'kokoro-tartalek.json'), 'utf-8')), today());

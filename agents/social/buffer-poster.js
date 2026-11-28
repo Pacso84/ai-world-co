@@ -335,8 +335,10 @@ async function maiVideok(field, cikkLista) {
   try {
     const { reelVideoUrl, varjVideora } = await import('../../core/reel-post.js');
     // 2026-10-11: + a napi csak-TikTok videó (tiktok_video_at, core/reel-post.js prepareTiktokExtra).
+    // 🛡️ 2026-11-28: + a mai csalás-videó (csalas_video_at, core/reel-post.js prepareCsalasReel — core/csalas-reel.js)
     const cikkek = cikkLista.map(({ data }) => ({ slug: data?._meta?.slug || '', reel_at: data?._meta?.reel_at || '',
-      tiktok_video_at: data?._meta?.tiktok_video_at || '' }));
+      tiktok_video_at: data?._meta?.tiktok_video_at || '',
+      csalas: !!data?._meta?.csalas, csalas_video_at: data?._meta?.csalas_video_at || '' }));
     const postOf = slug => {
       const sp = join(SOCIAL_DIR, slug + '.json');
       if (!existsSync(sp)) { console.log(`   ⚠️ ${slug.slice(0, 40)} — a mai Reel cikkéhez nincs poszt-szöveg`); return null; }

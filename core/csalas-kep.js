@@ -467,6 +467,28 @@ export function csalasKepSvg(pelda, { lang = 'en', format = '4x5' } = {}) {
   return format === '4x5' ? kep4x5(pelda, sz) : kep16x9(pelda, sz);
 }
 
+// ── 13. rész (2026-11-28): CSAK az üzenet-kártya a Reelhez (core/csalas-reel.js) ──────────────────────────────
+// A kamu üzenet a ①②③ jelekkel + a „PÉLDA — CSALÁS” vízjel, ÁTLÁTSZÓ háttéren (a Reel sötét alapján ül). A cím és a
+// jelmagyarázat NEM kerül rá: azt a Reel szövege és hangja mondja el. A vízjel kötelező — a kártya mindig példa.
+// A ①②③ körök a doboz jobb szélén ülnek (a 12 px-es margóval együtt DOBOZ_W + 30 a vászon).
+export const KARTYA_SZEL = DOBOZ_W + 30;
+export function csalasKartyaSvg(pelda, { lang = 'en', maxMag = 1100 } = {}) {
+  const sz = KEP_SZ[lang];
+  if (!sz) throw new Error(`ismeretlen nyelv: ${lang}`);
+  if (!pelda) throw new Error('nincs példablokk');
+  if (!rajzSablon(pelda.csatorna)) throw new Error(`ismeretlen csatorna: ${pelda.csatorna}`);
+  if ((pelda.magyarazat || []).length !== 3) throw new Error('nem 3 magyarázat');
+  const e = eszkozMeretre(pelda, sz, { tol: 40, ig: 24, fer: x => x.h <= maxMag });
+  const W = KARTYA_SZEL, H = Math.ceil(e.h + 24);
+  return {
+    w: W, h: H,
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">`
+      + `<g transform="translate(12 12)">${e.svg}</g>`
+      + vizjel(sz, 12 + DOBOZ_W / 2, 12 + e.h * 0.5, -20, 760, 96)
+      + '</svg>',
+  };
+}
+
 export async function rajzolCsalasKep(pelda, { lang = 'en', format = '4x5', sharpModul = null } = {}) {
   if (!pelda) throw new Error('nincs példablokk');
   const baj = peldaBiztonsag(pelda);
