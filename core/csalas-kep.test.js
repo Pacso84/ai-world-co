@@ -234,11 +234,16 @@ t('csalasKepekFuttat: bekapcsolva nyelvenként 4x5 + 16x9, angol borító; a hib
     assert.equal(g.kep_hibak.length, 1);
     assert.match(g.kep_hibak[0].hiba, /csatorna|példablokk/);
     assert.equal(g.kep_hibak[0].lang, 'es');
-    assert.equal(r.kesz, 5);
+    // 🛡️ 13. rész: + az angol Reel-kártya (PNG, átlátszó háttér) — csak angolul
+    const kartya = await sharp(join(I, 'csalas/package-scam-kartya.png')).metadata();
+    assert.equal(kartya.format, 'png');
+    assert.ok(kartya.hasAlpha, 'a kártya háttere átlátszó legyen');
+    assert.ok(!existsSync(join(I, 'csalas/package-scam-hu-kartya.png')) && !existsSync(join(I, 'csalas/package-scam-kartya-hu.png')));
+    assert.equal(r.kesz, 6);
     // második futás: változatlan példa → nem rajzol újra (hash), de az őrszem friss
     const r2 = await csalasKepekFuttat({ ROOT: R, be: true, sharpModul: sharp });
     assert.equal(r2.kesz, 0);
-    assert.equal(r2.valtozatlan, 5);
+    assert.equal(r2.valtozatlan, 6);
   } finally { rmSync(R, { recursive: true, force: true }); }
 });
 

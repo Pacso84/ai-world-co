@@ -498,6 +498,19 @@ export async function rajzolCsalasKep(pelda, { lang = 'en', format = '4x5', shar
   return await sharp(Buffer.from(svg)).jpeg({ quality: 86, mozjpeg: true }).toBuffer();
 }
 
+// A Reel üzenet-kártyája PNG-ben (átlátszó háttér). ⚠️ CSAK a csalás-képek CI-lépésében rajzoljuk (core/csalas-kepek.js
+// → csalas/<slug>-kartya.png): a normál betűvastagság (schibsted-grotesk-var.ttf) csak ott van telepítve, a Reel-lépésben
+// nincs (a 900-as Reel-betű miatt szándékosan leveszik) — ott rajzolva a szöveg vastag lett és kilógott a keretből
+// (CI-minta 11-28). A Reel a kész fájlt használja.
+export const KARTYA_MAX_MAG = 640;
+export async function rajzolCsalasKartya(pelda, { lang = 'en', sharpModul = null } = {}) {
+  if (!pelda) throw new Error('nincs példablokk');
+  const baj = peldaBiztonsag(pelda);
+  if (baj.length) throw new Error(`nem biztonságos példa: ${baj.join('; ')}`);
+  const sharp = sharpModul || (await import('sharp')).default;
+  return await sharp(Buffer.from(csalasKartyaSvg(pelda, { lang, maxMag: KARTYA_MAX_MAG }).svg)).png().toBuffer();
+}
+
 // ── betű-mérés (lásd core/video-font.js: a betű NEVE kérés, nem garancia) ─────
 // Megjött-e a normál vastagság? Három renderelés + önhitelesítés:
 //   500 ≠ 900 (a változtatható betű tényleg más vastagságot ad), 500 ≠ nem létező család (nem esett vissza),

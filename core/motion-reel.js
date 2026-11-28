@@ -545,8 +545,9 @@ async function main() {
         console.log(`🛡️ csalás-minta — becsült ${becsultHossz(szegmensek).toFixed(1)} mp`);
         for (const s of szegmensek) console.log('   «' + s.mond + '»');
         if (dry) continue;
+        // a kártyát a CI-próba KÜLÖN lépésben, normál betűvel rajzolja (mint élesben a csalás-képek lépése); ha nincs, itt
         const kartya = join(kiDir, 'csalas-kartya.png');
-        await sharp(Buffer.from(csalasKartyaSvg(pelda, { lang: 'en', maxMag: 640 }).svg)).png().toFile(kartya);
+        if (!existsSync(kartya)) await sharp(Buffer.from(csalasKartyaSvg(pelda, { lang: 'en', maxMag: 640 }).svg)).png().toFile(kartya);
         const r = await renderMotionReel(szegmensek, { out: join(kiDir, 'csalas-minta.mp4'), workDir: join(kiDir, '.munka-' + n), sablon: 'csalas', nema, csakKockak, kepUt: kartya });
         rmSync(join(kiDir, '.munka-' + n), { recursive: true, force: true });
         console.log(r.kepek ? '🖼️  ' + r.kepek.length + ' kocka' : `✅ ${r.file} — ${r.seconds.toFixed(1)} mp, ${r.kockak} kocka`);

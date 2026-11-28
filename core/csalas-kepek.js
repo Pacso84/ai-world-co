@@ -19,7 +19,7 @@ import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { CSALAS_FIGYELO_BE, csalasHir } from './csalas-figyelo.js';
 import { peldaBlokk } from './csalas-sablon.js';
-import { rajzolCsalasKep, rajzSablon, betuAllapot, RAJZ_V } from './csalas-kep.js';
+import { rajzolCsalasKep, rajzolCsalasKartya, rajzSablon, betuAllapot, RAJZ_V } from './csalas-kep.js';
 
 const NYELVEK = ['en', 'hu', 'es'];
 
@@ -59,13 +59,18 @@ export async function csalasKepekFuttat({ ROOT, be = CSALAS_FIGYELO_BE, sharpMod
         { rel: `csalas/${slug}-${lang}.jpg`, format: '4x5' },
         { rel: `csalas/${slug}-${lang}-16x9.jpg`, format: '16x9' },
         ...(lang === 'en' ? [{ rel: `${slug}.jpg`, format: '16x9' }] : []),
+        // 🛡️ 13. rész: a csalás-Reel üzenet-kártyája (core/reel-post.js prepareCsalasReel) — itt, mert csak ebben a
+        // lépésben van fent a normál betűvastagság
+        ...(lang === 'en' ? [{ rel: `csalas/${slug}-kartya.png`, format: 'kartya' }] : []),
       ];
       for (const c of celok) {
         const h = createHash('sha1').update(JSON.stringify([RAJZ_V, lang, c.format, pelda])).digest('hex').slice(0, 16);
         const ut = join(KEP, c.rel);
         if (hash[c.rel] === h && existsSync(ut)) { ujHash[c.rel] = h; valtozatlan++; continue; }
         try {
-          writeFileSync(ut, await rajzolCsalasKep(pelda, { lang, format: c.format, sharpModul: sharp }));
+          writeFileSync(ut, c.format === 'kartya'
+            ? await rajzolCsalasKartya(pelda, { lang, sharpModul: sharp })
+            : await rajzolCsalasKep(pelda, { lang, format: c.format, sharpModul: sharp }));
           ujHash[c.rel] = h;
           kesz++;
         } catch (e) {

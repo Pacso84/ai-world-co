@@ -614,27 +614,28 @@ async function prepare(ROOT, join) {
 // csalasKartyaSvg), alatta szavanként szinkron felirat. Jelölés: `_meta.csalas_video_at` a gyártáskor (ettől a
 // FB-képes poszt kimarad — core/social-published.js —, és a Buffer a TikTokra viszi), `_meta.csalas_reel_at` a
 // Facebook-küldéskor (sendCsalasReel). Kapcsoló: CSALAS_FIGYELO_BE (KI → semmi nem történik).
+/** A csalás-Reel üzenet-kártyája — a csalás-képek CI-lépése rajzolja (core/csalas-kepek.js), ott van fent a normál betű. */
+export function csalasKartyaUt(ROOT, join, slug) {
+  return join(ROOT, 'website', 'assets', 'images', 'csalas', `${slug}-kartya.png`);
+}
+
 async function csalasVideoGyart(ROOT, join, c, out) {
-  const { mkdirSync, rmSync } = await import('fs');
-  const { tmpdir } = await import('os');
+  const { mkdirSync, rmSync, existsSync } = await import('fs');
   const { dirname } = await import('path');
   const cr = await import('./csalas-reel.js');
-  const { szegmensek, pelda, reason } = cr.csalasReelSzkript(c.md);
+  const { szegmensek, reason } = cr.csalasReelSzkript(c.md);
   if (!szegmensek) throw new Error('a csalás-hírből nem telik videó: ' + reason);
-  const { csalasKartyaSvg } = await import('./csalas-kep.js');
+  // ⚠️ A kártyát NEM itt rajzoljuk: a Reel-lépésben csak a 900-as betű van fent, a kártya szövege vastag lett és
+  // kilógott a keretből (CI-minta 11-28). Kártya nélkül nincs Reel → a képes FB-poszt megy (tartalék).
+  const kartyaUt = csalasKartyaUt(ROOT, join, c.slug);
+  if (!existsSync(kartyaUt)) throw new Error('nincs kész üzenet-kártya (csalas/' + c.slug + '-kartya.png — a csalás-képek lépése nem rajzolta meg)');
   const { renderMotionReel } = await import('./motion-reel.js');
-  const sharp = (await import('sharp')).default;
   mkdirSync(dirname(out), { recursive: true });
-  // a kártya-PNG a rendszer ideiglenes mappájába: a renderMotionReel a workDir-t az elején kiüríti, a repóba
-  // (a CI visszacommitol) és a shorts/-ba (a deploy kitenné) pedig nem való
-  const kartyaUt = join(tmpdir(), `csalas-kartya-${process.pid}.png`);
   const workDir = join(ROOT, '.video-munka');
   try {
-    await sharp(Buffer.from(csalasKartyaSvg(pelda, { lang: 'en', maxMag: 640 }).svg)).png().toFile(kartyaUt);
     return await renderMotionReel(szegmensek, { out, workDir, kepUt: kartyaUt, sablon: 'csalas' });
   } finally {
     try { rmSync(workDir, { recursive: true, force: true }); } catch { /* */ }
-    try { rmSync(kartyaUt, { force: true }); } catch { /* */ }
   }
 }
 

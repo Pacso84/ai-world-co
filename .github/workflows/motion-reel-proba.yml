@@ -48,6 +48,22 @@ jobs:
           cp shared/fonts/schibsted-grotesk-900.ttf "$HOME/.local/share/fonts/"
           fc-cache -f >/dev/null
           fc-list | grep -i schibsted || echo "⚠️ a betű nem települt"
+      # 🛡️ csalás-minta (2026-11-28): az üzenet-kártya a NORMÁL betűvel (mint élesben a „Csalás-képek” lépés), utána a
+      # változtatható betű lekerül, hogy a videó 900-as betűjét ne zavarja
+      - name: Csalás-kártya (normál betűvel)
+        if: inputs.mod != 'eles_ut' && contains(inputs.celok, 'csalas-minta')
+        run: |
+          VF="$HOME/.local/share/fonts/schibsted-grotesk-var.ttf"
+          cp shared/fonts/schibsted-grotesk-var.ttf "$VF" && fc-cache -f >/dev/null
+          mkdir -p motion-minta
+          node -e "
+            const fs=require('fs'); const sharp=require('sharp');
+            Promise.all([import('./core/csalas-kep.js'), import('./core/csalas-sablon.js')]).then(async ([k,s])=>{
+              const f=JSON.parse(fs.readFileSync('core/fixtures/csalas-ic3-valasztas.json','utf8'));
+              fs.writeFileSync('motion-minta/csalas-kartya.png', await k.rajzolCsalasKartya(s.peldaBlokk(f.en), { sharpModul: sharp }));
+              console.log('✅ kártya kész');
+            });"
+          rm -f "$VF"; fc-cache -f >/dev/null
       - name: Minták legyártása
         if: inputs.mod != 'eles_ut'
         env:
