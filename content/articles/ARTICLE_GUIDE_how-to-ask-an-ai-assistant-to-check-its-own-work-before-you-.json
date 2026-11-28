@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "type": "guide",
+    "rules_version": 2,
+    "guide_topic_id": "how-to-ask-an-ai-assistant-to-check-its-own-work-before-you-",
+    "company": "",
+    "tool": "",
+    "icon": "✅",
+    "level": "intermediate",
+    "source_news": null,
+    "official_sources": null,
+    "trend": null,
+    "extra_slot": null,
+    "written_at": "2026-11-28T05:29:52.685Z",
+    "writer_provider": "openrouter",
+    "writer_model": "anthropic/claude-haiku-5.5",
+    "writer_cost_usd": 0.0060842,
+    "source_id": "guide",
+    "source_name": "AI World Guide",
+    "source_link": "",
+    "status": "published",
+    "published_at": "2026-11-28T05:30:23.263Z",
+    "slug": "how-to-ask-an-ai-assistant-to-check-its-own-work-before-you-use-it",
+    "auto_check": {
+      "passed": true,
+      "issues": [],
+      "wordCount": 1421
+    },
+    "ai_review": {
+      "overall_score": 9,
+      "clarity_score": 10,
+      "decision": "PASS",
+      "issues": [],
+      "verdict": "Excellent guide with clear structure, relatable examples using placeholders, and helpful recovery tips throughout. The skill prerequisites are reasonable and stated upfront. Each step has concrete success criteria and includes fallback guidance for when the expected result doesn't appear. The honesty about limitations (re-check can repeat mistakes) builds trust while empowering readers.",
+      "_aiCost": 0.0031116,
+      "_provider": "openrouter",
+      "_model": "minimax/minimax-m2.7",
+      "_attempts": 1
+    },
+    "image_v": 2,
+    "image_at": "2026-11-28T05:31:27.698Z",
+    "seo": {
+      "keywords": [
+        "AI assistant check its own work",
+        "make AI check its answer",
+        "ask AI to list assumptions",
+        "AI assistant mistakes in math",
+        "AI self-check prompt",
+        "verify AI answers before using them",
+        "AI assistant double check plan"
+      ],
+      "seo_title": "How to Get an AI Assistant to Check Its Own Work",
+      "meta_description": "Learn a second-prompt method that has your AI assistant list its assumptions and re-check each step, catching many slips in plans, math and drafts.",
+      "keresesek": [],
+      "v": 2,
+      "eles": true,
+      "optimised_at": "2026-11-28T05:31:44.993Z"
+    },
+    "fact_verified_at": "2026-11-28T05:38:39.935Z"
+  },
+  "article_markdown": "---\ntitle: \"How to Ask an AI Assistant to Check Its Own Work Before You Use It\"\nsubtitle: \"A second prompt that makes the assistant list its assumptions and re-check each step catches many mistakes in plans, math and drafts.\"\ncategory: \"guide\"\naudience: \"both\"\ncompany: \"\"\ntool: \"\"\nlevel: \"intermediate\"\nread_time_minutes: 6\ntags: [\"prompting\", \"fact-checking\", \"ai-assistants\", \"workflow\"]\n---\n\n# How to Ask an AI Assistant to Check Its Own Work Before You Use It\n\n> **In short:** Ask your AI assistant for an answer, then send a second prompt asking it to list its assumptions and re-check each step. This catches many slips in plans, math and drafts, but it does not guarantee the answer is right, so verify anything important yourself.\n\nBy the end of this guide, you'll be able to run a three-part conversation with an AI assistant: draft, audit, fix. It's for anyone who already uses an assistant for real tasks, such as a budget, a schedule, a work email or a homework check, and who wants fewer surprises before acting on an answer.\n\n## Before you start\n- An AI assistant account you already use, and you know how to start a chat and send a message. We assume this.\n- Any plan works for this technique. Nothing here needs a paid feature.\n- About 15 minutes, plus one real task you'd like help with, such as a plan, a calculation or a draft.\n\n## Step 1 — Ask for the first answer with clear details\n\nStart a new chat, or open one you already use. Type your real task and include the facts the assistant needs: numbers, dates, who it's for and what you want to end up with. Send it. The reply appears below your message as a normal answer. Don't worry about making this first answer perfect. The next steps exist because it doesn't have to be. Keep this answer on the screen, or copy it somewhere, because you'll refer back to it.\n\nIf it looks different, and the assistant asks you questions before answering, reply briefly to each one and wait for the full plan. Some assistants do this when a request is unclear.\n\n💬 Example: \"Plan a 3-day trip to [your destination] for [number] adults with a total budget of [amount].\"\n\nYou'll know it worked when you have a complete answer with specific numbers, dates or steps you can point to.\n\n## Step 2 — Ask it to list its assumptions\n\nSend a second message in the same chat, before asking for any fixes. This time you're asking the assistant to show what it took for granted: the costs it estimated, the dates it picked, and the things it assumed you already have or can do. Hidden guesses are the most common source of wrong answers, and writing them down makes them visible. The reply should be a numbered list.\n\nIf it gives you more plan instead of a list, that's normal. Repeat your request at the top of a new message, and ask for only the list.\n\n💬 Example: \"Before changing anything, list every assumption you made in your last answer as a numbered list, and mark any you are not sure about.\"\n\nYou'll know it worked when you see a numbered list where each item names a specific guess, such as a number, a date, a condition or something you supposedly own.\n\n## Step 3 — Confirm or correct each assumption\n\nRead the list slowly and ask yourself, for each item, whether it matches your real situation. This is the step most people skip, and it's the one that helps most. Only you know your life, so only you can spot a wrong guess. Reply in the same chat and correct each wrong item in one line. Your correction becomes part of the conversation, so the next answer builds on the truth instead of the guess.\n\nFor example, the assistant may assume your group has a car when it doesn't. If you say so, the rest of the plan can change to fit. You don't need to fix everything at once. Confirm the items that are right and correct the ones that are wrong.\n\n💬 Example: \"Assumption 2 is wrong: we are taking the train, not driving. Assumptions 1, 3 and 4 are correct.\"\n\nYou'll know it worked when every item on the list is either confirmed by you or corrected in writing.\n\n## Step 4 — Ask it to re-check each step\n\nNow ask the assistant to go through its answer one step at a time. Ask it to recalculate any numbers, check that each step follows from the one before, and label each step as holding up or failing, with a short reason. Re-checking is useful because the assistant can often catch arithmetic slips and out-of-order steps when it looks at them one at a time.\n\nBe honest about the limit here. The re-check can repeat the same mistake with full confidence, and a confident tone is not proof. Treat \"all steps hold\" as a sign to look more closely, not as a final answer.\n\nIf the re-check is very short, ask it to write each calculation on its own line so you can follow the arithmetic yourself.\n\n💬 Example: \"Go through your plan one step at a time. For each step, recalculate any numbers, check that it follows from the step before, and mark it 'holds' or 'fails' with one short reason.\"\n\nYou'll know it worked when each step has a clear holds or fails label, and every failed step comes with a corrected version.\n\n## Step 5 — Ask for a clean final version and a checklist\n\nAsk for a corrected version that changes only the failed parts, and ask it to say what changed. Then ask for a short checklist of things to verify outside the chat, such as opening hours, official rules, current prices from the seller's own website, or a date you can confirm on a calendar. Keep the corrected version and the checklist together.\n\nHere is the honest limit. The assistant can't confirm facts about your own life, and it may not have current information unless your tool is set up to look things up. For decisions involving money, health, legal matters or school deadlines, check the official source or speak with a qualified person before you act.\n\n💬 Example: \"Rewrite the plan with only the failed steps fixed, then list what I should verify myself before I rely on it, such as [fact to check].\"\n\nYou'll know it worked when you have a corrected answer, a short list of what changed, and a verification checklist you can follow.\n\n## Common mistakes\n\n- **Asking \"are you sure?\" and stopping there.** A vague question usually gets a vague \"yes.\" The fix is to ask for a numbered list of assumptions first, then a step-by-step re-check.\n- **Trusting the re-check without checking the facts.** The assistant can repeat its own error with confidence. The fix is to verify important numbers and dates against a source you trust, especially anything you'll spend money or time on.\n- **Letting a very long chat drift.** Early details can get lost in a long conversation, and the answers can start to contradict each other. The fix is to start a new chat when the thread gets very long, and paste in your corrected plan and confirmed assumptions.\n\n## What this means for you\n\n- **In everyday life:** Use this for a holiday budget or a weekly meal plan. List the assumptions, correct the ones about your household, then have the totals re-checked line by line.\n- **For your business or work:** Use it on a draft email or a spreadsheet formula. Ask the assistant what it assumed about the audience or the data, then have each formula step re-checked before you share it.\n- **If you want to go further:** Save your best assumption-check prompt so you don't retype it every time. Some assistants let you keep saved instructions or a project space, and availability varies by tool and plan. Look in your settings for a place to save instructions, and if you don't find one, copy the prompt into a note on your phone.\n\n## Try it now\n\nOpen a chat where you recently got an answer from your assistant. In that same chat, send this message: \"List every assumption you made in that answer as a numbered list.\" Read the list and notice whether any item surprises you. That surprise is the whole technique at work.",
+  "original_title": "How to Ask an AI Assistant to Check Its Own Work Before You Use It"
+}

@@ -1,118 +1,6 @@
 {
   "tasks": [
     {
-      "id": "t179563082106481",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-25T18:20:21.064Z",
-      "updated": "2026-11-25T18:20:21.247Z"
-    },
-    {
-      "id": "t179563082124879",
-      "title": "Run guide",
-      "status": "done",
-      "agent": "guide",
-      "created": "2026-11-25T18:20:21.248Z",
-      "updated": "2026-11-25T18:20:21.423Z"
-    },
-    {
-      "id": "t179563082146135",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-25T18:20:21.461Z",
-      "updated": "2026-11-25T18:20:41.735Z"
-    },
-    {
-      "id": "t179563084173712",
-      "title": "Run seo",
-      "status": "done",
-      "agent": "seo",
-      "created": "2026-11-25T18:20:41.737Z",
-      "updated": "2026-11-25T18:20:56.255Z"
-    },
-    {
-      "id": "t179563085625736",
-      "title": "Run designer",
-      "status": "done",
-      "agent": "designer",
-      "created": "2026-11-25T18:20:56.257Z",
-      "updated": "2026-11-25T18:21:18.992Z"
-    },
-    {
-      "id": "t179563087899495",
-      "title": "Run publisher",
-      "status": "done",
-      "agent": "publisher",
-      "created": "2026-11-25T18:21:18.994Z",
-      "updated": "2026-11-25T18:21:45.949Z"
-    },
-    {
-      "id": "t179567242955310",
-      "title": "Run ceo",
-      "status": "done",
-      "agent": "ceo",
-      "created": "2026-11-26T05:53:49.553Z",
-      "updated": "2026-11-26T05:53:49.708Z"
-    },
-    {
-      "id": "t179567242970943",
-      "title": "Run rss-scraper",
-      "status": "done",
-      "agent": "rss-scraper",
-      "created": "2026-11-26T05:53:49.709Z",
-      "updated": "2026-11-26T05:54:35.537Z"
-    },
-    {
-      "id": "t179567247553845",
-      "title": "Run source-scout",
-      "status": "done",
-      "agent": "source-scout",
-      "created": "2026-11-26T05:54:35.539Z",
-      "updated": "2026-11-26T05:54:35.694Z"
-    },
-    {
-      "id": "t179567247573734",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-26T05:54:35.737Z",
-      "updated": "2026-11-26T05:56:10.480Z"
-    },
-    {
-      "id": "t179567257048236",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-26T05:56:10.482Z",
-      "updated": "2026-11-26T05:56:27.634Z"
-    },
-    {
-      "id": "t179567258763656",
-      "title": "Run iro",
-      "status": "done",
-      "agent": "iro",
-      "created": "2026-11-26T05:56:27.636Z",
-      "updated": "2026-11-26T05:56:45.846Z"
-    },
-    {
-      "id": "t179567260584889",
-      "title": "Run ellenorzo",
-      "status": "done",
-      "agent": "ellenorzo",
-      "created": "2026-11-26T05:56:45.848Z",
-      "updated": "2026-11-26T05:56:50.515Z"
-    },
-    {
-      "id": "t17956726105176",
-      "title": "Run pairing",
-      "status": "done",
-      "agent": "pairing",
-      "created": "2026-11-26T05:56:50.517Z",
-      "updated": "2026-11-26T05:57:25.485Z"
-    },
-    {
       "id": "t179567264552897",
       "title": "Run guide",
       "status": "done",
@@ -479,41 +367,121 @@
       "agent": "publisher",
       "created": "2026-11-27T17:45:57.262Z",
       "updated": "2026-11-27T17:46:21.630Z"
+    },
+    {
+      "id": "t179584365315485",
+      "title": "Run ceo",
+      "status": "done",
+      "agent": "ceo",
+      "created": "2026-11-28T05:27:33.154Z",
+      "updated": "2026-11-28T05:27:33.380Z"
+    },
+    {
+      "id": "t179584365338262",
+      "title": "Run rss-scraper",
+      "status": "done",
+      "agent": "rss-scraper",
+      "created": "2026-11-28T05:27:33.382Z",
+      "updated": "2026-11-28T05:28:12.511Z"
+    },
+    {
+      "id": "t179584369251272",
+      "title": "Run source-scout",
+      "status": "done",
+      "agent": "source-scout",
+      "created": "2026-11-28T05:28:12.512Z",
+      "updated": "2026-11-28T05:28:12.729Z"
+    },
+    {
+      "id": "t17958436927848",
+      "title": "Run iro",
+      "status": "done",
+      "agent": "iro",
+      "created": "2026-11-28T05:28:12.784Z",
+      "updated": "2026-11-28T05:28:33.294Z"
+    },
+    {
+      "id": "t179584371329688",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-28T05:28:33.296Z",
+      "updated": "2026-11-28T05:28:39.671Z"
+    },
+    {
+      "id": "t179584371967376",
+      "title": "Run pairing",
+      "status": "done",
+      "agent": "pairing",
+      "created": "2026-11-28T05:28:39.673Z",
+      "updated": "2026-11-28T05:28:47.889Z"
+    },
+    {
+      "id": "t179584372793830",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-28T05:28:47.938Z",
+      "updated": "2026-11-28T05:30:13.178Z"
+    },
+    {
+      "id": "t17958438131793",
+      "title": "Run ellenorzo",
+      "status": "done",
+      "agent": "ellenorzo",
+      "created": "2026-11-28T05:30:13.179Z",
+      "updated": "2026-11-28T05:30:23.275Z"
+    },
+    {
+      "id": "t179584382331915",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-28T05:30:23.319Z",
+      "updated": "2026-11-28T05:30:23.572Z"
+    },
+    {
+      "id": "t179584382357339",
+      "title": "Run guide",
+      "status": "done",
+      "agent": "guide",
+      "created": "2026-11-28T05:30:23.573Z",
+      "updated": "2026-11-28T05:30:23.829Z"
+    },
+    {
+      "id": "t179584382391718",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-28T05:30:23.917Z",
+      "updated": "2026-11-28T05:31:27.734Z"
+    },
+    {
+      "id": "t179584388773682",
+      "title": "Run seo",
+      "status": "done",
+      "agent": "seo",
+      "created": "2026-11-28T05:31:27.736Z",
+      "updated": "2026-11-28T05:31:45.009Z"
+    },
+    {
+      "id": "t179584390501192",
+      "title": "Run designer",
+      "status": "done",
+      "agent": "designer",
+      "created": "2026-11-28T05:31:45.011Z",
+      "updated": "2026-11-28T05:31:58.977Z"
+    },
+    {
+      "id": "t17958439189805",
+      "title": "Run publisher",
+      "status": "done",
+      "agent": "publisher",
+      "created": "2026-11-28T05:31:58.980Z",
+      "updated": "2026-11-28T05:32:27.081Z"
     }
   ],
   "notifications": [
-    {
-      "id": "n179497877559996",
-      "level": "info",
-      "text": "SEO: 6 cikk optimalizálva (átlag 8.0/10).",
-      "agent": "seo",
-      "at": "2026-11-18T05:12:55.599Z",
-      "loud": false
-    },
-    {
-      "id": "n179497879853340",
-      "level": "success",
-      "text": "Kiadás kész (10 cikk). The lineup looks solid — practical, helpful articles that answer real everyday needs, from fact-checking to writing resumes to privacy smarts. One note: Article 3 warns against sharing sensitive info ",
-      "agent": "publisher",
-      "at": "2026-11-18T05:13:18.533Z",
-      "loud": false
-    },
-    {
-      "id": "n179497881622963",
-      "level": "success",
-      "text": "4 hír + 2 útmutató publikálva (költség: $0.0453).",
-      "agent": "ceo",
-      "at": "2026-11-18T05:13:36.229Z",
-      "loud": false
-    },
-    {
-      "id": "n179497886890866",
-      "level": "warn",
-      "text": "📨 fact-check → ceo: Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „In short:** GitHub ",
-      "agent": "fact-check",
-      "at": "2026-11-18T05:14:28.908Z",
-      "loud": false
-    },
     {
       "id": "n179502073669858",
       "level": "info",
@@ -1281,19 +1249,41 @@
       "agent": "fact-check",
       "at": "2026-11-27T17:53:44.679Z",
       "loud": false
+    },
+    {
+      "id": "n179584390499593",
+      "level": "info",
+      "text": "SEO: 3 cikk új keresőcímet kapott, 0 kapun elbukott.",
+      "agent": "seo",
+      "at": "2026-11-28T05:31:44.995Z",
+      "loud": false
+    },
+    {
+      "id": "n179584392659987",
+      "level": "success",
+      "text": "Kiadás kész (10 cikk). Great lineup — practical, varied, and hits real everyday needs from privacy to resume writing. One small suggestion: since some readers may be new to AI, a welcoming intro or the fact-check article co",
+      "agent": "publisher",
+      "at": "2026-11-28T05:32:06.599Z",
+      "loud": false
+    },
+    {
+      "id": "n179584394712545",
+      "level": "success",
+      "text": "1 hír + 2 útmutató publikálva (költség: $0.0280).",
+      "agent": "ceo",
+      "at": "2026-11-28T05:32:27.125Z",
+      "loud": false
+    },
+    {
+      "id": "n179584431336111",
+      "level": "info",
+      "text": "SEO: 44 cikk új keresőcímet kapott, 2 kapun elbukott.",
+      "agent": "seo",
+      "at": "2026-11-28T05:38:33.361Z",
+      "loud": false
     }
   ],
   "messages": [
-    {
-      "id": "m179468754528527",
-      "from": "fact-check",
-      "to": "ceo",
-      "kind": "need",
-      "text": "Gyanús állítás, de a javítás nem mehetett ki (a javítás a forrásban nem szereplő állítást hozna be: „This guide walks you through a simple two-sentence prompt pattern that works in many AI im”): \"GPT Image 2.5 prompting guide: 12 prompts for prec\" — A forrás kifejezetten a Picsart GPT Image 2.5-ről szól, és nem említi a ChatGPT-t, a Google Gemini-t vagy az Adobe Firefly-t",
-      "ref": "ARTICLE_2026-09-14T14-33-06-358Z_picsart_GPT_Image_2_5_prompting_guide__12_prompts_for_prec.json",
-      "open": true,
-      "at": "2026-11-14T20:19:05.285Z"
-    },
     {
       "id": "m179471471938093",
       "from": "designer",
@@ -2685,6 +2675,15 @@
       "ref": "ARTICLE_GUIDE_how-to-use-qwen-chat-to-plan-a-weekend-road-trip-in-australi.json",
       "open": true,
       "at": "2026-11-27T17:53:44.679Z"
+    },
+    {
+      "id": "m179584391891521",
+      "from": "designer",
+      "to": "team",
+      "kind": "fix",
+      "text": "Mobilra optimalizáltam: hamburger-menü (<760px), 2-oszlopos csempék, borító-fix, nincs vízszintes görgetés. Cég-csempék: 31 → 8/4/4 oszlop.",
+      "ref": "mobile",
+      "at": "2026-11-28T05:31:58.915Z"
     }
   ]
 }

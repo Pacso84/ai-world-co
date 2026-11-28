@@ -54,7 +54,7 @@
     "image_at": "2026-08-06T01:50:44.733Z",
     "social": true,
     "social_at": "2026-08-10T09:19:48.813Z",
-    "links_checked_at": "2026-10-28T20:41:18.893Z",
+    "links_checked_at": "2026-11-28T05:32:28.702Z",
     "fresh_updated_at": "2026-11-07T22:26:52.588Z",
     "fresh_from": "manual-source-refresh-2026-11-07",
     "manual_fix_note": "Rewritten from the live Space source code: the Whisper demo has an audio input (upload or microphone), a Task choice (transcribe/translate) and a Submit button, and its output box is read-only; removed invented buttons (\"Upload audio\", \"Transcribe\", \"Stop\"), invented progress details and the claim that the text can be edited in place. Source: https://huggingface.co/spaces/openai/whisper (app.py)",

@@ -1,0 +1,43 @@
+{
+  "started_at": "2026-11-28T05:28:13.012Z",
+  "drafts_total": 1,
+  "articles_written": 1,
+  "articles_failed": 0,
+  "skipped_duplicate": 0,
+  "clusters_found": 0,
+  "merged_total": 0,
+  "skipped_repeat": 0,
+  "repeats": [],
+  "source_via": {
+    "hirfolyam": 1,
+    "html": 0,
+    "rss": 0,
+    "kivonat": 0
+  },
+  "source_fail": [],
+  "total_cost_usd": 0.003794,
+  "by_article": [
+    {
+      "draft": "2026-11-28T05-28-12-493Z_google-workspace_Google_Workspace_Weekly_Recap_-_November_27__2026.json",
+      "writer_output": "WRITER_2026-11-28T05-28-12-493Z_google-workspace_Google_Workspace_Weekly_Recap_-_November_27__2026.json",
+      "success": true,
+      "merged_from": 1,
+      "merged_theme": null,
+      "source_via": [
+        "hirfolyam"
+      ],
+      "source_chars": 1954,
+      "source_overlap_words": 10,
+      "cost_usd": 0.003794,
+      "duration_ms": 13832,
+      "provider": "openrouter",
+      "model": "anthropic/claude-haiku-5.5"
+    }
+  ],
+  "csalas_irt": 0,
+  "csalas_hiba": [],
+  "termek_hir": 0,
+  "termek_extra": 0,
+  "finished_at": "2026-11-28T05:28:33.272Z",
+  "duration_seconds": 20.26
+}

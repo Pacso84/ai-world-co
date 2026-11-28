@@ -9857,10 +9857,11 @@
       "audience": "both",
       "level": "intermediate",
       "angle": "Use a second prompt that asks the assistant to list its assumptions and re-verify each step, which catches many mistakes in plans, math and drafts.",
-      "status": "todo",
+      "status": "done",
       "icon": "✅",
       "proposed_at": "2026-11-25T06:05:59.412Z",
-      "proposed_by": "guide-ideas"
+      "proposed_by": "guide-ideas",
+      "written_at": "2026-11-28T05:29:52.685Z"
     },
     {
       "id": "how-to-write-a-simple-faq-for-a-small-shop-with-an-ai-assist",
@@ -10034,6 +10035,28 @@
         "ok": false,
         "ok_ok": "a cikkből nem írható útmutató"
       }
+    },
+    {
+      "id": "how-to-ask-ai-to-plan-a-rainy-day-weekend-activity-list-for-",
+      "company": "",
+      "tool": "",
+      "title": "How to Ask AI to Plan a Rainy-Day Weekend Activity List for Your Kids",
+      "audience": "personal",
+      "level": "beginner",
+      "angle": "Tell the AI your kids' ages, your budget in plain numbers and how much time you have, and ask for a short list you can check off before the weekend.",
+      "status": "done",
+      "icon": "🌧️",
+      "proposed_at": "2026-11-28T05:29:19.826Z",
+      "proposed_by": "trend-kutato",
+      "priority": "trend",
+      "trend": {
+        "kifejezes": "can ai help with daily tasks",
+        "forras": [
+          "bing-lehetoseg"
+        ],
+        "datum": "2026-11-28"
+      },
+      "written_at": "2026-11-28T05:30:13.151Z"
     }
   ],
   "trend_proba": [
@@ -10156,6 +10179,10 @@
     {
       "kifejezes": "how to use copilot agents",
       "at": "2026-11-27T05:52:42.674Z"
+    },
+    {
+      "kifejezes": "can ai help with daily tasks",
+      "at": "2026-11-28T05:28:48.173Z"
     }
   ]
 }
