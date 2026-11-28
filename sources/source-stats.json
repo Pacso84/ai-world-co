@@ -1,7 +1,7 @@
 {
   "_meta": {
     "note": "Forrás-bizonyítvány: frissesség + termés + megbízhatóság forrásonként. Gyártja: core/source-report-card.js",
-    "updated": "2026-11-28T05:51:03.788Z",
+    "updated": "2026-11-28T16:45:47.713Z",
     "thresholds": {
       "DEAD_FEED_DAYS": 365,
       "MIN_SAMPLE": 8,
@@ -110,7 +110,7 @@
     },
     "microsoft-blog": {
       "name": "Official Microsoft Blog (hivatalos)",
-      "feedAgeDays": 10,
+      "feedAgeDays": 11,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -123,7 +123,7 @@
     },
     "meta-ai": {
       "name": "Meta Newsroom (hivatalos)",
-      "feedAgeDays": 4,
+      "feedAgeDays": 5,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -136,7 +136,7 @@
     },
     "microsoft-ai": {
       "name": "Microsoft AI (hivatalos)",
-      "feedAgeDays": 10,
+      "feedAgeDays": 11,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -174,7 +174,7 @@
     },
     "google-workspace": {
       "name": "Google Workspace Updates (hivatalos)",
-      "feedAgeDays": 0,
+      "feedAgeDays": 1,
       "published30d": 15,
       "published30dAfterAgeGuard": 14,
       "truthBlocks": 0,
@@ -225,7 +225,7 @@
     },
     "github-copilot-changelog": {
       "name": "GitHub Changelog – Copilot (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 6,
       "published30dAfterAgeGuard": 6,
       "truthBlocks": 0,
@@ -276,7 +276,7 @@
     },
     "apple-ml": {
       "name": "Apple Machine Learning Research (hivatalos)",
-      "feedAgeDays": 8,
+      "feedAgeDays": 9,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -559,7 +559,7 @@
     },
     "snowflake": {
       "name": "Snowflake Blog (hivatalos)",
-      "feedAgeDays": 3,
+      "feedAgeDays": 4,
       "published30d": 5,
       "published30dAfterAgeGuard": 5,
       "truthBlocks": 0,
@@ -663,7 +663,7 @@
     },
     "perplexity-news": {
       "name": "Perplexity (hivatalos, Google News szűrve)",
-      "feedAgeDays": null,
+      "feedAgeDays": 0,
       "published30d": 4,
       "published30dAfterAgeGuard": 4,
       "truthBlocks": 0,
@@ -751,7 +751,7 @@
     },
     "brave-leo": {
       "name": "Brave / Leo (hivatalos blog, csak MI)",
-      "feedAgeDays": 12,
+      "feedAgeDays": 13,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -802,7 +802,7 @@
     },
     "grammarly-blog": {
       "name": "Grammarly (hivatalos)",
-      "feedAgeDays": 2,
+      "feedAgeDays": 3,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -828,7 +828,7 @@
     },
     "sony-ai": {
       "name": "Sony AI (hivatalos)",
-      "feedAgeDays": 150,
+      "feedAgeDays": 151,
       "published30d": 0,
       "published30dAfterAgeGuard": 0,
       "truthBlocks": 0,
@@ -841,7 +841,7 @@
     },
     "notion-releases": {
       "name": "Notion – Mi újság (hivatalos)",
-      "feedAgeDays": 40,
+      "feedAgeDays": 41,
       "published30d": 0,
       "truthBlocks": 0,
       "truthUnfixed": 0,
@@ -866,7 +866,7 @@
     },
     "pixlr": {
       "name": "Pixlr Blog (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -905,7 +905,7 @@
     },
     "dropbox-blog": {
       "name": "Dropbox Blog (hivatalos)",
-      "feedAgeDays": 10,
+      "feedAgeDays": 11,
       "published30d": 1,
       "published30dAfterAgeGuard": 1,
       "truthBlocks": 0,
@@ -918,7 +918,7 @@
     },
     "samsung-newsroom": {
       "name": "Samsung Newsroom (hivatalos)",
-      "feedAgeDays": 1,
+      "feedAgeDays": 2,
       "published30d": 2,
       "published30dAfterAgeGuard": 2,
       "truthBlocks": 0,
@@ -931,7 +931,7 @@
     },
     "pika": {
       "name": "Pika (hivatalos)",
-      "feedAgeDays": 5,
+      "feedAgeDays": 6,
       "published30d": 2,
       "published30dAfterAgeGuard": 2,
       "truthBlocks": 0,

@@ -1,5 +1,71 @@
 {
   "slug": "how-to-plan-a-full-week-of-family-dinners-and-one-smart-shopping-list",
-  "probalva": "2026-10-27T20:23:46.711Z",
-  "doboz": null
+  "probalva": "2026-11-28T16:39:03.487Z",
+  "doboz": {
+    "keszult": "2026-11-28T16:39:03.487Z",
+    "enHash": "ddd772954cec4bea9ccb84beb755cd887d06d378",
+    "forrasok": {
+      "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search": "Shopping with ChatGPT Search"
+    },
+    "en": [
+      {
+        "symptom": "The price ChatGPT shows for an item may not be the cheapest one. What should I do?",
+        "why": "Prices shown in ChatGPT's initial response typically reflect the price from the first merchant listed, which may not be the lowest available price. ChatGPT works to highlight the lowest priced option it is aware of in the product detail page and merchant rankings.",
+        "fix": "In ChatGPT: after selecting a product, you may see additional options from other merchants who also offer that product, at the same or different prices. Look for the option that may have a \"Best price\" label when more than one merchant offers the product.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "Can I trust the ratings and review summaries ChatGPT shows?",
+        "why": "Reviews and ratings are not verified by OpenAI. Summaries are model-generated from reviews on public websites.",
+        "fix": "In ChatGPT: verify that products meet your specific needs before purchasing. Treat the review summaries as a general sense of common likes and dislikes, not verified statements.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "A price or shipping detail in ChatGPT looks wrong or out of date.",
+        "why": "When merchants update their pricing or shipping terms, there may be some delay before it is reflected in the information you see. If you spot an error, you can let OpenAI know.",
+        "fix": "In ChatGPT: if you spot an error, submit feedback to let OpenAI know. Expect that a recent price change may take some time to appear.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      }
+    ],
+    "hu": [
+      {
+        "symptom": "A ChatGPT által egy terméknél megjelenített ár nem feltétlenül a legolcsóbb. Mit tegyek?",
+        "why": "A ChatGPT első válaszában megjelenített árak általában az elsőként felsorolt kereskedő árát tükrözik, amely nem feltétlenül a rendelkezésre álló legalacsonyabb ár. A ChatGPT a termék részleteit tartalmazó oldalon és a kereskedők rangsorában igyekszik kiemelni az általa ismert legalacsonyabb árú lehetőséget.",
+        "fix": "A ChatGPT-ben: miután kiválasztottál egy terméket, további lehetőségeket láthatsz más kereskedőktől, akik szintén kínálják azt a terméket, azonos vagy eltérő áron. Ha egynél több kereskedő kínálja a terméket, keresd azt a lehetőséget, amelynél megjelenhet a „Best price” címke.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "Megbízhatok a ChatGPT által megjelenített értékelésekben és véleményösszefoglalókban?",
+        "why": "Az OpenAI nem ellenőrzi a véleményeket és az értékeléseket. Az összefoglalókat a modell nyilvános weboldalakon található vélemények alapján készíti.",
+        "fix": "A ChatGPT-ben: vásárlás előtt ellenőrizd, hogy a termékek megfelelnek-e a saját igényeidnek. A véleményösszefoglalókat a gyakori tetszések és nemtetszések általános bemutatásaként kezeld, ne ellenőrzött állításokként.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "A ChatGPT-ben megjelenő ár- vagy szállítási adat helytelennek vagy elavultnak tűnik.",
+        "why": "Amikor a kereskedők frissítik az áraikat vagy a szállítási feltételeiket, némi időbe telhet, mire ez megjelenik az általad látott információkban. Ha hibát találsz, jelezheted az OpenAI-nak.",
+        "fix": "A ChatGPT-ben: ha hibát találsz, küldj visszajelzést, hogy jelezd az OpenAI-nak. Számíts rá, hogy egy friss árváltozás megjelenéséhez némi időre lehet szükség.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      }
+    ],
+    "es": [
+      {
+        "symptom": "El precio que muestra ChatGPT de un artículo puede no ser el más barato. ¿Qué debo hacer?",
+        "why": "Los precios que se muestran en la respuesta inicial de ChatGPT suelen reflejar el precio del primer vendedor que aparece en la lista, que puede no ser el precio más bajo disponible. ChatGPT trabaja para destacar la opción de menor precio que conoce en la página de detalles del producto y en la clasificación de vendedores.",
+        "fix": "En ChatGPT: después de seleccionar un producto, es posible que veas opciones adicionales de otros vendedores que también ofrecen ese producto, al mismo precio o a precios diferentes. Busca la opción que pueda tener la etiqueta «Best price» cuando más de un vendedor ofrezca el producto.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "¿Puedo confiar en las calificaciones y los resúmenes de reseñas que muestra ChatGPT?",
+        "why": "OpenAI no verifica las reseñas ni las calificaciones. Los resúmenes los genera el modelo a partir de reseñas de sitios web públicos.",
+        "fix": "En ChatGPT: comprueba que los productos satisfagan tus necesidades específicas antes de comprarlos. Considera los resúmenes de reseñas como una idea general de los aspectos que suelen gustar y no gustar, no como afirmaciones verificadas.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      },
+      {
+        "symptom": "Un precio o detalle de envío en ChatGPT parece incorrecto o desactualizado.",
+        "why": "Cuando los vendedores actualizan sus precios o condiciones de envío, puede haber cierto retraso antes de que se refleje en la información que ves. Si detectas un error, puedes informar a OpenAI.",
+        "fix": "En ChatGPT: si detectas un error, envía comentarios para informar a OpenAI. Ten en cuenta que un cambio de precio reciente puede tardar un tiempo en aparecer.",
+        "source": "https://help.openai.com/en/articles/11128490-shopping-with-chatgpt-search"
+      }
+    ]
+  }
 }
