@@ -48,6 +48,16 @@ function titleOf(md, fallback) {
   return m ? m[1] : fallback;
 }
 
+// 📣 MIKOR VÁLTOZOTT A LAP A KERESŐ SZEMÉBEN (2026-11-28, Bing Webmaster „A közelmúltban közzétett fontos lapok nincsenek
+// elküldve az IndexNow-on keresztül”, MAGAS): a valódi tartalmi módosítás (valodiModositas — ez a látható „Frissítve”)
+// + az írás + az ÉLESÍTETT SEO-átírás (új <title> és leírás; a hu/es leírás újrafordul). A SEO a „Frissítve” dátumot
+// NEM mozdítja (nem tartalmi frissítés), de a keresőnek szólni kell róla. @returns {number} ms, 0 = ismeretlen
+export function bejelentesIdo(meta) {
+  const m = meta || {};
+  const ido = x => { const t = new Date(x || 0).getTime(); return Number.isFinite(t) ? t : 0; };
+  return Math.max(ido(valodiModositas(m)), ido(m.written_at), m.seo?.eles ? ido(m.seo.optimised_at) : 0);
+}
+
 export async function submitIndexNow({ all = false, dry = false } = {}) {
   let key = '', site = '';
   try {
@@ -68,9 +78,8 @@ export async function submitIndexNow({ all = false, dry = false } = {}) {
         // 2026-10-19: a MÓDOSÍTOTT cikk is friss (felújító, tény-ellenőrző javítása) — ugyanaz a dátum,
         // ami az oldalon „Frissítve”-ként és a sitemapban lastmod-ként látszik (core/sitemap-lastmod.js).
         if (d._meta?.slug) eloSlugok.push(d._meta.slug);
-        const pub = new Date(valodiModositas(d._meta) || 0).getTime();
-        const written = new Date(d._meta?.written_at || 0).getTime();
-        if (!all && (now - Math.max(pub, written)) > FRESH_HOURS * 3600e3) continue;
+        // (valodiModositas(d._meta) + írás + élesített SEO-átírás — bejelentesIdo, fent)
+        if (!all && (now - bejelentesIdo(d._meta)) > FRESH_HOURS * 3600e3) continue;
         // ===================================================================
         // 2026-07-28 — KÉT JAVÍTÁS EGY SORBAN:
         // 1) A RÖGZÍTETT slug (_meta.slug) az igazság, nem a címből számolt.

@@ -9,6 +9,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { valodiModositas, frissitveNap } from './sitemap-lastmod.js';
 import { osszevontUrlek } from './utmutato-osszevonas.js';
+import * as indexnow from './indexnow.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const olvas = p => readFileSync(join(ROOT, p), 'utf-8').replace(/\r\n/g, '\n');
@@ -58,7 +59,8 @@ t('🏗️ a build a közös függvényből számol, és MINDKÉT sablon kiírja
 
 t('📣 IndexNow: a MÓDOSÍTOTT cikket is bejelenti, nem csak az újat', () => {
   const src = olvas('core/indexnow.js');
-  assert.match(src, /valodiModositas\(d\._meta\)/, 'csak a megjelenés/írás dátumát nézi');
+  assert.match(src, /return Math\.max\(ido\(valodiModositas\(m\)\)/, 'a bejelentesIdo nem a valódi módosítást nézi');
+  assert.match(src, /now - bejelentesIdo\(d\._meta\)/, 'a kiválasztás nem a közös függvényből jön');
   assert.match(src, /osszevontUrlek\(/, 'az összevont útmutatók címe nem megy ki');
 });
 
@@ -75,6 +77,23 @@ t('🔗 összevonás után a RÉGI cím (301) és a megmaradó is kimegy — min
     'https://x.test/hu/article/megmarado', 'https://x.test/hu/article/regi-cim'
   ]);
   assert.deepEqual(osszevontUrlek(null, 'https://x.test', [''], most, 48), []);
+});
+
+// 11-28 (user: „nézd meg a webmestert a bingen!”): Bing Webmaster „A közelmúltban közzétett fontos lapok nincsenek
+// elküldve az IndexNow-on keresztül” (MAGAS) — /es/article/how-to-use-perplexity-…: a SEO tömeges kör 11-27-én új
+// keresőcímet + leírást írt (a hu/es leírás újrafordult), de az IndexNow csak a valodiModositas()-t nézte. Az élesített
+// SEO-átírás is bejelentendő; a látható „Frissítve” (valodiModositas) NEM mozdul — az nem tartalmi frissítés.
+t('📣 IndexNow: az élesített SEO-átírás is bejelentésre kerül, a „Frissítve” dátum nem változik', () => {
+  const { bejelentesIdo } = indexnow;
+  assert.equal(typeof bejelentesIdo, 'function', 'nincs bejelentesIdo');
+  const meta = { published_at: '2026-11-06T04:11:23Z', seo: { eles: true, optimised_at: '2026-11-27T17:47:30Z' } };
+  assert.equal(bejelentesIdo(meta), Date.parse('2026-11-27T17:47:30Z'));
+  assert.equal(valodiModositas(meta), '2026-11-06T04:11:23Z', 'a látható dátum nem mozdulhat a SEO miatt');
+  assert.equal(bejelentesIdo({ published_at: '2026-11-06T04:11:23Z', seo: { optimised_at: '2026-11-27T17:47:30Z' } }),
+    Date.parse('2026-11-06T04:11:23Z'), 'nem élesített (régi v1) SEO nem számít');
+  assert.equal(bejelentesIdo({ published_at: '2026-11-06T04:11:23Z', written_at: '2026-11-07T00:00:00Z' }), Date.parse('2026-11-07T00:00:00Z'));
+  assert.equal(bejelentesIdo(null), 0);
+  assert.match(olvas('core/indexnow.js'), /bejelentesIdo\(d\._meta\)/, 'a kiválasztás a közös függvényt használja');
 });
 
 if (hiba) { console.log(`\n❌ modositas-datum.test: ${hiba} hiba`); process.exit(1); }
