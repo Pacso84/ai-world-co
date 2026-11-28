@@ -38,6 +38,13 @@ t('látogatás: a 3 nyelvi útvonal együtt számít, az ablakon kívüli nap ne
   assert.equal(v.get('c'), undefined, 'a 65 napja volt látogatás az ablakon kívül esik');
 });
 
+t('🛡️ látogatás: a csalás-hír teljes oldala (/scams/<slug>) is a hír olvasója; a /scams gyűjtő nem cikk', () => {
+  const days = naplo({ '/scams/csalas-a': 3, '/hu/scams/csalas-a': 4, '/article/csalas-a': 5, '/scams': 2, '/es/scams': 2 });
+  const v = latogatasok(days, d(1), 60);
+  assert.equal(v.get('csalas-a'), 3, 'a /scams/<slug> és az /article/<slug> látogatása együtt számít');   // 3 sor × 1 látogatás
+  assert.deepEqual([...v.keys()].sort(), ['csalas-a', 'zaj-hir'], 'a /scams gyűjtőoldal nem cikk');
+});
+
 t('🔴 lefedettség-kapu: hiányzó nap, üres nap, elavult vagy üres napló → NINCS törlés', () => {
   assert.equal(lefedettseg(naplo(), MOST, 60).ok, true);
   const lyukas = naplo(); delete lyukas[d(30)];

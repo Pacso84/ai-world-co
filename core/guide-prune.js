@@ -18,7 +18,9 @@ import { halottLinkTorles } from './guide-links.js';
 
 export const SITE = 'https://aiworldhq.com';
 const NAP = 864e5;
-const UTVONAL_RX = /^\/(?:hu\/|es\/)?article\/([^/?#]+)/;
+// 🛡️ 2026-11-28 (csalás-figyelő 12. rész): a csalás-hír TELJES leírása a /scams/<slug> lapon van — aki ott olvassa,
+// az is a hír olvasója (különben a 90 napos hír-törlés egy olvasott csalás-hírt is kivenne). Útmutató sosincs ott.
+const UTVONAL_RX = /^\/(?:hu\/|es\/)?(?:article|scams)\/([^/?#]+)/;
 const GYANUS_ARANY = 0.6;
 export const CSONKA_SOR = 1000;  // a core/traffic-log.js ennyi útvonalat kér naponta (NAPI_LIMIT; 10-22 előtt 200)
 const SZEGENY_ARANY = 0.25;      // ennél kevesebb sor a szokásoshoz képest = hibás naplónap (10-16)

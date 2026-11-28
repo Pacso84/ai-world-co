@@ -115,6 +115,9 @@ for (const lang of LANGS) {
     .map(f => join(base, f)).filter(existsSync);
   const artDir = join(base, 'article');
   const articles = existsSync(artDir) ? readdirSync(artDir).map(f => join(artDir, f)) : [];
+  // 🛡️ 12. rész (11-28): a csalás-hírek TELJES oldala (scams/<slug>.html) is cikk — csak bekapcsolva létezik
+  const scDir = join(base, 'scams');
+  if (existsSync(scDir)) articles.push(...readdirSync(scDir).map(f => join(scDir, f)));
 
   for (const p of [...pages, ...articles]) {
     const raw = readFileSync(p, 'utf-8');
@@ -131,7 +134,7 @@ for (const lang of LANGS) {
     }
 
     // --- 2) fordítatlan tartalom (csak cikkeken számoljuk) ---
-    if (p.includes('article')) {
+    if (articles.includes(p)) {
       const hits = (proseText(raw).match(EN_RX) || []).length;   // példadobozok NÉLKÜL — lásd proseText()
       if (hits >= BODY_THRESHOLD) {
         console.log(`⚠️  [${lang}] FORDÍTATLAN TARTALOM GYANÚ (${hits} angol jel): ${short}`);

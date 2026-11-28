@@ -2,7 +2,8 @@
 // spec 8.6): papírlapos fejléc → legújabb csalás-hírek → átnézett útmutatók → bejelentő doboz → MI-címke.
 // Ingyenes, hálózat nélküli.
 import assert from 'node:assert/strict';
-import { csalasOldalHtml, csalasFejlecLap, CSALAS_UTMUTATOK, CSALAS_UI, bejelentesNyelven, csalasBorito } from './csalas-oldal.js';
+import { csalasOldalHtml, csalasFejlecLap, CSALAS_UTMUTATOK, CSALAS_UI, bejelentesNyelven, csalasBorito, csalasRovidMd, csalasTeljesUt } from './csalas-oldal.js';
+import { peldaBlokk } from './csalas-sablon.js';
 import { BEJELENTES, ORSZAGFUGGETLEN } from './csalas-vedekezes.js';
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -34,7 +35,7 @@ t('🕳️ 0 hírrel is teljes: útmutató-szakasz, bejelentő doboz, üres-szö
 
 t('🆕 2 hírnél a legújabb van elöl', () => {
   const h = oldal([H1, H2]);
-  assert.ok(h.indexOf('article/uj-csalas') > -1 && h.indexOf('article/uj-csalas') < h.indexOf('article/regi-csalas'));
+  assert.ok(h.indexOf('scams/uj-csalas') > -1 && h.indexOf('scams/uj-csalas') < h.indexOf('scams/regi-csalas'));
   assert.ok(!h.includes(sz('en').scEmpty), 'hír mellett nincs üres-szöveg');
 });
 
@@ -87,7 +88,7 @@ t('🖼️ kép csak ha van; alt-szöveg a cím + „nem valódi” jelölés; e
 
 t('📄 fejléc-lap: van friss képes hír → a képe; nincs → a bejelentő lista', () => {
   const kepes = csalasFejlecLap({ hirek: [H2, H1], sz: sz('en'), bejelentes: bejelentesNyelven('en') });
-  assert.ok(kepes.includes('class="lh-lap"') && kepes.includes('regi-csalas-en.jpg') && kepes.includes('article/regi-csalas'));
+  assert.ok(kepes.includes('class="lh-lap"') && kepes.includes('regi-csalas-en.jpg') && kepes.includes('scams/regi-csalas'));
   const ures = csalasFejlecLap({ hirek: [H2], sz: sz('en'), bejelentes: bejelentesNyelven('en') });
   assert.ok(ures.includes('https://www.ic3.gov') && !ures.includes('<img'));
   assert.ok(!/<h1[\s>]/.test(kepes + ures));
@@ -133,6 +134,52 @@ t('📱 csalás-hír cikkfej-képe mobilon sem vág (16:9 doboz, contain)', () =
   const css = readFileSync(join(ROOT, 'website', 'assets', 'style.css'), 'utf8');
   assert.match(css, /\.article__cover--csalas\s*\{[^}]*height:\s*auto[^}]*aspect-ratio:\s*16\s*\/\s*9/);
   assert.match(css, /\.article__cover--csalas img\s*\{[^}]*object-fit:\s*contain/);
+});
+
+// ── 12. rész (11-28): rövid hír a Hírek között, teljes leírás a /scams/<slug> oldalon ──
+const VALODI = JSON.parse(readFileSync(join(ROOT, 'core', 'fixtures', 'csalas-ic3-valasztas.json'), 'utf8'));
+const h2k = md => md.split('\n').filter(s => /^##\s/.test(s));
+
+t('✂️ rövid hír (valódi en/hu/es fordítás): a 3. H2 előtt vág — a példa + 3 jel marad, a védekezés nem', () => {
+  for (const l of ['en', 'hu', 'es']) {
+    const teljes = VALODI[l];
+    const rovid = csalasRovidMd(teljes);
+    assert.deepEqual(h2k(rovid), h2k(teljes).slice(0, 2), `${l}: nem az első két fejezet`);
+    assert.ok(/^#\s/m.test(rovid), `${l}: nincs H1`);
+    assert.ok(rovid.includes(teljes.match(/^>\s*\*\*[^*]+\*\*.*$/m)[0]), `${l}: nincs „In short” sor`);
+    const p = peldaBlokk(rovid);
+    assert.ok(p, `${l}: nincs példablokk`);
+    assert.equal(p.magyarazat.length, 3, `${l}: nem 3 jel-magyarázat`);
+    assert.deepEqual(p, peldaBlokk(teljes), `${l}: a példa nem azonos a teljes cikkével`);
+    assert.ok(rovid.length < teljes.length * 0.65, `${l}: nem rövidebb érdemben (${rovid.length}/${teljes.length})`);
+    assert.ok(!rovid.includes(h2k(teljes)[2]), `${l}: benne van a védekezés-fejezet`);
+    assert.ok(teljes.startsWith(rovid.trimEnd()), `${l}: nem a cikk eleje`);
+  }
+});
+
+t('✂️ rövid hír: sablon nélküli szöveg (kevesebb mint 3 H2) érintetlen; kódblokkban lévő ## nem számít', () => {
+  const ket = '# T\n\n> **In short:** x\n\n## A\n\nx\n\n## B\n\ny\n';
+  assert.equal(csalasRovidMd(ket), ket);
+  const kod = '# T\n\n## A\n\n```\n## nem fejléc\n```\n\n## B\n\nb\n\n## C\n\nc\n';
+  assert.equal(csalasRovidMd(kod), '# T\n\n## A\n\n```\n## nem fejléc\n```\n\n## B\n\nb\n');
+  assert.equal(csalasRovidMd(''), '');
+  assert.equal(csalasRovidMd(null), '');
+});
+
+t('🔗 a /scams kártyái és a fejléc-lap a TELJES oldalra (/scams/<slug>) mutatnak, nem a rövid hírre', () => {
+  assert.equal(csalasTeljesUt('abc'), 'scams/abc');
+  const h = oldal([H1, H2]);
+  assert.ok(!/href="article\/(uj|regi)-csalas"/.test(h), 'a kártya még a rövid hírre mutat');
+  assert.ok(h.includes('href="scams/uj-csalas"') && h.includes('href="scams/regi-csalas"'));
+  assert.ok(h.includes('href="article/how-to-spot-a-phishing-email-or-scam-text-before-you-click"'), 'az útmutató-link nem article/');
+});
+
+t('🌐 a teljes-oldal gomb felirata hu/es nyelven nem angol', () => {
+  for (const k of ['scFull']) {
+    assert.ok(CSALAS_UI.en[k] && CSALAS_UI.hu[k] && CSALAS_UI.es[k], `hiányzó ${k}`);
+    assert.notEqual(CSALAS_UI.hu[k], CSALAS_UI.en[k]);
+    assert.notEqual(CSALAS_UI.es[k], CSALAS_UI.en[k]);
+  }
 });
 
 if (hiba) { console.log(`\n❌ csalas-oldal: ${hiba} hiba`); process.exit(1); }

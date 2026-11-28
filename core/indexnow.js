@@ -24,6 +24,7 @@ import { noindexNyelv } from './noindex-langs.js';
 import { toroltUrlek } from './guide-prune.js';
 import { valodiModositas } from './sitemap-lastmod.js';
 import { osszevontUrlek } from './utmutato-osszevonas.js';
+import { CSALAS_FIGYELO_BE, csalasHir } from './csalas-figyelo.js';   // 🛡️ 12. rész: a csalás-hír teljes oldala
 import { frissit as halottFrissit, esedekes as halottEsedekes, bejelentve as halottBejelentve } from './halott-url.js';   // 🪦 2026-10-31
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -92,6 +93,8 @@ export async function submitIndexNow({ all = false, dry = false } = {}) {
         // ===================================================================
         const slug = d._meta?.slug || slugify(titleOf(d.article_markdown, d.original_title || f));
         for (const lp of LANGS) urls.add(`${site}${lp}/article/${slug}`);
+        // 🛡️ 12. rész (11-28): a csalás-hír TELJES leírása külön lapon (/scams/<slug>, website/build.js) — az is új cím
+        if (CSALAS_FIGYELO_BE && csalasHir(d._meta)) for (const lp of LANGS) urls.add(`${site}${lp}/scams/${slug}`);
       } catch { /* rossz fájl kihagyva */ }
     }
   }

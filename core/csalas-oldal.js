@@ -35,6 +35,7 @@ export const CSALAS_UI = Object.freeze({
     scEmpty: 'No new scam alerts right now. The guides below show the most common tricks.',
     scMore: 'See all scam alerts', scImgAlt: 'example of a scam message, not real', scLapFej: 'Latest example',
     scAi: 'The scam alerts on this page are written by AI from official warnings. They passed automated fact and quality checks, and our editor spot-checks published articles every day.',
+    scFull: 'Full details and how to protect yourself',
   },
   hu: {
     scNav: 'Csalások', scTitle: 'Csalás-figyelő', scBadge: 'Csalásriasztás',
@@ -47,6 +48,7 @@ export const CSALAS_UI = Object.freeze({
     scEmpty: 'Most nincs új csalásriasztás. Az alábbi útmutatók a leggyakoribb trükköket mutatják be.',
     scMore: 'Az összes csalásriasztás', scImgAlt: 'példa egy csalóüzenetre, nem valódi', scLapFej: 'Legutóbbi példa',
     scAi: 'Az oldalon lévő csalásriasztásokat mesterséges intelligencia írta hivatalos figyelmeztetések alapján. Automatikus tény- és minőség-ellenőrzésen mentek át, és a szerkesztőnk naponta szúrópróbaszerűen átnézi a megjelent cikkeket.',
+    scFull: 'Teljes leírás és védekezés',
   },
   es: {
     scNav: 'Estafas', scTitle: 'Alertas de estafas', scBadge: 'Alerta de estafa',
@@ -59,6 +61,7 @@ export const CSALAS_UI = Object.freeze({
     scEmpty: 'Ahora no hay alertas nuevas. Las guías de abajo muestran los trucos más comunes.',
     scMore: 'Ver todas las alertas de estafas', scImgAlt: 'ejemplo de un mensaje de estafa, no es real', scLapFej: 'Último ejemplo',
     scAi: 'Las alertas de esta página fueron escritas por IA a partir de avisos oficiales. Pasaron controles automáticos de datos y calidad, y nuestro editor comprueba cada día una muestra de los artículos publicados.',
+    scFull: 'Descripción completa y cómo protegerte',
   },
 });
 
@@ -82,6 +85,27 @@ export function csalasBorito(a, lang, letezik) {
   return a.image;
 }
 
+// ── 12. rész (2026-11-28, user: „a csalásokat a híreknél is lehozzuk! de a teljes leírást és védekezést az új
+// oldalon fejtjük ki!”) ── A Hírek közötti /article/<slug> a RÖVID változat: minden, ami a 3. H2 („How to protect
+// yourself”) ELŐTT áll — H1, „In short”, bevezető, „What's happening”, „Warning signs” a példával és a 3 jellel.
+// A teljes cikk a /scams/<slug> oldalon. POZÍCIÓ szerint vágunk, nem fejléc-szöveg szerint: a hu/es fejléc fordított.
+// Kevesebb mint 3 H2 (nem sablonos szöveg) → a teljes szöveg marad (nincs csonka hír).
+const H2_SOR = /^##\s+\S/;
+export function csalasRovidMd(md) {
+  const sorok = String(md ?? '').split('\n');
+  let h2 = 0, vege = -1, kodban = false;
+  for (let i = 0; i < sorok.length; i++) {
+    if (/^\s*```/.test(sorok[i])) kodban = !kodban;
+    if (kodban || !H2_SOR.test(sorok[i])) continue;
+    if (++h2 === 3) { vege = i; break; }
+  }
+  if (vege < 0) return String(md ?? '');
+  return sorok.slice(0, vege).join('\n').replace(/\s+$/, '') + '\n';
+}
+
+/** A csalás-hír teljes oldalának útja (a nyelvi előtag NÉLKÜL) — build, sitemap, IndexNow, /scams kártyák. */
+export const csalasTeljesUt = slug => `scams/${slug}`;
+
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 const legujabbElol = hirek => [...hirek].sort((a, b) => String(b.datum || '').localeCompare(String(a.datum || '')));
@@ -96,7 +120,7 @@ export function csalasFejlecLap({ hirek = [], sz, bejelentes }) {
   const kepes = legujabbElol(hirek).find(h => h.kep);
   if (kepes) {
     return lapHtml({ ikon: '🛡️', fej: sz.scLapFej,
-      torzs: `<a class="sc-lap-kep" href="article/${esc(kepes.slug)}">${kepImg(kepes, sz)}</a>` });
+      torzs: `<a class="sc-lap-kep" href="${esc(csalasTeljesUt(kepes.slug))}">${kepImg(kepes, sz)}</a>` });
   }
   return lapHtml({ ikon: '🛡️', fej: sz.scReport,
     torzs: `${bejelentoLista(bejelentes)}<p class="sc-lap-orszag">${esc(sz.scCountry)}</p>` });
@@ -106,7 +130,7 @@ export function csalasFejlecLap({ hirek = [], sz, bejelentes }) {
 export function csalasOldalHtml({ hirek = [], utmutatok = [], sz, bejelentes, hirdetes = '', fejlec = '', datumSzoveg = iso => String(iso || '').slice(0, 10) }) {
   const lista = legujabbElol(hirek);
   const kartyak = lista.length
-    ? `<ul class="sc-cards">${lista.map(h => `<li class="sc-card"><a href="article/${esc(h.slug)}">
+    ? `<ul class="sc-cards">${lista.map(h => `<li class="sc-card"><a href="${esc(csalasTeljesUt(h.slug))}">
         ${h.kep ? `<span class="sc-card__kep">${kepImg(h, sz)}</span>` : ''}
         <span class="sc-card__badge">🛡️ ${esc(sz.scBadge)}</span>
         <h3 class="sc-card__t">${esc(h.title)}</h3>

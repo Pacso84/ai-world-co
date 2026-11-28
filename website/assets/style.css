@@ -1650,6 +1650,14 @@ body {
 .sc-more { margin: 28px 0 0; font-weight: 700; }
 .sc-more a { color: var(--c-scam); text-decoration: none; }
 .sc-more a:hover { text-decoration: underline; }
+/* 🛡️ 12. rész (11-28): a rövid csalás-hír alján a nagy gomb a teljes leírásra (/scams/<slug>). A háttér mindkét
+   módban a világos-módú csalás-szín: fehér szöveggel így is ≥ 4,5:1 a kontraszt (a sötét-módú #c8573f-en nem lenne). */
+.sc-full { margin: 30px 0 6px; text-align: center; }
+.sc-full__btn { display: inline-block; max-width: 100%; box-sizing: border-box; padding: 15px 26px; border-radius: 12px;
+  background: #b4442f; color: #fff; font-weight: 800; font-size: 17px; line-height: 1.3; text-decoration: none;
+  box-shadow: 0 2px 0 rgba(0,0,0,.12); }
+.sc-full__btn:hover, .sc-full__btn:focus-visible { background: #9b3726; color: #fff; text-decoration: none; }
+.sc-full__btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 
 /* A cikkbeli példa: 4:5 kép felirattal, vagy jelölt szöveges változat (ha a kép még nincs) */
 .csalas-pelda { margin: 28px auto; max-width: 460px; }

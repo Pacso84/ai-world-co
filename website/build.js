@@ -71,7 +71,7 @@ import { partnerBeallitas, partnerDoboz, partnerJelzes } from '../core/affiliate
 import { kedvencForrasHtml } from '../core/preferred-source.js';
 import { CSALAS_FIGYELO_BE, csalasHir } from '../core/csalas-figyelo.js';   // 🛡️ 2026-11-27 csalás-figyelő 8. rész
 import { peldaBlokkCsere } from '../core/csalas-sablon.js';
-import { csalasOldalHtml, csalasFejlecLap, CSALAS_UTMUTATOK, CSALAS_UI, bejelentesNyelven, csalasBorito } from '../core/csalas-oldal.js';
+import { csalasOldalHtml, csalasFejlecLap, CSALAS_UTMUTATOK, CSALAS_UI, bejelentesNyelven, csalasBorito, csalasRovidMd, csalasTeljesUt } from '../core/csalas-oldal.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = join(__dirname, '..');
@@ -935,6 +935,8 @@ function localizeArticle(a, lang) {
     // 🛡️ csalás-hír: a hu/es oldal a saját nyelvű 16:9 borítót kapja (a <slug>.jpg angol feliratú)
     image: a.csalas ? csalasBorito(a, lang, kepVan) : a.image,
     bodyHtml: wrapTables(wrapInShort(wrapImpactSection(torzsH1(marked.parse(csalasTorzs(body, a.csalas, a.slug, lang, meta.title || a.title)), meta.title || a.title)))),
+    // 🛡️ 12. rész: a Hírek közötti RÖVID változat (a teljes a /scams/<slug> oldalon) — core/csalas-oldal.js
+    bodyHtmlRovid: a.csalas ? wrapTables(wrapInShort(wrapImpactSection(torzsH1(marked.parse(csalasTorzs(csalasRovidMd(body), true, a.slug, lang, meta.title || a.title)), meta.title || a.title)))) : null,
     bodyMd: body
   };
 }
@@ -1208,6 +1210,8 @@ function loadArticles() {
         kereso: keresoFej(data._meta, { lang: 'en', cikkMd: body }),
         seoKeywords: (data._meta?.seo?.keywords || meta.tags || []).join(', '),
         bodyHtml: wrapTables(wrapInShort(wrapImpactSection(torzsH1(marked.parse(csalasTorzs(body, csalasHir(data._meta), slug, 'en', meta.title || data.original_title)), meta.title || data.original_title)))),
+        // 🛡️ 12. rész (11-28): a Hírek közötti RÖVID változat; a teljes cikk a /scams/<slug> oldalon
+        bodyHtmlRovid: csalasHir(data._meta) ? wrapTables(wrapInShort(wrapImpactSection(torzsH1(marked.parse(csalasTorzs(csalasRovidMd(body), true, slug, 'en', meta.title || data.original_title)), meta.title || data.original_title)))) : null,
         bodyMd: body,
         // 🛡️ csalás-hír (2026-11-27): „Scam alert” címke, /scams gyűjtő, rajzolt példa-kép
         csalas: csalasHir(data._meta),
@@ -1287,9 +1291,11 @@ function buildXref(articles) {
 //
 // NYELVHELYES: a nevek a nyelvi szótárból jönnek (tr), az URL-ek a nyelvi
 // előtaggal (LP) — így a magyar oldalon "Főoldal › Útmutatók › …" lesz.
-function breadcrumbSchema(a, canonical) {
-  const listPath = a.isGuide ? `${LP}/guides` : `${LP}/archive`;
-  const listName = a.isGuide ? tr('guides') : tr('news');
+function breadcrumbSchema(a, canonical, { scams = false } = {}) {
+  // 🛡️ 12. rész: a csalás-hír teljes oldala (/scams/<slug>) a Csalás-figyelő alá tartozik
+  const sc = Boolean(scams && CSALAS_FIGYELO_BE);
+  const listPath = sc ? `${LP}/scams` : (a.isGuide ? `${LP}/guides` : `${LP}/archive`);   // CSALAS_FIGYELO_BE (sc)
+  const listName = sc ? tr('scTitle') : (a.isGuide ? tr('guides') : tr('news'));
   return {
     '@context': 'https://schema.org', '@type': 'BreadcrumbList',
     itemListElement: [
@@ -2209,12 +2215,24 @@ function supportLine() {
     + `<a href="${escapeHtml(SUPPORT.url)}" target="_blank" rel="noopener noreferrer">${tr('supFootLink')}</a></p>`;
 }
 
-function buildArticlePage(a) {
+// 🛡️ CSALÁS-HÍR KÉT LAPON (12. rész, 2026-11-28; user: „a csalásokat a híreknél is lehozzuk! de a teljes leírást
+// és védekezést az új oldalon fejtjük ki!”). Bekapcsolt CSALAS_FIGYELO_BE mellett:
+//   • /article/<slug> = RÖVID hír (core/csalas-oldal.js csalasRovidMd: a védekezés-fejezet előtt vége) + nagy gomb
+//   • /scams/<slug>   = a TELJES cikk (`teljes: true`), saját canonical/hreflang, a morzsamenü a Csalás-figyelő alá.
+// Kikapcsolva a régi, egylapos teljes cikk marad.
+function buildArticlePage(a, { teljes = false } = {}) {
   const cat = CATEGORIES[a.category] || CATEGORIES.other;
   const aud = AUDIENCES[a.audience] || AUDIENCES.both;
   const tagsHtml = a.tags.length
     ? `<div class="article__tags">${a.tags.map(t => `<span class="minitag">#${escapeHtml(t)}</span>`).join('')}</div>`
     : '';
+  const rovidCsalas = Boolean(CSALAS_FIGYELO_BE && a.csalas && !teljes && a.bodyHtmlRovid);
+  const teljesCsalas = Boolean(CSALAS_FIGYELO_BE && a.csalas && teljes);
+  const teljesGomb = rovidCsalas ? `<p class="sc-full"><a class="sc-full__btn" href="../${escapeHtml(csalasTeljesUt(a.slug))}">🛡️ ${escapeHtml(tr('scFull'))} →</a></p>` : '';
+  // a rövid hír a rövid törzset kapja; a teljes oldal nem viszi a keresőcímet (az az /article/ lapé — két lapon
+  // ugyanaz a <title> ne legyen). Másolaton, hogy a lenti hívások alakja a régi maradjon (forrás-őrök).
+  if (rovidCsalas) a = { ...a, bodyHtml: a.bodyHtmlRovid };
+  if (teljesCsalas) a = { ...a, kereso: null };
   // HIRDETÉS A CIKK KÖZEPÉN (2026-10-16): két bekezdés közé, a ~40%-hoz; ha nincs alkalmas
   // hely, a régi helyére, a cikk aljára — de EGY oldalon mindig legfeljebb EGY (core/ads.js).
   const hirTorzs = hirdetesHirbe(withMidRead(guideAutolink(glossAutolink(a.bodyHtml, { linked: new Set(), count: 0 }), a), a), hirdetesBlokk(HIRDETES, LANG));
@@ -2241,8 +2259,9 @@ function buildArticlePage(a) {
     <div class="article__body">
       ${hirTorzs.html}
     </div>
+    ${teljesGomb}
     ${tagsHtml}
-    ${(a.csalas && CSALAS_FIGYELO_BE) ? `<p class="sc-more"><a href="../scams">🛡️ ${escapeHtml(tr('scMore'))} →</a></p>` : ''}
+    ${(a.csalas && CSALAS_FIGYELO_BE && !rovidCsalas) ? `<p class="sc-more"><a href="../scams">🛡️ ${escapeHtml(tr('scMore'))} →</a></p>` : ''}
     ${xrefBox(a)}
     ${relatedBox(a)}
     <div class="article__foot">
@@ -2255,13 +2274,16 @@ function buildArticlePage(a) {
     ${hirTorzs.kozepen ? '' : hirdetesBlokk(HIRDETES, LANG)}
   </article>`;
 
-  const canonical = `${SITE.url}${LP}/article/${a.slug}`;
+  const lapUt = teljesCsalas ? csalasTeljesUt(a.slug) : `article/${a.slug}`;
+  const canonical = `${SITE.url}${LP}/${lapUt}`;
   const ogImage = a.image ? `${SITE.url}/assets/images/${a.image}` : '';
+  // 🛡️ a teljes csalás-oldal saját címet + leírást kap (ne legyen két lapon szóról szóra ugyanaz a <title>)
+  const leiras = buildMetaDescription(teljesCsalas ? `${tr('scFull')}: ${a.subtitle}` : (a.seoDescription || a.subtitle), a.bodyMd);
   // NewsArticle a híreknek (2026-07-14, Google News/Discover-felkészítés);
   // a szerző/kiadó az About-oldalra mutat (átlátható AI-szerkesztőség = E-E-A-T).
   const jsonld = {
-    '@context': 'https://schema.org', '@type': 'NewsArticle',
-    headline: a.title, description: buildMetaDescription(a.seoDescription || a.subtitle, a.bodyMd),
+    '@context': 'https://schema.org', '@type': teljesCsalas ? 'Article' : 'NewsArticle',
+    headline: a.title, description: leiras,
     image: ogImage || undefined,
     datePublished: a.publishedAt || undefined,
     dateModified: a.modifiedAt || a.publishedAt || undefined,   // VALÓDI frissítés (2026-08-01)
@@ -2275,10 +2297,11 @@ function buildArticlePage(a) {
     keywords: a.seoKeywords || undefined
   };
   return pageShell({
-    title: withBrand(a.title),
-    description: buildMetaDescription(a.seoDescription || a.subtitle, a.bodyMd),
+    // előtag, nem utótag: a hosszú címet a fej levágja, és az utótag eltűnne (build-próba 11-28: két egyforma <title>)
+    title: withBrand(teljesCsalas ? `${tr('scBadge')}: ${a.title}` : a.title),
+    description: leiras,
     keywords: a.seoKeywords,
-    ogImage, jsonld: [jsonld, breadcrumbSchema(a, canonical)], pagePath: `article/${a.slug}`,
+    ogImage, jsonld: [jsonld, breadcrumbSchema(a, canonical, { scams: teljesCsalas })], pagePath: lapUt,
     bodyContent: body, isArticle: true, kereso: a.kereso,
     articleMeta: { published: a.publishedAt, modified: a.modifiedAt || a.publishedAt, section: catNev(cat) }
   });
@@ -3944,6 +3967,10 @@ function main() {
       const html = a.isGuide ? buildGuidePage(a) : buildArticlePage(a);
       writeFileSync(join(outArticle, `${a.slug}.html`), html, 'utf-8');
     }
+    // 🛡️ 12. rész (11-28): a csalás-hírek TELJES oldala /scams/<slug> — CSAK bekapcsolt kapcsolóval (a rövid a fenti /article/)
+    const csalasCikkek = CSALAS_FIGYELO_BE ? loc.filter(a => a.csalas && !a.isGuide) : [];
+    if (csalasCikkek.length) mkdirSync(join(outBase, 'scams'), { recursive: true });
+    for (const a of csalasCikkek) writeFileSync(join(outBase, csalasTeljesUt(a.slug) + '.html'), buildArticlePage(a, { teljes: true }), 'utf-8');
     if (SUPPORT.enabled) writeFileSync(join(outBase, 'support.html'), buildSupportPage(), 'utf-8');
     // Az eladó oldal CSAK akkor készül el, ha van mérési adat ÉS bolt-cím
     // (lásd a PACKS betöltését) — üres boltba mutató gomb ne keletkezzen.
@@ -3973,6 +4000,7 @@ function main() {
       sitemapUrls.push({ loc: `${SITE.url}${lp}/privacy`, date: null });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/archive`, date: gyujtoLastmod(news) });
       for (const a of loc) sitemapUrls.push({ loc: `${SITE.url}${lp}/article/${a.slug}`, date: cikkLastmod(a) });
+      for (const a of csalasCikkek) sitemapUrls.push({ loc: `${SITE.url}${lp}/${csalasTeljesUt(a.slug)}`, date: cikkLastmod(a) });   // 🛡️ 12. rész (üres, ha a kapcsoló KI)
     }
 
     console.log(`✅ [${lang}] ${loc.length + 3} oldal generálva (${outBase === OUT_DIR ? 'gyökér' : lang + '/'})`);
