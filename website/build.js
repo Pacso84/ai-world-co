@@ -70,6 +70,7 @@ import { aktivTrendek } from '../core/trend-kutato.js';
 import { partnerBeallitas, partnerDoboz, partnerJelzes } from '../core/affiliate.js';
 import { kedvencForrasHtml } from '../core/preferred-source.js';
 import { CSALAS_FIGYELO_BE, csalasHir } from '../core/csalas-figyelo.js';   // 🛡️ 2026-11-27 csalás-figyelő 8. rész
+import { csalasArchivBetolt, csalasArchivAdat } from '../core/csalas-archiv.js';   // 🗂️ 2026-11-28 csalás-archív
 import { peldaBlokkCsere } from '../core/csalas-sablon.js';
 import { csalasOldalHtml, csalasFejlecLap, CSALAS_UTMUTATOK, CSALAS_UI, bejelentesNyelven, csalasBorito, csalasRovidMd, csalasTeljesUt } from '../core/csalas-oldal.js';
 
@@ -923,7 +924,7 @@ function csalasTorzs(md, csalas, slug, lang, cim) {
 
 function localizeArticle(a, lang) {
   if (lang === 'en') return a;
-  const md = loadTranslation(a.file)[lang];
+  const md = a.forditas ? a.forditas?.[lang] : loadTranslation(a.file)[lang];   // 🗂️ archív: beépített fordítás
   if (!md) return a;   // fallback: angol
   const { meta, body } = parseFrontmatter(md);
   return {
@@ -1137,14 +1138,17 @@ function frissitveHtml(a) {
 // CIKKEK BETÖLTÉSE
 // ===================================================================
 
-function loadArticles() {
-  if (!existsSync(ARTICLES_DIR)) return [];
-  const files = readdirSync(ARTICLES_DIR).filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json'));
+// 🗂️ CSALÁS-ARCHÍV (2026-11-28): `forras` = kész { file, data } lista (core/csalas-archiv.js csalasArchivBetolt) —
+// az archív cikkek a content/articles-en KÍVÜL vannak, hogy a social/Reel/hírlevél/prune utak ne lássák őket.
+function loadArticles(forras = null) {
+  if (!forras && !existsSync(ARTICLES_DIR)) return [];
+  const files = forras ? [] : readdirSync(ARTICLES_DIR).filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json'));
+  const tetelek = forras || files.map(file => ({ file }));
   const articles = [];
 
-  for (const file of files) {
+  for (const { file, data: kesz } of tetelek) {
     try {
-      const data = JSON.parse(readFileSync(join(ARTICLES_DIR, file), 'utf-8'));
+      const data = kesz || JSON.parse(readFileSync(join(ARTICLES_DIR, file), 'utf-8'));
       const { meta, body } = parseFrontmatter(data.article_markdown);
       // ===================================================================
       // RÖGZÍTETT SLUG (2026-07-27) — a megjelent URL ÖRÖKRE ugyanaz marad.
@@ -1170,7 +1174,7 @@ function loadArticles() {
       // minőségi körök átírják, és a mostani címmel mérve 0 találat jön ki —
       // vagyis kidobnánk 18 VALÓDI 301-et. Lásd core/legacy-urls.js.
       const bornSlug = file.replace(/^ARTICLE_(GUIDE_)?/, '').replace(/\.json$/, '');
-      const legacy = legacyRedirect({ bornSlug, slug, originalTitle: data.original_title });
+      const legacy = forras ? null : legacyRedirect({ bornSlug, slug, originalTitle: data.original_title });   // archívnak nincs /article/ lapja
       if (legacy) RENAMED_SLUGS.set(legacy.from, legacy.to);
 
       // Van valódi kép a slug-hoz? (Designer agent generálta)
@@ -1215,6 +1219,9 @@ function loadArticles() {
         bodyMd: body,
         // 🛡️ csalás-hír (2026-11-27): „Scam alert” címke, /scams gyűjtő, rajzolt példa-kép
         csalas: csalasHir(data._meta),
+        // 🗂️ csalás-archív (2026-11-28): { forrasNev, forrasDatum } + a beépített hu/es fordítás; élő cikknél null
+        csalasArchiv: forras ? csalasArchivAdat(data._meta) : null,
+        forditas: forras ? (data.forditas || {}) : null,
         // AZ ANGOL TÖRZS MEGŐRZÉSE (2026-10-23): a lokalizáló felülírja a bodyMd-t, a lépés-ikon
         // viszont az angol lépésből jön (core/lepes-kep.js) — így minden nyelven ugyanaz a kép
         bodyMdEn: body,
@@ -2251,6 +2258,7 @@ function buildArticlePage(a, { teljes = false } = {}) {
         <span class="dot">·</span>
         <span>${formatDate(a.publishedAt)}</span>
         ${frissitveHtml(a)}
+        ${a.csalasArchiv ? `<span class="sc-archiv-datum">🗓️ ${escapeHtml(tr('scWarnFrom').replace('{f}', a.csalasArchiv.forrasNev))} · ${formatDate(a.csalasArchiv.forrasDatum)}</span>` : ''}
       </div>
       ${aiLabelHtml('aiLabelNews')}
       ${kedvencForrasHtml(SITE.url, LANG)}
@@ -3432,7 +3440,7 @@ function buildScamsPage(loc) {
   const bejelentes = bejelentesNyelven(LANG);
   const hirek = loc.filter(a => a.csalas && !a.isGuide).map(a => {
     const rel = `csalas/${a.slug}-${LANG}.jpg`;
-    return { slug: a.slug, title: a.title, summary: a.subtitle, kep: kepVan(rel) ? `/assets/images/${rel}` : '', datum: a.publishedAt };
+    return { slug: a.slug, title: a.title, summary: a.subtitle, kep: kepVan(rel) ? `/assets/images/${rel}` : '', datum: a.csalasArchiv?.forrasDatum || a.publishedAt, forras: a.csalasArchiv?.forrasNev || '' };
   });
   const utmutatok = CSALAS_UTMUTATOK.map(s => loc.find(a => a.slug === s)).filter(Boolean).map(a => ({ slug: a.slug, title: a.title }));
   const fejlec = lapHeroHtml({
@@ -3821,6 +3829,15 @@ function main() {
 
   // Cikkek betöltése (egyszer) + kereszthivatkozás-index
   const articles = loadArticles();
+  // 🗂️ CSALÁS-ARCHÍV (2026-11-28): a 2026-ban már közzétett figyelmeztetések — CSAK /scams + /scams/<slug> + sitemap.
+  // Slug-ütközésnél (később élő hír lett belőle) az ÉLŐ nyer. Kikapcsolt figyelőnél üres.
+  const eloSlugok = new Set(articles.map(a => a.slug));
+  const archivCsalas = CSALAS_FIGYELO_BE ? loadArticles(csalasArchivBetolt(PROJECT_ROOT)).filter(a => {
+    if (!eloSlugok.has(a.slug)) return true;
+    console.warn(`⚠️  csalás-archív: ${a.slug} már élő cikk — az archív változat kimarad`);
+    return false;
+  }) : [];
+  if (archivCsalas.length) console.log(`🗂️ csalás-archív: ${archivCsalas.length} korábbi figyelmeztetés a csalás-oldalon`);
   // 🔥 Olvasóink kedvencei: a CI által írt forgalmi naplóból (hiba/hiány → nincs kiemelés, a build megy tovább)
   try {
     const tl = JSON.parse(readFileSync(join(PROJECT_ROOT, 'memory', 'traffic-log.json'), 'utf-8'));
@@ -3845,6 +3862,7 @@ function main() {
     mkdirSync(outArticle, { recursive: true });
 
     const loc = articles.map(a => localizeArticle(a, lang));
+    const locArchiv = archivCsalas.map(a => localizeArticle(a, lang));   // 🗂️ csak a csalás-gyűjtő, a teljes csalás-lapok és a sitemap kapja
     const news = loc.filter(a => !a.isGuide);
     const guides = loc.filter(a => a.isGuide);
     // ===================================================================
@@ -3907,7 +3925,7 @@ function main() {
     writeFileSync(join(outBase, 'glossary.html'), buildGlossaryPage(), 'utf-8');   // AI-kisszótár
     writeFileSync(join(outBase, 'prompts.html'), buildPromptsPage(articles, loc), 'utf-8');   // Prompt-tár (2026-10-16)
     writeFileSync(join(outBase, 'trending.html'), buildTrendingPage(articles, loc), 'utf-8'); // Trend-radar (2026-10-18)
-    if (CSALAS_FIGYELO_BE) writeFileSync(join(outBase, 'scams.html'), buildScamsPage(loc), 'utf-8');   // 🛡️ /scams (2026-11-27, kapcsoló mögött)
+    if (CSALAS_FIGYELO_BE) writeFileSync(join(outBase, 'scams.html'), buildScamsPage([...loc, ...locArchiv]), 'utf-8');   // 🛡️ /scams (2026-11-27, kapcsoló mögött)
     writeFileSync(join(outBase, ESZKOZ_UTAK.sp + '.html'), buildSafePastePage(), 'utf-8');   // 🧰 Ingyenes eszközök (2026-10-21; a gyűjtő a Prompt-tár)
     writeFileSync(join(outBase, ESZKOZ_UTAK.pb + '.html'), buildPromptBuilderPage(), 'utf-8');
     writeFileSync(join(outBase, 'wizard.html'), buildWizardPage(), 'utf-8');       // Melyik AI való neked?
@@ -3968,7 +3986,7 @@ function main() {
       writeFileSync(join(outArticle, `${a.slug}.html`), html, 'utf-8');
     }
     // 🛡️ 12. rész (11-28): a csalás-hírek TELJES oldala /scams/<slug> — CSAK bekapcsolt kapcsolóval (a rövid a fenti /article/)
-    const csalasCikkek = CSALAS_FIGYELO_BE ? loc.filter(a => a.csalas && !a.isGuide) : [];
+    const csalasCikkek = CSALAS_FIGYELO_BE ? [...loc.filter(a => a.csalas && !a.isGuide), ...locArchiv] : [];
     if (csalasCikkek.length) mkdirSync(join(outBase, 'scams'), { recursive: true });
     for (const a of csalasCikkek) writeFileSync(join(outBase, csalasTeljesUt(a.slug) + '.html'), buildArticlePage(a, { teljes: true }), 'utf-8');
     if (SUPPORT.enabled) writeFileSync(join(outBase, 'support.html'), buildSupportPage(), 'utf-8');
@@ -3993,7 +4011,7 @@ function main() {
       sitemapUrls.push({ loc: `${SITE.url}${lp}/glossary`, date: null });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/prompts`, date: gyujtoLastmod(guides) });
       sitemapUrls.push({ loc: `${SITE.url}${lp}/trending`, date: gyujtoLastmod(loc.filter(a => a.trend)) });
-      if (CSALAS_FIGYELO_BE) sitemapUrls.push({ loc: `${SITE.url}${lp}/scams`, date: gyujtoLastmod(loc.filter(a => a.csalas)) });   // 🛡️
+      if (CSALAS_FIGYELO_BE) sitemapUrls.push({ loc: `${SITE.url}${lp}/scams`, date: gyujtoLastmod([...loc.filter(a => a.csalas), ...locArchiv]) });   // 🛡️
       sitemapUrls.push({ loc: `${SITE.url}${lp}/wizard`, date: null });
       for (const ut of Object.values(ESZKOZ_UTAK)) sitemapUrls.push({ loc: `${SITE.url}${lp}/${ut}`, date: null });   // 🧰
       sitemapUrls.push({ loc: `${SITE.url}${lp}/about`, date: null });

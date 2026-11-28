@@ -247,6 +247,24 @@ t('csalasKepekFuttat: bekapcsolva nyelvenként 4x5 + 16x9, angol borító; a hib
   } finally { rmSync(R, { recursive: true, force: true }); }
 });
 
+t('csalasKepekFuttat: 🗂️ archív cikk (content/csalas-archiv, beépített fordítás) is kap képet mindhárom nyelven', async () => {
+  const R = gyoker();
+  try {
+    mkdirSync(join(R, 'content/csalas-archiv'), { recursive: true });
+    writeFileSync(join(R, 'content/csalas-archiv/ARTICLE_SCAM_regi-csomag.json'), JSON.stringify({
+      article_markdown: SMS_EN, forditas: { hu: SMS_HU, es: SMS_HU },
+      _meta: { slug: 'regi-csomag', csalas: { csatorna: 'sms' }, csalas_archiv: { forras_datum: '2026-06-15', forras_nev: 'FBI' } },
+    }));
+    await csalasKepekFuttat({ ROOT: R, be: true, sharpModul: sharp });
+    const I = join(R, 'website/assets/images');
+    for (const f of ['csalas/regi-csomag-en.jpg', 'csalas/regi-csomag-hu.jpg', 'csalas/regi-csomag-es.jpg',
+      'csalas/regi-csomag-hu-16x9.jpg', 'regi-csomag.jpg', 'csalas/regi-csomag-kartya.png']) assert.ok(existsSync(join(I, f)), f);
+    // a content/translations-ben NEM keres (ott nincs is ilyen fájl) — a hibák között nincs archív tétel
+    const g = JSON.parse(readFileSync(join(R, 'memory/csalas-guard.json'), 'utf-8'));
+    assert.ok(!g.kep_hibak.some(h => h.slug === 'regi-csomag'), JSON.stringify(g.kep_hibak));
+  } finally { rmSync(R, { recursive: true, force: true }); }
+});
+
 t('csalasKepekFuttat: a meglévő őrszem-mezőket (más részek adatát) megtartja', async () => {
   const R = gyoker();
   try {

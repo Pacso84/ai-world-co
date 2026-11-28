@@ -101,5 +101,38 @@ t('🛡️ MINDEN valódi archív cikk átmegy a kapun (content/csalas-archiv/)'
   assert.deepEqual(rossz, []);
 });
 
+// ── a build bekötése (forrás-minta őr): az archív CSAK a /scams-ra és a /scams/<slug> lapokra jut ──────────────
+const BUILD = readFileSync(join(ROOT, 'website', 'build.js'), 'utf-8').replace(/\r\n/g, '\n');
+t('🧱 build.js: az archív a csalasArchivBetolt-ból jön, és KÜLÖN listában marad', () => {
+  assert.match(BUILD, /import \{[^}]*csalasArchivBetolt[^}]*\} from '\.\.\/core\/csalas-archiv\.js'/);
+  assert.match(BUILD, /const archivCsalas = /);
+  assert.match(BUILD, /const locArchiv = /);
+});
+t('🧱 build.js: a locArchiv CSAK a /scams-lapon, a /scams/<slug> lapokon és a sitemapban szerepel', () => {
+  const sorok = BUILD.split('\n').filter(s => /locArchiv/.test(s) && !/^\s*\/\//.test(s));
+  for (const s of sorok) {
+    assert.ok(/const locArchiv = |buildScamsPage\(|const csalasCikkek = |gyujtoLastmod\(/.test(s), `váratlan locArchiv-használat: ${s.trim()}`);
+  }
+  assert.ok(sorok.some(s => /buildScamsPage\(/.test(s)), 'a /scams nem kapja meg');
+  assert.ok(sorok.some(s => /const csalasCikkek = /.test(s)), 'a /scams/<slug> lapok nem kapják meg');
+});
+t('🧱 build.js: a Hírek/főoldal a sima loc-ból készül (az archív nincs benne)', () => {
+  assert.match(BUILD, /const news = loc\.filter\(a => !a\.isGuide\);/);
+  assert.match(BUILD, /const loc = articles\.map\(a => localizeArticle\(a, lang\)\);/);
+  assert.ok(!/articles\.push\(\.\.\.archivCsalas|articles\.concat\(archivCsalas/.test(BUILD), 'az archív nem keveredhet az articles-be');
+});
+t('🧱 build.js: a hu/es szöveg az archív fájl beépített fordításából', () => {
+  assert.match(BUILD, /a\.forditas\?\.\[lang\]/);
+});
+
+t('📣 indexnow.js: az archívból CSAK /scams/<slug> (nincs /article/), a kapcsoló mögött', () => {
+  const IX = readFileSync(join(ROOT, 'core', 'indexnow.js'), 'utf-8').replace(/\r\n/g, '\n');
+  const i = IX.indexOf('csalasArchivBetolt(ROOT)');
+  assert.ok(i > -1, 'az indexnow nem olvassa az archívot');
+  const blokk = IX.slice(IX.lastIndexOf('if (CSALAS_FIGYELO_BE) {', i), IX.indexOf('\n  }\n', i) + 4);
+  assert.match(blokk, /\/scams\/\$\{slug\}/);
+  assert.ok(!/\/article\//.test(blokk), 'archívhoz /article/ cím nem jelenthető (a lap nem létezik)');
+});
+
 console.log(hiba ? `  ❌ ${hiba} hiba` : '  ✅ minden rendben');
 process.exit(hiba ? 1 : 0);

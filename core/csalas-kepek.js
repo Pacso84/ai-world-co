@@ -19,6 +19,7 @@ import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { CSALAS_FIGYELO_BE, csalasHir } from './csalas-figyelo.js';
 import { peldaBlokk } from './csalas-sablon.js';
+import { csalasArchivBetolt } from './csalas-archiv.js';
 import { rajzolCsalasKep, rajzolCsalasKartya, rajzSablon, betuAllapot, RAJZ_V } from './csalas-kep.js';
 
 const NYELVEK = ['en', 'hu', 'es'];
@@ -42,13 +43,18 @@ export async function csalasKepekFuttat({ ROOT, be = CSALAS_FIGYELO_BE, sharpMod
   let kesz = 0, valtozatlan = 0, cikkDb = 0;
 
   const fajlok = existsSync(CIKK) ? readdirSync(CIKK).filter(f => f.startsWith('ARTICLE_') && f.endsWith('.json')) : [];
-  for (const f of fajlok) {
-    const d = jsonOlvas(join(CIKK, f), null);
+  // 🗂️ csalás-archív (2026-11-28, core/csalas-archiv.js): a 2026-os korábbi figyelmeztetések is kapnak képet;
+  // a hu/es szöveg a fájlon BELÜL van (`forditas`), nem a content/translations-ben
+  const tetelek = [
+    ...fajlok.map(f => ({ f, d: jsonOlvas(join(CIKK, f), null), archiv: false })),
+    ...csalasArchivBetolt(ROOT).map(({ file, data }) => ({ f: file, d: data, archiv: true })),
+  ];
+  for (const { f, d, archiv } of tetelek) {
     if (!d || !csalasHir(d._meta)) continue;
     cikkDb++;
     const slug = d._meta?.slug;
     if (!slug || !/^[a-z0-9][a-z0-9-]*$/.test(slug)) { hibak.push({ slug: slug || f, lang: '-', hiba: 'nincs (érvényes) _meta.slug' }); continue; }
-    const ford = jsonOlvas(join(FORD, f), {});
+    const ford = archiv ? (d.forditas || {}) : jsonOlvas(join(FORD, f), {});
     for (const lang of NYELVEK) {
       const md = lang === 'en' ? d.article_markdown : ford[lang];
       if (!md) continue;                                   // a fordítás még nem készült el — nem hiba

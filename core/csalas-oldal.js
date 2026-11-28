@@ -36,6 +36,7 @@ export const CSALAS_UI = Object.freeze({
     scMore: 'See all scam alerts', scImgAlt: 'example of a scam message, not real', scLapFej: 'Latest example',
     scAi: 'The scam alerts on this page are written by AI from official warnings. They passed automated fact and quality checks, and our editor spot-checks published articles every day.',
     scFull: 'Full details and how to protect yourself',
+    scEarlier: 'Earlier official warnings from 2026', scWarnFrom: '{f} warning',
   },
   hu: {
     scNav: 'Csalások', scTitle: 'Csalás-figyelő', scBadge: 'Csalásriasztás',
@@ -49,6 +50,7 @@ export const CSALAS_UI = Object.freeze({
     scMore: 'Az összes csalásriasztás', scImgAlt: 'példa egy csalóüzenetre, nem valódi', scLapFej: 'Legutóbbi példa',
     scAi: 'Az oldalon lévő csalásriasztásokat mesterséges intelligencia írta hivatalos figyelmeztetések alapján. Automatikus tény- és minőség-ellenőrzésen mentek át, és a szerkesztőnk naponta szúrópróbaszerűen átnézi a megjelent cikkeket.',
     scFull: 'Teljes leírás és védekezés',
+    scEarlier: 'Korábbi hivatalos figyelmeztetések 2026-ból', scWarnFrom: '{f}-figyelmeztetés',
   },
   es: {
     scNav: 'Estafas', scTitle: 'Alertas de estafas', scBadge: 'Alerta de estafa',
@@ -62,6 +64,7 @@ export const CSALAS_UI = Object.freeze({
     scMore: 'Ver todas las alertas de estafas', scImgAlt: 'ejemplo de un mensaje de estafa, no es real', scLapFej: 'Último ejemplo',
     scAi: 'Las alertas de esta página fueron escritas por IA a partir de avisos oficiales. Pasaron controles automáticos de datos y calidad, y nuestro editor comprueba cada día una muestra de los artículos publicados.',
     scFull: 'Descripción completa y cómo protegerte',
+    scEarlier: 'Avisos oficiales anteriores de 2026', scWarnFrom: 'Aviso de {f}',
   },
 });
 
@@ -128,22 +131,30 @@ export function csalasFejlecLap({ hirek = [], sz, bejelentes }) {
 
 /** A /scams oldal törzse (a pageShell bodyContent-je). `datumSzoveg` az ISO dátumot írja ki a lap nyelvén. */
 export function csalasOldalHtml({ hirek = [], utmutatok = [], sz, bejelentes, hirdetes = '', fejlec = '', datumSzoveg = iso => String(iso || '').slice(0, 10) }) {
-  const lista = legujabbElol(hirek);
-  const kartyak = lista.length
-    ? `<ul class="sc-cards">${lista.map(h => `<li class="sc-card"><a href="${esc(csalasTeljesUt(h.slug))}">
+  // 🗂️ archív (2026-11-28, core/csalas-archiv.js): a `forras`-os elem a 2026-ban már közzétett figyelmeztetés —
+  // külön szakaszba, a friss hírek alá, „FBI warning · <eredeti dátum>” címkével.
+  const kartya = h => `<li class="sc-card"><a href="${esc(csalasTeljesUt(h.slug))}">
         ${h.kep ? `<span class="sc-card__kep">${kepImg(h, sz)}</span>` : ''}
         <span class="sc-card__badge">🛡️ ${esc(sz.scBadge)}</span>
         <h3 class="sc-card__t">${esc(h.title)}</h3>
         ${h.summary ? `<p class="sc-card__s">${esc(h.summary)}</p>` : ''}
-        ${h.datum ? `<time datetime="${esc(h.datum)}">${esc(datumSzoveg(h.datum))}</time>` : ''}
-      </a></li>`).join('')}</ul>`
+        ${h.datum ? `<time datetime="${esc(h.datum)}">${h.forras ? `${esc(sz.scWarnFrom.replace('{f}', h.forras))} · ` : ''}${esc(datumSzoveg(h.datum))}</time>` : ''}
+      </a></li>`;
+  const friss = legujabbElol(hirek.filter(h => !h.forras));
+  const korabbi = legujabbElol(hirek.filter(h => h.forras));
+  const kartyak = friss.length
+    ? `<ul class="sc-cards">${friss.map(kartya).join('')}</ul>`
     : `<p class="sc-empty">${esc(sz.scEmpty)}</p>`;
+  const korabbiSzakasz = korabbi.length
+    ? `<section class="sc-sec sc-earlier"><h2>${esc(sz.scEarlier)}</h2><ul class="sc-cards">${korabbi.map(kartya).join('')}</ul></section>`
+    : '';
   const utm = utmutatok.length
     ? `<section class="sc-sec sc-signs"><h2>${esc(sz.scSigns)}</h2><p class="sc-sec__lead">${esc(sz.scSignsLead)}</p>
       <ul class="sc-guides">${utmutatok.map(u => `<li><a href="article/${esc(u.slug)}">${esc(u.title)} →</a></li>`).join('')}</ul></section>`
     : '';
   return `${fejlec}
   <section class="sc-sec sc-latest"><h2>${esc(sz.scLatest)}</h2>${kartyak}</section>
+  ${korabbiSzakasz}
   ${hirdetes}
   ${utm}
   <section class="sc-report"><h2>${esc(sz.scReport)}</h2><p>${esc(sz.scReportLead)}</p>${bejelentoLista(bejelentes)}

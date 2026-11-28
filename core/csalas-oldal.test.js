@@ -182,5 +182,40 @@ t('🌐 a teljes-oldal gomb felirata hu/es nyelven nem angol', () => {
   }
 });
 
+// 🛡️ CSALÁS-ARCHÍV (2026-11-28): a 2026-ban már közzétett figyelmeztetések KÜLÖN szakaszban, a friss hírek alatt,
+// az eredeti forrásdátummal („FBI warning · …”) — hogy régi figyelmeztetés ne látsszon friss hírnek.
+const A1 = { slug: 'archiv-rendor', title: 'Fake police', summary: 'Old warning.', kep: '/assets/images/csalas/archiv-rendor-en.jpg', datum: '2026-09-17', forras: 'FBI' };
+const A2 = { slug: 'archiv-ic3', title: 'Fake IC3', summary: 'Older warning.', kep: '', datum: '2026-07-20', forras: 'FBI' };
+
+t('🗂️ archív: külön „korábbi” szakasz a friss hírek ALATT, forrásdátummal', () => {
+  const h = oldal([A2, H1, A1]);
+  const korabbi = h.indexOf(sz('en').scEarlier);
+  assert.ok(korabbi > -1, 'nincs scEarlier szakasz');
+  assert.ok(h.indexOf('scams/regi-csalas') < korabbi, 'a friss hír a korábbiak FÖLÖTT');
+  assert.ok(h.indexOf('scams/archiv-rendor') > korabbi && h.indexOf('scams/archiv-ic3') > korabbi);
+  assert.ok(h.indexOf('scams/archiv-rendor') < h.indexOf('scams/archiv-ic3'), 'a korábbiak közt is az újabb elöl');
+  assert.ok(h.includes('FBI warning · 2026-09-17'), 'nincs „FBI warning · dátum”');
+  assert.ok(!h.includes(sz('en').scEmpty), 'friss hír mellett nincs üres-szöveg');
+});
+
+t('🗂️ archív: friss hír nélkül az üres-szöveg marad, alatta a korábbiak', () => {
+  const h = oldal([A1]);
+  assert.ok(h.includes(sz('en').scEmpty));
+  assert.ok(h.indexOf(sz('en').scEmpty) < h.indexOf(sz('en').scEarlier));
+  assert.equal(db(h, /<h1[\s>]/g), 1);
+  assert.equal(db(h, /class="ad-slot"/g), 1);
+});
+
+t('🗂️ archív: nincs archív elem → nincs „korábbi” szakasz', () => {
+  assert.ok(!oldal([H1, H2]).includes(sz('en').scEarlier));
+});
+
+t('🌐 archív feliratok hu/es nyelven, {f} helyén a forrás', () => {
+  assert.equal(CSALAS_UI.hu.scWarnFrom.replace('{f}', 'FBI'), 'FBI-figyelmeztetés');
+  assert.equal(CSALAS_UI.es.scWarnFrom.replace('{f}', 'FBI'), 'Aviso de FBI');
+  assert.ok(oldal([A1], 'hu').includes('FBI-figyelmeztetés · 2026-09-17'));
+  for (const l of ['hu', 'es']) assert.notEqual(CSALAS_UI[l].scEarlier, CSALAS_UI.en.scEarlier);
+});
+
 if (hiba) { console.log(`\n❌ csalas-oldal: ${hiba} hiba`); process.exit(1); }
 console.log('✅ csalas-oldal: minden eset zöld');
