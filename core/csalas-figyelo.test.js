@@ -12,13 +12,13 @@ import { readFileSync } from 'node:fs';
 
 let hiba = 0;
 const t = (nev, fn) => { try { fn(); console.log('  ✅ ' + nev); } catch (e) { hiba++; console.log('  ❌ ' + nev + '\n     ' + e.message); } };
-console.log('\n🧪 csalas-figyelo (alapmodul, kikapcsolva)');
+console.log('\n🧪 csalas-figyelo (alapmodul)');
 
 const NAP = 24 * 3600 * 1000;
 const MOST = Date.parse('2026-11-23T12:00:00Z');
 
-t('🔌 a kapcsoló KI van kapcsolva (élesítésig — az élesítő rész írja át true-ra)', () => {
-  assert.equal(CSALAS_FIGYELO_BE, false);
+t('🔌 a kapcsoló BE van kapcsolva (user-jóváhagyás 2026-11-28; kikapcsolni csak user-döntéssel)', () => {
+  assert.equal(CSALAS_FIGYELO_BE, true);
 });
 
 t('🔢 állandók: napi 1 hely, 7 nap, 6 csatorna', () => {
@@ -27,9 +27,11 @@ t('🔢 állandók: napi 1 hely, 7 nap, 6 csatorna', () => {
   assert.deepEqual(CSATORNAK, ['sms', 'email', 'chat', 'call', 'social', 'web']);
 });
 
-t('🛑 kikapcsolva 0 csalás-hely marad (akkor is, ha ma még nem volt csalás-hír)', () => {
-  assert.equal(csalasExtraMaradek(0), 0);
+t('🛡️ bekapcsolva naponta pontosan 1 csalás-hely (ha már volt aznap, több nincs)', () => {
+  assert.equal(csalasExtraMaradek(0), 1);
+  assert.equal(csalasExtraMaradek(undefined), 1);
   assert.equal(csalasExtraMaradek(1), 0);
+  assert.equal(csalasExtraMaradek(2), 0);
 });
 
 t('📅 frissesség: 6 napos igen, 8 napos nem', () => {

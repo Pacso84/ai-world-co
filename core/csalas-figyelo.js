@@ -9,7 +9,8 @@
 // KILL-SWITCH: CSALAS_FIGYELO_BE (kézi, teszttel őrzött). A config `enabled` mezői NEM kapcsolnak ki semmit.
 // false = nincs csalás-gyűjtés, 0 csalás-hely, nincs /scams oldal, nincs menüpont.
 
-export const CSALAS_FIGYELO_BE = false;
+// 2026-11-28: BEKAPCSOLVA (user: „oké csináljuk!” — a 12–13. rész CI-mintájának megnézése után).
+export const CSALAS_FIGYELO_BE = true;
 export const CSALAS_EXTRA_NAPI = 1;
 export const CSALAS_MAX_KOR_NAP = 7;
 
