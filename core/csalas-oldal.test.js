@@ -212,7 +212,7 @@ t('🗂️ archív: nincs archív elem → nincs „korábbi” szakasz', () => 
 
 t('🌐 archív feliratok hu/es nyelven, {f} helyén a forrás', () => {
   assert.equal(CSALAS_UI.hu.scWarnFrom.replace('{f}', 'FBI'), 'FBI-figyelmeztetés');
-  assert.equal(CSALAS_UI.es.scWarnFrom.replace('{f}', 'FBI'), 'Aviso de FBI');
+  assert.equal(CSALAS_UI.es.scWarnFrom.replace('{f}', 'FBI'), 'FBI · aviso oficial');
   assert.ok(oldal([A1], 'hu').includes('FBI-figyelmeztetés · 2026-09-17'));
   for (const l of ['hu', 'es']) assert.notEqual(CSALAS_UI[l].scEarlier, CSALAS_UI.en.scEarlier);
 });

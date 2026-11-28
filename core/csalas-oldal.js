@@ -64,7 +64,7 @@ export const CSALAS_UI = Object.freeze({
     scMore: 'Ver todas las alertas de estafas', scImgAlt: 'ejemplo de un mensaje de estafa, no es real', scLapFej: 'Último ejemplo',
     scAi: 'Las alertas de esta página fueron escritas por IA a partir de avisos oficiales. Pasaron controles automáticos de datos y calidad, y nuestro editor comprueba cada día una muestra de los artículos publicados.',
     scFull: 'Descripción completa y cómo protegerte',
-    scEarlier: 'Avisos oficiales anteriores de 2026', scWarnFrom: 'Aviso de {f}',
+    scEarlier: 'Avisos oficiales anteriores de 2026', scWarnFrom: '{f} · aviso oficial',
   },
 });
 
