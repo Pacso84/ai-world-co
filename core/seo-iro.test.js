@@ -7,6 +7,7 @@ import { readFileSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import * as seoIro from './seo-iro.js';
+import { hibaSorok } from './report-lines.js';
 const { seoBemenet, seoPrompt, seoValasz, atirasSorrend, vedettFriss, forgalom30 } = seoIro;
 const javaslatMagok = (...a) => { if (!seoIro.javaslatMagok) throw new Error('javaslatMagok nincs'); return seoIro.javaslatMagok(...a); };
 const hasznosKeresesek = (...a) => { if (!seoIro.hasznosKeresesek) throw new Error('hasznosKeresesek nincs'); return seoIro.hasznosKeresesek(...a); };
@@ -144,6 +145,18 @@ t('seoRiportSor: mai munka → sor; kész + ma semmi → üres; hátralék melle
   assert.match(seoRiportSor({ nap: ma, kikapcsolva: true }, ma), /kikapcsolva/);
   assert.match(seoRiportSor({ nap: ma, kesz: 1, maradt: 9, javaslatHiba: 'HTTP 429 (letiltott)' }, ma), /Google-javaslat.*429/);
   assert.equal(seoRiportSor(null, ma), '');
+});
+// 11-28 (user: „tellegram irta hogy a seo-val gond van!”): a „3 kapun elbukott” sor az „elbukott” szó miatt
+// HIBAJELZÉSNEK számított (report-lines.js HIBA_JEL), pedig a kapu dolga, hogy a rossz címet visszatartsa — a régi
+// cím marad, nincs teendő. Hibajelzés CSAK a valódi baj: válasz nélküli hívás, vagy ma nem futott a kör.
+t('seoRiportSor: a kapu visszatartása NEM hibajelzés; a válasz nélküli hívás IGEN', () => {
+  const ma = '2026-11-28';
+  const kapus = seoRiportSor({ nap: ma, kesz: 90, bukott: 3, hiba: 0, maradt: 718 }, ma);
+  assert.match(kapus, /90 régi cikk.*3.*régi.*marad.*718/);
+  assert.equal(hibaSorok([kapus]).length, 0, 'a kapu-visszatartás ne riasszon');
+  const valaszNelkul = seoRiportSor({ nap: ma, kesz: 40, bukott: 0, hiba: 2, maradt: 700 }, ma);
+  assert.equal(hibaSorok([valaszNelkul]).length, 1, 'a válasz nélküli hívás valódi hiba → riasszon');
+  assert.equal(hibaSorok([seoRiportSor({ nap: '2026-11-25', kesz: 10, maradt: 500 }, ma)]).length, 1);
 });
 
 console.log(`\n${bukott ? '❌' : '✅'} ${pass} rendben, ${bukott} bukott`);

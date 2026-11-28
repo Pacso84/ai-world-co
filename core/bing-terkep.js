@@ -59,10 +59,10 @@ export function bingTerkepSor(allapot, { ujrakuldve = [] } = {}) {
   const bajok = allapot?.bajok || [];
   if (!bajok.length) return null;
   const mi = bajok.map(b => `${rovid(b.url)}: ${b.ok}`).join(' · ');
-  const tett = ujrakuldve.length
-    ? ` → újraküldtem a Bingnek (${ujrakuldve.map(rovid).join(', ')}); 1–2 nap, mire feldolgozza.`
-    : ' → a következő 2 napban magától újraküldöm; ha marad, nézd meg a Bing Webmasterben (Webhelytérképek).';
-  return `🔍 Bing-térkép: ⚠️ ${mi}${tett}`;
+  // 11-28: ha magától újraküldte, nincs ⚠️ (a user hibának olvasta, pedig a Bing aznap be is olvasta).
+  if (ujrakuldve.length)
+    return `🔍 Bing-térkép: ${mi} → magától újraküldtem a Bingnek (${ujrakuldve.map(rovid).join(', ')}); 1–2 nap, mire feldolgozza — nincs teendő.`;
+  return `🔍 Bing-térkép: ⚠️ ${mi} → a következő 2 napban magától újraküldöm; ha marad, nézd meg a Bing Webmasterben (Webhelytérképek).`;
 }
 
 /** Kell-e most újraküldeni (van baj, és az utolsó újraküldés UJRAKULDES_SZUNET_NAP napnál régebbi)? */

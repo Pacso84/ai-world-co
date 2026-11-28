@@ -82,3 +82,14 @@ assert.deepEqual(await ujrakuld('k', ELVART_TERKEPEK, async () => { throw new Er
 assert.ok(ELVART_TERKEPEK.every(u => u.startsWith('https://aiworldhq.com/')));
 
 console.log('✅ bing-terkep: minden rendben');
+
+// 11-28 (user: „bingnél van hiba!”): a Telegramban „⚠️ 2 napja nem olvasta” állt, pedig az őr MÁR újraküldte, és a Bing
+// aznap 16:45-kor be is olvasta (Success, 2871 URL). Ha magától intézte → nincs ⚠️, és kimondja: nincs teendő.
+// Ha nem tudta újraküldeni → marad a ⚠️ (ott tényleg nézni kell).
+{
+  const intezve = bingTerkepSor(a, { ujrakuldve: ['https://aiworldhq.com/sitemap.xml'] });
+  assert.ok(!/⚠️/.test(intezve), 'magától intézve → ne riasszon');
+  assert.match(intezve, /nincs teendő/);
+  assert.match(bingTerkepSor(a), /⚠️/, 'nem sikerült újraküldeni → marad a figyelmeztetés');
+}
+console.log('✅ bing-terkep: 11-28 riasztás-szöveg rendben');

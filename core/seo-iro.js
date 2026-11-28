@@ -170,7 +170,10 @@ export function seoRiportSor(e, ma) {
   if (e.nap !== ma) return (Number(e.maradt) || 0) > 0 ? `⚠️ 🔎 SEO tömeges kör: ma nem futott (utolsó: ${e.nap}, hátra ${e.maradt} régi cikk)` : '';
   const kesz = Number(e.kesz) || 0, bukott = Number(e.bukott) || 0, hiba = Number(e.hiba) || 0;
   if (!kesz && !bukott && !hiba) return '';
-  return `🔎 SEO: ma ${kesz} régi cikk új keresőcímet kapott` + (bukott ? ` · ${bukott} kapun elbukott (a régi marad)` : '')
+  // 11-28: a kapu-visszatartás NEM hiba (az „elbukott” szó a report-lines.js HIBA_JEL miatt riasztott) → semleges szó;
+  // a válasz nélküli hívás viszont valódi baj → ⚠️ elöl, így a zárósor is felsorolja.
+  return (hiba ? '⚠️ ' : '') + `🔎 SEO: ma ${kesz} régi cikk új keresőcímet kapott`
+    + (bukott ? ` · ${bukott} új címet a minőségkapu visszatartott (a régi cím marad, nincs teendő)` : '')
     + (hiba ? ` · ${hiba} válasz nélkül` : '') + ` · hátra ${Number(e.maradt) || 0}`
     + (e.javaslatHiba ? ` · ⚠️ Google-javaslat kiesett: ${String(e.javaslatHiba).slice(0, 60)}` : '');
 }
