@@ -267,5 +267,40 @@ t('🔌 Fordító: a példablokk szabálya a promptban, és a széttört blokk �
   assert.ok(/forditasEgyezik\(/.test(k), 'a fordítás nem ellenőrzi a példablokkot');
 });
 
+// 11-28 ELŐNÉZET-LELET: az FBI IC3 hírfolyama CSAK címet ad → a besoroló „no summary to confirm” indokkal eldobta a
+// „Scammers Exploit 2026 U.S. Midterm Election…” PSA-t (valódi, magánembereket célzó csalás). A rövid kivonatú
+// jelöltnek a hivatalos oldal elejét kell kapnia (ingyenes letöltés, AI nélkül); letöltési hiba sosem dob.
+{
+  const { csalasKivonatPotlas, CSALAS_KIVONAT_MIN } = await import('./csalas-figyelo.js');
+  const ok = typeof csalasKivonatPotlas === 'function';
+  t('📄 csalasKivonatPotlas létezik', () => assert.ok(ok, 'nincs csalasKivonatPotlas'));
+  if (ok) {
+    const hosszu = 'x'.repeat(CSALAS_KIVONAT_MIN + 50);
+    const jeloltek = [
+      { item: { link: 'https://www.ic3.gov/PSA/2026/PSA261020' }, snippet: '' },
+      { item: { link: 'https://blog.google/a' }, snippet: hosszu },
+      { item: { link: 'https://www.ic3.gov/PSA/2026/hibas' }, snippet: 'rövid' },
+    ];
+    const hivott = [];
+    const letolto = async (url, o) => { hivott.push([url, o?.maxChars]);
+      if (url.endsWith('hibas')) throw new Error('nincs net');
+      return { ok: true, text: 'Scammers impersonate election officials and ask voters for payment by phone.' }; };
+    const n = await csalasKivonatPotlas(jeloltek, letolto);
+    t('📄 rövid kivonat → letölti az oldal elejét; hosszú kivonat → nincs letöltés; hiba → marad a régi', () => {
+      assert.match(jeloltek[0].snippet, /impersonate election officials/);
+      assert.equal(jeloltek[1].snippet, hosszu);
+      assert.equal(jeloltek[2].snippet, 'rövid');
+      assert.deepEqual(hivott.map(h => h[0]), ['https://www.ic3.gov/PSA/2026/PSA261020', 'https://www.ic3.gov/PSA/2026/hibas']);
+      assert.ok(hivott.every(h => h[1] > 0 && h[1] <= 2000), 'csak az oldal eleje kell (kis maxChars)');
+      assert.equal(n, 1, 'ennyi kivonatot pótolt');
+    });
+    t('📄 az RSS-gyűjtő a besorolás ELŐTT pótolja a kivonatot', () => {
+      const k = readFileSync(new URL('../agents/rss-scraper/agent.js', import.meta.url), 'utf8');
+      const potol = k.indexOf('csalasKivonatPotlas(csalasJeloltek'), prompt = k.indexOf('csalasSzuroPrompt(csalasJeloltek');
+      assert.ok(potol > 0 && prompt > potol, 'a pótlás a besoroló prompt előtt fusson');
+    });
+  }
+}
+
 if (hiba) { console.log(`\n❌ ${hiba} hiba`); process.exit(1); }
 console.log('\n✅ csalas-figyelo: minden rendben');

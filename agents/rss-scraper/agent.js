@@ -31,11 +31,11 @@ import { extractJsonArray } from '../../core/extract-json.js';
 import { tulRegiTetel } from '../../core/hir-frissesseg.js';
 import { isStaticPage, googleNewsForras, keszulekBemutato } from '../../core/statikus-lap.js';   // 2026-10-29   // 🕰️ 2026-10-29 korhatár
 import { cimSzuronAtmegy, datumCimPotlas, kulcsszoSzuroKell } from '../../core/forras-cimszuro.js';   // 🎯 2026-10-30 forrásonkénti címszűrő
-import { tisztaUrl, latottLinkek, htmlSzoveg } from '../../core/forras-letoltes.js';   // ✂️ 2026-11-01 szóközös linkek
+import { tisztaUrl, latottLinkek, htmlSzoveg, forrasLetoltes } from '../../core/forras-letoltes.js';   // ✂️ 2026-11-01 szóközös linkek
 import { hirfolyamSzovegIr, vazlatKivonatIr } from '../../core/forras-cache.js';   // 🔒 2026-11-02 a teljes szöveg git-en kívül
 import {
   CSALAS_FIGYELO_BE, csalasForras, csalasFriss, CSALAS_SZURO_RENDSZER, csalasSzuroPrompt, csalasDontesek,
-  csalasSzetosztas, csalasVazlatMeta, csalasGuardFrissit,
+  csalasSzetosztas, csalasVazlatMeta, csalasGuardFrissit, csalasKivonatPotlas,
 } from '../../core/csalas-figyelo.js';   // 🛡️ 2026-11-24 csalás-figyelő ága (terv 5. rész)
 import { relevanciaLista } from '../../core/relevancia-lista.js';   // 🐛 2026-11-24 „Title: undefined” javítás
 
@@ -546,6 +546,9 @@ async function main() {
     } else if (csalasJeloltek.length) {
       console.log(`\n━━━ 2b. FÁZIS: csalás-besorolás (${csalasJeloltek.length} tétel) ━━━\n`);
       try {
+        // 📄 11-28: az IC3-hírfolyam csak címet ad → a rövid kivonatú jelölt a hivatalos oldal elejét kapja.
+        const potolva = await csalasKivonatPotlas(csalasJeloltek, forrasLetoltes);
+        if (potolva) console.log(`   📄 ${potolva} rövid kivonat pótolva a hivatalos oldalról`);
         const response = await ask(
           csalasSzuroPrompt(csalasJeloltek.map(j => ({ title: j.item.title, snippet: j.snippet }))),
           { agentName: AGENT_NAME, systemPrompt: CSALAS_SZURO_RENDSZER, maxTokens: 2000, jsonMode: true }

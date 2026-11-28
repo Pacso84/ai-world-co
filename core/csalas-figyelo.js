@@ -70,6 +70,27 @@ Answer "csalas": false for:
 Reply with JSON only, no prose:
 {"decisions":[{"index":0,"csalas":true,"csatorna":"sms|email|chat|call|social|web","ok":"brief"}]}`;
 
+// 📄 KIVONAT-PÓTLÁS (2026-11-28, az élesítés előtti előnézet lelete): az FBI IC3 hírfolyama CSAK címet ad, és a
+// besoroló „no summary to confirm” indokkal eldobta a valódi „Scammers Exploit 2026 U.S. Midterm Election…” PSA-t.
+// A rövid kivonatú jelölt a hivatalos oldal ELEJÉT kapja (ingyenes letöltés, AI nélkül). A letöltőt a hívó adja
+// (core/forras-letoltes.js forrasLetoltes) — ez a fájl hálózat nélküli marad. Hiba esetén a régi kivonat marad.
+export const CSALAS_KIVONAT_MIN = 200;
+const CSALAS_KIVONAT_LETOLTES = 1500;
+
+/** A rövid kivonatú jelöltek snippetjét helyben pótolja. @returns {Promise<number>} hány kivonat lett pótolva */
+export async function csalasKivonatPotlas(jeloltek, letolto) {
+  let potolva = 0;
+  for (const j of Array.isArray(jeloltek) ? jeloltek : []) {
+    if (String(j?.snippet ?? '').trim().length >= CSALAS_KIVONAT_MIN || !j?.item?.link) continue;
+    try {
+      const r = await letolto(j.item.link, { maxChars: CSALAS_KIVONAT_LETOLTES });
+      const text = String(r?.text ?? '').trim();
+      if (r?.ok && text.length > String(j.snippet ?? '').trim().length) { j.snippet = text; potolva++; }
+    } catch { /* a régi kivonat marad */ }
+  }
+  return potolva;
+}
+
 export function csalasSzuroPrompt(tetelek) {
   const sorok = (tetelek || []).map((x, i) => {
     const kivonat = String(x?.snippet ?? '').replace(/\s+/g, ' ').trim().slice(0, 600);
